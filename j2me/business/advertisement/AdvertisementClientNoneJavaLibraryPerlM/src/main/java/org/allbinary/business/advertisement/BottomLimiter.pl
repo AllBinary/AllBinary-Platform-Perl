@@ -1,0 +1,82 @@
+#
+# AllBinary Open License Version 1
+# Copyright (c) 2011 AllBinary
+# 
+# By agreeing to this license you and any business entity you represent are
+# legally bound to the AllBinary Open License Version 1 legal agreement.
+# 
+# You may obtain the AllBinary Open License Version 1 legal agreement from
+# AllBinary or the root directory of AllBinary's AllBinary Platform repository.
+# 
+# Created By: Travis Berthelot
+#  
+# Generated Code Do Not Modify
+
+package org::allbinary::business::advertisement::BottomLimiter;
+use strict;
+use warnings;
+use feature 'try';
+no warnings 'experimental::try';
+
+our $instance = 'org::allbinary::business::advertisement::BottomLimiter'->new();
+
+sub _init_fields {
+    my ($self) = @_;
+    $self->{bottom} = 0;
+    $self->{deltaY} = 0;
+    $self->{lower} = 0;
+    $self->{higher} = 0;
+}
+
+
+sub getInstance {
+    my ($class) = @_;
+        return $org::allbinary::business::advertisement::BottomLimiter::instance;
+}
+
+
+sub new {
+    my ($class) = @_;
+    my $self = bless({}, $class);
+    $self->_init_fields();
+    return $self;
+}
+
+
+sub init {
+    my ($self, $lower, $higher) = @_;
+        $self->{lower} = $lower;
+        $self->{higher} = $higher;
+}
+
+
+sub update {
+    my ($self) = @_;
+        my $displayInfo = 'org::allbinary::graphics::displayable::DisplayInfoSingleton'->getInstance();
+        my $gameAdState = 'org::allbinary::business::advertisement::GameAdStateFactory'->getInstance()->getCurrentInstance();
+        if ($gameAdState->isShowingAt()) {
+            $self->{deltaY} = $self->{higher};
+        } else {
+            $self->{deltaY} = $self->{lower};
+        }
+        $self->{bottom} = $displayInfo->getLastHeight() - $self->{deltaY};
+}
+
+
+sub getDeltaY {
+    my ($self) = @_;
+        return $self->{deltaY};
+}
+
+
+sub getBottom {
+    my ($self) = @_;
+        return $self->{bottom};
+}
+
+use org::allbinary::game::GameAdState;
+use org::allbinary::graphics::displayable::DisplayInfoSingleton;
+use org::allbinary::business::advertisement::GameAdStateFactory;
+
+1;
+

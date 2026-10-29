@@ -1,0 +1,45 @@
+# 
+# AllBinary Open License Version 1 
+# Copyright (c) 2025 AllBinary 
+#  
+# By agreeing to this license you and any business entity you represent are 
+# legally bound to the AllBinary Open License Version 1 legal agreement. 
+#  
+# You may obtain the AllBinary Open License Version 1 legal agreement from 
+# AllBinary or the root directory of AllBinary's AllBinary Platform repository. 
+#  
+# Created By: Travis Berthelot 
+#   
+# Generated Code Do Not Modify
+
+package org::allbinary::graphics::opengles::OrthogonalLightingOpenGLProcessorFactory;
+use strict;
+use warnings;
+use feature 'try';
+no warnings 'experimental::try';
+
+our $instance = 'org::allbinary::graphics::opengles::OrthogonalLightingOpenGLProcessorFactory'->new();
+
+sub _init_fields {
+    my ($self) = @_;
+    $self->{sceneLightingOrthogonalModeOpenGLProcessor} = 'org::allbinary::graphics::opengles::NullOpenGLProcessorFactory'->getInstance();
+    $self->{sceneLightsOrthogonalModeOpenGLProcessor} = 'org::allbinary::graphics::opengles::NullOpenGLProcessorFactory'->getInstance();
+}
+
+sub new {
+    my ($class) = @_;
+    my $self = bless({}, $class);
+    $self->_init_fields();
+    return $self;
+}
+
+
+sub getInstance {
+    my ($class) = @_;
+        return $org::allbinary::graphics::opengles::OrthogonalLightingOpenGLProcessorFactory::instance;
+}
+
+use org::allbinary::graphics::opengles::NullOpenGLProcessorFactory;
+
+1;
+

@@ -1,0 +1,62 @@
+#
+# AllBinary Open License Version 1
+# Copyright (c) 2011 AllBinary
+# 
+# By agreeing to this license you and any business entity you represent are
+# legally bound to the AllBinary Open License Version 1 legal agreement.
+# 
+# You may obtain the AllBinary Open License Version 1 legal agreement from
+# AllBinary or the root directory of AllBinary's AllBinary Platform repository.
+# 
+# Created By: Travis Berthelot
+#  
+# Generated Code Do Not Modify
+
+package org::allbinary::graphics::color::ColorCacheable;
+use strict;
+use warnings;
+use feature 'try';
+no warnings 'experimental::try';
+use parent -norequire,'org::allbinary::logic::util::cache::CacheableInterface';
+
+
+sub _init_fields {
+    my ($self) = @_;
+    $self->{key} = undef;
+    $self->{color} = undef;
+}
+
+
+sub new {
+    my ($class, $key) = @_;
+    my $self = bless({}, $class);
+    $self->_init_fields();
+        $self->{key} = $key;
+        $self->{color} = 'org::allbinary::graphics::color::Color'->new(int(($key)));
+    return $self;
+}
+
+
+sub getKey {
+    my ($self) = @_;
+        return $self->{key};
+}
+
+
+sub getColor {
+    my ($self) = @_;
+        return $self->{color};
+}
+
+
+sub setColor {
+    my ($self, $color) = @_;
+        $self->{color} = $color;
+}
+
+# use java::awt;
+use org::allbinary::logic::util::cache::CacheableInterface;
+use org::allbinary::graphics::color::Color;
+
+1;
+

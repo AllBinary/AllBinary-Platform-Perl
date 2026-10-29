@@ -1,0 +1,59 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>org.allbinary</groupId>
+    <artifactId>AllBinaryPersistenceLibraryPPerl</artifactId>
+    <packaging>pom</packaging>
+    <!-- AllBinary Platform Version Start -->
+    <version>1.0.0-SNAPSHOT</version>
+    <!-- AllBinary Platform Version End -->
+
+    <name>AllBinaryPersistenceLibraryPPerl</name>
+    <url>http://www.allbinary.com/</url>
+    <distributionManagement>
+        <snapshotRepository>
+            <id>nexus-snapshots</id>
+            <name>AllBinary Snapshots Nexus</name>
+            <url>https://nexus-allbinary.rhcloud.com/nexus/content/repositories/snapshots/</url>
+        </snapshotRepository>
+        <repository>
+            <id>nexus-releases</id>
+            <name>AllBinary Releases Nexus</name>
+            <url>https://nexus-allbinary.rhcloud.com/nexus/content/repositories/releases/</url>
+        </repository>
+    </distributionManagement>
+    
+    <properties>
+        <buildLabel>${project.version}</buildLabel>
+        <assemblyPluginVersion>2.2-beta-1</assemblyPluginVersion>
+    </properties>
+
+    <modules>
+        
+        <!--
+        -->
+        <module>../allbinary_src/cache/AllBinaryCacheLibraryPerlM</module>
+        <module>../allbinary_src/PermutationsJavaLibraryPerlM</module>
+        <module>../allbinary_src/logic/BasePreloaderFileJavaLibraryPerlM</module>
+        <module>../allbinary_src/logic/data/file/FileJavaLibraryPerlM</module>
+        <module>../allbinary_src/logic/data/file/FileJ2SEJavaLibraryPerlM</module>
+        <module>../allbinary_src/data/DataJavaLibraryPerlM</module>
+        <module>../allbinary_src/logic/data/file/FileUnamedJavaLibraryPerlM</module>
+        <module>../allbinary_src/logic/data/file/FileAdvancedJavaLibraryPerlM</module>
+        <module>../allbinary_src/PreLoaderJavaLibraryPerlM</module>
+        <module>../allbinary_src/FileInitInfoJavaLibraryPerlM</module>
+        <module>../allbinary_src/PreLoaderFileJavaLibraryPerlM</module>
+        <module>../allbinary_src/PreLoaderLicenseJavaLibraryPerlM</module>
+        <module>../j2me/PCResourceLibraryPerlM</module>
+        <module>../j2me/ProgressJ2MEJavaLibraryPerlM</module>
+        <module>../allbinary_src/licensing/ClientInfoBaseJavaLibraryPerlM</module>
+        <module>../allbinary_src/licensing/RemoteXmlRpcJavaLibraryPerlM</module>
+        <module>../allbinary_src/licensing/LicenseClientJavaLibraryPerlM</module>
+
+        <!--
+        <module>../allbinary_src/PreLoaderLicenseJavaLibraryPerlM</module>
+        -->
+    </modules>
+
+</project>
+

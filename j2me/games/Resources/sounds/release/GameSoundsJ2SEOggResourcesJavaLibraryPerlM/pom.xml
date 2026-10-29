@@ -1,0 +1,103 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>org.allbinary.game.resources</groupId>
+    <artifactId>GameSoundsJ2SEOggResourcesJavaLibraryPerl</artifactId>
+    <packaging>jar</packaging>
+    <!-- AllBinary Platform Version Start -->
+    <version>1.0.0-SNAPSHOT</version>
+    <!-- AllBinary Platform Version End -->
+
+    <name>GameSoundsJ2SEOggResourcesJavaLibraryPerl</name>
+    <url>http://www.allbinary.com</url>
+  
+    <distributionManagement>
+        <snapshotRepository>
+            <id>nexus-snapshots</id>
+            <name>AllBinary Snapshots Nexus</name>
+            <url>https://nexus-allbinary.rhcloud.com/nexus/content/repositories/snapshots/</url>
+        </snapshotRepository>
+        <repository>
+            <id>nexus-releases</id>
+            <name>AllBinary Releases Nexus</name>
+            <url>https://nexus-allbinary.rhcloud.com/nexus/content/repositories/releases/</url>
+        </repository>
+    </distributionManagement>
+      
+    <properties>
+        <buildLabel>${project.version}</buildLabel>
+        <cygwin.home>G:/cygwin64</cygwin.home>
+        <!-- The generated code uses feature 'try' so it needs Perl 5.34 or later. The Cygwin perl G:/cygwin64/bin/perl.exe also works. -->
+        <perl.executable>C:/Strawberry/perl/bin/perl.exe</perl.executable>
+        <!-- Set to false to continue the Maven build when the generated Perl does not compile -->
+        <perl.fail.on.error>true</perl.fail.on.error>
+        <perl.dependency.directory>${project.build.directory}/perl-dependencies/META-INF/perl/lib</perl.dependency.directory>
+        <!-- Hand written runtime for generated Perl code such as java::util::Vector -->
+        <perl.runtime.directory>G:/mnt/bc/mydev/workperl/j2me/J2SEForPerlLibraryPerlM/src/main/java</perl.runtime.directory>
+    </properties>
+
+    <dependencies>
+    </dependencies>
+
+
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-dependency-plugin</artifactId>
+                <version>3.8.1</version>
+                <executions>
+                    <execution>
+                        <id>unpack-perl-dependencies</id>
+                        <phase>generate-resources</phase>
+                        <goals>
+                            <goal>unpack-dependencies</goal>
+                        </goals>
+                        <configuration>
+                            <includeScope>runtime</includeScope>
+                            <includeTypes>jar</includeTypes>
+                            <excludeClassifiers>sources</excludeClassifiers>
+                            <includes>META-INF/perl/**</includes>
+                            <outputDirectory>${project.build.directory}/perl-dependencies</outputDirectory>
+                            <overWriteSnapshots>true</overWriteSnapshots>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>exec-maven-plugin</artifactId>
+                <version>3.5.0</version>
+                <executions>
+                    <execution>
+                        <id>compile-perl-sources</id>
+                        <phase>compile</phase>
+                        <goals>
+                            <goal>exec</goal>
+                        </goals>
+                        <configuration>
+                            <executable>${cygwin.home}/bin/bash.exe</executable>
+                            <arguments>
+                                <argument>${project.basedir}/build-cygwin.sh</argument>
+                                <argument>${project.basedir}/src/main/java</argument>
+                                <argument>${project.build.outputDirectory}/META-INF/perl/lib</argument>
+                                <argument>${project.build.directory}/perl-dependency-lib</argument>
+                                <argument>${perl.executable}</argument>
+                                <argument>${perl.fail.on.error}</argument>
+                                <argument>${perl.dependency.directory}</argument>
+                                <argument>${perl.runtime.directory}</argument>
+                            </arguments>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+
+
+        </plugins>
+    </build>
+
+</project>
+
+

@@ -1,0 +1,88 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>org.allbinary</groupId>
+    <artifactId>AllBinaryBaseLibraryPOMPerl</artifactId>
+    <packaging>pom</packaging>
+    <!-- AllBinary Platform Version Start -->
+    <version>1.0.0-SNAPSHOT</version>
+    <!-- AllBinary Platform Version End -->
+
+    <name>AllBinaryBaseLibraryPOMPerl</name>
+    <url>http://www.allbinary.com/</url>
+    <distributionManagement>
+        <snapshotRepository>
+            <id>nexus-snapshots</id>
+            <name>AllBinary Snapshots Nexus</name>
+            <url>https://nexus-allbinary.rhcloud.com/nexus/content/repositories/snapshots/</url>
+        </snapshotRepository>
+        <repository>
+            <id>nexus-releases</id>
+            <name>AllBinary Releases Nexus</name>
+            <url>https://nexus-allbinary.rhcloud.com/nexus/content/repositories/releases/</url>
+        </repository>
+    </distributionManagement>
+    
+    <properties>
+        <buildLabel>${project.version}</buildLabel>
+        <assemblyPluginVersion>2.2-beta-1</assemblyPluginVersion>
+    </properties>
+
+    <modules>
+        <module>../CommonJavaLibraryPerlM</module>
+        <module>../TempBaseJavaLibraryPerlM</module>
+        
+        <module>../../allbinary_src/LogPerlM</module>
+        <module>../../allbinary_src/allbinary_src_designpatterns_srcPerlM</module>
+        <module>../../allbinary_src/data/BaseDataJavaLibraryPerlM</module>
+        <module>../../allbinary_src/cache/BaseCacheJavaLibraryPerlM</module>
+        <module>../../allbinary_src/logic/BasePreloaderJavaLibraryPerlM</module>
+        <module>../../allbinary_src/logic/BasePreloaderJ2MEJavaLibraryPerlM</module>
+
+        <module>../ExceptionHTMLJavaLibraryPerlM</module>
+        <module>../J2MEExceptionLibraryPerlM</module>
+        <module>../../allbinary_src/J2SEExceptionLibraryPerlM</module>
+        <module>../J2MEUtilJavaLibraryPerlM</module>
+        <module>../J2MEColorJavaLibraryPerlM</module>
+        <module>../EventJ2MELibraryPerlM</module>
+
+        <module>../../allbinary_src/LogNoPlatformJavaLibraryPerlM</module>
+        <module>../../allbinary_src/LogJ2MEJavaLibraryPerlM</module>
+        <module>../../allbinary_src/LogJ2SEJavaLibraryPerlM</module>
+<!--        <module>../../allbinary_src/LogAndroidJavaLibraryPerlM</module>-->
+        <module>../logging/LoggingNonePerlM</module>
+        <module>../logging/LoggingJ2MEAllPerlM</module>
+        <module>../logging/LoggingJ2MEExceptionPerlM</module>
+        <!--<module>../logging/LoggingAndroidAllPerlM</module>-->
+        <!--
+        //While it is a possible dependency option it really does not fit here
+        //as such it is actually build in the final POM builds instead
+        <module>../logging/LoggingRemoteExceptionPerlM</module>  
+        -->
+        
+        <module>../J2MEWindowingJavaLibraryPerlM</module>
+        
+        <module>../lib/BaseMathLibraryPerlM</module>
+        <module>../lib/BasicMathLibraryPerlM</module>
+        
+        <module>../../allbinary_src/ThreadLibraryPerlM</module>
+        <module>../../allbinary_src/ThreadHTMLLibraryPerlM</module>
+        <module>../../replace_these_stub_projects/allbinary_src/NoneOnlyJavaLibraryPerlM</module>
+        <module>../../allbinary_src/ThreadJ2MELibraryPerlM</module>
+        <module>../time/TimeJavaLibraryPerlM</module>
+
+        <module>../statistics/ApplicationStatisticsJ2SELibraryPerlM</module>
+        <module>../statistics/ApplicationStatisticsJ2MELibraryPerlM</module>
+        <module>../statistics/ApplicationStatisticsJavaLibraryPerlM</module>
+
+        <module>../../allbinary_src/logging/BasicLogConfigTypeJavaLibraryPerlM</module>
+        <module>../../allbinary_src/logging/LogConfigTypeGameClientJavaLibraryPerlM</module>
+
+        <module>../../allbinary_src/hardware/HardwareLibraryPOPerlM</module>
+
+        <module>../lib/TrigBaseLibraryPerlM</module>
+
+    </modules>
+
+</project>
+

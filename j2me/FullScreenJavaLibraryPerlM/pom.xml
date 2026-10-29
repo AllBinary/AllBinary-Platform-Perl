@@ -1,0 +1,282 @@
+
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>org.allbinary</groupId>
+    <artifactId>FullScreenJavaLibraryPerl</artifactId>
+    <packaging>jar</packaging>
+    <!-- AllBinary Platform Version Start -->
+            <version>1.0.0-SNAPSHOT</version>
+            <!-- AllBinary Platform Version End -->
+
+    <name>FullScreenJavaLibraryPerl</name>
+    <url>http://www.allbinary.com/</url>
+    <distributionManagement>
+        <snapshotRepository>
+            <id>nexus-snapshots</id>
+            <name>AllBinary Snapshots Nexus</name>
+            <url>https://nexus-allbinary.rhcloud.com/nexus/content/repositories/snapshots/</url>
+        </snapshotRepository>
+        <repository>
+            <id>nexus-releases</id>
+            <name>AllBinary Releases Nexus</name>
+            <url>https://nexus-allbinary.rhcloud.com/nexus/content/repositories/releases/</url>
+        </repository>
+    </distributionManagement>
+    <properties>
+        <cygwin.home>G:/cygwin64</cygwin.home>
+        <!-- The generated code uses feature 'try' so it needs Perl 5.34 or later. The Cygwin perl G:/cygwin64/bin/perl.exe also works. -->
+        <perl.executable>C:/Strawberry/perl/bin/perl.exe</perl.executable>
+        <!-- Set to false to continue the Maven build when the generated Perl does not compile -->
+        <perl.fail.on.error>true</perl.fail.on.error>
+        <perl.dependency.directory>${project.build.directory}/perl-dependencies/META-INF/perl/lib</perl.dependency.directory>
+        <!-- Hand written runtime for generated Perl code such as java::util::Vector -->
+        <perl.runtime.directory>G:/mnt/bc/mydev/workperl/j2me/J2SEForPerlLibraryPerlM/src/main/java</perl.runtime.directory>
+    </properties>
+
+    <dependencies>
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>3.8.1</version>
+            <scope>test</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>org.allbinary</groupId>
+            <artifactId>LoggingJ2MEAllPerl</artifactId>
+            <!-- AllBinary Platform Version Start -->
+            <version>1.0.0-SNAPSHOT</version>
+            <!-- AllBinary Platform Version End -->
+
+            <optional>true</optional>
+        </dependency>
+
+        <dependency>
+            <groupId>org.allbinary</groupId>
+            <artifactId>SWTWithoutJOGLJavaLibraryPerl</artifactId>
+            <!-- AllBinary Platform Version Start -->
+            <version>1.0.0-SNAPSHOT</version>
+            <!-- AllBinary Platform Version End -->
+
+            <optional>true</optional>
+        </dependency>
+
+        <dependency>
+            <groupId>org.allbinary</groupId>
+            <artifactId>GameAnimationJavaLibraryPerl</artifactId>
+            <!-- AllBinary Platform Version Start -->
+            <version>1.0.0-SNAPSHOT</version>
+            <!-- AllBinary Platform Version End -->
+
+        </dependency>
+
+        <dependency>
+            <groupId>org.allbinary</groupId>
+            <artifactId>GameConfigurationFormJavaLibraryPerl</artifactId>
+            <!-- AllBinary Platform Version Start -->
+            <version>1.0.0-SNAPSHOT</version>
+            <!-- AllBinary Platform Version End -->
+
+            <optional>true</optional>
+        </dependency>
+
+        <dependency>
+            <groupId>org.microemu</groupId>
+            <artifactId>microemu-midpPerl</artifactId>
+            <version>3.0.0-SNAPSHOT</version>
+            <optional>true</optional>
+        </dependency>
+        <!--
+        Public microemu
+        <dependency>
+            <groupId>org.microemu</groupId>
+            <artifactId>microemu-midpPerl</artifactId>
+            <version>2.0.4</version>
+            <optional>true</optional>
+        </dependency>
+        Custom microemu
+        <dependency>
+            <groupId>org.microemu</groupId>
+            <artifactId>microemu-midpPerl</artifactId>
+            <version>3.0.0-SNAPSHOT</version>
+            <optional>true</optional>
+        </dependency>
+        -->
+    </dependencies>
+
+
+
+    <build>
+
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-dependency-plugin</artifactId>
+                <version>3.8.1</version>
+                <executions>
+                    <execution>
+                        <id>unpack-perl-dependencies</id>
+                        <phase>generate-resources</phase>
+                        <goals>
+                            <goal>unpack-dependencies</goal>
+                        </goals>
+                        <configuration>
+                            <includeScope>runtime</includeScope>
+                            <includeTypes>jar</includeTypes>
+                            <excludeClassifiers>sources</excludeClassifiers>
+                            <includes>META-INF/perl/**</includes>
+                            <outputDirectory>${project.build.directory}/perl-dependencies</outputDirectory>
+                            <overWriteSnapshots>true</overWriteSnapshots>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>exec-maven-plugin</artifactId>
+                <version>3.5.0</version>
+                <executions>
+                    <execution>
+                        <id>compile-perl-sources</id>
+                        <phase>compile</phase>
+                        <goals>
+                            <goal>exec</goal>
+                        </goals>
+                        <configuration>
+                            <executable>${cygwin.home}/bin/bash.exe</executable>
+                            <arguments>
+                                <argument>${project.basedir}/build-cygwin.sh</argument>
+                                <argument>${project.basedir}/src/main/java</argument>
+                                <argument>${project.build.outputDirectory}/META-INF/perl/lib</argument>
+                                <argument>${project.build.directory}/perl-dependency-lib</argument>
+                                <argument>${perl.executable}</argument>
+                                <argument>${perl.fail.on.error}</argument>
+                                <!-- Sources of the dependency closure since Maven does not unpack the optional dependencies of dependencies. Written by PerlPomUpdater. -->
+                                <argument>G:/mnt/bc/mydev/workingperl/allbinary_src/logic/data/file/FileJavaLibraryPerlM/src/main/java</argument>
+                                <argument>G:/mnt/bc/mydev/workingperl/allbinary_src/logic/data/file/FileJ2SEJavaLibraryPerlM/src/main/java</argument>
+                                <argument>G:/mnt/bc/mydev/AllBinary-Platform-Integrationperl/graphics/opengl/min3d/Min3dBaseJavaLibraryPerlM/src/main/java</argument>
+                                <argument>G:/mnt/bc/mydev/workingperl/j2me/media/graphics/animation/image/ImageJ2MEJavaLibraryPerlM/src/main/java</argument>
+                                <argument>G:/mnt/bc/mydev/workingperl/graphics/opengl/OpenGLJ2MENoneJavaLibraryPerlM/src/main/java</argument>
+                                <argument>G:/mnt/bc/mydev/workingperl/j2me/games/ScreenCaptureJavaLibraryPerlM/src/main/java</argument>
+                                <argument>G:/mnt/bc/mydev/workingperl/j2me/media/graphics/NullCustomUIPreJavaLibraryPerlM/src/main/java</argument>
+                                <argument>G:/mnt/bc/mydev/workingperl/allbinary_src/J2SEExceptionLibraryPerlM/src/main/java</argument>
+                                <argument>G:/mnt/bc/mydev/workingperl/j2me/lib/VectorThreeDimensionalLibraryPerlM/src/main/java</argument>
+                                <argument>G:/mnt/bc/mydev/workingperl/j2me/PCResourceLibraryPerlM/src/main/java</argument>
+                                <argument>G:/mnt/bc/mydev/workingperl/j2me/media/graphics/ImageCacheBaseJ2MEJavaLibraryPerlM/src/main/java</argument>
+                                <argument>G:/mnt/bc/mydev/workingperl/j2me/media/graphics/GameResourceNoneJavaLibraryPerlM/src/main/java</argument>
+                                <argument>G:/mnt/bc/mydev/workingperl/j2me/J2MEForJ2MEJavaLibraryPerlM/src/main/java</argument>
+                                <argument>G:/mnt/bc/mydev/workingperl/replace_these_stub_projects/allbinary_src/NoneOnlyJavaLibraryPerlM/src/main/java</argument>
+                                <argument>G:/mnt/bc/mydev/workingperl/allbinary_src/hardware/BaseSystemJavaLibraryPerlM/src/main/java</argument>
+                                <argument>G:/mnt/bc/mydev/workingperl/allbinary_src/hardware/BaseOperatingSystemJavaLibraryPerlM/src/main/java</argument>
+                                <argument>G:/mnt/bc/mydev/workingperl/allbinary_src/hardware/BaseHardwareJavaLibraryPerlM/src/main/java</argument>
+                                <argument>G:/mnt/bc/mydev/workingperl/allbinary_src/hardware/NoHardwareJavaLibraryPerlM/src/main/java</argument>
+                                <argument>G:/mnt/bc/mydev/workingperl/j2me/DebugJavaLibraryPerlM/src/main/java</argument>
+                                <argument>G:/mnt/bc/mydev/workingperl/allbinary_src/hardware/AndroidSystemJavaLibraryPerlM/src/main/java</argument>
+                                <argument>G:/mnt/bc/mydev/workingperl/j2me/android/VirtualKeyboardJavaLibraryPerlM/src/main/java</argument>
+                                <argument>G:/mnt/bc/mydev/workingperl/allbinary_src/logic/BasePreloaderFileJavaLibraryPerlM/src/main/java</argument>
+                                <argument>G:/mnt/bc/mydev/AllBinary-Platform-Integrationperl/embedded/j2me/microemulator/custom/MicroEmulatorCustomJavaLibraryPerlM/src/main/java</argument>
+                                <argument>G:/mnt/bc/mydev/workingperl/graphics/opengl/OpenGLESFileConfigurationJavaLibraryPerlM/src/main/java</argument>
+                                <argument>G:/mnt/bc/mydev/workingperl/j2me/ProgressJ2MEJavaLibraryPerlM/src/main/java</argument>
+                                <argument>G:/mnt/bc/mydev/workingperl/graphics/opengl/Min3dForNullJavaLibraryPerlM/src/main/java</argument>
+                                <argument>G:/mnt/bc/mydev/workingperl/graphics/opengl/OpenGLESNullImageJavaLibraryPerlM/src/main/java</argument>
+                                <argument>G:/mnt/bc/mydev/workingperl/allbinary_src/TokenizerJavaLibraryPerlM/src/main/java</argument>
+                                <argument>G:/mnt/bc/mydev/workingperl/j2me/media/graphics/ImageCacheOpenGLESJavaLibraryPerlM/src/main/java</argument>
+                                <argument>G:/mnt/bc/mydev/workingperl/j2me/input/NoGyroSensorJavaLibraryPerlM/src/main/java</argument>
+                                <argument>G:/mnt/bc/mydev/workingperl/j2me/games/PreGameJ2MEJavaLibraryPerlM/src/main/java</argument>
+                                <argument>G:/mnt/bc/mydev/workingperl/j2me/media/sound/NoPlayerJavaLibraryPerlM/src/main/java</argument>
+                                <argument>G:/mnt/bc/mydev/workingperl/j2me/media/sound/NotDeviceSpecificNoMediaMIDP1LibraryPerlM/src/main/java</argument>
+                                <argument>G:/mnt/bc/mydev/workingperl/j2me/media/sound/BasicPlayerJavaLibraryPerlM/src/main/java</argument>
+                                <argument>G:/mnt/bc/mydev/workingperl/allbinary_src/cache/BaseCacheJavaLibraryPerlM/src/main/java</argument>
+                                <argument>G:/mnt/bc/mydev/workingperl/j2me/media/graphics/FormJavaLibraryPerlM/src/main/java</argument>
+                                <argument>G:/mnt/bc/mydev/workingperl/j2me/media/graphics/FormValidationJavaLibraryPerlM/src/main/java</argument>
+                                <argument>G:/mnt/bc/mydev/workingperl/j2me/games/GameInputPersistanceLibraryPerlM/src/main/java</argument>
+                                <argument>G:/mnt/bc/mydev/workingperl/j2me/media/graphics/NullCustomUIJavaLibraryPerlM/src/main/java</argument>
+                                <argument>G:/mnt/bc/mydev/workingperl/graphics/opengl/OpenGLESBaseJavaLibraryPerlM/src/main/java</argument>
+                                <argument>G:/mnt/bc/mydev/workingperl/j2me/TempJavaLibraryPerlM/src/main/java</argument>
+                                <argument>G:/mnt/bc/mydev/workingperl/allbinary_src/LogJ2SEJavaLibraryPerlM/src/main/java</argument>
+                                <argument>G:/mnt/bc/mydev/workingperl/j2me/GroupLibraryPerlM/src/main/java</argument>
+                                <argument>G:/mnt/bc/mydev/workingperl/j2me/logging/LoggingJ2MEExceptionPerlM/src/main/java</argument>
+                                <argument>G:/mnt/bc/mydev/workingperl/j2me/lib/BaseMathLibraryPerlM/src/main/java</argument>
+                                <argument>G:/mnt/bc/mydev/workingperl/allbinary_src/LogNoPlatformJavaLibraryPerlM/src/main/java</argument>
+                                <argument>G:/mnt/bc/mydev/workingperl/replace_these_stub_projects/allbinary_src/J2MEJsInteropCompatibilityJavaLibraryPerlM/src/main/java</argument>
+                                <argument>G:/mnt/bc/mydev/workingperl/j2me/media/graphics/geography/map/LayerPlacementLibraryPerlM/src/main/java</argument>
+                                <argument>G:/mnt/bc/mydev/workingperl/j2me/media/graphics/ImageCacheJ2MEJavaLibraryPerlM/src/main/java</argument>
+                                <argument>G:/mnt/bc/mydev/workingperl/replace_these_stub_projects/allbinary_src/J2MEOnlyJavaLibraryPerlM/src/main/java</argument>
+                                <argument>G:/mnt/bc/mydev/workingperl/j2me/lib/TrigJ2MELibraryPerlM/src/main/java</argument>
+                                <argument>G:/mnt/bc/mydev/workingperl/j2me/media/graphics/geography/map/GraphBaseJavaLibraryPerlM/src/main/java</argument>
+                                <argument>G:/mnt/bc/mydev/workingperl/j2me/J2MEColorJavaLibraryPerlM/src/main/java</argument>
+                                <argument>G:/mnt/bc/mydev/workingperl/j2me/time/TimeJavaLibraryPerlM/src/main/java</argument>
+                                <argument>G:/mnt/bc/mydev/workingperl/j2me/lib/TrigBaseLibraryPerlM/src/main/java</argument>
+                                <argument>G:/mnt/bc/mydev/workingperl/allbinary_src/allbinary_src_designpatterns_srcPerlM/src/main/java</argument>
+                                <argument>G:/mnt/bc/mydev/workingperl/allbinary_src/ThreadJ2MELibraryPerlM/src/main/java</argument>
+                                <argument>G:/mnt/bc/mydev/workingperl/allbinary_src/ThreadLibraryPerlM/src/main/java</argument>
+                                <argument>G:/mnt/bc/mydev/workingperl/allbinary_src/licensing/ClientInfoBaseJavaLibraryPerlM/src/main/java</argument>
+                                <argument>G:/mnt/bc/mydev/workingperl/j2me/NullJ2MELibraryPerlM/src/main/java</argument>
+                                <argument>G:/mnt/bc/mydev/workingperl/allbinary_src/hardware/NoSystemJavaLibraryPerlM/src/main/java</argument>
+                                <argument>G:/mnt/bc/mydev/workingperl/j2me/J2MEExceptionLibraryPerlM/src/main/java</argument>
+                                <argument>G:/mnt/bc/mydev/workingperl/j2me/CommonJavaLibraryPerlM/src/main/java</argument>
+                                <argument>G:/mnt/bc/mydev/workingperl/j2me/AndroidResourceLibraryPerlM/src/main/java</argument>
+                                <argument>G:/mnt/bc/mydev/workingperl/j2me/statistics/ApplicationStatisticsJ2MELibraryPerlM/src/main/java</argument>
+                                <argument>G:/mnt/bc/mydev/workperl/j2me/android/AndroidToNullLibraryPerlM/src/main/java</argument>
+                                <argument>G:/mnt/bc/mydev/workingperl/j2me/statistics/ApplicationStatisticsJavaLibraryPerlM/src/main/java</argument>
+                                <argument>G:/mnt/bc/mydev/workingperl/graphics/opengl/OpenGLESJavaLibraryPerlM/src/main/java</argument>
+                                <argument>G:/mnt/bc/mydev/workingperl/j2me/J2MEWindowingJavaLibraryPerlM/src/main/java</argument>
+                                <argument>G:/mnt/bc/mydev/workingperl/allbinary_src/logic/BasePreloaderJ2MEJavaLibraryPerlM/src/main/java</argument>
+                                <argument>G:/mnt/bc/mydev/workingperl/j2me/input/NoSensorJavaLibraryPerlM/src/main/java</argument>
+                                <argument>G:/mnt/bc/mydev/workingperl/graphics/opengl/OpenGLNoneOtherJavaLibraryPerlM/src/main/java</argument>
+                                <argument>G:/mnt/bc/mydev/workingperl/graphics/opengl/OpenGLNoneJavaLibraryPerlM/src/main/java</argument>
+                                <argument>G:/mnt/bc/mydev/workingperl/j2me/media/sound/SoundJ2MELibraryPerlM/src/main/java</argument>
+                                <argument>G:/mnt/bc/mydev/workingperl/j2me/games/GameSoundsJavaLibraryPerlM/src/main/java</argument>
+                                <argument>G:/mnt/bc/mydev/workingperl/j2me/games/GameInputLibraryPerlM/src/main/java</argument>
+                                <argument>G:/mnt/bc/mydev/workingperl/j2me/input/AllBinarySensorJavaLibraryPerlM/src/main/java</argument>
+                                <argument>G:/mnt/bc/mydev/workingperl/j2me/EventJ2MELibraryPerlM/src/main/java</argument>
+                                <argument>G:/mnt/bc/mydev/workingperl/j2me/media/graphics/FormBaseJavaLibraryPerlM/src/main/java</argument>
+                                <argument>G:/mnt/bc/mydev/workingperl/j2me/media/graphics/FormJMEJavaLibraryPerlM/src/main/java</argument>
+                                <argument>G:/mnt/bc/mydev/workingperl/graphics/opengl/NoSWTJavaLibraryPerlM/src/main/java</argument>
+                                <argument>G:/mnt/bc/mydev/workingperl/j2me/games/GameConfigurationJ2MEJavaLibraryPerlM/src/main/java</argument>
+                                <argument>G:/mnt/bc/mydev/workingperl/j2me/J2SEForJ2MEJavaLibraryPerlM/src/main/java</argument>
+                                <argument>G:/mnt/bc/mydev/workingperl/j2me/media/graphics/layer/AllBinaryLayerJavaLibraryPerlM/src/main/java</argument>
+                                <argument>G:/mnt/bc/mydev/workingperl/j2me/lib/BasicMathLibraryPerlM/src/main/java</argument>
+                                <argument>G:/mnt/bc/mydev/workingperl/j2me/J2MEUtilJavaLibraryPerlM/src/main/java</argument>
+                                <argument>G:/mnt/bc/mydev/workingperl/j2me/media/graphics/animation/AnimationResourceJavaLibraryPerlM/src/main/java</argument>
+                                <argument>G:/mnt/bc/mydev/workingperl/j2me/games/GameConfigurationJavaLibraryPerlM/src/main/java</argument>
+                                <argument>G:/mnt/bc/mydev/workingperl/j2me/media/graphics/animation/RotationAnimationJavaLibraryPerlM/src/main/java</argument>
+                                <argument>G:/mnt/bc/mydev/workingperl/j2me/media/graphics/animation/AnimationLibraryPerlM/src/main/java</argument>
+                                <argument>G:/mnt/bc/mydev/workingperl/j2me/AllBinaryJ2MELibraryPerlM/src/main/java</argument>
+                                <argument>G:/mnt/bc/mydev/workingperl/allbinary_src/LogPerlM/src/main/java</argument>
+                                <argument>G:/mnt/bc/mydev/workingperl/allbinary_src/LogJ2MEJavaLibraryPerlM/src/main/java</argument>
+                                <argument>G:/mnt/bc/mydev/workingperl/j2me/TempBaseJavaLibraryPerlM/src/main/java</argument>
+                                <argument>G:/mnt/bc/mydev/workingperl/j2me/games/GameConfigurationFormJavaLibraryPerlM/src/main/java</argument>
+                                <argument>G:/mnt/bc/mydev/workingperl/j2me/media/graphics/animation/GameAnimationJavaLibraryPerlM/src/main/java</argument>
+                                <argument>G:/mnt/bc/mydev/workingperl/graphics/opengl/SWTWithoutJOGLJavaLibraryPerlM/src/main/java</argument>
+                                <argument>G:/mnt/bc/mydev/workingperl/j2me/logging/LoggingJ2MEAllPerlM/src/main/java</argument>
+                                <argument>${perl.dependency.directory}</argument>
+                                <argument>${perl.runtime.directory}</argument>
+                            </arguments>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-source-plugin</artifactId>
+                <version>3.3.1</version>
+                <executions>
+                    <execution>
+                        <id>attach-sources</id>
+                        <goals>
+                            <goal>jar</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+
+    </build>
+
+</project>
+

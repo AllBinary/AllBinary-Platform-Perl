@@ -1,0 +1,192 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>org.allbinary</groupId>
+  <artifactId>GameJ2MELibraryPOMPerl</artifactId>
+  <packaging>pom</packaging>
+  <!-- AllBinary Platform Version Start -->
+  <version>1.0.0-SNAPSHOT</version>
+  <!-- AllBinary Platform Version End -->
+
+  <name>GameJ2MELibraryPOMPerl</name>
+  <url>http://www.allbinary.com/</url>
+    <distributionManagement>
+        <snapshotRepository>
+            <id>nexus-snapshots</id>
+            <name>AllBinary Snapshots Nexus</name>
+            <url>https://nexus-allbinary.rhcloud.com/nexus/content/repositories/snapshots/</url>
+        </snapshotRepository>
+        <repository>
+            <id>nexus-releases</id>
+            <name>AllBinary Releases Nexus</name>
+            <url>https://nexus-allbinary.rhcloud.com/nexus/content/repositories/releases/</url>
+        </repository>
+    </distributionManagement>
+
+
+
+    <modules>
+
+        <!--
+        NoGyroSensorLibrary
+
+        -->
+        <module>../../android/AndroidUtilJavaLibraryPerlM</module>
+
+        <module>../../../allbinary_src/security/SimpleCryptLibraryPerlM</module>
+        <!--
+        <module>../../../../working_thirdparty/security/BouncyCastleDESJavaLibraryPerlM</module>
+        <module>../../../../working_thirdparty/communication/XmlRpc/XmlRpcJavaLibraryPerlM</module>
+        -->
+        <module>../../../allbinary_src/TokenizerJavaLibraryPerlM</module>
+        <module>../../../allbinary_src/security/BasicSecurityJavaLibraryPerlM</module>
+        <module>../../../replace_these_stub_projects/security/YourCryptFileJavaLibraryPerlM</module>
+        <module>../../../replace_these_stub_projects/security/YourSecurityJavaLibraryPerlM</module>
+        <module>../../../replace_these_stub_projects/communication/YourXmlRpcJavaLibraryPerlM</module>
+        <module>../../../replace_these_stub_projects/allbinary_src/J2MEOnlyJavaLibraryPerlM</module>
+        <module>../../../replace_these_stub_projects/allbinary_src/J2MECompatibilityJavaLibraryPerlM</module>
+        <module>../../../replace_these_stub_projects/allbinary_src/J2MEJsInteropCompatibilityJavaLibraryPerlM</module>
+
+        <module>../../DebugJavaLibraryPerlM</module>             
+        <module>../../ResourceLibraryPerlM</module>
+        <module>../../ResourceJ2MEJavaLibraryPerlM</module>
+        <module>../../AndroidResourceLibraryPerlM</module>
+        <module>../../../allbinary_src/hardware/AndroidSystemJavaLibraryPerlM</module>
+
+        <module>../../../game/behavior/ArtificialIntelligenceLibraryPerlM</module>
+
+        <module>../../media/graphics/PlatformNullImageJavaLibraryPerlM</module>
+        <module>../../media/graphics/ImageCacheBaseJ2MEJavaLibraryPerlM</module>
+        <module>../../media/graphics/ImageCacheJ2MEJavaLibraryPerlM</module>
+        <module>../../../graphics/opengl/OpenGLJ2MENoneJavaLibraryPerlM</module>
+        <module>../../../graphics/opengl/OpenGLNoneJavaLibraryPerlM</module>
+        <module>../../../graphics/opengl/OpenGLNoneOtherJavaLibraryPerlM</module>
+        <module>../../../graphics/opengl/OpenGLNoneOther2JavaLibraryPerlM</module>
+        <module>../../../graphics/opengl/OpenGLESBaseJ2MEJavaLibraryPerlM</module>
+
+        <module>../../media/graphics/animation/AnimationLibraryPerlM</module>
+        <module>../../media/graphics/animation/RotationAnimationJavaLibraryPerlM</module>
+
+        <module>../../games/GameInputLibraryPerlM</module>
+
+        <module>../../games/GameScoresBaseJavaLibraryPerlM</module>
+        <module>../../games/GameScoresBaseJ2MELibraryPerlM</module>
+
+        <module>../../statistics/ApplicationStatisticsHTMLLibraryPerlM</module>
+        <!--
+        <module>../../games/GameConfigurationHTMLJavaLibraryPerlM</module>
+        -->
+        <module>../../games/GameConfigurationJ2MEJavaLibraryPerlM</module>   
+        <module>../../games/GameConfigurationJavaLibraryPerlM</module>
+
+        <module>../../games/GameIntermissionLibraryPerlM</module>
+
+        <module>../../GroupLibraryPerlM</module>
+
+        <module>../../input/NoSensorJavaLibraryPerlM</module>
+
+        <module>../../input/AllBinarySensorJavaLibraryPerlM</module>
+
+        <module>../../input/platform/me/GameInputMEJavaLibraryPerlM</module>
+        <module>../../input/platform/me/GameInputMEKeyOnlyJavaLibraryPerlM</module>
+        <module>../../input/platform/me/GameInputMEMotionJavaLibraryPerlM</module>
+        <module>../../input/platform/pc/GameInputPCBaseJavaLibraryPerlM</module>
+        <module>../../input/platform/pc/GameInputPCJavaLibraryPerlM</module>
+        <module>../../input/platform/pc/GameInputPCKeyOnlyJavaLibraryPerlM</module>
+        <module>../../input/platform/pc/GameInputPCMotionJavaLibraryPerlM</module>
+        <module>../../input/platform/pc/GameInputSwtJavaLibraryPerlM</module>
+
+        <module>../../input/AllBinaryGyroSensorJavaLibraryPerlM</module>
+        <module>../../input/MotionGestureJavaLibraryPerlM</module>
+        
+        <module>../../input/MotionGestureBaseJavaLibraryPerlM</module>
+
+        <module>../../games/GameInputPersistanceLibraryPerlM</module>
+        <module>../../games/GameInputNoPersistanceLibraryPerlM</module>
+        
+        <module>../../lib/VectorThreeDimensionalLibraryPerlM</module>
+        <module>../../input/AllBinaryAccelerometerSensorJavaLibraryPerlM</module>
+        <module>../../input/NoGyroSensorJavaLibraryPerlM</module>
+        <module>../../input/JSEGyroSensorJavaLibraryPerlM</module>
+        <!--
+        <module>../../input/android/</module>
+        <module>../../input/platform/android/GameInputAndroidBaseJavaLibraryPerlM</module>
+        -->
+
+        <module>../../media/sound/BasicPlayerJavaLibraryPerlM</module>
+        <module>../../media/sound/BasicPlayerMIDP2JavaLibraryPerlM</module>
+        <module>../../media/sound/NoPlayerJavaLibraryPerlM</module>
+        <module>../../media/sound/SoundJ2MELibraryPerlM</module>
+
+        <module>../../media/motion/AllBinaryVibrationJavaLibraryPerlM</module>
+        <module>../../media/motion/NoVibrateJavaLibraryPerlM</module>
+        <module>../../media/motion/VibrateAndroidJavaLibraryPerlM</module>
+
+        <module>../../media/graphics/NullCustomUIJavaLibraryPerlM</module>
+        <module>../../media/graphics/NullCustomUIBaseJavaLibraryPerlM</module>
+
+        <module>../../media/graphics/FormValidationJavaLibraryPerlM</module>
+        
+        <module>../../media/graphics/FormJavaLibraryPerlM</module>
+        <module>../../media/graphics/FormBaseJavaLibraryPerlM</module>
+        <!--
+        <module>../../media/graphics/FormJMEJavaLibraryPerlM</module>
+        -->
+        <module>../../../j2me/media/graphics/FormJMEJavaLibraryPerlM</module>
+
+        <module>../../media/graphics/animation/AnimationResourceJavaLibraryPerlM</module>
+        <module>../../media/graphics/animation/TransitionAnimationJavaLibraryPerlM</module>
+        <module>../../media/graphics/animation/NoTransitionAnimationJavaLibraryPerlM</module>
+        <!--
+        AndroidTransitionAnimationJavaLibraryM
+        -->
+        <module>../../media/graphics/animation/GameAnimationJavaLibraryPerlM</module>
+        <module>../../games/GameResourceJavaLibraryPerlM</module>
+        <module>../../games/GameSoundsJavaLibraryPerlM</module>
+
+        <module>../../input/TouchInputLibraryP</module>
+
+        <module>../../media/MediaDataPerlM</module>
+        <module>../../media/sound/NotDeviceSpecificNoMediaMIDP1LibraryPerlM</module>
+
+        <module>../../../allbinary_src/content/ContentNoneJavaLibraryPerlM</module>
+        <module>../../../allbinary_src/content/ContentAndroidJavaLibraryPerlM</module>
+
+        <module>../../games/GameConfigurationFormJavaLibraryPerlM</module>
+
+        <module>../../FullScreenNoneJavaLibraryPerlM</module>
+        <!--
+        <module>../../FullScreenJavaLibraryPerlM</module>
+        -->
+
+        <module>../../../physics/VelocityLibraryPerlM</module>
+
+        <module>../../games/weapon/SoundsBasicWeaponsJavaLibraryPerlM</module>
+
+        <module>../../lib/TrigJ2MELibraryPerlM</module>
+
+        <module>../../media/graphics/geography/map/LayerPlacementLibraryPerlM</module>
+        <module>../../media/graphics/layer/AllBinaryLayerJavaLibraryPerlM</module>
+
+        <module>../../ScreenCaptureNoneJavaLibraryPerlM</module>
+        
+        <module>../licensing/GameLicensingNullJavaLibraryPerlM</module>
+        
+        <module>../../business/advertisement/AllBinaryAdvertisementClientJavaLibraryPerlM</module>
+        <module>../../business/advertisement/AdvertisementClientNoneJavaLibraryPerlM</module>
+
+        <module>../GameNotificationJavaLibraryPerlM</module>
+
+        <module>../../../graphics/opengl/NoSWTJavaLibraryPerlM</module>
+        <module>../../../graphics/opengl/SWTWithoutJOGLJavaLibraryPerlM</module>
+        <module>../SWTJavaLibraryPerlM</module>
+        <module>../GameJ2MELibraryPerlM</module>
+        
+        <!--
+        <module>../GameJ2MEOptionalLibraryPOPerlM</module>
+        -->
+    
+    </modules>
+
+</project>
+
