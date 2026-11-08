@@ -14,8 +14,8 @@
 
     <modules>
 
-        <module>../../platform/android/AndroidResourcesTempJavaLibraryPerlM</module>
-        <module>../../../../allbinary_src/licensing/ClientInformationMobileLicensingRegistrationJavaLibraryPerlM</module>
+        <!--<module>../../platform/android/AndroidResourcesTempJavaLibraryPerlM</module>-->
+        <!--<module>../../../../allbinary_src/licensing/ClientInformationMobileLicensingRegistrationJavaLibraryPerlM</module>-->
 
         <!--
         <module>../../../../../working/allbinary_src/licensing/LicenseRegistrationJavaLibraryPerlM</module>

@@ -31,7 +31,7 @@
         NoGyroSensorLibrary
 
         -->
-        <module>../../android/AndroidUtilJavaLibraryPerlM</module>
+        <!--<module>../../android/AndroidUtilJavaLibraryPerlM</module>-->
 
         <module>../../../allbinary_src/security/SimpleCryptLibraryPerlM</module>
         <!--
@@ -40,7 +40,7 @@
         -->
         <module>../../../allbinary_src/TokenizerJavaLibraryPerlM</module>
         <module>../../../allbinary_src/security/BasicSecurityJavaLibraryPerlM</module>
-        <module>../../../replace_these_stub_projects/security/YourCryptFileJavaLibraryPerlM</module>
+        <!--<module>../../../replace_these_stub_projects/security/YourCryptFileJavaLibraryPerlM</module>-->
         <module>../../../replace_these_stub_projects/security/YourSecurityJavaLibraryPerlM</module>
         <module>../../../replace_these_stub_projects/communication/YourXmlRpcJavaLibraryPerlM</module>
         <module>../../../replace_these_stub_projects/allbinary_src/J2MEOnlyJavaLibraryPerlM</module>
@@ -50,8 +50,8 @@
         <module>../../DebugJavaLibraryPerlM</module>             
         <module>../../ResourceLibraryPerlM</module>
         <module>../../ResourceJ2MEJavaLibraryPerlM</module>
-        <module>../../AndroidResourceLibraryPerlM</module>
-        <module>../../../allbinary_src/hardware/AndroidSystemJavaLibraryPerlM</module>
+        <!--<module>../../AndroidResourceLibraryPerlM</module>-->
+        <!--<module>../../../allbinary_src/hardware/AndroidSystemJavaLibraryPerlM</module>-->
 
         <module>../../../game/behavior/ArtificialIntelligenceLibraryPerlM</module>
 

@@ -33,14 +33,14 @@
         -->
         
         
-        <module>../AllBinaryGraphicsUserInterfaceJavaLibraryPerlM</module>
+        <!--<module>../AllBinaryGraphicsUserInterfaceJavaLibraryPerlM</module>-->
         
         <module>../../allbinary_src/logging/LogConfigTypeThickClientJavaLibraryPerlM</module>
-        <module>../../allbinary_src/logging/GUILoggingPerlM</module>
+        <!--<module>../../allbinary_src/logging/GUILoggingPerlM</module>-->
                 
-        <module>../AllBinaryGraphicsJavaApplicationPerlM</module>
+        <!--<module>../AllBinaryGraphicsJavaApplicationPerlM</module>-->
         
-        <module>../ImageToolJavaApplicationPerlM</module>
+        <!--<module>../ImageToolJavaApplicationPerlM</module>-->
     </modules>
 
 </project>

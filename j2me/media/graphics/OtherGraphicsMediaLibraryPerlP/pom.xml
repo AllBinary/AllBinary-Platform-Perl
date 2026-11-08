@@ -61,7 +61,7 @@
         <!--
         <module>../../graphics/animation/image/ImageHTMLJavaLibraryPerlM</module>
         -->
-        <module>../../graphics/animation/image/ImageJ2SEJavaLibraryPerlM</module>
+        <!--<module>../../graphics/animation/image/ImageJ2SEJavaLibraryPerlM</module>-->
         <!--
         <module>../../graphics/animation/image/ImageAndroidJavaLibraryPerlM</module>
         -->

@@ -42,18 +42,18 @@
         
         <!-- Several Move to PostPlatforms -->
         
-        <module>../../media/sound/MusicJ2MEJavaLibraryPerlM</module>
-        <module>../../media/sound/NullMusicAndroidJavaLibraryPerlM</module>
-        <module>../../media/sound/MusicAndroidJavaLibraryPerlM</module>
+        <!--<module>../../media/sound/MusicJ2MEJavaLibraryPerlM</module>-->
+        <!--<module>../../media/sound/NullMusicAndroidJavaLibraryPerlM</module>-->
+        <!--<module>../../media/sound/MusicAndroidJavaLibraryPerlM</module>-->
 
         <!--
         <module>../../media/graphics/ImageCacheAndroidJavaLibraryPerlM</module>
         -->
                 
         <!-- ../../../../working/allbinary_src/logic/data/file/FileAndroidJavaLibraryM -->
-        <module>../../../allbinary_src/logic/data/file/FileAndroidJavaLibraryPerlM</module>
+        <!--<module>../../../allbinary_src/logic/data/file/FileAndroidJavaLibraryPerlM</module>-->
         
-        <module>../../input/platform/android/MotionInputAndroidResourcesJavaLibraryPerlM</module>
+        <!--<module>../../input/platform/android/MotionInputAndroidResourcesJavaLibraryPerlM</module>-->
                 
     </modules>
 

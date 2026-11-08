@@ -37,18 +37,18 @@
         <module>../allbinary_src/logic/BasePreloaderFileJavaLibraryPerlM</module>
         <module>../allbinary_src/logic/data/file/FileJavaLibraryPerlM</module>
         <module>../allbinary_src/logic/data/file/FileJ2SEJavaLibraryPerlM</module>
-        <module>../allbinary_src/data/DataJavaLibraryPerlM</module>
-        <module>../allbinary_src/logic/data/file/FileUnamedJavaLibraryPerlM</module>
-        <module>../allbinary_src/logic/data/file/FileAdvancedJavaLibraryPerlM</module>
-        <module>../allbinary_src/PreLoaderJavaLibraryPerlM</module>
-        <module>../allbinary_src/FileInitInfoJavaLibraryPerlM</module>
-        <module>../allbinary_src/PreLoaderFileJavaLibraryPerlM</module>
-        <module>../allbinary_src/PreLoaderLicenseJavaLibraryPerlM</module>
+        <!--<module>../allbinary_src/data/DataJavaLibraryPerlM</module>-->
+        <!--<module>../allbinary_src/logic/data/file/FileUnamedJavaLibraryPerlM</module>-->
+        <!--<module>../allbinary_src/logic/data/file/FileAdvancedJavaLibraryPerlM</module>-->
+        <!--<module>../allbinary_src/PreLoaderJavaLibraryPerlM</module>-->
+        <!--<module>../allbinary_src/FileInitInfoJavaLibraryPerlM</module>-->
+        <!--<module>../allbinary_src/PreLoaderFileJavaLibraryPerlM</module>-->
+        <!--<module>../allbinary_src/PreLoaderLicenseJavaLibraryPerlM</module>-->
         <module>../j2me/PCResourceLibraryPerlM</module>
         <module>../j2me/ProgressJ2MEJavaLibraryPerlM</module>
         <module>../allbinary_src/licensing/ClientInfoBaseJavaLibraryPerlM</module>
-        <module>../allbinary_src/licensing/RemoteXmlRpcJavaLibraryPerlM</module>
-        <module>../allbinary_src/licensing/LicenseClientJavaLibraryPerlM</module>
+        <!--<module>../allbinary_src/licensing/RemoteXmlRpcJavaLibraryPerlM</module>-->
+        <!--<module>../allbinary_src/licensing/LicenseClientJavaLibraryPerlM</module>-->
 
         <!--
         <module>../allbinary_src/PreLoaderLicenseJavaLibraryPerlM</module>

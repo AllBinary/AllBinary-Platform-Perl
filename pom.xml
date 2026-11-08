@@ -32,6 +32,10 @@
 
         <!--
         -->
+        <module>../working_thirdpartyperl/embedded/j2me/microemulator/2_0_4/microemu-cldcPerl</module>
+        <module>../working_thirdpartyperl/embedded/j2me/microemulator/2_0_4/microemu-midpPerl</module>
+        <module>../working_thirdpartyperl/embedded/j2me/microemulator/2_0_4/microemu-extensions/microemu-jsr-135Perl</module>
+        
         <module>./j2me/AllBinaryBaseLibraryPOPerlM</module>
         <module>./j2me/AllBinaryJ2MELibraryP</module>
         <module>./AllBinaryPersistenceLibraryP</module>
@@ -45,9 +49,9 @@
         <module>./j2me/media/graphics/animation/image/AllBinaryHTMLImageAnimationRotationJavaLibraryPerlM</module>
         <module>./j2me/media/graphics/animation/image/AllBinaryHTML2ImageAnimationRotationJavaLibraryPerlM</module>
         -->
-        <module>./j2me/media/graphics/animation/image/AllBinaryJ2SEImageAnimationRotationJavaLibraryPerlM</module>
-        <module>./j2me/games/Resources/sounds/release/GameSoundsJ2SEOggResourcesJavaLibraryPerlM</module>
-        <module>./graphics/opengl/AllBinaryJOGLResourcesJavaLibraryPerlM</module>
+        <!--<module>./j2me/media/graphics/animation/image/AllBinaryJ2SEImageAnimationRotationJavaLibraryPerlM</module>-->
+        <!--<module>./j2me/games/Resources/sounds/release/GameSoundsJ2SEOggResourcesJavaLibraryPerlM</module>-->
+        <!--<module>./graphics/opengl/AllBinaryJOGLResourcesJavaLibraryPerlM</module>-->
 
     </modules>
 
