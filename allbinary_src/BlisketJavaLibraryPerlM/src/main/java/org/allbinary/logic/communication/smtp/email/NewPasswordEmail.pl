@@ -17,6 +17,7 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
 
 sub _init_fields {
@@ -32,7 +33,7 @@ sub _init_fields {
 sub new {
     my ($class, $abeClientInformation, $userInterface, $newPassword) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
         $self->{abeClientInformation} = $abeClientInformation;
         $self->{userInterface} = $userInterface;
         $self->{newPassword} = $newPassword;
@@ -90,17 +91,18 @@ sub notifyUser {
         }
 }
 
-use org::allbinary::business::user::UserInterface;
-use org::allbinary::logic::communication::log::LogUtil;
-use org::allbinary::logic::communication::smtp::event::UserEmailEventNameData;
-use org::allbinary::logic::communication::smtp::event::handler::UserEmailEventHandler;
-use org::allbinary::logic::communication::smtp::event::handler::factory::AdminUserEmailEventHandlerSingletons;
-use org::allbinary::logic::communication::smtp::event::handler::factory::UserEmailEventHandlerSingletons;
-use org::allbinary::logic::communication::smtp::info::AdminEmailInfo;
-use org::allbinary::logic::communication::smtp::info::BasicEmailInfo;
-use org::allbinary::logic::communication::smtp::info::EmailInfo;
-use org::allbinary::logic::system::security::licensing::AbeClientInformationInterface;
-use org::allbinary::string::CommonStrings;
+use java::lang::Object ();
+use org::allbinary::business::user::UserInterface ();
+use org::allbinary::logic::communication::log::LogUtil ();
+use org::allbinary::logic::communication::smtp::event::UserEmailEventNameData ();
+use org::allbinary::logic::communication::smtp::event::handler::UserEmailEventHandler ();
+use org::allbinary::logic::communication::smtp::event::handler::factory::AdminUserEmailEventHandlerSingletons ();
+use org::allbinary::logic::communication::smtp::event::handler::factory::UserEmailEventHandlerSingletons ();
+use org::allbinary::logic::communication::smtp::info::AdminEmailInfo ();
+use org::allbinary::logic::communication::smtp::info::BasicEmailInfo ();
+use org::allbinary::logic::communication::smtp::info::EmailInfo ();
+use org::allbinary::logic::system::security::licensing::AbeClientInformationInterface ();
+use org::allbinary::string::CommonStrings ();
 
 1;
 

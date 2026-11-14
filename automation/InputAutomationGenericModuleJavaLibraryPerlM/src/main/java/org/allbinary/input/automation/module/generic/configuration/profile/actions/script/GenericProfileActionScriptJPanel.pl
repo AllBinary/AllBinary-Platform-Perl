@@ -18,7 +18,7 @@ use warnings;
 use feature 'try';
 no warnings 'experimental::try';
 use Scalar::Util ();
-use parent -norequire,'javax::swing::JPanel','org::allbinary::input::automation::actions::script::JTreeInterface';
+use parent -norequire,'java::lang::Object','org::allbinary::input::automation::actions::script::JTreeInterface';
 
 
 sub _init_fields {
@@ -35,7 +35,7 @@ sub _init_fields {
 sub new {
     my ($class) = @_;
     my $self = $class->SUPER::new();
-    $self->_init_fields();
+    _init_fields($self);
         $self->{logUtil}->putF($self->{commonStrings}->{START}, $self, $self->{commonStrings}->{CONSTRUCTOR});
         $self->initComponents();
     return $self;
@@ -82,7 +82,7 @@ sub initComponents {
         $self->setLayout('java::awt::GridLayout'->new(1, 0));
         $self->{actionScriptJTree}->setPreferredSize('java::awt::Dimension'->new(500, 500));
         $self->{actionScriptJTree}->addMouseListener(do {
-            package java::awt::event::MouseAdapter::AnonymousN66880 { our @ISA = ('java::awt::event::MouseAdapter');
+            package java::awt::event::MouseAdapter::AnonymousN66880 { our @ISA = ('java::awt::event::MouseAdapter', 'java::lang::Object');
             
 
             sub mouseClicked {
@@ -124,15 +124,16 @@ sub actionScriptJTreeMouseClicked {
     my ($self, $evt) = @_;
 }
 
-# use java::awt::event::MouseEvent;
-# use javax::swing;
-# use javax::swing::tree::DefaultMutableTreeNode;
-# use javax::swing::tree::DefaultTreeModel;
-# use javax::swing::tree::TreePath;
-use org::allbinary::input::automation::actions::script::JTreeInterface;
-use org::allbinary::input::automation::actions::script::condition::CustomTreeNodeInterface;
-use org::allbinary::logic::communication::log::LogUtil;
-use org::allbinary::string::CommonStrings;
+use java::lang::Object ();
+# use java::awt::event::MouseEvent ();
+# use javax::swing ();
+# use javax::swing::tree::DefaultMutableTreeNode ();
+# use javax::swing::tree::DefaultTreeModel ();
+# use javax::swing::tree::TreePath ();
+use org::allbinary::input::automation::actions::script::JTreeInterface ();
+use org::allbinary::input::automation::actions::script::condition::CustomTreeNodeInterface ();
+use org::allbinary::logic::communication::log::LogUtil ();
+use org::allbinary::string::CommonStrings ();
 
 1;
 

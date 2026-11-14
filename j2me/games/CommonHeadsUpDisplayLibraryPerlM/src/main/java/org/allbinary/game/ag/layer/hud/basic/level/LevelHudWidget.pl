@@ -42,7 +42,7 @@ sub createHud {
 sub new {
     my ($class, $maxlevel, $location, $direction) = @_;
     my $self = $class->SUPER::new($location, $direction, 2, 'org::allbinary::graphics::color::BasicColorFactory'->getInstance()->{GREY});
-    $self->_init_fields();
+    _init_fields($self);
         # super(...) made $self above
         $self->{primitiveLongUtil} = 'org::allbinary::logic::math::PrimitiveLongUtil'->createPowerOfTen(1000);
         my $LEVEL = "Lv ";
@@ -115,13 +115,14 @@ sub paintThreed {
     my ($self, $graphics) = @_;
 }
 
-# use javax::microedition::lcdui::Font;
-# use javax::microedition::lcdui::Graphics;
-use org::allbinary::game::graphics::hud::BasicHud;
-use org::allbinary::graphics::color::BasicColorFactory;
-use org::allbinary::graphics::paint::PaintableInterface;
-use org::allbinary::logic::NullUtil;
-use org::allbinary::logic::math::PrimitiveLongUtil;
+use java::lang::Object ();
+use javax::microedition::lcdui::Font ();
+use javax::microedition::lcdui::Graphics ();
+use org::allbinary::game::graphics::hud::BasicHud ();
+use org::allbinary::graphics::color::BasicColorFactory ();
+use org::allbinary::graphics::paint::PaintableInterface ();
+use org::allbinary::logic::NullUtil ();
+use org::allbinary::logic::math::PrimitiveLongUtil ();
 
 1;
 

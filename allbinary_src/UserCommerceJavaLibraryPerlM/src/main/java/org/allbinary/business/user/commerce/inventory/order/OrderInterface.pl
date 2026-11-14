@@ -128,7 +128,7 @@ sub getStoreCancelComments {
     die "abstract method getStoreCancelComments";
 }
 
-use org::allbinary::business::user::commerce::inventory::basket::BasketInterface;
+use org::allbinary::business::user::commerce::inventory::basket::BasketInterface ();
 
 1;
 

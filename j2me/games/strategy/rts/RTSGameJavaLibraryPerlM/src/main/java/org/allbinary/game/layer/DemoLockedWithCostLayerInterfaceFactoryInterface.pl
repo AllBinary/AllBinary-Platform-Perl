@@ -27,7 +27,7 @@ sub isDemoLocked {
     die "abstract method isDemoLocked";
 }
 
-use org::allbinary::game::layer::CostLayerInterfaceFactoryInterface;
+use org::allbinary::game::layer::CostLayerInterfaceFactoryInterface ();
 
 1;
 

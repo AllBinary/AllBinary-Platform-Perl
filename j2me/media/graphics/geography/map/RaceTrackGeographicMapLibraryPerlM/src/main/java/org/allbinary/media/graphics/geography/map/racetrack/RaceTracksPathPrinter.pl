@@ -17,6 +17,7 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
 
 sub new {
@@ -45,11 +46,12 @@ sub printPaths {
         }
 }
 
-use org::allbinary::logic::string::StringMaker;
-use org::allbinary::util::BasicArrayList;
-use org::allbinary::logic::communication::log::PreLogUtil;
-use org::allbinary::string::CommonLabels;
-use java::lang::System;
+use java::lang::Object ();
+use org::allbinary::logic::string::StringMaker ();
+use org::allbinary::util::BasicArrayList ();
+use org::allbinary::logic::communication::log::PreLogUtil ();
+use org::allbinary::string::CommonLabels ();
+use java::lang::System ();
 
 1;
 

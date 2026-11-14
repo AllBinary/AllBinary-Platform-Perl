@@ -17,7 +17,7 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
-use parent -norequire,'org::allbinary::game::collision::CollidableInterface';
+use parent -norequire,'java::lang::Object','org::allbinary::game::collision::CollidableInterface';
 
 
 sub _init_fields {
@@ -32,7 +32,7 @@ sub _init_fields {
 sub new {
     my ($class, $collidable) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
         $self->{collidable} = $collidable;
     return $self;
 }
@@ -97,16 +97,17 @@ sub getCollisionTypeWith {
         return 'org::allbinary::game::collision::CollisionTypeFactory'->getInstance()->{NONE};
 }
 
-# use javax::microedition::lcdui::Graphics;
-use org::allbinary::game::layer::CollidableCompositeLayer;
-use org::allbinary::layer::AllBinaryLayer;
-use org::allbinary::logic::communication::log::LogUtil;
-use org::allbinary::logic::string::StringMaker;
-use org::allbinary::string::CommonLabels;
-use org::allbinary::string::CommonStrings;
-use org::allbinary::game::collision::CollidableInterface;
-use org::allbinary::game::collision::LayerCollisionUtil;
-use org::allbinary::game::collision::CollisionTypeFactory;
+use java::lang::Object ();
+use javax::microedition::lcdui::Graphics ();
+use org::allbinary::game::layer::CollidableCompositeLayer ();
+use org::allbinary::layer::AllBinaryLayer ();
+use org::allbinary::logic::communication::log::LogUtil ();
+use org::allbinary::logic::string::StringMaker ();
+use org::allbinary::string::CommonLabels ();
+use org::allbinary::string::CommonStrings ();
+use org::allbinary::game::collision::CollidableInterface ();
+use org::allbinary::game::collision::LayerCollisionUtil ();
+use org::allbinary::game::collision::CollisionTypeFactory ();
 
 1;
 

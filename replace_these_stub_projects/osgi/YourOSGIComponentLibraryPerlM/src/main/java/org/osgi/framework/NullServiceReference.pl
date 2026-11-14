@@ -17,6 +17,7 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
 
 sub new {
@@ -43,8 +44,9 @@ sub compareTo {
         die ("RuntimeException");
 }
 
-use org::allbinary::logic::NullUtil;
-use org::allbinary::logic::string::StringUtil;
+use java::lang::Object ();
+use org::allbinary::logic::NullUtil ();
+use org::allbinary::logic::string::StringUtil ();
 
 1;
 

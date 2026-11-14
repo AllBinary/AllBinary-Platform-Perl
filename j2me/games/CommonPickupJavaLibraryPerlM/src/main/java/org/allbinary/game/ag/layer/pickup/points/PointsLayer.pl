@@ -29,7 +29,7 @@ sub _init_fields {
 sub new {
     my ($class, $points) = @_;
     my $self = $class->SUPER::new('org::allbinary::logic::string::StringUtil'->getInstance()->{EMPTY_STRING}, 'org::allbinary::graphics::Rectangle'->new('org::allbinary::graphics::PointFactory'->getInstance()->{ZERO_ZERO}, 0, 0), 'org::allbinary::view::ViewPosition'->getInstanceD());
-    $self->_init_fields();
+    _init_fields($self);
         # super(...) made $self above
         $self->{points} = $points;
     return $self;
@@ -46,13 +46,14 @@ sub visit {
         $scoreableInterface->addPoints($self->{points});
 }
 
-# use javax::microedition::lcdui::Graphics;
-use org::allbinary::game::score::ScoreableInterface;
-use org::allbinary::graphics::PointFactory;
-use org::allbinary::graphics::Rectangle;
-use org::allbinary::layer::AllBinaryLayer;
-use org::allbinary::logic::string::StringUtil;
-use org::allbinary::view::ViewPosition;
+use java::lang::Object ();
+use javax::microedition::lcdui::Graphics ();
+use org::allbinary::game::score::ScoreableInterface ();
+use org::allbinary::graphics::PointFactory ();
+use org::allbinary::graphics::Rectangle ();
+use org::allbinary::layer::AllBinaryLayer ();
+use org::allbinary::logic::string::StringUtil ();
+use org::allbinary::view::ViewPosition ();
 
 1;
 

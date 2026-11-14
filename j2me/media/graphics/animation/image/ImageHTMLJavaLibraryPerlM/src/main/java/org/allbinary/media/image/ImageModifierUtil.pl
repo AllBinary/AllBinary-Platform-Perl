@@ -17,8 +17,9 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
-our $instance = 'org::allbinary::media::image::ImageModifierUtil'->new();
+tie our $instance, 'java::lang::LazyStatic', sub { 'org::allbinary::media::image::ImageModifierUtil'->new() };
 
 sub new {
     my ($class) = @_;
@@ -63,11 +64,13 @@ sub reset {
     my ($self) = @_;
 }
 
-# use javax::microedition::lcdui::Image;
-use org::allbinary::graphics::color::BasicColor;
-use org::microemu::device::playn::PlaynMutableImage;
-use playn::core::CanvasImage;
-use playn::core::CanvasSurface;
+use java::lang::Object ();
+use java::lang::LazyStatic ();
+use javax::microedition::lcdui::Image ();
+use org::allbinary::graphics::color::BasicColor ();
+use org::microemu::device::playn::PlaynMutableImage ();
+use playn::core::CanvasImage ();
+use playn::core::CanvasSurface ();
 
 1;
 

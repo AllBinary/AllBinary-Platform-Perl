@@ -17,7 +17,7 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
-use parent -norequire,'javax::swing::JPanel';
+use parent -norequire,'java::lang::Object';
 
 
 sub _init_fields {
@@ -53,7 +53,7 @@ sub _init_fields {
 sub new {
     my ($class, $keyActionScriptInputInterface) = @_;
     my $self = $class->SUPER::new();
-    $self->_init_fields();
+    _init_fields($self);
         $self->{logUtil}->putF($self->{commonStrings}->{START}, $self, $self->{commonStrings}->{CONSTRUCTOR});
         $self->initComponents();
         $self->{keyActionScriptInputInterface} = $keyActionScriptInputInterface;
@@ -172,7 +172,7 @@ sub initComponents {
         $self->{titleJLabel}->setText("Keyboard Input Options");
         $self->{addKeyJLabel}->setText("Add Key:");
         $self->{keyNameJComboBox}->addActionListener(do {
-            package java::awt::event::ActionListener::AnonymousN69302 { our @ISA = ('java::awt::event::ActionListener');
+            package java::awt::event::ActionListener::AnonymousN69302 { our @ISA = ('java::awt::event::ActionListener', 'java::lang::Object');
             
 
             sub actionPerformed {
@@ -193,7 +193,7 @@ sub initComponents {
         $self->{pressJRadioButton}->setBorder($org::allbinary::input::automation::actions::script::condition::processors::input::javax::swing->{BorderFactory}->createEmptyBorder(0, 0, 0, 0));
         $self->{pressJRadioButton}->setMargin('java::awt::Insets'->new(0, 0, 0, 0));
         $self->{pressJRadioButton}->addActionListener(do {
-            package java::awt::event::ActionListener::AnonymousN69909 { our @ISA = ('java::awt::event::ActionListener');
+            package java::awt::event::ActionListener::AnonymousN69909 { our @ISA = ('java::awt::event::ActionListener', 'java::lang::Object');
             
 
             sub actionPerformed {
@@ -207,7 +207,7 @@ sub initComponents {
         $self->{releaseJRadioButton}->setBorder($org::allbinary::input::automation::actions::script::condition::processors::input::javax::swing->{BorderFactory}->createEmptyBorder(0, 0, 0, 0));
         $self->{releaseJRadioButton}->setMargin('java::awt::Insets'->new(0, 0, 0, 0));
         $self->{releaseJRadioButton}->addActionListener(do {
-            package java::awt::event::ActionListener::AnonymousN70246 { our @ISA = ('java::awt::event::ActionListener');
+            package java::awt::event::ActionListener::AnonymousN70246 { our @ISA = ('java::awt::event::ActionListener', 'java::lang::Object');
             
 
             sub actionPerformed {
@@ -222,7 +222,7 @@ sub initComponents {
         $self->{normalJRadioButton}->setBorder($org::allbinary::input::automation::actions::script::condition::processors::input::javax::swing->{BorderFactory}->createEmptyBorder(0, 0, 0, 0));
         $self->{normalJRadioButton}->setMargin('java::awt::Insets'->new(0, 0, 0, 0));
         $self->{normalJRadioButton}->addActionListener(do {
-            package java::awt::event::ActionListener::AnonymousN70613 { our @ISA = ('java::awt::event::ActionListener');
+            package java::awt::event::ActionListener::AnonymousN70613 { our @ISA = ('java::awt::event::ActionListener', 'java::lang::Object');
             
 
             sub actionPerformed {
@@ -237,7 +237,7 @@ sub initComponents {
         $self->{simultaneousJRadioButton}->setBorder($org::allbinary::input::automation::actions::script::condition::processors::input::javax::swing->{BorderFactory}->createEmptyBorder(0, 0, 0, 0));
         $self->{simultaneousJRadioButton}->setMargin('java::awt::Insets'->new(0, 0, 0, 0));
         $self->{simultaneousJRadioButton}->addActionListener(do {
-            package java::awt::event::ActionListener::AnonymousN70980 { our @ISA = ('java::awt::event::ActionListener');
+            package java::awt::event::ActionListener::AnonymousN70980 { our @ISA = ('java::awt::event::ActionListener', 'java::lang::Object');
             
 
             sub actionPerformed {
@@ -251,7 +251,7 @@ sub initComponents {
         $self->{sequenceJRadioButton}->setBorder($org::allbinary::input::automation::actions::script::condition::processors::input::javax::swing->{BorderFactory}->createEmptyBorder(0, 0, 0, 0));
         $self->{sequenceJRadioButton}->setMargin('java::awt::Insets'->new(0, 0, 0, 0));
         $self->{sequenceJRadioButton}->addActionListener(do {
-            package java::awt::event::ActionListener::AnonymousN71317 { our @ISA = ('java::awt::event::ActionListener');
+            package java::awt::event::ActionListener::AnonymousN71317 { our @ISA = ('java::awt::event::ActionListener', 'java::lang::Object');
             
 
             sub actionPerformed {
@@ -264,7 +264,7 @@ sub initComponents {
         $self->{okJButton}->setText("OK");
         $self->{okJButton}->setHorizontalTextPosition($org::allbinary::input::automation::actions::script::condition::processors::input::javax::swing->{SwingConstants}->{CENTER});
         $self->{okJButton}->addActionListener(do {
-            package java::awt::event::ActionListener::AnonymousN71562 { our @ISA = ('java::awt::event::ActionListener');
+            package java::awt::event::ActionListener::AnonymousN71562 { our @ISA = ('java::awt::event::ActionListener', 'java::lang::Object');
             
 
             sub actionPerformed {
@@ -276,7 +276,7 @@ sub initComponents {
         });
         $self->{jPanel1}->add($self->{okJButton});
         $self->{keyIntegerJComboBox}->addActionListener(do {
-            package java::awt::event::ActionListener::AnonymousN71756 { our @ISA = ('java::awt::event::ActionListener');
+            package java::awt::event::ActionListener::AnonymousN71756 { our @ISA = ('java::awt::event::ActionListener', 'java::lang::Object');
             
 
             sub actionPerformed {
@@ -293,7 +293,7 @@ sub initComponents {
         $self->setMinimumSize('java::awt::Dimension'->new(100, 0));
         $self->{keyActionJButton}->setText("Edit");
         $self->{keyActionJButton}->addActionListener(do {
-            package java::awt::event::ActionListener::AnonymousN76180 { our @ISA = ('java::awt::event::ActionListener');
+            package java::awt::event::ActionListener::AnonymousN76180 { our @ISA = ('java::awt::event::ActionListener', 'java::lang::Object');
             
 
             sub actionPerformed {
@@ -401,18 +401,19 @@ sub pressJRadioButtonActionPerformed {
         }
 }
 
-# use javax::swing;
-use org::allbinary::input::KeySingletonFactory;
-use org::allbinary::input::automation::robot::InputRobot;
-use org::allbinary::input::automation::robot::InputRobotFactory;
-use org::allbinary::input::automation::robot::TempInputRobotNames;
-use org::allbinary::logic::communication::log::LogUtil;
-use org::allbinary::logic::string::StringValidationUtil;
-use org::allbinary::string::CommonPhoneStrings;
-use org::allbinary::string::CommonStrings;
-use org::allbinary::input::automation::actions::script::condition::processors::input::DefaultComboBoxModel;
-use org::allbinary::input::automation::actions::script::condition::processors::input::KeyNameDefaultComboBoxModelFactory;
-use org::allbinary::input::automation::actions::script::condition::processors::input::KeyCharDefaultComboBoxModelFactory;
+use java::lang::Object ();
+# use javax::swing ();
+use org::allbinary::input::KeySingletonFactory ();
+use org::allbinary::input::automation::robot::InputRobot ();
+use org::allbinary::input::automation::robot::InputRobotFactory ();
+use org::allbinary::input::automation::robot::TempInputRobotNames ();
+use org::allbinary::logic::communication::log::LogUtil ();
+use org::allbinary::logic::string::StringValidationUtil ();
+use org::allbinary::string::CommonPhoneStrings ();
+use org::allbinary::string::CommonStrings ();
+use org::allbinary::input::automation::actions::script::condition::processors::input::DefaultComboBoxModel ();
+use org::allbinary::input::automation::actions::script::condition::processors::input::KeyNameDefaultComboBoxModelFactory ();
+use org::allbinary::input::automation::actions::script::condition::processors::input::KeyCharDefaultComboBoxModelFactory ();
 
 1;
 

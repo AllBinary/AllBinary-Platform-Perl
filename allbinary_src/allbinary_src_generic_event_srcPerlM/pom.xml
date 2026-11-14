@@ -44,7 +44,8 @@
         
         <dependency>
             <groupId>org.allbinary</groupId>
-            <artifactId>LoggingAndroidAllPerl</artifactId>
+            <!-- LoggingAndroidAllPerl is Android only and not built for this language. LoggingJ2MEAll like Go and C++ -->
+            <artifactId>LoggingJ2MEAllPerl</artifactId>
 
             <!--
 <artifactId>LoggingJ2MEAllPerl</artifactId>
@@ -125,14 +126,12 @@
                                 <argument>G:/mnt/bc/mydev/workingperl/j2me/CommonJavaLibraryPerlM/src/main/java</argument>
                                 <argument>G:/mnt/bc/mydev/workingperl/allbinary_src/cache/BaseCacheJavaLibraryPerlM/src/main/java</argument>
                                 <argument>G:/mnt/bc/mydev/workingperl/j2me/J2MEUtilJavaLibraryPerlM/src/main/java</argument>
-                                <argument>G:/mnt/bc/mydev/workingperl/allbinary_src/LogJ2MEJavaLibraryPerlM/src/main/java</argument>
-                                <argument>G:/mnt/bc/mydev/workingperl/j2me/logging/LoggingJ2MEAllPerlM/src/main/java</argument>
                                 <argument>G:/mnt/bc/mydev/workingperl/replace_these_stub_projects/allbinary_src/J2MEJsInteropCompatibilityJavaLibraryPerlM/src/main/java</argument>
-                                <argument>G:/mnt/bc/mydev/workingperl/allbinary_src/LogAndroidJavaLibraryPerlM/src/main/java</argument>
                                 <argument>G:/mnt/bc/mydev/workingperl/allbinary_src/LogPerlM/src/main/java</argument>
+                                <argument>G:/mnt/bc/mydev/workingperl/allbinary_src/LogJ2MEJavaLibraryPerlM/src/main/java</argument>
                                 <argument>G:/mnt/bc/mydev/workingperl/j2me/TempBaseJavaLibraryPerlM/src/main/java</argument>
                                 <argument>G:/mnt/bc/mydev/workingperl/j2me/EventJ2MELibraryPerlM/src/main/java</argument>
-                                <argument>G:/mnt/bc/mydev/workingperl/j2me/logging/LoggingAndroidAllPerlM/src/main/java</argument>
+                                <argument>G:/mnt/bc/mydev/workingperl/j2me/logging/LoggingJ2MEAllPerlM/src/main/java</argument>
                                 <argument>${perl.dependency.directory}</argument>
                                 <argument>${perl.runtime.directory}</argument>
                             </arguments>

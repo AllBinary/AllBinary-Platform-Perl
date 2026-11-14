@@ -19,7 +19,7 @@ use feature 'try';
 no warnings 'experimental::try';
 use parent -norequire,'org::allbinary::game::physics::velocity::VelocityBehaviorBase';
 
-our $instance = 'org::allbinary::game::physics::velocity::NoDragVelocityBehavior'->new();
+tie our $instance, 'java::lang::LazyStatic', sub { 'org::allbinary::game::physics::velocity::NoDragVelocityBehavior'->new() };
 
 sub new {
     my ($class) = @_;
@@ -27,7 +27,9 @@ sub new {
     return $self;
 }
 
-use org::allbinary::game::physics::velocity::VelocityBehaviorBase;
+use java::lang::Object ();
+use java::lang::LazyStatic ();
+use org::allbinary::game::physics::velocity::VelocityBehaviorBase ();
 
 1;
 

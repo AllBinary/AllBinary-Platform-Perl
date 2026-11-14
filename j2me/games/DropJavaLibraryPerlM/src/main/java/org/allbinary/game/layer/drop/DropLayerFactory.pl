@@ -17,8 +17,9 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
-our $DROP_LAYER_FACTORY = 'org::allbinary::game::layer::drop::DropLayerFactory'->new();
+tie our $DROP_LAYER_FACTORY, 'java::lang::LazyStatic', sub { 'org::allbinary::game::layer::drop::DropLayerFactory'->new() };
 
 sub _init_fields {
     my ($self) = @_;
@@ -30,7 +31,7 @@ sub _init_fields {
 sub new {
     my ($class) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
     return $self;
 }
 
@@ -70,10 +71,12 @@ sub getList {
         return $self->{list};
 }
 
-use org::allbinary::game::layer::pickup::PickedUpLayerInterfaceFactoryInterface;
-use org::allbinary::util::BasicArrayList;
-use org::allbinary::util::BasicArrayListD;
-use org::allbinary::util::BasicArrayListUtil;
+use java::lang::Object ();
+use java::lang::LazyStatic ();
+use org::allbinary::game::layer::pickup::PickedUpLayerInterfaceFactoryInterface ();
+use org::allbinary::util::BasicArrayList ();
+use org::allbinary::util::BasicArrayListD ();
+use org::allbinary::util::BasicArrayListUtil ();
 
 1;
 

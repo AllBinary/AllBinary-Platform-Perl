@@ -28,8 +28,9 @@ sub new {
     return $self;
 }
 
-use org::allbinary::logic::visual::dhtml::html::input::HtmlValueInput;
-use org::allbinary::logic::visual::dhtml::html::input::HtmlInputData;
+use java::lang::Object ();
+use org::allbinary::logic::visual::dhtml::html::input::HtmlValueInput ();
+use org::allbinary::logic::visual::dhtml::html::input::HtmlInputData ();
 
 1;
 

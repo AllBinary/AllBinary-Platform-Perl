@@ -17,6 +17,7 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
 
 
@@ -96,8 +97,9 @@ sub isImplementedView {
         return $stringBuffer->toString();
 }
 
-use org::allbinary::logic::string::StringMaker;
-use org::allbinary::string::CommonSeps;
+use java::lang::Object ();
+use org::allbinary::logic::string::StringMaker ();
+use org::allbinary::string::CommonSeps ();
 
 1;
 

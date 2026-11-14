@@ -17,8 +17,9 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
-our $instance = 'views::generic::inventory::InventoryColumnUtil'->new();
+tie our $instance, 'java::lang::LazyStatic', sub { 'views::generic::inventory::InventoryColumnUtil'->new() };
 
 sub _init_fields {
     my ($self) = @_;
@@ -29,7 +30,7 @@ sub _init_fields {
 sub new {
     my ($class) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
     return $self;
 }
 
@@ -56,13 +57,15 @@ sub getColumnWhereLike {
         return $keywords;
 }
 
-use java::util::HashMap;
-use org::allbinary::util::BasicArrayList;
-use org::allbinary::util::BasicArrayListD;
-use org::allbinary::business::user::commerce::inventory::item::BasicItemData;
-use org::allbinary::data::tables::user::commerce::inventory::item::InventoryEntity;
-use org::allbinary::logic::communication::log::LogUtil;
-use org::allbinary::logic::string::StringValidationUtil;
+use java::lang::Object ();
+use java::lang::LazyStatic ();
+use java::util::HashMap ();
+use org::allbinary::util::BasicArrayList ();
+use org::allbinary::util::BasicArrayListD ();
+use org::allbinary::business::user::commerce::inventory::item::BasicItemData ();
+use org::allbinary::data::tables::user::commerce::inventory::item::InventoryEntity ();
+use org::allbinary::logic::communication::log::LogUtil ();
+use org::allbinary::logic::string::StringValidationUtil ();
 
 1;
 

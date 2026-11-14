@@ -17,7 +17,7 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
-use parent -norequire,'org::osgi::framework::BundleActivator';
+use parent -norequire,'java::lang::Object','org::osgi::framework::BundleActivator';
 
 
 sub _init_fields {
@@ -32,7 +32,7 @@ sub _init_fields {
 sub new {
     my ($class) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
         $self->init();
     return $self;
 }
@@ -143,17 +143,18 @@ sub setInputRobotInterface {
         $self->{inputRobotInterface} = $inputRobotInterface;
 }
 
-use org::osgi::framework::BundleActivator;
-use org::osgi::framework::BundleContext;
-use org::osgi::framework::ServiceFactory;
-use org::osgi::framework::ServiceReference;
-use bundle::input::automation::robot::InputAutomationRobotChangeListener;
-use bundle::input::automation::robot::InputAutomationRobotServiceInterface;
-use org::allbinary::input::automation::robot::InputRobotInterface;
-use org::allbinary::logic::communication::log::LogUtil;
-use org::allbinary::osgi::OSGIActivatorUtil;
-use org::allbinary::string::CommonStrings;
-use org::allbinary::input::automation::robot::osgi::InputAutomationRobotUtil;
+use java::lang::Object ();
+use org::osgi::framework::BundleActivator ();
+use org::osgi::framework::BundleContext ();
+use org::osgi::framework::ServiceFactory ();
+use org::osgi::framework::ServiceReference ();
+use bundle::input::automation::robot::InputAutomationRobotChangeListener ();
+use bundle::input::automation::robot::InputAutomationRobotServiceInterface ();
+use org::allbinary::input::automation::robot::InputRobotInterface ();
+use org::allbinary::logic::communication::log::LogUtil ();
+use org::allbinary::osgi::OSGIActivatorUtil ();
+use org::allbinary::string::CommonStrings ();
+use org::allbinary::input::automation::robot::osgi::InputAutomationRobotUtil ();
 
 1;
 

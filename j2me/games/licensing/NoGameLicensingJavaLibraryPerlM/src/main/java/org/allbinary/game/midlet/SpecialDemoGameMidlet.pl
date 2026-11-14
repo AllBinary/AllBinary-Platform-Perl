@@ -39,9 +39,10 @@ sub preInit {
         'org::allbinary::logic::system::security::licensing::LicenseServerInitFileUtil'->new()->init();
 }
 
-use org::allbinary::logic::system::security::licensing::ClientInformationFactory;
-use org::allbinary::logic::system::security::licensing::LicenseServerInitFileUtil;
-use org::allbinary::game::midlet::DemoGameMidlet;
+use java::lang::Object ();
+use org::allbinary::logic::system::security::licensing::ClientInformationFactory ();
+use org::allbinary::logic::system::security::licensing::LicenseServerInitFileUtil ();
+use org::allbinary::game::midlet::DemoGameMidlet ();
 
 1;
 

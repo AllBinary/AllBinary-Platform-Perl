@@ -17,6 +17,7 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
 
 sub _init_fields {
@@ -36,7 +37,7 @@ sub _init_fields {
 sub new {
     my ($class, $groupInterfaceArray) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
         my $size = scalar(@{$self->{newUnconstructedRTSLayerInterfaceArray}});
         for (my $index = 0; $index < $size; $index++) {
             $self->{newUnconstructedRTSLayerInterfaceArray}->[$index] = 'org::allbinary::game::layer::special::CollidableDestroyableDamageableLayer'->getNullInstance();
@@ -194,26 +195,27 @@ sub getHashtable {
         return $self->{hashtable};
 }
 
-use org::allbinary::game::identification::GroupCommonFactory;
-use org::allbinary::game::layer::RTSLayer;
-use org::allbinary::game::layer::RTSPlayerLayerInterface;
-use org::allbinary::game::layer::item::LayerInterfaceFactoryImageItem;
-use org::allbinary::graphics::form::item::ABCustomItem;
-use org::allbinary::logic::communication::log::LogUtil;
-use org::allbinary::direction::DirectionFactory;
-use org::allbinary::game::identification::Group;
-use org::allbinary::game::layer::AllBinaryGameLayerManager;
-use org::allbinary::game::layer::special::CollidableDestroyableDamageableLayer;
-use org::allbinary::graphics::GPoint;
-use org::allbinary::graphics::form::ScrollSelectionForm;
-use org::allbinary::layer::AllBinaryLayerManager;
-use org::allbinary::layer::LayerInterfaceFactoryInterface;
-use org::allbinary::logic::StdUtil;
-use org::allbinary::logic::string::StringMaker;
-use org::allbinary::logic::string::StringUtil;
-use org::allbinary::media::graphics::geography::map::GeographicMapCellPosition;
-use org::allbinary::media::graphics::geography::map::SimpleGeographicMapCellPositionFactory;
-use org::allbinary::util::ABHashtable;
+use java::lang::Object ();
+use org::allbinary::game::identification::GroupCommonFactory ();
+use org::allbinary::game::layer::RTSLayer ();
+use org::allbinary::game::layer::RTSPlayerLayerInterface ();
+use org::allbinary::game::layer::item::LayerInterfaceFactoryImageItem ();
+use org::allbinary::graphics::form::item::ABCustomItem ();
+use org::allbinary::logic::communication::log::LogUtil ();
+use org::allbinary::direction::DirectionFactory ();
+use org::allbinary::game::identification::Group ();
+use org::allbinary::game::layer::AllBinaryGameLayerManager ();
+use org::allbinary::game::layer::special::CollidableDestroyableDamageableLayer ();
+use org::allbinary::graphics::GPoint ();
+use org::allbinary::graphics::form::ScrollSelectionForm ();
+use org::allbinary::layer::AllBinaryLayerManager ();
+use org::allbinary::layer::LayerInterfaceFactoryInterface ();
+use org::allbinary::logic::StdUtil ();
+use org::allbinary::logic::string::StringMaker ();
+use org::allbinary::logic::string::StringUtil ();
+use org::allbinary::media::graphics::geography::map::GeographicMapCellPosition ();
+use org::allbinary::media::graphics::geography::map::SimpleGeographicMapCellPositionFactory ();
+use org::allbinary::util::ABHashtable ();
 
 1;
 

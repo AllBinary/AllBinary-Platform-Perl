@@ -17,6 +17,7 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
 
 sub _init_fields {
@@ -30,7 +31,7 @@ sub _init_fields {
 sub new {
     my ($class) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
     return $self;
 }
 
@@ -112,7 +113,7 @@ sub handleImage {
                 $self->copy($imageArray, $index, $image, $image3);
             } else {
                 my $callback = do {
-                    package playn::core::util::Callback::AnonymousN68494 { our @ISA = ('playn::core::util::Callback');
+                    package playn::core::util::Callback::AnonymousN68494 { our @ISA = ('playn::core::util::Callback', 'java::lang::Object');
                     
 
                     sub onSuccess {
@@ -160,18 +161,19 @@ sub reset {
         }
 }
 
-# use javax::microedition::lcdui::Graphics;
-# use javax::microedition::lcdui::Image;
-use org::allbinary::graphics::Anchor;
-use org::allbinary::graphics::color::BasicColor;
-use org::allbinary::string::CommonStrings;
-use org::allbinary::logic::communication::log::LogUtil;
-use org::allbinary::logic::string::StringMaker;
-use org::microemu::device::playn::PlaynImage;
-use org::microemu::device::ResourceCallbackStrings;
-use playn::core::Canvas;
-use playn::core::CanvasImage;
-use playn::core::util::Callback;
+use java::lang::Object ();
+use javax::microedition::lcdui::Graphics ();
+use javax::microedition::lcdui::Image ();
+use org::allbinary::graphics::Anchor ();
+use org::allbinary::graphics::color::BasicColor ();
+use org::allbinary::string::CommonStrings ();
+use org::allbinary::logic::communication::log::LogUtil ();
+use org::allbinary::logic::string::StringMaker ();
+use org::microemu::device::playn::PlaynImage ();
+use org::microemu::device::ResourceCallbackStrings ();
+use playn::core::Canvas ();
+use playn::core::CanvasImage ();
+use playn::core::util::Callback ();
 
 1;
 

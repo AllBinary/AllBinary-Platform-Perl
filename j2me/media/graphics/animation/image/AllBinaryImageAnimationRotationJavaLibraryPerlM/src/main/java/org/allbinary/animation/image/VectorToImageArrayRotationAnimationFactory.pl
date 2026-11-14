@@ -30,7 +30,7 @@ sub _init_fields {
 sub new {
     my ($class, $vectorInfo, $basicColor, $animationBehaviorFactory) = @_;
     my $self = $class->SUPER::new('org::allbinary::image::AnimationFrameToImageUtil'->getInstance()->getInstanceTranslate($vectorInfo->getWidth(), $vectorInfo->getHeight(), 'org::allbinary::animation::VectorAnimation'->createVectorAnimation($vectorInfo->getPoints(), $basicColor, $animationBehaviorFactory->getOrCreateInstance())), 'org::allbinary::logic::math::PrimitiveIntUtil'->getArrayInstance(), 0, 0, 0, 0, $animationBehaviorFactory);
-    $self->_init_fields();
+    _init_fields($self);
         # super(...) made $self above
         $self->init();
     return $self;
@@ -67,22 +67,23 @@ sub setInitialScale {
     my ($self, $scaleProperties) = @_;
 }
 
-# use javax::microedition::lcdui::Image;
-# use javax::microedition::lcdui::NullImage;
-use org::allbinary::animation::Animation;
-use org::allbinary::animation::AnimationBehaviorFactory;
-use org::allbinary::animation::VectorAnimation;
-use org::allbinary::game::configuration::GameConfigurationCentral;
-use org::allbinary::graphics::color::BasicColor;
-use org::allbinary::image::AnimationFrameToImageUtil;
-use org::allbinary::logic::math::PrimitiveIntUtil;
-use org::allbinary::math::AngleFactory;
-use org::allbinary::math::AngleInfo;
-use org::allbinary::media::ScaleProperties;
-use org::allbinary::media::image::ImageToRotationImageArrayUtil;
-use org::allbinary::vector::VectorInfo;
-use org::allbinary::animation::image::BaseImageAnimationFactory;
-use org::allbinary::animation::image::AdjustedImageArrayRotationAnimation;
+use java::lang::Object ();
+use javax::microedition::lcdui::Image ();
+use javax::microedition::lcdui::NullImage ();
+use org::allbinary::animation::Animation ();
+use org::allbinary::animation::AnimationBehaviorFactory ();
+use org::allbinary::animation::VectorAnimation ();
+use org::allbinary::game::configuration::GameConfigurationCentral ();
+use org::allbinary::graphics::color::BasicColor ();
+use org::allbinary::image::AnimationFrameToImageUtil ();
+use org::allbinary::logic::math::PrimitiveIntUtil ();
+use org::allbinary::math::AngleFactory ();
+use org::allbinary::math::AngleInfo ();
+use org::allbinary::media::ScaleProperties ();
+use org::allbinary::media::image::ImageToRotationImageArrayUtil ();
+use org::allbinary::vector::VectorInfo ();
+use org::allbinary::animation::image::BaseImageAnimationFactory ();
+use org::allbinary::animation::image::AdjustedImageArrayRotationAnimation ();
 
 1;
 

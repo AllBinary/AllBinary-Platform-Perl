@@ -17,6 +17,7 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
 our $points = [[[2, 1], [3, 2], [3, 2], [4, 1], [4, 1], [5, 1], [5, 1], [6, 2], [6, 2], [6, 3], [6, 3], [3, 6], [3, 6], [0, 3], [0, 3], [0, 2], [0, 2], [1, 1], [1, 1], [2, 1], [1000, 1000]]];
 
@@ -26,6 +27,7 @@ sub new {
     return $self;
 }
 
+use java::lang::Object ();
 
 1;
 

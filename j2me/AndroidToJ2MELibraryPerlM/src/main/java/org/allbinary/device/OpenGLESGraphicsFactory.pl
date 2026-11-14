@@ -17,6 +17,7 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
 
 sub new {
@@ -31,7 +32,8 @@ sub getOpenGLESGraphicsInstance {
         return 'org::allbinary::device::OpenGLESNullGraphicsFactory'->getInstance();
 }
 
-use org::allbinary::device::OpenGLESNullGraphicsFactory;
+use java::lang::Object ();
+use org::allbinary::device::OpenGLESNullGraphicsFactory ();
 
 1;
 

@@ -36,7 +36,7 @@ sub _init_fields {
 sub new {
     my ($class, $dataId, $width, $height, $cellWidth, $cellHeight) = @_;
     my $self = $class->SUPER::new(0, 0);
-    $self->_init_fields();
+    _init_fields($self);
         # super(...) made $self above
         $self->{dataId} = $dataId;
         $self->setLayerWidth($width);
@@ -203,13 +203,14 @@ sub getAnimatedTile {
         return $animationTileIndex;
 }
 
-# use javax::microedition::lcdui::Graphics;
-use org::allbinary::logic::string::StringMaker;
-use org::allbinary::logic::communication::log::LogUtil;
-use org::allbinary::graphics::paint::PaintableInterface;
-use org::allbinary::layer::Layer;
-use org::allbinary::layer::NamedInterface;
-use org::allbinary::string::CommonStrings;
+use java::lang::Object ();
+use javax::microedition::lcdui::Graphics ();
+use org::allbinary::logic::string::StringMaker ();
+use org::allbinary::logic::communication::log::LogUtil ();
+use org::allbinary::graphics::paint::PaintableInterface ();
+use org::allbinary::layer::Layer ();
+use org::allbinary::layer::NamedInterface ();
+use org::allbinary::string::CommonStrings ();
 
 1;
 

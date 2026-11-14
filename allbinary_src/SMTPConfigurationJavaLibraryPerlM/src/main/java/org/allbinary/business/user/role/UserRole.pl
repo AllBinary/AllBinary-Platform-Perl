@@ -17,7 +17,7 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
-use parent -norequire,'java::io::Serializable';
+use parent -norequire,'java::lang::Object';
 
 
 sub _init_fields {
@@ -30,7 +30,7 @@ sub _init_fields {
 sub new {
     my ($class, $aBasicUserRole, $aUserFactoryInterface) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
         $self->{basicUserRole} = $aBasicUserRole;
         $self->{userFactoryInterface} = $aUserFactoryInterface;
     return $self;
@@ -67,8 +67,9 @@ sub getSessionInactivityTimeout {
         return $self->{basicUserRole}->getSessionInactivityTimeout();
 }
 
-# use java::io::Serializable;
-use org::allbinary::business::user::UserFactoryInterface;
+use java::lang::Object ();
+# use java::io::Serializable ();
+use org::allbinary::business::user::UserFactoryInterface ();
 
 1;
 

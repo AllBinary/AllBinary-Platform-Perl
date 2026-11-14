@@ -28,7 +28,7 @@ sub onTerrainEvent {
     die "abstract method onTerrainEvent";
 }
 
-use org::allbinary::logic::util::event::EventListenerInterface;
+use org::allbinary::logic::util::event::EventListenerInterface ();
 
 1;
 

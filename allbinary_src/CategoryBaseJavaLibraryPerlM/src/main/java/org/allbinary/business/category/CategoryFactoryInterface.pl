@@ -59,9 +59,9 @@ sub getInstance {
     die "abstract method getInstance";
 }
 
-use java::util::HashMap;
-use org::allbinary::logic::io::path::AbPath;
-use org::w3c::dom::Node;
+use java::util::HashMap ();
+use org::allbinary::logic::io::path::AbPath ();
+use org::w3c::dom::Node ();
 
 1;
 

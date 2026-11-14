@@ -54,7 +54,7 @@ sub _init_fields {
 sub new {
     my ($class, $before, $cellpadding, $cellspacing, $after) = @_;
     my $self = $class->SUPER::new();
-    $self->_init_fields();
+    _init_fields($self);
         $self->{before} = $before;
         $self->{cellpadding} = $cellpadding;
         $self->{cellspacing} = $cellspacing;
@@ -106,12 +106,13 @@ sub toString {
         return $result;
 }
 
-use org::allbinary::util::BasicArrayList;
-use org::allbinary::util::BasicArrayListD;
-use org::allbinary::logic::StdUtil;
-use org::allbinary::logic::string::StringUtil;
-use org::allbinary::logic::visual::dhtml::html::HtmlTag;
-use org::allbinary::string::CommonPhoneStrings;
+use java::lang::Object ();
+use org::allbinary::util::BasicArrayList ();
+use org::allbinary::util::BasicArrayListD ();
+use org::allbinary::logic::StdUtil ();
+use org::allbinary::logic::string::StringUtil ();
+use org::allbinary::logic::visual::dhtml::html::HtmlTag ();
+use org::allbinary::string::CommonPhoneStrings ();
 
 1;
 

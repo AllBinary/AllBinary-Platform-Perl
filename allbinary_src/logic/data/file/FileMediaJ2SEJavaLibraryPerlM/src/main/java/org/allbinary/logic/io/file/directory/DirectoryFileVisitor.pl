@@ -17,7 +17,7 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
-use parent -norequire,'org::allbinary::logic::util::visitor::VisitorInterface','java::io::FileFilter';
+use parent -norequire,'java::lang::Object','org::allbinary::logic::util::visitor::VisitorInterface';
 
 
 
@@ -48,9 +48,10 @@ sub visit {
         return 0;
 }
 
-use java::io::File;
-# use java::io::FileFilter;
-use org::allbinary::logic::util::visitor::VisitorInterface;
+use java::lang::Object ();
+use java::io::File ();
+# use java::io::FileFilter ();
+use org::allbinary::logic::util::visitor::VisitorInterface ();
 
 1;
 

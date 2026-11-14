@@ -17,8 +17,9 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
-our $instance = 'org::allbinary::media::image::ImageCopyUtil'->new();
+tie our $instance, 'java::lang::LazyStatic', sub { 'org::allbinary::media::image::ImageCopyUtil'->new() };
 
 sub _init_fields {
     my ($self) = @_;
@@ -45,7 +46,7 @@ sub getInstance {
 sub new {
     my ($class) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
     return $self;
 }
 
@@ -280,24 +281,26 @@ sub createImageScale {
         }
 }
 
-# use javax::microedition::lcdui::Image;
-use org::allbinary::game::configuration::feature::Features;
-use org::allbinary::game::configuration::feature::GameFeatureFactory;
-use org::allbinary::graphics::displayable::DisplayInfoSingleton;
-use org::allbinary::graphics::opengles::OpenGLFeatureFactory;
-use org::allbinary::graphics::opengles::OpenGLUtil;
-use org::allbinary::image::opengles::OpenGLESDeviceImageTranslate;
-use org::allbinary::image::opengles::OpenGLESImage;
-use org::allbinary::image::opengles::OpenGLESImageExclusionUtil;
-use org::allbinary::image::opengles::OpenGLESImageProperties;
-use org::allbinary::logic::communication::log::LogUtil;
-use org::allbinary::string::CommonStrings;
-use org::eclipse::swt::graphics::ImageData;
-use org::microemu::app::ui::swt::SwtDeviceComponent;
-use org::microemu::device::swt::PostLoadSwtImmutableImageProcessor;
-use org::microemu::device::swt::PostLoadSwtMutableImageProcessor;
-use org::microemu::device::swt::SwtImmutableImage;
-use org::microemu::device::swt::SwtMutableImage;
+use java::lang::Object ();
+use java::lang::LazyStatic ();
+use javax::microedition::lcdui::Image ();
+use org::allbinary::game::configuration::feature::Features ();
+use org::allbinary::game::configuration::feature::GameFeatureFactory ();
+use org::allbinary::graphics::displayable::DisplayInfoSingleton ();
+use org::allbinary::graphics::opengles::OpenGLFeatureFactory ();
+use org::allbinary::graphics::opengles::OpenGLUtil ();
+use org::allbinary::image::opengles::OpenGLESDeviceImageTranslate ();
+use org::allbinary::image::opengles::OpenGLESImage ();
+use org::allbinary::image::opengles::OpenGLESImageExclusionUtil ();
+use org::allbinary::image::opengles::OpenGLESImageProperties ();
+use org::allbinary::logic::communication::log::LogUtil ();
+use org::allbinary::string::CommonStrings ();
+# use org::eclipse::swt::graphics::ImageData ();
+use org::microemu::app::ui::swt::SwtDeviceComponent ();
+use org::microemu::device::swt::PostLoadSwtImmutableImageProcessor ();
+use org::microemu::device::swt::PostLoadSwtMutableImageProcessor ();
+use org::microemu::device::swt::SwtImmutableImage ();
+use org::microemu::device::swt::SwtMutableImage ();
 
 1;
 

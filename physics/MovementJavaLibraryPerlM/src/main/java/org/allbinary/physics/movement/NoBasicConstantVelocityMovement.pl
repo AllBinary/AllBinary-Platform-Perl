@@ -34,10 +34,11 @@ sub process {
     my ($self, $layer) = @_;
 }
 
-use org::allbinary::game::layer::AllBinaryGameLayer;
-use org::allbinary::game::physics::velocity::BasicVelocityProperties;
-use org::allbinary::logic::math::BasicDecimal;
-use org::allbinary::physics::movement::BasicConstantVelocityMovement;
+use java::lang::Object ();
+use org::allbinary::game::layer::AllBinaryGameLayer ();
+use org::allbinary::game::physics::velocity::BasicVelocityProperties ();
+use org::allbinary::logic::math::BasicDecimal ();
+use org::allbinary::physics::movement::BasicConstantVelocityMovement ();
 
 1;
 

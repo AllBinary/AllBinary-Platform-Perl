@@ -17,6 +17,7 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
 
 sub _init_fields {
@@ -30,7 +31,7 @@ sub _init_fields {
 sub new {
     my ($class, $adConfiguration) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
         $self->{adConfigurationP} = $adConfiguration;
     return $self;
 }
@@ -154,12 +155,13 @@ sub isEnabled {
         return 0;
 }
 
-use org::allbinary::game::GameType;
-use org::allbinary::game::state::GameState;
-use org::allbinary::logic::communication::log::ForcedLogUtil;
-use org::allbinary::logic::util::event::AllBinaryEventObject;
-use org::allbinary::logic::util::event::EventStrings;
-use org::allbinary::business::advertisement::Advertisements;
+use java::lang::Object ();
+use org::allbinary::game::GameType ();
+use org::allbinary::game::state::GameState ();
+use org::allbinary::logic::communication::log::ForcedLogUtil ();
+use org::allbinary::logic::util::event::AllBinaryEventObject ();
+use org::allbinary::logic::util::event::EventStrings ();
+use org::allbinary::business::advertisement::Advertisements ();
 
 1;
 

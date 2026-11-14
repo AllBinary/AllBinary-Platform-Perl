@@ -17,7 +17,7 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
-use parent -norequire,'org::allbinary::view::ViewPositionFactoryInterface';
+use parent -norequire,'java::lang::Object','org::allbinary::view::ViewPositionFactoryInterface';
 
 
 sub new {
@@ -33,9 +33,10 @@ sub getInstance {
         return 'org::allbinary::game::view::StaticTileLayerIntoPositionViewPosition'->new();
 }
 
-use org::allbinary::view::ViewPositionBase;
-use org::allbinary::view::ViewPositionFactoryInterface;
-use org::allbinary::game::view::StaticTileLayerIntoPositionViewPosition;
+use java::lang::Object ();
+use org::allbinary::view::ViewPositionBase ();
+use org::allbinary::view::ViewPositionFactoryInterface ();
+use org::allbinary::game::view::StaticTileLayerIntoPositionViewPosition ();
 
 1;
 

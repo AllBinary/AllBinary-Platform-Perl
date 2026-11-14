@@ -17,8 +17,9 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
-our $vector = 'org::allbinary::util::BasicArrayListD'->new();
+tie our $vector, 'java::lang::LazyStatic', sub { 'org::allbinary::util::BasicArrayListD'->new() };
 
 
 sub new {
@@ -50,10 +51,12 @@ sub isNotified {
         return $isNotified;
 }
 
-# use java::net::URL;
-use org::allbinary::util::BasicArrayList;
-use org::allbinary::util::BasicArrayListD;
-# use javax::help::HelpSet;
+use java::lang::Object ();
+use java::lang::LazyStatic ();
+# use java::net::URL ();
+use org::allbinary::util::BasicArrayList ();
+use org::allbinary::util::BasicArrayListD ();
+# use javax::help::HelpSet ();
 
 1;
 

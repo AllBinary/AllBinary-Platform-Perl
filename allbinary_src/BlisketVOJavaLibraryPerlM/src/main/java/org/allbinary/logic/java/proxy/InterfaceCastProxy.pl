@@ -17,7 +17,7 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
-use parent -norequire,'java::lang::reflect::InvocationHandler';
+use parent -norequire,'java::lang::Object';
 
 
 sub _init_fields {
@@ -29,7 +29,7 @@ sub _init_fields {
 sub new {
     my ($class, $anyType) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
         $self->{anyType} = $anyType;
     return $self;
 }
@@ -52,8 +52,9 @@ sub invoke {
         return $proxyMethod->invoke($self->{anyType}, $proxyArgs);
 }
 
-# use java::lang::reflect::Method;
-# use java::lang::reflect::Proxy;
+use java::lang::Object ();
+# use java::lang::reflect::Method ();
+# use java::lang::reflect::Proxy ();
 
 1;
 

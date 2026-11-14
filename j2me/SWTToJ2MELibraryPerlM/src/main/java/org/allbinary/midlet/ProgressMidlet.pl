@@ -31,7 +31,7 @@ sub _init_fields {
 sub new {
     my ($class, $clientInformationFactory) = @_;
     my $self = $class->SUPER::new();
-    $self->_init_fields();
+    _init_fields($self);
         $self->preInit();
         $self->{abeClientInformation} = $clientInformationFactory->getInstance();
     return $self;
@@ -60,15 +60,16 @@ sub exitProgress {
         }
 }
 
-use org::allbinary::logic::communication::log::LogUtil;
-use org::allbinary::canvas::Processor;
-use org::allbinary::logic::system::security::licensing::AbeClientInformationInterface;
-use org::allbinary::logic::system::security::licensing::ClientInformationFactory;
-use org::allbinary::thread::PrimaryThreadPool;
-use org::allbinary::thread::ThreadPool;
-use org::allbinary::midlet::AllBinaryMidlet;
-use org::allbinary::midlet::MidletExitProcessorFactory;
-use org::allbinary::midlet::ExitRunnable;
+use java::lang::Object ();
+use org::allbinary::logic::communication::log::LogUtil ();
+use org::allbinary::canvas::Processor ();
+use org::allbinary::logic::system::security::licensing::AbeClientInformationInterface ();
+use org::allbinary::logic::system::security::licensing::ClientInformationFactory ();
+use org::allbinary::thread::PrimaryThreadPool ();
+use org::allbinary::thread::ThreadPool ();
+use org::allbinary::midlet::AllBinaryMidlet ();
+use org::allbinary::midlet::MidletExitProcessorFactory ();
+use org::allbinary::midlet::ExitRunnable ();
 
 1;
 

@@ -19,7 +19,7 @@ use feature 'try';
 no warnings 'experimental::try';
 use parent -norequire,'org::allbinary::animation::image::ModifierBaseProcessor';
 
-our $instanceC = 'org::allbinary::animation::image::SetColorProcessor'->new();
+tie our $instanceC, 'java::lang::LazyStatic', sub { 'org::allbinary::animation::image::SetColorProcessor'->new() };
 
 sub new {
     my ($class) = @_;
@@ -39,10 +39,12 @@ sub updateColor {
         $imageModifierUtil->setColor($originalImage, $imageToShow, $index, $basicColor);
 }
 
-# use javax::microedition::lcdui::Image;
-use org::allbinary::graphics::color::BasicColor;
-use org::allbinary::media::image::ImageModifierUtil;
-use org::allbinary::animation::image::ModifierBaseProcessor;
+use java::lang::Object ();
+use java::lang::LazyStatic ();
+use javax::microedition::lcdui::Image ();
+use org::allbinary::graphics::color::BasicColor ();
+use org::allbinary::media::image::ImageModifierUtil ();
+use org::allbinary::animation::image::ModifierBaseProcessor ();
 
 1;
 

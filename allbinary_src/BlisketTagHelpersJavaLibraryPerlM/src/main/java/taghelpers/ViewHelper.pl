@@ -17,7 +17,7 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
-use parent -norequire,'org::allbinary::logic::visual::transform::TransformInterface';
+use parent -norequire,'java::lang::Object','org::allbinary::logic::visual::transform::TransformInterface';
 
 
 sub _init_fields {
@@ -33,7 +33,7 @@ sub _init_fields {
 sub new {
     my ($class, $hashMap, $pageContext) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
         $self->{componentInterface} = 'org::allbinary::logic::visual::transform::TransformFactory'->getInstance()->getInstance($self->{abeClientInformation}, $hashMap, $pageContext);
     return $self;
 }
@@ -109,17 +109,18 @@ sub setTransformDocumentInterface {
         return;
 }
 
-use java::util::HashMap;
-# use javax::servlet::jsp::PageContext;
-use org::allbinary::logic::communication::log::LogUtil;
-use org::allbinary::logic::system::security::licensing::AbeClientInformationInterface;
-use org::allbinary::logic::system::security::licensing::ServiceClientInformationInterfaceFactory;
-use org::allbinary::logic::visual::transform::TransformFactory;
-use org::allbinary::logic::visual::transform::TransformInterface;
-use org::allbinary::logic::visual::transform::data::TransformDocumentInterface;
-use org::allbinary::logic::visual::transform::info::TransformInfoInterface;
-use org::allbinary::string::CommonStrings;
-use org::w3c::dom::Document;
+use java::lang::Object ();
+use java::util::HashMap ();
+# use javax::servlet::jsp::PageContext ();
+use org::allbinary::logic::communication::log::LogUtil ();
+use org::allbinary::logic::system::security::licensing::AbeClientInformationInterface ();
+use org::allbinary::logic::system::security::licensing::ServiceClientInformationInterfaceFactory ();
+use org::allbinary::logic::visual::transform::TransformFactory ();
+use org::allbinary::logic::visual::transform::TransformInterface ();
+use org::allbinary::logic::visual::transform::data::TransformDocumentInterface ();
+use org::allbinary::logic::visual::transform::info::TransformInfoInterface ();
+use org::allbinary::string::CommonStrings ();
+use org::w3c::dom::Document ();
 
 1;
 

@@ -29,7 +29,7 @@ sub _init_fields {
 sub new {
     my ($class, $image, $width, $height, $dx, $dy, $angleIncrement, $animationBehaviorFactory) = @_;
     my $self = $class->SUPER::new($image, 'org::allbinary::logic::math::PrimitiveIntUtil'->getArrayInstance(), $width, $height, 0, 0, $animationBehaviorFactory);
-    $self->_init_fields();
+    _init_fields($self);
         # super(...) made $self above
         $self->{angleIncrement} = $angleIncrement;
         $self->{animationFactoryInitializationVisitor}->{dx} = $dx;
@@ -55,16 +55,17 @@ sub getAngleIncrementP {
         return $self->{angleIncrement};
 }
 
-# use javax::microedition::lcdui::Image;
-use org::allbinary::animation::Animation;
-use org::allbinary::animation::AnimationBehaviorFactory;
-use org::allbinary::game::configuration::GameConfigurationCentral;
-use org::allbinary::logic::math::PrimitiveIntUtil;
-use org::allbinary::math::AngleFactory;
-use org::allbinary::math::AngleInfo;
-use org::allbinary::animation::image::BaseImageAnimationFactory;
-use org::allbinary::animation::image::ImageBaseRotationAnimation;
-use org::allbinary::animation::image::AdjustedImageBaseRotationAnimation;
+use java::lang::Object ();
+use javax::microedition::lcdui::Image ();
+use org::allbinary::animation::Animation ();
+use org::allbinary::animation::AnimationBehaviorFactory ();
+use org::allbinary::game::configuration::GameConfigurationCentral ();
+use org::allbinary::logic::math::PrimitiveIntUtil ();
+use org::allbinary::math::AngleFactory ();
+use org::allbinary::math::AngleInfo ();
+use org::allbinary::animation::image::BaseImageAnimationFactory ();
+use org::allbinary::animation::image::ImageBaseRotationAnimation ();
+use org::allbinary::animation::image::AdjustedImageBaseRotationAnimation ();
 
 1;
 

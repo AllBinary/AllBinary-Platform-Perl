@@ -30,7 +30,7 @@ sub _init_fields {
 sub new {
     my ($class, $collidable) = @_;
     my $self = $class->SUPER::new($collidable);
-    $self->_init_fields();
+    _init_fields($self);
         # super(...) made $self above
     return $self;
 }
@@ -172,25 +172,26 @@ sub collideUnit {
     }
 
 
-# use javax::microedition::lcdui::Canvas;
-use org::allbinary::game::layer::SteeringVisitor;
-use org::allbinary::game::layer::AdvancedRTSGameLayer;
-use org::allbinary::game::layer::CollidableCompositeLayer;
-use org::allbinary::game::layer::CollidableRTSBehavior;
-use org::allbinary::util::BasicArrayList;
-use org::allbinary::game::input::event::GameKeyEventFactory;
-use org::allbinary::game::layer::AllBinaryTiledLayer;
-use org::allbinary::game::layer::TiledLayerUtil;
-use org::allbinary::game::layer::geographic::map::LayerPartialCellPositionsUtil;
-use org::allbinary::logic::NullUtil;
-use org::allbinary::logic::communication::log::LogUtil;
-use org::allbinary::logic::java::bool::BooleanFactory;
-use org::allbinary::math::AngleInfo;
-use org::allbinary::media::graphics::geography::map::BasicGeographicMap;
-use org::allbinary::media::graphics::geography::map::GeographicMapCompositeInterface;
-use org::allbinary::media::graphics::geography::map::drop::DropCellPositionHistory;
-use org::allbinary::string::CommonStrings;
-use org::allbinary::game::layer::unit::UnitLayer;
+use java::lang::Object ();
+use javax::microedition::lcdui::Canvas ();
+use org::allbinary::game::layer::SteeringVisitor ();
+use org::allbinary::game::layer::AdvancedRTSGameLayer ();
+use org::allbinary::game::layer::CollidableCompositeLayer ();
+use org::allbinary::game::layer::CollidableRTSBehavior ();
+use org::allbinary::util::BasicArrayList ();
+use org::allbinary::game::input::event::GameKeyEventFactory ();
+use org::allbinary::game::layer::AllBinaryTiledLayer ();
+use org::allbinary::game::layer::TiledLayerUtil ();
+use org::allbinary::game::layer::geographic::map::LayerPartialCellPositionsUtil ();
+use org::allbinary::logic::NullUtil ();
+use org::allbinary::logic::communication::log::LogUtil ();
+use org::allbinary::logic::java::bool::BooleanFactory ();
+use org::allbinary::math::AngleInfo ();
+use org::allbinary::media::graphics::geography::map::BasicGeographicMap ();
+use org::allbinary::media::graphics::geography::map::GeographicMapCompositeInterface ();
+use org::allbinary::media::graphics::geography::map::drop::DropCellPositionHistory ();
+use org::allbinary::string::CommonStrings ();
+use org::allbinary::game::layer::unit::UnitLayer ();
 
 1;
 

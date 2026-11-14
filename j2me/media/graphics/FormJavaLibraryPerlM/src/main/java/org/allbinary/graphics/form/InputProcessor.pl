@@ -29,7 +29,7 @@ sub _init_fields {
 sub new {
     my ($class, $playerGameInputCompositeInterface) = @_;
     my $self = $class->SUPER::new();
-    $self->_init_fields();
+    _init_fields($self);
         $self->{playerGameInputCompositeInterface} = $playerGameInputCompositeInterface;
     return $self;
 }
@@ -41,8 +41,9 @@ sub process {
         $self->{playerGameInputCompositeInterface}->getPlayerGameInput()->update();
 }
 
-use org::allbinary::canvas::Processor;
-use org::allbinary::game::input::PlayerGameInputCompositeInterface;
+use java::lang::Object ();
+use org::allbinary::canvas::Processor ();
+use org::allbinary::game::input::PlayerGameInputCompositeInterface ();
 
 1;
 

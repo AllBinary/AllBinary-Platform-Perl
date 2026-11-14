@@ -32,9 +32,10 @@ sub new {
     return $self;
 }
 
-use org::allbinary::logic::util::cache::BaseCircularPool;
-use org::allbinary::util::CircularIndexUtil;
-use org::allbinary::graphics::CustomGPoint;
+use java::lang::Object ();
+use org::allbinary::logic::util::cache::BaseCircularPool ();
+use org::allbinary::util::CircularIndexUtil ();
+use org::allbinary::graphics::CustomGPoint ();
 
 1;
 

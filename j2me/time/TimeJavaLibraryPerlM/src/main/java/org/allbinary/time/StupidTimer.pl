@@ -5,6 +5,7 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
 
 sub _init_fields {
@@ -18,7 +19,7 @@ sub _init_fields {
 sub new {
     my ($class) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
     return $self;
 }
 
@@ -43,7 +44,7 @@ sub visit {
                 'org::allbinary::logic::communication::log::PreLogUtil'->put('org::allbinary::logic::string::StringMaker'->new()->append($WAITING_FOR)->appendint($index)->toString(), $self, $self->{commonStrings}->{VISIT});
             }
             $index++;
-            { # synchronized ($self)
+            {; # synchronized ($self)
                 $self->{threadObjectUtil}->waitObjectFor($self, 1800);
             }
             if ($timeDelayHelper->isTimeTNT()) {
@@ -62,19 +63,20 @@ sub visit {
 # throws Exception
 sub stopWaiting {
     my ($self) = @_;
-        { # synchronized ($self)
+        {; # synchronized ($self)
             $self->{threadObjectUtil}->notifyObject($self);
         }
 }
 
-use org::allbinary::logic::NullUtil;
-use org::allbinary::logic::communication::log::LogUtil;
-use org::allbinary::logic::communication::log::PreLogUtil;
-use org::allbinary::logic::string::StringMaker;
-use org::allbinary::logic::string::StringUtil;
-use org::allbinary::logic::util::visitor::Visitor;
-use org::allbinary::string::CommonStrings;
-use org::allbinary::thread::ThreadObjectUtil;
+use java::lang::Object ();
+use org::allbinary::logic::NullUtil ();
+use org::allbinary::logic::communication::log::LogUtil ();
+use org::allbinary::logic::communication::log::PreLogUtil ();
+use org::allbinary::logic::string::StringMaker ();
+use org::allbinary::logic::string::StringUtil ();
+use org::allbinary::logic::util::visitor::Visitor ();
+use org::allbinary::string::CommonStrings ();
+use org::allbinary::thread::ThreadObjectUtil ();
 
 1;
 

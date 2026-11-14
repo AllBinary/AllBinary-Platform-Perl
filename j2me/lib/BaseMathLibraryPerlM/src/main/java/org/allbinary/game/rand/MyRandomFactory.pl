@@ -19,8 +19,9 @@ use warnings;
 use feature 'try';
 no warnings 'experimental::try';
 use Time::HiRes ();
+use parent -norequire,'java::lang::Object';
 
-our $instance = 'org::allbinary::game::rand::MyRandomFactory'->new();
+tie our $instance, 'java::lang::LazyStatic', sub { 'org::allbinary::game::rand::MyRandomFactory'->new() };
 
 sub _init_fields {
     my ($self) = @_;
@@ -38,7 +39,7 @@ sub getInstance {
 sub new {
     my ($class) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
         $self->{rand} = 'java::util::Random'->new(int(Time::HiRes::time() * 1000));
     return $self;
 }
@@ -163,14 +164,16 @@ sub main {
         }
 }
 
-use java::util::Random;
-# use jsinterop::annotations::JsType;
-# use jsinterop::annotations::JsMethod;
-# use jsinterop::annotations::JsConstructor;
-use org::allbinary::logic::math::MathUtil;
-use org::allbinary::logic::string::StringMaker;
-use org::allbinary::string::CommonSeps;
-use java::lang::System;
+use java::lang::Object ();
+use java::lang::LazyStatic ();
+use java::util::Random ();
+# use jsinterop::annotations::JsType ();
+# use jsinterop::annotations::JsMethod ();
+# use jsinterop::annotations::JsConstructor ();
+use org::allbinary::logic::math::MathUtil ();
+use org::allbinary::logic::string::StringMaker ();
+use org::allbinary::string::CommonSeps ();
+use java::lang::System ();
 
 1;
 

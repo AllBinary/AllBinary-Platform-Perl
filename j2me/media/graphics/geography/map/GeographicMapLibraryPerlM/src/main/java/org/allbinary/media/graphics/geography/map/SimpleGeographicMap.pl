@@ -17,6 +17,7 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
 
 sub _init_fields {
@@ -35,7 +36,7 @@ sub _init_fields {
 sub new {
     my ($class, $id, $name, $cellTypeIdToGeographicMapCellType, $tiledLayer, $foregroundBasicColor, $backgroundBasicColor) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
         $self->{id} = $id;
         $self->{name} = $name;
         $self->{cellTypeIdToGeographicMapCellType} = $cellTypeIdToGeographicMapCellType;
@@ -111,11 +112,12 @@ sub setBackgroundBasicColor {
         $self->{backgroundBasicColor} = $backgroundBasicColor;
 }
 
-use org::allbinary::game::layer::AllBinaryTiledLayer;
-use org::allbinary::graphics::color::BasicColor;
-use org::allbinary::graphics::color::BasicColorFactory;
-use org::allbinary::string::CommonStrings;
-use org::allbinary::media::graphics::geography::map::GeographicMapCellTypeFactory;
+use java::lang::Object ();
+use org::allbinary::game::layer::AllBinaryTiledLayer ();
+use org::allbinary::graphics::color::BasicColor ();
+use org::allbinary::graphics::color::BasicColorFactory ();
+use org::allbinary::string::CommonStrings ();
+use org::allbinary::media::graphics::geography::map::GeographicMapCellTypeFactory ();
 
 1;
 

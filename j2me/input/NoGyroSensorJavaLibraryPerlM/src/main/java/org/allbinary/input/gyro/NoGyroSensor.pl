@@ -40,10 +40,11 @@ sub onSensorChange {
     my ($self) = @_;
 }
 
-use org::allbinary::input::AllBinarySensorListener;
-use org::allbinary::logic::communication::log::LogUtil;
-use org::allbinary::logic::math::Orientation;
-use org::allbinary::input::gyro::AllBinaryOrientationSensor;
+use java::lang::Object ();
+use org::allbinary::input::AllBinarySensorListener ();
+use org::allbinary::logic::communication::log::LogUtil ();
+use org::allbinary::logic::math::Orientation ();
+use org::allbinary::input::gyro::AllBinaryOrientationSensor ();
 
 1;
 

@@ -33,7 +33,7 @@ sub _init_fields {
 sub new {
     my ($class, $transformInfoInterface) = @_;
     my $self = $class->SUPER::new();
-    $self->_init_fields();
+    _init_fields($self);
         my $httpTransformInfoInterface = $transformInfoInterface;
         my $weblisketSession = 'org::allbinary::logic::communication::http::request::session::WeblisketSession'->new($httpTransformInfoInterface->getPropertiesHashMap(), $httpTransformInfoInterface->getPageContext());
         my $stringBuffer = 'org::allbinary::logic::string::StringMaker'->new();
@@ -99,29 +99,30 @@ sub process {
         return 'org::allbinary::logic::string::StringUtil'->getInstance()->{EMPTY_STRING};
 }
 
-# use java::io::ByteArrayInputStream;
-# use java::io::InputStream;
-use java::util::HashMap;
-use org::allbinary::globals::URLGLOBALS;
-use org::allbinary::logic::StdUtil;
-use org::allbinary::logic::communication::http::request::session::WeblisketSession;
-use org::allbinary::logic::communication::log::LogUtil;
-use org::allbinary::logic::io::InputOutputTypeData;
-use org::allbinary::logic::io::file::AbFile;
-use org::allbinary::logic::io::file::FileUtil;
-use org::allbinary::logic::io::path::AbPath;
-use org::allbinary::logic::io::path::AbPathData;
-use org::allbinary::logic::string::StringMaker;
-use org::allbinary::logic::string::StringUtil;
-use org::allbinary::logic::string::StringValidationUtil;
-use org::allbinary::logic::string::regex::replace::Replace;
-use org::allbinary::logic::visual::transform::info::TransformInfoHttpInterface;
-use org::allbinary::logic::visual::transform::info::TransformInfoHttpStoreInterface;
-use org::allbinary::logic::visual::transform::info::TransformInfoInterface;
-use org::allbinary::logic::visual::transform::info::TransformInfosData;
-use org::allbinary::string::CommonSeps;
-use org::allbinary::string::CommonStrings;
-use org::allbinary::logic::visual::transform::info::objectConfig::generator::TransformInfoObjectConfigGenerator;
+use java::lang::Object ();
+# use java::io::ByteArrayInputStream ();
+# use java::io::InputStream ();
+use java::util::HashMap ();
+use org::allbinary::globals::URLGLOBALS ();
+use org::allbinary::logic::StdUtil ();
+use org::allbinary::logic::communication::http::request::session::WeblisketSession ();
+use org::allbinary::logic::communication::log::LogUtil ();
+use org::allbinary::logic::io::InputOutputTypeData ();
+use org::allbinary::logic::io::file::AbFile ();
+use org::allbinary::logic::io::file::FileUtil ();
+use org::allbinary::logic::io::path::AbPath ();
+use org::allbinary::logic::io::path::AbPathData ();
+use org::allbinary::logic::string::StringMaker ();
+use org::allbinary::logic::string::StringUtil ();
+use org::allbinary::logic::string::StringValidationUtil ();
+use org::allbinary::logic::string::regex::replace::Replace ();
+use org::allbinary::logic::visual::transform::info::TransformInfoHttpInterface ();
+use org::allbinary::logic::visual::transform::info::TransformInfoHttpStoreInterface ();
+use org::allbinary::logic::visual::transform::info::TransformInfoInterface ();
+use org::allbinary::logic::visual::transform::info::TransformInfosData ();
+use org::allbinary::string::CommonSeps ();
+use org::allbinary::string::CommonStrings ();
+use org::allbinary::logic::visual::transform::info::objectConfig::generator::TransformInfoObjectConfigGenerator ();
 
 1;
 

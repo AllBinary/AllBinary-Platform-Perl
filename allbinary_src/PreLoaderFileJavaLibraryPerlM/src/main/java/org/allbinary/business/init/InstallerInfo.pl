@@ -17,12 +17,13 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
-our $instance = 'org::allbinary::business::init::InstallerInfo'->new();
+tie our $instance, 'java::lang::LazyStatic', sub { 'org::allbinary::business::init::InstallerInfo'->new() };
 our $INITFILENAME = "installerdata.dat";
-our $PACKAGE = 'org::allbinary::globals::PATH_GLOBALS'->getInstance()->{INIT_PATH};
-our $userName = 'org::allbinary::logic::string::StringUtil'->getInstance()->{EMPTY_STRING};
-our $password = 'org::allbinary::logic::string::StringUtil'->getInstance()->{EMPTY_STRING};
+tie our $PACKAGE, 'java::lang::LazyStatic', sub { 'org::allbinary::globals::PATH_GLOBALS'->getInstance()->{INIT_PATH} };
+tie our $userName, 'java::lang::LazyStatic', sub { 'org::allbinary::logic::string::StringUtil'->getInstance()->{EMPTY_STRING} };
+tie our $password, 'java::lang::LazyStatic', sub { 'org::allbinary::logic::string::StringUtil'->getInstance()->{EMPTY_STRING} };
 our $hasRead = 0;
 
 sub _init_fields {
@@ -34,7 +35,7 @@ sub _init_fields {
 sub new {
     my ($class) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
     return $self;
 }
 
@@ -146,18 +147,20 @@ sub isValid {
         return 0;
 }
 
-use org::allbinary::globals::PATH_GLOBALS;
-use org::allbinary::globals::URLGLOBALS;
-use org::allbinary::logic::communication::log::LogUtil;
-use org::allbinary::logic::io::AbDataInputStream;
-use org::allbinary::logic::io::AbDataOutputStream;
-use org::allbinary::logic::io::AbFileLocalInputStream;
-use org::allbinary::logic::io::DataOutputStreamFactory;
-use org::allbinary::logic::io::file::AbFile;
-use org::allbinary::logic::io::path::AbPath;
-use org::allbinary::logic::string::StringUtil;
-use org::allbinary::logic::system::security::crypt::DatabaseEncoder;
-use org::allbinary::logic::system::security::crypt::WeakCrypt;
+use java::lang::Object ();
+use java::lang::LazyStatic ();
+use org::allbinary::globals::PATH_GLOBALS ();
+use org::allbinary::globals::URLGLOBALS ();
+use org::allbinary::logic::communication::log::LogUtil ();
+use org::allbinary::logic::io::AbDataInputStream ();
+use org::allbinary::logic::io::AbDataOutputStream ();
+use org::allbinary::logic::io::AbFileLocalInputStream ();
+use org::allbinary::logic::io::DataOutputStreamFactory ();
+use org::allbinary::logic::io::file::AbFile ();
+use org::allbinary::logic::io::path::AbPath ();
+use org::allbinary::logic::string::StringUtil ();
+use org::allbinary::logic::system::security::crypt::DatabaseEncoder ();
+use org::allbinary::logic::system::security::crypt::WeakCrypt ();
 
 1;
 

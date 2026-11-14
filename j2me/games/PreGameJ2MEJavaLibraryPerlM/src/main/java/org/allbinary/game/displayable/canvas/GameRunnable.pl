@@ -18,6 +18,7 @@ use warnings;
 use feature 'try';
 no warnings 'experimental::try';
 use Time::HiRes ();
+use parent -norequire,'java::lang::Object';
 
 
 sub _init_fields {
@@ -31,7 +32,7 @@ sub _init_fields {
 sub new {
     my ($class) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
     return $self;
 }
 
@@ -48,8 +49,9 @@ sub processLoopSleep {
         Time::HiRes::sleep(($self->{waitInMillis}) / 1000);
 }
 
-use org::allbinary::graphics::displayable::DisplayInfoSingleton;
-use java::lang::Thread;
+use java::lang::Object ();
+use org::allbinary::graphics::displayable::DisplayInfoSingleton ();
+use java::lang::Thread ();
 
 1;
 

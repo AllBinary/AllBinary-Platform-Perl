@@ -17,7 +17,7 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
-use parent -norequire,'admin::taghelpers::TagHelperFactoryInterface';
+use parent -norequire,'java::lang::Object','admin::taghelpers::TagHelperFactoryInterface';
 
 
 sub _init_fields {
@@ -28,7 +28,7 @@ sub _init_fields {
 sub new {
     my ($class) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
     return $self;
 }
 
@@ -39,11 +39,12 @@ sub getInstance {
         die ("RuntimeException");
 }
 
-use java::util::HashMap;
-# use javax::servlet::jsp::PageContext;
-use org::allbinary::logic::system::security::licensing::LicensingException;
-use org::allbinary::string::CommonStrings;
-use admin::taghelpers::TagHelperFactoryInterface;
+use java::lang::Object ();
+use java::util::HashMap ();
+# use javax::servlet::jsp::PageContext ();
+use org::allbinary::logic::system::security::licensing::LicensingException ();
+use org::allbinary::string::CommonStrings ();
+use admin::taghelpers::TagHelperFactoryInterface ();
 
 1;
 

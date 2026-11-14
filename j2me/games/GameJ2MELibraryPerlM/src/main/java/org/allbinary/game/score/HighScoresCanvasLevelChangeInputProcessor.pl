@@ -34,7 +34,7 @@ sub _init_fields {
 sub new {
     my ($class, $highScoresCanvas) = @_;
     my $self = $class->SUPER::new($highScoresCanvas);
-    $self->_init_fields();
+    _init_fields($self);
         # super(...) made $self above
     return $self;
 }
@@ -86,19 +86,20 @@ sub paint {
         $graphics->drawString($self->{INSTRUCTIONS}, (POSIX::floor(($width) / (2 ** (1)))) - $topScoresWidth, $self->{fontHeight} * 2, $self->{anchor});
 }
 
-# use javax::microedition::lcdui::Canvas;
-# use javax::microedition::lcdui::Font;
-# use javax::microedition::lcdui::Graphics;
-use org::allbinary::game::input::event::GameKeyEventHandler;
-use org::allbinary::game::input::event::GameKeyEventUtil;
-use org::allbinary::game::score::displayable::HighScoresCanvas;
-use org::allbinary::graphics::Anchor;
-use org::allbinary::graphics::displayable::DisplayInfoSingleton;
-use org::allbinary::graphics::font::MyFontProcessor;
-use org::allbinary::graphics::font::UpdateMyFontInterface;
-use org::allbinary::graphics::font::UpdateMyFontProcessor;
-use org::allbinary::util::BasicArrayList;
-use org::allbinary::game::score::HighScoresCanvasInputProcessor;
+use java::lang::Object ();
+use javax::microedition::lcdui::Canvas ();
+use javax::microedition::lcdui::Font ();
+use javax::microedition::lcdui::Graphics ();
+use org::allbinary::game::input::event::GameKeyEventHandler ();
+use org::allbinary::game::input::event::GameKeyEventUtil ();
+use org::allbinary::game::score::displayable::HighScoresCanvas ();
+use org::allbinary::graphics::Anchor ();
+use org::allbinary::graphics::displayable::DisplayInfoSingleton ();
+use org::allbinary::graphics::font::MyFontProcessor ();
+use org::allbinary::graphics::font::UpdateMyFontInterface ();
+use org::allbinary::graphics::font::UpdateMyFontProcessor ();
+use org::allbinary::util::BasicArrayList ();
+use org::allbinary::game::score::HighScoresCanvasInputProcessor ();
 
 1;
 

@@ -35,10 +35,11 @@ sub getAnimationSize {
         return 0;
 }
 
-use org::allbinary::math::AngleFactory;
-use org::allbinary::math::AngleInfo;
-use org::allbinary::util::CircularIndexUtil;
-use org::allbinary::animation::RotationAnimation;
+use java::lang::Object ();
+use org::allbinary::math::AngleFactory ();
+use org::allbinary::math::AngleInfo ();
+use org::allbinary::util::CircularIndexUtil ();
+use org::allbinary::animation::RotationAnimation ();
 
 1;
 

@@ -17,8 +17,9 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
-our $cacheInterface = undef;
+tie our $cacheInterface, 'java::lang::LazyStatic', sub { undef }, sub { __PACKAGE__->_static_initializer1(); };
 
 sub _init_fields {
     my ($self) = @_;
@@ -26,7 +27,11 @@ sub _init_fields {
 }
 
 
-{ # Java static initializer
+# Java static initializer
+sub _static_initializer1 {
+    our $_static_initialized1;
+    return if $_static_initialized1;
+    $_static_initialized1 = 1;
         my $logUtil = 'org::allbinary::logic::communication::log::LogUtil'->getInstance();
         my $commonStrings = 'org::allbinary::string::CommonStrings'->getInstance();
         my $STATIC_BLOCK = "Static Block";
@@ -44,7 +49,7 @@ sub _init_fields {
 sub new {
     my ($class) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
     return $self;
 }
 
@@ -54,12 +59,14 @@ sub getInstance {
         return $org::allbinary::media::image::comparison::motion::AllMotionRectanglesResultsCacheSingleton::cacheInterface;
 }
 
-use org::allbinary::logic::communication::log::LogUtil;
-use org::allbinary::logic::util::cache::CacheInterface;
-use org::allbinary::logic::util::cache::CacheInterfaceFactory;
-use org::allbinary::logic::util::cache::CachePolicyFactory;
-use org::allbinary::logic::util::cache::CacheTypeFactory;
-use org::allbinary::string::CommonStrings;
+use java::lang::Object ();
+use java::lang::LazyStatic ();
+use org::allbinary::logic::communication::log::LogUtil ();
+use org::allbinary::logic::util::cache::CacheInterface ();
+use org::allbinary::logic::util::cache::CacheInterfaceFactory ();
+use org::allbinary::logic::util::cache::CachePolicyFactory ();
+use org::allbinary::logic::util::cache::CacheTypeFactory ();
+use org::allbinary::string::CommonStrings ();
 
 1;
 

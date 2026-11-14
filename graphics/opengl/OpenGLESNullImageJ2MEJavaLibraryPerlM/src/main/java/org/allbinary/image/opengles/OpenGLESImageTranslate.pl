@@ -17,8 +17,9 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
-our $instance = 'org::allbinary::image::opengles::OpenGLESImageTranslate'->new();
+tie our $instance, 'java::lang::LazyStatic', sub { 'org::allbinary::image::opengles::OpenGLESImageTranslate'->new() };
 
 sub new {
     my ($class) = @_;
@@ -42,7 +43,9 @@ sub translate2 {
     my ($self, $gl, $openGLESImage) = @_;
 }
 
-# use javax::microedition::khronos::opengles::GL10;
+use java::lang::Object ();
+use java::lang::LazyStatic ();
+use javax::microedition::khronos::opengles::GL10 ();
 
 1;
 

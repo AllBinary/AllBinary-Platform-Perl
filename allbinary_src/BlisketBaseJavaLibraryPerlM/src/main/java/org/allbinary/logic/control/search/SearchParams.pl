@@ -17,6 +17,7 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
 
 sub _init_fields {
@@ -33,7 +34,7 @@ sub _init_fields {
 sub new {
     my ($class, $request) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
         $self->{columnsAndSearchValues} = 'org::allbinary::logic::StdUtil'->getInstance()->createHashMap();
         $self->setLength($request->getParameter($org::allbinary::logic::control::search::SearchData::LENGTH));
         $self->setOrder($request->getParameter($org::allbinary::logic::control::search::SearchData::ORDER));
@@ -204,15 +205,16 @@ sub getLengthNode {
         return 'org::allbinary::data::tree::dom::ModDomHelper'->createNameValueNodes($document, $org::allbinary::logic::control::search::SearchData::LENGTH, 'org::allbinary::data::tree::dom::ToDomHelper'->convertNull($self->getLength()));
 }
 
-use java::util::HashMap;
-# use java::util::Set;
-# use javax::servlet::http::HttpServletRequest;
-use org::allbinary::data::tree::dom::ModDomHelper;
-use org::allbinary::data::tree::dom::ToDomHelper;
-use org::allbinary::logic::StdUtil;
-use org::w3c::dom::Document;
-use org::w3c::dom::Node;
-use org::allbinary::logic::control::search::SearchData;
+use java::lang::Object ();
+use java::util::HashMap ();
+# use java::util::Set ();
+# use javax::servlet::http::HttpServletRequest ();
+use org::allbinary::data::tree::dom::ModDomHelper ();
+use org::allbinary::data::tree::dom::ToDomHelper ();
+use org::allbinary::logic::StdUtil ();
+use org::w3c::dom::Document ();
+use org::w3c::dom::Node ();
+use org::allbinary::logic::control::search::SearchData ();
 
 1;
 

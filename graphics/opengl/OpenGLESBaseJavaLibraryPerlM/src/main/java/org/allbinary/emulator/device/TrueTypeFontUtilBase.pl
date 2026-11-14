@@ -17,6 +17,7 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
 
 sub _init_fields {
@@ -43,7 +44,7 @@ sub _init_fields {
 sub new {
     my ($class, $scale) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
         my $shortPattern = 'org::allbinary::logic::string::StringUtil'->getInstance()->{EMPTY_STRING};
         if ('org::allbinary::AvianUtil'->isAvian()) {
             my $shortPatterAsByteArray = [32, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86, 87, 88, 89, 90, 97, 98, 99, 100, 101, 102, 103, 104, 105, 106, 107, 108, 109, 110, 111, 112, 113, 114, 115, 116, 117, 118, 119, 120, 121, 122, 46, 63, 33, 36, 37, 96, ((int(-62) + 128) % 256 - 128), ((int(-84) + 128) % 256 - 128), ((int(-62) + 128) % 256 - 128), ((int(-84) + 128) % 256 - 128), 34, ((int(-62) + 128) % 256 - 128), ((int(-93) + 128) % 256 - 128), ((int(-62) + 128) % 256 - 128), ((int(-93) + 128) % 256 - 128), 94, 38, 42, 40, 41, 95, 43, 45, 61, 91, 93, 123, 125, 59, 39, 35, 58, 64, 126, 44, 47, 60, 62, 92, 124, ((int(-62) + 128) % 256 - 128), ((int(-82) + 128) % 256 - 128), ((int(-62) + 128) % 256 - 128), ((int(-82) + 128) % 256 - 128), ((int(-62) + 128) % 256 - 128), ((int(-87) + 128) % 256 - 128), ((int(-62) + 128) % 256 - 128), ((int(-87) + 128) % 256 - 128)];
@@ -103,9 +104,10 @@ sub getYOffset {
         return (($self->{scale} - 1) * $self->{cellSize});
 }
 
-# use javax::microedition::lcdui::Font;
-use org::allbinary::AvianUtil;
-use org::allbinary::logic::string::StringUtil;
+use java::lang::Object ();
+use javax::microedition::lcdui::Font ();
+use org::allbinary::AvianUtil ();
+use org::allbinary::logic::string::StringUtil ();
 
 1;
 

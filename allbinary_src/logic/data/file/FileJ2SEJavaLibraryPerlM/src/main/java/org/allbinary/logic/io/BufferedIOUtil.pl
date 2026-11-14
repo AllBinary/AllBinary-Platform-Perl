@@ -17,6 +17,7 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
 
 sub new {
@@ -32,24 +33,22 @@ sub copy {
         my $line = 'org::allbinary::logic::string::StringUtil'->getInstance()->{EMPTY_STRING};
         my $tmpOut = 'java::io::BufferedWriter'->new('java::io::FileWriter'->new('org::allbinary::logic::io::file::AbFileNativeUtil'->get($backupFileBak)));
         my $tmpIn = 'java::io::BufferedReader'->new('java::io::FileReader'->new('org::allbinary::logic::io::file::AbFileNativeUtil'->get($backupFile)));
-        while (1) {
+        while ($tmpIn->ready()) {
             $line = $tmpIn->readLine();
-            if (!defined($line)) {
-                last;
-            }
             $tmpOut->write($line, 0, length($line));
             $tmpOut->newLine();
         }
         $tmpOut->flush();
 }
 
-# use java::io::BufferedReader;
-# use java::io::BufferedWriter;
-# use java::io::FileReader;
-# use java::io::FileWriter;
-use org::allbinary::logic::io::file::AbFile;
-use org::allbinary::logic::io::file::AbFileNativeUtil;
-use org::allbinary::logic::string::StringUtil;
+use java::lang::Object ();
+# use java::io::BufferedReader ();
+# use java::io::BufferedWriter ();
+# use java::io::FileReader ();
+# use java::io::FileWriter ();
+use org::allbinary::logic::io::file::AbFile ();
+use org::allbinary::logic::io::file::AbFileNativeUtil ();
+use org::allbinary::logic::string::StringUtil ();
 
 1;
 

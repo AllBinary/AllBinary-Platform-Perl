@@ -19,8 +19,9 @@ use feature 'try';
 no warnings 'experimental::try';
 use POSIX ();
 use List::Util ();
+use parent -norequire,'java::lang::Object';
 
-our $instance = 'org::allbinary::media::image::ImageJ2SERotationUtil'->new();
+tie our $instance, 'java::lang::LazyStatic', sub { 'org::allbinary::media::image::ImageJ2SERotationUtil'->new() };
 
 sub _init_fields {
     my ($self) = @_;
@@ -39,7 +40,7 @@ sub getInstance {
 sub new {
     my ($class) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
     return $self;
 }
 
@@ -126,11 +127,13 @@ sub createSpriteImage {
         return $bufferedImage;
 }
 
-# use java::awt::Graphics2D;
-# use java::awt::Image;
-# use java::awt::image::BufferedImage;
-use org::allbinary::media::image::ImageUtil;
-use org::allbinary::media::image::ImageJ2SEUtil;
+use java::lang::Object ();
+use java::lang::LazyStatic ();
+# use java::awt::Graphics2D ();
+# use java::awt::Image ();
+# use java::awt::image::BufferedImage ();
+use org::allbinary::media::image::ImageUtil ();
+use org::allbinary::media::image::ImageJ2SEUtil ();
 
 1;
 

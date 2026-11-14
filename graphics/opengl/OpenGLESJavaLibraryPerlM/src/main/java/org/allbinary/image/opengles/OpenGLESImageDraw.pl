@@ -17,8 +17,9 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
-our $instance = 'org::allbinary::image::opengles::OpenGLESImageDraw'->new();
+tie our $instance, 'java::lang::LazyStatic', sub { 'org::allbinary::image::opengles::OpenGLESImageDraw'->new() };
 
 sub new {
     my ($class) = @_;
@@ -42,7 +43,9 @@ sub draw {
     my ($self, $gl, $x, $y, $z) = @_;
 }
 
-# use javax::microedition::khronos::opengles::GL10;
+use java::lang::Object ();
+use java::lang::LazyStatic ();
+use javax::microedition::khronos::opengles::GL10 ();
 
 1;
 

@@ -17,6 +17,7 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
 
 sub _init_fields {
@@ -29,7 +30,7 @@ sub _init_fields {
 sub new {
     my ($class, $categoryFactoryInterface) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
         if ($org::allbinary::data::tree::category::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($org::allbinary::data::tree::category::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{CATEGORY})) {
             my $commonStrings = 'org::allbinary::string::CommonStrings'->getInstance();
             $self->{logUtil}->putF($commonStrings->{START}, $self, "CategoryPrivateTree(CategoryFactoryInterface categoryFactoryInterface)");
@@ -71,15 +72,16 @@ sub delete {
         }
 }
 
-use org::allbinary::business::category::CategoryComponent;
-use org::allbinary::business::category::CategoryData;
-use org::allbinary::business::category::CategoryFactoryInterface;
-use org::allbinary::business::category::CategoryInterface;
-use org::allbinary::logic::communication::log::LogUtil;
-use org::allbinary::logic::control::crypt::file::CryptFileWriter;
-use org::allbinary::logic::io::file::AbFile;
-use org::allbinary::string::CommonStrings;
-use org::w3c::dom::Document;
+use java::lang::Object ();
+use org::allbinary::business::category::CategoryComponent ();
+use org::allbinary::business::category::CategoryData ();
+use org::allbinary::business::category::CategoryFactoryInterface ();
+use org::allbinary::business::category::CategoryInterface ();
+use org::allbinary::logic::communication::log::LogUtil ();
+use org::allbinary::logic::control::crypt::file::CryptFileWriter ();
+use org::allbinary::logic::io::file::AbFile ();
+use org::allbinary::string::CommonStrings ();
+use org::w3c::dom::Document ();
 
 1;
 

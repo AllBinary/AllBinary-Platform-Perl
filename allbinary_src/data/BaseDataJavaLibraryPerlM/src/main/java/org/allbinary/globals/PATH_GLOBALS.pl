@@ -17,8 +17,9 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
-our $instance = 'org::allbinary::globals::PATH_GLOBALS'->new();
+tie our $instance, 'java::lang::LazyStatic', sub { 'org::allbinary::globals::PATH_GLOBALS'->new() };
 
 sub _init_fields {
     my ($self) = @_;
@@ -39,7 +40,7 @@ sub getInstance {
 sub new {
     my ($class) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
         my $stringBuffer = 'org::allbinary::logic::string::StringMaker'->new();
         my $abPathData = 'org::allbinary::logic::io::path::AbPathData'->getInstance();
         $stringBuffer->append("data");
@@ -68,9 +69,11 @@ sub new {
     return $self;
 }
 
-use org::allbinary::logic::io::path::AbPathData;
-use org::allbinary::logic::string::StringMaker;
-use org::allbinary::string::CommonStrings;
+use java::lang::Object ();
+use java::lang::LazyStatic ();
+use org::allbinary::logic::io::path::AbPathData ();
+use org::allbinary::logic::string::StringMaker ();
+use org::allbinary::string::CommonStrings ();
 
 1;
 

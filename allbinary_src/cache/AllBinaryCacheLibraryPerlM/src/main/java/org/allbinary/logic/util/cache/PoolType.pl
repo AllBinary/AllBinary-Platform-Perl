@@ -17,6 +17,7 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
 
 sub _init_fields {
@@ -28,7 +29,7 @@ sub _init_fields {
 sub new {
     my ($class, $cacheType) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
         $self->{cacheType} = $cacheType;
     return $self;
 }
@@ -46,6 +47,7 @@ sub toString {
         return $POOL_TYPE . $self->getCacheType()->toString();
 }
 
+use java::lang::Object ();
 
 1;
 

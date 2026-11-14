@@ -18,7 +18,7 @@ use warnings;
 use feature 'try';
 no warnings 'experimental::try';
 use Scalar::Util ();
-use parent -norequire,'org::allbinary::logic::system::security::licensing::AbeLicenseInterface';
+use parent -norequire,'java::lang::Object','org::allbinary::logic::system::security::licensing::AbeLicenseInterface';
 
 
 sub _init_fields {
@@ -34,7 +34,7 @@ sub _init_fields {
 sub new {
     my ($class, $hashtable) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
         $self->{hashtable} = 'org::allbinary::logic::StdUtil'->getInstance()->createHashtable();
         my $abeClientInformationData = 'org::allbinary::logic::system::security::licensing::AbeClientInformationData'->getInstance();
         my $keyValue = $hashtable->get($abeClientInformationData->{KEY});
@@ -145,16 +145,17 @@ sub getLicenseType {
         return $self->{licenseType};
 }
 
-use org::allbinary::logic::StdUtil;
-use org::allbinary::logic::string::StringMaker;
-use org::allbinary::logic::string::StringUtil;
-use org::allbinary::logic::string::StringValidationUtil;
-use org::allbinary::util::ABHashtable;
-use org::allbinary::util::BasicArrayList;
-use org::allbinary::util::BasicArrayListD;
-use org::allbinary::logic::system::security::licensing::AbeLicenseInterface;
-use org::allbinary::logic::system::security::licensing::AbeClientInformationData;
-use org::allbinary::logic::system::security::licensing::LicenseTypeFactory;
+use java::lang::Object ();
+use org::allbinary::logic::StdUtil ();
+use org::allbinary::logic::string::StringMaker ();
+use org::allbinary::logic::string::StringUtil ();
+use org::allbinary::logic::string::StringValidationUtil ();
+use org::allbinary::util::ABHashtable ();
+use org::allbinary::util::BasicArrayList ();
+use org::allbinary::util::BasicArrayListD ();
+use org::allbinary::logic::system::security::licensing::AbeLicenseInterface ();
+use org::allbinary::logic::system::security::licensing::AbeClientInformationData ();
+use org::allbinary::logic::system::security::licensing::LicenseTypeFactory ();
 
 1;
 

@@ -17,6 +17,7 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
 
 sub _init_fields {
@@ -29,7 +30,7 @@ sub _init_fields {
 sub new {
     my ($class, $HIGH_SCORE_COMMANDS) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
         $self->{HIGH_SCORE_COMMANDS} = $HIGH_SCORE_COMMANDS;
     return $self;
 }
@@ -57,9 +58,10 @@ sub getIndex {
         die ("No Such Command");
 }
 
-# use javax::microedition::lcdui::Command;
-use org::allbinary::J2MEUtil;
-use org::allbinary::logic::communication::log::LogUtil;
+use java::lang::Object ();
+use javax::microedition::lcdui::Command ();
+use org::allbinary::J2MEUtil ();
+use org::allbinary::logic::communication::log::LogUtil ();
 
 1;
 

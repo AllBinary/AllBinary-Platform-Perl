@@ -37,10 +37,11 @@ sub visit {
         $pointsLayer->visit($scoreableInterface);
 }
 
-use org::allbinary::game::score::ScoreableInterface;
-use org::allbinary::layer::AllBinaryLayer;
-use org::allbinary::layer::AllBinaryLayerCircularPool;
-use org::allbinary::layer::AllBinaryLayerFactoryInterface;
+use java::lang::Object ();
+use org::allbinary::game::score::ScoreableInterface ();
+use org::allbinary::layer::AllBinaryLayer ();
+use org::allbinary::layer::AllBinaryLayerCircularPool ();
+use org::allbinary::layer::AllBinaryLayerFactoryInterface ();
 
 1;
 

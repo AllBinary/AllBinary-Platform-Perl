@@ -18,7 +18,7 @@ sub _init_fields {
 sub new {
     my ($class) = @_;
     my $self = $class->SUPER::new();
-    $self->_init_fields();
+    _init_fields($self);
     return $self;
 }
 
@@ -66,15 +66,16 @@ sub setFontDebug {
         die ("RuntimeException");
 }
 
-# use javax::microedition::khronos::opengles::GL;
-# use javax::microedition::khronos::opengles::GL10;
-# use javax::microedition::lcdui::Font;
-# use javax::microedition::lcdui::Graphics;
-use org::allbinary::graphics::font::FontDebugBase;
-use org::allbinary::image::opengles::OpenGLSurfaceChangedInterface;
-use org::allbinary::string::CommonStrings;
-use org::allbinary::device::GraphicsInterface;
-use org::allbinary::device::NullGL10;
+use java::lang::Object ();
+use javax::microedition::khronos::opengles::GL ();
+use javax::microedition::khronos::opengles::GL10 ();
+use javax::microedition::lcdui::Font ();
+use javax::microedition::lcdui::Graphics ();
+use org::allbinary::graphics::font::FontDebugBase ();
+use org::allbinary::image::opengles::OpenGLSurfaceChangedInterface ();
+use org::allbinary::string::CommonStrings ();
+use org::allbinary::device::GraphicsInterface ();
+use org::allbinary::device::NullGL10 ();
 
 1;
 

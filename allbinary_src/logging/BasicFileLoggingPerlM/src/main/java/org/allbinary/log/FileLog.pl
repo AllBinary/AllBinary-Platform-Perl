@@ -17,16 +17,17 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
-our $stringUtil = 'org::allbinary::logic::string::StringUtil'->getInstance();
+tie our $stringUtil, 'java::lang::LazyStatic', sub { 'org::allbinary::logic::string::StringUtil'->getInstance() };
 our $logLength = 33000000;
 our $logPath = "g:\\log\\";
-our $extension = ("" . "dat");
-our $fileName = ("" . "log." . $org::allbinary::log::FileLog::extension);
-our $backupFileName = $org::allbinary::log::FileLog::fileName->concat(".bak");
+tie our $extension, 'java::lang::LazyStatic', sub { ("" . "dat") };
+tie our $fileName, 'java::lang::LazyStatic', sub { ("" . "log." . $org::allbinary::log::FileLog::extension) };
+tie our $backupFileName, 'java::lang::LazyStatic', sub { $org::allbinary::log::FileLog::fileName->concat(".bak") };
 our $ORG_ALLBINARY = "org.allbinary: ";
 our $firstTime = 1;
-our $logFile = 'java::io::File'->new($org::allbinary::log::FileLog::logPath, $org::allbinary::log::FileLog::fileName);
+tie our $logFile, 'java::lang::LazyStatic', sub { 'java::io::File'->new($org::allbinary::log::FileLog::logPath, $org::allbinary::log::FileLog::fileName) };
 our $logFileBak = undef;
 our $fileOut = undef;
 our $backupIndex = 0;
@@ -73,7 +74,8 @@ sub createLogFileBackup {
             my $line = "";
             my $tmpOut = 'java::io::BufferedWriter'->new('java::io::FileWriter'->new($logFileBak));
             my $tmpIn = 'java::io::BufferedReader'->new('java::io::FileReader'->new($logFile));
-            while (defined((($line = $tmpIn->readLine())))) {
+            while ($tmpIn->ready()) {
+                $line = $tmpIn->readLine();
                 $tmpOut->write($line, 0, length($line));
                 $tmpOut->newLine();
             }
@@ -177,17 +179,19 @@ sub getFilePath {
         return $org::allbinary::log::FileLog::logPath + $org::allbinary::log::FileLog::fileName;
 }
 
-# use java::io::BufferedReader;
-# use java::io::BufferedWriter;
-use java::io::File;
-# use java::io::FileReader;
-# use java::io::FileWriter;
-# use java::io::RandomAccessFile;
-use org::allbinary::string::CommonSeps;
-use org::allbinary::logic::string::StringUtil;
-use org::allbinary::logic::communication::log::LogFormatUtil;
-use org::allbinary::logic::string::StringMaker;
-use java::lang::System;
+use java::lang::Object ();
+use java::lang::LazyStatic ();
+# use java::io::BufferedReader ();
+# use java::io::BufferedWriter ();
+use java::io::File ();
+# use java::io::FileReader ();
+# use java::io::FileWriter ();
+# use java::io::RandomAccessFile ();
+use org::allbinary::string::CommonSeps ();
+use org::allbinary::logic::string::StringUtil ();
+use org::allbinary::logic::communication::log::LogFormatUtil ();
+use org::allbinary::logic::string::StringMaker ();
+use java::lang::System ();
 
 1;
 

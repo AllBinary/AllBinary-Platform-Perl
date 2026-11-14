@@ -17,8 +17,9 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
-our $instance = 'org::allbinary::game::layer::RTSLayerLogHelper'->new();
+tie our $instance, 'java::lang::LazyStatic', sub { 'org::allbinary::game::layer::RTSLayerLogHelper'->new() };
 
 sub new {
     my ($class) = @_;
@@ -112,11 +113,13 @@ sub notOnPath {
     my ($self, $associatedAdvancedRTSGameLayer, $geographicMapCellHistory, $currentGeographicMapCellPosition, $pathList) = @_;
 }
 
-use org::allbinary::math::AngleInfo;
-use org::allbinary::math::NamedAngle;
-use org::allbinary::media::graphics::geography::map::GeographicMapCellHistory;
-use org::allbinary::media::graphics::geography::map::GeographicMapCellPosition;
-use org::allbinary::util::BasicArrayList;
+use java::lang::Object ();
+use java::lang::LazyStatic ();
+use org::allbinary::math::AngleInfo ();
+use org::allbinary::math::NamedAngle ();
+use org::allbinary::media::graphics::geography::map::GeographicMapCellHistory ();
+use org::allbinary::media::graphics::geography::map::GeographicMapCellPosition ();
+use org::allbinary::util::BasicArrayList ();
 
 1;
 

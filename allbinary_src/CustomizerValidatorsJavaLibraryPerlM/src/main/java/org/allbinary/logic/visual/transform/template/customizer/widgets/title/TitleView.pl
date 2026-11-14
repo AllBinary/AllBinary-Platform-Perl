@@ -17,7 +17,7 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
-use parent -norequire,'org::allbinary::data::tree::dom::DomNodeInterface';
+use parent -norequire,'java::lang::Object','org::allbinary::data::tree::dom::DomNodeInterface';
 
 our $NAME = "None";
 
@@ -40,7 +40,7 @@ sub new {
 sub _new0 {
     my ($class) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
         $self->{title} = $org::allbinary::logic::visual::transform::template::customizer::widgets::title::TitleView::NAME;
     return $self;
 }
@@ -49,7 +49,7 @@ sub _new0 {
 sub _new1 {
     my ($class, $node) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
         my $titleTextNode = 'org::allbinary::data::tree::dom::DomSearchHelper'->getNode('org::allbinary::logic::visual::transform::template::customizer::widgets::title::TitleData'->getInstance()->{TEXT}, $node->getChildNodes());
         my $valueNode = 'org::allbinary::data::tree::dom::DomSearchHelper'->getNode($org::allbinary::data::tree::dom::DomData::VALUE, $titleTextNode->getChildNodes());
         $self->{title} = 'org::allbinary::data::tree::dom::DomNodeHelper'->getTextNodeValue($valueNode);
@@ -66,7 +66,7 @@ sub _new1 {
 sub _new1 {
     my ($class, $hashMap) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
         if ($org::allbinary::logic::visual::transform::template::customizer::widgets::title::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($org::allbinary::logic::visual::transform::template::customizer::widgets::title::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{VIEW})) {
             $self->{logUtil}->putF("HashMap: " . $hashMap->toString(), $self, $self->{commonStrings}->{CONSTRUCTOR});
         }
@@ -108,19 +108,20 @@ sub toXmlNode {
         return 'org::allbinary::data::tree::dom::ModDomHelper'->createNameValueNodes($document, 'org::allbinary::logic::visual::transform::template::customizer::widgets::title::TitleData'->getInstance()->{NAME}, $hashMap);
 }
 
-use java::util::HashMap;
-use org::allbinary::data::tree::dom::DomData;
-use org::allbinary::data::tree::dom::DomNodeHelper;
-use org::allbinary::data::tree::dom::DomNodeInterface;
-use org::allbinary::data::tree::dom::DomSearchHelper;
-use org::allbinary::data::tree::dom::ModDomHelper;
-use org::allbinary::logic::StdUtil;
-use org::allbinary::logic::communication::log::LogUtil;
-use org::allbinary::logic::string::StringValidationUtil;
-use org::allbinary::string::CommonStrings;
-use org::w3c::dom::Document;
-use org::w3c::dom::Node;
-use org::allbinary::logic::visual::transform::template::customizer::widgets::title::TitleData;
+use java::lang::Object ();
+use java::util::HashMap ();
+use org::allbinary::data::tree::dom::DomData ();
+use org::allbinary::data::tree::dom::DomNodeHelper ();
+use org::allbinary::data::tree::dom::DomNodeInterface ();
+use org::allbinary::data::tree::dom::DomSearchHelper ();
+use org::allbinary::data::tree::dom::ModDomHelper ();
+use org::allbinary::logic::StdUtil ();
+use org::allbinary::logic::communication::log::LogUtil ();
+use org::allbinary::logic::string::StringValidationUtil ();
+use org::allbinary::string::CommonStrings ();
+use org::w3c::dom::Document ();
+use org::w3c::dom::Node ();
+use org::allbinary::logic::visual::transform::template::customizer::widgets::title::TitleData ();
 
 1;
 

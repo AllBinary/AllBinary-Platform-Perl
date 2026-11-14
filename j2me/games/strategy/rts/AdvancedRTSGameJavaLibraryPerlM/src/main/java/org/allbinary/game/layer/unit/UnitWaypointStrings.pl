@@ -17,11 +17,13 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
-our $instance = 'org::allbinary::game::layer::unit::UnitWaypointStrings'->new();
+tie our $instance, 'java::lang::LazyStatic', sub { 'org::allbinary::game::layer::unit::UnitWaypointStrings'->new() };
 
 sub _init_fields {
     my ($self) = @_;
+    $self->{PATHING} = "Pathing";
     $self->{WANDERING} = "Order?";
     $self->{THINKING} = "Thinking";
     $self->{THINKING_ABOUT_TARGET} = "Hmmm";
@@ -35,12 +37,16 @@ sub _init_fields {
     $self->{ALREADY_THERE_SHORT} = "Again?";
     $self->{ALREADY_THERE} = "Already There";
     $self->{NEXT_PATH_NODE} = 'org::allbinary::string::CommonLabels'->getInstance()->{NEXT} . " Path Node";
+    $self->{_ALL_VISITED_SHORT} = " Arrived";
+    $self->{_ALREADY_THERE_SHORT} = " Again?";
+    $self->{VISITED_MOST_OF_THE_PATH} = " visited most of the path";
+    $self->{RETURNING_AS_WAYPOINT_PATH_LIST} = " returning as waypointPathsList was runningWaypointPathList";
 }
 
 sub new {
     my ($class) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
     return $self;
 }
 
@@ -50,7 +56,9 @@ sub getInstance {
         return $org::allbinary::game::layer::unit::UnitWaypointStrings::instance;
 }
 
-use org::allbinary::string::CommonLabels;
+use java::lang::Object ();
+use java::lang::LazyStatic ();
+use org::allbinary::string::CommonLabels ();
 
 1;
 

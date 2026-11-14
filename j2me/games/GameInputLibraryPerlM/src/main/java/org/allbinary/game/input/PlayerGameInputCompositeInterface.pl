@@ -27,7 +27,7 @@ sub getPlayerGameInput {
     die "abstract method getPlayerGameInput";
 }
 
-use org::allbinary::game::input::GameInputInterface;
+use org::allbinary::game::input::GameInputInterface ();
 
 1;
 

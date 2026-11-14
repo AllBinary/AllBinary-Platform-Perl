@@ -17,6 +17,7 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
 
 
@@ -40,10 +41,11 @@ sub getInstance {
         return $defaultComboBoxModel;
 }
 
-# use java::util::Set;
-# use javax::swing;
-use org::allbinary::input::automation::robot::InputRobotFactory;
-use org::allbinary::input::automation::actions::script::condition::processors::input::DefaultComboBoxModel;
+use java::lang::Object ();
+# use java::util::Set ();
+# use javax::swing ();
+use org::allbinary::input::automation::robot::InputRobotFactory ();
+use org::allbinary::input::automation::actions::script::condition::processors::input::DefaultComboBoxModel ();
 
 1;
 

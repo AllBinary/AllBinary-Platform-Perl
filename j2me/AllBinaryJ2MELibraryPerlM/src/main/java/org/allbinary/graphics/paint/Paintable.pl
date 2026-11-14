@@ -17,7 +17,7 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
-use parent -norequire,'org::allbinary::graphics::paint::PaintableInterface';
+use parent -norequire,'java::lang::Object','org::allbinary::graphics::paint::PaintableInterface';
 
 
 sub new {
@@ -41,9 +41,10 @@ sub paintThreed {
     my ($self, $graphics) = @_;
 }
 
-# use javax::microedition::lcdui::Graphics;
-use org::allbinary::graphics::color::BasicColor;
-use org::allbinary::graphics::paint::PaintableInterface;
+use java::lang::Object ();
+use javax::microedition::lcdui::Graphics ();
+use org::allbinary::graphics::color::BasicColor ();
+use org::allbinary::graphics::paint::PaintableInterface ();
 
 1;
 

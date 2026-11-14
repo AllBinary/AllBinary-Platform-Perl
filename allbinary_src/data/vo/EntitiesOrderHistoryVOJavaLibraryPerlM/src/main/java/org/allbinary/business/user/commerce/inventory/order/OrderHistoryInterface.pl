@@ -182,9 +182,9 @@ sub getPaymentMethod {
     die "abstract method getPaymentMethod";
 }
 
-use org::allbinary::business::user::address::StreetAddress;
-use org::allbinary::business::user::commerce::money::Money;
-use org::allbinary::business::user::commerce::money::payment::Payment;
+use org::allbinary::business::user::address::StreetAddress ();
+use org::allbinary::business::user::commerce::money::Money ();
+use org::allbinary::business::user::commerce::money::payment::Payment ();
 
 1;
 

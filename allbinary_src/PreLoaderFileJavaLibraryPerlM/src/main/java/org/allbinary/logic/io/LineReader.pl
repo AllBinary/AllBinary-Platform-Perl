@@ -17,6 +17,7 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
 
 sub _init_fields {
@@ -34,7 +35,7 @@ sub _init_fields {
 sub new {
     my ($class, $fileName) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
         try {
             my $bytes = [(0) x (100000)];
             $self->{fileName} = $fileName;
@@ -43,7 +44,7 @@ sub new {
             $self->{string} = pack("C*", @{$bytes});
         } catch ($e) {
             $self->{logUtil}->put("File: " . $fileName, $self, "LineReader", $e);
-            {
+            {;
             }
         }
     return $self;
@@ -60,7 +61,7 @@ sub hasNext {
             return 1;
         } catch ($e) {
             $self->{logUtil}->put($self->{commonStrings}->{EXCEPTION}, $self, "hasNext", $e);
-            {
+            {;
             }
             return 0;
         }
@@ -80,17 +81,18 @@ sub next {
             return $temp;
         } catch ($e) {
             $self->{logUtil}->put($self->{commonStrings}->{EXCEPTION}, $self, "next", $e);
-            {
+            {;
             }
             die $e;
         }
 }
 
-# use java::io::DataInputStream;
-use org::allbinary::logic::communication::log::LogUtil;
-use org::allbinary::string::CommonSeps;
-use org::allbinary::string::CommonStrings;
-use org::allbinary::logic::io::AbFileInputStream;
+use java::lang::Object ();
+# use java::io::DataInputStream ();
+use org::allbinary::logic::communication::log::LogUtil ();
+use org::allbinary::string::CommonSeps ();
+use org::allbinary::string::CommonStrings ();
+use org::allbinary::logic::io::AbFileInputStream ();
 
 1;
 

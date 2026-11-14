@@ -17,6 +17,7 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
 our $SETTOBILLINGADDRESS = "Set To Billing Address";
 our $SELECT = "Select Shipping Address";
@@ -41,6 +42,7 @@ sub new {
     return $self;
 }
 
+use java::lang::Object ();
 
 1;
 

@@ -19,7 +19,7 @@ use feature 'try';
 no warnings 'experimental::try';
 use parent -norequire,'org::allbinary::layer::LayerManagerLoggingBase';
 
-our $instance = 'org::allbinary::layer::LayerManagerNoDebug'->new();
+tie our $instance, 'java::lang::LazyStatic', sub { 'org::allbinary::layer::LayerManagerNoDebug'->new() };
 
 sub new {
     my ($class) = @_;
@@ -33,7 +33,9 @@ sub getInstance {
         return $org::allbinary::layer::LayerManagerNoDebug::instance;
 }
 
-use org::allbinary::layer::LayerManagerLoggingBase;
+use java::lang::Object ();
+use java::lang::LazyStatic ();
+use org::allbinary::layer::LayerManagerLoggingBase ();
 
 1;
 

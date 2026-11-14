@@ -35,9 +35,10 @@ sub paint {
         $graphics->fillRect(-$graphics->getClipX(), -$graphics->getClipY(), $self->{displayInfoSingleton}->getLastWidth() + ($graphics->getClipX() * 2), $self->{displayInfoSingleton}->getLastHeight() + ($graphics->getClipY() * 2));
 }
 
-# use javax::microedition::lcdui::Graphics;
-use org::allbinary::graphics::color::BasicColor;
-use org::allbinary::game::paint::ColorFillPaintable;
+use java::lang::Object ();
+use javax::microedition::lcdui::Graphics ();
+use org::allbinary::graphics::color::BasicColor ();
+use org::allbinary::game::paint::ColorFillPaintable ();
 
 1;
 

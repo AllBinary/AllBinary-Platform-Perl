@@ -42,7 +42,7 @@ sub createVectorAnimation {
 sub new {
     my ($class, $currentPoints, $basicColor, $animationBehavior) = @_;
     my $self = $class->SUPER::new($animationBehavior);
-    $self->_init_fields();
+    _init_fields($self);
         # super(...) made $self above
         $self->setPoints($currentPoints);
         $self->setBasicColorP($basicColor);
@@ -198,14 +198,21 @@ sub setPoints {
         $self->{circularIndexUtil} = 'org::allbinary::util::CircularIndexUtil'->createInstance(scalar(@{$currentPoints}));
 }
 
-# use javax::microedition::lcdui::Graphics;
-# use javax::microedition::lcdui::NullImage;
-use org::allbinary::graphics::color::BasicColor;
-use org::allbinary::logic::NullUtil;
-use org::allbinary::logic::math::PrimitiveIntUtil;
-use org::allbinary::util::CircularIndexUtil;
-use org::allbinary::animation::IndexedAnimation;
-use org::allbinary::animation::VectorAnimationInterface;
+
+sub getBasicColorP {
+    my ($self) = @_;
+        return $self->SUPER::getBasicColorP();
+}
+
+use java::lang::Object ();
+use javax::microedition::lcdui::Graphics ();
+use javax::microedition::lcdui::NullImage ();
+use org::allbinary::graphics::color::BasicColor ();
+use org::allbinary::logic::NullUtil ();
+use org::allbinary::logic::math::PrimitiveIntUtil ();
+use org::allbinary::util::CircularIndexUtil ();
+use org::allbinary::animation::IndexedAnimation ();
+use org::allbinary::animation::VectorAnimationInterface ();
 
 1;
 

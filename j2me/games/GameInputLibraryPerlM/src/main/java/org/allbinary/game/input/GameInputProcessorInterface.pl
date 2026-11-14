@@ -27,7 +27,7 @@ sub onInput {
     die "abstract method onInput";
 }
 
-use org::allbinary::util::BasicArrayList;
+use org::allbinary::util::BasicArrayList ();
 
 1;
 

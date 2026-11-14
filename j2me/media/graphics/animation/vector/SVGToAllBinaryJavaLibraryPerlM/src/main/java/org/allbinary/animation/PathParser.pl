@@ -5,6 +5,7 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
 
 sub new {
@@ -152,11 +153,12 @@ sub isCommand {
         return index("MmLlVvCcZz", $c) >= 0;
 }
 
-use org::allbinary::util::BasicArrayList;
-use org::allbinary::util::BasicArrayListD;
-use org::allbinary::logic::StdUtil;
-use org::allbinary::animation::FixedPoint;
-use org::allbinary::animation::PGUtil;
+use java::lang::Object ();
+use org::allbinary::util::BasicArrayList ();
+use org::allbinary::util::BasicArrayListD ();
+use org::allbinary::logic::StdUtil ();
+use org::allbinary::animation::FixedPoint ();
+use org::allbinary::animation::PGUtil ();
 
 1;
 

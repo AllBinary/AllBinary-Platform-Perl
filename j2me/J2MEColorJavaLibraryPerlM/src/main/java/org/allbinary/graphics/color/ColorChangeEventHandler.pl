@@ -19,7 +19,7 @@ use feature 'try';
 no warnings 'experimental::try';
 use parent -norequire,'org::allbinary::logic::util::event::handler::BasicEventHandler';
 
-our $eventHandler = 'org::allbinary::graphics::color::ColorChangeEventHandler'->new();
+tie our $eventHandler, 'java::lang::LazyStatic', sub { 'org::allbinary::graphics::color::ColorChangeEventHandler'->new() };
 
 
 sub new {
@@ -34,7 +34,9 @@ sub getInstance {
         return $org::allbinary::graphics::color::ColorChangeEventHandler::eventHandler;
 }
 
-use org::allbinary::logic::util::event::handler::BasicEventHandler;
+use java::lang::Object ();
+use java::lang::LazyStatic ();
+use org::allbinary::logic::util::event::handler::BasicEventHandler ();
 
 1;
 

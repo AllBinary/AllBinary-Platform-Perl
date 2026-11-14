@@ -27,7 +27,7 @@ sub onImageComparisonResultsEvent {
     die "abstract method onImageComparisonResultsEvent";
 }
 
-use org::allbinary::logic::util::event::BasicEventListenerInterface;
+use org::allbinary::logic::util::event::BasicEventListenerInterface ();
 
 1;
 

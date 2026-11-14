@@ -33,7 +33,7 @@ sub _init_fields {
 sub new {
     my ($class, $storeFront, $searchParams, $xslFile, $contentType, $propertiesHashMap, $pageContext) = @_;
     my $self = $class->SUPER::new($propertiesHashMap, $pageContext);
-    $self->_init_fields();
+    _init_fields($self);
         # super(...) made $self above
         $self->{storeFront} = $storeFront;
         $self->{searchParams} = $searchParams;
@@ -110,14 +110,15 @@ sub getFileBaseNameNode {
         return 'org::allbinary::data::tree::dom::ModDomHelper'->createNameValueNodes($document, $org::allbinary::logic::control::search::SearchData::FILENAME, $self->getFileBaseName());
 }
 
-use java::util::HashMap;
-# use javax::servlet::jsp::PageContext;
-use org::allbinary::business::context::AbContext;
-use org::allbinary::business::context::modules::storefront::StoreFrontInterface;
-use org::allbinary::data::tree::dom::ModDomHelper;
-use org::w3c::dom::Document;
-use org::w3c::dom::Node;
-use org::allbinary::logic::control::search::SearchData;
+use java::lang::Object ();
+use java::util::HashMap ();
+# use javax::servlet::jsp::PageContext ();
+use org::allbinary::business::context::AbContext ();
+use org::allbinary::business::context::modules::storefront::StoreFrontInterface ();
+use org::allbinary::data::tree::dom::ModDomHelper ();
+use org::w3c::dom::Document ();
+use org::w3c::dom::Node ();
+use org::allbinary::logic::control::search::SearchData ();
 
 1;
 

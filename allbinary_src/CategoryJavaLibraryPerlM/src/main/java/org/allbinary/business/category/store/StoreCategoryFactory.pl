@@ -30,7 +30,7 @@ sub _init_fields {
 sub new {
     my ($class, $transformInfoInterface) = @_;
     my $self = $class->SUPER::new();
-    $self->_init_fields();
+    _init_fields($self);
         if ($org::allbinary::business::category::store::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($org::allbinary::business::category::store::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{CATEGORY})) {
             $self->{logUtil}->putF($self->{commonStrings}->{START}, $self, "StoreCategoryFactory(TransformInfoInterface transformInfoInterface)");
         }
@@ -84,18 +84,19 @@ sub getRootInstanceFromNode {
         }
 }
 
-use org::allbinary::business::category::Category;
-use org::allbinary::business::category::CategoryAbstractFactory;
-use org::allbinary::business::category::CategoryFactoryInterface;
-use org::allbinary::business::category::CategoryInterface;
-use org::allbinary::business::category::CategoryUtil;
-use org::allbinary::business::category::properties::CategoryPropertiesFactoryInterface;
-use org::allbinary::business::category::properties::root::store::RootStoreCategoryPropertiesFactory;
-use org::allbinary::logic::communication::log::LogUtil;
-use org::allbinary::logic::io::path::AbPath;
-use org::allbinary::logic::string::StringUtil;
-use org::allbinary::logic::visual::transform::info::TransformInfoInterface;
-use org::w3c::dom::Node;
+use java::lang::Object ();
+use org::allbinary::business::category::Category ();
+use org::allbinary::business::category::CategoryAbstractFactory ();
+use org::allbinary::business::category::CategoryFactoryInterface ();
+use org::allbinary::business::category::CategoryInterface ();
+use org::allbinary::business::category::CategoryUtil ();
+use org::allbinary::business::category::properties::CategoryPropertiesFactoryInterface ();
+use org::allbinary::business::category::properties::root::store::RootStoreCategoryPropertiesFactory ();
+use org::allbinary::logic::communication::log::LogUtil ();
+use org::allbinary::logic::io::path::AbPath ();
+use org::allbinary::logic::string::StringUtil ();
+use org::allbinary::logic::visual::transform::info::TransformInfoInterface ();
+use org::w3c::dom::Node ();
 
 1;
 

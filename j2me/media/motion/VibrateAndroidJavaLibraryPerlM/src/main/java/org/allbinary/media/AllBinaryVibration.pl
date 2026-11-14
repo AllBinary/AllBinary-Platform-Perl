@@ -19,7 +19,7 @@ use feature 'try';
 no warnings 'experimental::try';
 use parent -norequire,'org::allbinary::media::AllBinaryVibrationME';
 
-our $VIBRATION = $org::allbinary::media::AllBinaryNoVibration::NO_VIBRATION;
+tie our $VIBRATION, 'java::lang::LazyStatic', sub { $org::allbinary::media::AllBinaryNoVibration::NO_VIBRATION };
 
 sub _init_fields {
     my ($self) = @_;
@@ -30,7 +30,7 @@ sub _init_fields {
 sub new {
     my ($class) = @_;
     my $self = $class->SUPER::new();
-    $self->_init_fields();
+    _init_fields($self);
     return $self;
 }
 
@@ -56,12 +56,14 @@ sub vibrate {
         $self->{vibrator}->vibrate($duration);
 }
 
-use android::content::Context;
-use android::os::Vibrator;
-use org::allbinary::data::resource::ResourceUtil;
-use org::allbinary::game::configuration::GameConfigurationCentral;
-use org::allbinary::media::AllBinaryVibrationME;
-use org::allbinary::media::AllBinaryNoVibration;
+use java::lang::Object ();
+use java::lang::LazyStatic ();
+# use android::content::Context ();
+# use android::os::Vibrator ();
+use org::allbinary::data::resource::ResourceUtil ();
+use org::allbinary::game::configuration::GameConfigurationCentral ();
+use org::allbinary::media::AllBinaryVibrationME ();
+use org::allbinary::media::AllBinaryNoVibration ();
 
 1;
 

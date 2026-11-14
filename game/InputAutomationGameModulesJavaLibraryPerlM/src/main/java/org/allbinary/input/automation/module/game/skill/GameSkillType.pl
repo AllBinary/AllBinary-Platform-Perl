@@ -17,12 +17,13 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
-our $MANA = 'org::allbinary::input::automation::module::game::skill::GameSkillType'->new("Mana");
-our $REPLENISH = 'org::allbinary::input::automation::module::game::skill::GameSkillType'->new("Replenish");
-our $TIMED = 'org::allbinary::input::automation::module::game::skill::GameSkillType'->new("Timed");
-our $ATTACK = 'org::allbinary::input::automation::module::game::skill::GameSkillType'->new("Attack");
-our $TRANSPORT = 'org::allbinary::input::automation::module::game::skill::GameSkillType'->new("Transport");
+tie our $MANA, 'java::lang::LazyStatic', sub { 'org::allbinary::input::automation::module::game::skill::GameSkillType'->new("Mana") };
+tie our $REPLENISH, 'java::lang::LazyStatic', sub { 'org::allbinary::input::automation::module::game::skill::GameSkillType'->new("Replenish") };
+tie our $TIMED, 'java::lang::LazyStatic', sub { 'org::allbinary::input::automation::module::game::skill::GameSkillType'->new("Timed") };
+tie our $ATTACK, 'java::lang::LazyStatic', sub { 'org::allbinary::input::automation::module::game::skill::GameSkillType'->new("Attack") };
+tie our $TRANSPORT, 'java::lang::LazyStatic', sub { 'org::allbinary::input::automation::module::game::skill::GameSkillType'->new("Transport") };
 
 sub _init_fields {
     my ($self) = @_;
@@ -34,7 +35,7 @@ sub _init_fields {
 sub new {
     my ($class, $name) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
         $self->setName($name);
     return $self;
 }
@@ -57,6 +58,8 @@ sub toString {
         return $self->{SPELL_GAME_SKILL_TYPE} . $self->getName();
 }
 
+use java::lang::Object ();
+use java::lang::LazyStatic ();
 
 1;
 

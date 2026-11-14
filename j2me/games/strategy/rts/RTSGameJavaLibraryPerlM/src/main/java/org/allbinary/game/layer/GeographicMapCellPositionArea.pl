@@ -37,7 +37,7 @@ sub _init_fields {
 sub new {
     my ($class, $layerInterface) = @_;
     my $self = $class->SUPER::new();
-    $self->_init_fields();
+    _init_fields($self);
         $self->{layerInterface} = $layerInterface;
     return $self;
 }
@@ -71,16 +71,17 @@ sub getNextSurroundingGeographicMapCellPosition {
         return $geographicMapCellPosition;
 }
 
-use org::allbinary::util::BasicArrayList;
-use org::allbinary::util::CircularIndexUtil;
-use org::allbinary::game::layer::geographic::map::LayerCoveringCellPositionsUtil;
-use org::allbinary::layer::AllBinaryLayer;
-use org::allbinary::media::graphics::geography::map::BasicGeographicMap;
-use org::allbinary::media::graphics::geography::map::CellPositionsUtil;
-use org::allbinary::media::graphics::geography::map::GeographicMapCellPosition;
-use org::allbinary::util::BasicArrayListS;
-use org::allbinary::util::BasicArrayListUtil;
-use org::allbinary::game::layer::GeographicMapCellPositionAreaBase;
+use java::lang::Object ();
+use org::allbinary::util::BasicArrayList ();
+use org::allbinary::util::CircularIndexUtil ();
+use org::allbinary::game::layer::geographic::map::LayerCoveringCellPositionsUtil ();
+use org::allbinary::layer::AllBinaryLayer ();
+use org::allbinary::media::graphics::geography::map::BasicGeographicMap ();
+use org::allbinary::media::graphics::geography::map::CellPositionsUtil ();
+use org::allbinary::media::graphics::geography::map::GeographicMapCellPosition ();
+use org::allbinary::util::BasicArrayListS ();
+use org::allbinary::util::BasicArrayListUtil ();
+use org::allbinary::game::layer::GeographicMapCellPositionAreaBase ();
 
 1;
 

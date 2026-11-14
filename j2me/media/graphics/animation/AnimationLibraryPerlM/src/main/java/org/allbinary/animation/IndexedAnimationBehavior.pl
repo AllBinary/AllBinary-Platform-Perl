@@ -32,7 +32,7 @@ sub _init_fields {
 sub new {
     my ($class, $loopTotal, $frameDelayTime) = @_;
     my $self = $class->SUPER::new();
-    $self->_init_fields();
+    _init_fields($self);
         $self->{loopTotal} = $loopTotal;
         $self->{frameDelayTime} = $frameDelayTime;
     return $self;
@@ -44,7 +44,8 @@ sub reset {
         $self->{loopIndex} = 0;
 }
 
-use org::allbinary::animation::AnimationBehavior;
+use java::lang::Object ();
+use org::allbinary::animation::AnimationBehavior ();
 
 1;
 

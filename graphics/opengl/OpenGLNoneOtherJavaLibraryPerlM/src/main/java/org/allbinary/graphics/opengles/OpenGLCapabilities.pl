@@ -17,11 +17,13 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
-our $instance = 'org::allbinary::graphics::opengles::OpenGLCapabilities'->new();
+tie our $instance, 'java::lang::LazyStatic', sub { 'org::allbinary::graphics::opengles::OpenGLCapabilities'->new() };
 
 sub _init_fields {
     my ($self) = @_;
+    $self->{CUSTOM_GL_SURFACE_VIEW} = 1;
     $self->{VERSION_1_0} = "1.0";
     $self->{VERSION_1_1} = "1.1";
     $self->{VERSION_2_0} = "2.0";
@@ -45,8 +47,14 @@ sub getInstance {
 sub new {
     my ($class) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
     return $self;
+}
+
+
+sub isInitialized {
+    my ($self) = @_;
+        return 1;
 }
 
 
@@ -78,7 +86,9 @@ sub isTextureSizeValid {
         return 1;
 }
 
-use org::allbinary::logic::string::StringUtil;
+use java::lang::Object ();
+use java::lang::LazyStatic ();
+use org::allbinary::logic::string::StringUtil ();
 
 1;
 

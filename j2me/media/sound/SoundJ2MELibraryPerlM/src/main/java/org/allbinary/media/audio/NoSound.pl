@@ -19,7 +19,7 @@ use feature 'try';
 no warnings 'experimental::try';
 use parent -norequire,'org::allbinary::media::audio::Sound';
 
-our $instance = 'org::allbinary::media::audio::NoSound'->new();
+tie our $instance, 'java::lang::LazyStatic', sub { 'org::allbinary::media::audio::NoSound'->new() };
 
 
 sub getInstance {
@@ -36,9 +36,11 @@ sub new {
     return $self;
 }
 
-use org::allbinary::logic::string::StringUtil;
-use org::allbinary::media::audio::Sound;
-use org::allbinary::media::audio::NoPlayer;
+use java::lang::Object ();
+use java::lang::LazyStatic ();
+use org::allbinary::logic::string::StringUtil ();
+use org::allbinary::media::audio::Sound ();
+use org::allbinary::media::audio::NoPlayer ();
 
 1;
 

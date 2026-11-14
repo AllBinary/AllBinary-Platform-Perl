@@ -17,11 +17,16 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
-our $cacheInterface = undef;
+tie our $cacheInterface, 'java::lang::LazyStatic', sub { undef }, sub { __PACKAGE__->_static_initializer1(); };
 
 
-{ # Java static initializer
+# Java static initializer
+sub _static_initializer1 {
+    our $_static_initialized1;
+    return if $_static_initialized1;
+    $_static_initialized1 = 1;
         my $logUtil = 'org::allbinary::logic::communication::log::LogUtil'->getInstance();
         my $commonStrings = 'org::allbinary::string::CommonStrings'->getInstance();
         my $STATIC_BLOCK = "Static Block";
@@ -47,13 +52,15 @@ sub getInstance {
         return $org::allbinary::graphics::color::ColorCacheFactory::cacheInterface;
 }
 
-use org::allbinary::logic::communication::log::LogUtil;
-use org::allbinary::logic::util::cache::AutomaticCacheInterface;
-use org::allbinary::logic::util::cache::AutomaticCacheInterfaceFactory;
-use org::allbinary::logic::util::cache::CachePolicyFactory;
-use org::allbinary::logic::util::cache::CacheTypeFactory;
-use org::allbinary::string::CommonStrings;
-use org::allbinary::graphics::color::ColorCacheableFactory;
+use java::lang::Object ();
+use java::lang::LazyStatic ();
+use org::allbinary::logic::communication::log::LogUtil ();
+use org::allbinary::logic::util::cache::AutomaticCacheInterface ();
+use org::allbinary::logic::util::cache::AutomaticCacheInterfaceFactory ();
+use org::allbinary::logic::util::cache::CachePolicyFactory ();
+use org::allbinary::logic::util::cache::CacheTypeFactory ();
+use org::allbinary::string::CommonStrings ();
+use org::allbinary::graphics::color::ColorCacheableFactory ();
 
 1;
 

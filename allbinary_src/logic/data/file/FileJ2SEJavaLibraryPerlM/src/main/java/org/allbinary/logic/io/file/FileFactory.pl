@@ -17,8 +17,9 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
-our $instance = 'org::allbinary::logic::io::file::FileFactory'->new();
+tie our $instance, 'java::lang::LazyStatic', sub { 'org::allbinary::logic::io::file::FileFactory'->new() };
 
 sub new {
     my ($class) = @_;
@@ -60,7 +61,9 @@ sub isFile {
         }
 }
 
-use org::allbinary::logic::io::file::AbFile;
+use java::lang::Object ();
+use java::lang::LazyStatic ();
+use org::allbinary::logic::io::file::AbFile ();
 
 1;
 

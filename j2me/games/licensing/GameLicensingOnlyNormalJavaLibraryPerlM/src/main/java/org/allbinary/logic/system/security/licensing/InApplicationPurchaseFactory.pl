@@ -9,8 +9,9 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
-our $instance = 'org::allbinary::logic::system::security::licensing::InApplicationPurchaseFactory'->new();
+tie our $instance, 'java::lang::LazyStatic', sub { 'org::allbinary::logic::system::security::licensing::InApplicationPurchaseFactory'->new() };
 
 
 sub getInstance {
@@ -88,7 +89,9 @@ sub isEnabled {
         return 0;
 }
 
-use org::allbinary::logic::string::StringUtil;
+use java::lang::Object ();
+use java::lang::LazyStatic ();
+use org::allbinary::logic::string::StringUtil ();
 
 1;
 

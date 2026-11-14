@@ -30,7 +30,7 @@ sub _init_fields {
 sub new {
     my ($class, $hashtable, $ownerLayerInterface, $gameInput) = @_;
     my $self = $class->SUPER::new($ownerLayerInterface, $gameInput);
-    $self->_init_fields();
+    _init_fields($self);
         # super(...) made $self above
         $self->{keys} = [(undef) x ($hashtable->size())];
         my $objectArray = 'org::allbinary::util::HashtableUtil'->getInstance()->getKeysAsArray($hashtable);
@@ -89,12 +89,13 @@ sub isOn {
         return $self->{on};
 }
 
-use org::allbinary::game::input::GameInput;
-use org::allbinary::layer::AllBinaryLayer;
-use org::allbinary::layer::AllBinaryLayerManager;
-use org::allbinary::util::HashtableUtil;
-use org::allbinary::game::ai::BasicAI;
-use org::allbinary::util::ABHashtable;
+use java::lang::Object ();
+use org::allbinary::game::input::GameInput ();
+use org::allbinary::layer::AllBinaryLayer ();
+use org::allbinary::layer::AllBinaryLayerManager ();
+use org::allbinary::util::HashtableUtil ();
+use org::allbinary::game::ai::BasicAI ();
+use org::allbinary::util::ABHashtable ();
 
 1;
 

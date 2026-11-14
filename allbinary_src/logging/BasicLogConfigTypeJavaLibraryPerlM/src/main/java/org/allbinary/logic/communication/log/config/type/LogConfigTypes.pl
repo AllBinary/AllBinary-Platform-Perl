@@ -17,8 +17,9 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
-our $LOGGING = 'org::allbinary::util::BasicArrayListD'->new();
+tie our $LOGGING, 'java::lang::LazyStatic', sub { 'org::allbinary::util::BasicArrayListD'->new() };
 
 
 sub new {
@@ -27,8 +28,10 @@ sub new {
     return $self;
 }
 
-use org::allbinary::util::BasicArrayList;
-use org::allbinary::util::BasicArrayListD;
+use java::lang::Object ();
+use java::lang::LazyStatic ();
+use org::allbinary::util::BasicArrayList ();
+use org::allbinary::util::BasicArrayListD ();
 
 1;
 

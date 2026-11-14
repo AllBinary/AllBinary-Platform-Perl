@@ -17,8 +17,9 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
-our $stringBuffer = 'org::allbinary::logic::string::StringMaker'->new();
+tie our $stringBuffer, 'java::lang::LazyStatic', sub { 'org::allbinary::logic::string::StringMaker'->new() };
 
 sub _init_fields {
     my ($self) = @_;
@@ -31,7 +32,7 @@ sub _init_fields {
 sub new {
     my ($class) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
     return $self;
 }
 
@@ -77,12 +78,14 @@ sub getString {
         return 'org::allbinary::game::layer::resources::GameGraphicsResourceUtil'->getInstance()->getName();
 }
 
-use org::allbinary::game::configuration::GameConfigurationCentral;
-use org::allbinary::logic::communication::log::LogUtil;
-use org::allbinary::logic::string::StringMaker;
-use org::allbinary::logic::string::StringUtil;
-use org::allbinary::string::CommonStrings;
-use org::allbinary::game::layer::resources::GameGraphicsResourceUtil;
+use java::lang::Object ();
+use java::lang::LazyStatic ();
+use org::allbinary::game::configuration::GameConfigurationCentral ();
+use org::allbinary::logic::communication::log::LogUtil ();
+use org::allbinary::logic::string::StringMaker ();
+use org::allbinary::logic::string::StringUtil ();
+use org::allbinary::string::CommonStrings ();
+use org::allbinary::game::layer::resources::GameGraphicsResourceUtil ();
 
 1;
 

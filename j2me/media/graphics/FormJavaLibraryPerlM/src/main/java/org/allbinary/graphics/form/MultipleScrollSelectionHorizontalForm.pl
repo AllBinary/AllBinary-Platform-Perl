@@ -31,33 +31,11 @@ sub createForm {
 sub new {
     my ($class, $title, $items, $formPaintableFactory, $border, $backgroundBasicColor, $foregroundBasicColor) = @_;
     my $self = $class->SUPER::new($title, $items, $formPaintableFactory, $border, 3, $backgroundBasicColor, $foregroundBasicColor);
-    $self->_init_fields();
+    _init_fields($self);
         # super(...) made $self above
         if ('org::allbinary::J2MEUtil'->isJ2ME() || 'org::allbinary::J2MEUtil'->isHTML()) {
         } else {
-            {
-            package org::allbinary::graphics::form::MPaintable;
-            use strict;
-            use warnings;
-            use feature 'try';
-            no warnings 'experimental::try';
-            use parent -norequire,'org::allbinary::graphics::paint::Paintable';
-            
-
-            sub new {
-                my ($class) = @_;
-                my $self = $class->SUPER::new();
-                return $self;
-            }
-            
-
-            sub paint {
-                my ($self, $graphics) = @_;
-                    $self->fillRect($graphics);
-            }
-            }
-
-            $self->{rectPaintable} = 'org::allbinary::graphics::form::MPaintable'->new();
+            $self->{rectPaintable} = 'org::allbinary::graphics::form::MultipleScrollSelectionFormRectPaintable'->new($self);
         }
     return $self;
 }
@@ -145,87 +123,29 @@ sub paint {
             'org::allbinary::logic::communication::log::PreLogUtil'->put($self->{commonStrings}->{EXCEPTION}, $self, $self->{canvasStrings}->{PAINT});
         }
 }
-{
-    package org::allbinary::graphics::form::MultipleScrollSelectionFormHorizontalPaintable;
-    use strict;
-    use warnings;
-    use feature 'try';
-    no warnings 'experimental::try';
-    use parent -norequire,'org::allbinary::graphics::form::ItemIndexPaintable';
-    
 
-    sub _init_fields {
-        my ($self) = @_;
-        $self->{multipleScrollSelectionForm} = undef;
-    }
-    
-
-    sub new {
-        my ($class, $multipleScrollSelectionForm) = @_;
-        my $self = $class->SUPER::new();
-        $self->_init_fields();
-            $self->{multipleScrollSelectionForm} = $multipleScrollSelectionForm;
-        return $self;
-    }
-    
-
-    # throws Exception
-    sub paint {
-        my ($self, $graphics, $index, $item, $dx, $dy) = @_;
-            return $self->{multipleScrollSelectionForm}->paintHorizontal($graphics, $index, $item, $dx, $dy);
-    }
-    }
-
-{
-    package org::allbinary::graphics::form::MultipleScrollSelectionFormVerticalPaintable;
-    use strict;
-    use warnings;
-    use feature 'try';
-    no warnings 'experimental::try';
-    use parent -norequire,'org::allbinary::graphics::form::ItemIndexPaintable';
-    
-
-    sub _init_fields {
-        my ($self) = @_;
-        $self->{multipleScrollSelectionForm} = undef;
-    }
-    
-
-    sub new {
-        my ($class, $multipleScrollSelectionForm) = @_;
-        my $self = $class->SUPER::new();
-        $self->_init_fields();
-            $self->{multipleScrollSelectionForm} = $multipleScrollSelectionForm;
-        return $self;
-    }
-    
-
-    # throws Exception
-    sub paint {
-        my ($self, $graphics, $index, $item, $dx, $dy) = @_;
-            return $self->{multipleScrollSelectionForm}->paintVertical($graphics, $index, $item, $dx, $dy);
-    }
-    }
-
-
-# use javax::microedition::lcdui::Font;
-# use javax::microedition::lcdui::Graphics;
-use org::allbinary::J2MEUtil;
-use org::allbinary::graphics::Rectangle;
-use org::allbinary::graphics::color::BasicColor;
-use org::allbinary::graphics::color::BasicColorFactory;
-use org::allbinary::graphics::font::MyFontProcessor;
-use org::allbinary::graphics::font::UpdateMyFontInterface;
-use org::allbinary::graphics::font::UpdateMyFontProcessor;
-use org::allbinary::graphics::form::item::ABCustomItem;
-use org::allbinary::graphics::paint::NullPaintable;
-use org::allbinary::graphics::paint::Paintable;
-use org::allbinary::logic::communication::log::PreLogUtil;
-use org::allbinary::logic::string::StringMaker;
-use org::allbinary::graphics::form::ScrollSelectionForm;
-use org::allbinary::graphics::form::ItemPaintableFactory;
-use org::allbinary::graphics::form::ItemIndexPaintable;
-use org::allbinary::graphics::form::FormTypeFactory;
+use java::lang::Object ();
+use javax::microedition::lcdui::Font ();
+use javax::microedition::lcdui::Graphics ();
+use org::allbinary::J2MEUtil ();
+use org::allbinary::graphics::Rectangle ();
+use org::allbinary::graphics::color::BasicColor ();
+use org::allbinary::graphics::color::BasicColorFactory ();
+use org::allbinary::graphics::font::MyFontProcessor ();
+use org::allbinary::graphics::font::UpdateMyFontInterface ();
+use org::allbinary::graphics::font::UpdateMyFontProcessor ();
+use org::allbinary::graphics::form::item::ABCustomItem ();
+use org::allbinary::graphics::paint::NullPaintable ();
+use org::allbinary::graphics::paint::Paintable ();
+use org::allbinary::logic::communication::log::PreLogUtil ();
+use org::allbinary::logic::string::StringMaker ();
+use org::allbinary::graphics::form::ScrollSelectionForm ();
+use org::allbinary::graphics::form::ItemPaintableFactory ();
+use org::allbinary::graphics::form::ItemIndexPaintable ();
+use org::allbinary::graphics::form::MultipleScrollSelectionFormRectPaintable ();
+use org::allbinary::graphics::form::FormTypeFactory ();
+use org::allbinary::graphics::form::MultipleScrollSelectionFormVerticalPaintable ();
+use org::allbinary::graphics::form::MultipleScrollSelectionFormHorizontalPaintable ();
 
 1;
 

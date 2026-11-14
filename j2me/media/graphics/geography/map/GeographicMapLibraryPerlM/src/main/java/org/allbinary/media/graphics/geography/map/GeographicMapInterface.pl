@@ -109,9 +109,9 @@ sub getBackgroundBasicColor {
     die "abstract method getBackgroundBasicColor";
 }
 
-use org::allbinary::game::layer::AllBinaryTiledLayer;
-use org::allbinary::graphics::color::BasicColor;
-use org::allbinary::layer::Layer;
+use org::allbinary::game::layer::AllBinaryTiledLayer ();
+use org::allbinary::graphics::color::BasicColor ();
+use org::allbinary::layer::Layer ();
 
 1;
 

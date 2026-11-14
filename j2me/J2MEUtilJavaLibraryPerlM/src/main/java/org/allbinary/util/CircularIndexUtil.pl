@@ -17,8 +17,9 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
-our $NULL_CIRCULAR_INDEX_UTIL = 'org::allbinary::util::CircularIndexUtil'->new(0, 0);
+tie our $NULL_CIRCULAR_INDEX_UTIL, 'java::lang::LazyStatic', sub { 'org::allbinary::util::CircularIndexUtil'->new(0, 0) };
 
 sub _init_fields {
     my ($self) = @_;
@@ -31,7 +32,7 @@ sub _init_fields {
 sub new {
     my ($class, $index, $size) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
         $self->setSize($size);
         $self->setIndex($index);
     return $self;
@@ -106,12 +107,14 @@ sub toString {
         return 'org::allbinary::logic::string::StringMaker'->new()->append('org::allbinary::string::CommonLabels'->getInstance()->{INDEX_LABEL})->appendint($self->{index})->append("lastIndex: ")->appendint($self->{lastIndex})->append("size: ")->appendint($self->{size})->toString();
 }
 
-# use jsinterop::annotations::JsType;
-use org::allbinary::logic::string::StringMaker;
-use org::allbinary::string::CommonLabels;
-# use jsinterop::annotations::JsMethod;
-# use jsinterop::annotations::JsConstructor;
-# use jsinterop::annotations::JsProperty;
+use java::lang::Object ();
+use java::lang::LazyStatic ();
+# use jsinterop::annotations::JsType ();
+use org::allbinary::logic::string::StringMaker ();
+use org::allbinary::string::CommonLabels ();
+# use jsinterop::annotations::JsMethod ();
+# use jsinterop::annotations::JsConstructor ();
+# use jsinterop::annotations::JsProperty ();
 
 1;
 

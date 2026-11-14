@@ -17,7 +17,7 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
-use parent -norequire,'org::allbinary::ai::ArtificialIntelligenceFactoryInterface';
+use parent -norequire,'java::lang::Object','org::allbinary::ai::ArtificialIntelligenceFactoryInterface';
 
 
 sub new {
@@ -33,7 +33,8 @@ sub getInstance {
         die ("RuntimeException");
 }
 
-use org::allbinary::ai::ArtificialIntelligenceFactoryInterface;
+use java::lang::Object ();
+use org::allbinary::ai::ArtificialIntelligenceFactoryInterface ();
 
 1;
 

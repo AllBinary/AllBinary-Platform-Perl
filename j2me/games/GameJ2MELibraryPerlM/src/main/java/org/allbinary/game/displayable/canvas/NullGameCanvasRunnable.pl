@@ -17,9 +17,9 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
-use parent -norequire,'org::allbinary::game::displayable::canvas::GameCanvasRunnableInterface';
+use parent -norequire,'java::lang::Object','org::allbinary::game::displayable::canvas::GameCanvasRunnableInterface';
 
-our $NULL_GAME_CANVAS_RUNNABLE = 'org::allbinary::game::displayable::canvas::NullGameCanvasRunnable'->new();
+tie our $NULL_GAME_CANVAS_RUNNABLE, 'java::lang::LazyStatic', sub { 'org::allbinary::game::displayable::canvas::NullGameCanvasRunnable'->new() };
 
 sub _init_fields {
     my ($self) = @_;
@@ -29,7 +29,7 @@ sub _init_fields {
 sub new {
     my ($class) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
     return $self;
 }
 
@@ -165,15 +165,17 @@ sub run {
     my ($self) = @_;
 }
 
-# use javax::microedition::lcdui::CommandListener;
-# use javax::microedition::lcdui::Graphics;
-# use javax::microedition::lcdui::Item;
-use org::allbinary::game::state::GameState;
-use org::allbinary::game::state::GameStateFactory;
-use org::allbinary::logic::StdUtil;
-use org::allbinary::logic::string::StringUtil;
-use org::allbinary::util::ABHashtable;
-use org::allbinary::game::displayable::canvas::GameCanvasRunnableInterface;
+use java::lang::Object ();
+use java::lang::LazyStatic ();
+use javax::microedition::lcdui::CommandListener ();
+use javax::microedition::lcdui::Graphics ();
+use javax::microedition::lcdui::Item ();
+use org::allbinary::game::state::GameState ();
+use org::allbinary::game::state::GameStateFactory ();
+use org::allbinary::logic::StdUtil ();
+use org::allbinary::logic::string::StringUtil ();
+use org::allbinary::util::ABHashtable ();
+use org::allbinary::game::displayable::canvas::GameCanvasRunnableInterface ();
 
 1;
 

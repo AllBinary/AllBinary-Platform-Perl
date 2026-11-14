@@ -19,7 +19,7 @@ use feature 'try';
 no warnings 'experimental::try';
 use parent -norequire,'org::allbinary::media::graphics::geography::map::drop::BaseDropCellPositionGenerator';
 
-our $instance = 'org::allbinary::media::graphics::geography::map::drop::NullDropCellPositionGenerator'->new();
+tie our $instance, 'java::lang::LazyStatic', sub { 'org::allbinary::media::graphics::geography::map::drop::NullDropCellPositionGenerator'->new() };
 
 sub new {
     my ($class) = @_;
@@ -33,7 +33,9 @@ sub getInstance {
         return $org::allbinary::media::graphics::geography::map::drop::NullDropCellPositionGenerator::instance;
 }
 
-use org::allbinary::media::graphics::geography::map::drop::BaseDropCellPositionGenerator;
+use java::lang::Object ();
+use java::lang::LazyStatic ();
+use org::allbinary::media::graphics::geography::map::drop::BaseDropCellPositionGenerator ();
 
 1;
 

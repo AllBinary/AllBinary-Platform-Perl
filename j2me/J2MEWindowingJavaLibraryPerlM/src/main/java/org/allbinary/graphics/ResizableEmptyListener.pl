@@ -17,7 +17,7 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
-use parent -norequire,'org::allbinary::graphics::ResizableListenerInterface';
+use parent -norequire,'java::lang::Object','org::allbinary::graphics::ResizableListenerInterface';
 
 
 sub new {
@@ -31,7 +31,8 @@ sub onResizable {
     my ($self, $isResizable) = @_;
 }
 
-use org::allbinary::graphics::ResizableListenerInterface;
+use java::lang::Object ();
+use org::allbinary::graphics::ResizableListenerInterface ();
 
 1;
 

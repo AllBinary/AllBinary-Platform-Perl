@@ -17,7 +17,7 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
-use parent -norequire,'org::allbinary::game::ai::ArtificialIntelligenceInterfaceFactoryInterface';
+use parent -norequire,'java::lang::Object','org::allbinary::game::ai::ArtificialIntelligenceInterfaceFactoryInterface';
 
 
 sub new {
@@ -38,15 +38,16 @@ sub getInstance {
         return 'org::allbinary::game::ag::ai::tactical::BasicRandomAI'->new($ownerLayerInterface, $gameInput, $inputProbability, $visitor);
 }
 
-use org::allbinary::ai::ArtificialIntelligenceInterface;
-use org::allbinary::game::ai::ArtificialIntelligenceInterfaceFactoryInterface;
-use org::allbinary::game::ai::BasicAI;
-use org::allbinary::game::ag::ai::InputProbability;
-use org::allbinary::game::input::GameInput;
-use org::allbinary::layer::AllBinaryLayer;
-use org::allbinary::logic::util::visitor::Visitor;
-use org::allbinary::util::ABHashtable;
-use org::allbinary::game::ag::ai::tactical::BasicRandomAI;
+use java::lang::Object ();
+use org::allbinary::ai::ArtificialIntelligenceInterface ();
+use org::allbinary::game::ai::ArtificialIntelligenceInterfaceFactoryInterface ();
+use org::allbinary::game::ai::BasicAI ();
+use org::allbinary::game::ag::ai::InputProbability ();
+use org::allbinary::game::input::GameInput ();
+use org::allbinary::layer::AllBinaryLayer ();
+use org::allbinary::logic::util::visitor::Visitor ();
+use org::allbinary::util::ABHashtable ();
+use org::allbinary::game::ag::ai::tactical::BasicRandomAI ();
 
 1;
 

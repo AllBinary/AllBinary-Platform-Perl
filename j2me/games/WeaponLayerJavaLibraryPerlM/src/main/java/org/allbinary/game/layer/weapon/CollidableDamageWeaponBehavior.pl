@@ -30,7 +30,7 @@ sub _init_fields {
 sub new {
     my ($class, $collidable) = @_;
     my $self = $class->SUPER::new($collidable);
-    $self->_init_fields();
+    _init_fields($self);
         # super(...) made $self above
         $self->setCollided(0);
         $self->setCollidable(1);
@@ -104,15 +104,16 @@ sub setCollided {
         $self->{collided} = $collided;
 }
 
-use org::allbinary::game::collision::CollidableHelperFactory;
-use org::allbinary::game::collision::CollidableInterfaceCompositeInterface;
-use org::allbinary::game::collision::CollisionHelper;
-use org::allbinary::game::collision::CollisionType;
-use org::allbinary::game::collision::CollisionTypeFactory;
-use org::allbinary::game::combat::damage::DamageableInterface;
-use org::allbinary::game::layer::CollidableCompositeLayer;
-use org::allbinary::game::layer::special::CollidableDestroyableDamageableBehavior;
-use org::allbinary::layer::AllBinaryLayer;
+use java::lang::Object ();
+use org::allbinary::game::collision::CollidableHelperFactory ();
+use org::allbinary::game::collision::CollidableInterfaceCompositeInterface ();
+use org::allbinary::game::collision::CollisionHelper ();
+use org::allbinary::game::collision::CollisionType ();
+use org::allbinary::game::collision::CollisionTypeFactory ();
+use org::allbinary::game::combat::damage::DamageableInterface ();
+use org::allbinary::game::layer::CollidableCompositeLayer ();
+use org::allbinary::game::layer::special::CollidableDestroyableDamageableBehavior ();
+use org::allbinary::layer::AllBinaryLayer ();
 
 1;
 

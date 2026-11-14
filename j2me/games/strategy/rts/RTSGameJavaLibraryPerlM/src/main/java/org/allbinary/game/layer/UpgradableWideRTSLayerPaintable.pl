@@ -29,7 +29,7 @@ sub _init_fields {
 sub new {
     my ($class, $upgradableRTSLayerHudPaintable) = @_;
     my $self = $class->SUPER::new($upgradableRTSLayerHudPaintable);
-    $self->_init_fields();
+    _init_fields($self);
         # super(...) made $self above
     return $self;
 }
@@ -59,11 +59,12 @@ sub getCost {
         return $self->{cost};
 }
 
-# use javax::microedition::lcdui::Graphics;
-use org::allbinary::string::CommonSeps;
-use org::allbinary::logic::string::StringMaker;
-use org::allbinary::logic::string::StringUtil;
-use org::allbinary::game::layer::RTSLayerCompositePaintable;
+use java::lang::Object ();
+use javax::microedition::lcdui::Graphics ();
+use org::allbinary::string::CommonSeps ();
+use org::allbinary::logic::string::StringMaker ();
+use org::allbinary::logic::string::StringUtil ();
+use org::allbinary::game::layer::RTSLayerCompositePaintable ();
 
 1;
 

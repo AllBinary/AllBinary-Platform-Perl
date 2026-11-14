@@ -39,7 +39,7 @@ sub _init_fields {
 sub new {
     my ($class, $groupInterface, $isUnitProducer) = @_;
     my $self = $class->SUPER::new($groupInterface);
-    $self->_init_fields();
+    _init_fields($self);
         # super(...) made $self above
         $self->{isUnitProducer} = $isUnitProducer;
         my $smallIntegerSingletonFactory = 'org::allbinary::logic::math::SmallIntegerSingletonFactory'->getInstance();
@@ -277,41 +277,42 @@ sub isSurroundingCellsOffMap {
         }
 }
 
-use org::allbinary::game::input::RTSPlayerGameInput;
-use org::allbinary::game::layer::DemoLockedWithCostLayerInterfaceFactoryInterface;
-use org::allbinary::game::layer::GeographicMapCellPositionAreaBase;
-use org::allbinary::game::layer::RTSGameStrings;
-use org::allbinary::game::layer::RTSLayer;
-use org::allbinary::game::layer::RTSPlayerLayerInterface;
-use org::allbinary::game::layer::capital::Capital;
-use org::allbinary::game::layer::item::LayerInterfaceFactoryImageItem;
-use org::allbinary::graphics::form::item::ABCustomItem;
-use org::allbinary::media::audio::BuildingSound;
-use org::allbinary::util::BasicArrayList;
-use org::allbinary::string::CommonStrings;
-use org::allbinary::logic::string::StringMaker;
-use org::allbinary::logic::java::bool::BooleanFactory;
-use org::allbinary::logic::system::security::licensing::LockedFeatureNotificationUtil;
-use org::allbinary::logic::system::security::licensing::LockedUtil;
-use org::allbinary::game::identification::Group;
-use org::allbinary::game::layer::AllBinaryGameLayerManager;
-use org::allbinary::game::layer::hud::event::GameNotificationEvent;
-use org::allbinary::game::layer::hud::event::GameNotificationEventHandler;
-use org::allbinary::game::layer::special::CollidableDestroyableDamageableLayer;
-use org::allbinary::graphics::GPoint;
-use org::allbinary::graphics::color::BasicColorFactory;
-use org::allbinary::layer::AllBinaryLayerManager;
-use org::allbinary::logic::math::SmallIntegerSingletonFactory;
-use org::allbinary::logic::string::StringUtil;
-use org::allbinary::media::audio::ErrorSound;
-use org::allbinary::media::graphics::geography::map::BasicGeographicMap;
-use org::allbinary::media::graphics::geography::map::GeographicMapCellPosition;
-use org::allbinary::media::graphics::geography::map::GeographicMapCellType;
-use org::allbinary::media::graphics::geography::map::GeographicMapCompositeInterface;
-use org::allbinary::media::graphics::geography::map::SimpleGeographicMapCellPositionFactory;
-use org::allbinary::media::graphics::geography::map::drop::DropCellPositionHistory;
-use org::allbinary::media::graphics::geography::map::racetrack::RaceTrackGeographicMapCellTypeFactory;
-use org::allbinary::game::input::form::RTSFormInput;
+use java::lang::Object ();
+use org::allbinary::game::input::RTSPlayerGameInput ();
+use org::allbinary::game::layer::DemoLockedWithCostLayerInterfaceFactoryInterface ();
+use org::allbinary::game::layer::GeographicMapCellPositionAreaBase ();
+use org::allbinary::game::layer::RTSGameStrings ();
+use org::allbinary::game::layer::RTSLayer ();
+use org::allbinary::game::layer::RTSPlayerLayerInterface ();
+use org::allbinary::game::layer::capital::Capital ();
+use org::allbinary::game::layer::item::LayerInterfaceFactoryImageItem ();
+use org::allbinary::graphics::form::item::ABCustomItem ();
+use org::allbinary::media::audio::BuildingSound ();
+use org::allbinary::util::BasicArrayList ();
+use org::allbinary::string::CommonStrings ();
+use org::allbinary::logic::string::StringMaker ();
+use org::allbinary::logic::java::bool::BooleanFactory ();
+use org::allbinary::logic::system::security::licensing::LockedFeatureNotificationUtil ();
+use org::allbinary::logic::system::security::licensing::LockedUtil ();
+use org::allbinary::game::identification::Group ();
+use org::allbinary::game::layer::AllBinaryGameLayerManager ();
+use org::allbinary::game::layer::hud::event::GameNotificationEvent ();
+use org::allbinary::game::layer::hud::event::GameNotificationEventHandler ();
+use org::allbinary::game::layer::special::CollidableDestroyableDamageableLayer ();
+use org::allbinary::graphics::GPoint ();
+use org::allbinary::graphics::color::BasicColorFactory ();
+use org::allbinary::layer::AllBinaryLayerManager ();
+use org::allbinary::logic::math::SmallIntegerSingletonFactory ();
+use org::allbinary::logic::string::StringUtil ();
+use org::allbinary::media::audio::ErrorSound ();
+use org::allbinary::media::graphics::geography::map::BasicGeographicMap ();
+use org::allbinary::media::graphics::geography::map::GeographicMapCellPosition ();
+use org::allbinary::media::graphics::geography::map::GeographicMapCellType ();
+use org::allbinary::media::graphics::geography::map::GeographicMapCompositeInterface ();
+use org::allbinary::media::graphics::geography::map::SimpleGeographicMapCellPositionFactory ();
+use org::allbinary::media::graphics::geography::map::drop::DropCellPositionHistory ();
+use org::allbinary::media::graphics::geography::map::racetrack::RaceTrackGeographicMapCellTypeFactory ();
+use org::allbinary::game::input::form::RTSFormInput ();
 
 1;
 

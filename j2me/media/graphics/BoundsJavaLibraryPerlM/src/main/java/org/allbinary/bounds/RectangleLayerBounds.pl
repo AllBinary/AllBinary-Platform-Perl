@@ -45,8 +45,9 @@ sub visit {
         }
 }
 
-use org::allbinary::graphics::Rectangle;
-use org::allbinary::bounds::LayerBounds;
+use java::lang::Object ();
+use org::allbinary::graphics::Rectangle ();
+use org::allbinary::bounds::LayerBounds ();
 
 1;
 

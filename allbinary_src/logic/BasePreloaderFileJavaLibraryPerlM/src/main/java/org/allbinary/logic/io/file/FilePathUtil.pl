@@ -18,6 +18,7 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
 
 
@@ -40,9 +41,10 @@ sub adjust {
         return $path;
 }
 
-use org::allbinary::logic::io::path::AbPathData;
-use org::allbinary::logic::string::StringValidationUtil;
-use org::allbinary::logic::io::file::FilePathData;
+use java::lang::Object ();
+use org::allbinary::logic::io::path::AbPathData ();
+use org::allbinary::logic::string::StringValidationUtil ();
+use org::allbinary::logic::io::file::FilePathData ();
 
 1;
 

@@ -30,7 +30,7 @@ sub _init_fields {
 sub new {
     my ($class, $clientInfo) = @_;
     my $self = $class->SUPER::new($clientInfo, "LicenseRegistrationServer.process");
-    $self->_init_fields();
+    _init_fields($self);
         # super(...) made $self above
         $self->setServer(0);
     return $self;
@@ -54,11 +54,11 @@ sub get {
             $serverUrl = substr($serverUrl, 0, ($index + 1) - (0)) . $self->{PAGE};
             my $xmlRpcClient = 'org::apache::xmlrpc::XmlRpcClient'->new($serverUrl);
             $self->setClient($xmlRpcClient);
-            $xmlRpcClient->setBasicAuthentication(undef, undef);
+            $xmlRpcClient->setBasicAuthentication('org::allbinary::logic::string::StringUtil'->getInstance()->{EMPTY_STRING}, 'org::allbinary::logic::string::StringUtil'->getInstance()->{EMPTY_STRING});
             my $hashtable = $anyType;
             $self->{logUtil}->putF($self->{CLIENT_INFO} . $hashtable->toString(), $self, $self->{commonStrings}->{GET});
             $param->add($hashtable);
-            my $result = $xmlRpcClient->execute($self->getRemoteMethod(), $param, $cryptInterface);
+            my $result = $xmlRpcClient->executeWithCrypt($self->getRemoteMethod(), $param, $cryptInterface);
             $self->{logUtil}->putF($self->{RESULT} . $result->toString(), $self, $self->{commonStrings}->{GET});
             $self->{isOnline} = 1;
             return $result;
@@ -72,19 +72,21 @@ sub get {
         }
 }
 
-# use java::io::IOException;
-use org::apache::xmlrpc::XmlRpcClient;
-use org::apache::xmlrpc::XmlRpcException;
-use org::allbinary::util::BasicArrayList;
-use org::allbinary::util::BasicArrayListD;
-use org::allbinary::init::crypt::jcehelper::CryptInterface;
-use org::allbinary::string::CommonLabels;
-use org::allbinary::logic::string::StringMaker;
-use org::allbinary::logic::communication::log::LogUtil;
-use org::allbinary::logic::communication::xmlrpc::XmlRpcAbeClient;
-use org::allbinary::logic::java::exception::ExceptionUtil;
-use org::allbinary::logic::system::security::licensing::AbeClientInformationInterface;
-use org::allbinary::util::ABHashtable;
+use java::lang::Object ();
+use org::allbinary::logic::string::StringUtil ();
+# use java::io::IOException ();
+use org::apache::xmlrpc::XmlRpcClient ();
+use org::apache::xmlrpc::XmlRpcException ();
+use org::allbinary::util::BasicArrayList ();
+use org::allbinary::util::BasicArrayListD ();
+use org::allbinary::init::crypt::jcehelper::CryptInterface ();
+use org::allbinary::string::CommonLabels ();
+use org::allbinary::logic::string::StringMaker ();
+use org::allbinary::logic::communication::log::LogUtil ();
+use org::allbinary::logic::communication::xmlrpc::XmlRpcAbeClient ();
+use org::allbinary::logic::java::exception::ExceptionUtil ();
+use org::allbinary::logic::system::security::licensing::AbeClientInformationInterface ();
+use org::allbinary::util::ABHashtable ();
 
 1;
 

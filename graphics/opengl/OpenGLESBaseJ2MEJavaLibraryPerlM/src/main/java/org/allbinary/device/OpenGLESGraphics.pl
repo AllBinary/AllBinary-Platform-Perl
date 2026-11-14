@@ -5,7 +5,7 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
-use parent -norequire,'org::allbinary::image::opengles::OpenGLSurfaceChangedInterface','org::allbinary::device::GraphicsInterface';
+use parent -norequire,'java::lang::Object','org::allbinary::image::opengles::OpenGLSurfaceChangedInterface','org::allbinary::device::GraphicsInterface';
 
 
 sub _init_fields {
@@ -18,7 +18,7 @@ sub _init_fields {
 sub new {
     my ($class) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
     return $self;
 }
 
@@ -66,14 +66,15 @@ sub setFontDebug {
         die ("RuntimeException");
 }
 
-# use javax::microedition::khronos::opengles::GL;
-# use javax::microedition::khronos::opengles::GL10;
-# use javax::microedition::lcdui::Font;
-use org::allbinary::graphics::font::FontDebugBase;
-use org::allbinary::image::opengles::OpenGLSurfaceChangedInterface;
-use org::allbinary::string::CommonStrings;
-use org::allbinary::device::GraphicsInterface;
-use org::allbinary::device::NullGL10;
+use java::lang::Object ();
+use javax::microedition::khronos::opengles::GL ();
+use javax::microedition::khronos::opengles::GL10 ();
+use javax::microedition::lcdui::Font ();
+use org::allbinary::graphics::font::FontDebugBase ();
+use org::allbinary::image::opengles::OpenGLSurfaceChangedInterface ();
+use org::allbinary::string::CommonStrings ();
+use org::allbinary::device::GraphicsInterface ();
+use org::allbinary::device::NullGL10 ();
 
 1;
 

@@ -111,13 +111,13 @@ sub log {
     die "abstract method log";
 }
 
-use org::allbinary::util::BasicArrayList;
-use org::allbinary::util::BasicArrayListD;
-use org::allbinary::business::category::hierarchy::CategoryHierarchyInterface;
-use org::allbinary::business::category::properties::CategoryPropertiesInterface;
-use org::allbinary::data::tables::TableMappingInterface;
-use org::allbinary::logic::control::validate::ValidationInterface;
-use org::allbinary::logic::io::path::AbPath;
+use org::allbinary::util::BasicArrayList ();
+use org::allbinary::util::BasicArrayListD ();
+use org::allbinary::business::category::hierarchy::CategoryHierarchyInterface ();
+use org::allbinary::business::category::properties::CategoryPropertiesInterface ();
+use org::allbinary::data::tables::TableMappingInterface ();
+use org::allbinary::logic::control::validate::ValidationInterface ();
+use org::allbinary::logic::io::path::AbPath ();
 
 1;
 

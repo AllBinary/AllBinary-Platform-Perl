@@ -19,7 +19,7 @@ use feature 'try';
 no warnings 'experimental::try';
 use parent -norequire,'org::allbinary::game::ai::BasicAI';
 
-our $TIME = 'org::allbinary::logic::math::SmallIntegerSingletonFactory'->getInstance()->getAt(1);
+tie our $TIME, 'java::lang::LazyStatic', sub { 'org::allbinary::logic::math::SmallIntegerSingletonFactory'->getInstance()->getAt(1) };
 
 sub _init_fields {
     my ($self) = @_;
@@ -31,7 +31,7 @@ sub _init_fields {
 sub new {
     my ($class, $delay, $ownerLayerInterface, $gameInput) = @_;
     my $self = $class->SUPER::new($ownerLayerInterface, $gameInput);
-    $self->_init_fields();
+    _init_fields($self);
         # super(...) made $self above
         $self->{delay} = $delay;
     return $self;
@@ -48,14 +48,16 @@ sub processAI {
         }
 }
 
-# use javax::microedition::lcdui::Canvas;
-use org::allbinary::game::ai::BasicAI;
-use org::allbinary::game::input::GameInput;
-use org::allbinary::layer::AllBinaryLayer;
-use org::allbinary::layer::AllBinaryLayerManager;
-use org::allbinary::logic::math::SmallIntegerSingletonFactory;
-use org::allbinary::time::GameTickTimeDelayHelperFactory;
-use org::allbinary::time::TimeDelayHelper;
+use java::lang::Object ();
+use java::lang::LazyStatic ();
+use javax::microedition::lcdui::Canvas ();
+use org::allbinary::game::ai::BasicAI ();
+use org::allbinary::game::input::GameInput ();
+use org::allbinary::layer::AllBinaryLayer ();
+use org::allbinary::layer::AllBinaryLayerManager ();
+use org::allbinary::logic::math::SmallIntegerSingletonFactory ();
+use org::allbinary::time::GameTickTimeDelayHelperFactory ();
+use org::allbinary::time::TimeDelayHelper ();
 
 1;
 

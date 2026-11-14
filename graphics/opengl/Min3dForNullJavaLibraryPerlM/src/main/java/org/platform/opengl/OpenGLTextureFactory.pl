@@ -7,7 +7,7 @@ use feature 'try';
 no warnings 'experimental::try';
 use parent -norequire,'org::allbinary::platform::opengles::PlatformTextureBaseFactory';
 
-our $instance = 'org::platform::opengl::OpenGLTextureFactory'->new();
+tie our $instance, 'java::lang::LazyStatic', sub { 'org::platform::opengl::OpenGLTextureFactory'->new() };
 
 sub _init_fields {
     my ($self) = @_;
@@ -24,7 +24,7 @@ sub getInstance {
 sub new {
     my ($class) = @_;
     my $self = $class->SUPER::new();
-    $self->_init_fields();
+    _init_fields($self);
     return $self;
 }
 
@@ -34,10 +34,12 @@ sub load {
         die ("RuntimeException");
 }
 
-# use javax::microedition::khronos::opengles::GL10;
-# use javax::microedition::lcdui::Image;
-use org::allbinary::platform::opengles::PlatformTextureBaseFactory;
-use org::platform::opengl::OpenGLGLUUtils;
+use java::lang::Object ();
+use java::lang::LazyStatic ();
+use javax::microedition::khronos::opengles::GL10 ();
+use javax::microedition::lcdui::Image ();
+use org::allbinary::platform::opengles::PlatformTextureBaseFactory ();
+use org::platform::opengl::OpenGLGLUUtils ();
 
 1;
 

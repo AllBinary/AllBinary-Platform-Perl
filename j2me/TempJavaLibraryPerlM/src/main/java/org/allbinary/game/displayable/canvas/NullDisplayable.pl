@@ -8,7 +8,7 @@ use feature 'try';
 no warnings 'experimental::try';
 use parent -norequire,'javax::microedition::lcdui::Canvas';
 
-our $SINGLETON = 'org::allbinary::game::displayable::canvas::NullDisplayable'->new();
+tie our $SINGLETON, 'java::lang::LazyStatic', sub { 'org::allbinary::game::displayable::canvas::NullDisplayable'->new() };
 
 
 sub getInstance {
@@ -28,8 +28,10 @@ sub paint {
     my ($self, $graphics) = @_;
 }
 
-# use javax::microedition::lcdui::Canvas;
-# use javax::microedition::lcdui::Graphics;
+use java::lang::Object ();
+use java::lang::LazyStatic ();
+use javax::microedition::lcdui::Canvas ();
+use javax::microedition::lcdui::Graphics ();
 
 1;
 

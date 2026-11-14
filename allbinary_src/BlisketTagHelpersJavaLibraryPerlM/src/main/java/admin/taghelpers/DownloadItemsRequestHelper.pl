@@ -30,7 +30,7 @@ sub _init_fields {
 sub new {
     my ($class, $hashMap, $pageContext) = @_;
     my $self = $class->SUPER::new();
-    $self->_init_fields();
+    _init_fields($self);
         my $inventoryTag = $hashMap->get($admin::tags::AbTagData::PARENT);
         my $inventoryItemViewParentTagHelper = 'admin::taghelpers::InventoryItemViewParentTagHelper'->getInstance();
         my $downloadableInventoryItemView = $inventoryItemViewParentTagHelper->getDownloadableInventoryItemView($inventoryTag);
@@ -97,19 +97,20 @@ sub update {
         }
 }
 
-use java::util::HashMap;
-use org::allbinary::util::BasicArrayList;
-use org::allbinary::util::BasicArrayListD;
-# use javax::servlet::jsp::PageContext;
-use admin::tags::AbTagData;
-use org::allbinary::business::user::commerce::inventory::item::download::DownloadableItem;
-use org::allbinary::data::tables::user::commerce::inventory::item::downloads::DownloadItemsEntityFactory;
-use org::allbinary::logic::communication::log::LogUtil;
-use org::allbinary::string::CommonSeps;
-use tags::HelperTag;
-use views::admin::inventory::download::DownloadableInventoryItemView;
-use admin::taghelpers::ModifyTable;
-use admin::taghelpers::InventoryItemViewParentTagHelper;
+use java::lang::Object ();
+use java::util::HashMap ();
+use org::allbinary::util::BasicArrayList ();
+use org::allbinary::util::BasicArrayListD ();
+# use javax::servlet::jsp::PageContext ();
+use admin::tags::AbTagData ();
+use org::allbinary::business::user::commerce::inventory::item::download::DownloadableItem ();
+use org::allbinary::data::tables::user::commerce::inventory::item::downloads::DownloadItemsEntityFactory ();
+use org::allbinary::logic::communication::log::LogUtil ();
+use org::allbinary::string::CommonSeps ();
+use tags::HelperTag ();
+use views::admin::inventory::download::DownloadableInventoryItemView ();
+use admin::taghelpers::ModifyTable ();
+use admin::taghelpers::InventoryItemViewParentTagHelper ();
 
 1;
 

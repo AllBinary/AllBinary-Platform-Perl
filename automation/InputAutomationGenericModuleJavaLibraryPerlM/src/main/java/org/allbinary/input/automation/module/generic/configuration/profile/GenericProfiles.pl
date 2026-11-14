@@ -17,11 +17,11 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
-use parent -norequire,'org::allbinary::data::tree::dom::DomNodeInterface','org::allbinary::data::tree::dom::document::mapping::DomDocumentMappingInterface';
+use parent -norequire,'java::lang::Object','org::allbinary::data::tree::dom::DomNodeInterface','org::allbinary::data::tree::dom::document::mapping::DomDocumentMappingInterface';
 
 our $DEFAULT_PROFILES_PATH = "./modules/configs/profiles/";
-our $DEFAULT_PROFILE_ACTIONS_PATH = $org::allbinary::input::automation::module::generic::configuration::profile::GenericProfiles::DEFAULT_PROFILES_PATH . "actions/";
-our $DEFAULT_FILE = $org::allbinary::input::automation::module::generic::configuration::profile::GenericProfiles::DEFAULT_PROFILES_PATH . "profiles.xml";
+tie our $DEFAULT_PROFILE_ACTIONS_PATH, 'java::lang::LazyStatic', sub { $org::allbinary::input::automation::module::generic::configuration::profile::GenericProfiles::DEFAULT_PROFILES_PATH . "actions/" };
+tie our $DEFAULT_FILE, 'java::lang::LazyStatic', sub { $org::allbinary::input::automation::module::generic::configuration::profile::GenericProfiles::DEFAULT_PROFILES_PATH . "profiles.xml" };
 
 sub _init_fields {
     my ($self) = @_;
@@ -35,7 +35,7 @@ sub _init_fields {
 sub new {
     my ($class, $fileName) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
         $self->{fileName} = $fileName;
         $self->{profilesDefaultListModelHelper} = 'org::allbinary::input::automation::module::DefaultListModelHelper'->new();
         $self->{hashMap} = 'org::allbinary::logic::StdUtil'->getInstance()->createHashMap();
@@ -149,27 +149,29 @@ sub save {
         $idOutData->writeBytes($documentString);
 }
 
-# use java::io::DataOutputStream;
-use java::io::File;
-# use java::io::FileInputStream;
-# use java::io::FileOutputStream;
-use java::util::HashMap;
-# use java::util::Set;
-use org::allbinary::data::tree::dom::DomNodeInterface;
-use org::allbinary::data::tree::dom::document::DomDocumentHelper;
-use org::allbinary::data::tree::dom::document::XmlDocumentHelper;
-use org::allbinary::data::tree::dom::document::mapping::DomDocumentMappingInterface;
-use org::allbinary::input::automation::module::DefaultListModelHelper;
-use org::allbinary::input::automation::module::generic::configuration::profile::actions::GenericProfileActionData;
-use org::allbinary::logic::StdUtil;
-use org::allbinary::logic::communication::log::LogUtil;
-use org::allbinary::string::CommonStrings;
-use org::w3c::dom::Document;
-use org::w3c::dom::Node;
-use org::w3c::dom::NodeList;
-use org::allbinary::input::automation::module::generic::configuration::profile::GenericProfilesData;
-use org::allbinary::input::automation::module::generic::configuration::profile::GenericProfileData;
-use org::allbinary::input::automation::module::generic::configuration::profile::GenericProfile;
+use java::lang::Object ();
+use java::lang::LazyStatic ();
+# use java::io::DataOutputStream ();
+use java::io::File ();
+# use java::io::FileInputStream ();
+# use java::io::FileOutputStream ();
+use java::util::HashMap ();
+# use java::util::Set ();
+use org::allbinary::data::tree::dom::DomNodeInterface ();
+use org::allbinary::data::tree::dom::document::DomDocumentHelper ();
+use org::allbinary::data::tree::dom::document::XmlDocumentHelper ();
+use org::allbinary::data::tree::dom::document::mapping::DomDocumentMappingInterface ();
+use org::allbinary::input::automation::module::DefaultListModelHelper ();
+use org::allbinary::input::automation::module::generic::configuration::profile::actions::GenericProfileActionData ();
+use org::allbinary::logic::StdUtil ();
+use org::allbinary::logic::communication::log::LogUtil ();
+use org::allbinary::string::CommonStrings ();
+use org::w3c::dom::Document ();
+use org::w3c::dom::Node ();
+use org::w3c::dom::NodeList ();
+use org::allbinary::input::automation::module::generic::configuration::profile::GenericProfilesData ();
+use org::allbinary::input::automation::module::generic::configuration::profile::GenericProfileData ();
+use org::allbinary::input::automation::module::generic::configuration::profile::GenericProfile ();
 
 1;
 

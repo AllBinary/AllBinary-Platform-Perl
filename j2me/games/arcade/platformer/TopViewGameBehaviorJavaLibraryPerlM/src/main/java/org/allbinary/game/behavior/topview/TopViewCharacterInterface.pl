@@ -64,9 +64,9 @@ sub reset {
     die "abstract method reset";
 }
 
-use org::allbinary::media::graphics::geography::map::BasicGeographicMap;
-use org::allbinary::media::graphics::geography::map::GeographicMapCellPosition;
-use org::allbinary::media::graphics::geography::map::GeographicMapCellType;
+use org::allbinary::media::graphics::geography::map::BasicGeographicMap ();
+use org::allbinary::media::graphics::geography::map::GeographicMapCellPosition ();
+use org::allbinary::media::graphics::geography::map::GeographicMapCellType ();
 
 1;
 

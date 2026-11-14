@@ -18,7 +18,7 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
-use parent -norequire,'javax::microedition::khronos::opengles::GL10';
+use parent -norequire,'java::lang::Object','javax::microedition::khronos::opengles::GL10';
 
 
 sub _init_fields {
@@ -44,7 +44,7 @@ sub _init_fields {
 sub new {
     my ($class, $gl, $gl2) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
         $self->{gl10} = $gl2;
         $self->{glu} = 'com::jogamp::opengl::glu::GLU'->createGLU($self->{gl10});
         $self->{GL_LINE} = $org::allbinary::opengles::com::jogamp->{opengl}->{GL2}->{GL_LINE};
@@ -632,7 +632,8 @@ sub glPolygonMode {
         $self->{gl10}->glPolygonMode($i, $i1);
 }
 
-use com::jogamp::opengl::glu::GLU;
+use java::lang::Object ();
+use com::jogamp::opengl::glu::GLU ();
 
 1;
 

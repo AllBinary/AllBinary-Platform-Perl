@@ -17,6 +17,7 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
 
 sub new {
@@ -44,7 +45,8 @@ sub getCustomType {
         return -1;
 }
 
-use org::allbinary::logic::NullUtil;
+use java::lang::Object ();
+use org::allbinary::logic::NullUtil ();
 
 1;
 

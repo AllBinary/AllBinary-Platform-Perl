@@ -17,8 +17,9 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
-our $instance = 'org::allbinary::logic::io::file::SimpleFileUtil'->new();
+tie our $instance, 'java::lang::LazyStatic', sub { 'org::allbinary::logic::io::file::SimpleFileUtil'->new() };
 
 sub _init_fields {
     my ($self) = @_;
@@ -33,7 +34,7 @@ sub _init_fields {
 sub new {
     my ($class) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
     return $self;
 }
 
@@ -46,146 +47,19 @@ sub getInstance {
 
 sub nullOutputStream {
     my ($class) = @_;
-        return do {
-            package java::io::OutputStream::AnonymousN66096 { our @ISA = ('java::io::OutputStream');
-            
-
-            # throws IOException
-            sub write {
-                my ($self, $b) = @_;
-            }
-            
-
-            # throws IOException
-            sub write {
-                my ($self, $b, $off, $len) = @_;
-            }
-            
-
-            sub close {
-                my ($self) = @_;
-            }
-            }
-            'java::io::OutputStream::AnonymousN66096'->can('new') ? 'java::io::OutputStream::AnonymousN66096'->new() : bless({}, 'java::io::OutputStream::AnonymousN66096')
-        };
+        return $org::allbinary::logic::io::NullOutputStream::NULL_OUTPUT_STREAM;
 }
 
 
 sub nullWriter {
     my ($class) = @_;
-        return do {
-            package java::io::Writer::AnonymousN66330 { our @ISA = ('java::io::Writer');
-            $self->{closed} = 0;
-            
-
-            # throws IOException
-            sub append {
-                my ($self, $c) = @_;
-                return $self;
-            }
-            
-
-            # throws IOException
-            sub append {
-                my ($self, $csq) = @_;
-                return $self;
-            }
-            
-
-            # throws IOException
-            sub append {
-                my ($self, $csq, $start, $end) = @_;
-                return $self;
-            }
-            
-
-            # throws IOException
-            sub write {
-                my ($self, $c) = @_;
-            }
-            
-
-            # throws IOException
-            sub write {
-                my ($self, $cbuf, $off, $len) = @_;
-            }
-            
-
-            # throws IOException
-            sub write {
-                my ($self, $str) = @_;
-            }
-            
-
-            # throws IOException
-            sub write {
-                my ($self, $str, $off, $len) = @_;
-            }
-            
-
-            # throws IOException
-            sub flush {
-                my ($self) = @_;
-            }
-            
-
-            # throws IOException
-            sub close {
-                my ($self) = @_;
-            }
-            }
-            'java::io::Writer::AnonymousN66330'->can('new') ? 'java::io::Writer::AnonymousN66330'->new() : bless({}, 'java::io::Writer::AnonymousN66330')
-        };
+        return $org::allbinary::logic::io::NullWriter::NULL_WRITER;
 }
 
 
 sub nullReader {
     my ($class) = @_;
-        return do {
-            package java::io::Reader::AnonymousN67059 { our @ISA = ('java::io::Reader');
-            
-
-            # throws IOException
-            sub read {
-                my ($self) = @_;
-                return -1;
-            }
-            
-
-            # throws IOException
-            sub read {
-                my ($self, $cbuf, $off, $len) = @_;
-                return -1;
-            }
-            
-
-            # throws IOException
-            sub read {
-                my ($self, $target) = @_;
-                return -1;
-            }
-            
-
-            # throws IOException
-            sub ready {
-                my ($self) = @_;
-                return 0;
-            }
-            
-
-            # throws IOException
-            sub skip {
-                my ($self, $n) = @_;
-                return 0;
-            }
-            
-
-            sub close {
-                my ($self) = @_;
-            }
-            }
-            'java::io::Reader::AnonymousN67059'->can('new') ? 'java::io::Reader::AnonymousN67059'->new() : bless({}, 'java::io::Reader::AnonymousN67059')
-        };
+        return $org::allbinary::logic::io::NullReader::NULL_READER;
 }
 
 
@@ -229,7 +103,7 @@ sub loadFileAsListReturnLine {
                     $returnLine = 0;
                 }
             }
-            my $s = pack("C*", @{$byteArray, $startIndex, ($index + $includeReturnLine - $returnLine - $startIndex)});
+            my $s = pack("C*", @{$byteArray}[$startIndex .. $startIndex + (($index + $includeReturnLine - $returnLine - $startIndex)) - 1]);
             $stringList->add($s);
             $index++;
         }
@@ -247,20 +121,23 @@ sub createStringFromArrayOfStrings {
         return $stringMaker->toString();
 }
 
-# use java::io::ByteArrayOutputStream;
-# use java::io::IOException;
-# use java::io::InputStream;
-# use java::io::OutputStream;
-# use java::io::Reader;
-# use java::io::Writer;
-# use java::nio::CharBuffer;
-use org::allbinary::logic::NullUtil;
-use org::allbinary::logic::communication::log::LogUtil;
-use org::allbinary::logic::io::StreamUtil;
-use org::allbinary::logic::string::StringMaker;
-use org::allbinary::string::CommonStrings;
-use org::allbinary::util::BasicArrayList;
-use org::allbinary::util::BasicArrayListD;
+use java::lang::Object ();
+use java::lang::LazyStatic ();
+# use java::io::ByteArrayOutputStream ();
+# use java::io::InputStream ();
+# use java::io::OutputStream ();
+# use java::io::Reader ();
+# use java::io::Writer ();
+use org::allbinary::logic::NullUtil ();
+use org::allbinary::logic::communication::log::LogUtil ();
+use org::allbinary::logic::io::NullOutputStream ();
+use org::allbinary::logic::io::NullReader ();
+use org::allbinary::logic::io::NullWriter ();
+use org::allbinary::logic::io::StreamUtil ();
+use org::allbinary::logic::string::StringMaker ();
+use org::allbinary::string::CommonStrings ();
+use org::allbinary::util::BasicArrayList ();
+use org::allbinary::util::BasicArrayListD ();
 
 1;
 

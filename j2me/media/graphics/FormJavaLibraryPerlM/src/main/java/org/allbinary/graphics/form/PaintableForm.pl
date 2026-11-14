@@ -7,7 +7,7 @@ use feature 'try';
 no warnings 'experimental::try';
 use parent -norequire,'org::allbinary::graphics::form::ABCustomForm';
 
-our $NULL_PAINTABLE_FORM = 'org::allbinary::logic::NullUtil'->getInstance()->{NULL_OBJECT};
+tie our $NULL_PAINTABLE_FORM, 'java::lang::LazyStatic', sub { 'org::allbinary::logic::NullUtil'->getInstance()->{NULL_OBJECT} };
 
 sub _init_fields {
     my ($self) = @_;
@@ -31,7 +31,7 @@ sub getNullPaintableForm {
 sub new {
     my ($class, $title, $items, $backgroundBasicColor, $foregroundBasicColor) = @_;
     my $self = $class->SUPER::new($title, $items, $backgroundBasicColor, $foregroundBasicColor);
-    $self->_init_fields();
+    _init_fields($self);
         # super(...) made $self above
         $self->setSelectedIndex(0);
     return $self;
@@ -54,17 +54,19 @@ sub getWidth {
         return $self->{rectangle}->getWidth();
 }
 
-use org::allbinary::graphics::GPoint;
-use org::allbinary::graphics::Rectangle;
-use org::allbinary::graphics::RectangleFactory;
-use org::allbinary::graphics::color::BasicColor;
-use org::allbinary::graphics::color::BasicColorFactory;
-use org::allbinary::graphics::displayable::CanvasStrings;
-use org::allbinary::graphics::form::item::ABCustomItem;
-use org::allbinary::logic::NullUtil;
-use org::allbinary::logic::string::StringUtil;
-use org::allbinary::graphics::form::ABCustomForm;
-use org::allbinary::graphics::form::FormTypeFactory;
+use java::lang::Object ();
+use java::lang::LazyStatic ();
+use org::allbinary::graphics::GPoint ();
+use org::allbinary::graphics::Rectangle ();
+use org::allbinary::graphics::RectangleFactory ();
+use org::allbinary::graphics::color::BasicColor ();
+use org::allbinary::graphics::color::BasicColorFactory ();
+use org::allbinary::graphics::displayable::CanvasStrings ();
+use org::allbinary::graphics::form::item::ABCustomItem ();
+use org::allbinary::logic::NullUtil ();
+use org::allbinary::logic::string::StringUtil ();
+use org::allbinary::graphics::form::ABCustomForm ();
+use org::allbinary::graphics::form::FormTypeFactory ();
 
 1;
 

@@ -108,15 +108,16 @@ sub isOffMap {
         return 0;
 }
 
-use org::allbinary::game::physics::velocity::VelocityProperties;
-use org::allbinary::layer::AllBinaryLayer;
-use org::allbinary::media::graphics::geography::map::BasicGeographicMap;
-use org::allbinary::media::graphics::geography::map::GeographicMapCellPosition;
-use org::allbinary::media::graphics::geography::map::GeographicMapCellType;
-use org::allbinary::media::graphics::geography::map::SimpleGeographicMapCellPositionFactory;
-use org::allbinary::media::graphics::geography::map::topview::BasicTopViewGeographicMapCellTypeFactory;
-use org::allbinary::util::BasicArrayList;
-use org::allbinary::game::behavior::topview::TopViewGameLayerBehavior;
+use java::lang::Object ();
+use org::allbinary::game::physics::velocity::VelocityProperties ();
+use org::allbinary::layer::AllBinaryLayer ();
+use org::allbinary::media::graphics::geography::map::BasicGeographicMap ();
+use org::allbinary::media::graphics::geography::map::GeographicMapCellPosition ();
+use org::allbinary::media::graphics::geography::map::GeographicMapCellType ();
+use org::allbinary::media::graphics::geography::map::SimpleGeographicMapCellPositionFactory ();
+use org::allbinary::media::graphics::geography::map::topview::BasicTopViewGeographicMapCellTypeFactory ();
+use org::allbinary::util::BasicArrayList ();
+use org::allbinary::game::behavior::topview::TopViewGameLayerBehavior ();
 
 1;
 

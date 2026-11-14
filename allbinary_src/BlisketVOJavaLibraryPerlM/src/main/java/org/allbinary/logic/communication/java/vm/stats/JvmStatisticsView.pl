@@ -37,13 +37,14 @@ sub toXmlNode {
         return $node;
 }
 
-use java::util::HashMap;
-use org::allbinary::data::tree::dom::DomNodeInterface;
-use org::allbinary::data::tree::dom::ModDomHelper;
-use org::w3c::dom::Document;
-use org::w3c::dom::Node;
-use org::allbinary::logic::communication::java::vm::stats::JvmStatisticsMapping;
-use org::allbinary::logic::communication::java::vm::stats::JvmStatisticsData;
+use java::lang::Object ();
+use java::util::HashMap ();
+use org::allbinary::data::tree::dom::DomNodeInterface ();
+use org::allbinary::data::tree::dom::ModDomHelper ();
+use org::w3c::dom::Document ();
+use org::w3c::dom::Node ();
+use org::allbinary::logic::communication::java::vm::stats::JvmStatisticsMapping ();
+use org::allbinary::logic::communication::java::vm::stats::JvmStatisticsData ();
 
 1;
 

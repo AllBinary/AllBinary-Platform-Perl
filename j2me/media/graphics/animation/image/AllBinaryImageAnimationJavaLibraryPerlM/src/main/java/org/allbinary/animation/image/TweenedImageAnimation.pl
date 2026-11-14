@@ -34,7 +34,7 @@ sub _init_fields {
 sub new {
     my ($class, $image, $dx, $dy, $totalFrames, $animationBehavior) = @_;
     my $self = $class->SUPER::new($animationBehavior);
-    $self->_init_fields();
+    _init_fields($self);
         # super(...) made $self above
         $self->{image} = $image;
         $self->{dx} = $dx;
@@ -115,14 +115,15 @@ sub finalize {
         'org::allbinary::DisposalUtil'->getInstance()->disposeImage($self->{image});
 }
 
-# use javax::microedition::lcdui::Graphics;
-# use javax::microedition::lcdui::Image;
-use org::allbinary::DisposalUtil;
-use org::allbinary::animation::AnimationBehavior;
-use org::allbinary::animation::IndexedAnimation;
-use org::allbinary::graphics::Anchor;
-use org::allbinary::logic::math::PrimitiveIntUtil;
-use org::allbinary::util::CircularIndexUtil;
+use java::lang::Object ();
+use javax::microedition::lcdui::Graphics ();
+use javax::microedition::lcdui::Image ();
+use org::allbinary::DisposalUtil ();
+use org::allbinary::animation::AnimationBehavior ();
+use org::allbinary::animation::IndexedAnimation ();
+use org::allbinary::graphics::Anchor ();
+use org::allbinary::logic::math::PrimitiveIntUtil ();
+use org::allbinary::util::CircularIndexUtil ();
 
 1;
 

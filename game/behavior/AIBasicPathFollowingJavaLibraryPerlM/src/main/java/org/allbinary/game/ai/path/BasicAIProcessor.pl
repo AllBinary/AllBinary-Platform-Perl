@@ -17,6 +17,7 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
 
 sub _init_fields {
@@ -33,7 +34,7 @@ sub _init_fields {
 sub new {
     my ($class, $name, $geographicMapCellHistory, $geographicMapCellPathHistoryInfo, $chosenPathList, $angleInfo, $seed) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
         $self->{name} = $name;
         $self->{geographicMapCellHistory} = $geographicMapCellHistory;
         $self->{geographicMapCellPositionBasicArrayList} = $chosenPathList;
@@ -133,16 +134,17 @@ sub setGeographicMapCellHistory {
         $self->{geographicMapCellHistory} = $geographicMapCellHistory;
 }
 
-use org::allbinary::util::BasicArrayList;
-use org::allbinary::direction::Direction;
-use org::allbinary::direction::DirectionFactory;
-use org::allbinary::layer::AllBinaryLayerManager;
-use org::allbinary::math::AngleInfo;
-use org::allbinary::media::graphics::geography::map::GeographicMapCellHistory;
-use org::allbinary::media::graphics::geography::map::GeographicMapCellPosition;
-use org::allbinary::media::graphics::geography::map::GeographicMapDirectionUtil;
-use org::allbinary::media::graphics::geography::pathfinding::GeographicMapCellPathHistoryInfo;
-use org::allbinary::game::ai::path::BasicDirectionAIHelper;
+use java::lang::Object ();
+use org::allbinary::util::BasicArrayList ();
+use org::allbinary::direction::Direction ();
+use org::allbinary::direction::DirectionFactory ();
+use org::allbinary::layer::AllBinaryLayerManager ();
+use org::allbinary::math::AngleInfo ();
+use org::allbinary::media::graphics::geography::map::GeographicMapCellHistory ();
+use org::allbinary::media::graphics::geography::map::GeographicMapCellPosition ();
+use org::allbinary::media::graphics::geography::map::GeographicMapDirectionUtil ();
+use org::allbinary::media::graphics::geography::pathfinding::GeographicMapCellPathHistoryInfo ();
+use org::allbinary::game::ai::path::BasicDirectionAIHelper ();
 
 1;
 

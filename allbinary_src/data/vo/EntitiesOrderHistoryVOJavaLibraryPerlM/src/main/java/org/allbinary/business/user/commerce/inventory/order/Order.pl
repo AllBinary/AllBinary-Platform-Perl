@@ -17,7 +17,7 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
-use parent -norequire,'org::allbinary::business::user::commerce::inventory::order::OrderInterface','java::io::Serializable';
+use parent -norequire,'java::lang::Object','org::allbinary::business::user::commerce::inventory::order::OrderInterface';
 
 
 sub _init_fields {
@@ -45,7 +45,7 @@ sub new {
 sub _new1 {
     my ($class, $basket) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
         $self->{basket} = $basket;
         $self->{id} = undef;
         $self->{shippingType} = 'org::allbinary::logic::string::StringUtil'->getInstance()->{EMPTY_STRING};
@@ -56,7 +56,7 @@ sub _new1 {
 sub _new6 {
     my ($class, $storeName, $basket, $id, $shippingType, $special, $paymentMethod) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
         $self->{storeName} = $storeName;
         $self->{basket} = $basket;
         $self->{id} = $id;
@@ -257,24 +257,25 @@ sub toXmlNode {
         return $node;
 }
 
-# use java::io::Serializable;
-use java::util::HashMap;
-# use java::util::Set;
-use org::allbinary::business::context::modules::storefront::StoreFrontData;
-use org::allbinary::business::context::modules::storefront::StoreFrontInterface;
-use org::allbinary::business::entry::EntryData;
-use org::allbinary::business::user::commerce::inventory::basket::BasketInterface;
-use org::allbinary::business::user::commerce::money::payment::PaymentData;
-use org::allbinary::business::user::commerce::shipping::ShippingMethodData;
-use org::allbinary::data::tree::dom::ModDomHelper;
-use org::allbinary::logic::StdUtil;
-use org::allbinary::logic::string::StringUtil;
-use org::allbinary::logic::string::StringValidationUtil;
-use org::w3c::dom::Document;
-use org::w3c::dom::Node;
-use org::allbinary::business::user::commerce::inventory::order::OrderInterface;
-use org::allbinary::business::user::commerce::inventory::order::OrderHistoryData;
-use org::allbinary::business::user::commerce::inventory::order::OrderData;
+use java::lang::Object ();
+# use java::io::Serializable ();
+use java::util::HashMap ();
+# use java::util::Set ();
+use org::allbinary::business::context::modules::storefront::StoreFrontData ();
+use org::allbinary::business::context::modules::storefront::StoreFrontInterface ();
+use org::allbinary::business::entry::EntryData ();
+use org::allbinary::business::user::commerce::inventory::basket::BasketInterface ();
+use org::allbinary::business::user::commerce::money::payment::PaymentData ();
+use org::allbinary::business::user::commerce::shipping::ShippingMethodData ();
+use org::allbinary::data::tree::dom::ModDomHelper ();
+use org::allbinary::logic::StdUtil ();
+use org::allbinary::logic::string::StringUtil ();
+use org::allbinary::logic::string::StringValidationUtil ();
+use org::w3c::dom::Document ();
+use org::w3c::dom::Node ();
+use org::allbinary::business::user::commerce::inventory::order::OrderInterface ();
+use org::allbinary::business::user::commerce::inventory::order::OrderHistoryData ();
+use org::allbinary::business::user::commerce::inventory::order::OrderData ();
 
 1;
 

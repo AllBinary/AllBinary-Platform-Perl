@@ -19,7 +19,7 @@ use feature 'try';
 no warnings 'experimental::try';
 use parent -norequire,'org::allbinary::layer::AllBinaryLayerCircularPool';
 
-our $SINGLETON = 'org::allbinary::game::tracking::GenericTrackingLayerCircularStaticPool'->new();
+tie our $SINGLETON, 'java::lang::LazyStatic', sub { 'org::allbinary::game::tracking::GenericTrackingLayerCircularStaticPool'->new() };
 
 
 sub new {
@@ -34,7 +34,9 @@ sub getInstance {
         return $org::allbinary::game::tracking::GenericTrackingLayerCircularStaticPool::SINGLETON;
 }
 
-use org::allbinary::layer::AllBinaryLayerCircularPool;
+use java::lang::Object ();
+use java::lang::LazyStatic ();
+use org::allbinary::layer::AllBinaryLayerCircularPool ();
 
 1;
 

@@ -30,7 +30,7 @@ sub _init_fields {
 sub new {
     my ($class, $transformInfoInterface) = @_;
     my $self = $class->SUPER::new($transformInfoInterface);
-    $self->_init_fields();
+    _init_fields($self);
         # super(...) made $self above
         $self->setURIResolver('org::allbinary::data::tree::dom::StoreUriResolver'->new($self->getTransformInfoInterface(), $self->getURIResolver()));
         my $objectConfig = 'views::compound::objectConfig::CompoundContextTransformInfoObjectConfig'->new($self->{abeClientInformation}, $self->getTransformInfoInterface(), $self->getTransformInfoInterface()->getObjectConfigInterface()->toXmlDoc());
@@ -42,16 +42,17 @@ sub new {
     return $self;
 }
 
-# use java::io::InputStream;
-# use javax::xml::transform::URIResolver;
-use org::allbinary::data::tree::dom::BasicUriResolver;
-use org::allbinary::data::tree::dom::StoreUriResolver;
-use org::allbinary::logic::communication::log::LogUtil;
-use org::allbinary::logic::system::security::licensing::AbeClientInformationInterface;
-use org::allbinary::logic::system::security::licensing::ServiceClientInformationInterfaceFactory;
-use org::allbinary::logic::visual::transform::AbTransformer;
-use org::allbinary::logic::visual::transform::info::TransformInfoInterface;
-use views::compound::objectConfig::CompoundContextTransformInfoObjectConfig;
+use java::lang::Object ();
+# use java::io::InputStream ();
+# use javax::xml::transform::URIResolver ();
+use org::allbinary::data::tree::dom::BasicUriResolver ();
+use org::allbinary::data::tree::dom::StoreUriResolver ();
+use org::allbinary::logic::communication::log::LogUtil ();
+use org::allbinary::logic::system::security::licensing::AbeClientInformationInterface ();
+use org::allbinary::logic::system::security::licensing::ServiceClientInformationInterfaceFactory ();
+use org::allbinary::logic::visual::transform::AbTransformer ();
+use org::allbinary::logic::visual::transform::info::TransformInfoInterface ();
+use views::compound::objectConfig::CompoundContextTransformInfoObjectConfig ();
 
 1;
 

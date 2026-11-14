@@ -19,7 +19,7 @@ use feature 'try';
 no warnings 'experimental::try';
 use parent -norequire,'org::allbinary::game::input::PlayerGameInput';
 
-our $SINGLETON = 'org::allbinary::game::input::NoPlayerGameInput'->new();
+tie our $SINGLETON, 'java::lang::LazyStatic', sub { 'org::allbinary::game::input::NoPlayerGameInput'->new() };
 
 
 sub getInstance {
@@ -45,9 +45,11 @@ sub onUpGameKeyEvent {
     my ($self, $gameKeyEvent) = @_;
 }
 
-use org::allbinary::game::input::event::GameKeyEvent;
-use org::allbinary::util::BasicArrayListD;
-use org::allbinary::game::input::PlayerGameInput;
+use java::lang::Object ();
+use java::lang::LazyStatic ();
+use org::allbinary::game::input::event::GameKeyEvent ();
+use org::allbinary::util::BasicArrayListD ();
+use org::allbinary::game::input::PlayerGameInput ();
 
 1;
 

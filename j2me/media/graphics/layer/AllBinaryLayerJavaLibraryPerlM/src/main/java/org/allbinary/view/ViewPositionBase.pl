@@ -19,7 +19,7 @@ use feature 'try';
 no warnings 'experimental::try';
 use parent -norequire,'org::allbinary::graphics::GPoint';
 
-our $NULL_VIEW_POSITION = 'org::allbinary::view::ViewPositionBase'->new(0, 0, 0);
+tie our $NULL_VIEW_POSITION, 'java::lang::LazyStatic', sub { 'org::allbinary::view::ViewPositionBase'->new(0, 0, 0) };
 
 
 sub new {
@@ -52,7 +52,9 @@ sub setAllbinaryLayer {
     my ($self, $allbinaryLayer) = @_;
 }
 
-use org::allbinary::graphics::GPoint;
+use java::lang::Object ();
+use java::lang::LazyStatic ();
+use org::allbinary::graphics::GPoint ();
 
 1;
 

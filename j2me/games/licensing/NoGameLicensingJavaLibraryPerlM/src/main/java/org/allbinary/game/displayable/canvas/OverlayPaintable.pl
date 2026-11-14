@@ -29,7 +29,7 @@ sub _init_fields {
 sub new {
     my ($class) = @_;
     my $self = $class->SUPER::new();
-    $self->_init_fields();
+    _init_fields($self);
     return $self;
 }
 
@@ -48,10 +48,11 @@ sub paint {
     my ($self, $graphics) = @_;
 }
 
-# use javax::microedition::lcdui::Graphics;
-use org::allbinary::graphics::paint::InitUpdatePaintable;
-use org::allbinary::logic::communication::log::LogUtil;
-use org::allbinary::string::CommonStrings;
+use java::lang::Object ();
+use javax::microedition::lcdui::Graphics ();
+use org::allbinary::graphics::paint::InitUpdatePaintable ();
+use org::allbinary::logic::communication::log::LogUtil ();
+use org::allbinary::string::CommonStrings ();
 
 1;
 

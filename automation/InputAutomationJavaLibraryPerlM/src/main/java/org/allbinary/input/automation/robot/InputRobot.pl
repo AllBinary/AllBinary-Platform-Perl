@@ -17,7 +17,7 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
-use parent -norequire,'org::allbinary::input::automation::robot::InputRobotInterface';
+use parent -norequire,'java::lang::Object','org::allbinary::input::automation::robot::InputRobotInterface';
 
 our $NAME = "Java Robot";
 
@@ -31,7 +31,7 @@ sub _init_fields {
 sub new {
     my ($class, $graphicsDevice) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
         $self->{robot} = 'org::allbinary::input::automation::robot::Robot'->new($graphicsDevice);
     return $self;
 }
@@ -189,16 +189,17 @@ sub off {
     my ($self) = @_;
 }
 
-# use java::awt;
-# use java::awt::image::BufferedImage;
-# use javax::help::HelpSet;
-use org::allbinary::input::automation::PointHelper;
-use org::allbinary::logic::communication::log::LogUtil;
-use org::allbinary::logic::string::StringMaker;
-use org::allbinary::logic::string::StringUtil;
-use org::allbinary::input::automation::robot::InputRobotInterface;
-use org::allbinary::input::automation::robot::Robot;
-use org::allbinary::input::automation::robot::MouseInfo;
+use java::lang::Object ();
+# use java::awt ();
+# use java::awt::image::BufferedImage ();
+# use javax::help::HelpSet ();
+use org::allbinary::input::automation::PointHelper ();
+use org::allbinary::logic::communication::log::LogUtil ();
+use org::allbinary::logic::string::StringMaker ();
+use org::allbinary::logic::string::StringUtil ();
+use org::allbinary::input::automation::robot::InputRobotInterface ();
+use org::allbinary::input::automation::robot::Robot ();
+use org::allbinary::input::automation::robot::MouseInfo ();
 
 1;
 

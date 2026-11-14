@@ -44,7 +44,7 @@ sub getTwoDimensionalConstraint {
     die "abstract method getTwoDimensionalConstraint";
 }
 
-use org::allbinary::logic::control::contraints::size::TwoDimensionalConstraintInterface;
+use org::allbinary::logic::control::contraints::size::TwoDimensionalConstraintInterface ();
 
 1;
 

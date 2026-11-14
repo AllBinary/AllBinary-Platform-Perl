@@ -17,7 +17,7 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
-use parent -norequire,'org::allbinary::business::category::CategoryFactoryInterface';
+use parent -norequire,'java::lang::Object','org::allbinary::business::category::CategoryFactoryInterface';
 
 
 sub _init_fields {
@@ -31,7 +31,7 @@ sub _init_fields {
 sub new {
     my ($class, $transformInfoInterface) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
         if ($org::allbinary::business::category::store::theme::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($org::allbinary::business::category::store::theme::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{CATEGORY})) {
             $self->{logUtil}->putF($self->{commonStrings}->{START}, $self, "StoreCategoryFactory(TransformInfoInterface transformInfoInterface)");
         }
@@ -174,20 +174,21 @@ sub getInstance {
         }
 }
 
-use java::util::HashMap;
-use org::allbinary::business::category::CategoryFactoryInterface;
-use org::allbinary::business::category::CategoryInterface;
-use org::allbinary::business::category::CategoryUtil;
-use org::allbinary::business::category::properties::CategoryPropertiesFactory;
-use org::allbinary::business::category::properties::CategoryPropertiesFactoryInterface;
-use org::allbinary::business::category::properties::root::store::theme::RootStoreThemeCategoryPropertiesFactory;
-use org::allbinary::logic::communication::log::LogUtil;
-use org::allbinary::logic::io::path::AbPath;
-use org::allbinary::logic::string::StringUtil;
-use org::allbinary::logic::visual::transform::info::TransformInfoInterface;
-use org::allbinary::string::CommonStrings;
-use org::w3c::dom::Node;
-use org::allbinary::business::category::store::theme::StoreThemeCategory;
+use java::lang::Object ();
+use java::util::HashMap ();
+use org::allbinary::business::category::CategoryFactoryInterface ();
+use org::allbinary::business::category::CategoryInterface ();
+use org::allbinary::business::category::CategoryUtil ();
+use org::allbinary::business::category::properties::CategoryPropertiesFactory ();
+use org::allbinary::business::category::properties::CategoryPropertiesFactoryInterface ();
+use org::allbinary::business::category::properties::root::store::theme::RootStoreThemeCategoryPropertiesFactory ();
+use org::allbinary::logic::communication::log::LogUtil ();
+use org::allbinary::logic::io::path::AbPath ();
+use org::allbinary::logic::string::StringUtil ();
+use org::allbinary::logic::visual::transform::info::TransformInfoInterface ();
+use org::allbinary::string::CommonStrings ();
+use org::w3c::dom::Node ();
+use org::allbinary::business::category::store::theme::StoreThemeCategory ();
 
 1;
 

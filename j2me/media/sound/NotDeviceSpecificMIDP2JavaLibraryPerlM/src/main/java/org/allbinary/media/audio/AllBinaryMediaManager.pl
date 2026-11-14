@@ -18,6 +18,7 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
 our $THIS = "AllBinaryMediaManagerNoMIPD2";
 
@@ -74,7 +75,7 @@ sub createPlayer {
                 return 'javax::microedition::media::Manager'->createPlayer($resource);
             } else {
                 my $inputStream = 'org::allbinary::data::resource::ResourceUtil'->getInstance()->getResourceAsStream($resource);
-                return 'javax::microedition::media::Manager'->createPlayer($inputStream, 'org::allbinary::audio::AudioContentTypeDataFactory'->getInstance()->{MIME_AUDIO_WAV}->getName());
+                return 'org::allbinary::MIDPUtil'->getInstance()->createPlayerFromInputStream($inputStream, 'org::allbinary::audio::AudioContentTypeDataFactory'->getInstance()->{MIME_AUDIO_WAV}->getName());
             }
         } else {
             return $org::allbinary::media::audio::NoPlayer::NO_PLAYER;
@@ -90,20 +91,22 @@ sub playTone {
         }
 }
 
-# use java::io::InputStream;
-# use javax::microedition::media::Manager;
-# use javax::microedition::media::MediaException;
-# use javax::microedition::media::Player;
-use org::allbinary::TsUtil;
-use org::allbinary::audio::AudioContentTypeDataFactory;
-use org::allbinary::data::resource::ResourceUtil;
-use org::allbinary::game::configuration::feature::Features;
-use org::allbinary::game::configuration::feature::GameFeatureFactory;
-use org::allbinary::graphics::canvas::transition::progress::ProgressCanvasFactory;
-use org::allbinary::logic::communication::log::LogUtil;
-use org::allbinary::string::CommonStrings;
-use org::allbinary::media::audio::Sounds;
-use org::allbinary::media::audio::NoPlayer;
+use java::lang::Object ();
+# use java::io::InputStream ();
+use javax::microedition::media::Manager ();
+use javax::microedition::media::MediaException ();
+use javax::microedition::media::Player ();
+use org::allbinary::MIDPUtil ();
+use org::allbinary::TsUtil ();
+use org::allbinary::audio::AudioContentTypeDataFactory ();
+use org::allbinary::data::resource::ResourceUtil ();
+use org::allbinary::game::configuration::feature::Features ();
+use org::allbinary::game::configuration::feature::GameFeatureFactory ();
+use org::allbinary::graphics::canvas::transition::progress::ProgressCanvasFactory ();
+use org::allbinary::logic::communication::log::LogUtil ();
+use org::allbinary::string::CommonStrings ();
+use org::allbinary::media::audio::Sounds ();
+use org::allbinary::media::audio::NoPlayer ();
 
 1;
 

@@ -39,7 +39,7 @@ sub new {
 sub _new1 {
     my ($class, $node) = @_;
     my $self = $class->SUPER::new($org::allbinary::input::automation::actions::script::condition::AlwaysActionScriptCondition::NAME, $node);
-    $self->_init_fields();
+    _init_fields($self);
         # super(...) made $self above
         my $actionNode = 'org::allbinary::data::tree::dom::DomSearchHelper'->getNode($org::allbinary::input::automation::actions::script::condition::AlwaysActionScriptConditionData::NAME, $node->getChildNodes());
         if (defined($actionNode)) {
@@ -64,7 +64,7 @@ sub _new1 {
 sub _new0 {
     my ($class) = @_;
     my $self = $class->SUPER::new($org::allbinary::input::automation::actions::script::condition::AlwaysActionScriptCondition::NAME);
-    $self->_init_fields();
+    _init_fields($self);
         # super(...) made $self above
         $self->init();
     return $self;
@@ -128,19 +128,20 @@ sub log {
         $self->{logUtil}->putF("Is On: " . $self->isIsOn(), $self, "log");
 }
 
-use java::util::HashMap;
-use org::allbinary::data::tree::dom::DomNodeHelper;
-use org::allbinary::data::tree::dom::DomSearchHelper;
-use org::allbinary::data::tree::dom::ModDomHelper;
-use org::allbinary::logic::StdUtil;
-use org::allbinary::logic::communication::log::LogUtil;
-use org::w3c::dom::Document;
-use org::w3c::dom::Node;
-use org::w3c::dom::NodeList;
-use org::allbinary::input::automation::actions::script::condition::BasicProfileActionScriptCondition;
-use org::allbinary::input::automation::actions::script::condition::AlwaysActionScriptConditionInterface;
-use org::allbinary::input::automation::actions::script::condition::AlwaysActionScriptConditionData;
-use org::allbinary::input::automation::actions::script::condition::AlwaysActionScriptConditionJPanel;
+use java::lang::Object ();
+use java::util::HashMap ();
+use org::allbinary::data::tree::dom::DomNodeHelper ();
+use org::allbinary::data::tree::dom::DomSearchHelper ();
+use org::allbinary::data::tree::dom::ModDomHelper ();
+use org::allbinary::logic::StdUtil ();
+use org::allbinary::logic::communication::log::LogUtil ();
+use org::w3c::dom::Document ();
+use org::w3c::dom::Node ();
+use org::w3c::dom::NodeList ();
+use org::allbinary::input::automation::actions::script::condition::BasicProfileActionScriptCondition ();
+use org::allbinary::input::automation::actions::script::condition::AlwaysActionScriptConditionInterface ();
+use org::allbinary::input::automation::actions::script::condition::AlwaysActionScriptConditionData ();
+use org::allbinary::input::automation::actions::script::condition::AlwaysActionScriptConditionJPanel ();
 
 1;
 

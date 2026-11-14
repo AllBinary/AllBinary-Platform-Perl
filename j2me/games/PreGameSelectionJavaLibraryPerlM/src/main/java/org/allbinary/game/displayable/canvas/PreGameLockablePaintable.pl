@@ -30,7 +30,7 @@ sub _init_fields {
 sub new {
     my ($class, $paintableForm, $lockedIndex) = @_;
     my $self = $class->SUPER::new($lockedIndex);
-    $self->_init_fields();
+    _init_fields($self);
         # super(...) made $self above
         $self->{paintableForm} = $paintableForm;
         $self->{halfWidth} = 'org::allbinary::image::GameFeatureImageCacheFactory'->getInstance()->getWithKey('org::allbinary::logic::system::security::licensing::LockedResources'->getInstance()->{LOCKED_DEMO_GAME_FEATURE_RESOURCE})->getWidth() / 2;
@@ -51,12 +51,13 @@ sub getPaintableForm {
         return $self->{paintableForm};
 }
 
-# use javax::microedition::lcdui::Graphics;
-use org::allbinary::image::GameFeatureImageCacheFactory;
-use org::allbinary::logic::system::security::licensing::LockedResources;
-use org::allbinary::logic::system::security::licensing::LockedUtil;
-use org::allbinary::graphics::form::LockablePaintable;
-use org::allbinary::graphics::form::ScrollCurrentSelectionForm;
+use java::lang::Object ();
+use javax::microedition::lcdui::Graphics ();
+use org::allbinary::image::GameFeatureImageCacheFactory ();
+use org::allbinary::logic::system::security::licensing::LockedResources ();
+use org::allbinary::logic::system::security::licensing::LockedUtil ();
+use org::allbinary::graphics::form::LockablePaintable ();
+use org::allbinary::graphics::form::ScrollCurrentSelectionForm ();
 
 1;
 

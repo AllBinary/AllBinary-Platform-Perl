@@ -29,7 +29,7 @@ sub _init_fields {
 sub new {
     my ($class, $transformInfoInterface) = @_;
     my $self = $class->SUPER::new($transformInfoInterface);
-    $self->_init_fields();
+    _init_fields($self);
         # super(...) made $self above
         if ($views::business::context::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($views::business::context::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{VIEW})) {
             $self->{logUtil}->putF("View Name: " . $transformInfoInterface->getName(), $self, "RootContextView()");
@@ -86,17 +86,18 @@ sub getName {
         }
 }
 
-use org::allbinary::util::BasicArrayList;
-use org::allbinary::util::BasicArrayListD;
-use org::allbinary::logic::communication::log::LogUtil;
-use org::allbinary::logic::string::StringValidationUtil;
-use org::allbinary::logic::visual::transform::TransformFactory;
-use org::allbinary::logic::visual::transform::TransformInterface;
-use org::allbinary::logic::visual::transform::info::TransformInfo;
-use org::allbinary::logic::visual::transform::info::TransformInfoInterface;
-use org::allbinary::logic::visual::transform::template::TransformTemplateInterface;
-use views::business::context::modules::storefront::HttpStoreComponentView;
-use views::business::context::modules::storefront::customizer::template::objectConfig::NoTemplateTransformInfoObjectConfig;
+use java::lang::Object ();
+use org::allbinary::util::BasicArrayList ();
+use org::allbinary::util::BasicArrayListD ();
+use org::allbinary::logic::communication::log::LogUtil ();
+use org::allbinary::logic::string::StringValidationUtil ();
+use org::allbinary::logic::visual::transform::TransformFactory ();
+use org::allbinary::logic::visual::transform::TransformInterface ();
+use org::allbinary::logic::visual::transform::info::TransformInfo ();
+use org::allbinary::logic::visual::transform::info::TransformInfoInterface ();
+use org::allbinary::logic::visual::transform::template::TransformTemplateInterface ();
+use views::business::context::modules::storefront::HttpStoreComponentView ();
+use views::business::context::modules::storefront::customizer::template::objectConfig::NoTemplateTransformInfoObjectConfig ();
 
 1;
 

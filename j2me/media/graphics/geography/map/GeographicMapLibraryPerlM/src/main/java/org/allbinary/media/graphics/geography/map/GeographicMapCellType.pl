@@ -17,9 +17,10 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
 our $NULL_GEOGRAPHIC_MAP_CELL_TYPE_ARRAY = [(undef) x (0)];
-our $NULL_GEOGRAPHIC_MAP_CELL_TYPE = 'org::allbinary::media::graphics::geography::map::GeographicMapCellType'->new((-2147483648), 0);
+tie our $NULL_GEOGRAPHIC_MAP_CELL_TYPE, 'java::lang::LazyStatic', sub { 'org::allbinary::media::graphics::geography::map::GeographicMapCellType'->new((-2147483648), 0) };
 
 sub _init_fields {
     my ($self) = @_;
@@ -31,7 +32,7 @@ sub _init_fields {
 sub new {
     my ($class, $type, $reset) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
         $self->{type} = $type;
         if ($type != (-2147483648)) {
             my $geographicMapCellTypeFactory = 'org::allbinary::media::graphics::geography::map::GeographicMapCellTypeFactory'->getInstance();
@@ -59,9 +60,11 @@ sub toString {
         return 'org::allbinary::logic::math::SmallIntegerSingletonFactory'->getInstance()->getAt($self->{type})->toString();
 }
 
-use org::allbinary::logic::communication::log::LogUtil;
-use org::allbinary::logic::math::SmallIntegerSingletonFactory;
-use org::allbinary::media::graphics::geography::map::GeographicMapCellTypeFactory;
+use java::lang::Object ();
+use java::lang::LazyStatic ();
+use org::allbinary::logic::communication::log::LogUtil ();
+use org::allbinary::logic::math::SmallIntegerSingletonFactory ();
+use org::allbinary::media::graphics::geography::map::GeographicMapCellTypeFactory ();
 
 1;
 

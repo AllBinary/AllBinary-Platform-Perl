@@ -29,7 +29,7 @@ sub _init_fields {
 sub new {
     my ($class, $angleInfo, $currentPoints, $basicColor, $animationBehavior) = @_;
     my $self = $class->SUPER::new($angleInfo, 'org::allbinary::util::CircularIndexUtil'->createInstance(360 / $angleInfo->getAngleIncrementInfo()->getAngleIncrement()), $animationBehavior);
-    $self->_init_fields();
+    _init_fields($self);
         # super(...) made $self above
         $self->setPoints($currentPoints);
         $self->setBasicColorP($basicColor);
@@ -125,14 +125,27 @@ sub setPoints {
         $self->{circularIndexUtil} = 'org::allbinary::util::CircularIndexUtil'->createInstance(scalar(@{$self->{currentPoints}}));
 }
 
-# use javax::microedition::lcdui::Graphics;
-use org::allbinary::graphics::color::BasicColor;
-use org::allbinary::logic::NullUtil;
-use org::allbinary::logic::math::PrimitiveIntUtil;
-use org::allbinary::math::AngleInfo;
-use org::allbinary::util::CircularIndexUtil;
-use org::allbinary::animation::RotationAnimation;
-use org::allbinary::animation::VectorAnimationInterface;
+
+sub getBasicColorP {
+    my ($self) = @_;
+        return $self->SUPER::getBasicColorP();
+}
+
+
+sub setBasicColorP {
+    my ($self, $basicColor) = @_;
+        $self->SUPER::setBasicColorP($basicColor);
+}
+
+use java::lang::Object ();
+use javax::microedition::lcdui::Graphics ();
+use org::allbinary::graphics::color::BasicColor ();
+use org::allbinary::logic::NullUtil ();
+use org::allbinary::logic::math::PrimitiveIntUtil ();
+use org::allbinary::math::AngleInfo ();
+use org::allbinary::util::CircularIndexUtil ();
+use org::allbinary::animation::RotationAnimation ();
+use org::allbinary::animation::VectorAnimationInterface ();
 
 1;
 

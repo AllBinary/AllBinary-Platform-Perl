@@ -17,6 +17,7 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
 
 
@@ -44,14 +45,15 @@ sub process {
         }
 }
 
-use org::allbinary::string::CommonStrings;
-use org::allbinary::logic::communication::log::PreLogUtil;
-use org::allbinary::logic::system::security::licensing::AbeClientInformationInterface;
-use org::allbinary::canvas::SpecialMessageUtil;
-use org::allbinary::string::CommonLabels;
-use org::allbinary::util::ABHashtable;
-use org::allbinary::logic::system::security::licensing::registration::RegistrationConfiguration;
-use org::allbinary::logic::system::security::licensing::registration::XmlRpcRemoteLicenseRegistrationClient;
+use java::lang::Object ();
+use org::allbinary::string::CommonStrings ();
+use org::allbinary::logic::communication::log::PreLogUtil ();
+use org::allbinary::logic::system::security::licensing::AbeClientInformationInterface ();
+use org::allbinary::canvas::SpecialMessageUtil ();
+use org::allbinary::string::CommonLabels ();
+use org::allbinary::util::ABHashtable ();
+use org::allbinary::logic::system::security::licensing::registration::RegistrationConfiguration ();
+use org::allbinary::logic::system::security::licensing::registration::XmlRpcRemoteLicenseRegistrationClient ();
 
 1;
 

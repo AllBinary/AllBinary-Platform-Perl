@@ -33,7 +33,7 @@ sub _init_fields {
 sub new {
     my ($class) = @_;
     my $self = $class->SUPER::new('org::allbinary::business::init::db::UserDbInitInfo'->new());
-    $self->_init_fields();
+    _init_fields($self);
         # super(...) made $self above
         $self->{tableData} = 'org::allbinary::logic::string::StringMaker'->new()->append($self->{sqlStrings}->{CREATE_TABLE})->append($self->{tableName})->append($self->{sqlStrings}->{START})->append($self->{NAME})->append($self->{sqlTypeStrings}->{MAX_CHAR_COLUMN_NOT_NULL})->append($self->{VALUE})->append($self->{sqlTypeStrings}->{MAX_BIG_INT_UNSIGNED_NOT_NULL})->append($self->{sqlStrings}->{PRIMARY_KEY})->append($self->{NAME})->append($self->{sqlStrings}->{END})->toString();
         $self->SUPER::setTableName($self->{tableName});
@@ -105,15 +105,22 @@ sub dropTable {
         return $self->SUPER::dropTable();
 }
 
-use java::util::HashMap;
-use org::allbinary::util::BasicArrayList;
-use org::allbinary::util::BasicArrayListD;
-use org::allbinary::business::init::db::UserDbInitInfo;
-use org::allbinary::logic::StdUtil;
-use org::allbinary::logic::communication::log::LogUtil;
-use org::allbinary::logic::communication::sql::AbSqlBean;
-use org::allbinary::logic::string::StringMaker;
-use org::allbinary::data::tables::generator::IdGeneratorEntityInterface;
+
+sub deleteWhere {
+    my ($self, $key, $value) = @_;
+        $self->SUPER::deleteWhere($key, $value);
+}
+
+use java::lang::Object ();
+use java::util::HashMap ();
+use org::allbinary::util::BasicArrayList ();
+use org::allbinary::util::BasicArrayListD ();
+use org::allbinary::business::init::db::UserDbInitInfo ();
+use org::allbinary::logic::StdUtil ();
+use org::allbinary::logic::communication::log::LogUtil ();
+use org::allbinary::logic::communication::sql::AbSqlBean ();
+use org::allbinary::logic::string::StringMaker ();
+use org::allbinary::data::tables::generator::IdGeneratorEntityInterface ();
 
 1;
 

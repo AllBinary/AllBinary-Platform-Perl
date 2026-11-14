@@ -29,7 +29,7 @@ sub _init_fields {
 sub new {
     my ($class, $transformInfoInterface) = @_;
     my $self = $class->SUPER::new($transformInfoInterface);
-    $self->_init_fields();
+    _init_fields($self);
         # super(...) made $self above
         if ($views::business::context::modules::storefront::customizer::generic::page::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($views::business::context::modules::storefront::customizer::generic::page::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{VIEW})) {
             $self->{logUtil}->putF("View Name: " . $transformInfoInterface->getName(), $self, "PageViewValidation()");
@@ -156,26 +156,34 @@ sub toValidationInfoNode {
         return undef;
 }
 
-use java::util::HashMap;
-use org::allbinary::util::BasicArrayList;
-use org::allbinary::data::tables::transform::info::TransformInfoEntity;
-use org::allbinary::data::tables::transform::info::TransformInfoEntityBuilder;
-use org::allbinary::data::tree::dom::document::DomDocumentHelper;
-use org::allbinary::data::tree::dom::document::XmlDocumentHelper;
-use org::allbinary::logic::StdUtil;
-use org::allbinary::logic::communication::log::LogUtil;
-use org::allbinary::logic::control::validate::ValidationComponentInterface;
-use org::allbinary::logic::string::StringMaker;
-use org::allbinary::logic::visual::transform::info::TransformInfo;
-use org::allbinary::logic::visual::transform::info::TransformInfoHttpInterface;
-use org::allbinary::logic::visual::transform::info::TransformInfoInterface;
-use org::allbinary::logic::visual::transform::info::objectConfig::TransformInfoObjectConfigInterface;
-use org::allbinary::logic::visual::transform::template::customizer::page::PageValidation;
-use org::allbinary::logic::visual::transform::template::customizer::widgets::title::TitleData;
-use org::w3c::dom::Document;
-use org::w3c::dom::Node;
-use views::business::context::modules::storefront::customizer::CustomizerUtil;
-use views::business::context::modules::storefront::customizer::generic::page::PageView;
+
+# throws Exception
+sub getTransformInfoInterface {
+    my ($self) = @_;
+        return $self->SUPER::getTransformInfoInterface();
+}
+
+use java::lang::Object ();
+use java::util::HashMap ();
+use org::allbinary::util::BasicArrayList ();
+use org::allbinary::data::tables::transform::info::TransformInfoEntity ();
+use org::allbinary::data::tables::transform::info::TransformInfoEntityBuilder ();
+use org::allbinary::data::tree::dom::document::DomDocumentHelper ();
+use org::allbinary::data::tree::dom::document::XmlDocumentHelper ();
+use org::allbinary::logic::StdUtil ();
+use org::allbinary::logic::communication::log::LogUtil ();
+use org::allbinary::logic::control::validate::ValidationComponentInterface ();
+use org::allbinary::logic::string::StringMaker ();
+use org::allbinary::logic::visual::transform::info::TransformInfo ();
+use org::allbinary::logic::visual::transform::info::TransformInfoHttpInterface ();
+use org::allbinary::logic::visual::transform::info::TransformInfoInterface ();
+use org::allbinary::logic::visual::transform::info::objectConfig::TransformInfoObjectConfigInterface ();
+use org::allbinary::logic::visual::transform::template::customizer::page::PageValidation ();
+use org::allbinary::logic::visual::transform::template::customizer::widgets::title::TitleData ();
+use org::w3c::dom::Document ();
+use org::w3c::dom::Node ();
+use views::business::context::modules::storefront::customizer::CustomizerUtil ();
+use views::business::context::modules::storefront::customizer::generic::page::PageView ();
 
 1;
 

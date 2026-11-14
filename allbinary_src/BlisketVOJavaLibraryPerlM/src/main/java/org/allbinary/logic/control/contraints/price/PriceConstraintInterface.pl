@@ -21,7 +21,7 @@ no warnings 'experimental::try';
 use parent -norequire,'org::allbinary::logic::control::contraints::MinMaxDoubleConstraintInterface';
 
 
-use org::allbinary::logic::control::contraints::MinMaxDoubleConstraintInterface;
+use org::allbinary::logic::control::contraints::MinMaxDoubleConstraintInterface ();
 
 1;
 

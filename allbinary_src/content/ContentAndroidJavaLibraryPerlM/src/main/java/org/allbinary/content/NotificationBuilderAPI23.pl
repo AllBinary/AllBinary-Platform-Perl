@@ -34,14 +34,15 @@ sub build {
         return $notification;
 }
 
-# use javax::microedition::lcdui::Command;
-use android::app::Notification;
-use android::app::Notification::Builder;
-use android::app::PendingIntent;
-use android::content::Context;
-use android::os::Parcelable;
-use org::allbinary::content::NotificationBuilder;
-use java::lang::System;
+use java::lang::Object ();
+use javax::microedition::lcdui::Command ();
+# use android::app::Notification ();
+# use android::app::Notification::Builder ();
+# use android::app::PendingIntent ();
+# use android::content::Context ();
+# use android::os::Parcelable ();
+use org::allbinary::content::NotificationBuilder ();
+use java::lang::System ();
 
 1;
 

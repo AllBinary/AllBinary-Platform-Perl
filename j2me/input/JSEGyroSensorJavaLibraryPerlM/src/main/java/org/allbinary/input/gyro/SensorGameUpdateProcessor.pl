@@ -17,6 +17,7 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
 
 sub _init_fields {
@@ -27,7 +28,7 @@ sub _init_fields {
 sub new {
     my ($class) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
     return $self;
 }
 
@@ -73,11 +74,12 @@ sub setNoSensors {
         $self->setInputSensor('org::allbinary::input::NoAllBinarySensor'->getInstance());
 }
 
-use org::allbinary::game::input::motion::action::NoCompleteMotionGestureInputEventListener;
-use org::allbinary::input::AllBinarySensor;
-use org::allbinary::input::NoAllBinarySensor;
-use org::allbinary::input::accelerometer::AccelerometerSensorFactory;
-use org::allbinary::input::gyro::GyroSensorFactory;
+use java::lang::Object ();
+use org::allbinary::game::input::motion::action::NoCompleteMotionGestureInputEventListener ();
+use org::allbinary::input::AllBinarySensor ();
+use org::allbinary::input::NoAllBinarySensor ();
+use org::allbinary::input::accelerometer::AccelerometerSensorFactory ();
+use org::allbinary::input::gyro::GyroSensorFactory ();
 
 1;
 

@@ -19,8 +19,8 @@ use feature 'try';
 no warnings 'experimental::try';
 use parent -norequire,'org::allbinary::ai::ArtificialIntelligence','org::allbinary::game::input::GameKeyEventSourceInterface';
 
-our $AI_VISITOR = 'org::allbinary::logic::math::SmallIntegerSingletonFactory'->getInstance()->getAt(2);
-our $ID = 'org::allbinary::logic::math::SmallIntegerSingletonFactory'->getInstance()->getAt(1);
+tie our $AI_VISITOR, 'java::lang::LazyStatic', sub { 'org::allbinary::logic::math::SmallIntegerSingletonFactory'->getInstance()->getAt(2) };
+tie our $ID, 'java::lang::LazyStatic', sub { 'org::allbinary::logic::math::SmallIntegerSingletonFactory'->getInstance()->getAt(1) };
 
 sub _init_fields {
     my ($self) = @_;
@@ -36,7 +36,7 @@ sub _init_fields {
 sub new {
     my ($class, $ownerLayerInterface, $gameInput) = @_;
     my $self = $class->SUPER::new();
-    $self->_init_fields();
+    _init_fields($self);
         $self->{ownerLayerInterface} = $ownerLayerInterface;
         $self->{gameInput} = $gameInput;
     return $self;
@@ -105,18 +105,20 @@ sub getSourceId {
         return 1;
 }
 
-use org::allbinary::ai::ArtificialIntelligence;
-use org::allbinary::game::displayable::canvas::CanvasUtil;
-use org::allbinary::game::input::GameInput;
-use org::allbinary::game::input::GameKeyEventSourceInterface;
-use org::allbinary::game::input::event::GameKeyEventFactory;
-use org::allbinary::layer::AllBinaryLayer;
-use org::allbinary::layer::AllBinaryLayerManager;
-use org::allbinary::logic::communication::log::LogUtil;
-use org::allbinary::logic::math::SmallIntegerSingletonFactory;
-use org::allbinary::logic::string::StringMaker;
-use org::allbinary::string::CommonSeps;
-use org::allbinary::string::CommonStrings;
+use java::lang::Object ();
+use java::lang::LazyStatic ();
+use org::allbinary::ai::ArtificialIntelligence ();
+use org::allbinary::game::displayable::canvas::CanvasUtil ();
+use org::allbinary::game::input::GameInput ();
+use org::allbinary::game::input::GameKeyEventSourceInterface ();
+use org::allbinary::game::input::event::GameKeyEventFactory ();
+use org::allbinary::layer::AllBinaryLayer ();
+use org::allbinary::layer::AllBinaryLayerManager ();
+use org::allbinary::logic::communication::log::LogUtil ();
+use org::allbinary::logic::math::SmallIntegerSingletonFactory ();
+use org::allbinary::logic::string::StringMaker ();
+use org::allbinary::string::CommonSeps ();
+use org::allbinary::string::CommonStrings ();
 
 1;
 

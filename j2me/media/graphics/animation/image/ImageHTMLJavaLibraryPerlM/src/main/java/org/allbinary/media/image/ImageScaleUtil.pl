@@ -17,8 +17,9 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
-our $instance = 'org::allbinary::media::image::ImageScaleUtil'->new();
+tie our $instance, 'java::lang::LazyStatic', sub { 'org::allbinary::media::image::ImageScaleUtil'->new() };
 
 
 sub getInstance {
@@ -80,15 +81,17 @@ sub createImageInternal {
         }
 }
 
-# use javax::microedition::lcdui::Image;
-use org::allbinary::graphics::Anchor;
-use org::allbinary::image::ImageCache;
-use org::allbinary::logic::communication::log::PreLogUtil;
-use org::microemu::device::playn::PlaynImmutableImage;
-use org::microemu::device::playn::PlaynMutableImage;
-use playn::core::CanvasImage;
-use playn::core::CanvasSurface;
-use org::allbinary::media::image::ImageCreationUtil;
+use java::lang::Object ();
+use java::lang::LazyStatic ();
+use javax::microedition::lcdui::Image ();
+use org::allbinary::graphics::Anchor ();
+use org::allbinary::image::ImageCache ();
+use org::allbinary::logic::communication::log::PreLogUtil ();
+use org::microemu::device::playn::PlaynImmutableImage ();
+use org::microemu::device::playn::PlaynMutableImage ();
+use playn::core::CanvasImage ();
+use playn::core::CanvasSurface ();
+use org::allbinary::media::image::ImageCreationUtil ();
 
 1;
 

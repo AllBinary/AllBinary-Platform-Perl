@@ -44,7 +44,8 @@ sub _new1 {
     return $self;
 }
 
-use org::allbinary::business::init::db::DbInitInfo;
+use java::lang::Object ();
+use org::allbinary::business::init::db::DbInitInfo ();
 
 1;
 

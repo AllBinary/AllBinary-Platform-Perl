@@ -52,9 +52,10 @@ sub collideInterface {
     my ($self, $ownerLayer, $collidableInterface) = @_;
 }
 
-use org::allbinary::game::layer::CollidableCompositeLayer;
-use org::allbinary::game::layer::CollidableRTSBehavior;
-use org::allbinary::game::collision::CollidableInterfaceCompositeInterface;
+use java::lang::Object ();
+use org::allbinary::game::layer::CollidableCompositeLayer ();
+use org::allbinary::game::layer::CollidableRTSBehavior ();
+use org::allbinary::game::collision::CollidableInterfaceCompositeInterface ();
 
 1;
 

@@ -17,8 +17,9 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
-our $instance = 'org::allbinary::game::layer::geographic::map::LayerPartialCellPositionsUtil'->new();
+tie our $instance, 'java::lang::LazyStatic', sub { 'org::allbinary::game::layer::geographic::map::LayerPartialCellPositionsUtil'->new() };
 
 sub new {
     my ($class) = @_;
@@ -80,11 +81,13 @@ sub getInstance {
         return $org::allbinary::game::layer::geographic::map::LayerPartialCellPositionsUtil::instance;
 }
 
-use org::allbinary::util::BasicArrayList;
-use org::allbinary::layer::AllBinaryLayer;
-use org::allbinary::media::graphics::geography::map::BasicGeographicMap;
-use org::allbinary::media::graphics::geography::map::GeographicMapCellPosition;
-use org::allbinary::media::graphics::geography::map::SimpleGeographicMapCellPositionFactory;
+use java::lang::Object ();
+use java::lang::LazyStatic ();
+use org::allbinary::util::BasicArrayList ();
+use org::allbinary::layer::AllBinaryLayer ();
+use org::allbinary::media::graphics::geography::map::BasicGeographicMap ();
+use org::allbinary::media::graphics::geography::map::GeographicMapCellPosition ();
+use org::allbinary::media::graphics::geography::map::SimpleGeographicMapCellPositionFactory ();
 
 1;
 

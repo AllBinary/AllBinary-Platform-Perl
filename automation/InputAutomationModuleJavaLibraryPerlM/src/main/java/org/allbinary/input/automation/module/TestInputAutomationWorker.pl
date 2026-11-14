@@ -17,6 +17,7 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
 
 sub _init_fields {
@@ -33,7 +34,7 @@ sub _init_fields {
 sub new {
     my ($class) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
         $self->{captureWorker} = 'org::allbinary::input::media::image::capture::ScreenCaptureImagesWorker'->new();
         $self->{changedPixelsImageComparisonResultsWorker} = 'org::allbinary::media::image::comparison::SaveImageComparisonWorker'->new();
         $self->{saveMotionRectanglesAsImagesWorker} = 'org::allbinary::media::image::comparison::motion::SaveMotionRectanglesResultsWorker'->new();
@@ -46,12 +47,13 @@ sub new {
     return $self;
 }
 
-use org::allbinary::input::media::image::capture::ScreenCaptureImagesWorker;
-use org::allbinary::media::image::comparison::ImageComparisonWorker;
-use org::allbinary::media::image::comparison::SaveImageComparisonWorker;
-use org::allbinary::media::image::comparison::motion::MotionRectanglesWorker;
-use org::allbinary::media::image::comparison::motion::SaveMotionRectanglesResultsWorker;
-use org::allbinary::media::image::comparison::motion::TestInputForMotionRectanglesResultsWorker;
+use java::lang::Object ();
+use org::allbinary::input::media::image::capture::ScreenCaptureImagesWorker ();
+use org::allbinary::media::image::comparison::ImageComparisonWorker ();
+use org::allbinary::media::image::comparison::SaveImageComparisonWorker ();
+use org::allbinary::media::image::comparison::motion::MotionRectanglesWorker ();
+use org::allbinary::media::image::comparison::motion::SaveMotionRectanglesResultsWorker ();
+use org::allbinary::media::image::comparison::motion::TestInputForMotionRectanglesResultsWorker ();
 
 1;
 

@@ -17,7 +17,7 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
-use parent -norequire,'org::allbinary::business::user::commerce::money::tax::modules::TaxModuleInterface';
+use parent -norequire,'java::lang::Object','org::allbinary::business::user::commerce::money::tax::modules::TaxModuleInterface';
 
 
 sub _init_fields {
@@ -36,7 +36,7 @@ sub _init_fields {
 sub new {
     my ($class) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
     return $self;
 }
 
@@ -124,28 +124,29 @@ sub isValid {
         }
 }
 
-use org::allbinary::business::context::modules::storefront::StoreFrontInterface;
-use org::allbinary::business::user::address::StreetAddress;
-use org::allbinary::business::user::address::StreetAddressData;
-use org::allbinary::business::user::commerce::money::tax::components::TaxData;
-use org::allbinary::data::tree::dom::DomNodeHelper;
-use org::allbinary::data::tree::dom::DomSearchHelper;
-use org::allbinary::data::tree::dom::document::DomDocumentHelper;
-use org::allbinary::data::tree::dom::document::XmlDocumentHelper;
-use org::allbinary::globals::FREEBLISKET_PATH_GLOBALS;
-use org::allbinary::globals::URLGLOBALS;
-use org::allbinary::logic::communication::log::LogUtil;
-use org::allbinary::logic::control::crypt::file::CryptFileReader;
-use org::allbinary::logic::io::path::AbPath;
-use org::allbinary::logic::string::StringMaker;
-use org::allbinary::logic::string::StringValidationUtil;
-use org::allbinary::logic::visual::transform::info::objectConfig::TransformInfoObjectConfigData;
-use org::allbinary::string::CommonPhoneStrings;
-use org::allbinary::string::CommonStrings;
-use org::w3c::dom::Document;
-use org::w3c::dom::Node;
-use org::w3c::dom::NodeList;
-use org::allbinary::business::user::commerce::money::tax::modules::TaxModuleInterface;
+use java::lang::Object ();
+use org::allbinary::business::context::modules::storefront::StoreFrontInterface ();
+use org::allbinary::business::user::address::StreetAddress ();
+use org::allbinary::business::user::address::StreetAddressData ();
+use org::allbinary::business::user::commerce::money::tax::components::TaxData ();
+use org::allbinary::data::tree::dom::DomNodeHelper ();
+use org::allbinary::data::tree::dom::DomSearchHelper ();
+use org::allbinary::data::tree::dom::document::DomDocumentHelper ();
+use org::allbinary::data::tree::dom::document::XmlDocumentHelper ();
+use org::allbinary::globals::FREEBLISKET_PATH_GLOBALS ();
+use org::allbinary::globals::URLGLOBALS ();
+use org::allbinary::logic::communication::log::LogUtil ();
+use org::allbinary::logic::control::crypt::file::CryptFileReader ();
+use org::allbinary::logic::io::path::AbPath ();
+use org::allbinary::logic::string::StringMaker ();
+use org::allbinary::logic::string::StringValidationUtil ();
+use org::allbinary::logic::visual::transform::info::objectConfig::TransformInfoObjectConfigData ();
+use org::allbinary::string::CommonPhoneStrings ();
+use org::allbinary::string::CommonStrings ();
+use org::w3c::dom::Document ();
+use org::w3c::dom::Node ();
+use org::w3c::dom::NodeList ();
+use org::allbinary::business::user::commerce::money::tax::modules::TaxModuleInterface ();
 
 1;
 

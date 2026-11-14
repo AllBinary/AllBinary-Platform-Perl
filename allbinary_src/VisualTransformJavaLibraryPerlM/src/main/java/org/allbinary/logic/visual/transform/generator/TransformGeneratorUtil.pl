@@ -17,8 +17,9 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
-our $instance = 'org::allbinary::logic::visual::transform::generator::TransformGeneratorUtil'->new();
+tie our $instance, 'java::lang::LazyStatic', sub { 'org::allbinary::logic::visual::transform::generator::TransformGeneratorUtil'->new() };
 
 sub _init_fields {
     my ($self) = @_;
@@ -35,7 +36,7 @@ sub getInstance {
 sub new {
     my ($class) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
     return $self;
 }
 
@@ -73,15 +74,17 @@ sub generate {
         $self->generate($abeClientInformation, $transformInfoDomNode->getTransformInfoInterface(), $ownerTransformInfoInterface);
 }
 
-use org::allbinary::logic::communication::log::LogUtil;
-use org::allbinary::logic::io::InputOutputTypeData;
-use org::allbinary::logic::system::security::licensing::AbeClientInformationInterface;
-use org::allbinary::logic::visual::transform::TransformFactory;
-use org::allbinary::logic::visual::transform::TransformInterface;
-use org::allbinary::logic::visual::transform::info::TransformInfoDomNode;
-use org::allbinary::logic::visual::transform::info::TransformInfoHttpInterface;
-use org::allbinary::logic::visual::transform::info::TransformInfoInterface;
-use org::allbinary::logic::visual::transform::info::objectConfig::generator::StoreFileGenerator;
+use java::lang::Object ();
+use java::lang::LazyStatic ();
+use org::allbinary::logic::communication::log::LogUtil ();
+use org::allbinary::logic::io::InputOutputTypeData ();
+use org::allbinary::logic::system::security::licensing::AbeClientInformationInterface ();
+use org::allbinary::logic::visual::transform::TransformFactory ();
+use org::allbinary::logic::visual::transform::TransformInterface ();
+use org::allbinary::logic::visual::transform::info::TransformInfoDomNode ();
+use org::allbinary::logic::visual::transform::info::TransformInfoHttpInterface ();
+use org::allbinary::logic::visual::transform::info::TransformInfoInterface ();
+use org::allbinary::logic::visual::transform::info::objectConfig::generator::StoreFileGenerator ();
 
 1;
 

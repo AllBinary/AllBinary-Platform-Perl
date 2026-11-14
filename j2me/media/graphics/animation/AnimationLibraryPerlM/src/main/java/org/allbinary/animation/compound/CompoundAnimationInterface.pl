@@ -45,8 +45,8 @@ sub getCurrentAnimation {
     die "abstract method getCurrentAnimation";
 }
 
-use org::allbinary::animation::AnimationInterface;
-use org::allbinary::animation::IndexedAnimation;
+use org::allbinary::animation::AnimationInterface ();
+use org::allbinary::animation::IndexedAnimation ();
 
 1;
 

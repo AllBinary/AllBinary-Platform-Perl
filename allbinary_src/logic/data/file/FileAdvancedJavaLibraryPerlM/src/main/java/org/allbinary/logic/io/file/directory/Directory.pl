@@ -17,8 +17,9 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
-our $instance = 'org::allbinary::logic::io::file::directory::Directory'->new();
+tie our $instance, 'java::lang::LazyStatic', sub { 'org::allbinary::logic::io::file::directory::Directory'->new() };
 
 
 sub getInstance {
@@ -217,14 +218,16 @@ sub search {
         return $fileList;
 }
 
-# use java::io::FileFilter;
-use org::allbinary::logic::communication::log::PreLogUtil;
-use org::allbinary::logic::io::file::AbFile;
-use org::allbinary::logic::io::file::FileFactory;
-use org::allbinary::logic::io::file::FileWrapperUtil;
-use org::allbinary::logic::io::path::AbPath;
-use org::allbinary::util::BasicArrayList;
-use org::allbinary::util::BasicArrayListD;
+use java::lang::Object ();
+use java::lang::LazyStatic ();
+# use java::io::FileFilter ();
+use org::allbinary::logic::communication::log::PreLogUtil ();
+use org::allbinary::logic::io::file::AbFile ();
+use org::allbinary::logic::io::file::FileFactory ();
+use org::allbinary::logic::io::file::FileWrapperUtil ();
+use org::allbinary::logic::io::path::AbPath ();
+use org::allbinary::util::BasicArrayList ();
+use org::allbinary::util::BasicArrayListD ();
 
 1;
 

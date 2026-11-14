@@ -29,7 +29,7 @@ sub _init_fields {
 sub new {
     my ($class, $animationInterface, $healthInterface, $location, $direction) = @_;
     my $self = $class->SUPER::new($animationInterface, $healthInterface, $location, $direction);
-    $self->_init_fields();
+    _init_fields($self);
         # super(...) made $self above
         $self->{image} = [(undef) x ($self->{healthInterface}->getMaxHealth())];
         my $imageCacheFactory = 'org::allbinary::image::ImageCacheFactory'->getInstance();
@@ -50,13 +50,14 @@ sub paint {
         $graphics->drawImage($self->{image}->[$self->{max}], $self->{x}, $self->{y}, $org::allbinary::graphics::Anchor::TOP_LEFT);
 }
 
-# use javax::microedition::lcdui::Graphics;
-# use javax::microedition::lcdui::Image;
-use org::allbinary::animation::AnimationInterface;
-use org::allbinary::game::health::HealthInterface;
-use org::allbinary::graphics::Anchor;
-use org::allbinary::image::ImageCacheFactory;
-use org::allbinary::game::layer::hud::basic::HealthGraphic;
+use java::lang::Object ();
+use javax::microedition::lcdui::Graphics ();
+use javax::microedition::lcdui::Image ();
+use org::allbinary::animation::AnimationInterface ();
+use org::allbinary::game::health::HealthInterface ();
+use org::allbinary::graphics::Anchor ();
+use org::allbinary::image::ImageCacheFactory ();
+use org::allbinary::game::layer::hud::basic::HealthGraphic ();
 
 1;
 

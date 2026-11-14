@@ -17,7 +17,7 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
-use parent -norequire,'org::allbinary::thread::RunnableInterface';
+use parent -norequire,'java::lang::Object','org::allbinary::thread::RunnableInterface';
 
 our $FILE = "file:";
 our $JAR_DIR_PROP = "org.knopflerfish.gosg.jars";
@@ -37,7 +37,7 @@ sub _init_fields {
 sub new {
     my ($class, $inputAutomationBundleActivator) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
         $self->{inputAutomationBundleActivator} = $inputAutomationBundleActivator;
         $self->{fileBasicArrayList} = 'org::allbinary::util::BasicArrayListD'->new();
     return $self;
@@ -204,30 +204,31 @@ sub run {
         }
 }
 
-use java::io::File;
-# use java::io::FileFilter;
-# use java::io::FileInputStream;
-# use java::net::URL;
-use java::util::HashMap;
-# use java::util::Set;
-# use java::util::jar::JarInputStream;
-# use java::util::jar::Manifest;
-use org::osgi::framework::Bundle;
-use org::osgi::framework::BundleContext;
-use org::osgi::framework::Constants;
-use bundle::input::automation::InputAutomationBundleActivator;
-use org::allbinary::logic::StdUtil;
-use org::allbinary::logic::communication::log::LogUtil;
-use org::allbinary::logic::io::file::FileWrapperUtil;
-use org::allbinary::logic::io::file::directory::SubDirectory;
-use org::allbinary::logic::io::file::filter::BasicFileFilterUtil;
-use org::allbinary::string::CommonLabels;
-use org::allbinary::string::CommonStrings;
-use org::allbinary::thread::RunnableInterface;
-use org::allbinary::time::TimeDelayHelper;
-use org::allbinary::util::BasicArrayList;
-use org::allbinary::util::BasicArrayListD;
-use java::lang::System;
+use java::lang::Object ();
+use java::io::File ();
+# use java::io::FileFilter ();
+# use java::io::FileInputStream ();
+# use java::net::URL ();
+use java::util::HashMap ();
+# use java::util::Set ();
+# use java::util::jar::JarInputStream ();
+# use java::util::jar::Manifest ();
+use org::osgi::framework::Bundle ();
+use org::osgi::framework::BundleContext ();
+use org::osgi::framework::Constants ();
+use bundle::input::automation::InputAutomationBundleActivator ();
+use org::allbinary::logic::StdUtil ();
+use org::allbinary::logic::communication::log::LogUtil ();
+use org::allbinary::logic::io::file::FileWrapperUtil ();
+use org::allbinary::logic::io::file::directory::SubDirectory ();
+use org::allbinary::logic::io::file::filter::BasicFileFilterUtil ();
+use org::allbinary::string::CommonLabels ();
+use org::allbinary::string::CommonStrings ();
+use org::allbinary::thread::RunnableInterface ();
+use org::allbinary::time::TimeDelayHelper ();
+use org::allbinary::util::BasicArrayList ();
+use org::allbinary::util::BasicArrayListD ();
+use java::lang::System ();
 
 1;
 

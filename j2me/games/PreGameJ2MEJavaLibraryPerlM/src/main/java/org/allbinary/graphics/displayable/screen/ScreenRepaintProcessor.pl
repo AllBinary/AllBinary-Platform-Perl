@@ -29,7 +29,7 @@ sub _init_fields {
 sub new {
     my ($class, $displayable) = @_;
     my $self = $class->SUPER::new();
-    $self->_init_fields();
+    _init_fields($self);
         $self->{displayable} = $displayable;
     return $self;
 }
@@ -41,9 +41,10 @@ sub process {
         'org::allbinary::graphics::displayable::screen::ScreenRepaintUtil'->repaint($self->{displayable});
 }
 
-# use javax::microedition::lcdui::Displayable;
-use org::allbinary::canvas::Processor;
-use org::allbinary::graphics::displayable::screen::ScreenRepaintUtil;
+use java::lang::Object ();
+use javax::microedition::lcdui::Displayable ();
+use org::allbinary::canvas::Processor ();
+use org::allbinary::graphics::displayable::screen::ScreenRepaintUtil ();
 
 1;
 

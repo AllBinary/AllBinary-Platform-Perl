@@ -35,7 +35,7 @@ sub _init_fields {
 sub new {
     my ($class) = @_;
     my $self = $class->SUPER::new();
-    $self->_init_fields();
+    _init_fields($self);
     return $self;
 }
 
@@ -89,16 +89,17 @@ sub paint {
         $graphics->drawString($self->{rootNamesString}, $self->{textX}, $self->{textLine2Y}, 0);
 }
 
-# use javax::microedition::lcdui::Font;
-# use javax::microedition::lcdui::Graphics;
-use org::allbinary::util::BasicArrayList;
-use org::allbinary::util::BasicArrayListD;
-use org::allbinary::string::CommonSeps;
-use org::allbinary::logic::string::StringMaker;
-use org::allbinary::logic::string::StringUtil;
-use org::allbinary::graphics::color::BasicColorFactory;
-use org::allbinary::logic::NullUtil;
-use org::allbinary::game::layer::SelectionHudPaintable;
+use java::lang::Object ();
+use javax::microedition::lcdui::Font ();
+use javax::microedition::lcdui::Graphics ();
+use org::allbinary::util::BasicArrayList ();
+use org::allbinary::util::BasicArrayListD ();
+use org::allbinary::string::CommonSeps ();
+use org::allbinary::logic::string::StringMaker ();
+use org::allbinary::logic::string::StringUtil ();
+use org::allbinary::graphics::color::BasicColorFactory ();
+use org::allbinary::logic::NullUtil ();
+use org::allbinary::game::layer::SelectionHudPaintable ();
 
 1;
 

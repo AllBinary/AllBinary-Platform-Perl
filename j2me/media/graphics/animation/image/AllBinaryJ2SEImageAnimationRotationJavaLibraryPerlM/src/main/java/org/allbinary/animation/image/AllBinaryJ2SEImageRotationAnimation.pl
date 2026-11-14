@@ -45,7 +45,7 @@ sub _init_fields {
 sub new {
     my ($class, $originalImage, $image, $angleInfo, $totalAngle, $animationBehavior) = @_;
     my $self = $class->SUPER::new($image, $angleInfo, $totalAngle, $animationBehavior);
-    $self->_init_fields();
+    _init_fields($self);
         # super(...) made $self above
         $self->{realOriginalImage} = $originalImage;
         $self->{originalImageArray}->[0] = $originalImage;
@@ -203,22 +203,23 @@ sub finalize {
         $disposalUtil->disposeImage($self->{imageToShow});
 }
 
-# use javax::microedition::lcdui::Graphics;
-# use javax::microedition::lcdui::Image;
-# use javax::microedition::lcdui::NullImage;
-use org::allbinary::DisposalUtil;
-use org::allbinary::animation::AnimationBehavior;
-use org::allbinary::graphics::color::BasicColor;
-use org::allbinary::math::AngleInfo;
-use org::allbinary::media::image::ImageCopyUtil;
-use org::allbinary::media::image::ImageModifierUtil;
-use org::allbinary::media::image::ImageRotationUtil;
-use org::allbinary::animation::image::ImageBaseRotationAnimation;
-use org::allbinary::animation::image::ModifierBaseProcessor;
-use org::allbinary::animation::image::ScaleProcessor;
-use org::allbinary::animation::image::SetColorProcessor;
-use org::allbinary::animation::image::ChangeColorProcessor;
-use org::allbinary::animation::image::AlphaProcessor;
+use java::lang::Object ();
+use javax::microedition::lcdui::Graphics ();
+use javax::microedition::lcdui::Image ();
+use javax::microedition::lcdui::NullImage ();
+use org::allbinary::DisposalUtil ();
+use org::allbinary::animation::AnimationBehavior ();
+use org::allbinary::graphics::color::BasicColor ();
+use org::allbinary::math::AngleInfo ();
+use org::allbinary::media::image::ImageCopyUtil ();
+use org::allbinary::media::image::ImageModifierUtil ();
+use org::allbinary::media::image::ImageRotationUtil ();
+use org::allbinary::animation::image::ImageBaseRotationAnimation ();
+use org::allbinary::animation::image::ModifierBaseProcessor ();
+use org::allbinary::animation::image::ScaleProcessor ();
+use org::allbinary::animation::image::SetColorProcessor ();
+use org::allbinary::animation::image::ChangeColorProcessor ();
+use org::allbinary::animation::image::AlphaProcessor ();
 
 1;
 

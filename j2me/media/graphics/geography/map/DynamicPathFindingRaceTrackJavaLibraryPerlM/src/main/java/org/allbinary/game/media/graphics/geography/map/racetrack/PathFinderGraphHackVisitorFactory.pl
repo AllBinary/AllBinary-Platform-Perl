@@ -31,7 +31,7 @@ sub _init_fields {
 sub new {
     my ($class, $edgeMinimum, $minPathWeight, $maxPathWeight) = @_;
     my $self = $class->SUPER::new();
-    $self->_init_fields();
+    _init_fields($self);
         $self->{edgeMinimum} = $edgeMinimum;
         $self->{minPathWeight} = $minPathWeight;
         $self->{maxPathWeight} = $maxPathWeight;
@@ -44,10 +44,11 @@ sub getInstance {
         return 'org::allbinary::game::media::graphics::geography::map::racetrack::PathFinderGraphHackVisitor'->new($geographicMapInterface, $self->{edgeMinimum}, $self->{minPathWeight}, $self->{maxPathWeight});
 }
 
-use org::allbinary::media::graphics::geography::map::BasicGeographicMap;
-use org::allbinary::media::graphics::geography::pathfinding::PathFinderGraphVisitorFactoryBase;
-use org::allbinary::media::graphics::geography::pathfinding::PathFinderGraphVisitorBase;
-use org::allbinary::game::media::graphics::geography::map::racetrack::PathFinderGraphHackVisitor;
+use java::lang::Object ();
+use org::allbinary::media::graphics::geography::map::BasicGeographicMap ();
+use org::allbinary::media::graphics::geography::pathfinding::PathFinderGraphVisitorFactoryBase ();
+use org::allbinary::media::graphics::geography::pathfinding::PathFinderGraphVisitorBase ();
+use org::allbinary::game::media::graphics::geography::map::racetrack::PathFinderGraphHackVisitor ();
 
 1;
 

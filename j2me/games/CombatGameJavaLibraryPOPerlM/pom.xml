@@ -48,11 +48,11 @@
         <module>../../../allbinary_src/licensing/ClientInfoLicensingJavaLibraryPerlM</module>
 
         <module>../../games/licensing/PartnerJ2MEJavaLibraryPerlM</module>
-        <module>../../games/licensing/PartnerHTMLJavaLibraryPerlM</module>
-        <module>../../games/licensing/PartnerAndroidJavaLibraryPerlM</module>
+        <!--<module>../../games/licensing/PartnerHTMLJavaLibraryPerlM</module>-->
+        <!--<module>../../games/licensing/PartnerAndroidJavaLibraryPerlM</module>-->
         <module>../../games/licensing/NoGameLicensingJavaLibraryPerlM</module>
         <module>../../games/licensing/GameLicensingOnlyDemoJavaLibraryPerlM</module>
-        <module>../../games/licensing/GameLicensingOnlyNormalJavaLibraryPerlM</module>
+        <!--<module>../../games/licensing/GameLicensingOnlyNormalJavaLibraryPerlM</module>-->
         <module>../../games/licensing/GameLicensingBaseJavaLibraryPerlM</module>
 
         <!--
@@ -61,7 +61,7 @@
         <module>../../games/GameScoresBaseJ2MELibraryPerlM</module>
         -->
         <module>../../games/GameScoresLocalJavaLibraryPerlM</module>
-        <module>../../games/GameScoresRemoteAndLocalJavaLibraryPerlM</module>
+        <!--<module>../../games/GameScoresRemoteAndLocalJavaLibraryPerlM</module>-->
 
         <module>../../../store/ThirdPartyStoreJavaLibraryPerlM</module>
         <module>../../../store/NoThirdPartyStoreJavaLibraryPerlM</module>
@@ -111,16 +111,16 @@
         <module>../../../../work/j2me/games/strategy/rts/RTSGameJavaLibraryP</module>
         -->
 
-        <module>../../media/graphics/OtherGraphicsMediaLibraryP</module>
+        <module>../../media/graphics/OtherGraphicsMediaLibraryPerlP</module>
 
         <module>../../input/NoTouchButtonResourceAnimationJavaLibraryPerlM</module>
         <module>../../input/TouchButtonResourceAnimationJavaLibraryPerlM</module>
         <module>../../input/TouchButtonResourceOpenGLESAnimationJavaLibraryPerlM</module>
 
         <module>../../input/TrackingEventJavaLibraryPerlM</module>
-        <module>../../../game/behavior/BehaviorLibraryP</module>
+        <module>../../../game/behavior/BehaviorLibraryPerlP</module>
 
-        <module>../../media/sound/OtherSoundMediaLibraryP</module>
+        <module>../../media/sound/OtherSoundMediaLibraryPerlP</module>
 
         <module>../../../allbinary_src/licensing/ApplicationConfigurationJavaLibraryPerlM</module>
         <module>../../../allbinary_src/licensing/ApplicationConfigurationNoFSJavaLibraryPerlM</module>

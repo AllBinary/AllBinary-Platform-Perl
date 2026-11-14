@@ -19,8 +19,9 @@ use feature 'try';
 no warnings 'experimental::try';
 use POSIX ();
 use List::Util ();
+use parent -norequire,'java::lang::Object';
 
-our $instance = 'org::allbinary::media::image::ImageRotationUtil'->new();
+tie our $instance, 'java::lang::LazyStatic', sub { 'org::allbinary::media::image::ImageRotationUtil'->new() };
 
 sub _init_fields {
     my ($self) = @_;
@@ -37,7 +38,7 @@ sub getInstance {
 sub new {
     my ($class) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
     return $self;
 }
 
@@ -110,14 +111,16 @@ sub createRotatedImage {
         return $rotatedImage;
 }
 
-# use javax::microedition::lcdui::Image;
-use org::microemu::device::playn::PlaynImmutableImage;
-use org::microemu::device::playn::PlaynMutableImage;
-use playn::core::Canvas;
-use playn::core::CoreImage;
-use playn::core::ImageImpl;
-use playn::html::HTMLPlaynUtil;
-use org::allbinary::media::image::ImageCreationUtil;
+use java::lang::Object ();
+use java::lang::LazyStatic ();
+use javax::microedition::lcdui::Image ();
+use org::microemu::device::playn::PlaynImmutableImage ();
+use org::microemu::device::playn::PlaynMutableImage ();
+use playn::core::Canvas ();
+use playn::core::CoreImage ();
+use playn::core::ImageImpl ();
+use playn::html::HTMLPlaynUtil ();
+use org::allbinary::media::image::ImageCreationUtil ();
 
 1;
 

@@ -29,7 +29,7 @@ sub _init_fields {
 sub new {
     my ($class, $runnableCanvas) = @_;
     my $self = $class->SUPER::new();
-    $self->_init_fields();
+    _init_fields($self);
         $self->{runnableCanvas} = $runnableCanvas;
     return $self;
 }
@@ -40,8 +40,9 @@ sub process {
         $self->{runnableCanvas}->repaint();
 }
 
-use org::allbinary::graphics::displayable::MyCanvas;
-use org::allbinary::canvas::Processor;
+use java::lang::Object ();
+use org::allbinary::graphics::displayable::MyCanvas ();
+use org::allbinary::canvas::Processor ();
 
 1;
 

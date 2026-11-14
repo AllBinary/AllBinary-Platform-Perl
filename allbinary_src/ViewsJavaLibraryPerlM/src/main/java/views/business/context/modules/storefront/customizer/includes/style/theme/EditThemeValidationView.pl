@@ -29,7 +29,7 @@ sub _init_fields {
 sub new {
     my ($class, $transformInfoInterface) = @_;
     my $self = $class->SUPER::new($transformInfoInterface);
-    $self->_init_fields();
+    _init_fields($self);
         # super(...) made $self above
     return $self;
 }
@@ -89,23 +89,31 @@ sub toValidationInfoNode {
         return undef;
 }
 
-use org::allbinary::business::category::CategoryFactoryInterface;
-use org::allbinary::business::category::CategoryInterface;
-use org::allbinary::business::category::store::theme::StoreThemeCategoryFactory;
-use org::allbinary::business::category::store::theme::StoreThemeCategoryInterface;
-use org::allbinary::business::category::store::theme::StoreThemeCategoryPathValidationView;
-use org::allbinary::data::tree::category::CategoryLoaderFactory;
-use org::allbinary::data::tree::category::CategoryLoaderInterface;
-use org::allbinary::data::tree::dom::DomNodeInterface;
-use org::allbinary::data::tree::dom::document::DomDocumentHelper;
-use org::allbinary::data::tree::dom::document::XmlDocumentHelper;
-use org::allbinary::logic::communication::log::LogUtil;
-use org::allbinary::logic::control::validate::ValidationComponentInterface;
-use org::allbinary::logic::string::StringMaker;
-use org::allbinary::logic::visual::transform::info::TransformInfoInterface;
-use org::w3c::dom::Document;
-use org::w3c::dom::Node;
-use views::business::context::modules::storefront::customizer::includes::style::theme::ThemeCustomizerView;
+
+# throws Exception
+sub getTransformInfoInterface {
+    my ($self) = @_;
+        return $self->SUPER::getTransformInfoInterface();
+}
+
+use java::lang::Object ();
+use org::allbinary::business::category::CategoryFactoryInterface ();
+use org::allbinary::business::category::CategoryInterface ();
+use org::allbinary::business::category::store::theme::StoreThemeCategoryFactory ();
+use org::allbinary::business::category::store::theme::StoreThemeCategoryInterface ();
+use org::allbinary::business::category::store::theme::StoreThemeCategoryPathValidationView ();
+use org::allbinary::data::tree::category::CategoryLoaderFactory ();
+use org::allbinary::data::tree::category::CategoryLoaderInterface ();
+use org::allbinary::data::tree::dom::DomNodeInterface ();
+use org::allbinary::data::tree::dom::document::DomDocumentHelper ();
+use org::allbinary::data::tree::dom::document::XmlDocumentHelper ();
+use org::allbinary::logic::communication::log::LogUtil ();
+use org::allbinary::logic::control::validate::ValidationComponentInterface ();
+use org::allbinary::logic::string::StringMaker ();
+use org::allbinary::logic::visual::transform::info::TransformInfoInterface ();
+use org::w3c::dom::Document ();
+use org::w3c::dom::Node ();
+use views::business::context::modules::storefront::customizer::includes::style::theme::ThemeCustomizerView ();
 
 1;
 

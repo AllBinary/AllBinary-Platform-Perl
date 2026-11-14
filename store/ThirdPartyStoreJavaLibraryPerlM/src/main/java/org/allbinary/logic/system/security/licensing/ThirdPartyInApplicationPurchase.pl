@@ -17,7 +17,7 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
-use parent -norequire,'org::allbinary::logic::system::security::licensing::ThirdPartyInApplicationPurchaseInterface';
+use parent -norequire,'java::lang::Object','org::allbinary::logic::system::security::licensing::ThirdPartyInApplicationPurchaseInterface';
 
 
 sub new {
@@ -94,8 +94,9 @@ sub requestProducts {
     my ($self) = @_;
 }
 
-use org::allbinary::logic::string::StringUtil;
-use org::allbinary::logic::system::security::licensing::ThirdPartyInApplicationPurchaseInterface;
+use java::lang::Object ();
+use org::allbinary::logic::string::StringUtil ();
+use org::allbinary::logic::system::security::licensing::ThirdPartyInApplicationPurchaseInterface ();
 
 1;
 

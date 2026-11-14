@@ -111,7 +111,7 @@ sub _init_fields {
 sub new {
     my ($class, $commandListener, $gameLayerManager, $highScoresFactoryInterface, $gameInitializationInterfaceFactoryInterface, $buffered) = @_;
     my $self = $class->SUPER::new($commandListener, 'org::allbinary::graphics::displayable::CanvasStrings'->getInstance()->{EMPTY_CHILD_NAME_LIST}, 1);
-    $self->_init_fields();
+    _init_fields($self);
         # super(...) made $self above
         $self->{highScoresHelper} = $highScoresFactoryInterface->createHighScoresHelper();
         $self->{gameInitializationInterfaceFactoryInterface} = $gameInitializationInterfaceFactoryInterface;
@@ -1062,7 +1062,7 @@ sub processGame {
 
 sub notifyDonePainting {
     my ($self) = @_;
-        { # synchronized ($self)
+        {; # synchronized ($self)
             $self->{threadObjectUtil}->notifyObject($self);
         }
 }
@@ -1222,47 +1222,7 @@ sub setHighScore2 {
             $self->getCustomCommandListener()->commandAction('org::allbinary::game::commands::GameCommandsFactory'->getInstance()->{SET_MENU_DISPLAYABLE}, $textBox);
         }
         if ($autoSubmit) {
-            {
-            package org::allbinary::game::displayable::canvas::SaveHighScoreRunnable;
-            use strict;
-            use warnings;
-            use feature 'try';
-            no warnings 'experimental::try';
-            use Time::HiRes ();
-            use Scalar::Util ();
-            
-
-            sub _init_fields {
-                my ($self) = @_;
-                $self->{progressCanvas} = 'org::allbinary::graphics::canvas::transition::progress::ProgressCanvasFactory'->getInstance();
-            }
-
-            sub new {
-                my ($class) = @_;
-                my $self = bless({}, $class);
-                $self->_init_fields();
-                return $self;
-            }
-            
-
-            sub run {
-                my ($self) = @_;
-                    my $logUtil = 'org::allbinary::logic::communication::log::LogUtil'->getInstance();
-                    try {
-                        if ($self->{isLast}) {
-                            $self->{textBox}->submit();
-                        } else {
-                            $self->{textBox}->saveHighScore();
-                        }
-                    } catch ($e) {
-                        my $commonStrings = 'org::allbinary::string::CommonStrings'->getInstance();
-                        $logUtil->put($commonStrings->{EXCEPTION}, $self, "run", $e);
-                        $self->{progressCanvas}->end();
-                    }
-            }
-            }
-
-            'org::allbinary::thread::SecondaryThreadPool'->getInstance()->runTask('org::allbinary::game::displayable::canvas::SaveHighScoreRunnable'->new());
+            'org::allbinary::thread::SecondaryThreadPool'->getInstance()->runTask('org::allbinary::game::displayable::canvas::SaveHighScoreRunnable'->new($isLast, $textBox));
         }
 }
 
@@ -1631,162 +1591,176 @@ sub getType {
         return $org::allbinary::game::displayable::canvas::AllBinaryGameCanvas::TYPE;
 }
 
-# use javax::microedition::lcdui::ChoiceGroup;
-# use javax::microedition::lcdui::CommandListener;
-# use javax::microedition::lcdui::Font;
-# use javax::microedition::lcdui::Graphics;
-# use javax::microedition::lcdui::Item;
-# use javax::microedition::lcdui::NullCommandListener;
-use org::allbinary::AndroidUtil;
-use org::allbinary::J2MEUtil;
-use org::allbinary::business::advertisement::GameAdStateFactory;
-use org::allbinary::canvas::BaseGameStatistics;
-use org::allbinary::canvas::GameStatisticsFactory;
-use org::allbinary::canvas::Processor;
-use org::allbinary::canvas::RunnableCanvas;
-use org::allbinary::debug::DebugFactory;
-use org::allbinary::debug::NoDebug;
-use org::allbinary::game::GameAdState;
-use org::allbinary::game::GameInfo;
-use org::allbinary::game::GameStrings;
-use org::allbinary::game::GameTypeFactory;
-use org::allbinary::game::Intermission;
-use org::allbinary::game::IntermissionCompositeInterface;
-use org::allbinary::game::IntermissionEnableListenerInterface;
-use org::allbinary::game::IntermissionInterface;
-use org::allbinary::game::PlayerTypesFactory;
-use org::allbinary::game::commands::GameCommandsFactory;
-use org::allbinary::game::configuration::InGameFeatures;
-use org::allbinary::game::configuration::InGameOptionsForm;
-use org::allbinary::game::configuration::event::ChangedGameFeatureListener;
-use org::allbinary::game::configuration::event::GameInitializedEvent;
-use org::allbinary::game::configuration::event::GameInitializedEventHandler;
-use org::allbinary::game::configuration::feature::Features;
-use org::allbinary::game::configuration::feature::GameFeatureFactory;
-use org::allbinary::game::configuration::feature::GameFeatureUtil;
-use org::allbinary::game::configuration::feature::InputFeatureFactory;
-use org::allbinary::game::configuration::feature::MainFeatureFactory;
-use org::allbinary::game::configuration::feature::SensorFeatureFactory;
-use org::allbinary::game::configuration::feature::TouchFeatureFactory;
-use org::allbinary::game::displayable::GameLevelDisplayChangeEventListenersFactory;
-use org::allbinary::game::init::BasicBuildGameInitializerFactory;
-use org::allbinary::game::init::GameInitializationUtil;
-use org::allbinary::game::input::GameInputStrings;
-use org::allbinary::game::input::InputProcessor;
-use org::allbinary::game::input::NoPlayerGameInput;
-use org::allbinary::game::input::PlayerGameInput;
-use org::allbinary::game::input::event::GameKeyEventHandler;
-use org::allbinary::game::layer::AllBinaryGameLayerManager;
-use org::allbinary::game::layer::SWTUtil;
-use org::allbinary::game::paint::ColorFillBasePaintable;
-use org::allbinary::game::paint::ColorFillPaintableFactory;
-use org::allbinary::game::resource::ResourceLoadingLevel;
-use org::allbinary::game::resource::ResourceLoadingLevelFactory;
-use org::allbinary::game::score::HighScore;
-use org::allbinary::game::score::HighScoresHelperBaseInterface;
-use org::allbinary::game::score::HighScoresFactoryInterface;
-use org::allbinary::game::score::HighScoresPaintable;
-use org::allbinary::game::score::NullHighScoresSingletonFactory;
-use org::allbinary::game::score::displayable::HighScoreTextBox;
-use org::allbinary::game::state::GameState;
-use org::allbinary::game::state::GameStateFactory;
-use org::allbinary::graphics::GraphicsStrings;
-use org::allbinary::graphics::Rectangle;
-use org::allbinary::graphics::ScreenCapture;
-use org::allbinary::graphics::ScreenCaptureFactory;
-use org::allbinary::graphics::canvas::transition::progress::ProgressCanvas;
-use org::allbinary::graphics::canvas::transition::progress::ProgressCanvasFactory;
-use org::allbinary::graphics::color::BasicColorFactory;
-use org::allbinary::graphics::color::BasicColorSetUtil;
-use org::allbinary::graphics::displayable::CanvasStrings;
-use org::allbinary::graphics::displayable::DisplayInfoSingleton;
-use org::allbinary::graphics::displayable::GameTickDisplayInfoSingleton;
-use org::allbinary::graphics::displayable::command::MyCommandsFactory;
-use org::allbinary::graphics::displayable::event::DisplayChangeEvent;
-use org::allbinary::graphics::displayable::event::DisplayChangeEventHandler;
-use org::allbinary::graphics::displayable::event::DisplayChangeEventListener;
-use org::allbinary::graphics::font::MyFontProcessor;
-use org::allbinary::graphics::font::UpdateMyFontInterface;
-use org::allbinary::graphics::font::UpdateMyFontProcessor;
-use org::allbinary::graphics::form::CommandCurrentSelectionFormFactory;
-use org::allbinary::graphics::form::FormPaintable;
-use org::allbinary::graphics::form::FormType;
-use org::allbinary::graphics::form::FormTypeFactory;
-use org::allbinary::graphics::form::ScrollSelectionForm;
-use org::allbinary::graphics::form::ScrollSelectionFormNoneFactory;
-use org::allbinary::graphics::form::item::CommandTextItemArrayFactory;
-use org::allbinary::graphics::form::item::ABCustomItem;
-use org::allbinary::graphics::opengles::CurrentDisplayableFactory;
-use org::allbinary::graphics::opengles::OpenGLFeatureFactory;
-use org::allbinary::graphics::opengles::OpenGLFeatureUtil;
-use org::allbinary::graphics::opengles::OpenGLThreadUtil;
-use org::allbinary::graphics::paint::InitUpdatePaintable;
-use org::allbinary::graphics::paint::NullInitUpdatePaintable;
-use org::allbinary::graphics::paint::NullPaintable;
-use org::allbinary::graphics::paint::Paintable;
-use org::allbinary::graphics::paint::PaintableInterface;
-use org::allbinary::image::opengles::OpenGLImageSpecificFactory;
-use org::allbinary::input::gyro::SensorGameUpdateProcessor;
-use org::allbinary::input::gyro::SingleSensorGameUpdateProcessor;
-use org::allbinary::input::motion::button::BaseTouchInput;
-use org::allbinary::input::motion::button::NoButtonsTouchInputFactory;
-use org::allbinary::input::motion::button::TouchButtonFactory;
-use org::allbinary::input::motion::button::TouchButtonsPaintableFactory;
-use org::allbinary::input::motion::button::TouchScreenFactory;
-use org::allbinary::input::motion::gesture::observer::BasicMotionGesturesHandler;
-use org::allbinary::logic::ABSystemWrapper;
-use org::allbinary::logic::communication::log::ForcedLogUtil;
-use org::allbinary::logic::communication::log::LogUtil;
-use org::allbinary::logic::communication::log::PreLogUtil;
-use org::allbinary::logic::string::StringMaker;
-use org::allbinary::logic::string::StringUtil;
-use org::allbinary::logic::system::os::OperatingSystemFactory;
-use org::allbinary::logic::system::security::licensing::AbeClientInformationInterface;
-use org::allbinary::logic::util::event::AllBinaryEventObject;
-use org::allbinary::logic::util::event::EventStrings;
-use org::allbinary::media::audio::AllBinaryMediaManager;
-use org::allbinary::media::audio::PlayerQueue;
-use org::allbinary::media::audio::PrimaryPlayerQueueFactory;
-use org::allbinary::media::audio::SecondaryPlayerQueueFactory;
-use org::allbinary::media::audio::SelectSound;
-use org::allbinary::string::CommonSeps;
-use org::allbinary::string::CommonStrings;
-use org::allbinary::thread::SecondaryThreadPool;
-use org::allbinary::time::GameTickTimeDelayHelper;
-use org::allbinary::time::GameTickTimeDelayHelperFactory;
-use org::allbinary::time::TimeDelayHelper;
-use org::allbinary::util::ABHashtable;
-use org::allbinary::util::BasicArrayList;
-use org::allbinary::util::BasicArrayListD;
-use org::allbinary::util::BasicArrayListUtil;
-use org::allbinary::game::displayable::canvas::AllBinaryGameCanvasInterface;
-use org::allbinary::game::displayable::canvas::GameCanvasRunnableInterface;
-use org::allbinary::game::displayable::canvas::MenuListener;
-use org::allbinary::game::displayable::canvas::PopupMenuInterface;
-use org::allbinary::game::displayable::canvas::GameCanvasRunnable;
-use org::allbinary::game::displayable::canvas::GameCanvasPauseRunnable;
-use org::allbinary::game::displayable::canvas::FormUtil;
-use org::allbinary::game::displayable::canvas::MyFormUtil;
-use org::allbinary::game::displayable::canvas::EndGameInfo;
-use org::allbinary::game::displayable::canvas::NoMenuInputProcessor;
-use org::allbinary::game::displayable::canvas::BaseGameBehavior;
-use org::allbinary::game::displayable::canvas::DemoGameBehavior;
-use org::allbinary::game::displayable::canvas::BaseMenuBehavior;
-use org::allbinary::game::displayable::canvas::InGameMenuBehavior;
-use org::allbinary::game::displayable::canvas::BasicPopupMenuPaintable;
-use org::allbinary::game::displayable::canvas::PopupMenuInputProcessor;
-use org::allbinary::game::displayable::canvas::GameLimitedCommandTextItemArrayFactory;
-use org::allbinary::game::displayable::canvas::PopupCommandFormInputProcessor;
-use org::allbinary::game::displayable::canvas::NullWaitGameRunnable;
-use org::allbinary::game::displayable::canvas::GameProcessor;
-use org::allbinary::game::displayable::canvas::CheatGameInputProcessor;
-use org::allbinary::game::displayable::canvas::EndGameProcessor;
-use org::allbinary::game::displayable::canvas::StartIntermissionProcessor;
-use org::allbinary::game::displayable::canvas::EndGamePaintable;
-use org::allbinary::game::displayable::canvas::NullDemoPaintable;
-use org::allbinary::game::displayable::canvas::GameCanvasInputProcessor;
-use org::allbinary::game::displayable::canvas::FormInputProcessor;
-use java::lang::Thread;
+
+sub getTitle {
+    my ($self) = @_;
+        return $self->SUPER::getTitle();
+}
+
+
+sub isPaused {
+    my ($self) = @_;
+        return $self->SUPER::isPaused();
+}
+
+use java::lang::Object ();
+use javax::microedition::lcdui::ChoiceGroup ();
+use javax::microedition::lcdui::CommandListener ();
+use javax::microedition::lcdui::Font ();
+use javax::microedition::lcdui::Graphics ();
+use javax::microedition::lcdui::Item ();
+use javax::microedition::lcdui::NullCommandListener ();
+use org::allbinary::AndroidUtil ();
+use org::allbinary::J2MEUtil ();
+use org::allbinary::business::advertisement::GameAdStateFactory ();
+use org::allbinary::canvas::BaseGameStatistics ();
+use org::allbinary::canvas::GameStatisticsFactory ();
+use org::allbinary::canvas::Processor ();
+use org::allbinary::canvas::RunnableCanvas ();
+use org::allbinary::debug::DebugFactory ();
+use org::allbinary::debug::NoDebug ();
+use org::allbinary::game::GameAdState ();
+use org::allbinary::game::GameInfo ();
+use org::allbinary::game::GameStrings ();
+use org::allbinary::game::GameTypeFactory ();
+use org::allbinary::game::Intermission ();
+use org::allbinary::game::IntermissionCompositeInterface ();
+use org::allbinary::game::IntermissionEnableListenerInterface ();
+use org::allbinary::game::IntermissionInterface ();
+use org::allbinary::game::PlayerTypesFactory ();
+use org::allbinary::game::commands::GameCommandsFactory ();
+use org::allbinary::game::configuration::InGameFeatures ();
+use org::allbinary::game::configuration::InGameOptionsForm ();
+use org::allbinary::game::configuration::event::ChangedGameFeatureListener ();
+use org::allbinary::game::configuration::event::GameInitializedEvent ();
+use org::allbinary::game::configuration::event::GameInitializedEventHandler ();
+use org::allbinary::game::configuration::feature::Features ();
+use org::allbinary::game::configuration::feature::GameFeatureFactory ();
+use org::allbinary::game::configuration::feature::GameFeatureUtil ();
+use org::allbinary::game::configuration::feature::InputFeatureFactory ();
+use org::allbinary::game::configuration::feature::MainFeatureFactory ();
+use org::allbinary::game::configuration::feature::SensorFeatureFactory ();
+use org::allbinary::game::configuration::feature::TouchFeatureFactory ();
+use org::allbinary::game::displayable::GameLevelDisplayChangeEventListenersFactory ();
+use org::allbinary::game::init::BasicBuildGameInitializerFactory ();
+use org::allbinary::game::init::GameInitializationUtil ();
+use org::allbinary::game::input::GameInputStrings ();
+use org::allbinary::game::input::InputProcessor ();
+use org::allbinary::game::input::NoPlayerGameInput ();
+use org::allbinary::game::input::PlayerGameInput ();
+use org::allbinary::game::input::event::GameKeyEventHandler ();
+use org::allbinary::game::layer::AllBinaryGameLayerManager ();
+use org::allbinary::game::layer::SWTUtil ();
+use org::allbinary::game::paint::ColorFillBasePaintable ();
+use org::allbinary::game::paint::ColorFillPaintableFactory ();
+use org::allbinary::game::resource::ResourceLoadingLevel ();
+use org::allbinary::game::resource::ResourceLoadingLevelFactory ();
+use org::allbinary::game::score::HighScore ();
+use org::allbinary::game::score::HighScoresHelperBaseInterface ();
+use org::allbinary::game::score::HighScoresFactoryInterface ();
+use org::allbinary::game::score::HighScoresPaintable ();
+use org::allbinary::game::score::NullHighScoresSingletonFactory ();
+use org::allbinary::game::score::displayable::HighScoreTextBox ();
+use org::allbinary::game::state::GameState ();
+use org::allbinary::game::state::GameStateFactory ();
+use org::allbinary::graphics::GraphicsStrings ();
+use org::allbinary::graphics::Rectangle ();
+use org::allbinary::graphics::ScreenCapture ();
+use org::allbinary::graphics::ScreenCaptureFactory ();
+use org::allbinary::graphics::canvas::transition::progress::ProgressCanvas ();
+use org::allbinary::graphics::canvas::transition::progress::ProgressCanvasFactory ();
+use org::allbinary::graphics::color::BasicColorFactory ();
+use org::allbinary::graphics::color::BasicColorSetUtil ();
+use org::allbinary::graphics::displayable::CanvasStrings ();
+use org::allbinary::graphics::displayable::DisplayInfoSingleton ();
+use org::allbinary::graphics::displayable::GameTickDisplayInfoSingleton ();
+use org::allbinary::graphics::displayable::command::MyCommandsFactory ();
+use org::allbinary::graphics::displayable::event::DisplayChangeEvent ();
+use org::allbinary::graphics::displayable::event::DisplayChangeEventHandler ();
+use org::allbinary::graphics::displayable::event::DisplayChangeEventListener ();
+use org::allbinary::graphics::font::MyFontProcessor ();
+use org::allbinary::graphics::font::UpdateMyFontInterface ();
+use org::allbinary::graphics::font::UpdateMyFontProcessor ();
+use org::allbinary::graphics::form::CommandCurrentSelectionFormFactory ();
+use org::allbinary::graphics::form::FormPaintable ();
+use org::allbinary::graphics::form::FormType ();
+use org::allbinary::graphics::form::FormTypeFactory ();
+use org::allbinary::graphics::form::ScrollSelectionForm ();
+use org::allbinary::graphics::form::ScrollSelectionFormNoneFactory ();
+use org::allbinary::graphics::form::item::CommandTextItemArrayFactory ();
+use org::allbinary::graphics::form::item::ABCustomItem ();
+use org::allbinary::graphics::opengles::CurrentDisplayableFactory ();
+use org::allbinary::graphics::opengles::OpenGLFeatureFactory ();
+use org::allbinary::graphics::opengles::OpenGLFeatureUtil ();
+use org::allbinary::graphics::opengles::OpenGLThreadUtil ();
+use org::allbinary::graphics::paint::InitUpdatePaintable ();
+use org::allbinary::graphics::paint::NullInitUpdatePaintable ();
+use org::allbinary::graphics::paint::NullPaintable ();
+use org::allbinary::graphics::paint::Paintable ();
+use org::allbinary::graphics::paint::PaintableInterface ();
+use org::allbinary::image::opengles::OpenGLImageSpecificFactory ();
+use org::allbinary::input::gyro::SensorGameUpdateProcessor ();
+use org::allbinary::input::gyro::SingleSensorGameUpdateProcessor ();
+use org::allbinary::input::motion::button::BaseTouchInput ();
+use org::allbinary::input::motion::button::NoButtonsTouchInputFactory ();
+use org::allbinary::input::motion::button::TouchButtonFactory ();
+use org::allbinary::input::motion::button::TouchButtonsPaintableFactory ();
+use org::allbinary::input::motion::button::TouchScreenFactory ();
+use org::allbinary::input::motion::gesture::observer::BasicMotionGesturesHandler ();
+use org::allbinary::logic::ABSystemWrapper ();
+use org::allbinary::logic::communication::log::ForcedLogUtil ();
+use org::allbinary::logic::communication::log::LogUtil ();
+use org::allbinary::logic::communication::log::PreLogUtil ();
+use org::allbinary::logic::string::StringMaker ();
+use org::allbinary::logic::string::StringUtil ();
+use org::allbinary::logic::system::os::OperatingSystemFactory ();
+use org::allbinary::logic::system::security::licensing::AbeClientInformationInterface ();
+use org::allbinary::logic::util::event::AllBinaryEventObject ();
+use org::allbinary::logic::util::event::EventStrings ();
+use org::allbinary::media::audio::AllBinaryMediaManager ();
+use org::allbinary::media::audio::PlayerQueue ();
+use org::allbinary::media::audio::PrimaryPlayerQueueFactory ();
+use org::allbinary::media::audio::SecondaryPlayerQueueFactory ();
+use org::allbinary::media::audio::SelectSound ();
+use org::allbinary::string::CommonSeps ();
+use org::allbinary::string::CommonStrings ();
+use org::allbinary::thread::SecondaryThreadPool ();
+use org::allbinary::time::GameTickTimeDelayHelper ();
+use org::allbinary::time::GameTickTimeDelayHelperFactory ();
+use org::allbinary::time::TimeDelayHelper ();
+use org::allbinary::util::ABHashtable ();
+use org::allbinary::util::BasicArrayList ();
+use org::allbinary::util::BasicArrayListD ();
+use org::allbinary::util::BasicArrayListUtil ();
+use org::allbinary::game::displayable::canvas::AllBinaryGameCanvasInterface ();
+use org::allbinary::game::displayable::canvas::GameCanvasRunnableInterface ();
+use org::allbinary::game::displayable::canvas::MenuListener ();
+use org::allbinary::game::displayable::canvas::PopupMenuInterface ();
+use org::allbinary::game::displayable::canvas::GameCanvasRunnable ();
+use org::allbinary::game::displayable::canvas::GameCanvasPauseRunnable ();
+use org::allbinary::game::displayable::canvas::FormUtil ();
+use org::allbinary::game::displayable::canvas::MyFormUtil ();
+use org::allbinary::game::displayable::canvas::EndGameInfo ();
+use org::allbinary::game::displayable::canvas::NoMenuInputProcessor ();
+use org::allbinary::game::displayable::canvas::BaseGameBehavior ();
+use org::allbinary::game::displayable::canvas::DemoGameBehavior ();
+use org::allbinary::game::displayable::canvas::BaseMenuBehavior ();
+use org::allbinary::game::displayable::canvas::InGameMenuBehavior ();
+use org::allbinary::game::displayable::canvas::BasicPopupMenuPaintable ();
+use org::allbinary::game::displayable::canvas::PopupMenuInputProcessor ();
+use org::allbinary::game::displayable::canvas::GameLimitedCommandTextItemArrayFactory ();
+use org::allbinary::game::displayable::canvas::PopupCommandFormInputProcessor ();
+use org::allbinary::game::displayable::canvas::NullWaitGameRunnable ();
+use org::allbinary::game::displayable::canvas::GameProcessor ();
+use org::allbinary::game::displayable::canvas::CheatGameInputProcessor ();
+use org::allbinary::game::displayable::canvas::EndGameProcessor ();
+use org::allbinary::game::displayable::canvas::StartIntermissionProcessor ();
+use org::allbinary::game::displayable::canvas::EndGamePaintable ();
+use org::allbinary::game::displayable::canvas::NullDemoPaintable ();
+use org::allbinary::game::displayable::canvas::GameCanvasInputProcessor ();
+use org::allbinary::game::displayable::canvas::FormInputProcessor ();
+use java::lang::Thread ();
+use org::allbinary::game::displayable::canvas::SaveHighScoreRunnable ();
 
 1;
 

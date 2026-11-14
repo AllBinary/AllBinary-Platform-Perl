@@ -17,7 +17,7 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
-use parent -norequire,'org::allbinary::media::image::analysis::ColorRangeInterface';
+use parent -norequire,'java::lang::Object','org::allbinary::media::image::analysis::ColorRangeInterface';
 
 
 sub _init_fields {
@@ -34,7 +34,7 @@ sub _init_fields {
 sub new {
     my ($class) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
         $self->{minRed} = 0;
         $self->{maxRed} = 0;
         $self->{minGreen} = 0;
@@ -150,10 +150,11 @@ sub toString {
         return $stringBuffer->toString();
 }
 
-# use java::awt;
-use org::allbinary::logic::string::StringMaker;
-use org::allbinary::string::CommonSeps;
-use org::allbinary::media::image::analysis::ColorRangeInterface;
+use java::lang::Object ();
+# use java::awt ();
+use org::allbinary::logic::string::StringMaker ();
+use org::allbinary::string::CommonSeps ();
+use org::allbinary::media::image::analysis::ColorRangeInterface ();
 
 1;
 

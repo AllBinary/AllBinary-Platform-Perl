@@ -17,6 +17,7 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
 
 sub _init_fields {
@@ -28,7 +29,7 @@ sub _init_fields {
 sub new {
     my ($class) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
         $self->{runtime} = 'java::lang::Runtime'->getRuntime();
     return $self;
 }
@@ -219,8 +220,9 @@ sub collectGarbage {
         $self->{runtime}->gc();
 }
 
-use java::lang::Runtime;
-use java::lang::Thread;
+use java::lang::Object ();
+use java::lang::Runtime ();
+use java::lang::Thread ();
 
 1;
 

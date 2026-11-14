@@ -17,6 +17,7 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
 our $NAME = "GENERIC_CONFIGURATION_PROFILE_ACTION_INPUT_NAME";
 our $TYPE = "GENERIC_CONFIGURATION_PROFILE_ACTION_INPUT_TYPE";
@@ -29,6 +30,7 @@ sub new {
     return $self;
 }
 
+use java::lang::Object ();
 
 1;
 

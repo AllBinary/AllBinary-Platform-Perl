@@ -56,9 +56,9 @@ sub setTimeLastModified {
     die "abstract method setTimeLastModified";
 }
 
-use org::allbinary::business::time::created::TimeCreated;
-use org::allbinary::business::time::modified::TimeLastModified;
-use org::allbinary::logic::communication::smtp::configuration::user::UserEmailConfigurationInterface;
+use org::allbinary::business::time::created::TimeCreated ();
+use org::allbinary::business::time::modified::TimeLastModified ();
+use org::allbinary::logic::communication::smtp::configuration::user::UserEmailConfigurationInterface ();
 
 1;
 

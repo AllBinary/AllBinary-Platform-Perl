@@ -68,10 +68,10 @@ sub isRealRoot {
     die "abstract method isRealRoot";
 }
 
-use org::allbinary::business::category::hierarchy::CategoryHierarchyInterface;
-use org::allbinary::data::tables::TableMappingInterface;
-use org::allbinary::logic::control::validate::ValidationInterface;
-use org::allbinary::logic::io::path::AbPath;
+use org::allbinary::business::category::hierarchy::CategoryHierarchyInterface ();
+use org::allbinary::data::tables::TableMappingInterface ();
+use org::allbinary::logic::control::validate::ValidationInterface ();
+use org::allbinary::logic::io::path::AbPath ();
 
 1;
 

@@ -35,11 +35,19 @@ sub onVirtualKeyboardEvent {
     my ($self, $virtualKeyboardEvent) = @_;
 }
 
-use org::allbinary::business::advertisement::GameAdStateBase;
-use org::allbinary::business::advertisement::AdConfiguration;
-use org::allbinary::input::event::VirtualKeyboardEvent;
-use org::allbinary::input::event::VirtualKeyboardEventHandler;
-use org::allbinary::input::event::VirtualKeyboardEventListenerInterface;
+
+sub onEvent {
+    my ($self, $eventObject) = @_;
+        $self->SUPER::onEvent($eventObject);
+}
+
+use java::lang::Object ();
+use org::allbinary::business::advertisement::GameAdStateBase ();
+use org::allbinary::business::advertisement::AdConfiguration ();
+use org::allbinary::input::event::VirtualKeyboardEvent ();
+use org::allbinary::input::event::VirtualKeyboardEventHandler ();
+use org::allbinary::input::event::VirtualKeyboardEventListenerInterface ();
+use org::allbinary::logic::util::event::AllBinaryEventObject ();
 
 1;
 

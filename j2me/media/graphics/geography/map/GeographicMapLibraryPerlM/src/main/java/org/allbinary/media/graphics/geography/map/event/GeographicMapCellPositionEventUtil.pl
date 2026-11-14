@@ -17,6 +17,7 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
 
 sub _init_fields {
@@ -29,7 +30,7 @@ sub _init_fields {
 sub new {
     my ($class, $anyType) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
         $self->{geographicMapCellPositionEvent} = 'org::allbinary::media::graphics::geography::map::event::GeographicMapCellPositionEvent'->new($anyType, 'org::allbinary::graphics::CellPositionFactory'->getInstance()->{NONE});
     return $self;
 }
@@ -50,10 +51,11 @@ sub remove {
         $self->{geographicMapCellPositionEventHandler}->fireRemoveEvent($self->{geographicMapCellPositionEvent});
 }
 
-use org::allbinary::graphics::CellPositionFactory;
-use org::allbinary::media::graphics::geography::map::GeographicMapCellPositionTracking;
-use org::allbinary::media::graphics::geography::map::event::GeographicMapCellPositionEventHandler;
-use org::allbinary::media::graphics::geography::map::event::GeographicMapCellPositionEvent;
+use java::lang::Object ();
+use org::allbinary::graphics::CellPositionFactory ();
+use org::allbinary::media::graphics::geography::map::GeographicMapCellPositionTracking ();
+use org::allbinary::media::graphics::geography::map::event::GeographicMapCellPositionEventHandler ();
+use org::allbinary::media::graphics::geography::map::event::GeographicMapCellPositionEvent ();
 
 1;
 

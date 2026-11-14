@@ -19,7 +19,7 @@ use feature 'try';
 no warnings 'experimental::try';
 use parent -norequire,'org::allbinary::game::configuration::event::BaseChangedGameFeatureListener';
 
-our $gameFeatureListener = 'org::allbinary::game::configuration::event::ChangedGameFeatureListener'->new();
+tie our $gameFeatureListener, 'java::lang::LazyStatic', sub { 'org::allbinary::game::configuration::event::ChangedGameFeatureListener'->new() };
 
 sub new {
     my ($class) = @_;
@@ -39,8 +39,10 @@ sub isChangedGameConfiguration {
         return $self->{list}->contains($gameConfiguration);
 }
 
-use org::allbinary::game::configuration::GameConfiguration;
-use org::allbinary::game::configuration::event::BaseChangedGameFeatureListener;
+use java::lang::Object ();
+use java::lang::LazyStatic ();
+use org::allbinary::game::configuration::GameConfiguration ();
+use org::allbinary::game::configuration::event::BaseChangedGameFeatureListener ();
 
 1;
 

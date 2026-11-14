@@ -41,7 +41,7 @@ sub getInstance {
 sub new {
     my ($class, $location, $direction, $bufferZone, $basicColor, $timer) = @_;
     my $self = $class->SUPER::new($location, $direction, $bufferZone, $basicColor);
-    $self->_init_fields();
+    _init_fields($self);
         # super(...) made $self above
         $self->{timer} = $timer;
         $self->set();
@@ -84,12 +84,13 @@ sub paint {
         $self->SUPER::paintDX($graphics, $self->{TIME_CHAR_ARRAY}, 0, scalar(@{$self->{TIME_CHAR_ARRAY}}), $self->{string}, 0, $self->{totalDigits}, $self->{offset});
 }
 
-# use javax::microedition::lcdui::Font;
-# use javax::microedition::lcdui::Graphics;
-use org::allbinary::game::graphics::hud::BasicHud;
-use org::allbinary::graphics::color::BasicColor;
-use org::allbinary::graphics::font::MyFontProcessor;
-use org::allbinary::logic::math::PrimitiveLongSingleton;
+use java::lang::Object ();
+use javax::microedition::lcdui::Font ();
+use javax::microedition::lcdui::Graphics ();
+use org::allbinary::game::graphics::hud::BasicHud ();
+use org::allbinary::graphics::color::BasicColor ();
+use org::allbinary::graphics::font::MyFontProcessor ();
+use org::allbinary::logic::math::PrimitiveLongSingleton ();
 
 1;
 

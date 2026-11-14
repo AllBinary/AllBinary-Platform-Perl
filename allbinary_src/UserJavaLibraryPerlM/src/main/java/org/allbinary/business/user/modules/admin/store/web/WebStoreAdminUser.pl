@@ -56,9 +56,10 @@ sub updateSession {
         $weblisketSession->setStoreName($self->getPermissions());
 }
 
-use java::util::HashMap;
-use org::allbinary::business::user::modules::User;
-use org::allbinary::logic::communication::http::request::session::WeblisketSessionInterface;
+use java::lang::Object ();
+use java::util::HashMap ();
+use org::allbinary::business::user::modules::User ();
+use org::allbinary::logic::communication::http::request::session::WeblisketSessionInterface ();
 
 1;
 

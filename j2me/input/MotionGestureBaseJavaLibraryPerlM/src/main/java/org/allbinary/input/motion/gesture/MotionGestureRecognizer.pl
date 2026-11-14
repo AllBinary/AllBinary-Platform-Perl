@@ -19,6 +19,7 @@ use feature 'try';
 no warnings 'experimental::try';
 use POSIX ();
 use List::Util ();
+use parent -norequire,'java::lang::Object';
 
 
 sub _init_fields {
@@ -39,7 +40,7 @@ sub _init_fields {
 sub new {
     my ($class, $id) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
         $self->{motionEventCircularPool} = 'org::allbinary::input::motion::gesture::observer::MotionEventCircularPool'->createPool($id);
         my $motionGesturesHandler = 'org::allbinary::logic::util::event::handler::BasicEventHandler'->new();
         my $movedMotionGesturesHandler = $motionGesturesHandler;
@@ -182,21 +183,22 @@ sub getMotionGesturesHandler {
         return $self->{motionGesturesHandler};
 }
 
-use org::allbinary::graphics::GPoint;
-use org::allbinary::graphics::Line;
-use org::allbinary::graphics::PointFactory;
-use org::allbinary::input::motion::gesture::configuration::MotionGestureConfiguration;
-use org::allbinary::input::motion::gesture::configuration::MotionGestureConfigurationFactory;
-use org::allbinary::input::motion::gesture::observer::BasicMotionGesturesHandler;
-use org::allbinary::input::motion::gesture::observer::MotionEventCircularPool;
-use org::allbinary::input::motion::gesture::observer::MotionGestureEvent;
-use org::allbinary::input::motion::gesture::observer::MovedMotionGesturesHandler;
-use org::allbinary::input::motion::gesture::observer::ScrolledMotionGesturesHandler;
-use org::allbinary::logic::communication::log::LogUtil;
-use org::allbinary::logic::math::J2SEMath;
-use org::allbinary::logic::util::event::handler::BasicEventHandler;
-use org::allbinary::string::CommonStrings;
-use org::allbinary::input::motion::gesture::TouchMotionGestureFactory;
+use java::lang::Object ();
+use org::allbinary::graphics::GPoint ();
+use org::allbinary::graphics::Line ();
+use org::allbinary::graphics::PointFactory ();
+use org::allbinary::input::motion::gesture::configuration::MotionGestureConfiguration ();
+use org::allbinary::input::motion::gesture::configuration::MotionGestureConfigurationFactory ();
+use org::allbinary::input::motion::gesture::observer::BasicMotionGesturesHandler ();
+use org::allbinary::input::motion::gesture::observer::MotionEventCircularPool ();
+use org::allbinary::input::motion::gesture::observer::MotionGestureEvent ();
+use org::allbinary::input::motion::gesture::observer::MovedMotionGesturesHandler ();
+use org::allbinary::input::motion::gesture::observer::ScrolledMotionGesturesHandler ();
+use org::allbinary::logic::communication::log::LogUtil ();
+use org::allbinary::logic::math::J2SEMath ();
+use org::allbinary::logic::util::event::handler::BasicEventHandler ();
+use org::allbinary::string::CommonStrings ();
+use org::allbinary::input::motion::gesture::TouchMotionGestureFactory ();
 
 1;
 

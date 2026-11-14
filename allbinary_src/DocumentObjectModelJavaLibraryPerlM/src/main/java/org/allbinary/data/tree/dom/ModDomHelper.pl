@@ -18,6 +18,7 @@ use warnings;
 use feature 'try';
 no warnings 'experimental::try';
 use Scalar::Util ();
+use parent -norequire,'java::lang::Object';
 
 
 
@@ -179,16 +180,17 @@ sub createNodeWithValueNodes {
         return $node;
 }
 
-use java::util::HashMap;
-# use java::util::Set;
-use org::allbinary::util::BasicArrayList;
-use org::allbinary::util::BasicArrayListD;
-use org::allbinary::logic::java::anyType::clazz::ClassUtil;
-use org::allbinary::logic::string::StringUtil;
-use org::allbinary::string::CommonSeps;
-use org::w3c::dom::Document;
-use org::w3c::dom::Node;
-use org::allbinary::data::tree::dom::DomData;
+use java::lang::Object ();
+use java::util::HashMap ();
+# use java::util::Set ();
+use org::allbinary::util::BasicArrayList ();
+use org::allbinary::util::BasicArrayListD ();
+use org::allbinary::logic::java::anyType::clazz::ClassUtil ();
+use org::allbinary::logic::string::StringUtil ();
+use org::allbinary::string::CommonSeps ();
+use org::w3c::dom::Document ();
+use org::w3c::dom::Node ();
+use org::allbinary::data::tree::dom::DomData ();
 
 1;
 

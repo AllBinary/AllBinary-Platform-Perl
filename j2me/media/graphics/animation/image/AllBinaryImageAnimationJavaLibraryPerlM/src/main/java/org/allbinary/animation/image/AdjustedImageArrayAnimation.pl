@@ -30,7 +30,7 @@ sub _init_fields {
 sub new {
     my ($class, $imageArray, $dx, $dy, $animationBehavior) = @_;
     my $self = $class->SUPER::new($imageArray, $animationBehavior);
-    $self->_init_fields();
+    _init_fields($self);
         # super(...) made $self above
         $self->init($dx, $dy);
     return $self;
@@ -74,10 +74,11 @@ sub getDy {
         return $self->{dy};
 }
 
-# use javax::microedition::lcdui::Graphics;
-# use javax::microedition::lcdui::Image;
-use org::allbinary::animation::AnimationBehavior;
-use org::allbinary::animation::image::ImageArrayAnimation;
+use java::lang::Object ();
+use javax::microedition::lcdui::Graphics ();
+use javax::microedition::lcdui::Image ();
+use org::allbinary::animation::AnimationBehavior ();
+use org::allbinary::animation::image::ImageArrayAnimation ();
 
 1;
 

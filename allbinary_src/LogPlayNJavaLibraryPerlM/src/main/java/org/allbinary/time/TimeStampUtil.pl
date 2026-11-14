@@ -18,8 +18,9 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
-our $instance = 'org::allbinary::time::TimeStampUtil'->new();
+tie our $instance, 'java::lang::LazyStatic', sub { 'org::allbinary::time::TimeStampUtil'->new() };
 
 
 sub getInstance {
@@ -42,8 +43,10 @@ sub getAsString {
         return $simpleDataFormat->format($date);
 }
 
-use com::google::gwt::i18n::client::DateTimeFormat;
-use java::util::Date;
+use java::lang::Object ();
+use java::lang::LazyStatic ();
+use com::google::gwt::i18n::client::DateTimeFormat ();
+use java::util::Date ();
 
 1;
 

@@ -17,8 +17,9 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
-our $instance = 'org::allbinary::logic::VectorUtil'->new();
+tie our $instance, 'java::lang::LazyStatic', sub { 'org::allbinary::logic::VectorUtil'->new() };
 
 sub new {
     my ($class) = @_;
@@ -46,7 +47,9 @@ sub elementAt {
         return $vector->elementAt($index);
 }
 
-use java::util::Vector;
+use java::lang::Object ();
+use java::lang::LazyStatic ();
+use java::util::Vector ();
 
 1;
 

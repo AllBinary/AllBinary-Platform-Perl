@@ -17,7 +17,7 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
-use parent -norequire,'org::allbinary::logic::communication::http::request::session::WeblisketSessionInterface';
+use parent -norequire,'java::lang::Object','org::allbinary::logic::communication::http::request::session::WeblisketSessionInterface';
 
 
 sub _init_fields {
@@ -44,7 +44,7 @@ sub _new2 {
 sub _new2 {
     my ($class, $hashMap, $httpServletRequest) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
         my $propertiesHashMap = $hashMap;
         my $request = $httpServletRequest;
         $self->{session} = $request->getSession(1);
@@ -224,25 +224,26 @@ sub removeBasket {
         }
 }
 
-use java::util::HashMap;
-# use javax::servlet::http::HttpServletRequest;
-# use javax::servlet::http::HttpSession;
-# use javax::servlet::jsp::PageContext;
-use org::allbinary::business::context::modules::storefront::StoreFrontData;
-use org::allbinary::business::context::modules::storefront::StoreFrontFactory;
-use org::allbinary::business::context::modules::storefront::StoreFrontInterface;
-use org::allbinary::business::user::UserData;
-use org::allbinary::business::user::commerce::inventory::basket::Basket;
-use org::allbinary::business::user::commerce::inventory::order::Order;
-use org::allbinary::business::user::commerce::inventory::order::OrderInterface;
-use org::allbinary::business::user::commerce::money::payment::gateway::PaymentGatewayData;
-use org::allbinary::business::user::role::UserRole;
-use org::allbinary::business::user::role::UserRoleB;
-use org::allbinary::business::user::role::UserRoleData;
-use org::allbinary::logic::java::bool::BooleanFactory;
-use org::allbinary::logic::string::StringValidationUtil;
-use org::allbinary::logic::communication::http::request::session::WeblisketSessionInterface;
-use org::allbinary::logic::communication::http::request::session::WeblisketSessionData;
+use java::lang::Object ();
+use java::util::HashMap ();
+# use javax::servlet::http::HttpServletRequest ();
+# use javax::servlet::http::HttpSession ();
+# use javax::servlet::jsp::PageContext ();
+use org::allbinary::business::context::modules::storefront::StoreFrontData ();
+use org::allbinary::business::context::modules::storefront::StoreFrontFactory ();
+use org::allbinary::business::context::modules::storefront::StoreFrontInterface ();
+use org::allbinary::business::user::UserData ();
+use org::allbinary::business::user::commerce::inventory::basket::Basket ();
+use org::allbinary::business::user::commerce::inventory::order::Order ();
+use org::allbinary::business::user::commerce::inventory::order::OrderInterface ();
+use org::allbinary::business::user::commerce::money::payment::gateway::PaymentGatewayData ();
+use org::allbinary::business::user::role::UserRole ();
+use org::allbinary::business::user::role::UserRoleB ();
+use org::allbinary::business::user::role::UserRoleData ();
+use org::allbinary::logic::java::bool::BooleanFactory ();
+use org::allbinary::logic::string::StringValidationUtil ();
+use org::allbinary::logic::communication::http::request::session::WeblisketSessionInterface ();
+use org::allbinary::logic::communication::http::request::session::WeblisketSessionData ();
 
 1;
 

@@ -17,7 +17,7 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
-use parent -norequire,'org::allbinary::view::ViewPositionFactoryInterface';
+use parent -norequire,'java::lang::Object','org::allbinary::view::ViewPositionFactoryInterface';
 
 
 sub new {
@@ -32,8 +32,9 @@ sub getInstance {
         return 'org::allbinary::view::ViewPosition'->getInstanceD();
 }
 
-use org::allbinary::view::ViewPositionFactoryInterface;
-use org::allbinary::view::ViewPosition;
+use java::lang::Object ();
+use org::allbinary::view::ViewPositionFactoryInterface ();
+use org::allbinary::view::ViewPosition ();
 
 1;
 

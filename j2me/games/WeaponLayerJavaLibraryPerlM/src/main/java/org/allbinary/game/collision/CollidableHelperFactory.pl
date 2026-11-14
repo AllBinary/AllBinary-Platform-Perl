@@ -17,6 +17,7 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
 
 sub new {
@@ -35,11 +36,12 @@ sub getInstance {
         }
 }
 
-use org::allbinary::game::configuration::feature::Features;
-use org::allbinary::game::configuration::feature::GameFeatureFactory;
-use org::allbinary::layer::AllBinaryLayer;
-use org::allbinary::game::collision::SourceCollisionHelper;
-use org::allbinary::game::collision::CollisionHelper;
+use java::lang::Object ();
+use org::allbinary::game::configuration::feature::Features ();
+use org::allbinary::game::configuration::feature::GameFeatureFactory ();
+use org::allbinary::layer::AllBinaryLayer ();
+use org::allbinary::game::collision::SourceCollisionHelper ();
+use org::allbinary::game::collision::CollisionHelper ();
 
 1;
 

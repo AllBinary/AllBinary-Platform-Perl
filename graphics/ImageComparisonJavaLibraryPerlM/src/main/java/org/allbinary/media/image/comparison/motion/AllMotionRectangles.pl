@@ -109,14 +109,15 @@ sub isPixelDeltaLikelyPartOfMotionRectangle {
         return 0;
 }
 
-# use java::awt;
-use org::allbinary::util::BasicArrayList;
-use org::allbinary::util::BasicArrayListD;
-use org::allbinary::media::image::comparison::ImageComparisonResult;
-use org::allbinary::media::image::comparison::pixel::PixelDelta;
-use org::allbinary::media::image::comparison::motion::MotionRectangles;
-use org::allbinary::media::image::comparison::motion::Rectangle;
-use org::allbinary::media::image::comparison::motion::MotionRectangle;
+use java::lang::Object ();
+# use java::awt ();
+use org::allbinary::util::BasicArrayList ();
+use org::allbinary::util::BasicArrayListD ();
+use org::allbinary::media::image::comparison::ImageComparisonResult ();
+use org::allbinary::media::image::comparison::pixel::PixelDelta ();
+use org::allbinary::media::image::comparison::motion::MotionRectangles ();
+use org::allbinary::media::image::comparison::motion::Rectangle ();
+use org::allbinary::media::image::comparison::motion::MotionRectangle ();
 
 1;
 

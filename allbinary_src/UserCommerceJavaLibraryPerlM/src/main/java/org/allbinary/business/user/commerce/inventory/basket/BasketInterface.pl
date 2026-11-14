@@ -75,10 +75,10 @@ sub getSubTotal {
     die "abstract method getSubTotal";
 }
 
-use java::util::HashMap;
-# use java::util::Set;
-use org::allbinary::business::user::commerce::money::Money;
-use org::allbinary::business::user::commerce::money::MoneyException;
+use java::util::HashMap ();
+# use java::util::Set ();
+use org::allbinary::business::user::commerce::money::Money ();
+use org::allbinary::business::user::commerce::money::MoneyException ();
 
 1;
 

@@ -17,8 +17,9 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
-our $instance = 'views::business::context::modules::storefront::customizer::CustomizerUtil'->new();
+tie our $instance, 'java::lang::LazyStatic', sub { 'views::business::context::modules::storefront::customizer::CustomizerUtil'->new() };
 
 sub _init_fields {
     my ($self) = @_;
@@ -35,7 +36,7 @@ sub getInstance {
 sub new {
     my ($class) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
     return $self;
 }
 
@@ -183,19 +184,21 @@ sub getViewDataForComponentsInObjectConfig {
         die ("No Components Specified in ObjectConfig");
 }
 
-use org::allbinary::util::BasicArrayList;
-use org::allbinary::data::tables::transform::info::TransformInfoEntity;
-use org::allbinary::data::tables::transform::info::TransformInfoEntityBuilder;
-use org::allbinary::data::tree::dom::DomNodeInterface;
-use org::allbinary::data::tree::dom::document::DomDocumentHelper;
-use org::allbinary::data::tree::dom::document::XmlDocumentHelper;
-use org::allbinary::logic::communication::log::LogUtil;
-use org::allbinary::logic::string::StringMaker;
-use org::allbinary::logic::visual::transform::info::TransformInfo;
-use org::allbinary::logic::visual::transform::info::TransformInfoHttpInterface;
-use org::allbinary::logic::visual::transform::info::TransformInfoInterface;
-use org::allbinary::logic::visual::transform::info::objectConfig::TransformInfoObjectConfigInterface;
-use org::w3c::dom::Document;
+use java::lang::Object ();
+use java::lang::LazyStatic ();
+use org::allbinary::util::BasicArrayList ();
+use org::allbinary::data::tables::transform::info::TransformInfoEntity ();
+use org::allbinary::data::tables::transform::info::TransformInfoEntityBuilder ();
+use org::allbinary::data::tree::dom::DomNodeInterface ();
+use org::allbinary::data::tree::dom::document::DomDocumentHelper ();
+use org::allbinary::data::tree::dom::document::XmlDocumentHelper ();
+use org::allbinary::logic::communication::log::LogUtil ();
+use org::allbinary::logic::string::StringMaker ();
+use org::allbinary::logic::visual::transform::info::TransformInfo ();
+use org::allbinary::logic::visual::transform::info::TransformInfoHttpInterface ();
+use org::allbinary::logic::visual::transform::info::TransformInfoInterface ();
+use org::allbinary::logic::visual::transform::info::objectConfig::TransformInfoObjectConfigInterface ();
+use org::w3c::dom::Document ();
 
 1;
 

@@ -34,7 +34,7 @@ sub _init_fields {
 sub new {
     my ($class, $title, $backgroundBasicColor, $foregroundBasicColor) = @_;
     my $self = $class->SUPER::new($title, $backgroundBasicColor, $foregroundBasicColor);
-    $self->_init_fields();
+    _init_fields($self);
         # super(...) made $self above
     return $self;
 }
@@ -129,6 +129,7 @@ sub paint {
     use warnings;
     use feature 'try';
     no warnings 'experimental::try';
+    use parent -norequire,'java::lang::Object';
     
 
     sub _init_fields {
@@ -140,7 +141,7 @@ sub paint {
     sub new {
         my ($class, $androidTitleProgressBar) = @_;
         my $self = bless({}, $class);
-        $self->_init_fields();
+        _init_fields($self);
             $self->{androidTitleProgressBar} = $androidTitleProgressBar;
         return $self;
     }
@@ -165,6 +166,7 @@ sub paint {
     use warnings;
     use feature 'try';
     no warnings 'experimental::try';
+    use parent -norequire,'java::lang::Object';
     
 
     sub _init_fields {
@@ -176,7 +178,7 @@ sub paint {
     sub new {
         my ($class, $androidTitleProgressBar) = @_;
         my $self = bless({}, $class);
-        $self->_init_fields();
+        _init_fields($self);
             $self->{androidTitleProgressBar} = $androidTitleProgressBar;
         return $self;
     }
@@ -201,6 +203,7 @@ sub paint {
     use warnings;
     use feature 'try';
     no warnings 'experimental::try';
+    use parent -norequire,'java::lang::Object';
     
 
     sub _init_fields {
@@ -212,7 +215,7 @@ sub paint {
     sub new {
         my ($class, $androidTitleProgressBar) = @_;
         my $self = bless({}, $class);
-        $self->_init_fields();
+        _init_fields($self);
             $self->{androidTitleProgressBar} = $androidTitleProgressBar;
         return $self;
     }
@@ -237,6 +240,7 @@ sub paint {
     use warnings;
     use feature 'try';
     no warnings 'experimental::try';
+    use parent -norequire,'java::lang::Object';
     
 
     sub _init_fields {
@@ -248,7 +252,7 @@ sub paint {
     sub new {
         my ($class, $androidTitleProgressBar) = @_;
         my $self = bless({}, $class);
-        $self->_init_fields();
+        _init_fields($self);
             $self->{androidTitleProgressBar} = $androidTitleProgressBar;
         return $self;
     }
@@ -267,13 +271,14 @@ sub paint {
     }
 
 
-# use javax::microedition::lcdui::Graphics;
-use org::allbinary::android::activity::NullProgressActivity;
-use org::allbinary::android::activity::ProgressActivityInterface;
-use org::allbinary::graphics::color::BasicColor;
-use org::allbinary::logic::communication::log::LogUtil;
-use org::allbinary::string::CommonStrings;
-use org::allbinary::graphics::canvas::transition::progress::ProgressCanvas;
+use java::lang::Object ();
+use javax::microedition::lcdui::Graphics ();
+use org::allbinary::android::activity::NullProgressActivity ();
+use org::allbinary::android::activity::ProgressActivityInterface ();
+use org::allbinary::graphics::color::BasicColor ();
+use org::allbinary::logic::communication::log::LogUtil ();
+use org::allbinary::string::CommonStrings ();
+use org::allbinary::graphics::canvas::transition::progress::ProgressCanvas ();
 
 1;
 

@@ -27,8 +27,8 @@ sub getInstance {
     die "abstract method getInstance";
 }
 
-use java::util::HashMap;
-# use javax::servlet::jsp::PageContext;
+use java::util::HashMap ();
+# use javax::servlet::jsp::PageContext ();
 
 1;
 

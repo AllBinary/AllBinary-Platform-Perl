@@ -29,7 +29,7 @@ sub _init_fields {
 sub new {
     my ($class, $clientInfo) = @_;
     my $self = $class->SUPER::new($clientInfo, "SSLLogServ.logUtil");
-    $self->_init_fields();
+    _init_fields($self);
         # super(...) made $self above
     return $self;
 }
@@ -45,10 +45,10 @@ sub get {
             $serverUrl = substr($serverUrl, 0, ($index + 1) - (0)) . "logservssl.php";
             my $xmlRpcClient = 'org::apache::xmlrpc::XmlRpcClient'->new($serverUrl);
             $self->setClient($xmlRpcClient);
-            $xmlRpcClient->setBasicAuthentication(undef, undef);
+            $xmlRpcClient->setBasicAuthentication('org::allbinary::logic::string::StringUtil'->getInstance()->{EMPTY_STRING}, 'org::allbinary::logic::string::StringUtil'->getInstance()->{EMPTY_STRING});
             my $hashtable = $anyType;
             $param->add($hashtable);
-            my $result = $xmlRpcClient->execute($self->getRemoteMethod(), $param, $self->{noCrypt});
+            my $result = $xmlRpcClient->executeWithCrypt($self->getRemoteMethod(), $param, $self->{noCrypt});
             print('org::allbinary::string::CommonLabels'->getInstance()->{RESULT_} + 'org::allbinary::string::CommonSeps'->getInstance()->{NEW_LINE} . $result->toString(), "\n");
             return $result;
         } catch ($e) {
@@ -61,18 +61,20 @@ sub get {
         }
 }
 
-# use java::io::IOException;
-use org::apache::xmlrpc::XmlRpcClient;
-use org::apache::xmlrpc::XmlRpcException;
-use org::allbinary::util::BasicArrayList;
-use org::allbinary::util::BasicArrayListD;
-use org::allbinary::logic::communication::xmlrpc::XmlRpcAbeClient;
-use org::allbinary::logic::system::security::crypt::jcehelper::NoCrypt;
-use org::allbinary::logic::system::security::licensing::AbeClientInformationInterface;
-use org::allbinary::string::CommonLabels;
-use org::allbinary::string::CommonSeps;
-use org::allbinary::util::ABHashtable;
-use java::lang::System;
+use java::lang::Object ();
+use org::allbinary::logic::string::StringUtil ();
+# use java::io::IOException ();
+use org::apache::xmlrpc::XmlRpcClient ();
+use org::apache::xmlrpc::XmlRpcException ();
+use org::allbinary::util::BasicArrayList ();
+use org::allbinary::util::BasicArrayListD ();
+use org::allbinary::logic::communication::xmlrpc::XmlRpcAbeClient ();
+use org::allbinary::logic::system::security::crypt::jcehelper::NoCrypt ();
+use org::allbinary::logic::system::security::licensing::AbeClientInformationInterface ();
+use org::allbinary::string::CommonLabels ();
+use org::allbinary::string::CommonSeps ();
+use org::allbinary::util::ABHashtable ();
+use java::lang::System ();
 
 1;
 

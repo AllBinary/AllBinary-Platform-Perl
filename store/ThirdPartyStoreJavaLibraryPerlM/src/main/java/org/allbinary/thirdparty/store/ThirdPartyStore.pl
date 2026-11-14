@@ -17,6 +17,7 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
 
 sub _init_fields {
@@ -29,7 +30,7 @@ sub _init_fields {
 sub new {
     my ($class, $name) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
         $self->{name} = $name;
     return $self;
 }
@@ -57,7 +58,8 @@ sub getName {
         return $self->{name};
 }
 
-use org::allbinary::logic::system::security::licensing::AbeClientInformationInterface;
+use java::lang::Object ();
+use org::allbinary::logic::system::security::licensing::AbeClientInformationInterface ();
 
 1;
 

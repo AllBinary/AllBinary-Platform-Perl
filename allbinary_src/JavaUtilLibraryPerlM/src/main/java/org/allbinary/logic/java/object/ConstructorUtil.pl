@@ -17,6 +17,7 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
 
 
@@ -60,9 +61,10 @@ sub view {
         }
 }
 
-# use java::lang::reflect::Constructor;
-use org::allbinary::logic::string::StringMaker;
-use org::allbinary::string::CommonSeps;
+use java::lang::Object ();
+# use java::lang::reflect::Constructor ();
+use org::allbinary::logic::string::StringMaker ();
+use org::allbinary::string::CommonSeps ();
 
 1;
 

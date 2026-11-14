@@ -17,7 +17,7 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
-use parent -norequire,'org::allbinary::logic::communication::smtp::EmailInterface';
+use parent -norequire,'java::lang::Object','org::allbinary::logic::communication::smtp::EmailInterface';
 
 our $DEBUG = "mail.debug";
 our $SMTP_HOST = "mail.smtp.host";
@@ -47,7 +47,7 @@ sub new {
 sub _new7 {
     my ($class, $from, $to, $subject, $server, $textBody, $htmlAttachment, $contentBase) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
         $self->{isDebug} = 0;
         $self->init($from, $to, $subject, $server, $textBody, $htmlAttachment, $contentBase);
     return $self;
@@ -57,7 +57,7 @@ sub _new7 {
 sub _new8 {
     my ($class, $from, $to, $subject, $server, $textBody, $htmlAttachment, $contentBase, $isDebug) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
         $self->{isDebug} = $isDebug;
         $self->init($from, $to, $subject, $server, $textBody, $htmlAttachment, $contentBase);
     return $self;
@@ -220,30 +220,31 @@ sub toXmlDoc {
         die ('org::allbinary::string::CommonStrings'->getInstance()->{NOT_IMPLEMENTED});
 }
 
-# use java::io::ByteArrayOutputStream;
-# use java::io::PrintStream;
-use java::util::HashMap;
-# use java::util::Properties;
-# use javax::mail::Address;
-# use javax::mail::Authenticator;
-# use javax::mail::Message;
-# use javax::mail::MessagingException;
-# use javax::mail::Session;
-# use javax::mail::internet::InternetAddress;
-# use javax::mail::internet::InternetHeaders;
-# use javax::mail::internet::MimeBodyPart;
-# use javax::mail::internet::MimeMessage;
-# use javax::mail::internet::MimeMultipart;
-use org::allbinary::data::tree::dom::ModDomHelper;
-use org::allbinary::logic::StdUtil;
-use org::allbinary::logic::communication::log::LogUtil;
-use org::allbinary::logic::string::StringUtil;
-use org::allbinary::logic::string::StringValidationUtil;
-use org::allbinary::string::CommonStrings;
-use org::w3c::dom::Document;
-use org::w3c::dom::Node;
-use org::allbinary::logic::communication::smtp::EmailInterface;
-use org::allbinary::logic::communication::smtp::EmailData;
+use java::lang::Object ();
+# use java::io::ByteArrayOutputStream ();
+# use java::io::PrintStream ();
+use java::util::HashMap ();
+# use java::util::Properties ();
+# use javax::mail::Address ();
+# use javax::mail::Authenticator ();
+# use javax::mail::Message ();
+# use javax::mail::MessagingException ();
+# use javax::mail::Session ();
+# use javax::mail::internet::InternetAddress ();
+# use javax::mail::internet::InternetHeaders ();
+# use javax::mail::internet::MimeBodyPart ();
+# use javax::mail::internet::MimeMessage ();
+# use javax::mail::internet::MimeMultipart ();
+use org::allbinary::data::tree::dom::ModDomHelper ();
+use org::allbinary::logic::StdUtil ();
+use org::allbinary::logic::communication::log::LogUtil ();
+use org::allbinary::logic::string::StringUtil ();
+use org::allbinary::logic::string::StringValidationUtil ();
+use org::allbinary::string::CommonStrings ();
+use org::w3c::dom::Document ();
+use org::w3c::dom::Node ();
+use org::allbinary::logic::communication::smtp::EmailInterface ();
+use org::allbinary::logic::communication::smtp::EmailData ();
 
 1;
 

@@ -17,8 +17,9 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
-our $instance = 'org::allbinary::logic::NullUtil'->getInstance()->{NULL_OBJECT};
+tie our $instance, 'java::lang::LazyStatic', sub { 'org::allbinary::logic::NullUtil'->getInstance()->{NULL_OBJECT} };
 
 sub _init_fields {
     my ($self) = @_;
@@ -41,7 +42,7 @@ sub getInstance {
 sub new {
     my ($class) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
         try {
             $self->{name} = $self->getString();
         } catch ($e) {
@@ -103,16 +104,18 @@ sub getName {
         return $self->{name};
 }
 
-use org::allbinary::game::configuration::feature::Features;
-use org::allbinary::game::configuration::feature::GraphicsFeature;
-use org::allbinary::game::configuration::feature::GraphicsFeatureFactory;
-use org::allbinary::graphics::displayable::CanvasStrings;
-use org::allbinary::graphics::opengles::OpenGLFeatureUtil;
-use org::allbinary::logic::NullUtil;
-use org::allbinary::logic::communication::log::LogUtil;
-use org::allbinary::logic::string::StringMaker;
-use org::allbinary::logic::string::StringUtil;
-use org::allbinary::string::CommonStrings;
+use java::lang::Object ();
+use java::lang::LazyStatic ();
+use org::allbinary::game::configuration::feature::Features ();
+use org::allbinary::game::configuration::feature::GraphicsFeature ();
+use org::allbinary::game::configuration::feature::GraphicsFeatureFactory ();
+use org::allbinary::graphics::displayable::CanvasStrings ();
+use org::allbinary::graphics::opengles::OpenGLFeatureUtil ();
+use org::allbinary::logic::NullUtil ();
+use org::allbinary::logic::communication::log::LogUtil ();
+use org::allbinary::logic::string::StringMaker ();
+use org::allbinary::logic::string::StringUtil ();
+use org::allbinary::string::CommonStrings ();
 
 1;
 

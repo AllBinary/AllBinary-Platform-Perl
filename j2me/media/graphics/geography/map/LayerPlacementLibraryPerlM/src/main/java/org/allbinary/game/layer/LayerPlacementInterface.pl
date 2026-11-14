@@ -45,7 +45,7 @@ sub getInstance {
     die "abstract method getInstance";
 }
 
-use org::allbinary::util::ABHashtable;
+use org::allbinary::util::ABHashtable ();
 
 1;
 

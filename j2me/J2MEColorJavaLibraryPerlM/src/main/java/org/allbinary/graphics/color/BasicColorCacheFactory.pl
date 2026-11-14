@@ -17,8 +17,9 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
-our $instance = 'org::allbinary::graphics::color::BasicColorCacheFactory'->new();
+tie our $instance, 'java::lang::LazyStatic', sub { 'org::allbinary::graphics::color::BasicColorCacheFactory'->new() };
 
 sub _init_fields {
     my ($self) = @_;
@@ -35,7 +36,7 @@ sub getInstance {
 sub new {
     my ($class) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
     return $self;
 }
 
@@ -56,9 +57,11 @@ sub getAndOrCreate {
         return $basicColor;
 }
 
-use org::allbinary::logic::StdUtil;
-use org::allbinary::util::ABHashtable;
-use org::allbinary::graphics::color::BasicColorFactory;
+use java::lang::Object ();
+use java::lang::LazyStatic ();
+use org::allbinary::logic::StdUtil ();
+use org::allbinary::util::ABHashtable ();
+use org::allbinary::graphics::color::BasicColorFactory ();
 
 1;
 

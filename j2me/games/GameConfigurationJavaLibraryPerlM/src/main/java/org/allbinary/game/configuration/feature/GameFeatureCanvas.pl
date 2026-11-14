@@ -32,8 +32,9 @@ sub paint {
     my ($self, $graphics) = @_;
 }
 
-# use javax::microedition::lcdui::Canvas;
-# use javax::microedition::lcdui::Graphics;
+use java::lang::Object ();
+use javax::microedition::lcdui::Canvas ();
+use javax::microedition::lcdui::Graphics ();
 
 1;
 

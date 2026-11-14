@@ -19,7 +19,7 @@ use feature 'try';
 no warnings 'experimental::try';
 use parent -norequire,'org::allbinary::game::displayable::canvas::DemoGameBehavior';
 
-our $instanceC = 'org::allbinary::game::displayable::canvas::BaseGameBehavior'->new();
+tie our $instanceC, 'java::lang::LazyStatic', sub { 'org::allbinary::game::displayable::canvas::BaseGameBehavior'->new() };
 
 sub new {
     my ($class) = @_;
@@ -116,13 +116,15 @@ sub setHighScore {
         $allBinaryGameCanvas->setHighScore2($abeClientInformation, $name, $score, $autoSubmit, $isLast);
 }
 
-use org::allbinary::business::advertisement::GameAdStateFactory;
-use org::allbinary::game::GameAdState;
-use org::allbinary::game::configuration::feature::Features;
-use org::allbinary::graphics::opengles::CurrentDisplayableFactory;
-use org::allbinary::graphics::opengles::OpenGLFeatureFactory;
-use org::allbinary::logic::system::security::licensing::AbeClientInformationInterface;
-use org::allbinary::game::displayable::canvas::DemoGameBehavior;
+use java::lang::Object ();
+use java::lang::LazyStatic ();
+use org::allbinary::business::advertisement::GameAdStateFactory ();
+use org::allbinary::game::GameAdState ();
+use org::allbinary::game::configuration::feature::Features ();
+use org::allbinary::graphics::opengles::CurrentDisplayableFactory ();
+use org::allbinary::graphics::opengles::OpenGLFeatureFactory ();
+use org::allbinary::logic::system::security::licensing::AbeClientInformationInterface ();
+use org::allbinary::game::displayable::canvas::DemoGameBehavior ();
 
 1;
 

@@ -17,7 +17,7 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
-use parent -norequire,'org::allbinary::animation::resource::FeatureResourceAnimationInterfaceFactoryInterface';
+use parent -norequire,'java::lang::Object','org::allbinary::animation::resource::FeatureResourceAnimationInterfaceFactoryInterface';
 
 
 sub _init_fields {
@@ -35,7 +35,7 @@ sub _init_fields {
 sub new {
     my ($class, $name, $hashtable, $rectangleHashtable, $rectangleArrayHashtable) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
         $self->{hashtable} = $hashtable;
         $self->{rectangleHashtable} = $rectangleHashtable;
         $self->{rectangleArrayOfArraysHashtable} = $rectangleArrayHashtable;
@@ -107,7 +107,13 @@ sub addRectangle {
 # throws Exception
 sub getRectangleArrayOfArrays {
     my ($self, $resource) = @_;
-        return $self->{rectangleArrayOfArraysHashtable}->get($resource);
+        my $valueCanBeNull = $self->{rectangleArrayOfArraysHashtable}->get($resource);
+        if (defined($valueCanBeNull)) {
+            my $rectangleArrayOfArrays = $valueCanBeNull;
+            return $rectangleArrayOfArrays;
+        } else {
+            return $org::allbinary::graphics::RectangleFactory::ARRAY_OF_ARRAYS;
+        }
 }
 
 
@@ -170,18 +176,19 @@ sub isInitialized {
         return $self->{initialized};
 }
 
-use org::allbinary::animation::BasicAnimationInterfaceFactoryInterface;
-use org::allbinary::animation::NullAnimationFactory;
-use org::allbinary::game::resource::ResourceLoadingLevelFactory;
-use org::allbinary::graphics::Rectangle;
-use org::allbinary::graphics::RectangleFactory;
-use org::allbinary::image::ImageCache;
-use org::allbinary::logic::communication::log::LogUtil;
-use org::allbinary::logic::string::StringMaker;
-use org::allbinary::string::CommonSeps;
-use org::allbinary::string::CommonStrings;
-use org::allbinary::util::ABHashtable;
-use org::allbinary::animation::resource::FeatureResourceAnimationInterfaceFactoryInterface;
+use java::lang::Object ();
+use org::allbinary::animation::BasicAnimationInterfaceFactoryInterface ();
+use org::allbinary::animation::NullAnimationFactory ();
+use org::allbinary::game::resource::ResourceLoadingLevelFactory ();
+use org::allbinary::graphics::Rectangle ();
+use org::allbinary::graphics::RectangleFactory ();
+use org::allbinary::image::ImageCache ();
+use org::allbinary::logic::communication::log::LogUtil ();
+use org::allbinary::logic::string::StringMaker ();
+use org::allbinary::string::CommonSeps ();
+use org::allbinary::string::CommonStrings ();
+use org::allbinary::util::ABHashtable ();
+use org::allbinary::animation::resource::FeatureResourceAnimationInterfaceFactoryInterface ();
 
 1;
 

@@ -19,7 +19,7 @@ use feature 'try';
 no warnings 'experimental::try';
 use parent -norequire,'org::allbinary::media::AllBinaryVibrationME';
 
-our $VIBRATION = $org::allbinary::media::AllBinaryNoVibration::NO_VIBRATION;
+tie our $VIBRATION, 'java::lang::LazyStatic', sub { $org::allbinary::media::AllBinaryNoVibration::NO_VIBRATION };
 
 
 sub new {
@@ -49,9 +49,11 @@ sub vibrate {
     my ($self, $duration, $type, $volume) = @_;
 }
 
-use org::allbinary::game::configuration::GameConfigurationCentral;
-use org::allbinary::media::AllBinaryVibrationME;
-use org::allbinary::media::AllBinaryNoVibration;
+use java::lang::Object ();
+use java::lang::LazyStatic ();
+use org::allbinary::game::configuration::GameConfigurationCentral ();
+use org::allbinary::media::AllBinaryVibrationME ();
+use org::allbinary::media::AllBinaryNoVibration ();
 
 1;
 

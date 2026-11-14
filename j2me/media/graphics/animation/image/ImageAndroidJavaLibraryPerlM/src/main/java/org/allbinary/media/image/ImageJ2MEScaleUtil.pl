@@ -17,8 +17,9 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
-our $instance = 'org::allbinary::media::image::ImageJ2MEScaleUtil'->new();
+tie our $instance, 'java::lang::LazyStatic', sub { 'org::allbinary::media::image::ImageJ2MEScaleUtil'->new() };
 
 
 sub getInstance {
@@ -51,9 +52,11 @@ sub scale {
         return 'org::allbinary::media::image::ImageScaleUtil'->getInstance()->createImage2('org::allbinary::image::GameFeatureImageCacheFactory'->getInstance(), $image, $width, $image->getWidth(), $height, $image->getHeight(), 0);
 }
 
-# use javax::microedition::lcdui::Image;
-use org::allbinary::image::GameFeatureImageCacheFactory;
-use org::allbinary::media::image::ImageScaleUtil;
+use java::lang::Object ();
+use java::lang::LazyStatic ();
+use javax::microedition::lcdui::Image ();
+use org::allbinary::image::GameFeatureImageCacheFactory ();
+use org::allbinary::media::image::ImageScaleUtil ();
 
 1;
 

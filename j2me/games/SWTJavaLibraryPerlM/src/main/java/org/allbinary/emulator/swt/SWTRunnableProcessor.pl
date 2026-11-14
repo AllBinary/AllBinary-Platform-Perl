@@ -19,7 +19,7 @@ use feature 'try';
 no warnings 'experimental::try';
 use parent -norequire,'org::allbinary::emulator::swt::SWTProcessor';
 
-our $instanceR = 'org::allbinary::emulator::swt::SWTRunnableProcessor'->new();
+tie our $instanceR, 'java::lang::LazyStatic', sub { 'org::allbinary::emulator::swt::SWTRunnableProcessor'->new() };
 
 
 sub getInstance {
@@ -40,8 +40,10 @@ sub process {
         $self->{runnable}->run();
 }
 
-use org::eclipse::swt::widgets::Display;
-use org::allbinary::emulator::swt::SWTProcessor;
+use java::lang::Object ();
+use java::lang::LazyStatic ();
+use org::eclipse::swt::widgets::Display ();
+use org::allbinary::emulator::swt::SWTProcessor ();
 
 1;
 

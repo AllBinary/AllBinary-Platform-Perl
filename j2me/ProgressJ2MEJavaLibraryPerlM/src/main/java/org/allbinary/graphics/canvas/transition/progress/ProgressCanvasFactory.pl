@@ -17,8 +17,9 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
-our $PROGRESS_FORM_SCREEN = 'org::allbinary::logic::NullUtil'->getInstance()->{NULL_OBJECT};
+tie our $PROGRESS_FORM_SCREEN, 'java::lang::LazyStatic', sub { 'org::allbinary::logic::NullUtil'->getInstance()->{NULL_OBJECT} };
 
 sub new {
     my ($class) = @_;
@@ -41,12 +42,14 @@ sub getLazyInstance {
         return 'org::allbinary::graphics::paint::NullPaintable'->getInstance();
 }
 
-use org::allbinary::graphics::color::BasicColorFactory;
-use org::allbinary::graphics::paint::NullPaintable;
-use org::allbinary::graphics::paint::PaintableInterface;
-use org::allbinary::logic::NullUtil;
-use org::allbinary::logic::string::StringUtil;
-use org::allbinary::graphics::canvas::transition::progress::ProgressCanvas;
+use java::lang::Object ();
+use java::lang::LazyStatic ();
+use org::allbinary::graphics::color::BasicColorFactory ();
+use org::allbinary::graphics::paint::NullPaintable ();
+use org::allbinary::graphics::paint::PaintableInterface ();
+use org::allbinary::logic::NullUtil ();
+use org::allbinary::logic::string::StringUtil ();
+use org::allbinary::graphics::canvas::transition::progress::ProgressCanvas ();
 
 1;
 

@@ -17,6 +17,7 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
 our $CLASSNAME = "org.allbinary.business.installer.InitDbCrypted";
 
@@ -48,9 +49,10 @@ sub getInstance {
         return $anyType;
 }
 
-use org::allbinary::logic::system::loader::AbeFactory;
-use org::allbinary::logic::system::security::licensing::AbeClientInformationInterface;
-use org::allbinary::logic::system::security::licensing::LicensingException;
+use java::lang::Object ();
+use org::allbinary::logic::system::loader::AbeFactory ();
+use org::allbinary::logic::system::security::licensing::AbeClientInformationInterface ();
+use org::allbinary::logic::system::security::licensing::LicensingException ();
 
 1;
 

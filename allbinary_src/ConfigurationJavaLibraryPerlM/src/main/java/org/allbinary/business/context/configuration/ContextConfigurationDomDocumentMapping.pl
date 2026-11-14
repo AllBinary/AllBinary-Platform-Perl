@@ -17,7 +17,7 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
-use parent -norequire,'org::allbinary::data::tree::dom::document::mapping::DomDocumentMappingInterface';
+use parent -norequire,'java::lang::Object','org::allbinary::data::tree::dom::document::mapping::DomDocumentMappingInterface';
 
 
 sub _init_fields {
@@ -29,7 +29,7 @@ sub _init_fields {
 sub new {
     my ($class, $contextConfigurationInterface) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
         $self->{contextConfigurationInterface} = $contextConfigurationInterface;
     return $self;
 }
@@ -51,12 +51,13 @@ sub toDomDocumentString {
         return 'org::allbinary::data::tree::dom::document::XmlDocumentHelper'->toString($self->toXmlDoc());
 }
 
-use org::allbinary::data::tree::dom::document::DomDocumentHelper;
-use org::allbinary::data::tree::dom::document::XmlDocumentHelper;
-use org::allbinary::data::tree::dom::document::mapping::DomDocumentMappingInterface;
-use org::w3c::dom::Document;
-use org::w3c::dom::Node;
-use org::allbinary::business::context::configuration::ContextConfigurationView;
+use java::lang::Object ();
+use org::allbinary::data::tree::dom::document::DomDocumentHelper ();
+use org::allbinary::data::tree::dom::document::XmlDocumentHelper ();
+use org::allbinary::data::tree::dom::document::mapping::DomDocumentMappingInterface ();
+use org::w3c::dom::Document ();
+use org::w3c::dom::Node ();
+use org::allbinary::business::context::configuration::ContextConfigurationView ();
 
 1;
 

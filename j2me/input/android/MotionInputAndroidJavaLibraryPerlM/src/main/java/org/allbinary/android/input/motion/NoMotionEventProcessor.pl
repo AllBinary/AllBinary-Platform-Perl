@@ -19,7 +19,7 @@ use feature 'try';
 no warnings 'experimental::try';
 use parent -norequire,'org::allbinary::android::input::motion::MotionEventProcessor';
 
-our $SINGLETON = 'org::allbinary::android::input::motion::MotionEventProcessor'->new();
+tie our $SINGLETON, 'java::lang::LazyStatic', sub { 'org::allbinary::android::input::motion::MotionEventProcessor'->new() };
 
 sub new {
     my ($class) = @_;
@@ -33,7 +33,9 @@ sub getInstance {
         return $org::allbinary::android::input::motion::NoMotionEventProcessor::SINGLETON;
 }
 
-use org::allbinary::android::input::motion::MotionEventProcessor;
+use java::lang::Object ();
+use java::lang::LazyStatic ();
+use org::allbinary::android::input::motion::MotionEventProcessor ();
 
 1;
 

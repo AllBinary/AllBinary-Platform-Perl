@@ -39,7 +39,7 @@ sub createHealthIncludingLifeBar {
 sub new {
     my ($class, $layerInterface, $life, $healthInterface, $animationInterface, $direction) = @_;
     my $self = $class->SUPER::new();
-    $self->_init_fields();
+    _init_fields($self);
         $self->{allbinaryLayer} = $layerInterface;
         $self->{animationInterface} = $animationInterface;
         $self->{life} = $life;
@@ -67,14 +67,15 @@ sub paintThreed {
         $self->{animationInterface}->paintThreedXYZ($graphics, 0, 0, 0);
 }
 
-# use javax::microedition::lcdui::Graphics;
-use org::allbinary::game::health::Health;
-use org::allbinary::game::health::HealthBarAnimation;
-use org::allbinary::game::health::HealthBarTwodAnimation;
-use org::allbinary::game::health::HealthInterface;
-use org::allbinary::game::health::HealthListenerInterface;
-use org::allbinary::graphics::paint::Paintable;
-use org::allbinary::layer::AllBinaryLayer;
+use java::lang::Object ();
+use javax::microedition::lcdui::Graphics ();
+use org::allbinary::game::health::Health ();
+use org::allbinary::game::health::HealthBarAnimation ();
+use org::allbinary::game::health::HealthBarTwodAnimation ();
+use org::allbinary::game::health::HealthInterface ();
+use org::allbinary::game::health::HealthListenerInterface ();
+use org::allbinary::graphics::paint::Paintable ();
+use org::allbinary::layer::AllBinaryLayer ();
 
 1;
 

@@ -28,10 +28,11 @@ sub new {
     return $self;
 }
 
-use org::allbinary::graphics::PointFactory;
-use org::allbinary::layer::AllBinaryLayer;
-use org::allbinary::util::BasicArrayListUtil;
-use org::allbinary::layer::relationship::RelativeLayerRelationship;
+use java::lang::Object ();
+use org::allbinary::graphics::PointFactory ();
+use org::allbinary::layer::AllBinaryLayer ();
+use org::allbinary::util::BasicArrayListUtil ();
+use org::allbinary::layer::relationship::RelativeLayerRelationship ();
 
 1;
 

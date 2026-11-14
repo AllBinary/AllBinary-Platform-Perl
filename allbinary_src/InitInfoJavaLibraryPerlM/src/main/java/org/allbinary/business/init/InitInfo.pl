@@ -17,8 +17,9 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
-our $instance = 'org::allbinary::business::init::InitInfo'->new();
+tie our $instance, 'java::lang::LazyStatic', sub { 'org::allbinary::business::init::InitInfo'->new() };
 
 sub _init_fields {
     my ($self) = @_;
@@ -41,7 +42,7 @@ sub getInstance {
 sub new {
     my ($class) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
     return $self;
 }
 
@@ -217,15 +218,17 @@ sub toHashMap {
         return $hashMap;
 }
 
-use java::util::HashMap;
-use org::allbinary::logic::StdUtil;
-use org::allbinary::logic::communication::log::PreLogUtil;
-use org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory;
-use org::allbinary::logic::communication::log::config::type::LogConfigTypes;
-use org::allbinary::logic::io::path::AbPath;
-use org::allbinary::logic::java::bool::BooleanUtil;
-use org::allbinary::logic::string::StringUtil;
-use org::allbinary::business::init::InitInfoEntity;
+use java::lang::Object ();
+use java::lang::LazyStatic ();
+use java::util::HashMap ();
+use org::allbinary::logic::StdUtil ();
+use org::allbinary::logic::communication::log::PreLogUtil ();
+use org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory ();
+use org::allbinary::logic::communication::log::config::type::LogConfigTypes ();
+use org::allbinary::logic::io::path::AbPath ();
+use org::allbinary::logic::java::bool::BooleanUtil ();
+use org::allbinary::logic::string::StringUtil ();
+use org::allbinary::business::init::InitInfoEntity ();
 
 1;
 

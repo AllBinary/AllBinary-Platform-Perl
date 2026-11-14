@@ -17,6 +17,7 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
 
 sub _init_fields {
@@ -31,7 +32,7 @@ sub _init_fields {
 sub new {
     my ($class, $name, $imageComparisonResult) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
         $self->{name} = $name;
         $self->setImageComparisonResult($imageComparisonResult);
         $self->setVector('org::allbinary::util::BasicArrayListD'->new());
@@ -68,9 +69,10 @@ sub setImageComparisonResult {
         $self->{imageComparisonResult} = $imageComparisonResult;
 }
 
-use org::allbinary::util::BasicArrayList;
-use org::allbinary::util::BasicArrayListD;
-use org::allbinary::media::image::comparison::ImageComparisonResult;
+use java::lang::Object ();
+use org::allbinary::util::BasicArrayList ();
+use org::allbinary::util::BasicArrayListD ();
+use org::allbinary::media::image::comparison::ImageComparisonResult ();
 
 1;
 

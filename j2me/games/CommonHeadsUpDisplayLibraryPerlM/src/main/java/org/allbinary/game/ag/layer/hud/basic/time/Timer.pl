@@ -17,6 +17,7 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
 
 sub _init_fields {
@@ -36,7 +37,7 @@ sub _init_fields {
 sub new {
     my ($class, $maxTime) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
         $self->{primitiveLongUtil} = 'org::allbinary::logic::math::PrimitiveLongUtil'->createPowerOfTen($maxTime);
         $self->{maxTime} = $maxTime;
     return $self;
@@ -98,10 +99,11 @@ sub getCurrentTotalDigits {
         return $self->{totalDigits};
 }
 
-use org::allbinary::logic::math::PrimitiveLongSingleton;
-use org::allbinary::logic::math::PrimitiveLongUtil;
-use org::allbinary::time::GameTickTimeDelayHelper;
-use org::allbinary::time::GameTickTimeDelayHelperFactory;
+use java::lang::Object ();
+use org::allbinary::logic::math::PrimitiveLongSingleton ();
+use org::allbinary::logic::math::PrimitiveLongUtil ();
+use org::allbinary::time::GameTickTimeDelayHelper ();
+use org::allbinary::time::GameTickTimeDelayHelperFactory ();
 
 1;
 

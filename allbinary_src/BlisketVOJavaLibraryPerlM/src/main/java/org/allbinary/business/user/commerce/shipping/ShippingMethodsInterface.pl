@@ -40,9 +40,9 @@ sub getDefault {
     die "abstract method getDefault";
 }
 
-use org::allbinary::util::BasicArrayList;
-use org::allbinary::util::BasicArrayListD;
-use org::allbinary::business::user::commerce::shipping::modules::ShippingInterface;
+use org::allbinary::util::BasicArrayList ();
+use org::allbinary::util::BasicArrayListD ();
+use org::allbinary::business::user::commerce::shipping::modules::ShippingInterface ();
 
 1;
 

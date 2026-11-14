@@ -17,8 +17,9 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
-our $instance = 'org::allbinary::game::configuration::GameOptionsFormFactory'->new();
+tie our $instance, 'java::lang::LazyStatic', sub { 'org::allbinary::game::configuration::GameOptionsFormFactory'->new() };
 
 sub _init_fields {
     my ($self) = @_;
@@ -29,7 +30,7 @@ sub _init_fields {
 sub new {
     my ($class) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
     return $self;
 }
 
@@ -51,12 +52,14 @@ sub init {
         }
 }
 
-# use javax::microedition::lcdui::CommandListener;
-use org::allbinary::graphics::color::BasicColor;
-use org::allbinary::graphics::displayable::screen::CommandForm;
-use org::allbinary::logic::communication::log::LogUtil;
-use org::allbinary::string::CommonStrings;
-use org::allbinary::game::configuration::GameOptionsForm;
+use java::lang::Object ();
+use java::lang::LazyStatic ();
+use javax::microedition::lcdui::CommandListener ();
+use org::allbinary::graphics::color::BasicColor ();
+use org::allbinary::graphics::displayable::screen::CommandForm ();
+use org::allbinary::logic::communication::log::LogUtil ();
+use org::allbinary::string::CommonStrings ();
+use org::allbinary::game::configuration::GameOptionsForm ();
 
 1;
 

@@ -20,8 +20,9 @@ no warnings 'experimental::try';
 use POSIX ();
 use List::Util ();
 use Scalar::Util ();
+use parent -norequire,'java::lang::Object';
 
-our $instance = 'org::allbinary::animation::SVGAsJSONSimpleLoader'->new();
+tie our $instance, 'java::lang::LazyStatic', sub { 'org::allbinary::animation::SVGAsJSONSimpleLoader'->new() };
 
 sub _init_fields {
     my ($self) = @_;
@@ -49,7 +50,7 @@ sub _init_fields {
 sub new {
     my ($class) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
     return $self;
 }
 
@@ -71,9 +72,10 @@ sub load {
             my $svgValue = $root->opt($self->{KEY_SVG});
             my $svg = (!defined($svgValue) ? $root : $self->asObject($svgValue, $self->{KEY_SVG}));
             my $pointVector = 'org::allbinary::util::BasicArrayListD'->new();
-            my $keys = $svg->keys();
-            while ($keys->hasMoreElements()) {
-                my $key = $keys->nextElement();
+            my $objectArray = $svg->keysAsArray();
+            my $size = scalar(@{$objectArray});
+            for (my $index = 0; $index < $size; $index++) {
+                my $key = $objectArray->[$index];
                 my $value = $svg->opt($key);
                 if ($self->{shapeTypeFactory}->{KEY_LINE}->equals($key)) {
                     $self->addShapes($pointVector, $value, $self->{shapeTypeFactory}->{LINE});
@@ -250,19 +252,20 @@ sub main {
         print($stringBuilder->toString(), "\n");
 }
 
-use java::util::Enumeration;
-use org::allbinary::graphics::GraphicsStrings;
-use org::allbinary::logic::math::PrimitiveIntUtil;
-use org::allbinary::logic::string::StringMaker;
-use org::allbinary::math::PositionStrings;
-use org::allbinary::string::CommonSeps;
-use org::allbinary::util::BasicArrayList;
-use org::allbinary::util::BasicArrayListD;
-use org::json::me::JSONArray;
-use org::json::me::JSONException;
-use org::json::me::JSONObject;
-use org::allbinary::animation::ShapeTypeFactory;
-use java::lang::System;
+use java::lang::Object ();
+use java::lang::LazyStatic ();
+use org::allbinary::graphics::GraphicsStrings ();
+use org::allbinary::logic::math::PrimitiveIntUtil ();
+use org::allbinary::logic::string::StringMaker ();
+use org::allbinary::math::PositionStrings ();
+use org::allbinary::string::CommonSeps ();
+use org::allbinary::util::BasicArrayList ();
+use org::allbinary::util::BasicArrayListD ();
+use org::json::me::JSONArray ();
+use org::json::me::JSONException ();
+use org::json::me::JSONObject ();
+use org::allbinary::animation::ShapeTypeFactory ();
+use java::lang::System ();
 
 1;
 

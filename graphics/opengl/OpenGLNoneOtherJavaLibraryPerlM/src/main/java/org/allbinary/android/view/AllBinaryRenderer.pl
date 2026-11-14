@@ -17,8 +17,9 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
-our $instance = 'org::allbinary::android::view::AllBinaryRenderer'->new();
+tie our $instance, 'java::lang::LazyStatic', sub { 'org::allbinary::android::view::AllBinaryRenderer'->new() };
 
 sub new {
     my ($class) = @_;
@@ -42,6 +43,8 @@ sub clearRunnable {
     my ($self) = @_;
 }
 
+use java::lang::Object ();
+use java::lang::LazyStatic ();
 
 1;
 

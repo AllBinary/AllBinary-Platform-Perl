@@ -18,7 +18,7 @@ use feature 'try';
 no warnings 'experimental::try';
 use parent -norequire,'org::allbinary::media::audio::CompositeSound';
 
-our $soundInterface = 'org::allbinary::media::audio::UpgradeSound'->new();
+tie our $soundInterface, 'java::lang::LazyStatic', sub { 'org::allbinary::media::audio::UpgradeSound'->new() };
 
 
 sub new {
@@ -34,8 +34,10 @@ sub getInstance {
         return $org::allbinary::media::audio::UpgradeSound::soundInterface;
 }
 
-use org::allbinary::media::audio::CompositeSound;
-use org::allbinary::media::audio::Sound;
+use java::lang::Object ();
+use java::lang::LazyStatic ();
+use org::allbinary::media::audio::CompositeSound ();
+use org::allbinary::media::audio::Sound ();
 
 1;
 

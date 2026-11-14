@@ -17,8 +17,9 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
-our $NULL_BASIC_TERRAIN_INFO = 'org::allbinary::game::terrain::BasicTerrainInfo'->new('org::allbinary::math::AngleFactory'->getInstance()->{NOT_ANGLE});
+tie our $NULL_BASIC_TERRAIN_INFO, 'java::lang::LazyStatic', sub { 'org::allbinary::game::terrain::BasicTerrainInfo'->new('org::allbinary::math::AngleFactory'->getInstance()->{NOT_ANGLE}) };
 
 sub _init_fields {
     my ($self) = @_;
@@ -29,7 +30,7 @@ sub _init_fields {
 sub new {
     my ($class, $angle) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
         $self->{angle} = $angle;
     return $self;
 }
@@ -46,8 +47,10 @@ sub setAngle {
         $self->{angle} = $angle;
 }
 
-use org::allbinary::math::Angle;
-use org::allbinary::math::AngleFactory;
+use java::lang::Object ();
+use java::lang::LazyStatic ();
+use org::allbinary::math::Angle ();
+use org::allbinary::math::AngleFactory ();
 
 1;
 

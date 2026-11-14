@@ -31,7 +31,7 @@ sub _init_fields {
 sub new {
     my ($class, $hashtable, $ownerLayerInterface, $gameInput) = @_;
     my $self = $class->SUPER::new($hashtable, $ownerLayerInterface, $gameInput);
-    $self->_init_fields();
+    _init_fields($self);
         # super(...) made $self above
         'org::allbinary::game::terrain::TerrainEventHandler'->getInstance($ownerLayerInterface)->addListener($self->{terrainEventListener});
         $self->{terrainEventListener}->onTerrainEvent('org::allbinary::game::terrain::TerrainEventCircularStaticPool'->getInstance()->getNext($self->{CLIFF}));
@@ -64,18 +64,19 @@ sub changeDirectionIfCliffReached {
         }
 }
 
-use org::allbinary::game::input::GameInput;
-use org::allbinary::game::terrain::BasicTerrainInfo;
-use org::allbinary::game::terrain::TerrainEvent;
-use org::allbinary::game::terrain::TerrainEventCircularStaticPool;
-use org::allbinary::game::terrain::TerrainEventHandler;
-use org::allbinary::game::terrain::TerrainEventListener;
-use org::allbinary::layer::AllBinaryLayer;
-use org::allbinary::math::Angle;
-use org::allbinary::math::AngleFactory;
-use org::allbinary::util::ABHashtable;
-use org::allbinary::util::BasicArrayList;
-use org::allbinary::game::ag::ai::scroller::PacePatrolAI;
+use java::lang::Object ();
+use org::allbinary::game::input::GameInput ();
+use org::allbinary::game::terrain::BasicTerrainInfo ();
+use org::allbinary::game::terrain::TerrainEvent ();
+use org::allbinary::game::terrain::TerrainEventCircularStaticPool ();
+use org::allbinary::game::terrain::TerrainEventHandler ();
+use org::allbinary::game::terrain::TerrainEventListener ();
+use org::allbinary::layer::AllBinaryLayer ();
+use org::allbinary::math::Angle ();
+use org::allbinary::math::AngleFactory ();
+use org::allbinary::util::ABHashtable ();
+use org::allbinary::util::BasicArrayList ();
+use org::allbinary::game::ag::ai::scroller::PacePatrolAI ();
 
 1;
 

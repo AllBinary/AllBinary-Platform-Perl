@@ -19,7 +19,7 @@ use feature 'try';
 no warnings 'experimental::try';
 use parent -norequire,'org::allbinary::image::opengles::OpenGLESImageProcessor';
 
-our $instanceC = 'org::allbinary::image::opengles::ModifierOpenGLESImageProcessor'->new();
+tie our $instanceC, 'java::lang::LazyStatic', sub { 'org::allbinary::image::opengles::ModifierOpenGLESImageProcessor'->new() };
 
 sub new {
     my ($class) = @_;
@@ -33,7 +33,9 @@ sub getInstance {
         return $org::allbinary::image::opengles::ModifierOpenGLESImageProcessor::instanceC;
 }
 
-use org::allbinary::image::opengles::OpenGLESImageProcessor;
+use java::lang::Object ();
+use java::lang::LazyStatic ();
+use org::allbinary::image::opengles::OpenGLESImageProcessor ();
 
 1;
 

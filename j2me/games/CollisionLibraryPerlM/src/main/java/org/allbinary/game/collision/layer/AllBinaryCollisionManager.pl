@@ -17,8 +17,9 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
-our $allBinaryCollisionManager = 'org::allbinary::game::collision::layer::AllBinaryCollisionManager'->new();
+tie our $allBinaryCollisionManager, 'java::lang::LazyStatic', sub { 'org::allbinary::game::collision::layer::AllBinaryCollisionManager'->new() };
 
 
 sub new {
@@ -58,10 +59,12 @@ sub collide {
         }
 }
 
-use org::allbinary::game::collision::CollidableBaseBehavior;
-use org::allbinary::game::collision::CollidableInterfaceCompositeInterface;
-use org::allbinary::game::layer::CollidableCompositeLayer;
-use org::allbinary::layer::LayerManager;
+use java::lang::Object ();
+use java::lang::LazyStatic ();
+use org::allbinary::game::collision::CollidableBaseBehavior ();
+use org::allbinary::game::collision::CollidableInterfaceCompositeInterface ();
+use org::allbinary::game::layer::CollidableCompositeLayer ();
+use org::allbinary::layer::LayerManager ();
 
 1;
 

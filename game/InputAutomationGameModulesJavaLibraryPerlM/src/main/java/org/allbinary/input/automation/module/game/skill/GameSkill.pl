@@ -17,8 +17,9 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
-our $hashMap = 'org::allbinary::logic::StdUtil'->getInstance()->createHashMap();
+tie our $hashMap, 'java::lang::LazyStatic', sub { 'org::allbinary::logic::StdUtil'->getInstance()->createHashMap() };
 
 sub _init_fields {
     my ($self) = @_;
@@ -35,7 +36,7 @@ sub _init_fields {
 sub new {
     my ($class, $gameSkillType, $extra, $time) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
         $self->setGameSkillType($gameSkillType);
         $self->setExtra($extra);
         $self->setTime($time);
@@ -114,12 +115,14 @@ sub toString {
         return $stringBuffer->toString();
 }
 
-use java::util::HashMap;
-use org::allbinary::util::BasicArrayList;
-use org::allbinary::util::BasicArrayListD;
-use org::allbinary::logic::StdUtil;
-use org::allbinary::logic::string::StringMaker;
-use org::allbinary::string::CommonSeps;
+use java::lang::Object ();
+use java::lang::LazyStatic ();
+use java::util::HashMap ();
+use org::allbinary::util::BasicArrayList ();
+use org::allbinary::util::BasicArrayListD ();
+use org::allbinary::logic::StdUtil ();
+use org::allbinary::logic::string::StringMaker ();
+use org::allbinary::string::CommonSeps ();
 
 1;
 

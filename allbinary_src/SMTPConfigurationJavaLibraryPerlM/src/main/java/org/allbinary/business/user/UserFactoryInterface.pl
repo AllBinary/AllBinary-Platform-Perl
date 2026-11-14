@@ -18,7 +18,6 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
-use parent -norequire,'java::io::Serializable';
 
 
 
@@ -28,8 +27,8 @@ sub getInstance {
     die "abstract method getInstance";
 }
 
-# use java::io::Serializable;
-use java::util::HashMap;
+# use java::io::Serializable ();
+use java::util::HashMap ();
 
 1;
 

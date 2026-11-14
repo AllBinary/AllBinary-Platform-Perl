@@ -29,7 +29,7 @@ sub _init_fields {
 sub new {
     my ($class) = @_;
     my $self = $class->SUPER::new();
-    $self->_init_fields();
+    _init_fields($self);
     return $self;
 }
 
@@ -71,8 +71,9 @@ sub isAnyHighScores {
         return $anyScores;
 }
 
-use org::allbinary::util::CircularIndexUtil;
-use org::allbinary::game::score::HighScoresHelperBase;
+use java::lang::Object ();
+use org::allbinary::util::CircularIndexUtil ();
+use org::allbinary::game::score::HighScoresHelperBase ();
 
 1;
 

@@ -29,7 +29,7 @@ sub _init_fields {
 sub new {
     my ($class, $ownerLayer, $sound) = @_;
     my $self = $class->SUPER::new($sound);
-    $self->_init_fields();
+    _init_fields($self);
         # super(...) made $self above
         $self->{ownerLayer} = $ownerLayer;
     return $self;
@@ -151,28 +151,29 @@ sub visit {
         }
 }
 
-use org::allbinary::game::layer::AllBinaryGameLayerManager;
-use org::allbinary::game::layer::PathFindingLayerInterface;
-use org::allbinary::game::layer::RTSLayerEvent;
-use org::allbinary::game::layer::building::event::BuildingEventListenerInterface;
-use org::allbinary::game::layer::special::CollidableDestroyableDamageableLayer;
-use org::allbinary::game::layer::unit::UnitWaypointBehavior;
-use org::allbinary::game::media::graphics::geography::map::racetrack::PathFindingInfoFactory;
-use org::allbinary::logic::communication::log::ForcedLogUtil;
-use org::allbinary::logic::util::event::AllBinaryEventObject;
-use org::allbinary::logic::util::event::EventStrings;
-use org::allbinary::media::audio::Sound;
-use org::allbinary::media::graphics::geography::map::BasicGeographicMap;
-use org::allbinary::media::graphics::geography::map::GeographicMapCellPosition;
-use org::allbinary::media::graphics::geography::map::GeographicMapCellTypeFactory;
-use org::allbinary::media::graphics::geography::map::GeographicMapCompositeInterface;
-use org::allbinary::media::graphics::geography::map::racetrack::CustomMapGenerator;
-use org::allbinary::media::graphics::geography::map::racetrack::RaceTrackGeographicMap;
-use org::allbinary::media::graphics::geography::pathfinding::PathFindingInfo;
-use org::allbinary::media::graphics::geography::pathfinding::PathGenerator;
-use org::allbinary::util::BasicArrayList;
-use org::allbinary::util::BasicArrayListUtil;
-use org::allbinary::game::layer::waypoint::WaypointBase;
+use java::lang::Object ();
+use org::allbinary::game::layer::AllBinaryGameLayerManager ();
+use org::allbinary::game::layer::PathFindingLayerInterface ();
+use org::allbinary::game::layer::RTSLayerEvent ();
+use org::allbinary::game::layer::building::event::BuildingEventListenerInterface ();
+use org::allbinary::game::layer::special::CollidableDestroyableDamageableLayer ();
+use org::allbinary::game::layer::unit::UnitWaypointBehavior ();
+use org::allbinary::game::media::graphics::geography::map::racetrack::PathFindingInfoFactory ();
+use org::allbinary::logic::communication::log::ForcedLogUtil ();
+use org::allbinary::logic::util::event::AllBinaryEventObject ();
+use org::allbinary::logic::util::event::EventStrings ();
+use org::allbinary::media::audio::Sound ();
+use org::allbinary::media::graphics::geography::map::BasicGeographicMap ();
+use org::allbinary::media::graphics::geography::map::GeographicMapCellPosition ();
+use org::allbinary::media::graphics::geography::map::GeographicMapCellTypeFactory ();
+use org::allbinary::media::graphics::geography::map::GeographicMapCompositeInterface ();
+use org::allbinary::media::graphics::geography::map::racetrack::CustomMapGenerator ();
+use org::allbinary::media::graphics::geography::map::racetrack::RaceTrackGeographicMap ();
+use org::allbinary::media::graphics::geography::pathfinding::PathFindingInfo ();
+use org::allbinary::media::graphics::geography::pathfinding::PathGenerator ();
+use org::allbinary::util::BasicArrayList ();
+use org::allbinary::util::BasicArrayListUtil ();
+use org::allbinary::game::layer::waypoint::WaypointBase ();
 
 1;
 

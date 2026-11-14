@@ -17,8 +17,9 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
-our $instance = 'org::allbinary::game::layer::waypoint::WaypointRunnableLogHelper'->new();
+tie our $instance, 'java::lang::LazyStatic', sub { 'org::allbinary::game::layer::waypoint::WaypointRunnableLogHelper'->new() };
 
 sub new {
     my ($class) = @_;
@@ -42,7 +43,9 @@ sub end {
     my ($self, $pathFindingLayerInterface) = @_;
 }
 
-use org::allbinary::game::layer::PathFindingLayerInterface;
+use java::lang::Object ();
+use java::lang::LazyStatic ();
+use org::allbinary::game::layer::PathFindingLayerInterface ();
 
 1;
 

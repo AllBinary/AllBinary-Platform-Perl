@@ -40,7 +40,7 @@ sub new {
 sub _new3 {
     my ($class, $propertiesHashMap, $pageContext, $crud) = @_;
     my $self = $class->SUPER::new();
-    $self->_init_fields();
+    _init_fields($self);
         # super(...) made $self above
         $self->{abContext} = 'org::allbinary::business::context::AbContext'->new($propertiesHashMap, $pageContext);
         if ($org::allbinary::logic::visual::transform::info::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($org::allbinary::logic::visual::transform::info::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{VIEW})) {
@@ -54,7 +54,7 @@ sub _new3 {
 sub _new3 {
     my ($class, $request, $propertiesHashMap, $pageContext) = @_;
     my $self = $class->SUPER::new();
-    $self->_init_fields();
+    _init_fields($self);
         # super(...) made $self above
         $self->{abContext} = 'org::allbinary::business::context::AbContext'->new($propertiesHashMap, $pageContext);
         if ($org::allbinary::logic::visual::transform::info::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($org::allbinary::logic::visual::transform::info::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{VIEW})) {
@@ -69,7 +69,7 @@ sub _new3 {
 sub _new3 {
     my ($class, $databaseHashMap, $propertiesHashMap, $pageContext) = @_;
     my $self = $class->SUPER::new();
-    $self->_init_fields();
+    _init_fields($self);
         # super(...) made $self above
         $self->{abContext} = 'org::allbinary::business::context::AbContext'->new($propertiesHashMap, $pageContext);
         if ($org::allbinary::logic::visual::transform::info::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($org::allbinary::logic::visual::transform::info::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{VIEW})) {
@@ -83,7 +83,7 @@ sub _new3 {
 sub _new2 {
     my ($class, $propertiesHashMap, $pageContext) = @_;
     my $self = $class->SUPER::new();
-    $self->_init_fields();
+    _init_fields($self);
         # super(...) made $self above
         $self->{abContext} = 'org::allbinary::business::context::AbContext'->new($propertiesHashMap, $pageContext);
         if ($org::allbinary::logic::visual::transform::info::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($org::allbinary::logic::visual::transform::info::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{VIEW})) {
@@ -97,7 +97,7 @@ sub _new2 {
 sub _new1 {
     my ($class, $parentViewOfThisTransformInfoInterface) = @_;
     my $self = $class->SUPER::new();
-    $self->_init_fields();
+    _init_fields($self);
         # super(...) made $self above
         $self->{abContext} = 'org::allbinary::business::context::AbContext'->new($parentViewOfThisTransformInfoInterface->getPropertiesHashMap(), $parentViewOfThisTransformInfoInterface->getPageContext());
     return $self;
@@ -173,23 +173,24 @@ sub getDataFilePath {
         return 'org::allbinary::logic::io::path::AbPath'->new('org::allbinary::globals::URLGLOBALS'->getMainPath() + 'org::allbinary::globals::FREEBLISKET_PATH_GLOBALS'->getInstance()->{XSLPATH}, $self->getDataFile());
 }
 
-use java::util::HashMap;
-# use javax::servlet::http::HttpServletRequest;
-# use javax::servlet::jsp::PageContext;
-use org::allbinary::business::context::AbContext;
-use org::allbinary::business::context::modules::storefront::StoreFrontData;
-use org::allbinary::globals::FREEBLISKET_PATH_GLOBALS;
-use org::allbinary::globals::URLGLOBALS;
-use org::allbinary::logic::communication::http::request::RequestParams;
-use org::allbinary::logic::communication::http::request::session::WeblisketSessionInterface;
-use org::allbinary::logic::communication::log::LogUtil;
-use org::allbinary::logic::communication::sql::AbSqlData;
-use org::allbinary::logic::io::path::AbPath;
-use org::allbinary::logic::string::StringValidationUtil;
-use org::allbinary::logic::visual::transform::info::objectConfig::TransformInfoObjectConfig;
-use org::allbinary::logic::visual::transform::info::TransformInfo;
-use org::allbinary::logic::visual::transform::info::TransformInfoHttpInterface;
-use org::allbinary::logic::visual::transform::info::TransformInfoData;
+use java::lang::Object ();
+use java::util::HashMap ();
+# use javax::servlet::http::HttpServletRequest ();
+# use javax::servlet::jsp::PageContext ();
+use org::allbinary::business::context::AbContext ();
+use org::allbinary::business::context::modules::storefront::StoreFrontData ();
+use org::allbinary::globals::FREEBLISKET_PATH_GLOBALS ();
+use org::allbinary::globals::URLGLOBALS ();
+use org::allbinary::logic::communication::http::request::RequestParams ();
+use org::allbinary::logic::communication::http::request::session::WeblisketSessionInterface ();
+use org::allbinary::logic::communication::log::LogUtil ();
+use org::allbinary::logic::communication::sql::AbSqlData ();
+use org::allbinary::logic::io::path::AbPath ();
+use org::allbinary::logic::string::StringValidationUtil ();
+use org::allbinary::logic::visual::transform::info::objectConfig::TransformInfoObjectConfig ();
+use org::allbinary::logic::visual::transform::info::TransformInfo ();
+use org::allbinary::logic::visual::transform::info::TransformInfoHttpInterface ();
+use org::allbinary::logic::visual::transform::info::TransformInfoData ();
 
 1;
 

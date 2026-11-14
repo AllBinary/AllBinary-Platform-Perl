@@ -19,7 +19,7 @@ use feature 'try';
 no warnings 'experimental::try';
 use parent -norequire,'org::allbinary::game::combat::damage::DamageFloaters';
 
-our $basicColorArrayIndexer = 'org::allbinary::graphics::color::BasicColorArrayIndexer'->new(['org::allbinary::graphics::color::BasicColorFactory'->getInstance()->{WHITE}, 'org::allbinary::graphics::color::BasicColorFactory'->getInstance()->{RED}, 'org::allbinary::graphics::color::BasicColorFactory'->getInstance()->{YELLOW}, 'org::allbinary::graphics::color::BasicColorFactory'->getInstance()->{BLUE}]);
+tie our $basicColorArrayIndexer, 'java::lang::LazyStatic', sub { 'org::allbinary::graphics::color::BasicColorArrayIndexer'->new(['org::allbinary::graphics::color::BasicColorFactory'->getInstance()->{WHITE}, 'org::allbinary::graphics::color::BasicColorFactory'->getInstance()->{RED}, 'org::allbinary::graphics::color::BasicColorFactory'->getInstance()->{YELLOW}, 'org::allbinary::graphics::color::BasicColorFactory'->getInstance()->{BLUE}]) };
 
 sub _init_fields {
     my ($self) = @_;
@@ -37,7 +37,7 @@ sub _init_fields {
 sub new {
     my ($class, $layerInterface) = @_;
     my $self = $class->SUPER::new();
-    $self->_init_fields();
+    _init_fields($self);
         $self->{primitiveLongUtil} = 'org::allbinary::logic::math::PrimitiveLongUtil'->createPowerOfTen(100000);
         $self->{layerInterface} = $layerInterface;
         my $CHAR_ARRAY = 'org::allbinary::logic::java::character::CharArrayFactory'->getInstance()->getZeroCharArray();
@@ -74,19 +74,21 @@ sub paint {
         }
 }
 
-# use javax::microedition::lcdui::Graphics;
-use org::allbinary::game::rand::MyRandomFactory;
-use org::allbinary::graphics::color::BasicColor;
-use org::allbinary::graphics::color::BasicColorArrayIndexer;
-use org::allbinary::graphics::color::BasicColorFactory;
-use org::allbinary::graphics::color::BasicColorSetUtil;
-use org::allbinary::layer::AllBinaryLayer;
-use org::allbinary::logic::java::character::CharArrayFactory;
-use org::allbinary::logic::math::PrimitiveLongUtil;
-use org::allbinary::util::CircularIndexUtil;
-use org::allbinary::view::ViewPosition;
-use org::allbinary::view::ViewPositionBase;
-use org::allbinary::game::combat::damage::DamageFloaters;
+use java::lang::Object ();
+use java::lang::LazyStatic ();
+use javax::microedition::lcdui::Graphics ();
+use org::allbinary::game::rand::MyRandomFactory ();
+use org::allbinary::graphics::color::BasicColor ();
+use org::allbinary::graphics::color::BasicColorArrayIndexer ();
+use org::allbinary::graphics::color::BasicColorFactory ();
+use org::allbinary::graphics::color::BasicColorSetUtil ();
+use org::allbinary::layer::AllBinaryLayer ();
+use org::allbinary::logic::java::character::CharArrayFactory ();
+use org::allbinary::logic::math::PrimitiveLongUtil ();
+use org::allbinary::util::CircularIndexUtil ();
+use org::allbinary::view::ViewPosition ();
+use org::allbinary::view::ViewPositionBase ();
+use org::allbinary::game::combat::damage::DamageFloaters ();
 
 1;
 

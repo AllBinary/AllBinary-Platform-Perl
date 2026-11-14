@@ -30,7 +30,7 @@ sub _init_fields {
 sub new {
     my ($class, $lockedIndex) = @_;
     my $self = $class->SUPER::new();
-    $self->_init_fields();
+    _init_fields($self);
         $self->{lockedIndex} = $lockedIndex;
     return $self;
 }
@@ -55,12 +55,13 @@ sub getAnimation {
         return $self->{animation};
 }
 
-# use javax::microedition::lcdui::Graphics;
-use org::allbinary::animation::Animation;
-use org::allbinary::animation::FeaturedAnimationInterfaceFactoryInterfaceFactory;
-use org::allbinary::logic::system::security::licensing::LockedResources;
-use org::allbinary::logic::system::security::licensing::LockedUtil;
-use org::allbinary::graphics::form::ItemPaintable;
+use java::lang::Object ();
+use javax::microedition::lcdui::Graphics ();
+use org::allbinary::animation::Animation ();
+use org::allbinary::animation::FeaturedAnimationInterfaceFactoryInterfaceFactory ();
+use org::allbinary::logic::system::security::licensing::LockedResources ();
+use org::allbinary::logic::system::security::licensing::LockedUtil ();
+use org::allbinary::graphics::form::ItemPaintable ();
 
 1;
 

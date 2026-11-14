@@ -33,7 +33,7 @@ sub isComplete {
     die "abstract method isComplete";
 }
 
-use org::allbinary::animation::IndexedAnimationInterface;
+use org::allbinary::animation::IndexedAnimationInterface ();
 
 1;
 

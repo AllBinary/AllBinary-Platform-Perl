@@ -17,8 +17,9 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
-our $SINGLETON = 'org::allbinary::canvas::SpecialMessageUtil'->new();
+tie our $SINGLETON, 'java::lang::LazyStatic', sub { 'org::allbinary::canvas::SpecialMessageUtil'->new() };
 
 sub new {
     my ($class) = @_;
@@ -49,12 +50,14 @@ sub get {
         return $stringBuffer->toString();
 }
 
-use org::allbinary::game::configuration::feature::Features;
-use org::allbinary::graphics::opengles::OpenGLFeatureFactory;
-use org::allbinary::logic::string::StringMaker;
-use org::allbinary::string::CommonSeps;
-use org::allbinary::system::Memory;
-use org::allbinary::canvas::GameStatisticsFactory;
+use java::lang::Object ();
+use java::lang::LazyStatic ();
+use org::allbinary::game::configuration::feature::Features ();
+use org::allbinary::graphics::opengles::OpenGLFeatureFactory ();
+use org::allbinary::logic::string::StringMaker ();
+use org::allbinary::string::CommonSeps ();
+use org::allbinary::system::Memory ();
+use org::allbinary::canvas::GameStatisticsFactory ();
 
 1;
 

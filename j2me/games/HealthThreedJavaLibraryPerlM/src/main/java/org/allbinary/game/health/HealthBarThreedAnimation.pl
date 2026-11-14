@@ -31,7 +31,7 @@ sub _init_fields {
 sub new {
     my ($class, $layerInterface, $location) = @_;
     my $self = $class->SUPER::new($layerInterface, $location);
-    $self->_init_fields();
+    _init_fields($self);
         # super(...) made $self above
         $self->{basicColor} = $self->{basicColorFactory}->{GREEN};
         $self->{colorP} = int($self->{basicColor});
@@ -95,19 +95,20 @@ sub paintThreedXYZ {
         $self->{object3dProcessor}->drawObject($gl, $self->{rectangle});
 }
 
-# use javax::microedition::khronos::opengles::GL10;
-# use javax::microedition::lcdui::Graphics;
-use min3d::core::ColorBufferList;
-use min3d::core::Number3dBufferList;
-use min3d::objectPrimitives::Rectangle;
-use min3d::vos::Number3d;
-use org::allbinary::device::OpenGLESGraphics;
-use org::allbinary::graphics::threed::min3d::renderer::Object3dProcessor;
-use org::allbinary::graphics::threed::min3d::renderer::Object3dProcessorUtil;
-use org::allbinary::graphics::color::BasicColorFactory;
-use org::allbinary::layer::AllBinaryLayer;
-use org::allbinary::view::ViewPositionBase;
-use org::allbinary::game::health::HealthBarAnimation;
+use java::lang::Object ();
+use javax::microedition::khronos::opengles::GL10 ();
+use javax::microedition::lcdui::Graphics ();
+use min3d::core::ColorBufferList ();
+use min3d::core::Number3dBufferList ();
+use min3d::objectPrimitives::Rectangle ();
+use min3d::vos::Number3d ();
+use org::allbinary::device::OpenGLESGraphics ();
+use org::allbinary::graphics::threed::min3d::renderer::Object3dProcessor ();
+use org::allbinary::graphics::threed::min3d::renderer::Object3dProcessorUtil ();
+use org::allbinary::graphics::color::BasicColorFactory ();
+use org::allbinary::layer::AllBinaryLayer ();
+use org::allbinary::view::ViewPositionBase ();
+use org::allbinary::game::health::HealthBarAnimation ();
 
 1;
 

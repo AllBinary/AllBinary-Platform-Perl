@@ -5,8 +5,9 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
-our $instance = 'org::allbinary::logic::visual::media::MediaIOUtil'->new();
+tie our $instance, 'java::lang::LazyStatic', sub { 'org::allbinary::logic::visual::media::MediaIOUtil'->new() };
 
 sub new {
     my ($class) = @_;
@@ -32,7 +33,9 @@ sub getWriterFormatNames {
         return 'javax::imageio::ImageIO'->getWriterFormatNames();
 }
 
-# use javax::imageio::ImageIO;
+use java::lang::Object ();
+use java::lang::LazyStatic ();
+# use javax::imageio::ImageIO ();
 
 1;
 

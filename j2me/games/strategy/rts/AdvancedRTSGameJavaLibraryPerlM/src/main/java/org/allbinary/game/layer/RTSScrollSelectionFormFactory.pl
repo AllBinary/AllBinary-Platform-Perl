@@ -17,6 +17,7 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
 
 sub new {
@@ -38,16 +39,17 @@ sub getInstance {
         return 'org::allbinary::graphics::form::MultipleScrollSelectionHorizontalForm'->createForm($formLabel, $items, $menuRectangle, 'org::allbinary::graphics::form::FormTypeFactory'->getInstance()->{HORIZONTAL_FORM}, 0, $basicColorFactory->{BLACK}, $basicColorFactory->{WHITE});
 }
 
-use org::allbinary::graphics::form::item::ABCustomItem;
-use org::allbinary::graphics::PointFactory;
-use org::allbinary::graphics::Rectangle;
-use org::allbinary::graphics::color::BasicColorFactory;
-use org::allbinary::graphics::displayable::DisplayInfoSingleton;
-use org::allbinary::graphics::form::FormTypeFactory;
-use org::allbinary::graphics::form::MultipleScrollSelectionHorizontalForm;
-use org::allbinary::graphics::form::ScrollSelectionForm;
-use org::allbinary::input::motion::button::CommonButtons;
-use org::allbinary::input::motion::button::TouchButtonLocationHelper;
+use java::lang::Object ();
+use org::allbinary::graphics::form::item::ABCustomItem ();
+use org::allbinary::graphics::PointFactory ();
+use org::allbinary::graphics::Rectangle ();
+use org::allbinary::graphics::color::BasicColorFactory ();
+use org::allbinary::graphics::displayable::DisplayInfoSingleton ();
+use org::allbinary::graphics::form::FormTypeFactory ();
+use org::allbinary::graphics::form::MultipleScrollSelectionHorizontalForm ();
+use org::allbinary::graphics::form::ScrollSelectionForm ();
+use org::allbinary::input::motion::button::CommonButtons ();
+use org::allbinary::input::motion::button::TouchButtonLocationHelper ();
 
 1;
 

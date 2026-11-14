@@ -30,7 +30,7 @@ sub _init_fields {
 sub new {
     my ($class, $before, $type, $name, $value, $after) = @_;
     my $self = $class->SUPER::new($before, $type, $name, $after);
-    $self->_init_fields();
+    _init_fields($self);
         # super(...) made $self above
         my $stringUtil = 'org::allbinary::logic::string::StringUtil'->getInstance();
         $self->{value} = $stringUtil->{EMPTY_STRING};
@@ -38,8 +38,9 @@ sub new {
     return $self;
 }
 
-use org::allbinary::logic::string::StringUtil;
-use org::allbinary::logic::visual::dhtml::html::input::HtmlInput;
+use java::lang::Object ();
+use org::allbinary::logic::string::StringUtil ();
+use org::allbinary::logic::visual::dhtml::html::input::HtmlInput ();
 
 1;
 

@@ -20,6 +20,7 @@ no warnings 'experimental::try';
 use POSIX ();
 use List::Util ();
 use POSIX ();
+use parent -norequire,'java::lang::Object';
 
 
 sub _init_fields {
@@ -36,7 +37,7 @@ sub _init_fields {
 sub new {
     my ($class) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
         my $buttonSize = 'org::allbinary::input::motion::button::CommonButtons'->getInstance()->{STANDARD_BUTTON_SIZE};
         my $displayInfo = 'org::allbinary::graphics::displayable::DisplayInfoSingleton'->getInstance();
         $self->{totalColumns} = POSIX::floor($displayInfo->getLastWidth() / $buttonSize + 0.5);
@@ -103,9 +104,10 @@ sub toString {
         return $stringBuffer->toString();
 }
 
-use org::allbinary::graphics::displayable::DisplayInfoSingleton;
-use org::allbinary::logic::string::StringMaker;
-use org::allbinary::input::motion::button::CommonButtons;
+use java::lang::Object ();
+use org::allbinary::graphics::displayable::DisplayInfoSingleton ();
+use org::allbinary::logic::string::StringMaker ();
+use org::allbinary::input::motion::button::CommonButtons ();
 
 1;
 

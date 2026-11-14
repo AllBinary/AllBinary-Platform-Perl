@@ -17,7 +17,7 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
-use parent -norequire,'org::allbinary::logic::util::event::AllBinaryEventObjectFactoryInterface';
+use parent -norequire,'java::lang::Object','org::allbinary::logic::util::event::AllBinaryEventObjectFactoryInterface';
 
 
 sub _init_fields {
@@ -29,7 +29,7 @@ sub _init_fields {
 sub new {
     my ($class, $combatGameCanvas) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
         $self->{combatGameCanvas} = $combatGameCanvas;
     return $self;
 }
@@ -40,10 +40,11 @@ sub getInstance {
         return 'org::allbinary::game::combat::destroy::event::DestroyedEvent'->new($self->{combatGameCanvas});
 }
 
-use org::allbinary::game::displayable::canvas::AllBinaryGameCanvas;
-use org::allbinary::logic::util::event::AllBinaryEventObject;
-use org::allbinary::logic::util::event::AllBinaryEventObjectFactoryInterface;
-use org::allbinary::game::combat::destroy::event::DestroyedEvent;
+use java::lang::Object ();
+use org::allbinary::game::displayable::canvas::AllBinaryGameCanvas ();
+use org::allbinary::logic::util::event::AllBinaryEventObject ();
+use org::allbinary::logic::util::event::AllBinaryEventObjectFactoryInterface ();
+use org::allbinary::game::combat::destroy::event::DestroyedEvent ();
 
 1;
 

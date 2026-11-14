@@ -20,7 +20,7 @@ no warnings 'experimental::try';
 use Time::HiRes ();
 use parent -norequire,'org::allbinary::logic::util::event::handler::BasicEventHandler';
 
-our $gameKeyEventHandler = 'org::allbinary::input::event::VirtualKeyboardEventHandler'->new();
+tie our $gameKeyEventHandler, 'java::lang::LazyStatic', sub { 'org::allbinary::input::event::VirtualKeyboardEventHandler'->new() };
 
 sub _init_fields {
     my ($self) = @_;
@@ -32,7 +32,7 @@ sub _init_fields {
 sub new {
     my ($class) = @_;
     my $self = $class->SUPER::new();
-    $self->_init_fields();
+    _init_fields($self);
     return $self;
 }
 
@@ -73,12 +73,14 @@ sub close {
         }
 }
 
-use org::allbinary::logic::java::bool::BooleanFactory;
-use org::allbinary::logic::util::event::AllBinaryEventObject;
-use org::allbinary::logic::util::event::EventListenerInterface;
-use org::allbinary::logic::util::event::handler::BasicEventHandler;
-use org::allbinary::input::event::VirtualKeyboardEvent;
-use java::lang::Thread;
+use java::lang::Object ();
+use java::lang::LazyStatic ();
+use org::allbinary::logic::java::bool::BooleanFactory ();
+use org::allbinary::logic::util::event::AllBinaryEventObject ();
+use org::allbinary::logic::util::event::EventListenerInterface ();
+use org::allbinary::logic::util::event::handler::BasicEventHandler ();
+use org::allbinary::input::event::VirtualKeyboardEvent ();
+use java::lang::Thread ();
 
 1;
 

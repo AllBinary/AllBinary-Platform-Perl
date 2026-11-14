@@ -29,7 +29,7 @@ sub _init_fields {
 sub new {
     my ($class, $transformInfoInterface) = @_;
     my $self = $class->SUPER::new($transformInfoInterface);
-    $self->_init_fields();
+    _init_fields($self);
         # super(...) made $self above
     return $self;
 }
@@ -58,15 +58,16 @@ sub view {
         }
 }
 
-# use javax::servlet::http::HttpServletRequest;
-use org::allbinary::business::user::commerce::money::payment::gateway::PaymentGatewayInterface;
-use org::allbinary::business::user::commerce::money::payment::types::BasicPaymentTypeUtil;
-use org::allbinary::data::tables::user::commerce::money::payment::gateway::PaymentGatewayEntityFactory;
-use org::allbinary::logic::communication::log::LogUtil;
-use org::allbinary::logic::string::StringValidationUtil;
-use org::allbinary::logic::visual::transform::info::TransformInfoInterface;
-use views::admin::payment::gateway::PaymentGatewayViewAbstract;
-use views::admin::payment::gateway::PaymentGatewayComponent;
+use java::lang::Object ();
+# use javax::servlet::http::HttpServletRequest ();
+use org::allbinary::business::user::commerce::money::payment::gateway::PaymentGatewayInterface ();
+use org::allbinary::business::user::commerce::money::payment::types::BasicPaymentTypeUtil ();
+use org::allbinary::data::tables::user::commerce::money::payment::gateway::PaymentGatewayEntityFactory ();
+use org::allbinary::logic::communication::log::LogUtil ();
+use org::allbinary::logic::string::StringValidationUtil ();
+use org::allbinary::logic::visual::transform::info::TransformInfoInterface ();
+use views::admin::payment::gateway::PaymentGatewayViewAbstract ();
+use views::admin::payment::gateway::PaymentGatewayComponent ();
 
 1;
 

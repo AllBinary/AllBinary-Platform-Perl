@@ -31,7 +31,7 @@ sub _init_fields {
 sub new {
     my ($class, $hashMap, $pageContext) = @_;
     my $self = $class->SUPER::new();
-    $self->_init_fields();
+    _init_fields($self);
         if ($taghelpers::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($taghelpers::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{TAGHELPER})) {
             $self->{logUtil}->putF("Properties: " . $hashMap->toString(), $self, "StoreTagWorkFlowHelper()");
         }
@@ -57,14 +57,15 @@ sub process {
         }
 }
 
-use java::util::HashMap;
-# use javax::servlet::jsp::PageContext;
-use admin::taghelpers::TagHelper;
-use org::allbinary::logic::communication::log::LogUtil;
-use org::allbinary::logic::control::workflow::StoreTagWorkFlowFactory;
-use org::allbinary::logic::control::workflow::StoreWorkFlowInterface;
-use org::allbinary::logic::system::security::licensing::AbeClientInformationInterface;
-use org::allbinary::logic::system::security::licensing::ServiceClientInformationInterfaceFactory;
+use java::lang::Object ();
+use java::util::HashMap ();
+# use javax::servlet::jsp::PageContext ();
+use admin::taghelpers::TagHelper ();
+use org::allbinary::logic::communication::log::LogUtil ();
+use org::allbinary::logic::control::workflow::StoreTagWorkFlowFactory ();
+use org::allbinary::logic::control::workflow::StoreWorkFlowInterface ();
+use org::allbinary::logic::system::security::licensing::AbeClientInformationInterface ();
+use org::allbinary::logic::system::security::licensing::ServiceClientInformationInterfaceFactory ();
 
 1;
 

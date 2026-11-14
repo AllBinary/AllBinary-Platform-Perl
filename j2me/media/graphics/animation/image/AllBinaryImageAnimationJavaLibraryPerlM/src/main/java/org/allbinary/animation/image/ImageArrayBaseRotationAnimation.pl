@@ -34,7 +34,7 @@ sub _init_fields {
 sub new {
     my ($class, $originalImageArray, $angleInfo, $animationBehavior) = @_;
     my $self = $class->SUPER::new($angleInfo, 'org::allbinary::util::CircularIndexUtil'->createInstance(360 / $angleInfo->getAngleIncrementInfo()->getAngleIncrement()), $animationBehavior);
-    $self->_init_fields();
+    _init_fields($self);
         # super(...) made $self above
         $self->{originalImageArray} = $originalImageArray;
         $self->setImageArray($self->{imageModifierUtil}->getImageArray($originalImageArray));
@@ -144,17 +144,18 @@ sub finalize {
         $disposalUtil->disposeImage($self->{currentImage});
 }
 
-# use javax::microedition::lcdui::Graphics;
-# use javax::microedition::lcdui::Image;
-# use javax::microedition::lcdui::NullImage;
-use org::allbinary::DisposalUtil;
-use org::allbinary::animation::AnimationBehavior;
-use org::allbinary::animation::RotationAnimation;
-use org::allbinary::graphics::Anchor;
-use org::allbinary::logic::math::PrimitiveIntUtil;
-use org::allbinary::math::AngleInfo;
-use org::allbinary::media::image::ImageModifierUtil;
-use org::allbinary::util::CircularIndexUtil;
+use java::lang::Object ();
+use javax::microedition::lcdui::Graphics ();
+use javax::microedition::lcdui::Image ();
+use javax::microedition::lcdui::NullImage ();
+use org::allbinary::DisposalUtil ();
+use org::allbinary::animation::AnimationBehavior ();
+use org::allbinary::animation::RotationAnimation ();
+use org::allbinary::graphics::Anchor ();
+use org::allbinary::logic::math::PrimitiveIntUtil ();
+use org::allbinary::math::AngleInfo ();
+use org::allbinary::media::image::ImageModifierUtil ();
+use org::allbinary::util::CircularIndexUtil ();
 
 1;
 

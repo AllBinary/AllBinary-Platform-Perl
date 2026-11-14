@@ -36,7 +36,7 @@ sub _init_fields {
 sub new {
     my ($class, $tileTypeToTileIdsMap, $maxTileId) = @_;
     my $self = $class->SUPER::new();
-    $self->_init_fields();
+    _init_fields($self);
         my $commonStrings = 'org::allbinary::string::CommonStrings'->getInstance();
         $self->{logUtil}->putF($commonStrings->{START}, $self, $commonStrings->{CONSTRUCTOR});
         $self->{maxTileId} = $maxTileId;
@@ -139,16 +139,17 @@ sub toString {
         return 'org::allbinary::logic::string::StringMaker'->new()->append("key: WALL/BLOCK_CELL_TYPE: ")->append($self->{BLOCK_CELL_TYPE}->toString())->append("key: FLOOR_CELL_TYPE: ")->append($self->{FLOOR_CELL_TYPE}->toString())->append("key: OTHER_CELL_TYPE: ")->append($self->{OTHER_CELL_TYPE}->toString())->append("key: OFF_MAP_CELL_TYPE: ")->append($self->{OFF_MAP_CELL_TYPE}->toString())->append("key: DOOR_CELL_TYPE: ")->append($self->{DOOR_CELL_TYPE}->toString())->append("key: STAIRS_DOWN_CELL_TYPE: ")->append($self->{STAIRS_DOWN_CELL_TYPE}->toString())->append("key: STAIRS_UP_CELL_TYPE: ")->append($self->{STAIRS_UP_CELL_TYPE}->toString())->toString();
 }
 
-use org::allbinary::string::CommonStrings;
-use org::allbinary::logic::string::StringMaker;
-use org::allbinary::media::graphics::geography::map::GeographicMapCellType;
-use org::allbinary::media::graphics::geography::map::GeographicMapCellTypeFactory;
-use org::allbinary::media::graphics::geography::map::racetrack::RaceTrackGeographicMapCellType;
-use org::allbinary::util::ABHashtable;
-use org::allbinary::util::BasicArrayList;
-use org::allbinary::util::HashtableUtil;
-use org::allbinary::media::graphics::geography::map::topview::BasicTopViewGeographicMapStrings;
-use org::allbinary::media::graphics::geography::map::topview::BasicTopViewGeographicMapCellType;
+use java::lang::Object ();
+use org::allbinary::string::CommonStrings ();
+use org::allbinary::logic::string::StringMaker ();
+use org::allbinary::media::graphics::geography::map::GeographicMapCellType ();
+use org::allbinary::media::graphics::geography::map::GeographicMapCellTypeFactory ();
+use org::allbinary::media::graphics::geography::map::racetrack::RaceTrackGeographicMapCellType ();
+use org::allbinary::util::ABHashtable ();
+use org::allbinary::util::BasicArrayList ();
+use org::allbinary::util::HashtableUtil ();
+use org::allbinary::media::graphics::geography::map::topview::BasicTopViewGeographicMapStrings ();
+use org::allbinary::media::graphics::geography::map::topview::BasicTopViewGeographicMapCellType ();
 
 1;
 

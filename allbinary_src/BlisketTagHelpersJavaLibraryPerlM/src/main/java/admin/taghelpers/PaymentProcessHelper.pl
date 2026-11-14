@@ -29,7 +29,7 @@ sub _init_fields {
 sub new {
     my ($class, $propertiesHashMap, $pageContext) = @_;
     my $self = $class->SUPER::new();
-    $self->_init_fields();
+    _init_fields($self);
         my $transformInfoInterface = 'org::allbinary::logic::visual::transform::info::TransformInfoHttpFactory'->getInstance($propertiesHashMap, $pageContext);
         $self->{paymentProcessorComponent} = 'views::admin::payment::PaymentProcessorComponent'->new($transformInfoInterface);
     return $self;
@@ -42,12 +42,13 @@ sub process {
         return $self->{paymentProcessorComponent}->view();
 }
 
-use java::util::HashMap;
-# use javax::servlet::jsp::PageContext;
-use org::allbinary::logic::visual::transform::info::TransformInfoHttpFactory;
-use org::allbinary::logic::visual::transform::info::TransformInfoHttpInterface;
-use views::admin::payment::PaymentProcessorComponent;
-use admin::taghelpers::TagHelper;
+use java::lang::Object ();
+use java::util::HashMap ();
+# use javax::servlet::jsp::PageContext ();
+use org::allbinary::logic::visual::transform::info::TransformInfoHttpFactory ();
+use org::allbinary::logic::visual::transform::info::TransformInfoHttpInterface ();
+use views::admin::payment::PaymentProcessorComponent ();
+use admin::taghelpers::TagHelper ();
 
 1;
 

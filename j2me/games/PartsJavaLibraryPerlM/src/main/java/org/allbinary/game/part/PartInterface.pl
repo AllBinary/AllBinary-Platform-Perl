@@ -21,8 +21,8 @@ no warnings 'experimental::try';
 use parent -norequire,'org::allbinary::graphics::paint::PaintableInterface','org::allbinary::animation::AnimationInterfaceCompositeInterface';
 
 
-use org::allbinary::animation::AnimationInterfaceCompositeInterface;
-use org::allbinary::graphics::paint::PaintableInterface;
+use org::allbinary::animation::AnimationInterfaceCompositeInterface ();
+use org::allbinary::graphics::paint::PaintableInterface ();
 
 1;
 

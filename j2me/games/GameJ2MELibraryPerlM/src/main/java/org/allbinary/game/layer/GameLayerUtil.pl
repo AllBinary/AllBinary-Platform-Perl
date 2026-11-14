@@ -17,6 +17,7 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
 
 
@@ -44,9 +45,10 @@ sub isInside {
         }
 }
 
-use org::allbinary::graphics::displayable::DisplayInfoSingleton;
-use org::allbinary::layer::AllBinaryLayer;
-use org::allbinary::view::ViewPositionBase;
+use java::lang::Object ();
+use org::allbinary::graphics::displayable::DisplayInfoSingleton ();
+use org::allbinary::layer::AllBinaryLayer ();
+use org::allbinary::view::ViewPositionBase ();
 
 1;
 

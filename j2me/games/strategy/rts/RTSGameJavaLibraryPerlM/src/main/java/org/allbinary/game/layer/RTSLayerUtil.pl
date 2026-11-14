@@ -18,8 +18,9 @@ use warnings;
 use feature 'try';
 no warnings 'experimental::try';
 use POSIX ();
+use parent -norequire,'java::lang::Object';
 
-our $instance = 'org::allbinary::game::layer::RTSLayerUtil'->new();
+tie our $instance, 'java::lang::LazyStatic', sub { 'org::allbinary::game::layer::RTSLayerUtil'->new() };
 
 sub _init_fields {
     my ($self) = @_;
@@ -31,7 +32,7 @@ sub _init_fields {
 sub new {
     my ($class) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
     return $self;
 }
 
@@ -179,22 +180,24 @@ sub createFakeRTSLayerHashtable {
         return $hashtable;
 }
 
-use org::allbinary::game::identification::GroupCommonFactory;
-use org::allbinary::util::BasicArrayList;
-use org::allbinary::logic::communication::log::LogUtil;
-use org::allbinary::direction::DirectionFactory;
-use org::allbinary::game::GameInfo;
-use org::allbinary::game::combat::weapon::WeaponProperties;
-use org::allbinary::game::identification::BasicGroupFactory;
-use org::allbinary::game::part::PartInterface;
-use org::allbinary::game::part::weapon::BasicWeaponPart;
-use org::allbinary::logic::StdUtil;
-use org::allbinary::logic::string::StringMaker;
-use org::allbinary::media::graphics::geography::map::BasicGeographicMap;
-use org::allbinary::media::graphics::geography::map::racetrack::BaseRaceTrackGeographicMap;
-use org::allbinary::util::ABHashtable;
-use org::allbinary::game::layer::FakeLayerManager;
-use org::allbinary::game::layer::AllBinaryGameLayerManager;
+use java::lang::Object ();
+use java::lang::LazyStatic ();
+use org::allbinary::game::identification::GroupCommonFactory ();
+use org::allbinary::util::BasicArrayList ();
+use org::allbinary::logic::communication::log::LogUtil ();
+use org::allbinary::direction::DirectionFactory ();
+use org::allbinary::game::GameInfo ();
+use org::allbinary::game::combat::weapon::WeaponProperties ();
+use org::allbinary::game::identification::BasicGroupFactory ();
+use org::allbinary::game::part::PartInterface ();
+use org::allbinary::game::part::weapon::BasicWeaponPart ();
+use org::allbinary::logic::StdUtil ();
+use org::allbinary::logic::string::StringMaker ();
+use org::allbinary::media::graphics::geography::map::BasicGeographicMap ();
+use org::allbinary::media::graphics::geography::map::racetrack::BaseRaceTrackGeographicMap ();
+use org::allbinary::util::ABHashtable ();
+use org::allbinary::game::layer::FakeLayerManager ();
+use org::allbinary::game::layer::AllBinaryGameLayerManager ();
 
 1;
 

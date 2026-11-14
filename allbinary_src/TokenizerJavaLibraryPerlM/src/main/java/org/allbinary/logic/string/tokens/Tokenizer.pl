@@ -17,6 +17,7 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
 
 sub _init_fields {
@@ -29,8 +30,8 @@ sub _init_fields {
 sub new {
     my ($class, $sep) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
-        if (!defined($sep) || 'org::allbinary::TsUtil'->getInstance()->compareTo($sep, 'org::allbinary::logic::string::StringUtil'->getInstance()->{EMPTY_STRING}) == 0) {
+    _init_fields($self);
+        if ('org::allbinary::TsUtil'->getInstance()->compareTo($sep, 'org::allbinary::logic::string::StringUtil'->getInstance()->{EMPTY_STRING}) == 0) {
             die ("Sep provided is not valid");
         }
         $self->{sep} = $sep;
@@ -106,12 +107,13 @@ sub getTokens {
         return $tokenHashtable;
 }
 
-use org::allbinary::TsUtil;
-use org::allbinary::logic::StdUtil;
-use org::allbinary::logic::string::StringUtil;
-use org::allbinary::util::ABHashtable;
-use org::allbinary::util::BasicArrayList;
-use org::allbinary::util::BasicArrayListD;
+use java::lang::Object ();
+use org::allbinary::TsUtil ();
+use org::allbinary::logic::StdUtil ();
+use org::allbinary::logic::string::StringUtil ();
+use org::allbinary::util::ABHashtable ();
+use org::allbinary::util::BasicArrayList ();
+use org::allbinary::util::BasicArrayListD ();
 
 1;
 

@@ -18,8 +18,9 @@ use warnings;
 use feature 'try';
 no warnings 'experimental::try';
 use Scalar::Util ();
+use parent -norequire,'java::lang::Object';
 
-our $instance = 'admin::tags::ParentInventoryTagHelper'->new();
+tie our $instance, 'java::lang::LazyStatic', sub { 'admin::tags::ParentInventoryTagHelper'->new() };
 
 sub new {
     my ($class) = @_;
@@ -50,8 +51,10 @@ sub isValid {
         }
 }
 
-# use javax::servlet::jsp::tagext::Tag;
-use org::allbinary::logic::string::StringMaker;
+use java::lang::Object ();
+use java::lang::LazyStatic ();
+# use javax::servlet::jsp::tagext::Tag ();
+use org::allbinary::logic::string::StringMaker ();
 
 1;
 

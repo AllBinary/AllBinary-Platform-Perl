@@ -17,8 +17,9 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
-our $instance = 'org::allbinary::graphics::PointFactory'->new();
+tie our $instance, 'java::lang::LazyStatic', sub { 'org::allbinary::graphics::PointFactory'->new() };
 
 sub _init_fields {
     my ($self) = @_;
@@ -40,7 +41,7 @@ sub init {
 sub new {
     my ($class) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
     return $self;
 }
 
@@ -56,11 +57,13 @@ sub createXYZ {
         return 'org::allbinary::graphics::GPoint'->new($x, $y, $z);
 }
 
-# use jsinterop::annotations::JsType;
-# use jsinterop::annotations::JsMethod;
-# use jsinterop::annotations::JsConstructor;
-# use jsinterop::annotations::JsProperty;
-use org::allbinary::graphics::GPoint;
+use java::lang::Object ();
+use java::lang::LazyStatic ();
+# use jsinterop::annotations::JsType ();
+# use jsinterop::annotations::JsMethod ();
+# use jsinterop::annotations::JsConstructor ();
+# use jsinterop::annotations::JsProperty ();
+use org::allbinary::graphics::GPoint ();
 
 1;
 

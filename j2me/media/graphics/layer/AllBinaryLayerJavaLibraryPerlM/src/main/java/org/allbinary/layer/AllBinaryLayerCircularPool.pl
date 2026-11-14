@@ -38,8 +38,9 @@ sub initAllBinaryLayerCircularPool {
         }
 }
 
-use org::allbinary::logic::util::cache::BaseCircularPool;
-use org::allbinary::util::CircularIndexUtil;
+use java::lang::Object ();
+use org::allbinary::logic::util::cache::BaseCircularPool ();
+use org::allbinary::util::CircularIndexUtil ();
 
 1;
 

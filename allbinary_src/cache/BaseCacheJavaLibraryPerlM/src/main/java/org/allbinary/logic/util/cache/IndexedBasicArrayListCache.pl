@@ -40,7 +40,7 @@ sub createCache {
 sub new {
     my ($class) = @_;
     my $self = $class->SUPER::new();
-    $self->_init_fields();
+    _init_fields($self);
     return $self;
 }
 
@@ -96,13 +96,14 @@ sub clear {
         $self->{index} = 0;
 }
 
-# use jsinterop::annotations::JsType;
-use org::allbinary::string::CommonStrings;
-# use jsinterop::annotations::JsMethod;
-# use jsinterop::annotations::JsConstructor;
-# use jsinterop::annotations::JsProperty;
-use org::allbinary::logic::util::cache::BaseBasicArrayListCache;
-use org::allbinary::logic::util::cache::CacheInterface;
+use java::lang::Object ();
+# use jsinterop::annotations::JsType ();
+use org::allbinary::string::CommonStrings ();
+# use jsinterop::annotations::JsMethod ();
+# use jsinterop::annotations::JsConstructor ();
+# use jsinterop::annotations::JsProperty ();
+use org::allbinary::logic::util::cache::BaseBasicArrayListCache ();
+use org::allbinary::logic::util::cache::CacheInterface ();
 
 1;
 

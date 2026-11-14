@@ -33,8 +33,8 @@ sub add {
     die "abstract method add";
 }
 
-use org::allbinary::business::user::commerce::money::payment::gateway::transaction::PaymentTransactionInterface;
-use org::allbinary::data::tables::BasicDataTableInterface;
+use org::allbinary::business::user::commerce::money::payment::gateway::transaction::PaymentTransactionInterface ();
+use org::allbinary::data::tables::BasicDataTableInterface ();
 
 1;
 

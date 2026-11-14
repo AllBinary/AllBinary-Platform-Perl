@@ -54,7 +54,7 @@ sub _init_fields {
 sub new {
     my ($class, $transformInfoInterface) = @_;
     my $self = $class->SUPER::new($transformInfoInterface);
-    $self->_init_fields();
+    _init_fields($self);
         # super(...) made $self above
         $self->{request} = $self->getPageContext()->getRequest();
         $self->getFormData();
@@ -286,27 +286,35 @@ sub validationInfo {
         }
 }
 
-use java::util::Calendar;
-use org::allbinary::util::BasicArrayList;
-use org::allbinary::util::BasicArrayListD;
-# use javax::servlet::http::HttpServletRequest;
-use org::allbinary::business::user::commerce::inventory::order::OrderData;
-use org::allbinary::business::user::commerce::inventory::order::OrderHistory;
-use org::allbinary::business::user::commerce::inventory::order::OrderHistoryData;
-use org::allbinary::data::tables::user::commerce::inventory::order::OrderHistoryEntityFactory;
-use org::allbinary::data::tree::dom::DomNodeInterface;
-use org::allbinary::data::tree::dom::ModDomHelper;
-use org::allbinary::globals::GLOBALS2;
-use org::allbinary::logic::communication::log::LogUtil;
-use org::allbinary::logic::control::validate::ValidationComponentInterface;
-use org::allbinary::logic::string::StringMaker;
-use org::allbinary::logic::string::StringUtil;
-use org::allbinary::logic::string::StringValidationUtil;
-use org::allbinary::logic::visual::transform::info::TransformInfoInterface;
-use org::allbinary::time::TimeUtil;
-use org::w3c::dom::Document;
-use org::w3c::dom::Node;
-use views::business::context::modules::storefront::HttpStoreComponentView;
+
+# throws Exception
+sub getTransformInfoInterface {
+    my ($self) = @_;
+        return $self->SUPER::getTransformInfoInterface();
+}
+
+use java::lang::Object ();
+use java::util::Calendar ();
+use org::allbinary::util::BasicArrayList ();
+use org::allbinary::util::BasicArrayListD ();
+# use javax::servlet::http::HttpServletRequest ();
+use org::allbinary::business::user::commerce::inventory::order::OrderData ();
+use org::allbinary::business::user::commerce::inventory::order::OrderHistory ();
+use org::allbinary::business::user::commerce::inventory::order::OrderHistoryData ();
+use org::allbinary::data::tables::user::commerce::inventory::order::OrderHistoryEntityFactory ();
+use org::allbinary::data::tree::dom::DomNodeInterface ();
+use org::allbinary::data::tree::dom::ModDomHelper ();
+use org::allbinary::globals::GLOBALS2 ();
+use org::allbinary::logic::communication::log::LogUtil ();
+use org::allbinary::logic::control::validate::ValidationComponentInterface ();
+use org::allbinary::logic::string::StringMaker ();
+use org::allbinary::logic::string::StringUtil ();
+use org::allbinary::logic::string::StringValidationUtil ();
+use org::allbinary::logic::visual::transform::info::TransformInfoInterface ();
+use org::allbinary::time::TimeUtil ();
+use org::w3c::dom::Document ();
+use org::w3c::dom::Node ();
+use views::business::context::modules::storefront::HttpStoreComponentView ();
 
 1;
 

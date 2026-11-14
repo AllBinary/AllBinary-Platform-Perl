@@ -17,6 +17,7 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
 
 sub _init_fields {
@@ -31,7 +32,7 @@ sub _init_fields {
 sub new {
     my ($class, $fileName) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
         $self->{fileName} = $fileName;
         $self->{string} = 'org::allbinary::logic::io::file::AbFileSystem'->getInstance()->readAsString($fileName);
     return $self;
@@ -86,11 +87,12 @@ sub deleteBetween {
         }
 }
 
-# use java::io::DataOutputStream;
-# use java::io::FileOutputStream;
-use org::allbinary::logic::communication::log::LogUtil;
-use org::allbinary::logic::io::file::AbFileSystem;
-use org::allbinary::string::CommonStrings;
+use java::lang::Object ();
+# use java::io::DataOutputStream ();
+# use java::io::FileOutputStream ();
+use org::allbinary::logic::communication::log::LogUtil ();
+use org::allbinary::logic::io::file::AbFileSystem ();
+use org::allbinary::string::CommonStrings ();
 
 1;
 

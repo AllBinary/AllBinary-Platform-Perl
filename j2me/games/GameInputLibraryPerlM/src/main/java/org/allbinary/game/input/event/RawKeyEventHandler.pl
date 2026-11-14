@@ -17,8 +17,9 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
-our $instance = 'org::allbinary::game::input::event::RawKeyEventHandler'->new();
+tie our $instance, 'java::lang::LazyStatic', sub { 'org::allbinary::game::input::event::RawKeyEventHandler'->new() };
 our $TOTAL_LISTENERS = "Total Listeners: ";
 our $LISTENER_LABEL = " Listener: ";
 
@@ -38,7 +39,7 @@ sub getInstance {
 sub new {
     my ($class) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
         $self->{eventListenerInterfaceList} = 'org::allbinary::util::BasicArrayListD'->new();
     return $self;
 }
@@ -141,12 +142,14 @@ sub toString {
         return $stringBuffer->toString();
 }
 
-use org::allbinary::logic::communication::log::LogUtil;
-use org::allbinary::logic::string::StringMaker;
-use org::allbinary::logic::util::event::EventStrings;
-use org::allbinary::string::CommonStrings;
-use org::allbinary::util::BasicArrayList;
-use org::allbinary::util::BasicArrayListD;
+use java::lang::Object ();
+use java::lang::LazyStatic ();
+use org::allbinary::logic::communication::log::LogUtil ();
+use org::allbinary::logic::string::StringMaker ();
+use org::allbinary::logic::util::event::EventStrings ();
+use org::allbinary::string::CommonStrings ();
+use org::allbinary::util::BasicArrayList ();
+use org::allbinary::util::BasicArrayListD ();
 
 1;
 

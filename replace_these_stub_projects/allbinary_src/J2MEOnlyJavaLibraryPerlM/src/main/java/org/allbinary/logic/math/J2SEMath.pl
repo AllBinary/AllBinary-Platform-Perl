@@ -17,8 +17,9 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
-our $instance = 'org::allbinary::logic::math::J2SEMath'->new();
+tie our $instance, 'java::lang::LazyStatic', sub { 'org::allbinary::logic::math::J2SEMath'->new() };
 
 sub new {
     my ($class) = @_;
@@ -50,6 +51,8 @@ sub absdouble {
         return (($value < 0.0) ? -$value : $value);
 }
 
+use java::lang::Object ();
+use java::lang::LazyStatic ();
 
 1;
 

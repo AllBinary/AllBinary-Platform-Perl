@@ -26,8 +26,8 @@ sub process {
     die "abstract method process";
 }
 
-use org::allbinary::game::score::HighScore;
-use org::allbinary::logic::system::security::licensing::AbeClientInformationInterface;
+use org::allbinary::game::score::HighScore ();
+use org::allbinary::logic::system::security::licensing::AbeClientInformationInterface ();
 
 1;
 

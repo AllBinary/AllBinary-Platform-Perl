@@ -17,7 +17,7 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
-use parent -norequire,'javax::swing::JPanel';
+use parent -norequire,'java::lang::Object';
 
 
 sub _init_fields {
@@ -29,7 +29,7 @@ sub _init_fields {
 sub new {
     my ($class) = @_;
     my $self = $class->SUPER::new();
-    $self->_init_fields();
+    _init_fields($self);
         $self->initComponents();
     return $self;
 }
@@ -45,6 +45,7 @@ sub initComponents {
         $layout->setVerticalGroup($layout->createParallelGroup($org::allbinary::input::automation::module::configuration::javax::swing->{GroupLayout}->{Alignment}->{LEADING})->addGroup($layout->createSequentialGroup()->addContainerGap()->addComponent($self->{jLabel1})->addContainerGap(362, 32767)));
 }
 
+use java::lang::Object ();
 
 1;
 

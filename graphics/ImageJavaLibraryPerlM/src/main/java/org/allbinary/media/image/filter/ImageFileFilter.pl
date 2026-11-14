@@ -18,7 +18,7 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
-use parent -norequire,'javax::swing::filechooser::FileFilter';
+use parent -norequire,'java::lang::Object';
 
 
 sub new {
@@ -50,8 +50,9 @@ sub getDescription {
         return "Accepts .jpg and .jpeg files";
 }
 
-use java::io::File;
-# use javax::swing::filechooser::FileFilter;
+use java::lang::Object ();
+use java::io::File ();
+# use javax::swing::filechooser::FileFilter ();
 
 1;
 

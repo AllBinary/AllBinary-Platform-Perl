@@ -18,8 +18,9 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
-our $instance = 'org::allbinary::logic::StdUtil'->new();
+tie our $instance, 'java::lang::LazyStatic', sub { 'org::allbinary::logic::StdUtil'->new() };
 
 sub _init_fields {
     my ($self) = @_;
@@ -31,7 +32,7 @@ sub _init_fields {
 sub new {
     my ($class) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
     return $self;
 }
 
@@ -65,10 +66,12 @@ sub createHashMap {
         return 'org::allbinary::util::ABHashMap'->new();
 }
 
-use org::allbinary::util::ABHashMap;
-use org::allbinary::util::ABHashtable;
-use org::allbinary::util::ABStack;
-use org::allbinary::util::ABVector;
+use java::lang::Object ();
+use java::lang::LazyStatic ();
+use org::allbinary::util::ABHashMap ();
+use org::allbinary::util::ABHashtable ();
+use org::allbinary::util::ABStack ();
+use org::allbinary::util::ABVector ();
 
 1;
 

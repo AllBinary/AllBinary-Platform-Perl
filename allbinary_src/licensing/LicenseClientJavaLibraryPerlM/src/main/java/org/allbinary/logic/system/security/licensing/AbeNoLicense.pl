@@ -17,9 +17,9 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
-use parent -norequire,'org::allbinary::logic::system::security::licensing::AbeLicenseInterface';
+use parent -norequire,'java::lang::Object','org::allbinary::logic::system::security::licensing::AbeLicenseInterface';
 
-our $abeNoLicense = 'org::allbinary::logic::system::security::licensing::AbeNoLicense'->new();
+tie our $abeNoLicense, 'java::lang::LazyStatic', sub { 'org::allbinary::logic::system::security::licensing::AbeNoLicense'->new() };
 
 sub _init_fields {
     my ($self) = @_;
@@ -30,7 +30,7 @@ sub _init_fields {
 sub new {
     my ($class) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
     return $self;
 }
 
@@ -82,11 +82,13 @@ sub getLicenseType {
         return 'org::allbinary::logic::system::security::licensing::LicenseTypeFactory'->getInstance()->{UNKNOWN};
 }
 
-use org::allbinary::logic::string::StringUtil;
-use org::allbinary::util::BasicArrayList;
-use org::allbinary::util::BasicArrayListD;
-use org::allbinary::logic::system::security::licensing::AbeLicenseInterface;
-use org::allbinary::logic::system::security::licensing::LicenseTypeFactory;
+use java::lang::Object ();
+use java::lang::LazyStatic ();
+use org::allbinary::logic::string::StringUtil ();
+use org::allbinary::util::BasicArrayList ();
+use org::allbinary::util::BasicArrayListD ();
+use org::allbinary::logic::system::security::licensing::AbeLicenseInterface ();
+use org::allbinary::logic::system::security::licensing::LicenseTypeFactory ();
 
 1;
 

@@ -17,6 +17,7 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
 
 sub _init_fields {
@@ -38,7 +39,7 @@ sub _init_fields {
 sub new {
     my ($class, $action) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
         $self->{action} = $action;
         $self->{inputs} = 'org::allbinary::util::BasicArrayListD'->new();
     return $self;
@@ -91,12 +92,13 @@ sub toString {
         return $result;
 }
 
-use org::allbinary::util::BasicArrayList;
-use org::allbinary::util::BasicArrayListD;
-use org::allbinary::logic::StdUtil;
-use org::allbinary::logic::string::StringUtil;
-use org::allbinary::logic::visual::dhtml::html::input::HtmlInput;
-use org::allbinary::logic::visual::dhtml::html::table::HtmlTable;
+use java::lang::Object ();
+use org::allbinary::util::BasicArrayList ();
+use org::allbinary::util::BasicArrayListD ();
+use org::allbinary::logic::StdUtil ();
+use org::allbinary::logic::string::StringUtil ();
+use org::allbinary::logic::visual::dhtml::html::input::HtmlInput ();
+use org::allbinary::logic::visual::dhtml::html::table::HtmlTable ();
 
 1;
 

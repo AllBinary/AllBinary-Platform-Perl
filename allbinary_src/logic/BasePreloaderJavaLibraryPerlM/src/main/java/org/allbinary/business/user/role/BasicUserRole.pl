@@ -17,9 +17,8 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
-use parent -norequire,'java::io::Serializable';
+use parent -norequire,'java::lang::Object';
 
-our $roleVector = 'org::allbinary::util::BasicArrayListD'->new();
 
 sub _init_fields {
     my ($self) = @_;
@@ -49,13 +48,13 @@ sub _new4 {
 sub _new5 {
     my ($class, $aRole, $aDisplayValue, $a_int_RoleId, $aSessionTimeout, $aSessionInactivityTimeout) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
         $self->{m_int_RoleId} = $a_int_RoleId;
         $self->{role} = $aRole;
         $self->{displayValue} = $aDisplayValue;
         $self->{sessionTimeout} = $aSessionTimeout;
         $self->{sessionInactivityTimeout} = $aSessionInactivityTimeout;
-        $org::allbinary::business::user::role::BasicUserRole::roleVector->add($self);
+        'org::allbinary::business::user::role::BasicUserRoles'->getInstance()->{roleVector}->add($self);
     return $self;
 }
 
@@ -98,31 +97,9 @@ sub toString {
         return $self->getRole();
 }
 
-
-# throws Exception
-# Java overloaded method: Perl keeps the last definition
-sub getRole {
-    my ($class, $role) = @_;
-        my $roleVector = 'org::allbinary::business::user::role::BasicUserRole'->getAll();
-        my $size = $roleVector->size();
-        for (my $index = 0; $index < $size; $index++) {
-            my $userRole = $roleVector->get($index);
-            if (($role cmp $userRole->toString()) == 0) {
-                return $userRole;
-            }
-        }
-        die ("Unable to get role - Unknown Role");
-}
-
-
-sub getAll {
-    my ($class) = @_;
-        return $org::allbinary::business::user::role::BasicUserRole::roleVector;
-}
-
-# use java::io::Serializable;
-use org::allbinary::util::BasicArrayList;
-use org::allbinary::util::BasicArrayListD;
+use java::lang::Object ();
+# use java::io::Serializable ();
+use org::allbinary::business::user::role::BasicUserRoles ();
 
 1;
 

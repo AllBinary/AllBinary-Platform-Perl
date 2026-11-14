@@ -17,6 +17,7 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
 
 sub _init_fields {
@@ -36,7 +37,7 @@ sub new {
 sub _new2 {
     my ($class, $hashMap, $pageContext) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
     return $self;
 }
 
@@ -44,7 +45,7 @@ sub _new2 {
 sub _new0 {
     my ($class) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
     return $self;
 }
 
@@ -74,12 +75,13 @@ sub setWebappPath {
         }
 }
 
-use java::util::HashMap;
-# use javax::servlet::jsp::PageContext;
-use org::allbinary::globals::AppUrlGlobals;
-use org::allbinary::globals::URLGLOBALS;
-use org::allbinary::logic::communication::log::LogUtil;
-use org::allbinary::string::CommonStrings;
+use java::lang::Object ();
+use java::util::HashMap ();
+# use javax::servlet::jsp::PageContext ();
+use org::allbinary::globals::AppUrlGlobals ();
+use org::allbinary::globals::URLGLOBALS ();
+use org::allbinary::logic::communication::log::LogUtil ();
+use org::allbinary::string::CommonStrings ();
 
 1;
 

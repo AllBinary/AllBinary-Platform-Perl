@@ -43,13 +43,14 @@ sub createAnimation {
         return 'org::allbinary::animation::compound::SimultaneousCompoundRotationAnimation'->new($animationInterfaceArray, $self->{animationBehaviorFactory}->getOrCreateInstance());
 }
 
-use org::allbinary::animation::Animation;
-use org::allbinary::animation::AnimationBehaviorFactory;
-use org::allbinary::animation::AnimationInterfaceFactoryInterface;
-use org::allbinary::animation::RotationAnimation;
-use org::allbinary::logic::communication::log::ForcedLogUtil;
-use org::allbinary::animation::compound::CompoundAnimationInterfaceFactory;
-use org::allbinary::animation::compound::SimultaneousCompoundRotationAnimation;
+use java::lang::Object ();
+use org::allbinary::animation::Animation ();
+use org::allbinary::animation::AnimationBehaviorFactory ();
+use org::allbinary::animation::AnimationInterfaceFactoryInterface ();
+use org::allbinary::animation::RotationAnimation ();
+use org::allbinary::logic::communication::log::ForcedLogUtil ();
+use org::allbinary::animation::compound::CompoundAnimationInterfaceFactory ();
+use org::allbinary::animation::compound::SimultaneousCompoundRotationAnimation ();
 
 1;
 

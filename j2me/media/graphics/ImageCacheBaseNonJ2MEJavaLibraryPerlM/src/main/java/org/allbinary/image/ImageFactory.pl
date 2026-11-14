@@ -18,8 +18,9 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
-our $instance = 'org::allbinary::image::ImageFactory'->new();
+tie our $instance, 'java::lang::LazyStatic', sub { 'org::allbinary::image::ImageFactory'->new() };
 
 sub new {
     my ($class) = @_;
@@ -63,8 +64,10 @@ sub createImageFromInputStream {
         return 'javax::microedition::lcdui::Image'->createImageFromInputStream($inputStream);
 }
 
-# use java::io::InputStream;
-# use javax::microedition::lcdui::Image;
+use java::lang::Object ();
+use java::lang::LazyStatic ();
+# use java::io::InputStream ();
+use javax::microedition::lcdui::Image ();
 
 1;
 

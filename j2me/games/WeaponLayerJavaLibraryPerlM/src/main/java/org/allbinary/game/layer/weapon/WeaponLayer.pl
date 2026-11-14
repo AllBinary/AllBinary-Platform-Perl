@@ -40,7 +40,7 @@ sub _init_fields {
 sub new {
     my ($class, $name, $remoteInfo, $multiPlayerType, $movement, $animationInterface, $destroyedAnimationInterface, $rectangle, $viewPosition) = @_;
     my $self = $class->SUPER::new($remoteInfo, 'org::allbinary::game::identification::BasicGroupFactory'->getInstance()->{NONE_ARRAY}, $name, $rectangle, $viewPosition);
-    $self->_init_fields();
+    _init_fields($self);
         # super(...) made $self above
         $self->{initAnimationInterface} = $animationInterface;
         $self->setAnimationInterface($animationInterface);
@@ -290,28 +290,29 @@ sub set {
         $self->{initAnimationInterface}->set($gl);
 }
 
-# use javax::microedition::khronos::opengles::GL;
-# use javax::microedition::lcdui::Graphics;
-use org::allbinary::animation::Animation;
-use org::allbinary::animation::IndexedAnimation;
-use org::allbinary::animation::NullAnimationFactory;
-use org::allbinary::game::collision::CollidableBaseBehavior;
-use org::allbinary::game::combat::destroy::DestroyedLayerProcessor;
-use org::allbinary::game::combat::weapon::WeaponProperties;
-use org::allbinary::game::configuration::GameConfigurationUtil;
-use org::allbinary::game::identification::BasicGroupFactory;
-use org::allbinary::game::multiplayer::layer::MultiPlayerGameLayer;
-use org::allbinary::game::multiplayer::layer::RemoteInfo;
-use org::allbinary::game::score::NoScoreable;
-use org::allbinary::game::score::ScoreableInterface;
-use org::allbinary::game::tick::TickableInterface;
-use org::allbinary::graphics::Rectangle;
-use org::allbinary::layer::AllBinaryLayer;
-use org::allbinary::layer::AllBinaryLayerManager;
-use org::allbinary::physics::movement::Movement;
-use org::allbinary::view::ViewPosition;
-use org::allbinary::view::ViewPositionBase;
-use org::allbinary::game::layer::weapon::CollidableWeaponBehavior;
+use java::lang::Object ();
+use javax::microedition::khronos::opengles::GL ();
+use javax::microedition::lcdui::Graphics ();
+use org::allbinary::animation::Animation ();
+use org::allbinary::animation::IndexedAnimation ();
+use org::allbinary::animation::NullAnimationFactory ();
+use org::allbinary::game::collision::CollidableBaseBehavior ();
+use org::allbinary::game::combat::destroy::DestroyedLayerProcessor ();
+use org::allbinary::game::combat::weapon::WeaponProperties ();
+use org::allbinary::game::configuration::GameConfigurationUtil ();
+use org::allbinary::game::identification::BasicGroupFactory ();
+use org::allbinary::game::multiplayer::layer::MultiPlayerGameLayer ();
+use org::allbinary::game::multiplayer::layer::RemoteInfo ();
+use org::allbinary::game::score::NoScoreable ();
+use org::allbinary::game::score::ScoreableInterface ();
+use org::allbinary::game::tick::TickableInterface ();
+use org::allbinary::graphics::Rectangle ();
+use org::allbinary::layer::AllBinaryLayer ();
+use org::allbinary::layer::AllBinaryLayerManager ();
+use org::allbinary::physics::movement::Movement ();
+use org::allbinary::view::ViewPosition ();
+use org::allbinary::view::ViewPositionBase ();
+use org::allbinary::game::layer::weapon::CollidableWeaponBehavior ();
 
 1;
 

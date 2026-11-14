@@ -46,11 +46,12 @@ sub rotateTheta {
         $self->{pointBasicArrayList} = $newVector;
 }
 
-use org::allbinary::graphics::GPoint;
-use org::allbinary::graphics::PointFactory;
-use org::allbinary::util::BasicArrayList;
-use org::allbinary::util::BasicArrayListD;
-use org::allbinary::graphics::pipeline::BasicGraphicsPipeline;
+use java::lang::Object ();
+use org::allbinary::graphics::GPoint ();
+use org::allbinary::graphics::PointFactory ();
+use org::allbinary::util::BasicArrayList ();
+use org::allbinary::util::BasicArrayListD ();
+use org::allbinary::graphics::pipeline::BasicGraphicsPipeline ();
 
 1;
 

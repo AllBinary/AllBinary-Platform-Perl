@@ -17,6 +17,7 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
 
 sub _init_fields {
@@ -39,7 +40,7 @@ sub _init_fields {
 sub new {
     my ($class, $bufferedImage, $bufferedImage2, $tolerance) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
         $self->{nonMatchingPixelVector} = 'org::allbinary::util::BasicArrayListD'->new();
         $self->setBufferedImages([(undef) x (2)]);
         $self->getBufferedImages()->[0] = $bufferedImage;
@@ -122,14 +123,15 @@ sub setTolerance {
         $self->{tolerance} = $tolerance;
 }
 
-# use java::awt::image::BufferedImage;
-use org::allbinary::util::BasicArrayList;
-use org::allbinary::util::BasicArrayListD;
-use org::allbinary::logic::StdUtil;
-use org::allbinary::logic::communication::log::LogUtil;
-use org::allbinary::media::image::ImageUtil;
-use org::allbinary::media::image::comparison::pixel::PixelDelta;
-use org::allbinary::string::CommonStrings;
+use java::lang::Object ();
+# use java::awt::image::BufferedImage ();
+use org::allbinary::util::BasicArrayList ();
+use org::allbinary::util::BasicArrayListD ();
+use org::allbinary::logic::StdUtil ();
+use org::allbinary::logic::communication::log::LogUtil ();
+use org::allbinary::media::image::ImageUtil ();
+use org::allbinary::media::image::comparison::pixel::PixelDelta ();
+use org::allbinary::string::CommonStrings ();
 
 1;
 

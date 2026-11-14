@@ -17,9 +17,9 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
-use parent -norequire,'org::apache::xmlrpc::XmlRpcHandler';
+use parent -norequire,'java::lang::Object','org::apache::xmlrpc::XmlRpcHandler';
 
-our $NULL_XML_RPC_HANDLER = 'org::apache::xmlrpc::NullXmlRpcHandler'->new();
+tie our $NULL_XML_RPC_HANDLER, 'java::lang::LazyStatic', sub { 'org::apache::xmlrpc::NullXmlRpcHandler'->new() };
 
 sub new {
     my ($class) = @_;
@@ -34,10 +34,12 @@ sub execute {
         return 'org::allbinary::logic::NullUtil'->getInstance()->{NULL_OBJECT};
 }
 
-use org::allbinary::util::BasicArrayList;
-use org::allbinary::util::BasicArrayListD;
-use org::allbinary::logic::NullUtil;
-use org::apache::xmlrpc::XmlRpcHandler;
+use java::lang::Object ();
+use java::lang::LazyStatic ();
+use org::allbinary::util::BasicArrayList ();
+use org::allbinary::util::BasicArrayListD ();
+use org::allbinary::logic::NullUtil ();
+use org::apache::xmlrpc::XmlRpcHandler ();
 
 1;
 

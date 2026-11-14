@@ -20,7 +20,7 @@ no warnings 'experimental::try';
 use Time::HiRes ();
 use parent -norequire,'org::allbinary::image::ImageCacheBase';
 
-our $NULL_IMAGE_CACHE = 'org::allbinary::image::ImageCache'->new();
+tie our $NULL_IMAGE_CACHE, 'java::lang::LazyStatic', sub { 'org::allbinary::image::ImageCache'->new() };
 
 sub _init_fields {
     my ($self) = @_;
@@ -32,7 +32,7 @@ sub _init_fields {
 sub new {
     my ($class) = @_;
     my $self = $class->SUPER::new();
-    $self->_init_fields();
+    _init_fields($self);
     return $self;
 }
 
@@ -136,20 +136,22 @@ sub isLazy {
         return 0;
 }
 
-# use java::io::InputStream;
-# use javax::microedition::lcdui::Image;
-# use javax::microedition::lcdui::NullImage;
-use org::allbinary::J2MEUtil;
-use org::allbinary::TsUtil;
-use org::allbinary::data::resource::ResourceUtil;
-use org::allbinary::game::gd::resource::GDResources;
-use org::allbinary::logic::ABSystemWrapper;
-use org::allbinary::logic::string::StringMaker;
-use org::allbinary::logic::string::StringUtil;
-use org::allbinary::string::CommonStrings;
-use org::allbinary::system::Memory;
-use org::allbinary::image::ImageCacheBase;
-use java::lang::Thread;
+use java::lang::Object ();
+use java::lang::LazyStatic ();
+# use java::io::InputStream ();
+use javax::microedition::lcdui::Image ();
+use javax::microedition::lcdui::NullImage ();
+use org::allbinary::J2MEUtil ();
+use org::allbinary::TsUtil ();
+use org::allbinary::data::resource::ResourceUtil ();
+use org::allbinary::game::gd::resource::GDResources ();
+use org::allbinary::logic::ABSystemWrapper ();
+use org::allbinary::logic::string::StringMaker ();
+use org::allbinary::logic::string::StringUtil ();
+use org::allbinary::string::CommonStrings ();
+use org::allbinary::system::Memory ();
+use org::allbinary::image::ImageCacheBase ();
+use java::lang::Thread ();
 
 1;
 

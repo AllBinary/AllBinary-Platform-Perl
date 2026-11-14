@@ -19,7 +19,7 @@ use feature 'try';
 no warnings 'experimental::try';
 use parent -norequire,'org::allbinary::game::input::mapping::InputMapping';
 
-our $instance = 'org::allbinary::logic::NullUtil'->getInstance()->{NULL_OBJECT};
+tie our $instance, 'java::lang::LazyStatic', sub { 'org::allbinary::logic::NullUtil'->getInstance()->{NULL_OBJECT} };
 
 sub _init_fields {
     my ($self) = @_;
@@ -42,7 +42,7 @@ sub getNullInstance {
 sub new {
     my ($class) = @_;
     my $self = $class->SUPER::new();
-    $self->_init_fields();
+    _init_fields($self);
         $self->{logUtil}->putF($self->{commonStrings}->{START}, $self, $self->{commonStrings}->{CONSTRUCTOR});
         $self->clear();
     return $self;
@@ -209,20 +209,22 @@ sub getInstance {
         }
 }
 
-# use javax::microedition::lcdui::Canvas;
-use org::allbinary::game::input::GameKey;
-use org::allbinary::game::input::GameKeyFactory;
-use org::allbinary::game::input::Input;
-use org::allbinary::game::input::InputFactory;
-use org::allbinary::logic::NullUtil;
-use org::allbinary::logic::communication::log::PreLogUtil;
-use org::allbinary::logic::string::StringMaker;
-use org::allbinary::logic::string::StringUtil;
-use org::allbinary::string::CommonLabels;
-use org::allbinary::string::CommonSeps;
-use org::allbinary::util::BasicArrayList;
-use org::allbinary::util::BasicArrayListD;
-use org::allbinary::game::input::mapping::InputMapping;
+use java::lang::Object ();
+use java::lang::LazyStatic ();
+use javax::microedition::lcdui::Canvas ();
+use org::allbinary::game::input::GameKey ();
+use org::allbinary::game::input::GameKeyFactory ();
+use org::allbinary::game::input::Input ();
+use org::allbinary::game::input::InputFactory ();
+use org::allbinary::logic::NullUtil ();
+use org::allbinary::logic::communication::log::PreLogUtil ();
+use org::allbinary::logic::string::StringMaker ();
+use org::allbinary::logic::string::StringUtil ();
+use org::allbinary::string::CommonLabels ();
+use org::allbinary::string::CommonSeps ();
+use org::allbinary::util::BasicArrayList ();
+use org::allbinary::util::BasicArrayListD ();
+use org::allbinary::game::input::mapping::InputMapping ();
 
 1;
 

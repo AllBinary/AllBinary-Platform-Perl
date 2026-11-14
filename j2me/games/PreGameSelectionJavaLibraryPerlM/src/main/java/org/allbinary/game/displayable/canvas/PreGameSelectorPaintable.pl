@@ -31,7 +31,7 @@ sub _init_fields {
 sub new {
     my ($class, $title, $preGameScrollSelectionForm) = @_;
     my $self = $class->SUPER::new();
-    $self->_init_fields();
+    _init_fields($self);
         $self->{title} = $title;
         my $displayInfo = 'org::allbinary::graphics::displayable::DisplayInfoSingleton'->getInstance();
         $self->{canvasDrawLineString} = 'org::allbinary::graphics::draw::CanvasDrawLineString'->new($displayInfo->getLastHalfWidth(), 0);
@@ -60,11 +60,12 @@ sub getPreGameSelectionForm {
         return $self->{preGameScrollSelectionForm};
 }
 
-# use javax::microedition::lcdui::Graphics;
-use org::allbinary::graphics::color::BasicColorFactory;
-use org::allbinary::graphics::displayable::DisplayInfoSingleton;
-use org::allbinary::graphics::draw::CanvasDrawLineString;
-use org::allbinary::graphics::paint::InitUpdatePaintable;
+use java::lang::Object ();
+use javax::microedition::lcdui::Graphics ();
+use org::allbinary::graphics::color::BasicColorFactory ();
+use org::allbinary::graphics::displayable::DisplayInfoSingleton ();
+use org::allbinary::graphics::draw::CanvasDrawLineString ();
+use org::allbinary::graphics::paint::InitUpdatePaintable ();
 
 1;
 

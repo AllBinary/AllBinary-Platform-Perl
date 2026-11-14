@@ -17,8 +17,9 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
-our $instance = 'org::allbinary::graphics::displayable::screen::WebCommandProcessor'->new();
+tie our $instance, 'java::lang::LazyStatic', sub { 'org::allbinary::graphics::displayable::screen::WebCommandProcessor'->new() };
 
 sub _init_fields {
     my ($self) = @_;
@@ -31,7 +32,7 @@ sub _init_fields {
 sub new {
     my ($class) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
     return $self;
 }
 
@@ -56,17 +57,19 @@ sub process {
         }
 }
 
-use android::content::Context;
-# use javax::microedition::lcdui::Canvas;
-# use javax::microedition::lcdui::Command;
-# use javax::microedition::lcdui::CommandListener;
-use android::content::Intent;
-use org::allbinary::TsUtil;
-use org::allbinary::logic::communication::log::LogUtil;
-use org::allbinary::string::CommonStrings;
-use org::allbinary::util::BasicArrayList;
-use org::allbinary::util::BasicArrayListD;
-use org::allbinary::graphics::displayable::screen::AboutCommandProcessor;
+use java::lang::Object ();
+use java::lang::LazyStatic ();
+# use android::content::Context ();
+use javax::microedition::lcdui::Canvas ();
+use javax::microedition::lcdui::Command ();
+use javax::microedition::lcdui::CommandListener ();
+# use android::content::Intent ();
+use org::allbinary::TsUtil ();
+use org::allbinary::logic::communication::log::LogUtil ();
+use org::allbinary::string::CommonStrings ();
+use org::allbinary::util::BasicArrayList ();
+use org::allbinary::util::BasicArrayListD ();
+use org::allbinary::graphics::displayable::screen::AboutCommandProcessor ();
 
 1;
 

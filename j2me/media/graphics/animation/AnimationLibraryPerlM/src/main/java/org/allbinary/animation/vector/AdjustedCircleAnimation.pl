@@ -47,7 +47,7 @@ sub createW {
 sub new {
     my ($class, $width, $height, $basicColor) = @_;
     my $self = $class->SUPER::new($width, $height, $basicColor);
-    $self->_init_fields();
+    _init_fields($self);
         # super(...) made $self above
     return $self;
 }
@@ -79,10 +79,11 @@ sub paintXY {
         $graphics->drawArc($x + $self->{xAdjustment}, $y + $self->{yAdjustment}, $self->{width}, $self->{height}, 0, $self->{TOTAL_ANGLE});
 }
 
-# use javax::microedition::lcdui::Graphics;
-use org::allbinary::AndroidUtil;
-use org::allbinary::graphics::color::BasicColor;
-use org::allbinary::animation::vector::CircleAnimation;
+use java::lang::Object ();
+use javax::microedition::lcdui::Graphics ();
+use org::allbinary::AndroidUtil ();
+use org::allbinary::graphics::color::BasicColor ();
+use org::allbinary::animation::vector::CircleAnimation ();
 
 1;
 

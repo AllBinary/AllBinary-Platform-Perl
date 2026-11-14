@@ -17,8 +17,9 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
-our $listenerList = 'javax::swing::event::EventListenerList'->new();
+tie our $listenerList, 'java::lang::LazyStatic', sub { 'javax::swing::event::EventListenerList'->new() };
 our $DELETE = "delete";
 our $DUPLICATE = "duplicate";
 our $SELECT = "select";
@@ -72,6 +73,8 @@ sub fire {
         }
 }
 
+use java::lang::Object ();
+use java::lang::LazyStatic ();
 
 1;
 

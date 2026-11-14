@@ -17,8 +17,9 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
-our $SAVE_PATH = 'org::allbinary::logic::string::StringMaker'->new()->append('java::lang::System'->getProperty("user.dir"))->appendchar('org::allbinary::logic::io::file::FilePathData'->getInstance()->{SEPARATORCHAR})->append("saves")->appendchar('org::allbinary::logic::io::file::FilePathData'->getInstance()->{SEPARATORCHAR})->toString();
+tie our $SAVE_PATH, 'java::lang::LazyStatic', sub { 'org::allbinary::logic::string::StringMaker'->new()->append('java::lang::System'->getProperty("user.dir"))->appendchar('org::allbinary::logic::io::file::FilePathData'->getInstance()->{SEPARATORCHAR})->append("saves")->appendchar('org::allbinary::logic::io::file::FilePathData'->getInstance()->{SEPARATORCHAR})->toString() };
 
 
 sub new {
@@ -27,9 +28,11 @@ sub new {
     return $self;
 }
 
-use org::allbinary::logic::io::file::FilePathData;
-use org::allbinary::logic::string::StringMaker;
-use java::lang::System;
+use java::lang::Object ();
+use java::lang::LazyStatic ();
+use org::allbinary::logic::io::file::FilePathData ();
+use org::allbinary::logic::string::StringMaker ();
+use java::lang::System ();
 
 1;
 

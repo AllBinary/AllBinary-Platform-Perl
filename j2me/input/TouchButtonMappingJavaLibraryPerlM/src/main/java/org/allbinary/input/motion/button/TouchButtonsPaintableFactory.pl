@@ -17,6 +17,7 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
 
 sub new {
@@ -31,9 +32,10 @@ sub getInstance {
         return 'org::allbinary::input::motion::button::TouchButtonsPaintable'->new($basicColor);
 }
 
-use org::allbinary::graphics::color::BasicColor;
-use org::allbinary::graphics::paint::Paintable;
-use org::allbinary::input::motion::button::TouchButtonsPaintable;
+use java::lang::Object ();
+use org::allbinary::graphics::color::BasicColor ();
+use org::allbinary::graphics::paint::Paintable ();
+use org::allbinary::input::motion::button::TouchButtonsPaintable ();
 
 1;
 

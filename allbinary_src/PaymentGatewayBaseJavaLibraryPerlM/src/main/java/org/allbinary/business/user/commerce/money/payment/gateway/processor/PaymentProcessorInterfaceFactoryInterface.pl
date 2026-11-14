@@ -27,8 +27,8 @@ sub getInstance {
     die "abstract method getInstance";
 }
 
-use org::allbinary::business::user::commerce::money::payment::gateway::transaction::PaymentTransactionInterface;
-use org::allbinary::logic::visual::transform::info::TransformInfoInterface;
+use org::allbinary::business::user::commerce::money::payment::gateway::transaction::PaymentTransactionInterface ();
+use org::allbinary::logic::visual::transform::info::TransformInfoInterface ();
 
 1;
 

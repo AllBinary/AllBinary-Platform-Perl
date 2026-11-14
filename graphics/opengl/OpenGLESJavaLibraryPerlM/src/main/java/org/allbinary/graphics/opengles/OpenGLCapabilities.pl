@@ -18,8 +18,9 @@ use warnings;
 use feature 'try';
 no warnings 'experimental::try';
 use Scalar::Util ();
+use parent -norequire,'java::lang::Object';
 
-our $instance = 'org::allbinary::graphics::opengles::OpenGLCapabilities'->new();
+tie our $instance, 'java::lang::LazyStatic', sub { 'org::allbinary::graphics::opengles::OpenGLCapabilities'->new() };
 
 sub _init_fields {
     my ($self) = @_;
@@ -65,7 +66,7 @@ sub getInstance {
 sub new {
     my ($class) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
     return $self;
 }
 
@@ -311,23 +312,25 @@ sub toString {
         return $stringBuffer->toString();
 }
 
-# use javax::microedition::khronos::opengles::GL10;
-# use javax::microedition::khronos::opengles::GL11;
-use org::allbinary::AndroidUtil;
-use org::allbinary::image::opengles::OpenGLESGL10ImageFactory;
-use org::allbinary::image::opengles::OpenGLESGL11VBOImageFactory;
-use org::allbinary::image::opengles::OpenGLImageSpecificFactory;
-use org::allbinary::util::BasicArrayList;
-use org::allbinary::util::BasicArrayListD;
-use org::allbinary::string::CommonSeps;
-use org::allbinary::string::CommonStrings;
-use org::allbinary::logic::string::StringMaker;
-use org::allbinary::logic::string::StringUtil;
-use org::allbinary::logic::string::tokens::Tokenizer;
-use org::allbinary::logic::communication::log::PreLogUtil;
-use org::allbinary::game::configuration::feature::Features;
-use org::allbinary::logic::communication::log::LogUtil;
-use org::allbinary::graphics::opengles::OpenGLFeatureFactory;
+use java::lang::Object ();
+use java::lang::LazyStatic ();
+use javax::microedition::khronos::opengles::GL10 ();
+use javax::microedition::khronos::opengles::GL11 ();
+use org::allbinary::AndroidUtil ();
+use org::allbinary::image::opengles::OpenGLESGL10ImageFactory ();
+use org::allbinary::image::opengles::OpenGLESGL11VBOImageFactory ();
+use org::allbinary::image::opengles::OpenGLImageSpecificFactory ();
+use org::allbinary::util::BasicArrayList ();
+use org::allbinary::util::BasicArrayListD ();
+use org::allbinary::string::CommonSeps ();
+use org::allbinary::string::CommonStrings ();
+use org::allbinary::logic::string::StringMaker ();
+use org::allbinary::logic::string::StringUtil ();
+use org::allbinary::logic::string::tokens::Tokenizer ();
+use org::allbinary::logic::communication::log::PreLogUtil ();
+use org::allbinary::game::configuration::feature::Features ();
+use org::allbinary::logic::communication::log::LogUtil ();
+use org::allbinary::graphics::opengles::OpenGLFeatureFactory ();
 
 1;
 

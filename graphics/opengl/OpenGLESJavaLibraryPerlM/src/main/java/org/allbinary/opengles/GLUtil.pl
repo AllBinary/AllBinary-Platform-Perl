@@ -19,18 +19,20 @@ use feature 'try';
 no warnings 'experimental::try';
 use POSIX ();
 use List::Util ();
+use parent -norequire,'java::lang::Object';
 
-our $instance = 'org::allbinary::opengles::GLUtil'->new();
+tie our $instance, 'java::lang::LazyStatic', sub { 'org::allbinary::opengles::GLUtil'->new() };
 
 sub _init_fields {
     my ($self) = @_;
     $self->{BYTES_PER_FLOAT} = 4;
+    $self->{NULL_FLOAT_BUFFER} = 'java::nio::ByteBuffer'->allocateDirect(0)->asFloatBuffer();
 }
 
 sub new {
     my ($class) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
     return $self;
 }
 
@@ -76,7 +78,7 @@ sub makeFloatBuffer {
         my $unsigned = 0;
         my $v = 0.0;
         while ($byteBuffer->hasRemaining()) {
-            $unsigned = $byteBuffer->get() & 0xFF;
+            $unsigned = (int($byteBuffer->get())) & 0xFF;
             $v = ($unsigned) / 255;
             $buffer->put($v);
         }
@@ -108,10 +110,12 @@ sub rotateUVs {
         }
 }
 
-# use java::nio::Buffer;
-# use java::nio::ByteBuffer;
-# use java::nio::ByteOrder;
-# use java::nio::FloatBuffer;
+use java::lang::Object ();
+use java::lang::LazyStatic ();
+# use java::nio::Buffer ();
+# use java::nio::ByteBuffer ();
+# use java::nio::ByteOrder ();
+# use java::nio::FloatBuffer ();
 
 1;
 

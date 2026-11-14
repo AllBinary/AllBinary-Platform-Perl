@@ -17,8 +17,9 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
-our $instance = 'org::allbinary::logic::communication::sql::AbSqlTableUtil'->new();
+tie our $instance, 'java::lang::LazyStatic', sub { 'org::allbinary::logic::communication::sql::AbSqlTableUtil'->new() };
 
 sub _init_fields {
     my ($self) = @_;
@@ -53,7 +54,7 @@ sub _init_fields {
 sub new {
     my ($class) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
     return $self;
 }
 
@@ -225,7 +226,8 @@ sub restoreTable {
             }
             $bufferedLineReader->readUpToLines($start);
             my $line = $self->{stringUtil}->{EMPTY_STRING};
-            while ($bufferedLineReader->getCurrent() < $end && defined((($line = $bufferedLineReader->readLine())))) {
+            while ($bufferedLineReader->getCurrent() < $end && $bufferedLineReader->ready()) {
+                $line = $bufferedLineReader->readLine();
                 if (length($line) > 1) {
                     $abSqlTable->executeSQLStatement($line);
                 }
@@ -247,26 +249,28 @@ sub restoreTable {
         }
 }
 
-use org::allbinary::logic::string::StringMaker;
-# use java::sql::ResultSet;
-# use java::sql::ResultSetMetaData;
-use java::util::Calendar;
-use org::allbinary::business::installer::Portion;
-use org::allbinary::logic::io::AbFileOutputStream;
-use org::allbinary::logic::io::BufferedLineReader;
-use org::allbinary::logic::io::StreamUtil;
-use org::allbinary::logic::io::file::AbFile;
-use org::allbinary::logic::io::file::FileUtil;
-use org::allbinary::logic::io::file::directory::Directory;
-use org::allbinary::logic::io::path::AbPath;
-use org::allbinary::logic::io::path::AbPathData;
-use org::allbinary::logic::communication::log::LogUtil;
-use org::allbinary::globals::PATH_GLOBALS;
-# use java::io::OutputStream;
-use org::allbinary::string::CommonSeps;
-use org::allbinary::string::CommonStrings;
-use org::allbinary::logic::string::StringUtil;
-use org::allbinary::logic::communication::sql::SqlStrings;
+use java::lang::Object ();
+use java::lang::LazyStatic ();
+use org::allbinary::logic::string::StringMaker ();
+# use java::sql::ResultSet ();
+# use java::sql::ResultSetMetaData ();
+use java::util::Calendar ();
+use org::allbinary::business::installer::Portion ();
+use org::allbinary::logic::io::AbFileOutputStream ();
+use org::allbinary::logic::io::BufferedLineReader ();
+use org::allbinary::logic::io::StreamUtil ();
+use org::allbinary::logic::io::file::AbFile ();
+use org::allbinary::logic::io::file::FileUtil ();
+use org::allbinary::logic::io::file::directory::Directory ();
+use org::allbinary::logic::io::path::AbPath ();
+use org::allbinary::logic::io::path::AbPathData ();
+use org::allbinary::logic::communication::log::LogUtil ();
+use org::allbinary::globals::PATH_GLOBALS ();
+# use java::io::OutputStream ();
+use org::allbinary::string::CommonSeps ();
+use org::allbinary::string::CommonStrings ();
+use org::allbinary::logic::string::StringUtil ();
+use org::allbinary::logic::communication::sql::SqlStrings ();
 
 1;
 

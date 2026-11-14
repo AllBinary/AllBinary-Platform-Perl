@@ -17,6 +17,7 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
 our $TRANSACTION_TYPE = "transaction_type";
 our $MERCHANT_ECHO_ID = "merchant_echo_id";
@@ -96,6 +97,7 @@ sub new {
     return $self;
 }
 
+use java::lang::Object ();
 
 1;
 

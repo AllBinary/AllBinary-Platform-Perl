@@ -69,8 +69,8 @@ sub getInquiryTransaction {
     die "abstract method getInquiryTransaction";
 }
 
-use org::allbinary::business::user::commerce::inventory::order::OrderHistory;
-use org::allbinary::business::user::commerce::money::payment::types::TenderType;
+use org::allbinary::business::user::commerce::inventory::order::OrderHistory ();
+use org::allbinary::business::user::commerce::money::payment::types::TenderType ();
 
 1;
 

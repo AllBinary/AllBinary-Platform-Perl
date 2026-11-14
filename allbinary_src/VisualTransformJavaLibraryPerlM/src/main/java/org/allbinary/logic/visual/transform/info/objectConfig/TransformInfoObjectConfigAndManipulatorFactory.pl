@@ -19,7 +19,7 @@ use feature 'try';
 no warnings 'experimental::try';
 use parent -norequire,'org::allbinary::logic::visual::transform::info::objectConfig::TransformInfoObjectConfigAndManipulatorFactoryBase';
 
-our $instance = 'org::allbinary::logic::visual::transform::info::objectConfig::TransformInfoObjectConfigAndManipulatorFactory'->new();
+tie our $instance, 'java::lang::LazyStatic', sub { 'org::allbinary::logic::visual::transform::info::objectConfig::TransformInfoObjectConfigAndManipulatorFactory'->new() };
 
 sub _init_fields {
     my ($self) = @_;
@@ -36,7 +36,7 @@ sub getInstance {
 sub new {
     my ($class) = @_;
     my $self = $class->SUPER::new();
-    $self->_init_fields();
+    _init_fields($self);
     return $self;
 }
 
@@ -104,18 +104,20 @@ sub getInstance {
         }
 }
 
-use org::allbinary::data::tree::dom::document::DomDocumentHelper;
-use org::allbinary::logic::communication::log::LogUtil;
-use org::allbinary::logic::control::crypt::file::CryptFileReader;
-use org::allbinary::logic::io::path::AbPath;
-use org::allbinary::logic::string::StringValidationUtil;
-use org::allbinary::logic::system::security::licensing::AbeClientInformationInterface;
-use org::allbinary::logic::visual::transform::info::TransformInfoInterface;
-use org::w3c::dom::Document;
-use org::allbinary::logic::visual::transform::info::objectConfig::TransformInfoObjectConfigAndManipulatorFactoryBase;
-use org::allbinary::logic::visual::transform::info::objectConfig::TransformInfoObjectConfigData;
-use org::allbinary::logic::visual::transform::info::objectConfig::TransformInfoObjectConfig;
-use org::allbinary::logic::visual::transform::info::objectConfig::GenericStoreTransformInfoObjectConfig;
+use java::lang::Object ();
+use java::lang::LazyStatic ();
+use org::allbinary::data::tree::dom::document::DomDocumentHelper ();
+use org::allbinary::logic::communication::log::LogUtil ();
+use org::allbinary::logic::control::crypt::file::CryptFileReader ();
+use org::allbinary::logic::io::path::AbPath ();
+use org::allbinary::logic::string::StringValidationUtil ();
+use org::allbinary::logic::system::security::licensing::AbeClientInformationInterface ();
+use org::allbinary::logic::visual::transform::info::TransformInfoInterface ();
+use org::w3c::dom::Document ();
+use org::allbinary::logic::visual::transform::info::objectConfig::TransformInfoObjectConfigAndManipulatorFactoryBase ();
+use org::allbinary::logic::visual::transform::info::objectConfig::TransformInfoObjectConfigData ();
+use org::allbinary::logic::visual::transform::info::objectConfig::TransformInfoObjectConfig ();
+use org::allbinary::logic::visual::transform::info::objectConfig::GenericStoreTransformInfoObjectConfig ();
 
 1;
 

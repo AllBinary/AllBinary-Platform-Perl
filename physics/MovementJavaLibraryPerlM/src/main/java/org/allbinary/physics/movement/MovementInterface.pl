@@ -39,8 +39,8 @@ sub stop {
     die "abstract method stop";
 }
 
-use org::allbinary::game::layer::AllBinaryGameLayer;
-use org::allbinary::logic::math::BasicDecimal;
+use org::allbinary::game::layer::AllBinaryGameLayer ();
+use org::allbinary::logic::math::BasicDecimal ();
 
 1;
 

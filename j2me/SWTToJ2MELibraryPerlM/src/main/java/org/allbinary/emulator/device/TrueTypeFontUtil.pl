@@ -21,7 +21,7 @@ no warnings 'experimental::try';
 use POSIX ();
 use parent -norequire,'org::allbinary::emulator::device::TrueTypeFontUtilBase';
 
-our $instance = 'org::allbinary::emulator::device::TrueTypeFontUtil'->new();
+tie our $instance, 'java::lang::LazyStatic', sub { 'org::allbinary::emulator::device::TrueTypeFontUtil'->new() };
 
 sub _init_fields {
     my ($self) = @_;
@@ -41,7 +41,7 @@ sub getInstance {
 sub new {
     my ($class) = @_;
     my $self = $class->SUPER::new(2);
-    $self->_init_fields();
+    _init_fields($self);
         # super(...) made $self above
         if ('org::allbinary::AvianUtil'->isAvian()) {
             $self->{widthFloatArray} = [1504.0, 967.0, 527.0, 961.0, 957.0, 1087.0, 920.0, 954.0, 973.0, 961.0, 955.0, 1296.0, 1013.0, 1106.0, 1167.0, 815.0, 815.0, 1216.0, 1110.0, 170.0, 520.0, 1056.0, 815.0, 1448.0, 1142.0, 1345.0, 927.0, 1345.0, 1030.0, 920.0, 1096.0, 1119.0, 1219.0, 1841.0, 1166.0, 1147.0, 1005.0, 879.0, 965.0, 792.0, 964.0, 927.0, 753.0, 1034.0, 916.0, 196.0, 469.0, 877.0, 166.0, 1563.0, 916.0, 1007.0, 965.0, 964.0, 631.0, 777.0, 649.0, 917.0, 1026.0, 1548.0, 993.0, 1028.0, 795.0, 241.0, 798.0, 241.0, 905.0, 1477.0, 393.0, 961.0, 961.0, 961.0, 961.0, 555.0, 1029.0, 1010.0, 1378.0, 952.0, 952.0, 952.0, 952.0, 463.0, 463.0, 926.0, 961.0, 491.0, 930.0, 457.0, 457.0, 644.0, 643.0, 326.0, 186.0, 1219.0, 241.0, 1599.0, 961.0, 302.0, 711.0, 961.0, 961.0, 710.0, 141.0, 1504.0, 1504.0, 1504.0, 1504.0, 1504.0, 1504.0, 1504.0, 1504.0];
@@ -187,27 +187,29 @@ sub getFontWidths {
         return $self->{_characterWidth};
 }
 
-# use javax::microedition::khronos::opengles::GL10;
-# use javax::microedition::lcdui::Graphics;
-# use javax::microedition::lcdui::Image;
-use org::eclipse::swt::SWT;
-use org::eclipse::swt::graphics::ImageData;
-use org::eclipse::swt::graphics::ImageLoader;
-use org::microemu::device::swt::SwtMutableImage;
-use org::allbinary::AvianUtil;
-use org::allbinary::data::resource::ResourceUtil;
-use org::allbinary::graphics::PointFactory;
-use org::allbinary::graphics::Rectangle;
-use org::allbinary::graphics::color::BasicColor;
-use org::allbinary::graphics::color::BasicColorFactory;
-use org::allbinary::graphics::displayable::CanvasStrings;
-use org::allbinary::graphics::opengles::OpenGLCapabilities;
-use org::allbinary::image::PreResourceImageUtil;
-use org::allbinary::image::opengles::OpenGLESImage;
-use org::allbinary::logic::communication::log::PreLogUtil;
-use org::allbinary::string::CommonSeps;
-use org::allbinary::string::CommonStrings;
-use org::allbinary::emulator::device::TrueTypeFontUtilBase;
+use java::lang::Object ();
+use java::lang::LazyStatic ();
+use javax::microedition::khronos::opengles::GL10 ();
+use javax::microedition::lcdui::Graphics ();
+use javax::microedition::lcdui::Image ();
+# use org::eclipse::swt::SWT ();
+# use org::eclipse::swt::graphics::ImageData ();
+# use org::eclipse::swt::graphics::ImageLoader ();
+use org::microemu::device::swt::SwtMutableImage ();
+use org::allbinary::AvianUtil ();
+use org::allbinary::data::resource::ResourceUtil ();
+use org::allbinary::graphics::PointFactory ();
+use org::allbinary::graphics::Rectangle ();
+use org::allbinary::graphics::color::BasicColor ();
+use org::allbinary::graphics::color::BasicColorFactory ();
+use org::allbinary::graphics::displayable::CanvasStrings ();
+use org::allbinary::graphics::opengles::OpenGLCapabilities ();
+use org::allbinary::image::PreResourceImageUtil ();
+use org::allbinary::image::opengles::OpenGLESImage ();
+use org::allbinary::logic::communication::log::PreLogUtil ();
+use org::allbinary::string::CommonSeps ();
+use org::allbinary::string::CommonStrings ();
+use org::allbinary::emulator::device::TrueTypeFontUtilBase ();
 
 1;
 

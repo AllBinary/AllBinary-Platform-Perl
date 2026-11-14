@@ -18,7 +18,6 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
-use parent -norequire,'java::awt::event::KeyListener';
 
 
 
@@ -97,7 +96,7 @@ sub toDocument {
     die "abstract method toDocument";
 }
 
-use org::w3c::dom::Document;
+use org::w3c::dom::Document ();
 
 1;
 

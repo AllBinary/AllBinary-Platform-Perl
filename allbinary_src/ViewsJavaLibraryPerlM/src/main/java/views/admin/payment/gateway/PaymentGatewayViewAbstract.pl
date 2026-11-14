@@ -29,7 +29,7 @@ sub _init_fields {
 sub new {
     my ($class, $transformInfoInterface) = @_;
     my $self = $class->SUPER::new($transformInfoInterface);
-    $self->_init_fields();
+    _init_fields($self);
         # super(...) made $self above
         $self->getFormData($self->getPageContext()->getRequest());
     return $self;
@@ -55,11 +55,12 @@ sub setPaymentGatewayPrimaryKey {
         $self->{paymentGatewayPrimaryKey} = $paymentGatewayPrimaryKey;
 }
 
-# use javax::servlet::http::HttpServletRequest;
-use org::allbinary::business::user::commerce::money::payment::gateway::PaymentGatewayData;
-use org::allbinary::business::user::commerce::money::payment::gateway::PaymentGatewayPrimaryKey;
-use org::allbinary::logic::visual::transform::info::TransformInfoHttpComposite;
-use org::allbinary::logic::visual::transform::info::TransformInfoInterface;
+use java::lang::Object ();
+# use javax::servlet::http::HttpServletRequest ();
+use org::allbinary::business::user::commerce::money::payment::gateway::PaymentGatewayData ();
+use org::allbinary::business::user::commerce::money::payment::gateway::PaymentGatewayPrimaryKey ();
+use org::allbinary::logic::visual::transform::info::TransformInfoHttpComposite ();
+use org::allbinary::logic::visual::transform::info::TransformInfoInterface ();
 
 1;
 

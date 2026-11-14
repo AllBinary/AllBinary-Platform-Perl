@@ -19,7 +19,7 @@ use feature 'try';
 no warnings 'experimental::try';
 use POSIX ();
 use List::Util ();
-use parent -norequire,'org::allbinary::graphics::j2me::workarea::tools::GraphicItemInterface';
+use parent -norequire,'java::lang::Object','org::allbinary::graphics::j2me::workarea::tools::GraphicItemInterface';
 
 our $NAME = "Selection Tool";
 
@@ -39,7 +39,7 @@ sub _init_fields {
 sub new {
     my ($class, $canvasJPanel) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
         $self->{canvasJPanel} = $canvasJPanel;
     return $self;
 }
@@ -283,23 +283,24 @@ sub duplicate {
         return undef;
 }
 
-# use java::awt;
-use java::util::HashMap;
-# use javax::swing::tree::MutableTreeNode;
-use org::allbinary::graphics::GPoint;
-use org::allbinary::graphics::PointFactory;
-use org::allbinary::graphics::color::BasicColorFactory;
-use org::allbinary::graphics::j2me::workarea::canvas::CanvasDom;
-use org::allbinary::graphics::j2me::workarea::canvas::CanvasJPanel;
-use org::allbinary::graphics::j2me::workarea::canvas::IntegerDimension;
-use org::allbinary::logic::communication::log::LogUtil;
-use org::allbinary::math::RectangleCollisionPointUtil;
-use org::allbinary::string::CommonStrings;
-use org::w3c::dom::Node;
-use org::allbinary::graphics::j2me::workarea::tools::GraphicItemInterface;
-use org::allbinary::graphics::j2me::workarea::tools::LinesGraphicItem;
-use org::allbinary::graphics::j2me::workarea::tools::Color;
-use org::allbinary::graphics::j2me::workarea::tools::MouseStrings;
+use java::lang::Object ();
+# use java::awt ();
+use java::util::HashMap ();
+# use javax::swing::tree::MutableTreeNode ();
+use org::allbinary::graphics::GPoint ();
+use org::allbinary::graphics::PointFactory ();
+use org::allbinary::graphics::color::BasicColorFactory ();
+use org::allbinary::graphics::j2me::workarea::canvas::CanvasDom ();
+use org::allbinary::graphics::j2me::workarea::canvas::CanvasJPanel ();
+use org::allbinary::graphics::j2me::workarea::canvas::IntegerDimension ();
+use org::allbinary::logic::communication::log::LogUtil ();
+use org::allbinary::math::RectangleCollisionPointUtil ();
+use org::allbinary::string::CommonStrings ();
+use org::w3c::dom::Node ();
+use org::allbinary::graphics::j2me::workarea::tools::GraphicItemInterface ();
+use org::allbinary::graphics::j2me::workarea::tools::LinesGraphicItem ();
+use org::allbinary::graphics::j2me::workarea::tools::Color ();
+use org::allbinary::graphics::j2me::workarea::tools::MouseStrings ();
 
 1;
 

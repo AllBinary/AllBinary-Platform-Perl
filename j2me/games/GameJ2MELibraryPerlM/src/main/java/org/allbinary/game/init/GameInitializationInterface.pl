@@ -27,8 +27,8 @@ sub init {
     die "abstract method init";
 }
 
-# use javax::microedition::lcdui::CommandListener;
-use org::allbinary::logic::system::security::licensing::AbeClientInformationInterface;
+use javax::microedition::lcdui::CommandListener ();
+use org::allbinary::logic::system::security::licensing::AbeClientInformationInterface ();
 
 1;
 

@@ -32,7 +32,7 @@ sub onRemove {
     die "abstract method onRemove";
 }
 
-use org::allbinary::input::automation::robot::osgi::InputAutomationRobotChangeEvent;
+use org::allbinary::input::automation::robot::osgi::InputAutomationRobotChangeEvent ();
 
 1;
 

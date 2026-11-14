@@ -17,9 +17,9 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
-use parent -norequire,'org::allbinary::game::ag::life::LifeInterface';
+use parent -norequire,'java::lang::Object','org::allbinary::game::ag::life::LifeInterface';
 
-our $NO_LIFE = 'org::allbinary::game::ag::life::Life'->createLife();
+tie our $NO_LIFE, 'java::lang::LazyStatic', sub { 'org::allbinary::game::ag::life::Life'->createLife() };
 
 sub _init_fields {
     my ($self) = @_;
@@ -42,7 +42,7 @@ sub createLife {
 sub new {
     my ($class, $lives, $maxlives) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
         $self->{maxlives} = $maxlives;
         if ($lives > $self->{maxlives}) {
             die ("To Many Lives");
@@ -132,7 +132,9 @@ sub setStartLives {
         $self->{startLives} = $startLives;
 }
 
-use org::allbinary::game::ag::life::LifeInterface;
+use java::lang::Object ();
+use java::lang::LazyStatic ();
+use org::allbinary::game::ag::life::LifeInterface ();
 
 1;
 

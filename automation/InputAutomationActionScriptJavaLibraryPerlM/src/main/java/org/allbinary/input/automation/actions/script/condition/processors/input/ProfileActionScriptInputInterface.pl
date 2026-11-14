@@ -45,8 +45,8 @@ sub setTime {
     die "abstract method setTime";
 }
 
-use org::allbinary::input::automation::actions::script::condition::processors::ProfileActionScriptProcessorInterface;
-use org::allbinary::input::automation::robot::InputRobotInterface;
+use org::allbinary::input::automation::actions::script::condition::processors::ProfileActionScriptProcessorInterface ();
+use org::allbinary::input::automation::robot::InputRobotInterface ();
 
 1;
 

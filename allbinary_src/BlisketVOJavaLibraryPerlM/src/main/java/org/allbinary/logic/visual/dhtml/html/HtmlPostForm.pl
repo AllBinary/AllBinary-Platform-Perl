@@ -29,7 +29,8 @@ sub new {
     return $self;
 }
 
-use org::allbinary::logic::visual::dhtml::html::HtmlForm;
+use java::lang::Object ();
+use org::allbinary::logic::visual::dhtml::html::HtmlForm ();
 
 1;
 

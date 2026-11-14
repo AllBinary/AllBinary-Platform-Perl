@@ -32,7 +32,7 @@ sub _init_fields {
 sub new {
     my ($class, $anyType, $string, $seconds, $basicColor, $permanent) = @_;
     my $self = $class->SUPER::new($anyType);
-    $self->_init_fields();
+    _init_fields($self);
         # super(...) made $self above
         $self->setString($string);
         $self->{seconds} = $seconds;
@@ -77,10 +77,11 @@ sub setBasicColorP {
         $self->{basicColor} = $basicColor;
 }
 
-use org::allbinary::graphics::color::BasicColor;
-use org::allbinary::graphics::color::BasicColorFactory;
-use org::allbinary::logic::string::StringUtil;
-use org::allbinary::logic::util::event::AllBinaryEventObject;
+use java::lang::Object ();
+use org::allbinary::graphics::color::BasicColor ();
+use org::allbinary::graphics::color::BasicColorFactory ();
+use org::allbinary::logic::string::StringUtil ();
+use org::allbinary::logic::util::event::AllBinaryEventObject ();
 
 1;
 

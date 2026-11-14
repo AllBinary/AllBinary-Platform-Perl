@@ -38,7 +38,7 @@ sub _init_fields {
 sub new {
     my ($class, $propertiesHashMap, $pageContext) = @_;
     my $self = $class->SUPER::new();
-    $self->_init_fields();
+    _init_fields($self);
         $self->{propertiesHashMap} = $propertiesHashMap;
         $self->{pageContext} = $pageContext;
         $self->{request} = $pageContext->getRequest();
@@ -123,20 +123,21 @@ sub adjustBasket {
         }
 }
 
-use java::util::HashMap;
-# use javax::servlet::http::HttpServletRequest;
-# use javax::servlet::jsp::PageContext;
-use org::allbinary::business::context::modules::storefront::StoreFront;
-use org::allbinary::business::context::modules::storefront::StoreFrontData;
-use org::allbinary::business::context::modules::storefront::StoreFrontFactory;
-use org::allbinary::business::context::modules::storefront::StoreFrontInterface;
-use org::allbinary::business::user::commerce::inventory::basket::BasketData;
-use org::allbinary::business::user::commerce::inventory::basket::BasketInterface;
-use org::allbinary::business::user::commerce::inventory::item::BasicItemData;
-use org::allbinary::data::tables::user::commerce::inventory::item::InventoryEntityFactory;
-use org::allbinary::logic::communication::http::request::session::WeblisketSession;
-use org::allbinary::logic::communication::log::LogUtil;
-use admin::taghelpers::TagHelper;
+use java::lang::Object ();
+use java::util::HashMap ();
+# use javax::servlet::http::HttpServletRequest ();
+# use javax::servlet::jsp::PageContext ();
+use org::allbinary::business::context::modules::storefront::StoreFront ();
+use org::allbinary::business::context::modules::storefront::StoreFrontData ();
+use org::allbinary::business::context::modules::storefront::StoreFrontFactory ();
+use org::allbinary::business::context::modules::storefront::StoreFrontInterface ();
+use org::allbinary::business::user::commerce::inventory::basket::BasketData ();
+use org::allbinary::business::user::commerce::inventory::basket::BasketInterface ();
+use org::allbinary::business::user::commerce::inventory::item::BasicItemData ();
+use org::allbinary::data::tables::user::commerce::inventory::item::InventoryEntityFactory ();
+use org::allbinary::logic::communication::http::request::session::WeblisketSession ();
+use org::allbinary::logic::communication::log::LogUtil ();
+use admin::taghelpers::TagHelper ();
 
 1;
 

@@ -32,7 +32,7 @@ sub _init_fields {
 sub new {
     my ($class, $collidable) = @_;
     my $self = $class->SUPER::new($collidable);
-    $self->_init_fields();
+    _init_fields($self);
         # super(...) made $self above
     return $self;
 }
@@ -91,13 +91,14 @@ sub collideFriction {
         $vehiclePropertiesCompositeInterface->getVehicleProperties()->getVehicleFrictionProperties()->friction($vehiclePropertiesCompositeInterface->getVehicleProperties()->getVelocityProperties(), $vehicleFrictionProperties->getCrashFrictionNominator());
 }
 
-use org::allbinary::game::layer::pickup::PickedUpLayerInterface;
-use org::allbinary::logic::communication::log::ForcedLogUtil;
-use org::allbinary::game::collision::CollidableInterfaceCompositeInterface;
-use org::allbinary::game::collision::CollisionType;
-use org::allbinary::game::collision::CollisionTypeFactory;
-use org::allbinary::game::layer::special::CollidableDestroyableDamageableBehavior;
-use org::allbinary::game::layer::special::CollidableDestroyableDamageableLayer;
+use java::lang::Object ();
+use org::allbinary::game::layer::pickup::PickedUpLayerInterface ();
+use org::allbinary::logic::communication::log::ForcedLogUtil ();
+use org::allbinary::game::collision::CollidableInterfaceCompositeInterface ();
+use org::allbinary::game::collision::CollisionType ();
+use org::allbinary::game::collision::CollisionTypeFactory ();
+use org::allbinary::game::layer::special::CollidableDestroyableDamageableBehavior ();
+use org::allbinary::game::layer::special::CollidableDestroyableDamageableLayer ();
 
 1;
 

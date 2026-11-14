@@ -34,7 +34,7 @@ sub remove {
     die "abstract method remove";
 }
 
-use org::allbinary::data::tree::dom::document::mapping::DomDocumentMappingInterface;
+use org::allbinary::data::tree::dom::document::mapping::DomDocumentMappingInterface ();
 
 1;
 

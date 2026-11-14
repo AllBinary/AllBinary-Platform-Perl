@@ -17,8 +17,9 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
-our $instance = 'org::allbinary::graphics::j2me::workarea::tools::PointsUtil'->new();
+tie our $instance, 'java::lang::LazyStatic', sub { 'org::allbinary::graphics::j2me::workarea::tools::PointsUtil'->new() };
 
 sub new {
     my ($class) = @_;
@@ -39,10 +40,12 @@ sub doTransforms {
         return 'org::allbinary::animation::VectorRotationGenerator'->getInstance()->getListAtAngle($fulcrumPoint->getX(), $fulcrumPoint->getY(), $pointVector, 'org::allbinary::math::AngleFactory'->getInstance()->getAt(int($angle)));
 }
 
-use org::allbinary::animation::VectorRotationGenerator;
-use org::allbinary::graphics::GPoint;
-use org::allbinary::math::AngleFactory;
-use org::allbinary::util::BasicArrayList;
+use java::lang::Object ();
+use java::lang::LazyStatic ();
+use org::allbinary::animation::VectorRotationGenerator ();
+use org::allbinary::graphics::GPoint ();
+use org::allbinary::math::AngleFactory ();
+use org::allbinary::util::BasicArrayList ();
 
 1;
 

@@ -38,7 +38,7 @@ sub new {
 sub _new0 {
     my ($class) = @_;
     my $self = $class->SUPER::new();
-    $self->_init_fields();
+    _init_fields($self);
         $self->{cssStyleElementVector} = 'org::allbinary::util::BasicArrayListD'->new();
     return $self;
 }
@@ -47,7 +47,7 @@ sub _new0 {
 sub _new1 {
     my ($class, $document) = @_;
     my $self = $class->SUPER::new();
-    $self->_init_fields();
+    _init_fields($self);
         $self->{cssStyleElementVector} = 'org::allbinary::logic::visual::dhtml::style::StylesValidationFactory'->getInstance()->getInstance($document);
     return $self;
 }
@@ -56,7 +56,7 @@ sub _new1 {
 sub _new1 {
     my ($class, $hashMap) = @_;
     my $self = $class->SUPER::new();
-    $self->_init_fields();
+    _init_fields($self);
         $self->{cssStyleElementVector} = 'org::allbinary::logic::visual::dhtml::style::StylesValidationFactory'->getInstance($hashMap);
     return $self;
 }
@@ -129,20 +129,21 @@ sub toXmlNode {
         return $node;
 }
 
-use java::util::HashMap;
-use org::allbinary::util::BasicArrayList;
-use org::allbinary::util::BasicArrayListD;
-use org::allbinary::data::tree::dom::DomNodeInterface;
-use org::allbinary::logic::StdUtil;
-use org::allbinary::logic::communication::log::LogUtil;
-use org::allbinary::logic::control::validate::Validation;
-use org::allbinary::logic::control::validate::ValidationInterface;
-use org::allbinary::logic::string::StringMaker;
-use org::allbinary::logic::visual::dhtml::style::StyleData;
-use org::allbinary::logic::visual::dhtml::style::StylesData;
-use org::allbinary::logic::visual::dhtml::style::StylesValidationFactory;
-use org::w3c::dom::Document;
-use org::w3c::dom::Node;
+use java::lang::Object ();
+use java::util::HashMap ();
+use org::allbinary::util::BasicArrayList ();
+use org::allbinary::util::BasicArrayListD ();
+use org::allbinary::data::tree::dom::DomNodeInterface ();
+use org::allbinary::logic::StdUtil ();
+use org::allbinary::logic::communication::log::LogUtil ();
+use org::allbinary::logic::control::validate::Validation ();
+use org::allbinary::logic::control::validate::ValidationInterface ();
+use org::allbinary::logic::string::StringMaker ();
+use org::allbinary::logic::visual::dhtml::style::StyleData ();
+use org::allbinary::logic::visual::dhtml::style::StylesData ();
+use org::allbinary::logic::visual::dhtml::style::StylesValidationFactory ();
+use org::w3c::dom::Document ();
+use org::w3c::dom::Node ();
 
 1;
 

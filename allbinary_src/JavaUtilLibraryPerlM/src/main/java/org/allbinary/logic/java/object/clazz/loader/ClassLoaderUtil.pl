@@ -17,6 +17,7 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
 
 
@@ -37,6 +38,7 @@ sub getName {
         die ("Unable to get ClassLoader");
 }
 
+use java::lang::Object ();
 
 1;
 

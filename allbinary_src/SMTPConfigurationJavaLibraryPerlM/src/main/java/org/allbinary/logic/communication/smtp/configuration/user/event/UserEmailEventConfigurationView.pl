@@ -17,7 +17,7 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
-use parent -norequire,'org::allbinary::data::tree::dom::DomNodeInterface';
+use parent -norequire,'java::lang::Object','org::allbinary::data::tree::dom::DomNodeInterface';
 
 
 sub _init_fields {
@@ -36,7 +36,7 @@ sub new {
 sub _new1 {
     my ($class, $node) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
         my $childNodeList = $node->getChildNodes();
         my $hashMap = 'org::allbinary::logic::StdUtil'->getInstance()->createHashMap();
         my $name = 'org::allbinary::data::tree::dom::DomNodeHelper'->getTextNodeValue($org::allbinary::logic::communication::smtp::configuration::user::event::UserEmailEventConfigurationData::NAME, $childNodeList);
@@ -51,7 +51,7 @@ sub _new1 {
 sub _new1 {
     my ($class, $userEmailEventConfigurationInterface) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
         $self->setUserEmailEventConfigurationInterface($userEmailEventConfigurationInterface);
     return $self;
 }
@@ -78,17 +78,18 @@ sub setUserEmailEventConfigurationInterface {
         $self->{userEmailEventConfigurationInterface} = $userEmailEventConfigurationInterface;
 }
 
-use java::util::HashMap;
-use org::allbinary::data::tree::dom::DomNodeHelper;
-use org::allbinary::data::tree::dom::DomNodeInterface;
-use org::allbinary::data::tree::dom::ModDomHelper;
-use org::allbinary::logic::StdUtil;
-use org::w3c::dom::Document;
-use org::w3c::dom::Node;
-use org::w3c::dom::NodeList;
-use org::allbinary::logic::communication::smtp::configuration::user::event::UserEmailEventConfigurationData;
-use org::allbinary::logic::communication::smtp::configuration::user::event::UserEmailEventConfiguration;
-use org::allbinary::logic::communication::smtp::configuration::user::event::UserEmailEventConfigurationMapping;
+use java::lang::Object ();
+use java::util::HashMap ();
+use org::allbinary::data::tree::dom::DomNodeHelper ();
+use org::allbinary::data::tree::dom::DomNodeInterface ();
+use org::allbinary::data::tree::dom::ModDomHelper ();
+use org::allbinary::logic::StdUtil ();
+use org::w3c::dom::Document ();
+use org::w3c::dom::Node ();
+use org::w3c::dom::NodeList ();
+use org::allbinary::logic::communication::smtp::configuration::user::event::UserEmailEventConfigurationData ();
+use org::allbinary::logic::communication::smtp::configuration::user::event::UserEmailEventConfiguration ();
+use org::allbinary::logic::communication::smtp::configuration::user::event::UserEmailEventConfigurationMapping ();
 
 1;
 

@@ -17,9 +17,9 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
-use parent -norequire,'org::allbinary::media::graphics::geography::map::GeographicMapCellPositionFactoryInterface';
+use parent -norequire,'java::lang::Object','org::allbinary::media::graphics::geography::map::GeographicMapCellPositionFactoryInterface';
 
-our $NULL_GEOGRAPHIC_MAP_CELL_POSITION = 'org::allbinary::media::graphics::geography::map::GeographicMapCellPosition'->new(-1, -1, -1, -1, -1, -1);
+tie our $NULL_GEOGRAPHIC_MAP_CELL_POSITION, 'java::lang::LazyStatic', sub { 'org::allbinary::media::graphics::geography::map::GeographicMapCellPosition'->new(-1, -1, -1, -1, -1, -1) };
 
 sub new {
     my ($class) = @_;
@@ -33,8 +33,10 @@ sub getInstance {
         return 'org::allbinary::media::graphics::geography::map::GeographicMapCellPosition'->new($i_column, $i_row, $columns, $rows, $width, $height);
 }
 
-use org::allbinary::media::graphics::geography::map::GeographicMapCellPositionFactoryInterface;
-use org::allbinary::media::graphics::geography::map::GeographicMapCellPosition;
+use java::lang::Object ();
+use java::lang::LazyStatic ();
+use org::allbinary::media::graphics::geography::map::GeographicMapCellPositionFactoryInterface ();
+use org::allbinary::media::graphics::geography::map::GeographicMapCellPosition ();
 
 1;
 

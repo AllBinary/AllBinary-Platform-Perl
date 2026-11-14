@@ -39,7 +39,7 @@ sub setContextConfigurationInterface {
     die "abstract method setContextConfigurationInterface";
 }
 
-use org::allbinary::business::context::configuration::ContextConfigurationInterface;
+use org::allbinary::business::context::configuration::ContextConfigurationInterface ();
 
 1;
 

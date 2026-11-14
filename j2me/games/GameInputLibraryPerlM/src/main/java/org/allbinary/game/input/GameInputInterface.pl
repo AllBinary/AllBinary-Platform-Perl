@@ -34,8 +34,8 @@ sub initInputProcessors {
     die "abstract method initInputProcessors";
 }
 
-use org::allbinary::layer::AllBinaryLayerManager;
-use org::allbinary::layer::NamedInterface;
+use org::allbinary::layer::AllBinaryLayerManager ();
+use org::allbinary::layer::NamedInterface ();
 
 1;
 

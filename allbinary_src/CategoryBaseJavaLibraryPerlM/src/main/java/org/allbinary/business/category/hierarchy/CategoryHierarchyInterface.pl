@@ -62,7 +62,7 @@ sub setParent {
     die "abstract method setParent";
 }
 
-use org::allbinary::business::category::CategoryInterface;
+use org::allbinary::business::category::CategoryInterface ();
 
 1;
 

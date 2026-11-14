@@ -17,7 +17,7 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
-use parent -norequire,'org::allbinary::bounds::BoundsVisitorInterface';
+use parent -norequire,'java::lang::Object','org::allbinary::bounds::BoundsVisitorInterface';
 
 
 sub _init_fields {
@@ -31,7 +31,7 @@ sub _init_fields {
 sub new {
     my ($class, $layerInterface) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
         $self->{layerInterface} = $layerInterface;
         my $velocityInterfaceCompositeInterface = $layerInterface;
         $self->{velocityInterface} = $velocityInterfaceCompositeInterface->getVelocityProperties();
@@ -82,11 +82,12 @@ sub maxY {
         }
 }
 
-use org::allbinary::bounds::BoundsVisitorInterface;
-use org::allbinary::game::physics::velocity::VelocityInterface;
-use org::allbinary::game::physics::velocity::VelocityInterfaceCompositeInterface;
-use org::allbinary::layer::LayerInterface;
-use org::allbinary::logic::communication::log::LogUtil;
+use java::lang::Object ();
+use org::allbinary::bounds::BoundsVisitorInterface ();
+use org::allbinary::game::physics::velocity::VelocityInterface ();
+use org::allbinary::game::physics::velocity::VelocityInterfaceCompositeInterface ();
+use org::allbinary::layer::LayerInterface ();
+use org::allbinary::logic::communication::log::LogUtil ();
 
 1;
 

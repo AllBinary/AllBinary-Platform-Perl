@@ -17,8 +17,9 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
-our $instance = 'org::allbinary::media::image::ImageUtil'->new();
+tie our $instance, 'java::lang::LazyStatic', sub { 'org::allbinary::media::image::ImageUtil'->new() };
 
 sub _init_fields {
     my ($self) = @_;
@@ -39,7 +40,7 @@ sub getInstance {
 sub new {
     my ($class) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
         try {
             $self->{logUtil}->putF($self->{commonStrings}->{START}, $self, $self->{commonStrings}->{CONSTRUCTOR});
         } catch ($e) {
@@ -160,7 +161,7 @@ sub drawTransformedImage {
     my ($self, $image, $parent, $dx, $dy, $width, $height) = @_;
         my $imageCanvas = 'org::eclipse::swt::widgets::Canvas'->new($parent, $org::eclipse::swt::SWT::NONE);
         $imageCanvas->addPaintListener(do {
-            package org::eclipse::swt::events::PaintListener::AnonymousN71455 { our @ISA = ('org::eclipse::swt::events::PaintListener');
+            package org::eclipse::swt::events::PaintListener::AnonymousN71455 { our @ISA = ('org::eclipse::swt::events::PaintListener', 'java::lang::Object');
             
 
             sub paintControl {
@@ -194,21 +195,23 @@ sub toString {
         return $stringBuffer->toString();
 }
 
-use org::eclipse::swt::SWT;
-use org::eclipse::swt::widgets::Canvas;
-use org::eclipse::swt::widgets::Composite;
-use org::eclipse::swt::graphics::GC;
-use org::eclipse::swt::graphics::ImageData;
-use org::allbinary::logic::communication::log::LogUtil;
-use org::allbinary::string::CommonSeps;
-use org::allbinary::string::CommonStrings;
-use org::allbinary::logic::string::StringMaker;
-use org::allbinary::string::CommonLabels;
-use org::eclipse::swt::events::PaintEvent;
-use org::eclipse::swt::events::PaintListener;
-use org::eclipse::swt::graphics::Transform;
-use org::eclipse::swt::widgets::Display;
-use org::microemu::app::BareMain;
+use java::lang::Object ();
+use java::lang::LazyStatic ();
+# use org::eclipse::swt::SWT ();
+# use org::eclipse::swt::widgets::Canvas ();
+# use org::eclipse::swt::widgets::Composite ();
+# use org::eclipse::swt::graphics::GC ();
+# use org::eclipse::swt::graphics::ImageData ();
+use org::allbinary::logic::communication::log::LogUtil ();
+use org::allbinary::string::CommonSeps ();
+use org::allbinary::string::CommonStrings ();
+use org::allbinary::logic::string::StringMaker ();
+use org::allbinary::string::CommonLabels ();
+# use org::eclipse::swt::events::PaintEvent ();
+# use org::eclipse::swt::events::PaintListener ();
+# use org::eclipse::swt::graphics::Transform ();
+# use org::eclipse::swt::widgets::Display ();
+use org::microemu::app::BareMain ();
 
 1;
 

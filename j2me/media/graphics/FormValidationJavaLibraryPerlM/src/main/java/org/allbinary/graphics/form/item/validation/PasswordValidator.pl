@@ -28,8 +28,9 @@ sub new {
     return $self;
 }
 
-use org::allbinary::graphics::form::item::ABTextFieldItem;
-use org::allbinary::graphics::form::item::validation::TextFieldItemValidator;
+use java::lang::Object ();
+use org::allbinary::graphics::form::item::ABTextFieldItem ();
+use org::allbinary::graphics::form::item::validation::TextFieldItemValidator ();
 
 1;
 

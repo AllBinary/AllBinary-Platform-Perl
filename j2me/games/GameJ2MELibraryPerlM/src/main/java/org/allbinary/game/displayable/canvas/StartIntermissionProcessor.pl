@@ -32,7 +32,7 @@ sub _init_fields {
 sub new {
     my ($class, $gameCanvas) = @_;
     my $self = $class->SUPER::new();
-    $self->_init_fields();
+    _init_fields($self);
         $self->{gameCanvas} = $gameCanvas;
     return $self;
 }
@@ -47,9 +47,10 @@ sub process {
         }
 }
 
-use org::allbinary::canvas::Processor;
-use org::allbinary::logic::communication::log::LogUtil;
-use org::allbinary::string::CommonStrings;
+use java::lang::Object ();
+use org::allbinary::canvas::Processor ();
+use org::allbinary::logic::communication::log::LogUtil ();
+use org::allbinary::string::CommonStrings ();
 
 1;
 

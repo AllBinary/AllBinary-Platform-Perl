@@ -17,6 +17,7 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
 
 sub _init_fields {
@@ -30,7 +31,7 @@ sub _init_fields {
 sub new {
     my ($class) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
     return $self;
 }
 
@@ -67,16 +68,17 @@ sub get {
         }
 }
 
-use org::allbinary::business::init::LicenseInitInfo;
-use org::allbinary::business::init::LicenseInitInfoUtil;
-use org::allbinary::logic::communication::log::LogUtil;
-use org::allbinary::logic::communication::xmlrpc::XmlRpcAbeClient;
-use org::allbinary::logic::string::StringValidationUtil;
-use org::allbinary::logic::system::security::licensing::AbeClientInformationInterface;
-use org::allbinary::logic::system::security::licensing::AbeLicenseInterface;
-use org::allbinary::string::CommonStrings;
-use org::allbinary::util::BasicArrayList;
-use org::allbinary::logic::system::security::licensing::client::XmlRpcAbeLicenseRetrievalClient;
+use java::lang::Object ();
+use org::allbinary::business::init::LicenseInitInfo ();
+use org::allbinary::business::init::LicenseInitInfoUtil ();
+use org::allbinary::logic::communication::log::LogUtil ();
+use org::allbinary::logic::communication::xmlrpc::XmlRpcAbeClient ();
+use org::allbinary::logic::string::StringValidationUtil ();
+use org::allbinary::logic::system::security::licensing::AbeClientInformationInterface ();
+use org::allbinary::logic::system::security::licensing::AbeLicenseInterface ();
+use org::allbinary::string::CommonStrings ();
+use org::allbinary::util::BasicArrayList ();
+use org::allbinary::logic::system::security::licensing::client::XmlRpcAbeLicenseRetrievalClient ();
 
 1;
 

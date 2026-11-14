@@ -17,7 +17,7 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
-use parent -norequire,'javax::swing::JPanel';
+use parent -norequire,'java::lang::Object';
 
 
 sub _init_fields {
@@ -33,7 +33,7 @@ sub _init_fields {
 sub new {
     my ($class) = @_;
     my $self = $class->SUPER::new();
-    $self->_init_fields();
+    _init_fields($self);
         $self->initComponents();
     return $self;
 }
@@ -121,6 +121,7 @@ sub initComponents {
         $layout->setVerticalGroup($layout->createParallelGroup($org::allbinary::input::automation::module::generic::configuration::profile::actions::script::javax::swing->{GroupLayout}->{Alignment}->{LEADING})->addGroup($layout->createSequentialGroup()->addGroup($layout->createParallelGroup($org::allbinary::input::automation::module::generic::configuration::profile::actions::script::javax::swing->{GroupLayout}->{Alignment}->{LEADING})->addComponent($self->{scriptItemJPanel}, $org::allbinary::input::automation::module::generic::configuration::profile::actions::script::javax::swing->{GroupLayout}->{DEFAULT_SIZE}, 31, 32767)->addComponent($self->{removeJPanel}, $org::allbinary::input::automation::module::generic::configuration::profile::actions::script::javax::swing->{GroupLayout}->{Alignment}->{TRAILING}, $org::allbinary::input::automation::module::generic::configuration::profile::actions::script::javax::swing->{GroupLayout}->{DEFAULT_SIZE}, 31, 32767))->addPreferredGap($org::allbinary::input::automation::module::generic::configuration::profile::actions::script::javax::swing->{LayoutStyle}->{ComponentPlacement}->{RELATED})->addComponent($self->{childActionScriptConditionJPanel}, $org::allbinary::input::automation::module::generic::configuration::profile::actions::script::javax::swing->{GroupLayout}->{PREFERRED_SIZE}, $org::allbinary::input::automation::module::generic::configuration::profile::actions::script::javax::swing->{GroupLayout}->{DEFAULT_SIZE}, $org::allbinary::input::automation::module::generic::configuration::profile::actions::script::javax::swing->{GroupLayout}->{PREFERRED_SIZE})->addPreferredGap($org::allbinary::input::automation::module::generic::configuration::profile::actions::script::javax::swing->{LayoutStyle}->{ComponentPlacement}->{RELATED})->addComponent($self->{newActionScriptConditionJPanel}, $org::allbinary::input::automation::module::generic::configuration::profile::actions::script::javax::swing->{GroupLayout}->{PREFERRED_SIZE}, 28, $org::allbinary::input::automation::module::generic::configuration::profile::actions::script::javax::swing->{GroupLayout}->{PREFERRED_SIZE})->addPreferredGap($org::allbinary::input::automation::module::generic::configuration::profile::actions::script::javax::swing->{LayoutStyle}->{ComponentPlacement}->{RELATED})->addComponent($self->{newActionScriptInputJPanel}, $org::allbinary::input::automation::module::generic::configuration::profile::actions::script::javax::swing->{GroupLayout}->{PREFERRED_SIZE}, 30, $org::allbinary::input::automation::module::generic::configuration::profile::actions::script::javax::swing->{GroupLayout}->{PREFERRED_SIZE})));
 }
 
+use java::lang::Object ();
 
 1;
 

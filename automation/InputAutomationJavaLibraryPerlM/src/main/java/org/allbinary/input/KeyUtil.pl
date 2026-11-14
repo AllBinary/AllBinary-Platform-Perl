@@ -17,6 +17,7 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
 
 
@@ -39,7 +40,8 @@ sub isNormallyDisplayed {
         }
 }
 
-# use java::awt::event::KeyEvent;
+use java::lang::Object ();
+# use java::awt::event::KeyEvent ();
 
 1;
 

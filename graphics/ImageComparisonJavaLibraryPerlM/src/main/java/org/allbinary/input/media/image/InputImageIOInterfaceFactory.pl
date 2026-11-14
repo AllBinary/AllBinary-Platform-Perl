@@ -17,6 +17,7 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
 
 
@@ -41,11 +42,12 @@ sub getInstance {
         }
 }
 
-use org::allbinary::input::media::image::capture::CapturedImageInputOutput;
-use org::allbinary::media::image::comparison::ComparisonImageInputOutput;
-use org::allbinary::media::image::comparison::motion::MotionRectanglesImageInputOutput;
-use org::allbinary::media::image::io::ImageIOInterface;
-use org::allbinary::input::media::image::InputImageType;
+use java::lang::Object ();
+use org::allbinary::input::media::image::capture::CapturedImageInputOutput ();
+use org::allbinary::media::image::comparison::ComparisonImageInputOutput ();
+use org::allbinary::media::image::comparison::motion::MotionRectanglesImageInputOutput ();
+use org::allbinary::media::image::io::ImageIOInterface ();
+use org::allbinary::input::media::image::InputImageType ();
 
 1;
 

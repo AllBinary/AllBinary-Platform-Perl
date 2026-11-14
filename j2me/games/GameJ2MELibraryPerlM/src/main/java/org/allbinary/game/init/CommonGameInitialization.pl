@@ -29,7 +29,7 @@ sub _init_fields {
 sub new {
     my ($class, $resourceInitializationArray, $portion) = @_;
     my $self = $class->SUPER::new($resourceInitializationArray, $portion);
-    $self->_init_fields();
+    _init_fields($self);
         # super(...) made $self above
     return $self;
 }
@@ -62,17 +62,18 @@ sub initGame {
         die ($self->{commonStrings}->{NOT_IMPLEMENTED});
 }
 
-# use javax::microedition::lcdui::CommandListener;
-use org::allbinary::game::resource::ResourceInitialization;
-use org::allbinary::game::resource::ResourceLoadingLevelFactory;
-use org::allbinary::graphics::PointFactory;
-use org::allbinary::graphics::canvas::transition::progress::ProgressCanvas;
-use org::allbinary::graphics::canvas::transition::progress::ProgressCanvasFactory;
-use org::allbinary::logic::math::SmallIntegerSingletonFactory;
-use org::allbinary::logic::system::security::licensing::AbeClientInformationInterface;
-use org::allbinary::math::AngleFactory;
-use org::allbinary::string::CommonStrings;
-use org::allbinary::game::init::BaseGameInitialization;
+use java::lang::Object ();
+use javax::microedition::lcdui::CommandListener ();
+use org::allbinary::game::resource::ResourceInitialization ();
+use org::allbinary::game::resource::ResourceLoadingLevelFactory ();
+use org::allbinary::graphics::PointFactory ();
+use org::allbinary::graphics::canvas::transition::progress::ProgressCanvas ();
+use org::allbinary::graphics::canvas::transition::progress::ProgressCanvasFactory ();
+use org::allbinary::logic::math::SmallIntegerSingletonFactory ();
+use org::allbinary::logic::system::security::licensing::AbeClientInformationInterface ();
+use org::allbinary::math::AngleFactory ();
+use org::allbinary::string::CommonStrings ();
+use org::allbinary::game::init::BaseGameInitialization ();
 
 1;
 

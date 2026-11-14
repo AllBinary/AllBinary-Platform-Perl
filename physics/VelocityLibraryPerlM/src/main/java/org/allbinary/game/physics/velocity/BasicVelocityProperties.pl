@@ -17,7 +17,7 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
-use parent -norequire,'org::allbinary::game::physics::velocity::BasicVelocityInterface';
+use parent -norequire,'java::lang::Object','org::allbinary::game::physics::velocity::BasicVelocityInterface';
 
 
 sub _init_fields {
@@ -34,7 +34,7 @@ sub _init_fields {
 sub new {
     my ($class) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
         $self->{velocityXBasicDecimal} = 'org::allbinary::logic::math::BasicDecimal'->new(0);
         $self->{velocityYBasicDecimal} = 'org::allbinary::logic::math::BasicDecimal'->new(0);
         $self->{velocityZBasicDecimal} = 'org::allbinary::logic::math::BasicDecimal'->new(0);
@@ -166,17 +166,18 @@ sub toString {
         return $stringBuffer->toString();
 }
 
-use org::allbinary::direction::Direction;
-use org::allbinary::direction::DirectionUtil;
-use org::allbinary::logic::communication::log::LogUtil;
-use org::allbinary::logic::math::BasicDecimal;
-use org::allbinary::logic::math::vector::AxisMathVectorUtil;
-use org::allbinary::logic::string::StringMaker;
-use org::allbinary::logic::string::StringUtil;
-use org::allbinary::math::Angle;
-use org::allbinary::math::PositionStrings;
-use org::allbinary::string::CommonSeps;
-use org::allbinary::game::physics::velocity::BasicVelocityInterface;
+use java::lang::Object ();
+use org::allbinary::direction::Direction ();
+use org::allbinary::direction::DirectionUtil ();
+use org::allbinary::logic::communication::log::LogUtil ();
+use org::allbinary::logic::math::BasicDecimal ();
+use org::allbinary::logic::math::vector::AxisMathVectorUtil ();
+use org::allbinary::logic::string::StringMaker ();
+use org::allbinary::logic::string::StringUtil ();
+use org::allbinary::math::Angle ();
+use org::allbinary::math::PositionStrings ();
+use org::allbinary::string::CommonSeps ();
+use org::allbinary::game::physics::velocity::BasicVelocityInterface ();
 
 1;
 

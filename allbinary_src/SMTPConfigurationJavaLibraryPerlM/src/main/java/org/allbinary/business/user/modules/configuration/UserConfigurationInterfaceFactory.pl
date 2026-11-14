@@ -17,6 +17,7 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
 our $configurationName = "DefaultUserConfiguration";
 
@@ -54,19 +55,20 @@ sub getInstance {
         return 'org::allbinary::business::user::modules::configuration::UserConfiguration'->new();
 }
 
-use org::allbinary::business::user::role::UserRole;
-use org::allbinary::data::tree::dom::DomSearchHelper;
-use org::allbinary::data::tree::dom::document::DomDocumentHelper;
-use org::allbinary::globals::FREEBLISKET_PATH_GLOBALS;
-use org::allbinary::globals::URLGLOBALS;
-use org::allbinary::logic::control::crypt::file::CryptFileReader;
-use org::allbinary::logic::io::path::AbPath;
-use org::allbinary::logic::io::path::AbPathData;
-use org::w3c::dom::Document;
-use org::w3c::dom::Node;
-use org::allbinary::business::user::modules::configuration::UserConfigurationData;
-use org::allbinary::business::user::modules::configuration::UserConfigurationView;
-use org::allbinary::business::user::modules::configuration::UserConfiguration;
+use java::lang::Object ();
+use org::allbinary::business::user::role::UserRole ();
+use org::allbinary::data::tree::dom::DomSearchHelper ();
+use org::allbinary::data::tree::dom::document::DomDocumentHelper ();
+use org::allbinary::globals::FREEBLISKET_PATH_GLOBALS ();
+use org::allbinary::globals::URLGLOBALS ();
+use org::allbinary::logic::control::crypt::file::CryptFileReader ();
+use org::allbinary::logic::io::path::AbPath ();
+use org::allbinary::logic::io::path::AbPathData ();
+use org::w3c::dom::Document ();
+use org::w3c::dom::Node ();
+use org::allbinary::business::user::modules::configuration::UserConfigurationData ();
+use org::allbinary::business::user::modules::configuration::UserConfigurationView ();
+use org::allbinary::business::user::modules::configuration::UserConfiguration ();
 
 1;
 

@@ -19,7 +19,7 @@ use feature 'try';
 no warnings 'experimental::try';
 use parent -norequire,'org::allbinary::game::score::Scoreable';
 
-our $SINGLETON = 'org::allbinary::game::score::NoScoreable'->new();
+tie our $SINGLETON, 'java::lang::LazyStatic', sub { 'org::allbinary::game::score::NoScoreable'->new() };
 
 
 sub getInstance {
@@ -45,7 +45,9 @@ sub removePoints {
     my ($self, $points) = @_;
 }
 
-use org::allbinary::game::score::Scoreable;
+use java::lang::Object ();
+use java::lang::LazyStatic ();
+use org::allbinary::game::score::Scoreable ();
 
 1;
 

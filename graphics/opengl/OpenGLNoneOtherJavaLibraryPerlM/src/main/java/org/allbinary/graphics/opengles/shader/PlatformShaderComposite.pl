@@ -28,9 +28,10 @@ sub new {
     return $self;
 }
 
-use org::allbinary::graphics::opengles::NullOpenGLProcessorFactory;
-use org::allbinary::graphics::opengles::OpenGLProcessor;
-use org::allbinary::graphics::opengles::shader::ShaderComposite;
+use java::lang::Object ();
+use org::allbinary::graphics::opengles::NullOpenGLProcessorFactory ();
+use org::allbinary::graphics::opengles::OpenGLProcessor ();
+use org::allbinary::graphics::opengles::shader::ShaderComposite ();
 
 1;
 

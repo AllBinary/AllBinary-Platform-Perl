@@ -17,7 +17,7 @@ sub _init_fields {
 sub new {
     my ($class, $label, $image, $layout, $altText, $basicColor, $yOffset) = @_;
     my $self = $class->SUPER::new($label, $basicColor, $basicColor);
-    $self->_init_fields();
+    _init_fields($self);
         # super(...) made $self above
     return $self;
 }
@@ -28,10 +28,11 @@ sub getImage {
         return $javax::microedition::lcdui::NullImage::NULL_IMAGE;
 }
 
-# use javax::microedition::lcdui::Image;
-# use javax::microedition::lcdui::NullImage;
-use org::allbinary::graphics::color::BasicColor;
-use org::allbinary::graphics::form::item::ABCustomItem;
+use java::lang::Object ();
+use javax::microedition::lcdui::Image ();
+use javax::microedition::lcdui::NullImage ();
+use org::allbinary::graphics::color::BasicColor ();
+use org::allbinary::graphics::form::item::ABCustomItem ();
 
 1;
 

@@ -38,7 +38,7 @@ sub _init_fields {
 sub new {
     my ($class, $animationInterface, $movieIndexedAnimationInterface, $player, $captionDx, $captionDy, $dx, $dy, $time, $animationBehavior) = @_;
     my $self = $class->SUPER::new($animationBehavior);
-    $self->_init_fields();
+    _init_fields($self);
         # super(...) made $self above
         $self->{animationInterface} = $animationInterface;
         $self->{movieIndexedAnimationInterface} = $movieIndexedAnimationInterface;
@@ -126,16 +126,17 @@ sub paintThreedXYZ {
         $self->{movieIndexedAnimationInterface}->paintThreedXYZ($graphics, $x + $self->{captionDx} + $self->{dx}, $y + $self->{captionDy} + $self->{dy}, $z);
 }
 
-# use javax::microedition::lcdui::Graphics;
-# use javax::microedition::media::Player;
-use org::allbinary::animation::Animation;
-use org::allbinary::animation::AnimationBehavior;
-use org::allbinary::animation::AnimationEventHandler;
-use org::allbinary::animation::IndexedAnimation;
-use org::allbinary::logic::math::PrimitiveIntUtil;
-use org::allbinary::logic::util::event::AllBinaryEventObject;
-use org::allbinary::time::GameTickTimeDelayHelperFactory;
-use org::allbinary::time::TimeDelayHelper;
+use java::lang::Object ();
+use javax::microedition::lcdui::Graphics ();
+use javax::microedition::media::Player ();
+use org::allbinary::animation::Animation ();
+use org::allbinary::animation::AnimationBehavior ();
+use org::allbinary::animation::AnimationEventHandler ();
+use org::allbinary::animation::IndexedAnimation ();
+use org::allbinary::logic::math::PrimitiveIntUtil ();
+use org::allbinary::logic::util::event::AllBinaryEventObject ();
+use org::allbinary::time::GameTickTimeDelayHelperFactory ();
+use org::allbinary::time::TimeDelayHelper ();
 
 1;
 

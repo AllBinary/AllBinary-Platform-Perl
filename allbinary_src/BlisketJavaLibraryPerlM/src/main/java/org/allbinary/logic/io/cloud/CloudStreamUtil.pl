@@ -17,8 +17,9 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
-our $instance = 'org::allbinary::logic::io::CloudStreamUtil'->new();
+tie our $instance, 'java::lang::LazyStatic', sub { 'org::allbinary::logic::io::CloudStreamUtil'->new() };
 
 sub _init_fields {
     my ($self) = @_;
@@ -28,7 +29,7 @@ sub _init_fields {
 sub new {
     my ($class) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
     return $self;
 }
 
@@ -42,7 +43,7 @@ sub getInstance {
 # throws Exception
 sub getFile {
     my ($self, $file) = @_;
-        my $inputStream = 'org::allbinary::logic::io::AbFileInputStream'->new($file);
+        my $inputStream = 'org::allbinary::logic::io::AbFileInputStream'->createFromAbFile($file);
         my $available = $inputStream->available();
         if ($available > 0) {
             if ($org::allbinary::logic::io::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($org::allbinary::logic::io::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{VIEW})) {
@@ -63,7 +64,7 @@ sub getFileAnyWhere {
                 $self->{logUtil}->putF("Local File Bytes: " . $available, $self, "processRequest()");
             }
         } else {
-            $inputStream = 'org::allbinary::logic::io::AbFileInputStream'->new($file);
+            $inputStream = 'org::allbinary::logic::io::AbFileInputStream'->createFromAbFile($file);
             $available = $inputStream->available();
             if ($available > 0) {
                 if ($org::allbinary::logic::io::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($org::allbinary::logic::io::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{VIEWERROR})) {
@@ -88,11 +89,13 @@ sub getFileLocal {
         return $inputStream;
 }
 
-# use java::io::InputStream;
-use org::allbinary::logic::communication::log::LogUtil;
-use org::allbinary::logic::io::file::AbFile;
-use org::allbinary::logic::io::AbFileInputStream;
-use org::allbinary::logic::io::AbFileLocalInputStream;
+use java::lang::Object ();
+use java::lang::LazyStatic ();
+# use java::io::InputStream ();
+use org::allbinary::logic::communication::log::LogUtil ();
+use org::allbinary::logic::io::file::AbFile ();
+use org::allbinary::logic::io::AbFileInputStream ();
+use org::allbinary::logic::io::AbFileLocalInputStream ();
 
 1;
 

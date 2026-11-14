@@ -33,10 +33,11 @@ sub new {
     return $self;
 }
 
-use org::allbinary::logic::string::StringUtil;
-use org::allbinary::logic::io::path::AbPath;
-use org::allbinary::logic::io::path::AbPathData;
-use org::allbinary::logic::io::path::PathUtil;
+use java::lang::Object ();
+use org::allbinary::logic::string::StringUtil ();
+use org::allbinary::logic::io::path::AbPath ();
+use org::allbinary::logic::io::path::AbPathData ();
+use org::allbinary::logic::io::path::PathUtil ();
 
 1;
 

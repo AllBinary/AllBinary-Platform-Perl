@@ -17,6 +17,7 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
 our $NAME = "TIME_INTERVAL_ACTION_CONDITION_NAME";
 our $TIME = "TIME_INTERVAL_ACTION_CONDITION_TIME";
@@ -28,6 +29,7 @@ sub new {
     return $self;
 }
 
+use java::lang::Object ();
 
 1;
 

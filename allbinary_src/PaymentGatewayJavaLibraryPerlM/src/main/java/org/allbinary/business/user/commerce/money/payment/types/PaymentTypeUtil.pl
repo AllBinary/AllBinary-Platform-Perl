@@ -17,8 +17,9 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
-our $instance = 'org::allbinary::business::user::commerce::money::payment::types::PaymentTypeUtil'->new();
+tie our $instance, 'java::lang::LazyStatic', sub { 'org::allbinary::business::user::commerce::money::payment::types::PaymentTypeUtil'->new() };
 
 sub _init_fields {
     my ($self) = @_;
@@ -44,7 +45,7 @@ sub getInstance {
 sub new {
     my ($class) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
         my $stringBuffer = 'org::allbinary::logic::string::StringMaker'->new();
         my $sep = 'org::allbinary::logic::io::path::AbPathData'->getInstance()->{SEPARATOR};
         $stringBuffer->append($sep);
@@ -150,27 +151,29 @@ sub difference {
         return $diff;
 }
 
-use org::allbinary::util::BasicArrayList;
-use org::allbinary::util::BasicArrayListD;
-use org::allbinary::business::entry::EntryData;
-use org::allbinary::business::user::commerce::money::payment::gateway::PaymentGatewaysData;
-use org::allbinary::data::tree::dom::DomNodeHelper;
-use org::allbinary::data::tree::dom::DomSearchHelper;
-use org::allbinary::data::tree::dom::document::DomDocumentHelper;
-use org::allbinary::globals::FREEBLISKET_PATH_GLOBALS;
-use org::allbinary::globals::URLGLOBALS;
-use org::allbinary::logic::StdUtil;
-use org::allbinary::logic::communication::log::LogUtil;
-use org::allbinary::logic::control::crypt::file::CryptFileReader;
-use org::allbinary::logic::io::path::AbPath;
-use org::allbinary::logic::io::path::AbPathData;
-use org::allbinary::logic::string::StringMaker;
-use org::allbinary::logic::string::StringValidationUtil;
-use org::allbinary::logic::visual::transform::info::objectConfig::TransformInfoObjectConfigData;
-use org::allbinary::string::CommonStrings;
-use org::w3c::dom::Document;
-use org::w3c::dom::Node;
-use org::w3c::dom::NodeList;
+use java::lang::Object ();
+use java::lang::LazyStatic ();
+use org::allbinary::util::BasicArrayList ();
+use org::allbinary::util::BasicArrayListD ();
+use org::allbinary::business::entry::EntryData ();
+use org::allbinary::business::user::commerce::money::payment::gateway::PaymentGatewaysData ();
+use org::allbinary::data::tree::dom::DomNodeHelper ();
+use org::allbinary::data::tree::dom::DomSearchHelper ();
+use org::allbinary::data::tree::dom::document::DomDocumentHelper ();
+use org::allbinary::globals::FREEBLISKET_PATH_GLOBALS ();
+use org::allbinary::globals::URLGLOBALS ();
+use org::allbinary::logic::StdUtil ();
+use org::allbinary::logic::communication::log::LogUtil ();
+use org::allbinary::logic::control::crypt::file::CryptFileReader ();
+use org::allbinary::logic::io::path::AbPath ();
+use org::allbinary::logic::io::path::AbPathData ();
+use org::allbinary::logic::string::StringMaker ();
+use org::allbinary::logic::string::StringValidationUtil ();
+use org::allbinary::logic::visual::transform::info::objectConfig::TransformInfoObjectConfigData ();
+use org::allbinary::string::CommonStrings ();
+use org::w3c::dom::Document ();
+use org::w3c::dom::Node ();
+use org::w3c::dom::NodeList ();
 
 1;
 

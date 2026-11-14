@@ -18,8 +18,9 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
-our $instance = 'org::allbinary::data::tree::dom::XslHelper'->new();
+tie our $instance, 'java::lang::LazyStatic', sub { 'org::allbinary::data::tree::dom::XslHelper'->new() };
 
 
 sub getInstance {
@@ -59,6 +60,20 @@ sub translate {
             my $transformer = $tFactory->newTransformer($xsltStreamSource);
             $transformer->transform($xmlStreamSource, $streamResult);
             return $streamResult->getOutputStream();
+        } catch ($e) {
+            die $e;
+        }
+}
+
+
+# throws Exception
+sub translateTemplate {
+    my ($self, $templates, $xmlStreamSource) = @_;
+        try {
+            my $outputStream = 'java::io::ByteArrayOutputStream'->new();
+            my $streamResult = 'javax::xml::transform::stream::StreamResult'->new($outputStream);
+            $templates->newTransformer()->transform($xmlStreamSource, $streamResult);
+            return $streamResult->getOutputStream()->toString();
         } catch ($e) {
             die $e;
         }
@@ -115,17 +130,20 @@ sub export {
         }
 }
 
-# use java::io::ByteArrayOutputStream;
-use java::io::File;
-# use java::io::OutputStream;
-# use java::io::StringBufferInputStream;
-# use javax::xml::transform::Transformer;
-# use javax::xml::transform::TransformerFactory;
-# use javax::xml::transform::URIResolver;
-# use javax::xml::transform::stream::StreamResult;
-# use javax::xml::transform::stream::StreamSource;
-use org::allbinary::data::tree::dom::document::XmlDocumentHelper;
-use org::w3c::dom::Document;
+use java::lang::Object ();
+use java::lang::LazyStatic ();
+# use java::io::ByteArrayOutputStream ();
+use java::io::File ();
+# use java::io::OutputStream ();
+# use java::io::StringBufferInputStream ();
+# use javax::xml::transform::Templates ();
+# use javax::xml::transform::Transformer ();
+# use javax::xml::transform::TransformerFactory ();
+# use javax::xml::transform::URIResolver ();
+# use javax::xml::transform::stream::StreamResult ();
+# use javax::xml::transform::stream::StreamSource ();
+use org::allbinary::data::tree::dom::document::XmlDocumentHelper ();
+use org::w3c::dom::Document ();
 
 1;
 

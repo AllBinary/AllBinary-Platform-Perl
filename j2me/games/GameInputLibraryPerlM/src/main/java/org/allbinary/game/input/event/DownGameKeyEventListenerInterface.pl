@@ -28,7 +28,7 @@ sub onDownGameKeyEvent {
     die "abstract method onDownGameKeyEvent";
 }
 
-use org::allbinary::logic::util::event::EventListenerInterface;
+use org::allbinary::logic::util::event::EventListenerInterface ();
 
 1;
 

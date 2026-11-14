@@ -49,7 +49,7 @@ sub new {
 sub _new1 {
     my ($class, $basketInterface) = @_;
     my $self = $class->SUPER::new($basketInterface);
-    $self->_init_fields();
+    _init_fields($self);
         # super(...) made $self above
     return $self;
 }
@@ -58,7 +58,7 @@ sub _new1 {
 sub _new2 {
     my ($class, $basketInterface, $orderHistory) = @_;
     my $self = $class->SUPER::new($orderHistory->getStoreName(), $basketInterface, $orderHistory->getId(), $orderHistory->getShippingMethod(), $orderHistory->getSpecial(), $orderHistory->getPaymentMethod());
-    $self->_init_fields();
+    _init_fields($self);
         # super(...) made $self above
         $self->{userName} = $orderHistory->getUserName();
         $self->{shippingAddress} = $orderHistory->getShippingAddress();
@@ -84,7 +84,7 @@ sub _new2 {
 sub _new2 {
     my ($class, $basketInterface, $orderHistoryHashMap) = @_;
     my $self = $class->SUPER::new($orderHistoryHashMap->get('org::allbinary::business::context::modules::storefront::StoreFrontData'->getInstance()->{NAME}), $basketInterface, $orderHistoryHashMap->get($org::allbinary::business::user::commerce::inventory::order::OrderData::ID), $orderHistoryHashMap->get($org::allbinary::business::user::commerce::shipping::ShippingMethodData::NAME), $orderHistoryHashMap->get('org::allbinary::business::entry::EntryData'->getInstance()->{SPECIAL}), $orderHistoryHashMap->get($org::allbinary::business::user::commerce::money::payment::PaymentData::METHOD));
-    $self->_init_fields();
+    _init_fields($self);
         # super(...) made $self above
         $self->{shippingAddress} = 'org::allbinary::business::user::address::StreetAddress'->new($orderHistoryHashMap->get($org::allbinary::business::user::address::ShippingAddressData::NAME), $orderHistoryHashMap->get($org::allbinary::business::user::address::ShippingAddressData::STREET), $orderHistoryHashMap->get($org::allbinary::business::user::address::ShippingAddressData::CITY), $orderHistoryHashMap->get($org::allbinary::business::user::address::ShippingAddressData::STATE), $orderHistoryHashMap->get($org::allbinary::business::user::address::ShippingAddressData::CODE), $orderHistoryHashMap->get($org::allbinary::business::user::address::ShippingAddressData::COUNTRY));
         $self->{billingAddress} = 'org::allbinary::business::user::address::StreetAddress'->new($orderHistoryHashMap->get($org::allbinary::business::user::address::BillingAddressData::NAME), $orderHistoryHashMap->get($org::allbinary::business::user::address::BillingAddressData::STREET), $orderHistoryHashMap->get($org::allbinary::business::user::address::BillingAddressData::CITY), $orderHistoryHashMap->get($org::allbinary::business::user::address::BillingAddressData::STATE), $orderHistoryHashMap->get($org::allbinary::business::user::address::BillingAddressData::CODE), $orderHistoryHashMap->get($org::allbinary::business::user::address::BillingAddressData::COUNTRY));
@@ -309,30 +309,37 @@ sub toXmlNode {
         return $node;
 }
 
-use java::util::Date;
-use java::util::HashMap;
-# use java::util::Set;
-use org::allbinary::business::context::modules::storefront::StoreFrontData;
-use org::allbinary::business::entry::EntryData;
-use org::allbinary::business::user::UserData;
-use org::allbinary::business::user::address::BillingAddressData;
-use org::allbinary::business::user::address::ShippingAddressData;
-use org::allbinary::business::user::address::StreetAddress;
-use org::allbinary::business::user::commerce::inventory::basket::BasketInterface;
-use org::allbinary::business::user::commerce::money::Money;
-use org::allbinary::business::user::commerce::money::MoneyException;
-use org::allbinary::business::user::commerce::money::payment::Payment;
-use org::allbinary::business::user::commerce::money::payment::PaymentData;
-use org::allbinary::business::user::commerce::shipping::ShippingMethodData;
-use org::allbinary::data::tree::dom::ModDomHelper;
-use org::allbinary::logic::StdUtil;
-use org::allbinary::logic::string::StringUtil;
-use org::w3c::dom::Document;
-use org::w3c::dom::Node;
-use org::allbinary::business::user::commerce::inventory::order::Order;
-use org::allbinary::business::user::commerce::inventory::order::OrderHistoryInterface;
-use org::allbinary::business::user::commerce::inventory::order::OrderData;
-use org::allbinary::business::user::commerce::inventory::order::OrderHistoryData;
+
+sub getPaymentMethod {
+    my ($self) = @_;
+        return $self->SUPER::getPaymentMethod();
+}
+
+use java::lang::Object ();
+use java::util::Date ();
+use java::util::HashMap ();
+# use java::util::Set ();
+use org::allbinary::business::context::modules::storefront::StoreFrontData ();
+use org::allbinary::business::entry::EntryData ();
+use org::allbinary::business::user::UserData ();
+use org::allbinary::business::user::address::BillingAddressData ();
+use org::allbinary::business::user::address::ShippingAddressData ();
+use org::allbinary::business::user::address::StreetAddress ();
+use org::allbinary::business::user::commerce::inventory::basket::BasketInterface ();
+use org::allbinary::business::user::commerce::money::Money ();
+use org::allbinary::business::user::commerce::money::MoneyException ();
+use org::allbinary::business::user::commerce::money::payment::Payment ();
+use org::allbinary::business::user::commerce::money::payment::PaymentData ();
+use org::allbinary::business::user::commerce::shipping::ShippingMethodData ();
+use org::allbinary::data::tree::dom::ModDomHelper ();
+use org::allbinary::logic::StdUtil ();
+use org::allbinary::logic::string::StringUtil ();
+use org::w3c::dom::Document ();
+use org::w3c::dom::Node ();
+use org::allbinary::business::user::commerce::inventory::order::Order ();
+use org::allbinary::business::user::commerce::inventory::order::OrderHistoryInterface ();
+use org::allbinary::business::user::commerce::inventory::order::OrderData ();
+use org::allbinary::business::user::commerce::inventory::order::OrderHistoryData ();
 
 1;
 

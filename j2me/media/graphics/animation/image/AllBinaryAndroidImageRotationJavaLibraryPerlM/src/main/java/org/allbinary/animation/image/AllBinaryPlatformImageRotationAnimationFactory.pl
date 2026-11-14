@@ -28,9 +28,10 @@ sub new {
     return $self;
 }
 
-# use javax::microedition::lcdui::Image;
-use org::allbinary::animation::AnimationBehaviorFactory;
-use org::allbinary::animation::image::AllBinaryAndroidImageRotationAnimationFactory;
+use java::lang::Object ();
+use javax::microedition::lcdui::Image ();
+use org::allbinary::animation::AnimationBehaviorFactory ();
+use org::allbinary::animation::image::AllBinaryAndroidImageRotationAnimationFactory ();
 
 1;
 

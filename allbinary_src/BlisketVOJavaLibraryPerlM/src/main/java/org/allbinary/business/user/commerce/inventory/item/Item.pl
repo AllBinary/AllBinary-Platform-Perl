@@ -42,7 +42,7 @@ sub new {
 sub _new1 {
     my ($class, $itemHashMap) = @_;
     my $self = $class->SUPER::new($itemHashMap);
-    $self->_init_fields();
+    _init_fields($self);
         # super(...) made $self above
         $self->setData($itemHashMap);
     return $self;
@@ -52,7 +52,7 @@ sub _new1 {
 sub _new0 {
     my ($class) = @_;
     my $self = $class->SUPER::new();
-    $self->_init_fields();
+    _init_fields($self);
         my $EMPTY = 'org::allbinary::logic::string::StringUtil'->getInstance()->{EMPTY_STRING};
         $self->{group} = $EMPTY;
         $self->{tax} = $EMPTY;
@@ -164,17 +164,18 @@ sub toHashMap {
         return $hashMap;
 }
 
-use java::util::HashMap;
-use org::allbinary::business::entry::EntryData;
-use org::allbinary::business::user::address::ShippingAddressData;
-use org::allbinary::business::user::address::StreetAddress;
-use org::allbinary::business::user::address::StreetAddressData;
-use org::allbinary::business::user::commerce::inventory::order::OrderHistoryData;
-use org::allbinary::business::user::commerce::money::MoneyException;
-use org::allbinary::business::user::commerce::shipping::ShippingMethodData;
-use org::allbinary::logic::string::StringUtil;
-use org::allbinary::business::user::commerce::inventory::item::BasicItem;
-use org::allbinary::business::user::commerce::inventory::item::OrderItemInterface;
+use java::lang::Object ();
+use java::util::HashMap ();
+use org::allbinary::business::entry::EntryData ();
+use org::allbinary::business::user::address::ShippingAddressData ();
+use org::allbinary::business::user::address::StreetAddress ();
+use org::allbinary::business::user::address::StreetAddressData ();
+use org::allbinary::business::user::commerce::inventory::order::OrderHistoryData ();
+use org::allbinary::business::user::commerce::money::MoneyException ();
+use org::allbinary::business::user::commerce::shipping::ShippingMethodData ();
+use org::allbinary::logic::string::StringUtil ();
+use org::allbinary::business::user::commerce::inventory::item::BasicItem ();
+use org::allbinary::business::user::commerce::inventory::item::OrderItemInterface ();
 
 1;
 

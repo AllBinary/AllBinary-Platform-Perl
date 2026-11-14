@@ -17,8 +17,9 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
-our $instance = 'org::allbinary::media::image::ImageModifierUtil'->new();
+tie our $instance, 'java::lang::LazyStatic', sub { 'org::allbinary::media::image::ImageModifierUtil'->new() };
 
 sub _init_fields {
     my ($self) = @_;
@@ -29,7 +30,7 @@ sub _init_fields {
 sub new {
     my ($class) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
     return $self;
 }
 
@@ -154,16 +155,18 @@ sub reset {
     my ($self) = @_;
 }
 
-# use java::awt::image::BufferedImage;
-# use java::awt::image::ColorModel;
-# use java::awt::image::WritableRaster;
-# use javax::microedition::lcdui::Image;
-use org::allbinary::graphics::Anchor;
-use org::allbinary::graphics::color::BasicColor;
-use org::allbinary::logic::communication::log::PreLogUtil;
-use org::allbinary::string::CommonStrings;
-use org::allbinary::media::image::ImageUtil;
-use org::allbinary::media::image::ImageCreationUtil;
+use java::lang::Object ();
+use java::lang::LazyStatic ();
+# use java::awt::image::BufferedImage ();
+# use java::awt::image::ColorModel ();
+# use java::awt::image::WritableRaster ();
+use javax::microedition::lcdui::Image ();
+use org::allbinary::graphics::Anchor ();
+use org::allbinary::graphics::color::BasicColor ();
+use org::allbinary::logic::communication::log::PreLogUtil ();
+use org::allbinary::string::CommonStrings ();
+use org::allbinary::media::image::ImageUtil ();
+use org::allbinary::media::image::ImageCreationUtil ();
 
 1;
 

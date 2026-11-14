@@ -5,8 +5,9 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
-our $instance = 'org::allbinary::graphics::displayable::ScreenRelationalUtil'->new();
+tie our $instance, 'java::lang::LazyStatic', sub { 'org::allbinary::graphics::displayable::ScreenRelationalUtil'->new() };
 
 sub new {
     my ($class) = @_;
@@ -59,8 +60,10 @@ sub getScaledHeightAdd {
         return int(($self->getScaleWHA($aWidth, $aHeight, $add) * $aHeight));
 }
 
-# use javax::microedition::lcdui::Image;
-use org::allbinary::graphics::displayable::DisplayInfoSingleton;
+use java::lang::Object ();
+use java::lang::LazyStatic ();
+use javax::microedition::lcdui::Image ();
+use org::allbinary::graphics::displayable::DisplayInfoSingleton ();
 
 1;
 

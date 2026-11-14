@@ -17,9 +17,9 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
-use parent -norequire,'org::allbinary::graphics::font::UpdateMyFontInterface';
+use parent -norequire,'java::lang::Object','org::allbinary::graphics::font::UpdateMyFontInterface';
 
-our $NULL_CANVAS_DRAW_LINE_STRING = 'org::allbinary::graphics::draw::CanvasDrawLineString'->new(0, 0);
+tie our $NULL_CANVAS_DRAW_LINE_STRING, 'java::lang::LazyStatic', sub { 'org::allbinary::graphics::draw::CanvasDrawLineString'->new(0, 0) };
 
 sub _init_fields {
     my ($self) = @_;
@@ -34,7 +34,7 @@ sub _init_fields {
 sub new {
     my ($class, $x, $y) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
         $self->{x} = $x;
         $self->{y} = $y;
     return $self;
@@ -55,12 +55,14 @@ sub paint {
         $self->{drawStringUtil}->drawCenterString($graphics, $string, 0, length($string), $self->{x}, $self->{y} + ($line * $self->{fontHeight}));
 }
 
-# use javax::microedition::lcdui::Font;
-# use javax::microedition::lcdui::Graphics;
-use org::allbinary::graphics::font::MyFontProcessor;
-use org::allbinary::graphics::font::UpdateMyFontInterface;
-use org::allbinary::graphics::font::UpdateMyFontProcessor;
-use org::allbinary::graphics::draw::DrawStringUtil;
+use java::lang::Object ();
+use java::lang::LazyStatic ();
+use javax::microedition::lcdui::Font ();
+use javax::microedition::lcdui::Graphics ();
+use org::allbinary::graphics::font::MyFontProcessor ();
+use org::allbinary::graphics::font::UpdateMyFontInterface ();
+use org::allbinary::graphics::font::UpdateMyFontProcessor ();
+use org::allbinary::graphics::draw::DrawStringUtil ();
 
 1;
 

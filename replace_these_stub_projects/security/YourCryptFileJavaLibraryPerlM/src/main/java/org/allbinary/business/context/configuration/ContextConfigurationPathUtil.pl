@@ -5,6 +5,7 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
 
 sub new {
@@ -40,8 +41,9 @@ sub getFileName {
         return undef;
 }
 
-use org::allbinary::logic::io::file::AbFile;
-use org::allbinary::logic::io::path::AbPath;
+use java::lang::Object ();
+use org::allbinary::logic::io::file::AbFile ();
+use org::allbinary::logic::io::path::AbPath ();
 
 1;
 

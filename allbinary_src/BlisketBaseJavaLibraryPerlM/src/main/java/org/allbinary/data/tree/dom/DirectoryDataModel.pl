@@ -17,7 +17,7 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
-use parent -norequire,'org::allbinary::data::tree::dom::DomNodeInterface','org::allbinary::logic::visual::transform::TransformInterface';
+use parent -norequire,'java::lang::Object','org::allbinary::data::tree::dom::DomNodeInterface','org::allbinary::logic::visual::transform::TransformInterface';
 
 
 sub _init_fields {
@@ -31,7 +31,7 @@ sub _init_fields {
 sub new {
     my ($class, $file) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
         $self->{fileBasicArrayList} = 'org::allbinary::logic::io::file::directory::Directory'->getInstance()->search($file);
         $self->{transformDocumentInterface} = 'org::allbinary::logic::visual::transform::data::TransformDocumentFactory'->getInstance();
     return $self;
@@ -94,18 +94,19 @@ sub view {
         return 'org::allbinary::data::tree::dom::document::XmlDocumentHelper'->toString($self->getTransformDocumentInterface()->getDoc());
 }
 
-use org::allbinary::data::tree::dom::document::XmlDocumentHelper;
-use org::allbinary::logic::io::file::AbFile;
-use org::allbinary::logic::io::file::directory::Directory;
-use org::allbinary::logic::visual::transform::TransformInterface;
-use org::allbinary::logic::visual::transform::data::TransformDocumentFactory;
-use org::allbinary::logic::visual::transform::data::TransformDocumentInterface;
-use org::allbinary::logic::visual::transform::info::TransformInfoInterface;
-use org::allbinary::util::BasicArrayList;
-use org::w3c::dom::Document;
-use org::w3c::dom::Node;
-use org::allbinary::data::tree::dom::DomNodeInterface;
-use org::allbinary::data::tree::dom::FileDomDataModel;
+use java::lang::Object ();
+use org::allbinary::data::tree::dom::document::XmlDocumentHelper ();
+use org::allbinary::logic::io::file::AbFile ();
+use org::allbinary::logic::io::file::directory::Directory ();
+use org::allbinary::logic::visual::transform::TransformInterface ();
+use org::allbinary::logic::visual::transform::data::TransformDocumentFactory ();
+use org::allbinary::logic::visual::transform::data::TransformDocumentInterface ();
+use org::allbinary::logic::visual::transform::info::TransformInfoInterface ();
+use org::allbinary::util::BasicArrayList ();
+use org::w3c::dom::Document ();
+use org::w3c::dom::Node ();
+use org::allbinary::data::tree::dom::DomNodeInterface ();
+use org::allbinary::data::tree::dom::FileDomDataModel ();
 
 1;
 

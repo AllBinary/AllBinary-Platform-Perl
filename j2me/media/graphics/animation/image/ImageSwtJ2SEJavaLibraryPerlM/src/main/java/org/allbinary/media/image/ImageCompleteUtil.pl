@@ -17,8 +17,9 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
-our $instance = 'org::allbinary::media::image::ImageCompleteUtil'->new();
+tie our $instance, 'java::lang::LazyStatic', sub { 'org::allbinary::media::image::ImageCompleteUtil'->new() };
 
 sub new {
     my ($class) = @_;
@@ -38,7 +39,9 @@ sub waitForImage {
     my ($self, $image, $name) = @_;
 }
 
-# use javax::microedition::lcdui::Image;
+use java::lang::Object ();
+use java::lang::LazyStatic ();
+use javax::microedition::lcdui::Image ();
 
 1;
 

@@ -35,7 +35,7 @@ sub _init_fields {
 sub new {
     my ($class, $imageComparatorConstraintsInterface) = @_;
     my $self = $class->SUPER::new();
-    $self->_init_fields();
+    _init_fields($self);
         $self->{imageComparatorConstraintsInterface} = $imageComparatorConstraintsInterface;
         $self->{imageComparator} = 'org::allbinary::media::image::comparison::ImageComparator'->new($imageComparatorConstraintsInterface);
     return $self;
@@ -102,22 +102,23 @@ sub run {
         }
 }
 
-use org::allbinary::util::BasicArrayList;
-use org::allbinary::util::BasicArrayListD;
-use org::allbinary::input::media::image::capture::CapturedImageWorkerResultsEvent;
-use org::allbinary::input::media::image::capture::CapturedImageWorkerResultsListener;
-use org::allbinary::logic::StdUtil;
-use org::allbinary::logic::communication::log::LogUtil;
-use org::allbinary::logic::string::StringMaker;
-use org::allbinary::logic::util::event::AllBinaryEventObject;
-use org::allbinary::logic::util::event::handler::BasicEventHandler;
-use org::allbinary::string::CommonLabels;
-use org::allbinary::string::CommonStrings;
-use org::allbinary::time::TimeDelayHelper;
-use org::allbinary::media::image::comparison::ImageComparator;
-use org::allbinary::media::image::comparison::ImageComparisonResultFrameCacheable;
-use org::allbinary::media::image::comparison::ImageComparisonResultCacheSingleton;
-use org::allbinary::media::image::comparison::ImageComparisonResultsEvent;
+use java::lang::Object ();
+use org::allbinary::util::BasicArrayList ();
+use org::allbinary::util::BasicArrayListD ();
+use org::allbinary::input::media::image::capture::CapturedImageWorkerResultsEvent ();
+use org::allbinary::input::media::image::capture::CapturedImageWorkerResultsListener ();
+use org::allbinary::logic::StdUtil ();
+use org::allbinary::logic::communication::log::LogUtil ();
+use org::allbinary::logic::string::StringMaker ();
+use org::allbinary::logic::util::event::AllBinaryEventObject ();
+use org::allbinary::logic::util::event::handler::BasicEventHandler ();
+use org::allbinary::string::CommonLabels ();
+use org::allbinary::string::CommonStrings ();
+use org::allbinary::time::TimeDelayHelper ();
+use org::allbinary::media::image::comparison::ImageComparator ();
+use org::allbinary::media::image::comparison::ImageComparisonResultFrameCacheable ();
+use org::allbinary::media::image::comparison::ImageComparisonResultCacheSingleton ();
+use org::allbinary::media::image::comparison::ImageComparisonResultsEvent ();
 
 1;
 

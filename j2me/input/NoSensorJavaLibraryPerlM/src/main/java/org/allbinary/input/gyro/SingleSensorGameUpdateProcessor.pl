@@ -38,7 +38,8 @@ sub sendNotifications {
     my ($self, $anyType) = @_;
 }
 
-use org::allbinary::input::gyro::SensorGameUpdateProcessor;
+use java::lang::Object ();
+use org::allbinary::input::gyro::SensorGameUpdateProcessor ();
 
 1;
 

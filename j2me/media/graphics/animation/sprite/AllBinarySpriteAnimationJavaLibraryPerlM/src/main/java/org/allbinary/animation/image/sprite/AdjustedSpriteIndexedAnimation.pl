@@ -30,7 +30,7 @@ sub _init_fields {
 sub new {
     my ($class, $sprite, $image, $basicColorArray, $dx, $dy, $animationBehavior) = @_;
     my $self = $class->SUPER::new($sprite, $image, $basicColorArray, $animationBehavior);
-    $self->_init_fields();
+    _init_fields($self);
         # super(...) made $self above
         $self->{dx} = $dx;
         $self->{dy} = $dy;
@@ -59,13 +59,14 @@ sub paint {
         $self->SUPER::paint($g);
 }
 
-# use javax::microedition::lcdui::Graphics;
-# use javax::microedition::lcdui::Image;
-# use javax::microedition::lcdui::game::Sprite;
-use org::allbinary::animation::AnimationBehavior;
-use org::allbinary::graphics::color::BasicColor;
-use org::allbinary::graphics::color::BasicColorUtil;
-use org::allbinary::animation::image::sprite::SpriteIndexedAnimation;
+use java::lang::Object ();
+use javax::microedition::lcdui::Graphics ();
+use javax::microedition::lcdui::Image ();
+use javax::microedition::lcdui::game::Sprite ();
+use org::allbinary::animation::AnimationBehavior ();
+use org::allbinary::graphics::color::BasicColor ();
+use org::allbinary::graphics::color::BasicColorUtil ();
+use org::allbinary::animation::image::sprite::SpriteIndexedAnimation ();
 
 1;
 

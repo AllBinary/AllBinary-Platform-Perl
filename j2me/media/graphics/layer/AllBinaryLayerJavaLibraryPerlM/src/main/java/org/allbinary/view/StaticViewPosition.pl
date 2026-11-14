@@ -46,7 +46,8 @@ sub getZ {
         return $self->getRawZ();
 }
 
-use org::allbinary::view::ViewPosition;
+use java::lang::Object ();
+use org::allbinary::view::ViewPosition ();
 
 1;
 

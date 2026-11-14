@@ -17,8 +17,9 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
-our $instance = 'org::allbinary::image::PaintableToImageUtil'->new();
+tie our $instance, 'java::lang::LazyStatic', sub { 'org::allbinary::image::PaintableToImageUtil'->new() };
 
 sub new {
     my ($class) = @_;
@@ -36,10 +37,12 @@ sub getImage {
         return $image;
 }
 
-# use javax::microedition::lcdui::Graphics;
-# use javax::microedition::lcdui::Image;
-use org::allbinary::graphics::paint::PaintableInterface;
-use org::allbinary::image::GameFeatureImageCacheFactory;
+use java::lang::Object ();
+use java::lang::LazyStatic ();
+use javax::microedition::lcdui::Graphics ();
+use javax::microedition::lcdui::Image ();
+use org::allbinary::graphics::paint::PaintableInterface ();
+use org::allbinary::image::GameFeatureImageCacheFactory ();
 
 1;
 

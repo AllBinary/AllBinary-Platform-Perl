@@ -25,7 +25,7 @@ sub _init_fields {
 sub new {
     my ($class) = @_;
     my $self = $class->SUPER::new();
-    $self->_init_fields();
+    _init_fields($self);
     return $self;
 }
 
@@ -141,7 +141,7 @@ sub onStartCommandIntent {
                 sub new {
                     my ($class, $baseMusicService) = @_;
                     my $self = $class->SUPER::new();
-                    $self->_init_fields();
+                    _init_fields($self);
                         $self->{baseMusicService} = $baseMusicService;
                     return $self;
                 }
@@ -173,19 +173,20 @@ sub onStartCommandIntent {
         }
 }
 
-use android::app::Service;
-use android::content::Intent;
-use android::media::MediaPlayer;
-use android::os::IBinder;
-use org::allbinary::android::NullAndroidCanvas;
-use org::allbinary::logic::communication::log::LogUtil;
-use org::allbinary::string::CommonLabels;
-use org::allbinary::string::CommonStateStrings;
-use org::allbinary::string::CommonStrings;
-use org::allbinary::thread::ARunnable;
-use org::allbinary::media::audio::music::MusicStrings;
-use java::lang::System;
-use java::lang::Thread;
+use java::lang::Object ();
+# use android::app::Service ();
+# use android::content::Intent ();
+# use android::media::MediaPlayer ();
+# use android::os::IBinder ();
+use org::allbinary::android::NullAndroidCanvas ();
+use org::allbinary::logic::communication::log::LogUtil ();
+use org::allbinary::string::CommonLabels ();
+use org::allbinary::string::CommonStateStrings ();
+use org::allbinary::string::CommonStrings ();
+use org::allbinary::thread::ARunnable ();
+use org::allbinary::media::audio::music::MusicStrings ();
+use java::lang::System ();
+use java::lang::Thread ();
 
 1;
 

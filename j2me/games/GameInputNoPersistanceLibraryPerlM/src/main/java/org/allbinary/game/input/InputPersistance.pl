@@ -30,7 +30,7 @@ sub _init_fields {
 sub new {
     my ($class, $name) = @_;
     my $self = $class->SUPER::new($name);
-    $self->_init_fields();
+    _init_fields($self);
         # super(...) made $self above
     return $self;
 }
@@ -77,20 +77,21 @@ sub save {
         $recordStore->closeRecordStore();
 }
 
-# use javax::microedition::rms::RecordEnumeration;
-# use javax::microedition::rms::RecordStore;
-use org::allbinary::game::configuration::persistance::BasicPersitance;
-use org::allbinary::game::configuration::persistance::NullRecordComparator;
-use org::allbinary::game::configuration::persistance::NullRecordFilter;
-use org::allbinary::logic::communication::log::PreLogUtil;
-use org::allbinary::logic::math::SmallIntegerSingletonFactory;
-use org::allbinary::logic::string::StringMaker;
-use org::allbinary::logic::string::StringUtil;
-use org::allbinary::logic::system::security::licensing::AbeClientInformationInterface;
-use org::allbinary::util::BasicArrayList;
-use org::allbinary::util::HashtableUtil;
-use org::allbinary::logic::StdUtil;
-use org::allbinary::util::ABHashtable;
+use java::lang::Object ();
+use javax::microedition::rms::RecordEnumeration ();
+use javax::microedition::rms::RecordStore ();
+use org::allbinary::game::configuration::persistance::BasicPersitance ();
+use org::allbinary::game::configuration::persistance::NullRecordComparator ();
+use org::allbinary::game::configuration::persistance::NullRecordFilter ();
+use org::allbinary::logic::communication::log::PreLogUtil ();
+use org::allbinary::logic::math::SmallIntegerSingletonFactory ();
+use org::allbinary::logic::string::StringMaker ();
+use org::allbinary::logic::string::StringUtil ();
+use org::allbinary::logic::system::security::licensing::AbeClientInformationInterface ();
+use org::allbinary::util::BasicArrayList ();
+use org::allbinary::util::HashtableUtil ();
+use org::allbinary::logic::StdUtil ();
+use org::allbinary::util::ABHashtable ();
 
 1;
 

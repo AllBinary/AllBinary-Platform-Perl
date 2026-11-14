@@ -27,7 +27,7 @@ sub onMotionRectanglesImageComparisonResultsEvent {
     die "abstract method onMotionRectanglesImageComparisonResultsEvent";
 }
 
-use org::allbinary::logic::util::event::BasicEventListenerInterface;
+use org::allbinary::logic::util::event::BasicEventListenerInterface ();
 
 1;
 

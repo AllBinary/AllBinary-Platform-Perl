@@ -17,7 +17,7 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
-use parent -norequire,'org::allbinary::layer::AllBinaryLayerFactoryInterface';
+use parent -norequire,'java::lang::Object','org::allbinary::layer::AllBinaryLayerFactoryInterface';
 
 
 sub _init_fields {
@@ -29,7 +29,7 @@ sub _init_fields {
 sub new {
     my ($class, $rectangle) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
         $self->{rectangle} = $rectangle;
     return $self;
 }
@@ -40,11 +40,12 @@ sub getInstance {
         return 'org::allbinary::layer::AllBinaryLayer'->new('org::allbinary::logic::string::StringUtil'->getInstance()->{EMPTY_STRING}, $self->{rectangle}, 'org::allbinary::view::ViewPosition'->getInstanceD());
 }
 
-use org::allbinary::graphics::Rectangle;
-use org::allbinary::logic::string::StringUtil;
-use org::allbinary::view::ViewPosition;
-use org::allbinary::layer::AllBinaryLayerFactoryInterface;
-use org::allbinary::layer::AllBinaryLayer;
+use java::lang::Object ();
+use org::allbinary::graphics::Rectangle ();
+use org::allbinary::logic::string::StringUtil ();
+use org::allbinary::view::ViewPosition ();
+use org::allbinary::layer::AllBinaryLayerFactoryInterface ();
+use org::allbinary::layer::AllBinaryLayer ();
 
 1;
 

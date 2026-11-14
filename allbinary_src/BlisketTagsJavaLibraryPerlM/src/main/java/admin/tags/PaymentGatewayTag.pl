@@ -29,7 +29,7 @@ sub _init_fields {
 sub new {
     my ($class) = @_;
     my $self = $class->SUPER::new();
-    $self->_init_fields();
+    _init_fields($self);
         $self->setTagHelperFactory('admin::taghelpers::PaymentGatewayHelperFactory'->new());
         $self->setTagRequestHelperFactory('admin::taghelpers::PaymentGatewayHelperFactory'->new());
     return $self;
@@ -59,7 +59,7 @@ sub doStartTag {
             if ($self->isEnabled()) {
                 if ($self->getCommand()->compareTo($admin::tags::org::allbinary->{globals}->{GLOBALS2}->{AUTHORIZEORDEREVALBODYONERROR}) == 0 || $self->getCommand()->compareTo($admin::tags::org::allbinary->{globals}->{GLOBALS2}->{AUTHORIZEORDERANDEVALBODY}) == 0 || $self->getCommand()->compareTo($admin::tags::org::allbinary->{globals}->{GLOBALS2}->{AUTHORIZEFORMEVALBODYONERROR}) == 0) {
                     my $output = $self->process();
-                    {
+                    {;
                         $self->{pageContext}->getOut()->print($output . "<br />");
                     }
                     if ($self->getCommand()->compareTo($admin::tags::org::allbinary->{globals}->{GLOBALS2}->{AUTHORIZEORDEREVALBODYONERROR}) == 0) {
@@ -78,13 +78,14 @@ sub doStartTag {
         }
 }
 
-# use java::lang::reflect::Method;
-# use javax::servlet::jsp::JspTagException;
-use admin::taghelpers::PaymentGatewayHelperFactory;
-use org::allbinary::logic::communication::http::request::AbResponseHandler;
-use org::allbinary::logic::communication::log::LogUtil;
-use org::allbinary::logic::system::security::licensing::LicensingException;
-use admin::tags::TableTag;
+use java::lang::Object ();
+# use java::lang::reflect::Method ();
+# use javax::servlet::jsp::JspTagException ();
+use admin::taghelpers::PaymentGatewayHelperFactory ();
+use org::allbinary::logic::communication::http::request::AbResponseHandler ();
+use org::allbinary::logic::communication::log::LogUtil ();
+use org::allbinary::logic::system::security::licensing::LicensingException ();
+use admin::tags::TableTag ();
 
 1;
 

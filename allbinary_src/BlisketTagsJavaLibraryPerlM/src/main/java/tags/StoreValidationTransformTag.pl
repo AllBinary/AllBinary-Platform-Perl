@@ -30,7 +30,7 @@ sub _init_fields {
 sub new {
     my ($class) = @_;
     my $self = $class->SUPER::new();
-    $self->_init_fields();
+    _init_fields($self);
         # super(...) made $self above
     return $self;
 }
@@ -57,11 +57,12 @@ sub doStartTag {
         }
 }
 
-# use javax::servlet::jsp::JspTagException;
-use org::allbinary::business::context::modules::storefront::StoreFrontData;
-use org::allbinary::logic::communication::http::request::AbResponseHandler;
-use org::allbinary::logic::communication::log::LogUtil;
-use tags::ValidationTransformTag;
+use java::lang::Object ();
+# use javax::servlet::jsp::JspTagException ();
+use org::allbinary::business::context::modules::storefront::StoreFrontData ();
+use org::allbinary::logic::communication::http::request::AbResponseHandler ();
+use org::allbinary::logic::communication::log::LogUtil ();
+use tags::ValidationTransformTag ();
 
 1;
 

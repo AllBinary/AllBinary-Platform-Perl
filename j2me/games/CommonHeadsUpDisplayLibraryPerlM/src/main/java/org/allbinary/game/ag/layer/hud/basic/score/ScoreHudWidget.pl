@@ -44,11 +44,12 @@ sub updateMeasurement {
         $self->SUPER::updateMeasurement($graphics);
 }
 
-# use javax::microedition::lcdui::Font;
-# use javax::microedition::lcdui::Graphics;
-use org::allbinary::game::ag::layer::hud::basic::NumberStringHud;
-use org::allbinary::graphics::color::BasicColor;
-use org::allbinary::graphics::color::BasicColorFactory;
+use java::lang::Object ();
+use javax::microedition::lcdui::Font ();
+use javax::microedition::lcdui::Graphics ();
+use org::allbinary::game::ag::layer::hud::basic::NumberStringHud ();
+use org::allbinary::graphics::color::BasicColor ();
+use org::allbinary::graphics::color::BasicColorFactory ();
 
 1;
 

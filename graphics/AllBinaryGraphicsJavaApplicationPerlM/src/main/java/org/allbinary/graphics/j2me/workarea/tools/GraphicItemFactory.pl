@@ -17,8 +17,9 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
-our $instance = 'org::allbinary::graphics::j2me::workarea::tools::GraphicItemFactory'->new();
+tie our $instance, 'java::lang::LazyStatic', sub { 'org::allbinary::graphics::j2me::workarea::tools::GraphicItemFactory'->new() };
 
 sub _init_fields {
     my ($self) = @_;
@@ -36,7 +37,7 @@ sub getInstance {
 sub new {
     my ($class) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
         $self->{graphicItems} = 'org::allbinary::logic::StdUtil'->getInstance()->createHashMap();
         $self->{graphicItems}->put('org::allbinary::graphics::j2me::workarea::tools::LinesGraphicItem'->getStaticName(), 'org::allbinary::graphics::j2me::workarea::tools::LinesGraphicItemFactory'->new());
     return $self;
@@ -69,15 +70,17 @@ sub getInstance {
         return $graphicItemHashMap;
 }
 
-use java::util::HashMap;
-use org::allbinary::log::LOGGING;
-use org::allbinary::logic::StdUtil;
-use org::allbinary::util::BasicArrayList;
-use org::w3c::dom::Node;
-use org::allbinary::graphics::j2me::workarea::tools::SelectionToolFactory;
-use org::allbinary::graphics::j2me::workarea::tools::LinesGraphicItem;
-use org::allbinary::graphics::j2me::workarea::tools::LinesGraphicItemFactory;
-use org::allbinary::graphics::j2me::workarea::tools::GraphicItemBuilder;
+use java::lang::Object ();
+use java::lang::LazyStatic ();
+use java::util::HashMap ();
+use org::allbinary::log::LOGGING ();
+use org::allbinary::logic::StdUtil ();
+use org::allbinary::util::BasicArrayList ();
+use org::w3c::dom::Node ();
+use org::allbinary::graphics::j2me::workarea::tools::SelectionToolFactory ();
+use org::allbinary::graphics::j2me::workarea::tools::LinesGraphicItem ();
+use org::allbinary::graphics::j2me::workarea::tools::LinesGraphicItemFactory ();
+use org::allbinary::graphics::j2me::workarea::tools::GraphicItemBuilder ();
 
 1;
 

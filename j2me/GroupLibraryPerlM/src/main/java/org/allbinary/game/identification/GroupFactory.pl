@@ -9,7 +9,7 @@
 # AllBinary or the root directory of AllBinary's AllBinary Platform repository.
 # 
 # Created By: Travis Berthelot
-#  
+#   
 # Generated Code Do Not Modify
 
 package org::allbinary::game::identification::GroupFactory;
@@ -17,8 +17,9 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
-our $instance = 'org::allbinary::game::identification::GroupFactory'->new();
+tie our $instance, 'java::lang::LazyStatic', sub { 'org::allbinary::game::identification::GroupFactory'->new() };
 
 sub _init_fields {
     my ($self) = @_;
@@ -31,7 +32,7 @@ sub _init_fields {
 sub new {
     my ($class) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
     return $self;
 }
 
@@ -66,8 +67,9 @@ sub init {
         $self->{list}->clear();
         $self->{index} = 0;
         my $size = $self->{list}->size();
+        my $name = undef;
         while ($size < $groups) {
-            my $name = $stringUtil->{EMPTY_STRING};
+            $name = $stringUtil->{EMPTY_STRING};
             if ($size < scalar(@{$nameArray})) {
                 $name = $nameArray->[$size];
             } else {
@@ -79,12 +81,14 @@ sub init {
         }
 }
 
-use org::allbinary::logic::communication::log::LogUtil;
-use org::allbinary::logic::string::StringMaker;
-use org::allbinary::logic::string::StringUtil;
-use org::allbinary::util::BasicArrayList;
-use org::allbinary::util::BasicArrayListD;
-use org::allbinary::game::identification::Group;
+use java::lang::Object ();
+use java::lang::LazyStatic ();
+use org::allbinary::logic::communication::log::LogUtil ();
+use org::allbinary::logic::string::StringMaker ();
+use org::allbinary::logic::string::StringUtil ();
+use org::allbinary::util::BasicArrayList ();
+use org::allbinary::util::BasicArrayListD ();
+use org::allbinary::game::identification::Group ();
 
 1;
 

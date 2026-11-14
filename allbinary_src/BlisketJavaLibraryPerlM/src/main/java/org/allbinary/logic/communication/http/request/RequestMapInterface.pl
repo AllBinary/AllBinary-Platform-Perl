@@ -26,7 +26,7 @@ sub getRequestHashMap {
     die "abstract method getRequestHashMap";
 }
 
-use java::util::HashMap;
+use java::util::HashMap ();
 
 1;
 

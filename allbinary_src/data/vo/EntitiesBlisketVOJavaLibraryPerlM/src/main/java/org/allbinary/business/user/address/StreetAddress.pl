@@ -17,6 +17,7 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
 
 sub _init_fields {
@@ -47,7 +48,7 @@ sub new {
 sub _new0 {
     my ($class) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
     return $self;
 }
 
@@ -55,7 +56,7 @@ sub _new0 {
 sub _new1 {
     my ($class, $node) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
         my $nameNode = 'org::allbinary::data::tree::dom::DomSearchHelper'->getNode($org::allbinary::business::user::address::StreetAddressData::NAME, $node->getChildNodes());
         $self->{name} = 'org::allbinary::data::tree::dom::DomNodeHelper'->getTextNodeValue($nameNode);
         my $streetNode = 'org::allbinary::data::tree::dom::DomSearchHelper'->getNode($org::allbinary::business::user::address::StreetAddressData::STREET, $node->getChildNodes());
@@ -76,7 +77,7 @@ sub _new1 {
 sub _new1 {
     my ($class, $streetAddress) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
         $self->{id} = $streetAddress->getId();
         $self->{name} = $streetAddress->getName();
         $self->{street} = $streetAddress->getStreet();
@@ -93,7 +94,7 @@ sub _new1 {
 sub _new1 {
     my ($class, $request) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
         $self->setId($request->getParameter($org::allbinary::business::user::address::StreetAddressData::ID));
         $self->setName($request->getParameter($org::allbinary::business::user::address::StreetAddressData::NAME));
         $self->setStreet($request->getParameter($org::allbinary::business::user::address::StreetAddressData::STREET));
@@ -109,7 +110,7 @@ sub _new1 {
 sub _new6 {
     my ($class, $name, $street, $city, $state, $code, $country) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
         $self->{name} = $name;
         $self->{street} = $street;
         $self->{city} = $city;
@@ -124,7 +125,7 @@ sub _new6 {
 sub _new1 {
     my ($class, $address) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
         $self->{id} = $address->get($org::allbinary::business::user::address::StreetAddressData::ID);
         $self->{name} = $address->get($org::allbinary::business::user::address::StreetAddressData::NAME);
         $self->{street} = $address->get($org::allbinary::business::user::address::StreetAddressData::STREET);
@@ -347,21 +348,22 @@ sub toXmlNode {
         return $node;
 }
 
-use java::util::HashMap;
-# use java::util::Set;
-# use javax::servlet::http::HttpServletRequest;
-use org::allbinary::data::tree::dom::DomNodeHelper;
-use org::allbinary::data::tree::dom::DomSearchHelper;
-use org::allbinary::data::tree::dom::ModDomHelper;
-use org::allbinary::logic::StdUtil;
-use org::allbinary::logic::communication::log::LogUtil;
-use org::allbinary::logic::string::StringMaker;
-use org::allbinary::logic::string::StringUtil;
-use org::allbinary::logic::string::StringValidationUtil;
-use org::allbinary::string::CommonStrings;
-use org::w3c::dom::Document;
-use org::w3c::dom::Node;
-use org::allbinary::business::user::address::StreetAddressData;
+use java::lang::Object ();
+use java::util::HashMap ();
+# use java::util::Set ();
+# use javax::servlet::http::HttpServletRequest ();
+use org::allbinary::data::tree::dom::DomNodeHelper ();
+use org::allbinary::data::tree::dom::DomSearchHelper ();
+use org::allbinary::data::tree::dom::ModDomHelper ();
+use org::allbinary::logic::StdUtil ();
+use org::allbinary::logic::communication::log::LogUtil ();
+use org::allbinary::logic::string::StringMaker ();
+use org::allbinary::logic::string::StringUtil ();
+use org::allbinary::logic::string::StringValidationUtil ();
+use org::allbinary::string::CommonStrings ();
+use org::w3c::dom::Document ();
+use org::w3c::dom::Node ();
+use org::allbinary::business::user::address::StreetAddressData ();
 
 1;
 

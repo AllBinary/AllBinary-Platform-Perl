@@ -17,7 +17,7 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
-use parent -norequire,'org::allbinary::business::context::modules::storefront::statistics::orders::history::StoreFrontOrdersHistoryStatisticsInterface';
+use parent -norequire,'java::lang::Object','org::allbinary::business::context::modules::storefront::statistics::orders::history::StoreFrontOrdersHistoryStatisticsInterface';
 
 
 sub _init_fields {
@@ -33,7 +33,7 @@ sub _init_fields {
 sub new {
     my ($class, $storeFrontInterface) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
         $self->{subTotalMoney} = 'org::allbinary::business::user::commerce::money::Money'->new();
         $self->{shippingCostMoney} = 'org::allbinary::business::user::commerce::money::Money'->new();
         $self->{taxesMoney} = 'org::allbinary::business::user::commerce::money::Money'->new();
@@ -110,17 +110,18 @@ sub getKey {
         return undef;
 }
 
-use java::util::HashMap;
-use org::allbinary::util::BasicArrayList;
-use org::allbinary::util::BasicArrayListD;
-use org::allbinary::business::context::modules::storefront::StoreFrontInterface;
-use org::allbinary::business::user::commerce::inventory::order::OrderHistoryInterface;
-use org::allbinary::business::user::commerce::money::Money;
-use org::allbinary::data::tables::user::commerce::inventory::order::OrderHistoryEntityFactory;
-use org::allbinary::data::tables::user::commerce::inventory::order::OrderHistoryEntityInterface;
-use org::allbinary::logic::StdUtil;
-use org::allbinary::business::context::modules::storefront::statistics::orders::history::StoreFrontOrdersHistoryStatisticsInterface;
-use org::allbinary::business::context::modules::storefront::statistics::orders::history::StoreFrontOrdersHistoryStatisticsData;
+use java::lang::Object ();
+use java::util::HashMap ();
+use org::allbinary::util::BasicArrayList ();
+use org::allbinary::util::BasicArrayListD ();
+use org::allbinary::business::context::modules::storefront::StoreFrontInterface ();
+use org::allbinary::business::user::commerce::inventory::order::OrderHistoryInterface ();
+use org::allbinary::business::user::commerce::money::Money ();
+use org::allbinary::data::tables::user::commerce::inventory::order::OrderHistoryEntityFactory ();
+use org::allbinary::data::tables::user::commerce::inventory::order::OrderHistoryEntityInterface ();
+use org::allbinary::logic::StdUtil ();
+use org::allbinary::business::context::modules::storefront::statistics::orders::history::StoreFrontOrdersHistoryStatisticsInterface ();
+use org::allbinary::business::context::modules::storefront::statistics::orders::history::StoreFrontOrdersHistoryStatisticsData ();
 
 1;
 

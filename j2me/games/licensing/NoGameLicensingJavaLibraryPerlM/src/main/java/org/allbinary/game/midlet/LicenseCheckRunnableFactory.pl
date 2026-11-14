@@ -17,6 +17,7 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
 
 sub new {
@@ -31,8 +32,9 @@ sub getInstance {
         return 'org::allbinary::thread::NullABRunnable'->getInstance();
 }
 
-use org::allbinary::thread::ABRunnable;
-use org::allbinary::thread::NullABRunnable;
+use java::lang::Object ();
+use org::allbinary::thread::ABRunnable ();
+use org::allbinary::thread::NullABRunnable ();
 
 1;
 

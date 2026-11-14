@@ -17,7 +17,7 @@ sub _init_fields {
 sub new {
     my ($class, $bitmap) = @_;
     my $self = $class->SUPER::new();
-    $self->_init_fields();
+    _init_fields($self);
         $self->{bitmap} = $bitmap;
     return $self;
 }
@@ -37,7 +37,8 @@ sub recycle {
     my ($self) = @_;
 }
 
-use org::allbinary::platform::graphics::PlatformBitmapBase;
+use java::lang::Object ();
+use org::allbinary::platform::graphics::PlatformBitmapBase ();
 
 1;
 

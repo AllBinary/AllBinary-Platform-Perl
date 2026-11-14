@@ -56,10 +56,11 @@ sub validationInfo {
         return "Error";
 }
 
-use org::allbinary::logic::control::validate::ValidationInterface;
-use org::w3c::dom::Document;
-use org::w3c::dom::Node;
-use org::allbinary::business::category::store::theme::StoreThemeCategoryPathView;
+use java::lang::Object ();
+use org::allbinary::logic::control::validate::ValidationInterface ();
+use org::w3c::dom::Document ();
+use org::w3c::dom::Node ();
+use org::allbinary::business::category::store::theme::StoreThemeCategoryPathView ();
 
 1;
 

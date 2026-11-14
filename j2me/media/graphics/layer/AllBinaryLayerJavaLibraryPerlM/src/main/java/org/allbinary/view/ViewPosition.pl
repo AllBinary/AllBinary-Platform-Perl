@@ -35,7 +35,7 @@ sub getInstanceD {
 sub new {
     my ($class, $x, $y, $z) = @_;
     my $self = $class->SUPER::new($x, $y, $z);
-    $self->_init_fields();
+    _init_fields($self);
         # super(...) made $self above
     return $self;
 }
@@ -82,8 +82,9 @@ sub setAllbinaryLayer {
         $self->{allbinaryLayer} = $allbinaryLayer;
 }
 
-use org::allbinary::layer::AllBinaryLayer;
-use org::allbinary::view::ViewPositionBase;
+use java::lang::Object ();
+use org::allbinary::layer::AllBinaryLayer ();
+use org::allbinary::view::ViewPositionBase ();
 
 1;
 

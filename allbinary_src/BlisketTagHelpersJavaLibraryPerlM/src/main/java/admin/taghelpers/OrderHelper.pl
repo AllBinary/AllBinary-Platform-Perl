@@ -34,7 +34,7 @@ sub _init_fields {
 sub new {
     my ($class, $propertiesHashMap, $pageContext) = @_;
     my $self = $class->SUPER::new();
-    $self->_init_fields();
+    _init_fields($self);
         $self->{propertiesHashMap} = $propertiesHashMap;
         $self->{pageContext} = $pageContext;
         $self->{request} = $pageContext->getRequest();
@@ -124,27 +124,28 @@ sub process {
         }
 }
 
-use java::util::HashMap;
-use org::allbinary::util::BasicArrayList;
-use org::allbinary::util::BasicArrayListD;
-# use javax::servlet::http::HttpServletRequest;
-# use javax::servlet::jsp::PageContext;
-use org::allbinary::business::context::modules::storefront::StoreFrontData;
-use org::allbinary::business::context::modules::storefront::StoreFrontFactory;
-use org::allbinary::business::context::modules::storefront::StoreFrontInterface;
-use org::allbinary::business::user::commerce::inventory::order::Order;
-use org::allbinary::business::user::commerce::inventory::order::OrderInterface;
-use org::allbinary::business::user::commerce::inventory::order::OrderProcessorUtil;
-use org::allbinary::business::user::commerce::money::payment::gateway::PaymentGatewayData;
-use org::allbinary::business::user::commerce::money::payment::gateway::PaymentGatewayInterface;
-use org::allbinary::business::user::commerce::money::payment::types::BasicPaymentType;
-use org::allbinary::data::tables::user::commerce::money::payment::gateway::PaymentGatewayEntity;
-use org::allbinary::data::tables::user::commerce::money::payment::gateway::PaymentGatewayEntityFactory;
-use org::allbinary::logic::communication::http::request::session::WeblisketSession;
-use org::allbinary::logic::communication::log::LogUtil;
-use org::allbinary::logic::string::StringMaker;
-use org::allbinary::logic::string::StringValidationUtil;
-use admin::taghelpers::TagHelper;
+use java::lang::Object ();
+use java::util::HashMap ();
+use org::allbinary::util::BasicArrayList ();
+use org::allbinary::util::BasicArrayListD ();
+# use javax::servlet::http::HttpServletRequest ();
+# use javax::servlet::jsp::PageContext ();
+use org::allbinary::business::context::modules::storefront::StoreFrontData ();
+use org::allbinary::business::context::modules::storefront::StoreFrontFactory ();
+use org::allbinary::business::context::modules::storefront::StoreFrontInterface ();
+use org::allbinary::business::user::commerce::inventory::order::Order ();
+use org::allbinary::business::user::commerce::inventory::order::OrderInterface ();
+use org::allbinary::business::user::commerce::inventory::order::OrderProcessorUtil ();
+use org::allbinary::business::user::commerce::money::payment::gateway::PaymentGatewayData ();
+use org::allbinary::business::user::commerce::money::payment::gateway::PaymentGatewayInterface ();
+use org::allbinary::business::user::commerce::money::payment::types::BasicPaymentType ();
+use org::allbinary::data::tables::user::commerce::money::payment::gateway::PaymentGatewayEntity ();
+use org::allbinary::data::tables::user::commerce::money::payment::gateway::PaymentGatewayEntityFactory ();
+use org::allbinary::logic::communication::http::request::session::WeblisketSession ();
+use org::allbinary::logic::communication::log::LogUtil ();
+use org::allbinary::logic::string::StringMaker ();
+use org::allbinary::logic::string::StringValidationUtil ();
+use admin::taghelpers::TagHelper ();
 
 1;
 

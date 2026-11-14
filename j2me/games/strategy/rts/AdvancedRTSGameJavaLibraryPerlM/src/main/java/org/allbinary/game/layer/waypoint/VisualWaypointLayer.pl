@@ -43,15 +43,16 @@ sub getHudPaintable {
         return $rtsLayerHudPaintable;
 }
 
-use org::allbinary::game::layer::SelectionHudPaintable;
-use org::allbinary::animation::AnimationInterfaceFactoryInterface;
-use org::allbinary::animation::ProceduralAnimationInterfaceFactoryInterface;
-use org::allbinary::game::identification::Group;
-use org::allbinary::game::layer::PathFindingLayerInterface;
-use org::allbinary::graphics::Rectangle;
-use org::allbinary::game::multiplayer::layer::RemoteInfo;
-use org::allbinary::game::layer::waypoint::WaypointLayer;
-use org::allbinary::game::layer::waypoint::WaypointInfoHudPaintableSingleton;
+use java::lang::Object ();
+use org::allbinary::game::layer::SelectionHudPaintable ();
+use org::allbinary::animation::AnimationInterfaceFactoryInterface ();
+use org::allbinary::animation::ProceduralAnimationInterfaceFactoryInterface ();
+use org::allbinary::game::identification::Group ();
+use org::allbinary::game::layer::PathFindingLayerInterface ();
+use org::allbinary::graphics::Rectangle ();
+use org::allbinary::game::multiplayer::layer::RemoteInfo ();
+use org::allbinary::game::layer::waypoint::WaypointLayer ();
+use org::allbinary::game::layer::waypoint::WaypointInfoHudPaintableSingleton ();
 
 1;
 

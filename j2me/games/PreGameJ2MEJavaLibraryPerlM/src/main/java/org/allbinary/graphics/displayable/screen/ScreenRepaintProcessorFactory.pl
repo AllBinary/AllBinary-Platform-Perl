@@ -17,8 +17,9 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
-our $instance = 'org::allbinary::graphics::displayable::screen::ScreenRepaintProcessorFactory'->new();
+tie our $instance, 'java::lang::LazyStatic', sub { 'org::allbinary::graphics::displayable::screen::ScreenRepaintProcessorFactory'->new() };
 
 
 sub getInstance {
@@ -43,10 +44,12 @@ sub create {
         }
 }
 
-# use javax::microedition::lcdui::Displayable;
-use org::allbinary::J2MEUtil;
-use org::allbinary::canvas::Processor;
-use org::allbinary::graphics::displayable::screen::ScreenRepaintProcessor;
+use java::lang::Object ();
+use java::lang::LazyStatic ();
+use javax::microedition::lcdui::Displayable ();
+use org::allbinary::J2MEUtil ();
+use org::allbinary::canvas::Processor ();
+use org::allbinary::graphics::displayable::screen::ScreenRepaintProcessor ();
 
 1;
 

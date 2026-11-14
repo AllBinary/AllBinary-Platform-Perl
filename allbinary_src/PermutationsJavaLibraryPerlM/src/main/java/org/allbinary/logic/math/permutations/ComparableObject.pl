@@ -17,6 +17,7 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
 
 sub new {
@@ -36,7 +37,8 @@ sub compareTo {
         return 0;
 }
 
-use org::allbinary::TsUtil;
+use java::lang::Object ();
+use org::allbinary::TsUtil ();
 
 1;
 

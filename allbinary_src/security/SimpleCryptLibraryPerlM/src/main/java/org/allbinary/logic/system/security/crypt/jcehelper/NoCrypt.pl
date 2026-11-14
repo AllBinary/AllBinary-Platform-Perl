@@ -17,7 +17,7 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
-use parent -norequire,'org::allbinary::init::crypt::jcehelper::CryptInterface';
+use parent -norequire,'java::lang::Object','org::allbinary::init::crypt::jcehelper::CryptInterface';
 
 
 sub new {
@@ -38,7 +38,8 @@ sub decrypt {
         return $array;
 }
 
-use org::allbinary::init::crypt::jcehelper::CryptInterface;
+use java::lang::Object ();
+use org::allbinary::init::crypt::jcehelper::CryptInterface ();
 
 1;
 

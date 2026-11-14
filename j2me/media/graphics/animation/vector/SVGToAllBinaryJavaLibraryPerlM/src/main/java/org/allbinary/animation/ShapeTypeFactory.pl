@@ -17,8 +17,9 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
-our $instance = 'org::allbinary::animation::ShapeTypeFactory'->new();
+tie our $instance, 'java::lang::LazyStatic', sub { 'org::allbinary::animation::ShapeTypeFactory'->new() };
 
 sub _init_fields {
     my ($self) = @_;
@@ -34,7 +35,7 @@ sub _init_fields {
 sub new {
     my ($class) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
     return $self;
 }
 
@@ -44,7 +45,9 @@ sub getInstance {
         return $org::allbinary::animation::ShapeTypeFactory::instance;
 }
 
-use org::allbinary::animation::ShapeType;
+use java::lang::Object ();
+use java::lang::LazyStatic ();
+use org::allbinary::animation::ShapeType ();
 
 1;
 

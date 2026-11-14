@@ -17,7 +17,7 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
-use parent -norequire,'javax::microedition::rms::RecordComparator';
+use parent -norequire,'java::lang::Object','javax::microedition::rms::RecordComparator';
 
 
 sub _init_fields {
@@ -30,7 +30,7 @@ sub _init_fields {
 sub new {
     my ($class, $isHighestBest) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
         $self->{isHighestBest} = $isHighestBest;
     return $self;
 }
@@ -90,13 +90,14 @@ sub getLowTooHigh {
         }
 }
 
-# use java::io::ByteArrayInputStream;
-# use java::io::DataInputStream;
-# use java::io::EOFException;
-# use java::io::IOException;
-# use javax::microedition::rms::RecordComparator;
-use org::allbinary::logic::communication::log::LogUtil;
-use org::allbinary::string::CommonStrings;
+use java::lang::Object ();
+# use java::io::ByteArrayInputStream ();
+# use java::io::DataInputStream ();
+# use java::io::EOFException ();
+# use java::io::IOException ();
+use javax::microedition::rms::RecordComparator ();
+use org::allbinary::logic::communication::log::LogUtil ();
+use org::allbinary::string::CommonStrings ();
 
 1;
 

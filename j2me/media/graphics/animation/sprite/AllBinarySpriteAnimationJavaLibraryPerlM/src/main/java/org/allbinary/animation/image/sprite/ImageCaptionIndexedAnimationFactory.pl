@@ -17,7 +17,7 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
-use parent -norequire,'org::allbinary::animation::AnimationInterfaceFactoryInterface';
+use parent -norequire,'java::lang::Object','org::allbinary::animation::AnimationInterfaceFactoryInterface';
 
 
 sub _init_fields {
@@ -42,7 +42,7 @@ sub _init_fields {
 sub new {
     my ($class, $captionImage, $spriteMovieImage, $soundInterface, $frameWidth, $frameHeight, $captionDx, $captionDy, $dx, $dy, $time, $animationBehaviorFactory) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
         if ($animationBehaviorFactory == 'org::allbinary::animation::AnimationBehaviorFactory'->getInstance()) {
             'org::allbinary::logic::communication::log::ForcedLogUtil'->log("Using default AnimationBehaviorFactory with IndexedAnimationFactory", $self);
         }
@@ -81,22 +81,23 @@ sub setInitialScale {
         $self->{scaleProperties} = $scaleProperties;
 }
 
-# use javax::microedition::lcdui::Image;
-# use javax::microedition::lcdui::game::Sprite;
-# use javax::microedition::media::Player;
-use org::allbinary::animation::Animation;
-use org::allbinary::animation::AnimationBehaviorFactory;
-use org::allbinary::animation::AnimationInterfaceFactoryInterface;
-use org::allbinary::animation::IndexedAnimation;
-use org::allbinary::animation::caption::CaptionIndexedAnimation;
-use org::allbinary::animation::image::ImageAnimation;
-use org::allbinary::graphics::color::BasicColorUtil;
-use org::allbinary::image::AnimationFactoryImageScaleUtil;
-use org::allbinary::image::sprite::AnimationFactorySpriteScaleUtil;
-use org::allbinary::logic::communication::log::ForcedLogUtil;
-use org::allbinary::media::ScaleProperties;
-use org::allbinary::media::audio::Sound;
-use org::allbinary::animation::image::sprite::SpriteIndexedAnimation;
+use java::lang::Object ();
+use javax::microedition::lcdui::Image ();
+use javax::microedition::lcdui::game::Sprite ();
+use javax::microedition::media::Player ();
+use org::allbinary::animation::Animation ();
+use org::allbinary::animation::AnimationBehaviorFactory ();
+use org::allbinary::animation::AnimationInterfaceFactoryInterface ();
+use org::allbinary::animation::IndexedAnimation ();
+use org::allbinary::animation::caption::CaptionIndexedAnimation ();
+use org::allbinary::animation::image::ImageAnimation ();
+use org::allbinary::graphics::color::BasicColorUtil ();
+use org::allbinary::image::AnimationFactoryImageScaleUtil ();
+use org::allbinary::image::sprite::AnimationFactorySpriteScaleUtil ();
+use org::allbinary::logic::communication::log::ForcedLogUtil ();
+use org::allbinary::media::ScaleProperties ();
+use org::allbinary::media::audio::Sound ();
+use org::allbinary::animation::image::sprite::SpriteIndexedAnimation ();
 
 1;
 

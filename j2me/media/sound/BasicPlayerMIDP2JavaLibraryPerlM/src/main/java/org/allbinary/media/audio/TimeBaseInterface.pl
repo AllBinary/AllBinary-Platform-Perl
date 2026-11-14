@@ -33,8 +33,8 @@ sub setTimeBase {
     die "abstract method setTimeBase";
 }
 
-# use javax::microedition::media::MediaException;
-# use javax::microedition::media::TimeBase;
+use javax::microedition::media::MediaException ();
+use javax::microedition::media::TimeBase ();
 
 1;
 

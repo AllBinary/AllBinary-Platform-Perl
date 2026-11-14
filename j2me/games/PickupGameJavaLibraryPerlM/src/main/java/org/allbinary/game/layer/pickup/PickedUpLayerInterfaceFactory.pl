@@ -31,7 +31,7 @@ sub _init_fields {
 sub new {
     my ($class, $pickeUpLayerType, $iconLayer, $animationInterface) = @_;
     my $self = $class->SUPER::new();
-    $self->_init_fields();
+    _init_fields($self);
         $self->{pickedUpLayerType} = $pickeUpLayerType;
         $self->{animationInterface} = $animationInterface;
         $self->{iconLayer} = $iconLayer;
@@ -56,9 +56,10 @@ sub getPickedUpLayerType {
         return $self->{pickedUpLayerType};
 }
 
-use org::allbinary::animation::Animation;
-use org::allbinary::layer::AllBinaryLayer;
-use org::allbinary::game::layer::pickup::PickedUpLayerInterfaceFactoryBase;
+use java::lang::Object ();
+use org::allbinary::animation::Animation ();
+use org::allbinary::layer::AllBinaryLayer ();
+use org::allbinary::game::layer::pickup::PickedUpLayerInterfaceFactoryBase ();
 
 1;
 

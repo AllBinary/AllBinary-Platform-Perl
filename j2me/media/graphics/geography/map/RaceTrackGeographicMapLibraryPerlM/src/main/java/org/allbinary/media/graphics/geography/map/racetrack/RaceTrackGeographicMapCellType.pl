@@ -30,7 +30,7 @@ sub _init_fields {
 sub new {
     my ($class, $name, $type, $travelCost, $reset) = @_;
     my $self = $class->SUPER::new($type, $reset);
-    $self->_init_fields();
+    _init_fields($self);
         # super(...) made $self above
         $self->{name} = $name;
         $self->{travelCost} = $travelCost;
@@ -43,8 +43,9 @@ sub getTravelCost {
         return $self->{travelCost};
 }
 
-use org::allbinary::string::CommonStrings;
-use org::allbinary::media::graphics::geography::map::GeographicMapCellType;
+use java::lang::Object ();
+use org::allbinary::string::CommonStrings ();
+use org::allbinary::media::graphics::geography::map::GeographicMapCellType ();
 
 1;
 

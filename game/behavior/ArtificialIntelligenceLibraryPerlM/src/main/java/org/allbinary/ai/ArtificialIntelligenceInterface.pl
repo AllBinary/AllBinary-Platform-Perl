@@ -28,8 +28,8 @@ sub processAI {
     die "abstract method processAI";
 }
 
-use org::allbinary::graphics::IdentifierInterface;
-use org::allbinary::layer::AllBinaryLayerManager;
+use org::allbinary::graphics::IdentifierInterface ();
+use org::allbinary::layer::AllBinaryLayerManager ();
 
 1;
 

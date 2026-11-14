@@ -17,7 +17,7 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
-use parent -norequire,'org::allbinary::input::motion::gesture::observer::CompleteMotionGestureListenerInterface';
+use parent -norequire,'java::lang::Object','org::allbinary::input::motion::gesture::observer::CompleteMotionGestureListenerInterface';
 
 
 sub _init_fields {
@@ -29,7 +29,7 @@ sub _init_fields {
 sub new {
     my ($class) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
         my $commonStrings = 'org::allbinary::string::CommonStrings'->getInstance();
         $self->{logUtil}->putF("MotionGesture to CompleteMotionGesture Reciever", $self, $commonStrings->{CONSTRUCTOR});
         'org::allbinary::game::input::CompleteMotionGestureInputEventHandler'->getInstance()->addListener('org::allbinary::game::input::motion::action::GameKeyFromMotionGestureEventListener'->new());
@@ -53,16 +53,17 @@ sub onMotionGestureCompleted {
         }
 }
 
-use org::allbinary::game::input::CompleteMotionGestureInputEventHandler;
-use org::allbinary::game::input::motion::action::GameKeyCompleteMotionGestureInputEvent;
-use org::allbinary::game::input::motion::action::GameKeyFromMotionGestureEventListener;
-use org::allbinary::input::motion::gesture::MotionGestureToMotionGestureActionAssociation;
-use org::allbinary::input::motion::gesture::configuration::MotionGestureConfiguration;
-use org::allbinary::input::motion::gesture::configuration::MotionGestureConfigurationFactory;
-use org::allbinary::logic::communication::log::LogUtil;
-use org::allbinary::string::CommonStrings;
-use org::allbinary::util::BasicArrayList;
-use org::allbinary::input::motion::gesture::observer::CompleteMotionGestureListenerInterface;
+use java::lang::Object ();
+use org::allbinary::game::input::CompleteMotionGestureInputEventHandler ();
+use org::allbinary::game::input::motion::action::GameKeyCompleteMotionGestureInputEvent ();
+use org::allbinary::game::input::motion::action::GameKeyFromMotionGestureEventListener ();
+use org::allbinary::input::motion::gesture::MotionGestureToMotionGestureActionAssociation ();
+use org::allbinary::input::motion::gesture::configuration::MotionGestureConfiguration ();
+use org::allbinary::input::motion::gesture::configuration::MotionGestureConfigurationFactory ();
+use org::allbinary::logic::communication::log::LogUtil ();
+use org::allbinary::string::CommonStrings ();
+use org::allbinary::util::BasicArrayList ();
+use org::allbinary::input::motion::gesture::observer::CompleteMotionGestureListenerInterface ();
 
 1;
 

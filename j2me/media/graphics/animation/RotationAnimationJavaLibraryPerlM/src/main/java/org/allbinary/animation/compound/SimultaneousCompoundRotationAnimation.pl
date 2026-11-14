@@ -29,7 +29,7 @@ sub _init_fields {
 sub new {
     my ($class, $animationInterfaceArray, $animationBehavior) = @_;
     my $self = $class->SUPER::new('org::allbinary::math::AngleInfo'->getInstance('org::allbinary::math::AngleFactory'->getInstance()->{QUARTER_TOTAL_ANGLE}), 'org::allbinary::util::CircularIndexUtil'->createInstance(4), $animationBehavior);
-    $self->_init_fields();
+    _init_fields($self);
         # super(...) made $self above
         $self->{animationInterfaceArray} = $animationInterfaceArray;
     return $self;
@@ -179,16 +179,17 @@ sub set {
         }
 }
 
-# use javax::microedition::khronos::opengles::GL;
-# use javax::microedition::lcdui::Graphics;
-use org::allbinary::animation::AnimationBehavior;
-use org::allbinary::animation::RotationAnimation;
-use org::allbinary::direction::Direction;
-use org::allbinary::logic::math::PrimitiveIntUtil;
-use org::allbinary::math::Angle;
-use org::allbinary::math::AngleFactory;
-use org::allbinary::math::AngleInfo;
-use org::allbinary::util::CircularIndexUtil;
+use java::lang::Object ();
+use javax::microedition::khronos::opengles::GL ();
+use javax::microedition::lcdui::Graphics ();
+use org::allbinary::animation::AnimationBehavior ();
+use org::allbinary::animation::RotationAnimation ();
+use org::allbinary::direction::Direction ();
+use org::allbinary::logic::math::PrimitiveIntUtil ();
+use org::allbinary::math::Angle ();
+use org::allbinary::math::AngleFactory ();
+use org::allbinary::math::AngleInfo ();
+use org::allbinary::util::CircularIndexUtil ();
 
 1;
 

@@ -37,7 +37,7 @@ sub new {
 sub _new1 {
     my ($class, $storeName) = @_;
     my $self = $class->SUPER::new();
-    $self->_init_fields();
+    _init_fields($self);
         $self->{storeFrontInterface} = 'org::allbinary::business::context::modules::storefront::StoreFrontFactory'->getInstance($storeName);
     return $self;
 }
@@ -46,7 +46,7 @@ sub _new1 {
 sub _new1 {
     my ($class, $document) = @_;
     my $self = $class->SUPER::new();
-    $self->_init_fields();
+    _init_fields($self);
         die ('org::allbinary::string::CommonStrings'->getInstance()->{NOT_IMPLEMENTED});
     return $self;
 }
@@ -100,17 +100,18 @@ sub toXmlNode {
         return $node;
 }
 
-use org::allbinary::business::context::modules::storefront::StoreFrontFactory;
-use org::allbinary::business::context::modules::storefront::StoreFrontInterface;
-use org::allbinary::business::context::modules::storefront::StoreFrontView;
-use org::allbinary::data::tree::dom::DomNodeInterface;
-use org::allbinary::logic::communication::log::LogUtil;
-use org::allbinary::logic::control::validate::Validation;
-use org::allbinary::logic::string::StringMaker;
-use org::allbinary::string::CommonStrings;
-use org::w3c::dom::Document;
-use org::w3c::dom::Node;
-use org::allbinary::logic::visual::transform::template::customizer::includes::globals::GlobalsData;
+use java::lang::Object ();
+use org::allbinary::business::context::modules::storefront::StoreFrontFactory ();
+use org::allbinary::business::context::modules::storefront::StoreFrontInterface ();
+use org::allbinary::business::context::modules::storefront::StoreFrontView ();
+use org::allbinary::data::tree::dom::DomNodeInterface ();
+use org::allbinary::logic::communication::log::LogUtil ();
+use org::allbinary::logic::control::validate::Validation ();
+use org::allbinary::logic::string::StringMaker ();
+use org::allbinary::string::CommonStrings ();
+use org::w3c::dom::Document ();
+use org::w3c::dom::Node ();
+use org::allbinary::logic::visual::transform::template::customizer::includes::globals::GlobalsData ();
 
 1;
 

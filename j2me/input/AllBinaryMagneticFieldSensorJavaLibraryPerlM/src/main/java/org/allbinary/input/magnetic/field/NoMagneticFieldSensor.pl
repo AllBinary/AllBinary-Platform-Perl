@@ -38,9 +38,10 @@ sub onSensorChange {
     my ($self) = @_;
 }
 
-use org::allbinary::input::AllBinarySensorListener;
-use org::allbinary::logic::math::Orientation;
-use org::allbinary::input::magnetic::field::AllBinaryMagneticFieldSensor;
+use java::lang::Object ();
+use org::allbinary::input::AllBinarySensorListener ();
+use org::allbinary::logic::math::Orientation ();
+use org::allbinary::input::magnetic::field::AllBinaryMagneticFieldSensor ();
 
 1;
 

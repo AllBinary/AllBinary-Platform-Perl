@@ -17,8 +17,9 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
-our $SINGLETON = 'org::allbinary::game::configuration::GameConfigurationSingleton'->new();
+tie our $SINGLETON, 'java::lang::LazyStatic', sub { 'org::allbinary::game::configuration::GameConfigurationSingleton'->new() };
 
 sub _init_fields {
     my ($self) = @_;
@@ -36,7 +37,7 @@ sub getInstance {
 sub new {
     my ($class) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
         $self->{list} = 'org::allbinary::util::BasicArrayListD'->new();
         $self->{hashtable} = 'org::allbinary::logic::StdUtil'->getInstance()->createHashtable();
     return $self;
@@ -66,10 +67,12 @@ sub getHashtable {
         return $self->{hashtable};
 }
 
-use org::allbinary::logic::StdUtil;
-use org::allbinary::util::ABHashtable;
-use org::allbinary::util::BasicArrayList;
-use org::allbinary::util::BasicArrayListD;
+use java::lang::Object ();
+use java::lang::LazyStatic ();
+use org::allbinary::logic::StdUtil ();
+use org::allbinary::util::ABHashtable ();
+use org::allbinary::util::BasicArrayList ();
+use org::allbinary::util::BasicArrayListD ();
 
 1;
 

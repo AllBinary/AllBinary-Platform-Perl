@@ -30,7 +30,7 @@ sub _init_fields {
 sub new {
     my ($class, $text, $fontSize, $dx, $dy, $animationBehavior) = @_;
     my $self = $class->SUPER::new($text, $fontSize, $animationBehavior);
-    $self->_init_fields();
+    _init_fields($self);
         # super(...) made $self above
         $self->{dx} = $dx;
         $self->{dy} = $dy;
@@ -67,9 +67,10 @@ sub paintXY {
         $self->SUPER::paintXY($graphics, $x + $self->{dx}, $y + $self->{dy});
 }
 
-# use javax::microedition::lcdui::Graphics;
-use org::allbinary::animation::AnimationBehavior;
-use org::allbinary::animation::text::CustomTextAnimation;
+use java::lang::Object ();
+use javax::microedition::lcdui::Graphics ();
+use org::allbinary::animation::AnimationBehavior ();
+use org::allbinary::animation::text::CustomTextAnimation ();
 
 1;
 

@@ -29,9 +29,24 @@ sub new {
     return $self;
 }
 
-use org::allbinary::android::input::VirtualKeyboard;
-use org::allbinary::input::event::VirtualKeyboardEventListenerInterface;
-use android::app::Activity;
+
+sub onVirtualKeyboardEvent {
+    my ($self, $virtualKeyboardEvent) = @_;
+        $self->SUPER::onVirtualKeyboardEvent($virtualKeyboardEvent);
+}
+
+
+sub onEvent {
+    my ($self, $eventObject) = @_;
+        $self->SUPER::onEvent($eventObject);
+}
+
+use java::lang::Object ();
+use org::allbinary::android::input::VirtualKeyboard ();
+use org::allbinary::input::event::VirtualKeyboardEventListenerInterface ();
+# use android::app::Activity ();
+use org::allbinary::input::event::VirtualKeyboardEvent ();
+use org::allbinary::logic::util::event::AllBinaryEventObject ();
 
 1;
 

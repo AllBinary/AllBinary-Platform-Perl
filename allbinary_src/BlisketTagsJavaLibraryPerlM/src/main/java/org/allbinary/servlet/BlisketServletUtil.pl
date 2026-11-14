@@ -17,8 +17,9 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
-our $instance = 'org::allbinary::servlet::BlisketServletUtil'->new();
+tie our $instance, 'java::lang::LazyStatic', sub { 'org::allbinary::servlet::BlisketServletUtil'->new() };
 
 sub new {
     my ($class) = @_;
@@ -41,11 +42,13 @@ sub init {
         'org::allbinary::logic::system::loader::WebappClassLoaderInfo'->setLoader(ref($self)->getClassLoader());
 }
 
-# use javax::servlet::http::HttpServletRequest;
-use org::allbinary::globals::AppUrlGlobals;
-use org::allbinary::globals::URLGLOBALS;
-use org::allbinary::logic::io::path::AbPathData;
-use org::allbinary::logic::system::loader::WebappClassLoaderInfo;
+use java::lang::Object ();
+use java::lang::LazyStatic ();
+# use javax::servlet::http::HttpServletRequest ();
+use org::allbinary::globals::AppUrlGlobals ();
+use org::allbinary::globals::URLGLOBALS ();
+use org::allbinary::logic::io::path::AbPathData ();
+use org::allbinary::logic::system::loader::WebappClassLoaderInfo ();
 
 1;
 

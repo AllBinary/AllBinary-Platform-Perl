@@ -17,6 +17,7 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
 our $DES = "DES";
 our $DESEDE = "DESede";
@@ -34,7 +35,8 @@ sub getInstance {
         return undef;
 }
 
-# use java::security::spec::KeySpec;
+use java::lang::Object ();
+# use java::security::spec::KeySpec ();
 
 1;
 

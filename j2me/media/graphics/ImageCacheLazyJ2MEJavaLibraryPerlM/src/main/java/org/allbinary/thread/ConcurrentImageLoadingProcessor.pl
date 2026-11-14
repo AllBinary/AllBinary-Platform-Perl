@@ -30,7 +30,7 @@ sub _init_fields {
 sub new {
     my ($class, $imageCache) = @_;
     my $self = $class->SUPER::new();
-    $self->_init_fields();
+    _init_fields($self);
         $self->{runnable} = 'org::allbinary::thread::ImageCacheRunnable'->new($imageCache);
     return $self;
 }
@@ -60,7 +60,7 @@ sub runTask {
     sub new {
         my ($class, $imageCache) = @_;
         my $self = $class->SUPER::new();
-        $self->_init_fields();
+        _init_fields($self);
             $self->{imageCache} = $imageCache;
         return $self;
     }
@@ -88,14 +88,15 @@ sub runTask {
     }
 
 
-use org::allbinary::graphics::canvas::transition::progress::ProgressCanvas;
-use org::allbinary::graphics::canvas::transition::progress::ProgressCanvasFactory;
-use org::allbinary::image::ImageCache;
-use org::allbinary::logic::communication::log::LogUtil;
-use org::allbinary::string::CommonStrings;
-use org::allbinary::thread::BaseImageLoadingProcessor;
-use org::allbinary::thread::ABRunnable;
-use org::allbinary::thread::ImageThreadPool;
+use java::lang::Object ();
+use org::allbinary::graphics::canvas::transition::progress::ProgressCanvas ();
+use org::allbinary::graphics::canvas::transition::progress::ProgressCanvasFactory ();
+use org::allbinary::image::ImageCache ();
+use org::allbinary::logic::communication::log::LogUtil ();
+use org::allbinary::string::CommonStrings ();
+use org::allbinary::thread::BaseImageLoadingProcessor ();
+use org::allbinary::thread::ABRunnable ();
+use org::allbinary::thread::ImageThreadPool ();
 
 1;
 

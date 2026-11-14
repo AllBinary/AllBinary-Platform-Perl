@@ -29,7 +29,7 @@ sub _init_fields {
 sub new {
     my ($class, $transformInfoInterface) = @_;
     my $self = $class->SUPER::new($transformInfoInterface);
-    $self->_init_fields();
+    _init_fields($self);
         # super(...) made $self above
     return $self;
 }
@@ -50,13 +50,14 @@ sub view {
         }
 }
 
-use org::allbinary::logic::communication::log::LogUtil;
-use org::allbinary::logic::visual::transform::info::TransformInfoData;
-use org::allbinary::logic::visual::transform::info::TransformInfoHttpInterface;
-use org::allbinary::logic::visual::transform::info::TransformInfoInterface;
-use org::allbinary::logic::visual::transform::info::TransformInfosData;
-use org::allbinary::string::CommonSeps;
-use views::business::context::modules::storefront::generator::GeneratorStoreFrontContextView;
+use java::lang::Object ();
+use org::allbinary::logic::communication::log::LogUtil ();
+use org::allbinary::logic::visual::transform::info::TransformInfoData ();
+use org::allbinary::logic::visual::transform::info::TransformInfoHttpInterface ();
+use org::allbinary::logic::visual::transform::info::TransformInfoInterface ();
+use org::allbinary::logic::visual::transform::info::TransformInfosData ();
+use org::allbinary::string::CommonSeps ();
+use views::business::context::modules::storefront::generator::GeneratorStoreFrontContextView ();
 
 1;
 

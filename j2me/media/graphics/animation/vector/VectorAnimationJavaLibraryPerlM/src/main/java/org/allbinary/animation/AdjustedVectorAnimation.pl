@@ -30,7 +30,7 @@ sub _init_fields {
 sub new {
     my ($class, $currentPoints, $basicColor, $dx, $dy, $animationBehavior) = @_;
     my $self = $class->SUPER::new($currentPoints, $basicColor, $animationBehavior);
-    $self->_init_fields();
+    _init_fields($self);
         # super(...) made $self above
         $self->{dx} = $dx;
         $self->{dy} = $dy;
@@ -43,9 +43,10 @@ sub paintXY {
         $self->SUPER::paintXY($graphics, $x + $self->{dx}, $y + $self->{dy});
 }
 
-# use javax::microedition::lcdui::Graphics;
-use org::allbinary::graphics::color::BasicColor;
-use org::allbinary::animation::VectorAnimation;
+use java::lang::Object ();
+use javax::microedition::lcdui::Graphics ();
+use org::allbinary::graphics::color::BasicColor ();
+use org::allbinary::animation::VectorAnimation ();
 
 1;
 

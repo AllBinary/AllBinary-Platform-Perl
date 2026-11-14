@@ -17,8 +17,9 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
-our $instance = 'org::allbinary::graphics::form::ItemIndexDx'->new();
+tie our $instance, 'java::lang::LazyStatic', sub { 'org::allbinary::graphics::form::ItemIndexDx'->new() };
 
 sub new {
     my ($class) = @_;
@@ -39,7 +40,9 @@ sub getDx {
         return 0;
 }
 
-use org::allbinary::graphics::form::item::ABCustomItem;
+use java::lang::Object ();
+use java::lang::LazyStatic ();
+use org::allbinary::graphics::form::item::ABCustomItem ();
 
 1;
 

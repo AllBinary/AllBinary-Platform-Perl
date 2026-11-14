@@ -29,7 +29,7 @@ sub _init_fields {
 sub new {
     my ($class, $speedBasicDecimal) = @_;
     my $self = $class->SUPER::new($speedBasicDecimal, 'org::allbinary::game::physics::velocity::VelocityProperties'->new(int($speedBasicDecimal->getUnscaled()), int($speedBasicDecimal->getUnscaled())));
-    $self->_init_fields();
+    _init_fields($self);
         # super(...) made $self above
     return $self;
 }
@@ -42,11 +42,12 @@ sub process {
         $self->{gravityUtil}->process($self->getVelocityProperties(), $self->{gravityUtil}->{GAME_GRAVITY_VELOCITY});
 }
 
-use org::allbinary::game::layer::AllBinaryGameLayer;
-use org::allbinary::game::physics::acceleration::GravityUtil;
-use org::allbinary::game::physics::velocity::VelocityProperties;
-use org::allbinary::logic::math::BasicDecimal;
-use org::allbinary::physics::movement::BasicConstantVelocityMovement;
+use java::lang::Object ();
+use org::allbinary::game::layer::AllBinaryGameLayer ();
+use org::allbinary::game::physics::acceleration::GravityUtil ();
+use org::allbinary::game::physics::velocity::VelocityProperties ();
+use org::allbinary::logic::math::BasicDecimal ();
+use org::allbinary::physics::movement::BasicConstantVelocityMovement ();
 
 1;
 

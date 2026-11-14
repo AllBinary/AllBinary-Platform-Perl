@@ -31,7 +31,7 @@ sub _init_fields {
 sub new {
     my ($class) = @_;
     my $self = $class->SUPER::new('org::allbinary::business::init::db::HistoryDbInitInfo'->new());
-    $self->_init_fields();
+    _init_fields($self);
         # super(...) made $self above
         $self->setTableName($self->{tableName});
     return $self;
@@ -296,35 +296,43 @@ sub dropTable {
         return $self->SUPER::dropTable();
 }
 
-use java::util::HashMap;
-# use java::util::ListIterator;
-# use java::util::Set;
-use org::allbinary::util::BasicArrayList;
-use org::allbinary::util::BasicArrayListD;
-use org::allbinary::business::context::modules::storefront::StoreFrontData;
-use org::allbinary::business::entry::EntryData;
-use org::allbinary::business::init::db::HistoryDbInitInfo;
-use org::allbinary::logic::StdUtil;
-use org::allbinary::business::user::UserData;
-use org::allbinary::business::user::address::ShippingAddressData;
-use org::allbinary::business::user::commerce::inventory::basket::BasketInterface;
-use org::allbinary::business::user::commerce::inventory::basket::BasketReview;
-use org::allbinary::business::user::commerce::inventory::item::BasicItemData;
-use org::allbinary::business::user::commerce::inventory::item::Item;
-use org::allbinary::business::user::commerce::inventory::item::ItemInterface;
-use org::allbinary::business::user::commerce::inventory::order::OrderData;
-use org::allbinary::business::user::commerce::inventory::order::OrderHistoryData;
-use org::allbinary::business::user::commerce::inventory::order::OrderInterface;
-use org::allbinary::business::user::commerce::shipping::ShippingMethodData;
-use org::allbinary::data::generator::OrderItemIdGenerator;
-use org::allbinary::data::tables::TableDataFactory;
-use org::allbinary::data::tables::user::commerce::inventory::item::InventoryEntity;
-use org::allbinary::data::tables::user::commerce::inventory::item::InventoryEntityFactory;
-use org::allbinary::logic::communication::log::LogUtil;
-use org::allbinary::logic::communication::sql::AbSqlBean;
-use org::allbinary::logic::string::StringMaker;
-use org::allbinary::logic::string::StringUtil;
-use org::allbinary::data::tables::user::commerce::inventory::order::OrderItemsEntityInterface;
+
+# Java overloaded method: Perl keeps the last definition
+sub insert {
+    my ($self, $values) = @_;
+        $self->SUPER::insert($values);
+}
+
+use java::lang::Object ();
+use java::util::HashMap ();
+# use java::util::ListIterator ();
+# use java::util::Set ();
+use org::allbinary::util::BasicArrayList ();
+use org::allbinary::util::BasicArrayListD ();
+use org::allbinary::business::context::modules::storefront::StoreFrontData ();
+use org::allbinary::business::entry::EntryData ();
+use org::allbinary::business::init::db::HistoryDbInitInfo ();
+use org::allbinary::logic::StdUtil ();
+use org::allbinary::business::user::UserData ();
+use org::allbinary::business::user::address::ShippingAddressData ();
+use org::allbinary::business::user::commerce::inventory::basket::BasketInterface ();
+use org::allbinary::business::user::commerce::inventory::basket::BasketReview ();
+use org::allbinary::business::user::commerce::inventory::item::BasicItemData ();
+use org::allbinary::business::user::commerce::inventory::item::Item ();
+use org::allbinary::business::user::commerce::inventory::item::ItemInterface ();
+use org::allbinary::business::user::commerce::inventory::order::OrderData ();
+use org::allbinary::business::user::commerce::inventory::order::OrderHistoryData ();
+use org::allbinary::business::user::commerce::inventory::order::OrderInterface ();
+use org::allbinary::business::user::commerce::shipping::ShippingMethodData ();
+use org::allbinary::data::generator::OrderItemIdGenerator ();
+use org::allbinary::data::tables::TableDataFactory ();
+use org::allbinary::data::tables::user::commerce::inventory::item::InventoryEntity ();
+use org::allbinary::data::tables::user::commerce::inventory::item::InventoryEntityFactory ();
+use org::allbinary::logic::communication::log::LogUtil ();
+use org::allbinary::logic::communication::sql::AbSqlBean ();
+use org::allbinary::logic::string::StringMaker ();
+use org::allbinary::logic::string::StringUtil ();
+use org::allbinary::data::tables::user::commerce::inventory::order::OrderItemsEntityInterface ();
 
 1;
 

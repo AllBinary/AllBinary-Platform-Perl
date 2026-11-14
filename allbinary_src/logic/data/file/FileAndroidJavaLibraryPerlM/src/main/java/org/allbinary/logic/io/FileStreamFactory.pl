@@ -17,8 +17,9 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
-our $SINGLETON = 'org::allbinary::logic::NullUtil'->getInstance()->{NULL_OBJECT};
+tie our $SINGLETON, 'java::lang::LazyStatic', sub { 'org::allbinary::logic::NullUtil'->getInstance()->{NULL_OBJECT} };
 
 sub _init_fields {
     my ($self) = @_;
@@ -38,7 +39,7 @@ sub getInstance {
 sub new {
     my ($class, $context) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
         $self->{context} = $context;
     return $self;
 }
@@ -72,11 +73,13 @@ sub getContext {
         return $self->{context};
 }
 
-use android::content::Context;
-use org::allbinary::data::resource::ResourceUtil;
-use org::allbinary::logic::NullUtil;
-use org::allbinary::logic::io::AbFileInputStream;
-use org::allbinary::logic::io::AbFileOutputStream;
+use java::lang::Object ();
+use java::lang::LazyStatic ();
+# use android::content::Context ();
+use org::allbinary::data::resource::ResourceUtil ();
+use org::allbinary::logic::NullUtil ();
+use org::allbinary::logic::io::AbFileInputStream ();
+use org::allbinary::logic::io::AbFileOutputStream ();
 
 1;
 

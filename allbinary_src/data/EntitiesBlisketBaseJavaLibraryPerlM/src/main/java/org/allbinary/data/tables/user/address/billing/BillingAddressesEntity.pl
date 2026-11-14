@@ -29,13 +29,14 @@ sub _init_fields {
 sub new {
     my ($class, $userName) = @_;
     my $self = $class->SUPER::new($userName);
-    $self->_init_fields();
+    _init_fields($self);
         # super(...) made $self above
         $self->setTableName($self->{TABLENAME});
     return $self;
 }
 
-use org::allbinary::data::tables::user::address::StreetAddressesEntity;
+use java::lang::Object ();
+use org::allbinary::data::tables::user::address::StreetAddressesEntity ();
 
 1;
 

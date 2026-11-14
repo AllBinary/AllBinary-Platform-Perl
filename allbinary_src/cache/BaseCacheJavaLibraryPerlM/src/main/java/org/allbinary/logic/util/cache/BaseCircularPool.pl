@@ -17,6 +17,7 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
 
 sub _init_fields {
@@ -28,7 +29,7 @@ sub _init_fields {
 sub new {
     my ($class) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
     return $self;
 }
 
@@ -58,11 +59,12 @@ sub getInstance {
         return $self->{OBJECT_ARRAY}->[$index];
 }
 
-# use jsinterop::annotations::JsType;
-use org::allbinary::logic::NullUtil;
-use org::allbinary::util::CircularIndexUtil;
-# use jsinterop::annotations::JsMethod;
-# use jsinterop::annotations::JsProperty;
+use java::lang::Object ();
+# use jsinterop::annotations::JsType ();
+use org::allbinary::logic::NullUtil ();
+use org::allbinary::util::CircularIndexUtil ();
+# use jsinterop::annotations::JsMethod ();
+# use jsinterop::annotations::JsProperty ();
 
 1;
 

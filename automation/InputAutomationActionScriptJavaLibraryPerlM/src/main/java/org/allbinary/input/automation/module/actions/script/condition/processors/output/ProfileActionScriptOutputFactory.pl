@@ -17,6 +17,7 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
 
 
@@ -39,10 +40,11 @@ sub getInstance {
         return $profileActionScriptOutputInterface;
 }
 
-use org::allbinary::data::tree::dom::DomSearchHelper;
-use org::w3c::dom::Node;
-use org::allbinary::input::automation::module::actions::script::condition::processors::output::ImageActionScriptOutputData;
-use org::allbinary::input::automation::module::actions::script::condition::processors::output::ImageActionScriptOutput;
+use java::lang::Object ();
+use org::allbinary::data::tree::dom::DomSearchHelper ();
+use org::w3c::dom::Node ();
+use org::allbinary::input::automation::module::actions::script::condition::processors::output::ImageActionScriptOutputData ();
+use org::allbinary::input::automation::module::actions::script::condition::processors::output::ImageActionScriptOutput ();
 
 1;
 

@@ -30,7 +30,7 @@ sub _init_fields {
 sub new {
     my ($class) = @_;
     my $self = $class->SUPER::new();
-    $self->_init_fields();
+    _init_fields($self);
     return $self;
 }
 
@@ -46,8 +46,9 @@ sub getCommand {
         return $self->{command};
 }
 
-use tags::CustomTagSupport;
-use tags::TagStrings;
+use java::lang::Object ();
+use tags::CustomTagSupport ();
+use tags::TagStrings ();
 
 1;
 

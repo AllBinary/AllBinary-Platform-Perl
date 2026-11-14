@@ -19,7 +19,7 @@ use feature 'try';
 no warnings 'experimental::try';
 use parent -norequire,'org::allbinary::logic::system::os::GenericOperatingSystem';
 
-our $NO_OPERATING_SYSTEM = 'org::allbinary::logic::system::os::GenericOperatingSystem'->new();
+tie our $NO_OPERATING_SYSTEM, 'java::lang::LazyStatic', sub { 'org::allbinary::logic::system::os::GenericOperatingSystem'->new() };
 
 
 sub new {
@@ -28,7 +28,9 @@ sub new {
     return $self;
 }
 
-use org::allbinary::logic::system::os::GenericOperatingSystem;
+use java::lang::Object ();
+use java::lang::LazyStatic ();
+use org::allbinary::logic::system::os::GenericOperatingSystem ();
 
 1;
 

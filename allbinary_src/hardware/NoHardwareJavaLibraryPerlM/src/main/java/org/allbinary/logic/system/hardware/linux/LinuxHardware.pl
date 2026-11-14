@@ -17,7 +17,7 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
-use parent -norequire,'org::allbinary::logic::system::hardware::HardwareInterface';
+use parent -norequire,'java::lang::Object','org::allbinary::logic::system::hardware::HardwareInterface';
 
 
 
@@ -123,22 +123,23 @@ sub isNextHardware {
         return 0;
 }
 
-use org::allbinary::logic::StdUtil;
-use org::allbinary::logic::string::StringUtil;
-use org::allbinary::logic::system::hardware::HardwareInterface;
-use org::allbinary::logic::system::hardware::components::interfaces::BridgeInterface;
-use org::allbinary::logic::system::hardware::components::interfaces::CpuInterface;
-use org::allbinary::logic::system::hardware::components::interfaces::EthernetInterface;
-use org::allbinary::logic::system::hardware::components::interfaces::FireWireInterface;
-use org::allbinary::logic::system::hardware::components::interfaces::HardDriveControllerInterface;
-use org::allbinary::logic::system::hardware::components::interfaces::HardDriveInterface;
-use org::allbinary::logic::system::hardware::components::interfaces::HardwareComponentInterface;
-use org::allbinary::logic::system::hardware::components::interfaces::MachineAccessControlAddressInterface;
-use org::allbinary::logic::system::hardware::components::interfaces::MediaInterface;
-use org::allbinary::logic::system::hardware::components::interfaces::MonitorInterface;
-use org::allbinary::logic::system::hardware::components::interfaces::UsbInterface;
-use org::allbinary::logic::system::hardware::components::interfaces::VideoInterface;
-use org::allbinary::util::ABHashtable;
+use java::lang::Object ();
+use org::allbinary::logic::StdUtil ();
+use org::allbinary::logic::string::StringUtil ();
+use org::allbinary::logic::system::hardware::HardwareInterface ();
+use org::allbinary::logic::system::hardware::components::interfaces::BridgeInterface ();
+use org::allbinary::logic::system::hardware::components::interfaces::CpuInterface ();
+use org::allbinary::logic::system::hardware::components::interfaces::EthernetInterface ();
+use org::allbinary::logic::system::hardware::components::interfaces::FireWireInterface ();
+use org::allbinary::logic::system::hardware::components::interfaces::HardDriveControllerInterface ();
+use org::allbinary::logic::system::hardware::components::interfaces::HardDriveInterface ();
+use org::allbinary::logic::system::hardware::components::interfaces::HardwareComponentInterface ();
+use org::allbinary::logic::system::hardware::components::interfaces::MachineAccessControlAddressInterface ();
+use org::allbinary::logic::system::hardware::components::interfaces::MediaInterface ();
+use org::allbinary::logic::system::hardware::components::interfaces::MonitorInterface ();
+use org::allbinary::logic::system::hardware::components::interfaces::UsbInterface ();
+use org::allbinary::logic::system::hardware::components::interfaces::VideoInterface ();
+use org::allbinary::util::ABHashtable ();
 
 1;
 

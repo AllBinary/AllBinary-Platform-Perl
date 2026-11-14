@@ -26,8 +26,8 @@ sub setFontDebug {
     die "abstract method setFontDebug";
 }
 
-# use javax::microedition::lcdui::Font;
-use org::allbinary::graphics::font::FontDebugBase;
+use javax::microedition::lcdui::Font ();
+use org::allbinary::graphics::font::FontDebugBase ();
 
 1;
 

@@ -18,8 +18,9 @@ use warnings;
 use feature 'try';
 no warnings 'experimental::try';
 use POSIX ();
+use parent -norequire,'java::lang::Object';
 
-our $instance = 'org::allbinary::image::AnimationFrameToImageUtil'->new();
+tie our $instance, 'java::lang::LazyStatic', sub { 'org::allbinary::image::AnimationFrameToImageUtil'->new() };
 
 sub new {
     my ($class) = @_;
@@ -57,10 +58,12 @@ sub getInstanceWH {
         return $image;
 }
 
-# use javax::microedition::lcdui::Graphics;
-# use javax::microedition::lcdui::Image;
-use org::allbinary::animation::Animation;
-use org::allbinary::image::GameFeatureImageCacheFactory;
+use java::lang::Object ();
+use java::lang::LazyStatic ();
+use javax::microedition::lcdui::Graphics ();
+use javax::microedition::lcdui::Image ();
+use org::allbinary::animation::Animation ();
+use org::allbinary::image::GameFeatureImageCacheFactory ();
 
 1;
 

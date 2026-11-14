@@ -17,6 +17,7 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
 
 sub _init_fields {
@@ -31,7 +32,7 @@ sub _init_fields {
 sub new {
     my ($class, $commandFormInputProcessor, $command) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
         $self->{commandFormInputProcessor} = $commandFormInputProcessor;
         $self->{command} = $command;
     return $self;
@@ -51,11 +52,12 @@ sub run {
         }
 }
 
-# use javax::microedition::lcdui::Command;
-# use javax::microedition::lcdui::CommandListener;
-use org::allbinary::graphics::displayable::MyCanvas;
-use org::allbinary::logic::communication::log::LogUtil;
-use org::allbinary::string::CommonStrings;
+use java::lang::Object ();
+use javax::microedition::lcdui::Command ();
+use javax::microedition::lcdui::CommandListener ();
+use org::allbinary::graphics::displayable::MyCanvas ();
+use org::allbinary::logic::communication::log::LogUtil ();
+use org::allbinary::string::CommonStrings ();
 
 1;
 

@@ -19,7 +19,7 @@ use feature 'try';
 no warnings 'experimental::try';
 use parent -norequire,'org::allbinary::android::api5::ActivityFractureUtilAPI5';
 
-our $instance19 = 'org::allbinary::android::api19::ActivityFractureUtilAPI19'->new();
+tie our $instance19, 'java::lang::LazyStatic', sub { 'org::allbinary::android::api19::ActivityFractureUtilAPI19'->new() };
 
 sub new {
     my ($class) = @_;
@@ -41,9 +41,11 @@ sub setFullScreen {
         $decorView->setSystemUiVisibility($visibility);
 }
 
-use android::app::Activity;
-use android::view::View;
-use org::allbinary::android::api5::ActivityFractureUtilAPI5;
+use java::lang::Object ();
+use java::lang::LazyStatic ();
+# use android::app::Activity ();
+# use android::view::View ();
+use org::allbinary::android::api5::ActivityFractureUtilAPI5 ();
 
 1;
 

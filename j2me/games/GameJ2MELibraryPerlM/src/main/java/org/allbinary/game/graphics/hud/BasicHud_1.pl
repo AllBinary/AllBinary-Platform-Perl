@@ -17,7 +17,7 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
-use parent -norequire,'org::allbinary::graphics::font::UpdateMyFontInterface';
+use parent -norequire,'java::lang::Object','org::allbinary::graphics::font::UpdateMyFontInterface';
 
 
 sub _init_fields {
@@ -46,7 +46,7 @@ sub _init_fields {
 sub new {
     my ($class, $location, $direction, $bufferZone, $basicColor) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
         $self->setLocation($location);
         $self->setDirection($direction);
         $self->setBufferZone($bufferZone);
@@ -268,27 +268,28 @@ sub paintString {
         $graphics->drawString($string, $self->{x}, $y, $self->{hudGraphicsPosition}->getAnchor());
 }
 
-# use javax::microedition::lcdui::Graphics;
-use org::allbinary::graphics::Anchor;
-use org::allbinary::graphics::GPoint;
-use org::allbinary::graphics::PointFactory;
-use org::allbinary::graphics::color::BasicColor;
-use org::allbinary::graphics::color::BasicColorFactory;
-use org::allbinary::graphics::color::BasicColorSetUtil;
-use org::allbinary::graphics::displayable::CanvasStrings;
-use org::allbinary::graphics::displayable::DisplayInfoSingleton;
-use org::allbinary::graphics::displayable::event::DisplayChangeEvent;
-use org::allbinary::graphics::font::MyFontProcessor;
-use org::allbinary::graphics::font::UpdateMyFontInterface;
-use org::allbinary::graphics::font::UpdateMyFontProcessor;
-use org::allbinary::logic::communication::log::ForcedLogUtil;
-use org::allbinary::logic::communication::log::LogUtil;
-use org::allbinary::logic::string::StringMaker;
-use org::allbinary::logic::util::event::AllBinaryEventObject;
-use org::allbinary::logic::util::event::EventStrings;
-use org::allbinary::string::CommonStrings;
-use org::allbinary::game::graphics::hud::HudGraphicsPosition;
-use org::allbinary::game::graphics::hud::BasicHudFactory;
+use java::lang::Object ();
+use javax::microedition::lcdui::Graphics ();
+use org::allbinary::graphics::Anchor ();
+use org::allbinary::graphics::GPoint ();
+use org::allbinary::graphics::PointFactory ();
+use org::allbinary::graphics::color::BasicColor ();
+use org::allbinary::graphics::color::BasicColorFactory ();
+use org::allbinary::graphics::color::BasicColorSetUtil ();
+use org::allbinary::graphics::displayable::CanvasStrings ();
+use org::allbinary::graphics::displayable::DisplayInfoSingleton ();
+use org::allbinary::graphics::displayable::event::DisplayChangeEvent ();
+use org::allbinary::graphics::font::MyFontProcessor ();
+use org::allbinary::graphics::font::UpdateMyFontInterface ();
+use org::allbinary::graphics::font::UpdateMyFontProcessor ();
+use org::allbinary::logic::communication::log::ForcedLogUtil ();
+use org::allbinary::logic::communication::log::LogUtil ();
+use org::allbinary::logic::string::StringMaker ();
+use org::allbinary::logic::util::event::AllBinaryEventObject ();
+use org::allbinary::logic::util::event::EventStrings ();
+use org::allbinary::string::CommonStrings ();
+use org::allbinary::game::graphics::hud::HudGraphicsPosition ();
+use org::allbinary::game::graphics::hud::BasicHudFactory ();
 
 1;
 

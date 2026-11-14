@@ -17,7 +17,7 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
-use parent -norequire,'org::allbinary::logic::util::cache::CacheableInterface';
+use parent -norequire,'java::lang::Object','org::allbinary::logic::util::cache::CacheableInterface';
 
 
 sub _init_fields {
@@ -31,7 +31,7 @@ sub _init_fields {
 sub new {
     my ($class, $rgb1, $rgb2) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
         $self->setRgb1($rgb1);
         $self->setRgb2($rgb2);
         $self->{key} = 'org::allbinary::media::image::comparison::color::ColorDelta'->getKey($rgb1, $rgb2);
@@ -81,10 +81,11 @@ sub toString {
         return 'org::allbinary::logic::string::StringMaker'->new()->append("ColorDelta: ")->append('org::allbinary::logic::string::StringUtil'->getInstance()->toString($self->getKey()))->append(" RGB1: ")->appendint($self->getRgb1())->append(" RGB2: ")->appendint($self->getRgb2())->toString();
 }
 
-use org::allbinary::logic::string::StringMaker;
-use org::allbinary::logic::string::StringUtil;
-use org::allbinary::logic::util::cache::CacheableInterface;
-use org::allbinary::string::CommonSeps;
+use java::lang::Object ();
+use org::allbinary::logic::string::StringMaker ();
+use org::allbinary::logic::string::StringUtil ();
+use org::allbinary::logic::util::cache::CacheableInterface ();
+use org::allbinary::string::CommonSeps ();
 
 1;
 

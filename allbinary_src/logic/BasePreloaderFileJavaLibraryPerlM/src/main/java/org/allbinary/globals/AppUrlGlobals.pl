@@ -20,7 +20,7 @@ use feature 'try';
 no warnings 'experimental::try';
 use parent -norequire,'org::allbinary::globals::UrlGlobalsInterface';
 
-our $NULL_APP_URL_GLOBALS = 'org::allbinary::globals::AppUrlGlobals'->new();
+tie our $NULL_APP_URL_GLOBALS, 'java::lang::LazyStatic', sub { 'org::allbinary::globals::AppUrlGlobals'->new() };
 
 sub _init_fields {
     my ($self) = @_;
@@ -30,7 +30,7 @@ sub _init_fields {
 sub new {
     my ($class) = @_;
     my $self = $class->SUPER::new();
-    $self->_init_fields();
+    _init_fields($self);
     return $self;
 }
 
@@ -68,8 +68,10 @@ sub getMainPath {
         return $self->{path};
 }
 
-use org::allbinary::logic::string::StringUtil;
-use org::allbinary::globals::UrlGlobalsInterface;
+use java::lang::Object ();
+use java::lang::LazyStatic ();
+use org::allbinary::logic::string::StringUtil ();
+use org::allbinary::globals::UrlGlobalsInterface ();
 
 1;
 

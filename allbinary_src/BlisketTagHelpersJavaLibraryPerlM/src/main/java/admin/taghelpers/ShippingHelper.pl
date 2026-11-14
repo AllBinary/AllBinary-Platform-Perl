@@ -35,7 +35,7 @@ sub _init_fields {
 sub new {
     my ($class, $hashMap, $pageContext) = @_;
     my $self = $class->SUPER::new();
-    $self->_init_fields();
+    _init_fields($self);
         $self->{pageContext} = $pageContext;
         $self->{request} = $pageContext->getRequest();
         my $storeName = $hashMap->get('org::allbinary::business::context::modules::storefront::StoreFrontData'->getInstance()->{NAME});
@@ -73,17 +73,18 @@ sub setShippingType {
         }
 }
 
-use java::util::HashMap;
-# use javax::servlet::http::HttpServletRequest;
-# use javax::servlet::jsp::PageContext;
-use org::allbinary::business::context::modules::storefront::StoreFrontData;
-use org::allbinary::business::context::modules::storefront::StoreFrontFactory;
-use org::allbinary::business::context::modules::storefront::StoreFrontInterface;
-use org::allbinary::business::user::commerce::inventory::order::OrderInterface;
-use org::allbinary::business::user::commerce::shipping::ShippingMethodData;
-use org::allbinary::logic::communication::http::request::session::WeblisketSession;
-use org::allbinary::logic::communication::log::LogUtil;
-use admin::taghelpers::TagHelper;
+use java::lang::Object ();
+use java::util::HashMap ();
+# use javax::servlet::http::HttpServletRequest ();
+# use javax::servlet::jsp::PageContext ();
+use org::allbinary::business::context::modules::storefront::StoreFrontData ();
+use org::allbinary::business::context::modules::storefront::StoreFrontFactory ();
+use org::allbinary::business::context::modules::storefront::StoreFrontInterface ();
+use org::allbinary::business::user::commerce::inventory::order::OrderInterface ();
+use org::allbinary::business::user::commerce::shipping::ShippingMethodData ();
+use org::allbinary::logic::communication::http::request::session::WeblisketSession ();
+use org::allbinary::logic::communication::log::LogUtil ();
+use admin::taghelpers::TagHelper ();
 
 1;
 

@@ -36,7 +36,7 @@ sub _init_fields {
 sub new {
     my ($class, $originalImage, $image, $angleInfo, $totalAngle, $animationBehavior) = @_;
     my $self = $class->SUPER::new($image, $angleInfo, $totalAngle, $animationBehavior);
-    $self->_init_fields();
+    _init_fields($self);
         # super(...) made $self above
         $self->{originalImage} = $originalImage;
         $self->{imageToShow} = $image;
@@ -134,20 +134,21 @@ sub paintXY {
         $graphics->drawImage($self->{imageToShow}, $x, $y, $self->{anchor});
 }
 
-# use javax::microedition::lcdui::Graphics;
-# use javax::microedition::lcdui::Image;
-use org::allbinary::animation::AnimationBehavior;
-use org::allbinary::math::AngleInfo;
-use org::allbinary::graphics::color::BasicColor;
-use org::allbinary::media::image::ImageCopyUtil;
-use org::allbinary::media::image::ImageModifierUtil;
-use org::allbinary::media::image::ImageRotationUtil;
-use org::microemu::device::playn::PlaynMutableImage;
-use playn::core::CanvasImage;
-use playn::core::CanvasSurface;
-use org::allbinary::animation::image::ImageBaseRotationAnimation;
-use org::allbinary::animation::image::AlphaBaseProcessor;
-use org::allbinary::animation::image::AlphaProcessor;
+use java::lang::Object ();
+use javax::microedition::lcdui::Graphics ();
+use javax::microedition::lcdui::Image ();
+use org::allbinary::animation::AnimationBehavior ();
+use org::allbinary::math::AngleInfo ();
+use org::allbinary::graphics::color::BasicColor ();
+use org::allbinary::media::image::ImageCopyUtil ();
+use org::allbinary::media::image::ImageModifierUtil ();
+use org::allbinary::media::image::ImageRotationUtil ();
+use org::microemu::device::playn::PlaynMutableImage ();
+use playn::core::CanvasImage ();
+use playn::core::CanvasSurface ();
+use org::allbinary::animation::image::ImageBaseRotationAnimation ();
+use org::allbinary::animation::image::AlphaBaseProcessor ();
+use org::allbinary::animation::image::AlphaProcessor ();
 
 1;
 

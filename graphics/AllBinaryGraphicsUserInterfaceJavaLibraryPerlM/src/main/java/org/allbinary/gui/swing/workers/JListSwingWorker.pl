@@ -30,7 +30,7 @@ sub _init_fields {
 sub new {
     my ($class, $jList, $listModel) = @_;
     my $self = $class->SUPER::new();
-    $self->_init_fields();
+    _init_fields($self);
         $self->setJList($jList);
         $self->setListModel($listModel);
     return $self;
@@ -72,8 +72,9 @@ sub setListModel {
         $self->{listModel} = $listModel;
 }
 
-# use javax::swing;
-use org::allbinary::gui::swing::workers::SwingWorker;
+use java::lang::Object ();
+# use javax::swing ();
+use org::allbinary::gui::swing::workers::SwingWorker ();
 
 1;
 

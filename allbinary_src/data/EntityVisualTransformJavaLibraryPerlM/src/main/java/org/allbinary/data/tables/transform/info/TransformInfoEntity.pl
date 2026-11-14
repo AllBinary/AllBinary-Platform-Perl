@@ -34,7 +34,7 @@ sub _init_fields {
 sub new {
     my ($class, $transformInfoObjectConfigGeneratorFactoryInterface, $transformInfoObjectConfigAndManipulatorFactoryInterface, $transformInfoFactoryInterface) = @_;
     my $self = $class->SUPER::new('org::allbinary::business::init::db::UserDbInitInfo'->new());
-    $self->_init_fields();
+    _init_fields($self);
         # super(...) made $self above
         $self->setTableName($self->{tableName});
         $self->{transformInfoObjectConfigGeneratorFactoryInterface} = $transformInfoObjectConfigGeneratorFactoryInterface;
@@ -182,27 +182,28 @@ sub dropTable {
         return $self->SUPER::dropTable();
 }
 
-use java::util::HashMap;
-use org::allbinary::util::BasicArrayList;
-use org::allbinary::util::BasicArrayListD;
-# use javax::servlet::jsp::PageContext;
-use org::allbinary::business::context::modules::storefront::StoreFrontData;
-use org::allbinary::business::entry::EntryData;
-use org::allbinary::business::init::db::UserDbInitInfo;
-use org::allbinary::data::tree::dom::document::DomDocumentHelper;
-use org::allbinary::logic::StdUtil;
-use org::allbinary::logic::communication::log::LogUtil;
-use org::allbinary::logic::communication::sql::AbSqlBean;
-use org::allbinary::logic::control::crypt::Encoder;
-use org::allbinary::logic::string::StringMaker;
-use org::allbinary::logic::system::security::licensing::AbeClientInformationInterface;
-use org::allbinary::logic::system::security::licensing::ServiceClientInformationInterfaceFactory;
-use org::allbinary::logic::visual::transform::info::TransformInfoData;
-use org::allbinary::logic::visual::transform::info::TransformInfoFactoryInterface;
-use org::allbinary::logic::visual::transform::info::TransformInfoInterface;
-use org::allbinary::logic::visual::transform::info::objectConfig::TransformInfoObjectConfigAndManipulatorFactoryBase;
-use org::allbinary::logic::visual::transform::info::objectConfig::generator::TransformInfoObjectConfigGeneratorFactoryInterface;
-use org::allbinary::data::tables::transform::info::TransformInfoEntityInterface;
+use java::lang::Object ();
+use java::util::HashMap ();
+use org::allbinary::util::BasicArrayList ();
+use org::allbinary::util::BasicArrayListD ();
+# use javax::servlet::jsp::PageContext ();
+use org::allbinary::business::context::modules::storefront::StoreFrontData ();
+use org::allbinary::business::entry::EntryData ();
+use org::allbinary::business::init::db::UserDbInitInfo ();
+use org::allbinary::data::tree::dom::document::DomDocumentHelper ();
+use org::allbinary::logic::StdUtil ();
+use org::allbinary::logic::communication::log::LogUtil ();
+use org::allbinary::logic::communication::sql::AbSqlBean ();
+use org::allbinary::logic::control::crypt::Encoder ();
+use org::allbinary::logic::string::StringMaker ();
+use org::allbinary::logic::system::security::licensing::AbeClientInformationInterface ();
+use org::allbinary::logic::system::security::licensing::ServiceClientInformationInterfaceFactory ();
+use org::allbinary::logic::visual::transform::info::TransformInfoData ();
+use org::allbinary::logic::visual::transform::info::TransformInfoFactoryInterface ();
+use org::allbinary::logic::visual::transform::info::TransformInfoInterface ();
+use org::allbinary::logic::visual::transform::info::objectConfig::TransformInfoObjectConfigAndManipulatorFactoryBase ();
+use org::allbinary::logic::visual::transform::info::objectConfig::generator::TransformInfoObjectConfigGeneratorFactoryInterface ();
+use org::allbinary::data::tables::transform::info::TransformInfoEntityInterface ();
 
 1;
 

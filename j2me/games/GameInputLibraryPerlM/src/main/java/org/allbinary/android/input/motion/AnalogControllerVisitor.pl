@@ -17,6 +17,7 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
 
 sub new {
@@ -30,7 +31,8 @@ sub process {
     my ($self, $allbinaryLayerManager, $analogLocationInputProcessor) = @_;
 }
 
-use org::allbinary::layer::AllBinaryLayerManager;
+use java::lang::Object ();
+use org::allbinary::layer::AllBinaryLayerManager ();
 
 1;
 

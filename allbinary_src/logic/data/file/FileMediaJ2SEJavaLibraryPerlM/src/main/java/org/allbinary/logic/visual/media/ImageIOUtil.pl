@@ -5,6 +5,7 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
 
 sub new {
@@ -27,11 +28,12 @@ sub write {
         return 'javax::imageio::ImageIO'->write($renderedImage, $name, 'org::allbinary::logic::io::file::AbFileNativeUtil'->get($file));
 }
 
-# use java::awt::image::BufferedImage;
-# use java::awt::image::RenderedImage;
-# use javax::imageio::ImageIO;
-use org::allbinary::logic::io::file::AbFile;
-use org::allbinary::logic::io::file::AbFileNativeUtil;
+use java::lang::Object ();
+# use java::awt::image::BufferedImage ();
+# use java::awt::image::RenderedImage ();
+# use javax::imageio::ImageIO ();
+use org::allbinary::logic::io::file::AbFile ();
+use org::allbinary::logic::io::file::AbFileNativeUtil ();
 
 1;
 

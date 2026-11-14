@@ -91,15 +91,16 @@ sub toXmlNode {
         return $node;
 }
 
-use java::util::HashMap;
-use org::allbinary::data::tree::dom::DomNodeInterface;
-use org::allbinary::logic::control::validate::ValidationInterface;
-use org::allbinary::logic::visual::dhtml::style::StyleData;
-use org::allbinary::logic::visual::dhtml::style::StylesData;
-use org::allbinary::logic::visual::dhtml::style::color::ColorsView;
-use org::w3c::dom::Document;
-use org::w3c::dom::Node;
-use org::allbinary::logic::visual::transform::template::customizer::includes::style::css::template::retail::CssStyleValidation;
+use java::lang::Object ();
+use java::util::HashMap ();
+use org::allbinary::data::tree::dom::DomNodeInterface ();
+use org::allbinary::logic::control::validate::ValidationInterface ();
+use org::allbinary::logic::visual::dhtml::style::StyleData ();
+use org::allbinary::logic::visual::dhtml::style::StylesData ();
+use org::allbinary::logic::visual::dhtml::style::color::ColorsView ();
+use org::w3c::dom::Document ();
+use org::w3c::dom::Node ();
+use org::allbinary::logic::visual::transform::template::customizer::includes::style::css::template::retail::CssStyleValidation ();
 
 1;
 

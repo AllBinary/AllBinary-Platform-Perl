@@ -30,7 +30,7 @@ sub _init_fields {
 sub new {
     my ($class, $transformInfoInterface, $gatewayVector) = @_;
     my $self = $class->SUPER::new($transformInfoInterface);
-    $self->_init_fields();
+    _init_fields($self);
         # super(...) made $self above
         $self->{paymentGatewayVector} = $gatewayVector;
     return $self;
@@ -81,21 +81,22 @@ sub view {
         }
 }
 
-use java::util::HashMap;
-use org::allbinary::util::BasicArrayList;
-use org::allbinary::util::BasicArrayListD;
-use org::allbinary::business::entry::EntryData;
-use org::allbinary::business::user::commerce::money::payment::gateway::PaymentGatewayData;
-use org::allbinary::business::user::commerce::money::payment::gateway::PaymentGatewaysData;
-use org::allbinary::business::user::commerce::money::payment::types::BasicPaymentType;
-use org::allbinary::business::user::commerce::money::payment::types::PaymentTypeUtil;
-use org::allbinary::data::tree::dom::DomNodeInterface;
-use org::allbinary::data::tree::dom::ModDomHelper;
-use org::allbinary::logic::communication::log::LogUtil;
-use org::allbinary::logic::visual::transform::info::TransformInfoInterface;
-use org::w3c::dom::Document;
-use org::w3c::dom::Node;
-use views::business::context::modules::storefront::HttpStoreComponentView;
+use java::lang::Object ();
+use java::util::HashMap ();
+use org::allbinary::util::BasicArrayList ();
+use org::allbinary::util::BasicArrayListD ();
+use org::allbinary::business::entry::EntryData ();
+use org::allbinary::business::user::commerce::money::payment::gateway::PaymentGatewayData ();
+use org::allbinary::business::user::commerce::money::payment::gateway::PaymentGatewaysData ();
+use org::allbinary::business::user::commerce::money::payment::types::BasicPaymentType ();
+use org::allbinary::business::user::commerce::money::payment::types::PaymentTypeUtil ();
+use org::allbinary::data::tree::dom::DomNodeInterface ();
+use org::allbinary::data::tree::dom::ModDomHelper ();
+use org::allbinary::logic::communication::log::LogUtil ();
+use org::allbinary::logic::visual::transform::info::TransformInfoInterface ();
+use org::w3c::dom::Document ();
+use org::w3c::dom::Node ();
+use views::business::context::modules::storefront::HttpStoreComponentView ();
 
 1;
 

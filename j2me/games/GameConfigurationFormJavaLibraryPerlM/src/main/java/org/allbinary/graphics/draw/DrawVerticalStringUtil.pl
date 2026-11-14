@@ -18,8 +18,9 @@ use warnings;
 use feature 'try';
 no warnings 'experimental::try';
 use POSIX ();
+use parent -norequire,'java::lang::Object';
 
-our $instance = 'org::allbinary::graphics::draw::DrawVerticalStringUtil'->new();
+tie our $instance, 'java::lang::LazyStatic', sub { 'org::allbinary::graphics::draw::DrawVerticalStringUtil'->new() };
 
 sub _init_fields {
     my ($self) = @_;
@@ -33,7 +34,7 @@ sub _init_fields {
 sub new {
     my ($class) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
     return $self;
 }
 
@@ -130,16 +131,18 @@ sub drawCenterStrings {
         }
 }
 
-# use javax::microedition::lcdui::Font;
-# use javax::microedition::lcdui::Graphics;
-use org::allbinary::AndroidUtil;
-use org::allbinary::J2MEUtil;
-use org::allbinary::graphics::Anchor;
-use org::allbinary::graphics::opengles::OpenGLFeatureUtil;
-use org::allbinary::logic::NullUtil;
-use org::allbinary::logic::communication::log::PreLogUtil;
-use org::allbinary::logic::string::StringMaker;
-use org::allbinary::logic::string::StringUtil;
+use java::lang::Object ();
+use java::lang::LazyStatic ();
+use javax::microedition::lcdui::Font ();
+use javax::microedition::lcdui::Graphics ();
+use org::allbinary::AndroidUtil ();
+use org::allbinary::J2MEUtil ();
+use org::allbinary::graphics::Anchor ();
+use org::allbinary::graphics::opengles::OpenGLFeatureUtil ();
+use org::allbinary::logic::NullUtil ();
+use org::allbinary::logic::communication::log::PreLogUtil ();
+use org::allbinary::logic::string::StringMaker ();
+use org::allbinary::logic::string::StringUtil ();
 
 1;
 

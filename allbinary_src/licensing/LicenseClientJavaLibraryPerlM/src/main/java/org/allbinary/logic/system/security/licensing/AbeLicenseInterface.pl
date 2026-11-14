@@ -68,7 +68,7 @@ sub toString {
     die "abstract method toString";
 }
 
-use org::allbinary::util::BasicArrayList;
+use org::allbinary::util::BasicArrayList ();
 
 1;
 

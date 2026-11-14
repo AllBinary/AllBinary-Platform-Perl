@@ -7,7 +7,7 @@ use feature 'try';
 no warnings 'experimental::try';
 use parent -norequire,'org::allbinary::graphics::threed::min3d::renderer::processor::ObjectThreedOpenGLProcessor';
 
-our $instance = 'org::allbinary::graphics::opengles::EnableFacesShaderOpenGLProcessor'->new();
+tie our $instance, 'java::lang::LazyStatic', sub { 'org::allbinary::graphics::opengles::EnableFacesShaderOpenGLProcessor'->new() };
 
 
 sub getInstance {
@@ -27,8 +27,10 @@ sub process {
     my ($self, $gl, $anyType) = @_;
 }
 
-# use javax::microedition::khronos::opengles::GL10;
-use org::allbinary::graphics::threed::min3d::renderer::processor::ObjectThreedOpenGLProcessor;
+use java::lang::Object ();
+use java::lang::LazyStatic ();
+use javax::microedition::khronos::opengles::GL10 ();
+use org::allbinary::graphics::threed::min3d::renderer::processor::ObjectThreedOpenGLProcessor ();
 
 1;
 

@@ -17,8 +17,9 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
-our $instance = 'org::allbinary::string::CommonLabels'->new();
+tie our $instance, 'java::lang::LazyStatic', sub { 'org::allbinary::string::CommonLabels'->new() };
 
 sub _init_fields {
     my ($self) = @_;
@@ -42,7 +43,7 @@ sub _init_fields {
 sub new {
     my ($class) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
     return $self;
 }
 
@@ -52,9 +53,11 @@ sub getInstance {
         return $org::allbinary::string::CommonLabels::instance;
 }
 
-# use jsinterop::annotations::JsType;
-# use jsinterop::annotations::JsMethod;
-# use jsinterop::annotations::JsProperty;
+use java::lang::Object ();
+use java::lang::LazyStatic ();
+# use jsinterop::annotations::JsType ();
+# use jsinterop::annotations::JsMethod ();
+# use jsinterop::annotations::JsProperty ();
 
 1;
 

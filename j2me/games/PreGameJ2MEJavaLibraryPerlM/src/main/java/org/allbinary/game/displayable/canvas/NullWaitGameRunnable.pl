@@ -19,7 +19,7 @@ use feature 'try';
 no warnings 'experimental::try';
 use parent -norequire,'org::allbinary::game::displayable::canvas::GameRunnable';
 
-our $instance = 'org::allbinary::game::displayable::canvas::NullWaitGameRunnable'->new();
+tie our $instance, 'java::lang::LazyStatic', sub { 'org::allbinary::game::displayable::canvas::NullWaitGameRunnable'->new() };
 
 sub new {
     my ($class) = @_;
@@ -33,7 +33,9 @@ sub getInstance {
         return $org::allbinary::game::displayable::canvas::NullWaitGameRunnable::instance;
 }
 
-use org::allbinary::game::displayable::canvas::GameRunnable;
+use java::lang::Object ();
+use java::lang::LazyStatic ();
+use org::allbinary::game::displayable::canvas::GameRunnable ();
 
 1;
 

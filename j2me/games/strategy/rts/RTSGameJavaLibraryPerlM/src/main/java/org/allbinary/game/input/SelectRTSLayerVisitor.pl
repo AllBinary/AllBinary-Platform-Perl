@@ -27,7 +27,8 @@ sub new {
     return $self;
 }
 
-use org::allbinary::logic::util::visitor::Visitor;
+use java::lang::Object ();
+use org::allbinary::logic::util::visitor::Visitor ();
 
 1;
 

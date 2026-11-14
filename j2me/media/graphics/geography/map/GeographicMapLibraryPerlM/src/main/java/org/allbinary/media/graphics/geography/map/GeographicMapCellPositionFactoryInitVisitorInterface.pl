@@ -27,7 +27,7 @@ sub visit {
     die "abstract method visit";
 }
 
-use org::allbinary::game::layer::AllBinaryTiledLayer;
+use org::allbinary::game::layer::AllBinaryTiledLayer ();
 
 1;
 

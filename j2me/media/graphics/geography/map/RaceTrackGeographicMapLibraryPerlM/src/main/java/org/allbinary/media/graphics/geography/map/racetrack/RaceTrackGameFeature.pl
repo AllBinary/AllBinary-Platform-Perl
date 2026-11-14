@@ -19,8 +19,8 @@ use feature 'try';
 no warnings 'experimental::try';
 use parent -norequire,'org::allbinary::game::configuration::feature::GameFeature';
 
-our $MINI_MAP = 'org::allbinary::media::graphics::geography::map::racetrack::RaceTrackGameFeature'->new("Mini Map");
-our $AUTO_FINISH_AI = 'org::allbinary::media::graphics::geography::map::racetrack::RaceTrackGameFeature'->new("Auto Finish AI");
+tie our $MINI_MAP, 'java::lang::LazyStatic', sub { 'org::allbinary::media::graphics::geography::map::racetrack::RaceTrackGameFeature'->new("Mini Map") };
+tie our $AUTO_FINISH_AI, 'java::lang::LazyStatic', sub { 'org::allbinary::media::graphics::geography::map::racetrack::RaceTrackGameFeature'->new("Auto Finish AI") };
 
 
 sub new {
@@ -30,7 +30,9 @@ sub new {
     return $self;
 }
 
-use org::allbinary::game::configuration::feature::GameFeature;
+use java::lang::Object ();
+use java::lang::LazyStatic ();
+use org::allbinary::game::configuration::feature::GameFeature ();
 
 1;
 

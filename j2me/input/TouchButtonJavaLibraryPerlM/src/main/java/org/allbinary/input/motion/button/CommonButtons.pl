@@ -18,8 +18,9 @@ use warnings;
 use feature 'try';
 no warnings 'experimental::try';
 use POSIX ();
+use parent -norequire,'java::lang::Object';
 
-our $instance = 'org::allbinary::input::motion::button::CommonButtons'->new();
+tie our $instance, 'java::lang::LazyStatic', sub { 'org::allbinary::input::motion::button::CommonButtons'->new() };
 
 sub _init_fields {
     my ($self) = @_;
@@ -38,7 +39,7 @@ sub getInstance {
 sub new {
     my ($class) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
         my $displayInfo = 'org::allbinary::graphics::displayable::DisplayInfoSingleton'->getInstance();
         my $commonButtonSize = 128;
         while ($commonButtonSize > 64) {
@@ -59,9 +60,11 @@ sub new {
     return $self;
 }
 
-use org::allbinary::graphics::PointFactory;
-use org::allbinary::graphics::Rectangle;
-use org::allbinary::graphics::displayable::DisplayInfoSingleton;
+use java::lang::Object ();
+use java::lang::LazyStatic ();
+use org::allbinary::graphics::PointFactory ();
+use org::allbinary::graphics::Rectangle ();
+use org::allbinary::graphics::displayable::DisplayInfoSingleton ();
 
 1;
 

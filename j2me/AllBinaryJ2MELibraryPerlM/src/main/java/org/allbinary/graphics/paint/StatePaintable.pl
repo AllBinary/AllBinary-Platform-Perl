@@ -32,8 +32,9 @@ sub setState {
     my ($self, $state) = @_;
 }
 
-use org::allbinary::graphics::displayable::StateControlledInterface;
-use org::allbinary::graphics::paint::Paintable;
+use java::lang::Object ();
+use org::allbinary::graphics::displayable::StateControlledInterface ();
+use org::allbinary::graphics::paint::Paintable ();
 
 1;
 

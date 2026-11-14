@@ -21,8 +21,8 @@ no warnings 'experimental::try';
 use parent -norequire,'org::allbinary::logic::visual::transform::TransformInterface','org::allbinary::logic::control::validate::ValidationInterface';
 
 
-use org::allbinary::logic::visual::transform::TransformInterface;
-use org::allbinary::logic::control::validate::ValidationInterface;
+use org::allbinary::logic::visual::transform::TransformInterface ();
+use org::allbinary::logic::control::validate::ValidationInterface ();
 
 1;
 

@@ -17,6 +17,7 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
 
 sub _init_fields {
@@ -34,7 +35,7 @@ sub _init_fields {
 sub new {
     my ($class, $recordId) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
         $self->{recordId} = $recordId;
     return $self;
 }
@@ -102,17 +103,18 @@ sub clear {
         $self->{idList}->clear();
 }
 
-# use javax::microedition::rms::RecordStore;
-use org::allbinary::logic::communication::log::LogUtil;
-use org::allbinary::logic::communication::log::PreLogUtil;
-use org::allbinary::logic::string::StringMaker;
-use org::allbinary::logic::system::security::licensing::AbeClientInformationInterface;
-use org::allbinary::persistance::PlatformRecordIdUtil;
-use org::allbinary::string::CommonStrings;
-use org::allbinary::util::BasicArrayList;
-use org::allbinary::util::BasicArrayListD;
-use org::allbinary::game::configuration::persistance::PersistanceStrings;
-use org::allbinary::game::configuration::persistance::NullRecordStore;
+use java::lang::Object ();
+use javax::microedition::rms::RecordStore ();
+use org::allbinary::logic::communication::log::LogUtil ();
+use org::allbinary::logic::communication::log::PreLogUtil ();
+use org::allbinary::logic::string::StringMaker ();
+use org::allbinary::logic::system::security::licensing::AbeClientInformationInterface ();
+use org::allbinary::persistance::PlatformRecordIdUtil ();
+use org::allbinary::string::CommonStrings ();
+use org::allbinary::util::BasicArrayList ();
+use org::allbinary::util::BasicArrayListD ();
+use org::allbinary::game::configuration::persistance::PersistanceStrings ();
+use org::allbinary::game::configuration::persistance::NullRecordStore ();
 
 1;
 

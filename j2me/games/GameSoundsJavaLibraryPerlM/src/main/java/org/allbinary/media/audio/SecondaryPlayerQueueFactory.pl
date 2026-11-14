@@ -17,8 +17,9 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
-our $SINGLETON = 'org::allbinary::media::audio::PlayerQueue'->new(4);
+tie our $SINGLETON, 'java::lang::LazyStatic', sub { 'org::allbinary::media::audio::PlayerQueue'->new(4) };
 
 sub new {
     my ($class) = @_;
@@ -32,7 +33,9 @@ sub getInstance {
         return $org::allbinary::media::audio::SecondaryPlayerQueueFactory::SINGLETON;
 }
 
-use org::allbinary::media::audio::PlayerQueue;
+use java::lang::Object ();
+use java::lang::LazyStatic ();
+use org::allbinary::media::audio::PlayerQueue ();
 
 1;
 

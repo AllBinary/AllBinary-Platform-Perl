@@ -17,6 +17,7 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
 
 sub _init_fields {
@@ -29,7 +30,7 @@ sub _init_fields {
 sub new {
     my ($class) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
     return $self;
 }
 
@@ -49,15 +50,16 @@ sub getScreenAsBufferedImages {
         return $bufferedImageArray;
 }
 
-# use java::awt::Dimension;
-# use java::awt::Rectangle;
-# use java::awt::Toolkit;
-# use java::awt::image::BufferedImage;
-use org::allbinary::input::automation::robot::InputRobotFactory;
-use org::allbinary::input::automation::robot::InputRobotInterface;
-use org::allbinary::logic::communication::log::LogUtil;
-use org::allbinary::string::CommonStrings;
-use org::allbinary::util::ABHashtable;
+use java::lang::Object ();
+# use java::awt::Dimension ();
+# use java::awt::Rectangle ();
+# use java::awt::Toolkit ();
+# use java::awt::image::BufferedImage ();
+use org::allbinary::input::automation::robot::InputRobotFactory ();
+use org::allbinary::input::automation::robot::InputRobotInterface ();
+use org::allbinary::logic::communication::log::LogUtil ();
+use org::allbinary::string::CommonStrings ();
+use org::allbinary::util::ABHashtable ();
 
 1;
 

@@ -17,9 +17,9 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
-use parent -norequire,'java::io::Closeable';
+use parent -norequire,'java::lang::Object';
 
-our $NULL_CLOSEABLE = 'org::allbinary::logic::io::NullCloseable'->new();
+tie our $NULL_CLOSEABLE, 'java::lang::LazyStatic', sub { 'org::allbinary::logic::io::NullCloseable'->new() };
 
 sub new {
     my ($class) = @_;
@@ -33,8 +33,10 @@ sub close {
     my ($self) = @_;
 }
 
-# use java::io::Closeable;
-# use java::io::IOException;
+use java::lang::Object ();
+use java::lang::LazyStatic ();
+# use java::io::Closeable ();
+# use java::io::IOException ();
 
 1;
 

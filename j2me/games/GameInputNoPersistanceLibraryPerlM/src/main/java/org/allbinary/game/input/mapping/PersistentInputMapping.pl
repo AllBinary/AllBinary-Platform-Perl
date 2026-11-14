@@ -18,8 +18,9 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
-our $instance = 'org::allbinary::logic::NullUtil'->getInstance()->{NULL_OBJECT};
+tie our $instance, 'java::lang::LazyStatic', sub { 'org::allbinary::logic::NullUtil'->getInstance()->{NULL_OBJECT} };
 
 sub _init_fields {
     my ($self) = @_;
@@ -45,7 +46,7 @@ sub getNullInstance {
 sub new {
     my ($class, $name) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
         $self->{inputPersistance} = 'org::allbinary::game::input::InputPersistance'->new($name);
     return $self;
 }
@@ -166,23 +167,25 @@ sub isSystemInput {
         die ($self->{commonStrings}->{NOT_IMPLEMENTED});
 }
 
-use java::util::Enumeration;
-use org::allbinary::game::configuration::persistance::GamePersistanceStrings;
-use org::allbinary::game::input::Input;
-use org::allbinary::game::input::InputPersistance;
-use org::allbinary::game::input::mapping::event::InputMappingEvent;
-use org::allbinary::game::input::mapping::event::InputMappingEventListenerInterface;
-use org::allbinary::game::input::mapping::event::NullInputMappingEventListener;
-use org::allbinary::logic::NullUtil;
-use org::allbinary::logic::communication::log::LogUtil;
-use org::allbinary::logic::communication::log::PreLogUtil;
-use org::allbinary::logic::string::StringMaker;
-use org::allbinary::logic::system::security::licensing::AbeClientInformationInterface;
-use org::allbinary::string::CommonStrings;
-use org::allbinary::util::BasicArrayList;
-use org::allbinary::util::EnumerationUtil;
-use org::allbinary::util::ABHashtable;
-use org::allbinary::game::input::mapping::InputToGameKeyMapping;
+use java::lang::Object ();
+use java::lang::LazyStatic ();
+use java::util::Enumeration ();
+use org::allbinary::game::configuration::persistance::GamePersistanceStrings ();
+use org::allbinary::game::input::Input ();
+use org::allbinary::game::input::InputPersistance ();
+use org::allbinary::game::input::mapping::event::InputMappingEvent ();
+use org::allbinary::game::input::mapping::event::InputMappingEventListenerInterface ();
+use org::allbinary::game::input::mapping::event::NullInputMappingEventListener ();
+use org::allbinary::logic::NullUtil ();
+use org::allbinary::logic::communication::log::LogUtil ();
+use org::allbinary::logic::communication::log::PreLogUtil ();
+use org::allbinary::logic::string::StringMaker ();
+use org::allbinary::logic::system::security::licensing::AbeClientInformationInterface ();
+use org::allbinary::string::CommonStrings ();
+use org::allbinary::util::BasicArrayList ();
+use org::allbinary::util::EnumerationUtil ();
+use org::allbinary::util::ABHashtable ();
+use org::allbinary::game::input::mapping::InputToGameKeyMapping ();
 
 1;
 

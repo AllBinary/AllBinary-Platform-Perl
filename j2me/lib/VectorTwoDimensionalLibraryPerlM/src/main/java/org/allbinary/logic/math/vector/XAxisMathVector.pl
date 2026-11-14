@@ -36,9 +36,10 @@ sub calculate {
         $self->{resultBasicDecimal} = 'org::allbinary::logic::math::BasicDecimal'->new($result);
 }
 
-use org::allbinary::logic::math::BasicDecimal;
-use org::allbinary::logic::math::vector::MathVector;
-use org::allbinary::logic::math::vector::YAxisMathVectorUtil;
+use java::lang::Object ();
+use org::allbinary::logic::math::BasicDecimal ();
+use org::allbinary::logic::math::vector::MathVector ();
+use org::allbinary::logic::math::vector::YAxisMathVectorUtil ();
 
 1;
 

@@ -17,7 +17,7 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
-use parent -norequire,'org::allbinary::data::tree::dom::DomNodeInterface';
+use parent -norequire,'java::lang::Object','org::allbinary::data::tree::dom::DomNodeInterface';
 
 
 sub _init_fields {
@@ -30,7 +30,7 @@ sub _init_fields {
 sub new {
     my ($class, $storeFrontStatisticsInterface, $userRole) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
         $self->{storeFrontStatisticsInterface} = $storeFrontStatisticsInterface;
         $self->{userRole} = $userRole;
     return $self;
@@ -58,20 +58,21 @@ sub toXmlNode {
         return $node;
 }
 
-use org::allbinary::business::context::modules::storefront::statistics::advertisements::StoreFrontAdvertisementsStatisticsInterface;
-use org::allbinary::business::context::modules::storefront::statistics::advertisements::StoreFrontAdvertisementsStatisticsView;
-use org::allbinary::business::context::modules::storefront::statistics::inventory::StoreFrontInventoryStatisticsInterface;
-use org::allbinary::business::context::modules::storefront::statistics::inventory::StoreFrontInventoryStatisticsView;
-use org::allbinary::business::context::modules::storefront::statistics::orders::history::StoreFrontOrdersHistoryStatisticsInterface;
-use org::allbinary::business::context::modules::storefront::statistics::orders::history::StoreFrontOrdersHistoryStatisticsView;
-use org::allbinary::business::context::modules::storefront::statistics::users::StoreFrontUsersStatisticsInterface;
-use org::allbinary::business::context::modules::storefront::statistics::users::StoreFrontUsersStatisticsView;
-use org::allbinary::business::user::role::UserRole;
-use org::allbinary::business::user::role::UserRoleFactory;
-use org::allbinary::data::tree::dom::DomNodeInterface;
-use org::w3c::dom::Document;
-use org::w3c::dom::Node;
-use org::allbinary::business::context::modules::storefront::statistics::StoreFrontStatisticsData;
+use java::lang::Object ();
+use org::allbinary::business::context::modules::storefront::statistics::advertisements::StoreFrontAdvertisementsStatisticsInterface ();
+use org::allbinary::business::context::modules::storefront::statistics::advertisements::StoreFrontAdvertisementsStatisticsView ();
+use org::allbinary::business::context::modules::storefront::statistics::inventory::StoreFrontInventoryStatisticsInterface ();
+use org::allbinary::business::context::modules::storefront::statistics::inventory::StoreFrontInventoryStatisticsView ();
+use org::allbinary::business::context::modules::storefront::statistics::orders::history::StoreFrontOrdersHistoryStatisticsInterface ();
+use org::allbinary::business::context::modules::storefront::statistics::orders::history::StoreFrontOrdersHistoryStatisticsView ();
+use org::allbinary::business::context::modules::storefront::statistics::users::StoreFrontUsersStatisticsInterface ();
+use org::allbinary::business::context::modules::storefront::statistics::users::StoreFrontUsersStatisticsView ();
+use org::allbinary::business::user::role::UserRole ();
+use org::allbinary::business::user::role::UserRoleFactory ();
+use org::allbinary::data::tree::dom::DomNodeInterface ();
+use org::w3c::dom::Document ();
+use org::w3c::dom::Node ();
+use org::allbinary::business::context::modules::storefront::statistics::StoreFrontStatisticsData ();
 
 1;
 

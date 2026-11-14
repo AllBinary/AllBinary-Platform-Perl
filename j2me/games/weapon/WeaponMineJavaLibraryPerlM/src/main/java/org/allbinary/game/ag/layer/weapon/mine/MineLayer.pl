@@ -30,7 +30,7 @@ sub _init_fields {
 sub new {
     my ($class, $viewPosition) = @_;
     my $self = $class->SUPER::new($org::allbinary::game::ag::layer::weapon::mine::MineLayer::NAME, $org::allbinary::game::multiplayer::layer::RemoteInfo::REMOTE_INFO, -1, 'org::allbinary::physics::movement::NoMovementFactory'->getInstance()->getMovmentInstance(), 'org::allbinary::animation::FeaturedAnimationInterfaceFactoryInterfaceFactory'->getInstance()->get('org::allbinary::game::ag::layer::weapon::mine::MineWeaponResources'->getInstance()->{RESOURCE})->getInstance(0), 'org::allbinary::game::layer::weapon::SimpleWeaponLayer'->createDestroyed(), 'org::allbinary::graphics::Rectangle'->new('org::allbinary::graphics::PointFactory'->getInstance()->{ZERO_ZERO}, 10, 10), $viewPosition);
-    $self->_init_fields();
+    _init_fields($self);
         # super(...) made $self above
     return $self;
 }
@@ -65,18 +65,19 @@ sub setDestroyed {
         }
 }
 
-use org::allbinary::ag::weapon::media::audio::DropWeaponSound;
-use org::allbinary::animation::FeaturedAnimationInterfaceFactoryInterfaceFactory;
-use org::allbinary::game::layer::weapon::SimpleWeaponLayer;
-use org::allbinary::game::multiplayer::layer::RemoteInfo;
-use org::allbinary::graphics::PointFactory;
-use org::allbinary::graphics::Rectangle;
-use org::allbinary::layer::AllBinaryLayer;
-use org::allbinary::media::audio::SecondaryPlayerQueueFactory;
-use org::allbinary::physics::movement::NoMovementFactory;
-use org::allbinary::view::ViewPositionBase;
-use org::allbinary::view::event::ViewPositionEventHandler;
-use org::allbinary::game::ag::layer::weapon::mine::MineWeaponResources;
+use java::lang::Object ();
+use org::allbinary::ag::weapon::media::audio::DropWeaponSound ();
+use org::allbinary::animation::FeaturedAnimationInterfaceFactoryInterfaceFactory ();
+use org::allbinary::game::layer::weapon::SimpleWeaponLayer ();
+use org::allbinary::game::multiplayer::layer::RemoteInfo ();
+use org::allbinary::graphics::PointFactory ();
+use org::allbinary::graphics::Rectangle ();
+use org::allbinary::layer::AllBinaryLayer ();
+use org::allbinary::media::audio::SecondaryPlayerQueueFactory ();
+use org::allbinary::physics::movement::NoMovementFactory ();
+use org::allbinary::view::ViewPositionBase ();
+use org::allbinary::view::event::ViewPositionEventHandler ();
+use org::allbinary::game::ag::layer::weapon::mine::MineWeaponResources ();
 
 1;
 

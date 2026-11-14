@@ -17,6 +17,7 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
 
 
@@ -40,11 +41,12 @@ sub getInstance {
         return $defaultComboBoxModel;
 }
 
-# use javax::swing;
-use abbot::tester::KeyStrokeMap;
-use org::allbinary::input::KeySingletonFactory;
-use org::allbinary::input::automation::actions::script::condition::processors::input::DefaultComboBoxModel;
-use org::allbinary::input::automation::actions::script::condition::processors::input::KeyStroke;
+use java::lang::Object ();
+# use javax::swing ();
+use abbot::tester::KeyStrokeMap ();
+use org::allbinary::input::KeySingletonFactory ();
+use org::allbinary::input::automation::actions::script::condition::processors::input::DefaultComboBoxModel ();
+use org::allbinary::input::automation::actions::script::condition::processors::input::KeyStroke ();
 
 1;
 

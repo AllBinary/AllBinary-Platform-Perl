@@ -45,9 +45,9 @@ sub update {
     die "abstract method update";
 }
 
-use org::allbinary::media::graphics::geography::map::BasicGeographicMap;
-use org::allbinary::media::graphics::geography::map::GeographicMapCellPosition;
-use org::allbinary::util::BasicArrayList;
+use org::allbinary::media::graphics::geography::map::BasicGeographicMap ();
+use org::allbinary::media::graphics::geography::map::GeographicMapCellPosition ();
+use org::allbinary::util::BasicArrayList ();
 
 1;
 

@@ -17,6 +17,7 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
 
 sub _init_fields {
@@ -29,7 +30,7 @@ sub _init_fields {
 sub new {
     my ($class, $name, $gameKey) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
         $self->setName($name);
         $self->setGameKey($gameKey);
     return $self;
@@ -59,8 +60,9 @@ sub getName {
         return $self->{name};
 }
 
-use org::allbinary::game::input::GameKey;
-use org::allbinary::logic::string::StringUtil;
+use java::lang::Object ();
+use org::allbinary::game::input::GameKey ();
+use org::allbinary::logic::string::StringUtil ();
 
 1;
 

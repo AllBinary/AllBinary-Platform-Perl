@@ -17,6 +17,7 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
 our $COLOR_MASK = 0x00FFFFFF;
 our $MIN = 0x44;
@@ -31,6 +32,7 @@ sub new {
     return $self;
 }
 
+use java::lang::Object ();
 
 1;
 

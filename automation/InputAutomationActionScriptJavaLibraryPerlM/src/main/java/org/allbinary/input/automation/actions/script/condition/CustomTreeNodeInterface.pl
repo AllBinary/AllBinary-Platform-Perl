@@ -18,7 +18,6 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
-use parent -norequire,'javax::swing::tree::MutableTreeNode';
 
 
 
@@ -27,8 +26,8 @@ sub getJPopupMenu {
     die "abstract method getJPopupMenu";
 }
 
-# use javax::swing;
-# use javax::swing::tree::MutableTreeNode;
+# use javax::swing ();
+# use javax::swing::tree::MutableTreeNode ();
 
 1;
 

@@ -29,7 +29,7 @@ sub _init_fields {
 sub new {
     my ($class, $gameInfo) = @_;
     my $self = $class->SUPER::new('org::allbinary::graphics::color::BasicColorFactory'->getInstance()->{BLACK}, 'org::allbinary::graphics::color::BasicColorFactory'->getInstance()->{WHITE}, $gameInfo);
-    $self->_init_fields();
+    _init_fields($self);
         # super(...) made $self above
     return $self;
 }
@@ -53,12 +53,13 @@ sub geographicMapCellTypeArray {
         return $self->{geographicMapCellTypeArray};
 }
 
-use org::allbinary::game::GameInfo;
-use org::allbinary::graphics::color::BasicColorFactory;
-use org::allbinary::media::graphics::geography::map::BasicGeographicMap;
-use org::allbinary::media::graphics::geography::map::GeographicMapCellType;
-use org::allbinary::media::graphics::geography::map::GeographicMapCompositeInterface;
-use org::allbinary::game::layer::AllBinaryGameLayerManager;
+use java::lang::Object ();
+use org::allbinary::game::GameInfo ();
+use org::allbinary::graphics::color::BasicColorFactory ();
+use org::allbinary::media::graphics::geography::map::BasicGeographicMap ();
+use org::allbinary::media::graphics::geography::map::GeographicMapCellType ();
+use org::allbinary::media::graphics::geography::map::GeographicMapCompositeInterface ();
+use org::allbinary::game::layer::AllBinaryGameLayerManager ();
 
 1;
 

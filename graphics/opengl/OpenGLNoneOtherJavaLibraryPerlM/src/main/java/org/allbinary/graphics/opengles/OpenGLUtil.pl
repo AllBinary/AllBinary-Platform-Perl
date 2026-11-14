@@ -5,8 +5,9 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
-our $instance = 'org::allbinary::graphics::opengles::OpenGLUtil'->new();
+tie our $instance, 'java::lang::LazyStatic', sub { 'org::allbinary::graphics::opengles::OpenGLUtil'->new() };
 
 sub new {
     my ($class) = @_;
@@ -36,7 +37,9 @@ sub addRunnable {
     my ($self, $runnable) = @_;
 }
 
-# use javax::microedition::lcdui::Image;
+use java::lang::Object ();
+use java::lang::LazyStatic ();
+use javax::microedition::lcdui::Image ();
 
 1;
 

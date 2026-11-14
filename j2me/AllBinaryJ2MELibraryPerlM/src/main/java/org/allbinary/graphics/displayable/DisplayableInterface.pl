@@ -50,8 +50,8 @@ sub setCommandListener {
     die "abstract method setCommandListener";
 }
 
-# use javax::microedition::lcdui::Command;
-# use javax::microedition::lcdui::CommandListener;
+use javax::microedition::lcdui::Command ();
+use javax::microedition::lcdui::CommandListener ();
 
 1;
 

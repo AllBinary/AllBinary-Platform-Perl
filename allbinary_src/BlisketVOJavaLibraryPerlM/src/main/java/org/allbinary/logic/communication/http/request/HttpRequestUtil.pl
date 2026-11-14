@@ -17,8 +17,9 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
-our $instance = 'org::allbinary::logic::communication::http::request::HttpRequestUtil'->new();
+tie our $instance, 'java::lang::LazyStatic', sub { 'org::allbinary::logic::communication::http::request::HttpRequestUtil'->new() };
 
 
 sub getInstance {
@@ -55,7 +56,9 @@ sub generateFileName {
         }
 }
 
-use org::allbinary::logic::io::path::AbPathData;
+use java::lang::Object ();
+use java::lang::LazyStatic ();
+use org::allbinary::logic::io::path::AbPathData ();
 
 1;
 

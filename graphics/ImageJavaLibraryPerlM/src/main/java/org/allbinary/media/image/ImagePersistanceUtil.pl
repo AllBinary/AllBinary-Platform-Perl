@@ -9,8 +9,9 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
-our $instance = 'org::allbinary::media::image::ImagePersistanceUtil'->new();
+tie our $instance, 'java::lang::LazyStatic', sub { 'org::allbinary::media::image::ImagePersistanceUtil'->new() };
 
 sub _init_fields {
     my ($self) = @_;
@@ -21,7 +22,7 @@ sub _init_fields {
 sub new {
     my ($class) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
     return $self;
 }
 
@@ -96,21 +97,23 @@ sub saveWithImageIO {
         }
 }
 
-# use java::awt::image::BufferedImage;
-use java::io::File;
-# use java::io::IOException;
-use java::util::Iterator;
-# use javax::imageio::IIOImage;
-# use javax::imageio::ImageIO;
-# use javax::imageio::ImageWriteParam;
-# use javax::imageio::ImageWriter;
-# use javax::imageio::stream::ImageOutputStream;
-use org::allbinary::logic::communication::log::LogUtil;
-use org::allbinary::logic::io::AbFileOutputStream;
-use org::allbinary::logic::io::StreamUtil;
-use org::allbinary::logic::io::file::AbFile;
-use org::allbinary::string::CommonStrings;
-use org::apache::batik::ext::awt::image::codec::png::PNGImageWriter;
+use java::lang::Object ();
+use java::lang::LazyStatic ();
+# use java::awt::image::BufferedImage ();
+use java::io::File ();
+# use java::io::IOException ();
+use java::util::Iterator ();
+# use javax::imageio::IIOImage ();
+# use javax::imageio::ImageIO ();
+# use javax::imageio::ImageWriteParam ();
+# use javax::imageio::ImageWriter ();
+# use javax::imageio::stream::ImageOutputStream ();
+use org::allbinary::logic::communication::log::LogUtil ();
+use org::allbinary::logic::io::AbFileOutputStream ();
+use org::allbinary::logic::io::StreamUtil ();
+use org::allbinary::logic::io::file::AbFile ();
+use org::allbinary::string::CommonStrings ();
+use org::apache::batik::ext::awt::image::codec::png::PNGImageWriter ();
 
 1;
 

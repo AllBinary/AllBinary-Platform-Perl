@@ -18,6 +18,7 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
 
 sub _init_fields {
@@ -41,7 +42,7 @@ sub new {
 sub _new0 {
     my ($class) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
         $self->{logUtil}->putF("New RequestParams Size: 0", $self, $self->{commonStrings}->{CONSTRUCTOR});
     return $self;
 }
@@ -50,7 +51,7 @@ sub _new0 {
 sub _new1 {
     my ($class, $request) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
         $self->{map} = $request->getParameterMap();
         $self->{logUtil}->putF("RequestParams Size: " . $self->getMap()->keySet()->size(), $self, $self->{commonStrings}->{CONSTRUCTOR});
     return $self;
@@ -60,7 +61,7 @@ sub _new1 {
 sub _new1 {
     my ($class, $pageContext) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
         $self->{map} = $pageContext->getRequest()->getParameterMap();
         $self->{logUtil}->putF("Request Params Size: " . $self->getMap()->keySet()->size(), $self, $self->{commonStrings}->{CONSTRUCTOR});
     return $self;
@@ -128,19 +129,20 @@ sub toHashMap {
         return $hashMap;
 }
 
-use java::util::HashMap;
-# use java::util::Map;
-# use java::util::Set;
-# use javax::servlet::http::HttpServletRequest;
-# use javax::servlet::jsp::PageContext;
-use org::allbinary::data::tree::dom::ModDomHelper;
-use org::allbinary::logic::StdUtil;
-use org::allbinary::logic::communication::log::LogUtil;
-use org::allbinary::logic::string::StringMaker;
-use org::allbinary::string::CommonStrings;
-use org::w3c::dom::Document;
-use org::w3c::dom::Node;
-use org::allbinary::logic::communication::http::request::RequestData;
+use java::lang::Object ();
+use java::util::HashMap ();
+# use java::util::Map ();
+# use java::util::Set ();
+# use javax::servlet::http::HttpServletRequest ();
+# use javax::servlet::jsp::PageContext ();
+use org::allbinary::data::tree::dom::ModDomHelper ();
+use org::allbinary::logic::StdUtil ();
+use org::allbinary::logic::communication::log::LogUtil ();
+use org::allbinary::logic::string::StringMaker ();
+use org::allbinary::string::CommonStrings ();
+use org::w3c::dom::Document ();
+use org::w3c::dom::Node ();
+use org::allbinary::logic::communication::http::request::RequestData ();
 
 1;
 

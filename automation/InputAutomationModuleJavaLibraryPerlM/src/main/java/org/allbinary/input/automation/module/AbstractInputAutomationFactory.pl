@@ -38,7 +38,7 @@ sub new {
 sub _new3 {
     my ($class, $name, $jPanel, $helpSet) = @_;
     my $self = $class->SUPER::new();
-    $self->_init_fields();
+    _init_fields($self);
         $self->{name} = $name;
         $self->{jPanel} = $jPanel;
         $self->{helpSet} = $helpSet;
@@ -49,7 +49,7 @@ sub _new3 {
 sub _new2 {
     my ($class, $name, $jPanel) = @_;
     my $self = $class->SUPER::new();
-    $self->_init_fields();
+    _init_fields($self);
         $self->{name} = $name;
         $self->{jPanel} = $jPanel;
         my $url = ref($self)->getResource("/help/Help.hs");
@@ -75,11 +75,12 @@ sub getHelpSet {
         return $self->{helpSet};
 }
 
-# use java::net::URL;
-# use javax::help::HelpSet;
-# use javax::swing;
-use org::allbinary::logic::java::help::JavaHelpUtil;
-use org::allbinary::input::automation::module::InputAutomationModuleFactoryInterface;
+use java::lang::Object ();
+# use java::net::URL ();
+# use javax::help::HelpSet ();
+# use javax::swing ();
+use org::allbinary::logic::java::help::JavaHelpUtil ();
+use org::allbinary::input::automation::module::InputAutomationModuleFactoryInterface ();
 
 1;
 

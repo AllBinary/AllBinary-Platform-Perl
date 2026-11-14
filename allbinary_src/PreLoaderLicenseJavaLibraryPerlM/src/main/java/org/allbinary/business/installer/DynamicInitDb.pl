@@ -44,11 +44,12 @@ sub _new2 {
     return $self;
 }
 
-use org::allbinary::business::init::db::DatabaseConnectionInfoInterface;
-use org::allbinary::business::init::db::InitDbHelperFactory;
-use org::allbinary::logic::system::security::licensing::AbeClientInformationInterface;
-use org::allbinary::logic::system::security::licensing::LicensingException;
-use org::allbinary::business::installer::InitDb;
+use java::lang::Object ();
+use org::allbinary::business::init::db::DatabaseConnectionInfoInterface ();
+use org::allbinary::business::init::db::InitDbHelperFactory ();
+use org::allbinary::logic::system::security::licensing::AbeClientInformationInterface ();
+use org::allbinary::logic::system::security::licensing::LicensingException ();
+use org::allbinary::business::installer::InitDb ();
 
 1;
 

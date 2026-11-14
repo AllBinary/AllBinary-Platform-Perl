@@ -29,7 +29,7 @@ sub _init_fields {
 sub new {
     my ($class, $label, $tiledLayer, $layout, $altText, $backgroundBasicColor, $foregroundBasicColor) = @_;
     my $self = $class->SUPER::new($label, $backgroundBasicColor, $foregroundBasicColor);
-    $self->_init_fields();
+    _init_fields($self);
         # super(...) made $self above
         $self->{tiledLayer} = $tiledLayer;
     return $self;
@@ -88,11 +88,18 @@ sub paintUnselected {
     my ($self, $graphics, $x, $y) = @_;
 }
 
-# use javax::microedition::lcdui::Graphics;
-# use javax::microedition::lcdui::Screen;
-use org::allbinary::graphics::form::item::ABCustomItem;
-use org::allbinary::graphics::form::item::ABCustomItemInterface;
-use org::allbinary::graphics::color::BasicColor;
+
+sub getLabel {
+    my ($self) = @_;
+        return $self->SUPER::getLabel();
+}
+
+use java::lang::Object ();
+use javax::microedition::lcdui::Graphics ();
+use javax::microedition::lcdui::Screen ();
+use org::allbinary::graphics::form::item::ABCustomItem ();
+use org::allbinary::graphics::form::item::ABCustomItemInterface ();
+use org::allbinary::graphics::color::BasicColor ();
 
 1;
 

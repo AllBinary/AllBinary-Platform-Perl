@@ -28,7 +28,7 @@ sub onInputMappingEvent {
     die "abstract method onInputMappingEvent";
 }
 
-use org::allbinary::logic::util::event::EventListenerInterface;
+use org::allbinary::logic::util::event::EventListenerInterface ();
 
 1;
 

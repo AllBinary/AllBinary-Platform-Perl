@@ -5,8 +5,9 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
-our $instance = 'org::allbinary::device::OpenGLESGraphics'->new();
+tie our $instance, 'java::lang::LazyStatic', sub { 'org::allbinary::device::OpenGLESGraphics'->new() };
 
 sub new {
     my ($class) = @_;
@@ -20,7 +21,9 @@ sub getInstance {
         return $org::allbinary::device::OpenGLESNullGraphicsFactory::instance;
 }
 
-use org::allbinary::device::OpenGLESGraphics;
+use java::lang::Object ();
+use java::lang::LazyStatic ();
+use org::allbinary::device::OpenGLESGraphics ();
 
 1;
 

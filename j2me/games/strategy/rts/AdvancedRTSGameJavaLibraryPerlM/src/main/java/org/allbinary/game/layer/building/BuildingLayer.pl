@@ -48,7 +48,7 @@ sub createSimulated {
 sub new {
     my ($class, $remoteInfo, $buildingPropertiesFactory, $advancedRTSProperties, $groupInterface, $rootName, $name, $healthInterface, $rtsFormInput, $animationInterfaceFactoryInterface, $emptyAnimationInterfaceFactoryInterface, $baseAnimationInterfaceFactoryInterface, $buildAnimationInterfaceFactoryInterface, $verticleBuildAnimationInterfaceFactoryInterface, $proceduralAnimationInterfaceFactoryInterface, $rectangle, $x, $y) = @_;
     my $self = $class->SUPER::new($remoteInfo, $org::allbinary::game::layer::NullPathFindingLayer::NULL_PATH_FINDING_LAYER, $advancedRTSProperties, $groupInterface, $rootName, $name, $healthInterface, $rtsFormInput, $animationInterfaceFactoryInterface, $emptyAnimationInterfaceFactoryInterface, $baseAnimationInterfaceFactoryInterface, $buildAnimationInterfaceFactoryInterface, $verticleBuildAnimationInterfaceFactoryInterface, $proceduralAnimationInterfaceFactoryInterface, $rectangle, $x, $y, 'org::allbinary::game::view::TileLayerPositionIntoViewPosition'->new());
-    $self->_init_fields();
+    _init_fields($self);
         # super(...) made $self above
         $self->setCollidableInferface('org::allbinary::game::layer::CollidableRTSBehavior'->new(1));
         $self->getWaypointBehavior()->setWaypoint('org::allbinary::game::layer::waypoint::Waypoint'->new($self, 'org::allbinary::media::audio::SelectSound'->getInstance()));
@@ -365,54 +365,68 @@ sub getStaticType {
         return 2;
 }
 
-# use javax::microedition::lcdui::Graphics;
-use org::allbinary::ag::weapon::media::audio::ExplosionBasicSound;
-use org::allbinary::animation::NullAnimationFactory;
-use org::allbinary::animation::NullIndexedAnimationFactory;
-use org::allbinary::game::identification::GroupFactory;
-use org::allbinary::game::input::form::NullRTSFormInputFactory;
-use org::allbinary::game::input::form::RTSFormInput;
-use org::allbinary::game::input::form::VisibleCellPositionsSingleton;
-use org::allbinary::game::layer::AdvancedRTSGameLayer;
-use org::allbinary::game::layer::AdvancedRTSPlayerLayerInterface;
-use org::allbinary::game::layer::AdvancedRTSProperties;
-use org::allbinary::game::layer::CollidableRTSBehavior;
-use org::allbinary::game::layer::RTSLayerUtil;
-use org::allbinary::game::layer::RTSPlayerLayerInterface;
-use org::allbinary::game::layer::SelectionHudPaintable;
-use org::allbinary::game::layer::waypoint::Waypoint;
-use org::allbinary::game::view::TileLayerPositionIntoViewPosition;
-use org::allbinary::graphics::RectangleFactory;
-use org::allbinary::logic::string::StringUtil;
-use org::allbinary::util::BasicArrayList;
-use org::allbinary::util::BasicArrayListD;
-use org::allbinary::animation::AnimationInterfaceFactoryInterface;
-use org::allbinary::animation::ProceduralAnimationInterfaceFactoryInterface;
-use org::allbinary::animation::RotationAnimationInterfaceCompositeInterface;
-use org::allbinary::direction::Direction;
-use org::allbinary::direction::DirectionFactory;
-use org::allbinary::game::combat::damage::DamageFloaters;
-use org::allbinary::game::health::Health;
-use org::allbinary::game::identification::Group;
-use org::allbinary::game::layer::GeographicMapCellPositionAreaBase;
-use org::allbinary::game::layer::NullPathFindingLayer;
-use org::allbinary::game::tracking::TrackingEvent;
-use org::allbinary::game::tracking::TrackingEventHandler;
-use org::allbinary::game::tracking::TrackingEventListenerInterface;
-use org::allbinary::graphics::Rectangle;
-use org::allbinary::graphics::paint::Paintable;
-use org::allbinary::layer::AllBinaryLayerManager;
-use org::allbinary::media::audio::SecondaryPlayerQueueFactory;
-use org::allbinary::media::audio::SelectSound;
-use org::allbinary::media::graphics::geography::map::GeographicMapCellPosition;
-use org::allbinary::media::graphics::geography::map::GeographicMapDirectionUtil;
-use org::allbinary::media::graphics::geography::map::drop::DropCellPositionHistory;
-use org::allbinary::time::TimeDelayHelper;
-use org::allbinary::util::BasicArrayListS;
-use org::allbinary::game::multiplayer::layer::RemoteInfo;
-use org::allbinary::util::ABHashtable;
-use org::allbinary::game::layer::building::SimulatedBuildingPropertiesFactory;
-use org::allbinary::game::layer::building::BuildingInfoHudPaintable;
+
+sub getRotationAnimationInterface {
+    my ($self) = @_;
+        return $self->SUPER::getRotationAnimationInterface();
+}
+
+
+sub setFrame {
+    my ($self, $index) = @_;
+        $self->SUPER::setFrame($index);
+}
+
+use java::lang::Object ();
+use javax::microedition::lcdui::Graphics ();
+use org::allbinary::ag::weapon::media::audio::ExplosionBasicSound ();
+use org::allbinary::animation::NullAnimationFactory ();
+use org::allbinary::animation::NullIndexedAnimationFactory ();
+use org::allbinary::game::identification::GroupFactory ();
+use org::allbinary::game::input::form::NullRTSFormInputFactory ();
+use org::allbinary::game::input::form::RTSFormInput ();
+use org::allbinary::game::input::form::VisibleCellPositionsSingleton ();
+use org::allbinary::game::layer::AdvancedRTSGameLayer ();
+use org::allbinary::game::layer::AdvancedRTSPlayerLayerInterface ();
+use org::allbinary::game::layer::AdvancedRTSProperties ();
+use org::allbinary::game::layer::CollidableRTSBehavior ();
+use org::allbinary::game::layer::RTSLayerUtil ();
+use org::allbinary::game::layer::RTSPlayerLayerInterface ();
+use org::allbinary::game::layer::SelectionHudPaintable ();
+use org::allbinary::game::layer::waypoint::Waypoint ();
+use org::allbinary::game::view::TileLayerPositionIntoViewPosition ();
+use org::allbinary::graphics::RectangleFactory ();
+use org::allbinary::logic::string::StringUtil ();
+use org::allbinary::util::BasicArrayList ();
+use org::allbinary::util::BasicArrayListD ();
+use org::allbinary::animation::AnimationInterfaceFactoryInterface ();
+use org::allbinary::animation::ProceduralAnimationInterfaceFactoryInterface ();
+use org::allbinary::animation::RotationAnimationInterfaceCompositeInterface ();
+use org::allbinary::direction::Direction ();
+use org::allbinary::direction::DirectionFactory ();
+use org::allbinary::game::combat::damage::DamageFloaters ();
+use org::allbinary::game::health::Health ();
+use org::allbinary::game::identification::Group ();
+use org::allbinary::game::layer::GeographicMapCellPositionAreaBase ();
+use org::allbinary::game::layer::NullPathFindingLayer ();
+use org::allbinary::game::tracking::TrackingEvent ();
+use org::allbinary::game::tracking::TrackingEventHandler ();
+use org::allbinary::game::tracking::TrackingEventListenerInterface ();
+use org::allbinary::graphics::Rectangle ();
+use org::allbinary::graphics::paint::Paintable ();
+use org::allbinary::layer::AllBinaryLayerManager ();
+use org::allbinary::media::audio::SecondaryPlayerQueueFactory ();
+use org::allbinary::media::audio::SelectSound ();
+use org::allbinary::media::graphics::geography::map::GeographicMapCellPosition ();
+use org::allbinary::media::graphics::geography::map::GeographicMapDirectionUtil ();
+use org::allbinary::media::graphics::geography::map::drop::DropCellPositionHistory ();
+use org::allbinary::time::TimeDelayHelper ();
+use org::allbinary::util::BasicArrayListS ();
+use org::allbinary::game::multiplayer::layer::RemoteInfo ();
+use org::allbinary::util::ABHashtable ();
+use org::allbinary::animation::RotationAnimation ();
+use org::allbinary::game::layer::building::SimulatedBuildingPropertiesFactory ();
+use org::allbinary::game::layer::building::BuildingInfoHudPaintable ();
 
 1;
 

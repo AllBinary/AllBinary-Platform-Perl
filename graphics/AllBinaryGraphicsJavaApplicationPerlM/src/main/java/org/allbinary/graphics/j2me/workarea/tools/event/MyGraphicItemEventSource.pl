@@ -17,6 +17,7 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
 
 sub _init_fields {
@@ -37,7 +38,7 @@ sub new {
 sub _new2 {
     my ($class, $command, $treeNode) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
         $self->{command} = $command;
         $self->{treeNode} = $treeNode;
     return $self;
@@ -47,7 +48,7 @@ sub _new2 {
 sub _new3 {
     my ($class, $command, $angle, $treeNode) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
         $self->{command} = $command;
         $self->{treeNode} = $treeNode;
         $self->setAngle($angle);
@@ -78,7 +79,8 @@ sub setAngle {
         $self->{angle} = $angle;
 }
 
-# use javax::swing::tree::MutableTreeNode;
+use java::lang::Object ();
+# use javax::swing::tree::MutableTreeNode ();
 
 1;
 

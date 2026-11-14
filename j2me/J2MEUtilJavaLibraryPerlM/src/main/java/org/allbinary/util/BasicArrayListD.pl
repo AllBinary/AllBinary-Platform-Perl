@@ -28,9 +28,10 @@ sub new {
     return $self;
 }
 
-# use jsinterop::annotations::JsType;
-# use jsinterop::annotations::JsConstructor;
-use org::allbinary::util::BasicArrayListS;
+use java::lang::Object ();
+# use jsinterop::annotations::JsType ();
+# use jsinterop::annotations::JsConstructor ();
+use org::allbinary::util::BasicArrayListS ();
 
 1;
 

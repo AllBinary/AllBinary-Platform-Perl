@@ -17,9 +17,9 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
-use parent -norequire,'org::allbinary::game::combat::damage::DamageableInterface';
+use parent -norequire,'java::lang::Object','org::allbinary::game::combat::damage::DamageableInterface';
 
-our $instance = 'org::allbinary::game::combat::damage::DamageableBaseBehavior'->new();
+tie our $instance, 'java::lang::LazyStatic', sub { 'org::allbinary::game::combat::damage::DamageableBaseBehavior'->new() };
 
 sub new {
     my ($class) = @_;
@@ -52,7 +52,9 @@ sub getDamage {
         return 6000;
 }
 
-use org::allbinary::game::combat::damage::DamageableInterface;
+use java::lang::Object ();
+use java::lang::LazyStatic ();
+use org::allbinary::game::combat::damage::DamageableInterface ();
 
 1;
 

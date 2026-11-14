@@ -19,7 +19,7 @@ use feature 'try';
 no warnings 'experimental::try';
 use parent -norequire,'org::allbinary::graphics::opengles::shader::ShaderInitializer';
 
-our $instanceC = 'org::allbinary::graphics::opengles::shader::SimpleShaderInitializer'->new();
+tie our $instanceC, 'java::lang::LazyStatic', sub { 'org::allbinary::graphics::opengles::shader::SimpleShaderInitializer'->new() };
 
 sub new {
     my ($class) = @_;
@@ -33,7 +33,9 @@ sub getInstance {
         return $org::allbinary::graphics::opengles::shader::SimpleShaderInitializer::instanceC;
 }
 
-use org::allbinary::graphics::opengles::shader::ShaderInitializer;
+use java::lang::Object ();
+use java::lang::LazyStatic ();
+use org::allbinary::graphics::opengles::shader::ShaderInitializer ();
 
 1;
 

@@ -40,7 +40,7 @@ sub new {
 sub _new1 {
     my ($class, $node) = @_;
     my $self = $class->SUPER::new($org::allbinary::input::automation::actions::script::condition::ColorAtActionScriptCondition::NAME, $node);
-    $self->_init_fields();
+    _init_fields($self);
         # super(...) made $self above
         $self->{point} = 'java::awt::Point'->new(0, 0);
         my $actionNode = 'org::allbinary::data::tree::dom::DomSearchHelper'->getNode($org::allbinary::input::automation::actions::script::condition::ColorAtActionScriptConditionData::NAME, $node->getChildNodes());
@@ -85,7 +85,7 @@ sub _new1 {
 sub _new0 {
     my ($class) = @_;
     my $self = $class->SUPER::new($org::allbinary::input::automation::actions::script::condition::ColorAtActionScriptCondition::NAME);
-    $self->_init_fields();
+    _init_fields($self);
         # super(...) made $self above
         $self->{point} = 'java::awt::Point'->new(0, 0);
         $self->init();
@@ -176,31 +176,32 @@ sub setColorRangeInterface {
         $self->{colorRangeInterface} = $colorRangeInterface;
 }
 
-# use java::awt::Color;
-# use java::awt::Point;
-# use java::awt::image::BufferedImage;
-use java::util::HashMap;
-use org::allbinary::data::tree::dom::DomNodeHelper;
-use org::allbinary::data::tree::dom::DomSearchHelper;
-use org::allbinary::data::tree::dom::ModDomHelper;
-use org::allbinary::graphics::color::ColorCacheFactory;
-use org::allbinary::graphics::color::ColorCacheable;
-use org::allbinary::input::media::image::capture::CapturedBufferedImagesCacheSingleton;
-use org::allbinary::logic::StdUtil;
-use org::allbinary::logic::communication::log::LogUtil;
-use org::allbinary::logic::string::StringMaker;
-use org::allbinary::logic::util::cache::AutomaticCacheInterface;
-use org::allbinary::media::image::analysis::ColorRange;
-use org::allbinary::media::image::analysis::ColorRangeInterface;
-use org::allbinary::media::image::cache::BufferedImageFrameCacheable;
-use org::allbinary::string::CommonSeps;
-use org::w3c::dom::Document;
-use org::w3c::dom::Node;
-use org::w3c::dom::NodeList;
-use org::allbinary::input::automation::actions::script::condition::BasicProfileActionScriptCondition;
-use org::allbinary::input::automation::actions::script::condition::ColorAtActionScriptConditionInterface;
-use org::allbinary::input::automation::actions::script::condition::ColorAtActionScriptConditionData;
-use org::allbinary::input::automation::actions::script::condition::ColorAtActionScriptConditionJPanel;
+use java::lang::Object ();
+# use java::awt::Color ();
+# use java::awt::Point ();
+# use java::awt::image::BufferedImage ();
+use java::util::HashMap ();
+use org::allbinary::data::tree::dom::DomNodeHelper ();
+use org::allbinary::data::tree::dom::DomSearchHelper ();
+use org::allbinary::data::tree::dom::ModDomHelper ();
+use org::allbinary::graphics::color::ColorCacheFactory ();
+use org::allbinary::graphics::color::ColorCacheable ();
+use org::allbinary::input::media::image::capture::CapturedBufferedImagesCacheSingleton ();
+use org::allbinary::logic::StdUtil ();
+use org::allbinary::logic::communication::log::LogUtil ();
+use org::allbinary::logic::string::StringMaker ();
+use org::allbinary::logic::util::cache::AutomaticCacheInterface ();
+use org::allbinary::media::image::analysis::ColorRange ();
+use org::allbinary::media::image::analysis::ColorRangeInterface ();
+use org::allbinary::media::image::cache::BufferedImageFrameCacheable ();
+use org::allbinary::string::CommonSeps ();
+use org::w3c::dom::Document ();
+use org::w3c::dom::Node ();
+use org::w3c::dom::NodeList ();
+use org::allbinary::input::automation::actions::script::condition::BasicProfileActionScriptCondition ();
+use org::allbinary::input::automation::actions::script::condition::ColorAtActionScriptConditionInterface ();
+use org::allbinary::input::automation::actions::script::condition::ColorAtActionScriptConditionData ();
+use org::allbinary::input::automation::actions::script::condition::ColorAtActionScriptConditionJPanel ();
 
 1;
 

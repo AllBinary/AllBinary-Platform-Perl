@@ -34,7 +34,7 @@ sub _init_fields {
 sub new {
     my ($class, $geographicMapInterface, $viewPosition) = @_;
     my $self = $class->SUPER::new('org::allbinary::logic::string::StringUtil'->getInstance()->{EMPTY_STRING}, 'org::allbinary::graphics::Rectangle'->new('org::allbinary::graphics::PointFactory'->getInstance()->createXY(0, $viewPosition->getY()), $geographicMapInterface->getAllBinaryTiledLayer()->getWidth(), $geographicMapInterface->getAllBinaryTiledLayer()->getHeight()), $viewPosition);
-    $self->_init_fields();
+    _init_fields($self);
         # super(...) made $self above
         $self->{allBinaryTiledLayer} = $geographicMapInterface->getAllBinaryTiledLayer();
         $self->{geographicMapCellPositionFactory} = $geographicMapInterface->getGeographicMapCellPositionFactory();
@@ -125,29 +125,30 @@ sub paint {
         $self->paintDots($graphics);
 }
 
-# use javax::microedition::lcdui::Graphics;
-use org::allbinary::logic::string::StringUtil;
-use org::allbinary::util::BasicArrayList;
-use org::allbinary::util::BasicArrayListD;
-use org::allbinary::logic::communication::log::ForcedLogUtil;
-use org::allbinary::animation::vector::CircleFilledAnimation;
-use org::allbinary::game::layer::AllBinaryTiledLayer;
-use org::allbinary::graphics::GPoint;
-use org::allbinary::graphics::PointFactory;
-use org::allbinary::graphics::Rectangle;
-use org::allbinary::graphics::color::BasicColor;
-use org::allbinary::graphics::color::BasicColorFactory;
-use org::allbinary::graphics::color::ColorCompositeInterface;
-use org::allbinary::layer::AllBinaryLayer;
-use org::allbinary::logic::util::event::AllBinaryEventObject;
-use org::allbinary::logic::util::event::EventStrings;
-use org::allbinary::media::graphics::geography::map::BasicGeographicMap;
-use org::allbinary::media::graphics::geography::map::BasicGeographicMapCellPositionFactory;
-use org::allbinary::media::graphics::geography::map::GeographicMapCellPosition;
-use org::allbinary::media::graphics::geography::map::event::GeographicMapCellPositionEvent;
-use org::allbinary::media::graphics::geography::map::event::GeographicMapCellPositionEventHandler;
-use org::allbinary::media::graphics::geography::map::event::GeographicMapCellPositionEventListenerInterface;
-use org::allbinary::view::ViewPositionBase;
+use java::lang::Object ();
+use javax::microedition::lcdui::Graphics ();
+use org::allbinary::logic::string::StringUtil ();
+use org::allbinary::util::BasicArrayList ();
+use org::allbinary::util::BasicArrayListD ();
+use org::allbinary::logic::communication::log::ForcedLogUtil ();
+use org::allbinary::animation::vector::CircleFilledAnimation ();
+use org::allbinary::game::layer::AllBinaryTiledLayer ();
+use org::allbinary::graphics::GPoint ();
+use org::allbinary::graphics::PointFactory ();
+use org::allbinary::graphics::Rectangle ();
+use org::allbinary::graphics::color::BasicColor ();
+use org::allbinary::graphics::color::BasicColorFactory ();
+use org::allbinary::graphics::color::ColorCompositeInterface ();
+use org::allbinary::layer::AllBinaryLayer ();
+use org::allbinary::logic::util::event::AllBinaryEventObject ();
+use org::allbinary::logic::util::event::EventStrings ();
+use org::allbinary::media::graphics::geography::map::BasicGeographicMap ();
+use org::allbinary::media::graphics::geography::map::BasicGeographicMapCellPositionFactory ();
+use org::allbinary::media::graphics::geography::map::GeographicMapCellPosition ();
+use org::allbinary::media::graphics::geography::map::event::GeographicMapCellPositionEvent ();
+use org::allbinary::media::graphics::geography::map::event::GeographicMapCellPositionEventHandler ();
+use org::allbinary::media::graphics::geography::map::event::GeographicMapCellPositionEventListenerInterface ();
+use org::allbinary::view::ViewPositionBase ();
 
 1;
 

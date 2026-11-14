@@ -45,7 +45,7 @@ sub _new1 {
 sub _new2 {
     my ($class, $gl, $gl2) = @_;
     my $self = $class->SUPER::new($gl, $gl2);
-    $self->_init_fields();
+    _init_fields($self);
         # super(...) made $self above
         $self->{gl11} = $self->getJOGLGL();
     return $self;
@@ -342,8 +342,9 @@ sub glVertexPointer {
         $self->{gl11}->glVertexPointer($size, $type, $stride, $offset);
 }
 
-use com::jogamp::opengl::GL;
-use com::jogamp::opengl::GL2;
+use java::lang::Object ();
+use com::jogamp::opengl::GL ();
+use com::jogamp::opengl::GL2 ();
 
 1;
 

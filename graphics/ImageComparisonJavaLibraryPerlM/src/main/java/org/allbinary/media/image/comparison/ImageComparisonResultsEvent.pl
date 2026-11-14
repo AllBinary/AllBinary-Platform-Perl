@@ -29,7 +29,7 @@ sub _init_fields {
 sub new {
     my ($class, $anyType, $imageComparisonInfo) = @_;
     my $self = $class->SUPER::new($anyType);
-    $self->_init_fields();
+    _init_fields($self);
         # super(...) made $self above
         $self->setImageComparisonResult($imageComparisonInfo);
     return $self;
@@ -47,7 +47,8 @@ sub setImageComparisonResult {
         $self->{imageComparisonResult} = $imageComparisonResult;
 }
 
-use org::allbinary::logic::util::event::AllBinaryEventObject;
+use java::lang::Object ();
+use org::allbinary::logic::util::event::AllBinaryEventObject ();
 
 1;
 

@@ -17,7 +17,7 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
-use parent -norequire,'org::allbinary::input::motion::gesture::observer::MotionGestureEventListener';
+use parent -norequire,'java::lang::Object','org::allbinary::input::motion::gesture::observer::MotionGestureEventListener';
 
 
 sub _init_fields {
@@ -33,7 +33,7 @@ sub _init_fields {
 sub new {
     my ($class, $signed) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
         $self->{logUtil}->putF($self->{commonStrings}->{START}, $self, $self->{commonStrings}->{CONSTRUCTOR});
         $self->{signed} = $signed;
     return $self;
@@ -142,17 +142,18 @@ sub onMotionGestureEvent {
         }
 }
 
-use org::allbinary::input::motion::gesture::MotionGestureInput;
-use org::allbinary::input::motion::gesture::TouchMotionGestureFactory;
-use org::allbinary::logic::communication::log::ForcedLogUtil;
-use org::allbinary::logic::communication::log::LogUtil;
-use org::allbinary::logic::string::StringMaker;
-use org::allbinary::logic::string::StringUtil;
-use org::allbinary::logic::util::event::AllBinaryEventObject;
-use org::allbinary::string::CommonStrings;
-use org::allbinary::util::BasicArrayList;
-use org::allbinary::util::BasicArrayListD;
-use org::allbinary::input::motion::gesture::observer::MotionGestureEventListener;
+use java::lang::Object ();
+use org::allbinary::input::motion::gesture::MotionGestureInput ();
+use org::allbinary::input::motion::gesture::TouchMotionGestureFactory ();
+use org::allbinary::logic::communication::log::ForcedLogUtil ();
+use org::allbinary::logic::communication::log::LogUtil ();
+use org::allbinary::logic::string::StringMaker ();
+use org::allbinary::logic::string::StringUtil ();
+use org::allbinary::logic::util::event::AllBinaryEventObject ();
+use org::allbinary::string::CommonStrings ();
+use org::allbinary::util::BasicArrayList ();
+use org::allbinary::util::BasicArrayListD ();
+use org::allbinary::input::motion::gesture::observer::MotionGestureEventListener ();
 
 1;
 

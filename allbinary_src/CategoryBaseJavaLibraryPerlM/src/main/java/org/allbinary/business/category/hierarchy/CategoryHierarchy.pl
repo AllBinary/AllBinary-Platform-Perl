@@ -17,7 +17,7 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
-use parent -norequire,'org::allbinary::business::category::hierarchy::CategoryHierarchyInterface';
+use parent -norequire,'java::lang::Object','org::allbinary::business::category::hierarchy::CategoryHierarchyInterface';
 
 
 sub _init_fields {
@@ -39,7 +39,7 @@ sub new {
 sub _new2 {
     my ($class, $rootCategoryInterface, $parentCategoryInterface) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
         $self->{level} = 0;
         $self->setRoot($rootCategoryInterface);
         $self->setParent($parentCategoryInterface);
@@ -50,7 +50,7 @@ sub _new2 {
 sub _new3 {
     my ($class, $rootCategoryInterface, $parentCategoryInterface, $level) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
         $self->{level} = $level;
         $self->setRoot($rootCategoryInterface);
         $self->setParent($parentCategoryInterface);
@@ -61,7 +61,7 @@ sub _new3 {
 sub _new3 {
     my ($class, $rootCategoryInterface, $parentCategoryInterface, $categoryPropertiesHashMap) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
         my $levelString = 'org::allbinary::logic::string::StringUtil'->getInstance()->getNonNull($categoryPropertiesHashMap->get('org::allbinary::business::category::CategoryData'->getInstance()->{LEVEL}));
         $self->{level} = int(("" . ($levelString)));
         $self->setRoot($rootCategoryInterface);
@@ -111,11 +111,12 @@ sub getParent {
         return $self->{parentCategoryInterface};
 }
 
-use java::util::HashMap;
-use org::allbinary::business::category::CategoryData;
-use org::allbinary::business::category::CategoryInterface;
-use org::allbinary::logic::string::StringUtil;
-use org::allbinary::business::category::hierarchy::CategoryHierarchyInterface;
+use java::lang::Object ();
+use java::util::HashMap ();
+use org::allbinary::business::category::CategoryData ();
+use org::allbinary::business::category::CategoryInterface ();
+use org::allbinary::logic::string::StringUtil ();
+use org::allbinary::business::category::hierarchy::CategoryHierarchyInterface ();
 
 1;
 

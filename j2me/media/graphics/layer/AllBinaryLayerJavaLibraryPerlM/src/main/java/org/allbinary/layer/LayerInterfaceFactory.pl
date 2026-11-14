@@ -17,8 +17,9 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
-our $SINGLETON = 'org::allbinary::layer::LayerInterfaceFactory'->new();
+tie our $SINGLETON, 'java::lang::LazyStatic', sub { 'org::allbinary::layer::LayerInterfaceFactory'->new() };
 
 sub _init_fields {
     my ($self) = @_;
@@ -30,7 +31,7 @@ sub _init_fields {
 sub new {
     my ($class) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
     return $self;
 }
 
@@ -63,15 +64,17 @@ sub add {
         $self->{list}->add($layerInterfaceFactoryInterface);
 }
 
-use org::allbinary::logic::communication::log::LogUtil;
-use org::allbinary::logic::string::StringMaker;
-use org::allbinary::logic::string::StringUtil;
-use org::allbinary::string::CommonStrings;
-use org::allbinary::util::ABHashtable;
-use org::allbinary::util::BasicArrayList;
-use org::allbinary::util::BasicArrayListD;
-use org::allbinary::util::BasicArrayListUtil;
-use org::allbinary::layer::Layer;
+use java::lang::Object ();
+use java::lang::LazyStatic ();
+use org::allbinary::logic::communication::log::LogUtil ();
+use org::allbinary::logic::string::StringMaker ();
+use org::allbinary::logic::string::StringUtil ();
+use org::allbinary::string::CommonStrings ();
+use org::allbinary::util::ABHashtable ();
+use org::allbinary::util::BasicArrayList ();
+use org::allbinary::util::BasicArrayListD ();
+use org::allbinary::util::BasicArrayListUtil ();
+use org::allbinary::layer::Layer ();
 
 1;
 

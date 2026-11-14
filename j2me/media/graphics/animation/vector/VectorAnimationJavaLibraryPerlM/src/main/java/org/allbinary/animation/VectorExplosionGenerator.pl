@@ -17,8 +17,9 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
-our $instance = 'org::allbinary::animation::VectorExplosionGenerator'->new();
+tie our $instance, 'java::lang::LazyStatic', sub { 'org::allbinary::animation::VectorExplosionGenerator'->new() };
 
 sub _init_fields {
     my ($self) = @_;
@@ -38,7 +39,7 @@ sub getInstance {
 sub new {
     my ($class) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
     return $self;
 }
 
@@ -142,15 +143,17 @@ sub createPointsBasicArrayList {
         return $firstPointBasicArrayList;
 }
 
-use org::allbinary::graphics::GPoint;
-use org::allbinary::graphics::PointFactory;
-use org::allbinary::graphics::pipeline::RandomRotationFactory;
-use org::allbinary::graphics::pipeline::RandomTranslation;
-use org::allbinary::util::BasicArrayList;
-use org::allbinary::util::BasicArrayListD;
-use org::allbinary::util::BasicArrayListS;
-use org::allbinary::animation::VectorExplosionType;
-use org::allbinary::animation::VectorAnimationUtil;
+use java::lang::Object ();
+use java::lang::LazyStatic ();
+use org::allbinary::graphics::GPoint ();
+use org::allbinary::graphics::PointFactory ();
+use org::allbinary::graphics::pipeline::RandomRotationFactory ();
+use org::allbinary::graphics::pipeline::RandomTranslation ();
+use org::allbinary::util::BasicArrayList ();
+use org::allbinary::util::BasicArrayListD ();
+use org::allbinary::util::BasicArrayListS ();
+use org::allbinary::animation::VectorExplosionType ();
+use org::allbinary::animation::VectorAnimationUtil ();
 
 1;
 

@@ -19,7 +19,7 @@ use feature 'try';
 no warnings 'experimental::try';
 use parent -norequire,'org::allbinary::graphics::paint::LocationPaintable';
 
-our $instanceC = 'org::allbinary::graphics::paint::NullLocationPaintable'->new();
+tie our $instanceC, 'java::lang::LazyStatic', sub { 'org::allbinary::graphics::paint::NullLocationPaintable'->new() };
 
 sub new {
     my ($class) = @_;
@@ -33,7 +33,9 @@ sub getInstance {
         return $org::allbinary::graphics::paint::NullLocationPaintable::instanceC;
 }
 
-use org::allbinary::graphics::paint::LocationPaintable;
+use java::lang::Object ();
+use java::lang::LazyStatic ();
+use org::allbinary::graphics::paint::LocationPaintable ();
 
 1;
 

@@ -20,7 +20,7 @@ use feature 'try';
 no warnings 'experimental::try';
 use parent -norequire,'javax::microedition::lcdui::PlatformImage';
 
-our $instance = 'javax::microedition::lcdui::PostLoadPlatformImage'->new();
+tie our $instance, 'java::lang::LazyStatic', sub { 'javax::microedition::lcdui::PostLoadPlatformImage'->new() };
 
 sub new {
     my ($class) = @_;
@@ -34,7 +34,9 @@ sub getInstance {
         return $javax::microedition::lcdui::PostLoadPlatformImage::instance;
 }
 
-use javax::microedition::lcdui::PlatformImage;
+use java::lang::Object ();
+use java::lang::LazyStatic ();
+use javax::microedition::lcdui::PlatformImage ();
 
 1;
 

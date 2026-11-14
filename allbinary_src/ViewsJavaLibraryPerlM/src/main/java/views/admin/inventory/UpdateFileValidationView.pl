@@ -19,7 +19,7 @@ use feature 'try';
 no warnings 'experimental::try';
 use parent -norequire,'views::admin::inventory::InventoryItemView','org::allbinary::logic::control::validate::ValidationComponentInterface';
 
-our $UPDATEPRODUCT = 'org::allbinary::string::CommonStrings'->getInstance()->{UPDATE};
+tie our $UPDATEPRODUCT, 'java::lang::LazyStatic', sub { 'org::allbinary::string::CommonStrings'->getInstance()->{UPDATE} };
 
 sub _init_fields {
     my ($self) = @_;
@@ -30,7 +30,7 @@ sub _init_fields {
 sub new {
     my ($class, $transformInfoInterface) = @_;
     my $self = $class->SUPER::new($transformInfoInterface);
-    $self->_init_fields();
+    _init_fields($self);
         # super(...) made $self above
     return $self;
 }
@@ -188,29 +188,38 @@ sub validationInfo {
         }
 }
 
-use org::allbinary::business::context::modules::storefront::StoreFrontFactory;
-use org::allbinary::business::context::modules::storefront::StoreFrontInterface;
-use org::allbinary::business::user::commerce::inventory::item::BasicItemData;
-use org::allbinary::business::user::commerce::inventory::item::BasicItemValidation;
-use org::allbinary::business::user::commerce::money::MoneyException;
-use org::allbinary::data::tables::user::commerce::inventory::item::InventoryEntity;
-use org::allbinary::data::tables::user::commerce::inventory::item::InventoryEntityFactory;
-use org::allbinary::globals::GLOBALS2;
-use org::allbinary::globals::URLGLOBALS;
-use org::allbinary::logic::communication::http::file::upload::HttpFileUploadUtil;
-use org::allbinary::logic::communication::log::LogUtil;
-use org::allbinary::logic::control::validate::ValidationComponentInterface;
-use org::allbinary::logic::io::file::AbFile;
-use org::allbinary::logic::io::file::FileData;
-use org::allbinary::logic::string::StringMaker;
-use org::allbinary::logic::string::StringValidationUtil;
-use org::allbinary::logic::visual::transform::info::TransformInfoInterface;
-use org::allbinary::string::CommonSeps;
-use org::allbinary::string::CommonStrings;
-use org::apache::commons::fileupload::FileItem;
-use org::w3c::dom::Document;
-use org::w3c::dom::Node;
-use views::admin::inventory::InventoryItemView;
+
+# throws Exception
+sub getTransformInfoInterface {
+    my ($self) = @_;
+        return $self->SUPER::getTransformInfoInterface();
+}
+
+use java::lang::Object ();
+use java::lang::LazyStatic ();
+use org::allbinary::business::context::modules::storefront::StoreFrontFactory ();
+use org::allbinary::business::context::modules::storefront::StoreFrontInterface ();
+use org::allbinary::business::user::commerce::inventory::item::BasicItemData ();
+use org::allbinary::business::user::commerce::inventory::item::BasicItemValidation ();
+use org::allbinary::business::user::commerce::money::MoneyException ();
+use org::allbinary::data::tables::user::commerce::inventory::item::InventoryEntity ();
+use org::allbinary::data::tables::user::commerce::inventory::item::InventoryEntityFactory ();
+use org::allbinary::globals::GLOBALS2 ();
+use org::allbinary::globals::URLGLOBALS ();
+use org::allbinary::logic::communication::http::file::upload::HttpFileUploadUtil ();
+use org::allbinary::logic::communication::log::LogUtil ();
+use org::allbinary::logic::control::validate::ValidationComponentInterface ();
+use org::allbinary::logic::io::file::AbFile ();
+use org::allbinary::logic::io::file::FileData ();
+use org::allbinary::logic::string::StringMaker ();
+use org::allbinary::logic::string::StringValidationUtil ();
+use org::allbinary::logic::visual::transform::info::TransformInfoInterface ();
+use org::allbinary::string::CommonSeps ();
+use org::allbinary::string::CommonStrings ();
+use org::apache::commons::fileupload::FileItem ();
+use org::w3c::dom::Document ();
+use org::w3c::dom::Node ();
+use views::admin::inventory::InventoryItemView ();
 
 1;
 

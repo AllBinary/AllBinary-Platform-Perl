@@ -19,7 +19,7 @@ use feature 'try';
 no warnings 'experimental::try';
 use parent -norequire,'org::allbinary::logic::util::event::handler::BasicEventHandler';
 
-our $instance = 'org::allbinary::layer::event::LayerManagerEventHandler'->new();
+tie our $instance, 'java::lang::LazyStatic', sub { 'org::allbinary::layer::event::LayerManagerEventHandler'->new() };
 
 sub _init_fields {
     my ($self) = @_;
@@ -38,7 +38,7 @@ sub getInstance {
 sub new {
     my ($class) = @_;
     my $self = $class->SUPER::new();
-    $self->_init_fields();
+    _init_fields($self);
     return $self;
 }
 
@@ -94,16 +94,16 @@ sub fireDeleteEvent {
         my $eventListenerInterfaceList = $self->{eventListenerInterfaceList};
         my $eventListenerInterface = undef;
         my $layerManagerEventListenerInterface = undef;
-        my $index = 0;
-        while ($index < $eventListenerInterfaceList->size()) {
+        my $listenerIndex = 0;
+        while ($listenerIndex < $eventListenerInterfaceList->size()) {
             try {
-                $eventListenerInterface = $eventListenerInterfaceList->{objectArray}->[$index];
+                $eventListenerInterface = $eventListenerInterfaceList->{objectArray}->[$listenerIndex];
                 $layerManagerEventListenerInterface = ($eventListenerInterface);
                 $layerManagerEventListenerInterface->onDeleteLayerManagerEvent($eventObject);
             } catch ($e) {
                 $self->{logUtil}->put($self->{commonStrings}->{EXCEPTION}, $self, 'org::allbinary::logic::util::event::EventStrings'->getInstance()->{FIRE_EVENT}, $e);
             }
-            $index++;
+            $listenerIndex++;
         }
 }
 
@@ -115,12 +115,14 @@ sub process {
         $layerManagerEventListenerInterface->onCreateLayerManagerEvent($eventObject);
 }
 
-use org::allbinary::logic::util::event::AllBinaryEventObject;
-use org::allbinary::logic::util::event::EventListenerInterface;
-use org::allbinary::logic::util::event::EventStrings;
-use org::allbinary::logic::util::event::handler::BasicEventHandler;
-use org::allbinary::util::BasicArrayList;
-use org::allbinary::util::BasicArrayListD;
+use java::lang::Object ();
+use java::lang::LazyStatic ();
+use org::allbinary::logic::util::event::AllBinaryEventObject ();
+use org::allbinary::logic::util::event::EventListenerInterface ();
+use org::allbinary::logic::util::event::EventStrings ();
+use org::allbinary::logic::util::event::handler::BasicEventHandler ();
+use org::allbinary::util::BasicArrayList ();
+use org::allbinary::util::BasicArrayListD ();
 
 1;
 

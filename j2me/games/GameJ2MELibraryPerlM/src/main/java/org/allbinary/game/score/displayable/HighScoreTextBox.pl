@@ -33,17 +33,13 @@ sub _init_fields {
 sub new {
     my ($class, $highScoresFactoryInterface, $highScoresHelper, $abeClientInformation, $gameInfo, $cmdListener, $name, $highScore, $backgrounBasicColor, $foregroundBasicColor) = @_;
     my $self = $class->SUPER::new($cmdListener, "New High Score Enter Name:", $name, 12, $javax::microedition::lcdui::TextField::ANY, 'javax::microedition::lcdui::Font'->getDefaultFont(), $backgrounBasicColor, $foregroundBasicColor);
-    $self->_init_fields();
+    _init_fields($self);
         # super(...) made $self above
         $self->{highScoreUtil} = 'org::allbinary::game::score::displayable::HighScoreUtil'->new($highScoresFactoryInterface, $highScoresHelper, $abeClientInformation, $gameInfo, $cmdListener, $name, $highScore);
         my $operatingSystemInterface = 'org::allbinary::logic::system::os::OperatingSystemFactory'->getInstance()->getOperatingSystemInstance();
         if ($operatingSystemInterface->isOverScan()) {
             my $username = 'org::allbinary::logic::system::security::licensing::InApplicationPurchaseFactory'->getInstance()->getUserName();
-            if (defined($username)) {
-                $self->getTextFieldItem()->setString($username);
-            } else {
-                $self->getTextFieldItem()->setString("NoGamerInfo");
-            }
+            $self->getTextFieldItem()->setString($username);
         }
     return $self;
 }
@@ -111,27 +107,28 @@ sub submit {
         $self->{highScoreUtil}->submit($self);
 }
 
-# use javax::microedition::lcdui::CommandListener;
-# use javax::microedition::lcdui::Font;
-# use javax::microedition::lcdui::Graphics;
-# use javax::microedition::lcdui::TextField;
-use org::allbinary::PostGameCommandFactory;
-use org::allbinary::game::GameInfo;
-use org::allbinary::game::score::HighScore;
-use org::allbinary::game::score::HighScoresHelperBaseInterface;
-use org::allbinary::game::score::HighScoresFactoryInterface;
-use org::allbinary::graphics::color::BasicColor;
-use org::allbinary::graphics::color::BasicColorFactory;
-use org::allbinary::graphics::form::item::CustomTextBox;
-use org::allbinary::graphics::paint::NullPaintable;
-use org::allbinary::graphics::paint::Paintable;
-use org::allbinary::graphics::paint::SimpleTextPaintable;
-use org::allbinary::input::event::VirtualKeyboardEventHandler;
-use org::allbinary::logic::system::os::GenericOperatingSystem;
-use org::allbinary::logic::system::os::OperatingSystemFactory;
-use org::allbinary::logic::system::security::licensing::AbeClientInformationInterface;
-use org::allbinary::logic::system::security::licensing::InApplicationPurchaseFactory;
-use org::allbinary::game::score::displayable::HighScoreUtil;
+use java::lang::Object ();
+use javax::microedition::lcdui::CommandListener ();
+use javax::microedition::lcdui::Font ();
+use javax::microedition::lcdui::Graphics ();
+use javax::microedition::lcdui::TextField ();
+use org::allbinary::PostGameCommandFactory ();
+use org::allbinary::game::GameInfo ();
+use org::allbinary::game::score::HighScore ();
+use org::allbinary::game::score::HighScoresHelperBaseInterface ();
+use org::allbinary::game::score::HighScoresFactoryInterface ();
+use org::allbinary::graphics::color::BasicColor ();
+use org::allbinary::graphics::color::BasicColorFactory ();
+use org::allbinary::graphics::form::item::CustomTextBox ();
+use org::allbinary::graphics::paint::NullPaintable ();
+use org::allbinary::graphics::paint::Paintable ();
+use org::allbinary::graphics::paint::SimpleTextPaintable ();
+use org::allbinary::input::event::VirtualKeyboardEventHandler ();
+use org::allbinary::logic::system::os::GenericOperatingSystem ();
+use org::allbinary::logic::system::os::OperatingSystemFactory ();
+use org::allbinary::logic::system::security::licensing::AbeClientInformationInterface ();
+use org::allbinary::logic::system::security::licensing::InApplicationPurchaseFactory ();
+use org::allbinary::game::score::displayable::HighScoreUtil ();
 
 1;
 

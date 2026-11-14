@@ -94,13 +94,13 @@ sub setGeographicMapCellHistoryArray {
     die "abstract method setGeographicMapCellHistoryArray";
 }
 
-use org::allbinary::util::BasicArrayList;
-use org::allbinary::animation::RotationAnimation;
-use org::allbinary::layer::LayerInterface;
-use org::allbinary::logic::math::BasicDecimal;
-use org::allbinary::media::graphics::geography::map::GeographicMapCellHistory;
-use org::allbinary::media::graphics::geography::map::GeographicMapCellPositionTracking;
-use org::allbinary::game::layer::VehiclePropertiesCompositeInterface;
+use org::allbinary::util::BasicArrayList ();
+use org::allbinary::animation::RotationAnimation ();
+use org::allbinary::layer::LayerInterface ();
+use org::allbinary::logic::math::BasicDecimal ();
+use org::allbinary::media::graphics::geography::map::GeographicMapCellHistory ();
+use org::allbinary::media::graphics::geography::map::GeographicMapCellPositionTracking ();
+use org::allbinary::game::layer::VehiclePropertiesCompositeInterface ();
 
 1;
 

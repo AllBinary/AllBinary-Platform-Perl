@@ -26,7 +26,7 @@ sub finished {
     die "abstract method finished";
 }
 
-use org::allbinary::layer::AllBinaryLayer;
+use org::allbinary::layer::AllBinaryLayer ();
 
 1;
 

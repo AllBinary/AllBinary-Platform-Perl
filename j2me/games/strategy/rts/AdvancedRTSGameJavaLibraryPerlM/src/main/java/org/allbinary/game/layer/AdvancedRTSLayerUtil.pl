@@ -16,8 +16,9 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
-our $instance = 'org::allbinary::game::layer::AdvancedRTSLayerUtil'->new();
+tie our $instance, 'java::lang::LazyStatic', sub { 'org::allbinary::game::layer::AdvancedRTSLayerUtil'->new() };
 
 sub new {
     my ($class) = @_;
@@ -39,11 +40,13 @@ sub createFakeRTSLayerHashtable {
         return $hashtable;
 }
 
-use org::allbinary::game::layer::waypoint::WorkWaypoint;
-use org::allbinary::logic::math::SmallIntegerSingletonFactory;
-use org::allbinary::media::graphics::geography::map::racetrack::BaseRaceTrackGeographicMap;
-use org::allbinary::util::ABHashtable;
-use org::allbinary::game::layer::RTSLayerUtil;
+use java::lang::Object ();
+use java::lang::LazyStatic ();
+use org::allbinary::game::layer::waypoint::WorkWaypoint ();
+use org::allbinary::logic::math::SmallIntegerSingletonFactory ();
+use org::allbinary::media::graphics::geography::map::racetrack::BaseRaceTrackGeographicMap ();
+use org::allbinary::util::ABHashtable ();
+use org::allbinary::game::layer::RTSLayerUtil ();
 
 1;
 

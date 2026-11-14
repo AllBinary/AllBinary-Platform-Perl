@@ -72,11 +72,11 @@ sub setTarget {
     die "abstract method setTarget";
 }
 
-use org::allbinary::game::combat::destroy::DestroyableInterface;
-use org::allbinary::game::identification::GroupInterfaceCompositeInterface;
-use org::allbinary::game::input::GameKeyEventSourceInterface;
-use org::allbinary::game::layer::waypoint::WaypointLayerInterface;
-use org::allbinary::util::BasicArrayList;
+use org::allbinary::game::combat::destroy::DestroyableInterface ();
+use org::allbinary::game::identification::GroupInterfaceCompositeInterface ();
+use org::allbinary::game::input::GameKeyEventSourceInterface ();
+use org::allbinary::game::layer::waypoint::WaypointLayerInterface ();
+use org::allbinary::util::BasicArrayList ();
 
 1;
 

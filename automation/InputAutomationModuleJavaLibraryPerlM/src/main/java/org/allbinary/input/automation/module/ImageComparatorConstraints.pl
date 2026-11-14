@@ -17,7 +17,7 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
-use parent -norequire,'org::allbinary::media::image::comparison::ImageComparatorConstraintsInterface';
+use parent -norequire,'java::lang::Object','org::allbinary::media::image::comparison::ImageComparatorConstraintsInterface';
 
 
 sub _init_fields {
@@ -32,7 +32,7 @@ sub _init_fields {
 sub new {
     my ($class, $doImageComparisonEveryNthFrame) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
         $self->{doImageComparisonEveryNthFrame} = $doImageComparisonEveryNthFrame;
         $self->setAvoidVector('org::allbinary::util::BasicArrayListD'->new());
     return $self;
@@ -130,15 +130,16 @@ sub log {
         }
 }
 
-# use java::awt::Color;
-# use java::awt::Rectangle;
-# use java::awt::image::BufferedImage;
-use org::allbinary::util::BasicArrayList;
-use org::allbinary::util::BasicArrayListD;
-use org::allbinary::collision::RectangleCollisionUtil;
-use org::allbinary::graphics::GPoint;
-use org::allbinary::logic::communication::log::LogUtil;
-use org::allbinary::media::image::comparison::ImageComparatorConstraintsInterface;
+use java::lang::Object ();
+# use java::awt::Color ();
+# use java::awt::Rectangle ();
+# use java::awt::image::BufferedImage ();
+use org::allbinary::util::BasicArrayList ();
+use org::allbinary::util::BasicArrayListD ();
+use org::allbinary::collision::RectangleCollisionUtil ();
+use org::allbinary::graphics::GPoint ();
+use org::allbinary::logic::communication::log::LogUtil ();
+use org::allbinary::media::image::comparison::ImageComparatorConstraintsInterface ();
 
 1;
 

@@ -29,7 +29,7 @@ sub _init_fields {
 sub new {
     my ($class, $basicColor) = @_;
     my $self = $class->SUPER::new($basicColor);
-    $self->_init_fields();
+    _init_fields($self);
         # super(...) made $self above
     return $self;
 }
@@ -41,10 +41,11 @@ sub paint {
         $graphics->fillRect(0, 0, $self->{displayInfoSingleton}->getLastWidth(), $self->{displayInfoSingleton}->getLastHeight());
 }
 
-# use javax::microedition::lcdui::Graphics;
-use org::allbinary::graphics::color::BasicColor;
-use org::allbinary::graphics::displayable::DisplayInfoSingleton;
-use org::allbinary::game::paint::ColorFillBasePaintable;
+use java::lang::Object ();
+use javax::microedition::lcdui::Graphics ();
+use org::allbinary::graphics::color::BasicColor ();
+use org::allbinary::graphics::displayable::DisplayInfoSingleton ();
+use org::allbinary::game::paint::ColorFillBasePaintable ();
 
 1;
 

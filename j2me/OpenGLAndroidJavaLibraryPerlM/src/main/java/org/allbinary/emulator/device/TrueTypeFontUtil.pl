@@ -21,7 +21,7 @@ no warnings 'experimental::try';
 use POSIX ();
 use parent -norequire,'org::allbinary::emulator::device::TrueTypeFontUtilBase';
 
-our $instance = 'org::allbinary::emulator::device::TrueTypeFontUtil'->new();
+tie our $instance, 'java::lang::LazyStatic', sub { 'org::allbinary::emulator::device::TrueTypeFontUtil'->new() };
 
 sub _init_fields {
     my ($self) = @_;
@@ -41,7 +41,7 @@ sub getInstance {
 sub new {
     my ($class) = @_;
     my $self = $class->SUPER::new(1);
-    $self->_init_fields();
+    _init_fields($self);
         # super(...) made $self above
     return $self;
 }
@@ -185,26 +185,28 @@ sub getFontWidths {
         return $self->{_characterWidth};
 }
 
-use java::io::File;
-# use java::io::FileOutputStream;
-# use javax::microedition::khronos::opengles::GL10;
-# use javax::microedition::lcdui::Image;
-use android::graphics::Bitmap;
-use android::graphics::Canvas;
-use android::graphics::Paint;
-use android::graphics::Rect;
-use android::graphics::Typeface;
-use org::allbinary::data::resource::ResourceUtil;
-use org::allbinary::graphics::color::BasicColor;
-use org::allbinary::graphics::displayable::CanvasStrings;
-use org::allbinary::image::PreResourceImageUtil;
-use org::allbinary::image::opengles::OpenGLESImage;
-use org::allbinary::logic::communication::log::LogUtil;
-use org::allbinary::logic::communication::log::PreLogUtil;
-use org::allbinary::string::CommonStrings;
-use org::microemu::android::device::AndroidImageInterface;
-use org::microemu::android::device::AndroidImmutableImage;
-use org::allbinary::emulator::device::TrueTypeFontUtilBase;
+use java::lang::Object ();
+use java::lang::LazyStatic ();
+use java::io::File ();
+# use java::io::FileOutputStream ();
+use javax::microedition::khronos::opengles::GL10 ();
+use javax::microedition::lcdui::Image ();
+# use android::graphics::Bitmap ();
+# use android::graphics::Canvas ();
+# use android::graphics::Paint ();
+# use android::graphics::Rect ();
+# use android::graphics::Typeface ();
+use org::allbinary::data::resource::ResourceUtil ();
+use org::allbinary::graphics::color::BasicColor ();
+use org::allbinary::graphics::displayable::CanvasStrings ();
+use org::allbinary::image::PreResourceImageUtil ();
+use org::allbinary::image::opengles::OpenGLESImage ();
+use org::allbinary::logic::communication::log::LogUtil ();
+use org::allbinary::logic::communication::log::PreLogUtil ();
+use org::allbinary::string::CommonStrings ();
+use org::microemu::android::device::AndroidImageInterface ();
+use org::microemu::android::device::AndroidImmutableImage ();
+use org::allbinary::emulator::device::TrueTypeFontUtilBase ();
 
 1;
 

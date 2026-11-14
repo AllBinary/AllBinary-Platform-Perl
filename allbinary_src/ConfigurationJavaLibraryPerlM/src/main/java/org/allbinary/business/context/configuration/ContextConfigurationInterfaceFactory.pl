@@ -17,8 +17,9 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
-our $instance = 'org::allbinary::business::context::configuration::ContextConfigurationInterfaceFactory'->new();
+tie our $instance, 'java::lang::LazyStatic', sub { 'org::allbinary::business::context::configuration::ContextConfigurationInterfaceFactory'->new() };
 
 
 sub getInstance {
@@ -55,15 +56,17 @@ sub getInstance {
         return $self->getInstance($document);
 }
 
-use org::allbinary::data::tree::dom::DomSearchHelper;
-use org::allbinary::data::tree::dom::document::DomDocumentHelper;
-use org::allbinary::logic::control::crypt::file::CryptFileReader;
-use org::allbinary::logic::io::path::AbPath;
-use org::w3c::dom::Document;
-use org::w3c::dom::Node;
-use org::allbinary::business::context::configuration::ContextConfigurationData;
-use org::allbinary::business::context::configuration::ContextConfigurationView;
-use org::allbinary::business::context::configuration::ContextConfigurationPathUtil;
+use java::lang::Object ();
+use java::lang::LazyStatic ();
+use org::allbinary::data::tree::dom::DomSearchHelper ();
+use org::allbinary::data::tree::dom::document::DomDocumentHelper ();
+use org::allbinary::logic::control::crypt::file::CryptFileReader ();
+use org::allbinary::logic::io::path::AbPath ();
+use org::w3c::dom::Document ();
+use org::w3c::dom::Node ();
+use org::allbinary::business::context::configuration::ContextConfigurationData ();
+use org::allbinary::business::context::configuration::ContextConfigurationView ();
+use org::allbinary::business::context::configuration::ContextConfigurationPathUtil ();
 
 1;
 

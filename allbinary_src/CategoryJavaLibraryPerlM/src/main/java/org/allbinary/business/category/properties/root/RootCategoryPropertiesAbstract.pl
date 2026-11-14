@@ -17,7 +17,7 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
-use parent -norequire,'org::allbinary::business::category::properties::root::RootCategoryPropertiesInterface';
+use parent -norequire,'java::lang::Object','org::allbinary::business::category::properties::root::RootCategoryPropertiesInterface';
 
 
 sub _init_fields {
@@ -30,7 +30,7 @@ sub _init_fields {
 sub new {
     my ($class) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
     return $self;
 }
 
@@ -151,17 +151,18 @@ sub validationInfo {
         return undef;
 }
 
-use java::util::HashMap;
-use org::allbinary::util::BasicArrayList;
-use org::allbinary::util::BasicArrayListD;
-use org::allbinary::business::category::CategoryData;
-use org::allbinary::business::category::hierarchy::CategoryHierarchyInterface;
-use org::allbinary::logic::StdUtil;
-use org::allbinary::logic::io::path::AbPath;
-use org::allbinary::logic::io::path::AbPathData;
-use org::w3c::dom::Document;
-use org::w3c::dom::Node;
-use org::allbinary::business::category::properties::root::RootCategoryPropertiesInterface;
+use java::lang::Object ();
+use java::util::HashMap ();
+use org::allbinary::util::BasicArrayList ();
+use org::allbinary::util::BasicArrayListD ();
+use org::allbinary::business::category::CategoryData ();
+use org::allbinary::business::category::hierarchy::CategoryHierarchyInterface ();
+use org::allbinary::logic::StdUtil ();
+use org::allbinary::logic::io::path::AbPath ();
+use org::allbinary::logic::io::path::AbPathData ();
+use org::w3c::dom::Document ();
+use org::w3c::dom::Node ();
+use org::allbinary::business::category::properties::root::RootCategoryPropertiesInterface ();
 
 1;
 

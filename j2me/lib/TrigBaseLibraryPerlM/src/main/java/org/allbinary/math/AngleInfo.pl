@@ -17,6 +17,7 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
 our $ANGLE = "Angle: ";
 
@@ -37,7 +38,7 @@ sub getInstance {
 sub new {
     my ($class, $angleIncrementInfo) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
         $self->{angleIncrementInfo} = $angleIncrementInfo;
     return $self;
 }
@@ -78,14 +79,15 @@ sub toString {
         return $stringBuffer->toString();
 }
 
-# use jsinterop::annotations::JsType;
-use org::allbinary::logic::string::StringMaker;
-use org::allbinary::logic::string::StringUtil;
-use org::allbinary::string::CommonSeps;
-# use jsinterop::annotations::JsMethod;
-# use jsinterop::annotations::JsConstructor;
-use org::allbinary::math::AngleIncrementInfoFactory;
-use org::allbinary::math::FrameUtil;
+use java::lang::Object ();
+# use jsinterop::annotations::JsType ();
+use org::allbinary::logic::string::StringMaker ();
+use org::allbinary::logic::string::StringUtil ();
+use org::allbinary::string::CommonSeps ();
+# use jsinterop::annotations::JsMethod ();
+# use jsinterop::annotations::JsConstructor ();
+use org::allbinary::math::AngleIncrementInfoFactory ();
+use org::allbinary::math::FrameUtil ();
 
 1;
 

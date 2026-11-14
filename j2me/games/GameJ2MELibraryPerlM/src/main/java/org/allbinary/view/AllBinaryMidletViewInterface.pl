@@ -27,10 +27,10 @@ sub onDestroy {
     die "abstract method onDestroy";
 }
 
-use org::allbinary::game::configuration::event::GameInitializedListenerInterface;
-use org::allbinary::game::midlet::DemoGameMidletEventListener;
-use org::allbinary::midlet::MidletCompositeInterface;
-use org::allbinary::view::EmulatorViewInterface;
+use org::allbinary::game::configuration::event::GameInitializedListenerInterface ();
+use org::allbinary::game::midlet::DemoGameMidletEventListener ();
+use org::allbinary::midlet::MidletCompositeInterface ();
+use org::allbinary::view::EmulatorViewInterface ();
 
 1;
 

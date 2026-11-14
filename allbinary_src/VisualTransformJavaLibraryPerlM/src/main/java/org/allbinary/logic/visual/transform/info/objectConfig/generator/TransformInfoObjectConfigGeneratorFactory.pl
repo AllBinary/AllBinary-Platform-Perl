@@ -17,9 +17,9 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
-use parent -norequire,'org::allbinary::logic::visual::transform::info::objectConfig::generator::TransformInfoObjectConfigGeneratorFactoryInterface';
+use parent -norequire,'java::lang::Object','org::allbinary::logic::visual::transform::info::objectConfig::generator::TransformInfoObjectConfigGeneratorFactoryInterface';
 
-our $instance = 'org::allbinary::logic::visual::transform::info::objectConfig::generator::TransformInfoObjectConfigGeneratorFactory'->new();
+tie our $instance, 'java::lang::LazyStatic', sub { 'org::allbinary::logic::visual::transform::info::objectConfig::generator::TransformInfoObjectConfigGeneratorFactory'->new() };
 
 sub _init_fields {
     my ($self) = @_;
@@ -36,7 +36,7 @@ sub getInstance {
 sub new {
     my ($class) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
     return $self;
 }
 
@@ -59,13 +59,15 @@ sub getInstance {
         }
 }
 
-use org::allbinary::logic::communication::log::LogUtil;
-use org::allbinary::logic::io::InputOutputTypeData;
-use org::allbinary::logic::visual::transform::info::TransformInfoInterface;
-use org::allbinary::string::CommonStrings;
-use org::allbinary::logic::visual::transform::info::objectConfig::generator::TransformInfoObjectConfigGeneratorFactoryInterface;
-use org::allbinary::logic::visual::transform::info::objectConfig::generator::StoreFileGenerator;
-use org::allbinary::logic::visual::transform::info::objectConfig::generator::BasicGenerator;
+use java::lang::Object ();
+use java::lang::LazyStatic ();
+use org::allbinary::logic::communication::log::LogUtil ();
+use org::allbinary::logic::io::InputOutputTypeData ();
+use org::allbinary::logic::visual::transform::info::TransformInfoInterface ();
+use org::allbinary::string::CommonStrings ();
+use org::allbinary::logic::visual::transform::info::objectConfig::generator::TransformInfoObjectConfigGeneratorFactoryInterface ();
+use org::allbinary::logic::visual::transform::info::objectConfig::generator::StoreFileGenerator ();
+use org::allbinary::logic::visual::transform::info::objectConfig::generator::BasicGenerator ();
 
 1;
 

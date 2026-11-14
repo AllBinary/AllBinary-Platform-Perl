@@ -30,7 +30,7 @@ sub _init_fields {
 sub new {
     my ($class, $ownerLayerInterface, $gameInput) = @_;
     my $self = $class->SUPER::new($ownerLayerInterface, $gameInput);
-    $self->_init_fields();
+    _init_fields($self);
         # super(...) made $self above
         $self->{currentSpeed} = 5;
     return $self;
@@ -95,12 +95,13 @@ sub drop {
         $ownerLayerInterface->setPosition($ownerLayerInterface->getXP(), $y, $ownerLayerInterface->getZP());
 }
 
-# use javax::microedition::lcdui::Canvas;
-use org::allbinary::game::ai::BasicAI;
-use org::allbinary::game::input::GameInput;
-use org::allbinary::graphics::displayable::DisplayInfoSingleton;
-use org::allbinary::layer::AllBinaryLayer;
-use org::allbinary::layer::AllBinaryLayerManager;
+use java::lang::Object ();
+use javax::microedition::lcdui::Canvas ();
+use org::allbinary::game::ai::BasicAI ();
+use org::allbinary::game::input::GameInput ();
+use org::allbinary::graphics::displayable::DisplayInfoSingleton ();
+use org::allbinary::layer::AllBinaryLayer ();
+use org::allbinary::layer::AllBinaryLayerManager ();
 
 1;
 

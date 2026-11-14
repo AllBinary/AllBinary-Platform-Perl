@@ -5,6 +5,7 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
 our $androidtoJavaMicroEditionKeyMap = [(0) x (17)];
 
@@ -42,8 +43,9 @@ sub getKey {
         return $key;
 }
 
-# use javax::microedition::lcdui::Canvas;
-use android::view::KeyEvent;
+use java::lang::Object ();
+use javax::microedition::lcdui::Canvas ();
+# use android::view::KeyEvent ();
 
 1;
 

@@ -31,7 +31,7 @@ sub _init_fields {
 sub new {
     my ($class, $image, $animationBehavior) = @_;
     my $self = $class->SUPER::new($image, 'org::allbinary::logic::math::PrimitiveIntUtil'->getArrayInstance(), $animationBehavior);
-    $self->_init_fields();
+    _init_fields($self);
         # super(...) made $self above
         $self->setFrame($self->getSize() - 1);
     return $self;
@@ -71,13 +71,14 @@ sub paintXY {
         $graphics->drawRegion($self->getImage(), $self->{startWidth}, $self->getStartY(), $self->{currentWidth}, $self->getDrawHeight(), $javax::microedition::lcdui::game::Sprite::TRANS_NONE, $x + $self->{startWidth}, $y, $self->{anchor});
 }
 
-# use javax::microedition::lcdui::Graphics;
-# use javax::microedition::lcdui::Image;
-# use javax::microedition::lcdui::game::Sprite;
-use org::allbinary::animation::AnimationBehavior;
-use org::allbinary::graphics::Anchor;
-use org::allbinary::logic::math::PrimitiveIntUtil;
-use org::allbinary::animation::image::ImageSegmentAnimation;
+use java::lang::Object ();
+use javax::microedition::lcdui::Graphics ();
+use javax::microedition::lcdui::Image ();
+use javax::microedition::lcdui::game::Sprite ();
+use org::allbinary::animation::AnimationBehavior ();
+use org::allbinary::graphics::Anchor ();
+use org::allbinary::logic::math::PrimitiveIntUtil ();
+use org::allbinary::animation::image::ImageSegmentAnimation ();
 
 1;
 

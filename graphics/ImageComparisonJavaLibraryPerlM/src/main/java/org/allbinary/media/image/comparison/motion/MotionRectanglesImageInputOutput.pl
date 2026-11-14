@@ -17,7 +17,7 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
-use parent -norequire,'org::allbinary::media::image::io::ImageIOInterface';
+use parent -norequire,'java::lang::Object','org::allbinary::media::image::io::ImageIOInterface';
 
 
 sub _init_fields {
@@ -30,7 +30,7 @@ sub _init_fields {
 sub new {
     my ($class) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
     return $self;
 }
 
@@ -116,29 +116,30 @@ sub save {
         }
 }
 
-# use java::awt;
-# use java::awt::image::BufferedImage;
-use org::allbinary::util::BasicArrayList;
-use org::allbinary::util::BasicArrayListD;
-use org::allbinary::input::automation::ImageOutputData;
-use org::allbinary::logic::communication::log::LogUtil;
-use org::allbinary::logic::java::number::LongUtil;
-use org::allbinary::logic::string::StringMaker;
-use org::allbinary::logic::util::cache::AutomaticCacheInterface;
-use org::allbinary::logic::util::cache::PoolInterface;
-use org::allbinary::logic::visual::media::MediaDataFactory;
-use org::allbinary::media::image::ImagePersistanceUtil;
-use org::allbinary::media::image::cache::BufferedImageCacheable;
-use org::allbinary::media::image::cache::BufferedImageInfo;
-use org::allbinary::media::image::cache::BufferedImageInfoFactory;
-use org::allbinary::media::image::cache::BufferedImagePoolSingleton;
-use org::allbinary::media::image::comparison::ImageComparisonResult;
-use org::allbinary::media::image::io::ImageIOInterface;
-use org::allbinary::string::CommonStrings;
-use org::allbinary::media::image::comparison::motion::AllMotionRectanglesResultsCacheSingleton;
-use org::allbinary::media::image::comparison::motion::ConsolidatedMotionRectanglesResultsCacheSingleton;
-use org::allbinary::media::image::comparison::motion::ConstrainedMotionRectanglesResultsCacheSingleton;
-use org::allbinary::media::image::comparison::motion::Color;
+use java::lang::Object ();
+# use java::awt ();
+# use java::awt::image::BufferedImage ();
+use org::allbinary::util::BasicArrayList ();
+use org::allbinary::util::BasicArrayListD ();
+use org::allbinary::input::automation::ImageOutputData ();
+use org::allbinary::logic::communication::log::LogUtil ();
+use org::allbinary::logic::java::number::LongUtil ();
+use org::allbinary::logic::string::StringMaker ();
+use org::allbinary::logic::util::cache::AutomaticCacheInterface ();
+use org::allbinary::logic::util::cache::PoolInterface ();
+use org::allbinary::logic::visual::media::MediaDataFactory ();
+use org::allbinary::media::image::ImagePersistanceUtil ();
+use org::allbinary::media::image::cache::BufferedImageCacheable ();
+use org::allbinary::media::image::cache::BufferedImageInfo ();
+use org::allbinary::media::image::cache::BufferedImageInfoFactory ();
+use org::allbinary::media::image::cache::BufferedImagePoolSingleton ();
+use org::allbinary::media::image::comparison::ImageComparisonResult ();
+use org::allbinary::media::image::io::ImageIOInterface ();
+use org::allbinary::string::CommonStrings ();
+use org::allbinary::media::image::comparison::motion::AllMotionRectanglesResultsCacheSingleton ();
+use org::allbinary::media::image::comparison::motion::ConsolidatedMotionRectanglesResultsCacheSingleton ();
+use org::allbinary::media::image::comparison::motion::ConstrainedMotionRectanglesResultsCacheSingleton ();
+use org::allbinary::media::image::comparison::motion::Color ();
 
 1;
 

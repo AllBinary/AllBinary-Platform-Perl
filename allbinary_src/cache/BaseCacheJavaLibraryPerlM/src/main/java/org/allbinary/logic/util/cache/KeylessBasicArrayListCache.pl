@@ -30,7 +30,7 @@ sub _init_fields {
 sub new {
     my ($class) = @_;
     my $self = $class->SUPER::new();
-    $self->_init_fields();
+    _init_fields($self);
     return $self;
 }
 
@@ -76,11 +76,12 @@ sub log {
         return $stringBuffer->toString();
 }
 
-use org::allbinary::logic::communication::log::LogUtil;
-use org::allbinary::logic::string::StringMaker;
-use org::allbinary::util::BasicArrayList;
-use org::allbinary::util::BasicArrayListUtil;
-use org::allbinary::logic::util::cache::IndexedBasicArrayListCache;
+use java::lang::Object ();
+use org::allbinary::logic::communication::log::LogUtil ();
+use org::allbinary::logic::string::StringMaker ();
+use org::allbinary::util::BasicArrayList ();
+use org::allbinary::util::BasicArrayListUtil ();
+use org::allbinary::logic::util::cache::IndexedBasicArrayListCache ();
 
 1;
 

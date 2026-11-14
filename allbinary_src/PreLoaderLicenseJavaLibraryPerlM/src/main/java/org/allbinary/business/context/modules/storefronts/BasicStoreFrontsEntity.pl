@@ -30,7 +30,7 @@ sub _init_fields {
 sub new {
     my ($class) = @_;
     my $self = $class->SUPER::new('org::allbinary::business::init::db::UserDbInitInfo'->new());
-    $self->_init_fields();
+    _init_fields($self);
         # super(...) made $self above
         $self->setTable($self->{tableName});
     return $self;
@@ -52,13 +52,14 @@ sub getStoreFrontInterface {
         return 'org::allbinary::business::context::modules::storefronts::BasicStoreFront'->new($storeHashMap);
 }
 
-use java::util::HashMap;
-use org::allbinary::business::context::modules::storefront::StoreFrontData;
-use org::allbinary::business::init::InitSql;
-use org::allbinary::business::init::db::UserDbInitInfo;
-use org::allbinary::logic::StdUtil;
-use org::allbinary::logic::communication::log::LogUtil;
-use org::allbinary::business::context::modules::storefronts::BasicStoreFront;
+use java::lang::Object ();
+use java::util::HashMap ();
+use org::allbinary::business::context::modules::storefront::StoreFrontData ();
+use org::allbinary::business::init::InitSql ();
+use org::allbinary::business::init::db::UserDbInitInfo ();
+use org::allbinary::logic::StdUtil ();
+use org::allbinary::logic::communication::log::LogUtil ();
+use org::allbinary::business::context::modules::storefronts::BasicStoreFront ();
 
 1;
 

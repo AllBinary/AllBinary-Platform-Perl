@@ -19,7 +19,7 @@ use feature 'try';
 no warnings 'experimental::try';
 use parent -norequire,'org::allbinary::game::displayable::canvas::BasicMenuInputProcessor';
 
-our $SINGLETON = 'org::allbinary::game::displayable::canvas::NoMenuInputProcessor'->new();
+tie our $SINGLETON, 'java::lang::LazyStatic', sub { 'org::allbinary::game::displayable::canvas::NoMenuInputProcessor'->new() };
 
 
 sub getInstance {
@@ -50,11 +50,13 @@ sub onMotionGestureEvent {
     my ($self, $motionGestureEvent) = @_;
 }
 
-# use javax::microedition::lcdui::NullCanvas;
-use org::allbinary::game::input::event::GameKeyEvent;
-use org::allbinary::input::motion::gesture::observer::MotionGestureEvent;
-use org::allbinary::util::BasicArrayListUtil;
-use org::allbinary::game::displayable::canvas::BasicMenuInputProcessor;
+use java::lang::Object ();
+use java::lang::LazyStatic ();
+use javax::microedition::lcdui::NullCanvas ();
+use org::allbinary::game::input::event::GameKeyEvent ();
+use org::allbinary::input::motion::gesture::observer::MotionGestureEvent ();
+use org::allbinary::util::BasicArrayListUtil ();
+use org::allbinary::game::displayable::canvas::BasicMenuInputProcessor ();
 
 1;
 

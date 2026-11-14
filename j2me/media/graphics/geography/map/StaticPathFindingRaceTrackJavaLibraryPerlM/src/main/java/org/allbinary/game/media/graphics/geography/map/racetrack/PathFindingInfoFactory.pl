@@ -19,7 +19,7 @@ use feature 'try';
 no warnings 'experimental::try';
 use parent -norequire,'org::allbinary::media::graphics::geography::map::racetrack::BasePathFindingInfoFactory';
 
-our $instance = 'org::allbinary::game::media::graphics::geography::map::racetrack::PathFindingInfoFactory'->new();
+tie our $instance, 'java::lang::LazyStatic', sub { 'org::allbinary::game::media::graphics::geography::map::racetrack::PathFindingInfoFactory'->new() };
 
 
 sub getInstance {
@@ -46,14 +46,16 @@ sub getInstancePathFindingInfo {
         return $pathFindingInfo;
 }
 
-use org::allbinary::string::CommonStrings;
-use org::allbinary::logic::communication::log::PreLogUtil;
-use org::allbinary::media::graphics::geography::map::BasicGeographicMap;
-use org::allbinary::media::graphics::geography::map::racetrack::BasePathFindingInfoFactory;
-use org::allbinary::media::graphics::geography::map::racetrack::RaceTrackRoadsGeographicMapCellHistoryFactory;
-use org::allbinary::media::graphics::geography::pathfinding::PathFindingInfo;
-use org::allbinary::media::graphics::geography::pathfinding::PathFindingNodeCostInfoFactoryBase;
-use org::allbinary::util::BasicArrayListS;
+use java::lang::Object ();
+use java::lang::LazyStatic ();
+use org::allbinary::string::CommonStrings ();
+use org::allbinary::logic::communication::log::PreLogUtil ();
+use org::allbinary::media::graphics::geography::map::BasicGeographicMap ();
+use org::allbinary::media::graphics::geography::map::racetrack::BasePathFindingInfoFactory ();
+use org::allbinary::media::graphics::geography::map::racetrack::RaceTrackRoadsGeographicMapCellHistoryFactory ();
+use org::allbinary::media::graphics::geography::pathfinding::PathFindingInfo ();
+use org::allbinary::media::graphics::geography::pathfinding::PathFindingNodeCostInfoFactoryBase ();
+use org::allbinary::util::BasicArrayListS ();
 
 1;
 

@@ -18,7 +18,7 @@ use warnings;
 use feature 'try';
 no warnings 'experimental::try';
 use POSIX ();
-use parent -norequire,'org::allbinary::graphics::font::UpdateMyFontInterface';
+use parent -norequire,'java::lang::Object','org::allbinary::graphics::font::UpdateMyFontInterface';
 
 our $NULL_GEOGRPAHIC_MAP_HISTORY_ARRAY = [(undef) x (0)];
 
@@ -41,7 +41,7 @@ sub _init_fields {
 sub new {
     my ($class) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
         $self->{list} = 'org::allbinary::util::BasicArrayListD'->new();
         $self->{visitedList} = 'org::allbinary::util::BasicArrayListD'->new();
         $self->init();
@@ -290,23 +290,24 @@ sub init {
         $self->{totalVisited} = 0;
 }
 
-# use javax::microedition::lcdui::Font;
-# use javax::microedition::lcdui::Graphics;
-use org::allbinary::util::BasicArrayList;
-use org::allbinary::util::BasicArrayListD;
-use org::allbinary::string::CommonStrings;
-use org::allbinary::logic::communication::log::LogUtil;
-use org::allbinary::logic::java::bool::BooleanFactory;
-use org::allbinary::animation::Animation;
-use org::allbinary::animation::AnimationBehavior;
-use org::allbinary::animation::text::TextAnimation;
-use org::allbinary::game::layer::AllBinaryTiledLayer;
-use org::allbinary::graphics::GPoint;
-use org::allbinary::graphics::color::BasicColorFactory;
-use org::allbinary::graphics::font::MyFontProcessor;
-use org::allbinary::graphics::font::UpdateMyFontInterface;
-use org::allbinary::graphics::font::UpdateMyFontProcessor;
-use org::allbinary::logic::math::BasicDecimal;
+use java::lang::Object ();
+use javax::microedition::lcdui::Font ();
+use javax::microedition::lcdui::Graphics ();
+use org::allbinary::util::BasicArrayList ();
+use org::allbinary::util::BasicArrayListD ();
+use org::allbinary::string::CommonStrings ();
+use org::allbinary::logic::communication::log::LogUtil ();
+use org::allbinary::logic::java::bool::BooleanFactory ();
+use org::allbinary::animation::Animation ();
+use org::allbinary::animation::AnimationBehavior ();
+use org::allbinary::animation::text::TextAnimation ();
+use org::allbinary::game::layer::AllBinaryTiledLayer ();
+use org::allbinary::graphics::GPoint ();
+use org::allbinary::graphics::color::BasicColorFactory ();
+use org::allbinary::graphics::font::MyFontProcessor ();
+use org::allbinary::graphics::font::UpdateMyFontInterface ();
+use org::allbinary::graphics::font::UpdateMyFontProcessor ();
+use org::allbinary::logic::math::BasicDecimal ();
 
 1;
 

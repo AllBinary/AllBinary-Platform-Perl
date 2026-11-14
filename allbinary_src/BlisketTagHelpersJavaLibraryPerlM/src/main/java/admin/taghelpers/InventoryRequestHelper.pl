@@ -31,7 +31,7 @@ sub _init_fields {
 sub new {
     my ($class, $propertiesHashMap, $pageContext) = @_;
     my $self = $class->SUPER::new();
-    $self->_init_fields();
+    _init_fields($self);
         my $inventoryTag = $propertiesHashMap->get($admin::tags::AbTagData::PARENT);
         my $itemView = 'admin::taghelpers::InventoryItemViewParentTagHelper'->getInstance()->getInventoryItemView($inventoryTag);
         $self->{itemInterface} = $itemView->getItemInterface();
@@ -113,21 +113,22 @@ sub getItemInterface {
         return $self->{itemInterface};
 }
 
-use java::util::HashMap;
-use org::allbinary::util::BasicArrayList;
-use org::allbinary::util::BasicArrayListD;
-# use javax::servlet::jsp::PageContext;
-use admin::tags::AbTagData;
-use org::allbinary::business::user::commerce::inventory::item::BasicItemData;
-use org::allbinary::business::user::commerce::inventory::item::ItemInterface;
-use org::allbinary::data::tables::TableMappingInterface;
-use org::allbinary::data::tables::user::commerce::inventory::item::InventoryEntityFactory;
-use org::allbinary::logic::communication::log::LogUtil;
-use org::allbinary::logic::string::StringMaker;
-use tags::HelperTag;
-use views::admin::inventory::InventoryItemView;
-use admin::taghelpers::ModifyTable;
-use admin::taghelpers::InventoryItemViewParentTagHelper;
+use java::lang::Object ();
+use java::util::HashMap ();
+use org::allbinary::util::BasicArrayList ();
+use org::allbinary::util::BasicArrayListD ();
+# use javax::servlet::jsp::PageContext ();
+use admin::tags::AbTagData ();
+use org::allbinary::business::user::commerce::inventory::item::BasicItemData ();
+use org::allbinary::business::user::commerce::inventory::item::ItemInterface ();
+use org::allbinary::data::tables::TableMappingInterface ();
+use org::allbinary::data::tables::user::commerce::inventory::item::InventoryEntityFactory ();
+use org::allbinary::logic::communication::log::LogUtil ();
+use org::allbinary::logic::string::StringMaker ();
+use tags::HelperTag ();
+use views::admin::inventory::InventoryItemView ();
+use admin::taghelpers::ModifyTable ();
+use admin::taghelpers::InventoryItemViewParentTagHelper ();
 
 1;
 

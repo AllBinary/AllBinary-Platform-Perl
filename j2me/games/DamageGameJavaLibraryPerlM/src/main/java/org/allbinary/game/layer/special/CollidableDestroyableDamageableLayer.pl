@@ -19,7 +19,7 @@ use feature 'try';
 no warnings 'experimental::try';
 use parent -norequire,'org::allbinary::game::layer::CollidableCompositeLayer','org::allbinary::game::combat::destroy::DestroyableInterface','org::allbinary::game::combat::damage::DamageableInterface','org::allbinary::game::layer::pickup::PickupCompositeInterface','org::allbinary::game::layer::special::SpecialGameInputInterface';
 
-our $NULL_COLLIDABLE_DESTROYABLE_DAMAGE_LAYER = 'org::allbinary::logic::NullUtil'->getInstance()->{NULL_OBJECT};
+tie our $NULL_COLLIDABLE_DESTROYABLE_DAMAGE_LAYER, 'java::lang::LazyStatic', sub { 'org::allbinary::logic::NullUtil'->getInstance()->{NULL_OBJECT} };
 our $READYFOREXPLOSION = "ReadyForExplosion: ";
 
 sub _init_fields {
@@ -52,7 +52,7 @@ sub getNullInstance {
 sub new {
     my ($class, $groupInterface, $name, $layerInfo, $viewPosition) = @_;
     my $self = $class->SUPER::new($name, $layerInfo, $viewPosition, 'org::allbinary::game::collision::CollidableNeverCollideBehaviorFactory'->getInstance());
-    $self->_init_fields();
+    _init_fields($self);
         # super(...) made $self above
         $self->{initWidth} = $layerInfo->getWidth();
         $self->{initHeight} = $layerInfo->getHeight();
@@ -345,31 +345,33 @@ sub toString {
         return $stringBuffer->toString();
 }
 
-# use javax::microedition::lcdui::Graphics;
-use org::allbinary::game::collision::CollidableNeverCollideBehaviorFactory;
-use org::allbinary::game::combat::damage::DamageableInterface;
-use org::allbinary::game::combat::destroy::DestroyableInterface;
-use org::allbinary::game::combat::destroy::event::DestroyedEvent;
-use org::allbinary::game::identification::BasicGroupFactory;
-use org::allbinary::game::identification::Group;
-use org::allbinary::game::input::event::GameKeyEvent;
-use org::allbinary::game::layer::AllBinaryGameLayerManager;
-use org::allbinary::game::layer::CollidableCompositeLayer;
-use org::allbinary::game::layer::pickup::PickedUpLayerInterfaceFactoryInterface;
-use org::allbinary::game::layer::pickup::PickupBehavior;
-use org::allbinary::game::layer::pickup::PickupCompositeInterface;
-use org::allbinary::game::part::PartInterface;
-use org::allbinary::game::part::PartInterfaceUtil;
-use org::allbinary::graphics::Rectangle;
-use org::allbinary::graphics::RectangleFactory;
-use org::allbinary::layer::AllBinaryLayerManager;
-use org::allbinary::logic::NullUtil;
-use org::allbinary::logic::string::StringMaker;
-use org::allbinary::logic::string::StringUtil;
-use org::allbinary::math::PositionStrings;
-use org::allbinary::string::CommonSeps;
-use org::allbinary::view::ViewPositionBase;
-use org::allbinary::game::layer::special::SpecialGameInputInterface;
+use java::lang::Object ();
+use java::lang::LazyStatic ();
+use javax::microedition::lcdui::Graphics ();
+use org::allbinary::game::collision::CollidableNeverCollideBehaviorFactory ();
+use org::allbinary::game::combat::damage::DamageableInterface ();
+use org::allbinary::game::combat::destroy::DestroyableInterface ();
+use org::allbinary::game::combat::destroy::event::DestroyedEvent ();
+use org::allbinary::game::identification::BasicGroupFactory ();
+use org::allbinary::game::identification::Group ();
+use org::allbinary::game::input::event::GameKeyEvent ();
+use org::allbinary::game::layer::AllBinaryGameLayerManager ();
+use org::allbinary::game::layer::CollidableCompositeLayer ();
+use org::allbinary::game::layer::pickup::PickedUpLayerInterfaceFactoryInterface ();
+use org::allbinary::game::layer::pickup::PickupBehavior ();
+use org::allbinary::game::layer::pickup::PickupCompositeInterface ();
+use org::allbinary::game::part::PartInterface ();
+use org::allbinary::game::part::PartInterfaceUtil ();
+use org::allbinary::graphics::Rectangle ();
+use org::allbinary::graphics::RectangleFactory ();
+use org::allbinary::layer::AllBinaryLayerManager ();
+use org::allbinary::logic::NullUtil ();
+use org::allbinary::logic::string::StringMaker ();
+use org::allbinary::logic::string::StringUtil ();
+use org::allbinary::math::PositionStrings ();
+use org::allbinary::string::CommonSeps ();
+use org::allbinary::view::ViewPositionBase ();
+use org::allbinary::game::layer::special::SpecialGameInputInterface ();
 
 1;
 

@@ -32,7 +32,7 @@ sub _init_fields {
 sub new {
     my ($class, $geographicMapInterface, $edgeMinimum, $minPathWeight, $maxPathWeight) = @_;
     my $self = $class->SUPER::new();
-    $self->_init_fields();
+    _init_fields($self);
         $self->{geographicMapInterface} = $geographicMapInterface;
         $self->{edgeMinimum} = $edgeMinimum;
         $self->{minPathWeight} = $minPathWeight;
@@ -83,13 +83,14 @@ sub getInvalidReason {
         return $stringBuffer->toString();
 }
 
-use org::jgrapht::GraphPath;
-use org::jgrapht::graph::SimpleWeightedGraph;
-use org::allbinary::logic::string::StringMaker;
-use org::allbinary::media::graphics::geography::map::BasicGeographicMap;
-use org::allbinary::media::graphics::geography::pathfinding::PathFinderGraphVisitorBase;
-use org::allbinary::media::graphics::geography::pathfinding::PathFindingNode;
-use org::allbinary::util::BasicArrayList;
+use java::lang::Object ();
+use org::jgrapht::GraphPath ();
+use org::jgrapht::graph::SimpleWeightedGraph ();
+use org::allbinary::logic::string::StringMaker ();
+use org::allbinary::media::graphics::geography::map::BasicGeographicMap ();
+use org::allbinary::media::graphics::geography::pathfinding::PathFinderGraphVisitorBase ();
+use org::allbinary::media::graphics::geography::pathfinding::PathFindingNode ();
+use org::allbinary::util::BasicArrayList ();
 
 1;
 

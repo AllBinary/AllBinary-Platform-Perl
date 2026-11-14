@@ -17,8 +17,9 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
-our $instance = 'org::allbinary::graphics::displayable::screen::DisplayPointScalar'->new();
+tie our $instance, 'java::lang::LazyStatic', sub { 'org::allbinary::graphics::displayable::screen::DisplayPointScalar'->new() };
 
 
 sub getInstance {
@@ -51,7 +52,9 @@ sub process {
         return $point;
 }
 
-use org::allbinary::graphics::GPoint;
+use java::lang::Object ();
+use java::lang::LazyStatic ();
+use org::allbinary::graphics::GPoint ();
 
 1;
 

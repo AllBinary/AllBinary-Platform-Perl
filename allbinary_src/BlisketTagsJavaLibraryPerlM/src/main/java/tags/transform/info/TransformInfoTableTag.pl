@@ -28,8 +28,9 @@ sub new {
     return $self;
 }
 
-use admin::tags::TableTag;
-use taghelpers::transform::info::TransformInfoHelperFactory;
+use java::lang::Object ();
+use admin::tags::TableTag ();
+use taghelpers::transform::info::TransformInfoHelperFactory ();
 
 1;
 

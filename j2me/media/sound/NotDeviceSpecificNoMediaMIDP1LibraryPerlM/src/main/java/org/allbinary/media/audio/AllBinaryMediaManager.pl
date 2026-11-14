@@ -18,6 +18,7 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
 our $THIS = "AllBinaryMediaManagerNoMediaMIDP1";
 
@@ -100,15 +101,16 @@ sub getSupportedProtocols {
         return 'org::allbinary::logic::string::StringUtil'->getInstance()->getArrayInstance();
 }
 
-# use java::io::InputStream;
-# use javax::microedition::media::Player;
-use org::allbinary::TsUtil;
-use org::allbinary::graphics::canvas::transition::progress::ProgressCanvasFactory;
-use org::allbinary::logic::communication::log::LogUtil;
-use org::allbinary::logic::string::StringUtil;
-use org::allbinary::string::CommonStrings;
-use org::allbinary::media::audio::Sounds;
-use org::allbinary::media::audio::NoPlayer;
+use java::lang::Object ();
+# use java::io::InputStream ();
+use javax::microedition::media::Player ();
+use org::allbinary::TsUtil ();
+use org::allbinary::graphics::canvas::transition::progress::ProgressCanvasFactory ();
+use org::allbinary::logic::communication::log::LogUtil ();
+use org::allbinary::logic::string::StringUtil ();
+use org::allbinary::string::CommonStrings ();
+use org::allbinary::media::audio::Sounds ();
+use org::allbinary::media::audio::NoPlayer ();
 
 1;
 

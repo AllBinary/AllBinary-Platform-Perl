@@ -5,8 +5,9 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
-our $instance = 'org::apache::commons::fileupload::FileItemUtil'->new();
+tie our $instance, 'java::lang::LazyStatic', sub { 'org::apache::commons::fileupload::FileItemUtil'->new() };
 
 sub _init_fields {
     my ($self) = @_;
@@ -17,7 +18,7 @@ sub _init_fields {
 sub new {
     my ($class) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
     return $self;
 }
 
@@ -31,7 +32,7 @@ sub getInstance {
 # throws Exception
 sub getString {
     my ($self, $byteArray) = @_;
-        return pack("C*", @{$byteArray, $self->{DEFAULT_CHARSET}});
+        return pack("C*", @{$byteArray});
 }
 
 
@@ -77,13 +78,15 @@ sub write {
         $fileItem->write('org::allbinary::logic::io::file::AbFileNativeUtil'->get($file));
 }
 
-# use java::io::ByteArrayOutputStream;
-# use java::io::InputStream;
-use org::allbinary::logic::communication::log::LogUtil;
-use org::allbinary::logic::io::StreamUtil;
-use org::allbinary::logic::io::file::AbFile;
-use org::allbinary::logic::io::file::AbFileNativeUtil;
-use org::allbinary::logic::string::StringMaker;
+use java::lang::Object ();
+use java::lang::LazyStatic ();
+# use java::io::ByteArrayOutputStream ();
+# use java::io::InputStream ();
+use org::allbinary::logic::communication::log::LogUtil ();
+use org::allbinary::logic::io::StreamUtil ();
+use org::allbinary::logic::io::file::AbFile ();
+use org::allbinary::logic::io::file::AbFileNativeUtil ();
+use org::allbinary::logic::string::StringMaker ();
 
 1;
 

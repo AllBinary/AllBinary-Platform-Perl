@@ -17,7 +17,7 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
-use parent -norequire,'java::util::EventObject';
+use parent -norequire,'java::lang::Object';
 
 
 sub _init_fields {
@@ -31,7 +31,7 @@ sub _init_fields {
 sub new {
     my ($class, $emailEventHandler, $userEmailEventNameData, $emailInfo, $attempts) = @_;
     my $self = $class->SUPER::new($emailEventHandler);
-    $self->_init_fields();
+    _init_fields($self);
         # super(...) made $self above
         $self->{userEmailEventNameData} = $userEmailEventNameData;
         $self->{emailInfo} = $emailInfo;
@@ -69,9 +69,10 @@ sub toString {
         return $stringBuffer->toString();
 }
 
-# use java::util::EventObject;
-use org::allbinary::logic::communication::smtp::info::EmailInfo;
-use org::allbinary::logic::string::StringMaker;
+use java::lang::Object ();
+# use java::util::EventObject ();
+use org::allbinary::logic::communication::smtp::info::EmailInfo ();
+use org::allbinary::logic::string::StringMaker ();
 
 1;
 

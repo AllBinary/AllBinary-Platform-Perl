@@ -18,7 +18,6 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
-use parent -norequire,'java::util::EventListener';
 
 
 
@@ -28,7 +27,7 @@ sub onEmailSendRequest {
     die "abstract method onEmailSendRequest";
 }
 
-# use java::util::EventListener;
+# use java::util::EventListener ();
 
 1;
 

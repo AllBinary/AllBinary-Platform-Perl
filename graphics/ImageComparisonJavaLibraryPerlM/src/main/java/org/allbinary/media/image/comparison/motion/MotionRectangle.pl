@@ -17,6 +17,7 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
 
 sub _init_fields {
@@ -29,7 +30,7 @@ sub _init_fields {
 sub new {
     my ($class, $rectangle) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
         $self->setRectangle($rectangle);
         $self->setPixelDeltaVector('org::allbinary::util::BasicArrayListD'->new());
     return $self;
@@ -67,10 +68,11 @@ sub clone {
         return $motionRectangle;
 }
 
-# use java::awt::Rectangle;
-use java::util::Vector;
-use org::allbinary::util::BasicArrayList;
-use org::allbinary::util::BasicArrayListD;
+use java::lang::Object ();
+# use java::awt::Rectangle ();
+use java::util::Vector ();
+use org::allbinary::util::BasicArrayList ();
+use org::allbinary::util::BasicArrayListD ();
 
 1;
 

@@ -17,6 +17,7 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
 
 sub new {
@@ -94,9 +95,10 @@ sub stringWidth {
         die ("RuntimeException");
 }
 
-# use javax::microedition::khronos::opengles::GL10;
-# use javax::microedition::lcdui::Font;
-# use javax::microedition::lcdui::Graphics;
+use java::lang::Object ();
+use javax::microedition::khronos::opengles::GL10 ();
+use javax::microedition::lcdui::Font ();
+use javax::microedition::lcdui::Graphics ();
 
 1;
 

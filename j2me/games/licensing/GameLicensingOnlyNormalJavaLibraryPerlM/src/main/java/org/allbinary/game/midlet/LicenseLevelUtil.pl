@@ -17,8 +17,9 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
-our $instance = 'org::allbinary::game::midlet::LicenseLevelUtil'->new();
+tie our $instance, 'java::lang::LazyStatic', sub { 'org::allbinary::game::midlet::LicenseLevelUtil'->new() };
 
 sub new {
     my ($class) = @_;
@@ -38,6 +39,8 @@ sub getMaxLevel {
         return $maxLevel;
 }
 
+use java::lang::Object ();
+use java::lang::LazyStatic ();
 
 1;
 

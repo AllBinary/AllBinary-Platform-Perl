@@ -17,7 +17,7 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
-use parent -norequire,'org::allbinary::business::user::commerce::inventory::item::ItemInterface';
+use parent -norequire,'java::lang::Object','org::allbinary::business::user::commerce::inventory::item::ItemInterface';
 
 
 sub _init_fields {
@@ -68,7 +68,7 @@ sub new {
 sub _new1 {
     my ($class, $itemHashMap) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
         if ($org::allbinary::business::user::commerce::inventory::item::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($org::allbinary::business::user::commerce::inventory::item::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{PRODUCTSEARCHLOGGING})) {
             $self->{logUtil}->putF($self->{commonStrings}->{START}, $self, "Constructor(HashMap)");
         }
@@ -108,7 +108,7 @@ sub _new1 {
 sub _new0 {
     my ($class) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
         if ($org::allbinary::business::user::commerce::inventory::item::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($org::allbinary::business::user::commerce::inventory::item::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{PRODUCTSEARCHLOGGING})) {
             $self->{logUtil}->putF($self->{commonStrings}->{START}, $self, $self->{commonStrings}->{CONSTRUCTOR});
         }
@@ -607,22 +607,23 @@ sub getKey {
         return $self->getId();
 }
 
-use java::util::Calendar;
-use java::util::HashMap;
-use org::allbinary::util::BasicArrayList;
-use org::allbinary::util::BasicArrayListD;
-use org::allbinary::business::entry::EntryData;
-use org::allbinary::business::user::commerce::money::Money;
-use org::allbinary::business::user::commerce::money::MoneyException;
-use org::allbinary::data::generator::ProductIdGenerator;
-use org::allbinary::logic::StdUtil;
-use org::allbinary::logic::communication::log::LogUtil;
-use org::allbinary::logic::string::StringUtil;
-use org::allbinary::logic::string::StringValidationUtil;
-use org::allbinary::string::CommonPhoneStrings;
-use org::allbinary::string::CommonStrings;
-use org::allbinary::business::user::commerce::inventory::item::ItemInterface;
-use org::allbinary::business::user::commerce::inventory::item::BasicItemData;
+use java::lang::Object ();
+use java::util::Calendar ();
+use java::util::HashMap ();
+use org::allbinary::util::BasicArrayList ();
+use org::allbinary::util::BasicArrayListD ();
+use org::allbinary::business::entry::EntryData ();
+use org::allbinary::business::user::commerce::money::Money ();
+use org::allbinary::business::user::commerce::money::MoneyException ();
+use org::allbinary::data::generator::ProductIdGenerator ();
+use org::allbinary::logic::StdUtil ();
+use org::allbinary::logic::communication::log::LogUtil ();
+use org::allbinary::logic::string::StringUtil ();
+use org::allbinary::logic::string::StringValidationUtil ();
+use org::allbinary::string::CommonPhoneStrings ();
+use org::allbinary::string::CommonStrings ();
+use org::allbinary::business::user::commerce::inventory::item::ItemInterface ();
+use org::allbinary::business::user::commerce::inventory::item::BasicItemData ();
 
 1;
 

@@ -17,8 +17,9 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
-our $instance = 'org::allbinary::logic::NullUtil'->getInstance();
+tie our $instance, 'java::lang::LazyStatic', sub { 'org::allbinary::logic::NullUtil'->getInstance() };
 
 sub _init_fields {
     my ($self) = @_;
@@ -28,7 +29,7 @@ sub _init_fields {
 sub new {
     my ($class) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
     return $self;
 }
 
@@ -54,13 +55,15 @@ sub createHud {
         }
 }
 
-use org::allbinary::game::graphics::hud::BasicHudFactory;
-use org::allbinary::graphics::color::BasicColorFactory;
-use org::allbinary::logic::NullUtil;
-use org::allbinary::logic::communication::log::LogUtil;
-use org::allbinary::logic::string::StringUtil;
-use org::allbinary::string::CommonStrings;
-use org::allbinary::game::ag::layer::hud::basic::NumberStringHud;
+use java::lang::Object ();
+use java::lang::LazyStatic ();
+use org::allbinary::game::graphics::hud::BasicHudFactory ();
+use org::allbinary::graphics::color::BasicColorFactory ();
+use org::allbinary::logic::NullUtil ();
+use org::allbinary::logic::communication::log::LogUtil ();
+use org::allbinary::logic::string::StringUtil ();
+use org::allbinary::string::CommonStrings ();
+use org::allbinary::game::ag::layer::hud::basic::NumberStringHud ();
 
 1;
 

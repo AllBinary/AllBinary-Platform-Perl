@@ -17,8 +17,9 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
-our $instance = 'org::allbinary::logic::system::PlatformAssetManager'->new();
+tie our $instance, 'java::lang::LazyStatic', sub { 'org::allbinary::logic::system::PlatformAssetManager'->new() };
 
 sub new {
     my ($class) = @_;
@@ -41,8 +42,10 @@ sub getResourceAsStream {
         return $inputStream;
 }
 
-# use java::io::InputStream;
-use org::allbinary::data::resource::ResourceUtil;
+use java::lang::Object ();
+use java::lang::LazyStatic ();
+# use java::io::InputStream ();
+use org::allbinary::data::resource::ResourceUtil ();
 
 1;
 

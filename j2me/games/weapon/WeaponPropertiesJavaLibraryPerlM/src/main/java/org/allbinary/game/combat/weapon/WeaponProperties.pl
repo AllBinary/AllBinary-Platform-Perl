@@ -19,7 +19,7 @@ use feature 'try';
 no warnings 'experimental::try';
 use parent -norequire,'org::allbinary::game::combat::weapon::SimpleWeaponProperties';
 
-our $NULL_WEAPON_PROPERTIES = 'org::allbinary::game::combat::weapon::WeaponProperties'->new(0, 0, 0, 0, ((int(0) + 32768) % 65536 - 32768));
+tie our $NULL_WEAPON_PROPERTIES, 'java::lang::LazyStatic', sub { 'org::allbinary::game::combat::weapon::WeaponProperties'->new(0, 0, 0, 0, ((int(0) + 32768) % 65536 - 32768)) };
 our $messageSent = 0;
 our $DAMAGE = "Damage: ";
 our $RANGE = "Range: ";
@@ -38,7 +38,7 @@ sub _init_fields {
 sub new {
     my ($class, $reloadTime, $targetingTime, $speed, $damage, $dissipation) = @_;
     my $self = $class->SUPER::new();
-    $self->_init_fields();
+    _init_fields($self);
         if ($speed < $self->{MAX} && $speed != 0 && !$org::allbinary::game::combat::weapon::WeaponProperties::messageSent) {
             my $MESSAGE = "Danger Danger Danger: Speed probably to slow if using 1 degree calculations as velocity for a single axis could be below 1024: ";
             my $commonStrings = 'org::allbinary::string::CommonStrings'->getInstance();
@@ -127,12 +127,14 @@ sub toString {
         return $stringBuffer->toString();
 }
 
-use org::allbinary::logic::communication::log::PreLogUtil;
-use org::allbinary::logic::math::BasicDecimal;
-use org::allbinary::logic::string::StringMaker;
-use org::allbinary::string::CommonSeps;
-use org::allbinary::string::CommonStrings;
-use org::allbinary::game::combat::weapon::SimpleWeaponProperties;
+use java::lang::Object ();
+use java::lang::LazyStatic ();
+use org::allbinary::logic::communication::log::PreLogUtil ();
+use org::allbinary::logic::math::BasicDecimal ();
+use org::allbinary::logic::string::StringMaker ();
+use org::allbinary::string::CommonSeps ();
+use org::allbinary::string::CommonStrings ();
+use org::allbinary::game::combat::weapon::SimpleWeaponProperties ();
 
 1;
 

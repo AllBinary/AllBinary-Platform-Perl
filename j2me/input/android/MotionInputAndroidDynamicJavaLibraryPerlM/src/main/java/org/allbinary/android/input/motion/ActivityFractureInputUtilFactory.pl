@@ -17,6 +17,7 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
 
 sub new {
@@ -40,12 +41,13 @@ sub getInstance {
         }
 }
 
-use org::allbinary::android::ActivityFractureUtil;
-use org::allbinary::android::AndroidInfoFactory;
-use org::allbinary::android::api1::ActivityFractureUtilAPI1;
-use org::allbinary::android::api16::ActivityFractureUtilAPI16;
-use org::allbinary::android::api19::ActivityFractureUtilAPI19;
-use org::allbinary::android::api5::ActivityFractureUtilAPI5;
+use java::lang::Object ();
+use org::allbinary::android::ActivityFractureUtil ();
+use org::allbinary::android::AndroidInfoFactory ();
+use org::allbinary::android::api1::ActivityFractureUtilAPI1 ();
+use org::allbinary::android::api16::ActivityFractureUtilAPI16 ();
+use org::allbinary::android::api19::ActivityFractureUtilAPI19 ();
+use org::allbinary::android::api5::ActivityFractureUtilAPI5 ();
 
 1;
 

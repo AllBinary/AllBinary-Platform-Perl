@@ -34,7 +34,7 @@ sub _init_fields {
 sub new {
     my ($class, $databaseConnectionInfoInterface) = @_;
     my $self = $class->SUPER::new($databaseConnectionInfoInterface);
-    $self->_init_fields();
+    _init_fields($self);
         # super(...) made $self above
     return $self;
 }
@@ -86,9 +86,10 @@ sub dropTable {
         }
 }
 
-use org::allbinary::business::init::db::DbConnectionInfo;
-use org::allbinary::logic::communication::log::LogUtil;
-use org::allbinary::logic::communication::sql::AbSqlBasic;
+use java::lang::Object ();
+use org::allbinary::business::init::db::DbConnectionInfo ();
+use org::allbinary::logic::communication::log::LogUtil ();
+use org::allbinary::logic::communication::sql::AbSqlBasic ();
 
 1;
 

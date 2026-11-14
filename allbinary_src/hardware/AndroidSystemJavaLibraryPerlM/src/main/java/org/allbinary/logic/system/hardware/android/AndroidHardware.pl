@@ -17,7 +17,7 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
-use parent -norequire,'org::allbinary::logic::system::hardware::HardwareInterface';
+use parent -norequire,'java::lang::Object','org::allbinary::logic::system::hardware::HardwareInterface';
 
 
 sub _init_fields {
@@ -34,7 +34,7 @@ sub _init_fields {
 sub new {
     my ($class) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
         $self->init($self->{DEVICES});
         my $size = $self->{componentInterfaceVector}->size();
         if ($size < $self->{MINHARDWARE}) {
@@ -107,21 +107,22 @@ sub difference {
         return 'org::allbinary::logic::StdUtil'->getInstance()->{NULL_TABLE};
 }
 
-# use java::io::Closeable;
-# use java::io::FileReader;
-# use java::io::LineNumberReader;
-use org::allbinary::logic::io::NullCloseable;
-use org::allbinary::logic::StdUtil;
-use org::allbinary::logic::communication::log::LogUtil;
-use org::allbinary::logic::string::StringMaker;
-use org::allbinary::logic::system::hardware::HardwareInterface;
-use org::allbinary::logic::system::hardware::components::android::UnknownHardware;
-use org::allbinary::logic::system::hardware::components::interfaces::HardwareComponentInterface;
-use org::allbinary::string::CommonSeps;
-use org::allbinary::string::CommonStrings;
-use org::allbinary::util::ABHashtable;
-use org::allbinary::util::BasicArrayList;
-use org::allbinary::util::BasicArrayListD;
+use java::lang::Object ();
+# use java::io::Closeable ();
+# use java::io::FileReader ();
+# use java::io::LineNumberReader ();
+use org::allbinary::logic::io::NullCloseable ();
+use org::allbinary::logic::StdUtil ();
+use org::allbinary::logic::communication::log::LogUtil ();
+use org::allbinary::logic::string::StringMaker ();
+use org::allbinary::logic::system::hardware::HardwareInterface ();
+use org::allbinary::logic::system::hardware::components::android::UnknownHardware ();
+use org::allbinary::logic::system::hardware::components::interfaces::HardwareComponentInterface ();
+use org::allbinary::string::CommonSeps ();
+use org::allbinary::string::CommonStrings ();
+use org::allbinary::util::ABHashtable ();
+use org::allbinary::util::BasicArrayList ();
+use org::allbinary::util::BasicArrayListD ();
 
 1;
 

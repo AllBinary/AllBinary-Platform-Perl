@@ -5,7 +5,7 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
-use parent -norequire,'java::security::Provider';
+use parent -norequire,'java::lang::Object';
 
 our $info = "BouncyCastle Security Provider v1.41";
 our $PROVIDER_NAME = "BC";
@@ -23,7 +23,8 @@ sub setParameter {
     my ($self, $parameterName, $parameter) = @_;
 }
 
-# use java::security::Provider;
+use java::lang::Object ();
+# use java::security::Provider ();
 
 1;
 

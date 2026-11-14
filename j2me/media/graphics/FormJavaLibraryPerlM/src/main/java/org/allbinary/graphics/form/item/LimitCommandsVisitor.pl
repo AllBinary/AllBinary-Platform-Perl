@@ -29,7 +29,7 @@ sub _init_fields {
 sub new {
     my ($class) = @_;
     my $self = $class->SUPER::new();
-    $self->_init_fields();
+    _init_fields($self);
         my $displayInfo = 'org::allbinary::graphics::displayable::DisplayInfoSingleton'->getInstance();
         $self->{isNotSmallDisplay} = ($displayInfo->isPortrait() && $displayInfo->getLastHeight() > 'org::allbinary::graphics::form::ScreenInfo'->getInstance()->{SMALL_WIDTH}) || (!$displayInfo->isPortrait() && $displayInfo->getLastHeight() > 'org::allbinary::graphics::form::ScreenInfo'->getInstance()->{SMALL_HEIGHT});
     return $self;
@@ -47,12 +47,13 @@ sub visit {
         }
 }
 
-# use javax::microedition::lcdui::Command;
-use org::allbinary::game::commands::GameCommandsFactory;
-use org::allbinary::graphics::displayable::DisplayInfoSingleton;
-use org::allbinary::graphics::form::ScreenInfo;
-use org::allbinary::logic::java::bool::BooleanFactory;
-use org::allbinary::logic::util::visitor::Visitor;
+use java::lang::Object ();
+use javax::microedition::lcdui::Command ();
+use org::allbinary::game::commands::GameCommandsFactory ();
+use org::allbinary::graphics::displayable::DisplayInfoSingleton ();
+use org::allbinary::graphics::form::ScreenInfo ();
+use org::allbinary::logic::java::bool::BooleanFactory ();
+use org::allbinary::logic::util::visitor::Visitor ();
 
 1;
 

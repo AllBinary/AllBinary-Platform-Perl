@@ -19,6 +19,7 @@ use feature 'try';
 no warnings 'experimental::try';
 use POSIX ();
 use List::Util ();
+use parent -norequire,'java::lang::Object';
 
 
 sub _init_fields {
@@ -30,7 +31,7 @@ sub _init_fields {
 sub new {
     my ($class, $imageComparatorConstraintsInterface) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
         $self->{imageComparatorConstraintsInterface} = $imageComparatorConstraintsInterface;
     return $self;
 }
@@ -89,16 +90,17 @@ sub compare {
         return $imageComparisonInfo;
 }
 
-# use java::awt;
-# use java::awt::image::BufferedImage;
-use org::allbinary::graphics::GPoint;
-use org::allbinary::graphics::PointFactory;
-use org::allbinary::graphics::color::ColorCacheFactory;
-use org::allbinary::graphics::color::ColorCacheable;
-use org::allbinary::logic::string::StringUtil;
-use org::allbinary::logic::util::cache::AutomaticCacheInterface;
-use org::allbinary::media::image::comparison::pixel::PixelDeltaFactory;
-use org::allbinary::media::image::comparison::ImageComparisonResult;
+use java::lang::Object ();
+# use java::awt ();
+# use java::awt::image::BufferedImage ();
+use org::allbinary::graphics::GPoint ();
+use org::allbinary::graphics::PointFactory ();
+use org::allbinary::graphics::color::ColorCacheFactory ();
+use org::allbinary::graphics::color::ColorCacheable ();
+use org::allbinary::logic::string::StringUtil ();
+use org::allbinary::logic::util::cache::AutomaticCacheInterface ();
+use org::allbinary::media::image::comparison::pixel::PixelDeltaFactory ();
+use org::allbinary::media::image::comparison::ImageComparisonResult ();
 
 1;
 

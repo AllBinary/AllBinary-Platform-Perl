@@ -17,9 +17,10 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
-our $instance = 'org::allbinary::time::TimeUtil'->new();
-our $calendar = 'java::util::Calendar'->getInstance();
+tie our $instance, 'java::lang::LazyStatic', sub { 'org::allbinary::time::TimeUtil'->new() };
+tie our $calendar, 'java::lang::LazyStatic', sub { 'java::util::Calendar'->getInstance() };
 
 sub new {
     my ($class) = @_;
@@ -44,8 +45,7 @@ sub setCalendar {
 }
 
 
-# Java overloaded method: Perl keeps the last definition
-sub setCalendar {
+sub setCalendarWithTime {
     my ($self, $calendar, $yearString, $monthString, $dayString, $hourString, $minuteString, $secondString) = @_;
         my $year = int($yearString);
         my $month = int($monthString);
@@ -77,7 +77,9 @@ sub getTotalTime {
         return $timeDelta - $time;
 }
 
-use java::util::Calendar;
+use java::lang::Object ();
+use java::lang::LazyStatic ();
+use java::util::Calendar ();
 
 1;
 

@@ -17,8 +17,9 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
-our $instance = 'org::allbinary::media::DisplaysUtil'->new();
+tie our $instance, 'java::lang::LazyStatic', sub { 'org::allbinary::media::DisplaysUtil'->new() };
 
 sub new {
     my ($class) = @_;
@@ -58,13 +59,15 @@ sub getScreenSizesAsRectangleArray {
         return $rectangleArray;
 }
 
-# use java::awt::Dimension;
-# use java::awt::DisplayMode;
-# use java::awt::GraphicsDevice;
-# use java::awt::GraphicsEnvironment;
-# use java::awt::Toolkit;
-use org::allbinary::graphics::PointFactory;
-use org::allbinary::graphics::Rectangle;
+use java::lang::Object ();
+use java::lang::LazyStatic ();
+# use java::awt::Dimension ();
+# use java::awt::DisplayMode ();
+# use java::awt::GraphicsDevice ();
+# use java::awt::GraphicsEnvironment ();
+# use java::awt::Toolkit ();
+use org::allbinary::graphics::PointFactory ();
+use org::allbinary::graphics::Rectangle ();
 
 1;
 

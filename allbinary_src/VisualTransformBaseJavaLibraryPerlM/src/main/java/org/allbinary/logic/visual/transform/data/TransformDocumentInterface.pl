@@ -32,8 +32,8 @@ sub getDoc {
     die "abstract method getDoc";
 }
 
-use org::w3c::dom::Document;
-use org::w3c::dom::Node;
+use org::w3c::dom::Document ();
+use org::w3c::dom::Node ();
 
 1;
 

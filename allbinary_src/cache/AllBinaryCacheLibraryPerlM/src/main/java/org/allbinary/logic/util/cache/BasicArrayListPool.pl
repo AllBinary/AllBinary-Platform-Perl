@@ -70,8 +70,9 @@ sub releaseUsedBackToPool {
         }
 }
 
-use org::allbinary::util::BasicArrayList;
-use org::allbinary::logic::util::cache::AbstractArrayListPool;
+use java::lang::Object ();
+use org::allbinary::util::BasicArrayList ();
+use org::allbinary::logic::util::cache::AbstractArrayListPool ();
 
 1;
 

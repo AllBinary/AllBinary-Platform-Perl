@@ -17,6 +17,7 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
 
 sub _init_fields {
@@ -29,7 +30,7 @@ sub _init_fields {
 sub new {
     my ($class, $itemInterface, $vector) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
         $self->{itemInterface} = $itemInterface;
         $self->{vector} = $vector;
     return $self;
@@ -58,17 +59,18 @@ sub toXmlNode {
         return $node;
 }
 
-use java::util::HashMap;
-# use java::util::Set;
-use org::allbinary::util::BasicArrayList;
-use org::allbinary::util::BasicArrayListD;
-use org::allbinary::business::user::address::StreetAddressData;
-use org::allbinary::data::tree::dom::ModDomHelper;
-use org::allbinary::logic::string::StringUtil;
-use org::w3c::dom::Document;
-use org::w3c::dom::Node;
-use org::allbinary::business::user::commerce::inventory::item::ItemData;
-use org::allbinary::business::user::commerce::inventory::item::BasicItemView;
+use java::lang::Object ();
+use java::util::HashMap ();
+# use java::util::Set ();
+use org::allbinary::util::BasicArrayList ();
+use org::allbinary::util::BasicArrayListD ();
+use org::allbinary::business::user::address::StreetAddressData ();
+use org::allbinary::data::tree::dom::ModDomHelper ();
+use org::allbinary::logic::string::StringUtil ();
+use org::w3c::dom::Document ();
+use org::w3c::dom::Node ();
+use org::allbinary::business::user::commerce::inventory::item::ItemData ();
+use org::allbinary::business::user::commerce::inventory::item::BasicItemView ();
 
 1;
 

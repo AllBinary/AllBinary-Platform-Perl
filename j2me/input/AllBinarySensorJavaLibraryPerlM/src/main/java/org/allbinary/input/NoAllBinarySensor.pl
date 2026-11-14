@@ -19,7 +19,7 @@ use feature 'try';
 no warnings 'experimental::try';
 use parent -norequire,'org::allbinary::input::AllBinarySensor';
 
-our $instance = 'org::allbinary::input::NoAllBinarySensor'->new();
+tie our $instance, 'java::lang::LazyStatic', sub { 'org::allbinary::input::NoAllBinarySensor'->new() };
 
 
 sub getInstance {
@@ -34,7 +34,9 @@ sub new {
     return $self;
 }
 
-use org::allbinary::input::AllBinarySensor;
+use java::lang::Object ();
+use java::lang::LazyStatic ();
+use org::allbinary::input::AllBinarySensor ();
 
 1;
 

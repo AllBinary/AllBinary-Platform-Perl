@@ -19,9 +19,9 @@ use feature 'try';
 no warnings 'experimental::try';
 use parent -norequire,'org::allbinary::graphics::displayable::screen::CommandForm';
 
-our $DISPLAY = 'javax::microedition::lcdui::Command'->new("Options In Game", 'org::allbinary::logic::string::StringUtil'->getInstance()->{EMPTY_STRING}, $javax::microedition::lcdui::Command::SCREEN, 1);
-our $SAVE = 'javax::microedition::lcdui::Command'->new("Save", 'org::allbinary::logic::string::StringUtil'->getInstance()->{EMPTY_STRING}, $javax::microedition::lcdui::Command::SCREEN, 1);
-our $DEFAULT = 'javax::microedition::lcdui::Command'->new("Default", 'org::allbinary::logic::string::StringUtil'->getInstance()->{EMPTY_STRING}, $javax::microedition::lcdui::Command::SCREEN, 1);
+tie our $DISPLAY, 'java::lang::LazyStatic', sub { 'javax::microedition::lcdui::Command'->new("Options In Game", 'org::allbinary::logic::string::StringUtil'->getInstance()->{EMPTY_STRING}, $javax::microedition::lcdui::Command::SCREEN, 1) };
+tie our $SAVE, 'java::lang::LazyStatic', sub { 'javax::microedition::lcdui::Command'->new("Save", 'org::allbinary::logic::string::StringUtil'->getInstance()->{EMPTY_STRING}, $javax::microedition::lcdui::Command::SCREEN, 1) };
+tie our $DEFAULT, 'java::lang::LazyStatic', sub { 'javax::microedition::lcdui::Command'->new("Default", 'org::allbinary::logic::string::StringUtil'->getInstance()->{EMPTY_STRING}, $javax::microedition::lcdui::Command::SCREEN, 1) };
 
 
 sub new {
@@ -45,15 +45,17 @@ sub initCommands {
         $self->setCommandListener($cmdListener);
 }
 
-# use javax::microedition::lcdui::Choice;
-# use javax::microedition::lcdui::Command;
-# use javax::microedition::lcdui::CommandListener;
-use org::allbinary::game::commands::GameCommandsFactory;
-use org::allbinary::game::configuration::feature::GameFeatureFormUtil;
-use org::allbinary::game::configuration::feature::InGameFeatureChoiceGroups;
-use org::allbinary::graphics::color::BasicColor;
-use org::allbinary::graphics::displayable::screen::CommandForm;
-use org::allbinary::logic::string::StringUtil;
+use java::lang::Object ();
+use java::lang::LazyStatic ();
+use javax::microedition::lcdui::Choice ();
+use javax::microedition::lcdui::Command ();
+use javax::microedition::lcdui::CommandListener ();
+use org::allbinary::game::commands::GameCommandsFactory ();
+use org::allbinary::game::configuration::feature::GameFeatureFormUtil ();
+use org::allbinary::game::configuration::feature::InGameFeatureChoiceGroups ();
+use org::allbinary::graphics::color::BasicColor ();
+use org::allbinary::graphics::displayable::screen::CommandForm ();
+use org::allbinary::logic::string::StringUtil ();
 
 1;
 

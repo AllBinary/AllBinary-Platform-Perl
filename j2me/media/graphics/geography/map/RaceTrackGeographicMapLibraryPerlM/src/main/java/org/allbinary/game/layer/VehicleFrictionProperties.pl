@@ -32,7 +32,7 @@ sub _init_fields {
 sub new {
     my ($class, $tireFriction, $brakeFriction, $airFriction, $crashFriction) = @_;
     my $self = $class->SUPER::new();
-    $self->_init_fields();
+    _init_fields($self);
         $self->{TIRE_FRICTION_NOMINATOR} = 'org::allbinary::game::physics::friction::FrictionData'->getFrictionDenominator() - $tireFriction;
         $self->{BRAKE_FRICTION_NOMINATOR} = 'org::allbinary::game::physics::friction::FrictionData'->getFrictionDenominator() - $brakeFriction;
         $self->{AIR_FRICTION_NOMINATOR} = 'org::allbinary::game::physics::friction::FrictionData'->getFrictionDenominator() - $airFriction;
@@ -64,8 +64,9 @@ sub getCrashFrictionNominator {
         return $self->{CRASH_FRICTION_NOMINATOR};
 }
 
-use org::allbinary::game::physics::FrictionProperties;
-use org::allbinary::game::physics::friction::FrictionData;
+use java::lang::Object ();
+use org::allbinary::game::physics::FrictionProperties ();
+use org::allbinary::game::physics::friction::FrictionData ();
 
 1;
 

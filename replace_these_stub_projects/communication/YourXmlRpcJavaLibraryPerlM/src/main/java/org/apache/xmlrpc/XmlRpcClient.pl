@@ -5,7 +5,7 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
-use parent -norequire,'org::apache::xmlrpc::XmlRpcHandler';
+use parent -norequire,'java::lang::Object','org::apache::xmlrpc::XmlRpcHandler';
 
 
 sub _init_fields {
@@ -17,7 +17,7 @@ sub _init_fields {
 sub new {
     my ($class, $url) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
         $self->{url} = 'java::net::URL'->new($url);
     return $self;
 }
@@ -42,20 +42,20 @@ sub execute {
 
 
 # throws XmlRpcException, IOException
-# Java overloaded method: Perl keeps the last definition
-sub execute {
+sub executeWithCrypt {
     my ($self, $method, $params, $cryptInterface) = @_;
         return 'org::allbinary::logic::NullUtil'->getInstance()->{NULL_OBJECT};
 }
 
-# use java::io::IOException;
-# use java::net::MalformedURLException;
-# use java::net::URL;
-use org::allbinary::util::BasicArrayList;
-use org::allbinary::util::BasicArrayListD;
-use org::allbinary::init::crypt::jcehelper::CryptInterface;
-use org::allbinary::logic::NullUtil;
-use org::apache::xmlrpc::XmlRpcHandler;
+use java::lang::Object ();
+# use java::io::IOException ();
+# use java::net::MalformedURLException ();
+# use java::net::URL ();
+use org::allbinary::util::BasicArrayList ();
+use org::allbinary::util::BasicArrayListD ();
+use org::allbinary::init::crypt::jcehelper::CryptInterface ();
+use org::allbinary::logic::NullUtil ();
+use org::apache::xmlrpc::XmlRpcHandler ();
 
 1;
 

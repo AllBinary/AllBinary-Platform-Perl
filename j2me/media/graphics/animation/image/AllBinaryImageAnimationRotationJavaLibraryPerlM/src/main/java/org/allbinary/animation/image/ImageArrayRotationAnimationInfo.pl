@@ -17,6 +17,7 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
 
 sub _init_fields {
@@ -32,7 +33,7 @@ sub _init_fields {
 sub new {
     my ($class, $imageArray, $angleIncrement, $totalAngle, $dx, $dy) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
         $self->{imageArray} = $imageArray;
         $self->{angleIncrement} = $angleIncrement;
         $self->{totalAngle} = $totalAngle;
@@ -95,8 +96,9 @@ sub getDy {
         return $self->{dy};
 }
 
-# use javax::microedition::lcdui::Image;
-use org::allbinary::math::AngleInfo;
+use java::lang::Object ();
+use javax::microedition::lcdui::Image ();
+use org::allbinary::math::AngleInfo ();
 
 1;
 

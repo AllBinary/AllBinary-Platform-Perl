@@ -17,9 +17,9 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
-use parent -norequire,'org::allbinary::game::layer::GeographicMapCellPositionAreaInterface';
+use parent -norequire,'java::lang::Object','org::allbinary::game::layer::GeographicMapCellPositionAreaInterface';
 
-our $NULL_GEOGRPAHIC_MAP_POSITION_AREA_BASE = 'org::allbinary::game::layer::GeographicMapCellPositionAreaBase'->new();
+tie our $NULL_GEOGRPAHIC_MAP_POSITION_AREA_BASE, 'java::lang::LazyStatic', sub { 'org::allbinary::game::layer::GeographicMapCellPositionAreaBase'->new() };
 
 sub new {
     my ($class) = @_;
@@ -52,10 +52,12 @@ sub update {
         die ("RuntimeException");
 }
 
-use org::allbinary::media::graphics::geography::map::BasicGeographicMap;
-use org::allbinary::media::graphics::geography::map::GeographicMapCellPosition;
-use org::allbinary::util::BasicArrayList;
-use org::allbinary::game::layer::GeographicMapCellPositionAreaInterface;
+use java::lang::Object ();
+use java::lang::LazyStatic ();
+use org::allbinary::media::graphics::geography::map::BasicGeographicMap ();
+use org::allbinary::media::graphics::geography::map::GeographicMapCellPosition ();
+use org::allbinary::util::BasicArrayList ();
+use org::allbinary::game::layer::GeographicMapCellPositionAreaInterface ();
 
 1;
 

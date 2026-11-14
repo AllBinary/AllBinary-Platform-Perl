@@ -41,9 +41,10 @@ sub doStartTag {
         }
 }
 
-# use javax::servlet::jsp::JspTagException;
-use org::allbinary::logic::communication::http::request::AbResponseHandler;
-use tags::StoreValidationTransformTag;
+use java::lang::Object ();
+# use javax::servlet::jsp::JspTagException ();
+use org::allbinary::logic::communication::http::request::AbResponseHandler ();
+use tags::StoreValidationTransformTag ();
 
 1;
 

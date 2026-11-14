@@ -17,8 +17,9 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
-our $config = 'org::allbinary::input::motion::gesture::configuration::MotionGestureConfiguration'->new();
+tie our $config, 'java::lang::LazyStatic', sub { 'org::allbinary::input::motion::gesture::configuration::MotionGestureConfiguration'->new() };
 
 
 sub new {
@@ -33,7 +34,9 @@ sub getInstance {
         return $org::allbinary::input::motion::gesture::configuration::MotionGestureConfigurationFactory::config;
 }
 
-use org::allbinary::input::motion::gesture::configuration::MotionGestureConfiguration;
+use java::lang::Object ();
+use java::lang::LazyStatic ();
+use org::allbinary::input::motion::gesture::configuration::MotionGestureConfiguration ();
 
 1;
 

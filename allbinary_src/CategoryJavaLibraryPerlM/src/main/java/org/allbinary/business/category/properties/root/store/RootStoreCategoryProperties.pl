@@ -17,7 +17,7 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
-use parent -norequire,'org::allbinary::business::category::properties::root::RootCategoryPropertiesInterface','org::allbinary::business::category::properties::CategoryPropertiesInterface';
+use parent -norequire,'java::lang::Object','org::allbinary::business::category::properties::root::RootCategoryPropertiesInterface','org::allbinary::business::category::properties::CategoryPropertiesInterface';
 
 
 sub _init_fields {
@@ -45,7 +45,7 @@ sub new {
 sub _new1 {
     my ($class, $transformInfoInterface) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
         $self->{transformInfoInterface} = $transformInfoInterface;
         $self->{abPath} = 'org::allbinary::logic::io::path::AbPath'->createAbPath();
         $self->{category} = 'org::allbinary::business::category::CategoryData'->getInstance()->{ROOTCATEGORY};
@@ -59,7 +59,7 @@ sub _new1 {
 sub _new2 {
     my ($class, $transformInfoInterface, $categoryAbPath) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
         $self->{transformInfoInterface} = $transformInfoInterface;
         $self->{abPath} = $categoryAbPath;
         $self->{category} = $self->{pathData}->getNameFromPath($categoryAbPath->toString());
@@ -76,7 +76,7 @@ sub _new2 {
 sub _new2 {
     my ($class, $transformInfoInterface, $node) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
         $self->{transformInfoInterface} = $transformInfoInterface;
         my $categoryPath = 'org::allbinary::business::category::CategoryUtil'->getNameFromNode($node);
         $self->{abPath} = 'org::allbinary::logic::io::path::AbPath'->new($categoryPath, 'org::allbinary::logic::string::StringUtil'->getInstance()->{EMPTY_STRING});
@@ -94,7 +94,7 @@ sub _new2 {
 sub _new2 {
     my ($class, $transformInfoInterface, $categoryPropertiesHashMap) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
         $self->{transformInfoInterface} = $transformInfoInterface;
         my $categoryPath = ("" . $categoryPropertiesHashMap->get('org::allbinary::business::category::CategoryData'->getInstance()->{NAME}));
         $self->{abPath} = 'org::allbinary::logic::io::path::AbPath'->new($categoryPath, 'org::allbinary::logic::string::StringUtil'->getInstance()->{EMPTY_STRING});
@@ -238,29 +238,30 @@ sub log {
         }
 }
 
-use java::util::HashMap;
-use org::allbinary::util::BasicArrayList;
-use org::allbinary::util::BasicArrayListD;
-# use javax::servlet::http::HttpServletRequest;
-use org::allbinary::business::category::CategoryData;
-use org::allbinary::business::category::CategoryUtil;
-use org::allbinary::business::category::hierarchy::CategoryHierarchyInterface;
-use org::allbinary::business::category::properties::CategoryPropertiesInterface;
-use org::allbinary::business::category::properties::root::RootCategoryPropertiesInterface;
-use org::allbinary::business::context::modules::storefront::StoreFrontFactory;
-use org::allbinary::business::context::modules::storefront::StoreFrontInterface;
-use org::allbinary::globals::URLGLOBALS;
-use org::allbinary::logic::StdUtil;
-use org::allbinary::logic::communication::log::LogUtil;
-use org::allbinary::logic::io::path::AbPath;
-use org::allbinary::logic::io::path::AbPathData;
-use org::allbinary::logic::string::StringMaker;
-use org::allbinary::logic::string::StringUtil;
-use org::allbinary::logic::string::StringValidationUtil;
-use org::allbinary::logic::visual::transform::info::TransformInfoHttpInterface;
-use org::allbinary::logic::visual::transform::info::TransformInfoInterface;
-use org::w3c::dom::Document;
-use org::w3c::dom::Node;
+use java::lang::Object ();
+use java::util::HashMap ();
+use org::allbinary::util::BasicArrayList ();
+use org::allbinary::util::BasicArrayListD ();
+# use javax::servlet::http::HttpServletRequest ();
+use org::allbinary::business::category::CategoryData ();
+use org::allbinary::business::category::CategoryUtil ();
+use org::allbinary::business::category::hierarchy::CategoryHierarchyInterface ();
+use org::allbinary::business::category::properties::CategoryPropertiesInterface ();
+use org::allbinary::business::category::properties::root::RootCategoryPropertiesInterface ();
+use org::allbinary::business::context::modules::storefront::StoreFrontFactory ();
+use org::allbinary::business::context::modules::storefront::StoreFrontInterface ();
+use org::allbinary::globals::URLGLOBALS ();
+use org::allbinary::logic::StdUtil ();
+use org::allbinary::logic::communication::log::LogUtil ();
+use org::allbinary::logic::io::path::AbPath ();
+use org::allbinary::logic::io::path::AbPathData ();
+use org::allbinary::logic::string::StringMaker ();
+use org::allbinary::logic::string::StringUtil ();
+use org::allbinary::logic::string::StringValidationUtil ();
+use org::allbinary::logic::visual::transform::info::TransformInfoHttpInterface ();
+use org::allbinary::logic::visual::transform::info::TransformInfoInterface ();
+use org::w3c::dom::Document ();
+use org::w3c::dom::Node ();
 
 1;
 

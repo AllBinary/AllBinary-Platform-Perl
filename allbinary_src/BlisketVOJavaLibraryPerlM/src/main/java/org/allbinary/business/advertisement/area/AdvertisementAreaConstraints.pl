@@ -17,7 +17,7 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
-use parent -norequire,'org::allbinary::business::advertisement::area::AdvertisementAreaConstraintsInterface';
+use parent -norequire,'java::lang::Object','org::allbinary::business::advertisement::area::AdvertisementAreaConstraintsInterface';
 
 
 sub _init_fields {
@@ -30,7 +30,7 @@ sub _init_fields {
 sub new {
     my ($class, $document) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
         my $node = 'org::allbinary::data::tree::dom::DomSearchHelper'->getNode('org::allbinary::business::advertisement::area::AdvertisementAreaData'->getInstance()->{NAME}, $document->getChildNodes());
         $self->{displayInBrowserContraintsInterface} = 'org::allbinary::logic::control::contraints::display::browser::DisplayInBrowserContraints'->new($node);
         $self->{twoDimensionConstraintsInterface} = 'org::allbinary::logic::control::contraints::size::TwoDimensionalConstraint'->new($node);
@@ -62,15 +62,16 @@ sub getTwoDimensionContraints {
         return $self->{twoDimensionConstraintsInterface};
 }
 
-use org::allbinary::data::tree::dom::DomSearchHelper;
-use org::allbinary::logic::control::contraints::display::browser::DisplayInBrowserContraints;
-use org::allbinary::logic::control::contraints::display::browser::DisplayInBrowserContraintsInterface;
-use org::allbinary::logic::control::contraints::size::TwoDimensionalConstraint;
-use org::allbinary::logic::control::contraints::size::TwoDimensionalConstraintInterface;
-use org::w3c::dom::Document;
-use org::w3c::dom::Node;
-use org::allbinary::business::advertisement::area::AdvertisementAreaConstraintsInterface;
-use org::allbinary::business::advertisement::area::AdvertisementAreaData;
+use java::lang::Object ();
+use org::allbinary::data::tree::dom::DomSearchHelper ();
+use org::allbinary::logic::control::contraints::display::browser::DisplayInBrowserContraints ();
+use org::allbinary::logic::control::contraints::display::browser::DisplayInBrowserContraintsInterface ();
+use org::allbinary::logic::control::contraints::size::TwoDimensionalConstraint ();
+use org::allbinary::logic::control::contraints::size::TwoDimensionalConstraintInterface ();
+use org::w3c::dom::Document ();
+use org::w3c::dom::Node ();
+use org::allbinary::business::advertisement::area::AdvertisementAreaConstraintsInterface ();
+use org::allbinary::business::advertisement::area::AdvertisementAreaData ();
 
 1;
 

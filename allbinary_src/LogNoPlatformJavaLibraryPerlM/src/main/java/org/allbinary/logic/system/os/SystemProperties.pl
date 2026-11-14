@@ -18,8 +18,9 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
-our $instance = 'org::allbinary::logic::system::os::SystemProperties'->new();
+tie our $instance, 'java::lang::LazyStatic', sub { 'org::allbinary::logic::system::os::SystemProperties'->new() };
 
 
 sub getInstance {
@@ -58,6 +59,8 @@ sub getUserHomePath {
         die ("RuntimeException");
 }
 
+use java::lang::Object ();
+use java::lang::LazyStatic ();
 
 1;
 

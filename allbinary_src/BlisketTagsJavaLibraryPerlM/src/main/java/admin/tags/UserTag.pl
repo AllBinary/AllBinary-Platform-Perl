@@ -30,7 +30,7 @@ sub _init_fields {
 sub new {
     my ($class) = @_;
     my $self = $class->SUPER::new();
-    $self->_init_fields();
+    _init_fields($self);
         $self->setTagHelperFactory('admin::taghelpers::UserHelperFactory'->new());
         $self->setTagRequestHelperFactory('admin::taghelpers::UserHelperFactory'->new());
     return $self;
@@ -65,12 +65,13 @@ sub doStartTag {
         }
 }
 
-# use javax::servlet::jsp::JspTagException;
-use admin::taghelpers::UserHelperFactory;
-use org::allbinary::business::entry::EntryData;
-use org::allbinary::business::user::role::UserRoleData;
-use org::allbinary::logic::communication::http::request::AbResponseHandler;
-use admin::tags::TableTag;
+use java::lang::Object ();
+# use javax::servlet::jsp::JspTagException ();
+use admin::taghelpers::UserHelperFactory ();
+use org::allbinary::business::entry::EntryData ();
+use org::allbinary::business::user::role::UserRoleData ();
+use org::allbinary::logic::communication::http::request::AbResponseHandler ();
+use admin::tags::TableTag ();
 
 1;
 

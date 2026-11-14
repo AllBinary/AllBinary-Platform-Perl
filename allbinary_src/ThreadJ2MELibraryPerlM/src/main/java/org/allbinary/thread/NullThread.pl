@@ -17,8 +17,9 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
-our $NULL_THREAD = 'java::lang::Thread'->new();
+tie our $NULL_THREAD, 'java::lang::LazyStatic', sub { 'java::lang::Thread'->new() };
 
 sub new {
     my ($class) = @_;
@@ -26,7 +27,9 @@ sub new {
     return $self;
 }
 
-use java::lang::Thread;
+use java::lang::Object ();
+use java::lang::LazyStatic ();
+use java::lang::Thread ();
 
 1;
 

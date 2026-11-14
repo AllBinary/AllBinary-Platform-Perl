@@ -17,6 +17,7 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
 
 
@@ -45,9 +46,10 @@ sub viewAll {
         return $stringBuffer->toString();
 }
 
-# use java::lang::reflect::Method;
-use org::allbinary::logic::string::StringMaker;
-use org::allbinary::logic::java::anyType::ParamsUtil;
+use java::lang::Object ();
+# use java::lang::reflect::Method ();
+use org::allbinary::logic::string::StringMaker ();
+use org::allbinary::logic::java::anyType::ParamsUtil ();
 
 1;
 

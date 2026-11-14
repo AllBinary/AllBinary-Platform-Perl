@@ -66,9 +66,10 @@ sub collideNone {
     my ($self, $ownerLayer, $collidableInterface) = @_;
 }
 
-use org::allbinary::game::collision::CollisionType;
-use org::allbinary::game::collision::CollisionTypeFactory;
-use org::allbinary::game::layer::special::CollidableDestroyableDamageableBehavior;
+use java::lang::Object ();
+use org::allbinary::game::collision::CollisionType ();
+use org::allbinary::game::collision::CollisionTypeFactory ();
+use org::allbinary::game::layer::special::CollidableDestroyableDamageableBehavior ();
 
 1;
 

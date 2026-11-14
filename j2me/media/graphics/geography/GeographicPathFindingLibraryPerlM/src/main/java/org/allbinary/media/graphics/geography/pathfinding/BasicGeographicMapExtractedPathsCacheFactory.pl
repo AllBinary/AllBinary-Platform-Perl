@@ -7,7 +7,7 @@ use feature 'try';
 no warnings 'experimental::try';
 use parent -norequire,'org::allbinary::logic::util::cache::BaseBasicArrayListCache';
 
-our $instance = 'org::allbinary::media::graphics::geography::pathfinding::BasicGeographicMapExtractedPathsCacheFactory'->new();
+tie our $instance, 'java::lang::LazyStatic', sub { 'org::allbinary::media::graphics::geography::pathfinding::BasicGeographicMapExtractedPathsCacheFactory'->new() };
 
 sub _init_fields {
     my ($self) = @_;
@@ -25,7 +25,7 @@ sub getInstance {
 sub new {
     my ($class) = @_;
     my $self = $class->SUPER::new();
-    $self->_init_fields();
+    _init_fields($self);
     return $self;
 }
 
@@ -61,10 +61,12 @@ sub release {
         $self->{list}->add($list);
 }
 
-use org::allbinary::util::BasicArrayList;
-use org::allbinary::logic::util::cache::BaseBasicArrayListCache;
-use org::allbinary::util::BasicArrayListS;
-use org::allbinary::media::graphics::geography::pathfinding::BasicGeographicMapExtractedPathCacheFactory;
+use java::lang::Object ();
+use java::lang::LazyStatic ();
+use org::allbinary::util::BasicArrayList ();
+use org::allbinary::logic::util::cache::BaseBasicArrayListCache ();
+use org::allbinary::util::BasicArrayListS ();
+use org::allbinary::media::graphics::geography::pathfinding::BasicGeographicMapExtractedPathCacheFactory ();
 
 1;
 

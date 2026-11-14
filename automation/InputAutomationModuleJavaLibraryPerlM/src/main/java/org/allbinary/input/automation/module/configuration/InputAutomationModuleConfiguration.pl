@@ -17,6 +17,7 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
 
 sub _init_fields {
@@ -41,7 +42,7 @@ sub new {
 sub _new0 {
     my ($class) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
     return $self;
 }
 
@@ -49,7 +50,7 @@ sub _new0 {
 sub _new2 {
     my ($class, $abeClientInformation, $node) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
         $self->init($abeClientInformation, $node);
     return $self;
 }
@@ -58,7 +59,7 @@ sub _new2 {
 sub _new3 {
     my ($class, $abeClientInformation, $name, $className) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
         $self->setName($name);
         $self->setClassName($className);
         $self->init($abeClientInformation);
@@ -69,7 +70,7 @@ sub _new3 {
 sub _new1 {
     my ($class, $inputAutomationModuleInterface) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
         $self->setInputAutomationModuleInterface($inputAutomationModuleInterface);
         $self->setClassName(ref($self->{inputAutomationModuleInterface}));
     return $self;
@@ -157,25 +158,26 @@ sub setInputAutomationModuleInterface {
         $self->setName($self->{inputAutomationModuleInterface}->getName());
 }
 
-# use javax::xml::bind::annotation::XmlAccessType;
-# use javax::xml::bind::annotation::XmlAccessorType;
-# use javax::xml::bind::annotation::XmlElement;
-# use javax::xml::bind::annotation::XmlRootElement;
-# use javax::xml::bind::annotation::XmlType;
-use org::allbinary::business::DynamicObjectData;
-use org::allbinary::data::tree::dom::DomNodeHelper;
-use org::allbinary::data::tree::dom::DomSearchHelper;
-use org::allbinary::data::tree::dom::ModDomHelper;
-use org::allbinary::input::automation::InputAutomationData;
-use org::allbinary::input::automation::module::InputAutomationModuleData;
-use org::allbinary::input::automation::module::InputAutomationModuleFactoryInterface;
-use org::allbinary::logic::communication::log::LogUtil;
-use org::allbinary::logic::system::loader::AbeFactory;
-use org::allbinary::logic::system::security::licensing::AbeClientInformationInterface;
-use org::allbinary::string::CommonStrings;
-use org::w3c::dom::Document;
-use org::w3c::dom::Node;
-use org::w3c::dom::NodeList;
+use java::lang::Object ();
+# use javax::xml::bind::annotation::XmlAccessType ();
+# use javax::xml::bind::annotation::XmlAccessorType ();
+# use javax::xml::bind::annotation::XmlElement ();
+# use javax::xml::bind::annotation::XmlRootElement ();
+# use javax::xml::bind::annotation::XmlType ();
+use org::allbinary::business::DynamicObjectData ();
+use org::allbinary::data::tree::dom::DomNodeHelper ();
+use org::allbinary::data::tree::dom::DomSearchHelper ();
+use org::allbinary::data::tree::dom::ModDomHelper ();
+use org::allbinary::input::automation::InputAutomationData ();
+use org::allbinary::input::automation::module::InputAutomationModuleData ();
+use org::allbinary::input::automation::module::InputAutomationModuleFactoryInterface ();
+use org::allbinary::logic::communication::log::LogUtil ();
+use org::allbinary::logic::system::loader::AbeFactory ();
+use org::allbinary::logic::system::security::licensing::AbeClientInformationInterface ();
+use org::allbinary::string::CommonStrings ();
+use org::w3c::dom::Document ();
+use org::w3c::dom::Node ();
+use org::w3c::dom::NodeList ();
 
 1;
 

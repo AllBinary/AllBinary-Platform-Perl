@@ -17,9 +17,9 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
-use parent -norequire,'org::allbinary::game::layer::building::event::BuildingEventListenerInterface','org::allbinary::layer::event::ScrollMapEventListenerInterface';
+use parent -norequire,'java::lang::Object','org::allbinary::game::layer::building::event::BuildingEventListenerInterface','org::allbinary::layer::event::ScrollMapEventListenerInterface';
 
-our $instance = 'org::allbinary::game::input::form::VisibleCellPositionsSingleton'->new();
+tie our $instance, 'java::lang::LazyStatic', sub { 'org::allbinary::game::input::form::VisibleCellPositionsSingleton'->new() };
 
 sub _init_fields {
     my ($self) = @_;
@@ -42,7 +42,7 @@ sub getInstance {
 sub new {
     my ($class) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
         'org::allbinary::game::layer::building::event::LocalPlayerBuildingEventHandler'->getInstance()->addListenerInterface($self);
         'org::allbinary::layer::event::ScrollMapEventHandler'->getInstance()->addListenerInterface($self);
     return $self;
@@ -171,20 +171,22 @@ sub getSimpleTiledLayer {
         return $self->{simpleTiledLayer};
 }
 
-# use javax::microedition::lcdui::game::SimpleTiledLayer;
-# use javax::microedition::lcdui::Graphics;
-use org::allbinary::game::layer::RTSLayerEvent;
-use org::allbinary::game::layer::building::event::BuildingEventListenerInterface;
-use org::allbinary::game::layer::building::event::LocalPlayerBuildingEventHandler;
-use org::allbinary::util::BasicArrayList;
-use org::allbinary::logic::communication::log::ForcedLogUtil;
-use org::allbinary::graphics::CellPosition;
-use org::allbinary::layer::event::ScrollMapEvent;
-use org::allbinary::layer::event::ScrollMapEventHandler;
-use org::allbinary::layer::event::ScrollMapEventListenerInterface;
-use org::allbinary::logic::NullUtil;
-use org::allbinary::logic::util::event::AllBinaryEventObject;
-use org::allbinary::logic::util::event::EventStrings;
+use java::lang::Object ();
+use java::lang::LazyStatic ();
+use javax::microedition::lcdui::game::SimpleTiledLayer ();
+use javax::microedition::lcdui::Graphics ();
+use org::allbinary::game::layer::RTSLayerEvent ();
+use org::allbinary::game::layer::building::event::BuildingEventListenerInterface ();
+use org::allbinary::game::layer::building::event::LocalPlayerBuildingEventHandler ();
+use org::allbinary::util::BasicArrayList ();
+use org::allbinary::logic::communication::log::ForcedLogUtil ();
+use org::allbinary::graphics::CellPosition ();
+use org::allbinary::layer::event::ScrollMapEvent ();
+use org::allbinary::layer::event::ScrollMapEventHandler ();
+use org::allbinary::layer::event::ScrollMapEventListenerInterface ();
+use org::allbinary::logic::NullUtil ();
+use org::allbinary::logic::util::event::AllBinaryEventObject ();
+use org::allbinary::logic::util::event::EventStrings ();
 
 1;
 

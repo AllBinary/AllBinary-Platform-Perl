@@ -17,8 +17,9 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
-our $MIN_VALUE = (-2147483648);
+tie our $MIN_VALUE, 'java::lang::LazyStatic', sub { (-2147483648) };
 
 sub _init_fields {
     my ($self) = @_;
@@ -34,7 +35,7 @@ sub _init_fields {
 sub new {
     my ($class, $name, $defaultValue, $minValue, $maxValue) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
         $self->setName($name);
         $self->setDefaultValue($defaultValue);
         $self->{value} = $self->getDefaultValue();
@@ -147,13 +148,15 @@ sub isModifiable {
         return $self->{modifiable};
 }
 
-use org::allbinary::game::configuration::event::GameFeatureEvent;
-use org::allbinary::game::configuration::event::GameFeatureEventHandler;
-use org::allbinary::logic::java::bool::BooleanFactory;
-use org::allbinary::logic::math::SmallIntegerSingletonFactory;
-use org::allbinary::logic::string::StringMaker;
-use org::allbinary::logic::string::StringUtil;
-use org::allbinary::game::configuration::GameConfigurationSingleton;
+use java::lang::Object ();
+use java::lang::LazyStatic ();
+use org::allbinary::game::configuration::event::GameFeatureEvent ();
+use org::allbinary::game::configuration::event::GameFeatureEventHandler ();
+use org::allbinary::logic::java::bool::BooleanFactory ();
+use org::allbinary::logic::math::SmallIntegerSingletonFactory ();
+use org::allbinary::logic::string::StringMaker ();
+use org::allbinary::logic::string::StringUtil ();
+use org::allbinary::game::configuration::GameConfigurationSingleton ();
 
 1;
 

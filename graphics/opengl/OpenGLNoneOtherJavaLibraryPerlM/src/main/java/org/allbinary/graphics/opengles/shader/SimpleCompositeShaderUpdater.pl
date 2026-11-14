@@ -28,7 +28,8 @@ sub new {
     return $self;
 }
 
-use org::allbinary::graphics::opengles::shader::CompositeShaderUpdater;
+use java::lang::Object ();
+use org::allbinary::graphics::opengles::shader::CompositeShaderUpdater ();
 
 1;
 

@@ -19,7 +19,7 @@ use feature 'try';
 no warnings 'experimental::try';
 use parent -norequire,'org::allbinary::game::layer::RTSLayer2LogHelper';
 
-our $instanceC = 'org::allbinary::game::layer::RTSLayer2SelectedLogHelper'->new();
+tie our $instanceC, 'java::lang::LazyStatic', sub { 'org::allbinary::game::layer::RTSLayer2SelectedLogHelper'->new() };
 
 sub _init_fields {
     my ($self) = @_;
@@ -31,7 +31,7 @@ sub _init_fields {
 sub new {
     my ($class) = @_;
     my $self = $class->SUPER::new();
-    $self->_init_fields();
+    _init_fields($self);
     return $self;
 }
 
@@ -101,9 +101,11 @@ sub buildingRight {
         $self->{logUtil}->putF('org::allbinary::logic::string::StringMaker'->new()->append($pathFindingLayerInterface->getName())->append(" Building Right")->toString(), $self, $self->{BUILDING_CHASE});
 }
 
-use org::allbinary::logic::communication::log::LogUtil;
-use org::allbinary::logic::string::StringMaker;
-use org::allbinary::game::layer::RTSLayer2LogHelper;
+use java::lang::Object ();
+use java::lang::LazyStatic ();
+use org::allbinary::logic::communication::log::LogUtil ();
+use org::allbinary::logic::string::StringMaker ();
+use org::allbinary::game::layer::RTSLayer2LogHelper ();
 
 1;
 

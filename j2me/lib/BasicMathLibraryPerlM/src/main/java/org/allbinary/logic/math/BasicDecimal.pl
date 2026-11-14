@@ -17,8 +17,9 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
-our $ZERO_BIGDECIMAL = 'org::allbinary::logic::math::BasicDecimal'->new(0);
+tie our $ZERO_BIGDECIMAL, 'java::lang::LazyStatic', sub { 'org::allbinary::logic::math::BasicDecimal'->new(0) };
 
 sub _init_fields {
     my ($self) = @_;
@@ -38,7 +39,7 @@ sub createBigDecimal {
 sub new {
     my ($class, $units) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
         $self->{units} = $units;
         $self->updateScaled();
     return $self;
@@ -185,7 +186,9 @@ sub getScaledFactorValue {
         return $self->{factorValue};
 }
 
-use org::allbinary::logic::math::ScaleFactorFactory;
+use java::lang::Object ();
+use java::lang::LazyStatic ();
+use org::allbinary::logic::math::ScaleFactorFactory ();
 
 1;
 

@@ -19,8 +19,8 @@ use feature 'try';
 no warnings 'experimental::try';
 use parent -norequire,'org::allbinary::layer::AllBinaryLayerManager';
 
-our $NULL_ALLBINARY_LAYER_MANAGER = 'org::allbinary::logic::NullUtil'->getInstance()->{NULL_OBJECT};
-our $ID = 'org::allbinary::logic::math::SmallIntegerSingletonFactory'->getInstance()->getAt(22);
+tie our $NULL_ALLBINARY_LAYER_MANAGER, 'java::lang::LazyStatic', sub { 'org::allbinary::logic::NullUtil'->getInstance()->{NULL_OBJECT} };
+tie our $ID, 'java::lang::LazyStatic', sub { 'org::allbinary::logic::math::SmallIntegerSingletonFactory'->getInstance()->getAt(22) };
 
 sub _init_fields {
     my ($self) = @_;
@@ -43,7 +43,7 @@ sub getNullInstance {
 sub new {
     my ($class, $backgroundBasicColor, $foregroundBasicColor, $gameInfo) = @_;
     my $self = $class->SUPER::new();
-    $self->_init_fields();
+    _init_fields($self);
         $self->{backgroundBasicColor} = $backgroundBasicColor;
         $self->{foregroundBasicColor} = $foregroundBasicColor;
         my $itemColorFactory = 'org::allbinary::graphics::ItemColorFactory'->getInstance();
@@ -125,17 +125,19 @@ sub getPlayerGameInputCompositeInterface {
         return $self->{playerGameInputCompositeInterface};
 }
 
-use org::allbinary::game::GameInfo;
-use org::allbinary::game::input::NullPlayerGameInputComposite;
-use org::allbinary::game::input::PlayerGameInputCompositeInterface;
-use org::allbinary::graphics::ItemColorFactory;
-use org::allbinary::graphics::color::BasicColor;
-use org::allbinary::graphics::color::BasicColorFactory;
-use org::allbinary::layer::AllBinaryLayerManager;
-use org::allbinary::layer::LayerProcessor;
-use org::allbinary::logic::NullUtil;
-use org::allbinary::logic::math::SmallIntegerSingletonFactory;
-use org::allbinary::util::BasicArrayList;
+use java::lang::Object ();
+use java::lang::LazyStatic ();
+use org::allbinary::game::GameInfo ();
+use org::allbinary::game::input::NullPlayerGameInputComposite ();
+use org::allbinary::game::input::PlayerGameInputCompositeInterface ();
+use org::allbinary::graphics::ItemColorFactory ();
+use org::allbinary::graphics::color::BasicColor ();
+use org::allbinary::graphics::color::BasicColorFactory ();
+use org::allbinary::layer::AllBinaryLayerManager ();
+use org::allbinary::layer::LayerProcessor ();
+use org::allbinary::logic::NullUtil ();
+use org::allbinary::logic::math::SmallIntegerSingletonFactory ();
+use org::allbinary::util::BasicArrayList ();
 
 1;
 

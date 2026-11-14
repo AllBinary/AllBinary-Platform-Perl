@@ -43,7 +43,8 @@ sub _new0 {
     return $self;
 }
 
-use java::util::Hashtable;
+use java::lang::Object ();
+use java::util::Hashtable ();
 
 1;
 

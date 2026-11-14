@@ -17,8 +17,9 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
-our $SINGLETON = 'org::allbinary::game::input::form::RTSFormInput'->new('org::allbinary::game::identification::BasicGroupFactory'->getInstance()->{NONE_ARRAY});
+tie our $SINGLETON, 'java::lang::LazyStatic', sub { 'org::allbinary::game::input::form::RTSFormInput'->new('org::allbinary::game::identification::BasicGroupFactory'->getInstance()->{NONE_ARRAY}) };
 
 sub new {
     my ($class) = @_;
@@ -32,8 +33,10 @@ sub getInstance {
         return $org::allbinary::game::input::form::NullRTSFormInputFactory::SINGLETON;
 }
 
-use org::allbinary::game::identification::BasicGroupFactory;
-use org::allbinary::game::input::form::RTSFormInput;
+use java::lang::Object ();
+use java::lang::LazyStatic ();
+use org::allbinary::game::identification::BasicGroupFactory ();
+use org::allbinary::game::input::form::RTSFormInput ();
 
 1;
 

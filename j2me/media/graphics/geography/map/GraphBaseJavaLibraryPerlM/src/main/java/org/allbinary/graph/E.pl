@@ -5,8 +5,9 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
-our $e = 'org::allbinary::graph::E'->new();
+tie our $e, 'java::lang::LazyStatic', sub { 'org::allbinary::graph::E'->new() };
 
 sub new {
     my ($class) = @_;
@@ -20,6 +21,8 @@ sub newInstance {
         return $org::allbinary::graph::E::e;
 }
 
+use java::lang::Object ();
+use java::lang::LazyStatic ();
 
 1;
 

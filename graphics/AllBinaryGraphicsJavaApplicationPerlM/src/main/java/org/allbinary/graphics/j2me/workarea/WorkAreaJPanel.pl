@@ -18,7 +18,7 @@ use warnings;
 use feature 'try';
 no warnings 'experimental::try';
 use Time::HiRes ();
-use parent -norequire,'org::allbinary::graphics::j2me::workarea::JPanel','org::allbinary::graphics::j2me::workarea::WorkAreaJPanelInterface','org::allbinary::graphics::j2me::workarea::canvas::event::MyCanvasEventListener','java::util::EventListener';
+use parent -norequire,'org::allbinary::graphics::j2me::workarea::JPanel','org::allbinary::graphics::j2me::workarea::WorkAreaJPanelInterface','org::allbinary::graphics::j2me::workarea::canvas::event::MyCanvasEventListener';
 
 our $document = undef;
 
@@ -46,7 +46,7 @@ sub new {
 sub _new4 {
     my ($class, $name, $dimension, $x, $y) = @_;
     my $self = $class->SUPER::new();
-    $self->_init_fields();
+    _init_fields($self);
         try {
             $self->initComponents();
             $self->{name} = $name;
@@ -67,7 +67,7 @@ sub _new4 {
 sub _new2 {
     my ($class, $workAreaDom, $dimension) = @_;
     my $self = $class->SUPER::new();
-    $self->_init_fields();
+    _init_fields($self);
         try {
             $self->initComponents();
             $self->{name} = $workAreaDom->getName();
@@ -346,7 +346,7 @@ sub initComponents {
         $self->{innerJPanel} = 'javax::swing::JPanel'->new();
         $self->setLayout('java::awt::GridLayout'->new(1, 1));
         $self->{innerJPanel}->addKeyListener(do {
-            package java::awt::event::KeyAdapter::AnonymousN73492 { our @ISA = ('java::awt::event::KeyAdapter');
+            package java::awt::event::KeyAdapter::AnonymousN73492 { our @ISA = ('java::awt::event::KeyAdapter', 'java::lang::Object');
             
 
             sub keyTyped {
@@ -500,35 +500,36 @@ sub run {
         }
 }
 
-# use java::awt;
-# use java::util::EventListener;
-use java::util::HashMap;
-# use java::util::LinkedList;
-# use javax::swing;
-# use javax::swing::tree::MutableTreeNode;
-use org::allbinary::dom::DomHelper;
-use org::allbinary::graphics::j2me::StatusFactory;
-use org::allbinary::graphics::j2me::workarea::canvas::CanvasDom;
-use org::allbinary::graphics::j2me::workarea::canvas::CanvasJPanel;
-use org::allbinary::graphics::j2me::workarea::canvas::event::MyCanvasEvent;
-use org::allbinary::graphics::j2me::workarea::canvas::event::MyCanvasEventListener;
-use org::allbinary::graphics::j2me::workarea::canvas::event::MyCanvasEventService;
-use org::allbinary::graphics::j2me::workarea::properties::PropertiesJPanel;
-use org::allbinary::graphics::j2me::workarea::tools::ToolJPanel;
-use org::allbinary::log::LOGGING;
-use org::allbinary::logic::StdUtil;
-use org::allbinary::logic::communication::log::LogUtil;
-use org::allbinary::util::BasicArrayList;
-use org::w3c::dom::Document;
-use org::w3c::dom::Node;
-use org::allbinary::graphics::j2me::workarea::JPanel;
-use org::allbinary::graphics::j2me::workarea::WorkAreaJPanelInterface;
-use org::allbinary::graphics::j2me::workarea::WorkAreaJTreeJPanel;
-use org::allbinary::graphics::j2me::workarea::GridLayout;
-use org::allbinary::graphics::j2me::workarea::GridBagLayout;
-use org::allbinary::graphics::j2me::workarea::GridBagConstraints;
-use org::allbinary::graphics::j2me::workarea::WorkAreaDom;
-use java::lang::Thread;
+use java::lang::Object ();
+# use java::awt ();
+# use java::util::EventListener ();
+use java::util::HashMap ();
+# use java::util::LinkedList ();
+# use javax::swing ();
+# use javax::swing::tree::MutableTreeNode ();
+use org::allbinary::dom::DomHelper ();
+use org::allbinary::graphics::j2me::StatusFactory ();
+use org::allbinary::graphics::j2me::workarea::canvas::CanvasDom ();
+use org::allbinary::graphics::j2me::workarea::canvas::CanvasJPanel ();
+use org::allbinary::graphics::j2me::workarea::canvas::event::MyCanvasEvent ();
+use org::allbinary::graphics::j2me::workarea::canvas::event::MyCanvasEventListener ();
+use org::allbinary::graphics::j2me::workarea::canvas::event::MyCanvasEventService ();
+use org::allbinary::graphics::j2me::workarea::properties::PropertiesJPanel ();
+use org::allbinary::graphics::j2me::workarea::tools::ToolJPanel ();
+use org::allbinary::log::LOGGING ();
+use org::allbinary::logic::StdUtil ();
+use org::allbinary::logic::communication::log::LogUtil ();
+use org::allbinary::util::BasicArrayList ();
+use org::w3c::dom::Document ();
+use org::w3c::dom::Node ();
+use org::allbinary::graphics::j2me::workarea::JPanel ();
+use org::allbinary::graphics::j2me::workarea::WorkAreaJPanelInterface ();
+use org::allbinary::graphics::j2me::workarea::WorkAreaJTreeJPanel ();
+use org::allbinary::graphics::j2me::workarea::GridLayout ();
+use org::allbinary::graphics::j2me::workarea::GridBagLayout ();
+use org::allbinary::graphics::j2me::workarea::GridBagConstraints ();
+use org::allbinary::graphics::j2me::workarea::WorkAreaDom ();
+use java::lang::Thread ();
 
 1;
 

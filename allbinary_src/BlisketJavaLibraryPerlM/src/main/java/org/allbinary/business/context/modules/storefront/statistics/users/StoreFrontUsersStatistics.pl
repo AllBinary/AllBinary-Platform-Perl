@@ -17,7 +17,7 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
-use parent -norequire,'org::allbinary::business::context::modules::storefront::statistics::users::StoreFrontUsersStatisticsInterface';
+use parent -norequire,'java::lang::Object','org::allbinary::business::context::modules::storefront::statistics::users::StoreFrontUsersStatisticsInterface';
 
 
 sub _init_fields {
@@ -30,7 +30,7 @@ sub _init_fields {
 sub new {
     my ($class, $storeFrontInterface) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
         $self->{totalUsersByRoleHashMap} = 'org::allbinary::logic::StdUtil'->getInstance()->createHashMap();
         my $userEntityInterface = 'org::allbinary::data::tables::user::UserEntityFactory'->getInstance();
         my $userVector = $userEntityInterface->getCustomers();
@@ -97,18 +97,19 @@ sub getKey {
         return undef;
 }
 
-use java::util::HashMap;
-# use java::util::Set;
-use org::allbinary::util::BasicArrayList;
-use org::allbinary::util::BasicArrayListD;
-use org::allbinary::business::context::modules::storefront::StoreFrontInterface;
-use org::allbinary::business::user::UserInterface;
-use org::allbinary::business::user::role::UserRole;
-use org::allbinary::data::tables::user::UserEntityFactory;
-use org::allbinary::data::tables::user::UserEntityInterface;
-use org::allbinary::logic::StdUtil;
-use org::allbinary::business::context::modules::storefront::statistics::users::StoreFrontUsersStatisticsInterface;
-use org::allbinary::business::context::modules::storefront::statistics::users::StoreFrontUsersStatisticsData;
+use java::lang::Object ();
+use java::util::HashMap ();
+# use java::util::Set ();
+use org::allbinary::util::BasicArrayList ();
+use org::allbinary::util::BasicArrayListD ();
+use org::allbinary::business::context::modules::storefront::StoreFrontInterface ();
+use org::allbinary::business::user::UserInterface ();
+use org::allbinary::business::user::role::UserRole ();
+use org::allbinary::data::tables::user::UserEntityFactory ();
+use org::allbinary::data::tables::user::UserEntityInterface ();
+use org::allbinary::logic::StdUtil ();
+use org::allbinary::business::context::modules::storefront::statistics::users::StoreFrontUsersStatisticsInterface ();
+use org::allbinary::business::context::modules::storefront::statistics::users::StoreFrontUsersStatisticsData ();
 
 1;
 

@@ -5,7 +5,7 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
-use parent -norequire,'org::allbinary::game::input::CompleteMotionGestureInputEventListenerInterface';
+use parent -norequire,'java::lang::Object','org::allbinary::game::input::CompleteMotionGestureInputEventListenerInterface';
 
 
 sub new {
@@ -24,8 +24,9 @@ sub onCompleteMotionGestureInputEvent {
     my ($self, $completeMotionGestureInputEvent) = @_;
 }
 
-use org::allbinary::logic::util::event::AllBinaryEventObject;
-use org::allbinary::game::input::CompleteMotionGestureInputEventListenerInterface;
+use java::lang::Object ();
+use org::allbinary::logic::util::event::AllBinaryEventObject ();
+use org::allbinary::game::input::CompleteMotionGestureInputEventListenerInterface ();
 
 1;
 

@@ -17,8 +17,9 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
-our $instance = 'org::allbinary::game::input::GameKeyUtil'->new();
+tie our $instance, 'java::lang::LazyStatic', sub { 'org::allbinary::game::input::GameKeyUtil'->new() };
 
 sub new {
     my ($class) = @_;
@@ -42,7 +43,9 @@ sub getInstance {
         return $org::allbinary::game::input::GameKeyUtil::instance;
 }
 
-# use javax::microedition::lcdui::Canvas;
+use java::lang::Object ();
+use java::lang::LazyStatic ();
+use javax::microedition::lcdui::Canvas ();
 
 1;
 

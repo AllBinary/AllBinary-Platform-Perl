@@ -17,8 +17,9 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
-our $instance = 'org::allbinary::business::user::commerce::money::payment::gateway::transaction::PaymentTransactionInterfaceRequestFactory'->new();
+tie our $instance, 'java::lang::LazyStatic', sub { 'org::allbinary::business::user::commerce::money::payment::gateway::transaction::PaymentTransactionInterfaceRequestFactory'->new() };
 
 sub _init_fields {
     my ($self) = @_;
@@ -36,7 +37,7 @@ sub getInstance {
 sub new {
     my ($class) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
     return $self;
 }
 
@@ -150,32 +151,34 @@ sub generateFromTestData {
         }
 }
 
-use java::util::HashMap;
-# use javax::servlet::http::HttpServletRequest;
-# use javax::servlet::jsp::PageContext;
-use org::allbinary::business::context::modules::storefront::StoreFrontFactory;
-use org::allbinary::business::context::modules::storefront::StoreFrontInterface;
-use org::allbinary::business::user::address::StreetAddress;
-use org::allbinary::business::user::commerce::inventory::basket::Basket;
-use org::allbinary::business::user::commerce::inventory::order::OrderHistory;
-use org::allbinary::business::user::commerce::inventory::order::OrderInterface;
-use org::allbinary::business::user::commerce::money::Money;
-use org::allbinary::business::user::commerce::money::payment::Payment;
-use org::allbinary::business::user::commerce::money::payment::PaymentData;
-use org::allbinary::business::user::commerce::money::payment::gateway::PaymentGatewayData;
-use org::allbinary::business::user::commerce::money::payment::types::TenderTypeFactory;
-use org::allbinary::business::user::commerce::money::payment::types::TransactionTypeFactory;
-use org::allbinary::data::generator::OrderIdGenerator;
-use org::allbinary::data::tables::user::commerce::inventory::order::OrderHistoryEntityFactory;
-use org::allbinary::data::tables::user::commerce::inventory::order::OrderHistoryEntityInterface;
-use org::allbinary::logic::communication::http::request::session::WeblisketSession;
-use org::allbinary::logic::communication::log::LogUtil;
-use org::allbinary::logic::string::StringUtil;
-use org::allbinary::logic::string::StringValidationUtil;
-use org::allbinary::logic::visual::transform::info::TransformInfoHttpInterface;
-use org::allbinary::logic::visual::transform::info::TransformInfoInterface;
-use org::allbinary::string::CommonStrings;
-use org::allbinary::business::user::commerce::money::payment::gateway::transaction::PaymentTransactionInterfaceFactory;
+use java::lang::Object ();
+use java::lang::LazyStatic ();
+use java::util::HashMap ();
+# use javax::servlet::http::HttpServletRequest ();
+# use javax::servlet::jsp::PageContext ();
+use org::allbinary::business::context::modules::storefront::StoreFrontFactory ();
+use org::allbinary::business::context::modules::storefront::StoreFrontInterface ();
+use org::allbinary::business::user::address::StreetAddress ();
+use org::allbinary::business::user::commerce::inventory::basket::Basket ();
+use org::allbinary::business::user::commerce::inventory::order::OrderHistory ();
+use org::allbinary::business::user::commerce::inventory::order::OrderInterface ();
+use org::allbinary::business::user::commerce::money::Money ();
+use org::allbinary::business::user::commerce::money::payment::Payment ();
+use org::allbinary::business::user::commerce::money::payment::PaymentData ();
+use org::allbinary::business::user::commerce::money::payment::gateway::PaymentGatewayData ();
+use org::allbinary::business::user::commerce::money::payment::types::TenderTypeFactory ();
+use org::allbinary::business::user::commerce::money::payment::types::TransactionTypeFactory ();
+use org::allbinary::data::generator::OrderIdGenerator ();
+use org::allbinary::data::tables::user::commerce::inventory::order::OrderHistoryEntityFactory ();
+use org::allbinary::data::tables::user::commerce::inventory::order::OrderHistoryEntityInterface ();
+use org::allbinary::logic::communication::http::request::session::WeblisketSession ();
+use org::allbinary::logic::communication::log::LogUtil ();
+use org::allbinary::logic::string::StringUtil ();
+use org::allbinary::logic::string::StringValidationUtil ();
+use org::allbinary::logic::visual::transform::info::TransformInfoHttpInterface ();
+use org::allbinary::logic::visual::transform::info::TransformInfoInterface ();
+use org::allbinary::string::CommonStrings ();
+use org::allbinary::business::user::commerce::money::payment::gateway::transaction::PaymentTransactionInterfaceFactory ();
 
 1;
 

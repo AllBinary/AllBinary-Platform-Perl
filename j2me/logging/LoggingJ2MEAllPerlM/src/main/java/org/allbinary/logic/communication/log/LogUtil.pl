@@ -18,8 +18,9 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
-our $instance = 'org::allbinary::logic::communication::log::LogUtil'->new();
+tie our $instance, 'java::lang::LazyStatic', sub { 'org::allbinary::logic::communication::log::LogUtil'->new() };
 
 sub _init_fields {
     my ($self) = @_;
@@ -37,7 +38,7 @@ sub getInstance {
 sub new {
     my ($class) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
     return $self;
 }
 
@@ -85,12 +86,14 @@ sub put {
         print($message, "\n");
 }
 
-use org::allbinary::TsUtil;
-use org::allbinary::logic::string::StringMaker;
-use org::allbinary::string::CommonSeps;
-use org::allbinary::string::CommonStrings;
-use org::allbinary::logic::communication::log::LogFormatUtil;
-use java::lang::System;
+use java::lang::Object ();
+use java::lang::LazyStatic ();
+use org::allbinary::TsUtil ();
+use org::allbinary::logic::string::StringMaker ();
+use org::allbinary::string::CommonSeps ();
+use org::allbinary::string::CommonStrings ();
+use org::allbinary::logic::communication::log::LogFormatUtil ();
+use java::lang::System ();
 
 1;
 

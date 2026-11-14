@@ -36,7 +36,7 @@ sub _init_fields {
 sub new {
     my ($class, $propertiesHashMap, $pageContext) = @_;
     my $self = $class->SUPER::new();
-    $self->_init_fields();
+    _init_fields($self);
         $self->{response} = $pageContext->getResponse();
         $self->{request} = $pageContext->getRequest();
         my $storeName = $propertiesHashMap->get('org::allbinary::business::context::modules::storefront::StoreFrontData'->getInstance()->{NAME});
@@ -100,25 +100,26 @@ sub search {
         }
 }
 
-use java::util::HashMap;
-# use javax::servlet::http::HttpServletRequest;
-# use javax::servlet::http::HttpServletResponse;
-# use javax::servlet::jsp::PageContext;
-use admin::taghelpers::TagHelper;
-use org::allbinary::business::context::modules::storefront::StoreFrontData;
-use org::allbinary::business::context::modules::storefront::StoreFrontFactory;
-use org::allbinary::business::context::modules::storefront::StoreFrontInterface;
-use org::allbinary::business::user::address::StreetAddress;
-use org::allbinary::business::user::commerce::inventory::item::BasicItemData;
-use org::allbinary::logic::communication::http::AcceptableResponseGenerator;
-use org::allbinary::logic::communication::http::request::session::WeblisketSession;
-use org::allbinary::logic::communication::log::LogUtil;
-use org::allbinary::logic::control::search::SearchParams;
-use org::allbinary::logic::control::search::SearchRequest;
-use org::allbinary::logic::string::StringUtil;
-use org::allbinary::logic::visual::transform::info::TransformInfoData;
-use views::admin::inventory::listings::InventoryViewFactory;
-use views::admin::inventory::listings::InventoryViewSearchInterface;
+use java::lang::Object ();
+use java::util::HashMap ();
+# use javax::servlet::http::HttpServletRequest ();
+# use javax::servlet::http::HttpServletResponse ();
+# use javax::servlet::jsp::PageContext ();
+use admin::taghelpers::TagHelper ();
+use org::allbinary::business::context::modules::storefront::StoreFrontData ();
+use org::allbinary::business::context::modules::storefront::StoreFrontFactory ();
+use org::allbinary::business::context::modules::storefront::StoreFrontInterface ();
+use org::allbinary::business::user::address::StreetAddress ();
+use org::allbinary::business::user::commerce::inventory::item::BasicItemData ();
+use org::allbinary::logic::communication::http::AcceptableResponseGenerator ();
+use org::allbinary::logic::communication::http::request::session::WeblisketSession ();
+use org::allbinary::logic::communication::log::LogUtil ();
+use org::allbinary::logic::control::search::SearchParams ();
+use org::allbinary::logic::control::search::SearchRequest ();
+use org::allbinary::logic::string::StringUtil ();
+use org::allbinary::logic::visual::transform::info::TransformInfoData ();
+use views::admin::inventory::listings::InventoryViewFactory ();
+use views::admin::inventory::listings::InventoryViewSearchInterface ();
 
 1;
 

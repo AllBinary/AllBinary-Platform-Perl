@@ -17,6 +17,7 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
 
 sub _init_fields {
@@ -27,7 +28,7 @@ sub _init_fields {
 sub new {
     my ($class) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
     return $self;
 }
 
@@ -73,11 +74,12 @@ sub reset {
     my ($self) = @_;
 }
 
-use android::graphics::Paint;
-use android::graphics::PorterDuff;
-use android::graphics::PorterDuffColorFilter;
-# use javax::microedition::lcdui::Image;
-use org::allbinary::graphics::color::BasicColor;
+use java::lang::Object ();
+# use android::graphics::Paint ();
+# use android::graphics::PorterDuff ();
+# use android::graphics::PorterDuffColorFilter ();
+use javax::microedition::lcdui::Image ();
+use org::allbinary::graphics::color::BasicColor ();
 
 1;
 

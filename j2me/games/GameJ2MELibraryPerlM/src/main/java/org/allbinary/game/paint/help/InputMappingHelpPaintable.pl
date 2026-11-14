@@ -35,7 +35,7 @@ sub _init_fields {
     $self->{EMPTY_STRING} = 'org::allbinary::logic::string::StringUtil'->getInstance()->{EMPTY_STRING};
     $self->{gameInputMappingArray} = undef;
     $self->{keyMappingArray} = [(undef) x (0)];
-    $self->{actionBasicColor} = [(undef) x (0)];
+    $self->{actionBasicColor} = 'org::allbinary::graphics::color::BasicColorUtil'->getInstance()->{ZERO_ARRAY};
     $self->{inputBasicColorArray} = [map { [(undef) x (0)] } 1 .. (0)];
     $self->{selectedBasicColor} = undef;
     $self->{updateMyFontProperties} = 'org::allbinary::game::paint::help::UpdateMyFontProperties'->new();
@@ -45,7 +45,7 @@ sub _init_fields {
 sub new {
     my ($class, $gameInputMappingArray, $backgroundBasicColor, $basicColor) = @_;
     my $self = $class->SUPER::new("Input Mapping", $backgroundBasicColor, $basicColor);
-    $self->_init_fields();
+    _init_fields($self);
         # super(...) made $self above
         $self->{gameInputMappingArray} = $gameInputMappingArray;
         $self->update($self->{NONE}, $self->{NONE});
@@ -223,54 +223,29 @@ sub paint {
             }
         }
 }
-{
-    package org::allbinary::game::paint::help::UpdateMyFontProperties;
-    use strict;
-    use warnings;
-    use feature 'try';
-    no warnings 'experimental::try';
-    use POSIX ();
-    
 
-    sub _init_fields {
-        my ($self) = @_;
-        $self->{actionStringArray} = 'org::allbinary::logic::string::StringUtil'->getInstance()->getArrayInstance();
-        $self->{keymappingBeginWidthArray} = 'org::allbinary::logic::NullUtil'->getInstance()->{NULL_INT_ARRAY};
-        $self->{actionStringDeltaXArray} = 'org::allbinary::logic::NullUtil'->getInstance()->{NULL_INT_ARRAY};
-        $self->{inputDeltaXArray} = 'org::allbinary::logic::NullUtil'->getInstance()->{NULL_INT_ARRAY_ARRAY};
-        $self->{sepArray} = [map { [(undef) x (0)] } 1 .. (0)];
-        $self->{sepWidthArray} = 'org::allbinary::logic::NullUtil'->getInstance()->{NULL_INT_ARRAY_ARRAY};
-        $self->{charHeight} = 0;
-    }
-
-    sub new {
-        my ($class) = @_;
-        my $self = bless({}, $class);
-        $self->_init_fields();
-        return $self;
-    }
-    }
-
-
-# use javax::microedition::lcdui::Font;
-# use javax::microedition::lcdui::Graphics;
-use org::allbinary::game::input::GameKey;
-use org::allbinary::game::input::GameKeyFactory;
-use org::allbinary::game::input::Input;
-use org::allbinary::game::input::PlatformInputMappingFactory;
-use org::allbinary::game::input::mapping::GameInputMapping;
-use org::allbinary::game::input::mapping::PersistentInputMapping;
-use org::allbinary::graphics::color::BasicColor;
-use org::allbinary::graphics::color::BasicColorFactory;
-use org::allbinary::logic::NullUtil;
-use org::allbinary::logic::communication::log::LogUtil;
-use org::allbinary::logic::string::StringMaker;
-use org::allbinary::logic::string::StringUtil;
-use org::allbinary::string::CommonLabels;
-use org::allbinary::string::CommonSeps;
-use org::allbinary::string::CommonStrings;
-use org::allbinary::util::BasicArrayList;
-use org::allbinary::game::paint::help::HelpPaintable;
+use java::lang::Object ();
+use javax::microedition::lcdui::Font ();
+use javax::microedition::lcdui::Graphics ();
+use org::allbinary::game::input::GameKey ();
+use org::allbinary::game::input::GameKeyFactory ();
+use org::allbinary::game::input::Input ();
+use org::allbinary::game::input::PlatformInputMappingFactory ();
+use org::allbinary::game::input::mapping::GameInputMapping ();
+use org::allbinary::game::input::mapping::PersistentInputMapping ();
+use org::allbinary::graphics::color::BasicColor ();
+use org::allbinary::graphics::color::BasicColorFactory ();
+use org::allbinary::graphics::color::BasicColorUtil ();
+use org::allbinary::logic::NullUtil ();
+use org::allbinary::logic::communication::log::LogUtil ();
+use org::allbinary::logic::string::StringMaker ();
+use org::allbinary::logic::string::StringUtil ();
+use org::allbinary::string::CommonLabels ();
+use org::allbinary::string::CommonSeps ();
+use org::allbinary::string::CommonStrings ();
+use org::allbinary::util::BasicArrayList ();
+use org::allbinary::game::paint::help::HelpPaintable ();
+use org::allbinary::game::paint::help::UpdateMyFontProperties ();
 
 1;
 

@@ -18,19 +18,20 @@ use warnings;
 use feature 'try';
 no warnings 'experimental::try';
 use Scalar::Util ();
+use parent -norequire,'java::lang::Object';
 
-our $instance = 'org::allbinary::game::configuration::feature::GameFeatureFormUtil'->new();
+tie our $instance, 'java::lang::LazyStatic', sub { 'org::allbinary::game::configuration::feature::GameFeatureFormUtil'->new() };
 
 sub _init_fields {
     my ($self) = @_;
     $self->{logUtil} = 'org::allbinary::logic::communication::log::LogUtil'->getInstance();
-    $self->{meUtil} = 'org::allbinary::logic::MEUtil'->getInstance();
+    $self->{meUtil} = 'org::allbinary::MIDPUtil'->getInstance();
 }
 
 sub new {
     my ($class) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
     return $self;
 }
 
@@ -94,21 +95,23 @@ sub setDefault {
         }
 }
 
-# use javax::microedition::lcdui::ChoiceGroup;
-# use javax::microedition::lcdui::Item;
-# use javax::microedition::lcdui::NullImage;
-use org::allbinary::game::configuration::GameConfigurationGauge;
-use org::allbinary::game::configuration::GameConfigurationUtil;
-use org::allbinary::graphics::displayable::screen::CommandForm;
-use org::allbinary::logic::MEUtil;
-use org::allbinary::logic::communication::log::LogUtil;
-use org::allbinary::logic::string::StringMaker;
-use org::allbinary::logic::string::StringUtil;
-use org::allbinary::util::ABHashtable;
-use org::allbinary::util::BasicArrayList;
-use org::allbinary::util::HashtableUtil;
-use org::allbinary::game::configuration::feature::Features;
-use org::allbinary::game::configuration::feature::GameFeatureUtil;
+use java::lang::Object ();
+use java::lang::LazyStatic ();
+use javax::microedition::lcdui::ChoiceGroup ();
+use javax::microedition::lcdui::Item ();
+use javax::microedition::lcdui::NullImage ();
+use org::allbinary::MIDPUtil ();
+use org::allbinary::game::configuration::GameConfigurationGauge ();
+use org::allbinary::game::configuration::GameConfigurationUtil ();
+use org::allbinary::graphics::displayable::screen::CommandForm ();
+use org::allbinary::logic::communication::log::LogUtil ();
+use org::allbinary::logic::string::StringMaker ();
+use org::allbinary::logic::string::StringUtil ();
+use org::allbinary::util::ABHashtable ();
+use org::allbinary::util::BasicArrayList ();
+use org::allbinary::util::HashtableUtil ();
+use org::allbinary::game::configuration::feature::Features ();
+use org::allbinary::game::configuration::feature::GameFeatureUtil ();
 
 1;
 

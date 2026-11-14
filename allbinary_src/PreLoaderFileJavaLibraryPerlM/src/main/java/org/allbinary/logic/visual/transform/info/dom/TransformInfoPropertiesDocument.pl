@@ -17,6 +17,7 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
 
 sub _init_fields {
@@ -29,7 +30,7 @@ sub _init_fields {
 sub new {
     my ($class, $filePath) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
         my $xmlFile = 'org::allbinary::logic::io::file::AbFile'->createAbFile($filePath);
         $self->{document} = 'org::allbinary::data::tree::dom::document::DomDocumentFileHelper'->createDocument($xmlFile);
     return $self;
@@ -64,22 +65,23 @@ sub toTransformInfoPropertiesHashMap {
         }
 }
 
-use java::util::HashMap;
-use org::allbinary::util::BasicArrayList;
-use org::allbinary::util::BasicArrayListD;
-use org::allbinary::data::tree::dom::DomSearchHelper;
-use org::allbinary::data::tree::dom::document::DomDocumentFileHelper;
-use org::allbinary::logic::StdUtil;
-use org::allbinary::logic::communication::log::LogUtil;
-use org::allbinary::logic::io::file::AbFile;
-use org::allbinary::logic::visual::transform::info::TransformInfoData;
-use org::allbinary::logic::visual::transform::info::TransformInfoProperties;
-use org::allbinary::logic::visual::transform::info::TransformInfoPropertiesFactory;
-use org::allbinary::logic::visual::transform::info::TransformInfosData;
-use org::allbinary::string::CommonStrings;
-use org::w3c::dom::Document;
-use org::w3c::dom::Node;
-use org::w3c::dom::NodeList;
+use java::lang::Object ();
+use java::util::HashMap ();
+use org::allbinary::util::BasicArrayList ();
+use org::allbinary::util::BasicArrayListD ();
+use org::allbinary::data::tree::dom::DomSearchHelper ();
+use org::allbinary::data::tree::dom::document::DomDocumentFileHelper ();
+use org::allbinary::logic::StdUtil ();
+use org::allbinary::logic::communication::log::LogUtil ();
+use org::allbinary::logic::io::file::AbFile ();
+use org::allbinary::logic::visual::transform::info::TransformInfoData ();
+use org::allbinary::logic::visual::transform::info::TransformInfoProperties ();
+use org::allbinary::logic::visual::transform::info::TransformInfoPropertiesFactory ();
+use org::allbinary::logic::visual::transform::info::TransformInfosData ();
+use org::allbinary::string::CommonStrings ();
+use org::w3c::dom::Document ();
+use org::w3c::dom::Node ();
+use org::w3c::dom::NodeList ();
 
 1;
 

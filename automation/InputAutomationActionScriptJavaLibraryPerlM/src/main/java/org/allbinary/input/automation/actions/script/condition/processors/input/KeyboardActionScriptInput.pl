@@ -42,7 +42,7 @@ sub new {
 sub _new1 {
     my ($class, $node) = @_;
     my $self = $class->SUPER::new($NAME, $node);
-    $self->_init_fields();
+    _init_fields($self);
         # super(...) made $self above
         $self->{logUtil}->putF($self->{commonStrings}->{START}, $self, $self->{commonStrings}->{CONSTRUCTOR});
         my $actionNode = 'org::allbinary::data::tree::dom::DomSearchHelper'->getNode($org::allbinary::input::automation::actions::script::condition::processors::input::KeyboardActionScriptInputData::NAME, $node->getChildNodes());
@@ -83,7 +83,7 @@ sub _new1 {
 sub _new0 {
     my ($class) = @_;
     my $self = $class->SUPER::new($NAME);
-    $self->_init_fields();
+    _init_fields($self);
         # super(...) made $self above
         if (!$self->isPress() && !$self->isRelease()) {
             $self->setNormal();
@@ -275,27 +275,28 @@ sub toString {
         return $stringBuffer->toString();
 }
 
-# use java::awt::event::KeyEvent;
-use java::util::HashMap;
-use org::allbinary::util::BasicArrayList;
-use org::allbinary::util::BasicArrayListD;
-use org::allbinary::data::tree::dom::DomNodeHelper;
-use org::allbinary::data::tree::dom::DomSearchHelper;
-use org::allbinary::data::tree::dom::ModDomHelper;
-use org::allbinary::input::KeySingletonFactory;
-use org::allbinary::input::KeyUtil;
-use org::allbinary::logic::StdUtil;
-use org::allbinary::logic::communication::log::LogUtil;
-use org::allbinary::logic::string::StringMaker;
-use org::allbinary::string::CommonLabels;
-use org::w3c::dom::Document;
-use org::w3c::dom::Node;
-use org::w3c::dom::NodeList;
-use org::allbinary::input::automation::actions::script::condition::processors::input::BasicProfileActionScriptInput;
-use org::allbinary::input::automation::actions::script::condition::processors::input::KeyboardActionScriptInputInterface;
-use org::allbinary::input::automation::actions::script::condition::processors::input::KeyboardActionScriptInputData;
-use org::allbinary::input::automation::actions::script::condition::processors::input::KeyboardActionScriptInputJPanel;
-use org::allbinary::input::automation::actions::script::condition::processors::input::KeyboardInputAutomationProcessor;
+use java::lang::Object ();
+# use java::awt::event::KeyEvent ();
+use java::util::HashMap ();
+use org::allbinary::util::BasicArrayList ();
+use org::allbinary::util::BasicArrayListD ();
+use org::allbinary::data::tree::dom::DomNodeHelper ();
+use org::allbinary::data::tree::dom::DomSearchHelper ();
+use org::allbinary::data::tree::dom::ModDomHelper ();
+use org::allbinary::input::KeySingletonFactory ();
+use org::allbinary::input::KeyUtil ();
+use org::allbinary::logic::StdUtil ();
+use org::allbinary::logic::communication::log::LogUtil ();
+use org::allbinary::logic::string::StringMaker ();
+use org::allbinary::string::CommonLabels ();
+use org::w3c::dom::Document ();
+use org::w3c::dom::Node ();
+use org::w3c::dom::NodeList ();
+use org::allbinary::input::automation::actions::script::condition::processors::input::BasicProfileActionScriptInput ();
+use org::allbinary::input::automation::actions::script::condition::processors::input::KeyboardActionScriptInputInterface ();
+use org::allbinary::input::automation::actions::script::condition::processors::input::KeyboardActionScriptInputData ();
+use org::allbinary::input::automation::actions::script::condition::processors::input::KeyboardActionScriptInputJPanel ();
+use org::allbinary::input::automation::actions::script::condition::processors::input::KeyboardInputAutomationProcessor ();
 
 1;
 

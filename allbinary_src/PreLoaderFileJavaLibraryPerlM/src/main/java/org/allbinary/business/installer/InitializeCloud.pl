@@ -17,6 +17,7 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
 our $CLOUD = "cloud/";
 our $CLOUD_UPDATE = "cloudupdate/";
@@ -30,7 +31,7 @@ sub _init_fields {
 sub new {
     my ($class) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
     return $self;
 }
 
@@ -83,17 +84,18 @@ sub initialize {
         }
 }
 
-use org::allbinary::globals::PATH_GLOBALS;
-use org::allbinary::globals::URLGLOBALS;
-use org::allbinary::logic::communication::log::LogUtil;
-use org::allbinary::logic::io::AbIOSystem;
-use org::allbinary::logic::io::file::AbFile;
-use org::allbinary::logic::io::file::FileUtil;
-use org::allbinary::logic::io::file::directory::Directory;
-use org::allbinary::logic::io::path::AbPath;
-use org::allbinary::logic::string::StringMaker;
-use org::allbinary::logic::string::StringUtil;
-use org::allbinary::util::BasicArrayList;
+use java::lang::Object ();
+use org::allbinary::globals::PATH_GLOBALS ();
+use org::allbinary::globals::URLGLOBALS ();
+use org::allbinary::logic::communication::log::LogUtil ();
+use org::allbinary::logic::io::AbIOSystem ();
+use org::allbinary::logic::io::file::AbFile ();
+use org::allbinary::logic::io::file::FileUtil ();
+use org::allbinary::logic::io::file::directory::Directory ();
+use org::allbinary::logic::io::path::AbPath ();
+use org::allbinary::logic::string::StringMaker ();
+use org::allbinary::logic::string::StringUtil ();
+use org::allbinary::util::BasicArrayList ();
 
 1;
 

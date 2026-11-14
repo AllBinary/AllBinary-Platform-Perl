@@ -18,8 +18,9 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
-our $instance = 'org::allbinary::image::ImageFactory'->new();
+tie our $instance, 'java::lang::LazyStatic', sub { 'org::allbinary::image::ImageFactory'->new() };
 
 sub new {
     my ($class) = @_;
@@ -44,14 +45,14 @@ sub createImageUrl {
 # throws Exception
 sub createImage {
     my ($self, $caller, $width, $height) = @_;
-        return 'javax::microedition::lcdui::Image'->createImage($width, $height);
+        return 'org::allbinary::MIDPUtil'->getInstance()->createImageWH($width, $height);
 }
 
 
 # throws Exception
 sub createImageFromInputStream {
     my ($self, $key, $inputStream) = @_;
-        my $image = 'javax::microedition::lcdui::Image'->createImage($inputStream);
+        my $image = 'org::allbinary::MIDPUtil'->getInstance()->createImageFromInputStream($inputStream);
         return $image;
 }
 
@@ -60,11 +61,14 @@ sub createImageFromInputStream {
 # Java overloaded method: Perl keeps the last definition
 sub createImageFromInputStream {
     my ($self, $inputStream) = @_;
-        return 'javax::microedition::lcdui::Image'->createImage($inputStream);
+        return 'org::allbinary::MIDPUtil'->getInstance()->createImageFromInputStream($inputStream);
 }
 
-# use java::io::InputStream;
-# use javax::microedition::lcdui::Image;
+use java::lang::Object ();
+use java::lang::LazyStatic ();
+# use java::io::InputStream ();
+use javax::microedition::lcdui::Image ();
+use org::allbinary::MIDPUtil ();
 
 1;
 

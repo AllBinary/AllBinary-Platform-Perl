@@ -17,9 +17,9 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
-use parent -norequire,'org::allbinary::animation::AnimationInterfaceFactoryInterface','org::allbinary::animation::ProceduralAnimationInterfaceFactoryInterface';
+use parent -norequire,'java::lang::Object','org::allbinary::animation::AnimationInterfaceFactoryInterface','org::allbinary::animation::ProceduralAnimationInterfaceFactoryInterface';
 
-our $NULL_ROTATION_ANIMATION_FACTORY = 'org::allbinary::animation::NullRotationAnimationFactory'->new();
+tie our $NULL_ROTATION_ANIMATION_FACTORY, 'java::lang::LazyStatic', sub { 'org::allbinary::animation::NullRotationAnimationFactory'->new() };
 
 sub _init_fields {
     my ($self) = @_;
@@ -31,7 +31,7 @@ sub _init_fields {
 sub new {
     my ($class) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
     return $self;
 }
 
@@ -58,39 +58,13 @@ sub getInstanceAnimation {
 sub setInitialScale {
     my ($self, $scaleProperties) = @_;
 }
-{
-    package org::allbinary::animation::NullRotationAnimation2;
-    use strict;
-    use warnings;
-    use feature 'try';
-    no warnings 'experimental::try';
-    use parent -norequire,'org::allbinary::animation::NullRotationAnimation';
-    
-    
 
-    sub new {
-        my ($class) = @_;
-        my $self = $class->SUPER::new('org::allbinary::math::AngleInfo'->getInstance('org::allbinary::math::AngleFactory'->getInstance()->{QUARTER_TOTAL_ANGLE}), 'org::allbinary::util::CircularIndexUtil'->createInstance(4), 'org::allbinary::animation::IndexedAnimationBehavior'->new(1, 250));
-            # super(...) made $self above
-        return $self;
-    }
-    
-
-    sub paintXY {
-        my ($self, $graphics, $x, $y) = @_;
-    }
-    }
-
-
-# use javax::microedition::lcdui::Graphics;
-use org::allbinary::math::AngleFactory;
-use org::allbinary::math::AngleInfo;
-use org::allbinary::media::ScaleProperties;
-use org::allbinary::util::CircularIndexUtil;
-use org::allbinary::animation::AnimationInterfaceFactoryInterface;
-use org::allbinary::animation::ProceduralAnimationInterfaceFactoryInterface;
-use org::allbinary::animation::NullRotationAnimation;
-use org::allbinary::animation::IndexedAnimationBehavior;
+use java::lang::Object ();
+use java::lang::LazyStatic ();
+use org::allbinary::media::ScaleProperties ();
+use org::allbinary::animation::AnimationInterfaceFactoryInterface ();
+use org::allbinary::animation::ProceduralAnimationInterfaceFactoryInterface ();
+use org::allbinary::animation::NullRotationAnimation2 ();
 
 1;
 

@@ -17,7 +17,7 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
-use parent -norequire,'java::io::InputStream';
+use parent -norequire,'java::lang::Object';
 
 
 sub _init_fields {
@@ -29,7 +29,7 @@ sub _init_fields {
 sub new {
     my ($class, $fileInputStream) = @_;
     my $self = $class->SUPER::new();
-    $self->_init_fields();
+    _init_fields($self);
         $self->{fileInputStream} = $fileInputStream;
     return $self;
 }
@@ -103,11 +103,12 @@ sub skip {
         return $self->{fileInputStream}->skip($n);
 }
 
-# use java::io::FileInputStream;
-# use java::io::FileNotFoundException;
-# use java::io::IOException;
-# use java::io::InputStream;
-# use java::nio::channels::FileChannel;
+use java::lang::Object ();
+# use java::io::FileInputStream ();
+# use java::io::FileNotFoundException ();
+# use java::io::IOException ();
+# use java::io::InputStream ();
+# use java::nio::channels::FileChannel ();
 
 1;
 

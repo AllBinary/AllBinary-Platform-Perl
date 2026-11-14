@@ -19,7 +19,7 @@ use feature 'try';
 no warnings 'experimental::try';
 use parent -norequire,'org::allbinary::graphics::threed::min3d::renderer::processor::ObjectThreedOpenGLProcessor';
 
-our $instance = 'org::allbinary::graphics::opengles::ColorAttributePointerOpenGLProcessor'->new();
+tie our $instance, 'java::lang::LazyStatic', sub { 'org::allbinary::graphics::opengles::ColorAttributePointerOpenGLProcessor'->new() };
 
 
 sub getInstance {
@@ -40,8 +40,10 @@ sub process {
         die ("RuntimeException");
 }
 
-# use javax::microedition::khronos::opengles::GL10;
-use org::allbinary::graphics::threed::min3d::renderer::processor::ObjectThreedOpenGLProcessor;
+use java::lang::Object ();
+use java::lang::LazyStatic ();
+use javax::microedition::khronos::opengles::GL10 ();
+use org::allbinary::graphics::threed::min3d::renderer::processor::ObjectThreedOpenGLProcessor ();
 
 1;
 

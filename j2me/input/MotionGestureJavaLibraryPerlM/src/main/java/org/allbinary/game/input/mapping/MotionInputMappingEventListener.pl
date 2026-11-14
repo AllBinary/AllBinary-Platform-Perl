@@ -17,7 +17,7 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
-use parent -norequire,'org::allbinary::game::input::mapping::event::InputMappingEventListenerInterface';
+use parent -norequire,'java::lang::Object','org::allbinary::game::input::mapping::event::InputMappingEventListenerInterface';
 
 
 sub new {
@@ -40,13 +40,14 @@ sub onInputMappingEvent {
         'org::allbinary::input::motion::button::BasicTouchInputFactory'->getInstance()->updateAll($inputMappingEvent->getInputToGameKeyMapping());
 }
 
-use org::allbinary::game::input::mapping::event::InputMappingEvent;
-use org::allbinary::game::input::mapping::event::InputMappingEventListenerInterface;
-use org::allbinary::game::input::motion::action::GameKeyCompleteMotionGestureInputEventFactory;
-use org::allbinary::input::motion::button::BasicTouchInputFactory;
-use org::allbinary::logic::communication::log::ForcedLogUtil;
-use org::allbinary::logic::util::event::AllBinaryEventObject;
-use org::allbinary::logic::util::event::EventStrings;
+use java::lang::Object ();
+use org::allbinary::game::input::mapping::event::InputMappingEvent ();
+use org::allbinary::game::input::mapping::event::InputMappingEventListenerInterface ();
+use org::allbinary::game::input::motion::action::GameKeyCompleteMotionGestureInputEventFactory ();
+use org::allbinary::input::motion::button::BasicTouchInputFactory ();
+use org::allbinary::logic::communication::log::ForcedLogUtil ();
+use org::allbinary::logic::util::event::AllBinaryEventObject ();
+use org::allbinary::logic::util::event::EventStrings ();
 
 1;
 

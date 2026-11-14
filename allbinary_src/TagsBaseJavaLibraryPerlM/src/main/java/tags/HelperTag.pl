@@ -31,7 +31,7 @@ sub _init_fields {
 sub new {
     my ($class, $tagHelperFactoryInterface) = @_;
     my $self = $class->SUPER::new();
-    $self->_init_fields();
+    _init_fields($self);
         if ($tags::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($tags::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{JSPTAG})) {
             $self->{logUtil}->putF($self->{commonStrings}->{START}, $self, $self->{commonStrings}->{CONSTRUCTOR});
         }
@@ -67,9 +67,10 @@ sub doEndTag {
         return $self->SUPER::doEndTag();
 }
 
-use admin::taghelpers::TagHelperFactoryInterface;
-use org::allbinary::logic::communication::log::LogUtil;
-use tags::PropertiesTag;
+use java::lang::Object ();
+use admin::taghelpers::TagHelperFactoryInterface ();
+use org::allbinary::logic::communication::log::LogUtil ();
+use tags::PropertiesTag ();
 
 1;
 

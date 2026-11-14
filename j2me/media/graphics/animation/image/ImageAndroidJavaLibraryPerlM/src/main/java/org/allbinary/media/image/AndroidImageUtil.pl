@@ -17,8 +17,9 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
-our $instance = 'org::allbinary::media::image::AndroidImageUtil'->new();
+tie our $instance, 'java::lang::LazyStatic', sub { 'org::allbinary::media::image::AndroidImageUtil'->new() };
 
 sub new {
     my ($class) = @_;
@@ -62,13 +63,15 @@ sub rotate {
         $canvas->drawBitmap($originalAndroidImage->getBitmap(), 0.0, 0.0, $paint);
 }
 
-use android::graphics::Bitmap;
-use android::graphics::Canvas;
-use android::graphics::Color;
-use android::graphics::Matrix;
-use android::graphics::Paint;
-# use javax::microedition::lcdui::Image;
-use org::microemu::android::device::AndroidImageInterface;
+use java::lang::Object ();
+use java::lang::LazyStatic ();
+# use android::graphics::Bitmap ();
+# use android::graphics::Canvas ();
+# use android::graphics::Color ();
+# use android::graphics::Matrix ();
+# use android::graphics::Paint ();
+use javax::microedition::lcdui::Image ();
+use org::microemu::android::device::AndroidImageInterface ();
 
 1;
 

@@ -41,8 +41,8 @@ sub toHashMap {
     die "abstract method toHashMap";
 }
 
-use java::util::HashMap;
-use org::allbinary::util::BasicArrayList;
+use java::util::HashMap ();
+use org::allbinary::util::BasicArrayList ();
 
 1;
 

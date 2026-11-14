@@ -23,14 +23,14 @@ use parent -norequire,'org::allbinary::graphics::displayable::screen::CommandFor
 
 sub _init_fields {
     my ($self) = @_;
-    $self->{meUtil} = 'org::allbinary::logic::MEUtil'->getInstance();
+    $self->{meUtil} = 'org::allbinary::MIDPUtil'->getInstance();
 }
 
 
 sub new {
     my ($class, $commandListener, $title, $backgrounBasicColor, $foregroundBasicColor) = @_;
     my $self = $class->SUPER::new($commandListener, $title, $backgrounBasicColor, $foregroundBasicColor);
-    $self->_init_fields();
+    _init_fields($self);
         # super(...) made $self above
         $self->{logUtil}->putF($self->{commonStrings}->{START}, $self, $self->{commonStrings}->{CONSTRUCTOR});
         $self->addConfiguration();
@@ -131,7 +131,7 @@ sub save {
         'org::allbinary::game::configuration::GameConfigurationUtil'->getInstance()->updateCompetitionValue();
         my $hashtable = 'org::allbinary::logic::StdUtil'->getInstance()->createHashtable();
         my $SCALE = 'org::allbinary::game::configuration::GameConfigurationCentral'->getInstance()->{SCALE};
-        $hashtable->put($SCALE->getName(), $SCALE->getValue()->toString());
+        $hashtable->put($SCALE->getName(), ("" . (int($SCALE->getValue()))));
         my $keyValuePersistance = 'org::allbinary::game::configuration::persistance::GameConfigurationPersistanceSingleton'->getInstance();
         $keyValuePersistance->clear();
         $keyValuePersistance->loadAll($abeClientInformation);
@@ -145,35 +145,36 @@ sub save {
         }
 }
 
-# use javax::microedition::lcdui::Choice;
-# use javax::microedition::lcdui::Command;
-# use javax::microedition::lcdui::CommandListener;
-# use javax::microedition::lcdui::Item;
-# use javax::microedition::lcdui::TextField;
-use org::allbinary::game::commands::GameCommandsFactory;
-use org::allbinary::game::configuration::feature::GameFeatureChoiceGroups;
-use org::allbinary::game::configuration::feature::GameFeatureFormUtil;
-use org::allbinary::game::configuration::feature::GameFeatureItemCommandListener;
-use org::allbinary::game::configuration::feature::GameFeatureItemStateListener;
-use org::allbinary::game::configuration::feature::SensorFeatureFactory;
-use org::allbinary::game::configuration::persistance::GameConfigurationPersistanceSingleton;
-use org::allbinary::game::configuration::persistance::KeyValuePersistance;
-use org::allbinary::graphics::color::BasicColor;
-use org::allbinary::graphics::displayable::command::MyCommandsFactory;
-use org::allbinary::graphics::displayable::screen::CommandForm;
-use org::allbinary::input::gyro::OrientationData;
-use org::allbinary::logic::MEUtil;
-use org::allbinary::logic::string::StringMaker;
-use org::allbinary::logic::system::security::licensing::AbeClientInformationInterface;
-use org::allbinary::util::BasicArrayList;
-use org::allbinary::util::HashtableUtil;
-use org::allbinary::logic::StdUtil;
-use org::allbinary::util::ABHashtable;
-use org::allbinary::game::configuration::GameConfigurationTextInput;
-use org::allbinary::game::configuration::GameConfigurationSingleton;
-use org::allbinary::game::configuration::GameConfigurationGauge;
-use org::allbinary::game::configuration::GameConfigurationUtil;
-use org::allbinary::game::configuration::GameConfigurationCentral;
+use java::lang::Object ();
+use javax::microedition::lcdui::Choice ();
+use javax::microedition::lcdui::Command ();
+use javax::microedition::lcdui::CommandListener ();
+use javax::microedition::lcdui::Item ();
+use javax::microedition::lcdui::TextField ();
+use org::allbinary::MIDPUtil ();
+use org::allbinary::game::commands::GameCommandsFactory ();
+use org::allbinary::game::configuration::feature::GameFeatureChoiceGroups ();
+use org::allbinary::game::configuration::feature::GameFeatureFormUtil ();
+use org::allbinary::game::configuration::feature::GameFeatureItemCommandListener ();
+use org::allbinary::game::configuration::feature::GameFeatureItemStateListener ();
+use org::allbinary::game::configuration::feature::SensorFeatureFactory ();
+use org::allbinary::game::configuration::persistance::GameConfigurationPersistanceSingleton ();
+use org::allbinary::game::configuration::persistance::KeyValuePersistance ();
+use org::allbinary::graphics::color::BasicColor ();
+use org::allbinary::graphics::displayable::command::MyCommandsFactory ();
+use org::allbinary::graphics::displayable::screen::CommandForm ();
+use org::allbinary::input::gyro::OrientationData ();
+use org::allbinary::logic::string::StringMaker ();
+use org::allbinary::logic::system::security::licensing::AbeClientInformationInterface ();
+use org::allbinary::util::BasicArrayList ();
+use org::allbinary::util::HashtableUtil ();
+use org::allbinary::logic::StdUtil ();
+use org::allbinary::util::ABHashtable ();
+use org::allbinary::game::configuration::GameConfigurationTextInput ();
+use org::allbinary::game::configuration::GameConfigurationSingleton ();
+use org::allbinary::game::configuration::GameConfigurationGauge ();
+use org::allbinary::game::configuration::GameConfigurationUtil ();
+use org::allbinary::game::configuration::GameConfigurationCentral ();
 
 1;
 

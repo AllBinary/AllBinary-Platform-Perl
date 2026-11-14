@@ -17,8 +17,9 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
-our $instance = 'org::allbinary::game::input::LocalPlayerInputIdFactory'->new();
+tie our $instance, 'java::lang::LazyStatic', sub { 'org::allbinary::game::input::LocalPlayerInputIdFactory'->new() };
 
 sub _init_fields {
     my ($self) = @_;
@@ -35,7 +36,7 @@ sub _init_fields {
 sub new {
     my ($class) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
         for (my $index = scalar(@{$self->{deviceIdToplayerId}}) - 1; $index >= 0; $index--) {
             $self->{deviceIdToplayerId}->[$index] = -1;
         }
@@ -121,9 +122,11 @@ sub getPlayersInPlay {
         return $self->{playersInPlay};
 }
 
-use org::allbinary::game::input::analog::AnalogLocationInputFactory;
-use org::allbinary::logic::communication::log::LogUtil;
-use org::allbinary::logic::string::StringMaker;
+use java::lang::Object ();
+use java::lang::LazyStatic ();
+use org::allbinary::game::input::analog::AnalogLocationInputFactory ();
+use org::allbinary::logic::communication::log::LogUtil ();
+use org::allbinary::logic::string::StringMaker ();
 
 1;
 

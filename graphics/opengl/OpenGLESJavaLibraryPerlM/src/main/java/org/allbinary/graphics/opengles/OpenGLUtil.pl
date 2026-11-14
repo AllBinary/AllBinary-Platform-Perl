@@ -5,8 +5,9 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
-our $instance = 'org::allbinary::graphics::opengles::OpenGLUtil'->new();
+tie our $instance, 'java::lang::LazyStatic', sub { 'org::allbinary::graphics::opengles::OpenGLUtil'->new() };
 
 sub _init_fields {
     my ($self) = @_;
@@ -27,7 +28,7 @@ sub _init_fields {
 sub new {
     my ($class) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
     return $self;
 }
 
@@ -83,7 +84,7 @@ sub addImage {
     my ($self, $image) = @_;
         my $encapsulateImage = $self->{preResourceImageUtil}->encapsulate($image);
         if ($encapsulateImage != $image) {
-            { # synchronized ($self->{anyType})
+            {; # synchronized ($self->{anyType})
                 $self->{list}->add($encapsulateImage);
             }
             return $encapsulateImage;
@@ -94,7 +95,7 @@ sub addImage {
 
 sub clear {
     my ($self) = @_;
-        { # synchronized ($self->{anyType})
+        {; # synchronized ($self->{anyType})
             $self->{list}->clear();
         }
 }
@@ -102,7 +103,7 @@ sub clear {
 
 sub addRunnable {
     my ($self, $runnable) = @_;
-        { # synchronized ($self->{lockObject})
+        {; # synchronized ($self->{lockObject})
             if (!$self->{runnableList}->contains($runnable)) {
                 $self->{runnableList}->add($runnable);
                 $self->{displayInfoSingleton}->add($self->{canvasStrings}->{SCALED_IMAGES});
@@ -113,7 +114,7 @@ sub addRunnable {
 
 sub processRunnables {
     my ($self) = @_;
-        { # synchronized ($self->{lockObject})
+        {; # synchronized ($self->{lockObject})
             my $runnable = undef;
             my $size = $self->{runnableList}->size();
             for (my $index = 0; $index < $size; $index++) {
@@ -132,32 +133,34 @@ sub set {
         my $image = undef;
         for (my $index2 = 0; $index2 < $size; $index2++) {
             $image = $self->{list}->get($index2);
-            ($image)->set($gl);
+            $image->set($gl);
         }
 }
 
-# use javax::microedition::khronos::opengles::GL10;
-# use javax::microedition::lcdui::Image;
-use org::allbinary::device::LoadTextures;
-use org::allbinary::device::OpenGLESGraphics;
-use org::allbinary::graphics::canvas::transition::progress::ProgressCanvas;
-use org::allbinary::graphics::canvas::transition::progress::ProgressCanvasFactory;
-use org::allbinary::graphics::displayable::CanvasStrings;
-use org::allbinary::graphics::displayable::DisplayInfoSingleton;
-use org::allbinary::graphics::opengles::renderer::RendererStrings;
-use org::allbinary::image::PreResourceImageUtil;
-use org::allbinary::image::opengles::OpenGLESImage;
-use org::allbinary::image::opengles::OpenGLImageCache;
-use org::allbinary::image::opengles::OpenGLImageCacheFactory;
-use org::allbinary::logic::communication::log::LogUtil;
-use org::allbinary::logic::communication::log::PreLogUtil;
-use org::allbinary::string::CommonLabels;
-use org::allbinary::string::CommonStrings;
-use org::allbinary::thread::SynchObject;
-use org::allbinary::util::BasicArrayList;
-use org::allbinary::util::BasicArrayListD;
-use org::allbinary::graphics::opengles::OpenGLCapabilities;
-use org::allbinary::graphics::opengles::OpenGLLogUtil;
+use java::lang::Object ();
+use java::lang::LazyStatic ();
+use javax::microedition::khronos::opengles::GL10 ();
+use javax::microedition::lcdui::Image ();
+use org::allbinary::device::LoadTextures ();
+use org::allbinary::device::OpenGLESGraphics ();
+use org::allbinary::graphics::canvas::transition::progress::ProgressCanvas ();
+use org::allbinary::graphics::canvas::transition::progress::ProgressCanvasFactory ();
+use org::allbinary::graphics::displayable::CanvasStrings ();
+use org::allbinary::graphics::displayable::DisplayInfoSingleton ();
+use org::allbinary::graphics::opengles::renderer::RendererStrings ();
+use org::allbinary::image::PreResourceImageUtil ();
+use org::allbinary::image::opengles::OpenGLESImage ();
+use org::allbinary::image::opengles::OpenGLImageCache ();
+use org::allbinary::image::opengles::OpenGLImageCacheFactory ();
+use org::allbinary::logic::communication::log::LogUtil ();
+use org::allbinary::logic::communication::log::PreLogUtil ();
+use org::allbinary::string::CommonLabels ();
+use org::allbinary::string::CommonStrings ();
+use org::allbinary::thread::SynchObject ();
+use org::allbinary::util::BasicArrayList ();
+use org::allbinary::util::BasicArrayListD ();
+use org::allbinary::graphics::opengles::OpenGLCapabilities ();
+use org::allbinary::graphics::opengles::OpenGLLogUtil ();
 
 1;
 

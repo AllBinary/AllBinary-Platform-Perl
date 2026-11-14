@@ -29,7 +29,7 @@ sub _init_fields {
 sub new {
     my ($class, $anyType, $whatChanged) = @_;
     my $self = $class->SUPER::new($anyType);
-    $self->_init_fields();
+    _init_fields($self);
         # super(...) made $self above
         $self->{whatChanged} = $whatChanged;
     return $self;
@@ -47,7 +47,8 @@ sub getGameOption {
         return $self->getSource();
 }
 
-use org::allbinary::logic::util::event::AllBinaryEventObject;
+use java::lang::Object ();
+use org::allbinary::logic::util::event::AllBinaryEventObject ();
 
 1;
 

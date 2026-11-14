@@ -44,8 +44,9 @@ sub visit {
         }
 }
 
-use org::mapeditor::core::TiledMap;
-use org::allbinary::game::behavior::topview::placement::TileMapPlacementVisitor;
+use java::lang::Object ();
+use org::mapeditor::core::TiledMap ();
+use org::allbinary::game::behavior::topview::placement::TileMapPlacementVisitor ();
 
 1;
 

@@ -17,6 +17,7 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
 
 sub _init_fields {
@@ -29,7 +30,7 @@ sub _init_fields {
 sub new {
     my ($class, $activity) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
         $self->{activity} = $activity;
     return $self;
 }
@@ -51,14 +52,15 @@ sub run {
         }
 }
 
-use android::app::Activity;
-use android::content::Context;
-use android::view::View;
-use android::view::inputmethod::InputMethodManager;
-use org::allbinary::android::activity::ViewCompositeInterface;
-use org::allbinary::logic::communication::log::ForcedLogUtil;
-use org::allbinary::logic::communication::log::LogUtil;
-use org::allbinary::string::CommonStrings;
+use java::lang::Object ();
+# use android::app::Activity ();
+# use android::content::Context ();
+# use android::view::View ();
+# use android::view::inputmethod::InputMethodManager ();
+use org::allbinary::android::activity::ViewCompositeInterface ();
+use org::allbinary::logic::communication::log::ForcedLogUtil ();
+use org::allbinary::logic::communication::log::LogUtil ();
+use org::allbinary::string::CommonStrings ();
 
 1;
 

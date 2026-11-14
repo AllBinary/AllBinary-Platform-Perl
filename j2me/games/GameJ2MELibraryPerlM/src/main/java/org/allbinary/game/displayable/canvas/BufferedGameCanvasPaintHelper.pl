@@ -35,7 +35,7 @@ sub _init_fields {
 sub new {
     my ($class, $gameCanvas) = @_;
     my $self = $class->SUPER::new();
-    $self->_init_fields();
+    _init_fields($self);
         die ("No Longer Used");
     return $self;
 }
@@ -56,15 +56,16 @@ sub paint {
         $graphics->drawImage($self->{previousImage}, 0, 0, $self->{anchor});
 }
 
-# use javax::microedition::lcdui::Canvas;
-# use javax::microedition::lcdui::Graphics;
-# use javax::microedition::lcdui::Image;
-# use javax::microedition::lcdui::NullCanvas;
-# use javax::microedition::lcdui::NullImage;
-use org::allbinary::graphics::Anchor;
-use org::allbinary::graphics::displayable::MyCanvas;
-use org::allbinary::graphics::paint::ProcessPaintable;
-use org::allbinary::util::CircularIndexUtil;
+use java::lang::Object ();
+use javax::microedition::lcdui::Canvas ();
+use javax::microedition::lcdui::Graphics ();
+use javax::microedition::lcdui::Image ();
+use javax::microedition::lcdui::NullCanvas ();
+use javax::microedition::lcdui::NullImage ();
+use org::allbinary::graphics::Anchor ();
+use org::allbinary::graphics::displayable::MyCanvas ();
+use org::allbinary::graphics::paint::ProcessPaintable ();
+use org::allbinary::util::CircularIndexUtil ();
 
 1;
 

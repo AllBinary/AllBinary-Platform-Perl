@@ -31,7 +31,7 @@ sub _init_fields {
 sub new {
     my ($class, $dataId, $tiledLayer, $mapTwoDArray, $debugColor) = @_;
     my $self = $class->SUPER::new($dataId, $tiledLayer->getWidth(), $tiledLayer->getHeight(), $tiledLayer->getCellWidth(), $tiledLayer->getCellHeight());
-    $self->_init_fields();
+    _init_fields($self);
         # super(...) made $self above
         $self->{tiledLayerP} = $tiledLayer;
         $self->{debugColor} = $debugColor;
@@ -143,12 +143,13 @@ sub getAnimatedTile {
         return $self->{tiledLayerP}->getAnimatedTile($animationTileIndex);
 }
 
-# use javax::microedition::lcdui::Font;
-# use javax::microedition::lcdui::Graphics;
-# use javax::microedition::lcdui::game::TiledLayer;
-use org::allbinary::string::CommonSeps;
-use org::allbinary::logic::string::StringMaker;
-use org::allbinary::game::layer::AllBinaryTiledLayer;
+use java::lang::Object ();
+use javax::microedition::lcdui::Font ();
+use javax::microedition::lcdui::Graphics ();
+use javax::microedition::lcdui::game::TiledLayer ();
+use org::allbinary::string::CommonSeps ();
+use org::allbinary::logic::string::StringMaker ();
+use org::allbinary::game::layer::AllBinaryTiledLayer ();
 
 1;
 

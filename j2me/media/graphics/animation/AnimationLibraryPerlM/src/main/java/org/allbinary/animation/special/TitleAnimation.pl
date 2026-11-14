@@ -49,7 +49,7 @@ sub createAnimation {
 sub new {
     my ($class, $animationInterfaceArray, $basicColorArray, $dxArray, $dyArray, $y, $width, $animationBehavior) = @_;
     my $self = $class->SUPER::new($animationBehavior);
-    $self->_init_fields();
+    _init_fields($self);
         # super(...) made $self above
         $self->{lastFrameStartTime} = $self->{systemWrapper}->currentTimeMillis();
         $self->{animationInterfaceArray} = $animationInterfaceArray;
@@ -168,16 +168,17 @@ sub paintXY {
         }
 }
 
-# use javax::microedition::lcdui::Graphics;
-use org::allbinary::animation::AnimationBehavior;
-use org::allbinary::animation::IndexedAnimation;
-use org::allbinary::animation::IndexedAnimationBehavior;
-use org::allbinary::graphics::color::BasicColor;
-use org::allbinary::graphics::color::BasicColorFactory;
-use org::allbinary::graphics::displayable::DisplayInfoSingleton;
-use org::allbinary::logic::ABSystemWrapper;
-use org::allbinary::logic::math::PrimitiveIntUtil;
-use org::allbinary::animation::special::SpecialAnimation;
+use java::lang::Object ();
+use javax::microedition::lcdui::Graphics ();
+use org::allbinary::animation::AnimationBehavior ();
+use org::allbinary::animation::IndexedAnimation ();
+use org::allbinary::animation::IndexedAnimationBehavior ();
+use org::allbinary::graphics::color::BasicColor ();
+use org::allbinary::graphics::color::BasicColorFactory ();
+use org::allbinary::graphics::displayable::DisplayInfoSingleton ();
+use org::allbinary::logic::ABSystemWrapper ();
+use org::allbinary::logic::math::PrimitiveIntUtil ();
+use org::allbinary::animation::special::SpecialAnimation ();
 
 1;
 

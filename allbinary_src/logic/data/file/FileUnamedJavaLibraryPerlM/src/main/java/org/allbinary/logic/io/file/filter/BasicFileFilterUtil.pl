@@ -17,6 +17,7 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
 
 
@@ -35,11 +36,12 @@ sub getInstance {
         return 'org::allbinary::logic::io::file::filter::VisitorFileFilter'->new($includeFileExtensionsBooleanFileVisitor);
 }
 
-# use java::io::FileFilter;
-use org::allbinary::logic::io::file::visitor::IncludeFileExtensionsBooleanFileVisitor;
-use org::allbinary::util::BasicArrayList;
-use org::allbinary::util::BasicArrayListD;
-use org::allbinary::logic::io::file::filter::VisitorFileFilter;
+use java::lang::Object ();
+# use java::io::FileFilter ();
+use org::allbinary::logic::io::file::visitor::IncludeFileExtensionsBooleanFileVisitor ();
+use org::allbinary::util::BasicArrayList ();
+use org::allbinary::util::BasicArrayListD ();
+use org::allbinary::logic::io::file::filter::VisitorFileFilter ();
 
 1;
 

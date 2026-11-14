@@ -37,7 +37,7 @@ sub _init_fields {
 sub new {
     my ($class, $geographicMapInterface, $list, $playerInputId) = @_;
     my $self = $class->SUPER::new($list, 'org::allbinary::util::BasicArrayListD'->new(), $playerInputId);
-    $self->_init_fields();
+    _init_fields($self);
         # super(...) made $self above
         $self->initInputProcessors();
         $self->{geographicMapInterface} = $geographicMapInterface;
@@ -247,27 +247,28 @@ sub keepOnMapMinX {
         }
 }
 
-# use javax::microedition::lcdui::Canvas;
-# use javax::microedition::lcdui::Graphics;
-use org::allbinary::util::BasicArrayList;
-use org::allbinary::game::configuration::feature::Features;
-use org::allbinary::game::configuration::feature::InputFeatureFactory;
-use org::allbinary::game::input::event::GameKeyEvent;
-use org::allbinary::game::layer::AllBinaryGameLayerManager;
-use org::allbinary::game::layer::AllBinaryTiledLayer;
-use org::allbinary::graphics::displayable::DisplayInfoSingleton;
-use org::allbinary::layer::AllBinaryLayerManager;
-use org::allbinary::layer::event::ScrollMapEvent;
-use org::allbinary::layer::event::ScrollMapEventHandler;
-use org::allbinary::media::graphics::geography::map::BasicGeographicMap;
-use org::allbinary::util::BasicArrayListD;
-use org::allbinary::game::input::PlayerGameInput;
-use org::allbinary::game::input::InputFactory;
-use org::allbinary::game::input::ScrollMapUpGameInputProcessor;
-use org::allbinary::game::input::ScrollMapDownGameInputProcessor;
-use org::allbinary::game::input::ScrollMapRightGameInputProcessor;
-use org::allbinary::game::input::ScrollMapLeftGameInputProcessor;
-use org::allbinary::game::input::GameInputProcessorUtil;
+use java::lang::Object ();
+use javax::microedition::lcdui::Canvas ();
+use javax::microedition::lcdui::Graphics ();
+use org::allbinary::util::BasicArrayList ();
+use org::allbinary::game::configuration::feature::Features ();
+use org::allbinary::game::configuration::feature::InputFeatureFactory ();
+use org::allbinary::game::input::event::GameKeyEvent ();
+use org::allbinary::game::layer::AllBinaryGameLayerManager ();
+use org::allbinary::game::layer::AllBinaryTiledLayer ();
+use org::allbinary::graphics::displayable::DisplayInfoSingleton ();
+use org::allbinary::layer::AllBinaryLayerManager ();
+use org::allbinary::layer::event::ScrollMapEvent ();
+use org::allbinary::layer::event::ScrollMapEventHandler ();
+use org::allbinary::media::graphics::geography::map::BasicGeographicMap ();
+use org::allbinary::util::BasicArrayListD ();
+use org::allbinary::game::input::PlayerGameInput ();
+use org::allbinary::game::input::InputFactory ();
+use org::allbinary::game::input::ScrollMapUpGameInputProcessor ();
+use org::allbinary::game::input::ScrollMapDownGameInputProcessor ();
+use org::allbinary::game::input::ScrollMapRightGameInputProcessor ();
+use org::allbinary::game::input::ScrollMapLeftGameInputProcessor ();
+use org::allbinary::game::input::GameInputProcessorUtil ();
 
 1;
 

@@ -17,8 +17,9 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
-our $eventHandlerArray = ['org::allbinary::game::layer::waypoint::event::WaypointEventHandler'->new(), 'org::allbinary::game::layer::waypoint::event::WaypointEventHandler'->new(), 'org::allbinary::game::layer::waypoint::event::WaypointEventHandler'->new(), 'org::allbinary::game::layer::waypoint::event::WaypointEventHandler'->new(), 'org::allbinary::game::layer::waypoint::event::WaypointEventHandler'->new(), 'org::allbinary::game::layer::waypoint::event::WaypointEventHandler'->new(), 'org::allbinary::game::layer::waypoint::event::WaypointEventHandler'->new(), 'org::allbinary::game::layer::waypoint::event::WaypointEventHandler'->new(), 'org::allbinary::game::layer::waypoint::event::WaypointEventHandler'->new(), 'org::allbinary::game::layer::waypoint::event::WaypointEventHandler'->new()];
+tie our $eventHandlerArray, 'java::lang::LazyStatic', sub { ['org::allbinary::game::layer::waypoint::event::WaypointEventHandler'->new(), 'org::allbinary::game::layer::waypoint::event::WaypointEventHandler'->new(), 'org::allbinary::game::layer::waypoint::event::WaypointEventHandler'->new(), 'org::allbinary::game::layer::waypoint::event::WaypointEventHandler'->new(), 'org::allbinary::game::layer::waypoint::event::WaypointEventHandler'->new(), 'org::allbinary::game::layer::waypoint::event::WaypointEventHandler'->new(), 'org::allbinary::game::layer::waypoint::event::WaypointEventHandler'->new(), 'org::allbinary::game::layer::waypoint::event::WaypointEventHandler'->new(), 'org::allbinary::game::layer::waypoint::event::WaypointEventHandler'->new(), 'org::allbinary::game::layer::waypoint::event::WaypointEventHandler'->new()] };
 
 sub new {
     my ($class) = @_;
@@ -29,7 +30,8 @@ sub new {
 
 sub getInstance {
     my ($class, $groupInterface) = @_;
-        return $org::allbinary::game::layer::waypoint::event::WaypointEventHandlerFactory::eventHandlerArray->[int($groupInterface->getGroupId())];
+        my $groupId = int($groupInterface->getGroupId());
+        return $org::allbinary::game::layer::waypoint::event::WaypointEventHandlerFactory::eventHandlerArray->[$groupId];
 }
 
 
@@ -40,8 +42,10 @@ sub removeAll {
         }
 }
 
-use org::allbinary::game::identification::Group;
-use org::allbinary::game::layer::waypoint::event::WaypointEventHandler;
+use java::lang::Object ();
+use java::lang::LazyStatic ();
+use org::allbinary::game::identification::Group ();
+use org::allbinary::game::layer::waypoint::event::WaypointEventHandler ();
 
 1;
 

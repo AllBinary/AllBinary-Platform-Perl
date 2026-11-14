@@ -21,8 +21,8 @@ no warnings 'experimental::try';
 use parent -norequire,'org::allbinary::thread::RunnableInterface','org::allbinary::logic::util::event::handler::BasicEventHandlerInterface';
 
 
-use org::allbinary::logic::util::event::handler::BasicEventHandlerInterface;
-use org::allbinary::thread::RunnableInterface;
+use org::allbinary::logic::util::event::handler::BasicEventHandlerInterface ();
+use org::allbinary::thread::RunnableInterface ();
 
 1;
 

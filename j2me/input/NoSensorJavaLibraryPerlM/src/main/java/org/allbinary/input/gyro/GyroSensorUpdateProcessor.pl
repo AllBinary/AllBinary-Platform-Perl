@@ -32,7 +32,8 @@ sub process {
     my ($self) = @_;
 }
 
-use org::allbinary::canvas::Processor;
+use java::lang::Object ();
+use org::allbinary::canvas::Processor ();
 
 1;
 

@@ -30,7 +30,7 @@ sub _init_fields {
 sub new {
     my ($class, $basicColor) = @_;
     my $self = $class->SUPER::new();
-    $self->_init_fields();
+    _init_fields($self);
         $self->setBasicColorP($basicColor);
     return $self;
 }
@@ -65,11 +65,12 @@ sub paint {
     my ($self, $graphics) = @_;
 }
 
-# use javax::microedition::lcdui::Graphics;
-use org::allbinary::graphics::color::BasicColor;
-use org::allbinary::graphics::color::BasicColorFactory;
-use org::allbinary::graphics::color::ColorCompositeInterface;
-use org::allbinary::graphics::paint::Paintable;
+use java::lang::Object ();
+use javax::microedition::lcdui::Graphics ();
+use org::allbinary::graphics::color::BasicColor ();
+use org::allbinary::graphics::color::BasicColorFactory ();
+use org::allbinary::graphics::color::ColorCompositeInterface ();
+use org::allbinary::graphics::paint::Paintable ();
 
 1;
 

@@ -30,7 +30,7 @@ sub _init_fields {
 sub new {
     my ($class, $transformInfoInterface) = @_;
     my $self = $class->SUPER::new($transformInfoInterface);
-    $self->_init_fields();
+    _init_fields($self);
         # super(...) made $self above
         my $multipartRequestHashMap = 'org::allbinary::logic::communication::http::request::MultipartRequestParams'->new($self->getPageContext())->toHashMap();
         my $storeFrontInterface = 'org::allbinary::business::context::modules::storefront::StoreFrontFactory'->getInstance($self->getWeblisketSession()->getStoreName());
@@ -94,22 +94,30 @@ sub toValidationInfoNode {
         return undef;
 }
 
-use java::util::HashMap;
-use org::allbinary::business::context::modules::storefront::StoreFrontFactory;
-use org::allbinary::business::context::modules::storefront::StoreFrontInterface;
-use org::allbinary::data::tree::dom::DomNodeInterface;
-use org::allbinary::globals::URLGLOBALS;
-use org::allbinary::logic::communication::http::request::MultipartRequestParams;
-use org::allbinary::logic::communication::log::LogUtil;
-use org::allbinary::logic::control::validate::ValidationComponentInterface;
-use org::allbinary::logic::string::StringMaker;
-use org::allbinary::logic::visual::transform::info::TransformInfoInterface;
-use org::allbinary::logic::visual::transform::template::customizer::hedges::heading::HeadingValidation;
-use org::allbinary::logic::visual::transform::template::customizer::widgets::logo::LogoData;
-use org::w3c::dom::Document;
-use org::w3c::dom::Node;
-use views::business::context::modules::storefront::customizer::CustomizerUtil;
-use views::business::context::modules::storefront::customizer::hedges::header::TopBarView;
+
+# throws Exception
+sub getTransformInfoInterface {
+    my ($self) = @_;
+        return $self->SUPER::getTransformInfoInterface();
+}
+
+use java::lang::Object ();
+use java::util::HashMap ();
+use org::allbinary::business::context::modules::storefront::StoreFrontFactory ();
+use org::allbinary::business::context::modules::storefront::StoreFrontInterface ();
+use org::allbinary::data::tree::dom::DomNodeInterface ();
+use org::allbinary::globals::URLGLOBALS ();
+use org::allbinary::logic::communication::http::request::MultipartRequestParams ();
+use org::allbinary::logic::communication::log::LogUtil ();
+use org::allbinary::logic::control::validate::ValidationComponentInterface ();
+use org::allbinary::logic::string::StringMaker ();
+use org::allbinary::logic::visual::transform::info::TransformInfoInterface ();
+use org::allbinary::logic::visual::transform::template::customizer::hedges::heading::HeadingValidation ();
+use org::allbinary::logic::visual::transform::template::customizer::widgets::logo::LogoData ();
+use org::w3c::dom::Document ();
+use org::w3c::dom::Node ();
+use views::business::context::modules::storefront::customizer::CustomizerUtil ();
+use views::business::context::modules::storefront::customizer::hedges::header::TopBarView ();
 
 1;
 

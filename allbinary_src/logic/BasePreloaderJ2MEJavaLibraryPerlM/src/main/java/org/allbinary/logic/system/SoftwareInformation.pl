@@ -17,6 +17,7 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
 
 sub _init_fields {
@@ -30,7 +31,7 @@ sub _init_fields {
 sub new {
     my ($class, $name, $version, $shortName) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
         $self->{name} = $name;
         $self->{version} = $version;
         $self->{shortName} = 'org::allbinary::logic::string::StringMaker'->new()->append($shortName)->append('org::allbinary::KotlinUtil'->getShortName())->toString();
@@ -69,9 +70,10 @@ sub toString {
         return $stringBuffer->toString();
 }
 
-use org::allbinary::KotlinUtil;
-use org::allbinary::logic::string::StringMaker;
-use org::allbinary::string::CommonSeps;
+use java::lang::Object ();
+use org::allbinary::KotlinUtil ();
+use org::allbinary::logic::string::StringMaker ();
+use org::allbinary::string::CommonSeps ();
 
 1;
 

@@ -46,7 +46,7 @@ sub _init_fields {
 sub new {
     my ($class, $gameCanvas, $stringArray, $basicColor, $font) = @_;
     my $self = $class->SUPER::new();
-    $self->_init_fields();
+    _init_fields($self);
         $self->{gameCanvas} = $gameCanvas;
         $self->{stringArray} = $stringArray;
         $self->{lastWidth} = [(0) x (scalar(@{$self->{stringArray}}))];
@@ -107,21 +107,22 @@ sub getBasicColorP {
         return $self->{basicColor};
 }
 
-# use javax::microedition::lcdui::Font;
-# use javax::microedition::lcdui::Graphics;
-use org::allbinary::graphics::Anchor;
-use org::allbinary::graphics::color::BasicColor;
-use org::allbinary::graphics::color::BasicColorFactory;
-use org::allbinary::graphics::color::BasicColorSetUtil;
-use org::allbinary::graphics::displayable::DisplayInfoSingleton;
-use org::allbinary::graphics::font::FontDebugFactory;
-use org::allbinary::graphics::font::MyFontProcessor;
-use org::allbinary::graphics::font::UpdateMyFontInterface;
-use org::allbinary::graphics::font::UpdateMyFontProcessor;
-use org::allbinary::graphics::paint::InitUpdatePaintable;
-use org::allbinary::logic::NullUtil;
-use org::allbinary::logic::string::StringMaker;
-use org::allbinary::logic::string::StringUtil;
+use java::lang::Object ();
+use javax::microedition::lcdui::Font ();
+use javax::microedition::lcdui::Graphics ();
+use org::allbinary::graphics::Anchor ();
+use org::allbinary::graphics::color::BasicColor ();
+use org::allbinary::graphics::color::BasicColorFactory ();
+use org::allbinary::graphics::color::BasicColorSetUtil ();
+use org::allbinary::graphics::displayable::DisplayInfoSingleton ();
+use org::allbinary::graphics::font::FontDebugFactory ();
+use org::allbinary::graphics::font::MyFontProcessor ();
+use org::allbinary::graphics::font::UpdateMyFontInterface ();
+use org::allbinary::graphics::font::UpdateMyFontProcessor ();
+use org::allbinary::graphics::paint::InitUpdatePaintable ();
+use org::allbinary::logic::NullUtil ();
+use org::allbinary::logic::string::StringMaker ();
+use org::allbinary::logic::string::StringUtil ();
 
 1;
 

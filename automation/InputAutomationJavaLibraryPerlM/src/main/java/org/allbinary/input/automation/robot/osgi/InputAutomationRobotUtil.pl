@@ -17,6 +17,7 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
 
 
@@ -35,9 +36,10 @@ sub getChangeEvent {
         return $inputAutomationRobotChangeEvent;
 }
 
-use org::allbinary::input::automation::robot::InputRobotInterface;
-use org::allbinary::input::automation::robot::osgi::InputAutomationRobotInterfaceWrapper;
-use org::allbinary::input::automation::robot::osgi::InputAutomationRobotChangeEvent;
+use java::lang::Object ();
+use org::allbinary::input::automation::robot::InputRobotInterface ();
+use org::allbinary::input::automation::robot::osgi::InputAutomationRobotInterfaceWrapper ();
+use org::allbinary::input::automation::robot::osgi::InputAutomationRobotChangeEvent ();
 
 1;
 

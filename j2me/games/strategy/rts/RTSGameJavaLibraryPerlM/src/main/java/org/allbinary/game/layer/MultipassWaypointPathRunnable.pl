@@ -32,7 +32,7 @@ sub _init_fields {
     $self->{SECOND_RUNNABLE} = 'org::allbinary::game::layer::SecondRunnable'->new($self);
     $self->{END_RUNNABLE} = 'org::allbinary::game::layer::EndRunnable'->new($self);
     $self->{ALREADY_ENDED_RUNNABLE} = do {
-        package org::allbinary::thread::ARunnable::AnonymousN66915 { our @ISA = ('org::allbinary::thread::ARunnable');
+        package org::allbinary::thread::ARunnable::AnonymousN66915 { our @ISA = ('org::allbinary::thread::ARunnable', 'java::lang::Object');
         
 
         sub run {
@@ -49,7 +49,7 @@ sub _init_fields {
 sub new {
     my ($class) = @_;
     my $self = $class->SUPER::new();
-    $self->_init_fields();
+    _init_fields($self);
     return $self;
 }
 
@@ -183,7 +183,7 @@ sub processEndRunnable {
     sub new {
         my ($class, $multipassWaypointPathRunnable) = @_;
         my $self = $class->SUPER::new();
-        $self->_init_fields();
+        _init_fields($self);
             $self->{multipassWaypointPathRunnable} = $multipassWaypointPathRunnable;
         return $self;
     }
@@ -214,7 +214,7 @@ sub processEndRunnable {
     sub new {
         my ($class, $multipassWaypointPathRunnable) = @_;
         my $self = $class->SUPER::new();
-        $self->_init_fields();
+        _init_fields($self);
             $self->{multipassWaypointPathRunnable} = $multipassWaypointPathRunnable;
         return $self;
     }
@@ -244,7 +244,7 @@ sub processEndRunnable {
     sub new {
         my ($class, $multipassWaypointPathRunnable) = @_;
         my $self = $class->SUPER::new();
-        $self->_init_fields();
+        _init_fields($self);
             $self->{multipassWaypointPathRunnable} = $multipassWaypointPathRunnable;
         return $self;
     }
@@ -257,16 +257,17 @@ sub processEndRunnable {
     }
 
 
-use org::allbinary::logic::NullUtil;
-use org::allbinary::thread::ARunnable;
-use org::allbinary::logic::communication::log::LogUtil;
-use org::allbinary::string::CommonStrings;
-use org::allbinary::media::graphics::geography::map::GeographicMapCellPosition;
-use org::allbinary::media::graphics::geography::pathfinding::MultipassState;
-use org::allbinary::media::graphics::geography::pathfinding::PathFindingInfo;
-use org::allbinary::util::BasicArrayList;
-use org::allbinary::util::BasicArrayListUtil;
-use org::allbinary::game::layer::WaypointPathRunnableBase;
+use java::lang::Object ();
+use org::allbinary::logic::NullUtil ();
+use org::allbinary::thread::ARunnable ();
+use org::allbinary::logic::communication::log::LogUtil ();
+use org::allbinary::string::CommonStrings ();
+use org::allbinary::media::graphics::geography::map::GeographicMapCellPosition ();
+use org::allbinary::media::graphics::geography::pathfinding::MultipassState ();
+use org::allbinary::media::graphics::geography::pathfinding::PathFindingInfo ();
+use org::allbinary::util::BasicArrayList ();
+use org::allbinary::util::BasicArrayListUtil ();
+use org::allbinary::game::layer::WaypointPathRunnableBase ();
 
 1;
 

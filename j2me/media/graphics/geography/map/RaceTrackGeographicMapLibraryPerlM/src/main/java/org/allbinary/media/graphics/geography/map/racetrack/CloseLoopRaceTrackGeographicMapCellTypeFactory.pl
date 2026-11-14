@@ -19,7 +19,7 @@ use feature 'try';
 no warnings 'experimental::try';
 use parent -norequire,'org::allbinary::media::graphics::geography::map::racetrack::RaceTrackGeographicMapCellTypeFactory';
 
-our $instanceC = 'org::allbinary::media::graphics::geography::map::racetrack::CloseLoopRaceTrackGeographicMapCellTypeFactory'->new();
+tie our $instanceC, 'java::lang::LazyStatic', sub { 'org::allbinary::media::graphics::geography::map::racetrack::CloseLoopRaceTrackGeographicMapCellTypeFactory'->new() };
 
 
 sub getInstance {
@@ -37,8 +37,10 @@ sub new {
     return $self;
 }
 
-use org::allbinary::media::graphics::geography::map::racetrack::RaceTrackGeographicMapCellTypeFactory;
-use org::allbinary::media::graphics::geography::map::racetrack::EmptyRaceRaceTrackGeographicMapCellTypeFactory;
+use java::lang::Object ();
+use java::lang::LazyStatic ();
+use org::allbinary::media::graphics::geography::map::racetrack::RaceTrackGeographicMapCellTypeFactory ();
+use org::allbinary::media::graphics::geography::map::racetrack::EmptyRaceRaceTrackGeographicMapCellTypeFactory ();
 
 1;
 

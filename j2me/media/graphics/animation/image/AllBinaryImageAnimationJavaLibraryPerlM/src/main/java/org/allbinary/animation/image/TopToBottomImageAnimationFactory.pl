@@ -36,11 +36,12 @@ sub getInstance {
         return 'org::allbinary::animation::image::TopToBottomImageAnimation'->new($scaledImage, $self->getSequenceArray(), $self->{animationBehaviorFactory}->getOrCreateInstance());
 }
 
-# use javax::microedition::lcdui::Image;
-use org::allbinary::animation::Animation;
-use org::allbinary::animation::AnimationBehaviorFactory;
-use org::allbinary::animation::image::BaseImageAnimationFactory;
-use org::allbinary::animation::image::TopToBottomImageAnimation;
+use java::lang::Object ();
+use javax::microedition::lcdui::Image ();
+use org::allbinary::animation::Animation ();
+use org::allbinary::animation::AnimationBehaviorFactory ();
+use org::allbinary::animation::image::BaseImageAnimationFactory ();
+use org::allbinary::animation::image::TopToBottomImageAnimation ();
 
 1;
 

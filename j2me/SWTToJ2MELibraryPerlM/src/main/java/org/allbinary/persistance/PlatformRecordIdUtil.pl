@@ -17,8 +17,9 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
-our $instance = 'org::allbinary::persistance::PlatformRecordIdUtil'->new();
+tie our $instance, 'java::lang::LazyStatic', sub { 'org::allbinary::persistance::PlatformRecordIdUtil'->new() };
 
 sub _init_fields {
     my ($self) = @_;
@@ -28,7 +29,7 @@ sub _init_fields {
 sub new {
     my ($class) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
     return $self;
 }
 
@@ -44,9 +45,11 @@ sub getRecordId {
         return 'org::allbinary::logic::string::StringMaker'->new()->append($abeClientInformation->toShortString())->append('org::allbinary::string::CommonSeps'->getInstance()->{UNDERSCORE})->append($self->{PLATFORM_SHORT_NAME})->append($baseRecordId)->toString();
 }
 
-use org::allbinary::string::CommonSeps;
-use org::allbinary::logic::string::StringMaker;
-use org::allbinary::logic::system::security::licensing::AbeClientInformationInterface;
+use java::lang::Object ();
+use java::lang::LazyStatic ();
+use org::allbinary::string::CommonSeps ();
+use org::allbinary::logic::string::StringMaker ();
+use org::allbinary::logic::system::security::licensing::AbeClientInformationInterface ();
 
 1;
 

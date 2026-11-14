@@ -20,7 +20,7 @@ use feature 'try';
 no warnings 'experimental::try';
 use parent -norequire,'org::allbinary::thread::ThreadPool';
 
-our $instance = 'org::allbinary::thread::PathFindingThreadPool'->new("PathFinding", 1, 1);
+tie our $instance, 'java::lang::LazyStatic', sub { 'org::allbinary::thread::PathFindingThreadPool'->new("PathFinding", 1, 1) };
 
 
 sub getInstance {
@@ -58,7 +58,9 @@ sub completedTask {
     my ($self, $task) = @_;
 }
 
-use org::allbinary::thread::ThreadPool;
+use java::lang::Object ();
+use java::lang::LazyStatic ();
+use org::allbinary::thread::ThreadPool ();
 
 1;
 

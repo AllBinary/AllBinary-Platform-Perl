@@ -17,8 +17,9 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
-our $NULL_THREAD = 'java::lang::Thread'->new('org::allbinary::thread::NullRunnable'->getInstance(), 'org::allbinary::logic::string::StringUtil'->getInstance()->{EMPTY_STRING});
+tie our $NULL_THREAD, 'java::lang::LazyStatic', sub { 'java::lang::Thread'->new('org::allbinary::thread::NullRunnable'->getInstance(), 'org::allbinary::logic::string::StringUtil'->getInstance()->{EMPTY_STRING}) };
 
 sub new {
     my ($class) = @_;
@@ -26,9 +27,11 @@ sub new {
     return $self;
 }
 
-use org::allbinary::logic::string::StringUtil;
-use java::lang::Thread;
-use org::allbinary::thread::NullRunnable;
+use java::lang::Object ();
+use java::lang::LazyStatic ();
+use org::allbinary::logic::string::StringUtil ();
+use java::lang::Thread ();
+use org::allbinary::thread::NullRunnable ();
 
 1;
 

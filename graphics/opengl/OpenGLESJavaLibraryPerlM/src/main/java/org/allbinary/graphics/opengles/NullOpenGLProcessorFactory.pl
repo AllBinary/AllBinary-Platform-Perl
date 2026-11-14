@@ -5,8 +5,9 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
-our $instance = 'org::allbinary::graphics::opengles::OpenGLProcessor'->new();
+tie our $instance, 'java::lang::LazyStatic', sub { 'org::allbinary::graphics::opengles::OpenGLProcessor'->new() };
 
 sub new {
     my ($class) = @_;
@@ -20,7 +21,9 @@ sub getInstance {
         return $org::allbinary::graphics::opengles::NullOpenGLProcessorFactory::instance;
 }
 
-use org::allbinary::graphics::opengles::OpenGLProcessor;
+use java::lang::Object ();
+use java::lang::LazyStatic ();
+use org::allbinary::graphics::opengles::OpenGLProcessor ();
 
 1;
 

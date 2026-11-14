@@ -17,25 +17,26 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
-our $PROCESSOR = 'org::allbinary::logic::system::hardware::components::linux::CpuInfo'->new("processor");
-our $VENDORID = 'org::allbinary::logic::system::hardware::components::linux::CpuInfo'->new("vendor_id");
-our $CPUFAMILY = 'org::allbinary::logic::system::hardware::components::linux::CpuInfo'->new("cpu family");
-our $MODEL = 'org::allbinary::logic::system::hardware::components::linux::CpuInfo'->new("model");
-our $MODELNAME = 'org::allbinary::logic::system::hardware::components::linux::CpuInfo'->new("model name");
-our $STEPPING = 'org::allbinary::logic::system::hardware::components::linux::CpuInfo'->new("stepping");
-our $CPUMHZ = 'org::allbinary::logic::system::hardware::components::linux::CpuInfo'->new("cpu MHz");
-our $CACHESIZE = 'org::allbinary::logic::system::hardware::components::linux::CpuInfo'->new("cache size");
-our $FDIVBUG = 'org::allbinary::logic::system::hardware::components::linux::CpuInfo'->new("fdiv_bug");
-our $HLTBUG = 'org::allbinary::logic::system::hardware::components::linux::CpuInfo'->new("hlt_bug");
-our $F00FBUG = 'org::allbinary::logic::system::hardware::components::linux::CpuInfo'->new("f00f_bug");
-our $COMABUG = 'org::allbinary::logic::system::hardware::components::linux::CpuInfo'->new("coma_bug");
-our $FPU = 'org::allbinary::logic::system::hardware::components::linux::CpuInfo'->new("fpu");
-our $FPUEXCEPTION = 'org::allbinary::logic::system::hardware::components::linux::CpuInfo'->new("fpu_exception");
-our $CPUIDLEVEL = 'org::allbinary::logic::system::hardware::components::linux::CpuInfo'->new("cache size");
-our $WP = 'org::allbinary::logic::system::hardware::components::linux::CpuInfo'->new("yes");
-our $FLAGS = 'org::allbinary::logic::system::hardware::components::linux::CpuInfo'->new("flags");
-our $BOGOMIPS = 'org::allbinary::logic::system::hardware::components::linux::CpuInfo'->new("bogomips");
+tie our $PROCESSOR, 'java::lang::LazyStatic', sub { 'org::allbinary::logic::system::hardware::components::linux::CpuInfo'->new("processor") };
+tie our $VENDORID, 'java::lang::LazyStatic', sub { 'org::allbinary::logic::system::hardware::components::linux::CpuInfo'->new("vendor_id") };
+tie our $CPUFAMILY, 'java::lang::LazyStatic', sub { 'org::allbinary::logic::system::hardware::components::linux::CpuInfo'->new("cpu family") };
+tie our $MODEL, 'java::lang::LazyStatic', sub { 'org::allbinary::logic::system::hardware::components::linux::CpuInfo'->new("model") };
+tie our $MODELNAME, 'java::lang::LazyStatic', sub { 'org::allbinary::logic::system::hardware::components::linux::CpuInfo'->new("model name") };
+tie our $STEPPING, 'java::lang::LazyStatic', sub { 'org::allbinary::logic::system::hardware::components::linux::CpuInfo'->new("stepping") };
+tie our $CPUMHZ, 'java::lang::LazyStatic', sub { 'org::allbinary::logic::system::hardware::components::linux::CpuInfo'->new("cpu MHz") };
+tie our $CACHESIZE, 'java::lang::LazyStatic', sub { 'org::allbinary::logic::system::hardware::components::linux::CpuInfo'->new("cache size") };
+tie our $FDIVBUG, 'java::lang::LazyStatic', sub { 'org::allbinary::logic::system::hardware::components::linux::CpuInfo'->new("fdiv_bug") };
+tie our $HLTBUG, 'java::lang::LazyStatic', sub { 'org::allbinary::logic::system::hardware::components::linux::CpuInfo'->new("hlt_bug") };
+tie our $F00FBUG, 'java::lang::LazyStatic', sub { 'org::allbinary::logic::system::hardware::components::linux::CpuInfo'->new("f00f_bug") };
+tie our $COMABUG, 'java::lang::LazyStatic', sub { 'org::allbinary::logic::system::hardware::components::linux::CpuInfo'->new("coma_bug") };
+tie our $FPU, 'java::lang::LazyStatic', sub { 'org::allbinary::logic::system::hardware::components::linux::CpuInfo'->new("fpu") };
+tie our $FPUEXCEPTION, 'java::lang::LazyStatic', sub { 'org::allbinary::logic::system::hardware::components::linux::CpuInfo'->new("fpu_exception") };
+tie our $CPUIDLEVEL, 'java::lang::LazyStatic', sub { 'org::allbinary::logic::system::hardware::components::linux::CpuInfo'->new("cache size") };
+tie our $WP, 'java::lang::LazyStatic', sub { 'org::allbinary::logic::system::hardware::components::linux::CpuInfo'->new("yes") };
+tie our $FLAGS, 'java::lang::LazyStatic', sub { 'org::allbinary::logic::system::hardware::components::linux::CpuInfo'->new("flags") };
+tie our $BOGOMIPS, 'java::lang::LazyStatic', sub { 'org::allbinary::logic::system::hardware::components::linux::CpuInfo'->new("bogomips") };
 
 sub _init_fields {
     my ($self) = @_;
@@ -46,7 +47,7 @@ sub _init_fields {
 sub new {
     my ($class, $name) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
         $self->{name} = $name;
     return $self;
 }
@@ -57,6 +58,8 @@ sub toString {
         return $self->{name};
 }
 
+use java::lang::Object ();
+use java::lang::LazyStatic ();
 
 1;
 

@@ -5,8 +5,9 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
-our $NULL_STRING_COMPONENT = 'org::allbinary::graphics::form::item::ABStringComponent'->new('org::allbinary::graphics::color::BasicColorFactory'->getInstance()->{BLACK}, 'org::allbinary::graphics::color::BasicColorFactory'->getInstance()->{WHITE});
+tie our $NULL_STRING_COMPONENT, 'java::lang::LazyStatic', sub { 'org::allbinary::graphics::form::item::ABStringComponent'->new('org::allbinary::graphics::color::BasicColorFactory'->getInstance()->{BLACK}, 'org::allbinary::graphics::color::BasicColorFactory'->getInstance()->{WHITE}) };
 
 
 sub getBackgroundBasicColor {
@@ -32,8 +33,10 @@ sub setForegroundBasicColor {
     my ($self, $foregroundBasicColor) = @_;
 }
 
-use org::allbinary::graphics::color::BasicColor;
-use org::allbinary::graphics::color::BasicColorFactory;
+use java::lang::Object ();
+use java::lang::LazyStatic ();
+use org::allbinary::graphics::color::BasicColor ();
+use org::allbinary::graphics::color::BasicColorFactory ();
 
 1;
 

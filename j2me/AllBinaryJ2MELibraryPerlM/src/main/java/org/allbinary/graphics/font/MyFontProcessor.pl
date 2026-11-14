@@ -17,8 +17,9 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
-our $instance = 'org::allbinary::graphics::font::MyFontProcessor'->new();
+tie our $instance, 'java::lang::LazyStatic', sub { 'org::allbinary::graphics::font::MyFontProcessor'->new() };
 
 sub new {
     my ($class) = @_;
@@ -49,8 +50,10 @@ sub process {
     my ($self, $graphics) = @_;
 }
 
-# use javax::microedition::lcdui::Font;
-# use javax::microedition::lcdui::Graphics;
+use java::lang::Object ();
+use java::lang::LazyStatic ();
+use javax::microedition::lcdui::Font ();
+use javax::microedition::lcdui::Graphics ();
 
 1;
 

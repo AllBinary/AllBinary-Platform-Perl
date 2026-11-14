@@ -17,8 +17,9 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
-our $instance = 'org::allbinary::graphics::opengles::OpenGLFeatureUtil'->new();
+tie our $instance, 'java::lang::LazyStatic', sub { 'org::allbinary::graphics::opengles::OpenGLFeatureUtil'->new() };
 
 
 sub getInstance {
@@ -39,6 +40,8 @@ sub isAnyThreed {
         return 0;
 }
 
+use java::lang::Object ();
+use java::lang::LazyStatic ();
 
 1;
 

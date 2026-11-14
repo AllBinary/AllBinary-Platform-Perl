@@ -171,11 +171,11 @@ sub isChild {
     die "abstract method isChild";
 }
 
-use java::util::HashMap;
-use org::allbinary::data::tables::TableMappingInterface;
-use org::allbinary::logic::io::path::AbPath;
-use org::allbinary::logic::visual::transform::info::objectConfig::TransformInfoObjectConfigInterface;
-use org::w3c::dom::Document;
+use java::util::HashMap ();
+use org::allbinary::data::tables::TableMappingInterface ();
+use org::allbinary::logic::io::path::AbPath ();
+use org::allbinary::logic::visual::transform::info::objectConfig::TransformInfoObjectConfigInterface ();
+use org::w3c::dom::Document ();
 
 1;
 

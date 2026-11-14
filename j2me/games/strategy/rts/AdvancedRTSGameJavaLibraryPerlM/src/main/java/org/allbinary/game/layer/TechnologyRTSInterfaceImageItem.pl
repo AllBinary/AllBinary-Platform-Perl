@@ -43,7 +43,7 @@ sub _init_fields {
 sub new {
     my ($class, $label, $img, $layout, $altText, $basicColor, $rtsInterface) = @_;
     my $self = $class->SUPER::new($label, $img, $layout, $altText, $basicColor, 0);
-    $self->_init_fields();
+    _init_fields($self);
         # super(...) made $self above
         $self->{rtsInterface} = $rtsInterface;
         $self->update();
@@ -94,17 +94,18 @@ sub paintXY {
         $graphics->drawChars($self->{levelString}, 0, $self->{levelLength}, $x + $self->{adjustedLevelX}, $y + $self->{adjustedLevelY}, 0);
 }
 
-# use javax::microedition::lcdui::Font;
-# use javax::microedition::lcdui::Graphics;
-# use javax::microedition::lcdui::Image;
-# use javax::microedition::lcdui::NullImage;
-use org::allbinary::graphics::form::item::ABCustomImageItem;
-use org::allbinary::logic::java::character::CharArrayFactory;
-use org::allbinary::graphics::color::BasicColor;
-use org::allbinary::graphics::font::MyFontProcessor;
-use org::allbinary::graphics::font::UpdateMyFontInterface;
-use org::allbinary::graphics::font::UpdateMyFontProcessor;
-use org::allbinary::logic::math::PrimitiveLongUtil;
+use java::lang::Object ();
+use javax::microedition::lcdui::Font ();
+use javax::microedition::lcdui::Graphics ();
+use javax::microedition::lcdui::Image ();
+use javax::microedition::lcdui::NullImage ();
+use org::allbinary::graphics::form::item::ABCustomImageItem ();
+use org::allbinary::logic::java::character::CharArrayFactory ();
+use org::allbinary::graphics::color::BasicColor ();
+use org::allbinary::graphics::font::MyFontProcessor ();
+use org::allbinary::graphics::font::UpdateMyFontInterface ();
+use org::allbinary::graphics::font::UpdateMyFontProcessor ();
+use org::allbinary::logic::math::PrimitiveLongUtil ();
 
 1;
 

@@ -19,7 +19,7 @@ use feature 'try';
 no warnings 'experimental::try';
 use parent -norequire,'org::allbinary::graphics::opengles::shader::ShaderUpdater';
 
-our $instanceC = 'org::allbinary::graphics::opengles::shader::CompositeShaderUpdater'->new('org::allbinary::logic::string::StringUtil'->getInstance()->getArrayInstance(), 'org::allbinary::logic::string::StringUtil'->getInstance()->getArrayInstance(), 'org::allbinary::logic::string::StringUtil'->getInstance()->getArrayInstance(), 'org::allbinary::logic::NullUtil'->getInstance()->{NULL_INT_ARRAY});
+tie our $instanceC, 'java::lang::LazyStatic', sub { 'org::allbinary::graphics::opengles::shader::CompositeShaderUpdater'->new('org::allbinary::logic::string::StringUtil'->getInstance()->getArrayInstance(), 'org::allbinary::logic::string::StringUtil'->getInstance()->getArrayInstance(), 'org::allbinary::logic::string::StringUtil'->getInstance()->getArrayInstance(), 'org::allbinary::logic::NullUtil'->getInstance()->{NULL_INT_ARRAY}) };
 
 sub _init_fields {
     my ($self) = @_;
@@ -36,7 +36,7 @@ sub getInstance {
 sub new {
     my ($class, $uniformBlockArray, $uniformArray, $attributeArray, $attributeHandleArray) = @_;
     my $self = $class->SUPER::new();
-    $self->_init_fields();
+    _init_fields($self);
     return $self;
 }
 
@@ -50,12 +50,14 @@ sub onSurfaceDestroyed {
     my ($self, $gl) = @_;
 }
 
-# use javax::microedition::khronos::egl::EGLConfig;
-# use javax::microedition::khronos::opengles::GL10;
-use org::allbinary::logic::NullUtil;
-use org::allbinary::logic::string::StringUtil;
-use org::allbinary::string::CommonSeps;
-use org::allbinary::graphics::opengles::shader::ShaderUpdater;
+use java::lang::Object ();
+use java::lang::LazyStatic ();
+use javax::microedition::khronos::egl::EGLConfig ();
+use javax::microedition::khronos::opengles::GL10 ();
+use org::allbinary::logic::NullUtil ();
+use org::allbinary::logic::string::StringUtil ();
+use org::allbinary::string::CommonSeps ();
+use org::allbinary::graphics::opengles::shader::ShaderUpdater ();
 
 1;
 

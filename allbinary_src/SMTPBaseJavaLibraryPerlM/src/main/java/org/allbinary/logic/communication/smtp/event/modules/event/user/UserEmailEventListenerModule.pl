@@ -17,7 +17,7 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
-use parent -norequire,'org::allbinary::logic::communication::smtp::event::UserEmailEventListenerInterface';
+use parent -norequire,'java::lang::Object','org::allbinary::logic::communication::smtp::event::UserEmailEventListenerInterface';
 
 
 sub _init_fields {
@@ -30,7 +30,7 @@ sub _init_fields {
 sub new {
     my ($class, $userInterface) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
         $self->{userInterface} = $userInterface;
     return $self;
 }
@@ -56,13 +56,14 @@ sub onEmailSendRequest {
         'org::allbinary::logic::communication::smtp::queue::EmailQueueFactory'->getInstance()->offer($email->getEmail());
 }
 
-use org::allbinary::business::user::UserInterface;
-use org::allbinary::logic::communication::log::LogUtil;
-use org::allbinary::logic::communication::smtp::BasicEmail;
-use org::allbinary::logic::communication::smtp::EmailInterface;
-use org::allbinary::logic::communication::smtp::event::EmailEvent;
-use org::allbinary::logic::communication::smtp::event::UserEmailEventListenerInterface;
-use org::allbinary::logic::communication::smtp::queue::EmailQueueFactory;
+use java::lang::Object ();
+use org::allbinary::business::user::UserInterface ();
+use org::allbinary::logic::communication::log::LogUtil ();
+use org::allbinary::logic::communication::smtp::BasicEmail ();
+use org::allbinary::logic::communication::smtp::EmailInterface ();
+use org::allbinary::logic::communication::smtp::event::EmailEvent ();
+use org::allbinary::logic::communication::smtp::event::UserEmailEventListenerInterface ();
+use org::allbinary::logic::communication::smtp::queue::EmailQueueFactory ();
 
 1;
 

@@ -28,7 +28,8 @@ sub new {
     return $self;
 }
 
-use org::allbinary::logic::util::event::AllBinaryEventObject;
+use java::lang::Object ();
+use org::allbinary::logic::util::event::AllBinaryEventObject ();
 
 1;
 

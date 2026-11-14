@@ -31,7 +31,7 @@ sub _init_fields {
 sub new {
     my ($class, $gameCanvas) = @_;
     my $self = $class->SUPER::new();
-    $self->_init_fields();
+    _init_fields($self);
         $self->{gameCanvas} = $gameCanvas;
     return $self;
 }
@@ -59,12 +59,13 @@ sub process {
         }
 }
 
-use org::allbinary::canvas::Processor;
-use org::allbinary::game::score::HighScores;
-use org::allbinary::game::score::HighScoresHelperBase;
-use org::allbinary::game::score::NullHighScoresSingletonFactory;
-use org::allbinary::game::state::GameStateFactory;
-use org::allbinary::graphics::paint::NullPaintable;
+use java::lang::Object ();
+use org::allbinary::canvas::Processor ();
+use org::allbinary::game::score::HighScores ();
+use org::allbinary::game::score::HighScoresHelperBase ();
+use org::allbinary::game::score::NullHighScoresSingletonFactory ();
+use org::allbinary::game::state::GameStateFactory ();
+use org::allbinary::graphics::paint::NullPaintable ();
 
 1;
 

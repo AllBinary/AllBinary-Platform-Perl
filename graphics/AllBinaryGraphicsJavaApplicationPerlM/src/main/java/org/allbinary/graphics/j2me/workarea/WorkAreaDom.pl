@@ -17,6 +17,7 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
 our $WORKAREA = "workArea";
 our $NAME = "name";
@@ -32,7 +33,7 @@ sub _init_fields {
 sub new {
     my ($class, $document) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
         my $workAreaNodeList = $document->getElementsByTagName($WORKAREA);
         if (defined($workAreaNodeList)) {
             my $numberOfworkAreas = $workAreaNodeList->getLength();
@@ -63,11 +64,12 @@ sub getCanvasNodes {
         return $self->{canvasNodeList};
 }
 
-use org::allbinary::dom::DomHelper;
-use org::allbinary::util::BasicArrayList;
-use org::w3c::dom::Document;
-use org::w3c::dom::Node;
-use org::w3c::dom::NodeList;
+use java::lang::Object ();
+use org::allbinary::dom::DomHelper ();
+use org::allbinary::util::BasicArrayList ();
+use org::w3c::dom::Document ();
+use org::w3c::dom::Node ();
+use org::w3c::dom::NodeList ();
 
 1;
 

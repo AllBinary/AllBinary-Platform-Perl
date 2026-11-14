@@ -17,8 +17,9 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
-our $NULL_PLATFORM_TEXTURE_BASE_FACTORY = 'org::allbinary::platform::opengles::PlatformTextureBaseFactory'->new();
+tie our $NULL_PLATFORM_TEXTURE_BASE_FACTORY, 'java::lang::LazyStatic', sub { 'org::allbinary::platform::opengles::PlatformTextureBaseFactory'->new() };
 
 sub _init_fields {
     my ($self) = @_;
@@ -28,7 +29,7 @@ sub _init_fields {
 sub new {
     my ($class) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
     return $self;
 }
 
@@ -37,9 +38,11 @@ sub load {
     my ($self, $gl, $target, $level, $image, $border, $flip) = @_;
 }
 
-# use javax::microedition::khronos::opengles::GL10;
-# use javax::microedition::lcdui::Image;
-use org::allbinary::string::CommonStrings;
+use java::lang::Object ();
+use java::lang::LazyStatic ();
+use javax::microedition::khronos::opengles::GL10 ();
+use javax::microedition::lcdui::Image ();
+use org::allbinary::string::CommonStrings ();
 
 1;
 

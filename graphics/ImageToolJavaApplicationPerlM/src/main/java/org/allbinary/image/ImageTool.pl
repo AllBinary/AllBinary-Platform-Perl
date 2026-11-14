@@ -17,6 +17,7 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
 
 sub _init_fields {
@@ -28,7 +29,7 @@ sub _init_fields {
 sub new {
     my ($class) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
     return $self;
 }
 
@@ -36,7 +37,7 @@ sub new {
 sub main {
     my ($class, $args) = @_;
         $org::allbinary::image::java::awt->{EventQueue}->invokeLater(do {
-            package org::allbinary::thread::ARunnable::AnonymousN65805 { our @ISA = ('org::allbinary::thread::ARunnable');
+            package org::allbinary::thread::ARunnable::AnonymousN65805 { our @ISA = ('org::allbinary::thread::ARunnable', 'java::lang::Object');
             
 
             sub run {
@@ -55,10 +56,11 @@ sub main {
         });
 }
 
-use org::allbinary::thread::ARunnable;
-use org::allbinary::image::gui::ImageToolJFrame;
-use org::allbinary::logic::communication::log::LogUtil;
-use org::allbinary::string::CommonStrings;
+use java::lang::Object ();
+use org::allbinary::thread::ARunnable ();
+use org::allbinary::image::gui::ImageToolJFrame ();
+use org::allbinary::logic::communication::log::LogUtil ();
+use org::allbinary::string::CommonStrings ();
 
 1;
 

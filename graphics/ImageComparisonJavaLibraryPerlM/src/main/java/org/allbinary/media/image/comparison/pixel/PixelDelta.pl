@@ -17,7 +17,7 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
-use parent -norequire,'org::allbinary::logic::util::cache::CacheableInterface';
+use parent -norequire,'java::lang::Object','org::allbinary::logic::util::cache::CacheableInterface';
 
 
 sub _init_fields {
@@ -31,7 +31,7 @@ sub _init_fields {
 sub new {
     my ($class, $point, $colorDelta) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
         $self->setPoint($point);
         $self->setColorDelta($colorDelta);
         $self->{key} = 'org::allbinary::media::image::comparison::pixel::PixelDelta'->getKey($self->getPoint(), $self->getColorDelta());
@@ -81,12 +81,13 @@ sub toString {
         return 'org::allbinary::logic::string::StringMaker'->new()->append("PixelDelta: Point: ")->append($self->{point}->toString())->append('org::allbinary::string::CommonSeps'->getInstance()->{SPACE})->append($self->{colorDelta}->toString())->toString();
 }
 
-use org::allbinary::graphics::GPoint;
-use org::allbinary::TsUtil;
-use org::allbinary::logic::string::StringMaker;
-use org::allbinary::logic::util::cache::CacheableInterface;
-use org::allbinary::media::image::comparison::color::ColorDelta;
-use org::allbinary::string::CommonSeps;
+use java::lang::Object ();
+use org::allbinary::graphics::GPoint ();
+use org::allbinary::TsUtil ();
+use org::allbinary::logic::string::StringMaker ();
+use org::allbinary::logic::util::cache::CacheableInterface ();
+use org::allbinary::media::image::comparison::color::ColorDelta ();
+use org::allbinary::string::CommonSeps ();
 
 1;
 

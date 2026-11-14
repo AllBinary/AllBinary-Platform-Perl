@@ -29,7 +29,7 @@ sub _init_fields {
 sub new {
     my ($class, $name, $size) = @_;
     my $self = $class->SUPER::new($size);
-    $self->_init_fields();
+    _init_fields($self);
         # super(...) made $self above
         $self->{name} = $name;
     return $self;
@@ -54,8 +54,10 @@ sub toString {
         return $self->{name};
 }
 
-use org::allbinary::logic::communication::log::ForcedLogUtil;
-use org::allbinary::util::BasicArrayListS;
+use java::lang::Object ();
+# use jsinterop::annotations::JsType ();
+use org::allbinary::logic::communication::log::ForcedLogUtil ();
+use org::allbinary::util::BasicArrayListS ();
 
 1;
 

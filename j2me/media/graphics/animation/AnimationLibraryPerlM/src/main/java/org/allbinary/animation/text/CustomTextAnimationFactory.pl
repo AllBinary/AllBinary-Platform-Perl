@@ -17,7 +17,7 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
-use parent -norequire,'org::allbinary::animation::AnimationInterfaceFactoryInterface';
+use parent -norequire,'java::lang::Object','org::allbinary::animation::AnimationInterfaceFactoryInterface';
 
 
 sub _init_fields {
@@ -46,7 +46,7 @@ sub createDXY {
 sub new {
     my ($class, $text, $fontSize, $animationBehaviorFactory) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
         $self->{scaleProperties} = 'org::allbinary::media::ScaleProperties'->new();
         $self->{text} = $text;
         $self->{scaleProperties}->{scaleHeight} = $fontSize - (int($fontSize / 4));
@@ -87,16 +87,17 @@ sub getHeight {
         return $self->{font}->getHeight();
 }
 
-# use javax::microedition::lcdui::Font;
-use org::allbinary::animation::Animation;
-use org::allbinary::animation::AnimationBehaviorFactory;
-use org::allbinary::animation::AnimationInterfaceFactoryInterface;
-use org::allbinary::graphics::color::BasicColor;
-use org::allbinary::graphics::color::BasicColorFactory;
-use org::allbinary::logic::communication::log::LogUtil;
-use org::allbinary::media::ScaleProperties;
-use org::allbinary::animation::text::CustomTextAnimation;
-use org::allbinary::animation::text::AdjustCustomTextAnimation;
+use java::lang::Object ();
+use javax::microedition::lcdui::Font ();
+use org::allbinary::animation::Animation ();
+use org::allbinary::animation::AnimationBehaviorFactory ();
+use org::allbinary::animation::AnimationInterfaceFactoryInterface ();
+use org::allbinary::graphics::color::BasicColor ();
+use org::allbinary::graphics::color::BasicColorFactory ();
+use org::allbinary::logic::communication::log::LogUtil ();
+use org::allbinary::media::ScaleProperties ();
+use org::allbinary::animation::text::CustomTextAnimation ();
+use org::allbinary::animation::text::AdjustCustomTextAnimation ();
 
 1;
 

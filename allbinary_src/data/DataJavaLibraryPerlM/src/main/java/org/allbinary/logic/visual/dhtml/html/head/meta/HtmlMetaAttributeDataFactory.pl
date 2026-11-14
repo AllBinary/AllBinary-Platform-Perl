@@ -17,8 +17,9 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
-our $instance = 'org::allbinary::logic::visual::dhtml::html::head::meta::HtmlMetaAttributeDataFactory'->new();
+tie our $instance, 'java::lang::LazyStatic', sub { 'org::allbinary::logic::visual::dhtml::html::head::meta::HtmlMetaAttributeDataFactory'->new() };
 
 sub _init_fields {
     my ($self) = @_;
@@ -37,11 +38,13 @@ sub getInstance {
 sub new {
     my ($class) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
     return $self;
 }
 
-use org::allbinary::logic::visual::dhtml::html::head::meta::HtmlMetaAttributeData;
+use java::lang::Object ();
+use java::lang::LazyStatic ();
+use org::allbinary::logic::visual::dhtml::html::head::meta::HtmlMetaAttributeData ();
 
 1;
 

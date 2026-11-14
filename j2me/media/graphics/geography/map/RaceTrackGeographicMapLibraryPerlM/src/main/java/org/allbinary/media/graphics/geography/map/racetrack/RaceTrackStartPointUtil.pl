@@ -17,6 +17,7 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
 
 sub new {
@@ -36,13 +37,14 @@ sub get {
         return 'org::allbinary::graphics::PointFactory'->getInstance()->createXY($point->getX(), $point->getY() + $geographicMapInterface->getAllBinaryTiledLayer()->getHalfCellHeight());
 }
 
-use org::allbinary::util::BasicArrayList;
-use org::allbinary::graphics::GPoint;
-use org::allbinary::graphics::PointFactory;
-use org::allbinary::media::graphics::geography::map::BasicGeographicMap;
-use org::allbinary::media::graphics::geography::map::GeographicMapCellPosition;
-use org::allbinary::media::graphics::geography::pathfinding::PathFindingInfo;
-use org::allbinary::media::graphics::geography::pathfinding::PathFindingNode;
+use java::lang::Object ();
+use org::allbinary::util::BasicArrayList ();
+use org::allbinary::graphics::GPoint ();
+use org::allbinary::graphics::PointFactory ();
+use org::allbinary::media::graphics::geography::map::BasicGeographicMap ();
+use org::allbinary::media::graphics::geography::map::GeographicMapCellPosition ();
+use org::allbinary::media::graphics::geography::pathfinding::PathFindingInfo ();
+use org::allbinary::media::graphics::geography::pathfinding::PathFindingNode ();
 
 1;
 

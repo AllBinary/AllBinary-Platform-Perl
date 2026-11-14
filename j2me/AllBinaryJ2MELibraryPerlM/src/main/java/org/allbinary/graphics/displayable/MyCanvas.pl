@@ -39,13 +39,25 @@ sub _init_fields {
 sub new {
     my ($class, $name, $childNameList) = @_;
     my $self = $class->SUPER::new();
-    $self->_init_fields();
+    _init_fields($self);
         $self->{logUtil}->putF($self->{commonStrings}->{CONSTRUCTOR}, $self, $self->{commonStrings}->{CONSTRUCTOR});
         $self->{displayInfo}->update($self, $self->{canvasStrings}->{CONSTRUCTOR});
         $self->{name} = $name;
         $self->{childNameList} = $childNameList;
         $self->{commandStack} = 'org::allbinary::logic::StdUtil'->getInstance()->createStack();
     return $self;
+}
+
+
+sub getWidth {
+    my ($self) = @_;
+        return $self->SUPER::getWidth();
+}
+
+
+sub getHeight {
+    my ($self) = @_;
+        return $self->SUPER::getHeight();
 }
 
 
@@ -214,24 +226,25 @@ sub nextSong {
     my ($self, $nextSongSound, $leftVolume, $rightVolume) = @_;
 }
 
-# use javax::microedition::lcdui::Canvas;
-# use javax::microedition::lcdui::Command;
-# use javax::microedition::lcdui::CommandListener;
-# use javax::microedition::lcdui::Graphics;
-# use javax::microedition::lcdui::NullCommandListener;
-use org::allbinary::graphics::displayable::command::MyCommandInterface;
-use org::allbinary::graphics::displayable::command::MyCommandsFactory;
-use org::allbinary::input::TouchJ2ME;
-use org::allbinary::logic::communication::log::LogUtil;
-use org::allbinary::logic::string::StringUtil;
-use org::allbinary::media::audio::Sound;
-use org::allbinary::string::CommonStrings;
-use org::allbinary::util::BasicArrayList;
-use org::allbinary::logic::StdUtil;
-use org::allbinary::util::ABStack;
-use org::allbinary::graphics::displayable::DisplayableInterface;
-use org::allbinary::graphics::displayable::CanvasStrings;
-use org::allbinary::graphics::displayable::DisplayInfoSingleton;
+use java::lang::Object ();
+use javax::microedition::lcdui::Canvas ();
+use javax::microedition::lcdui::Command ();
+use javax::microedition::lcdui::CommandListener ();
+use javax::microedition::lcdui::Graphics ();
+use javax::microedition::lcdui::NullCommandListener ();
+use org::allbinary::graphics::displayable::command::MyCommandInterface ();
+use org::allbinary::graphics::displayable::command::MyCommandsFactory ();
+use org::allbinary::input::TouchJ2ME ();
+use org::allbinary::logic::communication::log::LogUtil ();
+use org::allbinary::logic::string::StringUtil ();
+use org::allbinary::media::audio::Sound ();
+use org::allbinary::string::CommonStrings ();
+use org::allbinary::util::BasicArrayList ();
+use org::allbinary::logic::StdUtil ();
+use org::allbinary::util::ABStack ();
+use org::allbinary::graphics::displayable::DisplayableInterface ();
+use org::allbinary::graphics::displayable::CanvasStrings ();
+use org::allbinary::graphics::displayable::DisplayInfoSingleton ();
 
 1;
 

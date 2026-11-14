@@ -17,8 +17,9 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
-our $instance = 'org::allbinary::game::input::event::GameKeyEventHandler'->new();
+tie our $instance, 'java::lang::LazyStatic', sub { 'org::allbinary::game::input::event::GameKeyEventHandler'->new() };
 
 sub _init_fields {
     my ($self) = @_;
@@ -32,7 +33,7 @@ sub _init_fields {
 sub new {
     my ($class) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
     return $self;
 }
 
@@ -77,12 +78,14 @@ sub removeListener {
         $self->{downGameKeyEventHandler}->removeListenerSingleThreaded($eventListenerInterface);
 }
 
-use org::allbinary::logic::communication::log::LogUtil;
-use org::allbinary::logic::util::event::EventListenerInterface;
-use org::allbinary::string::CommonStrings;
-use org::allbinary::game::input::event::PressGameKeyEventHandler;
-use org::allbinary::game::input::event::UpGameKeyEventHandler;
-use org::allbinary::game::input::event::DownGameKeyEventHandler;
+use java::lang::Object ();
+use java::lang::LazyStatic ();
+use org::allbinary::logic::communication::log::LogUtil ();
+use org::allbinary::logic::util::event::EventListenerInterface ();
+use org::allbinary::string::CommonStrings ();
+use org::allbinary::game::input::event::PressGameKeyEventHandler ();
+use org::allbinary::game::input::event::UpGameKeyEventHandler ();
+use org::allbinary::game::input::event::DownGameKeyEventHandler ();
 
 1;
 

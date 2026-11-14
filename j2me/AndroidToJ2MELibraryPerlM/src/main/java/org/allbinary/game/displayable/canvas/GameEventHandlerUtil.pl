@@ -17,6 +17,7 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
 
 sub new {
@@ -33,9 +34,10 @@ sub removeAllListeners {
         'org::allbinary::android::input::motion::GameInputMotionEventProcessorFactory'->getInstance()->addListener();
 }
 
-use org::allbinary::android::input::motion::GameInputMotionEventProcessorFactory;
-use org::allbinary::game::input::event::GameKeyEventHandler;
-use org::allbinary::input::motion::gesture::observer::BasicMotionGesturesHandler;
+use java::lang::Object ();
+use org::allbinary::android::input::motion::GameInputMotionEventProcessorFactory ();
+use org::allbinary::game::input::event::GameKeyEventHandler ();
+use org::allbinary::input::motion::gesture::observer::BasicMotionGesturesHandler ();
 
 1;
 

@@ -17,8 +17,9 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
-our $SINGLETON = 'org::allbinary::graphics::CellPositionFactory'->new();
+tie our $SINGLETON, 'java::lang::LazyStatic', sub { 'org::allbinary::graphics::CellPositionFactory'->new() };
 
 sub _init_fields {
     my ($self) = @_;
@@ -39,7 +40,7 @@ sub getInstance {
 sub new {
     my ($class) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
     return $self;
 }
 
@@ -98,10 +99,12 @@ sub getRows {
         return $self->{rows};
 }
 
-use org::allbinary::logic::communication::log::LogUtil;
-use org::allbinary::logic::string::StringMaker;
-use org::allbinary::string::CommonStrings;
-use org::allbinary::graphics::CellPosition;
+use java::lang::Object ();
+use java::lang::LazyStatic ();
+use org::allbinary::logic::communication::log::LogUtil ();
+use org::allbinary::logic::string::StringMaker ();
+use org::allbinary::string::CommonStrings ();
+use org::allbinary::graphics::CellPosition ();
 
 1;
 

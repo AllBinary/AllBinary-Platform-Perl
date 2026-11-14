@@ -17,6 +17,7 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
 our $allBinaryGyroSensor = undef;
 
@@ -39,7 +40,8 @@ sub getInstance {
         return $org::allbinary::input::gyro::GyroSensorFactory::allBinaryGyroSensor;
 }
 
-use org::allbinary::input::gyro::NoGyroSensor;
+use java::lang::Object ();
+use org::allbinary::input::gyro::NoGyroSensor ();
 
 1;
 

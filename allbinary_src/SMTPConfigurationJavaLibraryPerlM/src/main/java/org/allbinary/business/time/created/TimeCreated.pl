@@ -43,7 +43,8 @@ sub _new1 {
     return $self;
 }
 
-use org::allbinary::business::time::Time;
+use java::lang::Object ();
+use org::allbinary::business::time::Time ();
 
 1;
 

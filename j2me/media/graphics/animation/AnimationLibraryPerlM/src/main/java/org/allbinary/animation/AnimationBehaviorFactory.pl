@@ -17,8 +17,9 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
-our $instance = 'org::allbinary::animation::AnimationBehaviorFactory'->new();
+tie our $instance, 'java::lang::LazyStatic', sub { 'org::allbinary::animation::AnimationBehaviorFactory'->new() };
 
 sub new {
     my ($class) = @_;
@@ -38,7 +39,9 @@ sub getOrCreateInstance {
         return 'org::allbinary::animation::AnimationBehavior'->getInstance();
 }
 
-use org::allbinary::animation::AnimationBehavior;
+use java::lang::Object ();
+use java::lang::LazyStatic ();
+use org::allbinary::animation::AnimationBehavior ();
 
 1;
 

@@ -20,7 +20,7 @@ no warnings 'experimental::try';
 use parent -norequire,'org::allbinary::logic::system::security::licensing::AbeClientInformation';
 
 our $DESC = "Mobile";
-our $ANDROID_DESC = "Android" . $org::allbinary::logic::system::security::licensing::MobileClientInformation::DESC;
+tie our $ANDROID_DESC, 'java::lang::LazyStatic', sub { "Android" . $org::allbinary::logic::system::security::licensing::MobileClientInformation::DESC };
 
 
 sub new {
@@ -50,13 +50,15 @@ sub toHashtable {
         return $hashtable;
 }
 
-use org::allbinary::logic::string::StringMaker;
-use org::allbinary::logic::system::security::licensing::registration::RegistrationConfiguration;
-use org::allbinary::string::CommonSeps;
-use org::allbinary::string::CommonStrings;
-use org::allbinary::util::ABHashtable;
-use org::allbinary::logic::system::security::licensing::AbeClientInformation;
-use org::allbinary::logic::system::security::licensing::PartnerIdentifierFileUtil;
+use java::lang::Object ();
+use java::lang::LazyStatic ();
+use org::allbinary::logic::string::StringMaker ();
+use org::allbinary::logic::system::security::licensing::registration::RegistrationConfiguration ();
+use org::allbinary::string::CommonSeps ();
+use org::allbinary::string::CommonStrings ();
+use org::allbinary::util::ABHashtable ();
+use org::allbinary::logic::system::security::licensing::AbeClientInformation ();
+use org::allbinary::logic::system::security::licensing::PartnerIdentifierFileUtil ();
 
 1;
 

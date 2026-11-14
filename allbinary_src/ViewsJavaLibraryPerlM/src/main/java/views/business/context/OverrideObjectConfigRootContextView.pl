@@ -29,7 +29,7 @@ sub _init_fields {
 sub new {
     my ($class, $transformInfoInterface) = @_;
     my $self = $class->SUPER::new($transformInfoInterface);
-    $self->_init_fields();
+    _init_fields($self);
         # super(...) made $self above
         if ($views::business::context::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($views::business::context::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{VIEW})) {
             $self->{logUtil}->putF("View Name: " . $transformInfoInterface->getName(), $self, "OverrideObjectRootContextView()");
@@ -79,21 +79,22 @@ sub view {
         }
 }
 
-use org::allbinary::data::tree::dom::document::XmlDocumentHelper;
-use org::allbinary::logic::communication::log::LogUtil;
-use org::allbinary::logic::string::StringMaker;
-use org::allbinary::logic::visual::transform::TransformFactory;
-use org::allbinary::logic::visual::transform::TransformInterface;
-use org::allbinary::logic::visual::transform::info::GeneratorTransformInfoData;
-use org::allbinary::logic::visual::transform::info::RootTransformInfoData;
-use org::allbinary::logic::visual::transform::info::TransformInfoHttp;
-use org::allbinary::logic::visual::transform::info::TransformInfoInterface;
-use org::allbinary::logic::visual::transform::info::objectConfig::TransformInfoObjectConfigAndManipulatorFactory;
-use org::allbinary::logic::visual::transform::info::objectConfig::TransformInfoObjectConfigInterface;
-use org::allbinary::logic::visual::transform::template::TransformTemplateInterface;
-use org::allbinary::string::CommonSeps;
-use org::w3c::dom::Document;
-use views::business::context::modules::storefront::HttpStoreComponentView;
+use java::lang::Object ();
+use org::allbinary::data::tree::dom::document::XmlDocumentHelper ();
+use org::allbinary::logic::communication::log::LogUtil ();
+use org::allbinary::logic::string::StringMaker ();
+use org::allbinary::logic::visual::transform::TransformFactory ();
+use org::allbinary::logic::visual::transform::TransformInterface ();
+use org::allbinary::logic::visual::transform::info::GeneratorTransformInfoData ();
+use org::allbinary::logic::visual::transform::info::RootTransformInfoData ();
+use org::allbinary::logic::visual::transform::info::TransformInfoHttp ();
+use org::allbinary::logic::visual::transform::info::TransformInfoInterface ();
+use org::allbinary::logic::visual::transform::info::objectConfig::TransformInfoObjectConfigAndManipulatorFactory ();
+use org::allbinary::logic::visual::transform::info::objectConfig::TransformInfoObjectConfigInterface ();
+use org::allbinary::logic::visual::transform::template::TransformTemplateInterface ();
+use org::allbinary::string::CommonSeps ();
+use org::w3c::dom::Document ();
+use views::business::context::modules::storefront::HttpStoreComponentView ();
 
 1;
 

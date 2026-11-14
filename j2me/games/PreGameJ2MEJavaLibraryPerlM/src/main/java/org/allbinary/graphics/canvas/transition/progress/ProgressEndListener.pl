@@ -17,8 +17,9 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
-our $instance = 'org::allbinary::graphics::canvas::transition::progress::ProgressEndListener'->new();
+tie our $instance, 'java::lang::LazyStatic', sub { 'org::allbinary::graphics::canvas::transition::progress::ProgressEndListener'->new() };
 
 sub new {
     my ($class) = @_;
@@ -31,6 +32,8 @@ sub onEndEvent {
     my ($self) = @_;
 }
 
+use java::lang::Object ();
+use java::lang::LazyStatic ();
 
 1;
 

@@ -17,6 +17,7 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
 our $MIN = 4;
 our $MAX = 19;
@@ -48,6 +49,7 @@ sub new {
     return $self;
 }
 
+use java::lang::Object ();
 
 1;
 

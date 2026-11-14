@@ -29,7 +29,7 @@ sub _init_fields {
 sub new {
     my ($class, $lockedIndex) = @_;
     my $self = $class->SUPER::new();
-    $self->_init_fields();
+    _init_fields($self);
         $self->{lockedIndex} = $lockedIndex;
     return $self;
 }
@@ -41,11 +41,12 @@ sub getInstanceItemPaintable {
         return 'org::allbinary::game::displayable::canvas::PreGameLockablePaintable'->new($paintableForm, $self->{lockedIndex});
 }
 
-use org::allbinary::graphics::form::ItemPaintable;
-use org::allbinary::graphics::form::ItemPaintableFactory;
-use org::allbinary::graphics::form::PaintableForm;
-use org::allbinary::graphics::form::ScrollCurrentSelectionForm;
-use org::allbinary::game::displayable::canvas::PreGameLockablePaintable;
+use java::lang::Object ();
+use org::allbinary::graphics::form::ItemPaintable ();
+use org::allbinary::graphics::form::ItemPaintableFactory ();
+use org::allbinary::graphics::form::PaintableForm ();
+use org::allbinary::graphics::form::ScrollCurrentSelectionForm ();
+use org::allbinary::game::displayable::canvas::PreGameLockablePaintable ();
 
 1;
 

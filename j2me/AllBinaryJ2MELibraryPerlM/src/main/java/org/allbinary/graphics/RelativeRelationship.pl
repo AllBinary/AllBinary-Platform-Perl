@@ -17,8 +17,9 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
-our $NULL_RELATIVE_RELATIONSHIP = 'org::allbinary::graphics::RelativeRelationship'->new('org::allbinary::graphics::PointFactory'->getInstance()->{ZERO_ZERO}, 'org::allbinary::util::BasicArrayListUtil'->getInstance()->getImmutableInstance());
+tie our $NULL_RELATIVE_RELATIONSHIP, 'java::lang::LazyStatic', sub { 'org::allbinary::graphics::RelativeRelationship'->new('org::allbinary::graphics::PointFactory'->getInstance()->{ZERO_ZERO}, 'org::allbinary::util::BasicArrayListUtil'->getInstance()->getImmutableInstance()) };
 
 sub _init_fields {
     my ($self) = @_;
@@ -32,7 +33,7 @@ sub _init_fields {
 sub new {
     my ($class, $point, $typesAllowedList) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
         $self->{x} = $point->getX();
         $self->{y} = $point->getY();
         $self->{z} = $point->getZ();
@@ -70,9 +71,11 @@ sub setTypesAllowedList {
         $self->{typesAllowedList} = $typesAllowedList;
 }
 
-use org::allbinary::util::BasicArrayList;
-use org::allbinary::util::BasicArrayListUtil;
-use org::allbinary::graphics::PointFactory;
+use java::lang::Object ();
+use java::lang::LazyStatic ();
+use org::allbinary::util::BasicArrayList ();
+use org::allbinary::util::BasicArrayListUtil ();
+use org::allbinary::graphics::PointFactory ();
 
 1;
 

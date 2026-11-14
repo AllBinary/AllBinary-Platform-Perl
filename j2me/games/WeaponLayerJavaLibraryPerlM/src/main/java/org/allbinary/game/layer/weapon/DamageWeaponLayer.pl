@@ -29,13 +29,14 @@ sub new {
     return $self;
 }
 
-use org::allbinary::animation::Animation;
-use org::allbinary::game::multiplayer::layer::RemoteInfo;
-use org::allbinary::graphics::Rectangle;
-use org::allbinary::physics::movement::Movement;
-use org::allbinary::view::ViewPositionBase;
-use org::allbinary::game::layer::weapon::WeaponLayer;
-use org::allbinary::game::layer::weapon::CollidableDamageWeaponBehavior;
+use java::lang::Object ();
+use org::allbinary::animation::Animation ();
+use org::allbinary::game::multiplayer::layer::RemoteInfo ();
+use org::allbinary::graphics::Rectangle ();
+use org::allbinary::physics::movement::Movement ();
+use org::allbinary::view::ViewPositionBase ();
+use org::allbinary::game::layer::weapon::WeaponLayer ();
+use org::allbinary::game::layer::weapon::CollidableDamageWeaponBehavior ();
 
 1;
 

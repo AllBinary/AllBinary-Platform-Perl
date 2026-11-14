@@ -51,11 +51,12 @@ sub toXmlNode {
         return $node;
 }
 
-use org::allbinary::input::automation::actions::script::condition::processors::BasicProfileActionScriptProcessor;
-use org::w3c::dom::Document;
-use org::w3c::dom::Node;
-use org::allbinary::input::automation::module::actions::script::condition::processors::output::ProfileActionScriptOutputInterface;
-use org::allbinary::input::automation::module::actions::script::condition::processors::output::GenericProfileActionScriptOutputData;
+use java::lang::Object ();
+use org::allbinary::input::automation::actions::script::condition::processors::BasicProfileActionScriptProcessor ();
+use org::w3c::dom::Document ();
+use org::w3c::dom::Node ();
+use org::allbinary::input::automation::module::actions::script::condition::processors::output::ProfileActionScriptOutputInterface ();
+use org::allbinary::input::automation::module::actions::script::condition::processors::output::GenericProfileActionScriptOutputData ();
 
 1;
 

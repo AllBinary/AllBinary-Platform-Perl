@@ -19,7 +19,7 @@ use feature 'try';
 no warnings 'experimental::try';
 use parent -norequire,'org::allbinary::media::graphics::geography::map::racetrack::drop::RaceTrackDropCellPositionGenerator';
 
-our $SINGLETON = 'org::allbinary::media::graphics::geography::map::racetrack::drop::RaceTrackAdjacentDropCellPositionGenerator'->new();
+tie our $SINGLETON, 'java::lang::LazyStatic', sub { 'org::allbinary::media::graphics::geography::map::racetrack::drop::RaceTrackAdjacentDropCellPositionGenerator'->new() };
 
 sub _init_fields {
     my ($self) = @_;
@@ -40,7 +40,7 @@ sub getInstance {
 sub new {
     my ($class) = @_;
     my $self = $class->SUPER::new();
-    $self->_init_fields();
+    _init_fields($self);
     return $self;
 }
 
@@ -117,32 +117,34 @@ sub drop {
         }
 }
 
-use org::allbinary::game::identification::GroupCommonFactory;
-use org::allbinary::util::BasicArrayList;
-use org::allbinary::util::BasicArrayListD;
-use org::allbinary::direction::Direction;
-use org::allbinary::direction::DirectionFactory;
-use org::allbinary::game::identification::BasicGroupFactory;
-use org::allbinary::game::layer::AllBinaryGameLayerManager;
-use org::allbinary::game::layer::geographic::map::LayerCoveringCellPositionsUtil;
-use org::allbinary::graphics::GPoint;
-use org::allbinary::layer::AllBinaryLayer;
-use org::allbinary::layer::AllBinaryLayerManager;
-use org::allbinary::logic::StdUtil;
-use org::allbinary::media::graphics::geography::map::BasicGeographicMap;
-use org::allbinary::media::graphics::geography::map::BasicGeographicMapCellPositionFactory;
-use org::allbinary::media::graphics::geography::map::GeographicMapCellPosition;
-use org::allbinary::media::graphics::geography::map::GeographicMapCellType;
-use org::allbinary::media::graphics::geography::map::GeographicMapDirectionUtil;
-use org::allbinary::media::graphics::geography::map::SimpleGeographicMapCellPositionFactory;
-use org::allbinary::media::graphics::geography::map::drop::DropCellPositionGeneratorInterface;
-use org::allbinary::media::graphics::geography::map::drop::DropCellPositionHistory;
-use org::allbinary::media::graphics::geography::map::racetrack::BaseRaceTrackGeographicMap;
-use org::allbinary::media::graphics::geography::map::racetrack::RaceTrackGeographicMapCellType;
-use org::allbinary::media::graphics::geography::map::racetrack::RaceTrackGeographicMapCellTypeFactory;
-use org::allbinary::util::ABHashtable;
-use org::allbinary::media::graphics::geography::map::racetrack::drop::RaceTrackDropCellPositionGenerator;
-use org::allbinary::media::graphics::geography::map::racetrack::drop::RaceTrackAdjacentDropLayerFactory;
+use java::lang::Object ();
+use java::lang::LazyStatic ();
+use org::allbinary::game::identification::GroupCommonFactory ();
+use org::allbinary::util::BasicArrayList ();
+use org::allbinary::util::BasicArrayListD ();
+use org::allbinary::direction::Direction ();
+use org::allbinary::direction::DirectionFactory ();
+use org::allbinary::game::identification::BasicGroupFactory ();
+use org::allbinary::game::layer::AllBinaryGameLayerManager ();
+use org::allbinary::game::layer::geographic::map::LayerCoveringCellPositionsUtil ();
+use org::allbinary::graphics::GPoint ();
+use org::allbinary::layer::AllBinaryLayer ();
+use org::allbinary::layer::AllBinaryLayerManager ();
+use org::allbinary::logic::StdUtil ();
+use org::allbinary::media::graphics::geography::map::BasicGeographicMap ();
+use org::allbinary::media::graphics::geography::map::BasicGeographicMapCellPositionFactory ();
+use org::allbinary::media::graphics::geography::map::GeographicMapCellPosition ();
+use org::allbinary::media::graphics::geography::map::GeographicMapCellType ();
+use org::allbinary::media::graphics::geography::map::GeographicMapDirectionUtil ();
+use org::allbinary::media::graphics::geography::map::SimpleGeographicMapCellPositionFactory ();
+use org::allbinary::media::graphics::geography::map::drop::DropCellPositionGeneratorInterface ();
+use org::allbinary::media::graphics::geography::map::drop::DropCellPositionHistory ();
+use org::allbinary::media::graphics::geography::map::racetrack::BaseRaceTrackGeographicMap ();
+use org::allbinary::media::graphics::geography::map::racetrack::RaceTrackGeographicMapCellType ();
+use org::allbinary::media::graphics::geography::map::racetrack::RaceTrackGeographicMapCellTypeFactory ();
+use org::allbinary::util::ABHashtable ();
+use org::allbinary::media::graphics::geography::map::racetrack::drop::RaceTrackDropCellPositionGenerator ();
+use org::allbinary::media::graphics::geography::map::racetrack::drop::RaceTrackAdjacentDropLayerFactory ();
 
 1;
 

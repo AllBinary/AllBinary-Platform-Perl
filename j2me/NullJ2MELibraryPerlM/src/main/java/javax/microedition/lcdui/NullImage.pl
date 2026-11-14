@@ -17,9 +17,10 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
 our $NULL_IMAGE_ARRAY = [(undef) x (0)];
-our $NULL_IMAGE = 'javax::microedition::lcdui::Image'->new();
+tie our $NULL_IMAGE, 'java::lang::LazyStatic', sub { 'javax::microedition::lcdui::Image'->new() };
 
 sub new {
     my ($class) = @_;
@@ -27,7 +28,9 @@ sub new {
     return $self;
 }
 
-use javax::microedition::lcdui::Image;
+use java::lang::Object ();
+use java::lang::LazyStatic ();
+use javax::microedition::lcdui::Image ();
 
 1;
 

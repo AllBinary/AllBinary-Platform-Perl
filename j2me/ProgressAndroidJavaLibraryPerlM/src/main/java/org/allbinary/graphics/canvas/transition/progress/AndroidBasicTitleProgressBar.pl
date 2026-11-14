@@ -39,7 +39,7 @@ sub _init_fields {
 sub new {
     my ($class, $title, $backgroundBasicColor, $foregroundBasicColor) = @_;
     my $self = $class->SUPER::new($title, $backgroundBasicColor, $foregroundBasicColor);
-    $self->_init_fields();
+    _init_fields($self);
         # super(...) made $self above
         $self->init();
         'org::allbinary::graphics::displayable::event::DisplayChangeEventHandler'->getInstance()->addListenerInterface($self);
@@ -331,38 +331,39 @@ sub getPortion {
         return $self->{portion};
 }
 
-# use javax::microedition::lcdui::Graphics;
-# use javax::microedition::lcdui::Image;
-# use javax::microedition::lcdui::NullImage;
-use android::app::Activity;
-use org::allbinary::AndroidUtil;
-use org::allbinary::image::GameFeatureImageCacheFactory;
-use org::allbinary::image::PreResourceImageUtil;
-use org::allbinary::logic::communication::log::ForcedLogUtil;
-use org::allbinary::logic::java::exception::ExceptionUtil;
-use org::allbinary::animation::Animation;
-use org::allbinary::animation::NullAnimationFactory;
-use org::allbinary::game::configuration::feature::Features;
-use org::allbinary::game::configuration::feature::MainFeatureFactory;
-use org::allbinary::graphics::color::BasicColor;
-use org::allbinary::graphics::displayable::DisplayInfoSingleton;
-use org::allbinary::graphics::displayable::event::DisplayChangeEvent;
-use org::allbinary::graphics::displayable::event::DisplayChangeEventHandler;
-use org::allbinary::graphics::displayable::event::DisplayChangeEventListener;
-use org::allbinary::image::ImageCacheFactory;
-use org::allbinary::media::image::ImageScaleUtil;
-use org::allbinary::logic::util::event::AllBinaryEventObject;
-use org::allbinary::animation::AnimationBehavior;
-use org::allbinary::animation::image::ImageAnimation;
-use org::allbinary::data::resource::ResourceUtil;
-use org::allbinary::logic::util::event::EventStrings;
-use org::allbinary::thread::ARunnable;
-use org::allbinary::thread::NullRunnable;
-use org::allbinary::graphics::canvas::transition::progress::ProgressCanvas;
-use org::allbinary::graphics::canvas::transition::progress::ShowTitleProgressBarRunnable;
-use org::allbinary::graphics::canvas::transition::progress::DismissTitleProgressBarRunnable;
-use org::allbinary::graphics::canvas::transition::progress::TitleProgressBarSetProgressRunnable;
-use org::allbinary::graphics::canvas::transition::progress::TitleProgressBarPortionSetProgressRunnable;
+use java::lang::Object ();
+use javax::microedition::lcdui::Graphics ();
+use javax::microedition::lcdui::Image ();
+use javax::microedition::lcdui::NullImage ();
+# use android::app::Activity ();
+use org::allbinary::AndroidUtil ();
+use org::allbinary::image::GameFeatureImageCacheFactory ();
+use org::allbinary::image::PreResourceImageUtil ();
+use org::allbinary::logic::communication::log::ForcedLogUtil ();
+use org::allbinary::logic::java::exception::ExceptionUtil ();
+use org::allbinary::animation::Animation ();
+use org::allbinary::animation::NullAnimationFactory ();
+use org::allbinary::game::configuration::feature::Features ();
+use org::allbinary::game::configuration::feature::MainFeatureFactory ();
+use org::allbinary::graphics::color::BasicColor ();
+use org::allbinary::graphics::displayable::DisplayInfoSingleton ();
+use org::allbinary::graphics::displayable::event::DisplayChangeEvent ();
+use org::allbinary::graphics::displayable::event::DisplayChangeEventHandler ();
+use org::allbinary::graphics::displayable::event::DisplayChangeEventListener ();
+use org::allbinary::image::ImageCacheFactory ();
+use org::allbinary::media::image::ImageScaleUtil ();
+use org::allbinary::logic::util::event::AllBinaryEventObject ();
+use org::allbinary::animation::AnimationBehavior ();
+use org::allbinary::animation::image::ImageAnimation ();
+use org::allbinary::data::resource::ResourceUtil ();
+use org::allbinary::logic::util::event::EventStrings ();
+use org::allbinary::thread::ARunnable ();
+use org::allbinary::thread::NullRunnable ();
+use org::allbinary::graphics::canvas::transition::progress::ProgressCanvas ();
+use org::allbinary::graphics::canvas::transition::progress::ShowTitleProgressBarRunnable ();
+use org::allbinary::graphics::canvas::transition::progress::DismissTitleProgressBarRunnable ();
+use org::allbinary::graphics::canvas::transition::progress::TitleProgressBarSetProgressRunnable ();
+use org::allbinary::graphics::canvas::transition::progress::TitleProgressBarPortionSetProgressRunnable ();
 
 1;
 

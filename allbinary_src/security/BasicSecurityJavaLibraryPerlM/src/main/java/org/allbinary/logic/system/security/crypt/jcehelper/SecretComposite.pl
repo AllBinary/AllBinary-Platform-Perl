@@ -32,7 +32,7 @@ sub _init_fields {
 sub new {
     my ($class, $secretKey, $cipher, $key) = @_;
     my $self = $class->SUPER::new();
-    $self->_init_fields();
+    _init_fields($self);
         $self->{secretKey} = $secretKey;
         $self->{cipher} = $cipher;
         $self->{key} = $key;
@@ -68,10 +68,11 @@ sub mutilate {
         return $array;
 }
 
-# use javax::crypto::Cipher;
-# use javax::crypto::SecretKey;
-use org::allbinary::logic::java::byteutil::ByteUtil;
-use org::allbinary::logic::system::security::crypt::jcehelper::BaseSecretComposite;
+use java::lang::Object ();
+# use javax::crypto::Cipher ();
+# use javax::crypto::SecretKey ();
+use org::allbinary::logic::java::byteutil::ByteUtil ();
+use org::allbinary::logic::system::security::crypt::jcehelper::BaseSecretComposite ();
 
 1;
 

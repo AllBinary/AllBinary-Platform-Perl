@@ -98,11 +98,11 @@ sub setSearchParams {
     die "abstract method setSearchParams";
 }
 
-use java::util::HashMap;
-use org::allbinary::business::advertisement::search::category::AdvertisementCategoryInterface;
-use org::allbinary::business::advertisement::search::website::AdvertisementWebsiteInterface;
-use org::allbinary::logic::control::contraints::price::PriceConstraintInterface;
-use org::allbinary::logic::control::contraints::size::TwoDimensionalConstraintInterface;
+use java::util::HashMap ();
+use org::allbinary::business::advertisement::search::category::AdvertisementCategoryInterface ();
+use org::allbinary::business::advertisement::search::website::AdvertisementWebsiteInterface ();
+use org::allbinary::logic::control::contraints::price::PriceConstraintInterface ();
+use org::allbinary::logic::control::contraints::size::TwoDimensionalConstraintInterface ();
 
 1;
 

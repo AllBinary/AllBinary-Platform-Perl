@@ -17,8 +17,9 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
-our $instance = 'org::allbinary::animation::image::ModifierBaseProcessor'->new();
+tie our $instance, 'java::lang::LazyStatic', sub { 'org::allbinary::animation::image::ModifierBaseProcessor'->new() };
 
 sub new {
     my ($class) = @_;
@@ -42,9 +43,11 @@ sub updateAlpha {
     my ($self, $imageModifierUtil, $originalImage, $imageToShow, $index, $alpha) = @_;
 }
 
-# use javax::microedition::lcdui::Image;
-use org::allbinary::graphics::color::BasicColor;
-use org::allbinary::media::image::ImageModifierUtil;
+use java::lang::Object ();
+use java::lang::LazyStatic ();
+use javax::microedition::lcdui::Image ();
+use org::allbinary::graphics::color::BasicColor ();
+use org::allbinary::media::image::ImageModifierUtil ();
 
 1;
 

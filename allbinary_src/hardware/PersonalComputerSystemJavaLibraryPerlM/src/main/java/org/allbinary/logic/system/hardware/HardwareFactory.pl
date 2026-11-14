@@ -17,8 +17,9 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
-our $instance = 'org::allbinary::logic::system::hardware::HardwareFactory'->new();
+tie our $instance, 'java::lang::LazyStatic', sub { 'org::allbinary::logic::system::hardware::HardwareFactory'->new() };
 
 
 sub getInstance {
@@ -51,10 +52,12 @@ sub getInstance {
         }
 }
 
-use org::allbinary::logic::system::os::GenericOperatingSystem;
-use org::allbinary::logic::system::os::OperatingSystems;
-use org::allbinary::logic::system::hardware::linux::LinuxHardware;
-use org::allbinary::logic::system::hardware::windows::WindowsHardware;
+use java::lang::Object ();
+use java::lang::LazyStatic ();
+use org::allbinary::logic::system::os::GenericOperatingSystem ();
+use org::allbinary::logic::system::os::OperatingSystems ();
+use org::allbinary::logic::system::hardware::linux::LinuxHardware ();
+use org::allbinary::logic::system::hardware::windows::WindowsHardware ();
 
 1;
 

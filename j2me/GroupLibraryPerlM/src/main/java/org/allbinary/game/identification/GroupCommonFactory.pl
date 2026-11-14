@@ -17,8 +17,9 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
-our $instance = 'org::allbinary::logic::NullUtil'->getInstance()->{NULL_OBJECT};
+tie our $instance, 'java::lang::LazyStatic', sub { 'org::allbinary::logic::NullUtil'->getInstance()->{NULL_OBJECT} };
 
 sub _init_fields {
     my ($self) = @_;
@@ -32,7 +33,7 @@ sub _init_fields {
 sub new {
     my ($class) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
     return $self;
 }
 
@@ -45,8 +46,10 @@ sub getInstance {
         return $org::allbinary::game::identification::GroupCommonFactory::instance;
 }
 
-use org::allbinary::logic::NullUtil;
-use org::allbinary::logic::math::SmallIntegerSingletonFactory;
+use java::lang::Object ();
+use java::lang::LazyStatic ();
+use org::allbinary::logic::NullUtil ();
+use org::allbinary::logic::math::SmallIntegerSingletonFactory ();
 
 1;
 

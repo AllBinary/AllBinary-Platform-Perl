@@ -17,8 +17,9 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
-our $SINGLETON = 'org::allbinary::logic::io::file::FileFactory'->new('org::allbinary::data::resource::ResourceUtil'->getInstance()->getContext());
+tie our $SINGLETON, 'java::lang::LazyStatic', sub { 'org::allbinary::logic::io::file::FileFactory'->new('org::allbinary::data::resource::ResourceUtil'->getInstance()->getContext()) };
 
 sub _init_fields {
     my ($self) = @_;
@@ -29,7 +30,7 @@ sub _init_fields {
 sub new {
     my ($class, $context) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
         $self->{context} = $context;
     return $self;
 }
@@ -73,10 +74,12 @@ sub getInstance {
         return 'org::allbinary::logic::io::file::AbFile'->createAbFileWithChild($file, $childFilePath);
 }
 
-# use java::io::FileNotFoundException;
-use android::content::Context;
-use org::allbinary::data::resource::ResourceUtil;
-use org::allbinary::logic::io::file::AbFile;
+use java::lang::Object ();
+use java::lang::LazyStatic ();
+# use java::io::FileNotFoundException ();
+# use android::content::Context ();
+use org::allbinary::data::resource::ResourceUtil ();
+use org::allbinary::logic::io::file::AbFile ();
 
 1;
 

@@ -19,7 +19,7 @@ use feature 'try';
 no warnings 'experimental::try';
 use parent -norequire,'org::allbinary::graphics::opengles::shader::ShaderUpdater';
 
-our $instanceC = 'org::allbinary::graphics::opengles::shader::AppRendererShaderUpdaterFactory'->new();
+tie our $instanceC, 'java::lang::LazyStatic', sub { 'org::allbinary::graphics::opengles::shader::AppRendererShaderUpdaterFactory'->new() };
 
 sub _init_fields {
     my ($self) = @_;
@@ -31,7 +31,7 @@ sub _init_fields {
 sub new {
     my ($class) = @_;
     my $self = $class->SUPER::new();
-    $self->_init_fields();
+    _init_fields($self);
     return $self;
 }
 
@@ -52,7 +52,9 @@ sub setShaderComposite {
     my ($self, $object3d) = @_;
 }
 
-use org::allbinary::graphics::opengles::shader::ShaderUpdater;
+use java::lang::Object ();
+use java::lang::LazyStatic ();
+use org::allbinary::graphics::opengles::shader::ShaderUpdater ();
 
 1;
 

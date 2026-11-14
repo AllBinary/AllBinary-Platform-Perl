@@ -17,6 +17,7 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
 
 sub _init_fields {
@@ -37,7 +38,7 @@ sub new {
 sub _new1 {
     my ($class, $basicPaymentType) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
         $self->{basicPaymentType} = $basicPaymentType;
         $self->{paymentTransactionInterfaceFactoryInterface} = undef;
         $self->{paymentProcessorInterfaceFactoryInterface} = undef;
@@ -49,7 +50,7 @@ sub _new1 {
 sub _new3 {
     my ($class, $basicPaymentType, $paymentTransactionInterfaceFactoryInterface, $paymentProcessorInterfaceFactoryInterface) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
         $self->{basicPaymentType} = $basicPaymentType;
         $self->{paymentTransactionInterfaceFactoryInterface} = $paymentTransactionInterfaceFactoryInterface;
         $self->{paymentProcessorInterfaceFactoryInterface} = $paymentProcessorInterfaceFactoryInterface;
@@ -111,14 +112,15 @@ sub getBasicPaymentType {
         return $self->{basicPaymentType};
 }
 
-use java::util::HashMap;
-use org::allbinary::util::BasicArrayList;
-use org::allbinary::util::BasicArrayListD;
-use org::allbinary::business::user::commerce::money::payment::gateway::PaymentGatewayData;
-use org::allbinary::business::user::commerce::money::payment::gateway::processor::PaymentProcessorInterfaceFactoryInterface;
-use org::allbinary::business::user::commerce::money::payment::gateway::transaction::PaymentTransactionInterfaceFactoryInterface;
-use org::allbinary::logic::StdUtil;
-use org::allbinary::business::user::commerce::money::payment::types::PaymentTypeUtil;
+use java::lang::Object ();
+use java::util::HashMap ();
+use org::allbinary::util::BasicArrayList ();
+use org::allbinary::util::BasicArrayListD ();
+use org::allbinary::business::user::commerce::money::payment::gateway::PaymentGatewayData ();
+use org::allbinary::business::user::commerce::money::payment::gateway::processor::PaymentProcessorInterfaceFactoryInterface ();
+use org::allbinary::business::user::commerce::money::payment::gateway::transaction::PaymentTransactionInterfaceFactoryInterface ();
+use org::allbinary::logic::StdUtil ();
+use org::allbinary::business::user::commerce::money::payment::types::PaymentTypeUtil ();
 
 1;
 

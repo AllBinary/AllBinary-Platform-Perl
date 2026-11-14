@@ -31,7 +31,7 @@ sub _init_fields {
 sub new {
     my ($class, $name, $motionGestureInput) = @_;
     my $self = $class->SUPER::new($motionGestureInput);
-    $self->_init_fields();
+    _init_fields($self);
         # super(...) made $self above
         $self->setName($name);
         try {
@@ -67,13 +67,14 @@ sub getMotionGestureInput {
         return $self->{motionGestureInput};
 }
 
-use org::allbinary::input::motion::gesture::MotionGestureInput;
-use org::allbinary::input::motion::gesture::TouchMotionGestureFactory;
-use org::allbinary::logic::communication::log::LogUtil;
-use org::allbinary::logic::string::StringUtil;
-use org::allbinary::logic::util::event::AllBinaryEventObject;
-use org::allbinary::string::CommonStrings;
-use org::allbinary::game::input::CompleteMotionGestureInputInterface;
+use java::lang::Object ();
+use org::allbinary::input::motion::gesture::MotionGestureInput ();
+use org::allbinary::input::motion::gesture::TouchMotionGestureFactory ();
+use org::allbinary::logic::communication::log::LogUtil ();
+use org::allbinary::logic::string::StringUtil ();
+use org::allbinary::logic::util::event::AllBinaryEventObject ();
+use org::allbinary::string::CommonStrings ();
+use org::allbinary::game::input::CompleteMotionGestureInputInterface ();
 
 1;
 

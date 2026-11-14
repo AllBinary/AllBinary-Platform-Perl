@@ -38,7 +38,7 @@ sub runOnUiThread {
     die "abstract method runOnUiThread";
 }
 
-use android::view::View;
+# use android::view::View ();
 
 1;
 

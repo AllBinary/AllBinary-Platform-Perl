@@ -29,7 +29,7 @@ sub _init_fields {
 sub new {
     my ($class, $transformInfoInterface) = @_;
     my $self = $class->SUPER::new($transformInfoInterface, 'org::allbinary::logic::string::StringUtil'->getInstance()->{EMPTY_STRING});
-    $self->_init_fields();
+    _init_fields($self);
         # super(...) made $self above
         $self->getFormData();
     return $self;
@@ -92,18 +92,26 @@ sub validationInfo {
         }
 }
 
-use java::util::HashMap;
-use org::allbinary::business::user::commerce::inventory::item::BasicItemData;
-use org::allbinary::data::tables::user::commerce::inventory::item::InventoryEntityFactory;
-use org::allbinary::logic::communication::http::request::RequestParams;
-use org::allbinary::logic::control::validate::ValidationComponentInterface;
-use org::allbinary::logic::string::StringMaker;
-use org::allbinary::logic::string::StringUtil;
-use org::allbinary::logic::string::StringValidationUtil;
-use org::allbinary::logic::visual::transform::info::TransformInfoInterface;
-use org::w3c::dom::Document;
-use org::w3c::dom::Node;
-use views::admin::inventory::InventoryItemView;
+
+# throws Exception
+sub getTransformInfoInterface {
+    my ($self) = @_;
+        return $self->SUPER::getTransformInfoInterface();
+}
+
+use java::lang::Object ();
+use java::util::HashMap ();
+use org::allbinary::business::user::commerce::inventory::item::BasicItemData ();
+use org::allbinary::data::tables::user::commerce::inventory::item::InventoryEntityFactory ();
+use org::allbinary::logic::communication::http::request::RequestParams ();
+use org::allbinary::logic::control::validate::ValidationComponentInterface ();
+use org::allbinary::logic::string::StringMaker ();
+use org::allbinary::logic::string::StringUtil ();
+use org::allbinary::logic::string::StringValidationUtil ();
+use org::allbinary::logic::visual::transform::info::TransformInfoInterface ();
+use org::w3c::dom::Document ();
+use org::w3c::dom::Node ();
+use views::admin::inventory::InventoryItemView ();
 
 1;
 

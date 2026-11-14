@@ -38,7 +38,7 @@ sub _init_fields {
 sub new {
     my ($class) = @_;
     my $self = $class->SUPER::new('org::allbinary::business::init::db::UserDbInitInfo'->new());
-    $self->_init_fields();
+    _init_fields($self);
         # super(...) made $self above
         my $stringBuffer = 'org::allbinary::logic::string::StringMaker'->new();
         $stringBuffer->append($self->{sqlStrings}->{CREATE_TABLE});
@@ -144,18 +144,19 @@ sub createTable {
         }
 }
 
-use java::util::HashMap;
-use org::allbinary::util::BasicArrayList;
-use org::allbinary::util::BasicArrayListD;
-use org::allbinary::business::init::db::UserDbInitInfo;
-use org::allbinary::logic::StdUtil;
-use org::allbinary::logic::communication::log::PreLogUtil;
-use org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory;
-use org::allbinary::logic::communication::log::config::type::LogConfigTypes;
-use org::allbinary::logic::io::path::AbPathData;
-use org::allbinary::logic::string::StringMaker;
-use org::allbinary::business::init::InitSql;
-use org::allbinary::business::init::InitInfo;
+use java::lang::Object ();
+use java::util::HashMap ();
+use org::allbinary::util::BasicArrayList ();
+use org::allbinary::util::BasicArrayListD ();
+use org::allbinary::business::init::db::UserDbInitInfo ();
+use org::allbinary::logic::StdUtil ();
+use org::allbinary::logic::communication::log::PreLogUtil ();
+use org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory ();
+use org::allbinary::logic::communication::log::config::type::LogConfigTypes ();
+use org::allbinary::logic::io::path::AbPathData ();
+use org::allbinary::logic::string::StringMaker ();
+use org::allbinary::business::init::InitSql ();
+use org::allbinary::business::init::InitInfo ();
 
 1;
 

@@ -35,7 +35,7 @@ sub _init_fields {
 sub new {
     my ($class) = @_;
     my $self = $class->SUPER::new();
-    $self->_init_fields();
+    _init_fields($self);
         my $stringUtil = 'org::allbinary::logic::string::StringUtil'->getInstance();
         $self->{userName} = $stringUtil->{EMPTY_STRING};
         $self->{password} = $stringUtil->{EMPTY_STRING};
@@ -353,23 +353,24 @@ sub doStartTag {
         }
 }
 
-# use java::lang::reflect::Method;
-use java::util::HashMap;
-use org::allbinary::util::BasicArrayList;
-use org::allbinary::util::BasicArrayListD;
-# use javax::servlet::http::HttpServletRequest;
-# use javax::servlet::jsp::JspTagException;
-# use javax::servlet::jsp::tagext::TagSupport;
-use admin::taghelpers::AuthenticationHelperFactory;
-use admin::taghelpers::AuthenticationRequestHelperFactory;
-use org::allbinary::logic::StdUtil;
-use org::allbinary::logic::communication::http::request::AbResponseHandler;
-use org::allbinary::logic::communication::http::request::session::WeblisketSessionData;
-use org::allbinary::logic::communication::log::LogUtil;
-use org::allbinary::logic::string::StringMaker;
-use org::allbinary::logic::string::StringUtil;
-use org::allbinary::logic::system::security::licensing::LicensingException;
-use tags::CustomTagSupport;
+use java::lang::Object ();
+# use java::lang::reflect::Method ();
+use java::util::HashMap ();
+use org::allbinary::util::BasicArrayList ();
+use org::allbinary::util::BasicArrayListD ();
+# use javax::servlet::http::HttpServletRequest ();
+# use javax::servlet::jsp::JspTagException ();
+# use javax::servlet::jsp::tagext::TagSupport ();
+use admin::taghelpers::AuthenticationHelperFactory ();
+use admin::taghelpers::AuthenticationRequestHelperFactory ();
+use org::allbinary::logic::StdUtil ();
+use org::allbinary::logic::communication::http::request::AbResponseHandler ();
+use org::allbinary::logic::communication::http::request::session::WeblisketSessionData ();
+use org::allbinary::logic::communication::log::LogUtil ();
+use org::allbinary::logic::string::StringMaker ();
+use org::allbinary::logic::string::StringUtil ();
+use org::allbinary::logic::system::security::licensing::LicensingException ();
+use tags::CustomTagSupport ();
 
 1;
 

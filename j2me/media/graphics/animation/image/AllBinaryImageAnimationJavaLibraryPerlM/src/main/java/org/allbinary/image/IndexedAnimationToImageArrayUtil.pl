@@ -17,6 +17,7 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
 
 sub new {
@@ -38,9 +39,10 @@ sub getInstance {
         return $imageArray;
 }
 
-# use javax::microedition::lcdui::Image;
-use org::allbinary::animation::IndexedAnimation;
-use org::allbinary::image::AnimationFrameToImageUtil;
+use java::lang::Object ();
+use javax::microedition::lcdui::Image ();
+use org::allbinary::animation::IndexedAnimation ();
+use org::allbinary::image::AnimationFrameToImageUtil ();
 
 1;
 

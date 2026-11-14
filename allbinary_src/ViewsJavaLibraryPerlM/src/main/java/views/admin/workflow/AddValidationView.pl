@@ -30,7 +30,7 @@ sub _init_fields {
 sub new {
     my ($class, $transformInfoInterface) = @_;
     my $self = $class->SUPER::new($transformInfoInterface);
-    $self->_init_fields();
+    _init_fields($self);
         # super(...) made $self above
         $self->{workFlowInterface} = 'org::allbinary::logic::control::workflow::NewWorkFlowFactory'->getInstance()->getInstance($self->{abeClientInformation}, $self->getPropertiesHashMap(), $self->getPageContext());
     return $self;
@@ -81,17 +81,25 @@ sub toValidationInfoNode {
         return undef;
 }
 
-use org::allbinary::data::tables::workflow::WorkFlowEntityFactory;
-use org::allbinary::logic::communication::log::LogUtil;
-use org::allbinary::logic::control::validate::ValidationComponentInterface;
-use org::allbinary::logic::control::workflow::NewWorkFlowFactory;
-use org::allbinary::logic::string::StringMaker;
-use org::allbinary::logic::system::security::licensing::AbeClientInformationInterface;
-use org::allbinary::logic::system::security::licensing::ServiceClientInformationInterfaceFactory;
-use org::allbinary::logic::visual::transform::info::TransformInfoInterface;
-use org::w3c::dom::Document;
-use org::w3c::dom::Node;
-use views::admin::workflow::WorkFlowView;
+
+# throws Exception
+sub getTransformInfoInterface {
+    my ($self) = @_;
+        return $self->SUPER::getTransformInfoInterface();
+}
+
+use java::lang::Object ();
+use org::allbinary::data::tables::workflow::WorkFlowEntityFactory ();
+use org::allbinary::logic::communication::log::LogUtil ();
+use org::allbinary::logic::control::validate::ValidationComponentInterface ();
+use org::allbinary::logic::control::workflow::NewWorkFlowFactory ();
+use org::allbinary::logic::string::StringMaker ();
+use org::allbinary::logic::system::security::licensing::AbeClientInformationInterface ();
+use org::allbinary::logic::system::security::licensing::ServiceClientInformationInterfaceFactory ();
+use org::allbinary::logic::visual::transform::info::TransformInfoInterface ();
+use org::w3c::dom::Document ();
+use org::w3c::dom::Node ();
+use views::admin::workflow::WorkFlowView ();
 
 1;
 

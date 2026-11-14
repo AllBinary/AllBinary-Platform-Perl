@@ -18,6 +18,7 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
 
 sub new {
@@ -52,7 +53,8 @@ sub getInvalidReason {
         die ("RuntimeException");
 }
 
-use org::allbinary::util::BasicArrayList;
+use java::lang::Object ();
+use org::allbinary::util::BasicArrayList ();
 
 1;
 

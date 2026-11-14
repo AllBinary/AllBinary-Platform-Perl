@@ -17,6 +17,7 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
 our $DESKTOP_SYMBOLIC_NAME = "org.knopflerfish.bundle.desktop";
 
@@ -29,7 +30,7 @@ sub _init_fields {
 sub new {
     my ($class) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
         my $bundleContext = 'bundle::input::automation::InputAutomationBundleActivator'->getBundleContext();
         if (defined($bundleContext)) {
             my $bundleArray = $bundleContext->getBundles();
@@ -54,11 +55,12 @@ sub start {
         $self->{bundle}->start();
 }
 
-# use javax::swing;
-use org::osgi::framework::Bundle;
-use org::osgi::framework::BundleContext;
-use bundle::input::automation::InputAutomationBundleActivator;
-use org::allbinary::gui::dialog::BasicTextJDialog;
+use java::lang::Object ();
+# use javax::swing ();
+use org::osgi::framework::Bundle ();
+use org::osgi::framework::BundleContext ();
+use bundle::input::automation::InputAutomationBundleActivator ();
+use org::allbinary::gui::dialog::BasicTextJDialog ();
 
 1;
 

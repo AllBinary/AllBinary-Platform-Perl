@@ -19,6 +19,7 @@ use feature 'try';
 no warnings 'experimental::try';
 use POSIX ();
 use List::Util ();
+use parent -norequire,'java::lang::Object';
 
 
 sub _init_fields {
@@ -31,7 +32,7 @@ sub _init_fields {
 sub new {
     my ($class, $name, $angleInfo) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
         $self->{name} = $name;
         $self->{angleInfo} = $angleInfo;
     return $self;
@@ -101,11 +102,12 @@ sub getName {
         return $self->{name};
 }
 
-# use javax::microedition::lcdui::Canvas;
-use org::allbinary::direction::Direction;
-use org::allbinary::direction::DirectionFactory;
-use org::allbinary::math::AngleIncrementInfo;
-use org::allbinary::math::AngleInfo;
+use java::lang::Object ();
+use javax::microedition::lcdui::Canvas ();
+use org::allbinary::direction::Direction ();
+use org::allbinary::direction::DirectionFactory ();
+use org::allbinary::math::AngleIncrementInfo ();
+use org::allbinary::math::AngleInfo ();
 
 1;
 

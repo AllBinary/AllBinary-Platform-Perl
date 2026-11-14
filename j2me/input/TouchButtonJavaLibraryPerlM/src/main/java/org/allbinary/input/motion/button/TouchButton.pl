@@ -48,7 +48,7 @@ sub createButton {
 sub new {
     my ($class, $touchButtonInput, $animationInterface, $hintAnimationInterface, $rawRectangle, $cellPosition, $xBorder, $yBorder) = @_;
     my $self = $class->SUPER::new();
-    $self->_init_fields();
+    _init_fields($self);
         $self->{touchButtonInput} = $touchButtonInput;
         $self->{animationInterface} = $animationInterface;
         $self->{hintAnimationInterface} = $hintAnimationInterface;
@@ -124,19 +124,20 @@ sub toString {
         return $stringBuffer->toString();
 }
 
-# use javax::microedition::lcdui::Graphics;
-use org::allbinary::animation::Animation;
-use org::allbinary::animation::FeaturedAnimationInterfaceFactoryInterfaceFactory;
-use org::allbinary::graphics::CellPosition;
-use org::allbinary::graphics::GPoint;
-use org::allbinary::graphics::PointFactory;
-use org::allbinary::graphics::Rectangle;
-use org::allbinary::graphics::RectangleFactory;
-use org::allbinary::graphics::paint::Paintable;
-use org::allbinary::logic::communication::log::LogUtil;
-use org::allbinary::logic::string::StringMaker;
-use org::allbinary::logic::string::StringUtil;
-use org::allbinary::string::CommonStrings;
+use java::lang::Object ();
+use javax::microedition::lcdui::Graphics ();
+use org::allbinary::animation::Animation ();
+use org::allbinary::animation::FeaturedAnimationInterfaceFactoryInterfaceFactory ();
+use org::allbinary::graphics::CellPosition ();
+use org::allbinary::graphics::GPoint ();
+use org::allbinary::graphics::PointFactory ();
+use org::allbinary::graphics::Rectangle ();
+use org::allbinary::graphics::RectangleFactory ();
+use org::allbinary::graphics::paint::Paintable ();
+use org::allbinary::logic::communication::log::LogUtil ();
+use org::allbinary::logic::string::StringMaker ();
+use org::allbinary::logic::string::StringUtil ();
+use org::allbinary::string::CommonStrings ();
 
 1;
 

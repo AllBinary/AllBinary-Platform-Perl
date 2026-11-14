@@ -31,7 +31,7 @@ sub _init_fields {
 sub new {
     my ($class, $hashMap, $pageContext) = @_;
     my $self = $class->SUPER::new();
-    $self->_init_fields();
+    _init_fields($self);
         $self->{workFlowInterface} = 'org::allbinary::logic::control::workflow::NewWorkFlowFactory'->getInstance()->getInstance($self->{abeClientInformation}, $hashMap, $pageContext);
     return $self;
 }
@@ -101,17 +101,18 @@ sub update {
         }
 }
 
-use java::util::HashMap;
-# use javax::servlet::jsp::PageContext;
-use org::allbinary::data::tables::workflow::WorkFlowEntityFactory;
-use org::allbinary::logic::communication::log::LogUtil;
-use org::allbinary::logic::control::workflow::NewWorkFlowFactory;
-use org::allbinary::logic::control::workflow::WorkFlowData;
-use org::allbinary::logic::control::workflow::WorkFlowInterface;
-use org::allbinary::logic::string::StringUtil;
-use org::allbinary::logic::system::security::licensing::AbeClientInformationInterface;
-use org::allbinary::logic::system::security::licensing::ServiceClientInformationInterfaceFactory;
-use admin::taghelpers::ModifyTable;
+use java::lang::Object ();
+use java::util::HashMap ();
+# use javax::servlet::jsp::PageContext ();
+use org::allbinary::data::tables::workflow::WorkFlowEntityFactory ();
+use org::allbinary::logic::communication::log::LogUtil ();
+use org::allbinary::logic::control::workflow::NewWorkFlowFactory ();
+use org::allbinary::logic::control::workflow::WorkFlowData ();
+use org::allbinary::logic::control::workflow::WorkFlowInterface ();
+use org::allbinary::logic::string::StringUtil ();
+use org::allbinary::logic::system::security::licensing::AbeClientInformationInterface ();
+use org::allbinary::logic::system::security::licensing::ServiceClientInformationInterfaceFactory ();
+use admin::taghelpers::ModifyTable ();
 
 1;
 

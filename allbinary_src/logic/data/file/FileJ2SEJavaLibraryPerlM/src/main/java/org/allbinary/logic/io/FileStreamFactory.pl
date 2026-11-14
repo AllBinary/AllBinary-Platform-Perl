@@ -17,8 +17,9 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
-our $SINGLETON = 'org::allbinary::logic::NullUtil'->getInstance()->{NULL_OBJECT};
+tie our $SINGLETON, 'java::lang::LazyStatic', sub { 'org::allbinary::logic::NullUtil'->getInstance()->{NULL_OBJECT} };
 
 
 sub getInstance {
@@ -42,7 +43,7 @@ sub getFileInputStreamInstance {
     my ($self, $path, $fileName) = @_;
         my $FILEABPATH = 'org::allbinary::logic::io::path::AbPath'->new($path, $fileName);
         my $file = 'org::allbinary::logic::io::file::AbFile'->createAbFileFromAbPath($FILEABPATH);
-        return 'org::allbinary::logic::io::AbFileInputStream'->new($file);
+        return 'org::allbinary::logic::io::AbFileInputStream'->createFromAbFile($file);
 }
 
 
@@ -67,11 +68,13 @@ sub delete {
         $file->delete();
 }
 
-use org::allbinary::logic::NullUtil;
-use org::allbinary::logic::io::file::AbFile;
-use org::allbinary::logic::io::path::AbPath;
-use org::allbinary::logic::io::AbFileInputStream;
-use org::allbinary::logic::io::AbFileOutputStream;
+use java::lang::Object ();
+use java::lang::LazyStatic ();
+use org::allbinary::logic::NullUtil ();
+use org::allbinary::logic::io::file::AbFile ();
+use org::allbinary::logic::io::path::AbPath ();
+use org::allbinary::logic::io::AbFileInputStream ();
+use org::allbinary::logic::io::AbFileOutputStream ();
 
 1;
 

@@ -17,6 +17,7 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
 
 sub new {
@@ -59,13 +60,14 @@ sub getHashMap {
         return $hashMap;
 }
 
-use java::util::HashMap;
-use org::allbinary::logic::StdUtil;
-use org::allbinary::logic::io::path::AbPathData;
-use org::allbinary::logic::math::MathData;
-use org::allbinary::string::CommonPhoneStrings;
-use org::allbinary::string::CommonSeps;
-use org::allbinary::logic::string::StringUtil;
+use java::lang::Object ();
+use java::util::HashMap ();
+use org::allbinary::logic::StdUtil ();
+use org::allbinary::logic::io::path::AbPathData ();
+use org::allbinary::logic::math::MathData ();
+use org::allbinary::string::CommonPhoneStrings ();
+use org::allbinary::string::CommonSeps ();
+use org::allbinary::logic::string::StringUtil ();
 
 1;
 

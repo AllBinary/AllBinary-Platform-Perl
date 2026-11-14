@@ -29,9 +29,10 @@ sub new {
     return $self;
 }
 
-use admin::taghelpers::AdminConfigurationHelperFactory;
-use admin::taghelpers::AdminConfigurationRequestHelperFactory;
-use admin::tags::TableTag;
+use java::lang::Object ();
+use admin::taghelpers::AdminConfigurationHelperFactory ();
+use admin::taghelpers::AdminConfigurationRequestHelperFactory ();
+use admin::tags::TableTag ();
 
 1;
 

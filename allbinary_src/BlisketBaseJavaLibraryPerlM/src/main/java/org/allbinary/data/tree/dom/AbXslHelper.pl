@@ -17,8 +17,9 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
-our $instance = 'org::allbinary::data::tree::dom::AbXslHelper'->new();
+tie our $instance, 'java::lang::LazyStatic', sub { 'org::allbinary::data::tree::dom::AbXslHelper'->new() };
 
 sub new {
     my ($class) = @_;
@@ -60,12 +61,14 @@ sub translate {
         }
 }
 
-# use java::io::ByteArrayOutputStream;
-# use javax::xml::transform::stream::StreamResult;
-# use javax::xml::transform::stream::StreamSource;
-use org::allbinary::logic::io::file::AbFile;
-use org::allbinary::logic::io::path::AbPath;
-use org::allbinary::data::tree::dom::XslHelper;
+use java::lang::Object ();
+use java::lang::LazyStatic ();
+# use java::io::ByteArrayOutputStream ();
+# use javax::xml::transform::stream::StreamResult ();
+# use javax::xml::transform::stream::StreamSource ();
+use org::allbinary::logic::io::file::AbFile ();
+use org::allbinary::logic::io::path::AbPath ();
+use org::allbinary::data::tree::dom::XslHelper ();
 
 1;
 

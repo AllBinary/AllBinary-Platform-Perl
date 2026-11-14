@@ -17,8 +17,9 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
-our $instance = 'org::allbinary::direction::DirectionUtil'->new();
+tie our $instance, 'java::lang::LazyStatic', sub { 'org::allbinary::direction::DirectionUtil'->new() };
 
 sub _init_fields {
     my ($self) = @_;
@@ -36,7 +37,7 @@ sub getInstance {
 sub new {
     my ($class) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
         my $angleFactory = 'org::allbinary::math::AngleFactory'->getInstance();
         my $directionFactory = 'org::allbinary::direction::DirectionFactory'->getInstance();
         $self->{directionArray}->[$directionFactory->{LEFT}->getValue()] = $angleFactory->{LEFT};
@@ -62,9 +63,11 @@ sub getFrameAngle {
         return $self->{directionArray}->[$direction->getValue()];
 }
 
-use org::allbinary::math::Angle;
-use org::allbinary::math::AngleFactory;
-use org::allbinary::direction::DirectionFactory;
+use java::lang::Object ();
+use java::lang::LazyStatic ();
+use org::allbinary::math::Angle ();
+use org::allbinary::math::AngleFactory ();
+use org::allbinary::direction::DirectionFactory ();
 
 1;
 

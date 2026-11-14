@@ -26,8 +26,8 @@ sub getKey {
     die "abstract method getKey";
 }
 
-# use jsinterop::annotations::JsType;
-# use jsinterop::annotations::JsMethod;
+# use jsinterop::annotations::JsType ();
+# use jsinterop::annotations::JsMethod ();
 
 1;
 

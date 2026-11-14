@@ -26,7 +26,7 @@ sub paintXY {
     die "abstract method paintXY";
 }
 
-# use javax::microedition::lcdui::Graphics;
+use javax::microedition::lcdui::Graphics ();
 
 1;
 

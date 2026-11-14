@@ -62,10 +62,11 @@ sub generate {
         return $newObjectConfigDocument;
 }
 
-use org::allbinary::logic::system::security::licensing::AbeClientInformationInterface;
-use org::allbinary::logic::visual::transform::info::TransformInfoInterface;
-use org::w3c::dom::Document;
-use org::allbinary::logic::visual::transform::info::objectConfig::GenericStoreTransformInfoObjectConfig;
+use java::lang::Object ();
+use org::allbinary::logic::system::security::licensing::AbeClientInformationInterface ();
+use org::allbinary::logic::visual::transform::info::TransformInfoInterface ();
+use org::w3c::dom::Document ();
+use org::allbinary::logic::visual::transform::info::objectConfig::GenericStoreTransformInfoObjectConfig ();
 
 1;
 

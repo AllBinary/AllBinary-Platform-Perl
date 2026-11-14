@@ -17,27 +17,28 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
-our $logging = 'org::allbinary::util::BasicArrayListD'->new();
-our $GRAPHICSPAINT = 'org::allbinary::log::LOGGING'->new("Graphics Paint");
-our $GRAPHICSCREATION = 'org::allbinary::log::LOGGING'->new("Graphics Creation");
-our $GRAPHICSDELETION = 'org::allbinary::log::LOGGING'->new("Graphics Deletion");
-our $LOADINGERROR = 'org::allbinary::log::LOGGING'->new("Loading Error");
-our $MENUEVENT = 'org::allbinary::log::LOGGING'->new("Menu Action Event");
-our $MOUSEEVENT = 'org::allbinary::log::LOGGING'->new("Mouse Action Event");
-our $KEYEVENT = 'org::allbinary::log::LOGGING'->new("Keyboard Action Event");
-our $ACTIONEVENT = 'org::allbinary::log::LOGGING'->new("Action Event");
-our $ADJUSTMENTEVENT = 'org::allbinary::log::LOGGING'->new("Adjustment Action Event");
-our $COMPONENTEVENT = 'org::allbinary::log::LOGGING'->new("Component Action Event");
-our $CONTAINEREVENT = 'org::allbinary::log::LOGGING'->new("Container Action Event");
-our $FOCUSEVENT = 'org::allbinary::log::LOGGING'->new("Focus Action Event");
-our $HIERARCHYEVENT = 'org::allbinary::log::LOGGING'->new("Hierarchy Action Event");
-our $INPUTEVENT = 'org::allbinary::log::LOGGING'->new("Input Action Event");
-our $INVOCATIONEVENT = 'org::allbinary::log::LOGGING'->new("Invocation Action Event");
-our $ITEMEVENT = 'org::allbinary::log::LOGGING'->new("Item Action Event");
-our $PAINTEVENT = 'org::allbinary::log::LOGGING'->new("Paint Action Event");
-our $TEXTEVENT = 'org::allbinary::log::LOGGING'->new("Text Action Event");
-our $WINDOWEVENT = 'org::allbinary::log::LOGGING'->new("Window Action Event");
+tie our $logging, 'java::lang::LazyStatic', sub { 'org::allbinary::util::BasicArrayListD'->new() };
+tie our $GRAPHICSPAINT, 'java::lang::LazyStatic', sub { 'org::allbinary::log::LOGGING'->new("Graphics Paint") };
+tie our $GRAPHICSCREATION, 'java::lang::LazyStatic', sub { 'org::allbinary::log::LOGGING'->new("Graphics Creation") };
+tie our $GRAPHICSDELETION, 'java::lang::LazyStatic', sub { 'org::allbinary::log::LOGGING'->new("Graphics Deletion") };
+tie our $LOADINGERROR, 'java::lang::LazyStatic', sub { 'org::allbinary::log::LOGGING'->new("Loading Error") };
+tie our $MENUEVENT, 'java::lang::LazyStatic', sub { 'org::allbinary::log::LOGGING'->new("Menu Action Event") };
+tie our $MOUSEEVENT, 'java::lang::LazyStatic', sub { 'org::allbinary::log::LOGGING'->new("Mouse Action Event") };
+tie our $KEYEVENT, 'java::lang::LazyStatic', sub { 'org::allbinary::log::LOGGING'->new("Keyboard Action Event") };
+tie our $ACTIONEVENT, 'java::lang::LazyStatic', sub { 'org::allbinary::log::LOGGING'->new("Action Event") };
+tie our $ADJUSTMENTEVENT, 'java::lang::LazyStatic', sub { 'org::allbinary::log::LOGGING'->new("Adjustment Action Event") };
+tie our $COMPONENTEVENT, 'java::lang::LazyStatic', sub { 'org::allbinary::log::LOGGING'->new("Component Action Event") };
+tie our $CONTAINEREVENT, 'java::lang::LazyStatic', sub { 'org::allbinary::log::LOGGING'->new("Container Action Event") };
+tie our $FOCUSEVENT, 'java::lang::LazyStatic', sub { 'org::allbinary::log::LOGGING'->new("Focus Action Event") };
+tie our $HIERARCHYEVENT, 'java::lang::LazyStatic', sub { 'org::allbinary::log::LOGGING'->new("Hierarchy Action Event") };
+tie our $INPUTEVENT, 'java::lang::LazyStatic', sub { 'org::allbinary::log::LOGGING'->new("Input Action Event") };
+tie our $INVOCATIONEVENT, 'java::lang::LazyStatic', sub { 'org::allbinary::log::LOGGING'->new("Invocation Action Event") };
+tie our $ITEMEVENT, 'java::lang::LazyStatic', sub { 'org::allbinary::log::LOGGING'->new("Item Action Event") };
+tie our $PAINTEVENT, 'java::lang::LazyStatic', sub { 'org::allbinary::log::LOGGING'->new("Paint Action Event") };
+tie our $TEXTEVENT, 'java::lang::LazyStatic', sub { 'org::allbinary::log::LOGGING'->new("Text Action Event") };
+tie our $WINDOWEVENT, 'java::lang::LazyStatic', sub { 'org::allbinary::log::LOGGING'->new("Window Action Event") };
 
 sub _init_fields {
     my ($self) = @_;
@@ -48,7 +49,7 @@ sub _init_fields {
 sub new {
     my ($class, $value) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
         $self->{name} = $value;
         $org::allbinary::log::LOGGING::logging->add($value);
     return $self;
@@ -66,9 +67,11 @@ sub toString {
         return $self->{name};
 }
 
-use org::allbinary::util::BasicArrayList;
-use org::allbinary::util::BasicArrayListD;
-use org::allbinary::logic::StdUtil;
+use java::lang::Object ();
+use java::lang::LazyStatic ();
+use org::allbinary::util::BasicArrayList ();
+use org::allbinary::util::BasicArrayListD ();
+use org::allbinary::logic::StdUtil ();
 
 1;
 

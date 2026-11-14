@@ -37,7 +37,7 @@ sub new {
 sub _new1 {
     my ($class, $categoryFactoryInterface) = @_;
     my $self = $class->SUPER::new('org::allbinary::business::init::db::InventoryDbInitInfo'->new());
-    $self->_init_fields();
+    _init_fields($self);
         # super(...) made $self above
         $self->setTableName($self->{tableName});
     return $self;
@@ -47,7 +47,7 @@ sub _new1 {
 sub _new0 {
     my ($class) = @_;
     my $self = $class->SUPER::new('org::allbinary::business::init::db::InventoryDbInitInfo'->new());
-    $self->_init_fields();
+    _init_fields($self);
         # super(...) made $self above
         $self->setTableName($self->{tableName});
     return $self;
@@ -122,18 +122,26 @@ sub dropTable {
         return $self->SUPER::dropTable();
 }
 
-use java::util::HashMap;
-use org::allbinary::util::BasicArrayList;
-use org::allbinary::util::BasicArrayListD;
-use org::allbinary::business::category::Category;
-use org::allbinary::business::category::CategoryData;
-use org::allbinary::business::category::CategoryFactoryInterface;
-use org::allbinary::business::init::db::InventoryDbInitInfo;
-use org::allbinary::logic::StdUtil;
-use org::allbinary::logic::communication::log::LogUtil;
-use org::allbinary::logic::communication::sql::AbSqlBean;
-use org::allbinary::logic::string::StringMaker;
-use org::allbinary::data::tables::category::CategoryEntityInterface;
+
+# Java overloaded method: Perl keeps the last definition
+sub insert {
+    my ($self, $values) = @_;
+        $self->SUPER::insert($values);
+}
+
+use java::lang::Object ();
+use java::util::HashMap ();
+use org::allbinary::util::BasicArrayList ();
+use org::allbinary::util::BasicArrayListD ();
+use org::allbinary::business::category::Category ();
+use org::allbinary::business::category::CategoryData ();
+use org::allbinary::business::category::CategoryFactoryInterface ();
+use org::allbinary::business::init::db::InventoryDbInitInfo ();
+use org::allbinary::logic::StdUtil ();
+use org::allbinary::logic::communication::log::LogUtil ();
+use org::allbinary::logic::communication::sql::AbSqlBean ();
+use org::allbinary::logic::string::StringMaker ();
+use org::allbinary::data::tables::category::CategoryEntityInterface ();
 
 1;
 

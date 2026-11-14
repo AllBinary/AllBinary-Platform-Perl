@@ -25,8 +25,8 @@ sub _init_fields {
     $self->{logUtil} = 'org::allbinary::logic::communication::log::LogUtil'->getInstance();
     $self->{basicArrayListUtil} = 'org::allbinary::util::BasicArrayListUtil'->getInstance();
     $self->{mathUtil} = 'org::allbinary::logic::math::MathUtil'->getInstance();
-    $self->{openPriorityQueue} = 'java::util::PriorityQueue'->new();
-    $self->{closedSet} = 'java::util::HashSet'->new();
+    $self->{openPriorityQueue} = 'org::allbinary::util::ABPriorityQueue'->new();
+    $self->{closedSet} = 'org::allbinary::util::ABHashSet'->new();
     $self->{geographicMapInterface} = 'org::allbinary::logic::NullUtil'->getInstance()->{NULL_OBJECT};
     $self->{costArray} = $org::allbinary::media::graphics::geography::pathfinding::PathFindingNodeCost::NULL_PATH_FINDING_NODE_COST_ARRAY_ARRAY;
 }
@@ -34,7 +34,7 @@ sub _init_fields {
 sub new {
     my ($class) = @_;
     my $self = $class->SUPER::new();
-    $self->_init_fields();
+    _init_fields($self);
     return $self;
 }
 
@@ -266,24 +266,25 @@ sub extractPath {
         return $path;
 }
 
-# use java::util::HashSet;
-# use java::util::PriorityQueue;
-use org::allbinary::game::layer::AllBinaryTiledLayer;
-use org::allbinary::logic::NullUtil;
-use org::allbinary::logic::communication::log::LogUtil;
-use org::allbinary::logic::math::MathUtil;
-use org::allbinary::string::CommonStrings;
-use org::allbinary::media::graphics::geography::map::BasicGeographicMap;
-use org::allbinary::media::graphics::geography::map::BasicGeographicMapCellPositionFactory;
-use org::allbinary::media::graphics::geography::map::GeographicMapCellPosition;
-use org::allbinary::media::graphics::geography::map::GeographicMapCellType;
-use org::allbinary::media::graphics::geography::map::racetrack::RaceTrackGeographicMapCellType;
-use org::allbinary::util::BasicArrayList;
-use org::allbinary::util::BasicArrayListD;
-use org::allbinary::util::BasicArrayListUtil;
-use org::allbinary::media::graphics::geography::pathfinding::GeographicPathFinderBase;
-use org::allbinary::media::graphics::geography::pathfinding::PathFindingNodeCost;
-use org::allbinary::media::graphics::geography::pathfinding::PathFindingNodeCostInfo;
+use java::lang::Object ();
+use org::allbinary::game::layer::AllBinaryTiledLayer ();
+use org::allbinary::logic::NullUtil ();
+use org::allbinary::logic::communication::log::LogUtil ();
+use org::allbinary::logic::math::MathUtil ();
+use org::allbinary::string::CommonStrings ();
+use org::allbinary::media::graphics::geography::map::BasicGeographicMap ();
+use org::allbinary::media::graphics::geography::map::BasicGeographicMapCellPositionFactory ();
+use org::allbinary::media::graphics::geography::map::GeographicMapCellPosition ();
+use org::allbinary::media::graphics::geography::map::GeographicMapCellType ();
+use org::allbinary::media::graphics::geography::map::racetrack::RaceTrackGeographicMapCellType ();
+use org::allbinary::util::ABHashSet ();
+use org::allbinary::util::ABPriorityQueue ();
+use org::allbinary::util::BasicArrayList ();
+use org::allbinary::util::BasicArrayListD ();
+use org::allbinary::util::BasicArrayListUtil ();
+use org::allbinary::media::graphics::geography::pathfinding::GeographicPathFinderBase ();
+use org::allbinary::media::graphics::geography::pathfinding::PathFindingNodeCost ();
+use org::allbinary::media::graphics::geography::pathfinding::PathFindingNodeCostInfo ();
 
 1;
 

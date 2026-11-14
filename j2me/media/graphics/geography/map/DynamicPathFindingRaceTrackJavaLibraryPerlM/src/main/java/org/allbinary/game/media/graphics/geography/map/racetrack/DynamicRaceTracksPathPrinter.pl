@@ -28,7 +28,7 @@ sub _init_fields {
 sub new {
     my ($class) = @_;
     my $self = $class->SUPER::new();
-    $self->_init_fields();
+    _init_fields($self);
     return $self;
 }
 
@@ -48,17 +48,18 @@ sub printAllPaths {
         }
 }
 
-use org::allbinary::util::BasicArrayList;
-use org::allbinary::string::CommonStrings;
-use org::allbinary::logic::communication::log::LogUtil;
-use org::allbinary::logic::math::SmallIntegerSingletonFactory;
-use org::allbinary::media::graphics::geography::map::BasicGeographicMap;
-use org::allbinary::media::graphics::geography::map::racetrack::RaceTrackGeographicMapInterfaceFactoryInterface;
-use org::allbinary::media::graphics::geography::map::racetrack::RaceTrackRoadsGeographicMapCellHistoryFactory;
-use org::allbinary::media::graphics::geography::map::racetrack::RaceTracksPathPrinter;
-use org::allbinary::media::graphics::geography::pathfinding::PathFindingInfo;
-use org::allbinary::media::graphics::geography::pathfinding::PathGenerator;
-use java::lang::System;
+use java::lang::Object ();
+use org::allbinary::util::BasicArrayList ();
+use org::allbinary::string::CommonStrings ();
+use org::allbinary::logic::communication::log::LogUtil ();
+use org::allbinary::logic::math::SmallIntegerSingletonFactory ();
+use org::allbinary::media::graphics::geography::map::BasicGeographicMap ();
+use org::allbinary::media::graphics::geography::map::racetrack::RaceTrackGeographicMapInterfaceFactoryInterface ();
+use org::allbinary::media::graphics::geography::map::racetrack::RaceTrackRoadsGeographicMapCellHistoryFactory ();
+use org::allbinary::media::graphics::geography::map::racetrack::RaceTracksPathPrinter ();
+use org::allbinary::media::graphics::geography::pathfinding::PathFindingInfo ();
+use org::allbinary::media::graphics::geography::pathfinding::PathGenerator ();
+use java::lang::System ();
 
 1;
 

@@ -17,8 +17,9 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
-our $instance = 'org::allbinary::logic::java::help::JavaHelpUtil'->new();
+tie our $instance, 'java::lang::LazyStatic', sub { 'org::allbinary::logic::java::help::JavaHelpUtil'->new() };
 
 sub _init_fields {
     my ($self) = @_;
@@ -39,7 +40,7 @@ sub getInstance {
 sub new {
     my ($class) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
     return $self;
 }
 
@@ -92,20 +93,22 @@ sub main {
         }
 }
 
-# use java::awt;
-# use java::awt::event::ActionEvent;
-use java::io::File;
-# use java::net::URI;
-# use java::net::URL;
-# use javax::help::CSH;
-# use javax::help::HelpBroker;
-# use javax::help::HelpSet;
-# use javax::swing;
-use org::allbinary::logic::communication::log::LogUtil;
-use org::allbinary::string::CommonStrings;
-use org::allbinary::logic::java::help::Point;
-use org::allbinary::logic::java::help::Dimension;
-use org::allbinary::logic::java::help::JLabel;
+use java::lang::Object ();
+use java::lang::LazyStatic ();
+# use java::awt ();
+# use java::awt::event::ActionEvent ();
+use java::io::File ();
+# use java::net::URI ();
+# use java::net::URL ();
+# use javax::help::CSH ();
+# use javax::help::HelpBroker ();
+# use javax::help::HelpSet ();
+# use javax::swing ();
+use org::allbinary::logic::communication::log::LogUtil ();
+use org::allbinary::string::CommonStrings ();
+use org::allbinary::logic::java::help::Point ();
+use org::allbinary::logic::java::help::Dimension ();
+use org::allbinary::logic::java::help::JLabel ();
 
 1;
 

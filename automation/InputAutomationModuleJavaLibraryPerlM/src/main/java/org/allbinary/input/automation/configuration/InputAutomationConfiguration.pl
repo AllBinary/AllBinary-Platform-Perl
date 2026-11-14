@@ -18,6 +18,7 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
 our $FILENAME = "InputAutomationConfig.xml";
 
@@ -32,7 +33,7 @@ sub _init_fields {
 sub new {
     my ($class) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
     return $self;
 }
 
@@ -75,24 +76,25 @@ sub save {
         'org::allbinary::data::tree::dom::document::DomDocumentFileHelper'->save('org::allbinary::logic::io::file::FileWrapperUtil'->wrapFile($file), $document);
 }
 
-use java::io::File;
-# use java::util::List;
-# use javax::xml::bind::JAXBContext;
-# use javax::xml::bind::Marshaller;
-# use javax::xml::bind::annotation::XmlAccessType;
-# use javax::xml::bind::annotation::XmlAccessorType;
-# use javax::xml::bind::annotation::XmlElement;
-# use javax::xml::bind::annotation::XmlRootElement;
-# use javax::xml::bind::annotation::XmlType;
-use org::allbinary::data::tree::dom::document::DomDocumentFileHelper;
-use org::allbinary::data::tree::dom::document::DomDocumentHelper;
-use org::allbinary::input::automation::module::configuration::InputAutomationModuleConfiguration;
-use org::allbinary::logic::communication::log::LogUtil;
-use org::allbinary::logic::io::file::FileUtil;
-use org::allbinary::logic::io::file::FileWrapperUtil;
-use org::allbinary::logic::io::path::AbPath;
-use org::allbinary::logic::string::StringUtil;
-use org::w3c::dom::Document;
+use java::lang::Object ();
+use java::io::File ();
+# use java::util::List ();
+# use javax::xml::bind::JAXBContext ();
+# use javax::xml::bind::Marshaller ();
+# use javax::xml::bind::annotation::XmlAccessType ();
+# use javax::xml::bind::annotation::XmlAccessorType ();
+# use javax::xml::bind::annotation::XmlElement ();
+# use javax::xml::bind::annotation::XmlRootElement ();
+# use javax::xml::bind::annotation::XmlType ();
+use org::allbinary::data::tree::dom::document::DomDocumentFileHelper ();
+use org::allbinary::data::tree::dom::document::DomDocumentHelper ();
+use org::allbinary::input::automation::module::configuration::InputAutomationModuleConfiguration ();
+use org::allbinary::logic::communication::log::LogUtil ();
+use org::allbinary::logic::io::file::FileUtil ();
+use org::allbinary::logic::io::file::FileWrapperUtil ();
+use org::allbinary::logic::io::path::AbPath ();
+use org::allbinary::logic::string::StringUtil ();
+use org::w3c::dom::Document ();
 
 1;
 

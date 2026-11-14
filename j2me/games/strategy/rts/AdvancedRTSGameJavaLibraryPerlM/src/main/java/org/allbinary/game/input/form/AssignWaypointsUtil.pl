@@ -17,8 +17,9 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
-our $instance = 'org::allbinary::game::input::form::AssignWaypointsUtil'->new();
+tie our $instance, 'java::lang::LazyStatic', sub { 'org::allbinary::game::input::form::AssignWaypointsUtil'->new() };
 
 sub _init_fields {
     my ($self) = @_;
@@ -29,7 +30,7 @@ sub _init_fields {
 sub new {
     my ($class) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
     return $self;
 }
 
@@ -61,17 +62,19 @@ sub set {
         }
 }
 
-use org::allbinary::game::layer::AdvancedRTSGameLayer;
-use org::allbinary::game::layer::NullPathFindingLayer;
-use org::allbinary::game::layer::PathFindingLayerInterface;
-use org::allbinary::game::layer::RTSLayer;
-use org::allbinary::game::layer::RTSLayerEvent;
-use org::allbinary::game::layer::unit::UnitLayer;
-use org::allbinary::game::layer::unit::UnitWaypointBehavior;
-use org::allbinary::util::BasicArrayList;
-use org::allbinary::string::CommonStrings;
-use org::allbinary::logic::communication::log::LogUtil;
-use org::allbinary::game::input::form::PrimaryWaypointHelper;
+use java::lang::Object ();
+use java::lang::LazyStatic ();
+use org::allbinary::game::layer::AdvancedRTSGameLayer ();
+use org::allbinary::game::layer::NullPathFindingLayer ();
+use org::allbinary::game::layer::PathFindingLayerInterface ();
+use org::allbinary::game::layer::RTSLayer ();
+use org::allbinary::game::layer::RTSLayerEvent ();
+use org::allbinary::game::layer::unit::UnitLayer ();
+use org::allbinary::game::layer::unit::UnitWaypointBehavior ();
+use org::allbinary::util::BasicArrayList ();
+use org::allbinary::string::CommonStrings ();
+use org::allbinary::logic::communication::log::LogUtil ();
+use org::allbinary::game::input::form::PrimaryWaypointHelper ();
 
 1;
 

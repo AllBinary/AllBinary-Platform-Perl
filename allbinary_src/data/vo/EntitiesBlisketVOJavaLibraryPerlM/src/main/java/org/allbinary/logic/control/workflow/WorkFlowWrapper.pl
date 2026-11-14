@@ -17,7 +17,7 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
-use parent -norequire,'org::allbinary::logic::control::workflow::WorkFlowInterface';
+use parent -norequire,'java::lang::Object','org::allbinary::logic::control::workflow::WorkFlowInterface';
 
 
 sub _init_fields {
@@ -31,7 +31,7 @@ sub _init_fields {
 sub new {
     my ($class, $anyType) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
         $self->{anyType} = $anyType;
     return $self;
 }
@@ -96,10 +96,11 @@ sub process {
         }
 }
 
-# use java::lang::reflect::Method;
-use org::allbinary::logic::communication::log::LogUtil;
-use org::allbinary::string::CommonStrings;
-use org::allbinary::logic::control::workflow::WorkFlowInterface;
+use java::lang::Object ();
+# use java::lang::reflect::Method ();
+use org::allbinary::logic::communication::log::LogUtil ();
+use org::allbinary::string::CommonStrings ();
+use org::allbinary::logic::control::workflow::WorkFlowInterface ();
 
 1;
 

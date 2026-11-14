@@ -19,7 +19,7 @@ use feature 'try';
 no warnings 'experimental::try';
 use parent -norequire,'org::allbinary::input::automation::module::osgi::InputAutomationModuleServiceFactory';
 
-our $inputAutomationGenericModuleServiceFactory = 'org::allbinary::input::automation::module::generic::InputAutomationGenericModuleServiceFactory'->new();
+tie our $inputAutomationGenericModuleServiceFactory, 'java::lang::LazyStatic', sub { 'org::allbinary::input::automation::module::generic::InputAutomationGenericModuleServiceFactory'->new() };
 
 sub _init_fields {
     my ($self) = @_;
@@ -30,7 +30,7 @@ sub _init_fields {
 sub new {
     my ($class) = @_;
     my $self = $class->SUPER::new();
-    $self->_init_fields();
+    _init_fields($self);
         try {
             my $inputAutomationModuleInterfaceArray = [(undef) x (1)];
             $inputAutomationModuleInterfaceArray->[0] = 'org::allbinary::input::automation::module::generic::GenericModuleFactory'->new();
@@ -47,10 +47,12 @@ sub getInstance {
         return $org::allbinary::input::automation::module::generic::InputAutomationGenericModuleServiceFactory::inputAutomationGenericModuleServiceFactory;
 }
 
-use org::allbinary::input::automation::module::InputAutomationModuleFactoryInterface;
-use org::allbinary::input::automation::module::osgi::InputAutomationModuleServiceFactory;
-use org::allbinary::logic::communication::log::LogUtil;
-use org::allbinary::input::automation::module::generic::GenericModuleFactory;
+use java::lang::Object ();
+use java::lang::LazyStatic ();
+use org::allbinary::input::automation::module::InputAutomationModuleFactoryInterface ();
+use org::allbinary::input::automation::module::osgi::InputAutomationModuleServiceFactory ();
+use org::allbinary::logic::communication::log::LogUtil ();
+use org::allbinary::input::automation::module::generic::GenericModuleFactory ();
 
 1;
 

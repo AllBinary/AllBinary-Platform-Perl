@@ -27,7 +27,7 @@ sub onMotionGestureCompleted {
     die "abstract method onMotionGestureCompleted";
 }
 
-use org::allbinary::util::BasicArrayList;
+use org::allbinary::util::BasicArrayList ();
 
 1;
 

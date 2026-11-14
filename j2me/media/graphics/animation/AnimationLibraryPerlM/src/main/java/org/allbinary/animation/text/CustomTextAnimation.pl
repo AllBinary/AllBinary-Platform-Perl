@@ -34,7 +34,7 @@ sub _init_fields {
 sub new {
     my ($class, $text, $fontSize, $animationBehavior) = @_;
     my $self = $class->SUPER::new($text, $animationBehavior);
-    $self->_init_fields();
+    _init_fields($self);
         # super(...) made $self above
         $self->{fontSize} = $fontSize;
         $self->{font} = 'javax::microedition::lcdui::Font'->getFont($javax::microedition::lcdui::Font::FACE_SYSTEM, $javax::microedition::lcdui::Font::STYLE_PLAIN, $fontSize);
@@ -59,6 +59,12 @@ sub setScale {
         }
         $self->{hasChanged} = 1;
         $self->{font} = 'javax::microedition::lcdui::Font'->getFont($javax::microedition::lcdui::Font::FACE_SYSTEM, $javax::microedition::lcdui::Font::STYLE_PLAIN, int(($self->{fontSize} * $scaleX)));
+}
+
+
+sub setTextWithOnMeasure {
+    my ($self, $text, $textChangeListener) = @_;
+        $self->SUPER::setTextWithOnMeasure($text, $textChangeListener);
 }
 
 
@@ -93,13 +99,14 @@ sub getFontHeight {
         return $self->{font}->getHeight();
 }
 
-# use javax::microedition::lcdui::Font;
-# use javax::microedition::lcdui::Graphics;
-use org::allbinary::animation::AnimationBehavior;
-use org::allbinary::graphics::font::FontDebugFactory;
-use org::allbinary::logic::string::StringUtil;
-use org::allbinary::animation::text::TextAnimation;
-use org::allbinary::animation::text::TextInterface;
+use java::lang::Object ();
+use javax::microedition::lcdui::Font ();
+use javax::microedition::lcdui::Graphics ();
+use org::allbinary::animation::AnimationBehavior ();
+use org::allbinary::graphics::font::FontDebugFactory ();
+use org::allbinary::logic::string::StringUtil ();
+use org::allbinary::animation::text::TextAnimation ();
+use org::allbinary::animation::text::TextInterface ();
 
 1;
 

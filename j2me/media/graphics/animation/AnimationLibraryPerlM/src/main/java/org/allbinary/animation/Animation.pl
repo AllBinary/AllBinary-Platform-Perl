@@ -17,7 +17,7 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
-use parent -norequire,'org::allbinary::animation::AnimationInterface','org::allbinary::image::opengles::OpenGLSurfaceChangedInterface';
+use parent -norequire,'java::lang::Object','org::allbinary::animation::AnimationInterface','org::allbinary::image::opengles::OpenGLSurfaceChangedInterface';
 
 
 sub _init_fields {
@@ -34,7 +34,7 @@ sub _init_fields {
 sub new {
     my ($class) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
     return $self;
 }
 
@@ -148,13 +148,14 @@ sub getDy {
         return 0;
 }
 
-# use javax::microedition::khronos::opengles::GL;
-# use javax::microedition::lcdui::Graphics;
-use org::allbinary::graphics::color::BasicColor;
-use org::allbinary::graphics::color::BasicColorFactory;
-use org::allbinary::graphics::color::BasicColorSetUtil;
-use org::allbinary::image::opengles::OpenGLSurfaceChangedInterface;
-use org::allbinary::animation::AnimationInterface;
+use java::lang::Object ();
+use javax::microedition::khronos::opengles::GL ();
+use javax::microedition::lcdui::Graphics ();
+use org::allbinary::graphics::color::BasicColor ();
+use org::allbinary::graphics::color::BasicColorFactory ();
+use org::allbinary::graphics::color::BasicColorSetUtil ();
+use org::allbinary::image::opengles::OpenGLSurfaceChangedInterface ();
+use org::allbinary::animation::AnimationInterface ();
 
 1;
 

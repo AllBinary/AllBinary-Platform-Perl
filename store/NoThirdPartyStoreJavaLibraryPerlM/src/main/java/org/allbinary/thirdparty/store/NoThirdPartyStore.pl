@@ -34,9 +34,10 @@ sub authorize {
         $self->setAuthorized(1);
 }
 
-use org::allbinary::logic::string::StringUtil;
-use org::allbinary::logic::system::security::licensing::AbeClientInformationInterface;
-use org::allbinary::thirdparty::store::ThirdPartyStore;
+use java::lang::Object ();
+use org::allbinary::logic::string::StringUtil ();
+use org::allbinary::logic::system::security::licensing::AbeClientInformationInterface ();
+use org::allbinary::thirdparty::store::ThirdPartyStore ();
 
 1;
 

@@ -39,7 +39,7 @@ sub getSelectedHighScores {
     die "abstract method getSelectedHighScores";
 }
 
-use org::allbinary::game::score::HighScoresResultsListener;
+use org::allbinary::game::score::HighScoresResultsListener ();
 
 1;
 

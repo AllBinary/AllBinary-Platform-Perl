@@ -17,6 +17,7 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
 
 sub _init_fields {
@@ -30,7 +31,7 @@ sub _init_fields {
 sub new {
     my ($class, $imageAbPath, $imageFile) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
         $self->{fileName} = $imageFile;
         $self->{imageFileAbPath} = $imageAbPath;
     return $self;
@@ -51,12 +52,13 @@ sub saveFiles {
         'org::allbinary::logic::io::file::FileUtil'->getInstance()->write('java::io::ByteArrayInputStream'->new($fileItem->get()), $originalImageFile);
 }
 
-# use java::io::ByteArrayInputStream;
-use org::allbinary::logic::io::file::AbFile;
-use org::allbinary::logic::io::file::FileUtil;
-use org::allbinary::logic::io::file::directory::Directory;
-use org::allbinary::logic::io::path::AbPath;
-use org::apache::commons::fileupload::FileItem;
+use java::lang::Object ();
+# use java::io::ByteArrayInputStream ();
+use org::allbinary::logic::io::file::AbFile ();
+use org::allbinary::logic::io::file::FileUtil ();
+use org::allbinary::logic::io::file::directory::Directory ();
+use org::allbinary::logic::io::path::AbPath ();
+use org::apache::commons::fileupload::FileItem ();
 
 1;
 

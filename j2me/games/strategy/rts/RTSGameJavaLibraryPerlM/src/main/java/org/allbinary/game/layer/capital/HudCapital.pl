@@ -29,7 +29,7 @@ sub _init_fields {
 sub new {
     my ($class, $moneyGraphic) = @_;
     my $self = $class->SUPER::new();
-    $self->_init_fields();
+    _init_fields($self);
         $self->{capitalGraphic} = $moneyGraphic;
     return $self;
 }
@@ -54,8 +54,9 @@ sub addMoney {
         $self->{capitalGraphic}->add($points);
 }
 
-use org::allbinary::game::ag::layer::hud::basic::NumberStringHud;
-use org::allbinary::game::layer::capital::Capital;
+use java::lang::Object ();
+use org::allbinary::game::ag::layer::hud::basic::NumberStringHud ();
+use org::allbinary::game::layer::capital::Capital ();
 
 1;
 

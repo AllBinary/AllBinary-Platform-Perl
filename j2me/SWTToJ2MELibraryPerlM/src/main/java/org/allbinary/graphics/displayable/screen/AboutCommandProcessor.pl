@@ -17,8 +17,9 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
-our $instance = 'org::allbinary::graphics::displayable::screen::AboutCommandProcessor'->new();
+tie our $instance, 'java::lang::LazyStatic', sub { 'org::allbinary::graphics::displayable::screen::AboutCommandProcessor'->new() };
 
 sub new {
     my ($class) = @_;
@@ -38,9 +39,11 @@ sub process {
         $midletCommandListener->commandAction($command, $canvas);
 }
 
-# use javax::microedition::lcdui::Canvas;
-# use javax::microedition::lcdui::Command;
-# use javax::microedition::lcdui::CommandListener;
+use java::lang::Object ();
+use java::lang::LazyStatic ();
+use javax::microedition::lcdui::Canvas ();
+use javax::microedition::lcdui::Command ();
+use javax::microedition::lcdui::CommandListener ();
 
 1;
 

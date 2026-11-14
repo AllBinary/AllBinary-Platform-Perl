@@ -34,9 +34,10 @@ sub process {
         $capitalEventListenerInterface->onCapitalChangeEvent($eventObject);
 }
 
-use org::allbinary::logic::util::event::AllBinaryEventObject;
-use org::allbinary::logic::util::event::EventListenerInterface;
-use org::allbinary::logic::util::event::handler::BasicEventHandler;
+use java::lang::Object ();
+use org::allbinary::logic::util::event::AllBinaryEventObject ();
+use org::allbinary::logic::util::event::EventListenerInterface ();
+use org::allbinary::logic::util::event::handler::BasicEventHandler ();
 
 1;
 

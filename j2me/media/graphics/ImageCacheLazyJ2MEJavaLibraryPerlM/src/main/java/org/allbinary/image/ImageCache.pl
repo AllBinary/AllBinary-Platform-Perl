@@ -20,7 +20,7 @@ no warnings 'experimental::try';
 use Time::HiRes ();
 use parent -norequire,'org::allbinary::image::ImageCacheBase';
 
-our $NULL_IMAGE_CACHE = 'org::allbinary::image::ImageCache'->new();
+tie our $NULL_IMAGE_CACHE, 'java::lang::LazyStatic', sub { 'org::allbinary::image::ImageCache'->new() };
 
 sub _init_fields {
     my ($self) = @_;
@@ -49,7 +49,7 @@ sub _init_fields {
 sub new {
     my ($class) = @_;
     my $self = $class->SUPER::new();
-    $self->_init_fields();
+    _init_fields($self);
     return $self;
 }
 
@@ -96,7 +96,7 @@ sub waitForLoadNow {
 sub loadImageForAnimation {
     my ($self) = @_;
         my $lazyImageRotationAnimation = undef;
-        { # synchronized ($self->{lock})
+        {; # synchronized ($self->{lock})
             if ($self->{loadNowList}->isEmpty()) {
                 $self->{endProcessor}->process();
                 if ($self->{loadSoonList}->isEmpty()) {
@@ -124,12 +124,12 @@ sub loadImageForAnimation {
             $lazyImageRotationAnimation = $self->{loadNowList}->get(0);
         }
         if ($self->loadImageForLazyAnimation($lazyImageRotationAnimation)) {
-            { # synchronized ($self->{lock})
+            {; # synchronized ($self->{lock})
                 $self->{loadNowList}->remove($lazyImageRotationAnimation);
             }
             if ($lazyImageRotationAnimation->{layoutIndex} != 0) {
                 my $list = $self->getAssociated($lazyImageRotationAnimation);
-                { # synchronized ($self->{lock})
+                {; # synchronized ($self->{lock})
                     my $size = $list->size();
                     if ($size > 0) {
                         $self->{loadSoonList}->addAllList($list);
@@ -176,7 +176,7 @@ sub loadRemainingAnimations {
                 $self->loadImageForAnimation();
             }
             my $lazyImageRotationAnimation = undef;
-            { # synchronized ($self->{lock})
+            {; # synchronized ($self->{lock})
                 if (!$self->{loadAfterList}->isEmpty()) {
                     $lazyImageRotationAnimation = $self->{loadAfterList}->removeAt(0);
                 }
@@ -204,7 +204,7 @@ sub loadImageForLazyAnimation {
 sub loadNextImage {
     my ($self) = @_;
         my $image = undef;
-        { # synchronized ($self->{lock})
+        {; # synchronized ($self->{lock})
             if ($self->{loadList}->size() == 0) {
                 return;
             }
@@ -339,7 +339,7 @@ sub createImageFromInputStream {
         my $width = $gdLazyResources->{imageResourceWidthArray}->[$index];
         my $height = $gdLazyResources->{imageResourceHeightArray}->[$index];
         my $image = $self->createImageLater($key, $width, $height);
-        { # synchronized ($self->{lock})
+        {; # synchronized ($self->{lock})
             $self->{loadList}->add($image);
         }
         return $image;
@@ -356,7 +356,7 @@ sub createImageLater {
 sub getAssociated {
     my ($self, $lazyImageRotationAnimation) = @_;
         my $list = 'org::allbinary::util::BasicArrayListD'->new();
-        { # synchronized ($self->{lock})
+        {; # synchronized ($self->{lock})
             my $lazyImageRotationAnimation2 = undef;
             my $size = $self->{loadAfterList}->size();
             for (my $index = 0; $index < $size; $index++) {
@@ -376,7 +376,7 @@ sub getAssociated {
 
 sub add {
     my ($self, $lazyImageRotationAnimation) = @_;
-        { # synchronized ($self->{lock})
+        {; # synchronized ($self->{lock})
             $self->{loadAfterList}->add($lazyImageRotationAnimation);
         }
 }
@@ -387,7 +387,7 @@ sub insertFirst {
     my ($self, $lazyImageRotationAnimation) = @_;
         if ($self->{loadNowList}->contains($lazyImageRotationAnimation)) {
         } else {
-            { # synchronized ($self->{lock})
+            {; # synchronized ($self->{lock})
                 $self->{loadNowList}->add($lazyImageRotationAnimation);
                 $self->{loadAfterList}->remove($lazyImageRotationAnimation);
             }
@@ -523,36 +523,38 @@ sub isLazy {
     }
 
 
-# use java::io::InputStream;
-# use javax::microedition::lcdui::Image;
-# use javax::microedition::lcdui::NullImage;
-use org::allbinary::J2MEUtil;
-use org::allbinary::TsUtil;
-use org::allbinary::animation::image::LazyImageRotationAnimation;
-use org::allbinary::canvas::GameGlobalsFactory;
-use org::allbinary::canvas::Processor;
-use org::allbinary::logic::communication::log::LogUtil;
-use org::allbinary::string::CommonStrings;
-use org::allbinary::logic::string::StringMaker;
-use org::allbinary::data::resource::ResourceUtil;
-use org::allbinary::game::canvas::ABToGBUtil;
-use org::allbinary::game::displayable::canvas::AllBinaryGameCanvas;
-use org::allbinary::game::gd::resource::GDLazyResources;
-use org::allbinary::game::gd::resource::GDResources;
-use org::allbinary::graphics::canvas::transition::progress::ProgressCanvas;
-use org::allbinary::graphics::canvas::transition::progress::ProgressCanvasFactory;
-use org::allbinary::string::CommonSeps;
-use org::allbinary::logic::string::StringUtil;
-use org::allbinary::system::Memory;
-use org::allbinary::thread::BaseImageLoadingProcessor;
-use org::allbinary::thread::ConcurrentImageLoadingProcessor;
-use org::allbinary::thread::SynchObject;
-use org::allbinary::util::BasicArrayList;
-use org::allbinary::util::BasicArrayListD;
-use org::allbinary::logic::ABSystemWrapper;
-use org::allbinary::image::ImageCacheBase;
-use java::lang::Thread;
-use org::allbinary::image::ImageFactory;
+use java::lang::Object ();
+use java::lang::LazyStatic ();
+# use java::io::InputStream ();
+use javax::microedition::lcdui::Image ();
+use javax::microedition::lcdui::NullImage ();
+use org::allbinary::J2MEUtil ();
+use org::allbinary::TsUtil ();
+use org::allbinary::animation::image::LazyImageRotationAnimation ();
+use org::allbinary::canvas::GameGlobalsFactory ();
+use org::allbinary::canvas::Processor ();
+use org::allbinary::logic::communication::log::LogUtil ();
+use org::allbinary::string::CommonStrings ();
+use org::allbinary::logic::string::StringMaker ();
+use org::allbinary::data::resource::ResourceUtil ();
+use org::allbinary::game::canvas::ABToGBUtil ();
+use org::allbinary::game::displayable::canvas::AllBinaryGameCanvas ();
+use org::allbinary::game::gd::resource::GDLazyResources ();
+use org::allbinary::game::gd::resource::GDResources ();
+use org::allbinary::graphics::canvas::transition::progress::ProgressCanvas ();
+use org::allbinary::graphics::canvas::transition::progress::ProgressCanvasFactory ();
+use org::allbinary::string::CommonSeps ();
+use org::allbinary::logic::string::StringUtil ();
+use org::allbinary::system::Memory ();
+use org::allbinary::thread::BaseImageLoadingProcessor ();
+use org::allbinary::thread::ConcurrentImageLoadingProcessor ();
+use org::allbinary::thread::SynchObject ();
+use org::allbinary::util::BasicArrayList ();
+use org::allbinary::util::BasicArrayListD ();
+use org::allbinary::logic::ABSystemWrapper ();
+use org::allbinary::image::ImageCacheBase ();
+use java::lang::Thread ();
+use org::allbinary::image::ImageFactory ();
 
 1;
 

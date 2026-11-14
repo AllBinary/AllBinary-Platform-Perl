@@ -17,6 +17,7 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
 
 sub new {
@@ -33,12 +34,14 @@ sub init {
         my $licenseInitInfoUtil = 'org::allbinary::business::init::LicenseInitInfoUtil'->getInstance();
         $resourceUtil->addResource($licenseInitInfoUtil->{INITFILENAME}, ("" . ($androidResources->{raw}->{licenseinitdata})));
         $resourceUtil->addResource('org::allbinary::logic::system::security::licensing::PartnerIdentifierFileUtil'->getInstance()->{FILE_NAME}, ("" . ($androidResources->{raw}->{partner})));
+        $resourceUtil->addResource($licenseInitInfoUtil->{ABOUT}, ("" . ($androidResources->{raw}->{about})));
 }
 
-use org::allbinary::business::init::LicenseInitInfoUtil;
-use org::allbinary::data::resource::ResourceUtil;
-use org::allbinary::logic::system::security::licensing::PartnerIdentifierFileUtil;
-use org::allbinary::AndroidResources;
+use java::lang::Object ();
+use org::allbinary::business::init::LicenseInitInfoUtil ();
+use org::allbinary::data::resource::ResourceUtil ();
+use org::allbinary::logic::system::security::licensing::PartnerIdentifierFileUtil ();
+use org::allbinary::AndroidResources ();
 
 1;
 

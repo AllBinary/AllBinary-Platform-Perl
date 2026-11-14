@@ -35,7 +35,7 @@ sub _init_fields {
 sub new {
     my ($class, $pathFindingLayer, $linePathAnimation) = @_;
     my $self = $class->SUPER::new();
-    $self->_init_fields();
+    _init_fields($self);
         $self->{pathFindingLayer} = $pathFindingLayer;
         $self->{linePathAnimation} = $linePathAnimation;
     return $self;
@@ -95,20 +95,21 @@ sub paintXY {
         }
 }
 
-# use javax::microedition::lcdui::Graphics;
-use org::allbinary::animation::Animation;
-use org::allbinary::graphics::GPoint;
-use org::allbinary::graphics::color::BasicColor;
-use org::allbinary::graphics::color::BasicColorFactory;
-use org::allbinary::graphics::displayable::CanvasStrings;
-use org::allbinary::logic::communication::log::LogUtil;
-use org::allbinary::media::graphics::geography::map::BasicGeographicMap;
-use org::allbinary::media::graphics::geography::map::GeographicMapCellHistory;
-use org::allbinary::media::graphics::geography::map::GeographicMapCellPosition;
-use org::allbinary::media::graphics::geography::map::GeographicMapCompositeInterface;
-use org::allbinary::media::graphics::geography::map::SimpleGeographicMapCellPositionFactory;
-use org::allbinary::util::BasicArrayList;
-use org::allbinary::game::layer::AllBinaryGameLayerManager;
+use java::lang::Object ();
+use javax::microedition::lcdui::Graphics ();
+use org::allbinary::animation::Animation ();
+use org::allbinary::graphics::GPoint ();
+use org::allbinary::graphics::color::BasicColor ();
+use org::allbinary::graphics::color::BasicColorFactory ();
+use org::allbinary::graphics::displayable::CanvasStrings ();
+use org::allbinary::logic::communication::log::LogUtil ();
+use org::allbinary::media::graphics::geography::map::BasicGeographicMap ();
+use org::allbinary::media::graphics::geography::map::GeographicMapCellHistory ();
+use org::allbinary::media::graphics::geography::map::GeographicMapCellPosition ();
+use org::allbinary::media::graphics::geography::map::GeographicMapCompositeInterface ();
+use org::allbinary::media::graphics::geography::map::SimpleGeographicMapCellPositionFactory ();
+use org::allbinary::util::BasicArrayList ();
+use org::allbinary::game::layer::AllBinaryGameLayerManager ();
 
 1;
 

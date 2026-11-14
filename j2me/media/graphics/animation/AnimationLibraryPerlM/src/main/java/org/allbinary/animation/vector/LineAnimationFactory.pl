@@ -17,7 +17,7 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
-use parent -norequire,'org::allbinary::animation::AnimationInterfaceFactoryInterface';
+use parent -norequire,'java::lang::Object','org::allbinary::animation::AnimationInterfaceFactoryInterface';
 
 
 sub _init_fields {
@@ -29,7 +29,7 @@ sub _init_fields {
 sub new {
     my ($class, $basicColor) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
         $self->{basicColor} = $basicColor;
     return $self;
 }
@@ -46,11 +46,12 @@ sub setInitialScale {
     my ($self, $scaleProperties) = @_;
 }
 
-use org::allbinary::animation::Animation;
-use org::allbinary::animation::AnimationInterfaceFactoryInterface;
-use org::allbinary::graphics::color::BasicColor;
-use org::allbinary::media::ScaleProperties;
-use org::allbinary::animation::vector::LineAnimation;
+use java::lang::Object ();
+use org::allbinary::animation::Animation ();
+use org::allbinary::animation::AnimationInterfaceFactoryInterface ();
+use org::allbinary::graphics::color::BasicColor ();
+use org::allbinary::media::ScaleProperties ();
+use org::allbinary::animation::vector::LineAnimation ();
 
 1;
 

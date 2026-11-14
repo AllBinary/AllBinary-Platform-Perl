@@ -17,8 +17,9 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
-our $instance = 'org::allbinary::media::graphics::geography::map::racetrack::CustomMapGeneratorBaseFactory'->new();
+tie our $instance, 'java::lang::LazyStatic', sub { 'org::allbinary::media::graphics::geography::map::racetrack::CustomMapGeneratorBaseFactory'->new() };
 
 
 sub getInstance {
@@ -40,7 +41,9 @@ sub create {
         return 'org::allbinary::media::graphics::geography::map::racetrack::CustomMapGeneratorBase'->new();
 }
 
-use org::allbinary::media::graphics::geography::map::racetrack::CustomMapGeneratorBase;
+use java::lang::Object ();
+use java::lang::LazyStatic ();
+use org::allbinary::media::graphics::geography::map::racetrack::CustomMapGeneratorBase ();
 
 1;
 

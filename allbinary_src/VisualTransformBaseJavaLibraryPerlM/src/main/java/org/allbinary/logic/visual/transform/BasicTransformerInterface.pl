@@ -58,10 +58,10 @@ sub translate {
     die "abstract method translate";
 }
 
-# use java::io::InputStream;
-# use javax::xml::transform::URIResolver;
-# use javax::xml::transform::stream::StreamSource;
-use org::allbinary::logic::visual::transform::info::CompositeTransformInfoInterface;
+# use java::io::InputStream ();
+# use javax::xml::transform::URIResolver ();
+# use javax::xml::transform::stream::StreamSource ();
+use org::allbinary::logic::visual::transform::info::CompositeTransformInfoInterface ();
 
 1;
 

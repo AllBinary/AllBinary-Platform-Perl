@@ -110,12 +110,12 @@ sub getType {
     die "abstract method getType";
 }
 
-# use javax::microedition::lcdui::CommandListener;
-# use javax::microedition::lcdui::ItemStateListener;
-use org::allbinary::game::state::GameStateCompositeInterface;
-use org::allbinary::graphics::paint::PaintableInterface;
-use org::allbinary::thread::RunnableInterface;
-use org::allbinary::util::ABHashtable;
+use javax::microedition::lcdui::CommandListener ();
+use javax::microedition::lcdui::ItemStateListener ();
+use org::allbinary::game::state::GameStateCompositeInterface ();
+use org::allbinary::graphics::paint::PaintableInterface ();
+use org::allbinary::thread::RunnableInterface ();
+use org::allbinary::util::ABHashtable ();
 
 1;
 

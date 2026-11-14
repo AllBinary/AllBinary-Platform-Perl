@@ -17,7 +17,7 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
-use parent -norequire,'javax::swing::JDialog';
+use parent -norequire,'java::lang::Object';
 
 
 sub _init_fields {
@@ -36,7 +36,7 @@ sub _init_fields {
 sub new {
     my ($class, $parent, $modal) = @_;
     my $self = $class->SUPER::new($parent, $modal);
-    $self->_init_fields();
+    _init_fields($self);
         # super(...) made $self above
         $self->initComponents();
     return $self;
@@ -58,7 +58,7 @@ sub initComponents {
         $self->{jLabel2}->setText("Total Angular Rotation:");
         $self->{jButton1}->setText("OK");
         $self->{jButton1}->addActionListener(do {
-            package java::awt::event::ActionListener::AnonymousN66510 { our @ISA = ('java::awt::event::ActionListener');
+            package java::awt::event::ActionListener::AnonymousN66510 { our @ISA = ('java::awt::event::ActionListener', 'java::lang::Object');
             
 
             sub actionPerformed {
@@ -97,14 +97,14 @@ sub jButton1ActionPerformed {
 sub main {
     my ($class, $args) = @_;
         $org::allbinary::graphics::j2me::dialog::java::awt->{EventQueue}->invokeLater(do {
-            package org::allbinary::thread::ARunnable::AnonymousN69204 { our @ISA = ('org::allbinary::thread::ARunnable');
+            package org::allbinary::thread::ARunnable::AnonymousN69204 { our @ISA = ('org::allbinary::thread::ARunnable', 'java::lang::Object');
             
 
             sub run {
                 my ($self) = @_;
                 my $dialog = 'org::allbinary::graphics::j2me::dialog::RotateJDialog'->new('javax::swing::JFrame'->new(), 1);
                 $dialog->addWindowListener(do {
-                    package java::awt::event::WindowAdapter::AnonymousN69319 { our @ISA = ('java::awt::event::WindowAdapter');
+                    package java::awt::event::WindowAdapter::AnonymousN69319 { our @ISA = ('java::awt::event::WindowAdapter', 'java::lang::Object');
                     
 
                     sub windowClosing {
@@ -121,13 +121,14 @@ sub main {
         });
 }
 
-use org::allbinary::thread::ARunnable;
-use java::util::HashMap;
-use org::allbinary::gui::dialog::HashMapJDialogListenerInterface;
-use org::allbinary::logic::StdUtil;
-use org::allbinary::logic::communication::log::LogUtil;
-use org::allbinary::string::CommonStrings;
-use java::lang::System;
+use java::lang::Object ();
+use org::allbinary::thread::ARunnable ();
+use java::util::HashMap ();
+use org::allbinary::gui::dialog::HashMapJDialogListenerInterface ();
+use org::allbinary::logic::StdUtil ();
+use org::allbinary::logic::communication::log::LogUtil ();
+use org::allbinary::string::CommonStrings ();
+use java::lang::System ();
 
 1;
 

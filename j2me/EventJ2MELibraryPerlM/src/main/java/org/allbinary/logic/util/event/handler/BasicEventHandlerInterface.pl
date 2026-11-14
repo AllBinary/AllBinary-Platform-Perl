@@ -51,11 +51,11 @@ sub removeListener {
     die "abstract method removeListener";
 }
 
-# use jsinterop::annotations::JsType;
-use org::allbinary::logic::util::event::AllBinaryEventObject;
-use org::allbinary::logic::util::event::EventListenerInterface;
-use org::allbinary::util::BasicArrayList;
-# use jsinterop::annotations::JsMethod;
+# use jsinterop::annotations::JsType ();
+use org::allbinary::logic::util::event::AllBinaryEventObject ();
+use org::allbinary::logic::util::event::EventListenerInterface ();
+use org::allbinary::util::BasicArrayList ();
+# use jsinterop::annotations::JsMethod ();
 
 1;
 

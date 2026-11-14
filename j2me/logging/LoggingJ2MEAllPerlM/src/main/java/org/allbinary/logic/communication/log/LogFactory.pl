@@ -18,6 +18,7 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
 
 sub new {
@@ -53,9 +54,10 @@ sub getInstanceF {
         return 'org::allbinary::logic::communication::log::Log'->new($specialMessage, $anyType, $functionName, $nullUtil->{NULL_OBJECT});
 }
 
-use org::allbinary::logic::NullUtil;
-use org::allbinary::logic::string::StringUtil;
-use org::allbinary::logic::communication::log::Log;
+use java::lang::Object ();
+use org::allbinary::logic::NullUtil ();
+use org::allbinary::logic::string::StringUtil ();
+use org::allbinary::logic::communication::log::Log ();
 
 1;
 

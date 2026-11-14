@@ -33,7 +33,7 @@ sub getStoreName {
     die "abstract method getStoreName";
 }
 
-use org::allbinary::logic::visual::transform::info::TransformInfoHttpInterface;
+use org::allbinary::logic::visual::transform::info::TransformInfoHttpInterface ();
 
 1;
 

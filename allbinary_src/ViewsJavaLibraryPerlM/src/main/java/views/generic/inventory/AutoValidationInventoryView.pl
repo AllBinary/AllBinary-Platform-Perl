@@ -52,11 +52,19 @@ sub validationInfo {
         return undef;
 }
 
-use org::allbinary::logic::control::validate::ValidationComponentInterface;
-use org::allbinary::logic::visual::transform::info::TransformInfoInterface;
-use org::w3c::dom::Document;
-use org::w3c::dom::Node;
-use views::generic::inventory::InventoryView;
+
+# throws Exception
+sub getTransformInfoInterface {
+    my ($self) = @_;
+        return $self->SUPER::getTransformInfoInterface();
+}
+
+use java::lang::Object ();
+use org::allbinary::logic::control::validate::ValidationComponentInterface ();
+use org::allbinary::logic::visual::transform::info::TransformInfoInterface ();
+use org::w3c::dom::Document ();
+use org::w3c::dom::Node ();
+use views::generic::inventory::InventoryView ();
 
 1;
 

@@ -17,6 +17,7 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
 
 sub _init_fields {
@@ -31,7 +32,7 @@ sub _init_fields {
 sub new {
     my ($class, $nameSpace, $value) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
         $self->{nameSpaceVector} = 'org::allbinary::util::BasicArrayListD'->new();
         $self->{nameSpacePropertiesHashMap} = 'org::allbinary::logic::StdUtil'->getInstance()->createHashMap();
         $self->{value} = $value;
@@ -140,15 +141,16 @@ sub generatePackagePropertiesHashMap {
         return $packagePropertiesHashMap;
 }
 
-use java::util::HashMap;
-use org::allbinary::logic::StdUtil;
-use org::allbinary::logic::communication::log::LogUtil;
-use org::allbinary::logic::string::StringUtil;
-use org::allbinary::logic::string::tokens::Tokenizer;
-use org::allbinary::logic::visual::dhtml::html::name::HtmlNameMathData;
-use org::allbinary::util::BasicArrayList;
-use org::allbinary::util::BasicArrayListD;
-use org::allbinary::logic::communication::http::request::NameSpaceRequestParamData;
+use java::lang::Object ();
+use java::util::HashMap ();
+use org::allbinary::logic::StdUtil ();
+use org::allbinary::logic::communication::log::LogUtil ();
+use org::allbinary::logic::string::StringUtil ();
+use org::allbinary::logic::string::tokens::Tokenizer ();
+use org::allbinary::logic::visual::dhtml::html::name::HtmlNameMathData ();
+use org::allbinary::util::BasicArrayList ();
+use org::allbinary::util::BasicArrayListD ();
+use org::allbinary::logic::communication::http::request::NameSpaceRequestParamData ();
 
 1;
 

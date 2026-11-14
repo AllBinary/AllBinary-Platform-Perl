@@ -17,9 +17,9 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
-use parent -norequire,'org::allbinary::input::AllBinarySensorListener';
+use parent -norequire,'java::lang::Object','org::allbinary::input::AllBinarySensorListener';
 
-our $NULL_ALLBINARY_SENSOR = 'org::allbinary::input::AllBinarySensor'->new();
+tie our $NULL_ALLBINARY_SENSOR, 'java::lang::LazyStatic', sub { 'org::allbinary::input::AllBinarySensor'->new() };
 our $max = 100;
 
 sub _init_fields {
@@ -32,7 +32,7 @@ sub _init_fields {
 sub new {
     my ($class) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
     return $self;
 }
 
@@ -77,10 +77,12 @@ sub onSensorChange {
         'org::allbinary::logic::communication::log::ForcedLogUtil'->log($self->{commonStrings}->{NOT_IMPLEMENTED}, $self);
 }
 
-use org::allbinary::logic::communication::log::ForcedLogUtil;
-use org::allbinary::logic::communication::log::LogUtil;
-use org::allbinary::string::CommonStrings;
-use org::allbinary::input::AllBinarySensorListener;
+use java::lang::Object ();
+use java::lang::LazyStatic ();
+use org::allbinary::logic::communication::log::ForcedLogUtil ();
+use org::allbinary::logic::communication::log::LogUtil ();
+use org::allbinary::string::CommonStrings ();
+use org::allbinary::input::AllBinarySensorListener ();
 
 1;
 

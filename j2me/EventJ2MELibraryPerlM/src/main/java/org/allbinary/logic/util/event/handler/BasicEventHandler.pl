@@ -17,7 +17,7 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
-use parent -norequire,'org::allbinary::logic::util::event::handler::BasicEventHandlerInterface';
+use parent -norequire,'java::lang::Object','org::allbinary::logic::util::event::handler::BasicEventHandlerInterface';
 
 
 sub _init_fields {
@@ -32,7 +32,7 @@ sub _init_fields {
 sub new {
     my ($class) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
         $self->{eventListenerInterfaceList} = 'org::allbinary::util::BasicArrayListD'->new();
     return $self;
 }
@@ -144,19 +144,20 @@ sub toString {
         return $stringBuffer->toString();
 }
 
-# use jsinterop::annotations::JsType;
-use org::allbinary::logic::communication::log::LogUtil;
-use org::allbinary::logic::string::StringMaker;
-use org::allbinary::logic::util::event::AllBinaryEventObject;
-use org::allbinary::logic::util::event::EventListenerInterface;
-use org::allbinary::logic::util::event::EventStrings;
-use org::allbinary::string::CommonStrings;
-use org::allbinary::util::BasicArrayList;
-use org::allbinary::util::BasicArrayListD;
-# use jsinterop::annotations::JsMethod;
-# use jsinterop::annotations::JsConstructor;
-# use jsinterop::annotations::JsProperty;
-use org::allbinary::logic::util::event::handler::BasicEventHandlerInterface;
+use java::lang::Object ();
+# use jsinterop::annotations::JsType ();
+use org::allbinary::logic::communication::log::LogUtil ();
+use org::allbinary::logic::string::StringMaker ();
+use org::allbinary::logic::util::event::AllBinaryEventObject ();
+use org::allbinary::logic::util::event::EventListenerInterface ();
+use org::allbinary::logic::util::event::EventStrings ();
+use org::allbinary::string::CommonStrings ();
+use org::allbinary::util::BasicArrayList ();
+use org::allbinary::util::BasicArrayListD ();
+# use jsinterop::annotations::JsMethod ();
+# use jsinterop::annotations::JsConstructor ();
+# use jsinterop::annotations::JsProperty ();
+use org::allbinary::logic::util::event::handler::BasicEventHandlerInterface ();
 
 1;
 

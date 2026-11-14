@@ -30,7 +30,7 @@ sub _init_fields {
 sub new {
     my ($class) = @_;
     my $self = $class->SUPER::new();
-    $self->_init_fields();
+    _init_fields($self);
         $self->{gameMotionGestureListener} = 'org::allbinary::input::motion::gesture::observer::GameMotionGestureListener'->new('org::allbinary::input::motion::gesture::observer::MotionGestureReceiveInterfaceFactory'->getInstance());
         $self->addListener();
     return $self;
@@ -48,12 +48,13 @@ sub addListener {
         $motionGesturesHandler->addListenerInterface($self->{gameMotionGestureListener});
 }
 
-use android::view::MotionEvent;
-use org::allbinary::input::motion::gesture::observer::BasicMotionGesturesHandler;
-use org::allbinary::input::motion::gesture::observer::GameMotionGestureListener;
-use org::allbinary::input::motion::gesture::observer::MotionGestureReceiveInterfaceFactory;
-use org::allbinary::string::CommonStrings;
-use org::allbinary::android::input::motion::MotionEventProcessor;
+use java::lang::Object ();
+# use android::view::MotionEvent ();
+use org::allbinary::input::motion::gesture::observer::BasicMotionGesturesHandler ();
+use org::allbinary::input::motion::gesture::observer::GameMotionGestureListener ();
+use org::allbinary::input::motion::gesture::observer::MotionGestureReceiveInterfaceFactory ();
+use org::allbinary::string::CommonStrings ();
+use org::allbinary::android::input::motion::MotionEventProcessor ();
 
 1;
 

@@ -17,7 +17,7 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
-use parent -norequire,'org::allbinary::media::image::comparison::motion::MotionRectangleConstraintsInterface';
+use parent -norequire,'java::lang::Object','org::allbinary::media::image::comparison::motion::MotionRectangleConstraintsInterface';
 
 
 sub _init_fields {
@@ -32,7 +32,7 @@ sub _init_fields {
 sub new {
     my ($class) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
     return $self;
 }
 
@@ -121,9 +121,10 @@ sub setMinArea {
         $self->{minArea} = $minArea;
 }
 
-# use java::awt;
-# use java::awt::image::BufferedImage;
-use org::allbinary::media::image::comparison::motion::MotionRectangleConstraintsInterface;
+use java::lang::Object ();
+# use java::awt ();
+# use java::awt::image::BufferedImage ();
+use org::allbinary::media::image::comparison::motion::MotionRectangleConstraintsInterface ();
 
 1;
 

@@ -34,7 +34,7 @@ sub getRectangleArrayOfArrays {
     die "abstract method getRectangleArrayOfArrays";
 }
 
-use org::allbinary::graphics::Rectangle;
+use org::allbinary::graphics::Rectangle ();
 
 1;
 

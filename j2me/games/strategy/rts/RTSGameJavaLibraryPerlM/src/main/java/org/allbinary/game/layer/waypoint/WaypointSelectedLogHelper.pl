@@ -19,7 +19,7 @@ use feature 'try';
 no warnings 'experimental::try';
 use parent -norequire,'org::allbinary::game::layer::waypoint::WaypointLogHelper';
 
-our $instanceC = 'org::allbinary::game::layer::waypoint::WaypointSelectedLogHelper'->new();
+tie our $instanceC, 'java::lang::LazyStatic', sub { 'org::allbinary::game::layer::waypoint::WaypointSelectedLogHelper'->new() };
 
 sub _init_fields {
     my ($self) = @_;
@@ -31,7 +31,7 @@ sub _init_fields {
 sub new {
     my ($class) = @_;
     my $self = $class->SUPER::new();
-    $self->_init_fields();
+    _init_fields($self);
     return $self;
 }
 
@@ -154,17 +154,19 @@ sub setNextUnvisitedPathGeographicMapCellPosition {
         }
 }
 
-use org::allbinary::game::layer::PathFindingLayerInterface;
-use org::allbinary::game::layer::WaypointBehaviorBase;
-use org::allbinary::game::layer::special::CollidableDestroyableDamageableLayer;
-use org::allbinary::logic::communication::log::LogUtil;
-use org::allbinary::string::CommonLabels;
-use org::allbinary::string::CommonSeps;
-use org::allbinary::logic::string::StringMaker;
-use org::allbinary::logic::string::StringUtil;
-use org::allbinary::media::graphics::geography::map::GeographicMapCellPosition;
-use org::allbinary::util::BasicArrayList;
-use org::allbinary::game::layer::waypoint::WaypointLogHelper;
+use java::lang::Object ();
+use java::lang::LazyStatic ();
+use org::allbinary::game::layer::PathFindingLayerInterface ();
+use org::allbinary::game::layer::WaypointBehaviorBase ();
+use org::allbinary::game::layer::special::CollidableDestroyableDamageableLayer ();
+use org::allbinary::logic::communication::log::LogUtil ();
+use org::allbinary::string::CommonLabels ();
+use org::allbinary::string::CommonSeps ();
+use org::allbinary::logic::string::StringMaker ();
+use org::allbinary::logic::string::StringUtil ();
+use org::allbinary::media::graphics::geography::map::GeographicMapCellPosition ();
+use org::allbinary::util::BasicArrayList ();
+use org::allbinary::game::layer::waypoint::WaypointLogHelper ();
 
 1;
 

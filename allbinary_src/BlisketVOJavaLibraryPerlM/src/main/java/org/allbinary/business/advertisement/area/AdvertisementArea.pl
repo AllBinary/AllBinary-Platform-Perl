@@ -17,7 +17,7 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
-use parent -norequire,'org::allbinary::business::advertisement::area::AdvertisementAreaInterface';
+use parent -norequire,'java::lang::Object','org::allbinary::business::advertisement::area::AdvertisementAreaInterface';
 
 
 sub _init_fields {
@@ -33,7 +33,7 @@ sub _init_fields {
 sub new {
     my ($class, $hashMap) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
         $self->{name} = $hashMap->get('org::allbinary::business::advertisement::area::AdvertisementAreaData'->getInstance()->{NAME});
         $self->{storeName} = $hashMap->get('org::allbinary::business::context::modules::storefront::StoreFrontData'->getInstance()->{NAME});
         $self->{description} = $hashMap->get('org::allbinary::business::advertisement::area::AdvertisementAreaData'->getInstance()->{DESCRIPTION});
@@ -104,14 +104,15 @@ sub setCampaign {
         $self->{campaign} = $campaign;
 }
 
-use java::util::HashMap;
-use org::allbinary::business::advertisement::campaign::AdvertisementCampaignData;
-use org::allbinary::business::context::modules::storefront::StoreFrontData;
-use org::allbinary::data::tree::dom::document::DomDocumentHelper;
-use org::w3c::dom::Document;
-use org::allbinary::business::advertisement::area::AdvertisementAreaInterface;
-use org::allbinary::business::advertisement::area::AdvertisementAreaData;
-use org::allbinary::business::advertisement::area::AdvertisementAreaConstraints;
+use java::lang::Object ();
+use java::util::HashMap ();
+use org::allbinary::business::advertisement::campaign::AdvertisementCampaignData ();
+use org::allbinary::business::context::modules::storefront::StoreFrontData ();
+use org::allbinary::data::tree::dom::document::DomDocumentHelper ();
+use org::w3c::dom::Document ();
+use org::allbinary::business::advertisement::area::AdvertisementAreaInterface ();
+use org::allbinary::business::advertisement::area::AdvertisementAreaData ();
+use org::allbinary::business::advertisement::area::AdvertisementAreaConstraints ();
 
 1;
 

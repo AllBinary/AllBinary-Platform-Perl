@@ -26,8 +26,8 @@ sub getInstance {
     die "abstract method getInstance";
 }
 
-use org::allbinary::game::layer::RTSLayer;
-use org::allbinary::graphics::form::ScrollSelectionForm;
+use org::allbinary::game::layer::RTSLayer ();
+use org::allbinary::graphics::form::ScrollSelectionForm ();
 
 1;
 

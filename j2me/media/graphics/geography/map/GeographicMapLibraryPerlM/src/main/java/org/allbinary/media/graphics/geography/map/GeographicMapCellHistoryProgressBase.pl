@@ -17,8 +17,9 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
-our $instance = 'org::allbinary::media::graphics::geography::map::GeographicMapCellHistoryProgressBase'->new();
+tie our $instance, 'java::lang::LazyStatic', sub { 'org::allbinary::media::graphics::geography::map::GeographicMapCellHistoryProgressBase'->new() };
 
 
 sub getInstance {
@@ -45,6 +46,8 @@ sub isAnyProgress {
         die ("RuntimeException");
 }
 
+use java::lang::Object ();
+use java::lang::LazyStatic ();
 
 1;
 

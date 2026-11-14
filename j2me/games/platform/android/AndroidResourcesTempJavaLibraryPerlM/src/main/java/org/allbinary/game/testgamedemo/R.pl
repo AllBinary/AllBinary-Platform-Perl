@@ -10,6 +10,7 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
 
 sub new {
@@ -23,6 +24,7 @@ sub new {
     use warnings;
     use feature 'try';
     no warnings 'experimental::try';
+    use parent -norequire,'java::lang::Object';
     
 
     sub new {
@@ -38,6 +40,7 @@ sub new {
     use warnings;
     use feature 'try';
     no warnings 'experimental::try';
+    use parent -norequire,'java::lang::Object';
     
 
     sub new {
@@ -53,6 +56,7 @@ sub new {
     use warnings;
     use feature 'try';
     no warnings 'experimental::try';
+    use parent -norequire,'java::lang::Object';
     
     our $custom_web_view = 0x7f050000;
     our $ad_area_bottom = 0x7f060002;
@@ -73,6 +77,7 @@ sub new {
     use warnings;
     use feature 'try';
     no warnings 'experimental::try';
+    use parent -norequire,'java::lang::Object';
     
     our $webview_layout = 0x7f020000;
 
@@ -89,6 +94,7 @@ sub new {
     use warnings;
     use feature 'try';
     no warnings 'experimental::try';
+    use parent -norequire,'java::lang::Object';
     
     our $about = 0x7f030000;
     our $privacy_policy = 0x7f030001;
@@ -136,6 +142,7 @@ sub new {
     use warnings;
     use feature 'try';
     no warnings 'experimental::try';
+    use parent -norequire,'java::lang::Object';
     
     our $progressbar_in_title_string = 0x7f050001;
 
@@ -147,6 +154,7 @@ sub new {
     }
 
 
+use java::lang::Object ();
 
 1;
 

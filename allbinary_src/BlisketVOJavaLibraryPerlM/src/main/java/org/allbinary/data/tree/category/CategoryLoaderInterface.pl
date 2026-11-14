@@ -39,9 +39,9 @@ sub getAll {
     die "abstract method getAll";
 }
 
-use org::allbinary::business::category::CategoryInterface;
-use org::w3c::dom::Document;
-use org::allbinary::data::tree::category::CategoryModifierTreeInterface;
+use org::allbinary::business::category::CategoryInterface ();
+use org::w3c::dom::Document ();
+use org::allbinary::data::tree::category::CategoryModifierTreeInterface ();
 
 1;
 

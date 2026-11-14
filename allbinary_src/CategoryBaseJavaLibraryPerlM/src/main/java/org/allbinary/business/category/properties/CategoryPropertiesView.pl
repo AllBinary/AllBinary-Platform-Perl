@@ -17,7 +17,7 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
-use parent -norequire,'org::allbinary::data::tree::dom::DomNodeInterface';
+use parent -norequire,'java::lang::Object','org::allbinary::data::tree::dom::DomNodeInterface';
 
 
 sub _init_fields {
@@ -29,7 +29,7 @@ sub _init_fields {
 sub new {
     my ($class, $categoryPropertiesInterface) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
         $self->{categoryPropertiesInterface} = $categoryPropertiesInterface;
     return $self;
 }
@@ -44,11 +44,12 @@ sub toXmlNode {
         return $categoryNode;
 }
 
-use org::allbinary::business::category::CategoryData;
-use org::allbinary::data::tree::dom::DomNodeInterface;
-use org::w3c::dom::Document;
-use org::w3c::dom::Element;
-use org::w3c::dom::Node;
+use java::lang::Object ();
+use org::allbinary::business::category::CategoryData ();
+use org::allbinary::data::tree::dom::DomNodeInterface ();
+use org::w3c::dom::Document ();
+use org::w3c::dom::Element ();
+use org::w3c::dom::Node ();
 
 1;
 

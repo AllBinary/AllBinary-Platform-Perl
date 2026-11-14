@@ -31,7 +31,7 @@ sub _init_fields {
 sub new {
     my ($class, $sprite, $image, $basicColorArray, $animationBehavior) = @_;
     my $self = $class->SUPER::new($animationBehavior);
-    $self->_init_fields();
+    _init_fields($self);
         # super(...) made $self above
         $self->{sprite} = $sprite;
         $self->{image} = $image;
@@ -160,17 +160,18 @@ sub finalize {
     my ($self) = @_;
 }
 
-# use javax::microedition::lcdui::Graphics;
-# use javax::microedition::lcdui::Image;
-# use javax::microedition::lcdui::game::Sprite;
-use org::allbinary::animation::AnimationBehavior;
-use org::allbinary::animation::IndexedAnimation;
-use org::allbinary::graphics::color::BasicColor;
-use org::allbinary::graphics::color::BasicColorFactory;
-use org::allbinary::graphics::color::ColorCompositeInterface;
-use org::allbinary::logic::math::PrimitiveIntUtil;
-use org::allbinary::logic::string::StringMaker;
-use org::allbinary::string::CommonLabels;
+use java::lang::Object ();
+use javax::microedition::lcdui::Graphics ();
+use javax::microedition::lcdui::Image ();
+use javax::microedition::lcdui::game::Sprite ();
+use org::allbinary::animation::AnimationBehavior ();
+use org::allbinary::animation::IndexedAnimation ();
+use org::allbinary::graphics::color::BasicColor ();
+use org::allbinary::graphics::color::BasicColorFactory ();
+use org::allbinary::graphics::color::ColorCompositeInterface ();
+use org::allbinary::logic::math::PrimitiveIntUtil ();
+use org::allbinary::logic::string::StringMaker ();
+use org::allbinary::string::CommonLabels ();
 
 1;
 

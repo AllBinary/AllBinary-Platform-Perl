@@ -17,6 +17,7 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
 
 sub _init_fields {
@@ -40,7 +41,7 @@ sub new {
 sub _new0 {
     my ($class) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
         $self->{workFlowName} = 'org::allbinary::logic::string::StringUtil'->getInstance()->{EMPTY_STRING};
         $self->{workFlowDoc} = 'org::allbinary::data::tree::dom::document::DomDocumentHelper'->create();
         my $workFlowNode = $self->{workFlowDoc}->createElement('org::allbinary::logic::control::workflow::WorkFlowData'->getInstance()->{WORKFLOW});
@@ -52,7 +53,7 @@ sub _new0 {
 sub _new2 {
     my ($class, $hashMap, $pageContext) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
         my $weblisketSession = 'org::allbinary::logic::communication::http::request::session::WeblisketSession'->new($hashMap, $pageContext);
         $self->{storeName} = $weblisketSession->getStoreName();
         my $requestHashMap = 'org::allbinary::logic::communication::http::request::RequestParams'->new($pageContext)->toHashMap();
@@ -65,7 +66,7 @@ sub _new2 {
 sub _new1 {
     my ($class, $hashMap) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
         $self->{workFlowName} = $hashMap->get('org::allbinary::logic::control::workflow::WorkFlowData'->getInstance()->{NAME});
         $self->{storeName} = $hashMap->get('org::allbinary::business::context::modules::storefront::StoreFrontData'->getInstance()->{NAME});
         $self->{workFlowDoc} = 'org::allbinary::data::tree::dom::document::DomDocumentHelper'->create($hashMap->get('org::allbinary::logic::control::workflow::WorkFlowData'->getInstance()->{DATA}));
@@ -201,27 +202,28 @@ sub toValidationInfoNode {
         return undef;
 }
 
-use java::util::Calendar;
-use java::util::HashMap;
-# use java::util::Set;
-use org::allbinary::util::BasicArrayList;
-use org::allbinary::util::BasicArrayListD;
-# use javax::servlet::jsp::PageContext;
-use org::allbinary::business::context::modules::storefront::StoreFrontData;
-use org::allbinary::business::entry::EntryData;
-use org::allbinary::data::tree::dom::ModDomHelper;
-use org::allbinary::data::tree::dom::document::DomDocumentHelper;
-use org::allbinary::data::tree::dom::document::XmlDocumentHelper;
-use org::allbinary::logic::StdUtil;
-use org::allbinary::logic::communication::http::request::RequestParams;
-use org::allbinary::logic::communication::http::request::session::WeblisketSession;
-use org::allbinary::logic::communication::log::LogUtil;
-use org::allbinary::logic::control::workflow::WorkFlowData;
-use org::allbinary::logic::string::StringMaker;
-use org::allbinary::logic::string::StringUtil;
-use org::allbinary::string::CommonStrings;
-use org::w3c::dom::Document;
-use org::w3c::dom::Node;
+use java::lang::Object ();
+use java::util::Calendar ();
+use java::util::HashMap ();
+# use java::util::Set ();
+use org::allbinary::util::BasicArrayList ();
+use org::allbinary::util::BasicArrayListD ();
+# use javax::servlet::jsp::PageContext ();
+use org::allbinary::business::context::modules::storefront::StoreFrontData ();
+use org::allbinary::business::entry::EntryData ();
+use org::allbinary::data::tree::dom::ModDomHelper ();
+use org::allbinary::data::tree::dom::document::DomDocumentHelper ();
+use org::allbinary::data::tree::dom::document::XmlDocumentHelper ();
+use org::allbinary::logic::StdUtil ();
+use org::allbinary::logic::communication::http::request::RequestParams ();
+use org::allbinary::logic::communication::http::request::session::WeblisketSession ();
+use org::allbinary::logic::communication::log::LogUtil ();
+use org::allbinary::logic::control::workflow::WorkFlowData ();
+use org::allbinary::logic::string::StringMaker ();
+use org::allbinary::logic::string::StringUtil ();
+use org::allbinary::string::CommonStrings ();
+use org::w3c::dom::Document ();
+use org::w3c::dom::Node ();
 
 1;
 

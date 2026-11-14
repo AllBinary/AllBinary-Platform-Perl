@@ -39,7 +39,7 @@ sub _init_fields {
 sub new {
     my ($class, $towerInfoPaintable, $rtsPlayerLayerInterface, $list, $playerInputId, $selectRTSLayerVisitorFactoryInterface) = @_;
     my $self = $class->SUPER::new($list, 'org::allbinary::util::BasicArrayListD'->new(), $playerInputId);
-    $self->_init_fields();
+    _init_fields($self);
         # super(...) made $self above
         $self->initInputProcessors();
         $self->{rtsPlayerLayerInterface} = $rtsPlayerLayerInterface;
@@ -283,38 +283,39 @@ sub getPreSelectedRTSLayersList {
         return $self->{preSelectedRTSLayersList};
 }
 
-# use javax::microedition::lcdui::Canvas;
-use org::allbinary::game::layer::RTSGameStrings;
-use org::allbinary::game::layer::RTSLayer;
-use org::allbinary::game::layer::RTSLayerInfoPaintable;
-use org::allbinary::game::layer::RTSPlayerLayerInterface;
-use org::allbinary::game::layer::capital::Capital;
-use org::allbinary::media::audio::DowngradeSound;
-use org::allbinary::media::audio::UpgradeSound;
-use org::allbinary::util::BasicArrayList;
-use org::allbinary::util::BasicArrayListD;
-use org::allbinary::util::BasicArrayListUtil;
-use org::allbinary::logic::string::StringMaker;
-use org::allbinary::logic::java::bool::BooleanFactory;
-use org::allbinary::game::configuration::feature::Features;
-use org::allbinary::game::configuration::feature::InputFeatureFactory;
-use org::allbinary::game::input::event::GameKeyEvent;
-use org::allbinary::game::layer::AllBinaryGameLayerManager;
-use org::allbinary::game::layer::hud::event::GameNotificationEvent;
-use org::allbinary::game::layer::hud::event::GameNotificationEventHandler;
-use org::allbinary::game::layer::special::CollidableDestroyableDamageableLayer;
-use org::allbinary::graphics::color::BasicColorFactory;
-use org::allbinary::layer::AllBinaryLayerManager;
-use org::allbinary::logic::util::visitor::Visitor;
-use org::allbinary::logic::math::SmallIntegerSingletonFactory;
-use org::allbinary::media::audio::ErrorSound;
-use org::allbinary::media::graphics::geography::map::BasicGeographicMap;
-use org::allbinary::media::graphics::geography::map::GeographicMapCompositeInterface;
-use org::allbinary::game::input::PlayerGameInput;
-use org::allbinary::game::input::InputFactory;
-use org::allbinary::game::input::SelectedRTSLayersPlayerUpgradeGameInputProcessor;
-use org::allbinary::game::input::SelectedRTSLayersPlayerDowngradeGameInputProcessor;
-use org::allbinary::game::input::GameInputProcessorUtil;
+use java::lang::Object ();
+use javax::microedition::lcdui::Canvas ();
+use org::allbinary::game::layer::RTSGameStrings ();
+use org::allbinary::game::layer::RTSLayer ();
+use org::allbinary::game::layer::RTSLayerInfoPaintable ();
+use org::allbinary::game::layer::RTSPlayerLayerInterface ();
+use org::allbinary::game::layer::capital::Capital ();
+use org::allbinary::media::audio::DowngradeSound ();
+use org::allbinary::media::audio::UpgradeSound ();
+use org::allbinary::util::BasicArrayList ();
+use org::allbinary::util::BasicArrayListD ();
+use org::allbinary::util::BasicArrayListUtil ();
+use org::allbinary::logic::string::StringMaker ();
+use org::allbinary::logic::java::bool::BooleanFactory ();
+use org::allbinary::game::configuration::feature::Features ();
+use org::allbinary::game::configuration::feature::InputFeatureFactory ();
+use org::allbinary::game::input::event::GameKeyEvent ();
+use org::allbinary::game::layer::AllBinaryGameLayerManager ();
+use org::allbinary::game::layer::hud::event::GameNotificationEvent ();
+use org::allbinary::game::layer::hud::event::GameNotificationEventHandler ();
+use org::allbinary::game::layer::special::CollidableDestroyableDamageableLayer ();
+use org::allbinary::graphics::color::BasicColorFactory ();
+use org::allbinary::layer::AllBinaryLayerManager ();
+use org::allbinary::logic::util::visitor::Visitor ();
+use org::allbinary::logic::math::SmallIntegerSingletonFactory ();
+use org::allbinary::media::audio::ErrorSound ();
+use org::allbinary::media::graphics::geography::map::BasicGeographicMap ();
+use org::allbinary::media::graphics::geography::map::GeographicMapCompositeInterface ();
+use org::allbinary::game::input::PlayerGameInput ();
+use org::allbinary::game::input::InputFactory ();
+use org::allbinary::game::input::SelectedRTSLayersPlayerUpgradeGameInputProcessor ();
+use org::allbinary::game::input::SelectedRTSLayersPlayerDowngradeGameInputProcessor ();
+use org::allbinary::game::input::GameInputProcessorUtil ();
 
 1;
 

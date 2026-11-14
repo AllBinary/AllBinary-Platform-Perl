@@ -31,7 +31,7 @@ sub _init_fields {
 sub new {
     my ($class) = @_;
     my $self = $class->SUPER::new();
-    $self->_init_fields();
+    _init_fields($self);
         $self->{keyvalueDrawString} = 'org::allbinary::graphics::draw::KeyValueDrawCharArray'->new($org::allbinary::game::layer::geological::resources::GeologicalResourceInfoHudPaintable::RESOURCES, $self->{textX});
     return $self;
 }
@@ -65,12 +65,13 @@ sub paint {
         $self->{keyvalueDrawString}->paint($graphics, ($self->{y} + $self->{fontHeight}));
 }
 
-# use javax::microedition::lcdui::Font;
-# use javax::microedition::lcdui::Graphics;
-use org::allbinary::game::layer::RTSLayer;
-use org::allbinary::game::layer::waypoint::WaypointInfoHudPaintable;
-use org::allbinary::util::BasicArrayList;
-use org::allbinary::graphics::draw::KeyValueDrawCharArray;
+use java::lang::Object ();
+use javax::microedition::lcdui::Font ();
+use javax::microedition::lcdui::Graphics ();
+use org::allbinary::game::layer::RTSLayer ();
+use org::allbinary::game::layer::waypoint::WaypointInfoHudPaintable ();
+use org::allbinary::util::BasicArrayList ();
+use org::allbinary::graphics::draw::KeyValueDrawCharArray ();
 
 1;
 

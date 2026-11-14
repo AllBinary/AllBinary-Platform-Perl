@@ -31,7 +31,7 @@ sub _init_fields {
 sub new {
     my ($class, $basicDecimal, $velocityProperties) = @_;
     my $self = $class->SUPER::new();
-    $self->_init_fields();
+    _init_fields($self);
         $self->setSpeedBasicDecimal($basicDecimal);
         $self->{velocityProperties} = $velocityProperties;
     return $self;
@@ -98,14 +98,15 @@ sub getSpeedBasicDecimal {
         return $self->{speedBasicDecimal};
 }
 
-use org::allbinary::game::layer::AllBinaryGameLayer;
-use org::allbinary::game::physics::velocity::BasicVelocityProperties;
-use org::allbinary::game::physics::velocity::VelocityInterfaceCompositeInterface;
-use org::allbinary::layer::AllBinaryLayer;
-use org::allbinary::logic::math::BasicDecimal;
-use org::allbinary::logic::math::vector::AxisMathVectorUtil;
-use org::allbinary::math::AngleFactory;
-use org::allbinary::physics::movement::Movement;
+use java::lang::Object ();
+use org::allbinary::game::layer::AllBinaryGameLayer ();
+use org::allbinary::game::physics::velocity::BasicVelocityProperties ();
+use org::allbinary::game::physics::velocity::VelocityInterfaceCompositeInterface ();
+use org::allbinary::layer::AllBinaryLayer ();
+use org::allbinary::logic::math::BasicDecimal ();
+use org::allbinary::logic::math::vector::AxisMathVectorUtil ();
+use org::allbinary::math::AngleFactory ();
+use org::allbinary::physics::movement::Movement ();
 
 1;
 

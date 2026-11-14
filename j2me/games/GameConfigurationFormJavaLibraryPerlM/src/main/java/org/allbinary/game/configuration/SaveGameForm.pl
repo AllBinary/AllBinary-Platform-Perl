@@ -20,11 +20,11 @@ no warnings 'experimental::try';
 use Time::HiRes ();
 use parent -norequire,'org::allbinary::graphics::displayable::screen::CommandForm';
 
-our $FORM = 'org::allbinary::graphics::displayable::screen::CommandForm'->getNullCommandForm();
+tie our $FORM, 'java::lang::LazyStatic', sub { 'org::allbinary::graphics::displayable::screen::CommandForm'->getNullCommandForm() };
 
 sub _init_fields {
     my ($self) = @_;
-    $self->{meUtil} = 'org::allbinary::logic::MEUtil'->getInstance();
+    $self->{meUtil} = 'org::allbinary::MIDPUtil'->getInstance();
 }
 
 
@@ -45,7 +45,7 @@ sub getInstance {
 sub new {
     my ($class, $commandListener, $title, $backgrounBasicColor, $foregroundBasicColor) = @_;
     my $self = $class->SUPER::new($commandListener, $title, $backgrounBasicColor, $foregroundBasicColor);
-    $self->_init_fields();
+    _init_fields($self);
         # super(...) made $self above
         $self->{logUtil}->putF($self->{commonStrings}->{START}, $self, $self->{commonStrings}->{CONSTRUCTOR});
         my $timeString = ("" . ('org::allbinary::logic::ABSystemWrapper'->getInstance()->currentTimeMillis()));
@@ -64,13 +64,15 @@ sub initCommands {
         $self->setCommandListener($cmdListener);
 }
 
-# use javax::microedition::lcdui::CommandListener;
-# use javax::microedition::lcdui::TextField;
-use org::allbinary::game::commands::GameCommandsFactory;
-use org::allbinary::graphics::color::BasicColor;
-use org::allbinary::graphics::displayable::screen::CommandForm;
-use org::allbinary::logic::ABSystemWrapper;
-use org::allbinary::logic::MEUtil;
+use java::lang::Object ();
+use java::lang::LazyStatic ();
+use javax::microedition::lcdui::CommandListener ();
+use javax::microedition::lcdui::TextField ();
+use org::allbinary::MIDPUtil ();
+use org::allbinary::game::commands::GameCommandsFactory ();
+use org::allbinary::graphics::color::BasicColor ();
+use org::allbinary::graphics::displayable::screen::CommandForm ();
+use org::allbinary::logic::ABSystemWrapper ();
 
 1;
 

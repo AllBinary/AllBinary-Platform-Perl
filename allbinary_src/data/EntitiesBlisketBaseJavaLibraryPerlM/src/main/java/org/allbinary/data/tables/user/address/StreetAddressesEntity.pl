@@ -37,7 +37,7 @@ sub new {
 sub _new0 {
     my ($class) = @_;
     my $self = $class->SUPER::new('org::allbinary::business::init::db::UserDbInitInfo'->new());
-    $self->_init_fields();
+    _init_fields($self);
         # super(...) made $self above
     return $self;
 }
@@ -46,7 +46,7 @@ sub _new0 {
 sub _new1 {
     my ($class, $userName) = @_;
     my $self = $class->SUPER::new('org::allbinary::business::init::db::UserDbInitInfo'->new());
-    $self->_init_fields();
+    _init_fields($self);
         # super(...) made $self above
         $self->{userName} = $userName;
     return $self;
@@ -260,22 +260,29 @@ sub drop {
         return $self->SUPER::dropTable();
 }
 
-use java::util::Calendar;
-use java::util::HashMap;
-use org::allbinary::util::BasicArrayList;
-use org::allbinary::util::BasicArrayListD;
-use org::allbinary::business::entry::EntryData;
-use org::allbinary::business::init::db::UserDbInitInfo;
-use org::allbinary::business::user::UserData;
-use org::allbinary::business::user::address::StreetAddress;
-use org::allbinary::business::user::address::StreetAddressData;
-use org::allbinary::data::tables::TableDataFactory;
-use org::allbinary::logic::StdUtil;
-use org::allbinary::logic::communication::log::LogUtil;
-use org::allbinary::logic::communication::sql::AbSqlBean;
-use org::allbinary::logic::string::StringMaker;
-use org::allbinary::logic::string::StringUtil;
-use org::allbinary::data::tables::user::address::StreetAddressesEntityInterface;
+
+sub dropTable {
+    my ($self) = @_;
+        return $self->SUPER::dropTable();
+}
+
+use java::lang::Object ();
+use java::util::Calendar ();
+use java::util::HashMap ();
+use org::allbinary::util::BasicArrayList ();
+use org::allbinary::util::BasicArrayListD ();
+use org::allbinary::business::entry::EntryData ();
+use org::allbinary::business::init::db::UserDbInitInfo ();
+use org::allbinary::business::user::UserData ();
+use org::allbinary::business::user::address::StreetAddress ();
+use org::allbinary::business::user::address::StreetAddressData ();
+use org::allbinary::data::tables::TableDataFactory ();
+use org::allbinary::logic::StdUtil ();
+use org::allbinary::logic::communication::log::LogUtil ();
+use org::allbinary::logic::communication::sql::AbSqlBean ();
+use org::allbinary::logic::string::StringMaker ();
+use org::allbinary::logic::string::StringUtil ();
+use org::allbinary::data::tables::user::address::StreetAddressesEntityInterface ();
 
 1;
 

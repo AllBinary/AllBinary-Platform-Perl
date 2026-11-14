@@ -17,7 +17,7 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
-use parent -norequire,'org::allbinary::business::context::configuration::ContextConfigurationInterface';
+use parent -norequire,'java::lang::Object','org::allbinary::business::context::configuration::ContextConfigurationInterface';
 
 
 sub _init_fields {
@@ -38,7 +38,7 @@ sub new {
 sub _new0 {
     my ($class) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
         $self->{logUtil}->putF($self->{commonStrings}->{START}, $self, "ContextConfiguration");
         $self->setEmailServerConfigurationInterface('org::allbinary::logic::communication::smtp::configuration::server::EmailServerConfiguration'->new());
     return $self;
@@ -48,7 +48,7 @@ sub _new0 {
 sub _new1 {
     my ($class, $hashMap) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
         $self->{logUtil}->putF($self->{commonStrings}->{START}, $self, "ContextConfiguration(HashMap)");
         $self->setEmailServerConfigurationInterface('org::allbinary::logic::communication::smtp::configuration::server::EmailServerConfiguration'->new($hashMap));
     return $self;
@@ -66,12 +66,13 @@ sub setEmailServerConfigurationInterface {
         $self->{emailServerConfigurationInterface} = $emailServerConfigurationInterface;
 }
 
-use java::util::HashMap;
-use org::allbinary::logic::communication::log::LogUtil;
-use org::allbinary::logic::communication::smtp::configuration::server::EmailServerConfiguration;
-use org::allbinary::logic::communication::smtp::configuration::server::EmailServerConfigurationInterface;
-use org::allbinary::string::CommonStrings;
-use org::allbinary::business::context::configuration::ContextConfigurationInterface;
+use java::lang::Object ();
+use java::util::HashMap ();
+use org::allbinary::logic::communication::log::LogUtil ();
+use org::allbinary::logic::communication::smtp::configuration::server::EmailServerConfiguration ();
+use org::allbinary::logic::communication::smtp::configuration::server::EmailServerConfigurationInterface ();
+use org::allbinary::string::CommonStrings ();
+use org::allbinary::business::context::configuration::ContextConfigurationInterface ();
 
 1;
 

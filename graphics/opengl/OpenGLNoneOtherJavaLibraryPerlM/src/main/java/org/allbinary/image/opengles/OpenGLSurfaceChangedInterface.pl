@@ -15,7 +15,7 @@ sub set {
     die "abstract method set";
 }
 
-# use javax::microedition::khronos::opengles::GL;
+use javax::microedition::khronos::opengles::GL ();
 
 1;
 

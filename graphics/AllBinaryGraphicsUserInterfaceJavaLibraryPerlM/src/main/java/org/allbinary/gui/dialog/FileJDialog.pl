@@ -17,7 +17,7 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
-use parent -norequire,'javax::swing::JDialog';
+use parent -norequire,'java::lang::Object';
 
 
 sub _init_fields {
@@ -38,7 +38,7 @@ sub new {
 sub _new0 {
     my ($class) = @_;
     my $self = $class->SUPER::new();
-    $self->_init_fields();
+    _init_fields($self);
         # super(...) made $self above
         $self->initComponents();
         $self->getJFileChooser1()->setMultiSelectionEnabled(1);
@@ -49,7 +49,7 @@ sub _new0 {
 sub _new2 {
     my ($class, $parent, $modal) = @_;
     my $self = $class->SUPER::new($parent, $modal);
-    $self->_init_fields();
+    _init_fields($self);
         # super(...) made $self above
         $self->initComponents();
         $self->getJFileChooser1()->setMultiSelectionEnabled(1);
@@ -68,7 +68,7 @@ sub initComponents {
         $self->{jFileChooser1} = 'javax::swing::JFileChooser'->new();
         $self->setDefaultCloseOperation($org::allbinary::gui::dialog::javax::swing->{WindowConstants}->{DISPOSE_ON_CLOSE});
         $self->{jFileChooser1}->addActionListener(do {
-            package java::awt::event::ActionListener::AnonymousN66188 { our @ISA = ('java::awt::event::ActionListener');
+            package java::awt::event::ActionListener::AnonymousN66188 { our @ISA = ('java::awt::event::ActionListener', 'java::lang::Object');
             
 
             sub actionPerformed {
@@ -104,7 +104,7 @@ sub jFileChooser1ActionPerformed {
 sub main {
     my ($class, $args) = @_;
         $org::allbinary::gui::dialog::java::awt->{EventQueue}->invokeLater(do {
-            package org::allbinary::thread::ARunnable::AnonymousN67597 { our @ISA = ('org::allbinary::thread::ARunnable');
+            package org::allbinary::thread::ARunnable::AnonymousN67597 { our @ISA = ('org::allbinary::thread::ARunnable', 'java::lang::Object');
             
 
             sub run {
@@ -128,9 +128,10 @@ sub setJFileChooser1 {
         $self->{jFileChooser1} = $jFileChooser1;
 }
 
-use org::allbinary::thread::ARunnable;
-use java::io::File;
-use org::allbinary::logic::communication::log::LogUtil;
+use java::lang::Object ();
+use org::allbinary::thread::ARunnable ();
+use java::io::File ();
+use org::allbinary::logic::communication::log::LogUtil ();
 
 1;
 

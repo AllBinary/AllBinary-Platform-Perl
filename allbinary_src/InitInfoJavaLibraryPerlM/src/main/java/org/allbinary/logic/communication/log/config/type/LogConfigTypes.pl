@@ -17,9 +17,10 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
 our $JSP_ERROR_NO_FUNCTION = "in JSP Not In Function";
-our $LOGGING = 'org::allbinary::util::BasicArrayListD'->new();
+tie our $LOGGING, 'java::lang::LazyStatic', sub { 'org::allbinary::util::BasicArrayListD'->new() };
 
 
 { # Java static initializer
@@ -72,16 +73,18 @@ sub getInstance {
         die ("No Such LogConfigType: " . $name);
 }
 
-use org::allbinary::data::tree::dom::DomNodeHelper;
-use org::allbinary::data::tree::dom::DomSearchHelper;
-use org::allbinary::logic::communication::log::PreLogUtil;
-use org::allbinary::logic::communication::log::config::LoggingInitInfo;
-use org::allbinary::util::BasicArrayList;
-use org::allbinary::util::BasicArrayListD;
-use org::w3c::dom::Node;
-use org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory;
-use org::allbinary::logic::communication::log::config::type::LogConfigTypeData;
-use org::allbinary::logic::communication::log::config::type::LogConfigType;
+use java::lang::Object ();
+use java::lang::LazyStatic ();
+use org::allbinary::data::tree::dom::DomNodeHelper ();
+use org::allbinary::data::tree::dom::DomSearchHelper ();
+use org::allbinary::logic::communication::log::PreLogUtil ();
+use org::allbinary::logic::communication::log::config::LoggingInitInfo ();
+use org::allbinary::util::BasicArrayList ();
+use org::allbinary::util::BasicArrayListD ();
+use org::w3c::dom::Node ();
+use org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory ();
+use org::allbinary::logic::communication::log::config::type::LogConfigTypeData ();
+use org::allbinary::logic::communication::log::config::type::LogConfigType ();
 
 1;
 

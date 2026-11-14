@@ -32,7 +32,7 @@ sub log {
     die "abstract method log";
 }
 
-use org::allbinary::time::TimeDelayHelper;
+use org::allbinary::time::TimeDelayHelper ();
 
 1;
 

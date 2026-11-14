@@ -19,7 +19,7 @@ use feature 'try';
 no warnings 'experimental::try';
 use parent -norequire,'org::allbinary::layer::event::LayerManagerEventListener';
 
-our $SINGLETON = 'org::allbinary::game::layer::identification::GroupLayerManagerListener'->new();
+tie our $SINGLETON, 'java::lang::LazyStatic', sub { 'org::allbinary::game::layer::identification::GroupLayerManagerListener'->new() };
 
 sub _init_fields {
     my ($self) = @_;
@@ -37,7 +37,7 @@ sub getInstance {
 sub new {
     my ($class) = @_;
     my $self = $class->SUPER::new();
-    $self->_init_fields();
+    _init_fields($self);
         'org::allbinary::layer::event::LayerManagerEventHandler'->getInstance()->addListener($self);
     return $self;
 }
@@ -214,21 +214,23 @@ sub log {
         $self->{logUtil}->putF($stringBuffer->toString(), $self, "log");
 }
 
-use org::allbinary::game::identification::Group;
-use org::allbinary::game::identification::GroupInterfaceCompositeInterface;
-use org::allbinary::layer::AllBinaryLayer;
-use org::allbinary::layer::event::LayerManagerEvent;
-use org::allbinary::layer::event::LayerManagerEventHandler;
-use org::allbinary::layer::event::LayerManagerEventListener;
-use org::allbinary::logic::communication::log::ForcedLogUtil;
-use org::allbinary::logic::communication::log::LogUtil;
-use org::allbinary::logic::string::StringMaker;
-use org::allbinary::logic::util::event::AllBinaryEventObject;
-use org::allbinary::logic::util::event::EventStrings;
-use org::allbinary::string::CommonLabels;
-use org::allbinary::string::CommonSeps;
-use org::allbinary::util::BasicArrayList;
-use org::allbinary::util::BasicArrayListD;
+use java::lang::Object ();
+use java::lang::LazyStatic ();
+use org::allbinary::game::identification::Group ();
+use org::allbinary::game::identification::GroupInterfaceCompositeInterface ();
+use org::allbinary::layer::AllBinaryLayer ();
+use org::allbinary::layer::event::LayerManagerEvent ();
+use org::allbinary::layer::event::LayerManagerEventHandler ();
+use org::allbinary::layer::event::LayerManagerEventListener ();
+use org::allbinary::logic::communication::log::ForcedLogUtil ();
+use org::allbinary::logic::communication::log::LogUtil ();
+use org::allbinary::logic::string::StringMaker ();
+use org::allbinary::logic::util::event::AllBinaryEventObject ();
+use org::allbinary::logic::util::event::EventStrings ();
+use org::allbinary::string::CommonLabels ();
+use org::allbinary::string::CommonSeps ();
+use org::allbinary::util::BasicArrayList ();
+use org::allbinary::util::BasicArrayListD ();
 
 1;
 

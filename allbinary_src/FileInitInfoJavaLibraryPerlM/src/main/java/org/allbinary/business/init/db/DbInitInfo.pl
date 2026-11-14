@@ -35,7 +35,7 @@ sub _init_fields {
 sub new {
     my ($class, $initFileName, $read) = @_;
     my $self = $class->SUPER::new();
-    $self->_init_fields();
+    _init_fields($self);
         # super(...) made $self above
         $self->{initFileName} = $initFileName;
         if ($read) {
@@ -101,7 +101,7 @@ sub load {
         try {
             my $file = 'org::allbinary::logic::io::file::AbFile'->createAbFileFromAbPath($FILEABPATH);
             if ($file->isFile()) {
-                my $iFile = 'org::allbinary::logic::io::AbFileInputStream'->new($file);
+                my $iFile = 'org::allbinary::logic::io::AbFileInputStream'->createFromAbFile($file);
                 my $iData = 'org::allbinary::logic::io::AbDataInputStream'->new($iFile);
                 try {
                     my $decryptedJdbcDriver = ("" . 'org::allbinary::logic::system::security::crypt::DatabaseEncoder'->decode($iData->readUTF()));
@@ -204,25 +204,26 @@ sub getPort {
         return $self->SUPER::getPort();
 }
 
-use org::allbinary::globals::FREEBLISKET_PATH_GLOBALS;
-use org::allbinary::globals::URLGLOBALS;
-use org::allbinary::logic::communication::http::HttpData;
-use org::allbinary::logic::communication::log::PreLogUtil;
-use org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory;
-use org::allbinary::logic::communication::log::config::type::LogConfigTypes;
-use org::allbinary::logic::io::AbDataInputStream;
-use org::allbinary::logic::io::AbDataOutputStream;
-use org::allbinary::logic::io::AbFileInputStream;
-use org::allbinary::logic::io::DataOutputStreamFactory;
-use org::allbinary::logic::io::StreamUtil;
-use org::allbinary::logic::io::file::AbFile;
-use org::allbinary::logic::io::file::directory::Directory;
-use org::allbinary::logic::io::path::AbPath;
-use org::allbinary::logic::string::StringUtil;
-use org::allbinary::logic::system::security::crypt::DatabaseEncoder;
-use org::allbinary::logic::system::security::crypt::WeakCrypt;
-use org::allbinary::string::CommonStrings;
-use org::allbinary::business::init::db::DbConnectionInfo;
+use java::lang::Object ();
+use org::allbinary::globals::FREEBLISKET_PATH_GLOBALS ();
+use org::allbinary::globals::URLGLOBALS ();
+use org::allbinary::logic::communication::http::HttpData ();
+use org::allbinary::logic::communication::log::PreLogUtil ();
+use org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory ();
+use org::allbinary::logic::communication::log::config::type::LogConfigTypes ();
+use org::allbinary::logic::io::AbDataInputStream ();
+use org::allbinary::logic::io::AbDataOutputStream ();
+use org::allbinary::logic::io::AbFileInputStream ();
+use org::allbinary::logic::io::DataOutputStreamFactory ();
+use org::allbinary::logic::io::StreamUtil ();
+use org::allbinary::logic::io::file::AbFile ();
+use org::allbinary::logic::io::file::directory::Directory ();
+use org::allbinary::logic::io::path::AbPath ();
+use org::allbinary::logic::string::StringUtil ();
+use org::allbinary::logic::system::security::crypt::DatabaseEncoder ();
+use org::allbinary::logic::system::security::crypt::WeakCrypt ();
+use org::allbinary::string::CommonStrings ();
+use org::allbinary::business::init::db::DbConnectionInfo ();
 
 1;
 

@@ -17,8 +17,9 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
-our $instance = 'org::allbinary::input::motion::CompleteMotionGestureInputToGameMotionGestureInput'->new();
+tie our $instance, 'java::lang::LazyStatic', sub { 'org::allbinary::input::motion::CompleteMotionGestureInputToGameMotionGestureInput'->new() };
 
 sub _init_fields {
     my ($self) = @_;
@@ -28,7 +29,7 @@ sub _init_fields {
 sub new {
     my ($class) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
     return $self;
 }
 
@@ -78,23 +79,25 @@ sub init {
         }
 }
 
-use org::allbinary::input::motion::gesture::TouchMotionGestureFactory;
-use org::allbinary::input::motion::gesture::configuration::MotionGestureConfiguration;
-use org::allbinary::input::motion::gesture::configuration::MotionGestureConfigurationFactory;
-use org::allbinary::input::motion::touch::action::DiagonalDownLeftTouchInputToGameKeyEventAction;
-use org::allbinary::input::motion::touch::action::DiagonalDownRightTouchInputToGameKeyEventAction;
-use org::allbinary::input::motion::touch::action::DiagonalUpLeftTouchInputToGameKeyEventAction;
-use org::allbinary::input::motion::touch::action::DiagonalUpRightTouchInputToGameKeyEventAction;
-use org::allbinary::input::motion::touch::action::DownTouchInputToGameKeyEventAction;
-use org::allbinary::input::motion::touch::action::LeftTouchInputToGameKeyEventAction;
-use org::allbinary::input::motion::touch::action::ReleaseTouchInputToGameKeyEventAction;
-use org::allbinary::input::motion::touch::action::RightTouchInputToGameKeyEventAction;
-use org::allbinary::input::motion::touch::action::UpTouchInputToGameKeyEventAction;
-use org::allbinary::logic::communication::log::LogUtil;
-use org::allbinary::logic::communication::log::PreLogUtil;
-use org::allbinary::string::CommonStrings;
-use org::allbinary::util::BasicArrayList;
-use org::allbinary::util::BasicArrayListD;
+use java::lang::Object ();
+use java::lang::LazyStatic ();
+use org::allbinary::input::motion::gesture::TouchMotionGestureFactory ();
+use org::allbinary::input::motion::gesture::configuration::MotionGestureConfiguration ();
+use org::allbinary::input::motion::gesture::configuration::MotionGestureConfigurationFactory ();
+use org::allbinary::input::motion::touch::action::DiagonalDownLeftTouchInputToGameKeyEventAction ();
+use org::allbinary::input::motion::touch::action::DiagonalDownRightTouchInputToGameKeyEventAction ();
+use org::allbinary::input::motion::touch::action::DiagonalUpLeftTouchInputToGameKeyEventAction ();
+use org::allbinary::input::motion::touch::action::DiagonalUpRightTouchInputToGameKeyEventAction ();
+use org::allbinary::input::motion::touch::action::DownTouchInputToGameKeyEventAction ();
+use org::allbinary::input::motion::touch::action::LeftTouchInputToGameKeyEventAction ();
+use org::allbinary::input::motion::touch::action::ReleaseTouchInputToGameKeyEventAction ();
+use org::allbinary::input::motion::touch::action::RightTouchInputToGameKeyEventAction ();
+use org::allbinary::input::motion::touch::action::UpTouchInputToGameKeyEventAction ();
+use org::allbinary::logic::communication::log::LogUtil ();
+use org::allbinary::logic::communication::log::PreLogUtil ();
+use org::allbinary::string::CommonStrings ();
+use org::allbinary::util::BasicArrayList ();
+use org::allbinary::util::BasicArrayListD ();
 
 1;
 

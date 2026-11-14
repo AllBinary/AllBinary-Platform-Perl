@@ -44,7 +44,7 @@ sub _init_fields {
 sub new {
     my ($class, $location, $direction, $bufferZone, $basicColor) = @_;
     my $self = $class->SUPER::new($location, $direction, $bufferZone, $basicColor);
-    $self->_init_fields();
+    _init_fields($self);
         # super(...) made $self above
         $self->{circularIndexUtil} = 'org::allbinary::util::CircularIndexUtil'->createInstance(0);
         my $gameNotificationEventHandler = 'org::allbinary::game::layer::hud::event::GameNotificationEventHandler'->getInstance();
@@ -174,92 +174,31 @@ sub paint {
         $self->{myFontProcessor}->process($graphics);
         $self->SUPER::paintString($graphics, $self->{string});
 }
-{
-    package org::allbinary::game::ag::layer::hud::basic::SetAndRemoveProcessor;
-    use strict;
-    use warnings;
-    use feature 'try';
-    no warnings 'experimental::try';
-    use POSIX ();
-    use parent -norequire,'org::allbinary::canvas::Processor';
-    
 
-    sub _init_fields {
-        my ($self) = @_;
-        $self->{updateMeasurementProcessor} = undef;
-    }
-    
-
-    sub new {
-        my ($class, $updateMeasurementProcessor) = @_;
-        my $self = $class->SUPER::new();
-        $self->_init_fields();
-            $self->{updateMeasurementProcessor} = $updateMeasurementProcessor;
-        return $self;
-    }
-    
-
-    # throws Exception
-    sub process {
-        my ($self) = @_;
-            $self->{updateMeasurementProcessor}->setAndRemoveProcess();
-    }
-    }
-
-{
-    package org::allbinary::game::ag::layer::hud::basic::NextUnremoveableProcessor;
-    use strict;
-    use warnings;
-    use feature 'try';
-    no warnings 'experimental::try';
-    use POSIX ();
-    use parent -norequire,'org::allbinary::canvas::Processor';
-    
-
-    sub _init_fields {
-        my ($self) = @_;
-        $self->{updateMeasurementProcessor} = undef;
-    }
-    
-
-    sub new {
-        my ($class, $updateMeasurementProcessor) = @_;
-        my $self = $class->SUPER::new();
-        $self->_init_fields();
-            $self->{updateMeasurementProcessor} = $updateMeasurementProcessor;
-        return $self;
-    }
-    
-
-    # throws Exception
-    sub process {
-        my ($self) = @_;
-            $self->{updateMeasurementProcessor}->setNextUnremoveableProcess();
-    }
-    }
-
-
-# use javax::microedition::lcdui::Font;
-# use javax::microedition::lcdui::Graphics;
-use org::allbinary::business::advertisement::GameAdStateFactory;
-use org::allbinary::canvas::Processor;
-use org::allbinary::game::GameAdState;
-use org::allbinary::game::ag::layer::hud::basic::notification::GameNotification;
-use org::allbinary::game::ag::layer::hud::basic::notification::GameNotificationHud;
-use org::allbinary::game::layer::hud::event::GameNotificationEventHandler;
-use org::allbinary::graphics::CustomGPoint;
-use org::allbinary::graphics::GPoint;
-use org::allbinary::graphics::color::BasicColor;
-use org::allbinary::graphics::displayable::DisplayInfoSingleton;
-use org::allbinary::graphics::font::UpdateMyFontInterface;
-use org::allbinary::logic::communication::log::LogUtil;
-use org::allbinary::logic::string::StringMaker;
-use org::allbinary::logic::string::StringUtil;
-use org::allbinary::string::CommonStrings;
-use org::allbinary::time::GameTickTimeDelayHelper;
-use org::allbinary::time::GameTickTimeDelayHelperFactory;
-use org::allbinary::time::TimeDelayHelper;
-use org::allbinary::util::CircularIndexUtil;
+use java::lang::Object ();
+use javax::microedition::lcdui::Font ();
+use javax::microedition::lcdui::Graphics ();
+use org::allbinary::business::advertisement::GameAdStateFactory ();
+use org::allbinary::canvas::Processor ();
+use org::allbinary::game::GameAdState ();
+use org::allbinary::game::ag::layer::hud::basic::notification::GameNotification ();
+use org::allbinary::game::ag::layer::hud::basic::notification::GameNotificationHud ();
+use org::allbinary::game::layer::hud::event::GameNotificationEventHandler ();
+use org::allbinary::graphics::CustomGPoint ();
+use org::allbinary::graphics::GPoint ();
+use org::allbinary::graphics::color::BasicColor ();
+use org::allbinary::graphics::displayable::DisplayInfoSingleton ();
+use org::allbinary::graphics::font::UpdateMyFontInterface ();
+use org::allbinary::logic::communication::log::LogUtil ();
+use org::allbinary::logic::string::StringMaker ();
+use org::allbinary::logic::string::StringUtil ();
+use org::allbinary::string::CommonStrings ();
+use org::allbinary::time::GameTickTimeDelayHelper ();
+use org::allbinary::time::GameTickTimeDelayHelperFactory ();
+use org::allbinary::time::TimeDelayHelper ();
+use org::allbinary::util::CircularIndexUtil ();
+use org::allbinary::game::ag::layer::hud::basic::SetAndRemoveProcessor ();
+use org::allbinary::game::ag::layer::hud::basic::NextUnremoveableProcessor ();
 
 1;
 

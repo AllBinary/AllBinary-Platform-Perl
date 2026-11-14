@@ -110,10 +110,11 @@ sub clone {
         return $self->SUPER::clone();
 }
 
-use java::util::HashMap;
-# use java::util::Map;
-# use java::util::Set;
-# use jsinterop::annotations::JsType;
+use java::lang::Object ();
+use java::util::HashMap ();
+# use java::util::Map ();
+# use java::util::Set ();
+# use jsinterop::annotations::JsType ();
 
 1;
 

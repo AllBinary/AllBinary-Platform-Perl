@@ -17,8 +17,9 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
-our $instance = 'org::allbinary::media::image::ImageRotationUtil'->new();
+tie our $instance, 'java::lang::LazyStatic', sub { 'org::allbinary::media::image::ImageRotationUtil'->new() };
 
 sub _init_fields {
     my ($self) = @_;
@@ -36,7 +37,7 @@ sub getInstance {
 sub new {
     my ($class) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
     return $self;
 }
 
@@ -73,15 +74,17 @@ sub createRotatedImage {
         return $originalImage;
 }
 
-# use javax::microedition::lcdui::Image;
-use org::allbinary::game::configuration::feature::Features;
-use org::allbinary::graphics::opengles::OpenGLFeatureFactory;
-use org::allbinary::image::opengles::OpenGLESImage;
-use org::allbinary::logic::communication::log::PreLogUtil;
-use org::eclipse::swt::graphics::GC;
-use org::microemu::device::swt::SwtImmutableImage;
-use org::microemu::device::swt::SwtMutableImage;
-use org::allbinary::media::image::ImageSwtRotationUtil;
+use java::lang::Object ();
+use java::lang::LazyStatic ();
+use javax::microedition::lcdui::Image ();
+use org::allbinary::game::configuration::feature::Features ();
+use org::allbinary::graphics::opengles::OpenGLFeatureFactory ();
+use org::allbinary::image::opengles::OpenGLESImage ();
+use org::allbinary::logic::communication::log::PreLogUtil ();
+# use org::eclipse::swt::graphics::GC ();
+use org::microemu::device::swt::SwtImmutableImage ();
+use org::microemu::device::swt::SwtMutableImage ();
+use org::allbinary::media::image::ImageSwtRotationUtil ();
 
 1;
 

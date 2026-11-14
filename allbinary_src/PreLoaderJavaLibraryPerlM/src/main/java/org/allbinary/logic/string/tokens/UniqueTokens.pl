@@ -17,6 +17,7 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
 
 sub _init_fields {
@@ -28,7 +29,7 @@ sub _init_fields {
 sub new {
     my ($class) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
         $self->{specialCharacters}->add("!");
         $self->{specialCharacters}->add("\@");
         $self->{specialCharacters}->add('org::allbinary::string::CommonPhoneStrings'->getInstance()->{POUND});
@@ -116,14 +117,15 @@ sub isSpecialCharacter {
         return 0;
 }
 
-# use java::util::HashSet;
-use org::allbinary::logic::io::path::AbPathData;
-use org::allbinary::logic::string::regex::replace::Replace;
-use org::allbinary::string::CommonPhoneStrings;
-use org::allbinary::string::CommonSeps;
-use org::allbinary::util::BasicArrayList;
-use org::allbinary::util::BasicArrayListD;
-use org::allbinary::logic::string::tokens::Tokenizer;
+use java::lang::Object ();
+# use java::util::HashSet ();
+use org::allbinary::logic::io::path::AbPathData ();
+use org::allbinary::logic::string::regex::replace::Replace ();
+use org::allbinary::string::CommonPhoneStrings ();
+use org::allbinary::string::CommonSeps ();
+use org::allbinary::util::BasicArrayList ();
+use org::allbinary::util::BasicArrayListD ();
+use org::allbinary::logic::string::tokens::Tokenizer ();
 
 1;
 

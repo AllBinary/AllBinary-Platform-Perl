@@ -30,7 +30,7 @@ sub _init_fields {
 sub new {
     my ($class, $gameInputMappingArray, $basicColor) = @_;
     my $self = $class->SUPER::new("Help Screen", 'org::allbinary::graphics::color::BasicColorFactory'->getInstance()->{BLACK}, $basicColor);
-    $self->_init_fields();
+    _init_fields($self);
         # super(...) made $self above
         $self->{gameInputMappingArray} = $gameInputMappingArray;
         $self->update($self->{NONE}, $self->{NONE});
@@ -85,18 +85,19 @@ sub get {
         return $stringBuffer->toString();
 }
 
-use org::allbinary::game::input::GameKey;
-use org::allbinary::game::input::GameKeyFactory;
-use org::allbinary::game::input::Input;
-use org::allbinary::game::input::PlatformInputMappingFactory;
-use org::allbinary::game::input::mapping::GameInputMapping;
-use org::allbinary::game::input::mapping::PersistentInputMapping;
-use org::allbinary::graphics::color::BasicColor;
-use org::allbinary::graphics::color::BasicColorFactory;
-use org::allbinary::logic::string::StringMaker;
-use org::allbinary::string::CommonSeps;
-use org::allbinary::util::BasicArrayList;
-use org::allbinary::game::paint::help::HelpPaintable;
+use java::lang::Object ();
+use org::allbinary::game::input::GameKey ();
+use org::allbinary::game::input::GameKeyFactory ();
+use org::allbinary::game::input::Input ();
+use org::allbinary::game::input::PlatformInputMappingFactory ();
+use org::allbinary::game::input::mapping::GameInputMapping ();
+use org::allbinary::game::input::mapping::PersistentInputMapping ();
+use org::allbinary::graphics::color::BasicColor ();
+use org::allbinary::graphics::color::BasicColorFactory ();
+use org::allbinary::logic::string::StringMaker ();
+use org::allbinary::string::CommonSeps ();
+use org::allbinary::util::BasicArrayList ();
+use org::allbinary::game::paint::help::HelpPaintable ();
 
 1;
 

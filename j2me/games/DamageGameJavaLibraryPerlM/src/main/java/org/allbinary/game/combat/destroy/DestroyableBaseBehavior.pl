@@ -17,9 +17,9 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
-use parent -norequire,'org::allbinary::game::combat::destroy::DestroyableInterface';
+use parent -norequire,'java::lang::Object','org::allbinary::game::combat::destroy::DestroyableInterface';
 
-our $instance = 'org::allbinary::game::combat::destroy::DestroyableBaseBehavior'->new();
+tie our $instance, 'java::lang::LazyStatic', sub { 'org::allbinary::game::combat::destroy::DestroyableBaseBehavior'->new() };
 
 sub new {
     my ($class) = @_;
@@ -51,8 +51,10 @@ sub setDestroyed {
     my ($self, $destroyed) = @_;
 }
 
-use org::allbinary::string::CommonStrings;
-use org::allbinary::game::combat::destroy::DestroyableInterface;
+use java::lang::Object ();
+use java::lang::LazyStatic ();
+use org::allbinary::string::CommonStrings ();
+use org::allbinary::game::combat::destroy::DestroyableInterface ();
 
 1;
 

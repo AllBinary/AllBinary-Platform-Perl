@@ -29,7 +29,7 @@ sub _init_fields {
 sub new {
     my ($class, $allBinaryLayerInterface) = @_;
     my $self = $class->SUPER::new($allBinaryLayerInterface);
-    $self->_init_fields();
+    _init_fields($self);
         # super(...) made $self above
         if ($allBinaryLayerInterface != 'org::allbinary::game::tracking::TrackingEventHandler'->getInstance()) {
             $self->setLayerInterface($allBinaryLayerInterface);
@@ -71,10 +71,11 @@ sub toString {
         return $stringBuffer->toString();
 }
 
-use org::allbinary::layer::AllBinaryLayer;
-use org::allbinary::logic::string::StringMaker;
-use org::allbinary::logic::util::event::AllBinaryEventObject;
-use org::allbinary::game::tracking::TrackingEventHandler;
+use java::lang::Object ();
+use org::allbinary::layer::AllBinaryLayer ();
+use org::allbinary::logic::string::StringMaker ();
+use org::allbinary::logic::util::event::AllBinaryEventObject ();
+use org::allbinary::game::tracking::TrackingEventHandler ();
 
 1;
 

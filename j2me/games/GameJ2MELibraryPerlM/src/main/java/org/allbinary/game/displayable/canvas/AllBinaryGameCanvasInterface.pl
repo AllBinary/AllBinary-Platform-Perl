@@ -27,8 +27,8 @@ sub getLayerManager {
     die "abstract method getLayerManager";
 }
 
-use org::allbinary::game::layer::AllBinaryGameLayerManager;
-use org::allbinary::graphics::displayable::DisplayableInterface;
+use org::allbinary::game::layer::AllBinaryGameLayerManager ();
+use org::allbinary::graphics::displayable::DisplayableInterface ();
 
 1;
 

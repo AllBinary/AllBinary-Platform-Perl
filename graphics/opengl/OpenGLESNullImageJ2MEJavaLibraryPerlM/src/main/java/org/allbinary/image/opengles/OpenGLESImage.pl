@@ -18,10 +18,10 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
-use parent -norequire,'org::allbinary::image::opengles::OpenGLSurfaceChangedInterface';
+use parent -norequire,'java::lang::Object','org::allbinary::image::opengles::OpenGLSurfaceChangedInterface';
 
-our $NULL_OPENGL_IMAGE = 'org::allbinary::image::opengles::OpenGLESImage'->new($javax::microedition::lcdui::NullImage::NULL_IMAGE, $org::allbinary::platform::graphics::PlatformBitmapBaseFactory::NULL_PLATFORM_BITMAP_BASE_FACTORY, $org::allbinary::platform::opengles::PlatformTextureBaseFactory::NULL_PLATFORM_TEXTURE_BASE_FACTORY);
-our $texture2dList = 'org::allbinary::util::BasicArrayListD'->new();
+tie our $NULL_OPENGL_IMAGE, 'java::lang::LazyStatic', sub { 'org::allbinary::image::opengles::OpenGLESImage'->new($javax::microedition::lcdui::NullImage::NULL_IMAGE, $org::allbinary::platform::graphics::PlatformBitmapBaseFactory::NULL_PLATFORM_BITMAP_BASE_FACTORY, $org::allbinary::platform::opengles::PlatformTextureBaseFactory::NULL_PLATFORM_TEXTURE_BASE_FACTORY) };
+tie our $texture2dList, 'java::lang::LazyStatic', sub { 'org::allbinary::util::BasicArrayListD'->new() };
 our $TYPE = 4;
 
 sub _init_fields {
@@ -36,7 +36,7 @@ sub _init_fields {
 sub new {
     my ($class, $image, $bitmapFactory, $textureFactory) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
         $self->{openGLBitmap} = $bitmapFactory->createBitmap($image);
         $self->{textureFactory} = $textureFactory;
     return $self;
@@ -71,18 +71,20 @@ sub getType {
         return $org::allbinary::image::opengles::OpenGLESImage::TYPE;
 }
 
-# use javax::microedition::khronos::opengles::GL;
-# use javax::microedition::khronos::opengles::GL10;
-# use javax::microedition::lcdui::Image;
-# use javax::microedition::lcdui::NullImage;
-use org::allbinary::platform::graphics::PlatformBitmapBase;
-use org::allbinary::platform::graphics::PlatformBitmapBaseFactory;
-use org::allbinary::platform::opengles::PlatformTextureBaseFactory;
-use org::allbinary::string::CommonStrings;
-use org::allbinary::util::BasicArrayList;
-use org::allbinary::util::BasicArrayListD;
-use org::allbinary::image::opengles::OpenGLSurfaceChangedInterface;
-use org::allbinary::image::opengles::OpenGLESImageProperties;
+use java::lang::Object ();
+use java::lang::LazyStatic ();
+use javax::microedition::khronos::opengles::GL ();
+use javax::microedition::khronos::opengles::GL10 ();
+use javax::microedition::lcdui::Image ();
+use javax::microedition::lcdui::NullImage ();
+use org::allbinary::platform::graphics::PlatformBitmapBase ();
+use org::allbinary::platform::graphics::PlatformBitmapBaseFactory ();
+use org::allbinary::platform::opengles::PlatformTextureBaseFactory ();
+use org::allbinary::string::CommonStrings ();
+use org::allbinary::util::BasicArrayList ();
+use org::allbinary::util::BasicArrayListD ();
+use org::allbinary::image::opengles::OpenGLSurfaceChangedInterface ();
+use org::allbinary::image::opengles::OpenGLESImageProperties ();
 
 1;
 

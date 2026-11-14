@@ -17,6 +17,7 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
 
 sub _init_fields {
@@ -28,7 +29,7 @@ sub _init_fields {
 sub new {
     my ($class, $file) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
         $self->{tmpIn} = 'java::io::BufferedReader'->new('java::io::FileReader'->new('org::allbinary::logic::io::file::AbFileNativeUtil'->get($file)));
     return $self;
 }
@@ -46,6 +47,13 @@ sub readLine {
 }
 
 
+# throws Exception
+sub ready {
+    my ($self) = @_;
+        return $self->{tmpIn}->ready();
+}
+
+
 sub getSize {
     my ($self) = @_;
         return 0;
@@ -57,10 +65,11 @@ sub getCurrent {
         return 0;
 }
 
-# use java::io::BufferedReader;
-# use java::io::FileReader;
-use org::allbinary::logic::io::file::AbFile;
-use org::allbinary::logic::io::file::AbFileNativeUtil;
+use java::lang::Object ();
+# use java::io::BufferedReader ();
+# use java::io::FileReader ();
+use org::allbinary::logic::io::file::AbFile ();
+use org::allbinary::logic::io::file::AbFileNativeUtil ();
 
 1;
 

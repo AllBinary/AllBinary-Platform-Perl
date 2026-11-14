@@ -17,6 +17,7 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
 
 sub new {
@@ -49,10 +50,11 @@ sub toXmlNode {
         return $node;
 }
 
-use org::allbinary::data::tree::dom::DomSearchHelper;
-use org::w3c::dom::Document;
-use org::w3c::dom::Node;
-use org::allbinary::input::automation::actions::script::condition::processors::GenericProfileActionScriptProcessorData;
+use java::lang::Object ();
+use org::allbinary::data::tree::dom::DomSearchHelper ();
+use org::w3c::dom::Document ();
+use org::w3c::dom::Node ();
+use org::allbinary::input::automation::actions::script::condition::processors::GenericProfileActionScriptProcessorData ();
 
 1;
 

@@ -17,11 +17,16 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
-our $poolInterface = undef;
+tie our $poolInterface, 'java::lang::LazyStatic', sub { undef }, sub { __PACKAGE__->_static_initializer1(); };
 
 
-{ # Java static initializer
+# Java static initializer
+sub _static_initializer1 {
+    our $_static_initialized1;
+    return if $_static_initialized1;
+    $_static_initialized1 = 1;
         my $logUtil = 'org::allbinary::logic::communication::log::LogUtil'->getInstance();
         my $commonStrings = 'org::allbinary::string::CommonStrings'->getInstance();
         my $STATIC_BLOCK = "Static Block";
@@ -48,13 +53,15 @@ sub getInstance {
         return $org::allbinary::media::image::cache::BufferedImagePoolSingleton::poolInterface;
 }
 
-use org::allbinary::logic::communication::log::LogUtil;
-use org::allbinary::logic::util::cache::CachePolicyFactory;
-use org::allbinary::logic::util::cache::PoolInterface;
-use org::allbinary::logic::util::cache::PoolInterfaceFactory;
-use org::allbinary::logic::util::cache::PoolTypeFactory;
-use org::allbinary::string::CommonStrings;
-use org::allbinary::media::image::cache::BufferedImageCacheableFactory;
+use java::lang::Object ();
+use java::lang::LazyStatic ();
+use org::allbinary::logic::communication::log::LogUtil ();
+use org::allbinary::logic::util::cache::CachePolicyFactory ();
+use org::allbinary::logic::util::cache::PoolInterface ();
+use org::allbinary::logic::util::cache::PoolInterfaceFactory ();
+use org::allbinary::logic::util::cache::PoolTypeFactory ();
+use org::allbinary::string::CommonStrings ();
+use org::allbinary::media::image::cache::BufferedImageCacheableFactory ();
 
 1;
 

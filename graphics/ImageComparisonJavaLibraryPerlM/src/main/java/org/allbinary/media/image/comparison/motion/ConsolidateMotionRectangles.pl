@@ -30,7 +30,7 @@ sub _init_fields {
 sub new {
     my ($class, $motionRectangles) = @_;
     my $self = $class->SUPER::new($NAME, $motionRectangles->getImageComparisonResult());
-    $self->_init_fields();
+    _init_fields($self);
         # super(...) made $self above
         my $vector = $motionRectangles->getVector();
         my $size = $vector->size();
@@ -77,12 +77,13 @@ sub remove {
         }
 }
 
-# use java::awt;
-use org::allbinary::util::BasicArrayList;
-use org::allbinary::util::BasicArrayListD;
-use org::allbinary::logic::StdUtil;
-use org::allbinary::logic::communication::log::LogUtil;
-use org::allbinary::media::image::comparison::motion::MotionRectangles;
+use java::lang::Object ();
+# use java::awt ();
+use org::allbinary::util::BasicArrayList ();
+use org::allbinary::util::BasicArrayListD ();
+use org::allbinary::logic::StdUtil ();
+use org::allbinary::logic::communication::log::LogUtil ();
+use org::allbinary::media::image::comparison::motion::MotionRectangles ();
 
 1;
 

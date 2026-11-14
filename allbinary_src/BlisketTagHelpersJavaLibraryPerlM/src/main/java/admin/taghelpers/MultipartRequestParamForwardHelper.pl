@@ -17,6 +17,7 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
 
 sub _init_fields {
@@ -33,7 +34,7 @@ sub _init_fields {
 sub new {
     my ($class, $parentHelperTag, $page, $command, $paramVector, $pageContext) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
         $self->{pageContext} = $pageContext;
         $self->{page} = $page;
         $self->{command} = $command;
@@ -98,19 +99,20 @@ sub shouldForward {
         return 0;
 }
 
-use java::util::HashMap;
-use org::allbinary::util::BasicArrayList;
-use org::allbinary::util::BasicArrayListD;
-# use javax::servlet::jsp::PageContext;
-use org::allbinary::globals::GLOBALS2;
-use org::allbinary::logic::communication::http::request::RequestMapInterface;
-use org::allbinary::logic::communication::log::LogUtil;
-use org::allbinary::logic::string::StringMaker;
-use org::allbinary::logic::string::StringValidationUtil;
-use org::allbinary::string::CommonSeps;
-use org::allbinary::string::CommonStrings;
-use tags::HelperTag;
-use admin::taghelpers::InventoryItemViewParentTagHelper;
+use java::lang::Object ();
+use java::util::HashMap ();
+use org::allbinary::util::BasicArrayList ();
+use org::allbinary::util::BasicArrayListD ();
+# use javax::servlet::jsp::PageContext ();
+use org::allbinary::globals::GLOBALS2 ();
+use org::allbinary::logic::communication::http::request::RequestMapInterface ();
+use org::allbinary::logic::communication::log::LogUtil ();
+use org::allbinary::logic::string::StringMaker ();
+use org::allbinary::logic::string::StringValidationUtil ();
+use org::allbinary::string::CommonSeps ();
+use org::allbinary::string::CommonStrings ();
+use tags::HelperTag ();
+use admin::taghelpers::InventoryItemViewParentTagHelper ();
 
 1;
 

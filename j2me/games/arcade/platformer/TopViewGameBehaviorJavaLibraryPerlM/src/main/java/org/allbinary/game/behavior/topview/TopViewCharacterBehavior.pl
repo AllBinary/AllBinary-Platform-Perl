@@ -17,6 +17,7 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
 
 sub new {
@@ -50,12 +51,13 @@ sub hasSolidBlock {
         return 0;
 }
 
-use org::allbinary::direction::Direction;
-use org::allbinary::layer::AllBinaryLayer;
-use org::allbinary::media::graphics::geography::map::BasicGeographicMap;
-use org::allbinary::media::graphics::geography::map::GeographicMapCellPosition;
-use org::allbinary::media::graphics::geography::map::GeographicMapCellType;
-use org::allbinary::media::graphics::geography::map::topview::BasicTopViewGeographicMapCellTypeFactory;
+use java::lang::Object ();
+use org::allbinary::direction::Direction ();
+use org::allbinary::layer::AllBinaryLayer ();
+use org::allbinary::media::graphics::geography::map::BasicGeographicMap ();
+use org::allbinary::media::graphics::geography::map::GeographicMapCellPosition ();
+use org::allbinary::media::graphics::geography::map::GeographicMapCellType ();
+use org::allbinary::media::graphics::geography::map::topview::BasicTopViewGeographicMapCellTypeFactory ();
 
 1;
 

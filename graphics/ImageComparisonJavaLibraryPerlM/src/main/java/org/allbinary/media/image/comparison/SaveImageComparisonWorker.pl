@@ -17,7 +17,7 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
-use parent -norequire,'org::allbinary::media::image::comparison::ImageComparisonResultsListener';
+use parent -norequire,'java::lang::Object','org::allbinary::media::image::comparison::ImageComparisonResultsListener';
 
 
 sub _init_fields {
@@ -32,7 +32,7 @@ sub _init_fields {
 sub new {
     my ($class) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
     return $self;
 }
 
@@ -81,16 +81,17 @@ sub run {
         }
 }
 
-use org::allbinary::util::BasicArrayList;
-use org::allbinary::util::BasicArrayListD;
-use org::allbinary::logic::StdUtil;
-use org::allbinary::logic::communication::log::LogUtil;
-use org::allbinary::logic::util::event::AllBinaryEventObject;
-use org::allbinary::string::CommonLabels;
-use org::allbinary::string::CommonStrings;
-use org::allbinary::time::TimeDelayHelper;
-use org::allbinary::media::image::comparison::ImageComparisonResultsListener;
-use org::allbinary::media::image::comparison::ComparisonImageInputOutput;
+use java::lang::Object ();
+use org::allbinary::util::BasicArrayList ();
+use org::allbinary::util::BasicArrayListD ();
+use org::allbinary::logic::StdUtil ();
+use org::allbinary::logic::communication::log::LogUtil ();
+use org::allbinary::logic::util::event::AllBinaryEventObject ();
+use org::allbinary::string::CommonLabels ();
+use org::allbinary::string::CommonStrings ();
+use org::allbinary::time::TimeDelayHelper ();
+use org::allbinary::media::image::comparison::ImageComparisonResultsListener ();
+use org::allbinary::media::image::comparison::ComparisonImageInputOutput ();
 
 1;
 

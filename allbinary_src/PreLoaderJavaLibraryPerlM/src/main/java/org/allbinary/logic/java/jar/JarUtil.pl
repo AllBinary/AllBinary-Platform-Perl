@@ -17,6 +17,7 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
 
 sub _init_fields {
@@ -28,7 +29,7 @@ sub _init_fields {
 sub new {
     my ($class, $jarURL) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
         $self->{jarURL} = $jarURL;
     return $self;
 }
@@ -75,12 +76,13 @@ sub main {
         'org::allbinary::logic::java::jar::JarUtil'->new('java::net::URL'->new("file:///G:/mnt/bc/mydev/working/j2me/MiniSpaceWars/MiniSpaceWars/dist/MiniSpaceWars.jar"))->show();
 }
 
-# use java::io::IOException;
-# use java::net::URL;
-# use java::net::URLConnection;
-# use java::util::jar::JarEntry;
-# use java::util::jar::JarInputStream;
-use java::lang::System;
+use java::lang::Object ();
+# use java::io::IOException ();
+# use java::net::URL ();
+# use java::net::URLConnection ();
+# use java::util::jar::JarEntry ();
+# use java::util::jar::JarInputStream ();
+use java::lang::System ();
 
 1;
 

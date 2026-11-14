@@ -19,7 +19,7 @@ use feature 'try';
 no warnings 'experimental::try';
 use parent -norequire,'admin::taghelpers::ModifyTable';
 
-our $categoryRequest = 'org::allbinary::logic::string::StringMaker'->new()->append("<")->append('org::allbinary::business::category::CategoryData'->getInstance()->{REQUEST})->append(">")->toString();
+tie our $categoryRequest, 'java::lang::LazyStatic', sub { 'org::allbinary::logic::string::StringMaker'->new()->append("<")->append('org::allbinary::business::category::CategoryData'->getInstance()->{REQUEST})->append(">")->toString() };
 
 sub _init_fields {
     my ($self) = @_;
@@ -37,7 +37,7 @@ sub _init_fields {
 sub new {
     my ($class, $hashMap, $pageContext) = @_;
     my $self = $class->SUPER::new();
-    $self->_init_fields();
+    _init_fields($self);
         try {
             $self->{request} = $pageContext->getRequest();
             $self->{pageContext} = $pageContext;
@@ -235,32 +235,34 @@ sub update {
         }
 }
 
-use java::util::HashMap;
-# use java::util::Map;
-# use java::util::Set;
-# use javax::servlet::http::HttpServletRequest;
-# use javax::servlet::jsp::PageContext;
-use org::allbinary::business::category::CategoryComponent;
-use org::allbinary::business::category::CategoryData;
-use org::allbinary::business::category::CategoryInterface;
-use org::allbinary::business::category::store::StoreCategoryFactory;
-use org::allbinary::business::context::modules::storefront::StoreFrontData;
-use org::allbinary::business::context::modules::storefront::StoreFrontFactory;
-use org::allbinary::business::context::modules::storefront::StoreFrontInterface;
-use org::allbinary::data::tree::category::CategoryLoaderFactory;
-use org::allbinary::data::tree::category::CategoryLoaderInterface;
-use org::allbinary::data::tree::dom::DomNodeHelper;
-use org::allbinary::data::tree::dom::DomSearchHelper;
-use org::allbinary::data::tree::dom::document::DomDocumentHelper;
-use org::allbinary::data::tree::dom::document::XmlDocumentHelper;
-use org::allbinary::logic::communication::log::LogUtil;
-use org::allbinary::logic::string::StringMaker;
-use org::allbinary::logic::string::StringUtil;
-use org::allbinary::logic::visual::transform::info::TransformInfoBasic;
-use org::allbinary::logic::visual::transform::info::TransformInfoInterface;
-use org::w3c::dom::Document;
-use org::w3c::dom::Node;
-use admin::taghelpers::ModifyTable;
+use java::lang::Object ();
+use java::lang::LazyStatic ();
+use java::util::HashMap ();
+# use java::util::Map ();
+# use java::util::Set ();
+# use javax::servlet::http::HttpServletRequest ();
+# use javax::servlet::jsp::PageContext ();
+use org::allbinary::business::category::CategoryComponent ();
+use org::allbinary::business::category::CategoryData ();
+use org::allbinary::business::category::CategoryInterface ();
+use org::allbinary::business::category::store::StoreCategoryFactory ();
+use org::allbinary::business::context::modules::storefront::StoreFrontData ();
+use org::allbinary::business::context::modules::storefront::StoreFrontFactory ();
+use org::allbinary::business::context::modules::storefront::StoreFrontInterface ();
+use org::allbinary::data::tree::category::CategoryLoaderFactory ();
+use org::allbinary::data::tree::category::CategoryLoaderInterface ();
+use org::allbinary::data::tree::dom::DomNodeHelper ();
+use org::allbinary::data::tree::dom::DomSearchHelper ();
+use org::allbinary::data::tree::dom::document::DomDocumentHelper ();
+use org::allbinary::data::tree::dom::document::XmlDocumentHelper ();
+use org::allbinary::logic::communication::log::LogUtil ();
+use org::allbinary::logic::string::StringMaker ();
+use org::allbinary::logic::string::StringUtil ();
+use org::allbinary::logic::visual::transform::info::TransformInfoBasic ();
+use org::allbinary::logic::visual::transform::info::TransformInfoInterface ();
+use org::w3c::dom::Document ();
+use org::w3c::dom::Node ();
+use admin::taghelpers::ModifyTable ();
 
 1;
 

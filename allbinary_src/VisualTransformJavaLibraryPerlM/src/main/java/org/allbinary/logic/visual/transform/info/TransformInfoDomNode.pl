@@ -17,6 +17,7 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
 
 sub _init_fields {
@@ -39,7 +40,7 @@ sub new {
 sub _new1 {
     my ($class, $node) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
         if ($org::allbinary::logic::visual::transform::info::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($org::allbinary::logic::visual::transform::info::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{VIEW})) {
             $self->{logUtil}->putF("Constructing TransformInfo From TransformInfoDomNode: " . $node->getNodeName(), $self, "TransformInfoDomNode(Node node)");
         }
@@ -92,7 +93,7 @@ sub _new1 {
 sub _new1 {
     my ($class, $transformInfoInterface) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
         $self->{transformInfoInterface} = $transformInfoInterface;
         $self->{mappedName} = $transformInfoInterface->getName();
     return $self;
@@ -102,7 +103,7 @@ sub _new1 {
 sub _new2 {
     my ($class, $transformInfoInterface, $mappedName) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
         $self->{transformInfoInterface} = $transformInfoInterface;
         $self->{mappedName} = $mappedName;
     return $self;
@@ -112,7 +113,7 @@ sub _new2 {
 sub _new2 {
     my ($class, $name, $mappedName) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
         $self->{transformInfoInterface} = 'org::allbinary::logic::visual::transform::info::TransformInfo'->new($name);
         $self->{mappedName} = $mappedName;
     return $self;
@@ -144,16 +145,17 @@ sub getReplaceKey {
         return $key;
 }
 
-use org::allbinary::data::tree::dom::DomNodeHelper;
-use org::allbinary::data::tree::dom::DomSearchHelper;
-use org::allbinary::logic::communication::log::LogUtil;
-use org::allbinary::logic::string::StringMaker;
-use org::w3c::dom::Attr;
-use org::w3c::dom::NamedNodeMap;
-use org::w3c::dom::Node;
-use org::w3c::dom::NodeList;
-use org::allbinary::logic::visual::transform::info::TransformInfoData;
-use org::allbinary::logic::visual::transform::info::TransformInfo;
+use java::lang::Object ();
+use org::allbinary::data::tree::dom::DomNodeHelper ();
+use org::allbinary::data::tree::dom::DomSearchHelper ();
+use org::allbinary::logic::communication::log::LogUtil ();
+use org::allbinary::logic::string::StringMaker ();
+use org::w3c::dom::Attr ();
+use org::w3c::dom::NamedNodeMap ();
+use org::w3c::dom::Node ();
+use org::w3c::dom::NodeList ();
+use org::allbinary::logic::visual::transform::info::TransformInfoData ();
+use org::allbinary::logic::visual::transform::info::TransformInfo ();
 
 1;
 

@@ -17,7 +17,7 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
-use parent -norequire,'org::allbinary::graphics::font::UpdateMyFontInterface';
+use parent -norequire,'java::lang::Object','org::allbinary::graphics::font::UpdateMyFontInterface';
 
 
 sub _init_fields {
@@ -34,7 +34,7 @@ sub _init_fields {
 sub new {
     my ($class, $label, $x) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
         $self->{LABEL} = $label;
         $self->{labelX} = $x;
     return $self;
@@ -63,11 +63,12 @@ sub update {
         $self->{len} = $len;
 }
 
-# use javax::microedition::lcdui::Graphics;
-use org::allbinary::logic::java::character::CharArrayFactory;
-use org::allbinary::graphics::font::MyFontProcessor;
-use org::allbinary::graphics::font::UpdateMyFontInterface;
-use org::allbinary::graphics::font::UpdateMyFontProcessor;
+use java::lang::Object ();
+use javax::microedition::lcdui::Graphics ();
+use org::allbinary::logic::java::character::CharArrayFactory ();
+use org::allbinary::graphics::font::MyFontProcessor ();
+use org::allbinary::graphics::font::UpdateMyFontInterface ();
+use org::allbinary::graphics::font::UpdateMyFontProcessor ();
 
 1;
 

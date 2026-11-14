@@ -17,7 +17,7 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
-use parent -norequire,'org::allbinary::game::score::remote::RemoteHighScoresProcessorInterface';
+use parent -norequire,'java::lang::Object','org::allbinary::game::score::remote::RemoteHighScoresProcessorInterface';
 
 
 sub _init_fields {
@@ -31,7 +31,7 @@ sub _init_fields {
 sub new {
     my ($class) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
     return $self;
 }
 
@@ -54,21 +54,22 @@ sub process {
         }
 }
 
-use org::allbinary::game::GameInfo;
-use org::allbinary::game::GameInfoData;
-use org::allbinary::game::configuration::GameConfigurationCentral;
-use org::allbinary::graphics::displayable::DisplayInfoSingleton;
-use org::allbinary::logic::communication::log::LogUtil;
-use org::allbinary::logic::communication::xmlrpc::XmlRpcAbeClient;
-use org::allbinary::logic::java::bool::BooleanFactory;
-use org::allbinary::logic::system::security::crypt::jcehelper::NoCrypt;
-use org::allbinary::logic::system::security::licensing::AbeClientInformationInterface;
-use org::allbinary::string::CommonStrings;
-use org::allbinary::util::ABHashtable;
-use org::allbinary::util::HashtableUtil;
-use org::allbinary::game::score::remote::RemoteHighScoresProcessorInterface;
-use org::allbinary::game::score::remote::RemoteHighScoresData;
-use org::allbinary::game::score::remote::XmlRpcRemoteHighScoresClient;
+use java::lang::Object ();
+use org::allbinary::game::GameInfo ();
+use org::allbinary::game::GameInfoData ();
+use org::allbinary::game::configuration::GameConfigurationCentral ();
+use org::allbinary::graphics::displayable::DisplayInfoSingleton ();
+use org::allbinary::logic::communication::log::LogUtil ();
+use org::allbinary::logic::communication::xmlrpc::XmlRpcAbeClient ();
+use org::allbinary::logic::java::bool::BooleanFactory ();
+use org::allbinary::logic::system::security::crypt::jcehelper::NoCrypt ();
+use org::allbinary::logic::system::security::licensing::AbeClientInformationInterface ();
+use org::allbinary::string::CommonStrings ();
+use org::allbinary::util::ABHashtable ();
+use org::allbinary::util::HashtableUtil ();
+use org::allbinary::game::score::remote::RemoteHighScoresProcessorInterface ();
+use org::allbinary::game::score::remote::RemoteHighScoresData ();
+use org::allbinary::game::score::remote::XmlRpcRemoteHighScoresClient ();
 
 1;
 

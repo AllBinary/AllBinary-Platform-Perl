@@ -17,20 +17,23 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
-our $instance = 'org::allbinary::game::layer::weapon::WeaponLayerArrayLayerCircularStaticPool'->new();
+tie our $instance, 'java::lang::LazyStatic', sub { 'org::allbinary::game::layer::weapon::WeaponLayerArrayLayerCircularStaticPool'->new() };
 
 sub _init_fields {
     my ($self) = @_;
     $self->{MAX} = 5;
     $self->{circularIndexUtil} = 'org::allbinary::util::CircularIndexUtil'->createInstance($self->{MAX});
-    $self->{ALL_WEAPONLAYER_ARRAY} = [(undef) x (4)];
+    $self->{WEAPONLAYER_ARRAY} = undef;
+    $self->{TWO_WEAPONLAYER_ARRAY} = undef;
+    $self->{THREE_WEAPONLAYER_ARRAY} = undef;
 }
 
 sub new {
     my ($class) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
     return $self;
 }
 
@@ -51,21 +54,36 @@ sub init {
             $TWO_WEAPONLAYER_ARRAY->[$index] = [(undef) x (2)];
             $THREE_WEAPONLAYER_ARRAY->[$index] = [(undef) x (3)];
         }
-        $self->{ALL_WEAPONLAYER_ARRAY}->[1] = $WEAPONLAYER_ARRAY;
-        $self->{ALL_WEAPONLAYER_ARRAY}->[2] = $TWO_WEAPONLAYER_ARRAY;
-        $self->{ALL_WEAPONLAYER_ARRAY}->[3] = $THREE_WEAPONLAYER_ARRAY;
+        $self->{WEAPONLAYER_ARRAY} = $WEAPONLAYER_ARRAY;
+        $self->{TWO_WEAPONLAYER_ARRAY} = $TWO_WEAPONLAYER_ARRAY;
+        $self->{THREE_WEAPONLAYER_ARRAY} = $THREE_WEAPONLAYER_ARRAY;
+}
+
+
+sub getWeaponLayerArrays {
+    my ($self, $size) = @_;
+        if ($size == 1) {
+            return $self->{WEAPONLAYER_ARRAY};
+        } elsif ($size == 2) {
+            return $self->{TWO_WEAPONLAYER_ARRAY};
+        } elsif ($size == 3) {
+            return $self->{THREE_WEAPONLAYER_ARRAY};
+        }
+        die ("RuntimeException");
 }
 
 
 # throws Exception
 sub getInstanceArray {
     my ($self, $size) = @_;
-        my $weaponLayerArray = $self->{ALL_WEAPONLAYER_ARRAY}->[$size]->[$self->{circularIndexUtil}->getIndex()];
+        my $weaponLayerArray = $self->getWeaponLayerArrays($size)->[$self->{circularIndexUtil}->getIndex()];
         $self->{circularIndexUtil}->next();
         return $weaponLayerArray;
 }
 
-use org::allbinary::util::CircularIndexUtil;
+use java::lang::Object ();
+use java::lang::LazyStatic ();
+use org::allbinary::util::CircularIndexUtil ();
 
 1;
 

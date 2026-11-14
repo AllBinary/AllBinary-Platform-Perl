@@ -26,7 +26,8 @@ sub new {
     return $self;
 }
 
-use java::util::Vector;
+use java::lang::Object ();
+use java::util::Vector ();
 
 1;
 

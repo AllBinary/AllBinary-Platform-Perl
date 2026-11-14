@@ -74,19 +74,27 @@ sub toValidationInfoNode {
         return undef;
 }
 
-use org::allbinary::util::BasicArrayList;
-use org::allbinary::util::BasicArrayListD;
-use org::allbinary::business::context::modules::storefront::StoreFrontFactory;
-use org::allbinary::business::context::modules::storefront::StoreFrontInterface;
-use org::allbinary::business::user::address::ShippingAddressData;
-use org::allbinary::business::user::address::StreetAddress;
-use org::allbinary::business::user::commerce::money::tax::TaxFactory;
-use org::allbinary::data::tables::user::address::shipping::ShippingAddressesEntity;
-use org::allbinary::logic::control::validate::ValidationComponentInterface;
-use org::allbinary::logic::visual::transform::info::TransformInfoInterface;
-use org::w3c::dom::Document;
-use org::w3c::dom::Node;
-use views::generic::address::shipping::ShippingAddressView;
+
+# throws Exception
+sub getTransformInfoInterface {
+    my ($self) = @_;
+        return $self->SUPER::getTransformInfoInterface();
+}
+
+use java::lang::Object ();
+use org::allbinary::util::BasicArrayList ();
+use org::allbinary::util::BasicArrayListD ();
+use org::allbinary::business::context::modules::storefront::StoreFrontFactory ();
+use org::allbinary::business::context::modules::storefront::StoreFrontInterface ();
+use org::allbinary::business::user::address::ShippingAddressData ();
+use org::allbinary::business::user::address::StreetAddress ();
+use org::allbinary::business::user::commerce::money::tax::TaxFactory ();
+use org::allbinary::data::tables::user::address::shipping::ShippingAddressesEntity ();
+use org::allbinary::logic::control::validate::ValidationComponentInterface ();
+use org::allbinary::logic::visual::transform::info::TransformInfoInterface ();
+use org::w3c::dom::Document ();
+use org::w3c::dom::Node ();
+use views::generic::address::shipping::ShippingAddressView ();
 
 1;
 

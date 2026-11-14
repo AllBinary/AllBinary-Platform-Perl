@@ -17,12 +17,13 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
-our $hashMap = 'org::allbinary::logic::StdUtil'->getInstance()->createHashMap();
-our $TYPE_VECTOR = 'org::allbinary::util::BasicArrayListD'->new();
-our $CAPTURE = 'org::allbinary::input::media::image::InputImageType'->new("Capture", 0);
-our $COMPARISON = 'org::allbinary::input::media::image::InputImageType'->new("Comparison", 1);
-our $MOTION = 'org::allbinary::input::media::image::InputImageType'->new("Motion", 2);
+tie our $hashMap, 'java::lang::LazyStatic', sub { 'org::allbinary::logic::StdUtil'->getInstance()->createHashMap() };
+tie our $TYPE_VECTOR, 'java::lang::LazyStatic', sub { 'org::allbinary::util::BasicArrayListD'->new() };
+tie our $CAPTURE, 'java::lang::LazyStatic', sub { 'org::allbinary::input::media::image::InputImageType'->new("Capture", 0) };
+tie our $COMPARISON, 'java::lang::LazyStatic', sub { 'org::allbinary::input::media::image::InputImageType'->new("Comparison", 1) };
+tie our $MOTION, 'java::lang::LazyStatic', sub { 'org::allbinary::input::media::image::InputImageType'->new("Motion", 2) };
 
 sub _init_fields {
     my ($self) = @_;
@@ -34,7 +35,7 @@ sub _init_fields {
 sub new {
     my ($class, $name, $index) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
         $self->{name} = $name;
         $self->{index} = $index;
         $org::allbinary::input::media::image::InputImageType::TYPE_VECTOR->add($self);
@@ -72,10 +73,12 @@ sub getIndex {
         return $self->{index};
 }
 
-use java::util::HashMap;
-use org::allbinary::util::BasicArrayList;
-use org::allbinary::util::BasicArrayListD;
-use org::allbinary::logic::StdUtil;
+use java::lang::Object ();
+use java::lang::LazyStatic ();
+use java::util::HashMap ();
+use org::allbinary::util::BasicArrayList ();
+use org::allbinary::util::BasicArrayListD ();
+use org::allbinary::logic::StdUtil ();
 
 1;
 

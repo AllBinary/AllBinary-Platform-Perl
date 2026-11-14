@@ -29,7 +29,7 @@ sub _init_fields {
 sub new {
     my ($class, $command, $layout, $altText, $backgroundBasicColor, $foregroundBasicColor) = @_;
     my $self = $class->SUPER::new($command->getLabel(), $layout, $altText, $backgroundBasicColor, $foregroundBasicColor);
-    $self->_init_fields();
+    _init_fields($self);
         # super(...) made $self above
         $self->{command} = $command;
     return $self;
@@ -47,9 +47,10 @@ sub getCommand {
         return $self->{command};
 }
 
-# use javax::microedition::lcdui::Command;
-use org::allbinary::graphics::color::BasicColor;
-use org::allbinary::graphics::form::item::ABTextItem;
+use java::lang::Object ();
+use javax::microedition::lcdui::Command ();
+use org::allbinary::graphics::color::BasicColor ();
+use org::allbinary::graphics::form::item::ABTextItem ();
 
 1;
 

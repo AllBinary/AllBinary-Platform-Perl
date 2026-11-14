@@ -29,7 +29,7 @@ sub _init_fields {
 sub new {
     my ($class, $animationInterfaceArray, $animationBehavior) = @_;
     my $self = $class->SUPER::new($animationBehavior);
-    $self->_init_fields();
+    _init_fields($self);
         # super(...) made $self above
         $self->{animationInterfaceArray} = $animationInterfaceArray;
     return $self;
@@ -119,11 +119,12 @@ sub setAnimationInterfaceArray {
         $self->{animationInterfaceArray} = $animationInterfaceArray;
 }
 
-# use javax::microedition::lcdui::Graphics;
-use org::allbinary::animation::Animation;
-use org::allbinary::animation::AnimationBehavior;
-use org::allbinary::animation::IndexedAnimation;
-use org::allbinary::logic::math::PrimitiveIntUtil;
+use java::lang::Object ();
+use javax::microedition::lcdui::Graphics ();
+use org::allbinary::animation::Animation ();
+use org::allbinary::animation::AnimationBehavior ();
+use org::allbinary::animation::IndexedAnimation ();
+use org::allbinary::logic::math::PrimitiveIntUtil ();
 
 1;
 

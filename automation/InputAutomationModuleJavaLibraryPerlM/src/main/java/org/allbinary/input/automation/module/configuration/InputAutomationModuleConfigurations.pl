@@ -17,6 +17,7 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
 
 sub _init_fields {
@@ -38,7 +39,7 @@ sub new {
 sub _new2 {
     my ($class, $abeClientInformation, $file) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
         $self->setHashMap('java::util::HashMap'->new());
         my $bytes = [(0) x (100000)];
         my $idFile = 'java::io::FileInputStream'->new($file);
@@ -62,7 +63,7 @@ sub _new2 {
 sub _new2 {
     my ($class, $abeClientInformation, $document) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
         $self->setHashMap('java::util::HashMap'->new());
         my $nameNodeList = $document->getElementsByTagName($org::allbinary::input::automation::module::InputAutomationModuleData::NAME);
         $self->{logUtil}->putF("Number Of Module(s) Specified: " . $nameNodeList->getLength(), $self, "Contructor");
@@ -77,7 +78,7 @@ sub _new2 {
 sub _new1 {
     my ($class, $inputAutomationModuleConfigurationList) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
         $self->setHashMap('java::util::HashMap'->new());
         my $size = $inputAutomationModuleConfigurationList->size();
         my $inputAutomationModuleConfiguration = undef;
@@ -92,7 +93,7 @@ sub _new1 {
 sub _new0 {
     my ($class) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
         $self->setHashMap('java::util::HashMap'->new());
     return $self;
 }
@@ -121,19 +122,20 @@ sub setHashMap {
         $self->{hashMap} = $hashMap;
 }
 
-use java::io::File;
-# use java::io::FileInputStream;
-use java::util::HashMap;
-# use java::util::List;
-use org::allbinary::data::tree::dom::document::DomDocumentHelper;
-use org::allbinary::input::automation::module::InputAutomationModuleData;
-use org::allbinary::input::automation::module::NewInputAutomationModulesData;
-use org::allbinary::logic::communication::log::LogUtil;
-use org::allbinary::logic::system::security::licensing::AbeClientInformationInterface;
-use org::w3c::dom::Document;
-use org::w3c::dom::Node;
-use org::w3c::dom::NodeList;
-use org::allbinary::input::automation::module::configuration::InputAutomationModuleConfiguration;
+use java::lang::Object ();
+use java::io::File ();
+# use java::io::FileInputStream ();
+use java::util::HashMap ();
+# use java::util::List ();
+use org::allbinary::data::tree::dom::document::DomDocumentHelper ();
+use org::allbinary::input::automation::module::InputAutomationModuleData ();
+use org::allbinary::input::automation::module::NewInputAutomationModulesData ();
+use org::allbinary::logic::communication::log::LogUtil ();
+use org::allbinary::logic::system::security::licensing::AbeClientInformationInterface ();
+use org::w3c::dom::Document ();
+use org::w3c::dom::Node ();
+use org::w3c::dom::NodeList ();
+use org::allbinary::input::automation::module::configuration::InputAutomationModuleConfiguration ();
 
 1;
 

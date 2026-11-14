@@ -17,7 +17,7 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
-use parent -norequire,'org::allbinary::init::crypt::jcehelper::CryptInterface';
+use parent -norequire,'java::lang::Object','org::allbinary::init::crypt::jcehelper::CryptInterface';
 
 
 sub _init_fields {
@@ -30,7 +30,7 @@ sub _init_fields {
 sub new {
     my ($class, $keyAsString) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
         my $key = 'org::allbinary::logic::NullUtil'->getInstance()->{NULL_BYTE_ARRAY};
         try {
             $key = 'org::allbinary::TsUtil'->getInstance()->getByteArray($keyAsString);
@@ -75,12 +75,13 @@ sub mutilate {
         return $array;
 }
 
-use org::allbinary::TsUtil;
-use org::allbinary::init::crypt::jcehelper::CryptInterface;
-use org::allbinary::logic::NullUtil;
-use org::allbinary::logic::communication::log::PreLogUtil;
-use org::allbinary::logic::java::byteutil::ByteUtil;
-use org::allbinary::string::CommonStrings;
+use java::lang::Object ();
+use org::allbinary::TsUtil ();
+use org::allbinary::init::crypt::jcehelper::CryptInterface ();
+use org::allbinary::logic::NullUtil ();
+use org::allbinary::logic::communication::log::PreLogUtil ();
+use org::allbinary::logic::java::byteutil::ByteUtil ();
+use org::allbinary::string::CommonStrings ();
 
 1;
 

@@ -17,8 +17,9 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
-our $instance = 'org::allbinary::logic::io::file::FileUtil2'->new();
+tie our $instance, 'java::lang::LazyStatic', sub { 'org::allbinary::logic::io::file::FileUtil2'->new() };
 
 sub _init_fields {
     my ($self) = @_;
@@ -37,7 +38,7 @@ sub getInstance {
 sub new {
     my ($class) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
     return $self;
 }
 
@@ -46,19 +47,21 @@ sub loadFileAsList {
     my ($self, $file, $max, $byteArray1) = @_;
         my $inputStream = undef;
         try {
-            $inputStream = 'org::allbinary::logic::io::AbFileInputStream'->new($file);
+            $inputStream = 'org::allbinary::logic::io::AbFileInputStream'->createFromAbFile($file);
         } catch ($e) {
             $self->{logUtil}->put($self->{commonStrings}->{EXCEPTION}, $self, $self->{commonStrings}->{ADD}, $e);
         }
         return 'org::allbinary::logic::io::file::SimpleFileUtil'->getInstance()->loadFileAsList($inputStream, $max, $byteArray1);
 }
 
-use org::allbinary::logic::communication::log::LogUtil;
-use org::allbinary::logic::io::AbFileInputStream;
-use org::allbinary::logic::io::StreamUtil;
-use org::allbinary::string::CommonStrings;
-use org::allbinary::util::BasicArrayList;
-use org::allbinary::logic::io::file::SimpleFileUtil;
+use java::lang::Object ();
+use java::lang::LazyStatic ();
+use org::allbinary::logic::communication::log::LogUtil ();
+use org::allbinary::logic::io::AbFileInputStream ();
+use org::allbinary::logic::io::StreamUtil ();
+use org::allbinary::string::CommonStrings ();
+use org::allbinary::util::BasicArrayList ();
+use org::allbinary::logic::io::file::SimpleFileUtil ();
 
 1;
 

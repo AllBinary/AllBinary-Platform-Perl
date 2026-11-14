@@ -17,7 +17,7 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
-use parent -norequire,'org::allbinary::data::tree::dom::DomNodeInterface';
+use parent -norequire,'java::lang::Object','org::allbinary::data::tree::dom::DomNodeInterface';
 
 
 sub _init_fields {
@@ -37,7 +37,7 @@ sub new {
 sub _new0 {
     my ($class) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
         $self->{propertyValueVector} = 'org::allbinary::util::BasicArrayListD'->new();
     return $self;
 }
@@ -46,7 +46,7 @@ sub _new0 {
 sub _new1 {
     my ($class, $node) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
         my $indexPropertyValueHashMap = 'org::allbinary::logic::StdUtil'->getInstance()->createHashMap();
         $self->{propertyValueVector} = 'org::allbinary::util::BasicArrayListD'->new();
         my $cssPropertyNodeVector = 'org::allbinary::data::tree::dom::DomSearchHelper'->getAllNodes('org::allbinary::logic::visual::dhtml::style::css::property::CssPropertyValueData'->getInstance()->{NAME}, $node->getChildNodes());
@@ -106,22 +106,23 @@ sub toXmlNode {
         return 'org::allbinary::data::tree::dom::ModDomHelper'->createNameValueIndexNodes($document, 'org::allbinary::logic::visual::dhtml::style::css::property::CssPropertyData'->getInstance()->{VALUES}, 'org::allbinary::logic::visual::dhtml::style::css::property::CssPropertyValueData'->getInstance()->{NAME}, $self->{propertyValueVector});
 }
 
-use java::util::HashMap;
-use org::allbinary::util::BasicArrayList;
-use org::allbinary::util::BasicArrayListD;
-use org::allbinary::data::tree::dom::DomData;
-use org::allbinary::data::tree::dom::DomNodeHelper;
-use org::allbinary::data::tree::dom::DomNodeInterface;
-use org::allbinary::data::tree::dom::DomSearchHelper;
-use org::allbinary::data::tree::dom::ModDomHelper;
-use org::allbinary::logic::StdUtil;
-use org::allbinary::logic::communication::log::LogUtil;
-use org::allbinary::logic::string::StringMaker;
-use org::allbinary::string::CommonSeps;
-use org::w3c::dom::Document;
-use org::w3c::dom::Node;
-use org::allbinary::logic::visual::dhtml::style::css::property::CssPropertyValueData;
-use org::allbinary::logic::visual::dhtml::style::css::property::CssPropertyData;
+use java::lang::Object ();
+use java::util::HashMap ();
+use org::allbinary::util::BasicArrayList ();
+use org::allbinary::util::BasicArrayListD ();
+use org::allbinary::data::tree::dom::DomData ();
+use org::allbinary::data::tree::dom::DomNodeHelper ();
+use org::allbinary::data::tree::dom::DomNodeInterface ();
+use org::allbinary::data::tree::dom::DomSearchHelper ();
+use org::allbinary::data::tree::dom::ModDomHelper ();
+use org::allbinary::logic::StdUtil ();
+use org::allbinary::logic::communication::log::LogUtil ();
+use org::allbinary::logic::string::StringMaker ();
+use org::allbinary::string::CommonSeps ();
+use org::w3c::dom::Document ();
+use org::w3c::dom::Node ();
+use org::allbinary::logic::visual::dhtml::style::css::property::CssPropertyValueData ();
+use org::allbinary::logic::visual::dhtml::style::css::property::CssPropertyData ();
 
 1;
 

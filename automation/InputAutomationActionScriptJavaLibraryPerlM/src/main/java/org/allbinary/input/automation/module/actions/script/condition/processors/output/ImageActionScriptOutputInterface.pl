@@ -63,7 +63,7 @@ sub log {
     die "abstract method log";
 }
 
-use org::allbinary::input::automation::module::actions::script::condition::processors::output::ProfileActionScriptOutputInterface;
+use org::allbinary::input::automation::module::actions::script::condition::processors::output::ProfileActionScriptOutputInterface ();
 
 1;
 

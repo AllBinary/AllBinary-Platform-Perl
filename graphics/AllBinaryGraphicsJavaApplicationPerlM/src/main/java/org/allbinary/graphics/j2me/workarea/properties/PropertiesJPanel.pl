@@ -17,7 +17,7 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
-use parent -norequire,'javax::swing::JPanel';
+use parent -norequire,'java::lang::Object';
 
 
 sub _init_fields {
@@ -41,7 +41,7 @@ sub _init_fields {
 sub new {
     my ($class) = @_;
     my $self = $class->SUPER::new();
-    $self->_init_fields();
+    _init_fields($self);
         $self->initComponents();
     return $self;
 }
@@ -105,7 +105,8 @@ sub initComponents {
         $self->add($self->{modifierJPanel});
 }
 
-# use javax::swing;
+use java::lang::Object ();
+# use javax::swing ();
 
 1;
 

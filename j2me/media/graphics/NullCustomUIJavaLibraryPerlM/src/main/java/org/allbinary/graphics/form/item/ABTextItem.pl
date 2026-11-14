@@ -32,11 +32,36 @@ sub getLabelStringComponent {
         return $org::allbinary::graphics::form::item::ABStringComponent::NULL_STRING_COMPONENT;
 }
 
-# use javax::microedition::lcdui::Graphics;
-use org::allbinary::graphics::color::BasicColor;
-use org::allbinary::graphics::form::item::CustomCustomItem;
-use org::allbinary::graphics::form::item::ABCustomItemInterface;
-use org::allbinary::graphics::form::item::ABStringComponent;
+
+sub getMinimumWidth {
+    my ($self) = @_;
+        return $self->SUPER::getMinimumWidth();
+}
+
+
+sub getMinimumHeight {
+    my ($self) = @_;
+        return $self->SUPER::getMinimumHeight();
+}
+
+
+sub getLabel {
+    my ($self) = @_;
+        return $self->SUPER::getLabel();
+}
+
+
+sub paintXY {
+    my ($self, $graphics, $x, $y) = @_;
+        $self->SUPER::paintXY($graphics, $x, $y);
+}
+
+use java::lang::Object ();
+use javax::microedition::lcdui::Graphics ();
+use org::allbinary::graphics::color::BasicColor ();
+use org::allbinary::graphics::form::item::CustomCustomItem ();
+use org::allbinary::graphics::form::item::ABCustomItemInterface ();
+use org::allbinary::graphics::form::item::ABStringComponent ();
 
 1;
 

@@ -17,8 +17,9 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
-our $NULL_OPENGL_IMAGE_FACTORY = 'org::allbinary::image::opengles::OpenGLImageFactory'->new();
+tie our $NULL_OPENGL_IMAGE_FACTORY, 'java::lang::LazyStatic', sub { 'org::allbinary::image::opengles::OpenGLImageFactory'->new() };
 
 sub new {
     my ($class) = @_;
@@ -32,9 +33,11 @@ sub getInstance {
         die ("RuntimeException");
 }
 
-# use javax::microedition::lcdui::Image;
-use org::allbinary::platform::graphics::PlatformBitmapBaseFactory;
-use org::allbinary::platform::opengles::PlatformTextureBaseFactory;
+use java::lang::Object ();
+use java::lang::LazyStatic ();
+use javax::microedition::lcdui::Image ();
+use org::allbinary::platform::graphics::PlatformBitmapBaseFactory ();
+use org::allbinary::platform::opengles::PlatformTextureBaseFactory ();
 
 1;
 

@@ -17,6 +17,7 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
 
 sub new {
@@ -31,7 +32,8 @@ sub load {
     my ($self, $gl) = @_;
 }
 
-# use javax::microedition::khronos::opengles::GL10;
+use java::lang::Object ();
+use javax::microedition::khronos::opengles::GL10 ();
 
 1;
 

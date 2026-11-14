@@ -21,8 +21,8 @@ no warnings 'experimental::try';
 use parent -norequire,'admin::taghelpers::BasicTableInterface','admin::taghelpers::ModifyTableInterface';
 
 
-use admin::taghelpers::BasicTableInterface;
-use admin::taghelpers::ModifyTableInterface;
+use admin::taghelpers::BasicTableInterface ();
+use admin::taghelpers::ModifyTableInterface ();
 
 1;
 

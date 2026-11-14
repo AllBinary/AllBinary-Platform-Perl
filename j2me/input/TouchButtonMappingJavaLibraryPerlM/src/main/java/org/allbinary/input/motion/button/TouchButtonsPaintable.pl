@@ -32,7 +32,7 @@ sub _init_fields {
 sub new {
     my ($class, $basicColor) = @_;
     my $self = $class->SUPER::new();
-    $self->_init_fields();
+    _init_fields($self);
         $self->{foregroundBasicColor} = $basicColor;
         $self->{foregroundColor} = int($basicColor);
     return $self;
@@ -54,12 +54,13 @@ sub paint {
         }
 }
 
-# use javax::microedition::lcdui::Graphics;
-use org::allbinary::graphics::color::BasicColor;
-use org::allbinary::graphics::color::BasicColorSetUtil;
-use org::allbinary::graphics::paint::Paintable;
-use org::allbinary::util::BasicArrayList;
-use org::allbinary::input::motion::button::TouchButtonFactory;
+use java::lang::Object ();
+use javax::microedition::lcdui::Graphics ();
+use org::allbinary::graphics::color::BasicColor ();
+use org::allbinary::graphics::color::BasicColorSetUtil ();
+use org::allbinary::graphics::paint::Paintable ();
+use org::allbinary::util::BasicArrayList ();
+use org::allbinary::input::motion::button::TouchButtonFactory ();
 
 1;
 

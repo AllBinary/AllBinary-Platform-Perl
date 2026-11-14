@@ -17,8 +17,9 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
-our $instance = 'org::allbinary::graphics::opengles::shader::ShaderManager'->new(-1, -1);
+tie our $instance, 'java::lang::LazyStatic', sub { 'org::allbinary::graphics::opengles::shader::ShaderManager'->new(-1, -1) };
 
 sub _init_fields {
     my ($self) = @_;
@@ -39,7 +40,7 @@ sub getInstance {
 sub new {
     my ($class, $GL_VERTEX_SHADER, $GL_FRAGMENT_SHADER) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
         $self->{GL_VERTEX_SHADER} = $GL_VERTEX_SHADER;
         $self->{GL_FRAGMENT_SHADER} = $GL_FRAGMENT_SHADER;
     return $self;
@@ -57,9 +58,11 @@ sub loadShader {
         return -1;
 }
 
-# use javax::microedition::khronos::opengles::GL10;
-use org::allbinary::string::CommonStrings;
-use org::allbinary::util::BasicArrayList;
+use java::lang::Object ();
+use java::lang::LazyStatic ();
+use javax::microedition::khronos::opengles::GL10 ();
+use org::allbinary::string::CommonStrings ();
+use org::allbinary::util::BasicArrayList ();
 
 1;
 

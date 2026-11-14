@@ -19,7 +19,7 @@ use feature 'try';
 no warnings 'experimental::try';
 use parent -norequire,'org::allbinary::game::layer::pickup::PickedUpLayerInterfaceFactory','org::allbinary::game::layer::pickup::CountedPickedUpLayerInterfaceFactoryInterface';
 
-our $NULL_COUNTED_PICKUP_LAYER_FACTORY = 'org::allbinary::game::layer::pickup::CountedPickedUpLayerInterfaceFactory'->new('org::allbinary::game::layer::pickup::PickedUpLayerTypeFactory'->getInstance()->{NONE}, $org::allbinary::game::layer::pickup::IconLayer::NULL_ICON_LAYER, 'org::allbinary::animation::NullAnimationFactory'->getFactoryInstance()->getInstance(0));
+tie our $NULL_COUNTED_PICKUP_LAYER_FACTORY, 'java::lang::LazyStatic', sub { 'org::allbinary::game::layer::pickup::CountedPickedUpLayerInterfaceFactory'->new('org::allbinary::game::layer::pickup::PickedUpLayerTypeFactory'->getInstance()->{NONE}, $org::allbinary::game::layer::pickup::IconLayer::NULL_ICON_LAYER, 'org::allbinary::animation::NullAnimationFactory'->getFactoryInstance()->getInstance(0)) };
 
 sub _init_fields {
     my ($self) = @_;
@@ -30,7 +30,7 @@ sub _init_fields {
 sub new {
     my ($class, $pickeUpLayerType, $iconLayer, $animationInterface) = @_;
     my $self = $class->SUPER::new($pickeUpLayerType, $iconLayer, $animationInterface);
-    $self->_init_fields();
+    _init_fields($self);
         # super(...) made $self above
         my $list = 'org::allbinary::game::layer::pickup::CountedPickedUpLayerInterfaceFactoryPool'->getInstance()->getList();
         $self->{id} = $list->size();
@@ -57,17 +57,19 @@ sub getId {
         return $self->{id};
 }
 
-use org::allbinary::animation::Animation;
-use org::allbinary::animation::NullAnimationFactory;
-use org::allbinary::layer::AllBinaryLayer;
-use org::allbinary::string::CommonStrings;
-use org::allbinary::util::ABHashtable;
-use org::allbinary::util::BasicArrayList;
-use org::allbinary::game::layer::pickup::PickedUpLayerInterfaceFactory;
-use org::allbinary::game::layer::pickup::CountedPickedUpLayerInterfaceFactoryInterface;
-use org::allbinary::game::layer::pickup::PickedUpLayerTypeFactory;
-use org::allbinary::game::layer::pickup::IconLayer;
-use org::allbinary::game::layer::pickup::CountedPickedUpLayerInterfaceFactoryPool;
+use java::lang::Object ();
+use java::lang::LazyStatic ();
+use org::allbinary::animation::Animation ();
+use org::allbinary::animation::NullAnimationFactory ();
+use org::allbinary::layer::AllBinaryLayer ();
+use org::allbinary::string::CommonStrings ();
+use org::allbinary::util::ABHashtable ();
+use org::allbinary::util::BasicArrayList ();
+use org::allbinary::game::layer::pickup::PickedUpLayerInterfaceFactory ();
+use org::allbinary::game::layer::pickup::CountedPickedUpLayerInterfaceFactoryInterface ();
+use org::allbinary::game::layer::pickup::PickedUpLayerTypeFactory ();
+use org::allbinary::game::layer::pickup::IconLayer ();
+use org::allbinary::game::layer::pickup::CountedPickedUpLayerInterfaceFactoryPool ();
 
 1;
 

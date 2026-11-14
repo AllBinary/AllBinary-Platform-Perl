@@ -17,9 +17,9 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
-use parent -norequire,'org::allbinary::game::displayable::canvas::AllBinaryGameCanvasInterface';
+use parent -norequire,'java::lang::Object','org::allbinary::game::displayable::canvas::AllBinaryGameCanvasInterface';
 
-our $NULL_ALLBINARY_GAME_CANVAS = 'org::allbinary::game::displayable::canvas::NullAllBinaryGameCanvas'->new();
+tie our $NULL_ALLBINARY_GAME_CANVAS, 'java::lang::LazyStatic', sub { 'org::allbinary::game::displayable::canvas::NullAllBinaryGameCanvas'->new() };
 
 sub new {
     my ($class) = @_;
@@ -63,10 +63,12 @@ sub setCommandListener {
         die ("RuntimeException");
 }
 
-# use javax::microedition::lcdui::Command;
-# use javax::microedition::lcdui::CommandListener;
-use org::allbinary::game::layer::AllBinaryGameLayerManager;
-use org::allbinary::game::displayable::canvas::AllBinaryGameCanvasInterface;
+use java::lang::Object ();
+use java::lang::LazyStatic ();
+use javax::microedition::lcdui::Command ();
+use javax::microedition::lcdui::CommandListener ();
+use org::allbinary::game::layer::AllBinaryGameLayerManager ();
+use org::allbinary::game::displayable::canvas::AllBinaryGameCanvasInterface ();
 
 1;
 

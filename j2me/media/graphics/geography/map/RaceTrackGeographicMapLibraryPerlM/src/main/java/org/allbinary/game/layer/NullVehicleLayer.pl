@@ -17,9 +17,9 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
-use parent -norequire,'org::allbinary::game::layer::VehicleLayerInterface';
+use parent -norequire,'java::lang::Object','org::allbinary::game::layer::VehicleLayerInterface';
 
-our $NULL_VEHICLE_LAYER = 'org::allbinary::game::layer::NullVehicleLayer'->new();
+tie our $NULL_VEHICLE_LAYER, 'java::lang::LazyStatic', sub { 'org::allbinary::game::layer::NullVehicleLayer'->new() };
 
 sub new {
     my ($class) = @_;
@@ -242,14 +242,16 @@ sub paintThreed {
     my ($self, $graphics) = @_;
 }
 
-# use javax::microedition::lcdui::Graphics;
-use org::allbinary::animation::RotationAnimation;
-use org::allbinary::game::identification::Group;
-use org::allbinary::logic::math::BasicDecimal;
-use org::allbinary::media::graphics::geography::map::GeographicMapCellHistory;
-use org::allbinary::media::graphics::geography::map::GeographicMapCellPositionTracking;
-use org::allbinary::util::BasicArrayList;
-use org::allbinary::game::layer::VehicleLayerInterface;
+use java::lang::Object ();
+use java::lang::LazyStatic ();
+use javax::microedition::lcdui::Graphics ();
+use org::allbinary::animation::RotationAnimation ();
+use org::allbinary::game::identification::Group ();
+use org::allbinary::logic::math::BasicDecimal ();
+use org::allbinary::media::graphics::geography::map::GeographicMapCellHistory ();
+use org::allbinary::media::graphics::geography::map::GeographicMapCellPositionTracking ();
+use org::allbinary::util::BasicArrayList ();
+use org::allbinary::game::layer::VehicleLayerInterface ();
 
 1;
 

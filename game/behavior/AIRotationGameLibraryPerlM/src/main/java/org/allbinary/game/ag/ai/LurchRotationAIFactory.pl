@@ -17,7 +17,7 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
-use parent -norequire,'org::allbinary::game::ai::ArtificialIntelligenceInterfaceFactoryInterface';
+use parent -norequire,'java::lang::Object','org::allbinary::game::ai::ArtificialIntelligenceInterfaceFactoryInterface';
 
 
 sub new {
@@ -32,12 +32,13 @@ sub getInstance {
         return 'org::allbinary::game::ag::ai::LurchRotationAI'->new($ownerLayerInterface, $gameInput);
 }
 
-use org::allbinary::ai::ArtificialIntelligenceInterface;
-use org::allbinary::game::ai::ArtificialIntelligenceInterfaceFactoryInterface;
-use org::allbinary::game::input::GameInput;
-use org::allbinary::layer::AllBinaryLayer;
-use org::allbinary::util::ABHashtable;
-use org::allbinary::game::ag::ai::LurchRotationAI;
+use java::lang::Object ();
+use org::allbinary::ai::ArtificialIntelligenceInterface ();
+use org::allbinary::game::ai::ArtificialIntelligenceInterfaceFactoryInterface ();
+use org::allbinary::game::input::GameInput ();
+use org::allbinary::layer::AllBinaryLayer ();
+use org::allbinary::util::ABHashtable ();
+use org::allbinary::game::ag::ai::LurchRotationAI ();
 
 1;
 

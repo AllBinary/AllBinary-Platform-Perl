@@ -60,13 +60,14 @@ sub isSystemInput {
         return 0;
 }
 
-use org::allbinary::game::configuration::persistance::GamePersistanceStrings;
-use org::allbinary::game::input::mapping::PersistentInputMapping;
-use org::allbinary::input::motion::button::BasicTouchInputFactory;
-use org::allbinary::input::motion::gesture::TouchMotionGestureFactory;
-use org::allbinary::input::motion::gesture::TrackballMotionGestureFactory;
-use org::allbinary::logic::system::security::licensing::AbeClientInformationInterface;
-use org::allbinary::game::input::PCKeyFactory;
+use java::lang::Object ();
+use org::allbinary::game::configuration::persistance::GamePersistanceStrings ();
+use org::allbinary::game::input::mapping::PersistentInputMapping ();
+use org::allbinary::input::motion::button::BasicTouchInputFactory ();
+use org::allbinary::input::motion::gesture::TouchMotionGestureFactory ();
+use org::allbinary::input::motion::gesture::TrackballMotionGestureFactory ();
+use org::allbinary::logic::system::security::licensing::AbeClientInformationInterface ();
+use org::allbinary::game::input::PCKeyFactory ();
 
 1;
 

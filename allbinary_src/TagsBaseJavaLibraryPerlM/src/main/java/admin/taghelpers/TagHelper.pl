@@ -17,7 +17,7 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
-use parent -norequire,'admin::taghelpers::TagHelperInterface';
+use parent -norequire,'java::lang::Object','admin::taghelpers::TagHelperInterface';
 
 
 sub _init_fields {
@@ -28,12 +28,13 @@ sub _init_fields {
 sub new {
     my ($class) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
     return $self;
 }
 
-use org::allbinary::string::CommonStrings;
-use admin::taghelpers::TagHelperInterface;
+use java::lang::Object ();
+use org::allbinary::string::CommonStrings ();
+use admin::taghelpers::TagHelperInterface ();
 
 1;
 

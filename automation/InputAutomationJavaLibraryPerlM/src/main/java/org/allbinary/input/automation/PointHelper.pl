@@ -17,6 +17,7 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
 our $two = 2.0;
 
@@ -35,8 +36,9 @@ sub getCenterPoint {
         return 'org::allbinary::input::automation::PointFactory'->getInstance(int($x), int($y));
 }
 
-# use java::awt;
-use org::allbinary::input::automation::PointFactory;
+use java::lang::Object ();
+# use java::awt ();
+use org::allbinary::input::automation::PointFactory ();
 
 1;
 

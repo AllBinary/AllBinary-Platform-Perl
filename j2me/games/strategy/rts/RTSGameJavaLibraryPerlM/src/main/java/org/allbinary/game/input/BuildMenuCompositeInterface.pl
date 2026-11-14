@@ -38,7 +38,7 @@ sub getBuildingScrollSelectionForm {
     die "abstract method getBuildingScrollSelectionForm";
 }
 
-use org::allbinary::graphics::form::ScrollSelectionForm;
+use org::allbinary::graphics::form::ScrollSelectionForm ();
 
 1;
 

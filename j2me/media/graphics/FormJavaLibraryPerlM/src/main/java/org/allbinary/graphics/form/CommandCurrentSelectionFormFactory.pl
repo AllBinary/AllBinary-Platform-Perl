@@ -17,6 +17,7 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
 
 sub new {
@@ -38,13 +39,14 @@ sub getInstance {
         }
 }
 
-use org::allbinary::game::configuration::feature::Features;
-use org::allbinary::game::configuration::feature::TouchFeatureFactory;
-use org::allbinary::graphics::Rectangle;
-use org::allbinary::graphics::color::BasicColor;
-use org::allbinary::graphics::form::item::ABCustomItem;
-use org::allbinary::graphics::form::ScrollSelectionFormNoneFactory;
-use org::allbinary::graphics::form::CommandCurrentSelectionForm;
+use java::lang::Object ();
+use org::allbinary::game::configuration::feature::Features ();
+use org::allbinary::game::configuration::feature::TouchFeatureFactory ();
+use org::allbinary::graphics::Rectangle ();
+use org::allbinary::graphics::color::BasicColor ();
+use org::allbinary::graphics::form::item::ABCustomItem ();
+use org::allbinary::graphics::form::ScrollSelectionFormNoneFactory ();
+use org::allbinary::graphics::form::CommandCurrentSelectionForm ();
 
 1;
 

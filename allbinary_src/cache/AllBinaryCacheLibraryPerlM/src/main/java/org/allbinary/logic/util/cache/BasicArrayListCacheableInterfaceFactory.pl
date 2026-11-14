@@ -17,7 +17,7 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
-use parent -norequire,'org::allbinary::logic::util::cache::CacheableInterfaceFactoryInterface';
+use parent -norequire,'java::lang::Object','org::allbinary::logic::util::cache::CacheableInterfaceFactoryInterface';
 
 
 sub new {
@@ -33,8 +33,9 @@ sub getInstance {
         return 'org::allbinary::logic::util::cache::BasicArrayListCacheable'->new();
 }
 
-use org::allbinary::logic::util::cache::CacheableInterfaceFactoryInterface;
-use org::allbinary::logic::util::cache::BasicArrayListCacheable;
+use java::lang::Object ();
+use org::allbinary::logic::util::cache::CacheableInterfaceFactoryInterface ();
+use org::allbinary::logic::util::cache::BasicArrayListCacheable ();
 
 1;
 

@@ -17,8 +17,9 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
-our $instance = 'org::allbinary::logic::communication::log::LogUtil'->new();
+tie our $instance, 'java::lang::LazyStatic', sub { 'org::allbinary::logic::communication::log::LogUtil'->new() };
 
 
 sub getInstance {
@@ -50,8 +51,7 @@ sub putF {
 }
 
 
-# Java overloaded method: Perl keeps the last definition
-sub putF {
+sub putFS {
     my ($self, $specialMessage, $className, $functionName) = @_;
         die ("RuntimeException");
 }
@@ -62,6 +62,8 @@ sub put {
         die ("RuntimeException");
 }
 
+use java::lang::Object ();
+use java::lang::LazyStatic ();
 
 1;
 

@@ -18,8 +18,9 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
-our $IMAGE_CACHE = $org::allbinary::image::ImageCache::NULL_IMAGE_CACHE;
+tie our $IMAGE_CACHE, 'java::lang::LazyStatic', sub { $org::allbinary::image::ImageCache::NULL_IMAGE_CACHE };
 
 sub new {
     my ($class) = @_;
@@ -40,7 +41,9 @@ sub init {
         }
 }
 
-use org::allbinary::image::ImageCache;
+use java::lang::Object ();
+use java::lang::LazyStatic ();
+use org::allbinary::image::ImageCache ();
 
 1;
 

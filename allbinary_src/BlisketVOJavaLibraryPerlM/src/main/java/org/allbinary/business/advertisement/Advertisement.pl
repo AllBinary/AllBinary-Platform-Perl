@@ -17,7 +17,7 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
-use parent -norequire,'org::allbinary::business::advertisement::AdvertisementInterface';
+use parent -norequire,'java::lang::Object','org::allbinary::business::advertisement::AdvertisementInterface';
 
 
 sub _init_fields {
@@ -41,7 +41,7 @@ sub _init_fields {
 sub new {
     my ($class) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
         $self->{displayInBrowserContraintsInterface} = undef;
     return $self;
 }
@@ -196,12 +196,13 @@ sub getDisplayInBrowserContraintsInterface {
         return $self->{displayInBrowserContraintsInterface};
 }
 
-use org::allbinary::business::advertisement::image::AdvertisementImageInterface;
-use org::allbinary::business::advertisement::product::AdvertisementProductInterface;
-use org::allbinary::business::advertisement::thumbnail::AdvertisementThumbnailInterface;
-use org::allbinary::business::user::commerce::money::Money;
-use org::allbinary::logic::control::contraints::display::browser::DisplayInBrowserContraintsInterface;
-use org::allbinary::business::advertisement::AdvertisementInterface;
+use java::lang::Object ();
+use org::allbinary::business::advertisement::image::AdvertisementImageInterface ();
+use org::allbinary::business::advertisement::product::AdvertisementProductInterface ();
+use org::allbinary::business::advertisement::thumbnail::AdvertisementThumbnailInterface ();
+use org::allbinary::business::user::commerce::money::Money ();
+use org::allbinary::logic::control::contraints::display::browser::DisplayInBrowserContraintsInterface ();
+use org::allbinary::business::advertisement::AdvertisementInterface ();
 
 1;
 

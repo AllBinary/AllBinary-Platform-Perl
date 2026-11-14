@@ -17,8 +17,9 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
-our $instance = 'org::allbinary::logic::visual::transform::info::TransformInfoPropertiesFactory'->new();
+tie our $instance, 'java::lang::LazyStatic', sub { 'org::allbinary::logic::visual::transform::info::TransformInfoPropertiesFactory'->new() };
 
 sub _init_fields {
     my ($self) = @_;
@@ -35,7 +36,7 @@ sub getInstance {
 sub new {
     my ($class) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
     return $self;
 }
 
@@ -69,16 +70,18 @@ sub getInstance {
         return $transformInfoProperties;
 }
 
-use org::allbinary::data::tree::dom::DomNodeHelper;
-use org::allbinary::data::tree::dom::DomSearchHelper;
-use org::allbinary::logic::communication::log::LogUtil;
-use org::allbinary::string::CommonLabels;
-use org::w3c::dom::Attr;
-use org::w3c::dom::NamedNodeMap;
-use org::w3c::dom::Node;
-use org::w3c::dom::NodeList;
-use org::allbinary::logic::visual::transform::info::TransformInfoData;
-use org::allbinary::logic::visual::transform::info::TransformInfoProperties;
+use java::lang::Object ();
+use java::lang::LazyStatic ();
+use org::allbinary::data::tree::dom::DomNodeHelper ();
+use org::allbinary::data::tree::dom::DomSearchHelper ();
+use org::allbinary::logic::communication::log::LogUtil ();
+use org::allbinary::string::CommonLabels ();
+use org::w3c::dom::Attr ();
+use org::w3c::dom::NamedNodeMap ();
+use org::w3c::dom::Node ();
+use org::w3c::dom::NodeList ();
+use org::allbinary::logic::visual::transform::info::TransformInfoData ();
+use org::allbinary::logic::visual::transform::info::TransformInfoProperties ();
 
 1;
 

@@ -104,9 +104,9 @@ sub toShortString {
     die "abstract method toShortString";
 }
 
-use org::allbinary::logic::system::os::GenericOperatingSystem;
-use org::allbinary::util::ABHashtable;
-use org::allbinary::util::BasicArrayList;
+use org::allbinary::logic::system::os::GenericOperatingSystem ();
+use org::allbinary::util::ABHashtable ();
+use org::allbinary::util::BasicArrayList ();
 
 1;
 

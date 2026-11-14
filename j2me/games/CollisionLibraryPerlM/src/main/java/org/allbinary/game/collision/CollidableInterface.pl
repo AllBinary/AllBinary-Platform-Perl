@@ -48,9 +48,9 @@ sub getCollisionTypeWith {
     die "abstract method getCollisionTypeWith";
 }
 
-use org::allbinary::game::layer::CollidableCompositeLayer;
-use org::allbinary::layer::AllBinaryLayer;
-use org::allbinary::layer::NamedInterface;
+use org::allbinary::game::layer::CollidableCompositeLayer ();
+use org::allbinary::layer::AllBinaryLayer ();
+use org::allbinary::layer::NamedInterface ();
 
 1;
 

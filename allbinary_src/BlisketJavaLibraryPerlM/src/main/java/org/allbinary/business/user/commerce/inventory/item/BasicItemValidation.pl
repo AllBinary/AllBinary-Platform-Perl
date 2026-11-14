@@ -32,7 +32,7 @@ sub _init_fields {
 sub new {
     my ($class, $itemInterface) = @_;
     my $self = $class->SUPER::new();
-    $self->_init_fields();
+    _init_fields($self);
         $self->{itemInterface} = $itemInterface;
     return $self;
 }
@@ -210,13 +210,14 @@ sub toValidationInfoNode {
         return undef;
 }
 
-use org::allbinary::logic::communication::log::LogUtil;
-use org::allbinary::logic::communication::sql::AbSqlData;
-use org::allbinary::logic::control::validate::Validation;
-use org::allbinary::logic::string::StringMaker;
-use org::allbinary::logic::string::StringValidationUtil;
-use org::w3c::dom::Document;
-use org::w3c::dom::Node;
+use java::lang::Object ();
+use org::allbinary::logic::communication::log::LogUtil ();
+use org::allbinary::logic::communication::sql::AbSqlData ();
+use org::allbinary::logic::control::validate::Validation ();
+use org::allbinary::logic::string::StringMaker ();
+use org::allbinary::logic::string::StringValidationUtil ();
+use org::w3c::dom::Document ();
+use org::w3c::dom::Node ();
 
 1;
 

@@ -46,11 +46,12 @@ sub isProcessorLayer {
         }
 }
 
-use org::allbinary::game::layer::AllBinaryGameLayer;
-use org::allbinary::layer::AllBinaryLayer;
-use org::allbinary::layer::AllBinaryLayerManager;
-use org::allbinary::layer::LayerProcessor;
-use org::allbinary::game::tick::OptimizedTickableLayerManager;
+use java::lang::Object ();
+use org::allbinary::game::layer::AllBinaryGameLayer ();
+use org::allbinary::layer::AllBinaryLayer ();
+use org::allbinary::layer::AllBinaryLayerManager ();
+use org::allbinary::layer::LayerProcessor ();
+use org::allbinary::game::tick::OptimizedTickableLayerManager ();
 
 1;
 

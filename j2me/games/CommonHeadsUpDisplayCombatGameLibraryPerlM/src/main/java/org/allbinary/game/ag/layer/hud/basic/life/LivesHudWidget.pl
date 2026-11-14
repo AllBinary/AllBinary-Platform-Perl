@@ -31,7 +31,7 @@ sub _init_fields {
 sub new {
     my ($class, $animationInterface, $lifeInterface, $location, $direction) = @_;
     my $self = $class->SUPER::new($location, $direction, 2, 'org::allbinary::graphics::color::BasicColorFactory'->getInstance()->{WHITE});
-    $self->_init_fields();
+    _init_fields($self);
         # super(...) made $self above
         $self->{lifeInterface} = $lifeInterface;
         my $size = int($self->getLifeInterface()->getMaxlives());
@@ -86,13 +86,14 @@ sub getLifeInterface {
         return $self->{lifeInterface};
 }
 
-# use javax::microedition::lcdui::Graphics;
-use org::allbinary::animation::Animation;
-use org::allbinary::game::ag::life::Life;
-use org::allbinary::game::graphics::hud::BasicHud;
-use org::allbinary::graphics::color::BasicColorFactory;
-use org::allbinary::graphics::displayable::event::DisplayChangeEvent;
-use org::allbinary::graphics::paint::PaintableInterface;
+use java::lang::Object ();
+use javax::microedition::lcdui::Graphics ();
+use org::allbinary::animation::Animation ();
+use org::allbinary::game::ag::life::Life ();
+use org::allbinary::game::graphics::hud::BasicHud ();
+use org::allbinary::graphics::color::BasicColorFactory ();
+use org::allbinary::graphics::displayable::event::DisplayChangeEvent ();
+use org::allbinary::graphics::paint::PaintableInterface ();
 
 1;
 

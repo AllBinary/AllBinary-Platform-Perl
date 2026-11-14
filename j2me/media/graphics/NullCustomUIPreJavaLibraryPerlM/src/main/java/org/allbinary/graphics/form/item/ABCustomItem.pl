@@ -5,8 +5,9 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
-our $NULL_CUSTOM_ITEM = 'org::allbinary::logic::NullUtil'->getInstance()->{NULL_OBJECT};
+tie our $NULL_CUSTOM_ITEM, 'java::lang::LazyStatic', sub { 'org::allbinary::logic::NullUtil'->getInstance()->{NULL_OBJECT} };
 
 
 sub getNullInstance {
@@ -95,12 +96,14 @@ sub preMeasurement {
     my ($self, $graphics) = @_;
 }
 
-# use javax::microedition::lcdui::Graphics;
-# use javax::microedition::lcdui::Screen;
-use org::allbinary::graphics::color::BasicColor;
-use org::allbinary::graphics::color::BasicColorFactory;
-use org::allbinary::logic::NullUtil;
-use org::allbinary::logic::string::StringUtil;
+use java::lang::Object ();
+use java::lang::LazyStatic ();
+use javax::microedition::lcdui::Graphics ();
+use javax::microedition::lcdui::Screen ();
+use org::allbinary::graphics::color::BasicColor ();
+use org::allbinary::graphics::color::BasicColorFactory ();
+use org::allbinary::logic::NullUtil ();
+use org::allbinary::logic::string::StringUtil ();
 
 1;
 

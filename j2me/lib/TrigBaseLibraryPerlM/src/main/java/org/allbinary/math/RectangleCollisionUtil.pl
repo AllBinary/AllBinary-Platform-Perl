@@ -17,8 +17,9 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
-our $instance = 'org::allbinary::math::RectangleCollisionUtil'->new();
+tie our $instance, 'java::lang::LazyStatic', sub { 'org::allbinary::math::RectangleCollisionUtil'->new() };
 
 
 sub getInstance {
@@ -53,9 +54,11 @@ sub isInside {
         }
 }
 
-# use jsinterop::annotations::JsType;
-# use jsinterop::annotations::JsMethod;
-# use jsinterop::annotations::JsConstructor;
+use java::lang::Object ();
+use java::lang::LazyStatic ();
+# use jsinterop::annotations::JsType ();
+# use jsinterop::annotations::JsMethod ();
+# use jsinterop::annotations::JsConstructor ();
 
 1;
 

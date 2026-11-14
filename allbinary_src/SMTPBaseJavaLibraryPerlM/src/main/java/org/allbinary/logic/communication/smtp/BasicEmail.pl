@@ -17,7 +17,7 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
-use parent -norequire,'org::allbinary::logic::communication::smtp::EmailInterface';
+use parent -norequire,'java::lang::Object','org::allbinary::logic::communication::smtp::EmailInterface';
 
 
 sub _init_fields {
@@ -29,7 +29,7 @@ sub _init_fields {
 sub new {
     my ($class, $emailInfo, $to) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
         my $basicEmailInfo = $emailInfo->getBasicEmailInfo();
         $self->{email} = 'org::allbinary::logic::communication::smtp::AbEmail'->new($basicEmailInfo->getEmailServerConfigurationInterface()->getSmtpServer(), $basicEmailInfo->getEmailServerConfigurationInterface()->getAccountName(), $to, $basicEmailInfo->getSubject(), $basicEmailInfo->getTextBody(), $emailInfo->getHtmlAttachment(), $emailInfo->getContentBase());
     return $self;
@@ -81,14 +81,15 @@ sub toXmlDoc {
         return $self->{email}->toXmlDoc();
 }
 
-use java::util::HashMap;
-# use javax::mail::internet::MimeMessage;
-use org::allbinary::logic::communication::smtp::info::BasicEmailInfo;
-use org::allbinary::logic::communication::smtp::info::EmailInfo;
-use org::w3c::dom::Document;
-use org::w3c::dom::Node;
-use org::allbinary::logic::communication::smtp::EmailInterface;
-use org::allbinary::logic::communication::smtp::AbEmail;
+use java::lang::Object ();
+use java::util::HashMap ();
+# use javax::mail::internet::MimeMessage ();
+use org::allbinary::logic::communication::smtp::info::BasicEmailInfo ();
+use org::allbinary::logic::communication::smtp::info::EmailInfo ();
+use org::w3c::dom::Document ();
+use org::w3c::dom::Node ();
+use org::allbinary::logic::communication::smtp::EmailInterface ();
+use org::allbinary::logic::communication::smtp::AbEmail ();
 
 1;
 

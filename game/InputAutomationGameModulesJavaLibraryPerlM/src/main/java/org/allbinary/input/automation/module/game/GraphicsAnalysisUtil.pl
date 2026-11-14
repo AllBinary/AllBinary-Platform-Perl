@@ -17,6 +17,7 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
 our $MAX = 122;
 
@@ -44,11 +45,12 @@ sub getNominator {
         return 0.0;
 }
 
-# use java::awt;
-# use java::awt::image::BufferedImage;
-use org::allbinary::graphics::color::ColorCacheFactory;
-use org::allbinary::graphics::color::ColorCacheable;
-use org::allbinary::logic::util::cache::AutomaticCacheInterface;
+use java::lang::Object ();
+# use java::awt ();
+# use java::awt::image::BufferedImage ();
+use org::allbinary::graphics::color::ColorCacheFactory ();
+use org::allbinary::graphics::color::ColorCacheable ();
+use org::allbinary::logic::util::cache::AutomaticCacheInterface ();
 
 1;
 

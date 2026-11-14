@@ -19,7 +19,7 @@ use feature 'try';
 no warnings 'experimental::try';
 use parent -norequire,'org::allbinary::game::layer::waypoint::WaypointRunnableLogHelper';
 
-our $instanceC = 'org::allbinary::game::layer::waypoint::WaypointRunnableSelectedLogHelper'->new();
+tie our $instanceC, 'java::lang::LazyStatic', sub { 'org::allbinary::game::layer::waypoint::WaypointRunnableSelectedLogHelper'->new() };
 
 sub _init_fields {
     my ($self) = @_;
@@ -30,7 +30,7 @@ sub _init_fields {
 sub new {
     my ($class) = @_;
     my $self = $class->SUPER::new();
-    $self->_init_fields();
+    _init_fields($self);
     return $self;
 }
 
@@ -52,11 +52,13 @@ sub end {
         $self->{logUtil}->putF('org::allbinary::logic::string::StringMaker'->new()->append($pathFindingLayerInterface->getName())->append($self->{commonStrings}->{END_RUNNABLE})->toString(), $self, $self->{commonStrings}->{RUN});
 }
 
-use org::allbinary::game::layer::PathFindingLayerInterface;
-use org::allbinary::logic::communication::log::LogUtil;
-use org::allbinary::string::CommonStrings;
-use org::allbinary::logic::string::StringMaker;
-use org::allbinary::game::layer::waypoint::WaypointRunnableLogHelper;
+use java::lang::Object ();
+use java::lang::LazyStatic ();
+use org::allbinary::game::layer::PathFindingLayerInterface ();
+use org::allbinary::logic::communication::log::LogUtil ();
+use org::allbinary::string::CommonStrings ();
+use org::allbinary::logic::string::StringMaker ();
+use org::allbinary::game::layer::waypoint::WaypointRunnableLogHelper ();
 
 1;
 

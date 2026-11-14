@@ -17,8 +17,9 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
-our $instance = 'org::allbinary::PostGameCommandFactory'->new();
+tie our $instance, 'java::lang::LazyStatic', sub { 'org::allbinary::PostGameCommandFactory'->new() };
 
 sub new {
     my ($class) = @_;
@@ -38,8 +39,10 @@ sub addCommands {
         'org::allbinary::game::configuration::feature::MultiPlayerGameFeatureFactory'->getInstance()->addCommands($canvas);
 }
 
-# use javax::microedition::lcdui::Canvas;
-use org::allbinary::game::configuration::feature::MultiPlayerGameFeatureFactory;
+use java::lang::Object ();
+use java::lang::LazyStatic ();
+use javax::microedition::lcdui::Canvas ();
+use org::allbinary::game::configuration::feature::MultiPlayerGameFeatureFactory ();
 
 1;
 

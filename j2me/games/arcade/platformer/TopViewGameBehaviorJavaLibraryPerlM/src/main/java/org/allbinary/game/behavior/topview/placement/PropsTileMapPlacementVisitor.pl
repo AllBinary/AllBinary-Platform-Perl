@@ -29,7 +29,7 @@ sub _init_fields {
 sub new {
     my ($class) = @_;
     my $self = $class->SUPER::new();
-    $self->_init_fields();
+    _init_fields($self);
     return $self;
 }
 
@@ -119,12 +119,13 @@ sub visit2 {
         }
 }
 
-use org::allbinary::game::rand::MyRandomFactory;
-use org::allbinary::logic::communication::log::LogUtil;
-use org::allbinary::string::CommonStrings;
-use org::mapeditor::core::TileLayer;
-use org::mapeditor::core::TiledMap;
-use org::allbinary::game::behavior::topview::placement::TileMapPlacementVisitor;
+use java::lang::Object ();
+use org::allbinary::game::rand::MyRandomFactory ();
+use org::allbinary::logic::communication::log::LogUtil ();
+use org::allbinary::string::CommonStrings ();
+use org::mapeditor::core::TileLayer ();
+use org::mapeditor::core::TiledMap ();
+use org::allbinary::game::behavior::topview::placement::TileMapPlacementVisitor ();
 
 1;
 

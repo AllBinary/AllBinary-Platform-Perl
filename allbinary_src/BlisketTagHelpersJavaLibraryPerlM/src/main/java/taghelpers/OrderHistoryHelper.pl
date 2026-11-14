@@ -39,7 +39,7 @@ sub _init_fields {
 sub new {
     my ($class, $propertiesHashMap, $pageContext) = @_;
     my $self = $class->SUPER::new();
-    $self->_init_fields();
+    _init_fields($self);
         $self->{propertiesHashMap} = $propertiesHashMap;
         $self->{pageContext} = $pageContext;
         $self->{request} = $pageContext->getRequest();
@@ -95,23 +95,24 @@ sub setOrderStatus {
         }
 }
 
-use java::util::HashMap;
-# use javax::servlet::http::HttpServletRequest;
-# use javax::servlet::jsp::PageContext;
-use admin::taghelpers::TagHelper;
-use org::allbinary::business::context::modules::storefront::StoreFrontData;
-use org::allbinary::business::context::modules::storefront::StoreFrontFactory;
-use org::allbinary::business::context::modules::storefront::StoreFrontInterface;
-use org::allbinary::business::user::address::StreetAddress;
-use org::allbinary::business::user::commerce::inventory::order::OrderData;
-use org::allbinary::business::user::commerce::inventory::order::OrderHistoryData;
-use org::allbinary::business::user::commerce::inventory::order::OrderHistoryFactory;
-use org::allbinary::business::user::commerce::inventory::order::OrderHistoryInterface;
-use org::allbinary::business::user::commerce::shipping::ShippingMethodData;
-use org::allbinary::data::tables::user::commerce::inventory::order::OrderHistoryEntityFactory;
-use org::allbinary::data::tables::user::commerce::inventory::order::OrderHistoryEntityInterface;
-use org::allbinary::logic::communication::http::request::session::WeblisketSession;
-use org::allbinary::logic::communication::log::LogUtil;
+use java::lang::Object ();
+use java::util::HashMap ();
+# use javax::servlet::http::HttpServletRequest ();
+# use javax::servlet::jsp::PageContext ();
+use admin::taghelpers::TagHelper ();
+use org::allbinary::business::context::modules::storefront::StoreFrontData ();
+use org::allbinary::business::context::modules::storefront::StoreFrontFactory ();
+use org::allbinary::business::context::modules::storefront::StoreFrontInterface ();
+use org::allbinary::business::user::address::StreetAddress ();
+use org::allbinary::business::user::commerce::inventory::order::OrderData ();
+use org::allbinary::business::user::commerce::inventory::order::OrderHistoryData ();
+use org::allbinary::business::user::commerce::inventory::order::OrderHistoryFactory ();
+use org::allbinary::business::user::commerce::inventory::order::OrderHistoryInterface ();
+use org::allbinary::business::user::commerce::shipping::ShippingMethodData ();
+use org::allbinary::data::tables::user::commerce::inventory::order::OrderHistoryEntityFactory ();
+use org::allbinary::data::tables::user::commerce::inventory::order::OrderHistoryEntityInterface ();
+use org::allbinary::logic::communication::http::request::session::WeblisketSession ();
+use org::allbinary::logic::communication::log::LogUtil ();
 
 1;
 

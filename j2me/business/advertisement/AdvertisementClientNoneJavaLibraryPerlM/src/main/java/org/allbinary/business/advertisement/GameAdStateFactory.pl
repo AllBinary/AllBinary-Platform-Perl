@@ -5,9 +5,9 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
-use parent -norequire,'org::allbinary::business::advertisement::GameAdStateFactoryInterface';
+use parent -norequire,'java::lang::Object','org::allbinary::business::advertisement::GameAdStateFactoryInterface';
 
-our $instance = 'org::allbinary::business::advertisement::GameAdStateFactory'->new();
+tie our $instance, 'java::lang::LazyStatic', sub { 'org::allbinary::business::advertisement::GameAdStateFactory'->new() };
 
 sub _init_fields {
     my ($self) = @_;
@@ -18,7 +18,7 @@ sub _init_fields {
 sub new {
     my ($class) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
     return $self;
 }
 
@@ -48,10 +48,12 @@ sub isEnabled {
         return 0;
 }
 
-use org::allbinary::game::GameAdState;
-use org::allbinary::logic::system::SoftwareInformation;
-use org::allbinary::business::advertisement::GameAdStateFactoryInterface;
-use org::allbinary::business::advertisement::AppNameLicensingAdConfiguration;
+use java::lang::Object ();
+use java::lang::LazyStatic ();
+use org::allbinary::game::GameAdState ();
+use org::allbinary::logic::system::SoftwareInformation ();
+use org::allbinary::business::advertisement::GameAdStateFactoryInterface ();
+use org::allbinary::business::advertisement::AppNameLicensingAdConfiguration ();
 
 1;
 

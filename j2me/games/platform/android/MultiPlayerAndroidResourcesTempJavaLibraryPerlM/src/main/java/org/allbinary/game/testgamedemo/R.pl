@@ -10,6 +10,7 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
 
 sub new {
@@ -23,6 +24,7 @@ sub new {
     use warnings;
     use feature 'try';
     no warnings 'experimental::try';
+    use parent -norequire,'java::lang::Object';
     
 
     sub new {
@@ -38,6 +40,7 @@ sub new {
     use warnings;
     use feature 'try';
     no warnings 'experimental::try';
+    use parent -norequire,'java::lang::Object';
     
     our $testgamedemo_icon = 0x7f020000;
     our $testgamedemo_wait_256_by_256 = 0x7f020001;
@@ -55,6 +58,7 @@ sub new {
     use warnings;
     use feature 'try';
     no warnings 'experimental::try';
+    use parent -norequire,'java::lang::Object';
     
     our $ad_area_bottom = 0x7f060002;
     our $ad_area_left = 0x7f060003;
@@ -76,6 +80,7 @@ sub new {
     use warnings;
     use feature 'try';
     no warnings 'experimental::try';
+    use parent -norequire,'java::lang::Object';
     
     our $testgamedemo_ad_overlay_layout = 0x7f030000;
     our $testgamedemo_gl_layout = 0x7f030001;
@@ -94,6 +99,7 @@ sub new {
     use warnings;
     use feature 'try';
     no warnings 'experimental::try';
+    use parent -norequire,'java::lang::Object';
     
     our $error = 0x7f040000;
     our $licenseinitdata = 0x7f040001;
@@ -153,6 +159,7 @@ sub new {
     use warnings;
     use feature 'try';
     no warnings 'experimental::try';
+    use parent -norequire,'java::lang::Object';
     
     our $progressbar_in_title_string = 0x7f050001;
     our $testgamedemo_app_name = 0x7f050000;
@@ -165,6 +172,7 @@ sub new {
     }
 
 
+use java::lang::Object ();
 
 1;
 

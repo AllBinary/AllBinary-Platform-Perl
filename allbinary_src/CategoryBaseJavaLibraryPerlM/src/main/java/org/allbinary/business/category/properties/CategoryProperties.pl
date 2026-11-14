@@ -17,7 +17,7 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
-use parent -norequire,'org::allbinary::business::category::properties::CategoryPropertiesInterface';
+use parent -norequire,'java::lang::Object','org::allbinary::business::category::properties::CategoryPropertiesInterface';
 
 our $MAXDEPTH = 100;
 
@@ -39,7 +39,7 @@ sub new {
 sub _new1 {
     my ($class, $name) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
         $self->{category} = $name;
     return $self;
 }
@@ -48,7 +48,7 @@ sub _new1 {
 sub _new1 {
     my ($class, $node) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
         $self->{category} = 'org::allbinary::business::category::CategoryUtil'->getNameFromNode($node);
     return $self;
 }
@@ -57,7 +57,7 @@ sub _new1 {
 sub _new1 {
     my ($class, $categoryPropertiesHashMap) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
         $self->{category} = ("" . $categoryPropertiesHashMap->get('org::allbinary::business::category::CategoryData'->getInstance()->{NAME}));
     return $self;
 }
@@ -195,24 +195,25 @@ sub validationInfo {
         return undef;
 }
 
-use java::util::HashMap;
-use org::allbinary::business::category::CategoryData;
-use org::allbinary::business::category::CategoryInterface;
-use org::allbinary::business::category::CategoryUtil;
-use org::allbinary::business::category::hierarchy::CategoryHierarchyInterface;
-use org::allbinary::logic::StdUtil;
-use org::allbinary::logic::communication::log::LogUtil;
-use org::allbinary::logic::communication::sql::AbSqlData;
-use org::allbinary::logic::io::path::AbPath;
-use org::allbinary::logic::io::path::AbPathData;
-use org::allbinary::logic::string::StringMaker;
-use org::allbinary::logic::string::StringUtil;
-use org::allbinary::logic::string::StringValidationUtil;
-use org::allbinary::util::BasicArrayList;
-use org::allbinary::util::BasicArrayListD;
-use org::w3c::dom::Document;
-use org::w3c::dom::Node;
-use org::allbinary::business::category::properties::CategoryPropertiesInterface;
+use java::lang::Object ();
+use java::util::HashMap ();
+use org::allbinary::business::category::CategoryData ();
+use org::allbinary::business::category::CategoryInterface ();
+use org::allbinary::business::category::CategoryUtil ();
+use org::allbinary::business::category::hierarchy::CategoryHierarchyInterface ();
+use org::allbinary::logic::StdUtil ();
+use org::allbinary::logic::communication::log::LogUtil ();
+use org::allbinary::logic::communication::sql::AbSqlData ();
+use org::allbinary::logic::io::path::AbPath ();
+use org::allbinary::logic::io::path::AbPathData ();
+use org::allbinary::logic::string::StringMaker ();
+use org::allbinary::logic::string::StringUtil ();
+use org::allbinary::logic::string::StringValidationUtil ();
+use org::allbinary::util::BasicArrayList ();
+use org::allbinary::util::BasicArrayListD ();
+use org::w3c::dom::Document ();
+use org::w3c::dom::Node ();
+use org::allbinary::business::category::properties::CategoryPropertiesInterface ();
 
 1;
 

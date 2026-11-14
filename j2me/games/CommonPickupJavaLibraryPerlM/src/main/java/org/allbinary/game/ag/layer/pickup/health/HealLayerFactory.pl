@@ -17,7 +17,7 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
-use parent -norequire,'org::allbinary::layer::AllBinaryLayerFactoryInterface';
+use parent -norequire,'java::lang::Object','org::allbinary::layer::AllBinaryLayerFactoryInterface';
 
 
 sub new {
@@ -33,9 +33,10 @@ sub getInstance {
         return 'org::allbinary::game::ag::layer::pickup::health::HealLayer'->new();
 }
 
-use org::allbinary::layer::AllBinaryLayer;
-use org::allbinary::layer::AllBinaryLayerFactoryInterface;
-use org::allbinary::game::ag::layer::pickup::health::HealLayer;
+use java::lang::Object ();
+use org::allbinary::layer::AllBinaryLayer ();
+use org::allbinary::layer::AllBinaryLayerFactoryInterface ();
+use org::allbinary::game::ag::layer::pickup::health::HealLayer ();
 
 1;
 

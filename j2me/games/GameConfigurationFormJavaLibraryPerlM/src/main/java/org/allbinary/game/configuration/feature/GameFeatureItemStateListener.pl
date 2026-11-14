@@ -18,9 +18,9 @@ use warnings;
 use feature 'try';
 no warnings 'experimental::try';
 use Scalar::Util ();
-use parent -norequire,'javax::microedition::lcdui::ItemStateListener';
+use parent -norequire,'java::lang::Object','javax::microedition::lcdui::ItemStateListener';
 
-our $toggleList = 'org::allbinary::util::BasicArrayListD'->new();
+tie our $toggleList, 'java::lang::LazyStatic', sub { 'org::allbinary::util::BasicArrayListD'->new() };
 
 sub _init_fields {
     my ($self) = @_;
@@ -32,7 +32,7 @@ sub _init_fields {
 sub new {
     my ($class, $gameOptionsForm) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
         $self->{gameOptionsForm} = $gameOptionsForm;
         my $gameFeatureFactory = 'org::allbinary::game::configuration::feature::GameFeatureFactory'->getInstance();
         'org::allbinary::game::configuration::feature::GameFeatureItemStateListener'->add($gameFeatureFactory->{ARTIFICIAL_INTELLEGENCE_PROCESSOR});
@@ -76,20 +76,22 @@ sub itemStateChanged {
         }
 }
 
-# use javax::microedition::lcdui::ChoiceGroup;
-# use javax::microedition::lcdui::Item;
-# use javax::microedition::lcdui::ItemStateListener;
-use org::allbinary::game::configuration::GameConfigurationGauge;
-use org::allbinary::game::configuration::GameConfigurationUtil;
-use org::allbinary::game::configuration::GameOptionsForm;
-use org::allbinary::logic::communication::log::LogUtil;
-use org::allbinary::logic::string::StringMaker;
-use org::allbinary::string::CommonLabels;
-use org::allbinary::string::CommonStrings;
-use org::allbinary::util::BasicArrayList;
-use org::allbinary::util::BasicArrayListD;
-use org::allbinary::game::configuration::feature::GameFeatureFactory;
-use org::allbinary::game::configuration::feature::GameFeatureUtil;
+use java::lang::Object ();
+use java::lang::LazyStatic ();
+use javax::microedition::lcdui::ChoiceGroup ();
+use javax::microedition::lcdui::Item ();
+use javax::microedition::lcdui::ItemStateListener ();
+use org::allbinary::game::configuration::GameConfigurationGauge ();
+use org::allbinary::game::configuration::GameConfigurationUtil ();
+use org::allbinary::game::configuration::GameOptionsForm ();
+use org::allbinary::logic::communication::log::LogUtil ();
+use org::allbinary::logic::string::StringMaker ();
+use org::allbinary::string::CommonLabels ();
+use org::allbinary::string::CommonStrings ();
+use org::allbinary::util::BasicArrayList ();
+use org::allbinary::util::BasicArrayListD ();
+use org::allbinary::game::configuration::feature::GameFeatureFactory ();
+use org::allbinary::game::configuration::feature::GameFeatureUtil ();
 
 1;
 

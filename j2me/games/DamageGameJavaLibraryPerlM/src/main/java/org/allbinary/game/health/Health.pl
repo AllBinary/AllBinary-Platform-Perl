@@ -17,9 +17,9 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
-use parent -norequire,'org::allbinary::game::health::HealthInterface';
+use parent -norequire,'java::lang::Object','org::allbinary::game::health::HealthInterface';
 
-our $NULL_HEALTH = 'org::allbinary::game::health::Health'->new(0);
+tie our $NULL_HEALTH, 'java::lang::LazyStatic', sub { 'org::allbinary::game::health::Health'->new(0) };
 our $NAME = "Health Resource";
 our $HEALTH_LABEL = "Health: ";
 our $MAX_HEALTH_LABEL = " Max: ";
@@ -35,7 +35,7 @@ sub _init_fields {
 sub new {
     my ($class, $maxHealth) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
         $self->setMaxHealth($maxHealth);
         $self->setHealth($maxHealth);
     return $self;
@@ -144,11 +144,13 @@ sub toString {
         return $stringBuffer->toString();
 }
 
-use org::allbinary::logic::communication::log::ForcedLogUtil;
-use org::allbinary::logic::string::StringMaker;
-use org::allbinary::string::CommonSeps;
-use org::allbinary::game::health::HealthInterface;
-use org::allbinary::game::health::NullHealthListener;
+use java::lang::Object ();
+use java::lang::LazyStatic ();
+use org::allbinary::logic::communication::log::ForcedLogUtil ();
+use org::allbinary::logic::string::StringMaker ();
+use org::allbinary::string::CommonSeps ();
+use org::allbinary::game::health::HealthInterface ();
+use org::allbinary::game::health::NullHealthListener ();
 
 1;
 

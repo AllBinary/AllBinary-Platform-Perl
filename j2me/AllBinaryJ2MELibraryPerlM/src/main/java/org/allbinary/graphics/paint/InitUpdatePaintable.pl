@@ -38,8 +38,9 @@ sub update {
     my ($self) = @_;
 }
 
-use org::allbinary::graphics::paint::Paintable;
-use org::allbinary::graphics::paint::InitUpdatePaintableInterface;
+use java::lang::Object ();
+use org::allbinary::graphics::paint::Paintable ();
+use org::allbinary::graphics::paint::InitUpdatePaintableInterface ();
 
 1;
 

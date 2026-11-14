@@ -35,7 +35,7 @@ sub onRemoveGeographicMapCellPositionEvent {
     die "abstract method onRemoveGeographicMapCellPositionEvent";
 }
 
-use org::allbinary::logic::util::event::EventListenerInterface;
+use org::allbinary::logic::util::event::EventListenerInterface ();
 
 1;
 

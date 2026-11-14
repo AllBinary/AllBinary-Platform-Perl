@@ -30,7 +30,7 @@ sub _init_fields {
 sub new {
     my ($class) = @_;
     my $self = $class->SUPER::new();
-    $self->_init_fields();
+    _init_fields($self);
     return $self;
 }
 
@@ -70,19 +70,20 @@ sub doStartTag {
         }
 }
 
-use java::util::HashMap;
-use org::allbinary::util::BasicArrayList;
-use org::allbinary::util::BasicArrayListD;
-# use javax::servlet::jsp::JspTagException;
-# use javax::servlet::jsp::tagext::Tag;
-use admin::taghelpers::MultipartRequestParamForwardHelper;
-use org::allbinary::logic::StdUtil;
-use org::allbinary::logic::communication::http::request::AbResponseHandler;
-use org::allbinary::logic::system::security::licensing::LicensingException;
-use tags::CustomTagSupport;
-use tags::HelperTag;
-use admin::tags::ParentInventoryTagHelper;
-use admin::tags::AbTagData;
+use java::lang::Object ();
+use java::util::HashMap ();
+use org::allbinary::util::BasicArrayList ();
+use org::allbinary::util::BasicArrayListD ();
+# use javax::servlet::jsp::JspTagException ();
+# use javax::servlet::jsp::tagext::Tag ();
+use admin::taghelpers::MultipartRequestParamForwardHelper ();
+use org::allbinary::logic::StdUtil ();
+use org::allbinary::logic::communication::http::request::AbResponseHandler ();
+use org::allbinary::logic::system::security::licensing::LicensingException ();
+use tags::CustomTagSupport ();
+use tags::HelperTag ();
+use admin::tags::ParentInventoryTagHelper ();
+use admin::tags::AbTagData ();
 
 1;
 

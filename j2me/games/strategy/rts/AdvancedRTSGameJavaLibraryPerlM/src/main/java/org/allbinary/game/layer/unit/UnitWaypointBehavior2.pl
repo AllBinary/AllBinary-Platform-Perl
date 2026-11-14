@@ -19,7 +19,7 @@ use feature 'try';
 no warnings 'experimental::try';
 use parent -norequire,'org::allbinary::game::layer::unit::UnitWaypointBehavior';
 
-our $runningWaypointPathList = 'org::allbinary::util::BasicArrayListD'->new();
+tie our $runningWaypointPathList, 'java::lang::LazyStatic', sub { 'org::allbinary::util::BasicArrayListD'->new() };
 our $TARGET_DISTANCE = "Target Distance";
 our $TARGET_LAYER = "Target Layer";
 
@@ -47,7 +47,7 @@ sub _init_fields {
 sub new {
     my ($class, $ownerAdvancedRTSGameLayer, $fakeWaypoint) = @_;
     my $self = $class->SUPER::new($ownerAdvancedRTSGameLayer, $fakeWaypoint);
-    $self->_init_fields();
+    _init_fields($self);
         # super(...) made $self above
         $self->{progressTimeDelayHelper} = 'org::allbinary::time::TimeDelayHelper'->new(5000);
         $self->{wanderPathsList} = 'org::allbinary::util::BasicArrayListD'->new();
@@ -521,7 +521,7 @@ sub buildingChase {
     sub new {
         my ($class) = @_;
         my $self = $class->SUPER::new();
-        $self->_init_fields();
+        _init_fields($self);
         return $self;
     }
     
@@ -557,37 +557,39 @@ sub buildingChase {
     }
 
 
-use org::allbinary::J2MEUtil;
-use org::allbinary::game::configuration::feature::Features;
-use org::allbinary::game::layer::SteeringVisitor;
-use org::allbinary::game::layer::AdvancedRTSGameLayer;
-use org::allbinary::game::layer::MultipassWaypointPathRunnable;
-use org::allbinary::game::layer::RTSLayer;
-use org::allbinary::game::layer::WaypointPathRunnable;
-use org::allbinary::util::BasicArrayList;
-use org::allbinary::util::BasicArrayListD;
-use org::allbinary::string::CommonStrings;
-use org::allbinary::logic::string::StringMaker;
-use org::allbinary::logic::communication::log::LogUtil;
-use org::allbinary::game::layer::PathFindingLayerInterface;
-use org::allbinary::game::layer::WaypointPathRunnableBase;
-use org::allbinary::game::layer::special::CollidableDestroyableDamageableLayer;
-use org::allbinary::game::layer::waypoint::WaypointBase;
-use org::allbinary::game::tracking::TrackingEventHandler;
-use org::allbinary::graphics::GPoint;
-use org::allbinary::graphics::color::BasicColorFactory;
-use org::allbinary::layer::AllBinaryLayer;
-use org::allbinary::layer::AllBinaryLayerManager;
-use org::allbinary::logic::NullUtil;
-use org::allbinary::logic::java::bool::BooleanFactory;
-use org::allbinary::math::LayerDistanceUtil;
-use org::allbinary::media::graphics::geography::map::GeographicMapCellPosition;
-use org::allbinary::media::graphics::geography::map::SimpleGeographicMapCellPositionFactory;
-use org::allbinary::thread::PathFindingThreadPool;
-use org::allbinary::thread::ThreadPool;
-use org::allbinary::time::TimeDelayHelper;
-use org::allbinary::game::layer::unit::UnitWaypointBehavior;
-use org::allbinary::game::layer::unit::UnitWaypointStrings;
+use java::lang::Object ();
+use java::lang::LazyStatic ();
+use org::allbinary::J2MEUtil ();
+use org::allbinary::game::configuration::feature::Features ();
+use org::allbinary::game::layer::SteeringVisitor ();
+use org::allbinary::game::layer::AdvancedRTSGameLayer ();
+use org::allbinary::game::layer::MultipassWaypointPathRunnable ();
+use org::allbinary::game::layer::RTSLayer ();
+use org::allbinary::game::layer::WaypointPathRunnable ();
+use org::allbinary::util::BasicArrayList ();
+use org::allbinary::util::BasicArrayListD ();
+use org::allbinary::string::CommonStrings ();
+use org::allbinary::logic::string::StringMaker ();
+use org::allbinary::logic::communication::log::LogUtil ();
+use org::allbinary::game::layer::PathFindingLayerInterface ();
+use org::allbinary::game::layer::WaypointPathRunnableBase ();
+use org::allbinary::game::layer::special::CollidableDestroyableDamageableLayer ();
+use org::allbinary::game::layer::waypoint::WaypointBase ();
+use org::allbinary::game::tracking::TrackingEventHandler ();
+use org::allbinary::graphics::GPoint ();
+use org::allbinary::graphics::color::BasicColorFactory ();
+use org::allbinary::layer::AllBinaryLayer ();
+use org::allbinary::layer::AllBinaryLayerManager ();
+use org::allbinary::logic::NullUtil ();
+use org::allbinary::logic::java::bool::BooleanFactory ();
+use org::allbinary::math::LayerDistanceUtil ();
+use org::allbinary::media::graphics::geography::map::GeographicMapCellPosition ();
+use org::allbinary::media::graphics::geography::map::SimpleGeographicMapCellPositionFactory ();
+use org::allbinary::thread::PathFindingThreadPool ();
+use org::allbinary::thread::ThreadPool ();
+use org::allbinary::time::TimeDelayHelper ();
+use org::allbinary::game::layer::unit::UnitWaypointBehavior ();
+use org::allbinary::game::layer::unit::UnitWaypointStrings ();
 
 1;
 

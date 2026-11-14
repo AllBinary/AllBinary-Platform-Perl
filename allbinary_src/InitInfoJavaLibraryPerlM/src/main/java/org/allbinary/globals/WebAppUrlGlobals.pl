@@ -29,7 +29,7 @@ sub _init_fields {
 sub new {
     my ($class) = @_;
     my $self = $class->SUPER::new();
-    $self->_init_fields();
+    _init_fields($self);
     return $self;
 }
 
@@ -72,9 +72,10 @@ sub getMainPath {
         }
 }
 
-use org::allbinary::business::init::InitInfo;
-use org::allbinary::logic::string::StringValidationUtil;
-use org::allbinary::globals::UrlGlobalsInterface;
+use java::lang::Object ();
+use org::allbinary::business::init::InitInfo ();
+use org::allbinary::logic::string::StringValidationUtil ();
+use org::allbinary::globals::UrlGlobalsInterface ();
 
 1;
 

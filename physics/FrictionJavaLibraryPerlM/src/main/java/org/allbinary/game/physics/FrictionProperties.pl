@@ -17,6 +17,7 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
 
 
@@ -32,9 +33,10 @@ sub friction {
         $org::allbinary::game::physics::velocity::DragVelocityBehavior::instance->reduce($velocityProperties, $nominator, 'org::allbinary::game::physics::friction::FrictionData'->getFrictionDenominator());
 }
 
-use org::allbinary::game::physics::friction::FrictionData;
-use org::allbinary::game::physics::velocity::DragVelocityBehavior;
-use org::allbinary::game::physics::velocity::VelocityProperties;
+use java::lang::Object ();
+use org::allbinary::game::physics::friction::FrictionData ();
+use org::allbinary::game::physics::velocity::DragVelocityBehavior ();
+use org::allbinary::game::physics::velocity::VelocityProperties ();
 
 1;
 

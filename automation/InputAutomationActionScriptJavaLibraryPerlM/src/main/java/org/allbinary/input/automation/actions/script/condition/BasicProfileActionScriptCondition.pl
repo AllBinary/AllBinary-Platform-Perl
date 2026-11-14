@@ -39,7 +39,7 @@ sub new {
 sub _new2 {
     my ($class, $label, $node) = @_;
     my $self = $class->SUPER::new($label, $node);
-    $self->_init_fields();
+    _init_fields($self);
         # super(...) made $self above
         $self->init();
         my $nodeList = $node->getChildNodes();
@@ -77,7 +77,7 @@ sub addProcessorNodes {
 sub _new1 {
     my ($class, $label) = @_;
     my $self = $class->SUPER::new($label);
-    $self->_init_fields();
+    _init_fields($self);
         # super(...) made $self above
         $self->init();
     return $self;
@@ -282,35 +282,36 @@ sub process {
         }
 }
 
-# use java::awt::event::ActionEvent;
-use org::allbinary::util::BasicArrayList;
-use org::allbinary::util::BasicArrayListD;
-# use javax::swing;
-# use javax::swing::tree::TreePath;
-use org::allbinary::input::automation::actions::script::JTreeInterfaceFactory;
-use org::allbinary::input::automation::actions::script::ProfileActionScriptItem;
-use org::allbinary::input::automation::actions::script::ProfileActionScriptNodeInterface;
-use org::allbinary::input::automation::actions::script::condition::processors::ProfileActionScriptProcessorInterface;
-use org::allbinary::input::automation::actions::script::condition::processors::input::GenericProfileActionScriptInputData;
-use org::allbinary::input::automation::actions::script::condition::processors::input::KeyboardActionScriptInput;
-use org::allbinary::input::automation::actions::script::condition::processors::input::MouseActionScriptInput;
-use org::allbinary::input::automation::actions::script::condition::processors::input::ProfileActionScriptInputFactory;
-use org::allbinary::input::automation::module::actions::script::condition::processors::output::GenericProfileActionScriptOutputData;
-use org::allbinary::input::automation::module::actions::script::condition::processors::output::ImageActionScriptOutput;
-use org::allbinary::input::automation::module::actions::script::condition::processors::output::ProfileActionScriptOutputFactory;
-use org::allbinary::logic::communication::log::LogUtil;
-use org::allbinary::logic::string::StringMaker;
-use org::w3c::dom::Document;
-use org::w3c::dom::Node;
-use org::w3c::dom::NodeList;
-use org::allbinary::input::automation::actions::script::condition::ProfileActionScriptConditionInterface;
-use org::allbinary::input::automation::actions::script::condition::GenericProfileActionScriptConditionData;
-use org::allbinary::input::automation::actions::script::condition::ProfileActionScriptConditionFactory;
-use org::allbinary::input::automation::actions::script::condition::JMenu;
-use org::allbinary::input::automation::actions::script::condition::JMenuItem;
-use org::allbinary::input::automation::actions::script::condition::TimeIntervalActionScriptCondition;
-use org::allbinary::input::automation::actions::script::condition::AlwaysActionScriptCondition;
-use org::allbinary::input::automation::actions::script::condition::ColorAtActionScriptCondition;
+use java::lang::Object ();
+# use java::awt::event::ActionEvent ();
+use org::allbinary::util::BasicArrayList ();
+use org::allbinary::util::BasicArrayListD ();
+# use javax::swing ();
+# use javax::swing::tree::TreePath ();
+use org::allbinary::input::automation::actions::script::JTreeInterfaceFactory ();
+use org::allbinary::input::automation::actions::script::ProfileActionScriptItem ();
+use org::allbinary::input::automation::actions::script::ProfileActionScriptNodeInterface ();
+use org::allbinary::input::automation::actions::script::condition::processors::ProfileActionScriptProcessorInterface ();
+use org::allbinary::input::automation::actions::script::condition::processors::input::GenericProfileActionScriptInputData ();
+use org::allbinary::input::automation::actions::script::condition::processors::input::KeyboardActionScriptInput ();
+use org::allbinary::input::automation::actions::script::condition::processors::input::MouseActionScriptInput ();
+use org::allbinary::input::automation::actions::script::condition::processors::input::ProfileActionScriptInputFactory ();
+use org::allbinary::input::automation::module::actions::script::condition::processors::output::GenericProfileActionScriptOutputData ();
+use org::allbinary::input::automation::module::actions::script::condition::processors::output::ImageActionScriptOutput ();
+use org::allbinary::input::automation::module::actions::script::condition::processors::output::ProfileActionScriptOutputFactory ();
+use org::allbinary::logic::communication::log::LogUtil ();
+use org::allbinary::logic::string::StringMaker ();
+use org::w3c::dom::Document ();
+use org::w3c::dom::Node ();
+use org::w3c::dom::NodeList ();
+use org::allbinary::input::automation::actions::script::condition::ProfileActionScriptConditionInterface ();
+use org::allbinary::input::automation::actions::script::condition::GenericProfileActionScriptConditionData ();
+use org::allbinary::input::automation::actions::script::condition::ProfileActionScriptConditionFactory ();
+use org::allbinary::input::automation::actions::script::condition::JMenu ();
+use org::allbinary::input::automation::actions::script::condition::JMenuItem ();
+use org::allbinary::input::automation::actions::script::condition::TimeIntervalActionScriptCondition ();
+use org::allbinary::input::automation::actions::script::condition::AlwaysActionScriptCondition ();
+use org::allbinary::input::automation::actions::script::condition::ColorAtActionScriptCondition ();
 
 1;
 

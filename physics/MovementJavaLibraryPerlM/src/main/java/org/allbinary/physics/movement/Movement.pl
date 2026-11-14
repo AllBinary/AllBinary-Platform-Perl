@@ -17,7 +17,7 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
-use parent -norequire,'org::allbinary::physics::movement::MovementInterface';
+use parent -norequire,'java::lang::Object','org::allbinary::physics::movement::MovementInterface';
 
 
 
@@ -43,9 +43,10 @@ sub stop {
     my ($self) = @_;
 }
 
-use org::allbinary::game::layer::AllBinaryGameLayer;
-use org::allbinary::logic::math::BasicDecimal;
-use org::allbinary::physics::movement::MovementInterface;
+use java::lang::Object ();
+use org::allbinary::game::layer::AllBinaryGameLayer ();
+use org::allbinary::logic::math::BasicDecimal ();
+use org::allbinary::physics::movement::MovementInterface ();
 
 1;
 

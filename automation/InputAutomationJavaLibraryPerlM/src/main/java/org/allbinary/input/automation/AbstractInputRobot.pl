@@ -17,6 +17,7 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
 
 sub _init_fields {
@@ -29,7 +30,7 @@ sub _init_fields {
 sub new {
     my ($class, $helpSet) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
         $self->setHelpSet($helpSet);
     return $self;
 }
@@ -77,10 +78,11 @@ sub setHelpSet {
         $self->{helpSet} = $helpSet;
 }
 
-# use java::awt;
-# use javax::help::HelpSet;
-use org::allbinary::logic::communication::log::LogUtil;
-use org::allbinary::input::automation::PointHelper;
+use java::lang::Object ();
+# use java::awt ();
+# use javax::help::HelpSet ();
+use org::allbinary::logic::communication::log::LogUtil ();
+use org::allbinary::input::automation::PointHelper ();
 
 1;
 

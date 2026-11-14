@@ -41,7 +41,7 @@ sub new {
 sub _new1 {
     my ($class, $node) = @_;
     my $self = $class->SUPER::new($NAME, $node);
-    $self->_init_fields();
+    _init_fields($self);
         # super(...) made $self above
         $self->{logUtil}->putF($self->{commonStrings}->{START}, $self, $self->{commonStrings}->{CONSTRUCTOR});
         my $actionNode = 'org::allbinary::data::tree::dom::DomSearchHelper'->getNode($org::allbinary::input::automation::module::actions::script::condition::processors::output::ImageActionScriptOutputData::NAME, $node->getChildNodes());
@@ -73,7 +73,7 @@ sub _new1 {
 sub _new0 {
     my ($class) = @_;
     my $self = $class->SUPER::new($NAME);
-    $self->_init_fields();
+    _init_fields($self);
         # super(...) made $self above
         $self->setImageTypes('org::allbinary::input::automation::module::actions::script::condition::processors::output::ImageTypes'->new());
         $self->setAllowsChildren(0);
@@ -176,22 +176,23 @@ sub setImageTypes {
         $self->{imageTypes} = $imageTypes;
 }
 
-use java::util::HashMap;
-use org::allbinary::data::tree::dom::DomNodeHelper;
-use org::allbinary::data::tree::dom::DomSearchHelper;
-use org::allbinary::data::tree::dom::ModDomHelper;
-use org::allbinary::logic::StdUtil;
-use org::allbinary::logic::communication::log::LogUtil;
-use org::allbinary::logic::string::StringMaker;
-use org::w3c::dom::Document;
-use org::w3c::dom::Node;
-use org::w3c::dom::NodeList;
-use org::allbinary::input::automation::module::actions::script::condition::processors::output::BasicProfileActionScriptOutput;
-use org::allbinary::input::automation::module::actions::script::condition::processors::output::ImageActionScriptOutputInterface;
-use org::allbinary::input::automation::module::actions::script::condition::processors::output::ImageActionScriptOutputData;
-use org::allbinary::input::automation::module::actions::script::condition::processors::output::ImageTypes;
-use org::allbinary::input::automation::module::actions::script::condition::processors::output::ImageActionScriptOutputJPanel;
-use org::allbinary::input::automation::module::actions::script::condition::processors::output::ImageActionScriptOutputProcessor;
+use java::lang::Object ();
+use java::util::HashMap ();
+use org::allbinary::data::tree::dom::DomNodeHelper ();
+use org::allbinary::data::tree::dom::DomSearchHelper ();
+use org::allbinary::data::tree::dom::ModDomHelper ();
+use org::allbinary::logic::StdUtil ();
+use org::allbinary::logic::communication::log::LogUtil ();
+use org::allbinary::logic::string::StringMaker ();
+use org::w3c::dom::Document ();
+use org::w3c::dom::Node ();
+use org::w3c::dom::NodeList ();
+use org::allbinary::input::automation::module::actions::script::condition::processors::output::BasicProfileActionScriptOutput ();
+use org::allbinary::input::automation::module::actions::script::condition::processors::output::ImageActionScriptOutputInterface ();
+use org::allbinary::input::automation::module::actions::script::condition::processors::output::ImageActionScriptOutputData ();
+use org::allbinary::input::automation::module::actions::script::condition::processors::output::ImageTypes ();
+use org::allbinary::input::automation::module::actions::script::condition::processors::output::ImageActionScriptOutputJPanel ();
+use org::allbinary::input::automation::module::actions::script::condition::processors::output::ImageActionScriptOutputProcessor ();
 
 1;
 

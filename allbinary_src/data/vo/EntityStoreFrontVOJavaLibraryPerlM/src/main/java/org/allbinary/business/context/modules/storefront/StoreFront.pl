@@ -17,9 +17,9 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
-use parent -norequire,'org::allbinary::business::context::modules::storefront::StoreFrontInterface';
+use parent -norequire,'java::lang::Object','org::allbinary::business::context::modules::storefront::StoreFrontInterface';
 
-our $RESOURCES = " Resources" . 'org::allbinary::logic::io::path::AbPathData'->getInstance()->{SEPARATOR};
+tie our $RESOURCES, 'java::lang::LazyStatic', sub { " Resources" . 'org::allbinary::logic::io::path::AbPathData'->getInstance()->{SEPARATOR} };
 
 sub _init_fields {
     my ($self) = @_;
@@ -75,7 +75,7 @@ sub new {
 sub _new0 {
     my ($class) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
         $self->{contextConfigurationInterface} = 'org::allbinary::business::context::configuration::ContextConfiguration'->new();
     return $self;
 }
@@ -84,7 +84,7 @@ sub _new0 {
 sub _new1 {
     my ($class, $request) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
         $self->getFormData('org::allbinary::logic::communication::http::request::RequestParams'->new($request)->toHashMap());
         if ($org::allbinary::business::context::modules::storefront::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($org::allbinary::business::context::modules::storefront::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{EMAILLOGGING})) {
             $self->{logUtil}->putF("TWB- needs update for adding and updating context configuration - currently defaults to admin context config", $self, "StoreFront");
@@ -97,7 +97,7 @@ sub _new1 {
 sub _new1 {
     my ($class, $hashMap) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
         $self->getFormData($hashMap);
         my $domDocumentString = $hashMap->get('org::allbinary::business::context::modules::storefront::StoreFrontData'->getInstance()->{CONFIGURATION});
         if (!defined($domDocumentString)) {
@@ -1015,43 +1015,45 @@ sub setContextConfigurationInterface {
         $self->{contextConfigurationInterface} = $contextConfigurationInterface;
 }
 
-use java::util::Calendar;
-use java::util::HashMap;
-use org::allbinary::util::BasicArrayList;
-use org::allbinary::util::BasicArrayListD;
-# use javax::servlet::http::HttpServletRequest;
-use org::allbinary::business::context::configuration::ContextConfiguration;
-use org::allbinary::business::context::configuration::ContextConfigurationDomDocumentMapping;
-use org::allbinary::business::context::configuration::ContextConfigurationInterface;
-use org::allbinary::business::context::configuration::ContextConfigurationInterfaceFactory;
-use org::allbinary::business::entry::EntryData;
-use org::allbinary::business::user::UserData;
-use org::allbinary::data::tree::dom::document::DomDocumentHelper;
-use org::allbinary::globals::FREEBLISKET_PATH_GLOBALS;
-use org::allbinary::globals::URLGLOBALS;
-use org::allbinary::logic::StdUtil;
-use org::allbinary::logic::communication::http::request::RequestParams;
-use org::allbinary::logic::communication::log::LogUtil;
-use org::allbinary::logic::io::file::AbFile;
-use org::allbinary::logic::io::file::FileUtil;
-use org::allbinary::logic::io::file::directory::Directory;
-use org::allbinary::logic::io::path::AbPath;
-use org::allbinary::logic::io::path::AbPathData;
-use org::allbinary::logic::io::path::AbPathUtil;
-use org::allbinary::logic::string::SpecialCharacterUtil;
-use org::allbinary::logic::string::StringMaker;
-use org::allbinary::logic::string::StringUtil;
-use org::allbinary::logic::string::StringValidationUtil;
-use org::allbinary::logic::string::regex::replace::Replace;
-use org::allbinary::logic::string::tokens::Tokenizer;
-use org::allbinary::string::CommonSeps;
-use org::allbinary::string::CommonStrings;
-use org::allbinary::util::BasicArrayList;
-use org::allbinary::util::BasicArrayListD;
-use org::apache::commons::lang3::StringEscapeUtils;
-use org::w3c::dom::Document;
-use org::allbinary::business::context::modules::storefront::StoreFrontInterface;
-use org::allbinary::business::context::modules::storefront::StoreFrontData;
+use java::lang::Object ();
+use java::lang::LazyStatic ();
+use java::util::Calendar ();
+use java::util::HashMap ();
+use org::allbinary::util::BasicArrayList ();
+use org::allbinary::util::BasicArrayListD ();
+# use javax::servlet::http::HttpServletRequest ();
+use org::allbinary::business::context::configuration::ContextConfiguration ();
+use org::allbinary::business::context::configuration::ContextConfigurationDomDocumentMapping ();
+use org::allbinary::business::context::configuration::ContextConfigurationInterface ();
+use org::allbinary::business::context::configuration::ContextConfigurationInterfaceFactory ();
+use org::allbinary::business::entry::EntryData ();
+use org::allbinary::business::user::UserData ();
+use org::allbinary::data::tree::dom::document::DomDocumentHelper ();
+use org::allbinary::globals::FREEBLISKET_PATH_GLOBALS ();
+use org::allbinary::globals::URLGLOBALS ();
+use org::allbinary::logic::StdUtil ();
+use org::allbinary::logic::communication::http::request::RequestParams ();
+use org::allbinary::logic::communication::log::LogUtil ();
+use org::allbinary::logic::io::file::AbFile ();
+use org::allbinary::logic::io::file::FileUtil ();
+use org::allbinary::logic::io::file::directory::Directory ();
+use org::allbinary::logic::io::path::AbPath ();
+use org::allbinary::logic::io::path::AbPathData ();
+use org::allbinary::logic::io::path::AbPathUtil ();
+use org::allbinary::logic::string::SpecialCharacterUtil ();
+use org::allbinary::logic::string::StringMaker ();
+use org::allbinary::logic::string::StringUtil ();
+use org::allbinary::logic::string::StringValidationUtil ();
+use org::allbinary::logic::string::regex::replace::Replace ();
+use org::allbinary::logic::string::tokens::Tokenizer ();
+use org::allbinary::string::CommonSeps ();
+use org::allbinary::string::CommonStrings ();
+use org::allbinary::util::BasicArrayList ();
+use org::allbinary::util::BasicArrayListD ();
+use org::apache::commons::lang3::StringEscapeUtils ();
+use org::w3c::dom::Document ();
+use org::allbinary::business::context::modules::storefront::StoreFrontInterface ();
+use org::allbinary::business::context::modules::storefront::StoreFrontData ();
 
 1;
 

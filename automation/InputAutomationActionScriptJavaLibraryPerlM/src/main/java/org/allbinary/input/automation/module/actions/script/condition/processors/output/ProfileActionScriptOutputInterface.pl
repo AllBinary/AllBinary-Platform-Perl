@@ -21,7 +21,7 @@ no warnings 'experimental::try';
 use parent -norequire,'org::allbinary::input::automation::actions::script::condition::processors::ProfileActionScriptProcessorInterface';
 
 
-use org::allbinary::input::automation::actions::script::condition::processors::ProfileActionScriptProcessorInterface;
+use org::allbinary::input::automation::actions::script::condition::processors::ProfileActionScriptProcessorInterface ();
 
 1;
 

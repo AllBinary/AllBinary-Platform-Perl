@@ -213,7 +213,7 @@ sub getLastModified {
     die "abstract method getLastModified";
 }
 
-use org::allbinary::util::BasicArrayList;
+use org::allbinary::util::BasicArrayList ();
 
 1;
 

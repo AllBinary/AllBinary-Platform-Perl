@@ -31,7 +31,7 @@ sub _init_fields {
 sub new {
     my ($class, $position, $location, $direction, $basicColor) = @_;
     my $self = $class->SUPER::new($location, $direction, 2, $basicColor);
-    $self->_init_fields();
+    _init_fields($self);
         # super(...) made $self above
         $self->{updateMaxHeight} = 10;
         $self->{updateMaxWidth} = 40;
@@ -74,11 +74,12 @@ sub toString {
         return $stringBuffer->toString();
 }
 
-# use javax::microedition::lcdui::Graphics;
-use org::allbinary::logic::string::StringMaker;
-use org::allbinary::logic::string::StringUtil;
-use org::allbinary::game::graphics::hud::BasicHud;
-use org::allbinary::graphics::color::BasicColor;
+use java::lang::Object ();
+use javax::microedition::lcdui::Graphics ();
+use org::allbinary::logic::string::StringMaker ();
+use org::allbinary::logic::string::StringUtil ();
+use org::allbinary::game::graphics::hud::BasicHud ();
+use org::allbinary::graphics::color::BasicColor ();
 
 1;
 

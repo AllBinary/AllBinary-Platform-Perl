@@ -17,9 +17,9 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
-use parent -norequire,'android::os::Parcelable';
+use parent -norequire,'java::lang::Object','android::os::Parcelable';
 
-our $NULL_PARCELABLE = 'org::allbinary::android::NullParcelable'->new();
+tie our $NULL_PARCELABLE, 'java::lang::LazyStatic', sub { 'org::allbinary::android::NullParcelable'->new() };
 
 sub new {
     my ($class) = @_;
@@ -38,8 +38,10 @@ sub writeToParcel {
     my ($self, $dest, $flags) = @_;
 }
 
-use android::os::Parcelable;
-use android::os::Parcel;
+use java::lang::Object ();
+use java::lang::LazyStatic ();
+# use android::os::Parcelable ();
+# use android::os::Parcel ();
 
 1;
 

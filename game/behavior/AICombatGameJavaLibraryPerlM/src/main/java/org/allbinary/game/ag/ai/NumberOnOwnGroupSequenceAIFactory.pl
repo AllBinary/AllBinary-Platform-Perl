@@ -17,6 +17,7 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
 
 sub _init_fields {
@@ -27,7 +28,7 @@ sub _init_fields {
 sub new {
     my ($class) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
     return $self;
 }
 
@@ -65,17 +66,18 @@ sub getInstance {
         return 'org::allbinary::game::ag::ai::NumberOnOwnGroupSequenceAI'->new($numberOnSameTeam, $artificialIntelligenceInterface, $ownerLayerInterface, $gameInput);
 }
 
-use org::allbinary::ai::ArtificialIntelligenceInterface;
-use org::allbinary::game::input::GameInput;
-use org::allbinary::layer::AllBinaryLayer;
-use org::allbinary::logic::communication::log::LogUtil;
-use org::allbinary::logic::string::StringMaker;
-use org::allbinary::string::CommonStrings;
-use org::allbinary::util::ABHashtable;
-use org::allbinary::util::BasicArrayList;
-use org::allbinary::util::BasicArrayListD;
-use org::allbinary::game::ag::ai::NumberInSameGroupSequence;
-use org::allbinary::game::ag::ai::NumberOnOwnGroupSequenceAI;
+use java::lang::Object ();
+use org::allbinary::ai::ArtificialIntelligenceInterface ();
+use org::allbinary::game::input::GameInput ();
+use org::allbinary::layer::AllBinaryLayer ();
+use org::allbinary::logic::communication::log::LogUtil ();
+use org::allbinary::logic::string::StringMaker ();
+use org::allbinary::string::CommonStrings ();
+use org::allbinary::util::ABHashtable ();
+use org::allbinary::util::BasicArrayList ();
+use org::allbinary::util::BasicArrayListD ();
+use org::allbinary::game::ag::ai::NumberInSameGroupSequence ();
+use org::allbinary::game::ag::ai::NumberOnOwnGroupSequenceAI ();
 
 1;
 

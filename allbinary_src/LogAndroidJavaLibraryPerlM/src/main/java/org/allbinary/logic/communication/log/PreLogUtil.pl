@@ -18,6 +18,7 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
 our $LABEL = "org.allbinary";
 
@@ -59,8 +60,9 @@ sub putSE {
         $org::allbinary::logic::communication::log::android::util->{Log}->i($className, $message);
 }
 
-use org::allbinary::logic::NullUtil;
-use org::allbinary::logic::communication::log::LogFormatUtil;
+use java::lang::Object ();
+use org::allbinary::logic::NullUtil ();
+use org::allbinary::logic::communication::log::LogFormatUtil ();
 
 1;
 

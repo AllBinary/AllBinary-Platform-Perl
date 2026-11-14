@@ -18,8 +18,9 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
-our $IMAGE_CACHE = 'org::allbinary::image::opengles::OpenGLImageCache'->new();
+tie our $IMAGE_CACHE, 'java::lang::LazyStatic', sub { 'org::allbinary::image::opengles::OpenGLImageCache'->new() };
 
 sub new {
     my ($class) = @_;
@@ -38,8 +39,10 @@ sub init {
     my ($class) = @_;
 }
 
-use org::allbinary::image::ImageCache;
-use org::allbinary::image::opengles::OpenGLImageCache;
+use java::lang::Object ();
+use java::lang::LazyStatic ();
+use org::allbinary::image::ImageCache ();
+use org::allbinary::image::opengles::OpenGLImageCache ();
 
 1;
 

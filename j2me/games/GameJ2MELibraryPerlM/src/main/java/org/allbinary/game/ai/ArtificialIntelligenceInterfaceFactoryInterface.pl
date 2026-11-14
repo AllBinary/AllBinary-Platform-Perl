@@ -27,10 +27,10 @@ sub getInstance {
     die "abstract method getInstance";
 }
 
-use org::allbinary::ai::ArtificialIntelligenceInterface;
-use org::allbinary::game::input::GameInput;
-use org::allbinary::layer::AllBinaryLayer;
-use org::allbinary::util::ABHashtable;
+use org::allbinary::ai::ArtificialIntelligenceInterface ();
+use org::allbinary::game::input::GameInput ();
+use org::allbinary::layer::AllBinaryLayer ();
+use org::allbinary::util::ABHashtable ();
 
 1;
 

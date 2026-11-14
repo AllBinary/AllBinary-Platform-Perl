@@ -19,7 +19,7 @@ use feature 'try';
 no warnings 'experimental::try';
 use parent -norequire,'org::allbinary::media::audio::BaseSoundsFactory';
 
-our $instance = 'org::allbinary::media::audio::EarlySoundsFactory'->new();
+tie our $instance, 'java::lang::LazyStatic', sub { 'org::allbinary::media::audio::EarlySoundsFactory'->new() };
 
 sub new {
     my ($class) = @_;
@@ -44,9 +44,11 @@ sub getInstance {
         return $org::allbinary::media::audio::EarlySoundsFactory::instance;
 }
 
-use org::allbinary::media::audio::BaseSoundsFactory;
-use org::allbinary::media::audio::SelectSound;
-use org::allbinary::media::audio::ErrorSound;
+use java::lang::Object ();
+use java::lang::LazyStatic ();
+use org::allbinary::media::audio::BaseSoundsFactory ();
+use org::allbinary::media::audio::SelectSound ();
+use org::allbinary::media::audio::ErrorSound ();
 
 1;
 

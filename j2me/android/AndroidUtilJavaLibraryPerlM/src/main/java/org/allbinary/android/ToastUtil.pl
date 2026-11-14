@@ -5,8 +5,9 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
-our $instance = 'org::allbinary::android::ToastUtil'->new();
+tie our $instance, 'java::lang::LazyStatic', sub { 'org::allbinary::android::ToastUtil'->new() };
 
 sub _init_fields {
     my ($self) = @_;
@@ -16,7 +17,7 @@ sub _init_fields {
 sub new {
     my ($class) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
     return $self;
 }
 
@@ -35,6 +36,7 @@ sub makeToast {
         use warnings;
         use feature 'try';
         no warnings 'experimental::try';
+        use parent -norequire,'java::lang::Object';
         
 
         sub _init_fields {
@@ -46,7 +48,7 @@ sub makeToast {
         sub new {
             my ($class, $string) = @_;
             my $self = bless({}, $class);
-            $self->_init_fields();
+            _init_fields($self);
                 $self->{string} = $string;
             return $self;
         }
@@ -67,11 +69,13 @@ sub makeToast {
         $view->post('org::allbinary::android::MakeToast'->new($message));
 }
 
-use android::content::Context;
-use android::view::View;
-use android::widget::Toast;
-use org::allbinary::logic::communication::log::LogUtil;
-use org::allbinary::string::CommonStrings;
+use java::lang::Object ();
+use java::lang::LazyStatic ();
+# use android::content::Context ();
+# use android::view::View ();
+# use android::widget::Toast ();
+use org::allbinary::logic::communication::log::LogUtil ();
+use org::allbinary::string::CommonStrings ();
 
 1;
 

@@ -31,7 +31,7 @@ sub _init_fields {
 sub new {
     my ($class, $databaseConnectionInfoInterface) = @_;
     my $self = $class->SUPER::new($databaseConnectionInfoInterface);
-    $self->_init_fields();
+    _init_fields($self);
         # super(...) made $self above
     return $self;
 }
@@ -176,13 +176,14 @@ sub isSubsetOfEntry {
         }
 }
 
-# use java::sql::ResultSet;
-use java::util::HashMap;
-# use java::util::Set;
-use org::allbinary::business::init::db::DbConnectionInfo;
-use org::allbinary::logic::communication::log::LogUtil;
-use org::allbinary::logic::string::StringMaker;
-use org::allbinary::logic::communication::sql::AbSqlRow;
+use java::lang::Object ();
+# use java::sql::ResultSet ();
+use java::util::HashMap ();
+# use java::util::Set ();
+use org::allbinary::business::init::db::DbConnectionInfo ();
+use org::allbinary::logic::communication::log::LogUtil ();
+use org::allbinary::logic::string::StringMaker ();
+use org::allbinary::logic::communication::sql::AbSqlRow ();
 
 1;
 

@@ -32,7 +32,7 @@ sub removeAllCommands {
     die "abstract method removeAllCommands";
 }
 
-# use javax::microedition::lcdui::Command;
+use javax::microedition::lcdui::Command ();
 
 1;
 

@@ -29,16 +29,17 @@ sub _init_fields {
 sub new {
     my ($class, $angle, $name) = @_;
     my $self = $class->SUPER::new($angle);
-    $self->_init_fields();
+    _init_fields($self);
         # super(...) made $self above
         $self->{name} = $name;
     return $self;
 }
 
-# use jsinterop::annotations::JsType;
-# use jsinterop::annotations::JsProperty;
-# use jsinterop::annotations::JsConstructor;
-use org::allbinary::math::Angle;
+use java::lang::Object ();
+# use jsinterop::annotations::JsType ();
+# use jsinterop::annotations::JsProperty ();
+# use jsinterop::annotations::JsConstructor ();
+use org::allbinary::math::Angle ();
 
 1;
 

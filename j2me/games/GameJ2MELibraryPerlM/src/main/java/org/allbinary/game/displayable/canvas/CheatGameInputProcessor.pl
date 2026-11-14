@@ -19,7 +19,7 @@ use feature 'try';
 no warnings 'experimental::try';
 use parent -norequire,'org::allbinary::game::input::PlayerGameInput';
 
-our $inputProcessor = $org::allbinary::game::layer::special::SpecialGameInputFactory::NO_SPECIAL_GAME_INPUT;
+tie our $inputProcessor, 'java::lang::LazyStatic', sub { $org::allbinary::game::layer::special::SpecialGameInputFactory::NO_SPECIAL_GAME_INPUT };
 
 sub _init_fields {
     my ($self) = @_;
@@ -32,7 +32,7 @@ sub _init_fields {
 sub new {
     my ($class, $gameCanvas) = @_;
     my $self = $class->SUPER::new('org::allbinary::util::BasicArrayListD'->new(), 'org::allbinary::util::BasicArrayListD'->new(), -1);
-    $self->_init_fields();
+    _init_fields($self);
         # super(...) made $self above
         $self->{gameCanvas} = $gameCanvas;
     return $self;
@@ -81,16 +81,18 @@ sub update {
         }
 }
 
-use org::allbinary::game::input::GameKeyFactory;
-use org::allbinary::game::input::PlayerGameInput;
-use org::allbinary::game::input::event::GameKeyEvent;
-use org::allbinary::game::input::event::GameKeyEventUtil;
-use org::allbinary::game::layer::AllBinaryGameLayerManager;
-use org::allbinary::game::layer::special::SpecialGameInputFactory;
-use org::allbinary::game::layer::special::SpecialGameInputInterface;
-use org::allbinary::logic::string::StringMaker;
-use org::allbinary::util::BasicArrayList;
-use org::allbinary::util::BasicArrayListD;
+use java::lang::Object ();
+use java::lang::LazyStatic ();
+use org::allbinary::game::input::GameKeyFactory ();
+use org::allbinary::game::input::PlayerGameInput ();
+use org::allbinary::game::input::event::GameKeyEvent ();
+use org::allbinary::game::input::event::GameKeyEventUtil ();
+use org::allbinary::game::layer::AllBinaryGameLayerManager ();
+use org::allbinary::game::layer::special::SpecialGameInputFactory ();
+use org::allbinary::game::layer::special::SpecialGameInputInterface ();
+use org::allbinary::logic::string::StringMaker ();
+use org::allbinary::util::BasicArrayList ();
+use org::allbinary::util::BasicArrayListD ();
 
 1;
 

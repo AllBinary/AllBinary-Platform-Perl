@@ -17,8 +17,9 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
-our $SINGLETON = 'org::allbinary::content::NotificationUtil'->new();
+tie our $SINGLETON, 'java::lang::LazyStatic', sub { 'org::allbinary::content::NotificationUtil'->new() };
 
 sub new {
     my ($class) = @_;
@@ -37,7 +38,9 @@ sub notify {
     my ($self, $command, $resource, $message) = @_;
 }
 
-# use javax::microedition::lcdui::Command;
+use java::lang::Object ();
+use java::lang::LazyStatic ();
+use javax::microedition::lcdui::Command ();
 
 1;
 

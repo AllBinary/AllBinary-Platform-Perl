@@ -19,8 +19,9 @@ use feature 'try';
 no warnings 'experimental::try';
 use POSIX ();
 use List::Util ();
+use parent -norequire,'java::lang::Object';
 
-our $instance = 'org::allbinary::graphics::color::ColorUtil'->new();
+tie our $instance, 'java::lang::LazyStatic', sub { 'org::allbinary::graphics::color::ColorUtil'->new() };
 
 sub new {
     my ($class) = @_;
@@ -52,7 +53,9 @@ sub isDark {
         return 0;
 }
 
-# use java::awt;
+use java::lang::Object ();
+use java::lang::LazyStatic ();
+# use java::awt ();
 
 1;
 

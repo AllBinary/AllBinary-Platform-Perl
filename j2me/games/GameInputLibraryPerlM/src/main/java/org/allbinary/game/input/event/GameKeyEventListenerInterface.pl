@@ -21,9 +21,9 @@ no warnings 'experimental::try';
 use parent -norequire,'org::allbinary::game::input::event::DownGameKeyEventListenerInterface','org::allbinary::game::input::event::UpGameKeyEventListenerInterface','org::allbinary::game::input::event::PressGameKeyEventListenerInterface';
 
 
-use org::allbinary::game::input::event::DownGameKeyEventListenerInterface;
-use org::allbinary::game::input::event::UpGameKeyEventListenerInterface;
-use org::allbinary::game::input::event::PressGameKeyEventListenerInterface;
+use org::allbinary::game::input::event::DownGameKeyEventListenerInterface ();
+use org::allbinary::game::input::event::UpGameKeyEventListenerInterface ();
+use org::allbinary::game::input::event::PressGameKeyEventListenerInterface ();
 
 1;
 

@@ -79,13 +79,14 @@ sub toXmlNode {
         return $subViewNode;
 }
 
-use org::allbinary::data::tree::dom::DomNodeInterface;
-use org::w3c::dom::Attr;
-use org::w3c::dom::Document;
-use org::w3c::dom::NamedNodeMap;
-use org::w3c::dom::Node;
-use org::allbinary::logic::visual::transform::info::TransformInfoDomNode;
-use org::allbinary::logic::visual::transform::info::TransformInfoData;
+use java::lang::Object ();
+use org::allbinary::data::tree::dom::DomNodeInterface ();
+use org::w3c::dom::Attr ();
+use org::w3c::dom::Document ();
+use org::w3c::dom::NamedNodeMap ();
+use org::w3c::dom::Node ();
+use org::allbinary::logic::visual::transform::info::TransformInfoDomNode ();
+use org::allbinary::logic::visual::transform::info::TransformInfoData ();
 
 1;
 

@@ -209,12 +209,12 @@ sub duplicate {
     die "abstract method duplicate";
 }
 
-# use java::awt;
-# use javax::swing::tree::MutableTreeNode;
-use org::allbinary::graphics::GPoint;
-use org::allbinary::graphics::j2me::workarea::canvas::CanvasDom;
-use org::allbinary::graphics::j2me::workarea::canvas::IntegerDimension;
-use org::w3c::dom::Node;
+# use java::awt ();
+# use javax::swing::tree::MutableTreeNode ();
+use org::allbinary::graphics::GPoint ();
+use org::allbinary::graphics::j2me::workarea::canvas::CanvasDom ();
+use org::allbinary::graphics::j2me::workarea::canvas::IntegerDimension ();
+use org::w3c::dom::Node ();
 
 1;
 

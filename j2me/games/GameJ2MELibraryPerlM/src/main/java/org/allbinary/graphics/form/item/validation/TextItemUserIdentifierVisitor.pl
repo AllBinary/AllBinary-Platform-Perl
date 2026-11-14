@@ -29,7 +29,7 @@ sub _init_fields {
 sub new {
     my ($class) = @_;
     my $self = $class->SUPER::new();
-    $self->_init_fields();
+    _init_fields($self);
     return $self;
 }
 
@@ -65,12 +65,13 @@ sub isLetter {
         return ($value > 64 && $value < 91) || ($value > 96 && $value < 123);
 }
 
-use org::allbinary::game::input::TextNotificationUtil;
-use org::allbinary::logic::communication::log::LogUtil;
-use org::allbinary::logic::java::bool::BooleanFactory;
-use org::allbinary::logic::string::StringValidationUtil;
-use org::allbinary::logic::util::visitor::Visitor;
-use org::allbinary::string::CommonStrings;
+use java::lang::Object ();
+use org::allbinary::game::input::TextNotificationUtil ();
+use org::allbinary::logic::communication::log::LogUtil ();
+use org::allbinary::logic::java::bool::BooleanFactory ();
+use org::allbinary::logic::string::StringValidationUtil ();
+use org::allbinary::logic::util::visitor::Visitor ();
+use org::allbinary::string::CommonStrings ();
 
 1;
 

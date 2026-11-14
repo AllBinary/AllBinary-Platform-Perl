@@ -17,7 +17,7 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
-use parent -norequire,'org::allbinary::graphics::j2me::workarea::tools::GraphicsItemInterfaceFactoryInterface';
+use parent -norequire,'java::lang::Object','org::allbinary::graphics::j2me::workarea::tools::GraphicsItemInterfaceFactoryInterface';
 
 
 sub new {
@@ -32,9 +32,10 @@ sub getInstance {
         return 'org::allbinary::graphics::j2me::workarea::tools::LinesGraphicItem'->new();
 }
 
-use org::allbinary::graphics::j2me::workarea::canvas::CanvasJPanel;
-use org::allbinary::graphics::j2me::workarea::tools::GraphicsItemInterfaceFactoryInterface;
-use org::allbinary::graphics::j2me::workarea::tools::LinesGraphicItem;
+use java::lang::Object ();
+use org::allbinary::graphics::j2me::workarea::canvas::CanvasJPanel ();
+use org::allbinary::graphics::j2me::workarea::tools::GraphicsItemInterfaceFactoryInterface ();
+use org::allbinary::graphics::j2me::workarea::tools::LinesGraphicItem ();
 
 1;
 

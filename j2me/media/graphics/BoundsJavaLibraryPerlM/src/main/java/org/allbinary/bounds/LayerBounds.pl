@@ -17,7 +17,7 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
-use parent -norequire,'org::allbinary::bounds::event::BoundsChangeEventListener';
+use parent -norequire,'java::lang::Object','org::allbinary::bounds::event::BoundsChangeEventListener';
 
 
 sub _init_fields {
@@ -30,7 +30,7 @@ sub _init_fields {
 sub new {
     my ($class, $rectangle) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
         $self->{rectangle} = $rectangle;
     return $self;
 }
@@ -58,13 +58,14 @@ sub onBoundsChangeEvent {
         $self->{rectangle} = $boundsChangeEvent->getRectangle();
 }
 
-use org::allbinary::bounds::event::BoundsChangeEvent;
-use org::allbinary::bounds::event::BoundsChangeEventListener;
-use org::allbinary::graphics::Rectangle;
-use org::allbinary::logic::communication::log::ForcedLogUtil;
-use org::allbinary::logic::communication::log::LogUtil;
-use org::allbinary::logic::util::event::AllBinaryEventObject;
-use org::allbinary::logic::util::event::EventStrings;
+use java::lang::Object ();
+use org::allbinary::bounds::event::BoundsChangeEvent ();
+use org::allbinary::bounds::event::BoundsChangeEventListener ();
+use org::allbinary::graphics::Rectangle ();
+use org::allbinary::logic::communication::log::ForcedLogUtil ();
+use org::allbinary::logic::communication::log::LogUtil ();
+use org::allbinary::logic::util::event::AllBinaryEventObject ();
+use org::allbinary::logic::util::event::EventStrings ();
 
 1;
 

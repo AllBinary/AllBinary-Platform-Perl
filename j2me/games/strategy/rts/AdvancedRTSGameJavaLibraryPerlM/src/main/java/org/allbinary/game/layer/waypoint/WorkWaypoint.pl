@@ -19,7 +19,7 @@ use feature 'try';
 no warnings 'experimental::try';
 use parent -norequire,'org::allbinary::game::layer::waypoint::Waypoint';
 
-our $ID = 'org::allbinary::logic::math::SmallIntegerSingletonFactory'->getInstance()->getAt(25);
+tie our $ID, 'java::lang::LazyStatic', sub { 'org::allbinary::logic::math::SmallIntegerSingletonFactory'->getInstance()->getAt(25) };
 
 
 sub new {
@@ -78,16 +78,18 @@ sub getType {
         return 2;
 }
 
-use org::allbinary::game::layer::PathFindingLayerInterface;
-use org::allbinary::game::layer::RTSLayer;
-use org::allbinary::game::layer::geological::resources::GeologicalGeographicMapCellPosition;
-use org::allbinary::game::layer::geological::resources::GeologicalResource;
-use org::allbinary::game::layer::unit::UnitLayer;
-use org::allbinary::game::layer::unit::UnitWaypointBehavior;
-use org::allbinary::media::audio::WorkSound;
-use org::allbinary::util::BasicArrayList;
-use org::allbinary::logic::math::SmallIntegerSingletonFactory;
-use org::allbinary::game::layer::waypoint::Waypoint;
+use java::lang::Object ();
+use java::lang::LazyStatic ();
+use org::allbinary::game::layer::PathFindingLayerInterface ();
+use org::allbinary::game::layer::RTSLayer ();
+use org::allbinary::game::layer::geological::resources::GeologicalGeographicMapCellPosition ();
+use org::allbinary::game::layer::geological::resources::GeologicalResource ();
+use org::allbinary::game::layer::unit::UnitLayer ();
+use org::allbinary::game::layer::unit::UnitWaypointBehavior ();
+use org::allbinary::media::audio::WorkSound ();
+use org::allbinary::util::BasicArrayList ();
+use org::allbinary::logic::math::SmallIntegerSingletonFactory ();
+use org::allbinary::game::layer::waypoint::Waypoint ();
 
 1;
 

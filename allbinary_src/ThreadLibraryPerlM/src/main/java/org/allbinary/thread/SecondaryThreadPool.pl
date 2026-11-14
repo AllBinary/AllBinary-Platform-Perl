@@ -21,7 +21,7 @@ no warnings 'experimental::try';
 use Time::HiRes ();
 use parent -norequire,'org::allbinary::thread::ThreadPool';
 
-our $instance = 'org::allbinary::thread::SecondaryThreadPool'->new("Secondary", 1, $org::allbinary::thread::ThreadPool::NORMAL_PRIORITY);
+tie our $instance, 'java::lang::LazyStatic', sub { 'org::allbinary::thread::SecondaryThreadPool'->new("Secondary", 1, $org::allbinary::thread::ThreadPool::NORMAL_PRIORITY) };
 
 
 sub getInstance {
@@ -56,11 +56,13 @@ sub completedTask {
         $self->{logUtil}->putF('org::allbinary::logic::string::StringMaker'->new()->append($self->{threadPoolStrings}->{COMPLETE_TASK})->append('org::allbinary::logic::string::StringUtil'->getInstance()->toString($task))->appendlong(int(int(Time::HiRes::time() * 1000)))->toString(), $self, $self->{commonStrings}->{RUN});
 }
 
-use org::allbinary::logic::communication::log::LogUtil;
-use org::allbinary::logic::string::StringMaker;
-use org::allbinary::logic::string::StringUtil;
-use org::allbinary::thread::ThreadPool;
-use java::lang::System;
+use java::lang::Object ();
+use java::lang::LazyStatic ();
+use org::allbinary::logic::communication::log::LogUtil ();
+use org::allbinary::logic::string::StringMaker ();
+use org::allbinary::logic::string::StringUtil ();
+use org::allbinary::thread::ThreadPool ();
+use java::lang::System ();
 
 1;
 

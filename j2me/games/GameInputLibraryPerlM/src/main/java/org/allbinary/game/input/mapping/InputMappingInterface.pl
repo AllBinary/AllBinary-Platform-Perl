@@ -27,8 +27,8 @@ sub processInputMapping {
     die "abstract method processInputMapping";
 }
 
-use org::allbinary::game::input::GameKey;
-use org::allbinary::game::input::Input;
+use org::allbinary::game::input::GameKey ();
+use org::allbinary::game::input::Input ();
 
 1;
 

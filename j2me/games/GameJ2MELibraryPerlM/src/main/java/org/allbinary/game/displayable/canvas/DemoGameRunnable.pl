@@ -31,7 +31,7 @@ sub _init_fields {
 sub new {
     my ($class, $demoCanvas) = @_;
     my $self = $class->SUPER::new();
-    $self->_init_fields();
+    _init_fields($self);
         $self->{demoCanvas} = $demoCanvas;
     return $self;
 }
@@ -55,11 +55,12 @@ sub processLoopSleep {
         $self->{demoCanvas}->processLoopSleep();
 }
 
-use org::allbinary::logic::communication::log::LogUtil;
-use org::allbinary::string::CommonStrings;
-use org::allbinary::time::GameTickTimeDelayHelper;
-use org::allbinary::time::GameTickTimeDelayHelperFactory;
-use org::allbinary::game::displayable::canvas::GameRunnable;
+use java::lang::Object ();
+use org::allbinary::logic::communication::log::LogUtil ();
+use org::allbinary::string::CommonStrings ();
+use org::allbinary::time::GameTickTimeDelayHelper ();
+use org::allbinary::time::GameTickTimeDelayHelperFactory ();
+use org::allbinary::game::displayable::canvas::GameRunnable ();
 
 1;
 

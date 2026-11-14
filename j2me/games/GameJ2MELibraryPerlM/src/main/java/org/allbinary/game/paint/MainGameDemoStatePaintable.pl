@@ -30,7 +30,7 @@ sub _init_fields {
 sub new {
     my ($class, $ownershipPaintableInterface, $menuPaintableInterface) = @_;
     my $self = $class->SUPER::new();
-    $self->_init_fields();
+    _init_fields($self);
         $self->{ownershipPaintableInterface} = $ownershipPaintableInterface;
         $self->{menuPaintableInterface} = $menuPaintableInterface;
     return $self;
@@ -55,8 +55,9 @@ sub getMenuPaintableInterface {
         return $self->{menuPaintableInterface};
 }
 
-# use javax::microedition::lcdui::Graphics;
-use org::allbinary::graphics::paint::Paintable;
+use java::lang::Object ();
+use javax::microedition::lcdui::Graphics ();
+use org::allbinary::graphics::paint::Paintable ();
 
 1;
 

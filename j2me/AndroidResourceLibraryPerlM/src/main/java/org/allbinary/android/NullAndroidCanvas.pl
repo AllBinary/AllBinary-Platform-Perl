@@ -17,9 +17,10 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
-our $NULL_CANVAS = 'android::graphics::Canvas'->new();
-our $NULL_MEDIA_PLAYER = 'android::media::MediaPlayer'->new();
+tie our $NULL_CANVAS, 'java::lang::LazyStatic', sub { 'android::graphics::Canvas'->new() };
+tie our $NULL_MEDIA_PLAYER, 'java::lang::LazyStatic', sub { 'android::media::MediaPlayer'->new() };
 
 sub new {
     my ($class) = @_;
@@ -27,8 +28,10 @@ sub new {
     return $self;
 }
 
-use android::graphics::Canvas;
-use android::media::MediaPlayer;
+use java::lang::Object ();
+use java::lang::LazyStatic ();
+# use android::graphics::Canvas ();
+# use android::media::MediaPlayer ();
 
 1;
 

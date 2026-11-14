@@ -17,7 +17,7 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
-use parent -norequire,'org::allbinary::layer::AllBinaryLayerFactoryInterface';
+use parent -norequire,'java::lang::Object','org::allbinary::layer::AllBinaryLayerFactoryInterface';
 
 
 sub _init_fields {
@@ -29,7 +29,7 @@ sub _init_fields {
 sub new {
     my ($class, $points) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
         $self->{points} = $points;
     return $self;
 }
@@ -41,9 +41,10 @@ sub getInstance {
         return 'org::allbinary::game::ag::layer::pickup::points::PointsLayer'->new($self->{points});
 }
 
-use org::allbinary::layer::AllBinaryLayer;
-use org::allbinary::layer::AllBinaryLayerFactoryInterface;
-use org::allbinary::game::ag::layer::pickup::points::PointsLayer;
+use java::lang::Object ();
+use org::allbinary::layer::AllBinaryLayer ();
+use org::allbinary::layer::AllBinaryLayerFactoryInterface ();
+use org::allbinary::game::ag::layer::pickup::points::PointsLayer ();
 
 1;
 

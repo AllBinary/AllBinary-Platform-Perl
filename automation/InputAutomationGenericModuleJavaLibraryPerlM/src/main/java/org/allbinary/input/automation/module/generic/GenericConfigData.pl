@@ -17,12 +17,13 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
 our $RELATIVE_PATH = "./";
 our $CONFIG_PATH = "modules/configs/";
-our $MODULE_RELATIVE_PATH = $org::allbinary::input::automation::module::generic::GenericConfigData::RELATIVE_PATH + $org::allbinary::input::automation::module::generic::GenericConfigData::CONFIG_PATH . "allbinary/input/automation/module/";
-our $GAME_MODULE_RELATIVE_PATH = $org::allbinary::input::automation::module::generic::GenericConfigData::MODULE_RELATIVE_PATH . "game/";
-our $MMO_GAME_MODULE_RELATIVE_PATH = $org::allbinary::input::automation::module::generic::GenericConfigData::GAME_MODULE_RELATIVE_PATH . "mmog/";
+tie our $MODULE_RELATIVE_PATH, 'java::lang::LazyStatic', sub { $org::allbinary::input::automation::module::generic::GenericConfigData::RELATIVE_PATH + $org::allbinary::input::automation::module::generic::GenericConfigData::CONFIG_PATH . "allbinary/input/automation/module/" };
+tie our $GAME_MODULE_RELATIVE_PATH, 'java::lang::LazyStatic', sub { $org::allbinary::input::automation::module::generic::GenericConfigData::MODULE_RELATIVE_PATH . "game/" };
+tie our $MMO_GAME_MODULE_RELATIVE_PATH, 'java::lang::LazyStatic', sub { $org::allbinary::input::automation::module::generic::GenericConfigData::GAME_MODULE_RELATIVE_PATH . "mmog/" };
 our $FREE_MMO_GAME_MODULE_RELATIVE_PATH = "free/";
 
 
@@ -32,6 +33,8 @@ sub new {
     return $self;
 }
 
+use java::lang::Object ();
+use java::lang::LazyStatic ();
 
 1;
 

@@ -18,6 +18,7 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
 our $THIS = "AllBinaryMediaManagerHTML5";
 
@@ -89,17 +90,18 @@ sub playTone {
         }
 }
 
-# use javax::microedition::media::Manager;
-# use javax::microedition::media::MediaException;
-# use javax::microedition::media::Player;
-use org::allbinary::TsUtil;
-use org::allbinary::game::configuration::feature::Features;
-use org::allbinary::game::configuration::feature::GameFeatureFactory;
-use org::allbinary::graphics::canvas::transition::progress::ProgressCanvasFactory;
-use org::allbinary::logic::communication::log::LogUtil;
-use org::allbinary::string::CommonStrings;
-use org::allbinary::media::audio::Sounds;
-use org::allbinary::media::audio::NoPlayer;
+use java::lang::Object ();
+use javax::microedition::media::Manager ();
+use javax::microedition::media::MediaException ();
+use javax::microedition::media::Player ();
+use org::allbinary::TsUtil ();
+use org::allbinary::game::configuration::feature::Features ();
+use org::allbinary::game::configuration::feature::GameFeatureFactory ();
+use org::allbinary::graphics::canvas::transition::progress::ProgressCanvasFactory ();
+use org::allbinary::logic::communication::log::LogUtil ();
+use org::allbinary::string::CommonStrings ();
+use org::allbinary::media::audio::Sounds ();
+use org::allbinary::media::audio::NoPlayer ();
 
 1;
 

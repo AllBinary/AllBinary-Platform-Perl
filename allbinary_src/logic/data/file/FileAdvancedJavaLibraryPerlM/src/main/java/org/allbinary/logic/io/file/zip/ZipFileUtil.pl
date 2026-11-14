@@ -17,8 +17,9 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
-our $instance = 'org::allbinary::logic::io::file::zip::ZipFileUtil'->new();
+tie our $instance, 'java::lang::LazyStatic', sub { 'org::allbinary::logic::io::file::zip::ZipFileUtil'->new() };
 
 sub _init_fields {
     my ($self) = @_;
@@ -29,7 +30,7 @@ sub _init_fields {
 sub new {
     my ($class) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
     return $self;
 }
 
@@ -65,7 +66,7 @@ sub create {
                     $stringBuffer->append($file->getPath());
                     $self->{logUtil}->putF($stringBuffer->toString(), $self, "create()");
                     try {
-                        $fileInputStream = 'org::allbinary::logic::io::AbFileInputStream'->new($file);
+                        $fileInputStream = 'org::allbinary::logic::io::AbFileInputStream'->createFromAbFile($file);
                         $outputStream->putNextEntry('java::util::zip::ZipEntry'->new($file->getPath()));
                         $streamUtil->get($fileInputStream, $outputStream, $byteArray);
                         $outputStream->closeEntry();
@@ -89,7 +90,7 @@ sub unzip {
         my $buffer = [(0) x (16384)];
         my $inputStream = undef;
         try {
-            $inputStream = 'java::util::zip::ZipInputStream'->new('org::allbinary::logic::io::AbFileInputStream'->new($zipFile));
+            $inputStream = 'java::util::zip::ZipInputStream'->new('org::allbinary::logic::io::AbFileInputStream'->createFromAbFile($zipFile));
             my $zipEntry = undef;
             my $stringBuffer = 'org::allbinary::logic::string::StringMaker'->new();
             my $fileUtil = 'org::allbinary::logic::io::file::FileUtil'->getInstance();
@@ -118,20 +119,22 @@ sub unzip {
         }
 }
 
-# use java::util::zip::ZipEntry;
-# use java::util::zip::ZipInputStream;
-# use java::util::zip::ZipOutputStream;
-use org::allbinary::logic::communication::log::LogUtil;
-use org::allbinary::logic::io::AbDataOutputStream;
-use org::allbinary::logic::io::AbFileInputStream;
-use org::allbinary::logic::io::AbFileOutputStream;
-use org::allbinary::logic::io::DataOutputStreamFactory;
-use org::allbinary::logic::io::StreamUtil;
-use org::allbinary::logic::io::file::AbFile;
-use org::allbinary::logic::io::file::FileUtil;
-use org::allbinary::logic::string::StringMaker;
-use org::allbinary::string::CommonStrings;
-use org::allbinary::util::BasicArrayList;
+use java::lang::Object ();
+use java::lang::LazyStatic ();
+# use java::util::zip::ZipEntry ();
+# use java::util::zip::ZipInputStream ();
+# use java::util::zip::ZipOutputStream ();
+use org::allbinary::logic::communication::log::LogUtil ();
+use org::allbinary::logic::io::AbDataOutputStream ();
+use org::allbinary::logic::io::AbFileInputStream ();
+use org::allbinary::logic::io::AbFileOutputStream ();
+use org::allbinary::logic::io::DataOutputStreamFactory ();
+use org::allbinary::logic::io::StreamUtil ();
+use org::allbinary::logic::io::file::AbFile ();
+use org::allbinary::logic::io::file::FileUtil ();
+use org::allbinary::logic::string::StringMaker ();
+use org::allbinary::string::CommonStrings ();
+use org::allbinary::util::BasicArrayList ();
 
 1;
 

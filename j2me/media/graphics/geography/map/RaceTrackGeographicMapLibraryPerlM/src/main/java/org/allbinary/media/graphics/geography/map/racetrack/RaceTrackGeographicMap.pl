@@ -29,7 +29,7 @@ sub _init_fields {
 sub new {
     my ($class, $raceTrackInfo, $raceTrackData, $tiledLayerFactoryInterface, $geographicMapCellPositionFactoryInterface, $geographicMapCellPositionBaseFactory, $geographicMapCellTypeFactory, $customMapGeneratorBaseFactory) = @_;
     my $self = $class->SUPER::new($raceTrackInfo, $raceTrackData, $tiledLayerFactoryInterface->getInstance($raceTrackInfo, $raceTrackData), 'org::allbinary::media::graphics::geography::map::racetrack::BasicGeographicMapFactory'->new()->getInstance($raceTrackInfo, $raceTrackData, $tiledLayerFactoryInterface, $geographicMapCellPositionFactoryInterface, $geographicMapCellTypeFactory), $geographicMapCellPositionFactoryInterface, $geographicMapCellPositionBaseFactory, $geographicMapCellTypeFactory);
-    $self->_init_fields();
+    _init_fields($self);
         # super(...) made $self above
         $self->{customMapGenerator} = $customMapGeneratorBaseFactory->create($self);
     return $self;
@@ -74,13 +74,14 @@ sub isValid {
         return 1;
 }
 
-use org::allbinary::logic::string::StringMaker;
-use org::allbinary::media::graphics::geography::map::GeographicMapCellPosition;
-use org::allbinary::media::graphics::geography::map::GeographicMapCellPositionBaseFactory;
-use org::allbinary::media::graphics::geography::map::GeographicMapCellPositionFactoryInterface;
-use org::allbinary::media::graphics::geography::map::GeographicMapCellTypeFactory;
-use org::allbinary::media::graphics::geography::map::racetrack::BaseRaceTrackGeographicMap;
-use org::allbinary::media::graphics::geography::map::racetrack::BasicGeographicMapFactory;
+use java::lang::Object ();
+use org::allbinary::logic::string::StringMaker ();
+use org::allbinary::media::graphics::geography::map::GeographicMapCellPosition ();
+use org::allbinary::media::graphics::geography::map::GeographicMapCellPositionBaseFactory ();
+use org::allbinary::media::graphics::geography::map::GeographicMapCellPositionFactoryInterface ();
+use org::allbinary::media::graphics::geography::map::GeographicMapCellTypeFactory ();
+use org::allbinary::media::graphics::geography::map::racetrack::BaseRaceTrackGeographicMap ();
+use org::allbinary::media::graphics::geography::map::racetrack::BasicGeographicMapFactory ();
 
 1;
 

@@ -17,8 +17,9 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
-our $SINGLETON = 'org::allbinary::content::NotificationUtil'->new();
+tie our $SINGLETON, 'java::lang::LazyStatic', sub { 'org::allbinary::content::NotificationUtil'->new() };
 
 sub _init_fields {
     my ($self) = @_;
@@ -37,7 +38,7 @@ sub getInstance {
 sub new {
     my ($class) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
         my $SDK_VERSION = 'org::allbinary::android::AndroidInfoFactory'->getInstance()->getVersion();
         if ($SDK_VERSION > 22) {
             $self->{notificationBuilder} = 'org::allbinary::content::NotificationBuilderAPI23'->new();
@@ -64,19 +65,21 @@ sub notify {
         $self->{notificationBuilder}->build($context, $command, $message, $integer, $pendingIntent);
 }
 
-# use javax::microedition::lcdui::Command;
-use android::app::Notification;
-use android::app::NotificationManager;
-use android::app::PendingIntent;
-use android::content::Context;
-use android::content::Intent;
-use org::allbinary::android::AndroidInfoFactory;
-use org::allbinary::data::resource::ResourceUtil;
-use org::allbinary::logic::communication::log::LogUtil;
-use org::allbinary::string::CommonStrings;
-use org::allbinary::content::NotificationBuilder;
-use org::allbinary::content::NotificationBuilderAPI23;
-use org::allbinary::content::CommandUriAction;
+use java::lang::Object ();
+use java::lang::LazyStatic ();
+use javax::microedition::lcdui::Command ();
+# use android::app::Notification ();
+# use android::app::NotificationManager ();
+# use android::app::PendingIntent ();
+# use android::content::Context ();
+# use android::content::Intent ();
+use org::allbinary::android::AndroidInfoFactory ();
+use org::allbinary::data::resource::ResourceUtil ();
+use org::allbinary::logic::communication::log::LogUtil ();
+use org::allbinary::string::CommonStrings ();
+use org::allbinary::content::NotificationBuilder ();
+use org::allbinary::content::NotificationBuilderAPI23 ();
+use org::allbinary::content::CommandUriAction ();
 
 1;
 

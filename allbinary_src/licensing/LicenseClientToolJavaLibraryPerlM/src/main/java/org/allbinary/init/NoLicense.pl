@@ -17,6 +17,7 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
 
 
@@ -33,7 +34,8 @@ sub init {
         'org::allbinary::globals::Globals'->init($classLoader, $pathString);
 }
 
-use org::allbinary::globals::Globals;
+use java::lang::Object ();
+use org::allbinary::globals::Globals ();
 
 1;
 

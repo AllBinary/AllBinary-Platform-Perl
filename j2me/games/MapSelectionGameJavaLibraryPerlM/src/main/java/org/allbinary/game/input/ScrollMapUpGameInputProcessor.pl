@@ -35,9 +35,10 @@ sub processEvent {
         $self->{scrollMapPlayerGameInput}->up();
 }
 
-use org::allbinary::game::input::event::GameKeyEvent;
-use org::allbinary::layer::AllBinaryLayerManager;
-use org::allbinary::game::input::ScrollMapGameInputProcessor;
+use java::lang::Object ();
+use org::allbinary::game::input::event::GameKeyEvent ();
+use org::allbinary::layer::AllBinaryLayerManager ();
+use org::allbinary::game::input::ScrollMapGameInputProcessor ();
 
 1;
 

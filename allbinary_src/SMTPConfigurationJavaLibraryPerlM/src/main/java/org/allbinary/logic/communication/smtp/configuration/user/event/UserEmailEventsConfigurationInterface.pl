@@ -39,11 +39,11 @@ sub getEventListener {
     die "abstract method getEventListener";
 }
 
-use java::util::HashMap;
-use org::allbinary::business::user::UserInterface;
-use org::allbinary::logic::communication::smtp::event::UserEmailEventListenerInterface;
-use org::allbinary::logic::communication::smtp::event::UserEmailEventNameData;
-use org::allbinary::logic::system::security::licensing::AbeClientInformationInterface;
+use java::util::HashMap ();
+use org::allbinary::business::user::UserInterface ();
+use org::allbinary::logic::communication::smtp::event::UserEmailEventListenerInterface ();
+use org::allbinary::logic::communication::smtp::event::UserEmailEventNameData ();
+use org::allbinary::logic::system::security::licensing::AbeClientInformationInterface ();
 
 1;
 

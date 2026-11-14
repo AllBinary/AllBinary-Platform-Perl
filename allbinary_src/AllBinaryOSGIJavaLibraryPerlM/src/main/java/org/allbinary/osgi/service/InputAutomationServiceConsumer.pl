@@ -17,6 +17,7 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
 
 sub _init_fields {
@@ -33,7 +34,7 @@ sub _init_fields {
 sub new {
     my ($class, $registryName, $bundleContext, $osgiServiceVisitorInterface) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
         $self->setRegistryName($registryName);
         $self->setBundleContext($bundleContext);
         $self->setOsgiServiceVisitorInterface($osgiServiceVisitorInterface);
@@ -100,15 +101,16 @@ sub setOsgiServiceVisitorInterface {
         $self->{osgiServiceVisitorInterface} = $osgiServiceVisitorInterface;
 }
 
-use org::allbinary::util::BasicArrayList;
-use org::allbinary::util::BasicArrayListD;
-use org::osgi::framework::BundleContext;
-use org::osgi::framework::ServiceReference;
-use org::allbinary::logic::communication::log::LogUtil;
-use org::allbinary::osgi::OSGIServiceInterface;
-use org::allbinary::osgi::OSGIServiceVisitorInterface;
-use org::allbinary::string::CommonStrings;
-use org::allbinary::osgi::service::OSGIServiceUtil;
+use java::lang::Object ();
+use org::allbinary::util::BasicArrayList ();
+use org::allbinary::util::BasicArrayListD ();
+use org::osgi::framework::BundleContext ();
+use org::osgi::framework::ServiceReference ();
+use org::allbinary::logic::communication::log::LogUtil ();
+use org::allbinary::osgi::OSGIServiceInterface ();
+use org::allbinary::osgi::OSGIServiceVisitorInterface ();
+use org::allbinary::string::CommonStrings ();
+use org::allbinary::osgi::service::OSGIServiceUtil ();
 
 1;
 

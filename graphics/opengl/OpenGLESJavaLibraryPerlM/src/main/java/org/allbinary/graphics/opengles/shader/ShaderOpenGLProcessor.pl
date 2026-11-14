@@ -40,8 +40,9 @@ sub process3 {
     my ($self, $gl) = @_;
 }
 
-# use javax::microedition::khronos::opengles::GL10;
-use org::allbinary::graphics::opengles::OpenGLProcessor;
+use java::lang::Object ();
+use javax::microedition::khronos::opengles::GL10 ();
+use org::allbinary::graphics::opengles::OpenGLProcessor ();
 
 1;
 

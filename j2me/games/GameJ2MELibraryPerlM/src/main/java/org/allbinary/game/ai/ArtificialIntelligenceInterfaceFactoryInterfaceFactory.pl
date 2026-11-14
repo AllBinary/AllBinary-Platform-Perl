@@ -17,8 +17,9 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
-our $SINGLETON = 'org::allbinary::game::ai::ArtificialIntelligenceInterfaceFactoryInterfaceFactory'->new();
+tie our $SINGLETON, 'java::lang::LazyStatic', sub { 'org::allbinary::game::ai::ArtificialIntelligenceInterfaceFactoryInterfaceFactory'->new() };
 
 sub _init_fields {
     my ($self) = @_;
@@ -28,7 +29,7 @@ sub _init_fields {
 sub new {
     my ($class) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
     return $self;
 }
 
@@ -59,11 +60,13 @@ sub add {
         $self->{list}->add($artificialIntelligenceInterfaceFactoryInterface);
 }
 
-use org::allbinary::util::ABHashtable;
-use org::allbinary::util::BasicArrayList;
-use org::allbinary::util::BasicArrayListD;
-use org::allbinary::util::BasicArrayListUtil;
-use org::allbinary::game::ai::BasicAI;
+use java::lang::Object ();
+use java::lang::LazyStatic ();
+use org::allbinary::util::ABHashtable ();
+use org::allbinary::util::BasicArrayList ();
+use org::allbinary::util::BasicArrayListD ();
+use org::allbinary::util::BasicArrayListUtil ();
+use org::allbinary::game::ai::BasicAI ();
 
 1;
 

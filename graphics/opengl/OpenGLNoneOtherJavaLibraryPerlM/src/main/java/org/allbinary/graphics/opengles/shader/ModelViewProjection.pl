@@ -17,8 +17,9 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
-our $instance = 'org::allbinary::graphics::opengles::shader::ModelViewProjection'->new();
+tie our $instance, 'java::lang::LazyStatic', sub { 'org::allbinary::graphics::opengles::shader::ModelViewProjection'->new() };
 
 sub new {
     my ($class) = @_;
@@ -38,7 +39,9 @@ sub get {
         return 'org::allbinary::logic::NullUtil'->getInstance()->{NULL_FLOAT_ARRAY};
 }
 
-use org::allbinary::logic::NullUtil;
+use java::lang::Object ();
+use java::lang::LazyStatic ();
+use org::allbinary::logic::NullUtil ();
 
 1;
 

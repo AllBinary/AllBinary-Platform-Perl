@@ -36,7 +36,7 @@ sub new {
 sub _new0 {
     my ($class) = @_;
     my $self = $class->SUPER::new();
-    $self->_init_fields();
+    _init_fields($self);
         # super(...) made $self above
         $self->{subscription} = 'org::allbinary::business::user::subscription::Subscription'->new();
     return $self;
@@ -46,7 +46,7 @@ sub _new0 {
 sub _new1 {
     my ($class, $userHashMap) = @_;
     my $self = $class->SUPER::new($userHashMap);
-    $self->_init_fields();
+    _init_fields($self);
         # super(...) made $self above
         $self->{subscription} = 'org::allbinary::business::user::subscription::Subscription'->new();
     return $self;
@@ -71,10 +71,11 @@ sub isSessionValid {
         return $self->{subscription}->isSubscribed();
 }
 
-use java::util::HashMap;
-use org::allbinary::business::user::modules::User;
-use org::allbinary::business::user::subscription::Subscription;
-use org::allbinary::logic::communication::http::request::session::WeblisketSessionInterface;
+use java::lang::Object ();
+use java::util::HashMap ();
+use org::allbinary::business::user::modules::User ();
+use org::allbinary::business::user::subscription::Subscription ();
+use org::allbinary::logic::communication::http::request::session::WeblisketSessionInterface ();
 
 1;
 

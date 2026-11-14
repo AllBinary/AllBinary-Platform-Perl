@@ -36,7 +36,7 @@ sub new {
 sub _new1 {
     my ($class, $filterStringBasicArrayList) = @_;
     my $self = $class->SUPER::new($filterStringBasicArrayList);
-    $self->_init_fields();
+    _init_fields($self);
         # super(...) made $self above
         $self->{includesString} = undef;
     return $self;
@@ -46,7 +46,7 @@ sub _new1 {
 sub _new2 {
     my ($class, $filterStringBasicArrayList, $includesString) = @_;
     my $self = $class->SUPER::new($filterStringBasicArrayList);
-    $self->_init_fields();
+    _init_fields($self);
         # super(...) made $self above
         $self->{includesString} = $includesString;
     return $self;
@@ -65,9 +65,10 @@ sub visit {
         }
 }
 
-use org::allbinary::logic::io::file::AbFile;
-use org::allbinary::logic::io::file::visitor::IncludeFileExtensionsBooleanFileVisitor;
-use org::allbinary::util::BasicArrayList;
+use java::lang::Object ();
+use org::allbinary::logic::io::file::AbFile ();
+use org::allbinary::logic::io::file::visitor::IncludeFileExtensionsBooleanFileVisitor ();
+use org::allbinary::util::BasicArrayList ();
 
 1;
 

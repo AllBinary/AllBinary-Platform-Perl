@@ -17,9 +17,9 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
-use parent -norequire,'org::allbinary::logic::system::hardware::HardwareInterface';
+use parent -norequire,'java::lang::Object','org::allbinary::logic::system::hardware::HardwareInterface';
 
-our $instance = 'org::allbinary::logic::system::hardware::NoHardware'->new();
+tie our $instance, 'java::lang::LazyStatic', sub { 'org::allbinary::logic::system::hardware::NoHardware'->new() };
 
 sub new {
     my ($class) = @_;
@@ -57,11 +57,13 @@ sub difference {
         return 'org::allbinary::logic::StdUtil'->getInstance()->{NULL_TABLE};
 }
 
-use org::allbinary::logic::StdUtil;
-use org::allbinary::logic::system::hardware::components::interfaces::HardwareComponentInterface;
-use org::allbinary::logic::system::hardware::components::interfaces::NoHardwareComponent;
-use org::allbinary::util::ABHashtable;
-use org::allbinary::logic::system::hardware::HardwareInterface;
+use java::lang::Object ();
+use java::lang::LazyStatic ();
+use org::allbinary::logic::StdUtil ();
+use org::allbinary::logic::system::hardware::components::interfaces::HardwareComponentInterface ();
+use org::allbinary::logic::system::hardware::components::interfaces::NoHardwareComponent ();
+use org::allbinary::util::ABHashtable ();
+use org::allbinary::logic::system::hardware::HardwareInterface ();
 
 1;
 

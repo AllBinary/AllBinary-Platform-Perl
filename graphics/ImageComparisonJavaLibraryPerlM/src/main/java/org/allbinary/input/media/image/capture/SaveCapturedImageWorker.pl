@@ -32,7 +32,7 @@ sub _init_fields {
 sub new {
     my ($class) = @_;
     my $self = $class->SUPER::new();
-    $self->_init_fields();
+    _init_fields($self);
     return $self;
 }
 
@@ -81,18 +81,19 @@ sub run {
         }
 }
 
-# use java::awt::image::BufferedImage;
-use org::allbinary::util::BasicArrayList;
-use org::allbinary::util::BasicArrayListD;
-use org::allbinary::logic::StdUtil;
-use org::allbinary::logic::communication::log::LogUtil;
-use org::allbinary::logic::util::event::AllBinaryEventObject;
-use org::allbinary::logic::util::event::handler::BasicEventHandler;
-use org::allbinary::string::CommonLabels;
-use org::allbinary::string::CommonStrings;
-use org::allbinary::time::TimeDelayHelper;
-use org::allbinary::input::media::image::capture::CapturedImageWorkerResultsListener;
-use org::allbinary::input::media::image::capture::CapturedImageInputOutput;
+use java::lang::Object ();
+# use java::awt::image::BufferedImage ();
+use org::allbinary::util::BasicArrayList ();
+use org::allbinary::util::BasicArrayListD ();
+use org::allbinary::logic::StdUtil ();
+use org::allbinary::logic::communication::log::LogUtil ();
+use org::allbinary::logic::util::event::AllBinaryEventObject ();
+use org::allbinary::logic::util::event::handler::BasicEventHandler ();
+use org::allbinary::string::CommonLabels ();
+use org::allbinary::string::CommonStrings ();
+use org::allbinary::time::TimeDelayHelper ();
+use org::allbinary::input::media::image::capture::CapturedImageWorkerResultsListener ();
+use org::allbinary::input::media::image::capture::CapturedImageInputOutput ();
 
 1;
 

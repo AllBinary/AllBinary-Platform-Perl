@@ -17,6 +17,7 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
 our $NAME = "COLOR_AT_ACTION_CONDITION_NAME";
 our $LOCATION_X = "COLOR_AT_ACTION_CONDITION_LOCATION_X";
@@ -35,6 +36,7 @@ sub new {
     return $self;
 }
 
+use java::lang::Object ();
 
 1;
 

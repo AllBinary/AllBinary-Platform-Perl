@@ -17,6 +17,7 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
 
 sub _init_fields {
@@ -29,7 +30,7 @@ sub _init_fields {
 sub new {
     my ($class, $basicColorArray) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
         $self->{basicColorArray} = $basicColorArray;
         $self->{circularIndexUtil} = 'org::allbinary::util::CircularIndexUtil'->createInstance(scalar(@{$self->{basicColorArray}}));
     return $self;
@@ -53,10 +54,11 @@ sub getBasicColorArray {
         return $self->{basicColorArray};
 }
 
-# use jsinterop::annotations::JsType;
-use org::allbinary::util::CircularIndexUtil;
-# use jsinterop::annotations::JsMethod;
-# use jsinterop::annotations::JsConstructor;
+use java::lang::Object ();
+# use jsinterop::annotations::JsType ();
+use org::allbinary::util::CircularIndexUtil ();
+# use jsinterop::annotations::JsMethod ();
+# use jsinterop::annotations::JsConstructor ();
 
 1;
 

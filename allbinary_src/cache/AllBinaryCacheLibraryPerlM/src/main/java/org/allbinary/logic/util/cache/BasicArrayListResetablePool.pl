@@ -45,7 +45,8 @@ sub remove {
         }
 }
 
-use org::allbinary::logic::util::cache::AbstractArrayListPool;
+use java::lang::Object ();
+use org::allbinary::logic::util::cache::AbstractArrayListPool ();
 
 1;
 

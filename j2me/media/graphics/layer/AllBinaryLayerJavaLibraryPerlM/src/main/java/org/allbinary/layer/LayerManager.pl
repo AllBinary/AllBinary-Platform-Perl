@@ -5,6 +5,7 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
 
 sub _init_fields {
@@ -22,7 +23,7 @@ sub _init_fields {
 sub new {
     my ($class, $layerManagerLogging) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
         $self->{logUtil}->putF($self->{commonStrings}->{START}, $self, $self->{commonStrings}->{CONSTRUCTOR});
         $self->{layerManagerLogging} = $layerManagerLogging;
     return $self;
@@ -89,7 +90,7 @@ sub appendAt {
 # throws Exception
 sub remove {
     my ($self, $layerInterface) = @_;
-        { # synchronized ($self->{anyType})
+        {; # synchronized ($self->{anyType})
             $self->{layerManagerLogging}->remove($layerInterface);
             my $result = $self->{list}->remove($layerInterface);
             $self->{layerManagerLogging}->removeResult($self, $layerInterface, $result);
@@ -112,7 +113,7 @@ sub getSize {
 # throws Exception
 sub cleanup {
     my ($self) = @_;
-        { # synchronized ($self->{anyType})
+        {; # synchronized ($self->{anyType})
             $self->{list}->clear();
             $self->{layerManagerLogging}->clear();
             $self->{tsUtil}->gc();
@@ -123,7 +124,7 @@ sub cleanup {
 
 sub paint {
     my ($self, $g, $x, $y) = @_;
-        { # synchronized ($self->{anyType})
+        {; # synchronized ($self->{anyType})
             my $comp = undef;
             for (my $index = $self->{list}->size(); --$index >= 0; ) {
                 $comp = $self->{list}->{objectArray}->[$index];
@@ -134,14 +135,15 @@ sub paint {
         }
 }
 
-# use javax::microedition::lcdui::Graphics;
-use org::allbinary::TsUtil;
-use org::allbinary::logic::communication::log::LogUtil;
-use org::allbinary::string::CommonStrings;
-use org::allbinary::thread::SynchObject;
-use org::allbinary::util::BasicArrayList;
-use org::allbinary::util::BasicArrayListD;
-use org::allbinary::logic::ABSystemWrapper;
+use java::lang::Object ();
+use javax::microedition::lcdui::Graphics ();
+use org::allbinary::TsUtil ();
+use org::allbinary::logic::communication::log::LogUtil ();
+use org::allbinary::string::CommonStrings ();
+use org::allbinary::thread::SynchObject ();
+use org::allbinary::util::BasicArrayList ();
+use org::allbinary::util::BasicArrayListD ();
+use org::allbinary::logic::ABSystemWrapper ();
 
 1;
 

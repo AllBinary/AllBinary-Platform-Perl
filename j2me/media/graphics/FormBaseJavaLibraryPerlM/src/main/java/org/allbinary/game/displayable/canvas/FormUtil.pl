@@ -17,8 +17,9 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
-our $instance = 'org::allbinary::game::displayable::canvas::FormUtil'->new();
+tie our $instance, 'java::lang::LazyStatic', sub { 'org::allbinary::game::displayable::canvas::FormUtil'->new() };
 
 sub new {
     my ($class) = @_;
@@ -41,10 +42,12 @@ sub createFormRectangle {
         return $rectangle;
 }
 
-use org::allbinary::graphics::PointFactory;
-use org::allbinary::graphics::Rectangle;
-use org::allbinary::graphics::displayable::DisplayInfoSingleton;
-use org::allbinary::logic::communication::log::LogUtil;
+use java::lang::Object ();
+use java::lang::LazyStatic ();
+use org::allbinary::graphics::PointFactory ();
+use org::allbinary::graphics::Rectangle ();
+use org::allbinary::graphics::displayable::DisplayInfoSingleton ();
+use org::allbinary::logic::communication::log::LogUtil ();
 
 1;
 

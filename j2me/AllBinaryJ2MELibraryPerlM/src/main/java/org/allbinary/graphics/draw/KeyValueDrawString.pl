@@ -17,7 +17,7 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
-use parent -norequire,'org::allbinary::graphics::font::UpdateMyFontInterface';
+use parent -norequire,'java::lang::Object','org::allbinary::graphics::font::UpdateMyFontInterface';
 
 
 sub _init_fields {
@@ -33,7 +33,7 @@ sub _init_fields {
 sub new {
     my ($class, $label, $x) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
         $self->{LABEL} = $label;
         $self->{labelX} = $x;
     return $self;
@@ -58,16 +58,15 @@ sub paint {
 
 sub update {
     my ($self, $value) = @_;
-        if (defined($value)) {
-            $self->{value} = $value;
-        }
+        $self->{value} = $value;
 }
 
-# use javax::microedition::lcdui::Graphics;
-use org::allbinary::graphics::font::MyFontProcessor;
-use org::allbinary::graphics::font::UpdateMyFontInterface;
-use org::allbinary::graphics::font::UpdateMyFontProcessor;
-use org::allbinary::logic::string::StringUtil;
+use java::lang::Object ();
+use javax::microedition::lcdui::Graphics ();
+use org::allbinary::graphics::font::MyFontProcessor ();
+use org::allbinary::graphics::font::UpdateMyFontInterface ();
+use org::allbinary::graphics::font::UpdateMyFontProcessor ();
+use org::allbinary::logic::string::StringUtil ();
 
 1;
 

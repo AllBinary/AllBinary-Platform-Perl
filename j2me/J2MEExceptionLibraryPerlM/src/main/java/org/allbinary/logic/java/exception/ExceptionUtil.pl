@@ -18,8 +18,9 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
-our $instance = ("ExceptionUtil");
+tie our $instance, 'java::lang::LazyStatic', sub { ("ExceptionUtil") };
 
 sub _init_fields {
     my ($self) = @_;
@@ -37,7 +38,7 @@ sub getInstance {
 sub new {
     my ($class) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
     return $self;
 }
 
@@ -47,13 +48,12 @@ sub getStackTrace {
         my $bs = 'java::io::ByteArrayOutputStream'->new();
         print(STDERR $e, "\n");
         my $output = $bs->toString();
-        if (defined($output)) {
-            return ("" . $output);
-        }
-        return $self->{NONE};
+        return ("" . $output);
 }
 
-# use java::io::ByteArrayOutputStream;
+use java::lang::Object ();
+use java::lang::LazyStatic ();
+# use java::io::ByteArrayOutputStream ();
 
 1;
 

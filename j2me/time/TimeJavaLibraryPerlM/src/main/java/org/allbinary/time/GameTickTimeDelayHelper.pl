@@ -18,6 +18,7 @@ use warnings;
 use feature 'try';
 no warnings 'experimental::try';
 use Time::HiRes ();
+use parent -norequire,'java::lang::Object';
 
 
 sub _init_fields {
@@ -31,7 +32,7 @@ sub _init_fields {
 sub new {
     my ($class, $startTime) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
         $self->{startTime} = $startTime;
         $self->{lastStartTime} = 0;
     return $self;
@@ -60,7 +61,8 @@ sub getTimeFromStart {
         return $self->{startTime} - $self->{lastStartTime};
 }
 
-use java::lang::System;
+use java::lang::Object ();
+use java::lang::System ();
 
 1;
 

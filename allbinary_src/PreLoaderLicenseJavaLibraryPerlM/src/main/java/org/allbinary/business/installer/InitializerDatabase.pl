@@ -17,6 +17,7 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
 our $MAXDB = 30;
 our $MAX = 16;
@@ -46,7 +47,7 @@ sub new {
 sub _new2 {
     my ($class, $abeClientInformation, $map) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
         my $stringBuffer = 'org::allbinary::logic::string::StringMaker'->new();
         my $hashMap = 'org::allbinary::logic::StdUtil'->getInstance()->createHashMap();
         my $keys = $map->keySet();
@@ -71,7 +72,7 @@ sub _new2 {
 sub _new2 {
     my ($class, $abeClientInformation, $initHashMap) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
         $self->getFormData($abeClientInformation, $initHashMap);
     return $self;
 }
@@ -275,20 +276,21 @@ sub setAdminPort {
         $self->{adminPort} = $adminPort;
 }
 
-use java::util::HashMap;
-# use java::util::Map;
-# use java::util::Set;
-use org::allbinary::business::init::db::DatabaseConnectionInfoInterface;
-use org::allbinary::business::init::db::DbConnectionInfo;
-use org::allbinary::logic::StdUtil;
-use org::allbinary::logic::communication::log::LogUtil;
-use org::allbinary::logic::string::StringMaker;
-use org::allbinary::logic::string::StringUtil;
-use org::allbinary::logic::string::StringValidationUtil;
-use org::allbinary::logic::system::security::licensing::AbeClientInformationInterface;
-use org::allbinary::string::CommonStrings;
-use org::allbinary::business::installer::InitializerData;
-use org::allbinary::business::installer::DynamicInitDb;
+use java::lang::Object ();
+use java::util::HashMap ();
+# use java::util::Map ();
+# use java::util::Set ();
+use org::allbinary::business::init::db::DatabaseConnectionInfoInterface ();
+use org::allbinary::business::init::db::DbConnectionInfo ();
+use org::allbinary::logic::StdUtil ();
+use org::allbinary::logic::communication::log::LogUtil ();
+use org::allbinary::logic::string::StringMaker ();
+use org::allbinary::logic::string::StringUtil ();
+use org::allbinary::logic::string::StringValidationUtil ();
+use org::allbinary::logic::system::security::licensing::AbeClientInformationInterface ();
+use org::allbinary::string::CommonStrings ();
+use org::allbinary::business::installer::InitializerData ();
+use org::allbinary::business::installer::DynamicInitDb ();
 
 1;
 

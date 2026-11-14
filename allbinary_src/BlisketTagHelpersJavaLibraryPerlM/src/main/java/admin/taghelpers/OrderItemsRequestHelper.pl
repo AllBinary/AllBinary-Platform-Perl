@@ -33,7 +33,7 @@ sub _init_fields {
 sub new {
     my ($class, $hashMap, $pageContext) = @_;
     my $self = $class->SUPER::new();
-    $self->_init_fields();
+    _init_fields($self);
         $self->{request} = $pageContext->getRequest();
         $self->getFormData();
     return $self;
@@ -89,15 +89,16 @@ sub setOrderStatus {
         }
 }
 
-use java::util::HashMap;
-# use javax::servlet::http::HttpServletRequest;
-# use javax::servlet::jsp::PageContext;
-use org::allbinary::business::user::commerce::inventory::order::OrderData;
-use org::allbinary::business::user::commerce::inventory::order::OrderHistoryData;
-use org::allbinary::business::user::commerce::shipping::ShippingMethodData;
-use org::allbinary::data::tables::user::commerce::inventory::order::OrderItemsEntityFactory;
-use org::allbinary::logic::communication::log::LogUtil;
-use admin::taghelpers::TagHelper;
+use java::lang::Object ();
+use java::util::HashMap ();
+# use javax::servlet::http::HttpServletRequest ();
+# use javax::servlet::jsp::PageContext ();
+use org::allbinary::business::user::commerce::inventory::order::OrderData ();
+use org::allbinary::business::user::commerce::inventory::order::OrderHistoryData ();
+use org::allbinary::business::user::commerce::shipping::ShippingMethodData ();
+use org::allbinary::data::tables::user::commerce::inventory::order::OrderItemsEntityFactory ();
+use org::allbinary::logic::communication::log::LogUtil ();
+use admin::taghelpers::TagHelper ();
 
 1;
 

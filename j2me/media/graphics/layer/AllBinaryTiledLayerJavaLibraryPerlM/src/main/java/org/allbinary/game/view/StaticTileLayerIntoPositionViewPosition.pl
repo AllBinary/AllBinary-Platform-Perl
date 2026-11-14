@@ -19,8 +19,8 @@ use feature 'try';
 no warnings 'experimental::try';
 use parent -norequire,'org::allbinary::view::ViewPosition';
 
-our $tiledLayer = 'org::allbinary::layer::NullLayer'->getInstance();
-our $layer = $org::allbinary::layer::AllBinaryLayer::NULL_ALLBINARY_LAYER;
+tie our $tiledLayer, 'java::lang::LazyStatic', sub { 'org::allbinary::layer::NullLayer'->getInstance() };
+tie our $layer, 'java::lang::LazyStatic', sub { $org::allbinary::layer::AllBinaryLayer::NULL_ALLBINARY_LAYER };
 
 
 sub new {
@@ -54,11 +54,13 @@ sub setTiledLayer {
         $org::allbinary::game::view::StaticTileLayerIntoPositionViewPosition::tiledLayer = $tiledLayer;
 }
 
-use org::allbinary::game::layer::AllBinaryTiledLayer;
-use org::allbinary::layer::AllBinaryLayer;
-use org::allbinary::layer::Layer;
-use org::allbinary::layer::NullLayer;
-use org::allbinary::view::ViewPosition;
+use java::lang::Object ();
+use java::lang::LazyStatic ();
+use org::allbinary::game::layer::AllBinaryTiledLayer ();
+use org::allbinary::layer::AllBinaryLayer ();
+use org::allbinary::layer::Layer ();
+use org::allbinary::layer::NullLayer ();
+use org::allbinary::view::ViewPosition ();
 
 1;
 

@@ -17,7 +17,7 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
-use parent -norequire,'org::allbinary::media::graphics::geography::pathfinding::PathGeneratorInterface';
+use parent -norequire,'java::lang::Object','org::allbinary::media::graphics::geography::pathfinding::PathGeneratorInterface';
 
 
 sub _init_fields {
@@ -30,7 +30,7 @@ sub _init_fields {
 sub new {
     my ($class) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
         'org::allbinary::logic::communication::log::PreLogUtil'->put("Using Static Path Finding", $self, 'org::allbinary::string::CommonStrings'->getInstance()->{CONSTRUCTOR});
     return $self;
 }
@@ -89,23 +89,24 @@ sub createList {
         }
 }
 
-use org::allbinary::util::BasicArrayList;
-use org::allbinary::util::BasicArrayListD;
-use org::allbinary::string::CommonStrings;
-use org::allbinary::logic::communication::log::LogUtil;
-use org::allbinary::logic::communication::log::PreLogUtil;
-use org::allbinary::graphics::CellPosition;
-use org::allbinary::logic::string::StringMaker;
-use org::allbinary::logic::math::SmallIntegerSingletonFactory;
-use org::allbinary::logic::string::StringUtil;
-use org::allbinary::media::graphics::geography::map::BasicGeographicMap;
-use org::allbinary::media::graphics::geography::map::BasicGeographicMapCellPositionFactory;
-use org::allbinary::media::graphics::geography::map::GeographicMapCellHistory;
-use org::allbinary::media::graphics::geography::map::GeographicMapCellPosition;
-use org::allbinary::media::graphics::geography::map::PathData;
-use org::allbinary::util::BasicArrayListUtil;
-use org::allbinary::media::graphics::geography::pathfinding::PathGeneratorInterface;
-use org::allbinary::media::graphics::geography::pathfinding::PathCacheFactory;
+use java::lang::Object ();
+use org::allbinary::util::BasicArrayList ();
+use org::allbinary::util::BasicArrayListD ();
+use org::allbinary::string::CommonStrings ();
+use org::allbinary::logic::communication::log::LogUtil ();
+use org::allbinary::logic::communication::log::PreLogUtil ();
+use org::allbinary::graphics::CellPosition ();
+use org::allbinary::logic::string::StringMaker ();
+use org::allbinary::logic::math::SmallIntegerSingletonFactory ();
+use org::allbinary::logic::string::StringUtil ();
+use org::allbinary::media::graphics::geography::map::BasicGeographicMap ();
+use org::allbinary::media::graphics::geography::map::BasicGeographicMapCellPositionFactory ();
+use org::allbinary::media::graphics::geography::map::GeographicMapCellHistory ();
+use org::allbinary::media::graphics::geography::map::GeographicMapCellPosition ();
+use org::allbinary::media::graphics::geography::map::PathData ();
+use org::allbinary::util::BasicArrayListUtil ();
+use org::allbinary::media::graphics::geography::pathfinding::PathGeneratorInterface ();
+use org::allbinary::media::graphics::geography::pathfinding::PathCacheFactory ();
 
 1;
 

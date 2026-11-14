@@ -17,6 +17,7 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
 
 sub new {
@@ -31,8 +32,9 @@ sub getImage {
         return $javax::microedition::lcdui::NullImage::NULL_IMAGE;
 }
 
-# use javax::microedition::lcdui::Image;
-# use javax::microedition::lcdui::NullImage;
+use java::lang::Object ();
+use javax::microedition::lcdui::Image ();
+use javax::microedition::lcdui::NullImage ();
 
 1;
 

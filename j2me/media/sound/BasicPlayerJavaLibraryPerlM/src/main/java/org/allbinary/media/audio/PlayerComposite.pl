@@ -18,7 +18,7 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
-use parent -norequire,'javax::microedition::media::Controllable','javax::microedition::media::Player';
+use parent -norequire,'java::lang::Object','javax::microedition::media::Controllable','javax::microedition::media::Player';
 
 
 sub _init_fields {
@@ -34,7 +34,7 @@ sub _init_fields {
 sub new {
     my ($class, $player, $repeatTime) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
         $self->{player} = $player;
         $self->{timeElapsedHelper}->{delay} = $repeatTime;
     return $self;
@@ -172,15 +172,16 @@ sub getPlayerP {
         return $self->{player};
 }
 
-# use javax::microedition::media::Control;
-# use javax::microedition::media::Controllable;
-# use javax::microedition::media::Player;
-# use javax::microedition::media::PlayerListener;
-use org::allbinary::logic::communication::log::LogUtil;
-use org::allbinary::string::CommonStrings;
-use org::allbinary::time::GameTickTimeDelayHelper;
-use org::allbinary::time::GameTickTimeDelayHelperFactory;
-use org::allbinary::time::TimeDelayHelper;
+use java::lang::Object ();
+use javax::microedition::media::Control ();
+use javax::microedition::media::Controllable ();
+use javax::microedition::media::Player ();
+use javax::microedition::media::PlayerListener ();
+use org::allbinary::logic::communication::log::LogUtil ();
+use org::allbinary::string::CommonStrings ();
+use org::allbinary::time::GameTickTimeDelayHelper ();
+use org::allbinary::time::GameTickTimeDelayHelperFactory ();
+use org::allbinary::time::TimeDelayHelper ();
 
 1;
 

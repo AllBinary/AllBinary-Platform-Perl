@@ -19,7 +19,7 @@ use feature 'try';
 no warnings 'experimental::try';
 use parent -norequire,'org::allbinary::logic::util::event::handler::BasicEventHandler';
 
-our $instance = 'org::allbinary::game::tracking::TrackingEventHandler'->new();
+tie our $instance, 'java::lang::LazyStatic', sub { 'org::allbinary::game::tracking::TrackingEventHandler'->new() };
 
 
 sub getInstance {
@@ -42,9 +42,11 @@ sub process {
         $trackingEventListenerInterface->onMovement($eventObject);
 }
 
-use org::allbinary::logic::util::event::AllBinaryEventObject;
-use org::allbinary::logic::util::event::EventListenerInterface;
-use org::allbinary::logic::util::event::handler::BasicEventHandler;
+use java::lang::Object ();
+use java::lang::LazyStatic ();
+use org::allbinary::logic::util::event::AllBinaryEventObject ();
+use org::allbinary::logic::util::event::EventListenerInterface ();
+use org::allbinary::logic::util::event::handler::BasicEventHandler ();
 
 1;
 

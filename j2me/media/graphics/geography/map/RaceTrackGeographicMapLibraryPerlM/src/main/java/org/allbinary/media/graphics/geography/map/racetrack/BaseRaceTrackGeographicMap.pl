@@ -32,7 +32,7 @@ sub _init_fields {
 sub new {
     my ($class, $raceTrackInfo, $raceTrackData, $tiledLayer, $miniGeographicMap, $geographicMapCellPositionFactoryInterface, $geographicMapCellPositionBaseFactory, $geographicMapCellTypeFactory) = @_;
     my $self = $class->SUPER::new($raceTrackInfo->getId(), $raceTrackInfo->getName(), $raceTrackData->getCellTypeIdToGeographicMapCellTypeArray(), $tiledLayer, $raceTrackInfo->getForegroundBasicColor(), $raceTrackInfo->getBackgroundBasicColor(), $geographicMapCellPositionFactoryInterface, $geographicMapCellPositionBaseFactory, $geographicMapCellTypeFactory);
-    $self->_init_fields();
+    _init_fields($self);
         # super(...) made $self above
         $self->{raceTrackInfo} = $raceTrackInfo;
         $self->{raceTrackData} = $raceTrackData;
@@ -89,15 +89,68 @@ sub setRaceTrackData {
         $self->{raceTrackData} = $raceTrackData;
 }
 
-use org::allbinary::string::CommonStrings;
-use org::allbinary::logic::communication::log::LogUtil;
-use org::allbinary::game::layer::AllBinaryTiledLayer;
-use org::allbinary::logic::string::StringMaker;
-use org::allbinary::media::graphics::geography::map::BasicGeographicMap;
-use org::allbinary::media::graphics::geography::map::GeographicMapCellPositionBaseFactory;
-use org::allbinary::media::graphics::geography::map::GeographicMapCellPositionFactoryInterface;
-use org::allbinary::media::graphics::geography::map::GeographicMapCellTypeFactory;
-use org::allbinary::media::graphics::geography::map::racetrack::RaceTrackGeographicMapInterface;
+
+sub getId {
+    my ($self) = @_;
+        return $self->SUPER::getId();
+}
+
+
+sub getName {
+    my ($self) = @_;
+        return $self->SUPER::getName();
+}
+
+
+sub reset {
+    my ($self) = @_;
+        $self->SUPER::reset();
+}
+
+
+sub getAllBinaryTiledLayer {
+    my ($self) = @_;
+        return $self->SUPER::getAllBinaryTiledLayer();
+}
+
+
+sub getCellTypeFromMapCellTypeInt {
+    my ($self, $cellTypeId) = @_;
+        return $self->SUPER::getCellTypeFromMapCellTypeInt($cellTypeId);
+}
+
+
+# throws Exception
+sub getCellTypeAt {
+    my ($self, $cellPosition) = @_;
+        return $self->SUPER::getCellTypeAt($cellPosition);
+}
+
+
+sub getForegroundBasicColor {
+    my ($self) = @_;
+        return $self->SUPER::getForegroundBasicColor();
+}
+
+
+sub getBackgroundBasicColor {
+    my ($self) = @_;
+        return $self->SUPER::getBackgroundBasicColor();
+}
+
+use java::lang::Object ();
+use org::allbinary::string::CommonStrings ();
+use org::allbinary::logic::communication::log::LogUtil ();
+use org::allbinary::game::layer::AllBinaryTiledLayer ();
+use org::allbinary::logic::string::StringMaker ();
+use org::allbinary::media::graphics::geography::map::BasicGeographicMap ();
+use org::allbinary::media::graphics::geography::map::GeographicMapCellPositionBaseFactory ();
+use org::allbinary::media::graphics::geography::map::GeographicMapCellPositionFactoryInterface ();
+use org::allbinary::media::graphics::geography::map::GeographicMapCellTypeFactory ();
+use org::allbinary::graphics::color::BasicColor ();
+use org::allbinary::media::graphics::geography::map::GeographicMapCellPosition ();
+use org::allbinary::media::graphics::geography::map::GeographicMapCellType ();
+use org::allbinary::media::graphics::geography::map::racetrack::RaceTrackGeographicMapInterface ();
 
 1;
 

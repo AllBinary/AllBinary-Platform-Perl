@@ -19,7 +19,7 @@ use feature 'try';
 no warnings 'experimental::try';
 use parent -norequire,'org::allbinary::graphics::GPoint';
 
-our $NULL_CUSTOM_POINT = 'org::allbinary::graphics::CustomGPoint'->new(0, 0, 0);
+tie our $NULL_CUSTOM_POINT, 'java::lang::LazyStatic', sub { 'org::allbinary::graphics::CustomGPoint'->new(0, 0, 0) };
 
 sub _init_fields {
     my ($self) = @_;
@@ -44,7 +44,7 @@ sub getInstance3 {
 sub new {
     my ($class, $x, $y, $z) = @_;
     my $self = $class->SUPER::new($x, $y, $z);
-    $self->_init_fields();
+    _init_fields($self);
         # super(...) made $self above
     return $self;
 }
@@ -85,7 +85,9 @@ sub getZ {
         return $self->{cz};
 }
 
-use org::allbinary::graphics::GPoint;
+use java::lang::Object ();
+use java::lang::LazyStatic ();
+use org::allbinary::graphics::GPoint ();
 
 1;
 

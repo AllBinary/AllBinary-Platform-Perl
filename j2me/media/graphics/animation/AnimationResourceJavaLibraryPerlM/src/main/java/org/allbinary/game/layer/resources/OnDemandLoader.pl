@@ -17,6 +17,7 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
 
 sub _init_fields {
@@ -30,7 +31,7 @@ sub _init_fields {
 sub new {
     my ($class, $onDemandResourcesFactory, $gameLayerPlacementInterfaceBasicArrayListFactoryInterfaceFactory, $resourceAnimationInterfaceFactoryInterfaceFactory) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
         $self->{onDemandResourcesFactory} = $onDemandResourcesFactory;
         $self->{gameLayerPlacementInterfaceBasicArrayListFactoryInterfaceFactory} = $gameLayerPlacementInterfaceBasicArrayListFactoryInterfaceFactory;
         $self->{resourceAnimationInterfaceFactoryInterfaceFactory} = $resourceAnimationInterfaceFactoryInterfaceFactory;
@@ -86,17 +87,18 @@ sub initLevel {
         }
 }
 
-use org::allbinary::animation::resource::BaseResourceAnimationInterfaceFactoryInterfaceFactory;
-use org::allbinary::game::configuration::feature::Features;
-use org::allbinary::game::configuration::feature::MainFeatureFactory;
-use org::allbinary::game::layer::GameLayerPlacementInterfaceBasicArrayListFactoryInterfaceFactory;
-use org::allbinary::game::layer::LayerPlacementInterfaceBasicArrayListFactoryInterface;
-use org::allbinary::game::resource::ResourceLoadingLevelFactory;
-use org::allbinary::image::ImageCache;
-use org::allbinary::logic::communication::log::PreLogUtil;
-use org::allbinary::logic::string::StringMaker;
-use org::allbinary::string::CommonStrings;
-use org::allbinary::game::layer::resources::OnDemandResources;
+use java::lang::Object ();
+use org::allbinary::animation::resource::BaseResourceAnimationInterfaceFactoryInterfaceFactory ();
+use org::allbinary::game::configuration::feature::Features ();
+use org::allbinary::game::configuration::feature::MainFeatureFactory ();
+use org::allbinary::game::layer::GameLayerPlacementInterfaceBasicArrayListFactoryInterfaceFactory ();
+use org::allbinary::game::layer::LayerPlacementInterfaceBasicArrayListFactoryInterface ();
+use org::allbinary::game::resource::ResourceLoadingLevelFactory ();
+use org::allbinary::image::ImageCache ();
+use org::allbinary::logic::communication::log::PreLogUtil ();
+use org::allbinary::logic::string::StringMaker ();
+use org::allbinary::string::CommonStrings ();
+use org::allbinary::game::layer::resources::OnDemandResources ();
 
 1;
 

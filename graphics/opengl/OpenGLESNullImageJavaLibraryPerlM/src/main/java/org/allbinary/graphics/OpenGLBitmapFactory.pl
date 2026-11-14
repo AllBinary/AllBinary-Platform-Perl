@@ -7,7 +7,7 @@ use feature 'try';
 no warnings 'experimental::try';
 use parent -norequire,'org::allbinary::platform::graphics::PlatformBitmapBaseFactory';
 
-our $instance = 'org::allbinary::graphics::OpenGLBitmapFactory'->new();
+tie our $instance, 'java::lang::LazyStatic', sub { 'org::allbinary::graphics::OpenGLBitmapFactory'->new() };
 
 sub _init_fields {
     my ($self) = @_;
@@ -17,7 +17,7 @@ sub _init_fields {
 sub new {
     my ($class) = @_;
     my $self = $class->SUPER::new();
-    $self->_init_fields();
+    _init_fields($self);
     return $self;
 }
 
@@ -52,6 +52,7 @@ sub createBitmap {
     use warnings;
     use feature 'try';
     no warnings 'experimental::try';
+    use parent -norequire,'java::lang::Object';
     
 
     sub _init_fields {
@@ -63,20 +64,22 @@ sub createBitmap {
     sub new {
         my ($class, $bitmapConfig) = @_;
         my $self = bless({}, $class);
-        $self->_init_fields();
+        _init_fields($self);
             $self->{bitmapConfig} = $bitmapConfig;
         return $self;
     }
     }
 
 
-# use java::io::IOException;
-# use java::io::InputStream;
-# use javax::microedition::lcdui::Image;
-use org::allbinary::logic::NullUtil;
-use org::allbinary::platform::graphics::PlatformBitmapBase;
-use org::allbinary::platform::graphics::PlatformBitmapBaseFactory;
-use org::allbinary::graphics::OpenGLBitmap;
+use java::lang::Object ();
+use java::lang::LazyStatic ();
+# use java::io::IOException ();
+# use java::io::InputStream ();
+use javax::microedition::lcdui::Image ();
+use org::allbinary::logic::NullUtil ();
+use org::allbinary::platform::graphics::PlatformBitmapBase ();
+use org::allbinary::platform::graphics::PlatformBitmapBaseFactory ();
+use org::allbinary::graphics::OpenGLBitmap ();
 
 1;
 

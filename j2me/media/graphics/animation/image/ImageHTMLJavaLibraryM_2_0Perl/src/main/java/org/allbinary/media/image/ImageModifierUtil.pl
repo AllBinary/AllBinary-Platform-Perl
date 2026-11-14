@@ -17,6 +17,7 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
 
 sub _init_fields {
@@ -31,7 +32,7 @@ sub _init_fields {
 sub new {
     my ($class) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
     return $self;
 }
 
@@ -112,26 +113,7 @@ sub handleImage {
             if ($image3->isReady() || $image3->width() + $image3->height() <= 0 || $image->getName() eq $self->{resourceCallbackStrings}->{FROM_DATA}) {
                 $self->copy($imageArray, $index, $image, $image3);
             } else {
-                my $callback = do {
-                    package playn::core::Callback::AnonymousN68543 { our @ISA = ('playn::core::Callback');
-                    
-
-                    sub onSuccess {
-                        my ($self, $resource) = @_;
-                        my $logUtil = 'org::allbinary::logic::communication::log::LogUtil'->getInstance();
-                        $logUtil->putF($self->{resourceCallbackStrings}->{DONE} . $image->getName(), $self, $self->{resourceCallbackStrings}->{HANDLE_IMAGE});
-                        $self->copy($imageArray, $index, $image, $image3);
-                    }
-                    
-
-                    sub onFailure {
-                        my ($self, $e) = @_;
-                        my $logUtil = 'org::allbinary::logic::communication::log::LogUtil'->getInstance();
-                        $logUtil->put('org::allbinary::logic::string::StringMaker'->new()->append($self->{commonStrings}->{EXCEPTION_LABEL})->append($self->{resourceCallbackStrings}->{ERROR})->append($image->getName())->toString(), $self, $self->{resourceCallbackStrings}->{HANDLE_IMAGE}, $e);
-                    }
-                    }
-                    'playn::core::Callback::AnonymousN68543'->can('new') ? 'playn::core::Callback::AnonymousN68543'->new() : bless({}, 'playn::core::Callback::AnonymousN68543')
-                };
+                my $callback = 'org::allbinary::media::image::ImageCopyCallback'->new($self, $imageArray, $index, $image, $image3);
                 $image3->addCallback($callback);
             }
         } else {
@@ -160,21 +142,71 @@ sub reset {
             $self->{alphaArray}->[$index] = 1;
         }
 }
+{
+    package org::allbinary::media::image::ImageCopyCallback;
+    use strict;
+    use warnings;
+    use feature 'try';
+    no warnings 'experimental::try';
+    use parent -norequire,'java::lang::Object','playn::core::Callback';
+    
 
-# use javax::microedition::lcdui::Graphics;
-# use javax::microedition::lcdui::Image;
-use org::allbinary::graphics::Anchor;
-use org::allbinary::graphics::color::BasicColor;
-use org::allbinary::string::CommonStrings;
-use org::allbinary::logic::communication::log::LogUtil;
-use org::allbinary::logic::string::StringMaker;
-use org::microemu::device::playn::PlaynImage;
-use org::microemu::device::ResourceCallbackStrings;
-use playn::core::Callback;
-use playn::core::Canvas;
-use playn::core::CoreImage;
-use playn::core::ImageImpl;
-use playn::html::HTMLPlaynUtil;
+    sub _init_fields {
+        my ($self) = @_;
+        $self->{imageModifierUtil} = undef;
+        $self->{imageArray} = undef;
+        $self->{index} = undef;
+        $self->{image} = undef;
+        $self->{image3} = undef;
+    }
+    
+
+    sub new {
+        my ($class, $imageModifierUtil, $imageArray, $index, $image, $image3) = @_;
+        my $self = bless({}, $class);
+        _init_fields($self);
+            $self->{imageModifierUtil} = $imageModifierUtil;
+            $self->{imageArray} = $imageArray;
+            $self->{index} = $index;
+            $self->{image} = $image;
+            $self->{image3} = $image3;
+        return $self;
+    }
+    
+
+    sub onSuccess {
+        my ($self, $resource) = @_;
+            my $logUtil = 'org::allbinary::logic::communication::log::LogUtil'->getInstance();
+            my $resourceCallbackStrings = $self->{imageModifierUtil}->{resourceCallbackStrings};
+            $logUtil->putF($resourceCallbackStrings->{DONE} . $self->{image}->getName(), $self, $resourceCallbackStrings->{HANDLE_IMAGE});
+            $self->{imageModifierUtil}->copy($self->{imageArray}, $self->{index}, $self->{image}, $self->{image3});
+    }
+    
+
+    sub onFailure {
+        my ($self, $e) = @_;
+            my $logUtil = 'org::allbinary::logic::communication::log::LogUtil'->getInstance();
+            my $resourceCallbackStrings = $self->{imageModifierUtil}->{resourceCallbackStrings};
+            $logUtil->put('org::allbinary::logic::string::StringMaker'->new()->append($self->{imageModifierUtil}->{commonStrings}->{EXCEPTION_LABEL})->append($resourceCallbackStrings->{ERROR})->append($self->{image}->getName())->toString(), $self, $resourceCallbackStrings->{HANDLE_IMAGE}, $e);
+    }
+    }
+
+
+use java::lang::Object ();
+use javax::microedition::lcdui::Graphics ();
+use javax::microedition::lcdui::Image ();
+use org::allbinary::graphics::Anchor ();
+use org::allbinary::graphics::color::BasicColor ();
+use org::allbinary::string::CommonStrings ();
+use org::allbinary::logic::communication::log::LogUtil ();
+use org::allbinary::logic::string::StringMaker ();
+use org::microemu::device::playn::PlaynImage ();
+use org::microemu::device::ResourceCallbackStrings ();
+use playn::core::Callback ();
+use playn::core::Canvas ();
+use playn::core::CoreImage ();
+use playn::core::ImageImpl ();
+use playn::html::HTMLPlaynUtil ();
 
 1;
 

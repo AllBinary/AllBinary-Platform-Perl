@@ -31,7 +31,7 @@ sub _init_fields {
 sub new {
     my ($class, $basicColor) = @_;
     my $self = $class->SUPER::new();
-    $self->_init_fields();
+    _init_fields($self);
         $self->setBasicColorP($basicColor);
     return $self;
 }
@@ -73,12 +73,25 @@ sub nextFrame {
     my ($self) = @_;
 }
 
-# use javax::microedition::lcdui::Graphics;
-use org::allbinary::animation::Animation;
-use org::allbinary::graphics::color::BasicColor;
-use org::allbinary::graphics::color::ColorCompositeInterface;
-use org::allbinary::layer::PositionInterface;
-use org::allbinary::logic::NullUtil;
+
+sub getBasicColorP {
+    my ($self) = @_;
+        return $self->SUPER::getBasicColorP();
+}
+
+
+sub setBasicColorP {
+    my ($self, $basicColor) = @_;
+        $self->SUPER::setBasicColorP($basicColor);
+}
+
+use java::lang::Object ();
+use javax::microedition::lcdui::Graphics ();
+use org::allbinary::animation::Animation ();
+use org::allbinary::graphics::color::BasicColor ();
+use org::allbinary::graphics::color::ColorCompositeInterface ();
+use org::allbinary::layer::PositionInterface ();
+use org::allbinary::logic::NullUtil ();
 
 1;
 

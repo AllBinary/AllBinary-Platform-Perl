@@ -35,7 +35,7 @@ sub _init_fields {
 sub new {
     my ($class, $source, $id, $motionGesture) = @_;
     my $self = $class->SUPER::new($source);
-    $self->_init_fields();
+    _init_fields($self);
         # super(...) made $self above
         $self->{id} = $id;
         $self->setMotionGesture($motionGesture);
@@ -99,15 +99,16 @@ sub getId {
         return $self->{id};
 }
 
-use org::allbinary::graphics::GPoint;
-use org::allbinary::graphics::PointFactory;
-use org::allbinary::input::motion::gesture::MotionGestureInput;
-use org::allbinary::input::motion::gesture::TouchMotionGestureFactory;
-use org::allbinary::TsUtil;
-use org::allbinary::logic::string::StringMaker;
-use org::allbinary::logic::string::StringUtil;
-use org::allbinary::logic::util::event::AllBinaryEventObject;
-use org::allbinary::string::CommonLabels;
+use java::lang::Object ();
+use org::allbinary::graphics::GPoint ();
+use org::allbinary::graphics::PointFactory ();
+use org::allbinary::input::motion::gesture::MotionGestureInput ();
+use org::allbinary::input::motion::gesture::TouchMotionGestureFactory ();
+use org::allbinary::TsUtil ();
+use org::allbinary::logic::string::StringMaker ();
+use org::allbinary::logic::string::StringUtil ();
+use org::allbinary::logic::util::event::AllBinaryEventObject ();
+use org::allbinary::string::CommonLabels ();
 
 1;
 

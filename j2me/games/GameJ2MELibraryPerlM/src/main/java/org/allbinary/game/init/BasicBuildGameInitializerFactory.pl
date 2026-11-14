@@ -17,9 +17,9 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
-use parent -norequire,'org::allbinary::game::init::GameInitializationInterfaceFactoryInterface';
+use parent -norequire,'java::lang::Object','org::allbinary::game::init::GameInitializationInterfaceFactoryInterface';
 
-our $NULL_BASE_BUILD_GMAE_INITIALIZER_FACTORY = 'org::allbinary::game::init::BasicBuildGameInitializerFactory'->new();
+tie our $NULL_BASE_BUILD_GMAE_INITIALIZER_FACTORY, 'java::lang::LazyStatic', sub { 'org::allbinary::game::init::BasicBuildGameInitializerFactory'->new() };
 
 sub new {
     my ($class) = @_;
@@ -33,8 +33,10 @@ sub getInstance {
         return $org::allbinary::game::init::BaseGameInitialization::NULL_BASE_GAME_INITIALIZATION;
 }
 
-use org::allbinary::game::init::GameInitializationInterfaceFactoryInterface;
-use org::allbinary::game::init::BaseGameInitialization;
+use java::lang::Object ();
+use java::lang::LazyStatic ();
+use org::allbinary::game::init::GameInitializationInterfaceFactoryInterface ();
+use org::allbinary::game::init::BaseGameInitialization ();
 
 1;
 

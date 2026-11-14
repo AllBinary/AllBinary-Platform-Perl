@@ -17,7 +17,7 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
-use parent -norequire,'javax::swing::JFrame','org::allbinary::gui::dialog::FileJDialogListenerInterface';
+use parent -norequire,'java::lang::Object','org::allbinary::gui::dialog::FileJDialogListenerInterface';
 
 our $imageProcessorInputCompositeInterface = undef;
 
@@ -63,7 +63,7 @@ sub _init_fields {
 sub new {
     my ($class) = @_;
     my $self = $class->SUPER::new();
-    $self->_init_fields();
+    _init_fields($self);
         $self->initComponents();
         my $commonPhoneStrings = 'org::allbinary::string::CommonPhoneStrings'->getInstance();
         $self->setSize(640, 480);
@@ -121,7 +121,7 @@ sub initComponents {
         $self->{blueJLabel}->setText("Blue:");
         $self->{okJButton}->setText("OK");
         $self->{okJButton}->addActionListener(do {
-            package java::awt::event::ActionListener::AnonymousN68443 { our @ISA = ('java::awt::event::ActionListener');
+            package java::awt::event::ActionListener::AnonymousN68443 { our @ISA = ('java::awt::event::ActionListener', 'java::lang::Object');
             
 
             sub actionPerformed {
@@ -141,7 +141,7 @@ sub initComponents {
         $self->getContentPane()->add($self->{jPanel1});
         $self->{fileJMenu}->setText("File");
         $self->{fileJMenu}->addActionListener(do {
-            package java::awt::event::ActionListener::AnonymousN72720 { our @ISA = ('java::awt::event::ActionListener');
+            package java::awt::event::ActionListener::AnonymousN72720 { our @ISA = ('java::awt::event::ActionListener', 'java::lang::Object');
             
 
             sub actionPerformed {
@@ -153,7 +153,7 @@ sub initComponents {
         });
         $self->{openImageJMenuItem}->setText("Open");
         $self->{openImageJMenuItem}->addActionListener(do {
-            package java::awt::event::ActionListener::AnonymousN72907 { our @ISA = ('java::awt::event::ActionListener');
+            package java::awt::event::ActionListener::AnonymousN72907 { our @ISA = ('java::awt::event::ActionListener', 'java::lang::Object');
             
 
             sub actionPerformed {
@@ -167,7 +167,7 @@ sub initComponents {
         $self->{mainJMenuBar}->add($self->{fileJMenu});
         $self->{processingJMenu}->setText("Processing");
         $self->{processingJMenu}->addActionListener(do {
-            package java::awt::event::ActionListener::AnonymousN73168 { our @ISA = ('java::awt::event::ActionListener');
+            package java::awt::event::ActionListener::AnonymousN73168 { our @ISA = ('java::awt::event::ActionListener', 'java::lang::Object');
             
 
             sub actionPerformed {
@@ -179,7 +179,7 @@ sub initComponents {
         });
         $self->{analyzeJMenuItem}->setText("Image Analyze");
         $self->{analyzeJMenuItem}->addActionListener(do {
-            package java::awt::event::ActionListener::AnonymousN73355 { our @ISA = ('java::awt::event::ActionListener');
+            package java::awt::event::ActionListener::AnonymousN73355 { our @ISA = ('java::awt::event::ActionListener', 'java::lang::Object');
             
 
             sub actionPerformed {
@@ -192,7 +192,7 @@ sub initComponents {
         $self->{processingJMenu}->add($self->{analyzeJMenuItem});
         $self->{generateMirrorSpriteMenuItem}->setText("Mirror Sprite Generator");
         $self->{generateMirrorSpriteMenuItem}->addActionListener(do {
-            package java::awt::event::ActionListener::AnonymousN73579 { our @ISA = ('java::awt::event::ActionListener');
+            package java::awt::event::ActionListener::AnonymousN73579 { our @ISA = ('java::awt::event::ActionListener', 'java::lang::Object');
             
 
             sub actionPerformed {
@@ -205,7 +205,7 @@ sub initComponents {
         $self->{processingJMenu}->add($self->{generateMirrorSpriteMenuItem});
         $self->{generateRotationSpriteJMenuItem}->setText("Rotation Sprite Generator");
         $self->{generateRotationSpriteJMenuItem}->addActionListener(do {
-            package java::awt::event::ActionListener::AnonymousN73803 { our @ISA = ('java::awt::event::ActionListener');
+            package java::awt::event::ActionListener::AnonymousN73803 { our @ISA = ('java::awt::event::ActionListener', 'java::lang::Object');
             
 
             sub actionPerformed {
@@ -218,7 +218,7 @@ sub initComponents {
         $self->{processingJMenu}->add($self->{generateRotationSpriteJMenuItem});
         $self->{generateSpriteSplitterMenuItem}->setText("Sprite Splitter Generator");
         $self->{generateSpriteSplitterMenuItem}->addActionListener(do {
-            package java::awt::event::ActionListener::AnonymousN74027 { our @ISA = ('java::awt::event::ActionListener');
+            package java::awt::event::ActionListener::AnonymousN74027 { our @ISA = ('java::awt::event::ActionListener', 'java::lang::Object');
             
 
             sub actionPerformed {
@@ -231,7 +231,7 @@ sub initComponents {
         $self->{processingJMenu}->add($self->{generateSpriteSplitterMenuItem});
         $self->{generateRotationMenuItem}->setText("Rotate Image Generator");
         $self->{generateRotationMenuItem}->addActionListener(do {
-            package java::awt::event::ActionListener::AnonymousN74251 { our @ISA = ('java::awt::event::ActionListener');
+            package java::awt::event::ActionListener::AnonymousN74251 { our @ISA = ('java::awt::event::ActionListener', 'java::lang::Object');
             
 
             sub actionPerformed {
@@ -244,7 +244,7 @@ sub initComponents {
         $self->{processingJMenu}->add($self->{generateRotationMenuItem});
         $self->{createStripImageJMenuItem}->setText("Multi Image Unifier");
         $self->{createStripImageJMenuItem}->addActionListener(do {
-            package java::awt::event::ActionListener::AnonymousN74475 { our @ISA = ('java::awt::event::ActionListener');
+            package java::awt::event::ActionListener::AnonymousN74475 { our @ISA = ('java::awt::event::ActionListener', 'java::lang::Object');
             
 
             sub actionPerformed {
@@ -257,7 +257,7 @@ sub initComponents {
         $self->{processingJMenu}->add($self->{createStripImageJMenuItem});
         $self->{mirrorJMenuItem}->setText("Mirror Image(s)");
         $self->{mirrorJMenuItem}->addActionListener(do {
-            package java::awt::event::ActionListener::AnonymousN74699 { our @ISA = ('java::awt::event::ActionListener');
+            package java::awt::event::ActionListener::AnonymousN74699 { our @ISA = ('java::awt::event::ActionListener', 'java::lang::Object');
             
 
             sub actionPerformed {
@@ -270,7 +270,7 @@ sub initComponents {
         $self->{processingJMenu}->add($self->{mirrorJMenuItem});
         $self->{scaleImagesJMenuItem}->setText("Scale Image(s)");
         $self->{scaleImagesJMenuItem}->addActionListener(do {
-            package java::awt::event::ActionListener::AnonymousN74923 { our @ISA = ('java::awt::event::ActionListener');
+            package java::awt::event::ActionListener::AnonymousN74923 { our @ISA = ('java::awt::event::ActionListener', 'java::lang::Object');
             
 
             sub actionPerformed {
@@ -283,7 +283,7 @@ sub initComponents {
         $self->{processingJMenu}->add($self->{scaleImagesJMenuItem});
         $self->{canvasImagesJMenuItem}->setText("Canvas Image(s)");
         $self->{canvasImagesJMenuItem}->addActionListener(do {
-            package java::awt::event::ActionListener::AnonymousN75147 { our @ISA = ('java::awt::event::ActionListener');
+            package java::awt::event::ActionListener::AnonymousN75147 { our @ISA = ('java::awt::event::ActionListener', 'java::lang::Object');
             
 
             sub actionPerformed {
@@ -296,7 +296,7 @@ sub initComponents {
         $self->{processingJMenu}->add($self->{canvasImagesJMenuItem});
         $self->{createIconImagesJMenuItem}->setText("Create Icon Image(s)");
         $self->{createIconImagesJMenuItem}->addActionListener(do {
-            package java::awt::event::ActionListener::AnonymousN75371 { our @ISA = ('java::awt::event::ActionListener');
+            package java::awt::event::ActionListener::AnonymousN75371 { our @ISA = ('java::awt::event::ActionListener', 'java::lang::Object');
             
 
             sub actionPerformed {
@@ -364,7 +364,7 @@ sub onFiles {
         try {
             $self->{logUtil}->putF("Reading " . scalar(@{$files}) . " files.", $self, "onFiles");
             'java::util::Arrays'->sort($files, do {
-                package java::util::Comparator::AnonymousN76930 { our @ISA = ('java::util::Comparator');
+                package java::util::Comparator::AnonymousN76930 { our @ISA = ('java::util::Comparator', 'java::lang::Object');
                 
 
                 sub compare {
@@ -629,32 +629,33 @@ sub setMinRedJTextField {
         $self->{minRedJTextField} = $self->{minRedJTextField};
 }
 
-# use java::awt::image::BufferedImage;
-use java::io::File;
-# use java::util::Arrays;
-# use java::util::Comparator;
-# use javax::imageio::ImageIO;
-use org::allbinary::gui::dialog::FileJDialog;
-use org::allbinary::gui::dialog::FileJDialogListenerInterface;
-use org::allbinary::logic::communication::log::LogUtil;
-use org::allbinary::media::image::ImageProcessorInput;
-use org::allbinary::media::image::ImageProcessorInputCompositeInterface;
-use org::allbinary::media::image::analysis::ColorRange;
-use org::allbinary::media::image::analysis::ColorRangeInterface;
-use org::allbinary::media::image::analysis::ImageAnalysis;
-use org::allbinary::media::image::analysis::ImageAnalysisResults;
-use org::allbinary::string::CommonPhoneStrings;
-use org::allbinary::string::CommonStrings;
-use org::allbinary::image::gui::ImageUnifierJPanel;
-use org::allbinary::image::gui::ImageAnalysisResultsJPanel;
-use org::allbinary::image::gui::RotationSpriteImageJPanel;
-use org::allbinary::image::gui::SpriteSplitterImageJPanel;
-use org::allbinary::image::gui::RotationImageJPanel;
-use org::allbinary::image::gui::ResizeImageJPanel;
-use org::allbinary::image::gui::CreateIconImagesJPanel;
-use org::allbinary::image::gui::CanvasImageJPanel;
-use org::allbinary::image::gui::MirrorSpriteImageJPanel;
-use org::allbinary::image::gui::MirrorImageJPanel;
+use java::lang::Object ();
+# use java::awt::image::BufferedImage ();
+use java::io::File ();
+# use java::util::Arrays ();
+# use java::util::Comparator ();
+# use javax::imageio::ImageIO ();
+use org::allbinary::gui::dialog::FileJDialog ();
+use org::allbinary::gui::dialog::FileJDialogListenerInterface ();
+use org::allbinary::logic::communication::log::LogUtil ();
+use org::allbinary::media::image::ImageProcessorInput ();
+use org::allbinary::media::image::ImageProcessorInputCompositeInterface ();
+use org::allbinary::media::image::analysis::ColorRange ();
+use org::allbinary::media::image::analysis::ColorRangeInterface ();
+use org::allbinary::media::image::analysis::ImageAnalysis ();
+use org::allbinary::media::image::analysis::ImageAnalysisResults ();
+use org::allbinary::string::CommonPhoneStrings ();
+use org::allbinary::string::CommonStrings ();
+use org::allbinary::image::gui::ImageUnifierJPanel ();
+use org::allbinary::image::gui::ImageAnalysisResultsJPanel ();
+use org::allbinary::image::gui::RotationSpriteImageJPanel ();
+use org::allbinary::image::gui::SpriteSplitterImageJPanel ();
+use org::allbinary::image::gui::RotationImageJPanel ();
+use org::allbinary::image::gui::ResizeImageJPanel ();
+use org::allbinary::image::gui::CreateIconImagesJPanel ();
+use org::allbinary::image::gui::CanvasImageJPanel ();
+use org::allbinary::image::gui::MirrorSpriteImageJPanel ();
+use org::allbinary::image::gui::MirrorImageJPanel ();
 
 1;
 

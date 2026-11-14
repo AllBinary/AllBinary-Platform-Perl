@@ -34,8 +34,8 @@ sub paintThreedXYZ {
     die "abstract method paintThreedXYZ";
 }
 
-# use javax::microedition::lcdui::Graphics;
-use org::allbinary::graphics::paint::LocationPaintableInterface;
+use javax::microedition::lcdui::Graphics ();
+use org::allbinary::graphics::paint::LocationPaintableInterface ();
 
 1;
 

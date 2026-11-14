@@ -19,7 +19,7 @@ use feature 'try';
 no warnings 'experimental::try';
 use parent -norequire,'org::allbinary::android::api5::ActivityFractureUtilAPI5';
 
-our $instance30 = 'org::allbinary::android::api30::ActivityFractureUtilAPI30'->new();
+tie our $instance30, 'java::lang::LazyStatic', sub { 'org::allbinary::android::api30::ActivityFractureUtilAPI30'->new() };
 
 sub new {
     my ($class) = @_;
@@ -42,12 +42,14 @@ sub setFullScreen {
         $windowInsetsController->setSystemBarsBehavior($androidx::core::view::WindowInsetsControllerCompat::BEHAVIOR_SHOW_TRANSIENT_BARS_BY_SWIPE);
 }
 
-use android::app::Activity;
-use android::view::Window;
-use androidx::core::view::WindowCompat;
-use androidx::core::view::WindowInsetsCompat;
-use androidx::core::view::WindowInsetsControllerCompat;
-use org::allbinary::android::api5::ActivityFractureUtilAPI5;
+use java::lang::Object ();
+use java::lang::LazyStatic ();
+# use android::app::Activity ();
+# use android::view::Window ();
+use androidx::core::view::WindowCompat ();
+use androidx::core::view::WindowInsetsCompat ();
+use androidx::core::view::WindowInsetsControllerCompat ();
+use org::allbinary::android::api5::ActivityFractureUtilAPI5 ();
 
 1;
 

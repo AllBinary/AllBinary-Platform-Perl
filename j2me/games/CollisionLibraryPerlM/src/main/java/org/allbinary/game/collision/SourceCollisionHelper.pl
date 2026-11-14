@@ -37,9 +37,10 @@ sub isCollidable {
         return 0;
 }
 
-use org::allbinary::game::layer::CollidableCompositeLayer;
-use org::allbinary::layer::AllBinaryLayer;
-use org::allbinary::game::collision::CollisionHelper;
+use java::lang::Object ();
+use org::allbinary::game::layer::CollidableCompositeLayer ();
+use org::allbinary::layer::AllBinaryLayer ();
+use org::allbinary::game::collision::CollisionHelper ();
 
 1;
 

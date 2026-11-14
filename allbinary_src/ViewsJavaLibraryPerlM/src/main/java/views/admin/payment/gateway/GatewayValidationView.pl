@@ -72,12 +72,20 @@ sub view {
         return 'views::admin::payment::gateway::GatewayView'->new($self->getTransformInfoInterface())->view();
 }
 
-use org::allbinary::logic::control::validate::ValidationComponentInterface;
-use org::allbinary::logic::visual::transform::info::TransformInfoInterface;
-use org::w3c::dom::Document;
-use org::w3c::dom::Node;
-use views::business::context::modules::storefront::HttpStoreComponentView;
-use views::admin::payment::gateway::GatewayView;
+
+# throws Exception
+sub getTransformInfoInterface {
+    my ($self) = @_;
+        return $self->SUPER::getTransformInfoInterface();
+}
+
+use java::lang::Object ();
+use org::allbinary::logic::control::validate::ValidationComponentInterface ();
+use org::allbinary::logic::visual::transform::info::TransformInfoInterface ();
+use org::w3c::dom::Document ();
+use org::w3c::dom::Node ();
+use views::business::context::modules::storefront::HttpStoreComponentView ();
+use views::admin::payment::gateway::GatewayView ();
 
 1;
 

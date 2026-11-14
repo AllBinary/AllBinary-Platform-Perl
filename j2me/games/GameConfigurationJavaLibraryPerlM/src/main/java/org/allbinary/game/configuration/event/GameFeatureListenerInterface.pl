@@ -27,7 +27,7 @@ sub onGameFeatureChange {
     die "abstract method onGameFeatureChange";
 }
 
-use org::allbinary::logic::util::event::EventListenerInterface;
+use org::allbinary::logic::util::event::EventListenerInterface ();
 
 1;
 

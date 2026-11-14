@@ -30,7 +30,7 @@ sub _init_fields {
 sub new {
     my ($class, $name, $version, $specialName, $shortName) = @_;
     my $self = $class->SUPER::new($name, $version, $specialName, $shortName);
-    $self->_init_fields();
+    _init_fields($self);
         # super(...) made $self above
     return $self;
 }
@@ -57,15 +57,16 @@ sub init {
         }
 }
 
-use org::allbinary::business::init::LicenseInitInfo;
-use org::allbinary::business::init::LicenseInitInfoUtil;
-use org::allbinary::logic::communication::log::LogUtil;
-use org::allbinary::logic::communication::log::PreLogUtil;
-use org::allbinary::logic::string::StringMaker;
-use org::allbinary::logic::string::StringValidationUtil;
-use org::allbinary::logic::system::os::OperatingSystemFactory;
-use org::allbinary::string::CommonStrings;
-use org::allbinary::logic::system::security::licensing::ClientInformation;
+use java::lang::Object ();
+use org::allbinary::business::init::LicenseInitInfo ();
+use org::allbinary::business::init::LicenseInitInfoUtil ();
+use org::allbinary::logic::communication::log::LogUtil ();
+use org::allbinary::logic::communication::log::PreLogUtil ();
+use org::allbinary::logic::string::StringMaker ();
+use org::allbinary::logic::string::StringValidationUtil ();
+use org::allbinary::logic::system::os::OperatingSystemFactory ();
+use org::allbinary::string::CommonStrings ();
+use org::allbinary::logic::system::security::licensing::ClientInformation ();
 
 1;
 

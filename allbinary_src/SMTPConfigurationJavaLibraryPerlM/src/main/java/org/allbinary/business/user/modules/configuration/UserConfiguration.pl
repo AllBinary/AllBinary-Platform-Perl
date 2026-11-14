@@ -17,7 +17,7 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
-use parent -norequire,'org::allbinary::business::user::modules::configuration::UserConfigurationInterface';
+use parent -norequire,'java::lang::Object','org::allbinary::business::user::modules::configuration::UserConfigurationInterface';
 
 
 sub _init_fields {
@@ -38,7 +38,7 @@ sub new {
 sub _new0 {
     my ($class) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
         $self->{userEmailConfigurationInterface} = 'org::allbinary::logic::communication::smtp::configuration::user::UserEmailConfiguration'->new();
         $self->{timeCreated} = 'org::allbinary::business::time::created::TimeCreated'->new(0);
         $self->{timeLastModified} = 'org::allbinary::business::time::modified::TimeLastModified'->new(0);
@@ -49,7 +49,7 @@ sub _new0 {
 sub _new1 {
     my ($class, $hashMap) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
         $self->{userEmailConfigurationInterface} = 'org::allbinary::logic::communication::smtp::configuration::user::UserEmailConfiguration'->new($hashMap);
         $self->{timeCreated} = 'org::allbinary::business::time::created::TimeCreated'->new($hashMap->get('org::allbinary::business::entry::EntryData'->getInstance()->{TIMECREATED}));
         $self->{timeLastModified} = 'org::allbinary::business::time::modified::TimeLastModified'->new($hashMap->get('org::allbinary::business::entry::EntryData'->getInstance()->{LASTMODIFIED}));
@@ -92,13 +92,14 @@ sub setTimeLastModified {
         $self->{timeLastModified} = $timeLastModified;
 }
 
-use java::util::HashMap;
-use org::allbinary::business::entry::EntryData;
-use org::allbinary::business::time::created::TimeCreated;
-use org::allbinary::business::time::modified::TimeLastModified;
-use org::allbinary::logic::communication::smtp::configuration::user::UserEmailConfiguration;
-use org::allbinary::logic::communication::smtp::configuration::user::UserEmailConfigurationInterface;
-use org::allbinary::business::user::modules::configuration::UserConfigurationInterface;
+use java::lang::Object ();
+use java::util::HashMap ();
+use org::allbinary::business::entry::EntryData ();
+use org::allbinary::business::time::created::TimeCreated ();
+use org::allbinary::business::time::modified::TimeLastModified ();
+use org::allbinary::logic::communication::smtp::configuration::user::UserEmailConfiguration ();
+use org::allbinary::logic::communication::smtp::configuration::user::UserEmailConfigurationInterface ();
+use org::allbinary::business::user::modules::configuration::UserConfigurationInterface ();
 
 1;
 

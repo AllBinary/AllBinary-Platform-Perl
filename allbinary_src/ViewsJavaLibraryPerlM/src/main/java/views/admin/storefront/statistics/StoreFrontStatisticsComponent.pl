@@ -31,7 +31,7 @@ sub _init_fields {
 sub new {
     my ($class, $transformInfoInterface) = @_;
     my $self = $class->SUPER::new($transformInfoInterface);
-    $self->_init_fields();
+    _init_fields($self);
         # super(...) made $self above
         $self->{newStoreFrontInterface} = 'org::allbinary::business::context::modules::storefront::StoreFrontFactory'->getInstance($transformInfoInterface->getStoreName());
         $self->{domNodeInterface} = 'org::allbinary::business::context::modules::storefront::statistics::RealTimeStoreFrontStatisticsView'->new('org::allbinary::business::context::modules::storefront::statistics::RealTimeStoreFrontStatistics'->new($self->{newStoreFrontInterface}), $self->getWeblisketSession()->getRole());
@@ -59,14 +59,15 @@ sub view {
         }
 }
 
-use org::allbinary::business::context::modules::storefront::StoreFrontFactory;
-use org::allbinary::business::context::modules::storefront::StoreFrontInterface;
-use org::allbinary::business::context::modules::storefront::statistics::RealTimeStoreFrontStatistics;
-use org::allbinary::business::context::modules::storefront::statistics::RealTimeStoreFrontStatisticsView;
-use org::allbinary::data::tree::dom::DomNodeInterface;
-use org::allbinary::logic::communication::log::LogUtil;
-use org::allbinary::logic::visual::transform::info::TransformInfoInterface;
-use views::business::context::modules::storefront::HttpStoreComponentView;
+use java::lang::Object ();
+use org::allbinary::business::context::modules::storefront::StoreFrontFactory ();
+use org::allbinary::business::context::modules::storefront::StoreFrontInterface ();
+use org::allbinary::business::context::modules::storefront::statistics::RealTimeStoreFrontStatistics ();
+use org::allbinary::business::context::modules::storefront::statistics::RealTimeStoreFrontStatisticsView ();
+use org::allbinary::data::tree::dom::DomNodeInterface ();
+use org::allbinary::logic::communication::log::LogUtil ();
+use org::allbinary::logic::visual::transform::info::TransformInfoInterface ();
+use views::business::context::modules::storefront::HttpStoreComponentView ();
 
 1;
 

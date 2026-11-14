@@ -38,7 +38,7 @@ sub getPathFinder {
     die "abstract method getPathFinder";
 }
 
-use org::allbinary::util::BasicArrayList;
+use org::allbinary::util::BasicArrayList ();
 
 1;
 

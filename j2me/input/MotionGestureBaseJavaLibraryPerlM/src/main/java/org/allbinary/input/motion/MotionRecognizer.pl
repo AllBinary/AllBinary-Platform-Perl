@@ -17,6 +17,7 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
 
 sub new {
@@ -43,6 +44,7 @@ sub processDraggedMotionEvent {
     my ($self, $x, $y, $deviceId, $modifiers) = @_;
 }
 
+use java::lang::Object ();
 
 1;
 

@@ -41,7 +41,7 @@ sub isProcessorLayer {
     die "abstract method isProcessorLayer";
 }
 
-use org::allbinary::layer::BasicLayerProcessorInterface;
+use org::allbinary::layer::BasicLayerProcessorInterface ();
 
 1;
 

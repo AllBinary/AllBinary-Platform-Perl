@@ -17,9 +17,9 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
-use parent -norequire,'org::allbinary::game::input::SelectRTSLayerVisitorFactoryInterface';
+use parent -norequire,'java::lang::Object','org::allbinary::game::input::SelectRTSLayerVisitorFactoryInterface';
 
-our $instance = 'org::allbinary::game::input::SelectAdvancedRTSLayerVisitorFactory'->new();
+tie our $instance, 'java::lang::LazyStatic', sub { 'org::allbinary::game::input::SelectAdvancedRTSLayerVisitorFactory'->new() };
 
 
 sub getInstance {
@@ -40,9 +40,11 @@ sub create {
         return 'org::allbinary::game::input::SelectAdvancedRTSLayerVisitor'->new($selectedRTSLayersPlayerGameInput);
 }
 
-use org::allbinary::logic::util::visitor::Visitor;
-use org::allbinary::game::input::SelectRTSLayerVisitorFactoryInterface;
-use org::allbinary::game::input::SelectAdvancedRTSLayerVisitor;
+use java::lang::Object ();
+use java::lang::LazyStatic ();
+use org::allbinary::logic::util::visitor::Visitor ();
+use org::allbinary::game::input::SelectRTSLayerVisitorFactoryInterface ();
+use org::allbinary::game::input::SelectAdvancedRTSLayerVisitor ();
 
 1;
 

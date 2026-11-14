@@ -17,6 +17,7 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
 
 sub _init_fields {
@@ -28,7 +29,7 @@ sub _init_fields {
 sub new {
     my ($class) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
     return $self;
 }
 
@@ -122,16 +123,17 @@ sub sendRedirect {
         }
 }
 
-# use javax::servlet::RequestDispatcher;
-# use javax::servlet::ServletException;
-# use javax::servlet::http::HttpServletRequest;
-# use javax::servlet::http::HttpServletResponse;
-# use javax::servlet::jsp::JspTagException;
-# use javax::servlet::jsp::PageContext;
-use org::allbinary::globals::FREEBLISKET_PATH_GLOBALS;
-use org::allbinary::logic::communication::log::LogUtil;
-use org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory;
-use org::allbinary::logic::communication::log::config::type::LogConfigTypes;
+use java::lang::Object ();
+# use javax::servlet::RequestDispatcher ();
+# use javax::servlet::ServletException ();
+# use javax::servlet::http::HttpServletRequest ();
+# use javax::servlet::http::HttpServletResponse ();
+# use javax::servlet::jsp::JspTagException ();
+# use javax::servlet::jsp::PageContext ();
+use org::allbinary::globals::FREEBLISKET_PATH_GLOBALS ();
+use org::allbinary::logic::communication::log::LogUtil ();
+use org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory ();
+use org::allbinary::logic::communication::log::config::type::LogConfigTypes ();
 
 1;
 

@@ -17,8 +17,9 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
-our $instance = 'org::allbinary::logic::math::MathData'->new();
+tie our $instance, 'java::lang::LazyStatic', sub { 'org::allbinary::logic::math::MathData'->new() };
 
 sub _init_fields {
     my ($self) = @_;
@@ -40,7 +41,7 @@ sub getInstance {
 sub new {
     my ($class) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
         my $commonSeps = 'org::allbinary::string::CommonSeps'->getInstance();
         $self->{EQUALS} = $commonSeps->{EQUALS};
         $self->{MINUS} = $commonSeps->{DASH};
@@ -49,8 +50,10 @@ sub new {
     return $self;
 }
 
-use org::allbinary::string::CommonPhoneStrings;
-use org::allbinary::string::CommonSeps;
+use java::lang::Object ();
+use java::lang::LazyStatic ();
+use org::allbinary::string::CommonPhoneStrings ();
+use org::allbinary::string::CommonSeps ();
 
 1;
 

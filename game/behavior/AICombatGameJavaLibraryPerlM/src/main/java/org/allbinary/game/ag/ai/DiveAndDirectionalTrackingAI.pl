@@ -44,7 +44,7 @@ sub _init_fields {
 sub new {
     my ($class, $ownerLayerInterface, $artificialIntelligenceInterface, $gameInput, $visitor) = @_;
     my $self = $class->SUPER::new($ownerLayerInterface, $gameInput);
-    $self->_init_fields();
+    _init_fields($self);
         # super(...) made $self above
         $self->{aiVistor} = $visitor;
         $self->{artificialIntelligenceInterface} = $artificialIntelligenceInterface;
@@ -93,7 +93,9 @@ sub target {
         $self->{lastTrackingLayerInterface} = $lastTrackingEvent->getLayerInterface();
         my $layerInterface = $self->{lastTrackingLayerInterface};
         my $ownerLayerInterface = $self->getOwnerLayerInterface();
-        if ($layerInterface->getGroupInterface() == $ownerLayerInterface->getGroupInterface()) {
+        my $groupArray = $layerInterface->getGroupInterface();
+        my $ownerGroupArray = $ownerLayerInterface->getGroupInterface();
+        if ($groupArray == $ownerGroupArray) {
             return;
         }
         my $x = $self->{lastTrackingLayerInterface}->getXP();
@@ -323,36 +325,38 @@ sub toString {
         return $stringBuffer->toString();
 }
 
-# use javax::microedition::lcdui::Canvas;
-use org::allbinary::ai::ArtificialIntelligenceInterface;
-use org::allbinary::direction::Direction;
-use org::allbinary::direction::DirectionFactory;
-use org::allbinary::direction::DirectionalCompositeInterface;
-use org::allbinary::direction::DirectionalInterface;
-use org::allbinary::game::ai::BasicAI;
-use org::allbinary::game::combat::destroy::event::DestroyedEvent;
-use org::allbinary::game::combat::destroy::event::DestroyedEventHandler;
-use org::allbinary::game::combat::destroy::event::DestroyedEventListenerInterface;
-use org::allbinary::game::input::GameInput;
-use org::allbinary::game::physics::velocity::BasicVelocityProperties;
-use org::allbinary::game::physics::velocity::VelocityInterfaceCompositeInterface;
-use org::allbinary::game::tracking::TrackingEvent;
-use org::allbinary::game::tracking::TrackingEventHandler;
-use org::allbinary::game::tracking::TrackingEventListenerInterface;
-use org::allbinary::layer::AllBinaryLayer;
-use org::allbinary::layer::AllBinaryLayerManager;
-use org::allbinary::logic::communication::log::ForcedLogUtil;
-use org::allbinary::logic::math::MathUtil;
-use org::allbinary::logic::string::StringMaker;
-use org::allbinary::logic::string::StringUtil;
-use org::allbinary::logic::util::event::AllBinaryEventObject;
-use org::allbinary::logic::util::event::EventStrings;
-use org::allbinary::logic::util::visitor::Visitor;
-use org::allbinary::time::GameTickTimeDelayHelper;
-use org::allbinary::time::GameTickTimeDelayHelperFactory;
-use org::allbinary::time::TimeDelayHelper;
-use org::allbinary::util::BasicArrayList;
-use org::allbinary::util::BasicArrayListD;
+use java::lang::Object ();
+use javax::microedition::lcdui::Canvas ();
+use org::allbinary::ai::ArtificialIntelligenceInterface ();
+use org::allbinary::direction::Direction ();
+use org::allbinary::direction::DirectionFactory ();
+use org::allbinary::direction::DirectionalCompositeInterface ();
+use org::allbinary::direction::DirectionalInterface ();
+use org::allbinary::game::ai::BasicAI ();
+use org::allbinary::game::combat::destroy::event::DestroyedEvent ();
+use org::allbinary::game::combat::destroy::event::DestroyedEventHandler ();
+use org::allbinary::game::combat::destroy::event::DestroyedEventListenerInterface ();
+use org::allbinary::game::identification::Group ();
+use org::allbinary::game::input::GameInput ();
+use org::allbinary::game::physics::velocity::BasicVelocityProperties ();
+use org::allbinary::game::physics::velocity::VelocityInterfaceCompositeInterface ();
+use org::allbinary::game::tracking::TrackingEvent ();
+use org::allbinary::game::tracking::TrackingEventHandler ();
+use org::allbinary::game::tracking::TrackingEventListenerInterface ();
+use org::allbinary::layer::AllBinaryLayer ();
+use org::allbinary::layer::AllBinaryLayerManager ();
+use org::allbinary::logic::communication::log::ForcedLogUtil ();
+use org::allbinary::logic::math::MathUtil ();
+use org::allbinary::logic::string::StringMaker ();
+use org::allbinary::logic::string::StringUtil ();
+use org::allbinary::logic::util::event::AllBinaryEventObject ();
+use org::allbinary::logic::util::event::EventStrings ();
+use org::allbinary::logic::util::visitor::Visitor ();
+use org::allbinary::time::GameTickTimeDelayHelper ();
+use org::allbinary::time::GameTickTimeDelayHelperFactory ();
+use org::allbinary::time::TimeDelayHelper ();
+use org::allbinary::util::BasicArrayList ();
+use org::allbinary::util::BasicArrayListD ();
 
 1;
 

@@ -17,6 +17,7 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
 
 sub _init_fields {
@@ -39,7 +40,7 @@ sub new {
 sub _new4 {
     my ($class, $aName, $aDescription, $aPath, $aFileName) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
         $self->{isEnabled} = 0;
         $self->{name} = $aName;
         $self->{description} = $aDescription;
@@ -52,7 +53,7 @@ sub _new4 {
 sub _new1 {
     my ($class, $node) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
         my $enabledValueNode = 'org::allbinary::data::tree::dom::DomSearchHelper'->getNode('org::allbinary::business::entry::EntryData'->getInstance()->{ENABLE}, $node->getChildNodes());
         my $isEnabledString = 'org::allbinary::data::tree::dom::DomNodeHelper'->getTextNodeValue($enabledValueNode);
         $self->{isEnabled} = 'org::allbinary::logic::java::bool::BooleanUtil'->getInstance()->getFromString($isEnabledString);
@@ -157,26 +158,27 @@ sub getTypeVector {
         return $logKeyVector;
 }
 
-use org::allbinary::business::entry::EntryData;
-use org::allbinary::data::tree::dom::DomNodeHelper;
-use org::allbinary::data::tree::dom::DomSearchHelper;
-use org::allbinary::data::tree::dom::document::DomDocumentHelper;
-use org::allbinary::globals::PATH_GLOBALS;
-use org::allbinary::globals::URLGLOBALS;
-use org::allbinary::logic::communication::log::config::type::LogConfigType;
-use org::allbinary::logic::communication::log::config::type::LogConfigTypeData;
-use org::allbinary::logic::communication::log::config::type::LogConfigTypes;
-use org::allbinary::logic::communication::log::config::type::LogConfigTypesData;
-use org::allbinary::logic::io::AbFileLocalInputStream;
-use org::allbinary::logic::io::file::AbFile;
-use org::allbinary::logic::java::bool::BooleanUtil;
-use org::allbinary::logic::string::StringMaker;
-use org::allbinary::util::BasicArrayList;
-use org::allbinary::util::BasicArrayListD;
-use org::w3c::dom::Document;
-use org::w3c::dom::Node;
-use org::w3c::dom::NodeList;
-use org::allbinary::logic::communication::log::config::LogConfigData;
+use java::lang::Object ();
+use org::allbinary::business::entry::EntryData ();
+use org::allbinary::data::tree::dom::DomNodeHelper ();
+use org::allbinary::data::tree::dom::DomSearchHelper ();
+use org::allbinary::data::tree::dom::document::DomDocumentHelper ();
+use org::allbinary::globals::PATH_GLOBALS ();
+use org::allbinary::globals::URLGLOBALS ();
+use org::allbinary::logic::communication::log::config::type::LogConfigType ();
+use org::allbinary::logic::communication::log::config::type::LogConfigTypeData ();
+use org::allbinary::logic::communication::log::config::type::LogConfigTypes ();
+use org::allbinary::logic::communication::log::config::type::LogConfigTypesData ();
+use org::allbinary::logic::io::AbFileLocalInputStream ();
+use org::allbinary::logic::io::file::AbFile ();
+use org::allbinary::logic::java::bool::BooleanUtil ();
+use org::allbinary::logic::string::StringMaker ();
+use org::allbinary::util::BasicArrayList ();
+use org::allbinary::util::BasicArrayListD ();
+use org::w3c::dom::Document ();
+use org::w3c::dom::Node ();
+use org::w3c::dom::NodeList ();
+use org::allbinary::logic::communication::log::config::LogConfigData ();
 
 1;
 

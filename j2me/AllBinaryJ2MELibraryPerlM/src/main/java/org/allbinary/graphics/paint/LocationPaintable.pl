@@ -17,9 +17,9 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
-use parent -norequire,'org::allbinary::graphics::paint::LocationPaintableInterface';
+use parent -norequire,'java::lang::Object','org::allbinary::graphics::paint::LocationPaintableInterface';
 
-our $instance = 'org::allbinary::graphics::paint::LocationPaintable'->new();
+tie our $instance, 'java::lang::LazyStatic', sub { 'org::allbinary::graphics::paint::LocationPaintable'->new() };
 
 sub new {
     my ($class) = @_;
@@ -38,8 +38,10 @@ sub paintXY {
     my ($self, $graphics, $x, $y) = @_;
 }
 
-# use javax::microedition::lcdui::Graphics;
-use org::allbinary::graphics::paint::LocationPaintableInterface;
+use java::lang::Object ();
+use java::lang::LazyStatic ();
+use javax::microedition::lcdui::Graphics ();
+use org::allbinary::graphics::paint::LocationPaintableInterface ();
 
 1;
 

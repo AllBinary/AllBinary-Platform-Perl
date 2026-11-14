@@ -28,7 +28,8 @@ sub new {
     return $self;
 }
 
-# use javax::microedition::lcdui::Gauge;
+use java::lang::Object ();
+use javax::microedition::lcdui::Gauge ();
 
 1;
 

@@ -17,7 +17,7 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
-use parent -norequire,'org::allbinary::logic::visual::transform::info::TransformInfoInterface';
+use parent -norequire,'java::lang::Object','org::allbinary::logic::visual::transform::info::TransformInfoInterface';
 
 
 sub _init_fields {
@@ -50,7 +50,7 @@ sub new {
 sub _new0 {
     my ($class) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
     return $self;
 }
 
@@ -58,7 +58,7 @@ sub _new0 {
 sub _new1 {
     my ($class, $name) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
         $self->setName($name);
     return $self;
 }
@@ -67,7 +67,7 @@ sub _new1 {
 sub _new5 {
     my ($class, $name, $objectFileName, $objectConfigFileName, $templateFileName, $dataFileName) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
         $self->setName($name);
         $self->setObjectFile($objectFileName);
         $self->setObjectConfigFile($objectConfigFileName);
@@ -489,40 +489,41 @@ sub setObjectConfigInterface {
         $self->{objectConfigInterface} = $objectConfigInterface;
 }
 
-use java::util::Calendar;
-use java::util::HashMap;
-use org::allbinary::util::BasicArrayList;
-use org::allbinary::util::BasicArrayListD;
-use org::allbinary::business::context::modules::storefront::StoreFrontData;
-use org::allbinary::business::entry::EntryData;
-use org::allbinary::data::tree::dom::document::DomDocumentHelper;
-use org::allbinary::data::tree::dom::document::XmlDocumentHelper;
-use org::allbinary::globals::FREEBLISKET_PATH_GLOBALS;
-use org::allbinary::globals::URLGLOBALS;
-use org::allbinary::logic::StdUtil;
-use org::allbinary::logic::communication::log::LogUtil;
-use org::allbinary::logic::control::crypt::Encoder;
-use org::allbinary::logic::control::crypt::file::CryptFileReader;
-use org::allbinary::logic::io::OutputTypeData;
-use org::allbinary::logic::io::path::AbFilePath;
-use org::allbinary::logic::io::path::AbPath;
-use org::allbinary::logic::io::path::AbPathData;
-use org::allbinary::logic::string::StringMaker;
-use org::allbinary::logic::string::StringUtil;
-use org::allbinary::logic::string::StringValidationUtil;
-use org::allbinary::logic::system::security::licensing::AbeClientInformationInterface;
-use org::allbinary::logic::system::security::licensing::ServiceClientInformationInterfaceFactory;
-use org::allbinary::logic::visual::transform::info::data::TransformInfoDataData;
-use org::allbinary::logic::visual::transform::info::objectConfig::TransformInfoObjectConfig;
-use org::allbinary::logic::visual::transform::info::objectConfig::TransformInfoObjectConfigAndManipulatorFactory;
-use org::allbinary::logic::visual::transform::info::objectConfig::TransformInfoObjectConfigInterface;
-use org::allbinary::logic::visual::transform::info::template::TransformInfoTemplateData;
-use org::allbinary::logic::visual::transform::info::viewObject::TransformInfoObjectData;
-use org::allbinary::string::CommonSeps;
-use org::allbinary::string::CommonStrings;
-use org::w3c::dom::Document;
-use org::allbinary::logic::visual::transform::info::TransformInfoInterface;
-use org::allbinary::logic::visual::transform::info::TransformInfoData;
+use java::lang::Object ();
+use java::util::Calendar ();
+use java::util::HashMap ();
+use org::allbinary::util::BasicArrayList ();
+use org::allbinary::util::BasicArrayListD ();
+use org::allbinary::business::context::modules::storefront::StoreFrontData ();
+use org::allbinary::business::entry::EntryData ();
+use org::allbinary::data::tree::dom::document::DomDocumentHelper ();
+use org::allbinary::data::tree::dom::document::XmlDocumentHelper ();
+use org::allbinary::globals::FREEBLISKET_PATH_GLOBALS ();
+use org::allbinary::globals::URLGLOBALS ();
+use org::allbinary::logic::StdUtil ();
+use org::allbinary::logic::communication::log::LogUtil ();
+use org::allbinary::logic::control::crypt::Encoder ();
+use org::allbinary::logic::control::crypt::file::CryptFileReader ();
+use org::allbinary::logic::io::OutputTypeData ();
+use org::allbinary::logic::io::path::AbFilePath ();
+use org::allbinary::logic::io::path::AbPath ();
+use org::allbinary::logic::io::path::AbPathData ();
+use org::allbinary::logic::string::StringMaker ();
+use org::allbinary::logic::string::StringUtil ();
+use org::allbinary::logic::string::StringValidationUtil ();
+use org::allbinary::logic::system::security::licensing::AbeClientInformationInterface ();
+use org::allbinary::logic::system::security::licensing::ServiceClientInformationInterfaceFactory ();
+use org::allbinary::logic::visual::transform::info::data::TransformInfoDataData ();
+use org::allbinary::logic::visual::transform::info::objectConfig::TransformInfoObjectConfig ();
+use org::allbinary::logic::visual::transform::info::objectConfig::TransformInfoObjectConfigAndManipulatorFactory ();
+use org::allbinary::logic::visual::transform::info::objectConfig::TransformInfoObjectConfigInterface ();
+use org::allbinary::logic::visual::transform::info::template::TransformInfoTemplateData ();
+use org::allbinary::logic::visual::transform::info::viewObject::TransformInfoObjectData ();
+use org::allbinary::string::CommonSeps ();
+use org::allbinary::string::CommonStrings ();
+use org::w3c::dom::Document ();
+use org::allbinary::logic::visual::transform::info::TransformInfoInterface ();
+use org::allbinary::logic::visual::transform::info::TransformInfoData ();
 
 1;
 

@@ -17,7 +17,7 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
-use parent -norequire,'org::allbinary::animation::AnimationInterfaceFactoryInterface';
+use parent -norequire,'java::lang::Object','org::allbinary::animation::AnimationInterfaceFactoryInterface';
 
 
 sub _init_fields {
@@ -30,7 +30,7 @@ sub _init_fields {
 sub new {
     my ($class, $basicAnimationInterfaceFactoryInterfaceArray, $animationBehaviorFactory) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
         $self->{basicAnimationInterfaceFactoryInterfaceArrayP} = $basicAnimationInterfaceFactoryInterfaceArray;
         $self->{animationBehaviorFactory} = $animationBehaviorFactory;
     return $self;
@@ -75,12 +75,13 @@ sub setInitialScale {
         }
 }
 
-use org::allbinary::animation::Animation;
-use org::allbinary::animation::AnimationBehaviorFactory;
-use org::allbinary::animation::AnimationInterfaceFactoryInterface;
-use org::allbinary::animation::NullAnimationFactory;
-use org::allbinary::logic::communication::log::ForcedLogUtil;
-use org::allbinary::media::ScaleProperties;
+use java::lang::Object ();
+use org::allbinary::animation::Animation ();
+use org::allbinary::animation::AnimationBehaviorFactory ();
+use org::allbinary::animation::AnimationInterfaceFactoryInterface ();
+use org::allbinary::animation::NullAnimationFactory ();
+use org::allbinary::logic::communication::log::ForcedLogUtil ();
+use org::allbinary::media::ScaleProperties ();
 
 1;
 

@@ -19,7 +19,16 @@ use feature 'try';
 no warnings 'experimental::try';
 use parent -norequire,'org::allbinary::game::layer::resources::BasicGameResources';
 
-our $instance = 'org::allbinary::game::layer::unit::Unit3DecalGameResources'->new();
+tie our $instance, 'java::lang::LazyStatic', sub { 'org::allbinary::logic::NullUtil'->getInstance()->{NULL_OBJECT} };
+
+
+sub getInstance {
+    my ($class) = @_;
+        if ($org::allbinary::game::layer::unit::Unit3DecalGameResources::instance == 'org::allbinary::logic::NullUtil'->getInstance()->{NULL_OBJECT}) {
+            $org::allbinary::game::layer::unit::Unit3DecalGameResources::instance = 'org::allbinary::game::layer::unit::Unit3DecalGameResources'->new();
+        }
+        return $org::allbinary::game::layer::unit::Unit3DecalGameResources::instance;
+}
 
 
 sub new {
@@ -54,16 +63,13 @@ sub getString {
         }
 }
 
-
-sub getInstance {
-    my ($class) = @_;
-        return $org::allbinary::game::layer::unit::Unit3DecalGameResources::instance;
-}
-
-use org::allbinary::game::layer::resources::BasicGameResources;
-use org::allbinary::game::layer::resources::GameGraphicsResourceUtil;
-use org::allbinary::AndroidUtil;
-use org::allbinary::game::configuration::feature::GraphicsFeatureFactory;
+use java::lang::Object ();
+use java::lang::LazyStatic ();
+use org::allbinary::game::layer::resources::BasicGameResources ();
+use org::allbinary::game::layer::resources::GameGraphicsResourceUtil ();
+use org::allbinary::AndroidUtil ();
+use org::allbinary::game::configuration::feature::GraphicsFeatureFactory ();
+use org::allbinary::logic::NullUtil ();
 
 1;
 

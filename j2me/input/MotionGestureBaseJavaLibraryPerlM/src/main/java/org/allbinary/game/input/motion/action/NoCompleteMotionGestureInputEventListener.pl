@@ -19,7 +19,7 @@ use feature 'try';
 no warnings 'experimental::try';
 use parent -norequire,'org::allbinary::game::input::CompleteMotionGestureInputEventListener';
 
-our $instance = 'org::allbinary::game::input::motion::action::NoCompleteMotionGestureInputEventListener'->new();
+tie our $instance, 'java::lang::LazyStatic', sub { 'org::allbinary::game::input::motion::action::NoCompleteMotionGestureInputEventListener'->new() };
 
 
 sub new {
@@ -45,11 +45,13 @@ sub getInstance {
         return $org::allbinary::game::input::motion::action::NoCompleteMotionGestureInputEventListener::instance;
 }
 
-use org::allbinary::game::input::CompleteMotionGestureInputEvent;
-use org::allbinary::game::input::CompleteMotionGestureInputEventListener;
-use org::allbinary::logic::communication::log::ForcedLogUtil;
-use org::allbinary::logic::util::event::AllBinaryEventObject;
-use org::allbinary::logic::util::event::EventStrings;
+use java::lang::Object ();
+use java::lang::LazyStatic ();
+use org::allbinary::game::input::CompleteMotionGestureInputEvent ();
+use org::allbinary::game::input::CompleteMotionGestureInputEventListener ();
+use org::allbinary::logic::communication::log::ForcedLogUtil ();
+use org::allbinary::logic::util::event::AllBinaryEventObject ();
+use org::allbinary::logic::util::event::EventStrings ();
 
 1;
 

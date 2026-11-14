@@ -27,10 +27,10 @@ sub getHashtable {
     die "abstract method getHashtable";
 }
 
-use org::allbinary::game::configuration::feature::GameFeatureControlledInterface;
-use org::allbinary::game::resource::RectangleResourceFactoryInterface;
-use org::allbinary::util::ABHashtable;
-use org::allbinary::animation::resource::ResourceAnimationInterfaceFactoryInterface;
+use org::allbinary::game::configuration::feature::GameFeatureControlledInterface ();
+use org::allbinary::game::resource::RectangleResourceFactoryInterface ();
+use org::allbinary::util::ABHashtable ();
+use org::allbinary::animation::resource::ResourceAnimationInterfaceFactoryInterface ();
 
 1;
 

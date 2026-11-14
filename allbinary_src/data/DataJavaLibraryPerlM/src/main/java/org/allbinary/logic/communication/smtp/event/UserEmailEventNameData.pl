@@ -17,33 +17,34 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
-our $userNameEvenNameHashMap = 'org::allbinary::logic::StdUtil'->getInstance()->createHashMap();
+tie our $userNameEvenNameHashMap, 'java::lang::LazyStatic', sub { 'org::allbinary::logic::StdUtil'->getInstance()->createHashMap() };
 our $nextId = 0;
-our $INSTALLER = 'org::allbinary::logic::communication::smtp::event::UserEmailEventNameData'->new("Installer");
-our $EXCEPTION = 'org::allbinary::logic::communication::smtp::event::UserEmailEventNameData'->new("Exception");
-our $LOGGEDEXCEPTION = 'org::allbinary::logic::communication::smtp::event::UserEmailEventNameData'->new("Logged Exception");
-our $ERROR = 'org::allbinary::logic::communication::smtp::event::UserEmailEventNameData'->new("Error");
-our $OUTOFMEMORY = 'org::allbinary::logic::communication::smtp::event::UserEmailEventNameData'->new("Out Of Memory Error");
-our $ADMINGENERATINGSTATICPAGES = 'org::allbinary::logic::communication::smtp::event::UserEmailEventNameData'->new("Admin Generating Static Pages");
-our $STOREERROROCCURRED = 'org::allbinary::logic::communication::smtp::event::UserEmailEventNameData'->new("Store Error Occurred");
-our $STOREOUTOFMEMORY = 'org::allbinary::logic::communication::smtp::event::UserEmailEventNameData'->new("Store Out Of Memory Error");
-our $STORECREATED = 'org::allbinary::logic::communication::smtp::event::UserEmailEventNameData'->new("Store Created");
-our $STOREOPENED = 'org::allbinary::logic::communication::smtp::event::UserEmailEventNameData'->new("Store Opened");
-our $STORECLOSED = 'org::allbinary::logic::communication::smtp::event::UserEmailEventNameData'->new("Store Closed");
-our $STOREGENERATINGSTATICPAGES = 'org::allbinary::logic::communication::smtp::event::UserEmailEventNameData'->new("Store Generating Static Pages");
-our $PRODUCTISOUT = 'org::allbinary::logic::communication::smtp::event::UserEmailEventNameData'->new("Product Is Out");
-our $PRODUCTISAVAILABLE = 'org::allbinary::logic::communication::smtp::event::UserEmailEventNameData'->new("Product Is Available");
-our $PRODUCTISOLD = 'org::allbinary::logic::communication::smtp::event::UserEmailEventNameData'->new("Product Is Old");
-our $PRODUCTISONSALE = 'org::allbinary::logic::communication::smtp::event::UserEmailEventNameData'->new("Product Is On Sale");
-our $PRODUCTSALEISOVER = 'org::allbinary::logic::communication::smtp::event::UserEmailEventNameData'->new("Product Sale Is Over");
-our $ORDERPREPROCESSING = 'org::allbinary::logic::communication::smtp::event::UserEmailEventNameData'->new($org::allbinary::business::user::commerce::inventory::order::OrderHistoryData::PREPROCESSING);
-our $ORDERPROCESSING = 'org::allbinary::logic::communication::smtp::event::UserEmailEventNameData'->new($org::allbinary::business::user::commerce::inventory::order::OrderHistoryData::PROCESSING);
-our $ORDERCANCELLED = 'org::allbinary::logic::communication::smtp::event::UserEmailEventNameData'->new($org::allbinary::business::user::commerce::inventory::order::OrderHistoryData::CANCELLED);
-our $ORDERPARTIALLYSHIPPED = 'org::allbinary::logic::communication::smtp::event::UserEmailEventNameData'->new($org::allbinary::business::user::commerce::inventory::order::OrderHistoryData::PARTIALLYSHIPPED);
-our $ORDERSHIPPED = 'org::allbinary::logic::communication::smtp::event::UserEmailEventNameData'->new($org::allbinary::business::user::commerce::inventory::order::OrderHistoryData::SHIPPED);
-our $QUOTEREQUEST = 'org::allbinary::logic::communication::smtp::event::UserEmailEventNameData'->new("Quote Request");
-our $NEWPASSWORD = 'org::allbinary::logic::communication::smtp::event::UserEmailEventNameData'->new("New Password");
+tie our $INSTALLER, 'java::lang::LazyStatic', sub { 'org::allbinary::logic::communication::smtp::event::UserEmailEventNameData'->new("Installer") };
+tie our $EXCEPTION, 'java::lang::LazyStatic', sub { 'org::allbinary::logic::communication::smtp::event::UserEmailEventNameData'->new("Exception") };
+tie our $LOGGEDEXCEPTION, 'java::lang::LazyStatic', sub { 'org::allbinary::logic::communication::smtp::event::UserEmailEventNameData'->new("Logged Exception") };
+tie our $ERROR, 'java::lang::LazyStatic', sub { 'org::allbinary::logic::communication::smtp::event::UserEmailEventNameData'->new("Error") };
+tie our $OUTOFMEMORY, 'java::lang::LazyStatic', sub { 'org::allbinary::logic::communication::smtp::event::UserEmailEventNameData'->new("Out Of Memory Error") };
+tie our $ADMINGENERATINGSTATICPAGES, 'java::lang::LazyStatic', sub { 'org::allbinary::logic::communication::smtp::event::UserEmailEventNameData'->new("Admin Generating Static Pages") };
+tie our $STOREERROROCCURRED, 'java::lang::LazyStatic', sub { 'org::allbinary::logic::communication::smtp::event::UserEmailEventNameData'->new("Store Error Occurred") };
+tie our $STOREOUTOFMEMORY, 'java::lang::LazyStatic', sub { 'org::allbinary::logic::communication::smtp::event::UserEmailEventNameData'->new("Store Out Of Memory Error") };
+tie our $STORECREATED, 'java::lang::LazyStatic', sub { 'org::allbinary::logic::communication::smtp::event::UserEmailEventNameData'->new("Store Created") };
+tie our $STOREOPENED, 'java::lang::LazyStatic', sub { 'org::allbinary::logic::communication::smtp::event::UserEmailEventNameData'->new("Store Opened") };
+tie our $STORECLOSED, 'java::lang::LazyStatic', sub { 'org::allbinary::logic::communication::smtp::event::UserEmailEventNameData'->new("Store Closed") };
+tie our $STOREGENERATINGSTATICPAGES, 'java::lang::LazyStatic', sub { 'org::allbinary::logic::communication::smtp::event::UserEmailEventNameData'->new("Store Generating Static Pages") };
+tie our $PRODUCTISOUT, 'java::lang::LazyStatic', sub { 'org::allbinary::logic::communication::smtp::event::UserEmailEventNameData'->new("Product Is Out") };
+tie our $PRODUCTISAVAILABLE, 'java::lang::LazyStatic', sub { 'org::allbinary::logic::communication::smtp::event::UserEmailEventNameData'->new("Product Is Available") };
+tie our $PRODUCTISOLD, 'java::lang::LazyStatic', sub { 'org::allbinary::logic::communication::smtp::event::UserEmailEventNameData'->new("Product Is Old") };
+tie our $PRODUCTISONSALE, 'java::lang::LazyStatic', sub { 'org::allbinary::logic::communication::smtp::event::UserEmailEventNameData'->new("Product Is On Sale") };
+tie our $PRODUCTSALEISOVER, 'java::lang::LazyStatic', sub { 'org::allbinary::logic::communication::smtp::event::UserEmailEventNameData'->new("Product Sale Is Over") };
+tie our $ORDERPREPROCESSING, 'java::lang::LazyStatic', sub { 'org::allbinary::logic::communication::smtp::event::UserEmailEventNameData'->new($org::allbinary::business::user::commerce::inventory::order::OrderHistoryData::PREPROCESSING) };
+tie our $ORDERPROCESSING, 'java::lang::LazyStatic', sub { 'org::allbinary::logic::communication::smtp::event::UserEmailEventNameData'->new($org::allbinary::business::user::commerce::inventory::order::OrderHistoryData::PROCESSING) };
+tie our $ORDERCANCELLED, 'java::lang::LazyStatic', sub { 'org::allbinary::logic::communication::smtp::event::UserEmailEventNameData'->new($org::allbinary::business::user::commerce::inventory::order::OrderHistoryData::CANCELLED) };
+tie our $ORDERPARTIALLYSHIPPED, 'java::lang::LazyStatic', sub { 'org::allbinary::logic::communication::smtp::event::UserEmailEventNameData'->new($org::allbinary::business::user::commerce::inventory::order::OrderHistoryData::PARTIALLYSHIPPED) };
+tie our $ORDERSHIPPED, 'java::lang::LazyStatic', sub { 'org::allbinary::logic::communication::smtp::event::UserEmailEventNameData'->new($org::allbinary::business::user::commerce::inventory::order::OrderHistoryData::SHIPPED) };
+tie our $QUOTEREQUEST, 'java::lang::LazyStatic', sub { 'org::allbinary::logic::communication::smtp::event::UserEmailEventNameData'->new("Quote Request") };
+tie our $NEWPASSWORD, 'java::lang::LazyStatic', sub { 'org::allbinary::logic::communication::smtp::event::UserEmailEventNameData'->new("New Password") };
 
 sub _init_fields {
     my ($self) = @_;
@@ -55,7 +56,7 @@ sub _init_fields {
 sub new {
     my ($class, $eventHandlerName) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
         $self->{eventHandlerName} = $eventHandlerName;
         $self->initNextId();
         $org::allbinary::logic::communication::smtp::event::UserEmailEventNameData::userNameEvenNameHashMap->put($self->{eventHandlerName}, $self);
@@ -93,9 +94,11 @@ sub toString {
         return $self->{eventHandlerName};
 }
 
-use java::util::HashMap;
-use org::allbinary::business::user::commerce::inventory::order::OrderHistoryData;
-use org::allbinary::logic::StdUtil;
+use java::lang::Object ();
+use java::lang::LazyStatic ();
+use java::util::HashMap ();
+use org::allbinary::business::user::commerce::inventory::order::OrderHistoryData ();
+use org::allbinary::logic::StdUtil ();
 
 1;
 

@@ -17,7 +17,7 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
-use parent -norequire,'org::osgi::framework::BundleActivator';
+use parent -norequire,'java::lang::Object','org::osgi::framework::BundleActivator';
 
 our $context = undef;
 our $CRYPT_REGISTRY_NAME = "bundle.abcs.logic.system.loader.CryptService";
@@ -32,7 +32,7 @@ sub _init_fields {
 sub new {
     my ($class) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
     return $self;
 }
 
@@ -76,15 +76,16 @@ sub stop {
         $self->{logUtil}->putF($self->{commonStrings}->{START}, $self, "stop");
 }
 
-use org::osgi::framework::BundleActivator;
-use org::osgi::framework::BundleContext;
-use org::osgi::framework::ServiceReference;
-use org::osgi::framework::ServiceRegistration;
-use org::allbinary::bundle::logic::system::loader::CryptServiceFactory;
-use org::allbinary::logic::StdUtil;
-use org::allbinary::logic::communication::log::LogUtil;
-use org::allbinary::string::CommonStrings;
-use org::allbinary::util::ABHashtable;
+use java::lang::Object ();
+use org::osgi::framework::BundleActivator ();
+use org::osgi::framework::BundleContext ();
+use org::osgi::framework::ServiceReference ();
+use org::osgi::framework::ServiceRegistration ();
+use org::allbinary::bundle::logic::system::loader::CryptServiceFactory ();
+use org::allbinary::logic::StdUtil ();
+use org::allbinary::logic::communication::log::LogUtil ();
+use org::allbinary::string::CommonStrings ();
+use org::allbinary::util::ABHashtable ();
 
 1;
 

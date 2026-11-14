@@ -19,7 +19,7 @@ use feature 'try';
 no warnings 'experimental::try';
 use parent -norequire,'org::allbinary::logic::util::event::handler::BasicEventHandler';
 
-our $SINGLETON = 'org::allbinary::bounds::event::BoundsChangeEventHandler'->new();
+tie our $SINGLETON, 'java::lang::LazyStatic', sub { 'org::allbinary::bounds::event::BoundsChangeEventHandler'->new() };
 
 
 sub new {
@@ -42,9 +42,11 @@ sub process {
         $boundsChangeEventListener->onBoundsChangeEvent($eventObject);
 }
 
-use org::allbinary::logic::util::event::AllBinaryEventObject;
-use org::allbinary::logic::util::event::EventListenerInterface;
-use org::allbinary::logic::util::event::handler::BasicEventHandler;
+use java::lang::Object ();
+use java::lang::LazyStatic ();
+use org::allbinary::logic::util::event::AllBinaryEventObject ();
+use org::allbinary::logic::util::event::EventListenerInterface ();
+use org::allbinary::logic::util::event::handler::BasicEventHandler ();
 
 1;
 

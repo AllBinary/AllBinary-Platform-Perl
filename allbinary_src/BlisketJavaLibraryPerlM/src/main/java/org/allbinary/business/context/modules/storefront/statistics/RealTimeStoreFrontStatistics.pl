@@ -17,7 +17,7 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
-use parent -norequire,'org::allbinary::business::context::modules::storefront::statistics::StoreFrontStatisticsInterface';
+use parent -norequire,'java::lang::Object','org::allbinary::business::context::modules::storefront::statistics::StoreFrontStatisticsInterface';
 
 
 sub _init_fields {
@@ -32,7 +32,7 @@ sub _init_fields {
 sub new {
     my ($class, $storeFrontInterface) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
         $self->{storeFrontAdvertisementsStatisticsInterface} = 'org::allbinary::business::context::modules::storefront::statistics::advertisements::StoreFrontAdvertisementsStatistics'->new($storeFrontInterface);
         $self->{storeFrontUsersStatisticsInterface} = 'org::allbinary::business::context::modules::storefront::statistics::users::StoreFrontUsersStatistics'->new($storeFrontInterface);
         $self->{storeFrontInventoryStatisticsInterface} = 'org::allbinary::business::context::modules::storefront::statistics::inventory::StoreFrontInventoryStatistics'->new($storeFrontInterface);
@@ -64,16 +64,17 @@ sub getOrders {
         return $self->{storeFrontOrderHistoryStatisticsInterface};
 }
 
-use org::allbinary::business::context::modules::storefront::StoreFrontInterface;
-use org::allbinary::business::context::modules::storefront::statistics::advertisements::StoreFrontAdvertisementsStatistics;
-use org::allbinary::business::context::modules::storefront::statistics::advertisements::StoreFrontAdvertisementsStatisticsInterface;
-use org::allbinary::business::context::modules::storefront::statistics::inventory::StoreFrontInventoryStatistics;
-use org::allbinary::business::context::modules::storefront::statistics::inventory::StoreFrontInventoryStatisticsInterface;
-use org::allbinary::business::context::modules::storefront::statistics::orders::history::StoreFrontOrdersHistoryStatistics;
-use org::allbinary::business::context::modules::storefront::statistics::orders::history::StoreFrontOrdersHistoryStatisticsInterface;
-use org::allbinary::business::context::modules::storefront::statistics::users::StoreFrontUsersStatistics;
-use org::allbinary::business::context::modules::storefront::statistics::users::StoreFrontUsersStatisticsInterface;
-use org::allbinary::business::context::modules::storefront::statistics::StoreFrontStatisticsInterface;
+use java::lang::Object ();
+use org::allbinary::business::context::modules::storefront::StoreFrontInterface ();
+use org::allbinary::business::context::modules::storefront::statistics::advertisements::StoreFrontAdvertisementsStatistics ();
+use org::allbinary::business::context::modules::storefront::statistics::advertisements::StoreFrontAdvertisementsStatisticsInterface ();
+use org::allbinary::business::context::modules::storefront::statistics::inventory::StoreFrontInventoryStatistics ();
+use org::allbinary::business::context::modules::storefront::statistics::inventory::StoreFrontInventoryStatisticsInterface ();
+use org::allbinary::business::context::modules::storefront::statistics::orders::history::StoreFrontOrdersHistoryStatistics ();
+use org::allbinary::business::context::modules::storefront::statistics::orders::history::StoreFrontOrdersHistoryStatisticsInterface ();
+use org::allbinary::business::context::modules::storefront::statistics::users::StoreFrontUsersStatistics ();
+use org::allbinary::business::context::modules::storefront::statistics::users::StoreFrontUsersStatisticsInterface ();
+use org::allbinary::business::context::modules::storefront::statistics::StoreFrontStatisticsInterface ();
 
 1;
 

@@ -25,7 +25,7 @@ sub _init_fields {
     my ($self) = @_;
     $self->{glUtil} = 'org::allbinary::opengles::GLUtil'->getInstance();
     $self->{textureVertexFloatBuffer} = 'java::nio::ByteBuffer'->allocateDirect(4 * 4 * 2)->order('java::nio::ByteOrder'->nativeOrder())->asFloatBuffer();
-    $self->{regionRectangleFloatArray} = [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0];
+    $self->{regionRectangleFloatArray} = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
     $self->{regionRectangleVertexFloatBuffer} = 'java::nio::ByteBuffer'->allocateDirect(4 * 4 * 3)->order('java::nio::ByteOrder'->nativeOrder())->asFloatBuffer();
     $self->{regionTextureRectangleFloatArray} = [(0.0) x (8)];
     $self->{regionTextureVertexFloatBuffer} = 'java::nio::ByteBuffer'->allocateDirect(4 * 4 * 2)->order('java::nio::ByteOrder'->nativeOrder())->asFloatBuffer();
@@ -35,7 +35,7 @@ sub _init_fields {
 sub new {
     my ($class, $image, $bitmapFactory, $textureFactory) = @_;
     my $self = $class->SUPER::new($image, $bitmapFactory, $textureFactory);
-    $self->_init_fields();
+    _init_fields($self);
         # super(...) made $self above
         $self->initVertices();
         $self->{regionRectangleVertexFloatBuffer}->put('java::nio::FloatBuffer'->wrap($self->{regionRectangleFloatArray}));
@@ -80,8 +80,8 @@ sub drawRegion {
         $self->{regionRectangleFloatArray}->[9] = $self->{regionRectangleFloatArray}->[3];
         $self->{regionRectangleFloatArray}->[10] = $self->{regionRectangleFloatArray}->[7];
         $self->{regionTextureRectangleFloatArray}->[0] = $x_src / $self->getWidth();
-        $self->{regionTextureRectangleFloatArray}->[1] = (($y_src + $height)) / $self->getHeight();
-        $self->{regionTextureRectangleFloatArray}->[2] = (($x_src + $width)) / $self->getWidth();
+        $self->{regionTextureRectangleFloatArray}->[1] = ($y_src + $height) / $self->getHeight();
+        $self->{regionTextureRectangleFloatArray}->[2] = ($x_src + $width) / $self->getWidth();
         $self->{regionTextureRectangleFloatArray}->[3] = $self->{regionTextureRectangleFloatArray}->[1];
         $self->{regionTextureRectangleFloatArray}->[4] = $self->{regionTextureRectangleFloatArray}->[0];
         $self->{regionTextureRectangleFloatArray}->[5] = $y_src / $self->getHeight();
@@ -105,9 +105,9 @@ sub drawRegion {
 sub draw {
     my ($self, $gl, $x, $y, $z) = @_;
         $self->{regionRectangleFloatArray}->[0] = $x;
-        $self->{regionRectangleFloatArray}->[7] = 'org::allbinary::graphics::displayable::DisplayInfoSingleton'->getInstance()->getLastHeight() - $y;
+        $self->{regionRectangleFloatArray}->[7] = ('org::allbinary::graphics::displayable::DisplayInfoSingleton'->getInstance()->getLastHeight() - $y);
         $self->{regionRectangleFloatArray}->[1] = $self->{regionRectangleFloatArray}->[7] - $self->getHeight();
-        $self->{regionRectangleFloatArray}->[3] = $x + $self->getWidth();
+        $self->{regionRectangleFloatArray}->[3] = ($x + $self->getWidth());
         $self->{regionRectangleFloatArray}->[4] = $self->{regionRectangleFloatArray}->[1];
         $self->{regionRectangleFloatArray}->[6] = $x;
         $self->{regionRectangleFloatArray}->[9] = $self->{regionRectangleFloatArray}->[3];
@@ -126,18 +126,19 @@ sub draw {
         $gl->glDisable($javax::microedition::khronos::opengles::GL10::GL_TEXTURE_2D);
 }
 
-# use java::nio::ByteBuffer;
-# use java::nio::ByteOrder;
-# use java::nio::FloatBuffer;
-# use javax::microedition::khronos::opengles::GL;
-# use javax::microedition::khronos::opengles::GL10;
-# use javax::microedition::lcdui::Image;
-use org::allbinary::graphics::opengles::OpenGLLogUtil;
-use org::allbinary::graphics::displayable::DisplayInfoSingleton;
-use org::allbinary::opengles::GLUtil;
-use org::allbinary::platform::graphics::PlatformBitmapBaseFactory;
-use org::allbinary::platform::opengles::PlatformTextureBaseFactory;
-use org::allbinary::image::opengles::OpenGLESImage;
+use java::lang::Object ();
+# use java::nio::ByteBuffer ();
+# use java::nio::ByteOrder ();
+# use java::nio::FloatBuffer ();
+use javax::microedition::khronos::opengles::GL ();
+use javax::microedition::khronos::opengles::GL10 ();
+use javax::microedition::lcdui::Image ();
+use org::allbinary::graphics::opengles::OpenGLLogUtil ();
+use org::allbinary::graphics::displayable::DisplayInfoSingleton ();
+use org::allbinary::opengles::GLUtil ();
+use org::allbinary::platform::graphics::PlatformBitmapBaseFactory ();
+use org::allbinary::platform::opengles::PlatformTextureBaseFactory ();
+use org::allbinary::image::opengles::OpenGLESImage ();
 
 1;
 

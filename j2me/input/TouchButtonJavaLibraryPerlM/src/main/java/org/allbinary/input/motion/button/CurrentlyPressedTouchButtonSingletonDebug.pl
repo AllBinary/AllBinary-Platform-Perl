@@ -19,13 +19,13 @@ use feature 'try';
 no warnings 'experimental::try';
 use parent -norequire,'org::allbinary::input::motion::button::CurrentlyPressedTouchButtonSingleton';
 
-our $instanceC = 'org::allbinary::input::motion::button::CurrentlyPressedTouchButtonSingletonDebug'->new();
+tie our $instanceC, 'java::lang::LazyStatic', sub { 'org::allbinary::input::motion::button::CurrentlyPressedTouchButtonSingletonDebug'->new() };
 
 sub _init_fields {
     my ($self) = @_;
     $self->{string} = 'org::allbinary::logic::string::StringUtil'->getInstance()->{EMPTY_STRING};
     $self->{listString} = 'org::allbinary::logic::string::StringUtil'->getInstance()->{EMPTY_STRING};
-    $self->{append} = 'org::allbinary::logic::string::StringUtil'->getInstance()->{EMPTY_STRING};
+    $self->{appendText} = 'org::allbinary::logic::string::StringUtil'->getInstance()->{EMPTY_STRING};
     $self->{PRESSED_AND_FIRED} = "pressed & fired";
     $self->{PRESSED_AND_NOT_FIRED} = "pressed in button but not fired";
     $self->{ASSOCIATED_RELEASED_AND_FIRED} = "assoc. rel & fired";
@@ -37,7 +37,7 @@ sub _init_fields {
 sub new {
     my ($class) = @_;
     my $self = $class->SUPER::new();
-    $self->_init_fields();
+    _init_fields($self);
     return $self;
 }
 
@@ -54,22 +54,22 @@ sub appendTouchButtonInput {
         $stringBuffer->append($touchButtonInput->toString());
         $stringBuffer->append('org::allbinary::string::CommonSeps'->getInstance()->{SPACE});
         $stringBuffer->append($append);
-        $self->{append} = $stringBuffer->toString();
-        $self->{string} = 'org::allbinary::logic::string::StringMaker'->new()->append($self->{listString})->append($self->{append})->toString();
+        $self->{appendText} = $stringBuffer->toString();
+        $self->{string} = 'org::allbinary::logic::string::StringMaker'->new()->append($self->{listString})->append($self->{appendText})->toString();
 }
 
 
 sub append {
     my ($self, $append) = @_;
-        $self->{append} = 'org::allbinary::logic::string::StringMaker'->new()->append($self->{append})->append($append)->toString();
-        $self->{string} = 'org::allbinary::logic::string::StringMaker'->new()->append($self->{listString})->append($self->{append})->toString();
+        $self->{appendText} = 'org::allbinary::logic::string::StringMaker'->new()->append($self->{appendText})->append($append)->toString();
+        $self->{string} = 'org::allbinary::logic::string::StringMaker'->new()->append($self->{listString})->append($self->{appendText})->toString();
 }
 
 
 sub clearLog {
     my ($self, $x, $y) = @_;
-        $self->{append} = 'org::allbinary::logic::string::StringMaker'->new()->append('org::allbinary::graphics::GPoint'->toStringStatic($x, $y, 0))->append('org::allbinary::string::CommonSeps'->getInstance()->{SPACE})->toString();
-        $self->{string} = 'org::allbinary::logic::string::StringMaker'->new()->append($self->{listString})->append($self->{append})->toString();
+        $self->{appendText} = 'org::allbinary::logic::string::StringMaker'->new()->append('org::allbinary::graphics::GPoint'->toStringStatic($x, $y, 0))->append('org::allbinary::string::CommonSeps'->getInstance()->{SPACE})->toString();
+        $self->{string} = 'org::allbinary::logic::string::StringMaker'->new()->append($self->{listString})->append($self->{appendText})->toString();
 }
 
 
@@ -113,7 +113,7 @@ sub removeAt {
     my ($self, $index) = @_;
         my $touchButtonInput = $self->SUPER::removeAt($index);
         $self->{listString} = $self->{list}->toString();
-        $self->{string} = 'org::allbinary::logic::string::StringMaker'->new()->append($self->{listString})->append($self->{append})->toString();
+        $self->{string} = 'org::allbinary::logic::string::StringMaker'->new()->append($self->{listString})->append($self->{appendText})->toString();
         return $touchButtonInput;
 }
 
@@ -122,7 +122,7 @@ sub remove {
     my ($self, $touchButtonInput) = @_;
         my $isRemoved = $self->SUPER::remove($touchButtonInput);
         $self->{listString} = $self->{list}->toString();
-        $self->{string} = 'org::allbinary::logic::string::StringMaker'->new()->append($self->{listString})->append($self->{append})->toString();
+        $self->{string} = 'org::allbinary::logic::string::StringMaker'->new()->append($self->{listString})->append($self->{appendText})->toString();
         return $isRemoved;
 }
 
@@ -131,7 +131,7 @@ sub add {
     my ($self, $touchButtonInput) = @_;
         $self->SUPER::add($touchButtonInput);
         $self->{listString} = $self->{list}->toString();
-        $self->{string} = 'org::allbinary::logic::string::StringMaker'->new()->append($self->{listString})->append($self->{append})->toString();
+        $self->{string} = 'org::allbinary::logic::string::StringMaker'->new()->append($self->{listString})->append($self->{appendText})->toString();
 }
 
 
@@ -140,11 +140,13 @@ sub toString {
         return $self->{string};
 }
 
-use org::allbinary::graphics::GPoint;
-use org::allbinary::logic::string::StringMaker;
-use org::allbinary::logic::string::StringUtil;
-use org::allbinary::string::CommonSeps;
-use org::allbinary::input::motion::button::CurrentlyPressedTouchButtonSingleton;
+use java::lang::Object ();
+use java::lang::LazyStatic ();
+use org::allbinary::graphics::GPoint ();
+use org::allbinary::logic::string::StringMaker ();
+use org::allbinary::logic::string::StringUtil ();
+use org::allbinary::string::CommonSeps ();
+use org::allbinary::input::motion::button::CurrentlyPressedTouchButtonSingleton ();
 
 1;
 

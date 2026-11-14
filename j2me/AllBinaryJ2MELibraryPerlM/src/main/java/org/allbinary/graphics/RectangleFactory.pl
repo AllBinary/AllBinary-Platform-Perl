@@ -17,8 +17,9 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
-our $SINGLETON = 'org::allbinary::graphics::Rectangle'->new('org::allbinary::graphics::PointFactory'->getInstance()->{ZERO_ZERO}, 0, 0);
+tie our $SINGLETON, 'java::lang::LazyStatic', sub { 'org::allbinary::graphics::Rectangle'->new('org::allbinary::graphics::PointFactory'->getInstance()->{ZERO_ZERO}, 0, 0) };
 our $ARRAY_OF_ARRAYS = [map { [(undef) x (0)] } 1 .. (0)];
 
 sub new {
@@ -27,8 +28,10 @@ sub new {
     return $self;
 }
 
-use org::allbinary::graphics::Rectangle;
-use org::allbinary::graphics::PointFactory;
+use java::lang::Object ();
+use java::lang::LazyStatic ();
+use org::allbinary::graphics::Rectangle ();
+use org::allbinary::graphics::PointFactory ();
 
 1;
 

@@ -17,6 +17,7 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
 our $PATH = "G:\\mnt\\bc\\mydev\\work\\allbinary_src\\licensing\\data\\";
 
@@ -66,12 +67,13 @@ sub main {
         $initInfo->printInitInfo();
 }
 
-use org::allbinary::business::init::LicenseInitInfo;
-use org::allbinary::business::init::LicenseInitInfoUtil;
-use org::allbinary::logic::io::file::FileFactory;
-use org::allbinary::globals::PATH_GLOBALS;
-use org::allbinary::util::BasicArrayList;
-use java::lang::System;
+use java::lang::Object ();
+use org::allbinary::business::init::LicenseInitInfo ();
+use org::allbinary::business::init::LicenseInitInfoUtil ();
+use org::allbinary::logic::io::file::FileFactory ();
+use org::allbinary::globals::PATH_GLOBALS ();
+use org::allbinary::util::BasicArrayList ();
+use java::lang::System ();
 
 1;
 

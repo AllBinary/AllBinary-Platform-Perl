@@ -38,7 +38,7 @@ sub _init_fields {
 sub new {
     my ($class, $animationInterface, $healthInterface, $location, $direction) = @_;
     my $self = $class->SUPER::new($location, $direction, 2, 'org::allbinary::graphics::color::BasicColorFactory'->getInstance()->{WHITE});
-    $self->_init_fields();
+    _init_fields($self);
         # super(...) made $self above
         $self->{animationInterface} = $animationInterface;
         $self->{healthInterface} = $healthInterface;
@@ -102,17 +102,18 @@ sub paintThreed {
     my ($self, $graphics) = @_;
 }
 
-# use javax::microedition::lcdui::Graphics;
-use org::allbinary::animation::Animation;
-use org::allbinary::game::graphics::hud::BasicHud;
-use org::allbinary::game::health::Health;
-use org::allbinary::game::health::HealthListenerInterface;
-use org::allbinary::graphics::color::BasicColorFactory;
-use org::allbinary::graphics::paint::PaintableInterface;
-use org::allbinary::time::GameTickTimeDelayHelper;
-use org::allbinary::time::GameTickTimeDelayHelperFactory;
-use org::allbinary::time::NoTimeDelayHelper;
-use org::allbinary::time::TimeDelayHelper;
+use java::lang::Object ();
+use javax::microedition::lcdui::Graphics ();
+use org::allbinary::animation::Animation ();
+use org::allbinary::game::graphics::hud::BasicHud ();
+use org::allbinary::game::health::Health ();
+use org::allbinary::game::health::HealthListenerInterface ();
+use org::allbinary::graphics::color::BasicColorFactory ();
+use org::allbinary::graphics::paint::PaintableInterface ();
+use org::allbinary::time::GameTickTimeDelayHelper ();
+use org::allbinary::time::GameTickTimeDelayHelperFactory ();
+use org::allbinary::time::NoTimeDelayHelper ();
+use org::allbinary::time::TimeDelayHelper ();
 
 1;
 

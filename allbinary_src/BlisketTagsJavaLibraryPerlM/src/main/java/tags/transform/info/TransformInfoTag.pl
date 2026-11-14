@@ -47,7 +47,7 @@ sub new {
 sub _new0 {
     my ($class) = @_;
     my $self = $class->SUPER::new('taghelpers::transform::info::TransformInfoRequestHelperFactory'->new());
-    $self->_init_fields();
+    _init_fields($self);
         # super(...) made $self above
     return $self;
 }
@@ -56,7 +56,7 @@ sub _new0 {
 sub _new1 {
     my ($class, $tagHelperFactoryInterface) = @_;
     my $self = $class->SUPER::new($tagHelperFactoryInterface);
-    $self->_init_fields();
+    _init_fields($self);
         # super(...) made $self above
     return $self;
 }
@@ -165,15 +165,16 @@ sub doStartTag {
         }
 }
 
-# use javax::servlet::jsp::JspTagException;
-use admin::taghelpers::TagHelperFactoryInterface;
-use org::allbinary::business::context::modules::storefront::StoreFrontData;
-use org::allbinary::logic::communication::http::request::AbResponseHandler;
-use org::allbinary::logic::communication::log::LogUtil;
-use org::allbinary::logic::io::OutputTypeData;
-use org::allbinary::logic::visual::transform::info::TransformInfoData;
-use taghelpers::transform::info::TransformInfoRequestHelperFactory;
-use tags::ModifyTag;
+use java::lang::Object ();
+# use javax::servlet::jsp::JspTagException ();
+use admin::taghelpers::TagHelperFactoryInterface ();
+use org::allbinary::business::context::modules::storefront::StoreFrontData ();
+use org::allbinary::logic::communication::http::request::AbResponseHandler ();
+use org::allbinary::logic::communication::log::LogUtil ();
+use org::allbinary::logic::io::OutputTypeData ();
+use org::allbinary::logic::visual::transform::info::TransformInfoData ();
+use taghelpers::transform::info::TransformInfoRequestHelperFactory ();
+use tags::ModifyTag ();
 
 1;
 

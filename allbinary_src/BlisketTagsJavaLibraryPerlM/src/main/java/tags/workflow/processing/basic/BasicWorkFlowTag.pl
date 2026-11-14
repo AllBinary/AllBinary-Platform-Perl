@@ -30,7 +30,7 @@ sub _init_fields {
 sub new {
     my ($class) = @_;
     my $self = $class->SUPER::new();
-    $self->_init_fields();
+    _init_fields($self);
         if ($tags::workflow::processing::basic::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($tags::workflow::processing::basic::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{JSPTAG})) {
             $self->{logUtil}->putF($self->{commonStrings}->{START}, $self, $self->{commonStrings}->{CONSTRUCTOR});
         }
@@ -53,11 +53,12 @@ sub doStartTag {
         }
 }
 
-# use javax::servlet::jsp::JspTagException;
-use org::allbinary::business::DynamicObjectData;
-use org::allbinary::logic::communication::http::request::AbResponseHandler;
-use org::allbinary::logic::communication::log::LogUtil;
-use tags::StoreWorkFlowTag;
+use java::lang::Object ();
+# use javax::servlet::jsp::JspTagException ();
+use org::allbinary::business::DynamicObjectData ();
+use org::allbinary::logic::communication::http::request::AbResponseHandler ();
+use org::allbinary::logic::communication::log::LogUtil ();
+use tags::StoreWorkFlowTag ();
 
 1;
 

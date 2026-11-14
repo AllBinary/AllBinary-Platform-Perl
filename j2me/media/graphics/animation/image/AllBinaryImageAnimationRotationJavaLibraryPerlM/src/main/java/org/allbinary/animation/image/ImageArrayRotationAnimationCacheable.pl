@@ -40,11 +40,12 @@ sub toString {
         return 'org::allbinary::logic::string::StringUtil'->getInstance()->{EMPTY_STRING};
 }
 
-use org::allbinary::animation::AnimationBehavior;
-use org::allbinary::logic::NullUtil;
-use org::allbinary::logic::string::StringUtil;
-use org::allbinary::logic::util::cache::CacheableInterface;
-use org::allbinary::animation::image::AdjustedImageArrayRotationAnimation;
+use java::lang::Object ();
+use org::allbinary::animation::AnimationBehavior ();
+use org::allbinary::logic::NullUtil ();
+use org::allbinary::logic::string::StringUtil ();
+use org::allbinary::logic::util::cache::CacheableInterface ();
+use org::allbinary::animation::image::AdjustedImageArrayRotationAnimation ();
 
 1;
 

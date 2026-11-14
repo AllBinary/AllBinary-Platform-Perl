@@ -57,7 +57,7 @@ sub strafeRight {
     die "abstract method strafeRight";
 }
 
-use org::allbinary::graphics::paint::PaintableInterface;
+use org::allbinary::graphics::paint::PaintableInterface ();
 
 1;
 

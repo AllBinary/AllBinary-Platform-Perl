@@ -35,7 +35,7 @@ sub _init_fields {
 sub new {
     my ($class) = @_;
     my $self = $class->SUPER::new();
-    $self->_init_fields();
+    _init_fields($self);
     return $self;
 }
 
@@ -200,10 +200,11 @@ sub getBuildingList {
         return $self->{buildingList};
 }
 
-use org::allbinary::logic::string::StringMaker;
-use org::allbinary::util::BasicArrayList;
-use org::allbinary::util::BasicArrayListD;
-use org::allbinary::game::layer::PlayerOwnedRTSLayers;
+use java::lang::Object ();
+use org::allbinary::logic::string::StringMaker ();
+use org::allbinary::util::BasicArrayList ();
+use org::allbinary::util::BasicArrayListD ();
+use org::allbinary::game::layer::PlayerOwnedRTSLayers ();
 
 1;
 

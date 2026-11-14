@@ -29,8 +29,9 @@ sub new {
     return $self;
 }
 
-use admin::taghelpers::PaymentTransactionHelperFactory;
-use admin::tags::TableTag;
+use java::lang::Object ();
+use admin::taghelpers::PaymentTransactionHelperFactory ();
+use admin::tags::TableTag ();
 
 1;
 

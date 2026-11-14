@@ -17,7 +17,7 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
-use parent -norequire,'org::allbinary::logic::util::visitor::VisitorInterface';
+use parent -norequire,'java::lang::Object','org::allbinary::logic::util::visitor::VisitorInterface';
 
 
 sub _init_fields {
@@ -30,7 +30,7 @@ sub _init_fields {
 sub new {
     my ($class, $filterStringBasicArrayList) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
         $self->setFilterStringBasicArrayList($filterStringBasicArrayList);
         'org::allbinary::logic::communication::log::PreLogUtil'->put("Filter BasicArrayList: " . $self->getFilterStringBasicArrayList()->toString(), $self, $self->{commonStrings}->{CONSTRUCTOR});
     return $self;
@@ -77,11 +77,12 @@ sub visit {
         return 0;
 }
 
-use org::allbinary::logic::communication::log::PreLogUtil;
-use org::allbinary::logic::io::file::AbFile;
-use org::allbinary::logic::util::visitor::VisitorInterface;
-use org::allbinary::string::CommonStrings;
-use org::allbinary::util::BasicArrayList;
+use java::lang::Object ();
+use org::allbinary::logic::communication::log::PreLogUtil ();
+use org::allbinary::logic::io::file::AbFile ();
+use org::allbinary::logic::util::visitor::VisitorInterface ();
+use org::allbinary::string::CommonStrings ();
+use org::allbinary::util::BasicArrayList ();
 
 1;
 

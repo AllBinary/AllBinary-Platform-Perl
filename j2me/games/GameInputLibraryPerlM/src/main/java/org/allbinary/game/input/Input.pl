@@ -17,6 +17,7 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
 
 sub _init_fields {
@@ -29,7 +30,7 @@ sub _init_fields {
 sub new {
     my ($class, $id, $name) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
         $self->setId($id);
         $self->setName($name);
     return $self;
@@ -70,8 +71,9 @@ sub toString {
         return $stringBuffer->toString();
 }
 
-use org::allbinary::logic::string::StringMaker;
-use org::allbinary::logic::string::StringUtil;
+use java::lang::Object ();
+use org::allbinary::logic::string::StringMaker ();
+use org::allbinary::logic::string::StringUtil ();
 
 1;
 

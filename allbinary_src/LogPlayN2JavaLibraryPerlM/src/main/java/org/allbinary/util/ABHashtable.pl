@@ -100,11 +100,10 @@ sub hashCode {
         return $self->SUPER::hashCode();
 }
 
-use java::util::Enumeration;
-use java::util::Hashtable;
-# use java::util::Map;
-# use java::util::Set;
-# use jsinterop::annotations::JsType;
+use java::lang::Object ();
+use java::util::Enumeration ();
+use java::util::Hashtable ();
+# use jsinterop::annotations::JsType ();
 
 1;
 

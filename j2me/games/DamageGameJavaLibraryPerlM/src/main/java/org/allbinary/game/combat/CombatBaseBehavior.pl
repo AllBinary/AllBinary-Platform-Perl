@@ -17,8 +17,9 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
-our $NULL_COMBAT_BEHAVIOR = 'org::allbinary::game::combat::CombatBaseBehavior'->new('org::allbinary::game::combat::damage::DamageableBaseBehavior'->getInstance(), 'org::allbinary::game::combat::destroy::DestroyableBaseBehavior'->getInstance());
+tie our $NULL_COMBAT_BEHAVIOR, 'java::lang::LazyStatic', sub { 'org::allbinary::game::combat::CombatBaseBehavior'->new('org::allbinary::game::combat::damage::DamageableBaseBehavior'->getInstance(), 'org::allbinary::game::combat::destroy::DestroyableBaseBehavior'->getInstance()) };
 
 sub _init_fields {
     my ($self) = @_;
@@ -31,7 +32,7 @@ sub _init_fields {
 sub new {
     my ($class, $damageableBaseBehavior, $destroyableBaseBehavior) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
         $self->{damageableBaseBehavior} = $damageableBaseBehavior;
         $self->{destroyableBaseBehavior} = $destroyableBaseBehavior;
     return $self;
@@ -61,8 +62,10 @@ sub setReadyForExplosion {
         $self->{readyForExplosion} = $readyForExplosion;
 }
 
-use org::allbinary::game::combat::damage::DamageableBaseBehavior;
-use org::allbinary::game::combat::destroy::DestroyableBaseBehavior;
+use java::lang::Object ();
+use java::lang::LazyStatic ();
+use org::allbinary::game::combat::damage::DamageableBaseBehavior ();
+use org::allbinary::game::combat::destroy::DestroyableBaseBehavior ();
 
 1;
 

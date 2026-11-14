@@ -19,7 +19,7 @@ use feature 'try';
 no warnings 'experimental::try';
 use parent -norequire,'org::allbinary::logic::util::event::handler::BasicEventHandler';
 
-our $gameKeyEventHandler = 'org::allbinary::game::input::mapping::event::InputMappingEventHandler'->new();
+tie our $gameKeyEventHandler, 'java::lang::LazyStatic', sub { 'org::allbinary::game::input::mapping::event::InputMappingEventHandler'->new() };
 
 
 sub new {
@@ -42,9 +42,11 @@ sub process {
         $inputMappingEventListenerInterface->onInputMappingEvent($eventObject);
 }
 
-use org::allbinary::logic::util::event::AllBinaryEventObject;
-use org::allbinary::logic::util::event::EventListenerInterface;
-use org::allbinary::logic::util::event::handler::BasicEventHandler;
+use java::lang::Object ();
+use java::lang::LazyStatic ();
+use org::allbinary::logic::util::event::AllBinaryEventObject ();
+use org::allbinary::logic::util::event::EventListenerInterface ();
+use org::allbinary::logic::util::event::handler::BasicEventHandler ();
 
 1;
 

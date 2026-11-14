@@ -17,8 +17,9 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
-our $instance = 'org::allbinary::logic::communication::sql::AbSqlTableUtil'->new();
+tie our $instance, 'java::lang::LazyStatic', sub { 'org::allbinary::logic::communication::sql::AbSqlTableUtil'->new() };
 
 sub _init_fields {
     my ($self) = @_;
@@ -32,7 +33,7 @@ sub _init_fields {
 sub new {
     my ($class) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
     return $self;
 }
 
@@ -60,12 +61,14 @@ sub restoreTable {
         return $stringBuffer->toString();
 }
 
-use org::allbinary::business::installer::Portion;
-use org::allbinary::logic::string::StringMaker;
-use org::allbinary::logic::string::StringUtil;
-use org::allbinary::string::CommonSeps;
-use org::allbinary::string::CommonStrings;
-use org::allbinary::logic::communication::sql::SqlStrings;
+use java::lang::Object ();
+use java::lang::LazyStatic ();
+use org::allbinary::business::installer::Portion ();
+use org::allbinary::logic::string::StringMaker ();
+use org::allbinary::logic::string::StringUtil ();
+use org::allbinary::string::CommonSeps ();
+use org::allbinary::string::CommonStrings ();
+use org::allbinary::logic::communication::sql::SqlStrings ();
 
 1;
 

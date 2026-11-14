@@ -17,8 +17,9 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
-our $instance = 'org::allbinary::business::user::role::AdminRoleFactory'->new();
+tie our $instance, 'java::lang::LazyStatic', sub { 'org::allbinary::business::user::role::AdminRoleFactory'->new() };
 
 sub _init_fields {
     my ($self) = @_;
@@ -45,7 +46,7 @@ sub getInstance {
 sub new {
     my ($class) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
         my $basicUserRoleFactory = 'org::allbinary::business::user::role::BasicUserRoleFactory'->getInstance();
         $self->{adminRoles}->add($basicUserRoleFactory->{ADMINISTRATOR});
         $self->{storeAdminRoles}->add($basicUserRoleFactory->{ADMINISTRATOR});
@@ -151,9 +152,11 @@ sub getOrderManagementRoles {
         return $self->{orderManagementRoles};
 }
 
-use org::allbinary::util::BasicArrayList;
-use org::allbinary::util::BasicArrayListD;
-use org::allbinary::business::user::role::BasicUserRoleFactory;
+use java::lang::Object ();
+use java::lang::LazyStatic ();
+use org::allbinary::util::BasicArrayList ();
+use org::allbinary::util::BasicArrayListD ();
+use org::allbinary::business::user::role::BasicUserRoleFactory ();
 
 1;
 

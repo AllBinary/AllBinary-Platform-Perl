@@ -17,6 +17,7 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
 
 sub _init_fields {
@@ -34,7 +35,7 @@ sub _init_fields {
 sub new {
     my ($class, $geographicMapInterface) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
         $self->{geographicMapInterface} = $geographicMapInterface;
         $self->{geographicMapCellPositionFactoryInterface} = $self->{geographicMapInterface}->getGeographicMapCellPositionFactoryInterface();
         $self->{tiledLayer} = $self->{geographicMapInterface}->getAllBinaryTiledLayer();
@@ -121,10 +122,11 @@ sub getRows {
         return $self->{rows};
 }
 
-use org::allbinary::logic::communication::log::LogUtil;
-use org::allbinary::game::layer::AllBinaryTiledLayer;
-use org::allbinary::logic::string::StringMaker;
-use org::allbinary::string::CommonSeps;
+use java::lang::Object ();
+use org::allbinary::logic::communication::log::LogUtil ();
+use org::allbinary::game::layer::AllBinaryTiledLayer ();
+use org::allbinary::logic::string::StringMaker ();
+use org::allbinary::string::CommonSeps ();
 
 1;
 

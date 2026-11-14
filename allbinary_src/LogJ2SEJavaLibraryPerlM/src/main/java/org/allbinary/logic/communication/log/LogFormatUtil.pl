@@ -18,8 +18,9 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
-our $instance = 'org::allbinary::logic::communication::log::LogFormatUtil'->new();
+tie our $instance, 'java::lang::LazyStatic', sub { 'org::allbinary::logic::communication::log::LogFormatUtil'->new() };
 
 sub _init_fields {
     my ($self) = @_;
@@ -48,7 +49,7 @@ sub getInstance {
 sub new {
     my ($class) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
     return $self;
 }
 
@@ -76,9 +77,6 @@ sub getS {
 
 sub getF {
     my ($self, $className, $functionName) = @_;
-        if (!defined($functionName)) {
-            $functionName = $self->{NONE};
-        }
         my $stringBuffer = 'org::allbinary::logic::string::StringMaker'->new();
         $stringBuffer->append($self->{TIME});
         $stringBuffer->append($self->{timeStampUtil}->getAsString());
@@ -96,11 +94,7 @@ sub getO {
             my $stringBuffer = 'org::allbinary::logic::string::StringMaker'->new();
             $stringBuffer->append($self->{LOG_ERROR});
             my $exceptionAsString = $exception->toString();
-            if (defined($exceptionAsString)) {
-                $stringBuffer->append($exceptionAsString);
-            } else {
-                $stringBuffer->append($self->{EMPTY});
-            }
+            $stringBuffer->append($exceptionAsString);
             $stringBuffer->append($self->{STACK_TRACE});
             if ($exception != $self->{nullUtil}->{NULL_OBJECT}) {
                 $stringBuffer->append($self->{exceptionUtil}->getStackTrace($exception));
@@ -113,13 +107,15 @@ sub getO {
         }
 }
 
-use org::allbinary::logic::NullUtil;
-use org::allbinary::logic::java::exception::ExceptionUtil;
-use org::allbinary::logic::string::StringMaker;
-use org::allbinary::logic::string::StringUtil;
-use org::allbinary::string::CommonLabels;
-use org::allbinary::string::CommonSeps;
-use org::allbinary::time::TimeStampUtil;
+use java::lang::Object ();
+use java::lang::LazyStatic ();
+use org::allbinary::logic::NullUtil ();
+use org::allbinary::logic::java::exception::ExceptionUtil ();
+use org::allbinary::logic::string::StringMaker ();
+use org::allbinary::logic::string::StringUtil ();
+use org::allbinary::string::CommonLabels ();
+use org::allbinary::string::CommonSeps ();
+use org::allbinary::time::TimeStampUtil ();
 
 1;
 

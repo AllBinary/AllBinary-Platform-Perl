@@ -17,7 +17,7 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
-use parent -norequire,'org::allbinary::layer::AllBinaryLayerFactoryInterface';
+use parent -norequire,'java::lang::Object','org::allbinary::layer::AllBinaryLayerFactoryInterface';
 
 
 sub _init_fields {
@@ -29,7 +29,7 @@ sub _init_fields {
 sub new {
     my ($class, $viewPositionFactoryInterface) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
         $self->{viewPositionFactoryInterface} = $viewPositionFactoryInterface;
     return $self;
 }
@@ -41,10 +41,11 @@ sub getInstance {
         return 'org::allbinary::game::ag::layer::weapon::mine::MineLayer'->new($self->{viewPositionFactoryInterface}->getInstance());
 }
 
-use org::allbinary::layer::AllBinaryLayer;
-use org::allbinary::layer::AllBinaryLayerFactoryInterface;
-use org::allbinary::view::ViewPositionFactoryInterface;
-use org::allbinary::game::ag::layer::weapon::mine::MineLayer;
+use java::lang::Object ();
+use org::allbinary::layer::AllBinaryLayer ();
+use org::allbinary::layer::AllBinaryLayerFactoryInterface ();
+use org::allbinary::view::ViewPositionFactoryInterface ();
+use org::allbinary::game::ag::layer::weapon::mine::MineLayer ();
 
 1;
 

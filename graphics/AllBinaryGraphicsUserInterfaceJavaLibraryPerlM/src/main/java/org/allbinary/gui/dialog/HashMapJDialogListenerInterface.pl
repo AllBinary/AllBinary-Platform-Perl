@@ -27,7 +27,7 @@ sub onHashMap {
     die "abstract method onHashMap";
 }
 
-use java::util::HashMap;
+use java::util::HashMap ();
 
 1;
 

@@ -18,6 +18,7 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
 
 sub new {
@@ -38,7 +39,8 @@ sub getInstanceF {
         return undef;
 }
 
-use org::allbinary::logic::communication::log::Log;
+use java::lang::Object ();
+use org::allbinary::logic::communication::log::Log ();
 
 1;
 

@@ -17,6 +17,7 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
 
 
@@ -31,7 +32,7 @@ sub new {
 sub createDocument {
     my ($class, $xmlFile) = @_;
         try {
-            return 'org::allbinary::data::tree::dom::document::DomDocumentHelper'->create('org::allbinary::logic::io::AbFileInputStream'->new($xmlFile));
+            return 'org::allbinary::data::tree::dom::document::DomDocumentHelper'->create('org::allbinary::logic::io::AbFileInputStream'->createFromAbFile($xmlFile));
         } catch ($e) {
             die $e;
         }
@@ -61,17 +62,18 @@ sub save {
         }
 }
 
-# use javax::xml::transform::Transformer;
-# use javax::xml::transform::TransformerFactory;
-# use javax::xml::transform::dom::DOMSource;
-# use javax::xml::transform::stream::StreamResult;
-use org::allbinary::logic::io::AbDataOutputStream;
-use org::allbinary::logic::io::AbFileInputStream;
-use org::allbinary::logic::io::DataOutputStreamFactory;
-use org::allbinary::logic::io::StreamUtil;
-use org::allbinary::logic::io::file::AbFile;
-use org::w3c::dom::Document;
-use org::allbinary::data::tree::dom::document::DomDocumentHelper;
+use java::lang::Object ();
+# use javax::xml::transform::Transformer ();
+# use javax::xml::transform::TransformerFactory ();
+# use javax::xml::transform::dom::DOMSource ();
+# use javax::xml::transform::stream::StreamResult ();
+use org::allbinary::logic::io::AbDataOutputStream ();
+use org::allbinary::logic::io::AbFileInputStream ();
+use org::allbinary::logic::io::DataOutputStreamFactory ();
+use org::allbinary::logic::io::StreamUtil ();
+use org::allbinary::logic::io::file::AbFile ();
+use org::w3c::dom::Document ();
+use org::allbinary::data::tree::dom::document::DomDocumentHelper ();
 
 1;
 

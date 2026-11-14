@@ -17,6 +17,7 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
 
 sub _init_fields {
@@ -27,7 +28,7 @@ sub _init_fields {
 sub new {
     my ($class) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
     return $self;
 }
 
@@ -41,20 +42,22 @@ sub init {
         use warnings;
         use feature 'try';
         no warnings 'experimental::try';
-        use parent -norequire,'org::allbinary::media::graphics::geography::map::GeographicMapCellPositionFactoryInitVisitorInterface';
+        use parent -norequire,'java::lang::Object','org::allbinary::media::graphics::geography::map::GeographicMapCellPositionFactoryInitVisitorInterface';
         
 
         sub _init_fields {
             my ($self) = @_;
             $self->{startLineId} = undef;
             $self->{finishLineId} = undef;
+            $self->{pathFindingInfoFactory} = undef;
         }
         
 
         sub new {
-            my ($class) = @_;
+            my ($class, $pathFindingInfoFactory) = @_;
             my $self = bless({}, $class);
-            $self->_init_fields();
+            _init_fields($self);
+                $self->{pathFindingInfoFactory} = $pathFindingInfoFactory;
                 my $raceTrackGeographicMapCellTypeFactory = $self->{geographicMapInterface}->getGeographicMapCellTypeFactory();
                 $self->{startLineId} = $raceTrackGeographicMapCellTypeFactory->getStartType();
                 $self->{finishLineId} = $raceTrackGeographicMapCellTypeFactory->getEndType();
@@ -71,13 +74,13 @@ sub init {
                     my $cellTypeId = $self->{mapArray}->[$row]->[$column];
                     my $geographicCellType = $self->{geographicMapInterface}->getCellTypeFromMapCellTypeInt($cellTypeId);
                     if ($geographicCellType == $self->{startLineId}) {
-                        $self->addStartPathFindingNode($self->{pathFindingInfo}, $cellPosition);
+                        $self->{pathFindingInfoFactory}->addStartPathFindingNode($self->{pathFindingInfo}, $cellPosition);
                     }
                     if ($geographicCellType == $self->{finishLineId}) {
                         if ($geographicCellType == $self->{startLineId}) {
-                            $self->addEndPathFindingNode($self->{pathFindingInfo}, $self->{geographicMapInterface}->getGeographicMapCellPositionFactoryInterface()->getInstance($self->{geographicMapInterface}, $cellPosition->getColumn(), $cellPosition->getRow(), $tiledLayer->getColumns(), $tiledLayer->getRows(), $tiledLayer->getCellWidth(), $tiledLayer->getCellHeight()));
+                            $self->{pathFindingInfoFactory}->addEndPathFindingNode($self->{pathFindingInfo}, $self->{geographicMapInterface}->getGeographicMapCellPositionFactoryInterface()->getInstance($self->{geographicMapInterface}, $cellPosition->getColumn(), $cellPosition->getRow(), $tiledLayer->getColumns(), $tiledLayer->getRows(), $tiledLayer->getCellWidth(), $tiledLayer->getCellHeight()));
                         } else {
-                            $self->addEndPathFindingNode($self->{pathFindingInfo}, $cellPosition);
+                            $self->{pathFindingInfoFactory}->addEndPathFindingNode($self->{pathFindingInfo}, $cellPosition);
                         }
                     }
                     my $raceTrackGeographicMapCellTypeFactory = $self->{geographicMapInterface}->getGeographicMapCellTypeFactory();
@@ -88,13 +91,13 @@ sub init {
                     }
                 } catch ($e) {
                     my $commonSeps = 'org::allbinary::string::CommonSeps'->getInstance();
-                    $self->{logUtil}->put('org::allbinary::logic::string::StringMaker'->new()->append($commonSeps->{BRACKET_OPEN})->appendint($row)->append($commonSeps->{BRACKET_CLOSE})->append($commonSeps->{BRACKET_OPEN})->appendint($column)->append("] in [")->appendint(scalar(@{$self->{mapArray}}))->append($commonSeps->{BRACKET_CLOSE})->append($commonSeps->{BRACKET_OPEN})->appendint(scalar(@{$self->{mapArray}->[0]}))->append($commonSeps->{BRACKET_CLOSE})->toString(), $self, "visit", $e);
+                    $self->{pathFindingInfoFactory}->{logUtil}->put('org::allbinary::logic::string::StringMaker'->new()->append($commonSeps->{BRACKET_OPEN})->appendint($row)->append($commonSeps->{BRACKET_CLOSE})->append($commonSeps->{BRACKET_OPEN})->appendint($column)->append("] in [")->appendint(scalar(@{$self->{mapArray}}))->append($commonSeps->{BRACKET_CLOSE})->append($commonSeps->{BRACKET_OPEN})->appendint(scalar(@{$self->{mapArray}->[0]}))->append($commonSeps->{BRACKET_CLOSE})->toString(), $self, "visit", $e);
                     die $e;
                 }
         }
         }
 
-        $geographicMapInterface->getGeographicMapCellPositionFactory()->visit('org::allbinary::media::graphics::geography::map::racetrack::RaceTrackGeographicMapCellPositionFactoryInitVisitor'->new());
+        $geographicMapInterface->getGeographicMapCellPositionFactory()->visit('org::allbinary::media::graphics::geography::map::racetrack::RaceTrackGeographicMapCellPositionFactoryInitVisitor'->new($self));
 }
 
 
@@ -118,18 +121,19 @@ sub getInstancePathFindingInfo {
         die ("RuntimeException");
 }
 
-use org::allbinary::logic::communication::log::LogUtil;
-use org::allbinary::game::layer::AllBinaryTiledLayer;
-use org::allbinary::logic::NullUtil;
-use org::allbinary::logic::string::StringMaker;
-use org::allbinary::media::graphics::geography::map::BasicGeographicMap;
-use org::allbinary::media::graphics::geography::map::GeographicMapCellPosition;
-use org::allbinary::media::graphics::geography::map::GeographicMapCellTypeFactory;
-use org::allbinary::media::graphics::geography::pathfinding::PathFindingInfo;
-use org::allbinary::media::graphics::geography::pathfinding::PathFindingNode;
-use org::allbinary::media::graphics::geography::map::GeographicMapCellPositionFactoryInitVisitorInterface;
-use org::allbinary::string::CommonSeps;
-use org::allbinary::media::graphics::geography::map::racetrack::RaceTrackRoadsGeographicMapCellHistoryFactory;
+use java::lang::Object ();
+use org::allbinary::logic::communication::log::LogUtil ();
+use org::allbinary::game::layer::AllBinaryTiledLayer ();
+use org::allbinary::logic::NullUtil ();
+use org::allbinary::logic::string::StringMaker ();
+use org::allbinary::media::graphics::geography::map::BasicGeographicMap ();
+use org::allbinary::media::graphics::geography::map::GeographicMapCellPosition ();
+use org::allbinary::media::graphics::geography::map::GeographicMapCellTypeFactory ();
+use org::allbinary::media::graphics::geography::pathfinding::PathFindingInfo ();
+use org::allbinary::media::graphics::geography::pathfinding::PathFindingNode ();
+use org::allbinary::media::graphics::geography::map::GeographicMapCellPositionFactoryInitVisitorInterface ();
+use org::allbinary::string::CommonSeps ();
+use org::allbinary::media::graphics::geography::map::racetrack::RaceTrackRoadsGeographicMapCellHistoryFactory ();
 
 1;
 

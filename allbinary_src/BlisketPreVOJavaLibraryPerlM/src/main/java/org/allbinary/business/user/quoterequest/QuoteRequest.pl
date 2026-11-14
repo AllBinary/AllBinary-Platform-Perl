@@ -17,6 +17,7 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
 
 sub _init_fields {
@@ -43,7 +44,7 @@ sub new {
 sub _new2 {
     my ($class, $userName, $request) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
         my $quoteRequestData = 'org::allbinary::business::quoterequest::QuoteRequestData'->getInstance();
         $self->{id} = 'org::allbinary::data::generator::QuoteRequestIdGenerator'->new()->getNext();
         $self->setUserName($userName);
@@ -62,7 +63,7 @@ sub _new2 {
 sub _new1 {
     my ($class, $hashMap) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
         my $quoteRequestData = 'org::allbinary::business::quoterequest::QuoteRequestData'->getInstance();
         $self->{id} = $hashMap->get($quoteRequestData->{ID});
         $self->setUserName($hashMap->get($org::allbinary::business::user::UserData::USERNAME));
@@ -252,21 +253,22 @@ sub getComments {
         return $self->{comments};
 }
 
-use java::util::Calendar;
-use java::util::HashMap;
-use org::allbinary::util::BasicArrayList;
-use org::allbinary::util::BasicArrayListD;
-# use javax::servlet::http::HttpServletRequest;
-use org::allbinary::business::entry::EntryData;
-use org::allbinary::business::quoterequest::QuoteRequestData;
-use org::allbinary::business::user::UserData;
-use org::allbinary::data::generator::QuoteRequestIdGenerator;
-use org::allbinary::logic::StdUtil;
-use org::allbinary::logic::communication::log::LogUtil;
-use org::allbinary::logic::communication::sql::AbSqlData;
-use org::allbinary::logic::string::StringMaker;
-use org::allbinary::logic::string::StringUtil;
-use org::allbinary::string::CommonStrings;
+use java::lang::Object ();
+use java::util::Calendar ();
+use java::util::HashMap ();
+use org::allbinary::util::BasicArrayList ();
+use org::allbinary::util::BasicArrayListD ();
+# use javax::servlet::http::HttpServletRequest ();
+use org::allbinary::business::entry::EntryData ();
+use org::allbinary::business::quoterequest::QuoteRequestData ();
+use org::allbinary::business::user::UserData ();
+use org::allbinary::data::generator::QuoteRequestIdGenerator ();
+use org::allbinary::logic::StdUtil ();
+use org::allbinary::logic::communication::log::LogUtil ();
+use org::allbinary::logic::communication::sql::AbSqlData ();
+use org::allbinary::logic::string::StringMaker ();
+use org::allbinary::logic::string::StringUtil ();
+use org::allbinary::string::CommonStrings ();
 
 1;
 

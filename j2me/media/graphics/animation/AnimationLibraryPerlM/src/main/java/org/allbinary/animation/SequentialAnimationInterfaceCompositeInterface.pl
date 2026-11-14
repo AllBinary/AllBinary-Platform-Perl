@@ -21,7 +21,7 @@ no warnings 'experimental::try';
 use parent -norequire,'org::allbinary::animation::IndexedAnimationInterfaceCompositeInterface';
 
 
-use org::allbinary::animation::IndexedAnimationInterfaceCompositeInterface;
+use org::allbinary::animation::IndexedAnimationInterfaceCompositeInterface ();
 
 1;
 

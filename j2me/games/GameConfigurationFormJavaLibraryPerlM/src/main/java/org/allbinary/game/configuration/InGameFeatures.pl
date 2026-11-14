@@ -80,15 +80,16 @@ sub isAny {
         return 0;
 }
 
-use org::allbinary::game::configuration::feature::Features;
-use org::allbinary::game::configuration::feature::GameFeatureChoiceGroups;
-use org::allbinary::game::configuration::feature::InGameFeatureChoiceGroups;
-use org::allbinary::game::configuration::feature::SensorFeatureFactory;
-use org::allbinary::game::configuration::feature::TouchFeatureFactory;
-use org::allbinary::init::Init;
-use org::allbinary::input::gyro::OrientationData;
-use org::allbinary::util::BasicArrayList;
-use org::allbinary::util::BasicArrayListD;
+use java::lang::Object ();
+use org::allbinary::game::configuration::feature::Features ();
+use org::allbinary::game::configuration::feature::GameFeatureChoiceGroups ();
+use org::allbinary::game::configuration::feature::InGameFeatureChoiceGroups ();
+use org::allbinary::game::configuration::feature::SensorFeatureFactory ();
+use org::allbinary::game::configuration::feature::TouchFeatureFactory ();
+use org::allbinary::init::Init ();
+use org::allbinary::input::gyro::OrientationData ();
+use org::allbinary::util::BasicArrayList ();
+use org::allbinary::util::BasicArrayListD ();
 
 1;
 

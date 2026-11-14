@@ -17,7 +17,7 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
-use parent -norequire,'org::allbinary::business::advertisement::campaign::AdvertisementCampaignsInterface';
+use parent -norequire,'java::lang::Object','org::allbinary::business::advertisement::campaign::AdvertisementCampaignsInterface';
 
 
 sub _init_fields {
@@ -29,7 +29,7 @@ sub _init_fields {
 sub new {
     my ($class, $vector) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
         $self->{advertisementsVector} = $self->{advertisementsVector};
     return $self;
 }
@@ -64,12 +64,13 @@ sub search {
         return undef;
 }
 
-use org::allbinary::util::BasicArrayList;
-use org::allbinary::util::BasicArrayListD;
-use org::allbinary::business::advertisement::AdvertisementInterface;
-use org::allbinary::business::advertisement::AdvertisementsInterface;
-use org::allbinary::business::advertisement::search::AdvertisementSearchInterface;
-use org::allbinary::business::advertisement::campaign::AdvertisementCampaignsInterface;
+use java::lang::Object ();
+use org::allbinary::util::BasicArrayList ();
+use org::allbinary::util::BasicArrayListD ();
+use org::allbinary::business::advertisement::AdvertisementInterface ();
+use org::allbinary::business::advertisement::AdvertisementsInterface ();
+use org::allbinary::business::advertisement::search::AdvertisementSearchInterface ();
+use org::allbinary::business::advertisement::campaign::AdvertisementCampaignsInterface ();
 
 1;
 

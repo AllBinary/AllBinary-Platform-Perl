@@ -52,10 +52,18 @@ sub validationInfo {
         return $org::allbinary::globals::MESSAGES::CONTACTADMIN;
 }
 
-use org::allbinary::globals::MESSAGES;
-use org::allbinary::logic::control::validate::ValidationComponentInterface;
-use org::allbinary::logic::visual::transform::info::TransformInfoInterface;
-use views::generic::basket::mini::MiniBasketView;
+
+# throws Exception
+sub getTransformInfoInterface {
+    my ($self) = @_;
+        return $self->SUPER::getTransformInfoInterface();
+}
+
+use java::lang::Object ();
+use org::allbinary::globals::MESSAGES ();
+use org::allbinary::logic::control::validate::ValidationComponentInterface ();
+use org::allbinary::logic::visual::transform::info::TransformInfoInterface ();
+use views::generic::basket::mini::MiniBasketView ();
 
 1;
 

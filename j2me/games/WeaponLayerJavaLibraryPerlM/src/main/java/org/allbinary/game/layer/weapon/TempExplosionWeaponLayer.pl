@@ -18,7 +18,7 @@ sub _init_fields {
 sub new {
     my ($class, $name, $movement, $animationInterface, $rectangle, $viewPosition, $timeDelay) = @_;
     my $self = $class->SUPER::new($name, $org::allbinary::game::multiplayer::layer::RemoteInfo::REMOTE_INFO, -1, $movement, $animationInterface, 'org::allbinary::game::layer::weapon::SimpleWeaponLayer'->createDestroyed(), $rectangle, $viewPosition);
-    $self->_init_fields();
+    _init_fields($self);
         # super(...) made $self above
         $self->{timeDelayHelper}->{delay} = $timeDelay;
     return $self;
@@ -35,16 +35,17 @@ sub processTick {
         $self->SUPER::processTick($allBinaryLayerManager);
 }
 
-use org::allbinary::animation::Animation;
-use org::allbinary::game::combat::weapon::WeaponProperties;
-use org::allbinary::game::multiplayer::layer::RemoteInfo;
-use org::allbinary::graphics::Rectangle;
-use org::allbinary::layer::AllBinaryLayerManager;
-use org::allbinary::physics::movement::Movement;
-use org::allbinary::time::GameTickTimeDelayHelperFactory;
-use org::allbinary::time::TimeDelayHelper;
-use org::allbinary::view::ViewPositionBase;
-use org::allbinary::game::layer::weapon::SimpleWeaponLayer;
+use java::lang::Object ();
+use org::allbinary::animation::Animation ();
+use org::allbinary::game::combat::weapon::WeaponProperties ();
+use org::allbinary::game::multiplayer::layer::RemoteInfo ();
+use org::allbinary::graphics::Rectangle ();
+use org::allbinary::layer::AllBinaryLayerManager ();
+use org::allbinary::physics::movement::Movement ();
+use org::allbinary::time::GameTickTimeDelayHelperFactory ();
+use org::allbinary::time::TimeDelayHelper ();
+use org::allbinary::view::ViewPositionBase ();
+use org::allbinary::game::layer::weapon::SimpleWeaponLayer ();
 
 1;
 

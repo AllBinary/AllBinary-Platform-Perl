@@ -17,10 +17,11 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
 our $NAME = "USER_CONFIGURATION_NAME";
-our $UNCRYPTED_EXTENSION = 'org::allbinary::logic::io::file::CommonDataFileStrings'->getInstance()->{UNCRYPTED_EXTENSION};
-our $ENCRYPTED_EXTENSION = 'org::allbinary::logic::io::file::CommonDataFileStrings'->getInstance()->{ENCRYPTED_EXTENSION};
+tie our $UNCRYPTED_EXTENSION, 'java::lang::LazyStatic', sub { 'org::allbinary::logic::io::file::CommonDataFileStrings'->getInstance()->{UNCRYPTED_EXTENSION} };
+tie our $ENCRYPTED_EXTENSION, 'java::lang::LazyStatic', sub { 'org::allbinary::logic::io::file::CommonDataFileStrings'->getInstance()->{ENCRYPTED_EXTENSION} };
 
 
 sub new {
@@ -29,7 +30,9 @@ sub new {
     return $self;
 }
 
-use org::allbinary::logic::io::file::CommonDataFileStrings;
+use java::lang::Object ();
+use java::lang::LazyStatic ();
+use org::allbinary::logic::io::file::CommonDataFileStrings ();
 
 1;
 

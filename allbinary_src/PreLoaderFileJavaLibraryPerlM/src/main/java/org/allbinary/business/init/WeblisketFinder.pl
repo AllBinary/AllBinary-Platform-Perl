@@ -17,8 +17,9 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
-our $instance = 'org::allbinary::business::init::WeblisketFinder'->new();
+tie our $instance, 'java::lang::LazyStatic', sub { 'org::allbinary::business::init::WeblisketFinder'->new() };
 our $KEY = "installerdata.dat";
 
 sub _init_fields {
@@ -38,7 +39,7 @@ sub getInstance {
 sub new {
     my ($class) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
     return $self;
 }
 
@@ -84,16 +85,18 @@ sub main {
         print($vector->size(), "\n");
 }
 
-use org::allbinary::logic::communication::log::LogUtil;
-use org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory;
-use org::allbinary::logic::communication::log::config::type::LogConfigTypes;
-use org::allbinary::logic::io::file::AbFile;
-use org::allbinary::logic::io::file::directory::SubDirectory;
-use org::allbinary::logic::string::StringUtil;
-use org::allbinary::string::CommonStrings;
-use org::allbinary::util::BasicArrayList;
-use org::allbinary::util::BasicArrayListD;
-use java::lang::System;
+use java::lang::Object ();
+use java::lang::LazyStatic ();
+use org::allbinary::logic::communication::log::LogUtil ();
+use org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory ();
+use org::allbinary::logic::communication::log::config::type::LogConfigTypes ();
+use org::allbinary::logic::io::file::AbFile ();
+use org::allbinary::logic::io::file::directory::SubDirectory ();
+use org::allbinary::logic::string::StringUtil ();
+use org::allbinary::string::CommonStrings ();
+use org::allbinary::util::BasicArrayList ();
+use org::allbinary::util::BasicArrayListD ();
+use java::lang::System ();
 
 1;
 

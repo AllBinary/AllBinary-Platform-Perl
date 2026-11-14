@@ -58,9 +58,9 @@ sub isFrameAllowed {
     die "abstract method isFrameAllowed";
 }
 
-# use java::awt;
-# use java::awt::image::BufferedImage;
-use org::allbinary::graphics::GPoint;
+# use java::awt ();
+# use java::awt::image::BufferedImage ();
+use org::allbinary::graphics::GPoint ();
 
 1;
 

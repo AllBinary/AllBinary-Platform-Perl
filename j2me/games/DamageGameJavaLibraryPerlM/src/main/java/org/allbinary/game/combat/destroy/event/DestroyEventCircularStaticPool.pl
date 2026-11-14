@@ -17,8 +17,9 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
-our $instance = 'org::allbinary::game::combat::destroy::event::DestroyEventCircularStaticPool'->new();
+tie our $instance, 'java::lang::LazyStatic', sub { 'org::allbinary::game::combat::destroy::event::DestroyEventCircularStaticPool'->new() };
 
 sub _init_fields {
     my ($self) = @_;
@@ -35,7 +36,7 @@ sub getInstance {
 sub new {
     my ($class) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
     return $self;
 }
 
@@ -54,10 +55,12 @@ sub getInstanceForLayer {
         return $destroyedEvent;
 }
 
-use org::allbinary::game::displayable::canvas::AllBinaryGameCanvas;
-use org::allbinary::layer::AllBinaryLayer;
-use org::allbinary::logic::util::event::AllBinaryEventCircularPool;
-use org::allbinary::game::combat::destroy::event::DestroyEventFactory;
+use java::lang::Object ();
+use java::lang::LazyStatic ();
+use org::allbinary::game::displayable::canvas::AllBinaryGameCanvas ();
+use org::allbinary::layer::AllBinaryLayer ();
+use org::allbinary::logic::util::event::AllBinaryEventCircularPool ();
+use org::allbinary::game::combat::destroy::event::DestroyEventFactory ();
 
 1;
 

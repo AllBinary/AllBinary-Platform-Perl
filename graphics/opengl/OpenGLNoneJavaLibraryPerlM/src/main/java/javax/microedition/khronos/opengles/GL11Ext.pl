@@ -157,10 +157,10 @@ sub glWeightPointerOES {
     die "abstract method glWeightPointerOES";
 }
 
-# use java::nio::Buffer;
-# use java::nio::FloatBuffer;
-# use java::nio::IntBuffer;
-# use java::nio::ShortBuffer;
+# use java::nio::Buffer ();
+# use java::nio::FloatBuffer ();
+# use java::nio::IntBuffer ();
+# use java::nio::ShortBuffer ();
 
 1;
 

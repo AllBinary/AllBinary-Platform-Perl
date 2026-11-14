@@ -30,7 +30,7 @@ sub _init_fields {
 sub new {
     my ($class, $title, $items, $border, $moveForSmallScreen, $backgroundBasicColor, $foregroundBasicColor) = @_;
     my $self = $class->SUPER::new($title, $items, 'org::allbinary::graphics::form::ItemPaintableFactory'->getInstance(), $border, -3, $moveForSmallScreen, $backgroundBasicColor, $foregroundBasicColor);
-    $self->_init_fields();
+    _init_fields($self);
         # super(...) made $self above
         $self->initAnimations();
         $self->addAll($items);
@@ -207,20 +207,21 @@ sub paintUnselectedItem {
         return $self->SUPER::paintUnselectedItem($graphics, $index, $item, $x, $y);
 }
 
-# use javax::microedition::lcdui::Command;
-# use javax::microedition::lcdui::Graphics;
-use org::allbinary::J2MEUtil;
-use org::allbinary::animation::Animation;
-use org::allbinary::animation::NullAnimationFactory;
-use org::allbinary::animation::vector::RectangleAdjustedAnimation;
-use org::allbinary::animation::vector::RectangleFilledAdjustedAnimation;
-use org::allbinary::graphics::color::BasicColor;
-use org::allbinary::graphics::color::BasicColorFactory;
-use org::allbinary::graphics::font::UpdateMyFontInterface;
-use org::allbinary::graphics::form::item::CommandTextItem;
-use org::allbinary::graphics::form::item::ABCustomItem;
-use org::allbinary::graphics::form::ScrollCurrentSelectionForm;
-use org::allbinary::graphics::form::ItemPaintableFactory;
+use java::lang::Object ();
+use javax::microedition::lcdui::Command ();
+use javax::microedition::lcdui::Graphics ();
+use org::allbinary::J2MEUtil ();
+use org::allbinary::animation::Animation ();
+use org::allbinary::animation::NullAnimationFactory ();
+use org::allbinary::animation::vector::RectangleAdjustedAnimation ();
+use org::allbinary::animation::vector::RectangleFilledAdjustedAnimation ();
+use org::allbinary::graphics::color::BasicColor ();
+use org::allbinary::graphics::color::BasicColorFactory ();
+use org::allbinary::graphics::font::UpdateMyFontInterface ();
+use org::allbinary::graphics::form::item::CommandTextItem ();
+use org::allbinary::graphics::form::item::ABCustomItem ();
+use org::allbinary::graphics::form::ScrollCurrentSelectionForm ();
+use org::allbinary::graphics::form::ItemPaintableFactory ();
 
 1;
 

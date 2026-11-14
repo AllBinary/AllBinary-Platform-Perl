@@ -19,7 +19,7 @@ use feature 'try';
 no warnings 'experimental::try';
 use parent -norequire,'org::allbinary::layer::LayerManagerLoggingBase';
 
-our $instance = 'org::allbinary::layer::LayerManagerLogging'->new();
+tie our $instance, 'java::lang::LazyStatic', sub { 'org::allbinary::layer::LayerManagerLogging'->new() };
 our $removeFailed = 0;
 
 sub _init_fields {
@@ -39,7 +39,7 @@ sub _init_fields {
 sub new {
     my ($class) = @_;
     my $self = $class->SUPER::new();
-    $self->_init_fields();
+    _init_fields($self);
     return $self;
 }
 
@@ -117,12 +117,14 @@ sub clear {
         $self->{logUtil}->putF($self->{stringBuilder}->appendint(int('org::allbinary::TsUtil'->getInstance()->hashCode($self)))->append($self->{CLEAR})->toString(), $self, $self->{CLEAR});
 }
 
-use org::allbinary::TsUtil;
-use org::allbinary::logic::communication::log::LogUtil;
-use org::allbinary::logic::string::StringMaker;
-use org::allbinary::logic::string::StringUtil;
-use org::allbinary::string::CommonSeps;
-use org::allbinary::layer::LayerManagerLoggingBase;
+use java::lang::Object ();
+use java::lang::LazyStatic ();
+use org::allbinary::TsUtil ();
+use org::allbinary::logic::communication::log::LogUtil ();
+use org::allbinary::logic::string::StringMaker ();
+use org::allbinary::logic::string::StringUtil ();
+use org::allbinary::string::CommonSeps ();
+use org::allbinary::layer::LayerManagerLoggingBase ();
 
 1;
 

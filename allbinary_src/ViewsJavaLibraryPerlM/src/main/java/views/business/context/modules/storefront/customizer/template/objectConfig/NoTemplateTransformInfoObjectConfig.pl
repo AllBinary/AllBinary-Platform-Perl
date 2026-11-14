@@ -37,7 +37,7 @@ sub new {
 sub _new1 {
     my ($class, $transformInfoInterface) = @_;
     my $self = $class->SUPER::new($transformInfoInterface);
-    $self->_init_fields();
+    _init_fields($self);
         # super(...) made $self above
     return $self;
 }
@@ -46,7 +46,7 @@ sub _new1 {
 sub _new2 {
     my ($class, $transformInfoInterface, $document) = @_;
     my $self = $class->SUPER::new($transformInfoInterface, $document);
-    $self->_init_fields();
+    _init_fields($self);
         # super(...) made $self above
         $self->setDocument($self->generate($self->toXmlDoc()));
     return $self;
@@ -56,7 +56,7 @@ sub _new2 {
 sub _new3 {
     my ($class, $transformInfoInterface, $name, $type) = @_;
     my $self = $class->SUPER::new($transformInfoInterface, $name, $type);
-    $self->_init_fields();
+    _init_fields($self);
         # super(...) made $self above
         $self->setDocument($self->generate($self->toXmlDoc()));
     return $self;
@@ -86,19 +86,20 @@ sub generate {
         return $newObjectConfigDocument;
 }
 
-use java::util::HashMap;
-use org::allbinary::business::context::modules::storefront::StoreFrontData;
-use org::allbinary::data::tree::dom::document::DomDocumentHelper;
-use org::allbinary::data::tree::dom::document::XmlDocumentHelper;
-use org::allbinary::logic::StdUtil;
-use org::allbinary::logic::communication::log::LogUtil;
-use org::allbinary::logic::string::regex::replace::Replace;
-use org::allbinary::logic::visual::transform::info::TransformInfoData;
-use org::allbinary::logic::visual::transform::info::TransformInfoInterface;
-use org::allbinary::logic::visual::transform::info::objectConfig::TransformInfoObjectConfig;
-use org::allbinary::logic::visual::transform::info::objectConfig::TransformInfoObjectConfigData;
-use org::allbinary::logic::visual::transform::template::util::TransformTemplateCustomizerUtil;
-use org::w3c::dom::Document;
+use java::lang::Object ();
+use java::util::HashMap ();
+use org::allbinary::business::context::modules::storefront::StoreFrontData ();
+use org::allbinary::data::tree::dom::document::DomDocumentHelper ();
+use org::allbinary::data::tree::dom::document::XmlDocumentHelper ();
+use org::allbinary::logic::StdUtil ();
+use org::allbinary::logic::communication::log::LogUtil ();
+use org::allbinary::logic::string::regex::replace::Replace ();
+use org::allbinary::logic::visual::transform::info::TransformInfoData ();
+use org::allbinary::logic::visual::transform::info::TransformInfoInterface ();
+use org::allbinary::logic::visual::transform::info::objectConfig::TransformInfoObjectConfig ();
+use org::allbinary::logic::visual::transform::info::objectConfig::TransformInfoObjectConfigData ();
+use org::allbinary::logic::visual::transform::template::util::TransformTemplateCustomizerUtil ();
+use org::w3c::dom::Document ();
 
 1;
 

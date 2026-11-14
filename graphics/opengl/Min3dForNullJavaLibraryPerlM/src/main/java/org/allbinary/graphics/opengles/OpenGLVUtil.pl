@@ -19,7 +19,7 @@ use feature 'try';
 no warnings 'experimental::try';
 use parent -norequire,'org::allbinary::graphics::opengles::OpenGLVUtilBase';
 
-our $instance = 'org::allbinary::graphics::opengles::OpenGLVUtil'->new();
+tie our $instance, 'java::lang::LazyStatic', sub { 'org::allbinary::graphics::opengles::OpenGLVUtil'->new() };
 
 sub new {
     my ($class) = @_;
@@ -33,7 +33,9 @@ sub getInstance {
         return $org::allbinary::graphics::opengles::OpenGLVUtil::instance;
 }
 
-use org::allbinary::graphics::opengles::OpenGLVUtilBase;
+use java::lang::Object ();
+use java::lang::LazyStatic ();
+use org::allbinary::graphics::opengles::OpenGLVUtilBase ();
 
 1;
 

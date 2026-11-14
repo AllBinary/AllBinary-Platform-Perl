@@ -39,7 +39,7 @@ sub _init_fields {
 sub new {
     my ($class, $originalImage, $image, $angleInfo, $totalAngle, $animationBehavior) = @_;
     my $self = $class->SUPER::new($image, $angleInfo, $totalAngle, $animationBehavior);
-    $self->_init_fields();
+    _init_fields($self);
         # super(...) made $self above
         $self->{originalImage} = $originalImage;
         $self->{halfWidth} = (POSIX::floor(($image->getWidth()) / (2 ** (1))));
@@ -138,16 +138,17 @@ sub paintXY {
         $graphics->drawImage($self->{imageToShow}, $x, $y, $self->{anchor});
 }
 
-use android::graphics::Matrix;
-# use javax::microedition::lcdui::Image;
-# use javax::microedition::lcdui::Graphics;
-use org::allbinary::math::AngleInfo;
-use org::allbinary::animation::AnimationBehavior;
-use org::allbinary::graphics::color::BasicColor;
-use org::allbinary::media::image::AndroidImageUtil;
-use org::allbinary::media::image::ImageCopyUtil;
-use org::allbinary::media::image::ImageModifierUtil;
-use org::allbinary::animation::image::ImageBaseRotationAnimation;
+use java::lang::Object ();
+# use android::graphics::Matrix ();
+use javax::microedition::lcdui::Image ();
+use javax::microedition::lcdui::Graphics ();
+use org::allbinary::math::AngleInfo ();
+use org::allbinary::animation::AnimationBehavior ();
+use org::allbinary::graphics::color::BasicColor ();
+use org::allbinary::media::image::AndroidImageUtil ();
+use org::allbinary::media::image::ImageCopyUtil ();
+use org::allbinary::media::image::ImageModifierUtil ();
+use org::allbinary::animation::image::ImageBaseRotationAnimation ();
 
 1;
 

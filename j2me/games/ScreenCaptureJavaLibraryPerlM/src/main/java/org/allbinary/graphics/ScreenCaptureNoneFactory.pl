@@ -17,8 +17,9 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
-our $instance = 'org::allbinary::graphics::ScreenCapture'->new();
+tie our $instance, 'java::lang::LazyStatic', sub { 'org::allbinary::graphics::ScreenCapture'->new() };
 
 sub new {
     my ($class) = @_;
@@ -32,7 +33,9 @@ sub getInstance {
         return $org::allbinary::graphics::ScreenCaptureNoneFactory::instance;
 }
 
-use org::allbinary::graphics::ScreenCapture;
+use java::lang::Object ();
+use java::lang::LazyStatic ();
+use org::allbinary::graphics::ScreenCapture ();
 
 1;
 

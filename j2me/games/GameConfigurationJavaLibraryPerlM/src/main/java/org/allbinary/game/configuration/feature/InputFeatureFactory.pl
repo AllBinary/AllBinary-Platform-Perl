@@ -17,8 +17,9 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
-our $instance = 'org::allbinary::game::configuration::feature::InputFeatureFactory'->new();
+tie our $instance, 'java::lang::LazyStatic', sub { 'org::allbinary::game::configuration::feature::InputFeatureFactory'->new() };
 
 sub _init_fields {
     my ($self) = @_;
@@ -39,7 +40,7 @@ sub getInstance {
 sub new {
     my ($class) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
     return $self;
 }
 
@@ -54,8 +55,10 @@ sub isSingleKeyProcessing {
         }
 }
 
-use org::allbinary::game::configuration::feature::InputFeature;
-use org::allbinary::game::configuration::feature::Features;
+use java::lang::Object ();
+use java::lang::LazyStatic ();
+use org::allbinary::game::configuration::feature::InputFeature ();
+use org::allbinary::game::configuration::feature::Features ();
 
 1;
 

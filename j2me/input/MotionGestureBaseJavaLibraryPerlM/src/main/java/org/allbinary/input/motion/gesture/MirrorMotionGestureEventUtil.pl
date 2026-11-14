@@ -17,8 +17,9 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
-our $instance = 'org::allbinary::input::motion::gesture::MirrorMotionGestureEventUtil'->new();
+tie our $instance, 'java::lang::LazyStatic', sub { 'org::allbinary::input::motion::gesture::MirrorMotionGestureEventUtil'->new() };
 
 sub _init_fields {
     my ($self) = @_;
@@ -29,7 +30,7 @@ sub _init_fields {
 sub new {
     my ($class) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
         $self->{motionEventCircularPool} = 'org::allbinary::input::motion::gesture::observer::MotionEventCircularPool'->createPool(2147483647);
     return $self;
 }
@@ -67,10 +68,12 @@ sub getInstance {
         return $org::allbinary::input::motion::gesture::MirrorMotionGestureEventUtil::instance;
 }
 
-use org::allbinary::graphics::GPoint;
-use org::allbinary::graphics::PointFactory;
-use org::allbinary::input::motion::gesture::observer::MotionEventCircularPool;
-use org::allbinary::input::motion::gesture::observer::MotionGestureEvent;
+use java::lang::Object ();
+use java::lang::LazyStatic ();
+use org::allbinary::graphics::GPoint ();
+use org::allbinary::graphics::PointFactory ();
+use org::allbinary::input::motion::gesture::observer::MotionEventCircularPool ();
+use org::allbinary::input::motion::gesture::observer::MotionGestureEvent ();
 
 1;
 

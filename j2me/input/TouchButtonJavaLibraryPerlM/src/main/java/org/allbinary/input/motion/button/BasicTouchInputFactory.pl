@@ -17,8 +17,9 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
-our $instance = 'org::allbinary::logic::NullUtil'->getInstance()->{NULL_OBJECT};
+tie our $instance, 'java::lang::LazyStatic', sub { 'org::allbinary::logic::NullUtil'->getInstance()->{NULL_OBJECT} };
 
 sub _init_fields {
     my ($self) = @_;
@@ -53,7 +54,7 @@ sub getInstance {
 sub new {
     my ($class) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
         my $MAX = 'org::allbinary::game::input::InputFactory'->getInstance()->{MAX};
         $self->{SPECIAL_BUTTON_SEVEN_TESTING_ONLY} = 'org::allbinary::input::motion::button::TouchButtonInput'->new($MAX - 41, "Button 7 - Testing Only May Cross Over Key Values");
         $self->{SPECIAL_BUTTON_EIGHT_TESTING_ONLY} = 'org::allbinary::input::motion::button::TouchButtonInput'->new($MAX - 42, "Button 8 - Testing Only May Cross Over Key Values");
@@ -116,15 +117,17 @@ sub getList {
         return $self->{list};
 }
 
-use org::allbinary::game::input::InputFactory;
-use org::allbinary::game::input::mapping::InputToGameKeyMapping;
-use org::allbinary::logic::NullUtil;
-use org::allbinary::logic::communication::log::LogUtil;
-use org::allbinary::logic::string::StringMaker;
-use org::allbinary::string::CommonLabels;
-use org::allbinary::util::BasicArrayList;
-use org::allbinary::util::BasicArrayListD;
-use org::allbinary::input::motion::button::TouchButtonInput;
+use java::lang::Object ();
+use java::lang::LazyStatic ();
+use org::allbinary::game::input::InputFactory ();
+use org::allbinary::game::input::mapping::InputToGameKeyMapping ();
+use org::allbinary::logic::NullUtil ();
+use org::allbinary::logic::communication::log::LogUtil ();
+use org::allbinary::logic::string::StringMaker ();
+use org::allbinary::string::CommonLabels ();
+use org::allbinary::util::BasicArrayList ();
+use org::allbinary::util::BasicArrayListD ();
+use org::allbinary::input::motion::button::TouchButtonInput ();
 
 1;
 

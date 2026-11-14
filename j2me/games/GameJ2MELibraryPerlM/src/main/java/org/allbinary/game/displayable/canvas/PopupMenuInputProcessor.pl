@@ -32,7 +32,7 @@ sub _init_fields {
 sub new {
     my ($class, $gameKeyEventList, $playerInputId, $gameCanvas, $rectangle) = @_;
     my $self = $class->SUPER::new($gameKeyEventList, $playerInputId, $gameCanvas);
-    $self->_init_fields();
+    _init_fields($self);
         # super(...) made $self above
         $self->{rectangle} = $rectangle;
     return $self;
@@ -122,22 +122,23 @@ sub processMotionInput {
         }
 }
 
-# use javax::microedition::lcdui::Canvas;
-use org::allbinary::game::input::GameInputStrings;
-use org::allbinary::game::input::event::GameKeyEvent;
-use org::allbinary::graphics::GPoint;
-use org::allbinary::graphics::Rectangle;
-use org::allbinary::graphics::displayable::MyCanvas;
-use org::allbinary::input::motion::gesture::MotionGestureInput;
-use org::allbinary::input::motion::gesture::TouchMotionGestureFactory;
-use org::allbinary::input::motion::gesture::observer::MotionGestureEvent;
-use org::allbinary::logic::communication::log::PreLogUtil;
-use org::allbinary::logic::string::StringMaker;
-use org::allbinary::math::RectangleCollisionUtil;
-use org::allbinary::string::CommonSeps;
-use org::allbinary::time::TimeDelayHelper;
-use org::allbinary::util::BasicArrayList;
-use org::allbinary::game::displayable::canvas::BasicMenuInputProcessor;
+use java::lang::Object ();
+use javax::microedition::lcdui::Canvas ();
+use org::allbinary::game::input::GameInputStrings ();
+use org::allbinary::game::input::event::GameKeyEvent ();
+use org::allbinary::graphics::GPoint ();
+use org::allbinary::graphics::Rectangle ();
+use org::allbinary::graphics::displayable::MyCanvas ();
+use org::allbinary::input::motion::gesture::MotionGestureInput ();
+use org::allbinary::input::motion::gesture::TouchMotionGestureFactory ();
+use org::allbinary::input::motion::gesture::observer::MotionGestureEvent ();
+use org::allbinary::logic::communication::log::PreLogUtil ();
+use org::allbinary::logic::string::StringMaker ();
+use org::allbinary::math::RectangleCollisionUtil ();
+use org::allbinary::string::CommonSeps ();
+use org::allbinary::time::TimeDelayHelper ();
+use org::allbinary::util::BasicArrayList ();
+use org::allbinary::game::displayable::canvas::BasicMenuInputProcessor ();
 
 1;
 

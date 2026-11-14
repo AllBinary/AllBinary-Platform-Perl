@@ -30,7 +30,7 @@ sub _init_fields {
 sub new {
     my ($class, $label, $itemArrayFactoryInterface) = @_;
     my $self = $class->SUPER::new();
-    $self->_init_fields();
+    _init_fields($self);
         my $scrollSelectionForm = 'org::allbinary::graphics::form::ScrollSelectionForm'->getNullScrollSelectionForm();
         try {
             my $items = $itemArrayFactoryInterface->getItems();
@@ -49,13 +49,14 @@ sub getInstance {
         return $self->{scrollSelectionForm};
 }
 
-use org::allbinary::game::input::RTSLayerFormFactory;
-use org::allbinary::graphics::form::item::ABCustomItem;
-use org::allbinary::string::CommonStrings;
-use org::allbinary::logic::communication::log::LogUtil;
-use org::allbinary::graphics::form::ScrollSelectionForm;
-use org::allbinary::graphics::form::item::ItemArraySingletonFactoryInterface;
-use org::allbinary::game::layer::RTSScrollSelectionFormFactory;
+use java::lang::Object ();
+use org::allbinary::game::input::RTSLayerFormFactory ();
+use org::allbinary::graphics::form::item::ABCustomItem ();
+use org::allbinary::string::CommonStrings ();
+use org::allbinary::logic::communication::log::LogUtil ();
+use org::allbinary::graphics::form::ScrollSelectionForm ();
+use org::allbinary::graphics::form::item::ItemArraySingletonFactoryInterface ();
+use org::allbinary::game::layer::RTSScrollSelectionFormFactory ();
 
 1;
 

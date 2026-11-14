@@ -69,7 +69,7 @@ sub setMaxReverseVelocity {
     die "abstract method setMaxReverseVelocity";
 }
 
-use org::allbinary::game::physics::velocity::BasicVelocityInterface;
+use org::allbinary::game::physics::velocity::BasicVelocityInterface ();
 
 1;
 

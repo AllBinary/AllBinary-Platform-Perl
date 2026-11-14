@@ -29,7 +29,7 @@ sub _init_fields {
 sub new {
     my ($class, $highScoresCanvas) = @_;
     my $self = $class->SUPER::new('org::allbinary::util::BasicArrayListD'->new(), 'org::allbinary::util::BasicArrayListD'->new(), -1);
-    $self->_init_fields();
+    _init_fields($self);
         # super(...) made $self above
         $self->{highScoresCanvas} = $highScoresCanvas;
     return $self;
@@ -77,12 +77,13 @@ sub getHighScoresCanvas {
         return $self->{highScoresCanvas};
 }
 
-# use javax::microedition::lcdui::Graphics;
-use org::allbinary::game::input::PlayerGameInput;
-use org::allbinary::game::input::event::GameKeyEvent;
-use org::allbinary::game::score::displayable::HighScoresCanvas;
-use org::allbinary::util::BasicArrayList;
-use org::allbinary::util::BasicArrayListD;
+use java::lang::Object ();
+use javax::microedition::lcdui::Graphics ();
+use org::allbinary::game::input::PlayerGameInput ();
+use org::allbinary::game::input::event::GameKeyEvent ();
+use org::allbinary::game::score::displayable::HighScoresCanvas ();
+use org::allbinary::util::BasicArrayList ();
+use org::allbinary::util::BasicArrayListD ();
 
 1;
 

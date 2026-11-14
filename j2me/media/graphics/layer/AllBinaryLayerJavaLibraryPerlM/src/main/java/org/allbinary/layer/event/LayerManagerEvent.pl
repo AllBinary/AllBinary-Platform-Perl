@@ -30,7 +30,7 @@ sub _init_fields {
 sub new {
     my ($class, $layerManager, $crud) = @_;
     my $self = $class->SUPER::new($layerManager);
-    $self->_init_fields();
+    _init_fields($self);
         # super(...) made $self above
         $self->{crud} = $crud;
     return $self;
@@ -60,10 +60,11 @@ sub toString {
         return $stringBuffer->toString();
 }
 
-use org::allbinary::layer::AllBinaryLayer;
-use org::allbinary::layer::LayerManager;
-use org::allbinary::logic::string::StringMaker;
-use org::allbinary::logic::util::event::AllBinaryEventObject;
+use java::lang::Object ();
+use org::allbinary::layer::AllBinaryLayer ();
+use org::allbinary::layer::LayerManager ();
+use org::allbinary::logic::string::StringMaker ();
+use org::allbinary::logic::util::event::AllBinaryEventObject ();
 
 1;
 

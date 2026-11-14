@@ -18,8 +18,9 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
-our $instance = 'org::allbinary::data::resource::ResourceUtil'->new();
+tie our $instance, 'java::lang::LazyStatic', sub { 'org::allbinary::data::resource::ResourceUtil'->new() };
 
 sub _init_fields {
     my ($self) = @_;
@@ -39,7 +40,7 @@ sub getInstance {
 sub new {
     my ($class) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
     return $self;
 }
 
@@ -127,22 +128,24 @@ sub getResourceAsStream {
         return $inputStream;
 }
 
-# use java::io::InputStream;
-use android::app::Activity;
-use android::content::Context;
-use android::content::res::Resources;
-use org::allbinary::debug::DebugFactory;
-use org::allbinary::debug::NoDebug;
-use org::allbinary::logic::NullUtil;
-use org::allbinary::logic::StdUtil;
-use org::allbinary::logic::communication::log::ForcedLogUtil;
-use org::allbinary::logic::communication::log::LogUtil;
-use org::allbinary::logic::communication::log::PreLogUtil;
-use org::allbinary::logic::string::StringMaker;
-use org::allbinary::string::CommonSeps;
-use org::allbinary::string::CommonStrings;
-use org::allbinary::util::ABHashtable;
-use org::allbinary::util::HashtableUtil;
+use java::lang::Object ();
+use java::lang::LazyStatic ();
+# use java::io::InputStream ();
+# use android::app::Activity ();
+# use android::content::Context ();
+# use android::content::res::Resources ();
+use org::allbinary::debug::DebugFactory ();
+use org::allbinary::debug::NoDebug ();
+use org::allbinary::logic::NullUtil ();
+use org::allbinary::logic::StdUtil ();
+use org::allbinary::logic::communication::log::ForcedLogUtil ();
+use org::allbinary::logic::communication::log::LogUtil ();
+use org::allbinary::logic::communication::log::PreLogUtil ();
+use org::allbinary::logic::string::StringMaker ();
+use org::allbinary::string::CommonSeps ();
+use org::allbinary::string::CommonStrings ();
+use org::allbinary::util::ABHashtable ();
+use org::allbinary::util::HashtableUtil ();
 
 1;
 

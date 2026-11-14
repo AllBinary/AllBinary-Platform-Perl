@@ -17,8 +17,9 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
-our $instance = 'org::allbinary::logic::system::security::licensing::LicenseUtil'->new();
+tie our $instance, 'java::lang::LazyStatic', sub { 'org::allbinary::logic::system::security::licensing::LicenseUtil'->new() };
 
 sub new {
     my ($class) = @_;
@@ -54,7 +55,9 @@ sub shouldWait {
         return $self->isRunning();
 }
 
-# use javax::microedition::lcdui::CommandListener;
+use java::lang::Object ();
+use java::lang::LazyStatic ();
+use javax::microedition::lcdui::CommandListener ();
 
 1;
 

@@ -52,11 +52,11 @@ sub insert {
     die "abstract method insert";
 }
 
-use org::allbinary::util::BasicArrayList;
-use org::allbinary::util::BasicArrayListD;
-use org::allbinary::business::user::commerce::inventory::basket::BasketReview;
-use org::allbinary::business::user::commerce::inventory::order::OrderInterface;
-use org::allbinary::data::tables::BasicDataTableInterface;
+use org::allbinary::util::BasicArrayList ();
+use org::allbinary::util::BasicArrayListD ();
+use org::allbinary::business::user::commerce::inventory::basket::BasketReview ();
+use org::allbinary::business::user::commerce::inventory::order::OrderInterface ();
+use org::allbinary::data::tables::BasicDataTableInterface ();
 
 1;
 

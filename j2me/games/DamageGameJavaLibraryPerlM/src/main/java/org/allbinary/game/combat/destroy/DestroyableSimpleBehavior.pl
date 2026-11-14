@@ -30,7 +30,7 @@ sub _init_fields {
 sub new {
     my ($class, $ownerLayer) = @_;
     my $self = $class->SUPER::new();
-    $self->_init_fields();
+    _init_fields($self);
         $self->{ownerLayer} = $ownerLayer;
     return $self;
 }
@@ -50,9 +50,10 @@ sub setDestroyed {
         }
 }
 
-use org::allbinary::game::layer::CollidableCompositeLayer;
-use org::allbinary::game::combat::destroy::DestroyableBaseBehavior;
-use org::allbinary::game::combat::destroy::DestroyedLayerProcessor;
+use java::lang::Object ();
+use org::allbinary::game::layer::CollidableCompositeLayer ();
+use org::allbinary::game::combat::destroy::DestroyableBaseBehavior ();
+use org::allbinary::game::combat::destroy::DestroyedLayerProcessor ();
 
 1;
 

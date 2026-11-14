@@ -17,6 +17,7 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
 
 sub _init_fields {
@@ -30,7 +31,7 @@ sub _init_fields {
 sub new {
     my ($class) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
         $self->{emailVector} = 'org::allbinary::util::BasicArrayListD'->new();
     return $self;
 }
@@ -79,13 +80,14 @@ sub fireEmailEvent {
         }
 }
 
-use org::allbinary::util::BasicArrayList;
-use org::allbinary::util::BasicArrayListD;
-use org::allbinary::logic::StdUtil;
-use org::allbinary::logic::communication::smtp::event::EmailEvent;
-use org::allbinary::logic::communication::smtp::event::UserEmailEventListenerInterface;
-use org::allbinary::logic::communication::smtp::event::UserEmailEventNameData;
-use org::allbinary::logic::communication::smtp::info::EmailInfo;
+use java::lang::Object ();
+use org::allbinary::util::BasicArrayList ();
+use org::allbinary::util::BasicArrayListD ();
+use org::allbinary::logic::StdUtil ();
+use org::allbinary::logic::communication::smtp::event::EmailEvent ();
+use org::allbinary::logic::communication::smtp::event::UserEmailEventListenerInterface ();
+use org::allbinary::logic::communication::smtp::event::UserEmailEventNameData ();
+use org::allbinary::logic::communication::smtp::info::EmailInfo ();
 
 1;
 

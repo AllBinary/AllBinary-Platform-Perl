@@ -38,7 +38,7 @@ sub paintUnselected {
     die "abstract method paintUnselected";
 }
 
-# use javax::microedition::lcdui::Graphics;
+use javax::microedition::lcdui::Graphics ();
 
 1;
 

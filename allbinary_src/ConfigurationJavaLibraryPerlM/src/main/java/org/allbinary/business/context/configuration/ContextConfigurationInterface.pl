@@ -32,7 +32,7 @@ sub setEmailServerConfigurationInterface {
     die "abstract method setEmailServerConfigurationInterface";
 }
 
-use org::allbinary::logic::communication::smtp::configuration::server::EmailServerConfigurationInterface;
+use org::allbinary::logic::communication::smtp::configuration::server::EmailServerConfigurationInterface ();
 
 1;
 

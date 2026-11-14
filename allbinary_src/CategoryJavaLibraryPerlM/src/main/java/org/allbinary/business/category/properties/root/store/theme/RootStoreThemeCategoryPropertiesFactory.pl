@@ -17,7 +17,7 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
-use parent -norequire,'org::allbinary::business::category::properties::CategoryPropertiesFactoryInterface';
+use parent -norequire,'java::lang::Object','org::allbinary::business::category::properties::CategoryPropertiesFactoryInterface';
 
 
 sub _init_fields {
@@ -39,7 +39,7 @@ sub new {
 sub _new1 {
     my ($class, $transformInfoInterface) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
         $self->{categoryPropertiesInterface} = 'org::allbinary::business::category::properties::root::store::theme::RootStoreThemeCategoryProperties'->new($transformInfoInterface);
     return $self;
 }
@@ -48,7 +48,7 @@ sub _new1 {
 sub _new2 {
     my ($class, $transformInfoInterface, $abPath) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
         $self->{categoryPropertiesInterface} = 'org::allbinary::business::category::properties::root::store::theme::RootStoreThemeCategoryProperties'->new($transformInfoInterface, $abPath);
     return $self;
 }
@@ -57,7 +57,7 @@ sub _new2 {
 sub _new2 {
     my ($class, $transformInfoInterface, $node) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
         $self->{categoryPropertiesInterface} = 'org::allbinary::business::category::properties::root::store::theme::RootStoreThemeCategoryProperties'->new($transformInfoInterface, $node);
     return $self;
 }
@@ -66,7 +66,7 @@ sub _new2 {
 sub _new2 {
     my ($class, $transformInfoInterface, $categoryPropertiesHashMap) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
         $self->{categoryPropertiesInterface} = 'org::allbinary::business::category::properties::root::store::theme::RootStoreThemeCategoryProperties'->new($transformInfoInterface, $categoryPropertiesHashMap);
     return $self;
 }
@@ -85,15 +85,16 @@ sub getInstance {
         }
 }
 
-use java::util::HashMap;
-use org::allbinary::business::category::properties::CategoryPropertiesFactoryInterface;
-use org::allbinary::business::category::properties::CategoryPropertiesInterface;
-use org::allbinary::logic::communication::log::LogUtil;
-use org::allbinary::logic::io::path::AbPath;
-use org::allbinary::logic::visual::transform::info::TransformInfoInterface;
-use org::allbinary::string::CommonStrings;
-use org::w3c::dom::Node;
-use org::allbinary::business::category::properties::root::store::theme::RootStoreThemeCategoryProperties;
+use java::lang::Object ();
+use java::util::HashMap ();
+use org::allbinary::business::category::properties::CategoryPropertiesFactoryInterface ();
+use org::allbinary::business::category::properties::CategoryPropertiesInterface ();
+use org::allbinary::logic::communication::log::LogUtil ();
+use org::allbinary::logic::io::path::AbPath ();
+use org::allbinary::logic::visual::transform::info::TransformInfoInterface ();
+use org::allbinary::string::CommonStrings ();
+use org::w3c::dom::Node ();
+use org::allbinary::business::category::properties::root::store::theme::RootStoreThemeCategoryProperties ();
 
 1;
 

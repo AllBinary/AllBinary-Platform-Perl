@@ -30,7 +30,7 @@ sub _init_fields {
 sub new {
     my ($class, $transformInfoInterface) = @_;
     my $self = $class->SUPER::new($transformInfoInterface);
-    $self->_init_fields();
+    _init_fields($self);
         # super(...) made $self above
         my $httpServletRequest = $self->getPageContext()->getRequest();
         my $hashMap = 'org::allbinary::logic::communication::http::request::RequestParams'->new($httpServletRequest)->toHashMap();
@@ -96,18 +96,26 @@ sub toValidationInfoNode {
         return undef;
 }
 
-use java::util::HashMap;
-# use javax::servlet::http::HttpServletRequest;
-use org::allbinary::business::user::username::UserName;
-use org::allbinary::data::tables::user::UserEntityFactory;
-use org::allbinary::logic::communication::http::request::RequestParams;
-use org::allbinary::logic::communication::log::LogUtil;
-use org::allbinary::logic::control::validate::ValidationComponentInterface;
-use org::allbinary::logic::string::StringMaker;
-use org::allbinary::logic::visual::transform::info::TransformInfoInterface;
-use org::w3c::dom::Document;
-use org::w3c::dom::Node;
-use views::admin::user::UserView;
+
+# throws Exception
+sub getTransformInfoInterface {
+    my ($self) = @_;
+        return $self->SUPER::getTransformInfoInterface();
+}
+
+use java::lang::Object ();
+use java::util::HashMap ();
+# use javax::servlet::http::HttpServletRequest ();
+use org::allbinary::business::user::username::UserName ();
+use org::allbinary::data::tables::user::UserEntityFactory ();
+use org::allbinary::logic::communication::http::request::RequestParams ();
+use org::allbinary::logic::communication::log::LogUtil ();
+use org::allbinary::logic::control::validate::ValidationComponentInterface ();
+use org::allbinary::logic::string::StringMaker ();
+use org::allbinary::logic::visual::transform::info::TransformInfoInterface ();
+use org::w3c::dom::Document ();
+use org::w3c::dom::Node ();
+use views::admin::user::UserView ();
 
 1;
 

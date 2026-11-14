@@ -34,8 +34,8 @@ sub isValid {
     die "abstract method isValid";
 }
 
-use org::allbinary::business::context::modules::storefront::StoreFrontInterface;
-use org::allbinary::business::user::address::StreetAddress;
+use org::allbinary::business::context::modules::storefront::StoreFrontInterface ();
+use org::allbinary::business::user::address::StreetAddress ();
 
 1;
 

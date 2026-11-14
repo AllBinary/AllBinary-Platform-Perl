@@ -17,8 +17,9 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
-our $instance = 'org::allbinary::math::AngleFactory'->new();
+tie our $instance, 'java::lang::LazyStatic', sub { 'org::allbinary::math::AngleFactory'->new() };
 
 sub _init_fields {
     my ($self) = @_;
@@ -45,7 +46,7 @@ sub getInstance {
 sub new {
     my ($class) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
         my $commonPhoneStrings = 'org::allbinary::string::CommonPhoneStrings'->getInstance();
         my $total = ((int(scalar(@{$self->{angleArray}})) + 32768) % 65536 - 32768);
         $self->{UP} = 'org::allbinary::math::NamedAngle'->new(((int(0) + 32768) % 65536 - 32768), $commonPhoneStrings->{UP});
@@ -110,18 +111,20 @@ sub main {
         'org::allbinary::logic::communication::log::LogUtil'->getInstance()->putF($stringMaker->toString(), "main", "main");
 }
 
-# use jsinterop::annotations::JsType;
-use org::allbinary::logic::communication::log::LogUtil;
-use org::allbinary::logic::string::StringMaker;
-use org::allbinary::string::CommonPhoneStrings;
-use org::allbinary::string::CommonSeps;
-use org::allbinary::string::CommonStrings;
-# use jsinterop::annotations::JsMethod;
-# use jsinterop::annotations::JsConstructor;
-# use jsinterop::annotations::JsProperty;
-use org::allbinary::math::NamedAngle;
-use org::allbinary::math::Angle;
-use org::allbinary::math::FrameUtil;
+use java::lang::Object ();
+use java::lang::LazyStatic ();
+# use jsinterop::annotations::JsType ();
+use org::allbinary::logic::communication::log::LogUtil ();
+use org::allbinary::logic::string::StringMaker ();
+use org::allbinary::string::CommonPhoneStrings ();
+use org::allbinary::string::CommonSeps ();
+use org::allbinary::string::CommonStrings ();
+# use jsinterop::annotations::JsMethod ();
+# use jsinterop::annotations::JsConstructor ();
+# use jsinterop::annotations::JsProperty ();
+use org::allbinary::math::NamedAngle ();
+use org::allbinary::math::Angle ();
+use org::allbinary::math::FrameUtil ();
 
 1;
 

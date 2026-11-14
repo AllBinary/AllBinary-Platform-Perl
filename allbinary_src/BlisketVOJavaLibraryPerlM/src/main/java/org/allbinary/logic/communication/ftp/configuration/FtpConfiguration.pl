@@ -17,7 +17,7 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
-use parent -norequire,'org::allbinary::logic::communication::ftp::configuration::FtpConfigurationInterface';
+use parent -norequire,'java::lang::Object','org::allbinary::logic::communication::ftp::configuration::FtpConfigurationInterface';
 
 
 sub _init_fields {
@@ -39,7 +39,7 @@ sub new {
 sub _new0 {
     my ($class) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
     return $self;
 }
 
@@ -47,7 +47,7 @@ sub _new0 {
 sub _new1 {
     my ($class, $hashMap) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
         $self->{ftpServer} = $hashMap->get($org::allbinary::logic::communication::ftp::configuration::FtpConfigurationData::SERVER);
         $self->{ftpPath} = $hashMap->get($org::allbinary::logic::communication::ftp::configuration::FtpConfigurationData::PATH);
         $self->{ftpUserName} = $hashMap->get($org::allbinary::logic::communication::ftp::configuration::FtpConfigurationData::USERNAME);
@@ -103,9 +103,10 @@ sub setPassword {
         $self->{ftpPassword} = $value;
 }
 
-use java::util::HashMap;
-use org::allbinary::logic::communication::ftp::configuration::FtpConfigurationInterface;
-use org::allbinary::logic::communication::ftp::configuration::FtpConfigurationData;
+use java::lang::Object ();
+use java::util::HashMap ();
+use org::allbinary::logic::communication::ftp::configuration::FtpConfigurationInterface ();
+use org::allbinary::logic::communication::ftp::configuration::FtpConfigurationData ();
 
 1;
 

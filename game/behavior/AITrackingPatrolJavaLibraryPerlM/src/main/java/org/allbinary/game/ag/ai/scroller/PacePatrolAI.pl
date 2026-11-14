@@ -33,7 +33,7 @@ sub _init_fields {
 sub new {
     my ($class, $hashtable, $ownerLayerInterface, $gameInput) = @_;
     my $self = $class->SUPER::new($hashtable, $ownerLayerInterface, $gameInput);
-    $self->_init_fields();
+    _init_fields($self);
         # super(...) made $self above
         'org::allbinary::game::tracking::TrackingEventHandler'->getInstance()->addListenerInterface($self);
         $self->{trackingList} = 'org::allbinary::util::BasicArrayListD'->new();
@@ -131,24 +131,25 @@ sub setFiringDistance {
         $self->{firingDistance} = $firingDistance;
 }
 
-# use javax::microedition::lcdui::Canvas;
-use org::allbinary::direction::Direction;
-use org::allbinary::direction::DirectionCompositeInterface;
-use org::allbinary::direction::DirectionFactory;
-use org::allbinary::game::input::GameInput;
-use org::allbinary::game::tracking::TrackingEvent;
-use org::allbinary::game::tracking::TrackingEventHandler;
-use org::allbinary::game::tracking::TrackingEventListenerInterface;
-use org::allbinary::layer::AllBinaryLayer;
-use org::allbinary::layer::AllBinaryLayerManager;
-use org::allbinary::layer::LayerInterface;
-use org::allbinary::logic::communication::log::ForcedLogUtil;
-use org::allbinary::logic::util::event::AllBinaryEventObject;
-use org::allbinary::logic::util::event::EventStrings;
-use org::allbinary::util::ABHashtable;
-use org::allbinary::util::BasicArrayList;
-use org::allbinary::util::BasicArrayListD;
-use org::allbinary::game::ag::ai::scroller::BasePatrolAI;
+use java::lang::Object ();
+use javax::microedition::lcdui::Canvas ();
+use org::allbinary::direction::Direction ();
+use org::allbinary::direction::DirectionCompositeInterface ();
+use org::allbinary::direction::DirectionFactory ();
+use org::allbinary::game::input::GameInput ();
+use org::allbinary::game::tracking::TrackingEvent ();
+use org::allbinary::game::tracking::TrackingEventHandler ();
+use org::allbinary::game::tracking::TrackingEventListenerInterface ();
+use org::allbinary::layer::AllBinaryLayer ();
+use org::allbinary::layer::AllBinaryLayerManager ();
+use org::allbinary::layer::LayerInterface ();
+use org::allbinary::logic::communication::log::ForcedLogUtil ();
+use org::allbinary::logic::util::event::AllBinaryEventObject ();
+use org::allbinary::logic::util::event::EventStrings ();
+use org::allbinary::util::ABHashtable ();
+use org::allbinary::util::BasicArrayList ();
+use org::allbinary::util::BasicArrayListD ();
+use org::allbinary::game::ag::ai::scroller::BasePatrolAI ();
 
 1;
 

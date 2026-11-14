@@ -23,15 +23,16 @@ use parent -norequire,'org::allbinary::logic::io::AbFileInputStream';
 
 sub new {
     my ($class, $file) = @_;
-    my $self = $class->SUPER::new('org::allbinary::logic::io::file::AbFileNativeUtil'->get($file));
+    my $self = $class->SUPER::new('org::allbinary::logic::io::file::AbFileNativeUtil'->get($file)->getPath());
         # super(...) made $self above
     return $self;
 }
 
-# use java::io::FileNotFoundException;
-use org::allbinary::logic::io::file::AbFile;
-use org::allbinary::logic::io::file::AbFileNativeUtil;
-use org::allbinary::logic::io::AbFileInputStream;
+use java::lang::Object ();
+# use java::io::FileNotFoundException ();
+use org::allbinary::logic::io::file::AbFile ();
+use org::allbinary::logic::io::file::AbFileNativeUtil ();
+use org::allbinary::logic::io::AbFileInputStream ();
 
 1;
 

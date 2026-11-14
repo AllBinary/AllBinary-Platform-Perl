@@ -17,6 +17,7 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
 
 sub _init_fields {
@@ -50,7 +51,7 @@ sub _init_fields {
 sub new {
     my ($class) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
         $self->{logUtil}->putF($self->{commonStrings}->{START}, $self, $self->{commonStrings}->{CONSTRUCTOR});
         my $touchButtonLocationHelper = 'org::allbinary::input::motion::button::TouchButtonLocationHelper'->new();
         my $cellPositionFactory = 'org::allbinary::graphics::CellPositionFactory'->getInstance();
@@ -99,11 +100,12 @@ sub new {
     return $self;
 }
 
-use org::allbinary::graphics::CellPosition;
-use org::allbinary::graphics::CellPositionFactory;
-use org::allbinary::logic::communication::log::LogUtil;
-use org::allbinary::string::CommonStrings;
-use org::allbinary::input::motion::button::TouchButtonLocationHelper;
+use java::lang::Object ();
+use org::allbinary::graphics::CellPosition ();
+use org::allbinary::graphics::CellPositionFactory ();
+use org::allbinary::logic::communication::log::LogUtil ();
+use org::allbinary::string::CommonStrings ();
+use org::allbinary::input::motion::button::TouchButtonLocationHelper ();
 
 1;
 

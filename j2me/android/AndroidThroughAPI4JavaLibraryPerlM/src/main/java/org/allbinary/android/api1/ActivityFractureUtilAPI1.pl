@@ -19,7 +19,7 @@ use feature 'try';
 no warnings 'experimental::try';
 use parent -norequire,'org::allbinary::android::ActivityFractureUtil';
 
-our $instance = 'org::allbinary::android::api1::ActivityFractureUtilAPI1'->new();
+tie our $instance, 'java::lang::LazyStatic', sub { 'org::allbinary::android::api1::ActivityFractureUtilAPI1'->new() };
 
 sub new {
     my ($class) = @_;
@@ -45,9 +45,11 @@ sub setFullScreen {
         $activity->getWindow()->setFlags($android::view::WindowManager::LayoutParams->{FLAG_FULLSCREEN}, $android::view::WindowManager::LayoutParams->{FLAG_FULLSCREEN});
 }
 
-use org::allbinary::android::ActivityFractureUtil;
-use android::app::Activity;
-use android::view::WindowManager;
+use java::lang::Object ();
+use java::lang::LazyStatic ();
+use org::allbinary::android::ActivityFractureUtil ();
+# use android::app::Activity ();
+# use android::view::WindowManager ();
 
 1;
 

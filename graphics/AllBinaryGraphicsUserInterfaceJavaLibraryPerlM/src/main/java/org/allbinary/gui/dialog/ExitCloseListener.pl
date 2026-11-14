@@ -17,7 +17,7 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
-use parent -norequire,'org::allbinary::gui::dialog::CloseJDialogListenerInterface';
+use parent -norequire,'java::lang::Object','org::allbinary::gui::dialog::CloseJDialogListenerInterface';
 
 
 
@@ -33,8 +33,9 @@ sub onClose {
         exit(-1);
 }
 
-use org::allbinary::gui::dialog::CloseJDialogListenerInterface;
-use java::lang::System;
+use java::lang::Object ();
+use org::allbinary::gui::dialog::CloseJDialogListenerInterface ();
+use java::lang::System ();
 
 1;
 

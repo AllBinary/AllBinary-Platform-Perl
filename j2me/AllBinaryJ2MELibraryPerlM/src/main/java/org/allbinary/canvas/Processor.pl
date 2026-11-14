@@ -17,8 +17,9 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
-our $SINGLETON = 'org::allbinary::canvas::Processor'->new();
+tie our $SINGLETON, 'java::lang::LazyStatic', sub { 'org::allbinary::canvas::Processor'->new() };
 
 sub new {
     my ($class) = @_;
@@ -44,6 +45,8 @@ sub processt {
     my ($self, $timeDelta) = @_;
 }
 
+use java::lang::Object ();
+use java::lang::LazyStatic ();
 
 1;
 

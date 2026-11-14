@@ -17,6 +17,7 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
 
 
@@ -33,7 +34,8 @@ sub getInstance {
         return 'org::allbinary::logic::visual::transform::data::TransformDocument'->new();
 }
 
-use org::allbinary::logic::visual::transform::data::TransformDocument;
+use java::lang::Object ();
+use org::allbinary::logic::visual::transform::data::TransformDocument ();
 
 1;
 

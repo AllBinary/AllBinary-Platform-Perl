@@ -36,7 +36,7 @@ sub _init_fields {
 sub new {
     my ($class, $prependString, $max, $location, $direction, $bufferZone, $basicColor) = @_;
     my $self = $class->SUPER::new($location, $direction, $bufferZone, $basicColor);
-    $self->_init_fields();
+    _init_fields($self);
         # super(...) made $self above
         $self->{prependString} = $prependString;
         $self->{PREPEND_STRING} = [split(//, $prependString)];
@@ -111,15 +111,16 @@ sub paintThreed {
     my ($self, $graphics) = @_;
 }
 
-# use javax::microedition::lcdui::Font;
-# use javax::microedition::lcdui::Graphics;
-use org::allbinary::game::graphics::hud::BasicHud;
-use org::allbinary::game::graphics::hud::BasicHudFactory;
-use org::allbinary::graphics::color::BasicColor;
-use org::allbinary::graphics::font::MyFontProcessor;
-use org::allbinary::graphics::paint::PaintableInterface;
-use org::allbinary::logic::math::PrimitiveLongSingleton;
-use org::allbinary::logic::math::PrimitiveLongUtil;
+use java::lang::Object ();
+use javax::microedition::lcdui::Font ();
+use javax::microedition::lcdui::Graphics ();
+use org::allbinary::game::graphics::hud::BasicHud ();
+use org::allbinary::game::graphics::hud::BasicHudFactory ();
+use org::allbinary::graphics::color::BasicColor ();
+use org::allbinary::graphics::font::MyFontProcessor ();
+use org::allbinary::graphics::paint::PaintableInterface ();
+use org::allbinary::logic::math::PrimitiveLongSingleton ();
+use org::allbinary::logic::math::PrimitiveLongUtil ();
 
 1;
 

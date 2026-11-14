@@ -17,7 +17,7 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
-use parent -norequire,'org::allbinary::logic::visual::transform::data::TransformDocumentInterface';
+use parent -norequire,'java::lang::Object','org::allbinary::logic::visual::transform::data::TransformDocumentInterface';
 
 
 sub _init_fields {
@@ -32,7 +32,7 @@ sub _init_fields {
 sub new {
     my ($class) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
         try {
             $self->{document} = 'org::allbinary::data::tree::dom::document::DomDocumentHelper'->create();
             my $allbinaryNode = $self->{document}->createElement("allbinary");
@@ -78,14 +78,15 @@ sub log {
         return $stringBuffer->toString();
 }
 
-use org::allbinary::data::tree::dom::document::DomDocumentHelper;
-use org::allbinary::data::tree::dom::document::XmlDocumentHelper;
-use org::allbinary::logic::communication::log::LogUtil;
-use org::allbinary::logic::string::StringMaker;
-use org::allbinary::string::CommonStrings;
-use org::w3c::dom::Document;
-use org::w3c::dom::Node;
-use org::allbinary::logic::visual::transform::data::TransformDocumentInterface;
+use java::lang::Object ();
+use org::allbinary::data::tree::dom::document::DomDocumentHelper ();
+use org::allbinary::data::tree::dom::document::XmlDocumentHelper ();
+use org::allbinary::logic::communication::log::LogUtil ();
+use org::allbinary::logic::string::StringMaker ();
+use org::allbinary::string::CommonStrings ();
+use org::w3c::dom::Document ();
+use org::w3c::dom::Node ();
+use org::allbinary::logic::visual::transform::data::TransformDocumentInterface ();
 
 1;
 

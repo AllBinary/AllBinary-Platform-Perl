@@ -17,6 +17,7 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
 
 
@@ -29,9 +30,10 @@ sub new {
 
 sub init {
     my ($class) = @_;
-        'java::lang::System'->setProperty("jdk.xml.maxElementDepth", "0");
-        'java::lang::System'->setProperty("jdk.xml.xpathExprOpLimit", "0");
-        'java::lang::System'->setProperty("jdk.xml.xpathTotalOpLimit", "0");
+        my $commonPhoneStrings = 'org::allbinary::string::CommonPhoneStrings'->getInstance();
+        'java::lang::System'->setProperty("jdk.xml.maxElementDepth", $commonPhoneStrings->{ZERO});
+        'java::lang::System'->setProperty("jdk.xml.xpathExprOpLimit", $commonPhoneStrings->{ZERO});
+        'java::lang::System'->setProperty("jdk.xml.xpathTotalOpLimit", $commonPhoneStrings->{ZERO});
         my $LIMIT = "500000";
         'java::lang::System'->setProperty("jdk.xml.maxGeneralEntitySizeLimit", $LIMIT);
         'java::lang::System'->setProperty("jdk.xml.totalEntitySizeLimit", $LIMIT);
@@ -80,12 +82,14 @@ sub create {
         }
 }
 
-# use java::io::InputStream;
-# use java::io::StringBufferInputStream;
-# use javax::xml::parsers::DocumentBuilder;
-# use javax::xml::parsers::DocumentBuilderFactory;
-use org::w3c::dom::Document;
-use java::lang::System;
+use java::lang::Object ();
+# use java::io::InputStream ();
+# use java::io::StringBufferInputStream ();
+# use javax::xml::parsers::DocumentBuilder ();
+# use javax::xml::parsers::DocumentBuilderFactory ();
+use org::allbinary::string::CommonPhoneStrings ();
+use org::w3c::dom::Document ();
+use java::lang::System ();
 
 1;
 

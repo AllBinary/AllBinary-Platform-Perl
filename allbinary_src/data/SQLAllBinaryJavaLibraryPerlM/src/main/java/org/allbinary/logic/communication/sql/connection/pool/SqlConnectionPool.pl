@@ -17,8 +17,9 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
-our $instance = 'org::allbinary::logic::communication::sql::connection::pool::SqlConnectionPool'->new();
+tie our $instance, 'java::lang::LazyStatic', sub { 'org::allbinary::logic::communication::sql::connection::pool::SqlConnectionPool'->new() };
 
 sub _init_fields {
     my ($self) = @_;
@@ -47,7 +48,7 @@ sub getInstance {
 sub new {
     my ($class) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
     return $self;
 }
 
@@ -144,15 +145,17 @@ sub add {
         }
 }
 
-# use java::sql::Connection;
-# use java::sql::DriverManager;
-# use java::sql::SQLException;
-use java::util::HashMap;
-use org::allbinary::util::BasicArrayList;
-use org::allbinary::util::BasicArrayListD;
-use org::allbinary::logic::StdUtil;
-use org::allbinary::logic::communication::log::LogUtil;
-use org::allbinary::logic::string::StringMaker;
+use java::lang::Object ();
+use java::lang::LazyStatic ();
+# use java::sql::Connection ();
+# use java::sql::DriverManager ();
+# use java::sql::SQLException ();
+use java::util::HashMap ();
+use org::allbinary::util::BasicArrayList ();
+use org::allbinary::util::BasicArrayListD ();
+use org::allbinary::logic::StdUtil ();
+use org::allbinary::logic::communication::log::LogUtil ();
+use org::allbinary::logic::string::StringMaker ();
 
 1;
 

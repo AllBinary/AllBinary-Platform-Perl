@@ -17,7 +17,7 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
-use parent -norequire,'org::allbinary::logic::util::cache::CacheableInterfaceFactoryInterface';
+use parent -norequire,'java::lang::Object','org::allbinary::logic::util::cache::CacheableInterfaceFactoryInterface';
 
 
 
@@ -34,7 +34,8 @@ sub getInstance {
         die ("This Factory Does Not");
 }
 
-use org::allbinary::logic::util::cache::CacheableInterfaceFactoryInterface;
+use java::lang::Object ();
+use org::allbinary::logic::util::cache::CacheableInterfaceFactoryInterface ();
 
 1;
 

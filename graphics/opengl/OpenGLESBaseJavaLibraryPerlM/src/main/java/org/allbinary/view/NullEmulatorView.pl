@@ -17,9 +17,9 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
-use parent -norequire,'org::allbinary::view::EmulatorViewInterface';
+use parent -norequire,'java::lang::Object','org::allbinary::view::EmulatorViewInterface';
 
-our $NULL_EMULATOR_VIEW = 'org::allbinary::view::NullEmulatorView'->new();
+tie our $NULL_EMULATOR_VIEW, 'java::lang::LazyStatic', sub { 'org::allbinary::view::NullEmulatorView'->new() };
 
 sub new {
     my ($class) = @_;
@@ -42,9 +42,11 @@ sub onSetDisplayable {
     my ($self, $displayable) = @_;
 }
 
-# use javax::microedition::lcdui::Displayable;
-# use javax::microedition::midlet::MIDlet;
-use org::allbinary::view::EmulatorViewInterface;
+use java::lang::Object ();
+use java::lang::LazyStatic ();
+use javax::microedition::lcdui::Displayable ();
+use javax::microedition::midlet::MIDlet ();
+use org::allbinary::view::EmulatorViewInterface ();
 
 1;
 

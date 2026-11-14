@@ -18,8 +18,9 @@ use warnings;
 use feature 'try';
 no warnings 'experimental::try';
 use Scalar::Util ();
+use parent -norequire,'java::lang::Object';
 
-our $instance = 'admin::taghelpers::InventoryItemViewParentTagHelper'->new();
+tie our $instance, 'java::lang::LazyStatic', sub { 'admin::taghelpers::InventoryItemViewParentTagHelper'->new() };
 
 sub new {
     my ($class) = @_;
@@ -110,13 +111,15 @@ sub checkForValidationViewHelper {
         }
 }
 
-use org::allbinary::logic::communication::http::request::RequestMapInterface;
-use org::allbinary::logic::string::StringMaker;
-use org::allbinary::logic::visual::transform::TransformInterface;
-use taghelpers::ValidationViewHelper;
-use tags::HelperTag;
-use views::admin::inventory::InventoryItemView;
-use views::admin::inventory::download::DownloadableInventoryItemView;
+use java::lang::Object ();
+use java::lang::LazyStatic ();
+use org::allbinary::logic::communication::http::request::RequestMapInterface ();
+use org::allbinary::logic::string::StringMaker ();
+use org::allbinary::logic::visual::transform::TransformInterface ();
+use taghelpers::ValidationViewHelper ();
+use tags::HelperTag ();
+use views::admin::inventory::InventoryItemView ();
+use views::admin::inventory::download::DownloadableInventoryItemView ();
 
 1;
 

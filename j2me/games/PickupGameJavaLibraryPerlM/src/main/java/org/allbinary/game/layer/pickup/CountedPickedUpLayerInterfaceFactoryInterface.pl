@@ -33,8 +33,8 @@ sub getTotal {
     die "abstract method getTotal";
 }
 
-use org::allbinary::layer::LayerInterfaceFactoryInterface;
-use org::allbinary::game::layer::pickup::PickedUpLayerInterfaceFactoryInterface;
+use org::allbinary::layer::LayerInterfaceFactoryInterface ();
+use org::allbinary::game::layer::pickup::PickedUpLayerInterfaceFactoryInterface ();
 
 1;
 

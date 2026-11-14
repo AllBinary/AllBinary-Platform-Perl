@@ -17,6 +17,7 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
 our $isOnline = 1;
 
@@ -50,7 +51,7 @@ sub _init_fields {
 sub new {
     my ($class, $clientInfo, $remoteMethod) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
         $self->{remoteMethod} = $remoteMethod;
         $self->{clientInfo} = $clientInfo;
         if ($clientInfo->getNumberOfLicenseServers() > 1) {
@@ -168,18 +169,19 @@ sub getRemoteMethod {
         return $self->{remoteMethod};
 }
 
-use org::allbinary::game::rand::MyRandomFactory;
-use org::allbinary::logic::NullUtil;
-use org::allbinary::logic::communication::log::ForcedLogUtil;
-use org::allbinary::logic::communication::log::LogUtil;
-use org::allbinary::logic::string::StringMaker;
-use org::allbinary::logic::system::security::licensing::AbeClientInformationInterface;
-use org::allbinary::string::CommonLabels;
-use org::allbinary::string::CommonSeps;
-use org::allbinary::string::CommonStrings;
-use org::apache::xmlrpc::NullXmlRpcHandler;
-use org::apache::xmlrpc::XmlRpcClient;
-use org::apache::xmlrpc::XmlRpcHandler;
+use java::lang::Object ();
+use org::allbinary::game::rand::MyRandomFactory ();
+use org::allbinary::logic::NullUtil ();
+use org::allbinary::logic::communication::log::ForcedLogUtil ();
+use org::allbinary::logic::communication::log::LogUtil ();
+use org::allbinary::logic::string::StringMaker ();
+use org::allbinary::logic::system::security::licensing::AbeClientInformationInterface ();
+use org::allbinary::string::CommonLabels ();
+use org::allbinary::string::CommonSeps ();
+use org::allbinary::string::CommonStrings ();
+use org::apache::xmlrpc::NullXmlRpcHandler ();
+use org::apache::xmlrpc::XmlRpcClient ();
+use org::apache::xmlrpc::XmlRpcHandler ();
 
 1;
 

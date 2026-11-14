@@ -19,7 +19,7 @@ use feature 'try';
 no warnings 'experimental::try';
 use parent -norequire,'org::allbinary::logic::system::loader::ClassLoader';
 
-our $classes = 'org::allbinary::logic::StdUtil'->getInstance()->createHashMap();
+tie our $classes, 'java::lang::LazyStatic', sub { 'org::allbinary::logic::StdUtil'->getInstance()->createHashMap() };
 our $PATH;
 
 sub _init_fields {
@@ -35,7 +35,7 @@ sub _init_fields {
 sub new {
     my ($class, $parent, $key) = @_;
     my $self = $class->SUPER::new($parent);
-    $self->_init_fields();
+    _init_fields($self);
         # super(...) made $self above
         $self->{key} = $key;
         $org::allbinary::logic::system::loader::AbeClassLoader::PATH = $org::allbinary::logic::system::loader::org::allbinary->{globals}->{URLGLOBALS}->getWebappPath() . "WEB-INF/classes/";
@@ -160,18 +160,20 @@ sub oldLoadClass {
         }
 }
 
-# use java::io::FileInputStream;
-# use java::io::IOException;
-# use java::util::Map;
-use org::allbinary::logic::StdUtil;
-use org::allbinary::logic::communication::log::LogBuffer;
-use org::allbinary::logic::communication::log::LogFactory;
-use org::allbinary::logic::communication::log::LogUtil;
-use org::allbinary::logic::io::StreamUtil;
-use org::allbinary::logic::io::path::AbPathData;
-use org::allbinary::logic::string::StringUtil;
-use org::allbinary::logic::system::security::AbCryptUtil;
-use org::allbinary::logic::system::loader::ClassLoader;
+use java::lang::Object ();
+use java::lang::LazyStatic ();
+# use java::io::FileInputStream ();
+# use java::io::IOException ();
+# use java::util::Map ();
+use org::allbinary::logic::StdUtil ();
+use org::allbinary::logic::communication::log::LogBuffer ();
+use org::allbinary::logic::communication::log::LogFactory ();
+use org::allbinary::logic::communication::log::LogUtil ();
+use org::allbinary::logic::io::StreamUtil ();
+use org::allbinary::logic::io::path::AbPathData ();
+use org::allbinary::logic::string::StringUtil ();
+use org::allbinary::logic::system::security::AbCryptUtil ();
+use org::allbinary::logic::system::loader::ClassLoader ();
 
 1;
 

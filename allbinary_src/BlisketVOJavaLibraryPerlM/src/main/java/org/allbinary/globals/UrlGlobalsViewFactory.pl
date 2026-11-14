@@ -17,6 +17,7 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
 
 
@@ -41,10 +42,11 @@ sub getInstance {
         }
 }
 
-use org::allbinary::data::tree::dom::DomNodeInterface;
-use org::allbinary::logic::communication::log::LogUtil;
-use org::allbinary::string::CommonStrings;
-use org::allbinary::globals::UrlGlobalsView;
+use java::lang::Object ();
+use org::allbinary::data::tree::dom::DomNodeInterface ();
+use org::allbinary::logic::communication::log::LogUtil ();
+use org::allbinary::string::CommonStrings ();
+use org::allbinary::globals::UrlGlobalsView ();
 
 1;
 

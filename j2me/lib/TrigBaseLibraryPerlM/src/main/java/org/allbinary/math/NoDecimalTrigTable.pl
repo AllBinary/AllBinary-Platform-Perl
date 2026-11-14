@@ -17,8 +17,9 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
-our $instance = 'org::allbinary::math::NoDecimalTrigTable'->new();
+tie our $instance, 'java::lang::LazyStatic', sub { 'org::allbinary::math::NoDecimalTrigTable'->new() };
 
 sub _init_fields {
     my ($self) = @_;
@@ -39,7 +40,7 @@ sub getInstance {
 sub new {
     my ($class) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
         my $TOTAL_ANGLE = int('org::allbinary::math::AngleFactory'->getInstance()->{TOTAL_ANGLE});
         my $MAX_VALUE = (int(2147483647));
         $self->{noDecimalSin} = [(0) x ($TOTAL_ANGLE)];
@@ -1243,17 +1244,19 @@ sub antiTanDebug {
         return $angleOfTarget;
 }
 
-# use jsinterop::annotations::JsType;
-use org::allbinary::logic::communication::log::PreLogUtil;
-use org::allbinary::logic::math::MathUtil;
-use org::allbinary::logic::string::StringMaker;
-use org::allbinary::string::CommonLabels;
-use org::allbinary::string::CommonSeps;
-# use jsinterop::annotations::JsMethod;
-# use jsinterop::annotations::JsConstructor;
-# use jsinterop::annotations::JsProperty;
-use org::allbinary::math::AngleFactory;
-use org::allbinary::math::PositionStrings;
+use java::lang::Object ();
+use java::lang::LazyStatic ();
+# use jsinterop::annotations::JsType ();
+use org::allbinary::logic::communication::log::PreLogUtil ();
+use org::allbinary::logic::math::MathUtil ();
+use org::allbinary::logic::string::StringMaker ();
+use org::allbinary::string::CommonLabels ();
+use org::allbinary::string::CommonSeps ();
+# use jsinterop::annotations::JsMethod ();
+# use jsinterop::annotations::JsConstructor ();
+# use jsinterop::annotations::JsProperty ();
+use org::allbinary::math::AngleFactory ();
+use org::allbinary::math::PositionStrings ();
 
 1;
 

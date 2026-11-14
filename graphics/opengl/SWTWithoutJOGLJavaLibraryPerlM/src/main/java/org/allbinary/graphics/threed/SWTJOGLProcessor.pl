@@ -18,13 +18,14 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
-our $instance = 'org::allbinary::graphics::threed::SWTJOGLProcessor'->new();
+tie our $instance, 'java::lang::LazyStatic', sub { 'org::allbinary::graphics::threed::SWTJOGLProcessor'->new() };
 
 sub _init_fields {
     my ($self) = @_;
     $self->{glHolder} = do {
-        package org::allbinary::graphics::threed::GLHolder::AnonymousN65771 { our @ISA = ('org::allbinary::graphics::threed::GLHolder');
+        package org::allbinary::graphics::threed::GLHolder::AnonymousN65771 { our @ISA = ('org::allbinary::graphics::threed::GLHolder', 'java::lang::Object');
         
 
         sub run {
@@ -38,7 +39,7 @@ sub _init_fields {
 sub new {
     my ($class) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
     return $self;
 }
 
@@ -149,9 +150,11 @@ sub substringWidth {
         die ("RuntimeException");
 }
 
-# use javax::microedition::lcdui::Font;
-# use javax::microedition::midlet::MIDlet;
-use org::allbinary::graphics::threed::GLHolder;
+use java::lang::Object ();
+use java::lang::LazyStatic ();
+use javax::microedition::lcdui::Font ();
+use javax::microedition::midlet::MIDlet ();
+use org::allbinary::graphics::threed::GLHolder ();
 
 1;
 

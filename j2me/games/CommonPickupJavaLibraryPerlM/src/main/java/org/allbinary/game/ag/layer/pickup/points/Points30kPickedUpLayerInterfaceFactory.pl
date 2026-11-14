@@ -19,7 +19,7 @@ use feature 'try';
 no warnings 'experimental::try';
 use parent -norequire,'org::allbinary::game::layer::pickup::PickedUpLayerInterfaceFactory','org::allbinary::game::layer::pickup::PickupProcessorInterface';
 
-our $pickedUpLayerInterfaceFactoryInterface = $org::allbinary::game::layer::pickup::CountedPickedUpLayerInterfaceFactory::NULL_COUNTED_PICKUP_LAYER_FACTORY;
+tie our $pickedUpLayerInterfaceFactoryInterface, 'java::lang::LazyStatic', sub { $org::allbinary::game::layer::pickup::CountedPickedUpLayerInterfaceFactory::NULL_COUNTED_PICKUP_LAYER_FACTORY };
 
 sub _init_fields {
     my ($self) = @_;
@@ -37,7 +37,7 @@ sub init {
 sub new {
     my ($class) = @_;
     my $self = $class->SUPER::new('org::allbinary::game::layer::pickup::PickedUpLayerTypeFactory'->getInstance()->{POINTS}, 'org::allbinary::game::layer::pickup::IconLayerFactory'->getInstance('org::allbinary::animation::FeaturedAnimationInterfaceFactoryInterfaceFactory'->getInstance()->get('org::allbinary::game::ag::layer::pickup::points::PointsResources'->getInstance()->{RESOURCE_3})->getInstance(0), 10, 10), 'org::allbinary::animation::FeaturedAnimationInterfaceFactoryInterfaceFactory'->getInstance()->get('org::allbinary::game::ag::layer::pickup::points::PointsResources'->getInstance()->{RESOURCE_3})->getInstance(0));
-    $self->_init_fields();
+    _init_fields($self);
         # super(...) made $self above
     return $self;
 }
@@ -61,18 +61,20 @@ sub process {
         $self->{pool}->visit($sourceLayerInterface);
 }
 
-use org::allbinary::animation::FeaturedAnimationInterfaceFactoryInterfaceFactory;
-use org::allbinary::game::configuration::GameConfigurationUtil;
-use org::allbinary::game::layer::pickup::CountedPickedUpLayerInterfaceFactory;
-use org::allbinary::game::layer::pickup::IconLayerFactory;
-use org::allbinary::game::layer::pickup::PickedUpLayerInterfaceFactory;
-use org::allbinary::game::layer::pickup::PickedUpLayerInterfaceFactoryInterface;
-use org::allbinary::game::layer::pickup::PickedUpLayerTypeFactory;
-use org::allbinary::game::layer::pickup::PickupProcessorInterface;
-use org::allbinary::layer::AllBinaryLayer;
-use org::allbinary::game::ag::layer::pickup::points::PointsLayerCircularStaticPool;
-use org::allbinary::game::ag::layer::pickup::points::PointsLayerFactory;
-use org::allbinary::game::ag::layer::pickup::points::PointsResources;
+use java::lang::Object ();
+use java::lang::LazyStatic ();
+use org::allbinary::animation::FeaturedAnimationInterfaceFactoryInterfaceFactory ();
+use org::allbinary::game::configuration::GameConfigurationUtil ();
+use org::allbinary::game::layer::pickup::CountedPickedUpLayerInterfaceFactory ();
+use org::allbinary::game::layer::pickup::IconLayerFactory ();
+use org::allbinary::game::layer::pickup::PickedUpLayerInterfaceFactory ();
+use org::allbinary::game::layer::pickup::PickedUpLayerInterfaceFactoryInterface ();
+use org::allbinary::game::layer::pickup::PickedUpLayerTypeFactory ();
+use org::allbinary::game::layer::pickup::PickupProcessorInterface ();
+use org::allbinary::layer::AllBinaryLayer ();
+use org::allbinary::game::ag::layer::pickup::points::PointsLayerCircularStaticPool ();
+use org::allbinary::game::ag::layer::pickup::points::PointsLayerFactory ();
+use org::allbinary::game::ag::layer::pickup::points::PointsResources ();
 
 1;
 

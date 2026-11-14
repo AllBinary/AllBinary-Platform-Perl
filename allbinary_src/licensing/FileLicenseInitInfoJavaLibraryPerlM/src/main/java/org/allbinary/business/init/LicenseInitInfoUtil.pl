@@ -17,8 +17,9 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
-our $instance = 'org::allbinary::business::init::LicenseInitInfoUtil'->new();
+tie our $instance, 'java::lang::LazyStatic', sub { 'org::allbinary::business::init::LicenseInitInfoUtil'->new() };
 
 sub _init_fields {
     my ($self) = @_;
@@ -33,7 +34,7 @@ sub _init_fields {
 sub new {
     my ($class) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
     return $self;
 }
 
@@ -129,21 +130,23 @@ sub getFilePath {
         return $self->{filePath};
 }
 
-use org::allbinary::TsUtil;
-use org::allbinary::globals::PATH_GLOBALS;
-use org::allbinary::globals::URLGLOBALS;
-use org::allbinary::logic::communication::log::LogUtil;
-use org::allbinary::logic::io::AbDataInputStream;
-use org::allbinary::logic::io::AbDataOutputStream;
-use org::allbinary::logic::io::AbFileInputStream;
-use org::allbinary::logic::io::DataOutputStreamFactory;
-use org::allbinary::logic::io::FileStreamFactory;
-use org::allbinary::logic::string::StringMaker;
-use org::allbinary::logic::string::StringUtil;
-use org::allbinary::logic::system::security::crypt::DatabaseEncoder;
-use org::allbinary::logic::system::security::crypt::WeakCrypt;
-use org::allbinary::string::CommonLabels;
-use org::allbinary::business::init::LicenseInitInfo;
+use java::lang::Object ();
+use java::lang::LazyStatic ();
+use org::allbinary::TsUtil ();
+use org::allbinary::globals::PATH_GLOBALS ();
+use org::allbinary::globals::URLGLOBALS ();
+use org::allbinary::logic::communication::log::LogUtil ();
+use org::allbinary::logic::io::AbDataInputStream ();
+use org::allbinary::logic::io::AbDataOutputStream ();
+use org::allbinary::logic::io::AbFileInputStream ();
+use org::allbinary::logic::io::DataOutputStreamFactory ();
+use org::allbinary::logic::io::FileStreamFactory ();
+use org::allbinary::logic::string::StringMaker ();
+use org::allbinary::logic::string::StringUtil ();
+use org::allbinary::logic::system::security::crypt::DatabaseEncoder ();
+use org::allbinary::logic::system::security::crypt::WeakCrypt ();
+use org::allbinary::string::CommonLabels ();
+use org::allbinary::business::init::LicenseInitInfo ();
 
 1;
 

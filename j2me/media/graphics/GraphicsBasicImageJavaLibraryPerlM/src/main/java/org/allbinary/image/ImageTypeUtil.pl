@@ -17,8 +17,9 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
-our $SINGLETON = 'org::allbinary::image::ImageTypeUtil'->new();
+tie our $SINGLETON, 'java::lang::LazyStatic', sub { 'org::allbinary::image::ImageTypeUtil'->new() };
 
 sub _init_fields {
     my ($self) = @_;
@@ -32,7 +33,7 @@ sub _init_fields {
 sub new {
     my ($class) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
         $self->{list}->add($self->{JPG});
         $self->{list}->add($self->{GIF});
         $self->{list}->add($self->{PNG});
@@ -58,8 +59,10 @@ sub getInstance {
         return $org::allbinary::image::ImageTypeUtil::SINGLETON;
 }
 
-use org::allbinary::util::BasicArrayList;
-use org::allbinary::util::BasicArrayListD;
+use java::lang::Object ();
+use java::lang::LazyStatic ();
+use org::allbinary::util::BasicArrayList ();
+use org::allbinary::util::BasicArrayListD ();
 
 1;
 

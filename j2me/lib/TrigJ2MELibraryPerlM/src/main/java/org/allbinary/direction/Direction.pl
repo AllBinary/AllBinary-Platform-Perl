@@ -17,6 +17,7 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
 our $directionArray = [(undef) x (13)];
 
@@ -32,7 +33,7 @@ sub _init_fields {
 sub new {
     my ($class, $name, $otherName, $value, $frameFactor) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
         $self->{name} = $name;
         $self->{otherName} = $otherName;
         $self->{value} = $value;
@@ -84,7 +85,8 @@ sub toString {
         return $stringBuffer->toString();
 }
 
-use org::allbinary::logic::string::StringMaker;
+use java::lang::Object ();
+use org::allbinary::logic::string::StringMaker ();
 
 1;
 

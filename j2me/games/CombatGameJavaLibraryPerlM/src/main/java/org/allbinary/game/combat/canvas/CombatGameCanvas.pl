@@ -92,21 +92,22 @@ sub cleanupManager {
         $self->{gameLayerManager}->cleanup();
 }
 
-# use javax::microedition::lcdui::CommandListener;
-use org::allbinary::game::combat::destroy::DestroyedLayerProcessor;
-use org::allbinary::game::combat::destroy::event::DestroyEventCircularStaticPool;
-use org::allbinary::game::combat::destroy::event::DestroyedEventHandler;
-use org::allbinary::game::configuration::feature::Features;
-use org::allbinary::game::configuration::feature::GameFeatureFactory;
-use org::allbinary::game::displayable::canvas::AllBinaryGameCanvas;
-use org::allbinary::game::init::BasicBuildGameInitializerFactory;
-use org::allbinary::game::layer::AllBinaryGameLayerManager;
-use org::allbinary::game::layer::drop::DropLayerProcessor;
-use org::allbinary::game::layer::identification::GroupLayerManagerListener;
-use org::allbinary::game::score::HighScoresFactoryInterface;
-use org::allbinary::graphics::canvas::transition::progress::ProgressCanvasFactory;
-use org::allbinary::layer::BasicLayerProcessor;
-use org::allbinary::logic::system::security::licensing::AbeClientInformationInterface;
+use java::lang::Object ();
+use javax::microedition::lcdui::CommandListener ();
+use org::allbinary::game::combat::destroy::DestroyedLayerProcessor ();
+use org::allbinary::game::combat::destroy::event::DestroyEventCircularStaticPool ();
+use org::allbinary::game::combat::destroy::event::DestroyedEventHandler ();
+use org::allbinary::game::configuration::feature::Features ();
+use org::allbinary::game::configuration::feature::GameFeatureFactory ();
+use org::allbinary::game::displayable::canvas::AllBinaryGameCanvas ();
+use org::allbinary::game::init::BasicBuildGameInitializerFactory ();
+use org::allbinary::game::layer::AllBinaryGameLayerManager ();
+use org::allbinary::game::layer::drop::DropLayerProcessor ();
+use org::allbinary::game::layer::identification::GroupLayerManagerListener ();
+use org::allbinary::game::score::HighScoresFactoryInterface ();
+use org::allbinary::graphics::canvas::transition::progress::ProgressCanvasFactory ();
+use org::allbinary::layer::BasicLayerProcessor ();
+use org::allbinary::logic::system::security::licensing::AbeClientInformationInterface ();
 
 1;
 

@@ -29,7 +29,7 @@ sub _init_fields {
 sub new {
     my ($class, $before, $name, $value, $after) = @_;
     my $self = $class->SUPER::new($before, 'org::allbinary::logic::visual::dhtml::html::input::HtmlInputData'->getInstance()->{RADIO}, $name, $value, $after);
-    $self->_init_fields();
+    _init_fields($self);
         # super(...) made $self above
     return $self;
 }
@@ -40,9 +40,10 @@ sub setSelected {
         $self->SUPER::addAttribute($self->{CHECKED}, 'org::allbinary::logic::java::bool::BooleanFactory'->getInstance()->{TRUE_STRING});
 }
 
-use org::allbinary::logic::java::bool::BooleanFactory;
-use org::allbinary::logic::visual::dhtml::html::input::HtmlValueInput;
-use org::allbinary::logic::visual::dhtml::html::input::HtmlInputData;
+use java::lang::Object ();
+use org::allbinary::logic::java::bool::BooleanFactory ();
+use org::allbinary::logic::visual::dhtml::html::input::HtmlValueInput ();
+use org::allbinary::logic::visual::dhtml::html::input::HtmlInputData ();
 
 1;
 

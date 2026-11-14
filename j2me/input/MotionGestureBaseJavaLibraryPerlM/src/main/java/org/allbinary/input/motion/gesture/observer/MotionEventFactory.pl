@@ -17,7 +17,7 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
-use parent -norequire,'org::allbinary::logic::util::event::AllBinaryEventObjectFactoryInterface';
+use parent -norequire,'java::lang::Object','org::allbinary::logic::util::event::AllBinaryEventObjectFactoryInterface';
 
 our $index = 0;
 
@@ -31,7 +31,7 @@ sub _init_fields {
 sub new {
     my ($class, $source, $id) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
         $self->{source} = $source;
         $self->{id} = $id;
         $org::allbinary::input::motion::gesture::observer::MotionEventFactory::index = 'org::allbinary::input::motion::gesture::TouchMotionGestureFactory'->getInstance()->{LAST_MOTION}->getId();
@@ -50,13 +50,14 @@ sub getInstance {
         }
 }
 
-use org::allbinary::game::input::Input;
-use org::allbinary::game::input::InputFactory;
-use org::allbinary::input::motion::gesture::MotionGestureInput;
-use org::allbinary::input::motion::gesture::TouchMotionGestureFactory;
-use org::allbinary::logic::util::event::AllBinaryEventObject;
-use org::allbinary::logic::util::event::AllBinaryEventObjectFactoryInterface;
-use org::allbinary::input::motion::gesture::observer::MotionGestureEvent;
+use java::lang::Object ();
+use org::allbinary::game::input::Input ();
+use org::allbinary::game::input::InputFactory ();
+use org::allbinary::input::motion::gesture::MotionGestureInput ();
+use org::allbinary::input::motion::gesture::TouchMotionGestureFactory ();
+use org::allbinary::logic::util::event::AllBinaryEventObject ();
+use org::allbinary::logic::util::event::AllBinaryEventObjectFactoryInterface ();
+use org::allbinary::input::motion::gesture::observer::MotionGestureEvent ();
 
 1;
 

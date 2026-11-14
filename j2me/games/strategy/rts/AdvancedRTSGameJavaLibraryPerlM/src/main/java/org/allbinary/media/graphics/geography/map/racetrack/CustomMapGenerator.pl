@@ -32,7 +32,7 @@ sub _init_fields {
 sub new {
     my ($class, $raceTrackGeographicMap) = @_;
     my $self = $class->SUPER::new();
-    $self->_init_fields();
+    _init_fields($self);
         $self->{raceTrackGeographicMap} = $raceTrackGeographicMap;
         $self->{geographicMapCellTypeFactory} = $self->{raceTrackGeographicMap}->getGeographicMapCellTypeFactory();
         my $mapArray = $raceTrackGeographicMap->getRaceTrackData()->getMapArray();
@@ -83,14 +83,15 @@ sub getCustomMapArray {
         return $self->{customMapArray};
 }
 
-use org::allbinary::game::layer::AdvancedRTSGameLayer;
-use org::allbinary::game::layer::waypoint::WaypointLayer;
-use org::allbinary::graphics::CellPosition;
-use org::allbinary::layer::AllBinaryLayer;
-use org::allbinary::media::graphics::geography::map::BasicGeographicMapCellPositionFactory;
-use org::allbinary::media::graphics::geography::map::GeographicMapCellTypeFactory;
-use org::allbinary::media::graphics::geography::map::drop::DropCellPositionHistory;
-use org::allbinary::media::graphics::geography::map::racetrack::CustomMapGeneratorBase;
+use java::lang::Object ();
+use org::allbinary::game::layer::AdvancedRTSGameLayer ();
+use org::allbinary::game::layer::waypoint::WaypointLayer ();
+use org::allbinary::graphics::CellPosition ();
+use org::allbinary::layer::AllBinaryLayer ();
+use org::allbinary::media::graphics::geography::map::BasicGeographicMapCellPositionFactory ();
+use org::allbinary::media::graphics::geography::map::GeographicMapCellTypeFactory ();
+use org::allbinary::media::graphics::geography::map::drop::DropCellPositionHistory ();
+use org::allbinary::media::graphics::geography::map::racetrack::CustomMapGeneratorBase ();
 
 1;
 

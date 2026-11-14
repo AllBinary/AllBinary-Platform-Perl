@@ -17,8 +17,9 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
-our $instance = 'org::allbinary::graphics::color::BasicColorSetUtil'->new();
+tie our $instance, 'java::lang::LazyStatic', sub { 'org::allbinary::graphics::color::BasicColorSetUtil'->new() };
 
 
 sub getInstance {
@@ -45,7 +46,9 @@ sub setBasicColorP3 {
         $graphics->setColor($value);
 }
 
-# use javax::microedition::lcdui::Graphics;
+use java::lang::Object ();
+use java::lang::LazyStatic ();
+use javax::microedition::lcdui::Graphics ();
 
 1;
 

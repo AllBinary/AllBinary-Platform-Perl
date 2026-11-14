@@ -17,8 +17,9 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
-our $instance = 'org::allbinary::media::image::ImageScaleUtil'->new();
+tie our $instance, 'java::lang::LazyStatic', sub { 'org::allbinary::media::image::ImageScaleUtil'->new() };
 
 sub _init_fields {
     my ($self) = @_;
@@ -41,7 +42,7 @@ sub getInstance {
 sub new {
     my ($class) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
     return $self;
 }
 
@@ -120,18 +121,20 @@ sub scale {
         $canvas->concat($matrix);
 }
 
-use android::graphics::Bitmap;
-use android::graphics::Canvas;
-use android::graphics::Matrix;
-# use javax::microedition::lcdui::Image;
-# use javax::microedition::lcdui::NullImage;
-use org::allbinary::graphics::Anchor;
-use org::allbinary::image::ImageCache;
-use org::allbinary::logic::communication::log::LogUtil;
-use org::allbinary::string::CommonStrings;
-use org::allbinary::util::BasicArrayList;
-use org::allbinary::util::BasicArrayListD;
-use org::microemu::android::device::AndroidImageInterface;
+use java::lang::Object ();
+use java::lang::LazyStatic ();
+# use android::graphics::Bitmap ();
+# use android::graphics::Canvas ();
+# use android::graphics::Matrix ();
+use javax::microedition::lcdui::Image ();
+use javax::microedition::lcdui::NullImage ();
+use org::allbinary::graphics::Anchor ();
+use org::allbinary::image::ImageCache ();
+use org::allbinary::logic::communication::log::LogUtil ();
+use org::allbinary::string::CommonStrings ();
+use org::allbinary::util::BasicArrayList ();
+use org::allbinary::util::BasicArrayListD ();
+use org::microemu::android::device::AndroidImageInterface ();
 
 1;
 

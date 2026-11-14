@@ -17,14 +17,16 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
-our $instance = 'org::allbinary::data::tree::dom::document::XmlDocumentHelper'->new();
+tie our $instance, 'java::lang::LazyStatic', sub { 'org::allbinary::data::tree::dom::document::XmlDocumentHelper'->new() };
 
 sub _init_fields {
     my ($self) = @_;
     $self->{logUtil} = 'org::allbinary::logic::communication::log::LogUtil'->getInstance();
     $self->{INDENT_NUMBER} = "indent-number";
-    $self->{transformer} = undef;
+    $self->{indent} = 0;
+    $self->{ignoreDeclaration} = 0;
 }
 
 
@@ -37,7 +39,7 @@ sub getInstance {
 sub new {
     my ($class) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
         $self->init(4, 1);
     return $self;
 }
@@ -45,28 +47,53 @@ sub new {
 
 sub init {
     my ($self, $indent, $ignoreDeclaration) = @_;
-        try {
-            my $booleanFactory = 'org::allbinary::logic::java::bool::BooleanFactory'->getInstance();
-            my $transformerFactory = 'javax::xml::transform::TransformerFactory'->newInstance();
-            $transformerFactory->setAttribute($self->{INDENT_NUMBER}, $indent);
-            $self->{transformer} = $transformerFactory->newTransformer();
-            $self->{transformer}->setOutputProperty($javax::xml::transform::OutputKeys::ENCODING, 'org::allbinary::logic::java::characters::CharacterSetData'->getInstance()->{UTF_8});
-            $self->{transformer}->setOutputProperty($javax::xml::transform::OutputKeys::OMIT_XML_DECLARATION, ($ignoreDeclaration ? $booleanFactory->{YES} : $booleanFactory->{NO}));
-            $self->{transformer}->setOutputProperty($javax::xml::transform::OutputKeys::INDENT, $booleanFactory->{YES});
-        } catch ($e) {
-            my $commonStrings = 'org::allbinary::string::CommonStrings'->getInstance();
-            $self->{logUtil}->put($commonStrings->{EXCEPTION}, $self, $commonStrings->{INIT}, $e);
+        $self->{indent} = $indent;
+        $self->{ignoreDeclaration} = $ignoreDeclaration;
+}
+
+
+# throws TransformerConfigurationException
+sub createTransformer {
+    my ($self, $indent, $ignoreDeclaration) = @_;
+        my $booleanFactory = 'org::allbinary::logic::java::bool::BooleanFactory'->getInstance();
+        my $transformerFactory = 'javax::xml::transform::TransformerFactory'->newInstance();
+        $transformerFactory->setAttribute($self->{INDENT_NUMBER}, $indent);
+        my $transformer = $transformerFactory->newTransformer();
+        $transformer->setOutputProperty($javax::xml::transform::OutputKeys::ENCODING, 'org::allbinary::logic::java::characters::CharacterSetData'->getInstance()->{UTF_8});
+        $transformer->setOutputProperty($javax::xml::transform::OutputKeys::OMIT_XML_DECLARATION, ($ignoreDeclaration ? $booleanFactory->{YES} : $booleanFactory->{NO}));
+        $transformer->setOutputProperty($javax::xml::transform::OutputKeys::INDENT, $booleanFactory->{YES});
+        return $transformer;
+}
+
+
+# throws TransformerConfigurationException
+# Java overloaded method: Perl keeps the last definition
+sub createTransformer {
+    my ($self) = @_;
+        my $currentIndent = 0;
+        my $currentIgnoreDeclaration = 0;
+        {; # synchronized ($self)
+            $currentIndent = $self->{indent};
+            $currentIgnoreDeclaration = $self->{ignoreDeclaration};
         }
+        return $self->createTransformer($currentIndent, $currentIgnoreDeclaration);
 }
 
 
 # throws Exception
 sub format {
     my ($self, $xmlString) = @_;
+        return $self->formatWithTransformer($xmlString, $self->createTransformer());
+}
+
+
+# throws Exception
+sub formatWithTransformer {
+    my ($self, $xmlString, $transformer) = @_;
         my $src = 'org::xml::sax::InputSource'->new('java::io::StringReader'->new($xmlString));
         my $document = 'javax::xml::parsers::DocumentBuilderFactory'->newInstance()->newDocumentBuilder()->parse($src);
         my $out = 'java::io::StringWriter'->new();
-        $self->{transformer}->transform('javax::xml::transform::dom::DOMSource'->new($document), 'javax::xml::transform::stream::StreamResult'->new($out));
+        $transformer->transform('javax::xml::transform::dom::DOMSource'->new($document), 'javax::xml::transform::stream::StreamResult'->new($out));
         return $out->toString();
 }
 
@@ -87,22 +114,24 @@ sub toString {
         }
 }
 
-# use java::io::ByteArrayOutputStream;
-# use java::io::StringReader;
-# use java::io::StringWriter;
-# use java::io::Writer;
-# use javax::xml::parsers::DocumentBuilderFactory;
-# use javax::xml::transform::OutputKeys;
-# use javax::xml::transform::Transformer;
-# use javax::xml::transform::TransformerFactory;
-# use javax::xml::transform::dom::DOMSource;
-# use javax::xml::transform::stream::StreamResult;
-use org::allbinary::logic::communication::log::LogUtil;
-use org::allbinary::logic::java::bool::BooleanFactory;
-use org::allbinary::logic::java::characters::CharacterSetData;
-use org::allbinary::string::CommonStrings;
-use org::w3c::dom::Document;
-use org::xml::sax::InputSource;
+use java::lang::Object ();
+use java::lang::LazyStatic ();
+# use java::io::ByteArrayOutputStream ();
+# use java::io::StringReader ();
+# use java::io::StringWriter ();
+# use java::io::Writer ();
+# use javax::xml::parsers::DocumentBuilderFactory ();
+# use javax::xml::transform::OutputKeys ();
+# use javax::xml::transform::Transformer ();
+# use javax::xml::transform::TransformerConfigurationException ();
+# use javax::xml::transform::TransformerFactory ();
+# use javax::xml::transform::dom::DOMSource ();
+# use javax::xml::transform::stream::StreamResult ();
+use org::allbinary::logic::communication::log::LogUtil ();
+use org::allbinary::logic::java::bool::BooleanFactory ();
+use org::allbinary::logic::java::characters::CharacterSetData ();
+use org::w3c::dom::Document ();
+use org::xml::sax::InputSource ();
 
 1;
 

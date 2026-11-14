@@ -29,7 +29,7 @@ sub _init_fields {
 sub new {
     my ($class, $categoryInterface) = @_;
     my $self = $class->SUPER::new($categoryInterface);
-    $self->_init_fields();
+    _init_fields($self);
         # super(...) made $self above
     return $self;
 }
@@ -74,12 +74,13 @@ sub view {
         return undef;
 }
 
-use org::allbinary::data::tree::dom::document::DomDocumentHelper;
-use org::allbinary::logic::visual::transform::TransformInterface;
-use org::allbinary::logic::visual::transform::data::TransformDocumentInterface;
-use org::allbinary::logic::visual::transform::info::TransformInfoInterface;
-use org::w3c::dom::Document;
-use org::allbinary::business::category::CategoryView;
+use java::lang::Object ();
+use org::allbinary::data::tree::dom::document::DomDocumentHelper ();
+use org::allbinary::logic::visual::transform::TransformInterface ();
+use org::allbinary::logic::visual::transform::data::TransformDocumentInterface ();
+use org::allbinary::logic::visual::transform::info::TransformInfoInterface ();
+use org::w3c::dom::Document ();
+use org::allbinary::business::category::CategoryView ();
 
 1;
 

@@ -17,7 +17,7 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
-use parent -norequire,'org::allbinary::game::collision::CollidableBaseBehaviorFactoryInterface';
+use parent -norequire,'java::lang::Object','org::allbinary::game::collision::CollidableBaseBehaviorFactoryInterface';
 
 
 sub new {
@@ -32,7 +32,8 @@ sub createBehavior {
         die ("RuntimeException");
 }
 
-use org::allbinary::game::collision::CollidableBaseBehaviorFactoryInterface;
+use java::lang::Object ();
+use org::allbinary::game::collision::CollidableBaseBehaviorFactoryInterface ();
 
 1;
 

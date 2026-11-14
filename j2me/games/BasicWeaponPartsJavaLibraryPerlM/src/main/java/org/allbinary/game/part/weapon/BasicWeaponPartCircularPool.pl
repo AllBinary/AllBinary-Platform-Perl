@@ -17,8 +17,9 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
-our $NULL_BASIC_WEAPON_PART_CIRCULAR_POOL = 'org::allbinary::game::part::weapon::BasicWeaponPartCircularPool'->new();
+tie our $NULL_BASIC_WEAPON_PART_CIRCULAR_POOL, 'java::lang::LazyStatic', sub { 'org::allbinary::game::part::weapon::BasicWeaponPartCircularPool'->new() };
 
 sub _init_fields {
     my ($self) = @_;
@@ -28,7 +29,7 @@ sub _init_fields {
 sub new {
     my ($class) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
     return $self;
 }
 
@@ -47,11 +48,13 @@ sub getInstance {
         return $self->{basicWeaponPart};
 }
 
-use org::allbinary::game::combat::weapon::WeaponProperties;
-use org::allbinary::game::score::ScoreableInterface;
-use org::allbinary::graphics::RelativeRelationship;
-use org::allbinary::layer::AllBinaryLayer;
-use org::allbinary::game::part::weapon::BasicWeaponPart;
+use java::lang::Object ();
+use java::lang::LazyStatic ();
+use org::allbinary::game::combat::weapon::WeaponProperties ();
+use org::allbinary::game::score::ScoreableInterface ();
+use org::allbinary::graphics::RelativeRelationship ();
+use org::allbinary::layer::AllBinaryLayer ();
+use org::allbinary::game::part::weapon::BasicWeaponPart ();
 
 1;
 

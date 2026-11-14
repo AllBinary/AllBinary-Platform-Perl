@@ -26,27 +26,24 @@ sub _init_fields {
     $self->{commonStrings} = 'org::allbinary::string::CommonStrings'->getInstance();
     $self->{basicSetColorUtil} = 'org::allbinary::graphics::color::BasicColorSetUtil'->getInstance();
     $self->{RED} = 'org::allbinary::graphics::color::BasicColorFactory'->getInstance()->{RED};
-    $self->{paintable} = ($org::allbinary::game::layer::SWTUtil::isSWT ? do {
-        package org::allbinary::graphics::paint::Paintable::AnonymousN66404 { our @ISA = ('org::allbinary::graphics::paint::Paintable');
-        $self->{basicSetColorUtil} = 'org::allbinary::graphics::color::BasicColorSetUtil'->getInstance();
-        $self->{BLACK} = 'org::allbinary::graphics::color::BasicColorFactory'->getInstance()->{BLACK};
-        
-
-        sub paint {
-            my ($self, $graphics) = @_;
-            $self->{basicSetColorUtil}->setBasicColorP($graphics, $self->{BLACK});
-        }
-        }
-        'org::allbinary::graphics::paint::Paintable::AnonymousN66404'->can('new') ? 'org::allbinary::graphics::paint::Paintable::AnonymousN66404'->new() : bless({}, 'org::allbinary::graphics::paint::Paintable::AnonymousN66404')
-    } : 'org::allbinary::graphics::paint::NullPaintable'->getInstance());
+    $self->{paintable} = __PACKAGE__->createPaintable();
     $self->{gameKeyEventList} = 'org::allbinary::util::BasicArrayListD'->new();
+}
+
+
+sub createPaintable {
+    my ($class) = @_;
+        if ($org::allbinary::game::layer::SWTUtil::isSWT) {
+            return 'org::allbinary::game::layer::SWTBlackPaintable'->new();
+        }
+        return 'org::allbinary::graphics::paint::NullPaintable'->getInstance();
 }
 
 
 sub new {
     my ($class, $name, $layerInfo, $viewPosition) = @_;
     my $self = $class->SUPER::new($name, $layerInfo, $viewPosition);
-    $self->_init_fields();
+    _init_fields($self);
         # super(...) made $self above
     return $self;
 }
@@ -137,28 +134,30 @@ sub setHeight {
         $self->setHalfHeight(POSIX::floor(($height) / (2 ** (1))));
 }
 
-# use javax::microedition::khronos::opengles::GL;
-# use javax::microedition::lcdui::Graphics;
-use org::allbinary::graphics::Rectangle;
-use org::allbinary::graphics::color::BasicColor;
-use org::allbinary::graphics::color::BasicColorFactory;
-use org::allbinary::graphics::color::BasicColorSetUtil;
-use org::allbinary::graphics::paint::NullPaintable;
-use org::allbinary::graphics::paint::Paintable;
-use org::allbinary::image::opengles::OpenGLSurfaceChangedInterface;
-use org::allbinary::layer::AllBinaryLayer;
-use org::allbinary::layer::AllBinaryLayerManager;
-use org::allbinary::logic::communication::log::ForcedLogUtil;
-use org::allbinary::logic::util::event::AllBinaryEventObject;
-use org::allbinary::logic::util::event::EventStrings;
-use org::allbinary::string::CommonStrings;
-use org::allbinary::util::BasicArrayList;
-use org::allbinary::util::BasicArrayListD;
-use org::allbinary::view::ViewPositionBase;
-use org::allbinary::view::event::ViewPositionEvent;
-use org::allbinary::view::event::ViewPositionEventListenerInterface;
-use org::allbinary::game::layer::SWTUtil;
-use org::allbinary::game::layer::GameLayerUtil;
+use java::lang::Object ();
+use javax::microedition::khronos::opengles::GL ();
+use javax::microedition::lcdui::Graphics ();
+use org::allbinary::graphics::Rectangle ();
+use org::allbinary::graphics::color::BasicColor ();
+use org::allbinary::graphics::color::BasicColorFactory ();
+use org::allbinary::graphics::color::BasicColorSetUtil ();
+use org::allbinary::graphics::paint::NullPaintable ();
+use org::allbinary::graphics::paint::Paintable ();
+use org::allbinary::image::opengles::OpenGLSurfaceChangedInterface ();
+use org::allbinary::layer::AllBinaryLayer ();
+use org::allbinary::layer::AllBinaryLayerManager ();
+use org::allbinary::logic::communication::log::ForcedLogUtil ();
+use org::allbinary::logic::util::event::AllBinaryEventObject ();
+use org::allbinary::logic::util::event::EventStrings ();
+use org::allbinary::string::CommonStrings ();
+use org::allbinary::util::BasicArrayList ();
+use org::allbinary::util::BasicArrayListD ();
+use org::allbinary::view::ViewPositionBase ();
+use org::allbinary::view::event::ViewPositionEvent ();
+use org::allbinary::view::event::ViewPositionEventListenerInterface ();
+use org::allbinary::game::layer::SWTUtil ();
+use org::allbinary::game::layer::SWTBlackPaintable ();
+use org::allbinary::game::layer::GameLayerUtil ();
 
 1;
 

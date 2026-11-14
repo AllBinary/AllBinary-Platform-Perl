@@ -32,7 +32,7 @@ sub addPoints {
     die "abstract method addPoints";
 }
 
-use org::allbinary::util::BasicArrayList;
+use org::allbinary::util::BasicArrayList ();
 
 1;
 

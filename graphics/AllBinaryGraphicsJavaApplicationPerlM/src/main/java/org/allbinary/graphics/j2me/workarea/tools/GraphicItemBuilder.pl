@@ -17,6 +17,7 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
 
 
@@ -38,9 +39,10 @@ sub getInstance {
         }
 }
 
-use org::w3c::dom::Node;
-use org::allbinary::graphics::j2me::workarea::tools::PointsDomUtil;
-use org::allbinary::graphics::j2me::workarea::tools::LinesGraphicItem;
+use java::lang::Object ();
+use org::w3c::dom::Node ();
+use org::allbinary::graphics::j2me::workarea::tools::PointsDomUtil ();
+use org::allbinary::graphics::j2me::workarea::tools::LinesGraphicItem ();
 
 1;
 

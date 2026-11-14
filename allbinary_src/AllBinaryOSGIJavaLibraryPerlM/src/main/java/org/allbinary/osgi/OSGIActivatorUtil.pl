@@ -17,6 +17,7 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
 
 
@@ -46,12 +47,13 @@ sub registerAsService {
         }
 }
 
-use org::allbinary::logic::StdUtil;
-use org::allbinary::util::ABHashtable;
-use org::osgi::framework::BundleContext;
-use org::osgi::framework::NullServiceReferenceFactory;
-use org::osgi::framework::ServiceReference;
-use org::osgi::framework::ServiceRegistration;
+use java::lang::Object ();
+use org::allbinary::logic::StdUtil ();
+use org::allbinary::util::ABHashtable ();
+use org::osgi::framework::BundleContext ();
+use org::osgi::framework::NullServiceReferenceFactory ();
+use org::osgi::framework::ServiceReference ();
+use org::osgi::framework::ServiceRegistration ();
 
 1;
 

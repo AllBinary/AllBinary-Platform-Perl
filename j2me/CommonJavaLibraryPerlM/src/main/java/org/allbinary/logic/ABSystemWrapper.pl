@@ -18,8 +18,9 @@ use warnings;
 use feature 'try';
 no warnings 'experimental::try';
 use Time::HiRes ();
+use parent -norequire,'java::lang::Object';
 
-our $instance = 'org::allbinary::logic::ABSystemWrapper'->new();
+tie our $instance, 'java::lang::LazyStatic', sub { 'org::allbinary::logic::ABSystemWrapper'->new() };
 
 sub new {
     my ($class) = @_;
@@ -45,8 +46,10 @@ sub currentTimeMillis {
         return int(Time::HiRes::time() * 1000);
 }
 
-# use jsinterop::annotations::JsType;
-use java::lang::System;
+use java::lang::Object ();
+use java::lang::LazyStatic ();
+# use jsinterop::annotations::JsType ();
+use java::lang::System ();
 
 1;
 

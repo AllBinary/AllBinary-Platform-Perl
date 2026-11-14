@@ -19,6 +19,7 @@ use feature 'try';
 no warnings 'experimental::try';
 use parent -norequire,'org::allbinary::input::AllBinarySensor';
 
+tie our $NULL_ALLBINARY_ORIENTATION_SENSOR, 'java::lang::LazyStatic', sub { 'org::allbinary::input::gyro::AllBinaryOrientationSensor'->new() };
 
 sub _init_fields {
     my ($self) = @_;
@@ -36,7 +37,7 @@ sub setCompleteMotionGestureInputEventListener {
 sub new {
     my ($class) = @_;
     my $self = $class->SUPER::new();
-    $self->_init_fields();
+    _init_fields($self);
     return $self;
 }
 
@@ -47,11 +48,13 @@ sub getOrientation {
         die ($self->{commonStrings}->{NOT_IMPLEMENTED});
 }
 
-use org::allbinary::game::input::CompleteMotionGestureInputEventListenerInterface;
-use org::allbinary::game::input::motion::action::NoCompleteMotionGestureInputEventListener;
-use org::allbinary::input::AllBinarySensor;
-use org::allbinary::logic::math::Orientation;
-use org::allbinary::logic::math::PrimitiveFloatUtil;
+use java::lang::Object ();
+use java::lang::LazyStatic ();
+use org::allbinary::game::input::CompleteMotionGestureInputEventListenerInterface ();
+use org::allbinary::game::input::motion::action::NoCompleteMotionGestureInputEventListener ();
+use org::allbinary::input::AllBinarySensor ();
+use org::allbinary::logic::math::Orientation ();
+use org::allbinary::logic::math::PrimitiveFloatUtil ();
 
 1;
 

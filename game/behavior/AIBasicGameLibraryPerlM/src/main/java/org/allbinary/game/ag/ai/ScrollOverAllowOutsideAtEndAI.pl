@@ -52,11 +52,12 @@ sub processAI {
         }
 }
 
-use org::allbinary::game::ai::BasicAI;
-use org::allbinary::game::input::GameInput;
-use org::allbinary::graphics::displayable::DisplayInfoSingleton;
-use org::allbinary::layer::AllBinaryLayer;
-use org::allbinary::layer::AllBinaryLayerManager;
+use java::lang::Object ();
+use org::allbinary::game::ai::BasicAI ();
+use org::allbinary::game::input::GameInput ();
+use org::allbinary::graphics::displayable::DisplayInfoSingleton ();
+use org::allbinary::layer::AllBinaryLayer ();
+use org::allbinary::layer::AllBinaryLayerManager ();
 
 1;
 

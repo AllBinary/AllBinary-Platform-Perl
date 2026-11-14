@@ -34,10 +34,11 @@ sub process {
         $waypointEventListenerInterface->onWaypointEvent($eventObject);
 }
 
-use org::allbinary::game::layer::RTSLayerEvent;
-use org::allbinary::logic::util::event::AllBinaryEventObject;
-use org::allbinary::logic::util::event::EventListenerInterface;
-use org::allbinary::logic::util::event::handler::BasicEventHandler;
+use java::lang::Object ();
+use org::allbinary::game::layer::RTSLayerEvent ();
+use org::allbinary::logic::util::event::AllBinaryEventObject ();
+use org::allbinary::logic::util::event::EventListenerInterface ();
+use org::allbinary::logic::util::event::handler::BasicEventHandler ();
 
 1;
 

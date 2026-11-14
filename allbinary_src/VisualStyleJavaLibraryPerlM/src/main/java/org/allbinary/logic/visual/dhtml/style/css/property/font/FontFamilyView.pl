@@ -43,9 +43,10 @@ sub _new1 {
     return $self;
 }
 
-use org::allbinary::logic::visual::dhtml::style::css::property::CssPropertyView;
-use org::w3c::dom::Node;
-use org::allbinary::logic::visual::dhtml::style::css::property::font::FontFamilyData;
+use java::lang::Object ();
+use org::allbinary::logic::visual::dhtml::style::css::property::CssPropertyView ();
+use org::w3c::dom::Node ();
+use org::allbinary::logic::visual::dhtml::style::css::property::font::FontFamilyData ();
 
 1;
 

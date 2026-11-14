@@ -38,7 +38,7 @@ sub createHighScoresHelper {
     die "abstract method createHighScoresHelper";
 }
 
-use org::allbinary::game::GameInfo;
+use org::allbinary::game::GameInfo ();
 
 1;
 

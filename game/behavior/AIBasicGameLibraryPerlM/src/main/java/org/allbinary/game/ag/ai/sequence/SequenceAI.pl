@@ -30,7 +30,7 @@ sub _init_fields {
 sub new {
     my ($class, $artificialIntelligenceInterfaceArray, $ownerLayerInterface, $gameInput) = @_;
     my $self = $class->SUPER::new($artificialIntelligenceInterfaceArray, $ownerLayerInterface, $gameInput);
-    $self->_init_fields();
+    _init_fields($self);
         # super(...) made $self above
     return $self;
 }
@@ -87,15 +87,16 @@ sub toString {
         return $stringBuffer->toString();
 }
 
-use org::allbinary::ai::ArtificialIntelligence;
-use org::allbinary::ai::ArtificialIntelligenceInterface;
-use org::allbinary::ai::ArtificialIntelligenceTransitionInterface;
-use org::allbinary::game::ag::ai::ArrayAI;
-use org::allbinary::game::input::GameInput;
-use org::allbinary::layer::AllBinaryLayer;
-use org::allbinary::layer::AllBinaryLayerManager;
-use org::allbinary::logic::string::StringMaker;
-use org::allbinary::logic::string::StringUtil;
+use java::lang::Object ();
+use org::allbinary::ai::ArtificialIntelligence ();
+use org::allbinary::ai::ArtificialIntelligenceInterface ();
+use org::allbinary::ai::ArtificialIntelligenceTransitionInterface ();
+use org::allbinary::game::ag::ai::ArrayAI ();
+use org::allbinary::game::input::GameInput ();
+use org::allbinary::layer::AllBinaryLayer ();
+use org::allbinary::layer::AllBinaryLayerManager ();
+use org::allbinary::logic::string::StringMaker ();
+use org::allbinary::logic::string::StringUtil ();
 
 1;
 

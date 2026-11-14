@@ -17,6 +17,7 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
 
 sub _init_fields {
@@ -29,7 +30,7 @@ sub _init_fields {
 sub new {
     my ($class, $xsltFilePath, $dataFilePath) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
         $self->{xsltFilePath} = $xsltFilePath;
         $self->{dataFilePath} = $dataFilePath;
     return $self;
@@ -45,15 +46,16 @@ sub transform {
         return $result;
 }
 
-# use java::io::StringBufferInputStream;
-# use javax::xml::transform::stream::StreamSource;
-use org::allbinary::data::tree::dom::document::DomDocumentHelper;
-use org::allbinary::data::tree::dom::document::XmlDocumentHelper;
-use org::allbinary::logic::io::AbFileLocalInputStream;
-use org::allbinary::logic::io::file::AbFile;
-use org::allbinary::logic::io::path::AbPath;
-use org::w3c::dom::Document;
-use org::allbinary::data::tree::dom::XslHelper;
+use java::lang::Object ();
+# use java::io::StringBufferInputStream ();
+# use javax::xml::transform::stream::StreamSource ();
+use org::allbinary::data::tree::dom::document::DomDocumentHelper ();
+use org::allbinary::data::tree::dom::document::XmlDocumentHelper ();
+use org::allbinary::logic::io::AbFileLocalInputStream ();
+use org::allbinary::logic::io::file::AbFile ();
+use org::allbinary::logic::io::path::AbPath ();
+use org::w3c::dom::Document ();
+use org::allbinary::data::tree::dom::XslHelper ();
 
 1;
 

@@ -17,8 +17,9 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
-our $instance = 'org::allbinary::image::PreResourceImageUtil'->new();
+tie our $instance, 'java::lang::LazyStatic', sub { 'org::allbinary::image::PreResourceImageUtil'->new() };
 
 sub new {
     my ($class) = @_;
@@ -48,9 +49,11 @@ sub update {
     my ($self, $graphics, $image) = @_;
 }
 
-# use javax::microedition::khronos::opengles::GL;
-# use javax::microedition::lcdui::Graphics;
-# use javax::microedition::lcdui::Image;
+use java::lang::Object ();
+use java::lang::LazyStatic ();
+use javax::microedition::khronos::opengles::GL ();
+use javax::microedition::lcdui::Graphics ();
+use javax::microedition::lcdui::Image ();
 
 1;
 

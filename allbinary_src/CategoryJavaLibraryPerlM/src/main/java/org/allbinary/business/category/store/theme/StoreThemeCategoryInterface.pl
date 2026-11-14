@@ -33,13 +33,13 @@ sub getThemes {
     die "abstract method getThemes";
 }
 
-use org::allbinary::util::BasicArrayList;
-use org::allbinary::util::BasicArrayListD;
-use org::allbinary::business::category::CategoryInterface;
-use org::allbinary::data::tables::TableMappingInterface;
-use org::allbinary::logic::control::validate::ValidationInterface;
-use org::allbinary::logic::visual::theme::ThemeValidation;
-use org::allbinary::logic::visual::transform::info::CompositeTransformInfoInterface;
+use org::allbinary::util::BasicArrayList ();
+use org::allbinary::util::BasicArrayListD ();
+use org::allbinary::business::category::CategoryInterface ();
+use org::allbinary::data::tables::TableMappingInterface ();
+use org::allbinary::logic::control::validate::ValidationInterface ();
+use org::allbinary::logic::visual::theme::ThemeValidation ();
+use org::allbinary::logic::visual::transform::info::CompositeTransformInfoInterface ();
 
 1;
 

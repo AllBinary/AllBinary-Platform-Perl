@@ -18,8 +18,9 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
-our $instance = 'org::allbinary::logic::io::path::PathUtil'->new();
+tie our $instance, 'java::lang::LazyStatic', sub { 'org::allbinary::logic::io::path::PathUtil'->new() };
 
 sub _init_fields {
     my ($self) = @_;
@@ -37,7 +38,7 @@ sub getInstance {
 sub new {
     my ($class) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
     return $self;
 }
 
@@ -164,11 +165,13 @@ sub removeNameFromPath {
         }
 }
 
-use org::allbinary::logic::io::file::FilePathData;
-use org::allbinary::logic::string::StringUtil;
-use org::allbinary::logic::string::StringValidationUtil;
-use org::allbinary::logic::io::path::AbPathData;
-use org::allbinary::logic::io::path::AbPath;
+use java::lang::Object ();
+use java::lang::LazyStatic ();
+use org::allbinary::logic::io::file::FilePathData ();
+use org::allbinary::logic::string::StringUtil ();
+use org::allbinary::logic::string::StringValidationUtil ();
+use org::allbinary::logic::io::path::AbPathData ();
+use org::allbinary::logic::io::path::AbPath ();
 
 1;
 

@@ -17,6 +17,7 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
 
 sub _init_fields {
@@ -29,7 +30,7 @@ sub _init_fields {
 sub new {
     my ($class, $initTotal) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
         $self->{initTotal} = $initTotal;
         $self->init();
     return $self;
@@ -74,6 +75,7 @@ sub setTotal {
         $self->{total} = $total;
 }
 
+use java::lang::Object ();
 
 1;
 

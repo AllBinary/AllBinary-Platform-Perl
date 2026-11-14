@@ -17,8 +17,9 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
-our $instance = 'org::allbinary::logic::io::file::directory::SubDirectory'->new();
+tie our $instance, 'java::lang::LazyStatic', sub { 'org::allbinary::logic::io::file::directory::SubDirectory'->new() };
 
 sub _init_fields {
     my ($self) = @_;
@@ -35,7 +36,7 @@ sub getInstance {
 sub new {
     my ($class) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
     return $self;
 }
 
@@ -80,12 +81,14 @@ sub toString {
         return $stringBuffer->toString();
 }
 
-# use java::io::FileFilter;
-use org::allbinary::logic::io::file::AbFile;
-use org::allbinary::logic::string::StringMaker;
-use org::allbinary::string::CommonSeps;
-use org::allbinary::util::BasicArrayList;
-use org::allbinary::logic::io::file::directory::Directory;
+use java::lang::Object ();
+use java::lang::LazyStatic ();
+# use java::io::FileFilter ();
+use org::allbinary::logic::io::file::AbFile ();
+use org::allbinary::logic::string::StringMaker ();
+use org::allbinary::string::CommonSeps ();
+use org::allbinary::util::BasicArrayList ();
+use org::allbinary::logic::io::file::directory::Directory ();
 
 1;
 

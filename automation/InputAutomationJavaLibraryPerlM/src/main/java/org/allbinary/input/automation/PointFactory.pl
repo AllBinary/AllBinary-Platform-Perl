@@ -17,6 +17,7 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
 our $pointArray = [map { [(undef) x (3000)] } 1 .. (3000)];
 
@@ -38,8 +39,9 @@ sub getInstance {
         return $point;
 }
 
-# use java::awt;
-use org::allbinary::input::automation::Point;
+use java::lang::Object ();
+# use java::awt ();
+use org::allbinary::input::automation::Point ();
 
 1;
 

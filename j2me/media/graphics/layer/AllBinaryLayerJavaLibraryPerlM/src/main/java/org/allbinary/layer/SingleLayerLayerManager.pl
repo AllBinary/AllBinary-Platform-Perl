@@ -28,8 +28,9 @@ sub new {
     return $self;
 }
 
-use org::allbinary::layer::LayerManager;
-use org::allbinary::layer::LayerManagerNoDebug;
+use java::lang::Object ();
+use org::allbinary::layer::LayerManager ();
+use org::allbinary::layer::LayerManagerNoDebug ();
 
 1;
 

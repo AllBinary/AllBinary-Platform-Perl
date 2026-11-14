@@ -17,6 +17,7 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
 
 sub _init_fields {
@@ -32,7 +33,7 @@ sub _init_fields {
 sub new {
     my ($class, $gameKeyEventList, $removalGameKeyEventList) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
         $self->{gameKeyEventList} = $gameKeyEventList;
         $self->{removalGameKeyEventList} = $removalGameKeyEventList;
         $self->{isRemoveDuplicateKeyPresses} = 'org::allbinary::game::configuration::feature::Features'->getInstance()->isFeature('org::allbinary::game::configuration::feature::InputFeatureFactory'->getInstance()->{REMOVE_DUPLICATE_KEY_PRESSES});
@@ -112,12 +113,13 @@ sub getGameKeyEventList {
         return $self->{gameKeyEventList};
 }
 
-use org::allbinary::game::configuration::feature::Features;
-use org::allbinary::game::configuration::feature::InputFeatureFactory;
-use org::allbinary::game::input::event::GameKeyEvent;
-use org::allbinary::logic::communication::log::LogUtil;
-use org::allbinary::string::CommonStrings;
-use org::allbinary::util::BasicArrayList;
+use java::lang::Object ();
+use org::allbinary::game::configuration::feature::Features ();
+use org::allbinary::game::configuration::feature::InputFeatureFactory ();
+use org::allbinary::game::input::event::GameKeyEvent ();
+use org::allbinary::logic::communication::log::LogUtil ();
+use org::allbinary::string::CommonStrings ();
+use org::allbinary::util::BasicArrayList ();
 
 1;
 

@@ -17,8 +17,9 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
-our $NULL_SECRET_COMPOSITE = 'org::allbinary::logic::system::security::crypt::jcehelper::BaseSecretComposite'->new();
+tie our $NULL_SECRET_COMPOSITE, 'java::lang::LazyStatic', sub { 'org::allbinary::logic::system::security::crypt::jcehelper::BaseSecretComposite'->new() };
 
 sub new {
     my ($class) = @_;
@@ -40,7 +41,9 @@ sub decrypt {
         return 'org::allbinary::logic::NullUtil'->getInstance()->{NULL_BYTE_ARRAY};
 }
 
-use org::allbinary::logic::NullUtil;
+use java::lang::Object ();
+use java::lang::LazyStatic ();
+use org::allbinary::logic::NullUtil ();
 
 1;
 

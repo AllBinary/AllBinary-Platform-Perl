@@ -17,9 +17,9 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
-use parent -norequire,'org::allbinary::logic::visual::transform::info::TransformInfoFactoryInterface';
+use parent -norequire,'java::lang::Object','org::allbinary::logic::visual::transform::info::TransformInfoFactoryInterface';
 
-our $instance = 'org::allbinary::logic::visual::transform::info::TransformInfoHttpStoreFactory'->new();
+tie our $instance, 'java::lang::LazyStatic', sub { 'org::allbinary::logic::visual::transform::info::TransformInfoHttpStoreFactory'->new() };
 
 
 sub getInstance {
@@ -42,10 +42,12 @@ sub getInstance {
         return 'org::allbinary::logic::visual::transform::info::TransformInfoHttpStore'->new($databaseHashMap, $propertiesHashMap, $pageContext);
 }
 
-use java::util::HashMap;
-# use javax::servlet::jsp::PageContext;
-use org::allbinary::logic::visual::transform::info::TransformInfoFactoryInterface;
-use org::allbinary::logic::visual::transform::info::TransformInfoHttpStore;
+use java::lang::Object ();
+use java::lang::LazyStatic ();
+use java::util::HashMap ();
+# use javax::servlet::jsp::PageContext ();
+use org::allbinary::logic::visual::transform::info::TransformInfoFactoryInterface ();
+use org::allbinary::logic::visual::transform::info::TransformInfoHttpStore ();
 
 1;
 

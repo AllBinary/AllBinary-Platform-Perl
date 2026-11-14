@@ -37,7 +37,7 @@ sub _init_fields {
 sub new {
     my ($class, $allBinaryGameCanvas) = @_;
     my $self = $class->SUPER::new();
-    $self->_init_fields();
+    _init_fields($self);
         $self->{allBinaryGameCanvas} = $allBinaryGameCanvas;
         $self->{inputToGameKeyMapping}->init($self->{allBinaryGameCanvas});
     return $self;
@@ -87,21 +87,22 @@ sub removeGameKeyEvent {
         }
 }
 
-# use javax::microedition::lcdui::Canvas;
-use org::allbinary::game::input::GameKey;
-use org::allbinary::game::input::GameKeyEventSourceInterface;
-use org::allbinary::game::input::GameKeyFactory;
-use org::allbinary::game::input::InputProcessor;
-use org::allbinary::game::input::PlatformInputMappingFactory;
-use org::allbinary::game::input::event::DownGameKeyEventHandler;
-use org::allbinary::game::input::event::DownKeyEventHandler;
-use org::allbinary::game::input::event::GameKeyEvent;
-use org::allbinary::game::input::event::GameKeyEventFactory;
-use org::allbinary::game::input::event::UpGameKeyEventHandler;
-use org::allbinary::game::input::mapping::InputToGameKeyMapping;
-use org::allbinary::logic::communication::log::LogUtil;
-use org::allbinary::logic::math::SmallIntegerSingletonFactory;
-use org::allbinary::logic::string::StringMaker;
+use java::lang::Object ();
+use javax::microedition::lcdui::Canvas ();
+use org::allbinary::game::input::GameKey ();
+use org::allbinary::game::input::GameKeyEventSourceInterface ();
+use org::allbinary::game::input::GameKeyFactory ();
+use org::allbinary::game::input::InputProcessor ();
+use org::allbinary::game::input::PlatformInputMappingFactory ();
+use org::allbinary::game::input::event::DownGameKeyEventHandler ();
+use org::allbinary::game::input::event::DownKeyEventHandler ();
+use org::allbinary::game::input::event::GameKeyEvent ();
+use org::allbinary::game::input::event::GameKeyEventFactory ();
+use org::allbinary::game::input::event::UpGameKeyEventHandler ();
+use org::allbinary::game::input::mapping::InputToGameKeyMapping ();
+use org::allbinary::logic::communication::log::LogUtil ();
+use org::allbinary::logic::math::SmallIntegerSingletonFactory ();
+use org::allbinary::logic::string::StringMaker ();
 
 1;
 

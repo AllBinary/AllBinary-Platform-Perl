@@ -17,8 +17,9 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
-our $instance = 'org::allbinary::game::layer::geographic::map::LayerCoveringCellPositionsUtil'->new();
+tie our $instance, 'java::lang::LazyStatic', sub { 'org::allbinary::game::layer::geographic::map::LayerCoveringCellPositionsUtil'->new() };
 
 sub _init_fields {
     my ($self) = @_;
@@ -28,7 +29,7 @@ sub _init_fields {
 sub new {
     my ($class) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
     return $self;
 }
 
@@ -62,11 +63,13 @@ sub getAll {
         return $self->{cellPositionsUtil}->getAll($geographicMapInterface, $topLeftGeographicMapCellPosition, $columns, $rows, $reusableList);
 }
 
-use org::allbinary::util::BasicArrayList;
-use org::allbinary::layer::AllBinaryLayer;
-use org::allbinary::media::graphics::geography::map::BasicGeographicMap;
-use org::allbinary::media::graphics::geography::map::CellPositionsUtil;
-use org::allbinary::media::graphics::geography::map::GeographicMapCellPosition;
+use java::lang::Object ();
+use java::lang::LazyStatic ();
+use org::allbinary::util::BasicArrayList ();
+use org::allbinary::layer::AllBinaryLayer ();
+use org::allbinary::media::graphics::geography::map::BasicGeographicMap ();
+use org::allbinary::media::graphics::geography::map::CellPositionsUtil ();
+use org::allbinary::media::graphics::geography::map::GeographicMapCellPosition ();
 
 1;
 

@@ -19,7 +19,7 @@ use feature 'try';
 no warnings 'experimental::try';
 use parent -norequire,'org::allbinary::input::automation::module::AbstractInputAutomationFactory';
 
-our $NAME = "Test New Game" . $org::allbinary::input::automation::module::InputAutomationModuleData::MODULE_NAME_END;
+tie our $NAME, 'java::lang::LazyStatic', sub { "Test New Game" . $org::allbinary::input::automation::module::InputAutomationModuleData::MODULE_NAME_END };
 
 sub _init_fields {
     my ($self) = @_;
@@ -30,7 +30,7 @@ sub _init_fields {
 sub new {
     my ($class) = @_;
     my $self = $class->SUPER::new($NAME, 'org::allbinary::input::automation::module::configuration::BlankModuleConfigurationJPanel'->new());
-    $self->_init_fields();
+    _init_fields($self);
         # super(...) made $self above
     return $self;
 }
@@ -54,11 +54,13 @@ sub getInstance {
         return undef;
 }
 
-# use javax::swing;
-use org::allbinary::input::automation::module::AbstractInputAutomationFactory;
-use org::allbinary::input::automation::module::InputAutomationModuleData;
-use org::allbinary::input::automation::module::configuration::BlankModuleConfigurationJPanel;
-use org::allbinary::thread::RunnableInterface;
+use java::lang::Object ();
+use java::lang::LazyStatic ();
+# use javax::swing ();
+use org::allbinary::input::automation::module::AbstractInputAutomationFactory ();
+use org::allbinary::input::automation::module::InputAutomationModuleData ();
+use org::allbinary::input::automation::module::configuration::BlankModuleConfigurationJPanel ();
+use org::allbinary::thread::RunnableInterface ();
 
 1;
 

@@ -17,8 +17,9 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
-our $instance = 'org::allbinary::business::user::commerce::inventory::order::OrderProcessorUtil'->new();
+tie our $instance, 'java::lang::LazyStatic', sub { 'org::allbinary::business::user::commerce::inventory::order::OrderProcessorUtil'->new() };
 
 sub _init_fields {
     my ($self) = @_;
@@ -28,7 +29,7 @@ sub _init_fields {
 sub new {
     my ($class) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
     return $self;
 }
 
@@ -50,9 +51,11 @@ sub process {
         return $self->{ORDER_PROCESSED};
 }
 
-use org::allbinary::data::generator::OrderIdGenerator;
-use org::allbinary::data::tables::user::commerce::inventory::order::OrderHistoryEntity;
-use org::allbinary::data::tables::user::commerce::inventory::order::OrderItemsEntity;
+use java::lang::Object ();
+use java::lang::LazyStatic ();
+use org::allbinary::data::generator::OrderIdGenerator ();
+use org::allbinary::data::tables::user::commerce::inventory::order::OrderHistoryEntity ();
+use org::allbinary::data::tables::user::commerce::inventory::order::OrderItemsEntity ();
 
 1;
 

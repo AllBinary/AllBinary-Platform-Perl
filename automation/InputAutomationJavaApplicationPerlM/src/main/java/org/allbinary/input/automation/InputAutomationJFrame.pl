@@ -17,7 +17,7 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
-use parent -norequire,'javax::swing::JFrame','bundle::input::automation::module::configuration::InputAutomationConfigurationModuleChangeListener','bundle::input::automation::robot::InputAutomationRobotChangeListener','javax::help::event::HelpSetListener';
+use parent -norequire,'java::lang::Object','bundle::input::automation::module::configuration::InputAutomationConfigurationModuleChangeListener','bundle::input::automation::robot::InputAutomationRobotChangeListener';
 
 our $INPUTAUTOMATION_JFRAME = undef;
 
@@ -57,7 +57,7 @@ sub _init_fields {
 sub new {
     my ($class) = @_;
     my $self = $class->SUPER::new();
-    $self->_init_fields();
+    _init_fields($self);
         $self->initComponents();
         my $url = ref($self)->getResource("/help/Help.hs");
         $self->{logUtil}->putF("URL: " . $url, $self, $self->{commonStrings}->{CONSTRUCTOR});
@@ -130,7 +130,7 @@ sub initComponents {
         $self->setMinimumSize('java::awt::Dimension'->new(325, 215));
         $self->setResizable(0);
         $self->addWindowFocusListener(do {
-            package java::awt::event::WindowFocusListener::AnonymousN69680 { our @ISA = ('java::awt::event::WindowFocusListener');
+            package java::awt::event::WindowFocusListener::AnonymousN69680 { our @ISA = ('java::awt::event::WindowFocusListener', 'java::lang::Object');
             
 
             sub windowGainedFocus {
@@ -147,7 +147,7 @@ sub initComponents {
             'java::awt::event::WindowFocusListener::AnonymousN69680'->can('new') ? 'java::awt::event::WindowFocusListener::AnonymousN69680'->new() : bless({}, 'java::awt::event::WindowFocusListener::AnonymousN69680')
         });
         $self->addFocusListener(do {
-            package java::awt::event::FocusAdapter::AnonymousN69918 { our @ISA = ('java::awt::event::FocusAdapter');
+            package java::awt::event::FocusAdapter::AnonymousN69918 { our @ISA = ('java::awt::event::FocusAdapter', 'java::lang::Object');
             
 
             sub focusGained {
@@ -166,7 +166,7 @@ sub initComponents {
         $self->{gameRobotJTabbedPane}->setMinimumSize('java::awt::Dimension'->new(320, 200));
         $self->{inputAutomationModuleJList}->setMinimumSize('java::awt::Dimension'->new(200, 0));
         $self->{inputAutomationModuleJList}->addListSelectionListener(do {
-            package javax::swing::event::ListSelectionListener::AnonymousN70297 { our @ISA = ('javax::swing::event::ListSelectionListener');
+            package javax::swing::event::ListSelectionListener::AnonymousN70297 { our @ISA = ('javax::swing::event::ListSelectionListener', 'java::lang::Object');
             
 
             sub valueChanged {
@@ -191,7 +191,7 @@ sub initComponents {
         $self->{processingJMenu}->setToolTipText("Set module processing state");
         $self->{startJMenuItem}->setText($self->{commonStrings}->{START});
         $self->{startJMenuItem}->addActionListener(do {
-            package java::awt::event::ActionListener::AnonymousN71626 { our @ISA = ('java::awt::event::ActionListener');
+            package java::awt::event::ActionListener::AnonymousN71626 { our @ISA = ('java::awt::event::ActionListener', 'java::lang::Object');
             
 
             sub actionPerformed {
@@ -204,7 +204,7 @@ sub initComponents {
         $self->{processingJMenu}->add($self->{startJMenuItem});
         $self->{stopJMenuItem}->setText("Stop");
         $self->{stopJMenuItem}->addActionListener(do {
-            package java::awt::event::ActionListener::AnonymousN71850 { our @ISA = ('java::awt::event::ActionListener');
+            package java::awt::event::ActionListener::AnonymousN71850 { our @ISA = ('java::awt::event::ActionListener', 'java::lang::Object');
             
 
             sub actionPerformed {
@@ -218,7 +218,7 @@ sub initComponents {
         $self->{mainJMenuBar}->add($self->{processingJMenu});
         $self->{optionsJMenu}->setText("Options");
         $self->{optionsJMenu}->addActionListener(do {
-            package java::awt::event::ActionListener::AnonymousN72111 { our @ISA = ('java::awt::event::ActionListener');
+            package java::awt::event::ActionListener::AnonymousN72111 { our @ISA = ('java::awt::event::ActionListener', 'java::lang::Object');
             
 
             sub actionPerformed {
@@ -232,7 +232,7 @@ sub initComponents {
         $self->{stopOnFocusJCheckBoxMenuItem}->setEnabled(0);
         $self->{stopOnFocusJCheckBoxMenuItem}->setLabel("Stop Module On Focus");
         $self->{stopOnFocusJCheckBoxMenuItem}->addActionListener(do {
-            package java::awt::event::ActionListener::AnonymousN72358 { our @ISA = ('java::awt::event::ActionListener');
+            package java::awt::event::ActionListener::AnonymousN72358 { our @ISA = ('java::awt::event::ActionListener', 'java::lang::Object');
             
 
             sub actionPerformed {
@@ -247,7 +247,7 @@ sub initComponents {
         $self->{toolsJMenu}->setText("Help");
         $self->{helpJMenuItem}->setText("Help");
         $self->{helpJMenuItem}->addActionListener(do {
-            package java::awt::event::ActionListener::AnonymousN72649 { our @ISA = ('java::awt::event::ActionListener');
+            package java::awt::event::ActionListener::AnonymousN72649 { our @ISA = ('java::awt::event::ActionListener', 'java::lang::Object');
             
 
             sub actionPerformed {
@@ -260,7 +260,7 @@ sub initComponents {
         $self->{toolsJMenu}->add($self->{helpJMenuItem});
         $self->{updatesJMenuItem}->setText("Updates");
         $self->{updatesJMenuItem}->addActionListener(do {
-            package java::awt::event::ActionListener::AnonymousN72873 { our @ISA = ('java::awt::event::ActionListener');
+            package java::awt::event::ActionListener::AnonymousN72873 { our @ISA = ('java::awt::event::ActionListener', 'java::lang::Object');
             
 
             sub actionPerformed {
@@ -273,7 +273,7 @@ sub initComponents {
         $self->{toolsJMenu}->add($self->{updatesJMenuItem});
         $self->{subscriptionJMenuItem}->setText("Subscription");
         $self->{subscriptionJMenuItem}->addActionListener(do {
-            package java::awt::event::ActionListener::AnonymousN73097 { our @ISA = ('java::awt::event::ActionListener');
+            package java::awt::event::ActionListener::AnonymousN73097 { our @ISA = ('java::awt::event::ActionListener', 'java::lang::Object');
             
 
             sub actionPerformed {
@@ -286,7 +286,7 @@ sub initComponents {
         $self->{toolsJMenu}->add($self->{subscriptionJMenuItem});
         $self->{modulesJMenuItem}->setText("Module Manager");
         $self->{modulesJMenuItem}->addActionListener(do {
-            package java::awt::event::ActionListener::AnonymousN73321 { our @ISA = ('java::awt::event::ActionListener');
+            package java::awt::event::ActionListener::AnonymousN73321 { our @ISA = ('java::awt::event::ActionListener', 'java::lang::Object');
             
 
             sub actionPerformed {
@@ -299,7 +299,7 @@ sub initComponents {
         $self->{toolsJMenu}->add($self->{modulesJMenuItem});
         $self->{aboutJMenuItem}->setText("About");
         $self->{aboutJMenuItem}->addActionListener(do {
-            package java::awt::event::ActionListener::AnonymousN73545 { our @ISA = ('java::awt::event::ActionListener');
+            package java::awt::event::ActionListener::AnonymousN73545 { our @ISA = ('java::awt::event::ActionListener', 'java::lang::Object');
             
 
             sub actionPerformed {
@@ -480,7 +480,7 @@ sub create {
         'org::allbinary::globals::URLGLOBALS'->init($appUrlGlobals);
         'org::allbinary::logic::system::loader::WebappClassLoaderInfo'->setLoader(ref($appUrlGlobals)->getClassLoader());
         $org::allbinary::input::automation::java::awt->{EventQueue}->invokeLater(do {
-            package org::allbinary::thread::ARunnable::AnonymousN78340 { our @ISA = ('org::allbinary::thread::ARunnable');
+            package org::allbinary::thread::ARunnable::AnonymousN78340 { our @ISA = ('org::allbinary::thread::ARunnable', 'java::lang::Object');
             
 
             sub run {
@@ -581,41 +581,42 @@ sub onRemove {
         }
 }
 
-use org::allbinary::thread::ARunnable;
-# use java::net::URI;
-# use java::net::URL;
-# use java::awt::Desktop;
-# use java::util::List;
-# use javax::swing::ImageIcon;
-# use javax::swing::JDialog;
-# use javax::help::HelpSet;
-# use javax::help::event::HelpSetEvent;
-# use javax::help::event::HelpSetListener;
-use bundle::input::automation::InputAutomationBundleActivatorListenerInterface;
-use bundle::input::automation::module::configuration::InputAutomationConfigurationModuleChangeListener;
-use bundle::input::automation::robot::InputAutomationRobotChangeListener;
-use org::allbinary::globals::AppUrlGlobals;
-use org::allbinary::globals::URLGLOBALS;
-use org::allbinary::gui::dialog::BasicTextJDialog;
-use org::allbinary::gui::swing::workers::JListSwingWorker;
-use org::allbinary::input::automation::configuration::InputAutomationConfiguration;
-use org::allbinary::input::automation::configuration::InputAutomationConfigurationFactory;
-use org::allbinary::input::automation::configuration::InputAutomationConfigurationModuleChangeEvent;
-use org::allbinary::input::automation::module::InputAutomationModuleFactoryFactory;
-use org::allbinary::input::automation::module::InputAutomationModuleFactoryInterface;
-use org::allbinary::input::automation::module::configuration::InputAutomationModuleConfiguration;
-use org::allbinary::input::automation::module::configuration::InputAutomationModuleConfigurations;
-use org::allbinary::input::automation::osgi::DesktopBundle;
-use org::allbinary::input::automation::robot::InputRobotFactory;
-use org::allbinary::input::automation::robot::osgi::InputAutomationRobotChangeEvent;
-use org::allbinary::logic::communication::log::LogUtil;
-use org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory;
-use org::allbinary::logic::java::help::JavaHelpUtil;
-use org::allbinary::logic::system::loader::WebappClassLoaderInfo;
-use org::allbinary::logic::system::security::licensing::InputAutomationClientInformationFactory;
-use org::allbinary::string::CommonStrings;
-use org::allbinary::thread::RunnableInterface;
-use java::lang::Thread;
+use java::lang::Object ();
+use org::allbinary::thread::ARunnable ();
+# use java::net::URI ();
+# use java::net::URL ();
+# use java::awt::Desktop ();
+# use java::util::List ();
+# use javax::swing::ImageIcon ();
+# use javax::swing::JDialog ();
+# use javax::help::HelpSet ();
+# use javax::help::event::HelpSetEvent ();
+# use javax::help::event::HelpSetListener ();
+use bundle::input::automation::InputAutomationBundleActivatorListenerInterface ();
+use bundle::input::automation::module::configuration::InputAutomationConfigurationModuleChangeListener ();
+use bundle::input::automation::robot::InputAutomationRobotChangeListener ();
+use org::allbinary::globals::AppUrlGlobals ();
+use org::allbinary::globals::URLGLOBALS ();
+use org::allbinary::gui::dialog::BasicTextJDialog ();
+use org::allbinary::gui::swing::workers::JListSwingWorker ();
+use org::allbinary::input::automation::configuration::InputAutomationConfiguration ();
+use org::allbinary::input::automation::configuration::InputAutomationConfigurationFactory ();
+use org::allbinary::input::automation::configuration::InputAutomationConfigurationModuleChangeEvent ();
+use org::allbinary::input::automation::module::InputAutomationModuleFactoryFactory ();
+use org::allbinary::input::automation::module::InputAutomationModuleFactoryInterface ();
+use org::allbinary::input::automation::module::configuration::InputAutomationModuleConfiguration ();
+use org::allbinary::input::automation::module::configuration::InputAutomationModuleConfigurations ();
+use org::allbinary::input::automation::osgi::DesktopBundle ();
+use org::allbinary::input::automation::robot::InputRobotFactory ();
+use org::allbinary::input::automation::robot::osgi::InputAutomationRobotChangeEvent ();
+use org::allbinary::logic::communication::log::LogUtil ();
+use org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory ();
+use org::allbinary::logic::java::help::JavaHelpUtil ();
+use org::allbinary::logic::system::loader::WebappClassLoaderInfo ();
+use org::allbinary::logic::system::security::licensing::InputAutomationClientInformationFactory ();
+use org::allbinary::string::CommonStrings ();
+use org::allbinary::thread::RunnableInterface ();
+use java::lang::Thread ();
 
 1;
 

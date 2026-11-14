@@ -36,7 +36,7 @@ sub new {
 sub _new0 {
     my ($class) = @_;
     my $self = $class->SUPER::new('taghelpers::ViewHelperFactory'->new());
-    $self->_init_fields();
+    _init_fields($self);
         # super(...) made $self above
         if ($tags::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($tags::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{JSPTAG})) {
             $self->{logUtil}->putF($self->{commonStrings}->{START}, $self, $self->{commonStrings}->{CONSTRUCTOR});
@@ -48,7 +48,7 @@ sub _new0 {
 sub _new1 {
     my ($class, $tagHelperFactoryInterface) = @_;
     my $self = $class->SUPER::new($tagHelperFactoryInterface);
-    $self->_init_fields();
+    _init_fields($self);
         # super(...) made $self above
         if ($tags::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($tags::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{JSPTAG})) {
             $self->{logUtil}->putF($self->{commonStrings}->{START}, $self, $self->{commonStrings}->{CONSTRUCTOR});
@@ -99,14 +99,15 @@ sub doStartTag {
         }
 }
 
-# use javax::servlet::jsp::JspTagException;
-use admin::taghelpers::TagHelperFactoryInterface;
-use org::allbinary::logic::communication::http::request::AbResponseHandler;
-use org::allbinary::logic::communication::log::LogUtil;
-use org::allbinary::logic::string::StringMaker;
-use org::allbinary::logic::system::security::licensing::LicensingException;
-use taghelpers::ViewHelperFactory;
-use tags::transform::info::TransformInfoTag;
+use java::lang::Object ();
+# use javax::servlet::jsp::JspTagException ();
+use admin::taghelpers::TagHelperFactoryInterface ();
+use org::allbinary::logic::communication::http::request::AbResponseHandler ();
+use org::allbinary::logic::communication::log::LogUtil ();
+use org::allbinary::logic::string::StringMaker ();
+use org::allbinary::logic::system::security::licensing::LicensingException ();
+use taghelpers::ViewHelperFactory ();
+use tags::transform::info::TransformInfoTag ();
 
 1;
 

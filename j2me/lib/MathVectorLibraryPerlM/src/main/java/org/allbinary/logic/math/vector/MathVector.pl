@@ -17,7 +17,7 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
-use parent -norequire,'org::allbinary::logic::math::vector::MathVectorInterface';
+use parent -norequire,'java::lang::Object','org::allbinary::logic::math::vector::MathVectorInterface';
 
 
 sub _init_fields {
@@ -31,7 +31,7 @@ sub _init_fields {
 sub new {
     my ($class, $magnitudeBasicDecimal, $direction) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
         $self->{magnitudeBasicDecimal} = $magnitudeBasicDecimal;
         $self->{direction} = $direction;
     return $self;
@@ -55,8 +55,9 @@ sub getResult {
         return $self->{resultBasicDecimal};
 }
 
-use org::allbinary::logic::math::BasicDecimal;
-use org::allbinary::logic::math::vector::MathVectorInterface;
+use java::lang::Object ();
+use org::allbinary::logic::math::BasicDecimal ();
+use org::allbinary::logic::math::vector::MathVectorInterface ();
 
 1;
 

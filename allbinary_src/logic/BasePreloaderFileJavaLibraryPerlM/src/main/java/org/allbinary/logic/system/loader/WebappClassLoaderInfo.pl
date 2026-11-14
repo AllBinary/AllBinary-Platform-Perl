@@ -17,8 +17,9 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
-our $classLoader = 'org::allbinary::logic::NullUtil'->getInstance()->{NULL_OBJECT};
+tie our $classLoader, 'java::lang::LazyStatic', sub { 'org::allbinary::logic::NullUtil'->getInstance()->{NULL_OBJECT} };
 
 
 sub new {
@@ -39,7 +40,9 @@ sub getLoader {
         return $org::allbinary::logic::system::loader::WebappClassLoaderInfo::classLoader;
 }
 
-use org::allbinary::logic::NullUtil;
+use java::lang::Object ();
+use java::lang::LazyStatic ();
+use org::allbinary::logic::NullUtil ();
 
 1;
 

@@ -17,9 +17,10 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
 our $INITFILENAME = "logConfig.xml";
-our $PACKAGE = 'org::allbinary::globals::PATH_GLOBALS'->getInstance()->{INIT_PATH};
+tie our $PACKAGE, 'java::lang::LazyStatic', sub { 'org::allbinary::globals::PATH_GLOBALS'->getInstance()->{INIT_PATH} };
 our $logConfigInfoList = undef;
 our $hasRead = 0;
 
@@ -168,22 +169,24 @@ sub toString {
         }
 }
 
-use org::allbinary::data::tree::dom::DomSearchHelper;
-use org::allbinary::data::tree::dom::document::DomDocumentHelper;
-use org::allbinary::data::tree::dom::document::XmlDocumentHelper;
-use org::allbinary::globals::PATH_GLOBALS;
-use org::allbinary::globals::URLGLOBALS;
-use org::allbinary::logic::io::AbFileLocalInputStream;
-use org::allbinary::logic::io::file::AbFile;
-use org::allbinary::logic::io::path::AbPath;
-use org::allbinary::util::BasicArrayList;
-use org::allbinary::util::BasicArrayListD;
-use org::w3c::dom::Document;
-use org::w3c::dom::Node;
-use org::w3c::dom::NodeList;
-use org::allbinary::logic::communication::log::config::LogConfigsData;
-use org::allbinary::logic::communication::log::config::LogConfigData;
-use org::allbinary::logic::communication::log::config::LogConfig;
+use java::lang::Object ();
+use java::lang::LazyStatic ();
+use org::allbinary::data::tree::dom::DomSearchHelper ();
+use org::allbinary::data::tree::dom::document::DomDocumentHelper ();
+use org::allbinary::data::tree::dom::document::XmlDocumentHelper ();
+use org::allbinary::globals::PATH_GLOBALS ();
+use org::allbinary::globals::URLGLOBALS ();
+use org::allbinary::logic::io::AbFileLocalInputStream ();
+use org::allbinary::logic::io::file::AbFile ();
+use org::allbinary::logic::io::path::AbPath ();
+use org::allbinary::util::BasicArrayList ();
+use org::allbinary::util::BasicArrayListD ();
+use org::w3c::dom::Document ();
+use org::w3c::dom::Node ();
+use org::w3c::dom::NodeList ();
+use org::allbinary::logic::communication::log::config::LogConfigsData ();
+use org::allbinary::logic::communication::log::config::LogConfigData ();
+use org::allbinary::logic::communication::log::config::LogConfig ();
 
 1;
 

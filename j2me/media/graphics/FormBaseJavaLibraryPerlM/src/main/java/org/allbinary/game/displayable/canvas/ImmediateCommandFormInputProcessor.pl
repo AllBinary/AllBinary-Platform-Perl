@@ -30,7 +30,7 @@ sub _init_fields {
 sub new {
     my ($class, $gameKeyEventList, $playerInputId, $gameCommandCanvas, $form) = @_;
     my $self = $class->SUPER::new($gameKeyEventList, $playerInputId, $gameCommandCanvas, $form);
-    $self->_init_fields();
+    _init_fields($self);
         # super(...) made $self above
         $self->{gameCommandCanvas} = $gameCommandCanvas;
     return $self;
@@ -92,12 +92,13 @@ sub onMotionGestureEvent {
         }
 }
 
-use org::allbinary::game::input::event::GameKeyEvent;
-use org::allbinary::graphics::form::ScrollSelectionForm;
-use org::allbinary::input::motion::gesture::observer::MotionGestureEvent;
-use org::allbinary::time::TimeDelayHelper;
-use org::allbinary::util::BasicArrayList;
-use org::allbinary::game::displayable::canvas::CommandFormInputProcessor;
+use java::lang::Object ();
+use org::allbinary::game::input::event::GameKeyEvent ();
+use org::allbinary::graphics::form::ScrollSelectionForm ();
+use org::allbinary::input::motion::gesture::observer::MotionGestureEvent ();
+use org::allbinary::time::TimeDelayHelper ();
+use org::allbinary::util::BasicArrayList ();
+use org::allbinary::game::displayable::canvas::CommandFormInputProcessor ();
 
 1;
 

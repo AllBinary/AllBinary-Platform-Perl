@@ -32,7 +32,7 @@ sub _init_fields {
 sub new {
     my ($class) = @_;
     my $self = $class->SUPER::new('org::allbinary::layer::LayerManagerNoDebug'->getInstance());
-    $self->_init_fields();
+    _init_fields($self);
         # super(...) made $self above
     return $self;
 }
@@ -132,10 +132,11 @@ sub cleanup {
         $self->SUPER::cleanup();
 }
 
-use org::allbinary::layer::event::LayerManagerEvent;
-use org::allbinary::layer::event::LayerManagerEventHandler;
-use org::allbinary::layer::LayerManager;
-use org::allbinary::layer::LayerManagerNoDebug;
+use java::lang::Object ();
+use org::allbinary::layer::event::LayerManagerEvent ();
+use org::allbinary::layer::event::LayerManagerEventHandler ();
+use org::allbinary::layer::LayerManager ();
+use org::allbinary::layer::LayerManagerNoDebug ();
 
 1;
 

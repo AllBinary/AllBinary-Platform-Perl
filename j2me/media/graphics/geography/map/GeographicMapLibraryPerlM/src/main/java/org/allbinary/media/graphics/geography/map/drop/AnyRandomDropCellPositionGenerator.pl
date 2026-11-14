@@ -29,7 +29,7 @@ sub _init_fields {
 sub new {
     my ($class) = @_;
     my $self = $class->SUPER::new();
-    $self->_init_fields();
+    _init_fields($self);
     return $self;
 }
 
@@ -61,17 +61,18 @@ sub processTick {
     my ($self, $allBinaryLayerManager) = @_;
 }
 
-use org::allbinary::util::BasicArrayList;
-use org::allbinary::util::BasicArrayListD;
-use org::allbinary::game::layer::AllBinaryGameLayerManager;
-use org::allbinary::game::layer::AllBinaryTiledLayer;
-use org::allbinary::game::rand::MyRandomFactory;
-use org::allbinary::layer::AllBinaryLayerManager;
-use org::allbinary::logic::NullUtil;
-use org::allbinary::media::graphics::geography::map::BasicGeographicMapCellPositionFactory;
-use org::allbinary::media::graphics::geography::map::GeographicMapCellPosition;
-use org::allbinary::media::graphics::geography::map::BasicGeographicMap;
-use org::allbinary::media::graphics::geography::map::drop::BaseDropCellPositionGenerator;
+use java::lang::Object ();
+use org::allbinary::util::BasicArrayList ();
+use org::allbinary::util::BasicArrayListD ();
+use org::allbinary::game::layer::AllBinaryGameLayerManager ();
+use org::allbinary::game::layer::AllBinaryTiledLayer ();
+use org::allbinary::game::rand::MyRandomFactory ();
+use org::allbinary::layer::AllBinaryLayerManager ();
+use org::allbinary::logic::NullUtil ();
+use org::allbinary::media::graphics::geography::map::BasicGeographicMapCellPositionFactory ();
+use org::allbinary::media::graphics::geography::map::GeographicMapCellPosition ();
+use org::allbinary::media::graphics::geography::map::BasicGeographicMap ();
+use org::allbinary::media::graphics::geography::map::drop::BaseDropCellPositionGenerator ();
 
 1;
 

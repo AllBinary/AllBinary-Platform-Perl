@@ -17,8 +17,9 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
-our $SINGLETON = 'org::allbinary::game::score::HighScores'->new('org::allbinary::string::CommonStrings'->getInstance()->{LOADING}, "High Scores Not Loaded", 'org::allbinary::string::CommonStrings'->getInstance()->{PERIODS});
+tie our $SINGLETON, 'java::lang::LazyStatic', sub { 'org::allbinary::game::score::HighScores'->new('org::allbinary::string::CommonStrings'->getInstance()->{LOADING}, "High Scores Not Loaded", 'org::allbinary::string::CommonStrings'->getInstance()->{PERIODS}) };
 
 sub new {
     my ($class) = @_;
@@ -32,8 +33,10 @@ sub getInstance {
         return $org::allbinary::game::score::NullHighScoresSingletonFactory::SINGLETON;
 }
 
-use org::allbinary::string::CommonStrings;
-use org::allbinary::game::score::HighScores;
+use java::lang::Object ();
+use java::lang::LazyStatic ();
+use org::allbinary::string::CommonStrings ();
+use org::allbinary::game::score::HighScores ();
 
 1;
 

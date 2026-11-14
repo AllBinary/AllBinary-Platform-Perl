@@ -32,9 +32,9 @@ sub _init_fields {
 sub new {
     my ($class, $image, $bitmapFactory, $textureFactory) = @_;
     my $self = $class->SUPER::new($image, $bitmapFactory, $textureFactory);
-    $self->_init_fields();
+    _init_fields($self);
         # super(...) made $self above
-        $self->onDisplayChangeEvent(undef);
+        $self->onDisplayChangeEvent('org::allbinary::graphics::displayable::DisplayInfoSingleton'->getInstance()->{displayChangeEvent});
         $self->{rectangle} = [0, $self->getHeight(), $self->getWidth(), -$self->getHeight()];
     return $self;
 }
@@ -53,7 +53,7 @@ sub onDisplayChangeEvent {
 
 sub set {
     my ($self, $gl) = @_;
-        $self->onDisplayChangeEvent(undef);
+        $self->onDisplayChangeEvent('org::allbinary::graphics::displayable::DisplayInfoSingleton'->getInstance()->{displayChangeEvent});
         my $gl11 = $gl;
         if ($self->SUPER::initTexture($gl11)) {
             $self->{textureFactory}->load($gl11, $javax::microedition::khronos::opengles::GL10::GL_TEXTURE_2D, 0, $self, 0, 1);
@@ -68,22 +68,24 @@ sub draw {
     my ($self, $gl, $x, $y, $z) = @_;
         $gl->glEnable($javax::microedition::khronos::opengles::GL10::GL_TEXTURE_2D);
         $gl->glBindTexture($javax::microedition::khronos::opengles::GL10::GL_TEXTURE_2D, $self->{openGLESImageProperties}->{textureID});
-        ($gl)->glDrawTexfOES($x, $self->{a} - $y, $z, $self->getWidth(), $self->getHeight());
+        my $gl11Ext = $gl;
+        $gl11Ext->glDrawTexfOES($x, ($self->{a} - $y), $z, $self->getWidth(), $self->getHeight());
         $gl->glDisable($javax::microedition::khronos::opengles::GL10::GL_TEXTURE_2D);
 }
 
-# use javax::microedition::khronos::opengles::GL;
-# use javax::microedition::khronos::opengles::GL10;
-# use javax::microedition::khronos::opengles::GL11;
-# use javax::microedition::khronos::opengles::GL11Ext;
-# use javax::microedition::lcdui::Image;
-use org::allbinary::graphics::displayable::DisplayInfoSingleton;
-use org::allbinary::graphics::displayable::event::DisplayChangeEvent;
-use org::allbinary::graphics::opengles::OpenGLLogUtil;
-use org::allbinary::logic::communication::log::LogUtil;
-use org::allbinary::platform::graphics::PlatformBitmapBaseFactory;
-use org::allbinary::platform::opengles::PlatformTextureBaseFactory;
-use org::allbinary::image::opengles::OpenGLESImage;
+use java::lang::Object ();
+use javax::microedition::khronos::opengles::GL ();
+use javax::microedition::khronos::opengles::GL10 ();
+use javax::microedition::khronos::opengles::GL11 ();
+use javax::microedition::khronos::opengles::GL11Ext ();
+use javax::microedition::lcdui::Image ();
+use org::allbinary::graphics::displayable::DisplayInfoSingleton ();
+use org::allbinary::graphics::displayable::event::DisplayChangeEvent ();
+use org::allbinary::graphics::opengles::OpenGLLogUtil ();
+use org::allbinary::logic::communication::log::LogUtil ();
+use org::allbinary::platform::graphics::PlatformBitmapBaseFactory ();
+use org::allbinary::platform::opengles::PlatformTextureBaseFactory ();
+use org::allbinary::image::opengles::OpenGLESImage ();
 
 1;
 

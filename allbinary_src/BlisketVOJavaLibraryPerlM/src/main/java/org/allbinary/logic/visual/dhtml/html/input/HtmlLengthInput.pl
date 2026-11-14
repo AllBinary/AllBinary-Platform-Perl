@@ -32,7 +32,7 @@ sub _init_fields {
 sub new {
     my ($class, $before, $type, $name, $value, $after) = @_;
     my $self = $class->SUPER::new($before, $type, $name, $value, $after);
-    $self->_init_fields();
+    _init_fields($self);
         # super(...) made $self above
     return $self;
 }
@@ -51,7 +51,8 @@ sub setSize {
         $self->addAttribute($self->{MAXLENGTH}, $self->{size});
 }
 
-use org::allbinary::logic::visual::dhtml::html::input::HtmlValueInput;
+use java::lang::Object ();
+use org::allbinary::logic::visual::dhtml::html::input::HtmlValueInput ();
 
 1;
 

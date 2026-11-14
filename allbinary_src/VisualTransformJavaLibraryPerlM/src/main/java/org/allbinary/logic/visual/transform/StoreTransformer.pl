@@ -29,12 +29,13 @@ sub new {
     return $self;
 }
 
-# use javax::xml::transform::URIResolver;
-use org::allbinary::data::tree::dom::BasicUriResolver;
-use org::allbinary::data::tree::dom::StoreUriResolver;
-use org::allbinary::logic::system::security::licensing::AbeClientInformationInterface;
-use org::allbinary::logic::visual::transform::info::TransformInfoInterface;
-use org::allbinary::logic::visual::transform::BasicTransformer;
+use java::lang::Object ();
+# use javax::xml::transform::URIResolver ();
+use org::allbinary::data::tree::dom::BasicUriResolver ();
+use org::allbinary::data::tree::dom::StoreUriResolver ();
+use org::allbinary::logic::system::security::licensing::AbeClientInformationInterface ();
+use org::allbinary::logic::visual::transform::info::TransformInfoInterface ();
+use org::allbinary::logic::visual::transform::BasicTransformer ();
 
 1;
 

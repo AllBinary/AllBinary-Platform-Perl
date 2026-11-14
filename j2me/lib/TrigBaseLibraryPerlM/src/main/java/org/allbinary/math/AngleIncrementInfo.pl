@@ -17,6 +17,7 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
 our $INCREMENT = "Inc: ";
 
@@ -34,7 +35,7 @@ sub _init_fields {
 sub new {
     my ($class, $angleIncrement) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
         $self->{angleIncrement} = $angleIncrement;
         my $angleFactory = 'org::allbinary::math::AngleFactory'->getInstance();
         my $smallIntegerSingletonFactory = 'org::allbinary::logic::math::SmallIntegerSingletonFactory'->getInstance();
@@ -82,14 +83,15 @@ sub getClosestGeneralDirection {
         return int($closestDirection);
 }
 
-# use jsinterop::annotations::JsType;
-use org::allbinary::logic::math::SmallIntegerSingletonFactory;
-use org::allbinary::logic::string::StringMaker;
-# use jsinterop::annotations::JsProperty;
-# use jsinterop::annotations::JsMethod;
-# use jsinterop::annotations::JsConstructor;
-use org::allbinary::math::AngleFactory;
-use org::allbinary::math::FrameUtil;
+use java::lang::Object ();
+# use jsinterop::annotations::JsType ();
+use org::allbinary::logic::math::SmallIntegerSingletonFactory ();
+use org::allbinary::logic::string::StringMaker ();
+# use jsinterop::annotations::JsProperty ();
+# use jsinterop::annotations::JsMethod ();
+# use jsinterop::annotations::JsConstructor ();
+use org::allbinary::math::AngleFactory ();
+use org::allbinary::math::FrameUtil ();
 
 1;
 

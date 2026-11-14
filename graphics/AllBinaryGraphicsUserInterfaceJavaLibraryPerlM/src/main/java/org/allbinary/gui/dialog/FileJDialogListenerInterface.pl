@@ -26,7 +26,7 @@ sub onFiles {
     die "abstract method onFiles";
 }
 
-use java::io::File;
+use java::io::File ();
 
 1;
 

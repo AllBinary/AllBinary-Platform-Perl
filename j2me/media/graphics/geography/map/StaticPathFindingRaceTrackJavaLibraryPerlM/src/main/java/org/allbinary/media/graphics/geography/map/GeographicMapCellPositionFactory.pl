@@ -19,7 +19,7 @@ use feature 'try';
 no warnings 'experimental::try';
 use parent -norequire,'org::allbinary::media::graphics::geography::map::GeographicMapCellPositionBaseFactory';
 
-our $hashtable = 'org::allbinary::logic::StdUtil'->getInstance()->createHashtable();
+tie our $hashtable, 'java::lang::LazyStatic', sub { 'org::allbinary::logic::StdUtil'->getInstance()->createHashtable() };
 
 sub _init_fields {
     my ($self) = @_;
@@ -29,7 +29,7 @@ sub _init_fields {
 sub new {
     my ($class) = @_;
     my $self = $class->SUPER::new();
-    $self->_init_fields();
+    _init_fields($self);
     return $self;
 }
 
@@ -57,14 +57,16 @@ sub getHashtable {
         return $org::allbinary::media::graphics::geography::map::GeographicMapCellPositionFactory::hashtable;
 }
 
-use org::allbinary::string::CommonStrings;
-use org::allbinary::game::layer::AllBinaryTiledLayer;
-use org::allbinary::logic::StdUtil;
-use org::allbinary::logic::communication::log::LogUtil;
-use org::allbinary::logic::string::StringMaker;
-use org::allbinary::util::ABHashtable;
-use org::allbinary::media::graphics::geography::map::GeographicMapCellPositionBaseFactory;
-use org::allbinary::media::graphics::geography::map::BasicGeographicMapCellPositionFactory;
+use java::lang::Object ();
+use java::lang::LazyStatic ();
+use org::allbinary::string::CommonStrings ();
+use org::allbinary::game::layer::AllBinaryTiledLayer ();
+use org::allbinary::logic::StdUtil ();
+use org::allbinary::logic::communication::log::LogUtil ();
+use org::allbinary::logic::string::StringMaker ();
+use org::allbinary::util::ABHashtable ();
+use org::allbinary::media::graphics::geography::map::GeographicMapCellPositionBaseFactory ();
+use org::allbinary::media::graphics::geography::map::BasicGeographicMapCellPositionFactory ();
 
 1;
 

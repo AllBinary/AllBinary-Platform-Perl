@@ -17,7 +17,7 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
-use parent -norequire,'org::allbinary::logic::visual::transform::info::objectConfig::TransformInfoObjectConfigInterface';
+use parent -norequire,'java::lang::Object','org::allbinary::logic::visual::transform::info::objectConfig::TransformInfoObjectConfigInterface';
 
 
 sub _init_fields {
@@ -41,7 +41,7 @@ sub new {
 sub _new1 {
     my ($class, $transformInfoInterface) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
         $self->{ownerTransformInfoInterface} = $transformInfoInterface;
         $self->createDocument();
         if ($org::allbinary::logic::visual::transform::info::objectConfig::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($org::allbinary::logic::visual::transform::info::objectConfig::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{VIEW})) {
@@ -63,7 +63,7 @@ sub _new1 {
 sub _new2 {
     my ($class, $transformInfoInterface, $document) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
         $self->{ownerTransformInfoInterface} = $transformInfoInterface;
         $self->{document} = $document;
         my $node = 'org::allbinary::data::tree::dom::DomSearchHelper'->getNodeNoThrow('org::allbinary::logic::io::OutputTypeData'->getInstance()->{NAME}, $self->getRootNode()->getChildNodes());
@@ -89,7 +89,7 @@ sub _new2 {
 sub _new3 {
     my ($class, $transformInfoInterface, $name, $type) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
         $self->{ownerTransformInfoInterface} = $transformInfoInterface;
         $self->createDocument();
         my $configNameAttr = $self->{document}->createAttribute('org::allbinary::logic::visual::transform::info::objectConfig::TransformInfoObjectConfigData'->getInstance()->{NAME});
@@ -363,29 +363,30 @@ sub toString {
         }
 }
 
-use org::allbinary::util::BasicArrayList;
-use org::allbinary::util::BasicArrayListD;
-use org::allbinary::data::tree::dom::DomNodeHelper;
-use org::allbinary::data::tree::dom::DomSearchHelper;
-use org::allbinary::data::tree::dom::document::DomDocumentHelper;
-use org::allbinary::data::tree::dom::document::XmlDocumentHelper;
-use org::allbinary::logic::communication::log::LogUtil;
-use org::allbinary::logic::io::InputOutputTypeData;
-use org::allbinary::logic::io::OutputTypeData;
-use org::allbinary::logic::string::StringMaker;
-use org::allbinary::logic::visual::transform::info::TransformInfoData;
-use org::allbinary::logic::visual::transform::info::TransformInfoDomNode;
-use org::allbinary::logic::visual::transform::info::TransformInfoInterface;
-use org::allbinary::logic::visual::transform::info::TransformInfosData;
-use org::allbinary::logic::visual::transform::template::XslData;
-use org::allbinary::string::CommonStrings;
-use org::w3c::dom::Attr;
-use org::w3c::dom::Document;
-use org::w3c::dom::NamedNodeMap;
-use org::w3c::dom::Node;
-use org::w3c::dom::NodeList;
-use org::allbinary::logic::visual::transform::info::objectConfig::TransformInfoObjectConfigInterface;
-use org::allbinary::logic::visual::transform::info::objectConfig::TransformInfoObjectConfigData;
+use java::lang::Object ();
+use org::allbinary::util::BasicArrayList ();
+use org::allbinary::util::BasicArrayListD ();
+use org::allbinary::data::tree::dom::DomNodeHelper ();
+use org::allbinary::data::tree::dom::DomSearchHelper ();
+use org::allbinary::data::tree::dom::document::DomDocumentHelper ();
+use org::allbinary::data::tree::dom::document::XmlDocumentHelper ();
+use org::allbinary::logic::communication::log::LogUtil ();
+use org::allbinary::logic::io::InputOutputTypeData ();
+use org::allbinary::logic::io::OutputTypeData ();
+use org::allbinary::logic::string::StringMaker ();
+use org::allbinary::logic::visual::transform::info::TransformInfoData ();
+use org::allbinary::logic::visual::transform::info::TransformInfoDomNode ();
+use org::allbinary::logic::visual::transform::info::TransformInfoInterface ();
+use org::allbinary::logic::visual::transform::info::TransformInfosData ();
+use org::allbinary::logic::visual::transform::template::XslData ();
+use org::allbinary::string::CommonStrings ();
+use org::w3c::dom::Attr ();
+use org::w3c::dom::Document ();
+use org::w3c::dom::NamedNodeMap ();
+use org::w3c::dom::Node ();
+use org::w3c::dom::NodeList ();
+use org::allbinary::logic::visual::transform::info::objectConfig::TransformInfoObjectConfigInterface ();
+use org::allbinary::logic::visual::transform::info::objectConfig::TransformInfoObjectConfigData ();
 
 1;
 

@@ -17,6 +17,7 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
 
 sub new {
@@ -36,10 +37,11 @@ sub add {
         }
 }
 
-use org::allbinary::AppletUtil;
-use org::allbinary::J2MEUtil;
-use org::allbinary::game::commands::GameCommandsFactory;
-use org::allbinary::graphics::displayable::MyCanvas;
+use java::lang::Object ();
+use org::allbinary::AppletUtil ();
+use org::allbinary::J2MEUtil ();
+use org::allbinary::game::commands::GameCommandsFactory ();
+use org::allbinary::graphics::displayable::MyCanvas ();
 
 1;
 

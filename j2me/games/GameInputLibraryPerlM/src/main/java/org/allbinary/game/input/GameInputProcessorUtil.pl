@@ -17,6 +17,7 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
 
 sub new {
@@ -38,8 +39,9 @@ sub init {
         }
 }
 
-use org::allbinary::game::input::GameInputProcessor;
-use org::allbinary::game::input::InputFactory;
+use java::lang::Object ();
+use org::allbinary::game::input::GameInputProcessor ();
+use org::allbinary::game::input::InputFactory ();
 
 1;
 

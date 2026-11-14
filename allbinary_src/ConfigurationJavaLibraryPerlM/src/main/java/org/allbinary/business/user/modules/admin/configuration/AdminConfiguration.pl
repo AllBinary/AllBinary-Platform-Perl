@@ -17,7 +17,7 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
-use parent -norequire,'org::allbinary::business::user::modules::admin::configuration::AdminConfigurationInterface';
+use parent -norequire,'java::lang::Object','org::allbinary::business::user::modules::admin::configuration::AdminConfigurationInterface';
 
 
 sub _init_fields {
@@ -39,7 +39,7 @@ sub new {
 sub _new0 {
     my ($class) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
         $self->{logUtil}->putF($self->{commonStrings}->{START}, $self, $self->{commonStrings}->{CONSTRUCTOR});
         $self->{contextConfigurationInterface} = 'org::allbinary::business::context::configuration::ContextConfigurationInterfaceFactory'->getInstance()->getInstance($org::allbinary::business::user::modules::admin::configuration::AdminConfigurationData::CONTEXTNAME);
     return $self;
@@ -49,7 +49,7 @@ sub _new0 {
 sub _new1 {
     my ($class, $request) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
         $self->{logUtil}->putF($self->{commonStrings}->{START}, $self, $self->{commonStrings}->{CONSTRUCTOR});
         $self->getFormData('org::allbinary::logic::communication::http::request::RequestParams'->new($request)->toHashMap());
     return $self;
@@ -59,7 +59,7 @@ sub _new1 {
 sub _new1 {
     my ($class, $storeHashMap) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
         $self->{logUtil}->putF($self->{commonStrings}->{START}, $self, $self->{commonStrings}->{CONSTRUCTOR});
         $self->getFormData($storeHashMap);
     return $self;
@@ -94,20 +94,21 @@ sub setContextConfigurationInterface {
         $self->{contextConfigurationInterface} = $contextConfigurationInterface;
 }
 
-use java::util::HashMap;
-# use javax::servlet::http::HttpServletRequest;
-use org::allbinary::business::context::configuration::ContextConfiguration;
-use org::allbinary::business::context::configuration::ContextConfigurationData;
-use org::allbinary::business::context::configuration::ContextConfigurationDomDocumentMapping;
-use org::allbinary::business::context::configuration::ContextConfigurationInterface;
-use org::allbinary::business::context::configuration::ContextConfigurationInterfaceFactory;
-use org::allbinary::business::context::configuration::ContextConfigurationPathUtil;
-use org::allbinary::logic::communication::http::request::RequestParams;
-use org::allbinary::logic::communication::log::LogUtil;
-use org::allbinary::logic::control::crypt::file::CryptFileWriter;
-use org::allbinary::string::CommonStrings;
-use org::allbinary::business::user::modules::admin::configuration::AdminConfigurationInterface;
-use org::allbinary::business::user::modules::admin::configuration::AdminConfigurationData;
+use java::lang::Object ();
+use java::util::HashMap ();
+# use javax::servlet::http::HttpServletRequest ();
+use org::allbinary::business::context::configuration::ContextConfiguration ();
+use org::allbinary::business::context::configuration::ContextConfigurationData ();
+use org::allbinary::business::context::configuration::ContextConfigurationDomDocumentMapping ();
+use org::allbinary::business::context::configuration::ContextConfigurationInterface ();
+use org::allbinary::business::context::configuration::ContextConfigurationInterfaceFactory ();
+use org::allbinary::business::context::configuration::ContextConfigurationPathUtil ();
+use org::allbinary::logic::communication::http::request::RequestParams ();
+use org::allbinary::logic::communication::log::LogUtil ();
+use org::allbinary::logic::control::crypt::file::CryptFileWriter ();
+use org::allbinary::string::CommonStrings ();
+use org::allbinary::business::user::modules::admin::configuration::AdminConfigurationInterface ();
+use org::allbinary::business::user::modules::admin::configuration::AdminConfigurationData ();
 
 1;
 

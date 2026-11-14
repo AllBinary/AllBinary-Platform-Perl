@@ -19,7 +19,7 @@ use feature 'try';
 no warnings 'experimental::try';
 use parent -norequire,'org::allbinary::emulator::device::TrueTypeFontUtilBase';
 
-our $instance = 'org::allbinary::emulator::device::TrueTypeFontUtil'->new();
+tie our $instance, 'java::lang::LazyStatic', sub { 'org::allbinary::emulator::device::TrueTypeFontUtil'->new() };
 
 sub _init_fields {
     my ($self) = @_;
@@ -36,7 +36,7 @@ sub getInstance {
 sub new {
     my ($class) = @_;
     my $self = $class->SUPER::new(1);
-    $self->_init_fields();
+    _init_fields($self);
         # super(...) made $self above
     return $self;
 }
@@ -76,11 +76,13 @@ sub getFontWidths {
         die ("RuntimeException");
 }
 
-# use javax::microedition::khronos::opengles::GL10;
-# use javax::microedition::lcdui::Image;
-use org::allbinary::graphics::color::BasicColor;
-use org::allbinary::image::opengles::OpenGLESImage;
-use org::allbinary::emulator::device::TrueTypeFontUtilBase;
+use java::lang::Object ();
+use java::lang::LazyStatic ();
+use javax::microedition::khronos::opengles::GL10 ();
+use javax::microedition::lcdui::Image ();
+use org::allbinary::graphics::color::BasicColor ();
+use org::allbinary::image::opengles::OpenGLESImage ();
+use org::allbinary::emulator::device::TrueTypeFontUtilBase ();
 
 1;
 

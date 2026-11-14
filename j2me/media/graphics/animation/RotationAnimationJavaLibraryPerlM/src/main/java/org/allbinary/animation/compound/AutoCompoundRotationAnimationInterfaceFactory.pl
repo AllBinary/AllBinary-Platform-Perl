@@ -40,12 +40,13 @@ sub createAnimation {
         return 'org::allbinary::animation::compound::AutoCompoundRotationAnimation'->new($animationInterfaceArray, $self->{animationBehaviorFactory}->getOrCreateInstance());
 }
 
-use org::allbinary::animation::Animation;
-use org::allbinary::animation::AnimationBehaviorFactory;
-use org::allbinary::animation::AnimationInterfaceFactoryInterface;
-use org::allbinary::animation::RotationAnimation;
-use org::allbinary::animation::compound::CompoundAnimationInterfaceFactory;
-use org::allbinary::animation::compound::AutoCompoundRotationAnimation;
+use java::lang::Object ();
+use org::allbinary::animation::Animation ();
+use org::allbinary::animation::AnimationBehaviorFactory ();
+use org::allbinary::animation::AnimationInterfaceFactoryInterface ();
+use org::allbinary::animation::RotationAnimation ();
+use org::allbinary::animation::compound::CompoundAnimationInterfaceFactory ();
+use org::allbinary::animation::compound::AutoCompoundRotationAnimation ();
 
 1;
 

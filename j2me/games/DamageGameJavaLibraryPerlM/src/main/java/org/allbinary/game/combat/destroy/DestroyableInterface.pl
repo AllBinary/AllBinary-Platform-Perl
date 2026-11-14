@@ -28,7 +28,7 @@ sub isDestroyed {
     die "abstract method isDestroyed";
 }
 
-use org::allbinary::layer::NamedInterface;
+use org::allbinary::layer::NamedInterface ();
 
 1;
 

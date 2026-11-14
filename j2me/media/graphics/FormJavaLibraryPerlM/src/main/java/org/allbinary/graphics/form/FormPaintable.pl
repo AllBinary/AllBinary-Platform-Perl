@@ -29,7 +29,7 @@ sub _init_fields {
 sub new {
     my ($class, $form) = @_;
     my $self = $class->SUPER::new();
-    $self->_init_fields();
+    _init_fields($self);
         $self->{form} = $form;
     return $self;
 }
@@ -46,8 +46,9 @@ sub getForm {
         return $self->{form};
 }
 
-# use javax::microedition::lcdui::Graphics;
-use org::allbinary::graphics::paint::Paintable;
+use java::lang::Object ();
+use javax::microedition::lcdui::Graphics ();
+use org::allbinary::graphics::paint::Paintable ();
 
 1;
 

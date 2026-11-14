@@ -17,7 +17,7 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
-use parent -norequire,'org::osgi::framework::ServiceReference';
+use parent -norequire,'java::lang::Object','org::osgi::framework::ServiceReference';
 
 
 sub new {
@@ -44,7 +44,8 @@ sub compareTo {
         die ("RuntimeException");
 }
 
-use org::osgi::framework::ServiceReference;
+use java::lang::Object ();
+use org::osgi::framework::ServiceReference ();
 
 1;
 

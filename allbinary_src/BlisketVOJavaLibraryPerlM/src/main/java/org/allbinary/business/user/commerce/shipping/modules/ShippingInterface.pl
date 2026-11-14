@@ -38,8 +38,8 @@ sub getDescription {
     die "abstract method getDescription";
 }
 
-use org::allbinary::business::user::commerce::inventory::order::OrderInterface;
-use org::allbinary::business::user::commerce::money::Money;
+use org::allbinary::business::user::commerce::inventory::order::OrderInterface ();
+use org::allbinary::business::user::commerce::money::Money ();
 
 1;
 

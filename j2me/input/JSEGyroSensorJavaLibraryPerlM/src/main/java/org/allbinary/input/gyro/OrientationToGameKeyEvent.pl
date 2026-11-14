@@ -17,6 +17,7 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
 
 sub _init_fields {
@@ -29,7 +30,7 @@ sub _init_fields {
 sub new {
     my ($class) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
         if ('org::allbinary::game::configuration::feature::Features'->getInstance()->isFeature('org::allbinary::game::configuration::feature::SensorFeatureFactory'->getInstance()->{NO_ORIENTATION})) {
             $self->{allBinaryGyroSensor} = 'org::allbinary::input::gyro::NoGyroSensor'->new();
         } else {
@@ -62,10 +63,11 @@ sub updateGameKeyEvents {
     my ($self, $orientation, $yaw, $pitch, $roll) = @_;
 }
 
-use org::allbinary::game::configuration::feature::Features;
-use org::allbinary::game::configuration::feature::SensorFeatureFactory;
-use org::allbinary::logic::math::Orientation;
-use org::allbinary::input::gyro::NoGyroSensor;
+use java::lang::Object ();
+use org::allbinary::game::configuration::feature::Features ();
+use org::allbinary::game::configuration::feature::SensorFeatureFactory ();
+use org::allbinary::logic::math::Orientation ();
+use org::allbinary::input::gyro::NoGyroSensor ();
 
 1;
 

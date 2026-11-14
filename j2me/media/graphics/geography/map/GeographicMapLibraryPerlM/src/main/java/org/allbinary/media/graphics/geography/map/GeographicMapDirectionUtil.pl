@@ -17,8 +17,9 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
-our $instance = 'org::allbinary::media::graphics::geography::map::GeographicMapDirectionUtil'->new();
+tie our $instance, 'java::lang::LazyStatic', sub { 'org::allbinary::media::graphics::geography::map::GeographicMapDirectionUtil'->new() };
 
 sub _init_fields {
     my ($self) = @_;
@@ -37,7 +38,7 @@ sub getInstance {
 sub new {
     my ($class) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
     return $self;
 }
 
@@ -173,10 +174,12 @@ sub getEightDirectionFromCellPositionToCellPosition {
         die ($stringBuffer->toString());
 }
 
-use org::allbinary::logic::string::StringMaker;
-use org::allbinary::direction::Direction;
-use org::allbinary::direction::DirectionFactory;
-use org::allbinary::graphics::CellPosition;
+use java::lang::Object ();
+use java::lang::LazyStatic ();
+use org::allbinary::logic::string::StringMaker ();
+use org::allbinary::direction::Direction ();
+use org::allbinary::direction::DirectionFactory ();
+use org::allbinary::graphics::CellPosition ();
 
 1;
 

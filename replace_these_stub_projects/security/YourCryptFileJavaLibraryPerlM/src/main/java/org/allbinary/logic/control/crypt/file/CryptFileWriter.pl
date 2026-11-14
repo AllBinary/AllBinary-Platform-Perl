@@ -5,6 +5,7 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
 
 
@@ -20,8 +21,9 @@ sub write {
     my ($self, $fileAbPath, $document) = @_;
 }
 
-use org::allbinary::logic::io::path::AbPath;
-use org::w3c::dom::Document;
+use java::lang::Object ();
+use org::allbinary::logic::io::path::AbPath ();
+use org::w3c::dom::Document ();
 
 1;
 

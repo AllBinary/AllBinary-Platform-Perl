@@ -17,7 +17,7 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
-use parent -norequire,'org::allbinary::input::automation::module::game::MeteredGameObjectInterface';
+use parent -norequire,'java::lang::Object','org::allbinary::input::automation::module::game::MeteredGameObjectInterface';
 
 
 sub _init_fields {
@@ -38,7 +38,7 @@ sub _init_fields {
 sub new {
     my ($class, $bufferedImage, $minX, $maxX, $y) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
         $self->setRatios([(undef) x (scalar(@{$bufferedImage}))]);
         $self->setMinX($minX);
         $self->setMaxX($maxX);
@@ -167,11 +167,12 @@ sub setSize {
         $self->{size} = $size;
 }
 
-# use java::awt::image::BufferedImage;
-use org::allbinary::logic::string::StringMaker;
-use org::allbinary::string::CommonSeps;
-use org::allbinary::input::automation::module::game::MeteredGameObjectInterface;
-use org::allbinary::input::automation::module::game::GraphicsAnalysisUtil;
+use java::lang::Object ();
+# use java::awt::image::BufferedImage ();
+use org::allbinary::logic::string::StringMaker ();
+use org::allbinary::string::CommonSeps ();
+use org::allbinary::input::automation::module::game::MeteredGameObjectInterface ();
+use org::allbinary::input::automation::module::game::GraphicsAnalysisUtil ();
 
 1;
 

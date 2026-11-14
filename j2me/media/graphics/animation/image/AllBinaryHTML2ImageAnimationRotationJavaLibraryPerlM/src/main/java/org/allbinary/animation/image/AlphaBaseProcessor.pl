@@ -17,8 +17,9 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
-our $instance = 'org::allbinary::animation::image::AlphaBaseProcessor'->new();
+tie our $instance, 'java::lang::LazyStatic', sub { 'org::allbinary::animation::image::AlphaBaseProcessor'->new() };
 
 sub new {
     my ($class) = @_;
@@ -37,8 +38,10 @@ sub setAlpha {
     my ($self, $imageModifierUtil, $originalImage, $imageToShow, $alpha) = @_;
 }
 
-# use javax::microedition::lcdui::Image;
-use org::allbinary::media::image::ImageModifierUtil;
+use java::lang::Object ();
+use java::lang::LazyStatic ();
+use javax::microedition::lcdui::Image ();
+use org::allbinary::media::image::ImageModifierUtil ();
 
 1;
 

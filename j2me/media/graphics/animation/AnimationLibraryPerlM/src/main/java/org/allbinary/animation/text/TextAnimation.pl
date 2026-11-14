@@ -35,7 +35,7 @@ sub _init_fields {
 sub new {
     my ($class, $text, $animationBehavior) = @_;
     my $self = $class->SUPER::new($animationBehavior);
-    $self->_init_fields();
+    _init_fields($self);
         # super(...) made $self above
         $self->setText($text);
     return $self;
@@ -87,7 +87,7 @@ sub setTextWithOnMeasure {
 sub setText {
     my ($self, $text) = @_;
         my $list = 'org::allbinary::util::BasicArrayListD'->new();
-        if (defined($text) && length($text) > 0) {
+        if (length($text) > 0) {
             my $index = 0;
             my $startIndex = 0;
             my $endIndex = 0;
@@ -130,20 +130,21 @@ sub getFontHeight {
         return $self->{fontHeight};
 }
 
-# use javax::microedition::lcdui::Font;
-# use javax::microedition::lcdui::Graphics;
-use org::allbinary::animation::AnimationBehavior;
-use org::allbinary::animation::IndexedAnimation;
-use org::allbinary::graphics::Anchor;
-use org::allbinary::graphics::font::MyFontProcessor;
-use org::allbinary::graphics::font::UpdateMyFontInterface;
-use org::allbinary::graphics::font::UpdateMyFontProcessor;
-use org::allbinary::graphics::threed::SWTJOGLProcessor;
-use org::allbinary::logic::string::StringMaker;
-use org::allbinary::logic::string::StringUtil;
-use org::allbinary::util::BasicArrayList;
-use org::allbinary::util::BasicArrayListD;
-use org::allbinary::animation::text::TextChangeListener;
+use java::lang::Object ();
+use javax::microedition::lcdui::Font ();
+use javax::microedition::lcdui::Graphics ();
+use org::allbinary::animation::AnimationBehavior ();
+use org::allbinary::animation::IndexedAnimation ();
+use org::allbinary::graphics::Anchor ();
+use org::allbinary::graphics::font::MyFontProcessor ();
+use org::allbinary::graphics::font::UpdateMyFontInterface ();
+use org::allbinary::graphics::font::UpdateMyFontProcessor ();
+use org::allbinary::graphics::threed::SWTJOGLProcessor ();
+use org::allbinary::logic::string::StringMaker ();
+use org::allbinary::logic::string::StringUtil ();
+use org::allbinary::util::BasicArrayList ();
+use org::allbinary::util::BasicArrayListD ();
+use org::allbinary::animation::text::TextChangeListener ();
 
 1;
 

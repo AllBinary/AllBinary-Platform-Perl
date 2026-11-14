@@ -33,8 +33,8 @@ sub previousFrame {
     die "abstract method previousFrame";
 }
 
-use org::allbinary::animation::AnimationInterface;
-use org::allbinary::animation::SequenceInterface;
+use org::allbinary::animation::AnimationInterface ();
+use org::allbinary::animation::SequenceInterface ();
 
 1;
 

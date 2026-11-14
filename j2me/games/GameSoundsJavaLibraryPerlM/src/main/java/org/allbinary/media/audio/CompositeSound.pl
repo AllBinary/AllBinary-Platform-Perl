@@ -35,9 +35,10 @@ sub init {
         $self->setPlayerP('org::allbinary::media::audio::PlayerComposite'->new('org::allbinary::media::audio::AllBinaryMediaManager'->createPlayer($self->getResource()), 570));
 }
 
-use org::allbinary::media::audio::Sound;
-use org::allbinary::media::audio::PlayerComposite;
-use org::allbinary::media::audio::AllBinaryMediaManager;
+use java::lang::Object ();
+use org::allbinary::media::audio::Sound ();
+use org::allbinary::media::audio::PlayerComposite ();
+use org::allbinary::media::audio::AllBinaryMediaManager ();
 
 1;
 

@@ -44,7 +44,7 @@ sub _init_fields {
 sub new {
     my ($class, $before, $size, $name, $after) = @_;
     my $self = $class->SUPER::new();
-    $self->_init_fields();
+    _init_fields($self);
         $self->{before} = $before;
         $self->{size} = $size;
         $self->{name} = $name;
@@ -145,12 +145,13 @@ sub toString {
         return $result;
 }
 
-use org::allbinary::util::BasicArrayList;
-use org::allbinary::util::BasicArrayListD;
-use org::allbinary::logic::StdUtil;
-use org::allbinary::logic::io::LineReader;
-use org::allbinary::logic::string::StringUtil;
-use org::allbinary::logic::visual::dhtml::html::HtmlTag;
+use java::lang::Object ();
+use org::allbinary::util::BasicArrayList ();
+use org::allbinary::util::BasicArrayListD ();
+use org::allbinary::logic::StdUtil ();
+use org::allbinary::logic::io::LineReader ();
+use org::allbinary::logic::string::StringUtil ();
+use org::allbinary::logic::visual::dhtml::html::HtmlTag ();
 
 1;
 

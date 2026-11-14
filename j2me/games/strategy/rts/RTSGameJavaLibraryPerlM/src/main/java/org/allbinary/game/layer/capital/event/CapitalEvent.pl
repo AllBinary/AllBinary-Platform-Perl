@@ -28,7 +28,7 @@ sub _init_fields {
 sub new {
     my ($class, $anyType) = @_;
     my $self = $class->SUPER::new($anyType);
-    $self->_init_fields();
+    _init_fields($self);
         # super(...) made $self above
     return $self;
 }
@@ -54,8 +54,9 @@ sub setValue {
         $self->{value} = $value;
 }
 
-use org::allbinary::logic::string::StringMaker;
-use org::allbinary::logic::util::event::AllBinaryEventObject;
+use java::lang::Object ();
+use org::allbinary::logic::string::StringMaker ();
+use org::allbinary::logic::util::event::AllBinaryEventObject ();
 
 1;
 

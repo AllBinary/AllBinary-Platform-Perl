@@ -30,7 +30,7 @@ sub _init_fields {
 sub new {
     my ($class) = @_;
     my $self = $class->SUPER::new();
-    $self->_init_fields();
+    _init_fields($self);
     return $self;
 }
 
@@ -47,12 +47,13 @@ sub visit {
         return $self->{TRUE};
 }
 
-# use javax::microedition::lcdui::Canvas;
-use org::allbinary::game::ai::BasicAI;
-use org::allbinary::logic::communication::log::LogUtil;
-use org::allbinary::logic::java::bool::BooleanFactory;
-use org::allbinary::logic::util::visitor::Visitor;
-use org::allbinary::string::CommonStrings;
+use java::lang::Object ();
+use javax::microedition::lcdui::Canvas ();
+use org::allbinary::game::ai::BasicAI ();
+use org::allbinary::logic::communication::log::LogUtil ();
+use org::allbinary::logic::java::bool::BooleanFactory ();
+use org::allbinary::logic::util::visitor::Visitor ();
+use org::allbinary::string::CommonStrings ();
 
 1;
 

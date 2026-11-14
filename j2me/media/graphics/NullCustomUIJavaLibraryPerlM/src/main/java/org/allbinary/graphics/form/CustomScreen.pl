@@ -14,7 +14,8 @@ sub new {
     return $self;
 }
 
-use org::allbinary::graphics::form::CustomDisplayable;
+use java::lang::Object ();
+use org::allbinary::graphics::form::CustomDisplayable ();
 
 1;
 

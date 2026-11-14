@@ -17,6 +17,7 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
 
 sub _init_fields {
@@ -30,7 +31,7 @@ sub _init_fields {
 sub new {
     my ($class, $libraryName) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
         $self->setLibraryName($libraryName);
     return $self;
 }
@@ -79,11 +80,12 @@ sub setLibraryName {
         $self->{libraryName} = $libraryName;
 }
 
-# use java::lang::reflect::Constructor;
-# use java::lang::reflect::Method;
-use org::allbinary::string::CommonStrings;
-use org::allbinary::logic::system::loader::NativeLibraryClassLoader;
-use java::lang::System;
+use java::lang::Object ();
+# use java::lang::reflect::Constructor ();
+# use java::lang::reflect::Method ();
+use org::allbinary::string::CommonStrings ();
+use org::allbinary::logic::system::loader::NativeLibraryClassLoader ();
+use java::lang::System ();
 
 1;
 

@@ -17,8 +17,9 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
-our $instance = 'org::allbinary::time::StupidTimer'->new();
+tie our $instance, 'java::lang::LazyStatic', sub { 'org::allbinary::time::StupidTimer'->new() };
 
 sub new {
     my ($class) = @_;
@@ -32,7 +33,9 @@ sub getInstance {
         return $org::allbinary::time::LicenseStupidTimerFactory::instance;
 }
 
-use org::allbinary::time::StupidTimer;
+use java::lang::Object ();
+use java::lang::LazyStatic ();
+use org::allbinary::time::StupidTimer ();
 
 1;
 

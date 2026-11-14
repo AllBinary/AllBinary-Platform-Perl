@@ -50,12 +50,13 @@ sub getFiring {
         return 0;
 }
 
-use org::allbinary::game::identification::Group;
-use org::allbinary::game::layer::special::CollidableDestroyableDamageableLayer;
-use org::allbinary::graphics::Rectangle;
-use org::allbinary::view::ViewPositionBase;
-use org::allbinary::game::multiplayer::layer::MultiPlayerGameLayerInterface;
-use org::allbinary::game::multiplayer::layer::MultiplayerBehavior;
+use java::lang::Object ();
+use org::allbinary::game::identification::Group ();
+use org::allbinary::game::layer::special::CollidableDestroyableDamageableLayer ();
+use org::allbinary::graphics::Rectangle ();
+use org::allbinary::view::ViewPositionBase ();
+use org::allbinary::game::multiplayer::layer::MultiPlayerGameLayerInterface ();
+use org::allbinary::game::multiplayer::layer::MultiplayerBehavior ();
 
 1;
 

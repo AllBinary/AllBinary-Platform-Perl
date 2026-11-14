@@ -17,8 +17,9 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
-our $instance = 'org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->new();
+tie our $instance, 'java::lang::LazyStatic', sub { 'org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->new() };
 
 sub _init_fields {
     my ($self) = @_;
@@ -103,14 +104,16 @@ sub getInstance {
 sub new {
     my ($class) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
         'org::allbinary::logic::communication::log::PreLogUtil'->put("FreeBlisket", $self, 'org::allbinary::string::CommonStrings'->getInstance()->{CONSTRUCTOR});
     return $self;
 }
 
-use org::allbinary::logic::communication::log::PreLogUtil;
-use org::allbinary::string::CommonStrings;
-use org::allbinary::logic::communication::log::config::type::LogConfigType;
+use java::lang::Object ();
+use java::lang::LazyStatic ();
+use org::allbinary::logic::communication::log::PreLogUtil ();
+use org::allbinary::string::CommonStrings ();
+use org::allbinary::logic::communication::log::config::type::LogConfigType ();
 
 1;
 

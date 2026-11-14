@@ -36,7 +36,7 @@ sub new {
 sub _new0 {
     my ($class) = @_;
     my $self = $class->SUPER::new();
-    $self->_init_fields();
+    _init_fields($self);
         # super(...) made $self above
     return $self;
 }
@@ -45,7 +45,7 @@ sub _new0 {
 sub _new1 {
     my ($class, $node) = @_;
     my $self = $class->SUPER::new($node);
-    $self->_init_fields();
+    _init_fields($self);
         # super(...) made $self above
     return $self;
 }
@@ -98,12 +98,13 @@ sub toValidationInfoNode {
         return undef;
 }
 
-use org::allbinary::logic::communication::log::LogUtil;
-use org::allbinary::logic::control::validate::ValidationInterface;
-use org::allbinary::logic::string::StringMaker;
-use org::w3c::dom::Document;
-use org::w3c::dom::Node;
-use org::allbinary::logic::visual::dhtml::style::css::CssElementView;
+use java::lang::Object ();
+use org::allbinary::logic::communication::log::LogUtil ();
+use org::allbinary::logic::control::validate::ValidationInterface ();
+use org::allbinary::logic::string::StringMaker ();
+use org::w3c::dom::Document ();
+use org::w3c::dom::Node ();
+use org::allbinary::logic::visual::dhtml::style::css::CssElementView ();
 
 1;
 

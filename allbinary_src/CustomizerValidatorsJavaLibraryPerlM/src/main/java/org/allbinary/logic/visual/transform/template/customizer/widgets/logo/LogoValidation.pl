@@ -41,7 +41,7 @@ sub new {
 sub _new0 {
     my ($class) = @_;
     my $self = $class->SUPER::new();
-    $self->_init_fields();
+    _init_fields($self);
         $self->{isFile} = 0;
         $self->{logoAbPath} = undef;
         $self->{logoFile} = undef;
@@ -52,7 +52,7 @@ sub _new0 {
 sub _new1 {
     my ($class, $node) = @_;
     my $self = $class->SUPER::new();
-    $self->_init_fields();
+    _init_fields($self);
         $self->{isFile} = 0;
         $self->{logoAbPath} = 'org::allbinary::logic::io::path::AbPath'->new('org::allbinary::data::tree::dom::DomSearchHelper'->getNode('org::allbinary::logic::visual::transform::template::customizer::widgets::logo::LogoData'->getInstance()->{IMAGEPATH}, $node->getChildNodes())->getNodeValue(), 'org::allbinary::logic::string::StringUtil'->getInstance()->{EMPTY_STRING});
         $self->{logoFile} = 'org::allbinary::data::tree::dom::DomSearchHelper'->getNode('org::allbinary::logic::visual::transform::template::customizer::widgets::logo::LogoData'->getInstance()->{IMAGEFILENAME}, $node->getChildNodes())->getNodeValue();
@@ -63,7 +63,7 @@ sub _new1 {
 sub _new1 {
     my ($class, $hashMap) = @_;
     my $self = $class->SUPER::new();
-    $self->_init_fields();
+    _init_fields($self);
         $self->{isFile} = 1;
         $self->getFormData($hashMap);
     return $self;
@@ -197,24 +197,25 @@ sub processLogoFile {
         'org::allbinary::logic::visual::transform::template::customizer::widgets::logo::LogoImageFileUtil'->new($self->{logoAbPath}, $self->{logoFile})->saveFiles($self->{logoFileItem});
 }
 
-use java::util::HashMap;
-use org::allbinary::data::tree::dom::DomNodeInterface;
-use org::allbinary::data::tree::dom::DomSearchHelper;
-use org::allbinary::data::tree::dom::ModDomHelper;
-use org::allbinary::logic::StdUtil;
-use org::allbinary::logic::communication::http::request::HttpRequestUtil;
-use org::allbinary::logic::communication::log::LogUtil;
-use org::allbinary::logic::control::validate::Validation;
-use org::allbinary::logic::io::file::FileData;
-use org::allbinary::logic::io::path::AbPath;
-use org::allbinary::logic::string::StringMaker;
-use org::allbinary::logic::string::StringUtil;
-use org::allbinary::logic::string::StringValidationUtil;
-use org::apache::commons::fileupload::FileItem;
-use org::w3c::dom::Document;
-use org::w3c::dom::Node;
-use org::allbinary::logic::visual::transform::template::customizer::widgets::logo::LogoData;
-use org::allbinary::logic::visual::transform::template::customizer::widgets::logo::LogoImageFileUtil;
+use java::lang::Object ();
+use java::util::HashMap ();
+use org::allbinary::data::tree::dom::DomNodeInterface ();
+use org::allbinary::data::tree::dom::DomSearchHelper ();
+use org::allbinary::data::tree::dom::ModDomHelper ();
+use org::allbinary::logic::StdUtil ();
+use org::allbinary::logic::communication::http::request::HttpRequestUtil ();
+use org::allbinary::logic::communication::log::LogUtil ();
+use org::allbinary::logic::control::validate::Validation ();
+use org::allbinary::logic::io::file::FileData ();
+use org::allbinary::logic::io::path::AbPath ();
+use org::allbinary::logic::string::StringMaker ();
+use org::allbinary::logic::string::StringUtil ();
+use org::allbinary::logic::string::StringValidationUtil ();
+use org::apache::commons::fileupload::FileItem ();
+use org::w3c::dom::Document ();
+use org::w3c::dom::Node ();
+use org::allbinary::logic::visual::transform::template::customizer::widgets::logo::LogoData ();
+use org::allbinary::logic::visual::transform::template::customizer::widgets::logo::LogoImageFileUtil ();
 
 1;
 

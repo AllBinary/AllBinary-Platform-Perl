@@ -18,8 +18,9 @@ use warnings;
 use feature 'try';
 no warnings 'experimental::try';
 use POSIX ();
+use parent -norequire,'java::lang::Object';
 
-our $instance = 'org::allbinary::media::image::ImageJ2MEScaleUtil'->new();
+tie our $instance, 'java::lang::LazyStatic', sub { 'org::allbinary::media::image::ImageJ2MEScaleUtil'->new() };
 
 
 sub getInstance {
@@ -70,7 +71,9 @@ sub scale {
         return $scaledImage;
 }
 
-# use javax::microedition::lcdui::Image;
+use java::lang::Object ();
+use java::lang::LazyStatic ();
+use javax::microedition::lcdui::Image ();
 
 1;
 

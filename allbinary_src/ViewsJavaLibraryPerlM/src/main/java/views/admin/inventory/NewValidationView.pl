@@ -57,14 +57,22 @@ sub validationInfo {
         return "Error Creating New Item";
 }
 
-use org::allbinary::business::user::commerce::inventory::item::BasicItem;
-use org::allbinary::business::user::commerce::inventory::item::ItemInterface;
-use org::allbinary::logic::control::validate::ValidationComponentInterface;
-use org::allbinary::logic::string::StringUtil;
-use org::allbinary::logic::visual::transform::info::TransformInfoInterface;
-use org::w3c::dom::Document;
-use org::w3c::dom::Node;
-use views::admin::inventory::InventoryItemView;
+
+# throws Exception
+sub getTransformInfoInterface {
+    my ($self) = @_;
+        return $self->SUPER::getTransformInfoInterface();
+}
+
+use java::lang::Object ();
+use org::allbinary::business::user::commerce::inventory::item::BasicItem ();
+use org::allbinary::business::user::commerce::inventory::item::ItemInterface ();
+use org::allbinary::logic::control::validate::ValidationComponentInterface ();
+use org::allbinary::logic::string::StringUtil ();
+use org::allbinary::logic::visual::transform::info::TransformInfoInterface ();
+use org::w3c::dom::Document ();
+use org::w3c::dom::Node ();
+use views::admin::inventory::InventoryItemView ();
 
 1;
 

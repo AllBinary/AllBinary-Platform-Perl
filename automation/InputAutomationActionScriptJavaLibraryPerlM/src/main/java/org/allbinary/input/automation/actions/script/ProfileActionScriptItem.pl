@@ -17,7 +17,7 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
-use parent -norequire,'javax::swing::tree::DefaultMutableTreeNode','org::allbinary::input::automation::actions::script::ProfileActionScriptItemInterface','java::awt::event::ActionListener';
+use parent -norequire,'java::lang::Object','org::allbinary::input::automation::actions::script::ProfileActionScriptItemInterface';
 
 our $EDIT = "Edit";
 our $DELETE = "Delete";
@@ -50,7 +50,7 @@ sub new {
 sub _new2 {
     my ($class, $label, $node) = @_;
     my $self = $class->SUPER::new($label);
-    $self->_init_fields();
+    _init_fields($self);
         # super(...) made $self above
         $self->init();
         $self->{logUtil}->putF("Label: " . $label, $self, $self->{commonStrings}->{CONSTRUCTOR});
@@ -61,7 +61,7 @@ sub _new2 {
 sub _new1 {
     my ($class, $label) = @_;
     my $self = $class->SUPER::new($label);
-    $self->_init_fields();
+    _init_fields($self);
         # super(...) made $self above
         $self->init();
         $self->{logUtil}->putF("Label: " . $label, $self, $self->{commonStrings}->{CONSTRUCTOR});
@@ -113,16 +113,17 @@ sub setJPopupMenu {
         $self->{jPopupMenu} = $jPopupMenu;
 }
 
-# use java::awt::event::ActionEvent;
-# use java::awt::event::ActionListener;
-# use javax::swing;
-# use javax::swing::tree::DefaultMutableTreeNode;
-use org::allbinary::logic::communication::log::LogUtil;
-use org::allbinary::string::CommonStrings;
-use org::w3c::dom::Node;
-use org::allbinary::input::automation::actions::script::ProfileActionScriptItemInterface;
-use org::allbinary::input::automation::actions::script::JPopupMenu;
-use org::allbinary::input::automation::actions::script::JMenuItem;
+use java::lang::Object ();
+# use java::awt::event::ActionEvent ();
+# use java::awt::event::ActionListener ();
+# use javax::swing ();
+# use javax::swing::tree::DefaultMutableTreeNode ();
+use org::allbinary::logic::communication::log::LogUtil ();
+use org::allbinary::string::CommonStrings ();
+use org::w3c::dom::Node ();
+use org::allbinary::input::automation::actions::script::ProfileActionScriptItemInterface ();
+use org::allbinary::input::automation::actions::script::JPopupMenu ();
+use org::allbinary::input::automation::actions::script::JMenuItem ();
 
 1;
 

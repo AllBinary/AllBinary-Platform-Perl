@@ -17,6 +17,7 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
 
 
@@ -50,13 +51,14 @@ sub getInstance {
         return $styles;
 }
 
-use java::util::HashMap;
-use org::allbinary::util::BasicArrayList;
-use org::allbinary::util::BasicArrayListD;
-use org::allbinary::logic::StdUtil;
-use org::allbinary::logic::control::validate::ValidationInterface;
-use org::w3c::dom::Node;
-use org::allbinary::logic::visual::dhtml::style::css::CssElementValidationFactory;
+use java::lang::Object ();
+use java::util::HashMap ();
+use org::allbinary::util::BasicArrayList ();
+use org::allbinary::util::BasicArrayListD ();
+use org::allbinary::logic::StdUtil ();
+use org::allbinary::logic::control::validate::ValidationInterface ();
+use org::w3c::dom::Node ();
+use org::allbinary::logic::visual::dhtml::style::css::CssElementValidationFactory ();
 
 1;
 

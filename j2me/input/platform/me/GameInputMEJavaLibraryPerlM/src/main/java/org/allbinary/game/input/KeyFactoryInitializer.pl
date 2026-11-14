@@ -28,7 +28,7 @@ sub _init_fields {
 sub new {
     my ($class) = @_;
     my $self = $class->SUPER::new();
-    $self->_init_fields();
+    _init_fields($self);
     return $self;
 }
 
@@ -38,8 +38,9 @@ sub init {
         $self->{logUtil}->putF($self->{commonStrings}->{START}, $self, $self->{commonStrings}->{INIT});
 }
 
-use org::allbinary::init::Init;
-use org::allbinary::logic::communication::log::LogUtil;
+use java::lang::Object ();
+use org::allbinary::init::Init ();
+use org::allbinary::logic::communication::log::LogUtil ();
 
 1;
 

@@ -17,7 +17,7 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
-use parent -norequire,'org::allbinary::graphics::paint::PaintableInterface','org::allbinary::graphics::font::UpdateMyFontInterface';
+use parent -norequire,'java::lang::Object','org::allbinary::graphics::paint::PaintableInterface','org::allbinary::graphics::font::UpdateMyFontInterface';
 
 our $XXStringWidth = 0;
 
@@ -37,7 +37,7 @@ sub _init_fields {
 sub new {
     my ($class, $partInterfaceArray, $dropSize, $startIndex, $countedTotalStringColor, $countedPartsBorder) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
         $self->{partInterfaceArray} = $partInterfaceArray;
         $self->{startIndex} = $startIndex;
         $self->{countedTotalStringColor} = $countedTotalStringColor;
@@ -100,15 +100,16 @@ sub paintThreed {
     my ($self, $graphics) = @_;
 }
 
-# use javax::microedition::lcdui::Font;
-# use javax::microedition::lcdui::Graphics;
-use org::allbinary::game::layer::pickup::PickedUpLayerInterfaceFactoryInterface;
-use org::allbinary::graphics::displayable::DisplayInfoSingleton;
-use org::allbinary::graphics::font::MyFontProcessor;
-use org::allbinary::graphics::font::UpdateMyFontInterface;
-use org::allbinary::graphics::font::UpdateMyFontProcessor;
-use org::allbinary::graphics::paint::PaintableInterface;
-use org::allbinary::layer::AllBinaryLayer;
+use java::lang::Object ();
+use javax::microedition::lcdui::Font ();
+use javax::microedition::lcdui::Graphics ();
+use org::allbinary::game::layer::pickup::PickedUpLayerInterfaceFactoryInterface ();
+use org::allbinary::graphics::displayable::DisplayInfoSingleton ();
+use org::allbinary::graphics::font::MyFontProcessor ();
+use org::allbinary::graphics::font::UpdateMyFontInterface ();
+use org::allbinary::graphics::font::UpdateMyFontProcessor ();
+use org::allbinary::graphics::paint::PaintableInterface ();
+use org::allbinary::layer::AllBinaryLayer ();
 
 1;
 

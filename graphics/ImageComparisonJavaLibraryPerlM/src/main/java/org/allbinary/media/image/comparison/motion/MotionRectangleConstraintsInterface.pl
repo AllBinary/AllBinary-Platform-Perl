@@ -69,8 +69,8 @@ sub isValid {
     die "abstract method isValid";
 }
 
-# use java::awt;
-# use java::awt::image::BufferedImage;
+# use java::awt ();
+# use java::awt::image::BufferedImage ();
 
 1;
 

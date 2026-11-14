@@ -18,8 +18,9 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
-our $instance = 'org::allbinary::logic::communication::log::LogUtil'->new();
+tie our $instance, 'java::lang::LazyStatic', sub { 'org::allbinary::logic::communication::log::LogUtil'->new() };
 
 
 sub getInstance {
@@ -62,10 +63,12 @@ sub put {
         'org::allbinary::log::FileLog'->put($specialMessage, $anyType, $functionName, $exception);
 }
 
-use org::allbinary::log::FileLog;
-use org::allbinary::string::CommonSeps;
-use org::allbinary::string::CommonStrings;
-use org::allbinary::logic::string::StringMaker;
+use java::lang::Object ();
+use java::lang::LazyStatic ();
+use org::allbinary::log::FileLog ();
+use org::allbinary::string::CommonSeps ();
+use org::allbinary::string::CommonStrings ();
+use org::allbinary::logic::string::StringMaker ();
 
 1;
 

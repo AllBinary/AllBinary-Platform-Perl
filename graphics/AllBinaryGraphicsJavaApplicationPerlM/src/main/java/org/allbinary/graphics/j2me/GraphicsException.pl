@@ -17,7 +17,7 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
-use parent -norequire,'java::lang::Exception';
+use parent -norequire,'java::lang::Object';
 
 
 sub _init_fields {
@@ -37,7 +37,7 @@ sub new {
 sub _new3 {
     my ($class, $msg, $obj, $method) = @_;
     my $self = $class->SUPER::new($msg);
-    $self->_init_fields();
+    _init_fields($self);
         # super(...) made $self above
         try {
             $self->{guiLog}->showDialog($msg);
@@ -51,7 +51,7 @@ sub _new3 {
 sub _new3 {
     my ($class, $msg, $className, $method) = @_;
     my $self = $class->SUPER::new($msg);
-    $self->_init_fields();
+    _init_fields($self);
         # super(...) made $self above
         try {
             $self->{guiLog}->showDialog($msg);
@@ -61,8 +61,9 @@ sub _new3 {
     return $self;
 }
 
-use org::allbinary::logic::communication::log::GuiLog;
-use org::allbinary::logic::communication::log::LogUtil;
+use java::lang::Object ();
+use org::allbinary::logic::communication::log::GuiLog ();
+use org::allbinary::logic::communication::log::LogUtil ();
 
 1;
 

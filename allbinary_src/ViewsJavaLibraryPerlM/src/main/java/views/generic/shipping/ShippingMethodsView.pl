@@ -31,7 +31,7 @@ sub _init_fields {
 sub new {
     my ($class, $transformInfoInterface) = @_;
     my $self = $class->SUPER::new($transformInfoInterface);
-    $self->_init_fields();
+    _init_fields($self);
         # super(...) made $self above
         $self->{storeFrontInterface} = 'org::allbinary::business::context::modules::storefront::StoreFrontFactory'->getInstance($self->getTransformInfoInterface()->getStoreName());
         $self->{shippingMethods} = 'org::allbinary::business::user::commerce::shipping::ShippingMethods'->new($self->{abeClientInformation}, $self->{storeFrontInterface});
@@ -103,28 +103,29 @@ sub view {
         }
 }
 
-use org::allbinary::util::BasicArrayList;
-use org::allbinary::util::BasicArrayListD;
-use org::allbinary::business::context::modules::storefront::StoreFrontFactory;
-use org::allbinary::business::context::modules::storefront::StoreFrontInterface;
-use org::allbinary::business::entry::EntryData;
-use org::allbinary::business::user::address::StreetAddress;
-use org::allbinary::business::user::commerce::inventory::basket::BasketInterface;
-use org::allbinary::business::user::commerce::inventory::order::OrderInterface;
-use org::allbinary::business::user::commerce::money::Money;
-use org::allbinary::business::user::commerce::money::tax::TaxFactory;
-use org::allbinary::business::user::commerce::shipping::ShippingMethods;
-use org::allbinary::business::user::commerce::shipping::ShippingMethodsData;
-use org::allbinary::business::user::commerce::shipping::modules::ShippingInterface;
-use org::allbinary::data::tables::user::address::StreetAddressesEntityInterface;
-use org::allbinary::data::tables::user::address::shipping::ShippingAddressesEntityFactory;
-use org::allbinary::data::tree::dom::DomNodeInterface;
-use org::allbinary::data::tree::dom::ModDomHelper;
-use org::allbinary::logic::communication::log::LogUtil;
-use org::allbinary::logic::visual::transform::info::TransformInfoInterface;
-use org::w3c::dom::Document;
-use org::w3c::dom::Node;
-use views::business::context::modules::storefront::HttpStoreComponentView;
+use java::lang::Object ();
+use org::allbinary::util::BasicArrayList ();
+use org::allbinary::util::BasicArrayListD ();
+use org::allbinary::business::context::modules::storefront::StoreFrontFactory ();
+use org::allbinary::business::context::modules::storefront::StoreFrontInterface ();
+use org::allbinary::business::entry::EntryData ();
+use org::allbinary::business::user::address::StreetAddress ();
+use org::allbinary::business::user::commerce::inventory::basket::BasketInterface ();
+use org::allbinary::business::user::commerce::inventory::order::OrderInterface ();
+use org::allbinary::business::user::commerce::money::Money ();
+use org::allbinary::business::user::commerce::money::tax::TaxFactory ();
+use org::allbinary::business::user::commerce::shipping::ShippingMethods ();
+use org::allbinary::business::user::commerce::shipping::ShippingMethodsData ();
+use org::allbinary::business::user::commerce::shipping::modules::ShippingInterface ();
+use org::allbinary::data::tables::user::address::StreetAddressesEntityInterface ();
+use org::allbinary::data::tables::user::address::shipping::ShippingAddressesEntityFactory ();
+use org::allbinary::data::tree::dom::DomNodeInterface ();
+use org::allbinary::data::tree::dom::ModDomHelper ();
+use org::allbinary::logic::communication::log::LogUtil ();
+use org::allbinary::logic::visual::transform::info::TransformInfoInterface ();
+use org::w3c::dom::Document ();
+use org::w3c::dom::Node ();
+use views::business::context::modules::storefront::HttpStoreComponentView ();
 
 1;
 

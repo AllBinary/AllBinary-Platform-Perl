@@ -19,7 +19,7 @@ use feature 'try';
 no warnings 'experimental::try';
 use parent -norequire,'org::allbinary::graphics::paint::Paintable';
 
-our $SINGLETON = 'org::allbinary::graphics::paint::NullPaintable'->new();
+tie our $SINGLETON, 'java::lang::LazyStatic', sub { 'org::allbinary::graphics::paint::NullPaintable'->new() };
 
 
 sub new {
@@ -34,7 +34,9 @@ sub getInstance {
         return $org::allbinary::graphics::paint::NullPaintable::SINGLETON;
 }
 
-use org::allbinary::graphics::paint::Paintable;
+use java::lang::Object ();
+use java::lang::LazyStatic ();
+use org::allbinary::graphics::paint::Paintable ();
 
 1;
 

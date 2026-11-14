@@ -19,7 +19,7 @@ use feature 'try';
 no warnings 'experimental::try';
 use parent -norequire,'javax::microedition::rms::RecordStore';
 
-our $NULL_RECORD_STORE = 'org::allbinary::game::configuration::persistance::NullRecordStore'->new();
+tie our $NULL_RECORD_STORE, 'java::lang::LazyStatic', sub { 'org::allbinary::game::configuration::persistance::NullRecordStore'->new() };
 
 sub new {
     my ($class) = @_;
@@ -27,7 +27,9 @@ sub new {
     return $self;
 }
 
-# use javax::microedition::rms::RecordStore;
+use java::lang::Object ();
+use java::lang::LazyStatic ();
+use javax::microedition::rms::RecordStore ();
 
 1;
 

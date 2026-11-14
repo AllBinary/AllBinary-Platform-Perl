@@ -29,7 +29,7 @@ sub _init_fields {
 sub new {
     my ($class, $recordId) = @_;
     my $self = $class->SUPER::new($recordId);
-    $self->_init_fields();
+    _init_fields($self);
         # super(...) made $self above
     return $self;
 }
@@ -128,25 +128,26 @@ sub get {
         return $hashtable;
 }
 
-# use java::io::ByteArrayInputStream;
-# use java::io::ByteArrayOutputStream;
-# use java::io::DataInputStream;
-# use java::io::DataOutputStream;
-# use javax::microedition::rms::RecordEnumeration;
-# use javax::microedition::rms::RecordStore;
-use org::allbinary::TsUtil;
-use org::allbinary::logic::communication::log::PreLogUtil;
-use org::allbinary::logic::math::SmallIntegerSingletonFactory;
-use org::allbinary::logic::string::StringMaker;
-use org::allbinary::logic::string::StringUtil;
-use org::allbinary::logic::system::security::licensing::AbeClientInformationInterface;
-use org::allbinary::string::CommonSeps;
-use org::allbinary::util::ABHashtable;
-use org::allbinary::util::HashtableUtil;
-use org::allbinary::game::configuration::persistance::BasicPersitance;
-use org::allbinary::game::configuration::persistance::NullRecordStore;
-use org::allbinary::game::configuration::persistance::NullRecordFilter;
-use org::allbinary::game::configuration::persistance::NullRecordComparator;
+use java::lang::Object ();
+# use java::io::ByteArrayInputStream ();
+# use java::io::ByteArrayOutputStream ();
+# use java::io::DataInputStream ();
+# use java::io::DataOutputStream ();
+use javax::microedition::rms::RecordEnumeration ();
+use javax::microedition::rms::RecordStore ();
+use org::allbinary::TsUtil ();
+use org::allbinary::logic::communication::log::PreLogUtil ();
+use org::allbinary::logic::math::SmallIntegerSingletonFactory ();
+use org::allbinary::logic::string::StringMaker ();
+use org::allbinary::logic::string::StringUtil ();
+use org::allbinary::logic::system::security::licensing::AbeClientInformationInterface ();
+use org::allbinary::string::CommonSeps ();
+use org::allbinary::util::ABHashtable ();
+use org::allbinary::util::HashtableUtil ();
+use org::allbinary::game::configuration::persistance::BasicPersitance ();
+use org::allbinary::game::configuration::persistance::NullRecordStore ();
+use org::allbinary::game::configuration::persistance::NullRecordFilter ();
+use org::allbinary::game::configuration::persistance::NullRecordComparator ();
 
 1;
 

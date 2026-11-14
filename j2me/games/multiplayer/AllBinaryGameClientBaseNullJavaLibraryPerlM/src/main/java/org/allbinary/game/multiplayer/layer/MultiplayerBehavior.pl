@@ -17,8 +17,9 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
-our $NULL_MULTIPLAYER_BEHAVIOR = 'org::allbinary::game::multiplayer::layer::MultiplayerBehavior'->new('org::allbinary::logic::string::StringUtil'->getInstance()->{EMPTY_STRING});
+tie our $NULL_MULTIPLAYER_BEHAVIOR, 'java::lang::LazyStatic', sub { 'org::allbinary::game::multiplayer::layer::MultiplayerBehavior'->new('org::allbinary::logic::string::StringUtil'->getInstance()->{EMPTY_STRING}) };
 
 
 sub new {
@@ -43,7 +44,9 @@ sub getApproximateElapsed {
         return 0;
 }
 
-use org::allbinary::logic::string::StringUtil;
+use java::lang::Object ();
+use java::lang::LazyStatic ();
+use org::allbinary::logic::string::StringUtil ();
 
 1;
 

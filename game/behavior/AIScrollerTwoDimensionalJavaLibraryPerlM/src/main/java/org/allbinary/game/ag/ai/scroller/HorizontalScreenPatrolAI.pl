@@ -20,7 +20,7 @@ no warnings 'experimental::try';
 use POSIX ();
 use parent -norequire,'org::allbinary::game::ai::BasicAI';
 
-our $SOUND = 'org::allbinary::logic::math::SmallIntegerSingletonFactory'->getInstance()->getAt(433);
+tie our $SOUND, 'java::lang::LazyStatic', sub { 'org::allbinary::logic::math::SmallIntegerSingletonFactory'->getInstance()->getAt(433) };
 
 sub _init_fields {
     my ($self) = @_;
@@ -38,7 +38,7 @@ sub _init_fields {
 sub new {
     my ($class, $hashtable, $ownerLayerInterface, $gameInput) = @_;
     my $self = $class->SUPER::new($ownerLayerInterface, $gameInput);
-    $self->_init_fields();
+    _init_fields($self);
         # super(...) made $self above
         $self->{sound} = $hashtable->get($org::allbinary::game::ag::ai::scroller::HorizontalScreenPatrolAI::SOUND);
         if (!defined($self->{sound})) {
@@ -83,20 +83,22 @@ sub nextDirection {
     my ($self) = @_;
 }
 
-# use javax::microedition::lcdui::Canvas;
-use org::allbinary::game::ai::BasicAI;
-use org::allbinary::game::input::GameInput;
-use org::allbinary::game::layer::AllBinaryGameLayerManager;
-use org::allbinary::game::rand::MyRandomFactory;
-use org::allbinary::graphics::displayable::DisplayInfoSingleton;
-use org::allbinary::layer::AllBinaryLayer;
-use org::allbinary::layer::AllBinaryLayerManager;
-use org::allbinary::logic::math::SmallIntegerSingletonFactory;
-use org::allbinary::media::audio::PlayerQueue;
-use org::allbinary::media::audio::SecondaryPlayerQueueFactory;
-use org::allbinary::media::audio::Sound;
-use org::allbinary::time::TimeDelayHelper;
-use org::allbinary::util::ABHashtable;
+use java::lang::Object ();
+use java::lang::LazyStatic ();
+use javax::microedition::lcdui::Canvas ();
+use org::allbinary::game::ai::BasicAI ();
+use org::allbinary::game::input::GameInput ();
+use org::allbinary::game::layer::AllBinaryGameLayerManager ();
+use org::allbinary::game::rand::MyRandomFactory ();
+use org::allbinary::graphics::displayable::DisplayInfoSingleton ();
+use org::allbinary::layer::AllBinaryLayer ();
+use org::allbinary::layer::AllBinaryLayerManager ();
+use org::allbinary::logic::math::SmallIntegerSingletonFactory ();
+use org::allbinary::media::audio::PlayerQueue ();
+use org::allbinary::media::audio::SecondaryPlayerQueueFactory ();
+use org::allbinary::media::audio::Sound ();
+use org::allbinary::time::TimeDelayHelper ();
+use org::allbinary::util::ABHashtable ();
 
 1;
 

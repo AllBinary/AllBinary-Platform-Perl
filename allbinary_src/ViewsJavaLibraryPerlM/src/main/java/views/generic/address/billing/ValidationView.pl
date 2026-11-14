@@ -60,12 +60,20 @@ sub toValidationInfoNode {
         return undef;
 }
 
-use org::allbinary::data::tables::user::address::billing::BillingAddressesEntity;
-use org::allbinary::logic::control::validate::ValidationComponentInterface;
-use org::allbinary::logic::visual::transform::info::TransformInfoInterface;
-use org::w3c::dom::Document;
-use org::w3c::dom::Node;
-use views::generic::address::billing::BillingAddressesView;
+
+# throws Exception
+sub getTransformInfoInterface {
+    my ($self) = @_;
+        return $self->SUPER::getTransformInfoInterface();
+}
+
+use java::lang::Object ();
+use org::allbinary::data::tables::user::address::billing::BillingAddressesEntity ();
+use org::allbinary::logic::control::validate::ValidationComponentInterface ();
+use org::allbinary::logic::visual::transform::info::TransformInfoInterface ();
+use org::w3c::dom::Document ();
+use org::w3c::dom::Node ();
+use views::generic::address::billing::BillingAddressesView ();
 
 1;
 

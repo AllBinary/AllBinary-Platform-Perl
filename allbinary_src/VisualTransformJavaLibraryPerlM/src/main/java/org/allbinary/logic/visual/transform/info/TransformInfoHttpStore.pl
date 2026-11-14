@@ -37,7 +37,7 @@ sub new {
 sub _new2 {
     my ($class, $propertiesHashMap, $pageContext) = @_;
     my $self = $class->SUPER::new($propertiesHashMap, $pageContext, 1);
-    $self->_init_fields();
+    _init_fields($self);
         # super(...) made $self above
         if ($org::allbinary::logic::visual::transform::info::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($org::allbinary::logic::visual::transform::info::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{VIEW})) {
             $self->{logUtil}->putF("Properties HashMap: " . $propertiesHashMap->toString(), $self, $self->{commonStrings}->{CONSTRUCTOR});
@@ -49,7 +49,7 @@ sub _new2 {
 sub _new3 {
     my ($class, $databaseHashMap, $propertiesHashMap, $pageContext) = @_;
     my $self = $class->SUPER::new($databaseHashMap, $propertiesHashMap, $pageContext);
-    $self->_init_fields();
+    _init_fields($self);
         # super(...) made $self above
         if ($org::allbinary::logic::visual::transform::info::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($org::allbinary::logic::visual::transform::info::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{VIEW})) {
             my $stringBuffer = 'org::allbinary::logic::string::StringMaker'->new();
@@ -67,7 +67,7 @@ sub _new3 {
 sub _new3 {
     my ($class, $storeFrontInterface, $propertiesHashMap, $pageContext) = @_;
     my $self = $class->SUPER::new($propertiesHashMap, $pageContext);
-    $self->_init_fields();
+    _init_fields($self);
         # super(...) made $self above
         if ($org::allbinary::logic::visual::transform::info::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($org::allbinary::logic::visual::transform::info::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{VIEW})) {
             $self->{logUtil}->putF("Properties HashMap: " . $propertiesHashMap->toString(), $self, $self->{commonStrings}->{CONSTRUCTOR});
@@ -109,18 +109,31 @@ sub getDataFilePath {
         return 'org::allbinary::logic::io::path::AbPath'->new($self->getPath(), $self->getDataFile());
 }
 
-use java::util::HashMap;
-# use javax::servlet::jsp::PageContext;
-use org::allbinary::business::context::modules::storefront::StoreFrontData;
-use org::allbinary::business::context::modules::storefront::StoreFrontInterface;
-use org::allbinary::globals::FREEBLISKET_PATH_GLOBALS;
-use org::allbinary::globals::URLGLOBALS;
-use org::allbinary::logic::communication::log::LogUtil;
-use org::allbinary::logic::io::path::AbPath;
-use org::allbinary::logic::io::path::AbPathData;
-use org::allbinary::logic::string::StringMaker;
-use org::allbinary::logic::visual::transform::info::TransformInfoHttp;
-use org::allbinary::logic::visual::transform::info::TransformInfoHttpStoreInterface;
+
+sub setStoreName {
+    my ($self, $value) = @_;
+        $self->SUPER::setStoreName($value);
+}
+
+
+sub getStoreName {
+    my ($self) = @_;
+        return $self->SUPER::getStoreName();
+}
+
+use java::lang::Object ();
+use java::util::HashMap ();
+# use javax::servlet::jsp::PageContext ();
+use org::allbinary::business::context::modules::storefront::StoreFrontData ();
+use org::allbinary::business::context::modules::storefront::StoreFrontInterface ();
+use org::allbinary::globals::FREEBLISKET_PATH_GLOBALS ();
+use org::allbinary::globals::URLGLOBALS ();
+use org::allbinary::logic::communication::log::LogUtil ();
+use org::allbinary::logic::io::path::AbPath ();
+use org::allbinary::logic::io::path::AbPathData ();
+use org::allbinary::logic::string::StringMaker ();
+use org::allbinary::logic::visual::transform::info::TransformInfoHttp ();
+use org::allbinary::logic::visual::transform::info::TransformInfoHttpStoreInterface ();
 
 1;
 

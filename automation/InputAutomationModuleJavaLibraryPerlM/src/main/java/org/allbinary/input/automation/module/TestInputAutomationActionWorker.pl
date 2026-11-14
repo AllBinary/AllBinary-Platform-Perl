@@ -31,7 +31,7 @@ sub _init_fields {
 sub new {
     my ($class, $sleep, $inputAutomationActionInterface, $imageComparatorConstraintsInterface, $motionRectangleConstraintsInterface) = @_;
     my $self = $class->SUPER::new($inputAutomationActionInterface);
-    $self->_init_fields();
+    _init_fields($self);
         # super(...) made $self above
         $self->{logUtil}->putF("BasicTestAttackWorder", $self, $self->{commonStrings}->{CONSTRUCTOR});
         $self->{sleep} = $sleep;
@@ -63,15 +63,16 @@ sub process {
         }
 }
 
-# use java::util::Set;
-use org::allbinary::input::automation::robot::InputRobotFactory;
-use org::allbinary::input::automation::robot::InputRobotInterface;
-use org::allbinary::logic::communication::log::LogUtil;
-use org::allbinary::media::image::comparison::ImageComparatorConstraintsInterface;
-use org::allbinary::media::image::comparison::motion::MotionRectangleConstraintsInterface;
-use org::allbinary::util::ABHashtable;
-use org::allbinary::input::automation::module::AbstractInputAutomationWorker;
-use java::lang::Thread;
+use java::lang::Object ();
+# use java::util::Set ();
+use org::allbinary::input::automation::robot::InputRobotFactory ();
+use org::allbinary::input::automation::robot::InputRobotInterface ();
+use org::allbinary::logic::communication::log::LogUtil ();
+use org::allbinary::media::image::comparison::ImageComparatorConstraintsInterface ();
+use org::allbinary::media::image::comparison::motion::MotionRectangleConstraintsInterface ();
+use org::allbinary::util::ABHashtable ();
+use org::allbinary::input::automation::module::AbstractInputAutomationWorker ();
+use java::lang::Thread ();
 
 1;
 

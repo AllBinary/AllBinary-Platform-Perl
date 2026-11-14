@@ -17,8 +17,9 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
-our $instance = 'org::allbinary::game::layer::LinePathAnimation'->new();
+tie our $instance, 'java::lang::LazyStatic', sub { 'org::allbinary::game::layer::LinePathAnimation'->new() };
 
 sub new {
     my ($class) = @_;
@@ -38,9 +39,11 @@ sub paint {
         $graphics->drawLine($nextPoint->getX(), $nextPoint->getY(), $point->getX(), $point->getY());
 }
 
-# use javax::microedition::lcdui::Graphics;
-use org::allbinary::graphics::GPoint;
-use org::allbinary::layer::Layer;
+use java::lang::Object ();
+use java::lang::LazyStatic ();
+use javax::microedition::lcdui::Graphics ();
+use org::allbinary::graphics::GPoint ();
+use org::allbinary::layer::Layer ();
 
 1;
 

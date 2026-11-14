@@ -17,7 +17,7 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
-use parent -norequire,'org::allbinary::thread::RunnableInterface','org::allbinary::thread::PriorityRunnable';
+use parent -norequire,'java::lang::Object','org::allbinary::thread::RunnableInterface','org::allbinary::thread::PriorityRunnable';
 
 
 sub _init_fields {
@@ -32,7 +32,7 @@ sub _init_fields {
 sub new {
     my ($class) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
     return $self;
 }
 
@@ -107,11 +107,12 @@ sub reset {
     my ($self) = @_;
 }
 
-use org::allbinary::layer::AllBinaryLayer;
-use org::allbinary::math::LayerDistanceUtil;
-use org::allbinary::thread::PriorityRunnable;
-use org::allbinary::thread::RunnableInterface;
-use org::allbinary::game::layer::NullPathFindingLayer;
+use java::lang::Object ();
+use org::allbinary::layer::AllBinaryLayer ();
+use org::allbinary::math::LayerDistanceUtil ();
+use org::allbinary::thread::PriorityRunnable ();
+use org::allbinary::thread::RunnableInterface ();
+use org::allbinary::game::layer::NullPathFindingLayer ();
 
 1;
 

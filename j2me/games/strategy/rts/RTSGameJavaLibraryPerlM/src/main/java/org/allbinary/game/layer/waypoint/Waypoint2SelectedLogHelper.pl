@@ -19,7 +19,7 @@ use feature 'try';
 no warnings 'experimental::try';
 use parent -norequire,'org::allbinary::game::layer::waypoint::Waypoint2LogHelper';
 
-our $instanceC = 'org::allbinary::game::layer::waypoint::Waypoint2SelectedLogHelper'->new();
+tie our $instanceC, 'java::lang::LazyStatic', sub { 'org::allbinary::game::layer::waypoint::Waypoint2SelectedLogHelper'->new() };
 
 sub _init_fields {
     my ($self) = @_;
@@ -40,7 +40,7 @@ sub _init_fields {
 sub new {
     my ($class) = @_;
     my $self = $class->SUPER::new();
-    $self->_init_fields();
+    _init_fields($self);
     return $self;
 }
 
@@ -288,17 +288,19 @@ sub targetMovedSoRetarget {
         $self->{logUtil}->putF('org::allbinary::logic::string::StringMaker'->new()->append($associatedAdvancedRTSGameLayer->getName())->append(" - target moved so retargeting")->toString(), $self, "turnTo");
 }
 
-use org::allbinary::game::layer::PathFindingLayerInterface;
-use org::allbinary::game::layer::WaypointBehaviorBase;
-use org::allbinary::game::layer::special::CollidableDestroyableDamageableLayer;
-use org::allbinary::logic::communication::log::LogUtil;
-use org::allbinary::string::CommonSeps;
-use org::allbinary::logic::string::StringMaker;
-use org::allbinary::logic::string::StringUtil;
-use org::allbinary::math::PositionStrings;
-use org::allbinary::media::graphics::geography::map::GeographicMapCellPosition;
-use org::allbinary::util::BasicArrayList;
-use org::allbinary::game::layer::waypoint::Waypoint2LogHelper;
+use java::lang::Object ();
+use java::lang::LazyStatic ();
+use org::allbinary::game::layer::PathFindingLayerInterface ();
+use org::allbinary::game::layer::WaypointBehaviorBase ();
+use org::allbinary::game::layer::special::CollidableDestroyableDamageableLayer ();
+use org::allbinary::logic::communication::log::LogUtil ();
+use org::allbinary::string::CommonSeps ();
+use org::allbinary::logic::string::StringMaker ();
+use org::allbinary::logic::string::StringUtil ();
+use org::allbinary::math::PositionStrings ();
+use org::allbinary::media::graphics::geography::map::GeographicMapCellPosition ();
+use org::allbinary::util::BasicArrayList ();
+use org::allbinary::game::layer::waypoint::Waypoint2LogHelper ();
 
 1;
 

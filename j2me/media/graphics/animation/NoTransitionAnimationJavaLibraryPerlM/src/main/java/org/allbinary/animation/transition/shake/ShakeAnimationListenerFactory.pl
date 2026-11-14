@@ -17,6 +17,7 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
 
 sub new {
@@ -31,7 +32,8 @@ sub getInstance {
         return 'org::allbinary::animation::transition::shake::NoShakeAnimationListener'->new();
 }
 
-use org::allbinary::animation::transition::shake::NoShakeAnimationListener;
+use java::lang::Object ();
+use org::allbinary::animation::transition::shake::NoShakeAnimationListener ();
 
 1;
 

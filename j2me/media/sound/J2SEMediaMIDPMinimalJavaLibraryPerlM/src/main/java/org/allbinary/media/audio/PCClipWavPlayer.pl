@@ -19,7 +19,7 @@ use feature 'try';
 no warnings 'experimental::try';
 use POSIX ();
 use List::Util ();
-use parent -norequire,'org::allbinary::media::audio::BasicPlayer','javax::sound::sampled::LineListener';
+use parent -norequire,'org::allbinary::media::audio::BasicPlayer';
 
 
 sub _init_fields {
@@ -33,7 +33,7 @@ sub _init_fields {
 sub new {
     my ($class, $inputStream) = @_;
     my $self = $class->SUPER::new();
-    $self->_init_fields();
+    _init_fields($self);
         my $audioInputStream = 'javax::sound::sampled::AudioInputStream'->new('java::io::ByteArrayInputStream'->new('org::allbinary::logic::NullUtil'->getInstance()->{NULL_BYTE_ARRAY}), $org::allbinary::media::audio::NullAudioFormat::NULL_AUDIO_FORMAT, 0);
         my $clip = 'org::allbinary::media::audio::NullClip'->new();
         try {
@@ -55,7 +55,7 @@ sub new {
 sub close {
     my ($self) = @_;
         'org::allbinary::thread::MusicThreadPool'->getInstance()->runTask(do {
-            package org::allbinary::thread::ARunnable::AnonymousN66744 { our @ISA = ('org::allbinary::thread::ARunnable');
+            package org::allbinary::thread::ARunnable::AnonymousN66744 { our @ISA = ('org::allbinary::thread::ARunnable', 'java::lang::Object');
             
 
             sub run {
@@ -91,7 +91,7 @@ sub getContentType {
 sub start {
     my ($self) = @_;
         'org::allbinary::thread::MusicThreadPool'->getInstance()->runTask(do {
-            package org::allbinary::thread::ARunnable::AnonymousN67156 { our @ISA = ('org::allbinary::thread::ARunnable');
+            package org::allbinary::thread::ARunnable::AnonymousN67156 { our @ISA = ('org::allbinary::thread::ARunnable', 'java::lang::Object');
             
 
             sub run {
@@ -132,7 +132,7 @@ sub create {
 sub stop {
     my ($self) = @_;
         'org::allbinary::thread::MusicThreadPool'->getInstance()->runTask(do {
-            package org::allbinary::thread::ARunnable::AnonymousN67738 { our @ISA = ('org::allbinary::thread::ARunnable');
+            package org::allbinary::thread::ARunnable::AnonymousN67738 { our @ISA = ('org::allbinary::thread::ARunnable', 'java::lang::Object');
             
 
             sub run {
@@ -209,27 +209,28 @@ sub update {
         }
 }
 
-use org::allbinary::thread::ARunnable;
-# use java::io::ByteArrayInputStream;
-# use java::io::InputStream;
-# use javax::microedition::media::Control;
-# use javax::microedition::media::MediaException;
-# use javax::microedition::media::PlayerListener;
-# use javax::sound::sampled::AudioInputStream;
-# use javax::sound::sampled::AudioSystem;
-# use javax::sound::sampled::Clip;
-# use javax::sound::sampled::FloatControl;
-# use javax::sound::sampled::LineEvent;
-# use javax::sound::sampled::LineListener;
-use org::allbinary::logic::NullUtil;
-use org::allbinary::logic::communication::log::LogUtil;
-use org::allbinary::logic::communication::log::PreLogUtil;
-use org::allbinary::logic::string::StringUtil;
-use org::allbinary::thread::MusicThreadPool;
-use org::allbinary::media::audio::BasicPlayer;
-use org::allbinary::media::audio::NullAudioFormat;
-use org::allbinary::media::audio::NullClip;
-use org::allbinary::media::audio::NullControl;
+use java::lang::Object ();
+use org::allbinary::thread::ARunnable ();
+# use java::io::ByteArrayInputStream ();
+# use java::io::InputStream ();
+use javax::microedition::media::Control ();
+use javax::microedition::media::MediaException ();
+use javax::microedition::media::PlayerListener ();
+# use javax::sound::sampled::AudioInputStream ();
+# use javax::sound::sampled::AudioSystem ();
+# use javax::sound::sampled::Clip ();
+# use javax::sound::sampled::FloatControl ();
+# use javax::sound::sampled::LineEvent ();
+# use javax::sound::sampled::LineListener ();
+use org::allbinary::logic::NullUtil ();
+use org::allbinary::logic::communication::log::LogUtil ();
+use org::allbinary::logic::communication::log::PreLogUtil ();
+use org::allbinary::logic::string::StringUtil ();
+use org::allbinary::thread::MusicThreadPool ();
+use org::allbinary::media::audio::BasicPlayer ();
+use org::allbinary::media::audio::NullAudioFormat ();
+use org::allbinary::media::audio::NullClip ();
+use org::allbinary::media::audio::NullControl ();
 
 1;
 

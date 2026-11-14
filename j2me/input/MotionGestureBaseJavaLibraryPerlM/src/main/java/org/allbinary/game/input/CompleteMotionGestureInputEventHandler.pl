@@ -19,7 +19,7 @@ use feature 'try';
 no warnings 'experimental::try';
 use parent -norequire,'org::allbinary::logic::util::event::handler::BasicEventHandler';
 
-our $SINGLETON = 'org::allbinary::game::input::CompleteMotionGestureInputEventHandler'->new();
+tie our $SINGLETON, 'java::lang::LazyStatic', sub { 'org::allbinary::game::input::CompleteMotionGestureInputEventHandler'->new() };
 
 sub _init_fields {
     my ($self) = @_;
@@ -36,7 +36,7 @@ sub getInstance {
 sub new {
     my ($class) = @_;
     my $self = $class->SUPER::new();
-    $self->_init_fields();
+    _init_fields($self);
     return $self;
 }
 
@@ -85,12 +85,14 @@ sub process {
         $completeMotionGestureInputEventListenerInterface->onCompleteMotionGestureInputEvent($eventObject);
 }
 
-use org::allbinary::logic::util::event::AllBinaryEventObject;
-use org::allbinary::logic::util::event::EventListenerInterface;
-use org::allbinary::logic::util::event::EventStrings;
-use org::allbinary::logic::util::event::handler::BasicEventHandler;
-use org::allbinary::util::BasicArrayList;
-use org::allbinary::util::BasicArrayListD;
+use java::lang::Object ();
+use java::lang::LazyStatic ();
+use org::allbinary::logic::util::event::AllBinaryEventObject ();
+use org::allbinary::logic::util::event::EventListenerInterface ();
+use org::allbinary::logic::util::event::EventStrings ();
+use org::allbinary::logic::util::event::handler::BasicEventHandler ();
+use org::allbinary::util::BasicArrayList ();
+use org::allbinary::util::BasicArrayListD ();
 
 1;
 

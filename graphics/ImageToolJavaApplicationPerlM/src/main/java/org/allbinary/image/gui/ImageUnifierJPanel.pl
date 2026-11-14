@@ -17,7 +17,7 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
-use parent -norequire,'javax::swing::JPanel','org::allbinary::media::image::ImageProcessorInputCompositeInterface';
+use parent -norequire,'java::lang::Object','org::allbinary::media::image::ImageProcessorInputCompositeInterface';
 
 
 sub _init_fields {
@@ -59,7 +59,7 @@ sub _init_fields {
 sub new {
     my ($class, $imageProcessorInput) = @_;
     my $self = $class->SUPER::new();
-    $self->_init_fields();
+    _init_fields($self);
         $self->initComponents();
         $self->setImageProcessorInput($imageProcessorInput);
     return $self;
@@ -202,7 +202,7 @@ sub initComponents {
         $self->{jScrollPane1}->setViewportView($self->{imageJList});
         $self->{jButton1}->setText("Save");
         $self->{jButton1}->addActionListener(do {
-            package java::awt::event::ActionListener::AnonymousN71934 { our @ISA = ('java::awt::event::ActionListener');
+            package java::awt::event::ActionListener::AnonymousN71934 { our @ISA = ('java::awt::event::ActionListener', 'java::lang::Object');
             
 
             sub actionPerformed {
@@ -214,7 +214,7 @@ sub initComponents {
         });
         $self->{upJButton}->setText("Up");
         $self->{upJButton}->addActionListener(do {
-            package java::awt::event::ActionListener::AnonymousN72121 { our @ISA = ('java::awt::event::ActionListener');
+            package java::awt::event::ActionListener::AnonymousN72121 { our @ISA = ('java::awt::event::ActionListener', 'java::lang::Object');
             
 
             sub actionPerformed {
@@ -226,7 +226,7 @@ sub initComponents {
         });
         $self->{downJButton}->setText("Down");
         $self->{downJButton}->addActionListener(do {
-            package java::awt::event::ActionListener::AnonymousN72308 { our @ISA = ('java::awt::event::ActionListener');
+            package java::awt::event::ActionListener::AnonymousN72308 { our @ISA = ('java::awt::event::ActionListener', 'java::lang::Object');
             
 
             sub actionPerformed {
@@ -238,7 +238,7 @@ sub initComponents {
         });
         $self->{fudgeItJButton}->setText("Fudge It!");
         $self->{fudgeItJButton}->addActionListener(do {
-            package java::awt::event::ActionListener::AnonymousN72495 { our @ISA = ('java::awt::event::ActionListener');
+            package java::awt::event::ActionListener::AnonymousN72495 { our @ISA = ('java::awt::event::ActionListener', 'java::lang::Object');
             
 
             sub actionPerformed {
@@ -251,7 +251,7 @@ sub initComponents {
         $self->{jLabel2}->setText("Columns:");
         $self->{columnsJTextField}->setText($commonPhoneStrings->{TWO});
         $self->{columnsJTextField}->addActionListener(do {
-            package java::awt::event::ActionListener::AnonymousN72724 { our @ISA = ('java::awt::event::ActionListener');
+            package java::awt::event::ActionListener::AnonymousN72724 { our @ISA = ('java::awt::event::ActionListener', 'java::lang::Object');
             
 
             sub actionPerformed {
@@ -262,7 +262,7 @@ sub initComponents {
             'java::awt::event::ActionListener::AnonymousN72724'->can('new') ? 'java::awt::event::ActionListener::AnonymousN72724'->new() : bless({}, 'java::awt::event::ActionListener::AnonymousN72724')
         });
         $self->{columnsJTextField}->addPropertyChangeListener(do {
-            package java::beans::PropertyChangeListener::AnonymousN72881 { our @ISA = ('java::beans::PropertyChangeListener');
+            package java::beans::PropertyChangeListener::AnonymousN72881 { our @ISA = ('java::beans::PropertyChangeListener', 'java::lang::Object');
             
 
             sub propertyChange {
@@ -273,7 +273,7 @@ sub initComponents {
             'java::beans::PropertyChangeListener::AnonymousN72881'->can('new') ? 'java::beans::PropertyChangeListener::AnonymousN72881'->new() : bless({}, 'java::beans::PropertyChangeListener::AnonymousN72881')
         });
         $self->{columnsJTextField}->addKeyListener(do {
-            package java::awt::event::KeyAdapter::AnonymousN73022 { our @ISA = ('java::awt::event::KeyAdapter');
+            package java::awt::event::KeyAdapter::AnonymousN73022 { our @ISA = ('java::awt::event::KeyAdapter', 'java::lang::Object');
             
 
             sub keyPressed {
@@ -292,7 +292,7 @@ sub initComponents {
         $self->{jLabel1}->setText("Rows:");
         $self->{rowsJTextField}->setText($commonPhoneStrings->{TWO});
         $self->{rowsJTextField}->addActionListener(do {
-            package java::awt::event::ActionListener::AnonymousN73343 { our @ISA = ('java::awt::event::ActionListener');
+            package java::awt::event::ActionListener::AnonymousN73343 { our @ISA = ('java::awt::event::ActionListener', 'java::lang::Object');
             
 
             sub actionPerformed {
@@ -305,7 +305,7 @@ sub initComponents {
         $self->{jLabel3}->setText("Cell Width:");
         $self->{cellWidthJTextField}->setText("200");
         $self->{cellWidthJTextField}->addActionListener(do {
-            package java::awt::event::ActionListener::AnonymousN73560 { our @ISA = ('java::awt::event::ActionListener');
+            package java::awt::event::ActionListener::AnonymousN73560 { our @ISA = ('java::awt::event::ActionListener', 'java::lang::Object');
             
 
             sub actionPerformed {
@@ -318,7 +318,7 @@ sub initComponents {
         $self->{jLabel4}->setText("Cell Height:");
         $self->{cellHeightJTextField}->setText("150");
         $self->{cellHeightJTextField}->addActionListener(do {
-            package java::awt::event::ActionListener::AnonymousN73777 { our @ISA = ('java::awt::event::ActionListener');
+            package java::awt::event::ActionListener::AnonymousN73777 { our @ISA = ('java::awt::event::ActionListener', 'java::lang::Object');
             
 
             sub actionPerformed {
@@ -334,7 +334,7 @@ sub initComponents {
         $self->{avgRatioJTextField}->setEditable(0);
         $self->{jButton2}->setText($self->{commonStrings}->{UPDATE});
         $self->{jButton2}->addActionListener(do {
-            package java::awt::event::ActionListener::AnonymousN74099 { our @ISA = ('java::awt::event::ActionListener');
+            package java::awt::event::ActionListener::AnonymousN74099 { our @ISA = ('java::awt::event::ActionListener', 'java::lang::Object');
             
 
             sub actionPerformed {
@@ -346,7 +346,7 @@ sub initComponents {
         });
         $self->{jButtonOrder}->setText("Order");
         $self->{jButtonOrder}->addActionListener(do {
-            package java::awt::event::ActionListener::AnonymousN74286 { our @ISA = ('java::awt::event::ActionListener');
+            package java::awt::event::ActionListener::AnonymousN74286 { our @ISA = ('java::awt::event::ActionListener', 'java::lang::Object');
             
 
             sub actionPerformed {
@@ -489,29 +489,30 @@ sub setImageProcessorInput {
         $self->init();
 }
 
-# use java::awt::image::BufferedImage;
-use java::io::File;
-# use javax::swing;
-use org::allbinary::logic::communication::log::LogUtil;
-use org::allbinary::logic::io::file::FileWrapperUtil;
-use org::allbinary::logic::string::StringMaker;
-use org::allbinary::logic::string::StringUtil;
-use org::allbinary::media::image::ImagePersistanceUtil;
-use org::allbinary::media::image::ImageProcessorInput;
-use org::allbinary::media::image::ImageProcessorInputCompositeInterface;
-use org::allbinary::media::image::ImageStrings;
-use org::allbinary::media::image::ImageUnifierCell;
-use org::allbinary::media::image::ImageUnifierProperties;
-use org::allbinary::media::image::ImageUnifierUtil;
-use org::allbinary::media::image::ImageUtil;
-use org::allbinary::media::image::ImagesRatioUtil;
-use org::allbinary::string::CommonPhoneStrings;
-use org::allbinary::string::CommonSeps;
-use org::allbinary::string::CommonStrings;
-use org::allbinary::image::gui::DefaultListModel;
-use org::allbinary::image::gui::ImageIconUnique;
-use org::allbinary::image::gui::ImageIcon;
-use org::allbinary::image::gui::JLabel;
+use java::lang::Object ();
+# use java::awt::image::BufferedImage ();
+use java::io::File ();
+# use javax::swing ();
+use org::allbinary::logic::communication::log::LogUtil ();
+use org::allbinary::logic::io::file::FileWrapperUtil ();
+use org::allbinary::logic::string::StringMaker ();
+use org::allbinary::logic::string::StringUtil ();
+use org::allbinary::media::image::ImagePersistanceUtil ();
+use org::allbinary::media::image::ImageProcessorInput ();
+use org::allbinary::media::image::ImageProcessorInputCompositeInterface ();
+use org::allbinary::media::image::ImageStrings ();
+use org::allbinary::media::image::ImageUnifierCell ();
+use org::allbinary::media::image::ImageUnifierProperties ();
+use org::allbinary::media::image::ImageUnifierUtil ();
+use org::allbinary::media::image::ImageUtil ();
+use org::allbinary::media::image::ImagesRatioUtil ();
+use org::allbinary::string::CommonPhoneStrings ();
+use org::allbinary::string::CommonSeps ();
+use org::allbinary::string::CommonStrings ();
+use org::allbinary::image::gui::DefaultListModel ();
+use org::allbinary::image::gui::ImageIconUnique ();
+use org::allbinary::image::gui::ImageIcon ();
+use org::allbinary::image::gui::JLabel ();
 
 1;
 

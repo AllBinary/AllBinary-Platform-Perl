@@ -17,9 +17,9 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
-use parent -norequire,'org::allbinary::media::graphics::geography::map::racetrack::RaceTrackGeographicMapInterface';
+use parent -norequire,'java::lang::Object','org::allbinary::media::graphics::geography::map::racetrack::RaceTrackGeographicMapInterface';
 
-our $NULL_RACE_TRACK_GEOGRAPHIC_MAP = 'org::allbinary::media::graphics::geography::map::racetrack::NullRaceTrackGeographicMap'->new();
+tie our $NULL_RACE_TRACK_GEOGRAPHIC_MAP, 'java::lang::LazyStatic', sub { 'org::allbinary::media::graphics::geography::map::racetrack::NullRaceTrackGeographicMap'->new() };
 
 sub new {
     my ($class) = @_;
@@ -140,14 +140,16 @@ sub setRaceTrackData {
         die ("RuntimeException");
 }
 
-use org::allbinary::game::layer::AllBinaryTiledLayer;
-use org::allbinary::graphics::color::BasicColor;
-use org::allbinary::layer::Layer;
-use org::allbinary::media::graphics::geography::map::BasicGeographicMapCellPositionFactory;
-use org::allbinary::media::graphics::geography::map::GeographicMapCellPosition;
-use org::allbinary::media::graphics::geography::map::GeographicMapCellPositionFactoryInterface;
-use org::allbinary::media::graphics::geography::map::GeographicMapCellType;
-use org::allbinary::media::graphics::geography::map::racetrack::RaceTrackGeographicMapInterface;
+use java::lang::Object ();
+use java::lang::LazyStatic ();
+use org::allbinary::game::layer::AllBinaryTiledLayer ();
+use org::allbinary::graphics::color::BasicColor ();
+use org::allbinary::layer::Layer ();
+use org::allbinary::media::graphics::geography::map::BasicGeographicMapCellPositionFactory ();
+use org::allbinary::media::graphics::geography::map::GeographicMapCellPosition ();
+use org::allbinary::media::graphics::geography::map::GeographicMapCellPositionFactoryInterface ();
+use org::allbinary::media::graphics::geography::map::GeographicMapCellType ();
+use org::allbinary::media::graphics::geography::map::racetrack::RaceTrackGeographicMapInterface ();
 
 1;
 

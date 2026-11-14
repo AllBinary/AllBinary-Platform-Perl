@@ -17,8 +17,9 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
-our $instance = 'org::allbinary::logic::NullUtil'->getInstance()->{NULL_OBJECT};
+tie our $instance, 'java::lang::LazyStatic', sub { 'org::allbinary::logic::NullUtil'->getInstance()->{NULL_OBJECT} };
 
 sub _init_fields {
     my ($self) = @_;
@@ -41,7 +42,7 @@ sub getInstance {
 sub new {
     my ($class) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
         my $MAX = 'org::allbinary::game::input::InputFactory'->getInstance()->{MAX};
         $self->{LEFT} = 'org::allbinary::input::motion::gesture::MotionGestureInput'->new($MAX - 26, "L Trackball");
         $self->{RIGHT} = 'org::allbinary::input::motion::gesture::MotionGestureInput'->new($MAX - 27, "R Trackball");
@@ -50,9 +51,11 @@ sub new {
     return $self;
 }
 
-use org::allbinary::game::input::InputFactory;
-use org::allbinary::logic::NullUtil;
-use org::allbinary::input::motion::gesture::MotionGestureInput;
+use java::lang::Object ();
+use java::lang::LazyStatic ();
+use org::allbinary::game::input::InputFactory ();
+use org::allbinary::logic::NullUtil ();
+use org::allbinary::input::motion::gesture::MotionGestureInput ();
 
 1;
 

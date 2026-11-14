@@ -167,9 +167,9 @@ sub toURI {
     die "abstract method toURI";
 }
 
-# use java::io::FilenameFilter;
-# use java::io::IOException;
-# use java::net::URI;
+# use java::io::FilenameFilter ();
+# use java::io::IOException ();
+# use java::net::URI ();
 
 1;
 

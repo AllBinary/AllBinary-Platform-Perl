@@ -17,6 +17,7 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
 
 sub new {
@@ -37,7 +38,8 @@ sub getInstance {
         return 'org::allbinary::game::GameInfo'->new($gameInfo->getGameType(), $gameInfo->getGameMode(), $gameInfo->getPlayerType(), $gameInfo->getHighestLevel(), $gameInfo->getCurrentLevel());
 }
 
-use org::allbinary::game::GameInfo;
+use java::lang::Object ();
+use org::allbinary::game::GameInfo ();
 
 1;
 

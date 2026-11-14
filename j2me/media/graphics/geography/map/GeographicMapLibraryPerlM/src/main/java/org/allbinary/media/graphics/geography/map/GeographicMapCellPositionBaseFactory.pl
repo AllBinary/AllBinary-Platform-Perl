@@ -17,6 +17,7 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
 
 sub new {
@@ -32,7 +33,8 @@ sub getInstance {
         return 'org::allbinary::media::graphics::geography::map::BasicGeographicMapCellPositionFactory'->new($geographicMapInterface);
 }
 
-use org::allbinary::media::graphics::geography::map::BasicGeographicMapCellPositionFactory;
+use java::lang::Object ();
+use org::allbinary::media::graphics::geography::map::BasicGeographicMapCellPositionFactory ();
 
 1;
 

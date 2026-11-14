@@ -17,7 +17,7 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
-use parent -norequire,'java::io::FileOutputStream';
+use parent -norequire,'java::lang::Object';
 
 
 
@@ -56,10 +56,11 @@ sub new {
     return $self;
 }
 
-# use java::io::FileNotFoundException;
-# use java::io::FileOutputStream;
-use org::allbinary::logic::io::file::AbFile;
-use org::allbinary::logic::io::file::AbFileNativeUtil;
+use java::lang::Object ();
+# use java::io::FileNotFoundException ();
+# use java::io::FileOutputStream ();
+use org::allbinary::logic::io::file::AbFile ();
+use org::allbinary::logic::io::file::AbFileNativeUtil ();
 
 1;
 

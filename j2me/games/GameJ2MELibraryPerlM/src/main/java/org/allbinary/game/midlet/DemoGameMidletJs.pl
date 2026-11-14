@@ -27,7 +27,7 @@ sub createDemoGameCanvasRunnableInterface {
     die "abstract method createDemoGameCanvasRunnableInterface";
 }
 
-use org::allbinary::game::displayable::canvas::GameCanvasRunnableInterface;
+use org::allbinary::game::displayable::canvas::GameCanvasRunnableInterface ();
 
 1;
 

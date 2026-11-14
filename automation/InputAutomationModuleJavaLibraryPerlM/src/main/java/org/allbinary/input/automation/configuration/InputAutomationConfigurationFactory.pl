@@ -17,8 +17,9 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
-our $instance = 'org::allbinary::input::automation::configuration::InputAutomationConfigurationFactory'->new();
+tie our $instance, 'java::lang::LazyStatic', sub { 'org::allbinary::input::automation::configuration::InputAutomationConfigurationFactory'->new() };
 
 sub _init_fields {
     my ($self) = @_;
@@ -36,7 +37,7 @@ sub getInstance {
 sub new {
     my ($class) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
     return $self;
 }
 
@@ -71,18 +72,20 @@ sub init {
         }
 }
 
-use java::io::File;
-# use java::io::FileInputStream;
-# use java::util::List;
-# use javax::xml::bind::JAXBContext;
-# use javax::xml::bind::JAXBElement;
-# use javax::xml::bind::Unmarshaller;
-# use javax::xml::transform::stream::StreamSource;
-use org::allbinary::input::automation::module::configuration::InputAutomationModuleConfiguration;
-use org::allbinary::logic::communication::log::LogUtil;
-use org::allbinary::logic::system::security::licensing::AbeClientInformationInterface;
-use org::allbinary::string::CommonStrings;
-use org::allbinary::input::automation::configuration::InputAutomationConfiguration;
+use java::lang::Object ();
+use java::lang::LazyStatic ();
+use java::io::File ();
+# use java::io::FileInputStream ();
+# use java::util::List ();
+# use javax::xml::bind::JAXBContext ();
+# use javax::xml::bind::JAXBElement ();
+# use javax::xml::bind::Unmarshaller ();
+# use javax::xml::transform::stream::StreamSource ();
+use org::allbinary::input::automation::module::configuration::InputAutomationModuleConfiguration ();
+use org::allbinary::logic::communication::log::LogUtil ();
+use org::allbinary::logic::system::security::licensing::AbeClientInformationInterface ();
+use org::allbinary::string::CommonStrings ();
+use org::allbinary::input::automation::configuration::InputAutomationConfiguration ();
 
 1;
 

@@ -32,7 +32,7 @@ sub _init_fields {
 sub new {
     my ($class, $id, $name) = @_;
     my $self = $class->SUPER::new($id, $name);
-    $self->_init_fields();
+    _init_fields($self);
         # super(...) made $self above
         my $inputFactory = 'org::allbinary::game::input::InputFactory'->getInstance();
         $inputFactory->add($self->getId(), $self);
@@ -63,15 +63,16 @@ sub getGameKeyEvent {
         return $self->{gameKeyEvent};
 }
 
-use org::allbinary::game::input::GameKey;
-use org::allbinary::game::input::GameKeyEventSourceInterface;
-use org::allbinary::game::input::Input;
-use org::allbinary::game::input::InputFactory;
-use org::allbinary::game::input::event::GameKeyEvent;
-use org::allbinary::game::input::event::GameKeyEventFactory;
-use org::allbinary::game::input::mapping::InputToGameKeyMapping;
-use org::allbinary::logic::communication::log::LogUtil;
-use org::allbinary::string::CommonStrings;
+use java::lang::Object ();
+use org::allbinary::game::input::GameKey ();
+use org::allbinary::game::input::GameKeyEventSourceInterface ();
+use org::allbinary::game::input::Input ();
+use org::allbinary::game::input::InputFactory ();
+use org::allbinary::game::input::event::GameKeyEvent ();
+use org::allbinary::game::input::event::GameKeyEventFactory ();
+use org::allbinary::game::input::mapping::InputToGameKeyMapping ();
+use org::allbinary::logic::communication::log::LogUtil ();
+use org::allbinary::string::CommonStrings ();
 
 1;
 

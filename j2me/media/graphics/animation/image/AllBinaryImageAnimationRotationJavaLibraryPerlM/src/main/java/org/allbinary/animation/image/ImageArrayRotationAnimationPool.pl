@@ -19,7 +19,7 @@ use feature 'try';
 no warnings 'experimental::try';
 use parent -norequire,'org::allbinary::logic::util::cache::BasicArrayListResetablePool';
 
-our $IMAGE_ROTATION_ANIMATION_POOL = 'org::allbinary::animation::image::ImageArrayRotationAnimationPool'->new('org::allbinary::animation::image::ImageArrayRotationAnimationCacheableInterfaceFactory'->new());
+tie our $IMAGE_ROTATION_ANIMATION_POOL, 'java::lang::LazyStatic', sub { 'org::allbinary::animation::image::ImageArrayRotationAnimationPool'->new('org::allbinary::animation::image::ImageArrayRotationAnimationCacheableInterfaceFactory'->new()) };
 
 
 sub new {
@@ -46,11 +46,13 @@ sub remove {
         return $cacheableInterface;
 }
 
-use org::allbinary::logic::util::cache::BasicArrayListResetablePool;
-use org::allbinary::logic::util::cache::CacheableInterface;
-use org::allbinary::logic::util::cache::CacheableInterfaceFactoryInterface;
-use org::allbinary::logic::util::cache::PoolInterface;
-use org::allbinary::animation::image::ImageArrayRotationAnimationCacheableInterfaceFactory;
+use java::lang::Object ();
+use java::lang::LazyStatic ();
+use org::allbinary::logic::util::cache::BasicArrayListResetablePool ();
+use org::allbinary::logic::util::cache::CacheableInterface ();
+use org::allbinary::logic::util::cache::CacheableInterfaceFactoryInterface ();
+use org::allbinary::logic::util::cache::PoolInterface ();
+use org::allbinary::animation::image::ImageArrayRotationAnimationCacheableInterfaceFactory ();
 
 1;
 

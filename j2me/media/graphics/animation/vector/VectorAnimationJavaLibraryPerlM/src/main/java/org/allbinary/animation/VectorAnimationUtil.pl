@@ -17,8 +17,9 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
-our $instance = 'org::allbinary::animation::VectorAnimationUtil'->new();
+tie our $instance, 'java::lang::LazyStatic', sub { 'org::allbinary::animation::VectorAnimationUtil'->new() };
 
 
 sub getInstance {
@@ -83,8 +84,10 @@ sub toFrameArrayFromPointBasicArrayList {
         return $points;
 }
 
-use org::allbinary::graphics::GPoint;
-use org::allbinary::util::BasicArrayList;
+use java::lang::Object ();
+use java::lang::LazyStatic ();
+use org::allbinary::graphics::GPoint ();
+use org::allbinary::util::BasicArrayList ();
 
 1;
 

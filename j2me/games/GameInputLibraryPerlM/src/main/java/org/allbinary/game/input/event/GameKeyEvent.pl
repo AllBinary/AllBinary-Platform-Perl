@@ -19,7 +19,7 @@ use feature 'try';
 no warnings 'experimental::try';
 use parent -norequire,'org::allbinary::logic::util::event::AllBinaryEventObject';
 
-our $NONE = 'org::allbinary::game::input::event::GameKeyEvent'->new('org::allbinary::logic::NullUtil'->getInstance()->{NULL_OBJECT}, -1, -1, -1, -1, 0);
+tie our $NONE, 'java::lang::LazyStatic', sub { 'org::allbinary::game::input::event::GameKeyEvent'->new('org::allbinary::logic::NullUtil'->getInstance()->{NULL_OBJECT}, -1, -1, -1, -1, 0) };
 
 sub _init_fields {
     my ($self) = @_;
@@ -40,7 +40,7 @@ sub createEvent {
 sub new {
     my ($class, $anyType, $sourceId, $originalKey, $gameActionKey, $key, $repeated) = @_;
     my $self = $class->SUPER::new($anyType);
-    $self->_init_fields();
+    _init_fields($self);
         # super(...) made $self above
         $self->{sourceId} = $sourceId;
         $self->setOriginalKey($originalKey);
@@ -113,9 +113,11 @@ sub getSourceId {
         return $self->{sourceId};
 }
 
-use org::allbinary::logic::NullUtil;
-use org::allbinary::logic::string::StringMaker;
-use org::allbinary::logic::util::event::AllBinaryEventObject;
+use java::lang::Object ();
+use java::lang::LazyStatic ();
+use org::allbinary::logic::NullUtil ();
+use org::allbinary::logic::string::StringMaker ();
+use org::allbinary::logic::util::event::AllBinaryEventObject ();
 
 1;
 

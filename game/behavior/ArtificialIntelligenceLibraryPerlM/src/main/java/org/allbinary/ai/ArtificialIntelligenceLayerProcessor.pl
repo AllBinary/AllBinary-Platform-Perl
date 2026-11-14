@@ -47,10 +47,11 @@ sub isProcessorLayer {
         }
 }
 
-use org::allbinary::layer::AllBinaryLayer;
-use org::allbinary::layer::AllBinaryLayerManager;
-use org::allbinary::layer::LayerProcessor;
-use org::allbinary::ai::ArtificialIntelligenceLayerManager;
+use java::lang::Object ();
+use org::allbinary::layer::AllBinaryLayer ();
+use org::allbinary::layer::AllBinaryLayerManager ();
+use org::allbinary::layer::LayerProcessor ();
+use org::allbinary::ai::ArtificialIntelligenceLayerManager ();
 
 1;
 

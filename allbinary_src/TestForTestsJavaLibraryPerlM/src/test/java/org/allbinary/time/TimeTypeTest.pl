@@ -5,6 +5,7 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
 
 sub new {
@@ -123,7 +124,7 @@ sub getInstance_returns_same_singleton {
     sub new {
         my ($class, $hour) = @_;
         my $self = $class->SUPER::new();
-        $self->_init_fields();
+        _init_fields($self);
             $self->{hour} = $hour;
         return $self;
     }
@@ -136,11 +137,12 @@ sub getInstance_returns_same_singleton {
     }
 
 
-use java::util::Calendar;
-use org::junit::jupiter::api::Assertions;
-use org::junit::jupiter::api::DisplayName;
-use org::junit::jupiter::api::Test;
-use org::allbinary::time::TimeTypeUtil;
+use java::lang::Object ();
+use java::util::Calendar ();
+use org::junit::jupiter::api::Assertions ();
+use org::junit::jupiter::api::DisplayName ();
+use org::junit::jupiter::api::Test ();
+use org::allbinary::time::TimeTypeUtil ();
 
 1;
 

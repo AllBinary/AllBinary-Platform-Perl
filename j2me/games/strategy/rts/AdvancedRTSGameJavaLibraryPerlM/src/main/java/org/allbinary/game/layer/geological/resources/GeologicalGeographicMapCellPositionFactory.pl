@@ -17,7 +17,7 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
-use parent -norequire,'org::allbinary::media::graphics::geography::map::GeographicMapCellPositionFactoryInterface';
+use parent -norequire,'java::lang::Object','org::allbinary::media::graphics::geography::map::GeographicMapCellPositionFactoryInterface';
 
 
 sub _init_fields {
@@ -29,7 +29,7 @@ sub _init_fields {
 sub new {
     my ($class, $resourcePerMapCellType) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
         $self->{resourcePerMapCellType} = $resourcePerMapCellType;
     return $self;
 }
@@ -43,13 +43,14 @@ sub getInstance {
         return 'org::allbinary::game::layer::geological::resources::GeologicalGeographicMapCellPosition'->new($i_column, $i_row, $columns, $rows, $width, $height, 'org::allbinary::game::layer::geological::resources::GeologicalResource'->new($resources));
 }
 
-use org::allbinary::game::layer::AllBinaryTiledLayer;
-use org::allbinary::game::rand::MyRandomFactory;
-use org::allbinary::media::graphics::geography::map::BasicGeographicMap;
-use org::allbinary::media::graphics::geography::map::GeographicMapCellPosition;
-use org::allbinary::media::graphics::geography::map::GeographicMapCellPositionFactoryInterface;
-use org::allbinary::game::layer::geological::resources::GeologicalGeographicMapCellPosition;
-use org::allbinary::game::layer::geological::resources::GeologicalResource;
+use java::lang::Object ();
+use org::allbinary::game::layer::AllBinaryTiledLayer ();
+use org::allbinary::game::rand::MyRandomFactory ();
+use org::allbinary::media::graphics::geography::map::BasicGeographicMap ();
+use org::allbinary::media::graphics::geography::map::GeographicMapCellPosition ();
+use org::allbinary::media::graphics::geography::map::GeographicMapCellPositionFactoryInterface ();
+use org::allbinary::game::layer::geological::resources::GeologicalGeographicMapCellPosition ();
+use org::allbinary::game::layer::geological::resources::GeologicalResource ();
 
 1;
 

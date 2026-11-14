@@ -29,7 +29,7 @@ sub _init_fields {
 sub new {
     my ($class) = @_;
     my $self = $class->SUPER::new();
-    $self->_init_fields();
+    _init_fields($self);
     return $self;
 }
 
@@ -72,11 +72,12 @@ sub doStartTag {
         }
 }
 
-# use javax::servlet::jsp::JspTagException;
-use org::allbinary::business::user::address::ShippingAddressData;
-use org::allbinary::logic::communication::http::request::AbResponseHandler;
-use org::allbinary::logic::system::security::licensing::LicensingException;
-use tags::StoreValidationTransformTag;
+use java::lang::Object ();
+# use javax::servlet::jsp::JspTagException ();
+use org::allbinary::business::user::address::ShippingAddressData ();
+use org::allbinary::logic::communication::http::request::AbResponseHandler ();
+use org::allbinary::logic::system::security::licensing::LicensingException ();
+use tags::StoreValidationTransformTag ();
 
 1;
 

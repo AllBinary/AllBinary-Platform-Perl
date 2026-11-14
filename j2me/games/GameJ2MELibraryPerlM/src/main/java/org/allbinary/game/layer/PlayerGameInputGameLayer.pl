@@ -29,7 +29,7 @@ sub _init_fields {
 sub new {
     my ($class, $playerInputId) = @_;
     my $self = $class->SUPER::new('org::allbinary::logic::string::StringUtil'->getInstance()->{EMPTY_STRING}, 'org::allbinary::graphics::Rectangle'->new('org::allbinary::graphics::PointFactory'->getInstance()->{ZERO_ZERO}, 0, 0), 'org::allbinary::view::StaticViewPosition'->new(0, 0, 0));
-    $self->_init_fields();
+    _init_fields($self);
         # super(...) made $self above
         $self->{playerGameInput} = 'org::allbinary::game::input::PlayerGameInput'->new($self->getGameKeyEventList(), 'org::allbinary::util::BasicArrayListD'->new(), $playerInputId);
         my $canvasStrings = 'org::allbinary::graphics::displayable::CanvasStrings'->getInstance();
@@ -59,17 +59,18 @@ sub paint {
     my ($self, $graphics) = @_;
 }
 
-# use javax::microedition::lcdui::Graphics;
-use org::allbinary::game::input::PlayerGameInput;
-use org::allbinary::game::input::PlayerGameInputCompositeInterface;
-use org::allbinary::graphics::PointFactory;
-use org::allbinary::graphics::Rectangle;
-use org::allbinary::graphics::displayable::CanvasStrings;
-use org::allbinary::layer::AllBinaryLayerManager;
-use org::allbinary::logic::string::StringUtil;
-use org::allbinary::util::BasicArrayListD;
-use org::allbinary::view::StaticViewPosition;
-use org::allbinary::game::layer::AllBinaryGameLayer;
+use java::lang::Object ();
+use javax::microedition::lcdui::Graphics ();
+use org::allbinary::game::input::PlayerGameInput ();
+use org::allbinary::game::input::PlayerGameInputCompositeInterface ();
+use org::allbinary::graphics::PointFactory ();
+use org::allbinary::graphics::Rectangle ();
+use org::allbinary::graphics::displayable::CanvasStrings ();
+use org::allbinary::layer::AllBinaryLayerManager ();
+use org::allbinary::logic::string::StringUtil ();
+use org::allbinary::util::BasicArrayListD ();
+use org::allbinary::view::StaticViewPosition ();
+use org::allbinary::game::layer::AllBinaryGameLayer ();
 
 1;
 

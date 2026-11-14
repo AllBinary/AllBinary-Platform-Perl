@@ -23,7 +23,7 @@ sub _init_fields {
 sub new {
     my ($class, $abeClientInformation, $softwareInformation) = @_;
     my $self = $class->SUPER::new();
-    $self->_init_fields();
+    _init_fields($self);
         $self->{abeClientInformation} = $abeClientInformation;
     return $self;
 }
@@ -61,14 +61,15 @@ sub loaded {
         return 0;
 }
 
-use org::allbinary::game::GameInfo;
-use org::allbinary::logic::communication::log::LogUtil;
-use org::allbinary::logic::system::SoftwareInformation;
-use org::allbinary::logic::system::security::licensing::AbeClientInformationInterface;
-use org::allbinary::game::score::HighScoresBase;
-use org::allbinary::game::score::RecordStoreHighScores;
-use org::allbinary::game::score::ScoreComparator;
-use org::allbinary::game::score::HighScoresHelper2;
+use java::lang::Object ();
+use org::allbinary::game::GameInfo ();
+use org::allbinary::logic::communication::log::LogUtil ();
+use org::allbinary::logic::system::SoftwareInformation ();
+use org::allbinary::logic::system::security::licensing::AbeClientInformationInterface ();
+use org::allbinary::game::score::HighScoresBase ();
+use org::allbinary::game::score::RecordStoreHighScores ();
+use org::allbinary::game::score::ScoreComparator ();
+use org::allbinary::game::score::HighScoresHelper2 ();
 
 1;
 

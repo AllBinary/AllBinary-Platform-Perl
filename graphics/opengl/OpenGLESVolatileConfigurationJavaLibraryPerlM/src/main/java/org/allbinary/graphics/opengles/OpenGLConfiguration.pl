@@ -17,8 +17,9 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
-our $instance = 'org::allbinary::logic::NullUtil'->getInstance()->{NULL_OBJECT};
+tie our $instance, 'java::lang::LazyStatic', sub { 'org::allbinary::logic::NullUtil'->getInstance()->{NULL_OBJECT} };
 
 sub _init_fields {
     my ($self) = @_;
@@ -44,7 +45,7 @@ sub getInstance {
 sub new {
     my ($class) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
     return $self;
 }
 
@@ -222,17 +223,19 @@ sub toString {
         return $stringBuffer->toString();
 }
 
-use org::allbinary::string::CommonStrings;
-use org::allbinary::logic::string::StringMaker;
-use org::allbinary::logic::communication::log::LogUtil;
-use org::allbinary::logic::communication::log::PreLogUtil;
-use org::allbinary::game::configuration::event::ChangedGameFeatureListener;
-use org::allbinary::game::configuration::feature::Feature;
-use org::allbinary::game::configuration::feature::Features;
-use org::allbinary::game::configuration::feature::MainFeatureFactory;
-use org::allbinary::logic::NullUtil;
-use org::allbinary::logic::string::StringUtil;
-use org::allbinary::graphics::opengles::OpenGLFeatureFactory;
+use java::lang::Object ();
+use java::lang::LazyStatic ();
+use org::allbinary::string::CommonStrings ();
+use org::allbinary::logic::string::StringMaker ();
+use org::allbinary::logic::communication::log::LogUtil ();
+use org::allbinary::logic::communication::log::PreLogUtil ();
+use org::allbinary::game::configuration::event::ChangedGameFeatureListener ();
+use org::allbinary::game::configuration::feature::Feature ();
+use org::allbinary::game::configuration::feature::Features ();
+use org::allbinary::game::configuration::feature::MainFeatureFactory ();
+use org::allbinary::logic::NullUtil ();
+use org::allbinary::logic::string::StringUtil ();
+use org::allbinary::graphics::opengles::OpenGLFeatureFactory ();
 
 1;
 

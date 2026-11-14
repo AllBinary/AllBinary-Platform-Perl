@@ -17,9 +17,9 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
-use parent -norequire,'org::allbinary::game::ai::ArtificialIntelligenceInterfaceFactoryInterface';
+use parent -norequire,'java::lang::Object','org::allbinary::game::ai::ArtificialIntelligenceInterfaceFactoryInterface';
 
-our $NULL_AI = 'org::allbinary::game::ag::ai::NullAI'->new();
+tie our $NULL_AI, 'java::lang::LazyStatic', sub { 'org::allbinary::game::ag::ai::NullAI'->new() };
 
 sub new {
     my ($class) = @_;
@@ -40,12 +40,14 @@ sub getInstance {
         return $org::allbinary::game::ag::ai::NullAIFactory::NULL_AI;
 }
 
-use org::allbinary::ai::ArtificialIntelligenceInterface;
-use org::allbinary::game::ai::ArtificialIntelligenceInterfaceFactoryInterface;
-use org::allbinary::game::input::GameInput;
-use org::allbinary::layer::AllBinaryLayer;
-use org::allbinary::util::ABHashtable;
-use org::allbinary::game::ag::ai::NullAI;
+use java::lang::Object ();
+use java::lang::LazyStatic ();
+use org::allbinary::ai::ArtificialIntelligenceInterface ();
+use org::allbinary::game::ai::ArtificialIntelligenceInterfaceFactoryInterface ();
+use org::allbinary::game::input::GameInput ();
+use org::allbinary::layer::AllBinaryLayer ();
+use org::allbinary::util::ABHashtable ();
+use org::allbinary::game::ag::ai::NullAI ();
 
 1;
 

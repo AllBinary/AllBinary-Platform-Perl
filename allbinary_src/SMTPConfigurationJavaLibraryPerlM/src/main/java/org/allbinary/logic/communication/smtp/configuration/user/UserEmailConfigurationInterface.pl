@@ -32,7 +32,7 @@ sub setUserEmailEventsConfigurationInterface {
     die "abstract method setUserEmailEventsConfigurationInterface";
 }
 
-use org::allbinary::logic::communication::smtp::configuration::user::event::UserEmailEventsConfigurationInterface;
+use org::allbinary::logic::communication::smtp::configuration::user::event::UserEmailEventsConfigurationInterface ();
 
 1;
 

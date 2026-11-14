@@ -28,7 +28,7 @@ sub onChangeEvent {
     die "abstract method onChangeEvent";
 }
 
-use org::allbinary::logic::util::event::EventListenerInterface;
+use org::allbinary::logic::util::event::EventListenerInterface ();
 
 1;
 

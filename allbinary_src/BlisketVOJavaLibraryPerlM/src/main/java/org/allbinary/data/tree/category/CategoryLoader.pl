@@ -29,7 +29,7 @@ sub _init_fields {
 sub new {
     my ($class, $categoryFactoryInterface) = @_;
     my $self = $class->SUPER::new($categoryFactoryInterface);
-    $self->_init_fields();
+    _init_fields($self);
         # super(...) made $self above
         if ($org::allbinary::data::tree::category::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($org::allbinary::data::tree::category::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{CATEGORY})) {
             $self->{logUtil}->putF($self->{commonStrings}->{START}, $self, "CategoryLoader(CategoryFactoryInterface categoryFactoryInterface)");
@@ -178,22 +178,23 @@ sub addProperties {
         }
 }
 
-use org::allbinary::business::category::CategoryData;
-use org::allbinary::business::category::CategoryFactoryInterface;
-use org::allbinary::business::category::CategoryInterface;
-use org::allbinary::business::category::properties::CategoryProperties;
-use org::allbinary::business::category::properties::CategoryPropertiesInterface;
-use org::allbinary::data::tree::dom::DomSearchHelper;
-use org::allbinary::data::tree::dom::document::DomDocumentHelper;
-use org::allbinary::logic::communication::log::LogUtil;
-use org::allbinary::logic::control::crypt::file::CryptFileReader;
-use org::allbinary::logic::io::file::AbFile;
-use org::allbinary::logic::io::path::AbPath;
-use org::w3c::dom::Document;
-use org::w3c::dom::Node;
-use org::w3c::dom::NodeList;
-use org::allbinary::data::tree::category::CategoryModifierTree;
-use org::allbinary::data::tree::category::CategoryLoaderInterface;
+use java::lang::Object ();
+use org::allbinary::business::category::CategoryData ();
+use org::allbinary::business::category::CategoryFactoryInterface ();
+use org::allbinary::business::category::CategoryInterface ();
+use org::allbinary::business::category::properties::CategoryProperties ();
+use org::allbinary::business::category::properties::CategoryPropertiesInterface ();
+use org::allbinary::data::tree::dom::DomSearchHelper ();
+use org::allbinary::data::tree::dom::document::DomDocumentHelper ();
+use org::allbinary::logic::communication::log::LogUtil ();
+use org::allbinary::logic::control::crypt::file::CryptFileReader ();
+use org::allbinary::logic::io::file::AbFile ();
+use org::allbinary::logic::io::path::AbPath ();
+use org::w3c::dom::Document ();
+use org::w3c::dom::Node ();
+use org::w3c::dom::NodeList ();
+use org::allbinary::data::tree::category::CategoryModifierTree ();
+use org::allbinary::data::tree::category::CategoryLoaderInterface ();
 
 1;
 

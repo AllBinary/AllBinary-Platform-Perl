@@ -43,7 +43,7 @@ sub _init_fields {
 sub new {
     my ($class, $databaseConnectionInfoInterface) = @_;
     my $self = $class->SUPER::new($databaseConnectionInfoInterface);
-    $self->_init_fields();
+    _init_fields($self);
         # super(...) made $self above
     return $self;
 }
@@ -141,7 +141,7 @@ sub updateWhere {
             for (my $i = 0; $i < $size2; $i++) {
                 my $key = $keyArray2->[$i];
                 my $value = $whereKeyValuePairs->get($key);
-                {
+                {;
                     $stringBuffer->append($key);
                     $stringBuffer->append($self->{sqlStrings}->{EQUAL_QUOTE});
                     $stringBuffer->append($self->getValue($value));
@@ -524,19 +524,20 @@ sub getRowsWhereBetween {
         }
 }
 
-# use java::sql::ResultSet;
-# use java::sql::ResultSetMetaData;
-use java::util::HashMap;
-# use java::util::Set;
-use org::allbinary::util::BasicArrayList;
-use org::allbinary::util::BasicArrayListD;
-use org::allbinary::business::init::db::DbConnectionInfo;
-use org::allbinary::logic::communication::log::LogUtil;
-use org::allbinary::logic::string::StringMaker;
-use org::allbinary::logic::string::StringUtil;
-use org::allbinary::logic::string::StringValidationUtil;
-use org::allbinary::logic::string::regex::replace::Replace;
-use org::allbinary::logic::communication::sql::AbSqlColumn;
+use java::lang::Object ();
+# use java::sql::ResultSet ();
+# use java::sql::ResultSetMetaData ();
+use java::util::HashMap ();
+# use java::util::Set ();
+use org::allbinary::util::BasicArrayList ();
+use org::allbinary::util::BasicArrayListD ();
+use org::allbinary::business::init::db::DbConnectionInfo ();
+use org::allbinary::logic::communication::log::LogUtil ();
+use org::allbinary::logic::string::StringMaker ();
+use org::allbinary::logic::string::StringUtil ();
+use org::allbinary::logic::string::StringValidationUtil ();
+use org::allbinary::logic::string::regex::replace::Replace ();
+use org::allbinary::logic::communication::sql::AbSqlColumn ();
 
 1;
 

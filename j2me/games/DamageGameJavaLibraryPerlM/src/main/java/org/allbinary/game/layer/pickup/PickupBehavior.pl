@@ -17,9 +17,9 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
-use parent -norequire,'org::allbinary::game::layer::pickup::PickupBehaviorInterface';
+use parent -norequire,'java::lang::Object','org::allbinary::game::layer::pickup::PickupBehaviorInterface';
 
-our $NULL_PICKUP_BEHAVIOR = 'org::allbinary::logic::NullUtil'->getInstance()->{NULL_OBJECT};
+tie our $NULL_PICKUP_BEHAVIOR, 'java::lang::LazyStatic', sub { 'org::allbinary::logic::NullUtil'->getInstance()->{NULL_OBJECT} };
 
 sub _init_fields {
     my ($self) = @_;
@@ -41,7 +41,7 @@ sub getNullInstance {
 sub new {
     my ($class, $ownerLayerInterface, $countedIndex) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
         $self->{ownerLayerInterface} = $ownerLayerInterface;
         $self->{countedIndex} = $countedIndex;
     return $self;
@@ -150,17 +150,19 @@ sub getCountedIndex {
         return $self->{countedIndex};
 }
 
-use org::allbinary::game::health::HealthInterfaceCompositeInterface;
-use org::allbinary::game::layer::CollidableCompositeLayer;
-use org::allbinary::game::layer::special::CollidableDestroyableDamageableLayer;
-use org::allbinary::game::part::CountedLayerInterfaceFactoryPart;
-use org::allbinary::game::part::PartInterface;
-use org::allbinary::logic::NullUtil;
-use org::allbinary::logic::communication::log::LogUtil;
-use org::allbinary::logic::communication::log::PreLogUtil;
-use org::allbinary::string::CommonStrings;
-use org::allbinary::game::layer::pickup::PickupBehaviorInterface;
-use org::allbinary::game::layer::pickup::PickedUpLayerTypeFactory;
+use java::lang::Object ();
+use java::lang::LazyStatic ();
+use org::allbinary::game::health::HealthInterfaceCompositeInterface ();
+use org::allbinary::game::layer::CollidableCompositeLayer ();
+use org::allbinary::game::layer::special::CollidableDestroyableDamageableLayer ();
+use org::allbinary::game::part::CountedLayerInterfaceFactoryPart ();
+use org::allbinary::game::part::PartInterface ();
+use org::allbinary::logic::NullUtil ();
+use org::allbinary::logic::communication::log::LogUtil ();
+use org::allbinary::logic::communication::log::PreLogUtil ();
+use org::allbinary::string::CommonStrings ();
+use org::allbinary::game::layer::pickup::PickupBehaviorInterface ();
+use org::allbinary::game::layer::pickup::PickedUpLayerTypeFactory ();
 
 1;
 

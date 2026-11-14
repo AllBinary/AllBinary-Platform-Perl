@@ -17,6 +17,7 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
 
 sub _init_fields {
@@ -31,7 +32,7 @@ sub _init_fields {
 sub new {
     my ($class, $inputAutomationModuleConfigurations, $helpSetListenerInterface) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
         $self->{helpSetListenerInterface} = $helpSetListenerInterface;
         $self->{defaultListModelHelper} = 'org::allbinary::input::automation::module::DefaultListModelHelper'->new();
         $self->{hashMap} = 'org::allbinary::logic::StdUtil'->getInstance()->createHashMap();
@@ -78,20 +79,21 @@ sub getInstance {
         return $inputAutomationModuleFactoryInterface;
 }
 
-# use java::util::Collection;
-use java::util::HashMap;
-use java::util::Iterator;
-# use javax::help::HelpSet;
-# use javax::help::event::HelpSetEvent;
-# use javax::help::event::HelpSetListener;
-# use javax::swing::ListModel;
-use org::allbinary::input::automation::module::configuration::InputAutomationModuleConfiguration;
-use org::allbinary::input::automation::module::configuration::InputAutomationModuleConfigurations;
-use org::allbinary::logic::StdUtil;
-use org::allbinary::logic::communication::log::LogUtil;
-use org::allbinary::logic::java::help::JavaHelpSetNotifier;
-use org::allbinary::string::CommonStrings;
-use org::allbinary::input::automation::module::DefaultListModelHelper;
+use java::lang::Object ();
+# use java::util::Collection ();
+use java::util::HashMap ();
+use java::util::Iterator ();
+# use javax::help::HelpSet ();
+# use javax::help::event::HelpSetEvent ();
+# use javax::help::event::HelpSetListener ();
+# use javax::swing::ListModel ();
+use org::allbinary::input::automation::module::configuration::InputAutomationModuleConfiguration ();
+use org::allbinary::input::automation::module::configuration::InputAutomationModuleConfigurations ();
+use org::allbinary::logic::StdUtil ();
+use org::allbinary::logic::communication::log::LogUtil ();
+use org::allbinary::logic::java::help::JavaHelpSetNotifier ();
+use org::allbinary::string::CommonStrings ();
+use org::allbinary::input::automation::module::DefaultListModelHelper ();
 
 1;
 

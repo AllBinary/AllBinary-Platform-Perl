@@ -31,7 +31,7 @@ sub _init_fields {
 sub new {
     my ($class) = @_;
     my $self = $class->SUPER::new();
-    $self->_init_fields();
+    _init_fields($self);
     return $self;
 }
 
@@ -82,15 +82,16 @@ sub waitForAll {
         }
 }
 
-# use javax::microedition::lcdui::Image;
-use org::allbinary::image::GameFeatureImageCacheFactory;
-use org::allbinary::logic::communication::log::LogUtil;
-use org::allbinary::logic::communication::log::PreLogUtil;
-use org::allbinary::time::TimeDelayHelper;
-use org::allbinary::util::ABHashtable;
-use org::allbinary::util::HashtableUtil;
-use org::microemu::device::playn::PlaynImage;
-use org::allbinary::media::image::ImageCompleteUtil;
+use java::lang::Object ();
+use javax::microedition::lcdui::Image ();
+use org::allbinary::image::GameFeatureImageCacheFactory ();
+use org::allbinary::logic::communication::log::LogUtil ();
+use org::allbinary::logic::communication::log::PreLogUtil ();
+use org::allbinary::time::TimeDelayHelper ();
+use org::allbinary::util::ABHashtable ();
+use org::allbinary::util::HashtableUtil ();
+use org::microemu::device::playn::PlaynImage ();
+use org::allbinary::media::image::ImageCompleteUtil ();
 
 1;
 

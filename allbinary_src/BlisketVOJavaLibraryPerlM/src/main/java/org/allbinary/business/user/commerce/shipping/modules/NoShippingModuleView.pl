@@ -29,7 +29,7 @@ sub _init_fields {
 sub new {
     my ($class) = @_;
     my $self = $class->SUPER::new();
-    $self->_init_fields();
+    _init_fields($self);
     return $self;
 }
 
@@ -85,12 +85,13 @@ sub view {
         return undef;
 }
 
-use org::allbinary::business::user::commerce::shipping::ShippingMethodData;
-use org::allbinary::data::tree::dom::DomNodeInterface;
-use org::allbinary::data::tree::dom::ModDomHelper;
-use org::allbinary::logic::communication::log::LogUtil;
-use org::w3c::dom::Node;
-use org::allbinary::business::user::commerce::shipping::modules::NoShippingModule;
+use java::lang::Object ();
+use org::allbinary::business::user::commerce::shipping::ShippingMethodData ();
+use org::allbinary::data::tree::dom::DomNodeInterface ();
+use org::allbinary::data::tree::dom::ModDomHelper ();
+use org::allbinary::logic::communication::log::LogUtil ();
+use org::w3c::dom::Node ();
+use org::allbinary::business::user::commerce::shipping::modules::NoShippingModule ();
 
 1;
 

@@ -17,8 +17,9 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
-our $instance = 'views::generic::inventory::InventorySearchUtil'->new();
+tie our $instance, 'java::lang::LazyStatic', sub { 'views::generic::inventory::InventorySearchUtil'->new() };
 
 sub _init_fields {
     my ($self) = @_;
@@ -31,7 +32,7 @@ sub _init_fields {
 sub new {
     my ($class) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
     return $self;
 }
 
@@ -200,38 +201,40 @@ sub search {
         }
 }
 
-use java::util::HashMap;
-use org::allbinary::util::BasicArrayListD;
-use org::allbinary::business::context::modules::storefront::StoreFrontInterface;
-use org::allbinary::business::user::commerce::inventory::InventoryData;
-use org::allbinary::business::user::commerce::inventory::basket::BasketData;
-use org::allbinary::business::user::commerce::inventory::item::BasicItemData;
-use org::allbinary::business::user::commerce::inventory::item::BasicItemView;
-use org::allbinary::business::user::commerce::inventory::item::ItemInterface;
-use org::allbinary::data::tables::user::commerce::inventory::item::InventoryEntity;
-use org::allbinary::data::tables::user::commerce::inventory::item::InventoryEntityFactory;
-use org::allbinary::data::tree::dom::ModDomHelper;
-use org::allbinary::data::tree::dom::document::XmlDocumentHelper;
-use org::allbinary::logic::communication::log::LogUtil;
-use org::allbinary::logic::control::search::SearchData;
-use org::allbinary::logic::control::search::SearchParams;
-use org::allbinary::logic::control::search::SearchRequest;
-use org::allbinary::logic::string::StringMaker;
-use org::allbinary::logic::string::StringValidationUtil;
-use org::allbinary::logic::string::regex::replace::Replace;
-use org::allbinary::logic::system::security::licensing::AbeClientInformationInterface;
-use org::allbinary::logic::visual::transform::StoreTransformer;
-use org::allbinary::logic::visual::transform::data::TransformDocumentInterface;
-use org::allbinary::logic::visual::transform::data::TransformStoreDocumentFactory;
-use org::allbinary::logic::visual::transform::info::TransformInfoHttpSearch;
-use org::allbinary::logic::visual::transform::info::TransformInfoInterface;
-use org::allbinary::string::CommonPhoneStrings;
-use org::allbinary::string::CommonSeps;
-use org::allbinary::string::CommonStrings;
-use org::allbinary::util::BasicArrayList;
-use org::w3c::dom::Document;
-use org::w3c::dom::Node;
-use views::generic::inventory::InventoryColumnUtil;
+use java::lang::Object ();
+use java::lang::LazyStatic ();
+use java::util::HashMap ();
+use org::allbinary::util::BasicArrayListD ();
+use org::allbinary::business::context::modules::storefront::StoreFrontInterface ();
+use org::allbinary::business::user::commerce::inventory::InventoryData ();
+use org::allbinary::business::user::commerce::inventory::basket::BasketData ();
+use org::allbinary::business::user::commerce::inventory::item::BasicItemData ();
+use org::allbinary::business::user::commerce::inventory::item::BasicItemView ();
+use org::allbinary::business::user::commerce::inventory::item::ItemInterface ();
+use org::allbinary::data::tables::user::commerce::inventory::item::InventoryEntity ();
+use org::allbinary::data::tables::user::commerce::inventory::item::InventoryEntityFactory ();
+use org::allbinary::data::tree::dom::ModDomHelper ();
+use org::allbinary::data::tree::dom::document::XmlDocumentHelper ();
+use org::allbinary::logic::communication::log::LogUtil ();
+use org::allbinary::logic::control::search::SearchData ();
+use org::allbinary::logic::control::search::SearchParams ();
+use org::allbinary::logic::control::search::SearchRequest ();
+use org::allbinary::logic::string::StringMaker ();
+use org::allbinary::logic::string::StringValidationUtil ();
+use org::allbinary::logic::string::regex::replace::Replace ();
+use org::allbinary::logic::system::security::licensing::AbeClientInformationInterface ();
+use org::allbinary::logic::visual::transform::StoreTransformer ();
+use org::allbinary::logic::visual::transform::data::TransformDocumentInterface ();
+use org::allbinary::logic::visual::transform::data::TransformStoreDocumentFactory ();
+use org::allbinary::logic::visual::transform::info::TransformInfoHttpSearch ();
+use org::allbinary::logic::visual::transform::info::TransformInfoInterface ();
+use org::allbinary::string::CommonPhoneStrings ();
+use org::allbinary::string::CommonSeps ();
+use org::allbinary::string::CommonStrings ();
+use org::allbinary::util::BasicArrayList ();
+use org::w3c::dom::Document ();
+use org::w3c::dom::Node ();
+use views::generic::inventory::InventoryColumnUtil ();
 
 1;
 

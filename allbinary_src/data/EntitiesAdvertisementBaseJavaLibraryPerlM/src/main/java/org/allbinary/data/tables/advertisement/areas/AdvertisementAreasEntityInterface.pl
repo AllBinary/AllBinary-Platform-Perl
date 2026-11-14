@@ -54,11 +54,11 @@ sub update {
     die "abstract method update";
 }
 
-use java::util::HashMap;
-use org::allbinary::util::BasicArrayList;
-use org::allbinary::util::BasicArrayListD;
-use org::allbinary::business::advertisement::area::AdvertisementAreaInterface;
-use org::allbinary::data::tables::BasicDataTableInterface;
+use java::util::HashMap ();
+use org::allbinary::util::BasicArrayList ();
+use org::allbinary::util::BasicArrayListD ();
+use org::allbinary::business::advertisement::area::AdvertisementAreaInterface ();
+use org::allbinary::data::tables::BasicDataTableInterface ();
 
 1;
 

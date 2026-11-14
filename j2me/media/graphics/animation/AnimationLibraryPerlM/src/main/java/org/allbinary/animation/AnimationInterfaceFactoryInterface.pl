@@ -34,8 +34,8 @@ sub setInitialScale {
     die "abstract method setInitialScale";
 }
 
-use org::allbinary::media::ScaleProperties;
-use org::allbinary::animation::BasicAnimationInterfaceFactoryInterface;
+use org::allbinary::media::ScaleProperties ();
+use org::allbinary::animation::BasicAnimationInterfaceFactoryInterface ();
 
 1;
 

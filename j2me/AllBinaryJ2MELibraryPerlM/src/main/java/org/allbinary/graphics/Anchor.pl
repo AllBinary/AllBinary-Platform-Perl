@@ -17,8 +17,9 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
-our $TOP_LEFT = $javax::microedition::lcdui::Graphics::TOP & $javax::microedition::lcdui::Graphics::LEFT;
+tie our $TOP_LEFT, 'java::lang::LazyStatic', sub { $javax::microedition::lcdui::Graphics::TOP & $javax::microedition::lcdui::Graphics::LEFT };
 
 sub new {
     my ($class) = @_;
@@ -26,7 +27,9 @@ sub new {
     return $self;
 }
 
-# use javax::microedition::lcdui::Graphics;
+use java::lang::Object ();
+use java::lang::LazyStatic ();
+use javax::microedition::lcdui::Graphics ();
 
 1;
 

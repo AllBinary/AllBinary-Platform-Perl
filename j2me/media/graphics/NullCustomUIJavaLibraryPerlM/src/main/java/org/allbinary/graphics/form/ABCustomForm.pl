@@ -18,7 +18,7 @@ sub _init_fields {
 sub new {
     my ($class, $title, $items, $backgroundBasicColor, $foregroundBasicColor) = @_;
     my $self = $class->SUPER::new();
-    $self->_init_fields();
+    _init_fields($self);
     return $self;
 }
 
@@ -94,13 +94,14 @@ sub getTitle {
         return 'org::allbinary::logic::string::StringUtil'->getInstance()->{EMPTY_STRING};
 }
 
-# use javax::microedition::lcdui::Graphics;
-use org::allbinary::graphics::color::BasicColor;
-use org::allbinary::graphics::form::item::ABCustomItem;
-use org::allbinary::logic::communication::log::LogUtil;
-use org::allbinary::logic::string::StringUtil;
-use org::allbinary::string::CommonStrings;
-use org::allbinary::graphics::form::CustomScreen;
+use java::lang::Object ();
+use javax::microedition::lcdui::Graphics ();
+use org::allbinary::graphics::color::BasicColor ();
+use org::allbinary::graphics::form::item::ABCustomItem ();
+use org::allbinary::logic::communication::log::LogUtil ();
+use org::allbinary::logic::string::StringUtil ();
+use org::allbinary::string::CommonStrings ();
+use org::allbinary::graphics::form::CustomScreen ();
 
 1;
 

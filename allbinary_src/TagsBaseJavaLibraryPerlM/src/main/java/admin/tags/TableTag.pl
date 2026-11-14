@@ -35,7 +35,7 @@ sub _init_fields {
 sub new {
     my ($class) = @_;
     my $self = $class->SUPER::new();
-    $self->_init_fields();
+    _init_fields($self);
         if ($admin::tags::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($admin::tags::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{JSPTAG})) {
             $self->{logUtil}->putF($self->{commonStrings}->{START}, $self, $self->{commonStrings}->{CONSTRUCTOR});
         }
@@ -327,18 +327,19 @@ sub doStartTag {
         }
 }
 
-# use java::lang::reflect::Method;
-# use javax::servlet::http::HttpServletRequest;
-# use javax::servlet::jsp::JspTagException;
-use admin::taghelpers::TagHelperFactoryInterface;
-use org::allbinary::logic::communication::http::request::AbResponseHandler;
-use org::allbinary::logic::communication::log::LogUtil;
-use org::allbinary::logic::communication::sql::SqlStrings;
-use org::allbinary::logic::java::bool::BooleanUtil;
-use org::allbinary::logic::string::StringMaker;
-use org::allbinary::logic::string::StringValidationUtil;
-use org::allbinary::logic::system::security::licensing::LicensingException;
-use tags::PropertiesTag;
+use java::lang::Object ();
+# use java::lang::reflect::Method ();
+# use javax::servlet::http::HttpServletRequest ();
+# use javax::servlet::jsp::JspTagException ();
+use admin::taghelpers::TagHelperFactoryInterface ();
+use org::allbinary::logic::communication::http::request::AbResponseHandler ();
+use org::allbinary::logic::communication::log::LogUtil ();
+use org::allbinary::logic::communication::sql::SqlStrings ();
+use org::allbinary::logic::java::bool::BooleanUtil ();
+use org::allbinary::logic::string::StringMaker ();
+use org::allbinary::logic::string::StringValidationUtil ();
+use org::allbinary::logic::system::security::licensing::LicensingException ();
+use tags::PropertiesTag ();
 
 1;
 

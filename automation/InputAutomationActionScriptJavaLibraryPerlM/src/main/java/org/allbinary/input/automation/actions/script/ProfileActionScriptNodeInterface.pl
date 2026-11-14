@@ -18,7 +18,7 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
-use parent -norequire,'org::allbinary::data::tree::dom::DomNodeInterface','javax::swing::tree::MutableTreeNode';
+use parent -norequire,'org::allbinary::data::tree::dom::DomNodeInterface';
 
 
 
@@ -33,8 +33,8 @@ sub removeCondition {
     die "abstract method removeCondition";
 }
 
-# use javax::swing::tree::MutableTreeNode;
-use org::allbinary::data::tree::dom::DomNodeInterface;
+# use javax::swing::tree::MutableTreeNode ();
+use org::allbinary::data::tree::dom::DomNodeInterface ();
 
 1;
 

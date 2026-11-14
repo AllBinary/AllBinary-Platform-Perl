@@ -35,7 +35,7 @@ sub _init_fields {
 sub new {
     my ($class) = @_;
     my $self = $class->SUPER::new();
-    $self->_init_fields();
+    _init_fields($self);
     return $self;
 }
 
@@ -50,7 +50,7 @@ sub addListener {
 sub update {
     my ($self, $gl) = @_;
         $self->{gl} = $gl;
-        { # synchronized ($self->{lock})
+        {; # synchronized ($self->{lock})
             for (my $index = $self->{list}->size() - 1; $index >= 0; $index--) {
                 my $openGLESImage = ($self->{list}->{objectArray}->[$index]);
                 if ($openGLESImage != $org::allbinary::image::opengles::OpenGLESImage::NULL_OPENGL_IMAGE) {
@@ -75,7 +75,7 @@ sub createImage {
         $height = $textureSize;
         my $image2 = $self->{imageCache}->get($caller, $width, $height);
         my $image = $self->{preResourceImageUtil}->encapsulate($image2);
-        { # synchronized ($self->{lock})
+        {; # synchronized ($self->{lock})
             if ($image != $javax::microedition::lcdui::NullImage::NULL_IMAGE) {
                 $self->{list}->add($image);
             }
@@ -89,7 +89,7 @@ sub createImageFromInputStream {
     my ($self, $key, $inputStream) = @_;
         my $cachedImage = $self->{imageCache}->getWithKey($key);
         my $image = $self->{preResourceImageUtil}->encapsulate($cachedImage);
-        { # synchronized ($self->{lock})
+        {; # synchronized ($self->{lock})
             if ($image != $javax::microedition::lcdui::NullImage::NULL_IMAGE) {
                 $self->{list}->add($image);
             }
@@ -107,7 +107,7 @@ sub getGlP {
 sub init {
     my ($self, $image) = @_;
         try {
-            { # synchronized ($self->{lock})
+            {; # synchronized ($self->{lock})
                 if ($self->{list}->contains($image)) {
                     die ("RuntimeException");
                 }
@@ -119,19 +119,20 @@ sub init {
         }
 }
 
-# use java::io::InputStream;
-# use javax::microedition::khronos::opengles::GL10;
-# use javax::microedition::lcdui::Image;
-# use javax::microedition::lcdui::NullImage;
-use org::allbinary::device::NullGL10;
-use org::allbinary::graphics::opengles::renderer::AllBinaryRendererBase3;
-use org::allbinary::util::BasicArrayList;
-use org::allbinary::util::BasicArrayListD;
-use org::allbinary::image::ImageCache;
-use org::allbinary::image::ImageCacheFactory;
-use org::allbinary::image::PreResourceImageUtil;
-use org::allbinary::thread::SynchObject;
-use org::allbinary::image::opengles::OpenGLESImage;
+use java::lang::Object ();
+# use java::io::InputStream ();
+use javax::microedition::khronos::opengles::GL10 ();
+use javax::microedition::lcdui::Image ();
+use javax::microedition::lcdui::NullImage ();
+use org::allbinary::device::NullGL10 ();
+use org::allbinary::graphics::opengles::renderer::AllBinaryRendererBase3 ();
+use org::allbinary::util::BasicArrayList ();
+use org::allbinary::util::BasicArrayListD ();
+use org::allbinary::image::ImageCache ();
+use org::allbinary::image::ImageCacheFactory ();
+use org::allbinary::image::PreResourceImageUtil ();
+use org::allbinary::thread::SynchObject ();
+use org::allbinary::image::opengles::OpenGLESImage ();
 
 1;
 

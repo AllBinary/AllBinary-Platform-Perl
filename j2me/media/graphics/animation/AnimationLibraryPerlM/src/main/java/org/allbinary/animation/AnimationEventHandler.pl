@@ -19,7 +19,7 @@ use feature 'try';
 no warnings 'experimental::try';
 use parent -norequire,'org::allbinary::logic::util::event::handler::BasicEventHandler';
 
-our $eventHandler = 'org::allbinary::animation::AnimationEventHandler'->new();
+tie our $eventHandler, 'java::lang::LazyStatic', sub { 'org::allbinary::animation::AnimationEventHandler'->new() };
 
 
 sub new {
@@ -34,7 +34,9 @@ sub getInstance {
         return $org::allbinary::animation::AnimationEventHandler::eventHandler;
 }
 
-use org::allbinary::logic::util::event::handler::BasicEventHandler;
+use java::lang::Object ();
+use java::lang::LazyStatic ();
+use org::allbinary::logic::util::event::handler::BasicEventHandler ();
 
 1;
 

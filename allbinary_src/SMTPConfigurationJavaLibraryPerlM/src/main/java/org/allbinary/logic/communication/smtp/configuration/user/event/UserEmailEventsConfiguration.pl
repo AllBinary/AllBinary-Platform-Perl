@@ -17,7 +17,7 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
-use parent -norequire,'org::allbinary::logic::communication::smtp::configuration::user::event::UserEmailEventsConfigurationInterface';
+use parent -norequire,'java::lang::Object','org::allbinary::logic::communication::smtp::configuration::user::event::UserEmailEventsConfigurationInterface';
 
 
 sub _init_fields {
@@ -38,7 +38,7 @@ sub new {
 sub _new0 {
     my ($class) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
         $self->init();
     return $self;
 }
@@ -47,7 +47,7 @@ sub _new0 {
 sub _new1 {
     my ($class, $hashMap) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
         $self->init();
     return $self;
 }
@@ -84,16 +84,17 @@ sub getEventListener {
         return 'org::allbinary::logic::communication::smtp::configuration::user::event::UserEmailEventListenerFactory'->getInstance($abeClientInformation, $userEmailEventConfigurationInterface, $userInterface);
 }
 
-use java::util::HashMap;
-use org::allbinary::business::user::UserInterface;
-use org::allbinary::logic::StdUtil;
-use org::allbinary::logic::communication::log::LogUtil;
-use org::allbinary::logic::communication::smtp::event::UserEmailEventListenerInterface;
-use org::allbinary::logic::communication::smtp::event::UserEmailEventNameData;
-use org::allbinary::logic::system::security::licensing::AbeClientInformationInterface;
-use org::allbinary::string::CommonStrings;
-use org::allbinary::logic::communication::smtp::configuration::user::event::UserEmailEventsConfigurationInterface;
-use org::allbinary::logic::communication::smtp::configuration::user::event::UserEmailEventListenerFactory;
+use java::lang::Object ();
+use java::util::HashMap ();
+use org::allbinary::business::user::UserInterface ();
+use org::allbinary::logic::StdUtil ();
+use org::allbinary::logic::communication::log::LogUtil ();
+use org::allbinary::logic::communication::smtp::event::UserEmailEventListenerInterface ();
+use org::allbinary::logic::communication::smtp::event::UserEmailEventNameData ();
+use org::allbinary::logic::system::security::licensing::AbeClientInformationInterface ();
+use org::allbinary::string::CommonStrings ();
+use org::allbinary::logic::communication::smtp::configuration::user::event::UserEmailEventsConfigurationInterface ();
+use org::allbinary::logic::communication::smtp::configuration::user::event::UserEmailEventListenerFactory ();
 
 1;
 

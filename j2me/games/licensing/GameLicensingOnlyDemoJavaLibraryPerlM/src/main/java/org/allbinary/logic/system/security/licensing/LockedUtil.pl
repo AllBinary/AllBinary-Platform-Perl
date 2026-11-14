@@ -17,9 +17,9 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
-use parent -norequire,'org::allbinary::logic::system::security::licensing::LockedUtilInterface';
+use parent -norequire,'java::lang::Object','org::allbinary::logic::system::security::licensing::LockedUtilInterface';
 
-our $instance = 'org::allbinary::logic::system::security::licensing::LockedUtil'->new();
+tie our $instance, 'java::lang::LazyStatic', sub { 'org::allbinary::logic::system::security::licensing::LockedUtil'->new() };
 
 sub new {
     my ($class) = @_;
@@ -45,7 +45,9 @@ sub isLockedFeature {
         return 1;
 }
 
-use org::allbinary::logic::system::security::licensing::LockedUtilInterface;
+use java::lang::Object ();
+use java::lang::LazyStatic ();
+use org::allbinary::logic::system::security::licensing::LockedUtilInterface ();
 
 1;
 

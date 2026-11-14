@@ -27,7 +27,8 @@ sub new {
     return $self;
 }
 
-use org::allbinary::input::AllBinarySensor;
+use java::lang::Object ();
+use org::allbinary::input::AllBinarySensor ();
 
 1;
 

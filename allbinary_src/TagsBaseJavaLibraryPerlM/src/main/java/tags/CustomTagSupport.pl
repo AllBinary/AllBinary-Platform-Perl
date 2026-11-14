@@ -17,7 +17,7 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
-use parent -norequire,'javax::servlet::jsp::tagext::TagSupport';
+use parent -norequire,'java::lang::Object';
 
 
 sub _init_fields {
@@ -29,13 +29,14 @@ sub _init_fields {
 sub new {
     my ($class) = @_;
     my $self = $class->SUPER::new();
-    $self->_init_fields();
+    _init_fields($self);
     return $self;
 }
 
-# use javax::servlet::jsp::tagext::TagSupport;
-use org::allbinary::string::CommonStrings;
-use tags::TagStrings;
+use java::lang::Object ();
+# use javax::servlet::jsp::tagext::TagSupport ();
+use org::allbinary::string::CommonStrings ();
+use tags::TagStrings ();
 
 1;
 

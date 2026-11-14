@@ -32,7 +32,7 @@ sub paintThreed {
     die "abstract method paintThreed";
 }
 
-# use javax::microedition::lcdui::Graphics;
+use javax::microedition::lcdui::Graphics ();
 
 1;
 

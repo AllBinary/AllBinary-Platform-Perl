@@ -98,7 +98,7 @@ sub isInRange {
     die "abstract method isInRange";
 }
 
-# use java::awt;
+# use java::awt ();
 
 1;
 

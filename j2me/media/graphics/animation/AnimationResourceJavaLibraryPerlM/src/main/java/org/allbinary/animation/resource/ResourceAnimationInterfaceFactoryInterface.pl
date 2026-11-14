@@ -27,7 +27,7 @@ sub getBasicAnimationInterfaceFactoryInstance {
     die "abstract method getBasicAnimationInterfaceFactoryInstance";
 }
 
-use org::allbinary::animation::BasicAnimationInterfaceFactoryInterface;
+use org::allbinary::animation::BasicAnimationInterfaceFactoryInterface ();
 
 1;
 

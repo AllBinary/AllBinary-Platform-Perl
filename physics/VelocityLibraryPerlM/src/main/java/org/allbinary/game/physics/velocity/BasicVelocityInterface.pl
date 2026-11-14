@@ -92,9 +92,9 @@ sub addVelocityi {
     die "abstract method addVelocityi";
 }
 
-use org::allbinary::direction::Direction;
-use org::allbinary::logic::math::BasicDecimal;
-use org::allbinary::math::Angle;
+use org::allbinary::direction::Direction ();
+use org::allbinary::logic::math::BasicDecimal ();
+use org::allbinary::math::Angle ();
 
 1;
 

@@ -820,9 +820,9 @@ sub glPolygonMode {
     die "abstract method glPolygonMode";
 }
 
-# use java::nio::Buffer;
-# use java::nio::FloatBuffer;
-# use java::nio::IntBuffer;
+# use java::nio::Buffer ();
+# use java::nio::FloatBuffer ();
+# use java::nio::IntBuffer ();
 
 1;
 

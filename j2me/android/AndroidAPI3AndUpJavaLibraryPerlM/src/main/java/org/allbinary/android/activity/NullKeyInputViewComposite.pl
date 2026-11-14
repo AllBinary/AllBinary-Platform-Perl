@@ -17,9 +17,9 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
-use parent -norequire,'org::allbinary::android::activity::KeyInputViewCompositeInterface';
+use parent -norequire,'java::lang::Object','org::allbinary::android::activity::KeyInputViewCompositeInterface';
 
-our $NULL_KEY_INPUT_VIEW_COMPOSITE = 'org::allbinary::android::activity::NullKeyInputViewComposite'->new();
+tie our $NULL_KEY_INPUT_VIEW_COMPOSITE, 'java::lang::LazyStatic', sub { 'org::allbinary::android::activity::NullKeyInputViewComposite'->new() };
 
 sub new {
     my ($class) = @_;
@@ -49,8 +49,10 @@ sub runOnUiThread {
     my ($self, $action) = @_;
 }
 
-use android::view::View;
-use org::allbinary::android::activity::KeyInputViewCompositeInterface;
+use java::lang::Object ();
+use java::lang::LazyStatic ();
+# use android::view::View ();
+use org::allbinary::android::activity::KeyInputViewCompositeInterface ();
 
 1;
 

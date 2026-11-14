@@ -34,7 +34,7 @@ sub _init_fields {
 sub new {
     my ($class, $databaseConnectionInfoInterface) = @_;
     my $self = $class->SUPER::new($databaseConnectionInfoInterface);
-    $self->_init_fields();
+    _init_fields($self);
         # super(...) made $self above
     return $self;
 }
@@ -153,13 +153,14 @@ sub getColumnWhere {
         }
 }
 
-# use java::sql::ResultSet;
-use org::allbinary::util::BasicArrayList;
-use org::allbinary::util::BasicArrayListD;
-use org::allbinary::business::init::db::DbConnectionInfo;
-use org::allbinary::logic::communication::log::LogUtil;
-use org::allbinary::logic::string::StringMaker;
-use org::allbinary::logic::communication::sql::AbSqlTable;
+use java::lang::Object ();
+# use java::sql::ResultSet ();
+use org::allbinary::util::BasicArrayList ();
+use org::allbinary::util::BasicArrayListD ();
+use org::allbinary::business::init::db::DbConnectionInfo ();
+use org::allbinary::logic::communication::log::LogUtil ();
+use org::allbinary::logic::string::StringMaker ();
+use org::allbinary::logic::communication::sql::AbSqlTable ();
 
 1;
 

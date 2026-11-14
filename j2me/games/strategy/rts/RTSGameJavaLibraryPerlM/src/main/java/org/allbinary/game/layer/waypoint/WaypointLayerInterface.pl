@@ -161,13 +161,13 @@ sub getWaypointRunnableLogHelper {
     die "abstract method getWaypointRunnableLogHelper";
 }
 
-use org::allbinary::animation::caption::CaptionAnimationHelperBase;
-use org::allbinary::game::layer::WaypointBehaviorBase;
-use org::allbinary::game::tracking::TrackingEvent;
-use org::allbinary::layer::AllBinaryLayer;
-use org::allbinary::media::graphics::geography::map::GeographicMapCellHistory;
-use org::allbinary::media::graphics::geography::map::GeographicMapCellPosition;
-use org::allbinary::util::BasicArrayList;
+use org::allbinary::animation::caption::CaptionAnimationHelperBase ();
+use org::allbinary::game::layer::WaypointBehaviorBase ();
+use org::allbinary::game::tracking::TrackingEvent ();
+use org::allbinary::layer::AllBinaryLayer ();
+use org::allbinary::media::graphics::geography::map::GeographicMapCellHistory ();
+use org::allbinary::media::graphics::geography::map::GeographicMapCellPosition ();
+use org::allbinary::util::BasicArrayList ();
 
 1;
 

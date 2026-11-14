@@ -17,9 +17,9 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
-use parent -norequire,'org::allbinary::game::layer::pickup::PickedUpLayerInterfaceFactoryInterface';
+use parent -norequire,'java::lang::Object','org::allbinary::game::layer::pickup::PickedUpLayerInterfaceFactoryInterface';
 
-our $NULL_PICKED_UP_LAYER_FACTORY_BASE = 'org::allbinary::game::layer::pickup::PickedUpLayerInterfaceFactoryBase'->new();
+tie our $NULL_PICKED_UP_LAYER_FACTORY_BASE, 'java::lang::LazyStatic', sub { 'org::allbinary::game::layer::pickup::PickedUpLayerInterfaceFactoryBase'->new() };
 
 sub new {
     my ($class) = @_;
@@ -45,9 +45,11 @@ sub getPickedUpLayerType {
         die ("RuntimeException");
 }
 
-use org::allbinary::animation::Animation;
-use org::allbinary::layer::AllBinaryLayer;
-use org::allbinary::game::layer::pickup::PickedUpLayerInterfaceFactoryInterface;
+use java::lang::Object ();
+use java::lang::LazyStatic ();
+use org::allbinary::animation::Animation ();
+use org::allbinary::layer::AllBinaryLayer ();
+use org::allbinary::game::layer::pickup::PickedUpLayerInterfaceFactoryInterface ();
 
 1;
 

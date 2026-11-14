@@ -17,8 +17,9 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
-our $instance = 'org::allbinary::media::image::analysis::ImageAnalysis'->new();
+tie our $instance, 'java::lang::LazyStatic', sub { 'org::allbinary::media::image::analysis::ImageAnalysis'->new() };
 
 sub _init_fields {
     my ($self) = @_;
@@ -35,7 +36,7 @@ sub getInstance {
 sub new {
     my ($class) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
     return $self;
 }
 
@@ -114,14 +115,16 @@ sub processImageColorResults {
         }
 }
 
-# use java::awt;
-# use java::awt::image::BufferedImage;
-use org::allbinary::graphics::color::ColorCacheFactory;
-use org::allbinary::graphics::color::ColorCacheable;
-use org::allbinary::logic::communication::log::LogUtil;
-use org::allbinary::string::CommonLabels;
-use org::allbinary::string::CommonStrings;
-use org::allbinary::media::image::analysis::ImageAnalysisResults;
+use java::lang::Object ();
+use java::lang::LazyStatic ();
+# use java::awt ();
+# use java::awt::image::BufferedImage ();
+use org::allbinary::graphics::color::ColorCacheFactory ();
+use org::allbinary::graphics::color::ColorCacheable ();
+use org::allbinary::logic::communication::log::LogUtil ();
+use org::allbinary::string::CommonLabels ();
+use org::allbinary::string::CommonStrings ();
+use org::allbinary::media::image::analysis::ImageAnalysisResults ();
 
 1;
 

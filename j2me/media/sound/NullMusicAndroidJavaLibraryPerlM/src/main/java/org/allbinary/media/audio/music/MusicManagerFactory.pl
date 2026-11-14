@@ -17,6 +17,7 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
 
 sub new {
@@ -31,8 +32,9 @@ sub createMusicManager {
         return 'org::allbinary::media::audio::music::MusicManager'->new('org::allbinary::media::audio::music::MusicService', $soundList);
 }
 
-use org::allbinary::util::BasicArrayList;
-use org::allbinary::media::audio::music::MusicManager;
+use java::lang::Object ();
+use org::allbinary::util::BasicArrayList ();
+use org::allbinary::media::audio::music::MusicManager ();
 
 1;
 

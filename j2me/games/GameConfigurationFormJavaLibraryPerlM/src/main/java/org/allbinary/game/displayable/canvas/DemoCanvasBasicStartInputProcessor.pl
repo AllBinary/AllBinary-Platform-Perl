@@ -43,15 +43,16 @@ sub processInputList {
         return $size;
 }
 
-# use javax::microedition::lcdui::NullCanvas;
-use org::allbinary::canvas::RunnableCanvas;
-use org::allbinary::game::commands::GameCommandsFactory;
-use org::allbinary::game::input::GameInputStrings;
-use org::allbinary::game::input::event::GameKeyEvent;
-use org::allbinary::logic::string::StringMaker;
-use org::allbinary::logic::string::StringUtil;
-use org::allbinary::util::BasicArrayList;
-use org::allbinary::game::displayable::canvas::BasicMenuInputProcessor;
+use java::lang::Object ();
+use javax::microedition::lcdui::NullCanvas ();
+use org::allbinary::canvas::RunnableCanvas ();
+use org::allbinary::game::commands::GameCommandsFactory ();
+use org::allbinary::game::input::GameInputStrings ();
+use org::allbinary::game::input::event::GameKeyEvent ();
+use org::allbinary::logic::string::StringMaker ();
+use org::allbinary::logic::string::StringUtil ();
+use org::allbinary::util::BasicArrayList ();
+use org::allbinary::game::displayable::canvas::BasicMenuInputProcessor ();
 
 1;
 

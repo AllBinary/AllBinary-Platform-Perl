@@ -27,7 +27,7 @@ sub process {
     die "abstract method process";
 }
 
-use org::allbinary::layer::AllBinaryLayer;
+use org::allbinary::layer::AllBinaryLayer ();
 
 1;
 

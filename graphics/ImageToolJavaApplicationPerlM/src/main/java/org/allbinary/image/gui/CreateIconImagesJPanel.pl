@@ -17,7 +17,7 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
-use parent -norequire,'javax::swing::JPanel','org::allbinary::media::image::ImageProcessorInputCompositeInterface';
+use parent -norequire,'java::lang::Object','org::allbinary::media::image::ImageProcessorInputCompositeInterface';
 
 
 sub _init_fields {
@@ -32,7 +32,7 @@ sub _init_fields {
 sub new {
     my ($class, $imageProcessorInput) = @_;
     my $self = $class->SUPER::new();
-    $self->_init_fields();
+    _init_fields($self);
         # super(...) made $self above
         $self->initComponents();
         $self->{imageProcessorInput} = $imageProcessorInput;
@@ -54,7 +54,7 @@ sub new {
 sub process {
     my ($self) = @_;
         do {
-            package java::lang::Thread::AnonymousN66679 { our @ISA = ('java::lang::Thread');
+            package java::lang::Thread::AnonymousN66679 { our @ISA = ('java::lang::Thread', 'java::lang::Object');
             
 
             sub run {
@@ -121,7 +121,7 @@ sub initComponents {
         $self->{aboveJButton} = 'javax::swing::JButton'->new();
         $self->{aboveJButton}->setText("Process");
         $self->{aboveJButton}->addActionListener(do {
-            package java::awt::event::ActionListener::AnonymousN68821 { our @ISA = ('java::awt::event::ActionListener');
+            package java::awt::event::ActionListener::AnonymousN68821 { our @ISA = ('java::awt::event::ActionListener', 'java::lang::Object');
             
 
             sub actionPerformed {
@@ -143,22 +143,23 @@ sub aboveJButtonActionPerformed {
         $self->process();
 }
 
-# use java::awt::image::BufferedImage;
-# use java::awt::image::Raster;
-use java::io::File;
-use org::allbinary::graphics::displayable::CanvasStrings;
-use org::allbinary::logic::communication::log::LogUtil;
-use org::allbinary::logic::io::file::AbFile;
-use org::allbinary::logic::string::StringMaker;
-use org::allbinary::media::image::ImagePersistanceUtil;
-use org::allbinary::media::image::ImageProcessorInput;
-use org::allbinary::media::image::ImageProcessorInputCompositeInterface;
-use org::allbinary::media::image::ImageUtil;
-use org::allbinary::string::CommonStrings;
-use org::allbinary::util::BasicArrayList;
-use org::allbinary::util::BasicArrayListD;
-use java::lang::System;
-use java::lang::Thread;
+use java::lang::Object ();
+# use java::awt::image::BufferedImage ();
+# use java::awt::image::Raster ();
+use java::io::File ();
+use org::allbinary::graphics::displayable::CanvasStrings ();
+use org::allbinary::logic::communication::log::LogUtil ();
+use org::allbinary::logic::io::file::AbFile ();
+use org::allbinary::logic::string::StringMaker ();
+use org::allbinary::media::image::ImagePersistanceUtil ();
+use org::allbinary::media::image::ImageProcessorInput ();
+use org::allbinary::media::image::ImageProcessorInputCompositeInterface ();
+use org::allbinary::media::image::ImageUtil ();
+use org::allbinary::string::CommonStrings ();
+use org::allbinary::util::BasicArrayList ();
+use org::allbinary::util::BasicArrayListD ();
+use java::lang::System ();
+use java::lang::Thread ();
 
 1;
 

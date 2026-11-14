@@ -17,9 +17,9 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
-use parent -norequire,'org::allbinary::logic::io::file::AbFileInterface';
+use parent -norequire,'java::lang::Object','org::allbinary::logic::io::file::AbFileInterface';
 
-our $NULL_FILE = 'org::allbinary::logic::io::file::AbFile'->createAbFileFromRawPath('org::allbinary::logic::string::StringUtil'->getInstance()->{EMPTY_STRING});
+tie our $NULL_FILE, 'java::lang::LazyStatic', sub { 'org::allbinary::logic::io::file::AbFile'->createAbFileFromRawPath('org::allbinary::logic::string::StringUtil'->getInstance()->{EMPTY_STRING}) };
 
 sub _init_fields {
     my ($self) = @_;
@@ -63,7 +63,7 @@ sub createAbFileFromRawPath {
 sub new {
     my ($class, $file) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
         $self->{file} = $file;
     return $self;
 }
@@ -351,15 +351,17 @@ sub toString {
         return $self->{file}->toString();
 }
 
-use java::io::File;
-# use java::io::FileFilter;
-# use java::io::FilenameFilter;
-# use java::io::IOException;
-# use java::net::URI;
-use org::allbinary::TsUtil;
-use org::allbinary::logic::io::path::AbPath;
-use org::allbinary::logic::string::StringUtil;
-use org::allbinary::logic::io::file::AbFileInterface;
+use java::lang::Object ();
+use java::lang::LazyStatic ();
+use java::io::File ();
+# use java::io::FileFilter ();
+# use java::io::FilenameFilter ();
+# use java::io::IOException ();
+# use java::net::URI ();
+use org::allbinary::TsUtil ();
+use org::allbinary::logic::io::path::AbPath ();
+use org::allbinary::logic::string::StringUtil ();
+use org::allbinary::logic::io::file::AbFileInterface ();
 
 1;
 

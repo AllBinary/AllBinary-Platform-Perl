@@ -17,8 +17,9 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
-our $instance = 'org::allbinary::graphics::opengles::OpenGLFeatureUtil'->new();
+tie our $instance, 'java::lang::LazyStatic', sub { 'org::allbinary::graphics::opengles::OpenGLFeatureUtil'->new() };
 
 sub _init_fields {
     my ($self) = @_;
@@ -35,7 +36,7 @@ sub getInstance {
 sub new {
     my ($class) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
         my $openGLConfiguration = 'org::allbinary::graphics::opengles::OpenGLConfiguration'->getInstance();
         my $features = 'org::allbinary::game::configuration::feature::Features'->getInstance();
         my $openGLFeatureFactory = 'org::allbinary::graphics::opengles::OpenGLFeatureFactory'->getInstance();
@@ -49,9 +50,11 @@ sub isAnyThreed {
         return $self->{anyThreed};
 }
 
-use org::allbinary::game::configuration::feature::Features;
-use org::allbinary::graphics::opengles::OpenGLConfiguration;
-use org::allbinary::graphics::opengles::OpenGLFeatureFactory;
+use java::lang::Object ();
+use java::lang::LazyStatic ();
+use org::allbinary::game::configuration::feature::Features ();
+use org::allbinary::graphics::opengles::OpenGLConfiguration ();
+use org::allbinary::graphics::opengles::OpenGLFeatureFactory ();
 
 1;
 

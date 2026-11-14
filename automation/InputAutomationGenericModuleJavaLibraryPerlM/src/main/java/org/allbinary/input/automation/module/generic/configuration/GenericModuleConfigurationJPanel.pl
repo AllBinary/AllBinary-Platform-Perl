@@ -17,7 +17,7 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
-use parent -norequire,'javax::swing::JPanel','org::allbinary::input::automation::module::generic::configuration::GenericModuleConfigurationInterface';
+use parent -norequire,'java::lang::Object','org::allbinary::input::automation::module::generic::configuration::GenericModuleConfigurationInterface';
 
 
 sub _init_fields {
@@ -53,7 +53,7 @@ sub _init_fields {
 sub new {
     my ($class) = @_;
     my $self = $class->SUPER::new();
-    $self->_init_fields();
+    _init_fields($self);
         $self->initComponents();
         $self->setGenericProfiles('org::allbinary::input::automation::module::generic::configuration::profile::GenericProfiles'->new($org::allbinary::input::automation::module::generic::configuration::profile::GenericProfiles::DEFAULT_FILE));
         $self->selectFirstElement();
@@ -87,7 +87,7 @@ sub initComponents {
         $self->{newProfileJDialog}->setResizable(0);
         $self->{okNewProfileJButton}->setText("Ok");
         $self->{okNewProfileJButton}->addActionListener(do {
-            package java::awt::event::ActionListener::AnonymousN67478 { our @ISA = ('java::awt::event::ActionListener');
+            package java::awt::event::ActionListener::AnonymousN67478 { our @ISA = ('java::awt::event::ActionListener', 'java::lang::Object');
             
 
             sub actionPerformed {
@@ -110,7 +110,7 @@ sub initComponents {
         $self->{genericProfilesJPanel}->setMinimumSize('java::awt::Dimension'->new(400, 300));
         $self->{genericProfilesJPanel}->setPreferredSize('java::awt::Dimension'->new(0, 0));
         $self->{genericProfilesJList}->addListSelectionListener(do {
-            package javax::swing::event::ListSelectionListener::AnonymousN69018 { our @ISA = ('javax::swing::event::ListSelectionListener');
+            package javax::swing::event::ListSelectionListener::AnonymousN69018 { our @ISA = ('javax::swing::event::ListSelectionListener', 'java::lang::Object');
             
 
             sub valueChanged {
@@ -124,7 +124,7 @@ sub initComponents {
         $self->{newProfileJButton}->setText("New");
         $self->{newProfileJButton}->setToolTipText("Creates a new profile");
         $self->{newProfileJButton}->addActionListener(do {
-            package java::awt::event::ActionListener::AnonymousN69272 { our @ISA = ('java::awt::event::ActionListener');
+            package java::awt::event::ActionListener::AnonymousN69272 { our @ISA = ('java::awt::event::ActionListener', 'java::lang::Object');
             
 
             sub actionPerformed {
@@ -137,7 +137,7 @@ sub initComponents {
         $self->{deleteProfileJButton}->setText("Delete");
         $self->{deleteProfileJButton}->setToolTipText("Deletes the selected profile");
         $self->{deleteProfileJButton}->addActionListener(do {
-            package java::awt::event::ActionListener::AnonymousN69489 { our @ISA = ('java::awt::event::ActionListener');
+            package java::awt::event::ActionListener::AnonymousN69489 { our @ISA = ('java::awt::event::ActionListener', 'java::lang::Object');
             
 
             sub actionPerformed {
@@ -153,7 +153,7 @@ sub initComponents {
         $self->{screenCaptureJRadioButton}->setBorder($org::allbinary::input::automation::module::generic::configuration::javax::swing->{BorderFactory}->createEmptyBorder(0, 0, 0, 0));
         $self->{screenCaptureJRadioButton}->setMargin('java::awt::Insets'->new(0, 0, 0, 0));
         $self->{screenCaptureJRadioButton}->addActionListener(do {
-            package java::awt::event::ActionListener::AnonymousN69921 { our @ISA = ('java::awt::event::ActionListener');
+            package java::awt::event::ActionListener::AnonymousN69921 { our @ISA = ('java::awt::event::ActionListener', 'java::lang::Object');
             
 
             sub actionPerformed {
@@ -170,7 +170,7 @@ sub initComponents {
         $self->{savedCaptureJRadioButton}->setBorder($org::allbinary::input::automation::module::generic::configuration::javax::swing->{BorderFactory}->createEmptyBorder(0, 0, 0, 0));
         $self->{savedCaptureJRadioButton}->setMargin('java::awt::Insets'->new(0, 0, 0, 0));
         $self->{savedCaptureJRadioButton}->addActionListener(do {
-            package java::awt::event::ActionListener::AnonymousN70348 { our @ISA = ('java::awt::event::ActionListener');
+            package java::awt::event::ActionListener::AnonymousN70348 { our @ISA = ('java::awt::event::ActionListener', 'java::lang::Object');
             
 
             sub actionPerformed {
@@ -185,7 +185,7 @@ sub initComponents {
         $self->{captureMotionAnalysisJCheckBox}->setBorder($org::allbinary::input::automation::module::generic::configuration::javax::swing->{BorderFactory}->createEmptyBorder(0, 0, 0, 0));
         $self->{captureMotionAnalysisJCheckBox}->setMargin('java::awt::Insets'->new(0, 0, 0, 0));
         $self->{captureMotionAnalysisJCheckBox}->addActionListener(do {
-            package java::awt::event::ActionListener::AnonymousN70715 { our @ISA = ('java::awt::event::ActionListener');
+            package java::awt::event::ActionListener::AnonymousN70715 { our @ISA = ('java::awt::event::ActionListener', 'java::lang::Object');
             
 
             sub actionPerformed {
@@ -200,7 +200,7 @@ sub initComponents {
         $self->{captureComparisonJCheckBox}->setBorder($org::allbinary::input::automation::module::generic::configuration::javax::swing->{BorderFactory}->createEmptyBorder(0, 0, 0, 0));
         $self->{captureComparisonJCheckBox}->setMargin('java::awt::Insets'->new(0, 0, 0, 0));
         $self->{captureComparisonJCheckBox}->addActionListener(do {
-            package java::awt::event::ActionListener::AnonymousN71082 { our @ISA = ('java::awt::event::ActionListener');
+            package java::awt::event::ActionListener::AnonymousN71082 { our @ISA = ('java::awt::event::ActionListener', 'java::lang::Object');
             
 
             sub actionPerformed {
@@ -442,17 +442,18 @@ sub newProfileJButtonActionPerformed {
         $self->{newProfileJDialog}->setVisible(1);
 }
 
-use org::allbinary::util::BasicArrayList;
-use org::allbinary::util::BasicArrayListD;
-use org::allbinary::input::automation::module::generic::configuration::profile::GenericProfile;
-use org::allbinary::input::automation::module::generic::configuration::profile::GenericProfileDataWorkerType;
-use org::allbinary::input::automation::module::generic::configuration::profile::GenericProfiles;
-use org::allbinary::input::automation::module::generic::configuration::profile::actions::GenericProfileActions;
-use org::allbinary::input::automation::module::generic::configuration::profile::actions::GenericProfileActionsJPanel;
-use org::allbinary::logic::communication::log::LogUtil;
-use org::allbinary::logic::string::StringUtil;
-use org::allbinary::string::CommonStrings;
-use org::allbinary::input::automation::module::generic::configuration::GenericModuleConfigurationInterface;
+use java::lang::Object ();
+use org::allbinary::util::BasicArrayList ();
+use org::allbinary::util::BasicArrayListD ();
+use org::allbinary::input::automation::module::generic::configuration::profile::GenericProfile ();
+use org::allbinary::input::automation::module::generic::configuration::profile::GenericProfileDataWorkerType ();
+use org::allbinary::input::automation::module::generic::configuration::profile::GenericProfiles ();
+use org::allbinary::input::automation::module::generic::configuration::profile::actions::GenericProfileActions ();
+use org::allbinary::input::automation::module::generic::configuration::profile::actions::GenericProfileActionsJPanel ();
+use org::allbinary::logic::communication::log::LogUtil ();
+use org::allbinary::logic::string::StringUtil ();
+use org::allbinary::string::CommonStrings ();
+use org::allbinary::input::automation::module::generic::configuration::GenericModuleConfigurationInterface ();
 
 1;
 

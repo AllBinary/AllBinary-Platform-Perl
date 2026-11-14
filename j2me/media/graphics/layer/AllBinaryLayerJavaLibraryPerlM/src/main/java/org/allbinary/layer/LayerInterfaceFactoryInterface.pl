@@ -27,7 +27,7 @@ sub getNextInstance {
     die "abstract method getNextInstance";
 }
 
-use org::allbinary::util::ABHashtable;
+use org::allbinary::util::ABHashtable ();
 
 1;
 

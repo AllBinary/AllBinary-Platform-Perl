@@ -33,7 +33,7 @@ sub _init_fields {
 sub new {
     my ($class) = @_;
     my $self = $class->SUPER::new();
-    $self->_init_fields();
+    _init_fields($self);
         my $SDK_VERSION = 'org::allbinary::android::AndroidInfoFactory'->getInstance()->getVersion();
         if ($SDK_VERSION > 10) {
             $self->{scalable} = 1;
@@ -136,11 +136,12 @@ sub toString {
         return $osBuffer->toString();
 }
 
-use org::allbinary::android::AndroidInfoFactory;
-use org::allbinary::logic::string::StringMaker;
-use org::allbinary::logic::system::os::GenericOperatingSystem;
-use org::allbinary::string::CommonSeps;
-use org::allbinary::logic::system::os::android::AndroidSystemProperties;
+use java::lang::Object ();
+use org::allbinary::android::AndroidInfoFactory ();
+use org::allbinary::logic::string::StringMaker ();
+use org::allbinary::logic::system::os::GenericOperatingSystem ();
+use org::allbinary::string::CommonSeps ();
+use org::allbinary::logic::system::os::android::AndroidSystemProperties ();
 
 1;
 

@@ -29,7 +29,7 @@ sub _init_fields {
 sub new {
     my ($class, $image, $animationBehaviorFactory) = @_;
     my $self = $class->SUPER::new($image, 'org::allbinary::logic::math::PrimitiveIntUtil'->getArrayInstance(), 0, 0, 0, 0, $animationBehaviorFactory);
-    $self->_init_fields();
+    _init_fields($self);
         # super(...) made $self above
         if ($self->{lastImage} != $javax::microedition::lcdui::NullImage::NULL_IMAGE) {
             my $androidImageInterface = $self->{lastImage};
@@ -47,17 +47,18 @@ sub getInstance {
         return 'org::allbinary::animation::image::ImageAnimation'->new($self->{lastImage}, $self->{animationBehaviorFactory}->getOrCreateInstance());
 }
 
-# use javax::microedition::lcdui::Image;
-# use javax::microedition::lcdui::NullImage;
-use org::allbinary::image::GameFeatureImageCacheFactory;
-use org::allbinary::animation::Animation;
-use org::allbinary::animation::AnimationBehaviorFactory;
-use org::allbinary::graphics::displayable::ScreenRelationalUtil;
-use org::allbinary::logic::math::PrimitiveIntUtil;
-use org::allbinary::media::image::ImageScaleUtil;
-use org::microemu::android::device::AndroidImageInterface;
-use org::allbinary::animation::image::BaseImageAnimationFactory;
-use org::allbinary::animation::image::ImageAnimation;
+use java::lang::Object ();
+use javax::microedition::lcdui::Image ();
+use javax::microedition::lcdui::NullImage ();
+use org::allbinary::image::GameFeatureImageCacheFactory ();
+use org::allbinary::animation::Animation ();
+use org::allbinary::animation::AnimationBehaviorFactory ();
+use org::allbinary::graphics::displayable::ScreenRelationalUtil ();
+use org::allbinary::logic::math::PrimitiveIntUtil ();
+use org::allbinary::media::image::ImageScaleUtil ();
+use org::microemu::android::device::AndroidImageInterface ();
+use org::allbinary::animation::image::BaseImageAnimationFactory ();
+use org::allbinary::animation::image::ImageAnimation ();
 
 1;
 

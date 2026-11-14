@@ -29,7 +29,7 @@ sub _init_fields {
 sub new {
     my ($class, $ownerLayerInterface, $gameInput) = @_;
     my $self = $class->SUPER::new($ownerLayerInterface, $gameInput);
-    $self->_init_fields();
+    _init_fields($self);
         # super(...) made $self above
         my $rotationAnimationInterfaceCompositeInterface = $self->getOwnerLayerInterface();
         $self->{rotationAnimationInterface} = $rotationAnimationInterfaceCompositeInterface->getRotationAnimationInterface();
@@ -60,13 +60,14 @@ sub update {
         }
 }
 
-use org::allbinary::animation::IndexedAnimation;
-use org::allbinary::animation::RotationAnimationInterface;
-use org::allbinary::animation::RotationAnimationInterfaceCompositeInterface;
-use org::allbinary::game::ag::ai::tactical::LurchAI;
-use org::allbinary::game::input::GameInput;
-use org::allbinary::layer::AllBinaryLayer;
-use org::allbinary::math::AngleIncrementInfo;
+use java::lang::Object ();
+use org::allbinary::animation::IndexedAnimation ();
+use org::allbinary::animation::RotationAnimationInterface ();
+use org::allbinary::animation::RotationAnimationInterfaceCompositeInterface ();
+use org::allbinary::game::ag::ai::tactical::LurchAI ();
+use org::allbinary::game::input::GameInput ();
+use org::allbinary::layer::AllBinaryLayer ();
+use org::allbinary::math::AngleIncrementInfo ();
 
 1;
 

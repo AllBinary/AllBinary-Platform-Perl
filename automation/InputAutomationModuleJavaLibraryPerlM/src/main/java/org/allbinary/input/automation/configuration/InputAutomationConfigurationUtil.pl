@@ -17,6 +17,7 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
 
 
@@ -35,9 +36,10 @@ sub getChangeEvent {
         return $inputAutomationConfigurationModuleChangeEvent;
 }
 
-use org::allbinary::input::automation::module::InputAutomationModuleFactoryInterface;
-use org::allbinary::input::automation::module::configuration::InputAutomationModuleConfiguration;
-use org::allbinary::input::automation::configuration::InputAutomationConfigurationModuleChangeEvent;
+use java::lang::Object ();
+use org::allbinary::input::automation::module::InputAutomationModuleFactoryInterface ();
+use org::allbinary::input::automation::module::configuration::InputAutomationModuleConfiguration ();
+use org::allbinary::input::automation::configuration::InputAutomationConfigurationModuleChangeEvent ();
 
 1;
 

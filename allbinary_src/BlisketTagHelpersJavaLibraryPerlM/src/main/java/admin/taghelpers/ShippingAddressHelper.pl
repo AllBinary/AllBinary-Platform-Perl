@@ -35,7 +35,7 @@ sub _init_fields {
 sub new {
     my ($class, $hashMap, $pageContext) = @_;
     my $self = $class->SUPER::new();
-    $self->_init_fields();
+    _init_fields($self);
         $self->{request} = $pageContext->getRequest();
         $self->{weblisketSession} = 'org::allbinary::logic::communication::http::request::session::WeblisketSession'->new($hashMap, $pageContext);
         $self->{portion} = 'org::allbinary::business::installer::Portion'->new($hashMap);
@@ -223,21 +223,22 @@ sub set {
         }
 }
 
-use java::util::HashMap;
-# use javax::servlet::http::HttpServletRequest;
-# use javax::servlet::jsp::PageContext;
-use org::allbinary::business::installer::Portion;
-use org::allbinary::business::user::UserData;
-use org::allbinary::business::user::address::StreetAddress;
-use org::allbinary::data::tables::user::address::billing::BillingAddressesEntityFactory;
-use org::allbinary::data::tables::user::address::shipping::ShippingAddressesEntity;
-use org::allbinary::data::tables::user::address::shipping::ShippingAddressesEntityFactory;
-use org::allbinary::logic::communication::http::request::session::WeblisketSession;
-use org::allbinary::logic::communication::http::request::session::WeblisketSessionData;
-use org::allbinary::logic::communication::log::LogUtil;
-use org::allbinary::logic::communication::sql::AbSqlTableUtil;
-use org::allbinary::logic::string::StringUtil;
-use admin::taghelpers::BasicTable;
+use java::lang::Object ();
+use java::util::HashMap ();
+# use javax::servlet::http::HttpServletRequest ();
+# use javax::servlet::jsp::PageContext ();
+use org::allbinary::business::installer::Portion ();
+use org::allbinary::business::user::UserData ();
+use org::allbinary::business::user::address::StreetAddress ();
+use org::allbinary::data::tables::user::address::billing::BillingAddressesEntityFactory ();
+use org::allbinary::data::tables::user::address::shipping::ShippingAddressesEntity ();
+use org::allbinary::data::tables::user::address::shipping::ShippingAddressesEntityFactory ();
+use org::allbinary::logic::communication::http::request::session::WeblisketSession ();
+use org::allbinary::logic::communication::http::request::session::WeblisketSessionData ();
+use org::allbinary::logic::communication::log::LogUtil ();
+use org::allbinary::logic::communication::sql::AbSqlTableUtil ();
+use org::allbinary::logic::string::StringUtil ();
+use admin::taghelpers::BasicTable ();
 
 1;
 

@@ -30,7 +30,7 @@ sub _init_fields {
 sub new {
     my ($class, $hashMap, $pageContext) = @_;
     my $self = $class->SUPER::new();
-    $self->_init_fields();
+    _init_fields($self);
         $self->{portion} = 'org::allbinary::business::installer::Portion'->new($hashMap);
     return $self;
 }
@@ -109,13 +109,14 @@ sub backup {
         }
 }
 
-use java::util::HashMap;
-# use javax::servlet::jsp::PageContext;
-use org::allbinary::business::installer::Portion;
-use org::allbinary::data::tables::user::commerce::inventory::item::permissions::PermissionItemsEntityFactory;
-use org::allbinary::logic::communication::log::LogUtil;
-use org::allbinary::logic::communication::sql::AbSqlTableUtil;
-use admin::taghelpers::BasicTable;
+use java::lang::Object ();
+use java::util::HashMap ();
+# use javax::servlet::jsp::PageContext ();
+use org::allbinary::business::installer::Portion ();
+use org::allbinary::data::tables::user::commerce::inventory::item::permissions::PermissionItemsEntityFactory ();
+use org::allbinary::logic::communication::log::LogUtil ();
+use org::allbinary::logic::communication::sql::AbSqlTableUtil ();
+use admin::taghelpers::BasicTable ();
 
 1;
 

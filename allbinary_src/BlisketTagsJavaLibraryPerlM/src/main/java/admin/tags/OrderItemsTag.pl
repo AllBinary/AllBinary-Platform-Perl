@@ -30,7 +30,7 @@ sub _init_fields {
 sub new {
     my ($class) = @_;
     my $self = $class->SUPER::new();
-    $self->_init_fields();
+    _init_fields($self);
         $self->setTagHelperFactory('admin::taghelpers::OrderItemsHelperFactory'->new());
         $self->setTagRequestHelperFactory('admin::taghelpers::OrderItemsRequestHelperFactory'->new());
     return $self;
@@ -88,15 +88,16 @@ sub doStartTag {
         }
 }
 
-# use java::lang::reflect::Method;
-# use javax::servlet::jsp::JspTagException;
-use admin::taghelpers::OrderItemsHelperFactory;
-use admin::taghelpers::OrderItemsRequestHelperFactory;
-use org::allbinary::business::user::commerce::inventory::order::OrderHistoryData;
-use org::allbinary::logic::communication::http::request::AbResponseHandler;
-use org::allbinary::logic::communication::log::LogUtil;
-use org::allbinary::logic::system::security::licensing::LicensingException;
-use admin::tags::TableTag;
+use java::lang::Object ();
+# use java::lang::reflect::Method ();
+# use javax::servlet::jsp::JspTagException ();
+use admin::taghelpers::OrderItemsHelperFactory ();
+use admin::taghelpers::OrderItemsRequestHelperFactory ();
+use org::allbinary::business::user::commerce::inventory::order::OrderHistoryData ();
+use org::allbinary::logic::communication::http::request::AbResponseHandler ();
+use org::allbinary::logic::communication::log::LogUtil ();
+use org::allbinary::logic::system::security::licensing::LicensingException ();
+use admin::tags::TableTag ();
 
 1;
 

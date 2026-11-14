@@ -37,10 +37,11 @@ sub getInstanceWeaponLayer {
         return $weaponLayer;
 }
 
-use org::allbinary::game::combat::weapon::WeaponProperties;
-use org::allbinary::game::score::ScoreableInterface;
-use org::allbinary::layer::AllBinaryLayer;
-use org::allbinary::layer::AllBinaryLayerCircularPool;
+use java::lang::Object ();
+use org::allbinary::game::combat::weapon::WeaponProperties ();
+use org::allbinary::game::score::ScoreableInterface ();
+use org::allbinary::layer::AllBinaryLayer ();
+use org::allbinary::layer::AllBinaryLayerCircularPool ();
 
 1;
 

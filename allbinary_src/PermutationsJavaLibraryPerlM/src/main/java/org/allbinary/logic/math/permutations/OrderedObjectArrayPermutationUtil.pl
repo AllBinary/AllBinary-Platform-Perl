@@ -17,8 +17,9 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
-our $instance = 'org::allbinary::logic::math::permutations::OrderedObjectArrayPermutationUtil'->new();
+tie our $instance, 'java::lang::LazyStatic', sub { 'org::allbinary::logic::math::permutations::OrderedObjectArrayPermutationUtil'->new() };
 
 sub _init_fields {
     my ($self) = @_;
@@ -36,7 +37,7 @@ sub getInstance {
 sub new {
     my ($class) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
     return $self;
 }
 
@@ -112,12 +113,14 @@ sub main {
         'org::allbinary::logic::math::permutations::OrderedObjectArrayPermutationUtil'->getInstance()->generate($data, $permutationVisitor);
 }
 
-# use java::util::Arrays;
-use org::allbinary::TsUtil;
-use org::allbinary::logic::util::visitor::Visitor;
-use java::lang::System;
-use org::allbinary::logic::math::permutations::ComparableObject;
-use org::allbinary::logic::math::permutations::ObjectPermutationVisitor;
+use java::lang::Object ();
+use java::lang::LazyStatic ();
+# use java::util::Arrays ();
+use org::allbinary::TsUtil ();
+use org::allbinary::logic::util::visitor::Visitor ();
+use java::lang::System ();
+use org::allbinary::logic::math::permutations::ComparableObject ();
+use org::allbinary::logic::math::permutations::ObjectPermutationVisitor ();
 
 1;
 

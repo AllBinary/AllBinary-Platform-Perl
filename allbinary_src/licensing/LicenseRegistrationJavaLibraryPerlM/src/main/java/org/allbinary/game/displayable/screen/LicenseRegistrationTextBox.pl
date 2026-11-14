@@ -19,8 +19,8 @@ use feature 'try';
 no warnings 'experimental::try';
 use parent -norequire,'org::allbinary::graphics::form::item::CustomTextBox';
 
-our $DISPLAY_COMMAND = 'javax::microedition::lcdui::Command'->new("Register", 'org::allbinary::logic::string::StringUtil'->getInstance()->{EMPTY_STRING}, $javax::microedition::lcdui::Command::SCREEN, 3);
-our $SUBMIT_COMMAND = 'javax::microedition::lcdui::Command'->new("Submit", 'org::allbinary::logic::string::StringUtil'->getInstance()->{EMPTY_STRING}, $javax::microedition::lcdui::Command::SCREEN, 3);
+tie our $DISPLAY_COMMAND, 'java::lang::LazyStatic', sub { 'javax::microedition::lcdui::Command'->new("Register", 'org::allbinary::logic::string::StringUtil'->getInstance()->{EMPTY_STRING}, $javax::microedition::lcdui::Command::SCREEN, 3) };
+tie our $SUBMIT_COMMAND, 'java::lang::LazyStatic', sub { 'javax::microedition::lcdui::Command'->new("Submit", 'org::allbinary::logic::string::StringUtil'->getInstance()->{EMPTY_STRING}, $javax::microedition::lcdui::Command::SCREEN, 3) };
 
 sub _init_fields {
     my ($self) = @_;
@@ -33,7 +33,7 @@ sub _init_fields {
 sub new {
     my ($class, $cmdListener, $backgrounBasicColor, $foregroundBasicColor) = @_;
     my $self = $class->SUPER::new($cmdListener, "Enter Registration Code:", 'org::allbinary::logic::string::StringUtil'->getInstance()->{EMPTY_STRING}, 60, $javax::microedition::lcdui::TextField::ANY, 'javax::microedition::lcdui::Font'->getDefaultFont(), $backgrounBasicColor, $foregroundBasicColor);
-    $self->_init_fields();
+    _init_fields($self);
         # super(...) made $self above
     return $self;
 }
@@ -91,22 +91,24 @@ sub submit {
         $commandListener->commandAction($SUBMIT_COMMAND, $self);
 }
 
-# use javax::microedition::lcdui::Command;
-# use javax::microedition::lcdui::CommandListener;
-# use javax::microedition::lcdui::Font;
-# use javax::microedition::lcdui::Graphics;
-# use javax::microedition::lcdui::TextField;
-use org::allbinary::string::CommonStrings;
-use org::allbinary::logic::string::StringUtil;
-use org::allbinary::logic::communication::log::LogUtil;
-use org::allbinary::game::commands::GameCommandsFactory;
-use org::allbinary::graphics::color::BasicColor;
-use org::allbinary::graphics::color::BasicColorFactory;
-use org::allbinary::graphics::form::item::CustomTextBox;
-use org::allbinary::graphics::paint::NullPaintable;
-use org::allbinary::graphics::paint::Paintable;
-use org::allbinary::graphics::paint::SimpleTextPaintable;
-use org::allbinary::input::event::VirtualKeyboardEventHandler;
+use java::lang::Object ();
+use java::lang::LazyStatic ();
+use javax::microedition::lcdui::Command ();
+use javax::microedition::lcdui::CommandListener ();
+use javax::microedition::lcdui::Font ();
+use javax::microedition::lcdui::Graphics ();
+use javax::microedition::lcdui::TextField ();
+use org::allbinary::string::CommonStrings ();
+use org::allbinary::logic::string::StringUtil ();
+use org::allbinary::logic::communication::log::LogUtil ();
+use org::allbinary::game::commands::GameCommandsFactory ();
+use org::allbinary::graphics::color::BasicColor ();
+use org::allbinary::graphics::color::BasicColorFactory ();
+use org::allbinary::graphics::form::item::CustomTextBox ();
+use org::allbinary::graphics::paint::NullPaintable ();
+use org::allbinary::graphics::paint::Paintable ();
+use org::allbinary::graphics::paint::SimpleTextPaintable ();
+use org::allbinary::input::event::VirtualKeyboardEventHandler ();
 
 1;
 

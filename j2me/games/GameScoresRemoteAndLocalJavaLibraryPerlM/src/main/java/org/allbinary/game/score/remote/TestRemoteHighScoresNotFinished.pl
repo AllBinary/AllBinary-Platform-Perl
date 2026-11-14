@@ -17,6 +17,7 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
 our $PATH = "G:\\mnt\\bc\\mydev\\work\\allbinary_src\\licensing\\data\\";
 
@@ -34,6 +35,7 @@ sub main {
         'org::allbinary::game::score::remote::TestRemoteHighScoresNotFinished'->new();
 }
 
+use java::lang::Object ();
 
 1;
 

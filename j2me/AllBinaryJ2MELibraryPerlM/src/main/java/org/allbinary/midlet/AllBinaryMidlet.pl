@@ -19,7 +19,7 @@ use feature 'try';
 no warnings 'experimental::try';
 use parent -norequire,'javax::microedition::midlet::MIDlet','javax::microedition::lcdui::CommandListener';
 
-our $NULL_ALLBINARY_MIDLET = 'org::allbinary::logic::NullUtil'->getInstance()->{NULL_OBJECT};
+tie our $NULL_ALLBINARY_MIDLET, 'java::lang::LazyStatic', sub { 'org::allbinary::logic::NullUtil'->getInstance()->{NULL_OBJECT} };
 
 sub _init_fields {
     my ($self) = @_;
@@ -46,7 +46,7 @@ sub getNullInstance {
 sub new {
     my ($class) = @_;
     my $self = $class->SUPER::new();
-    $self->_init_fields();
+    _init_fields($self);
         $self->{logUtil}->putF($self->{commonStrings}->{CONSTRUCTOR}, $self, "AllBinaryMidlet::AllBinaryMidlet");
     return $self;
 }
@@ -57,11 +57,7 @@ sub setDisplay {
         my $title = 'org::allbinary::logic::string::StringUtil'->getInstance()->{EMPTY_STRING};
         if ($newDisplay != $javax::microedition::lcdui::NullCanvas::NULL_CANVAS) {
             $title = $newDisplay->getTitle();
-            if (defined($title)) {
-                $self->{logUtil}->putF('org::allbinary::logic::string::StringMaker'->new()->append($self->{SETTING_})->append($title)->append($self->{_DISPLAY_})->append('org::allbinary::logic::string::StringUtil'->getInstance()->toString($newDisplay))->toString(), $self, $self->{SET_DISPLAY});
-            } else {
-                $self->{logUtil}->putF('org::allbinary::logic::string::StringMaker'->new()->append($self->{SETTING_NO_TITLE})->append('org::allbinary::logic::string::StringUtil'->getInstance()->toString($newDisplay))->toString(), $self, $self->{SET_DISPLAY});
-            }
+            $self->{logUtil}->putF('org::allbinary::logic::string::StringMaker'->new()->append($self->{SETTING_})->append($title)->append($self->{_DISPLAY_})->append('org::allbinary::logic::string::StringUtil'->getInstance()->toString($newDisplay))->toString(), $self, $self->{SET_DISPLAY});
         }
         my $display = $self->getDisplay();
         $display->setCurrent($newDisplay);
@@ -151,25 +147,27 @@ sub commandAction {
     my ($self, $command, $displayable) = @_;
 }
 
-# use javax::microedition::lcdui::Command;
-# use javax::microedition::lcdui::CommandListener;
-# use javax::microedition::lcdui::Display;
-# use javax::microedition::lcdui::Displayable;
-# use javax::microedition::lcdui::NullCanvas;
-# use javax::microedition::midlet::MIDlet;
-# use javax::microedition::midlet::MIDletStateChangeException;
-use org::allbinary::logic::StdUtil;
-use org::allbinary::logic::communication::log::ForcedLogUtil;
-use org::allbinary::logic::communication::log::LogUtil;
-use org::allbinary::logic::communication::log::PreLogUtil;
-use org::allbinary::logic::string::StringMaker;
-use org::allbinary::logic::string::StringUtil;
-use org::allbinary::logic::util::event::EventStrings;
-use org::allbinary::string::CommonLabels;
-use org::allbinary::string::CommonStrings;
-use org::allbinary::system::Memory;
-use org::allbinary::logic::NullUtil;
-use org::allbinary::util::ABHashtable;
+use java::lang::Object ();
+use java::lang::LazyStatic ();
+use javax::microedition::lcdui::Command ();
+use javax::microedition::lcdui::CommandListener ();
+use javax::microedition::lcdui::Display ();
+use javax::microedition::lcdui::Displayable ();
+use javax::microedition::lcdui::NullCanvas ();
+use javax::microedition::midlet::MIDlet ();
+use javax::microedition::midlet::MIDletStateChangeException ();
+use org::allbinary::logic::StdUtil ();
+use org::allbinary::logic::communication::log::ForcedLogUtil ();
+use org::allbinary::logic::communication::log::LogUtil ();
+use org::allbinary::logic::communication::log::PreLogUtil ();
+use org::allbinary::logic::string::StringMaker ();
+use org::allbinary::logic::string::StringUtil ();
+use org::allbinary::logic::util::event::EventStrings ();
+use org::allbinary::string::CommonLabels ();
+use org::allbinary::string::CommonStrings ();
+use org::allbinary::system::Memory ();
+use org::allbinary::logic::NullUtil ();
+use org::allbinary::util::ABHashtable ();
 
 1;
 

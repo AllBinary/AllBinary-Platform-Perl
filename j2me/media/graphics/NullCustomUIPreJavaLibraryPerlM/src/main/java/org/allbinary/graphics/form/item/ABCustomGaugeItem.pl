@@ -7,7 +7,7 @@ use feature 'try';
 no warnings 'experimental::try';
 use parent -norequire,'org::allbinary::graphics::form::item::ABCustomItem';
 
-our $NULL_GAUGE_ITEM = 'org::allbinary::graphics::form::item::ABCustomGaugeItem'->new('org::allbinary::logic::string::StringUtil'->getInstance()->{EMPTY_STRING}, 1, 0, 'org::allbinary::graphics::color::BasicColorFactory'->getInstance()->{BLACK}, 'org::allbinary::graphics::color::BasicColorFactory'->getInstance()->{WHITE});
+tie our $NULL_GAUGE_ITEM, 'java::lang::LazyStatic', sub { 'org::allbinary::graphics::form::item::ABCustomGaugeItem'->new('org::allbinary::logic::string::StringUtil'->getInstance()->{EMPTY_STRING}, 1, 0, 'org::allbinary::graphics::color::BasicColorFactory'->getInstance()->{BLACK}, 'org::allbinary::graphics::color::BasicColorFactory'->getInstance()->{WHITE}) };
 
 
 sub new {
@@ -17,10 +17,12 @@ sub new {
     return $self;
 }
 
-use org::allbinary::graphics::color::BasicColor;
-use org::allbinary::graphics::color::BasicColorFactory;
-use org::allbinary::logic::string::StringUtil;
-use org::allbinary::graphics::form::item::ABCustomItem;
+use java::lang::Object ();
+use java::lang::LazyStatic ();
+use org::allbinary::graphics::color::BasicColor ();
+use org::allbinary::graphics::color::BasicColorFactory ();
+use org::allbinary::logic::string::StringUtil ();
+use org::allbinary::graphics::form::item::ABCustomItem ();
 
 1;
 

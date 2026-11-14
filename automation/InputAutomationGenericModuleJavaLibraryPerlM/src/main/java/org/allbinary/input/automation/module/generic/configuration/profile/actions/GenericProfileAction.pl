@@ -17,7 +17,7 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
-use parent -norequire,'org::allbinary::data::tree::dom::DomNodeInterface';
+use parent -norequire,'java::lang::Object','org::allbinary::data::tree::dom::DomNodeInterface';
 
 
 sub _init_fields {
@@ -39,7 +39,7 @@ sub new {
 sub _new2 {
     my ($class, $genericProfileActionJPanel, $node) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
         my $actionNameNode = 'org::allbinary::data::tree::dom::DomSearchHelper'->getNode($org::allbinary::input::automation::module::generic::configuration::profile::actions::GenericProfileActionData::NAME, $node->getChildNodes());
         if (defined($actionNameNode)) {
             $self->{name} = 'org::allbinary::data::tree::dom::DomNodeHelper'->getTextNodeValue($actionNameNode);
@@ -54,7 +54,7 @@ sub _new2 {
 sub _new1 {
     my ($class, $name) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
         $self->{name} = $name;
         $self->setGenericProfileActionScript('org::allbinary::input::automation::module::generic::configuration::profile::actions::script::GenericProfileActionScript'->new($self->{genericProfileActionJPanel}));
     return $self;
@@ -102,17 +102,18 @@ sub setGenericProfileActionScript {
         $self->{genericProfileActionScript} = $genericProfileActionScript;
 }
 
-use java::util::HashMap;
-use org::allbinary::data::tree::dom::DomNodeHelper;
-use org::allbinary::data::tree::dom::DomNodeInterface;
-use org::allbinary::data::tree::dom::DomSearchHelper;
-use org::allbinary::data::tree::dom::ModDomHelper;
-use org::allbinary::input::automation::module::generic::configuration::profile::actions::script::GenericProfileActionScript;
-use org::allbinary::logic::StdUtil;
-use org::allbinary::logic::communication::log::LogUtil;
-use org::w3c::dom::Document;
-use org::w3c::dom::Node;
-use org::allbinary::input::automation::module::generic::configuration::profile::actions::GenericProfileActionData;
+use java::lang::Object ();
+use java::util::HashMap ();
+use org::allbinary::data::tree::dom::DomNodeHelper ();
+use org::allbinary::data::tree::dom::DomNodeInterface ();
+use org::allbinary::data::tree::dom::DomSearchHelper ();
+use org::allbinary::data::tree::dom::ModDomHelper ();
+use org::allbinary::input::automation::module::generic::configuration::profile::actions::script::GenericProfileActionScript ();
+use org::allbinary::logic::StdUtil ();
+use org::allbinary::logic::communication::log::LogUtil ();
+use org::w3c::dom::Document ();
+use org::w3c::dom::Node ();
+use org::allbinary::input::automation::module::generic::configuration::profile::actions::GenericProfileActionData ();
 
 1;
 

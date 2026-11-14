@@ -34,7 +34,7 @@ sub _init_fields {
 sub new {
     my ($class) = @_;
     my $self = $class->SUPER::new();
-    $self->_init_fields();
+    _init_fields($self);
         $self->{timeDelayHelper} = 'org::allbinary::time::TimeDelayHelper'->new(10000);
     return $self;
 }
@@ -110,25 +110,26 @@ sub drop {
         die ('org::allbinary::string::CommonStrings'->getInstance()->{NOT_IMPLEMENTED});
 }
 
-use org::allbinary::util::BasicArrayList;
-use org::allbinary::util::BasicArrayListD;
-use org::allbinary::util::BasicArrayListUtil;
-use org::allbinary::string::CommonStrings;
-use org::allbinary::game::layer::AllBinaryGameLayerManager;
-use org::allbinary::layer::AllBinaryLayerManager;
-use org::allbinary::media::graphics::geography::map::BasicGeographicMap;
-use org::allbinary::media::graphics::geography::map::GeographicMapCellHistory;
-use org::allbinary::media::graphics::geography::map::GeographicMapCellPosition;
-use org::allbinary::media::graphics::geography::map::GeographicMapCellTypeFactory;
-use org::allbinary::media::graphics::geography::map::drop::BaseDropCellPositionGenerator;
-use org::allbinary::media::graphics::geography::map::racetrack::BaseRaceTrackGeographicMap;
-use org::allbinary::media::graphics::geography::map::racetrack::NullRaceTrackGeographicMap;
-use org::allbinary::media::graphics::geography::map::racetrack::RaceTrackGeographicMapCellType;
-use org::allbinary::media::graphics::geography::map::racetrack::RaceTrackGeographicMapCellTypeFactory;
-use org::allbinary::media::graphics::geography::map::racetrack::RaceTrackGeographicMapInterface;
-use org::allbinary::media::graphics::geography::map::racetrack::RaceTrackRoadsGeographicMapCellHistoryFactory;
-use org::allbinary::time::GameTickTimeDelayHelperFactory;
-use org::allbinary::time::TimeDelayHelper;
+use java::lang::Object ();
+use org::allbinary::util::BasicArrayList ();
+use org::allbinary::util::BasicArrayListD ();
+use org::allbinary::util::BasicArrayListUtil ();
+use org::allbinary::string::CommonStrings ();
+use org::allbinary::game::layer::AllBinaryGameLayerManager ();
+use org::allbinary::layer::AllBinaryLayerManager ();
+use org::allbinary::media::graphics::geography::map::BasicGeographicMap ();
+use org::allbinary::media::graphics::geography::map::GeographicMapCellHistory ();
+use org::allbinary::media::graphics::geography::map::GeographicMapCellPosition ();
+use org::allbinary::media::graphics::geography::map::GeographicMapCellTypeFactory ();
+use org::allbinary::media::graphics::geography::map::drop::BaseDropCellPositionGenerator ();
+use org::allbinary::media::graphics::geography::map::racetrack::BaseRaceTrackGeographicMap ();
+use org::allbinary::media::graphics::geography::map::racetrack::NullRaceTrackGeographicMap ();
+use org::allbinary::media::graphics::geography::map::racetrack::RaceTrackGeographicMapCellType ();
+use org::allbinary::media::graphics::geography::map::racetrack::RaceTrackGeographicMapCellTypeFactory ();
+use org::allbinary::media::graphics::geography::map::racetrack::RaceTrackGeographicMapInterface ();
+use org::allbinary::media::graphics::geography::map::racetrack::RaceTrackRoadsGeographicMapCellHistoryFactory ();
+use org::allbinary::time::GameTickTimeDelayHelperFactory ();
+use org::allbinary::time::TimeDelayHelper ();
 
 1;
 

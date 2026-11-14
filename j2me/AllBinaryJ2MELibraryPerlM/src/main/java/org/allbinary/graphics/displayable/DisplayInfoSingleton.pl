@@ -18,8 +18,9 @@ use warnings;
 use feature 'try';
 no warnings 'experimental::try';
 use POSIX ();
+use parent -norequire,'java::lang::Object';
 
-our $SINGLETON = 'org::allbinary::graphics::displayable::DisplayInfoSingleton'->new();
+tie our $SINGLETON, 'java::lang::LazyStatic', sub { 'org::allbinary::graphics::displayable::DisplayInfoSingleton'->new() };
 
 sub _init_fields {
     my ($self) = @_;
@@ -73,7 +74,7 @@ sub getInstance {
 sub new {
     my ($class) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
         my $size = scalar(@{$self->{last}});
         for (my $index = 0; $index < $size; $index++) {
             $self->{last}->[$index] = 0;
@@ -455,25 +456,27 @@ sub getyOffset {
         return $self->{yOffset};
 }
 
-# use javax::microedition::lcdui::Displayable;
-use org::allbinary::AndroidUtil;
-use org::allbinary::game::configuration::feature::Features;
-use org::allbinary::graphics::displayable::event::DisplayChangeEvent;
-use org::allbinary::graphics::displayable::event::DisplayChangeEventHandler;
-use org::allbinary::graphics::displayable::event::LastDisplayChangeEventHandler;
-use org::allbinary::graphics::opengles::OpenGLFeatureFactory;
-use org::allbinary::graphics::threed::SWTJOGLProcessor;
-use org::allbinary::logic::communication::log::LogUtil;
-use org::allbinary::logic::communication::log::PreLogUtil;
-use org::allbinary::logic::string::StringMaker;
-use org::allbinary::logic::system::os::GenericOperatingSystem;
-use org::allbinary::logic::system::os::OperatingSystemFactory;
-use org::allbinary::string::CommonLabels;
-use org::allbinary::string::CommonSeps;
-use org::allbinary::string::CommonStrings;
-use org::allbinary::util::BasicArrayList;
-use org::allbinary::util::BasicArrayListD;
-use org::allbinary::graphics::displayable::BaseScalable;
+use java::lang::Object ();
+use java::lang::LazyStatic ();
+use javax::microedition::lcdui::Displayable ();
+use org::allbinary::AndroidUtil ();
+use org::allbinary::game::configuration::feature::Features ();
+use org::allbinary::graphics::displayable::event::DisplayChangeEvent ();
+use org::allbinary::graphics::displayable::event::DisplayChangeEventHandler ();
+use org::allbinary::graphics::displayable::event::LastDisplayChangeEventHandler ();
+use org::allbinary::graphics::opengles::OpenGLFeatureFactory ();
+use org::allbinary::graphics::threed::SWTJOGLProcessor ();
+use org::allbinary::logic::communication::log::LogUtil ();
+use org::allbinary::logic::communication::log::PreLogUtil ();
+use org::allbinary::logic::string::StringMaker ();
+use org::allbinary::logic::system::os::GenericOperatingSystem ();
+use org::allbinary::logic::system::os::OperatingSystemFactory ();
+use org::allbinary::string::CommonLabels ();
+use org::allbinary::string::CommonSeps ();
+use org::allbinary::string::CommonStrings ();
+use org::allbinary::util::BasicArrayList ();
+use org::allbinary::util::BasicArrayListD ();
+use org::allbinary::graphics::displayable::BaseScalable ();
 
 1;
 

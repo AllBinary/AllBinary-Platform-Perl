@@ -17,6 +17,7 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
 
 sub _init_fields {
@@ -29,7 +30,7 @@ sub _init_fields {
 sub new {
     my ($class, $visitorInterface) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
         $self->{visitorInterface} = $visitorInterface;
     return $self;
 }
@@ -66,17 +67,18 @@ sub getInstance {
         return $textItemArray;
 }
 
-# use javax::microedition::lcdui::Command;
-# use javax::microedition::lcdui::ImageItem;
-use org::allbinary::graphics::color::BasicColor;
-use org::allbinary::graphics::displayable::DisplayInfoSingleton;
-use org::allbinary::graphics::form::ScreenInfo;
-use org::allbinary::logic::VectorUtil;
-use org::allbinary::logic::string::StringUtil;
-use org::allbinary::logic::util::visitor::Visitor;
-use org::allbinary::util::BasicArrayList;
-use org::allbinary::util::BasicArrayListD;
-use org::allbinary::graphics::form::item::CommandTextItem;
+use java::lang::Object ();
+use javax::microedition::lcdui::Command ();
+use javax::microedition::lcdui::ImageItem ();
+use org::allbinary::graphics::color::BasicColor ();
+use org::allbinary::graphics::displayable::DisplayInfoSingleton ();
+use org::allbinary::graphics::form::ScreenInfo ();
+use org::allbinary::logic::VectorUtil ();
+use org::allbinary::logic::string::StringUtil ();
+use org::allbinary::logic::util::visitor::Visitor ();
+use org::allbinary::util::BasicArrayList ();
+use org::allbinary::util::BasicArrayListD ();
+use org::allbinary::graphics::form::item::CommandTextItem ();
 
 1;
 

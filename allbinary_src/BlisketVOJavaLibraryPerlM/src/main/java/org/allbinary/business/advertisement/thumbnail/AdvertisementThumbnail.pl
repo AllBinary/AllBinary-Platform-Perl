@@ -17,7 +17,7 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
-use parent -norequire,'org::allbinary::business::advertisement::thumbnail::AdvertisementThumbnailInterface';
+use parent -norequire,'java::lang::Object','org::allbinary::business::advertisement::thumbnail::AdvertisementThumbnailInterface';
 
 
 sub _init_fields {
@@ -31,7 +31,7 @@ sub _init_fields {
 sub new {
     my ($class) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
     return $self;
 }
 
@@ -53,8 +53,9 @@ sub getTwoDimensionalConstraint {
         return $self->{constraint};
 }
 
-use org::allbinary::logic::control::contraints::size::TwoDimensionalConstraintInterface;
-use org::allbinary::business::advertisement::thumbnail::AdvertisementThumbnailInterface;
+use java::lang::Object ();
+use org::allbinary::logic::control::contraints::size::TwoDimensionalConstraintInterface ();
+use org::allbinary::business::advertisement::thumbnail::AdvertisementThumbnailInterface ();
 
 1;
 

@@ -17,10 +17,11 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
-our $NONE = 'org::allbinary::game::GameMode'->new('org::allbinary::logic::string::StringUtil'->getInstance()->{NULL_STRING});
-our $SERVER = 'org::allbinary::game::GameMode'->new("Server");
-our $CLIENT = 'org::allbinary::game::GameMode'->new("Client");
+tie our $NONE, 'java::lang::LazyStatic', sub { 'org::allbinary::game::GameMode'->new('org::allbinary::logic::string::StringUtil'->getInstance()->{NULL_STRING}) };
+tie our $SERVER, 'java::lang::LazyStatic', sub { 'org::allbinary::game::GameMode'->new("Server") };
+tie our $CLIENT, 'java::lang::LazyStatic', sub { 'org::allbinary::game::GameMode'->new("Client") };
 
 sub _init_fields {
     my ($self) = @_;
@@ -31,7 +32,7 @@ sub _init_fields {
 sub new {
     my ($class, $name) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
         $self->setName($name);
     return $self;
 }
@@ -54,7 +55,9 @@ sub toString {
         return $self->getName();
 }
 
-use org::allbinary::logic::string::StringUtil;
+use java::lang::Object ();
+use java::lang::LazyStatic ();
+use org::allbinary::logic::string::StringUtil ();
 
 1;
 

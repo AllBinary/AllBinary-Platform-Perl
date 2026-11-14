@@ -31,7 +31,7 @@ sub _init_fields {
 sub new {
     my ($class) = @_;
     my $self = $class->SUPER::new();
-    $self->_init_fields();
+    _init_fields($self);
     return $self;
 }
 
@@ -47,8 +47,9 @@ sub translate2 {
         $openGLESImage->{imageProcessor}->translate($gl, $self->{translateX2}, $self->{translateY2});
 }
 
-# use javax::microedition::khronos::opengles::GL10;
-use org::allbinary::image::opengles::OpenGLESImageTranslate;
+use java::lang::Object ();
+use javax::microedition::khronos::opengles::GL10 ();
+use org::allbinary::image::opengles::OpenGLESImageTranslate ();
 
 1;
 

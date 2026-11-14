@@ -19,7 +19,7 @@ use feature 'try';
 no warnings 'experimental::try';
 use parent -norequire,'org::allbinary::game::input::motion::action::GameKeyCompleteMotionGestureInputEvent';
 
-our $instance = 'org::allbinary::logic::NullUtil'->getInstance()->{NULL_OBJECT};
+tie our $instance, 'java::lang::LazyStatic', sub { 'org::allbinary::logic::NullUtil'->getInstance()->{NULL_OBJECT} };
 
 sub _init_fields {
     my ($self) = @_;
@@ -39,7 +39,7 @@ sub getInstance {
 sub new {
     my ($class) = @_;
     my $self = $class->SUPER::new("Release Action", 'org::allbinary::input::motion::gesture::TouchMotionGestureFactory'->getInstance()->{RELEASED}, 'org::allbinary::game::input::PlatformInputMappingFactory'->getInstance()->getPersistentInputMappingInstance()->getInputMapping());
-    $self->_init_fields();
+    _init_fields($self);
         # super(...) made $self above
         try {
             $self->setGameKey($self->{NONE});
@@ -56,14 +56,16 @@ sub update {
     my ($self) = @_;
 }
 
-use org::allbinary::game::input::GameKey;
-use org::allbinary::game::input::GameKeyFactory;
-use org::allbinary::game::input::PlatformInputMappingFactory;
-use org::allbinary::game::input::event::GameKeyEventFactory;
-use org::allbinary::game::input::motion::action::GameKeyCompleteMotionGestureInputEvent;
-use org::allbinary::input::motion::gesture::TouchMotionGestureFactory;
-use org::allbinary::logic::NullUtil;
-use org::allbinary::string::CommonStrings;
+use java::lang::Object ();
+use java::lang::LazyStatic ();
+use org::allbinary::game::input::GameKey ();
+use org::allbinary::game::input::GameKeyFactory ();
+use org::allbinary::game::input::PlatformInputMappingFactory ();
+use org::allbinary::game::input::event::GameKeyEventFactory ();
+use org::allbinary::game::input::motion::action::GameKeyCompleteMotionGestureInputEvent ();
+use org::allbinary::input::motion::gesture::TouchMotionGestureFactory ();
+use org::allbinary::logic::NullUtil ();
+use org::allbinary::string::CommonStrings ();
 
 1;
 

@@ -32,7 +32,7 @@ sub _init_fields {
 sub new {
     my ($class, $mainDemoStatePaintable, $ownershipPaintable, $helpPaintableInterface) = @_;
     my $self = $class->SUPER::new();
-    $self->_init_fields();
+    _init_fields($self);
         $self->{mainDemoStatePaintable} = $mainDemoStatePaintable;
         $self->setCurrentStatePaintable('org::allbinary::graphics::paint::NullPaintable'->getInstance());
         $self->{ownershipPaintable} = $ownershipPaintable;
@@ -82,10 +82,11 @@ sub getMainDemoStatePaintable {
         return $self->{mainDemoStatePaintable};
 }
 
-# use javax::microedition::lcdui::Graphics;
-use org::allbinary::graphics::paint::NullPaintable;
-use org::allbinary::graphics::paint::Paintable;
-use org::allbinary::graphics::paint::StatePaintable;
+use java::lang::Object ();
+use javax::microedition::lcdui::Graphics ();
+use org::allbinary::graphics::paint::NullPaintable ();
+use org::allbinary::graphics::paint::Paintable ();
+use org::allbinary::graphics::paint::StatePaintable ();
 
 1;
 

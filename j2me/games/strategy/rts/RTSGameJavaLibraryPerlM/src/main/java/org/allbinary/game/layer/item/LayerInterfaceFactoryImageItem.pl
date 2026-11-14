@@ -30,7 +30,7 @@ sub _init_fields {
 sub new {
     my ($class, $label, $img, $layout, $altText, $basicColor, $animationArray, $layerInterfaceFactoryInterface) = @_;
     my $self = $class->SUPER::new($label, $img, $layout, $altText, $basicColor, 0);
-    $self->_init_fields();
+    _init_fields($self);
         # super(...) made $self above
         $self->{animationArray} = $animationArray;
         $self->{layerInterfaceFactoryInterface} = $layerInterfaceFactoryInterface;
@@ -52,12 +52,13 @@ sub paintXY {
         }
 }
 
-# use javax::microedition::lcdui::Graphics;
-# use javax::microedition::lcdui::Image;
-use org::allbinary::graphics::form::item::ABCustomImageItem;
-use org::allbinary::animation::Animation;
-use org::allbinary::graphics::color::BasicColor;
-use org::allbinary::layer::LayerInterfaceFactoryInterface;
+use java::lang::Object ();
+use javax::microedition::lcdui::Graphics ();
+use javax::microedition::lcdui::Image ();
+use org::allbinary::graphics::form::item::ABCustomImageItem ();
+use org::allbinary::animation::Animation ();
+use org::allbinary::graphics::color::BasicColor ();
+use org::allbinary::layer::LayerInterfaceFactoryInterface ();
 
 1;
 

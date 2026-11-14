@@ -12,13 +12,15 @@
 #   
 # Generated Code Do Not Modify
 
+#Used to correct user input for paths
 package org::allbinary::logic::io::path::AbPathData;
 use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
-our $instance = 'org::allbinary::logic::io::path::AbPathData'->new();
+tie our $instance, 'java::lang::LazyStatic', sub { 'org::allbinary::logic::io::path::AbPathData'->new() };
 
 sub _init_fields {
     my ($self) = @_;
@@ -37,7 +39,7 @@ sub getInstance {
 sub new {
     my ($class) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
     return $self;
 }
 
@@ -114,9 +116,12 @@ sub removeNameFromPath {
         }
 }
 
-use org::allbinary::logic::io::file::FilePathData;
-use org::allbinary::logic::string::StringUtil;
-use org::allbinary::string::CommonSeps;
+use java::lang::Object ();
+use java::lang::LazyStatic ();
+# use jsinterop::annotations::JsType ();
+use org::allbinary::logic::io::file::FilePathData ();
+use org::allbinary::logic::string::StringUtil ();
+use org::allbinary::string::CommonSeps ();
 
 1;
 

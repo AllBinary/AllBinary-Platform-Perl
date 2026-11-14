@@ -17,7 +17,7 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
-use parent -norequire,'javax::swing::JPanel';
+use parent -norequire,'java::lang::Object';
 
 
 sub _init_fields {
@@ -33,7 +33,7 @@ sub _init_fields {
 sub new {
     my ($class, $bufferedImage) = @_;
     my $self = $class->SUPER::new();
-    $self->_init_fields();
+    _init_fields($self);
         $self->initComponents();
         $self->{bufferedImage} = $bufferedImage;
         $self->setSize($self->{bufferedImage}->getWidth(undef), $self->{bufferedImage}->getHeight(undef));
@@ -59,11 +59,12 @@ sub initComponents {
         $layout->setVerticalGroup($layout->createParallelGroup($org::allbinary::image::gui::javax::swing->{GroupLayout}->{Alignment}->{LEADING})->addGap(0, 300, 32767));
 }
 
-# use java::awt;
-# use java::awt::image::BufferedImage;
-use org::allbinary::graphics::displayable::CanvasStrings;
-use org::allbinary::logic::communication::log::LogUtil;
-use org::allbinary::string::CommonStrings;
+use java::lang::Object ();
+# use java::awt ();
+# use java::awt::image::BufferedImage ();
+use org::allbinary::graphics::displayable::CanvasStrings ();
+use org::allbinary::logic::communication::log::LogUtil ();
+use org::allbinary::string::CommonStrings ();
 
 1;
 

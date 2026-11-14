@@ -17,7 +17,7 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
-use parent -norequire,'admin::taghelpers::TagHelperFactoryInterface';
+use parent -norequire,'java::lang::Object','admin::taghelpers::TagHelperFactoryInterface';
 
 our $CLASSNAME = "taghelpers.ValidationViewHelper";
 our $FACTORYNAME = "taghelpers.ValidationViewHelperFactory";
@@ -36,11 +36,12 @@ sub getInstance {
         return 'admin::taghelpers::HelperFactory'->getInstance($FACTORYNAME, $CLASSNAME, $hashMap, $pageContext);
 }
 
-use java::util::HashMap;
-# use javax::servlet::jsp::PageContext;
-use admin::taghelpers::HelperFactory;
-use org::allbinary::logic::system::security::licensing::LicensingException;
-use admin::taghelpers::TagHelperFactoryInterface;
+use java::lang::Object ();
+use java::util::HashMap ();
+# use javax::servlet::jsp::PageContext ();
+use admin::taghelpers::HelperFactory ();
+use org::allbinary::logic::system::security::licensing::LicensingException ();
+use admin::taghelpers::TagHelperFactoryInterface ();
 
 1;
 

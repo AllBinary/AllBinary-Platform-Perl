@@ -17,7 +17,7 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
-use parent -norequire,'org::allbinary::business::user::commerce::money::payment::gateway::transaction::TransactionResultInterface';
+use parent -norequire,'java::lang::Object','org::allbinary::business::user::commerce::money::payment::gateway::transaction::TransactionResultInterface';
 
 
 sub _init_fields {
@@ -39,7 +39,7 @@ sub new {
 sub _new1 {
     my ($class, $result) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
         try {
             $self->{result} = $result;
             my $tokenizer = 'org::allbinary::logic::string::tokens::Tokenizer'->new('org::allbinary::string::CommonSeps'->getInstance()->{AMPERSAND});
@@ -58,7 +58,7 @@ sub _new1 {
 sub _new1 {
     my ($class, $keyValuePairs) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
         $keyValuePairs = $keyValuePairs;
         $self->{result} = "Needs to have the hashmap converted to string for other constructor";
     return $self;
@@ -250,17 +250,18 @@ sub getReason3 {
         return $self->{keyValuePairs}->get('org::allbinary::business::user::commerce::money::payment::gateway::transaction::PaymentTransactionKeysFactory'->getInstance()->{REASON3}->toString());
 }
 
-use java::util::HashMap;
-use org::allbinary::logic::communication::log::LogUtil;
-use org::allbinary::logic::string::StringUtil;
-use org::allbinary::logic::string::tokens::Tokenizer;
-use org::allbinary::string::CommonSeps;
-use org::allbinary::string::CommonStrings;
-use org::allbinary::util::ABHashtable;
-use org::allbinary::util::BasicArrayList;
-use org::allbinary::util::BasicArrayListD;
-use org::allbinary::business::user::commerce::money::payment::gateway::transaction::TransactionResultInterface;
-use org::allbinary::business::user::commerce::money::payment::gateway::transaction::PaymentTransactionKeysFactory;
+use java::lang::Object ();
+use java::util::HashMap ();
+use org::allbinary::logic::communication::log::LogUtil ();
+use org::allbinary::logic::string::StringUtil ();
+use org::allbinary::logic::string::tokens::Tokenizer ();
+use org::allbinary::string::CommonSeps ();
+use org::allbinary::string::CommonStrings ();
+use org::allbinary::util::ABHashtable ();
+use org::allbinary::util::BasicArrayList ();
+use org::allbinary::util::BasicArrayListD ();
+use org::allbinary::business::user::commerce::money::payment::gateway::transaction::TransactionResultInterface ();
+use org::allbinary::business::user::commerce::money::payment::gateway::transaction::PaymentTransactionKeysFactory ();
 
 1;
 

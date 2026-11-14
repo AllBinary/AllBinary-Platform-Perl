@@ -28,10 +28,11 @@ sub new {
     return $self;
 }
 
-use org::osgi::framework::BundleContext;
-use bundle::input::automation::robot::InputAutomationRobotServiceInterface;
-use org::allbinary::osgi::service::InputAutomationServiceConsumer;
-use org::allbinary::input::automation::robot::osgi::InputAutomationRobotOSGIServiceVisitor;
+use java::lang::Object ();
+use org::osgi::framework::BundleContext ();
+use bundle::input::automation::robot::InputAutomationRobotServiceInterface ();
+use org::allbinary::osgi::service::InputAutomationServiceConsumer ();
+use org::allbinary::input::automation::robot::osgi::InputAutomationRobotOSGIServiceVisitor ();
 
 1;
 

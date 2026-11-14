@@ -19,7 +19,7 @@ use feature 'try';
 no warnings 'experimental::try';
 use parent -norequire,'org::allbinary::time::TimeDelayHelper';
 
-our $SINGLETON = 'org::allbinary::time::NoTimeDelayHelper'->new();
+tie our $SINGLETON, 'java::lang::LazyStatic', sub { 'org::allbinary::time::NoTimeDelayHelper'->new() };
 
 
 sub new {
@@ -53,7 +53,9 @@ sub isTimeSince {
         return 1;
 }
 
-use org::allbinary::time::TimeDelayHelper;
+use java::lang::Object ();
+use java::lang::LazyStatic ();
+use org::allbinary::time::TimeDelayHelper ();
 
 1;
 

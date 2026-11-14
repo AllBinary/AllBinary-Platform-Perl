@@ -37,8 +37,7 @@ sub _init_fields {
     $self->{paintable} = $self->{GAUGE_PAINTABLE};
     $self->{inProgress} = 0;
     $self->{IN_GAME_PROCESSOR} = do {
-        package org::allbinary::canvas::Processor::AnonymousN67079 { our @ISA = ('org::allbinary::canvas::Processor');
-        $self->{pathFindingThreadPool} = 'org::allbinary::thread::PathFindingThreadPool'->getInstance();
+        package org::allbinary::canvas::Processor::AnonymousN66866 { our @ISA = ('org::allbinary::canvas::Processor', 'java::lang::Object');
         
 
         # throws Exception
@@ -46,8 +45,12 @@ sub _init_fields {
             my ($self) = @_;
             $self->{pathFindingThreadPool}->runAPriorityTask();
         }
+        sub _init_anonymous_fields {
+            my ($self) = @_;
+            $self->{pathFindingThreadPool} = 'org::allbinary::thread::PathFindingThreadPool'->getInstance();
         }
-        'org::allbinary::canvas::Processor::AnonymousN67079'->can('new') ? 'org::allbinary::canvas::Processor::AnonymousN67079'->new() : bless({}, 'org::allbinary::canvas::Processor::AnonymousN67079')
+        }
+        my $anonymous = 'org::allbinary::canvas::Processor::AnonymousN66866'->can('new') ? 'org::allbinary::canvas::Processor::AnonymousN66866'->new() : bless({}, 'org::allbinary::canvas::Processor::AnonymousN66866'); $anonymous->_init_anonymous_fields(); $anonymous
     };
     $self->{inGameProcessor} = 'org::allbinary::canvas::Processor'->getInstance();
     $self->{progressEndListener} = $org::allbinary::graphics::canvas::transition::progress::ProgressEndListener::instance;
@@ -61,7 +64,7 @@ sub _init_fields {
 sub new {
     my ($class, $title, $backgroundBasicColor, $foregroundBasicColor) = @_;
     my $self = $class->SUPER::new($javax::microedition::lcdui::NullCommandListener::NULL_COMMAND_LISTENER, 'org::allbinary::graphics::displayable::CanvasStrings'->getInstance()->{EMPTY_CHILD_NAME_LIST}, 0);
-    $self->_init_fields();
+    _init_fields($self);
         # super(...) made $self above
         $self->{backgroundBasicColor} = $backgroundBasicColor;
         $self->{gauge} = 'org::allbinary::graphics::form::item::ABCustomGaugeItem'->new('org::allbinary::logic::string::StringUtil'->getInstance()->{EMPTY_STRING}, int($self->{maxValue}), 0, $backgroundBasicColor, $foregroundBasicColor);
@@ -254,62 +257,34 @@ sub isBackground {
     my ($self) = @_;
         return $self->{background};
 }
-{
-    package org::allbinary::graphics::canvas::transition::progress::ProgressPaintable;
-    use strict;
-    use warnings;
-    use feature 'try';
-    no warnings 'experimental::try';
-    use parent -norequire,'org::allbinary::graphics::paint::Paintable';
-    
 
-    sub _init_fields {
-        my ($self) = @_;
-        $self->{progressCanvas} = undef;
-    }
-    
-
-    sub new {
-        my ($class, $progressCanvas) = @_;
-        my $self = $class->SUPER::new();
-        $self->_init_fields();
-            $self->{progressCanvas} = $progressCanvas;
-        return $self;
-    }
-    
-
-    sub paint {
-        my ($self, $graphics) = @_;
-            $self->{progressCanvas}->paint2($graphics);
-    }
-    }
-
-
-# use javax::microedition::lcdui::CommandListener;
-# use javax::microedition::lcdui::Font;
-# use javax::microedition::lcdui::Graphics;
-# use javax::microedition::lcdui::NullCanvas;
-# use javax::microedition::lcdui::NullCommandListener;
-use org::allbinary::canvas::Processor;
-use org::allbinary::canvas::RunnableCanvas;
-use org::allbinary::game::commands::GameCommandsFactory;
-use org::allbinary::graphics::color::BasicColor;
-use org::allbinary::graphics::displayable::CanvasStrings;
-use org::allbinary::graphics::font::MyFontProcessor;
-use org::allbinary::graphics::font::UpdateMyFontInterface;
-use org::allbinary::graphics::font::UpdateMyFontProcessor;
-use org::allbinary::graphics::form::item::ABCustomGaugeItem;
-use org::allbinary::graphics::paint::NullPaintable;
-use org::allbinary::graphics::paint::Paintable;
-use org::allbinary::graphics::paint::PaintableInterface;
-use org::allbinary::logic::communication::log::PreLogUtil;
-use org::allbinary::logic::math::SmallIntegerSingletonFactory;
-use org::allbinary::logic::string::StringMaker;
-use org::allbinary::logic::string::StringUtil;
-use org::allbinary::midlet::AllBinaryMidlet;
-use org::allbinary::thread::PathFindingThreadPool;
-use org::allbinary::thread::ThreadPool;
-use org::allbinary::graphics::canvas::transition::progress::ProgressEndListener;
+use java::lang::Object ();
+use javax::microedition::lcdui::CommandListener ();
+use javax::microedition::lcdui::Font ();
+use javax::microedition::lcdui::Graphics ();
+use javax::microedition::lcdui::NullCanvas ();
+use javax::microedition::lcdui::NullCommandListener ();
+use org::allbinary::canvas::Processor ();
+use org::allbinary::canvas::RunnableCanvas ();
+use org::allbinary::game::commands::GameCommandsFactory ();
+use org::allbinary::graphics::color::BasicColor ();
+use org::allbinary::graphics::displayable::CanvasStrings ();
+use org::allbinary::graphics::font::MyFontProcessor ();
+use org::allbinary::graphics::font::UpdateMyFontInterface ();
+use org::allbinary::graphics::font::UpdateMyFontProcessor ();
+use org::allbinary::graphics::form::item::ABCustomGaugeItem ();
+use org::allbinary::graphics::paint::NullPaintable ();
+use org::allbinary::graphics::paint::Paintable ();
+use org::allbinary::graphics::paint::PaintableInterface ();
+use org::allbinary::logic::communication::log::PreLogUtil ();
+use org::allbinary::logic::math::SmallIntegerSingletonFactory ();
+use org::allbinary::logic::string::StringMaker ();
+use org::allbinary::logic::string::StringUtil ();
+use org::allbinary::midlet::AllBinaryMidlet ();
+use org::allbinary::thread::PathFindingThreadPool ();
+use org::allbinary::thread::ThreadPool ();
+use org::allbinary::graphics::canvas::transition::progress::ProgressPaintable ();
+use org::allbinary::graphics::canvas::transition::progress::ProgressEndListener ();
 
 1;
 

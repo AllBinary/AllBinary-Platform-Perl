@@ -19,7 +19,7 @@ use feature 'try';
 no warnings 'experimental::try';
 use parent -norequire,'org::allbinary::input::automation::module::AbstractInputAutomationFactory';
 
-our $NAME = "Generic" . $org::allbinary::input::automation::module::InputAutomationModuleData::MODULE_NAME_END;
+tie our $NAME, 'java::lang::LazyStatic', sub { "Generic" . $org::allbinary::input::automation::module::InputAutomationModuleData::MODULE_NAME_END };
 
 
 sub new {
@@ -38,16 +38,18 @@ sub getInstance {
         return 'org::allbinary::input::automation::module::generic::GenericInputAutomationWorker'->new($inputAutomationActionInterface, $genericProfile, 'org::allbinary::input::automation::module::generic::constraints::NoMotionRectangleConstraints'->new(), 'org::allbinary::input::automation::module::generic::constraints::NoImageComparatorConstraints'->new());
 }
 
-use org::allbinary::input::automation::module::AbstractInputAutomationFactory;
-use org::allbinary::input::automation::module::InputAutomationActionInterface;
-use org::allbinary::input::automation::module::InputAutomationModuleData;
-use org::allbinary::input::automation::module::generic::configuration::GenericModuleConfigurationJPanel;
-use org::allbinary::input::automation::module::generic::configuration::profile::GenericProfile;
-use org::allbinary::input::automation::module::generic::constraints::NoImageComparatorConstraints;
-use org::allbinary::input::automation::module::generic::constraints::NoMotionRectangleConstraints;
-use org::allbinary::thread::RunnableInterface;
-use org::allbinary::input::automation::module::generic::GenericInputAutomationAction;
-use org::allbinary::input::automation::module::generic::GenericInputAutomationWorker;
+use java::lang::Object ();
+use java::lang::LazyStatic ();
+use org::allbinary::input::automation::module::AbstractInputAutomationFactory ();
+use org::allbinary::input::automation::module::InputAutomationActionInterface ();
+use org::allbinary::input::automation::module::InputAutomationModuleData ();
+use org::allbinary::input::automation::module::generic::configuration::GenericModuleConfigurationJPanel ();
+use org::allbinary::input::automation::module::generic::configuration::profile::GenericProfile ();
+use org::allbinary::input::automation::module::generic::constraints::NoImageComparatorConstraints ();
+use org::allbinary::input::automation::module::generic::constraints::NoMotionRectangleConstraints ();
+use org::allbinary::thread::RunnableInterface ();
+use org::allbinary::input::automation::module::generic::GenericInputAutomationAction ();
+use org::allbinary::input::automation::module::generic::GenericInputAutomationWorker ();
 
 1;
 

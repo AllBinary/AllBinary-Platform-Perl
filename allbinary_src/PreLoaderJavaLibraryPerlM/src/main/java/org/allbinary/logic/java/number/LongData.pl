@@ -17,8 +17,9 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
-our $MAX_LONG_LENGTH = length(9223372036854775807->toString());
+tie our $MAX_LONG_LENGTH, 'java::lang::LazyStatic', sub { length(9223372036854775807->toString()) };
 
 
 sub new {
@@ -27,6 +28,8 @@ sub new {
     return $self;
 }
 
+use java::lang::Object ();
+use java::lang::LazyStatic ();
 
 1;
 

@@ -19,7 +19,7 @@ use feature 'try';
 no warnings 'experimental::try';
 use parent -norequire,'org::allbinary::game::score::HighScores';
 
-our $hashTable = 'org::allbinary::logic::StdUtil'->getInstance()->createHashtable();
+tie our $hashTable, 'java::lang::LazyStatic', sub { 'org::allbinary::logic::StdUtil'->getInstance()->createHashtable() };
 
 sub _init_fields {
     my ($self) = @_;
@@ -35,7 +35,7 @@ sub _init_fields {
 sub new {
     my ($class, $abeClientInformation, $softwareInformation, $gameInfo, $heading, $columnTwoHeading, $ascending, $preload) = @_;
     my $self = $class->SUPER::new($gameInfo->toString(), $heading, $columnTwoHeading);
-    $self->_init_fields();
+    _init_fields($self);
         # super(...) made $self above
         $self->{abeClientInformation} = $abeClientInformation;
         $self->{softwareInformation} = $softwareInformation;
@@ -121,24 +121,26 @@ sub getSoftwareInformation {
         return $self->{softwareInformation};
 }
 
-use java::util::Enumeration;
-use org::allbinary::util::BasicArrayList;
-use org::allbinary::game::GameInfo;
-use org::allbinary::game::score::HighScore;
-use org::allbinary::game::score::HighScores;
-use org::allbinary::game::score::RemoteErrorHighScoresSingletonFactory;
-use org::allbinary::logic::StdUtil;
-use org::allbinary::logic::communication::log::LogUtil;
-use org::allbinary::logic::string::StringMaker;
-use org::allbinary::logic::system::SoftwareInformation;
-use org::allbinary::logic::system::security::licensing::AbeClientInformationInterface;
-use org::allbinary::string::CommonLabels;
-use org::allbinary::string::CommonStrings;
-use org::allbinary::util::ABHashtable;
-use org::allbinary::util::EnumerationUtil;
-use org::allbinary::game::score::remote::RemoteHighScoresProcessorFactory;
-use org::allbinary::game::score::remote::RemoteHighScoresSubmissionProcessorFactory;
-use org::allbinary::game::score::remote::RemoteHighScoresData;
+use java::lang::Object ();
+use java::lang::LazyStatic ();
+use java::util::Enumeration ();
+use org::allbinary::util::BasicArrayList ();
+use org::allbinary::game::GameInfo ();
+use org::allbinary::game::score::HighScore ();
+use org::allbinary::game::score::HighScores ();
+use org::allbinary::game::score::RemoteErrorHighScoresSingletonFactory ();
+use org::allbinary::logic::StdUtil ();
+use org::allbinary::logic::communication::log::LogUtil ();
+use org::allbinary::logic::string::StringMaker ();
+use org::allbinary::logic::system::SoftwareInformation ();
+use org::allbinary::logic::system::security::licensing::AbeClientInformationInterface ();
+use org::allbinary::string::CommonLabels ();
+use org::allbinary::string::CommonStrings ();
+use org::allbinary::util::ABHashtable ();
+use org::allbinary::util::EnumerationUtil ();
+use org::allbinary::game::score::remote::RemoteHighScoresProcessorFactory ();
+use org::allbinary::game::score::remote::RemoteHighScoresSubmissionProcessorFactory ();
+use org::allbinary::game::score::remote::RemoteHighScoresData ();
 
 1;
 

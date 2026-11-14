@@ -17,6 +17,7 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
 
 
@@ -52,20 +53,12 @@ sub decode {
         try {
             my $tokenizer = 'org::allbinary::logic::string::tokens::Tokenizer'->new('org::allbinary::string::CommonSeps'->getInstance()->{SPACE});
             my $vector = $tokenizer->getTokensFromString($value, 'org::allbinary::util::BasicArrayListD'->new());
-            my $byteVector = 'org::allbinary::util::BasicArrayListD'->new();
             my $size = $vector->size();
+            my $decode = [(0) x ($size)];
             my $byteOfData = undef;
             for (my $index = 0; $index < $size; $index++) {
                 $byteOfData = $vector->{objectArray}->[$index];
-                $byteVector->add($byteOfData);
-            }
-            my $decode = [(0) x ($byteVector->size())];
-            my $decodeIndex = 0;
-            my $aByte = undef;
-            for (my $index = 0; $index < $size; $index++) {
-                $aByte = $byteVector->{objectArray}->[$index];
-                $decode->[$decodeIndex] = int($aByte);
-                $decodeIndex++;
+                $decode->[$index] = 'Byte'->parseByte($byteOfData);
             }
             return $decode;
         } catch ($e) {
@@ -75,15 +68,16 @@ sub decode {
         }
 }
 
-use org::allbinary::logic::NullUtil;
-use org::allbinary::logic::communication::log::PreLogUtil;
-use org::allbinary::logic::string::StringMaker;
-use org::allbinary::logic::string::StringUtil;
-use org::allbinary::logic::string::tokens::Tokenizer;
-use org::allbinary::string::CommonSeps;
-use org::allbinary::string::CommonStrings;
-use org::allbinary::util::BasicArrayList;
-use org::allbinary::util::BasicArrayListD;
+use java::lang::Object ();
+use org::allbinary::logic::NullUtil ();
+use org::allbinary::logic::communication::log::PreLogUtil ();
+use org::allbinary::logic::string::StringMaker ();
+use org::allbinary::logic::string::StringUtil ();
+use org::allbinary::logic::string::tokens::Tokenizer ();
+use org::allbinary::string::CommonSeps ();
+use org::allbinary::string::CommonStrings ();
+use org::allbinary::util::BasicArrayList ();
+use org::allbinary::util::BasicArrayListD ();
 
 1;
 

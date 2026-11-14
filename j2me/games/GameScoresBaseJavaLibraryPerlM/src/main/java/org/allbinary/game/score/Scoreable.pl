@@ -17,9 +17,9 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
-use parent -norequire,'org::allbinary::game::score::ScoreableInterface';
+use parent -norequire,'java::lang::Object','org::allbinary::game::score::ScoreableInterface';
 
-our $ID = 'org::allbinary::logic::math::SmallIntegerSingletonFactory'->getInstance()->getAt(3);
+tie our $ID, 'java::lang::LazyStatic', sub { 'org::allbinary::logic::math::SmallIntegerSingletonFactory'->getInstance()->getAt(3) };
 
 sub _init_fields {
     my ($self) = @_;
@@ -30,7 +30,7 @@ sub _init_fields {
 sub new {
     my ($class, $points) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
         $self->{points} = $points;
     return $self;
 }
@@ -59,8 +59,10 @@ sub getPoints {
         return $self->{points};
 }
 
-use org::allbinary::logic::math::SmallIntegerSingletonFactory;
-use org::allbinary::game::score::ScoreableInterface;
+use java::lang::Object ();
+use java::lang::LazyStatic ();
+use org::allbinary::logic::math::SmallIntegerSingletonFactory ();
+use org::allbinary::game::score::ScoreableInterface ();
 
 1;
 

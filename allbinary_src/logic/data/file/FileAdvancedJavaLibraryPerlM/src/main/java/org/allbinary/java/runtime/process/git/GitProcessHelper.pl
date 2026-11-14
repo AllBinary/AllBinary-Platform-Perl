@@ -18,8 +18,9 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
-our $instance = 'org::allbinary::java::runtime::process::git::GitProcessHelper'->new();
+tie our $instance, 'java::lang::LazyStatic', sub { 'org::allbinary::java::runtime::process::git::GitProcessHelper'->new() };
 
 sub _init_fields {
     my ($self) = @_;
@@ -36,7 +37,7 @@ sub getInstance {
 sub new {
     my ($class) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
         my $logUtil = 'org::allbinary::logic::communication::log::LogUtil'->getInstance();
         my $commonStrings = 'org::allbinary::string::CommonStrings'->getInstance();
         my $THIS_IS_SLOW = "This is slow consider path exclusion instead";
@@ -67,7 +68,7 @@ sub trackedFiles {
         my $relativePath = undef;
         for (my $index = 0; $index < scalar(@{$output}); $index++) {
             if ($output->[$index] == 0) {
-                $relativePath = pack("C*", @{$output, $start, $index - $start, $java::nio::charset::StandardCharsets::UTF_8});
+                $relativePath = 'String'->new($output, $start, $index - $start, $java::nio::charset::StandardCharsets::UTF_8);
                 if ((substr($relativePath, -length($suffix)) eq $suffix)) {
                     $files->add($relativePath);
                 }
@@ -91,18 +92,20 @@ sub isTracked {
         }
 }
 
-use java::io::File;
-# use java::io::IOException;
-# use java::nio::charset::StandardCharsets;
-use java::util::ArrayList;
-# use java::util::List;
-use org::allbinary::logic::communication::log::LogUtil;
-use org::allbinary::logic::io::file::AbFile;
-use org::allbinary::logic::io::file::AbFileNativeUtil;
-use org::allbinary::logic::io::file::directory::TrackedStrings;
-use org::allbinary::logic::string::StringMaker;
-use org::allbinary::string::CommonStrings;
-use org::allbinary::java::runtime::process::git::ProcessBuilder;
+use java::lang::Object ();
+use java::lang::LazyStatic ();
+use java::io::File ();
+# use java::io::IOException ();
+# use java::nio::charset::StandardCharsets ();
+use java::util::ArrayList ();
+# use java::util::List ();
+use org::allbinary::logic::communication::log::LogUtil ();
+use org::allbinary::logic::io::file::AbFile ();
+use org::allbinary::logic::io::file::AbFileNativeUtil ();
+use org::allbinary::logic::io::file::directory::TrackedStrings ();
+use org::allbinary::logic::string::StringMaker ();
+use org::allbinary::string::CommonStrings ();
+use org::allbinary::java::runtime::process::git::ProcessBuilder ();
 
 1;
 

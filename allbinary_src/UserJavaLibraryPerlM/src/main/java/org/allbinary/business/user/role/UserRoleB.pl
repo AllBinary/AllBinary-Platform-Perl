@@ -19,7 +19,7 @@ use feature 'try';
 no warnings 'experimental::try';
 use parent -norequire,'org::allbinary::business::user::role::UserRole';
 
-our $roleVector = 'org::allbinary::util::BasicArrayListD'->new();
+tie our $roleVector, 'java::lang::LazyStatic', sub { 'org::allbinary::util::BasicArrayListD'->new() };
 
 
 sub new {
@@ -55,13 +55,15 @@ sub getAll {
         return $org::allbinary::business::user::role::UserRoleB::roleVector;
 }
 
-use org::allbinary::util::BasicArrayList;
-use org::allbinary::util::BasicArrayListD;
-use org::allbinary::business::user::UserFactoryInterface;
-use org::allbinary::logic::StdUtil;
-use org::allbinary::logic::string::StringValidationUtil;
-use org::allbinary::business::user::role::UserRole;
-use org::allbinary::business::user::role::UserRoleFactory;
+use java::lang::Object ();
+use java::lang::LazyStatic ();
+use org::allbinary::util::BasicArrayList ();
+use org::allbinary::util::BasicArrayListD ();
+use org::allbinary::business::user::UserFactoryInterface ();
+use org::allbinary::logic::StdUtil ();
+use org::allbinary::logic::string::StringValidationUtil ();
+use org::allbinary::business::user::role::UserRole ();
+use org::allbinary::business::user::role::UserRoleFactory ();
 
 1;
 

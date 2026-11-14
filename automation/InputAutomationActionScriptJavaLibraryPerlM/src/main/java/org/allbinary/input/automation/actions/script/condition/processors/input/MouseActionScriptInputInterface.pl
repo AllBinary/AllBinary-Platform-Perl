@@ -51,8 +51,8 @@ sub log {
     die "abstract method log";
 }
 
-# use java::awt;
-use org::allbinary::input::automation::actions::script::condition::processors::input::ProfileActionScriptInputInterface;
+# use java::awt ();
+use org::allbinary::input::automation::actions::script::condition::processors::input::ProfileActionScriptInputInterface ();
 
 1;
 

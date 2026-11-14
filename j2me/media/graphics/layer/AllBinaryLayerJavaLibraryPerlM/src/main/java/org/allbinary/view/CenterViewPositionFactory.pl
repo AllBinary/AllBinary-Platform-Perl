@@ -26,7 +26,8 @@ sub new {
     return $self;
 }
 
-use org::allbinary::view::CenterStaticViewPositionFactory;
+use java::lang::Object ();
+use org::allbinary::view::CenterStaticViewPositionFactory ();
 
 1;
 

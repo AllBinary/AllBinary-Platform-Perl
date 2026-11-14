@@ -57,11 +57,12 @@ sub isSystemInput {
         return 0;
 }
 
-use org::allbinary::game::configuration::persistance::GamePersistanceStrings;
-use org::allbinary::game::input::mapping::PersistentInputMapping;
-use org::allbinary::logic::system::security::licensing::AbeClientInformationInterface;
-use org::allbinary::game::input::J2MEKeyFactory;
-use org::allbinary::game::input::GameKeyFactory;
+use java::lang::Object ();
+use org::allbinary::game::configuration::persistance::GamePersistanceStrings ();
+use org::allbinary::game::input::mapping::PersistentInputMapping ();
+use org::allbinary::logic::system::security::licensing::AbeClientInformationInterface ();
+use org::allbinary::game::input::J2MEKeyFactory ();
+use org::allbinary::game::input::GameKeyFactory ();
 
 1;
 

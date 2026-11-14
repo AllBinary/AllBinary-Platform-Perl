@@ -17,8 +17,9 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
-our $instance = 'org::allbinary::logic::system::hardware::linux::PCComponentFactory'->new();
+tie our $instance, 'java::lang::LazyStatic', sub { 'org::allbinary::logic::system::hardware::linux::PCComponentFactory'->new() };
 
 sub _init_fields {
     my ($self) = @_;
@@ -36,7 +37,7 @@ sub getInstance {
 sub new {
     my ($class) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
     return $self;
 }
 
@@ -97,20 +98,22 @@ sub getComponentType {
         return $self->{componentFactory}->{UNKNOWN}->toString();
 }
 
-use org::allbinary::logic::communication::log::LogUtil;
-use org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory;
-use org::allbinary::logic::communication::log::config::type::LogConfigTypes;
-use org::allbinary::logic::system::hardware::components::ComponentFactory;
-use org::allbinary::logic::system::hardware::components::interfaces::HardwareComponentInterface;
-use org::allbinary::logic::system::hardware::components::linux::Bridge;
-use org::allbinary::logic::system::hardware::components::linux::Ethernet;
-use org::allbinary::logic::system::hardware::components::linux::HardDriveController;
-use org::allbinary::logic::system::hardware::components::linux::Media;
-use org::allbinary::logic::system::hardware::components::linux::PCI;
-use org::allbinary::logic::system::hardware::components::linux::Unknown;
-use org::allbinary::logic::system::hardware::components::linux::Usb;
-use org::allbinary::logic::system::hardware::components::linux::Video;
-use org::allbinary::string::CommonStrings;
+use java::lang::Object ();
+use java::lang::LazyStatic ();
+use org::allbinary::logic::communication::log::LogUtil ();
+use org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory ();
+use org::allbinary::logic::communication::log::config::type::LogConfigTypes ();
+use org::allbinary::logic::system::hardware::components::ComponentFactory ();
+use org::allbinary::logic::system::hardware::components::interfaces::HardwareComponentInterface ();
+use org::allbinary::logic::system::hardware::components::linux::Bridge ();
+use org::allbinary::logic::system::hardware::components::linux::Ethernet ();
+use org::allbinary::logic::system::hardware::components::linux::HardDriveController ();
+use org::allbinary::logic::system::hardware::components::linux::Media ();
+use org::allbinary::logic::system::hardware::components::linux::PCI ();
+use org::allbinary::logic::system::hardware::components::linux::Unknown ();
+use org::allbinary::logic::system::hardware::components::linux::Usb ();
+use org::allbinary::logic::system::hardware::components::linux::Video ();
+use org::allbinary::string::CommonStrings ();
 
 1;
 

@@ -17,8 +17,9 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
-our $instance = 'org::allbinary::PostGameCommandFactory'->new();
+tie our $instance, 'java::lang::LazyStatic', sub { 'org::allbinary::PostGameCommandFactory'->new() };
 
 sub new {
     my ($class) = @_;
@@ -37,7 +38,9 @@ sub addCommands {
     my ($self, $canvas) = @_;
 }
 
-# use javax::microedition::lcdui::Canvas;
+use java::lang::Object ();
+use java::lang::LazyStatic ();
+use javax::microedition::lcdui::Canvas ();
 
 1;
 

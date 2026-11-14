@@ -39,8 +39,9 @@ sub onSensorChange {
     my ($self) = @_;
 }
 
-use org::allbinary::input::gyro::AllBinaryOrientationSensor;
-use org::allbinary::logic::math::Orientation;
+use java::lang::Object ();
+use org::allbinary::input::gyro::AllBinaryOrientationSensor ();
+use org::allbinary::logic::math::Orientation ();
 
 1;
 

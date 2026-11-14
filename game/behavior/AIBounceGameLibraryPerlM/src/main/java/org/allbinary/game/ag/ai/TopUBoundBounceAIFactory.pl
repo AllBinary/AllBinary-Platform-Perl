@@ -18,7 +18,7 @@ use warnings;
 use feature 'try';
 no warnings 'experimental::try';
 use POSIX ();
-use parent -norequire,'org::allbinary::game::ai::ArtificialIntelligenceInterfaceFactoryInterface';
+use parent -norequire,'java::lang::Object','org::allbinary::game::ai::ArtificialIntelligenceInterfaceFactoryInterface';
 
 
 sub new {
@@ -42,20 +42,21 @@ sub getInstance {
         return 'org::allbinary::game::ag::ai::BoundBounceAI'->new($ownerLayerInterface, $gameInput, 'org::allbinary::bounds::TopULayerBounds'->new($rectangle), 'org::allbinary::game::ag::ai::ReverseVelocityBoundsVisitor'->new($ownerLayerInterface));
 }
 
-use org::allbinary::ai::ArtificialIntelligenceInterface;
-use org::allbinary::bounds::TopULayerBounds;
-use org::allbinary::game::ai::ArtificialIntelligenceInterfaceFactoryInterface;
-use org::allbinary::game::input::GameInput;
-use org::allbinary::game::physics::velocity::VelocityInterface;
-use org::allbinary::game::physics::velocity::VelocityInterfaceCompositeInterface;
-use org::allbinary::graphics::GPoint;
-use org::allbinary::graphics::PointFactory;
-use org::allbinary::graphics::Rectangle;
-use org::allbinary::graphics::displayable::DisplayInfoSingleton;
-use org::allbinary::layer::AllBinaryLayer;
-use org::allbinary::util::ABHashtable;
-use org::allbinary::game::ag::ai::BoundBounceAI;
-use org::allbinary::game::ag::ai::ReverseVelocityBoundsVisitor;
+use java::lang::Object ();
+use org::allbinary::ai::ArtificialIntelligenceInterface ();
+use org::allbinary::bounds::TopULayerBounds ();
+use org::allbinary::game::ai::ArtificialIntelligenceInterfaceFactoryInterface ();
+use org::allbinary::game::input::GameInput ();
+use org::allbinary::game::physics::velocity::VelocityInterface ();
+use org::allbinary::game::physics::velocity::VelocityInterfaceCompositeInterface ();
+use org::allbinary::graphics::GPoint ();
+use org::allbinary::graphics::PointFactory ();
+use org::allbinary::graphics::Rectangle ();
+use org::allbinary::graphics::displayable::DisplayInfoSingleton ();
+use org::allbinary::layer::AllBinaryLayer ();
+use org::allbinary::util::ABHashtable ();
+use org::allbinary::game::ag::ai::BoundBounceAI ();
+use org::allbinary::game::ag::ai::ReverseVelocityBoundsVisitor ();
 
 1;
 

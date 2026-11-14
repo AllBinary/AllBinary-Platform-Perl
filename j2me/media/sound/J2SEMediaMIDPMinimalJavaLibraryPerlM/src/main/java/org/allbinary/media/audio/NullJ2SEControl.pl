@@ -17,7 +17,7 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
-use parent -norequire,'javax::sound::sampled::Control';
+use parent -norequire,'java::lang::Object';
 
 
 
@@ -28,7 +28,8 @@ sub new {
     return $self;
 }
 
-# use javax::sound::sampled::Control;
+use java::lang::Object ();
+# use javax::sound::sampled::Control ();
 
 1;
 

@@ -17,9 +17,9 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
-use parent -norequire,'org::allbinary::animation::AnimationInterfaceFactoryInterface','org::allbinary::animation::ProceduralAnimationInterfaceFactoryInterface';
+use parent -norequire,'java::lang::Object','org::allbinary::animation::AnimationInterfaceFactoryInterface','org::allbinary::animation::ProceduralAnimationInterfaceFactoryInterface';
 
-our $NULL_SPECIAL_ANIMATION_FACTORY = 'org::allbinary::animation::NullSpecialAnimationFactory'->new();
+tie our $NULL_SPECIAL_ANIMATION_FACTORY, 'java::lang::LazyStatic', sub { 'org::allbinary::animation::NullSpecialAnimationFactory'->new() };
 
 
 sub new {
@@ -53,10 +53,12 @@ sub setInitialScale {
     my ($self, $scaleProperties) = @_;
 }
 
-use org::allbinary::animation::special::SpecialAnimation;
-use org::allbinary::media::ScaleProperties;
-use org::allbinary::animation::AnimationInterfaceFactoryInterface;
-use org::allbinary::animation::ProceduralAnimationInterfaceFactoryInterface;
+use java::lang::Object ();
+use java::lang::LazyStatic ();
+use org::allbinary::animation::special::SpecialAnimation ();
+use org::allbinary::media::ScaleProperties ();
+use org::allbinary::animation::AnimationInterfaceFactoryInterface ();
+use org::allbinary::animation::ProceduralAnimationInterfaceFactoryInterface ();
 
 1;
 

@@ -29,7 +29,7 @@ sub _init_fields {
 sub new {
     my ($class, $gameCanvas) = @_;
     my $self = $class->SUPER::new();
-    $self->_init_fields();
+    _init_fields($self);
         $self->{gameCanvas} = $gameCanvas;
     return $self;
 }
@@ -45,8 +45,9 @@ sub paint {
         $self->{gameCanvas}->draw($graphics);
 }
 
-# use javax::microedition::lcdui::Graphics;
-use org::allbinary::graphics::paint::ProcessPaintable;
+use java::lang::Object ();
+use javax::microedition::lcdui::Graphics ();
+use org::allbinary::graphics::paint::ProcessPaintable ();
 
 1;
 

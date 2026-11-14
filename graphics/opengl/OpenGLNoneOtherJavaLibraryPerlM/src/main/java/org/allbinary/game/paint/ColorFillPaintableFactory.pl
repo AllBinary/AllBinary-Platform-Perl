@@ -17,8 +17,9 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
-our $instance = 'org::allbinary::game::paint::ColorFillPaintableFactory'->new();
+tie our $instance, 'java::lang::LazyStatic', sub { 'org::allbinary::game::paint::ColorFillPaintableFactory'->new() };
 
 sub new {
     my ($class) = @_;
@@ -44,11 +45,13 @@ sub getInstance {
         }
 }
 
-use org::allbinary::graphics::color::BasicColor;
-use org::allbinary::logic::system::os::GenericOperatingSystem;
-use org::allbinary::logic::system::os::OperatingSystemFactory;
-use org::allbinary::game::paint::ColorFillPaintable;
-use org::allbinary::game::paint::OverScanColorFillPaintable;
+use java::lang::Object ();
+use java::lang::LazyStatic ();
+use org::allbinary::graphics::color::BasicColor ();
+use org::allbinary::logic::system::os::GenericOperatingSystem ();
+use org::allbinary::logic::system::os::OperatingSystemFactory ();
+use org::allbinary::game::paint::ColorFillPaintable ();
+use org::allbinary::game::paint::OverScanColorFillPaintable ();
 
 1;
 

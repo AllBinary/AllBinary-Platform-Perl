@@ -26,7 +26,7 @@ sub updateMeasurement {
     die "abstract method updateMeasurement";
 }
 
-# use javax::microedition::lcdui::Graphics;
+use javax::microedition::lcdui::Graphics ();
 
 1;
 

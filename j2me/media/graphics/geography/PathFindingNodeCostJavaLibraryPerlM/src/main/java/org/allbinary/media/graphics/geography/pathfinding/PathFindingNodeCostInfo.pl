@@ -17,6 +17,7 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
 
 sub _init_fields {
@@ -31,7 +32,7 @@ sub _init_fields {
 sub new {
     my ($class, $costFromStart, $costToGoal) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
         $self->{costFromStartP} = $costFromStart;
         $self->{costToEndP} = $costToGoal;
         $self->setCalculatedTotalCost();
@@ -75,7 +76,12 @@ sub addCostFromStart {
 
 sub compareTo {
     my ($self, $pathFindingNodeCostInfo) = @_;
-        return $org::allbinary::media::graphics::geography::pathfinding::java::lang->{Long}->compare($self->{totalCostP}, $pathFindingNodeCostInfo->{totalCostP});
+        if ($self->{totalCostP} < $pathFindingNodeCostInfo->{totalCostP}) {
+            return -1;
+        } elsif ($self->{totalCostP} > $pathFindingNodeCostInfo->{totalCostP}) {
+            return 1;
+        }
+        return 0;
 }
 
 
@@ -93,9 +99,10 @@ sub toString {
         return $stringBuffer->toString();
 }
 
-use org::allbinary::logic::string::StringMaker;
-use org::allbinary::string::CommonLabels;
-use org::allbinary::media::graphics::geography::pathfinding::PathFindingNodeCostInfoData;
+use java::lang::Object ();
+use org::allbinary::logic::string::StringMaker ();
+use org::allbinary::string::CommonLabels ();
+use org::allbinary::media::graphics::geography::pathfinding::PathFindingNodeCostInfoData ();
 
 1;
 

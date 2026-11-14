@@ -17,6 +17,7 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
 
 sub new {
@@ -30,7 +31,8 @@ sub visit {
     my ($self, $lastMap, $mapData) = @_;
 }
 
-use org::mapeditor::core::TiledMap;
+use java::lang::Object ();
+use org::mapeditor::core::TiledMap ();
 
 1;
 

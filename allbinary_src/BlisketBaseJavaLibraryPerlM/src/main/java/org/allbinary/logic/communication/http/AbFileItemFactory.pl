@@ -28,7 +28,8 @@ sub new {
     return $self;
 }
 
-use org::apache::commons::fileupload::DefaultFileItemFactory;
+use java::lang::Object ();
+use org::apache::commons::fileupload::DefaultFileItemFactory ();
 
 1;
 

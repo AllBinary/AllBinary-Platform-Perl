@@ -31,7 +31,7 @@ sub _init_fields {
 sub new {
     my ($class, $column, $row, $columns, $rows) = @_;
     my $self = $class->SUPER::new();
-    $self->_init_fields();
+    _init_fields($self);
         $self->{column} = $column;
         $self->{row} = $row;
         $self->{id} = ($row * $columns) + $column;
@@ -81,9 +81,10 @@ sub getId {
         return $self->{id};
 }
 
-use org::allbinary::graph::V;
-use org::allbinary::logic::string::StringMaker;
-use org::allbinary::string::CommonSeps;
+use java::lang::Object ();
+use org::allbinary::graph::V ();
+use org::allbinary::logic::string::StringMaker ();
+use org::allbinary::string::CommonSeps ();
 
 1;
 

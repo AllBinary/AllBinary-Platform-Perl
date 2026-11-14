@@ -17,9 +17,9 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
-use parent -norequire,'org::allbinary::logic::util::event::EventListenerInterface';
+use parent -norequire,'java::lang::Object','org::allbinary::logic::util::event::EventListenerInterface';
 
-our $NULL_WAYPOINT_BASE = 'org::allbinary::game::layer::waypoint::WaypointBase'->new('org::allbinary::media::audio::NoSound'->getInstance());
+tie our $NULL_WAYPOINT_BASE, 'java::lang::LazyStatic', sub { 'org::allbinary::game::layer::waypoint::WaypointBase'->new('org::allbinary::media::audio::NoSound'->getInstance()) };
 
 sub _init_fields {
     my ($self) = @_;
@@ -32,7 +32,7 @@ sub _init_fields {
 sub new {
     my ($class, $sound) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
         $self->{sound} = $sound;
     return $self;
 }
@@ -107,19 +107,21 @@ sub getType {
         return 0;
 }
 
-use org::allbinary::game::layer::AllBinaryGameLayerManager;
-use org::allbinary::game::layer::PathFindingLayerInterface;
-use org::allbinary::logic::communication::log::ForcedLogUtil;
-use org::allbinary::logic::util::event::AllBinaryEventObject;
-use org::allbinary::logic::util::event::EventListenerInterface;
-use org::allbinary::logic::util::event::EventStrings;
-use org::allbinary::media::audio::NoSound;
-use org::allbinary::media::audio::Sound;
-use org::allbinary::media::graphics::geography::map::GeographicMapCellPosition;
-use org::allbinary::media::graphics::geography::pathfinding::MultipassState;
-use org::allbinary::media::graphics::geography::pathfinding::PathFindingInfo;
-use org::allbinary::util::BasicArrayList;
-use org::allbinary::util::BasicArrayListD;
+use java::lang::Object ();
+use java::lang::LazyStatic ();
+use org::allbinary::game::layer::AllBinaryGameLayerManager ();
+use org::allbinary::game::layer::PathFindingLayerInterface ();
+use org::allbinary::logic::communication::log::ForcedLogUtil ();
+use org::allbinary::logic::util::event::AllBinaryEventObject ();
+use org::allbinary::logic::util::event::EventListenerInterface ();
+use org::allbinary::logic::util::event::EventStrings ();
+use org::allbinary::media::audio::NoSound ();
+use org::allbinary::media::audio::Sound ();
+use org::allbinary::media::graphics::geography::map::GeographicMapCellPosition ();
+use org::allbinary::media::graphics::geography::pathfinding::MultipassState ();
+use org::allbinary::media::graphics::geography::pathfinding::PathFindingInfo ();
+use org::allbinary::util::BasicArrayList ();
+use org::allbinary::util::BasicArrayListD ();
 
 1;
 

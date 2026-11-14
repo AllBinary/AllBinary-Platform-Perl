@@ -17,6 +17,7 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
 our $CLASSNAME = "org.allbinary.data.tables.AdvertisementEntity";
 
@@ -42,9 +43,10 @@ sub getInstance {
         }
 }
 
-use org::allbinary::logic::communication::log::LogUtil;
-use org::allbinary::string::CommonStrings;
-use org::allbinary::data::tables::advertisement::AdvertisementsEntity;
+use java::lang::Object ();
+use org::allbinary::logic::communication::log::LogUtil ();
+use org::allbinary::string::CommonStrings ();
+use org::allbinary::data::tables::advertisement::AdvertisementsEntity ();
 
 1;
 

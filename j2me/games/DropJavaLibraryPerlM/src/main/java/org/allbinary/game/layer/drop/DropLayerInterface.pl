@@ -28,8 +28,8 @@ sub getDroppedLayer {
     die "abstract method getDroppedLayer";
 }
 
-use org::allbinary::game::layer::pickup::PickedUpLayerInterface;
-use org::allbinary::layer::LayerInterface;
+use org::allbinary::game::layer::pickup::PickedUpLayerInterface ();
+use org::allbinary::layer::LayerInterface ();
 
 1;
 

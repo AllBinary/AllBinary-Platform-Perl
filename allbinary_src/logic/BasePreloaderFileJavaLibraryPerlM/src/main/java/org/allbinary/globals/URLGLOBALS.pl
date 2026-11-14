@@ -17,8 +17,9 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
-our $urlGlobalsInterface = $org::allbinary::globals::AppUrlGlobals::NULL_APP_URL_GLOBALS;
+tie our $urlGlobalsInterface, 'java::lang::LazyStatic', sub { $org::allbinary::globals::AppUrlGlobals::NULL_APP_URL_GLOBALS };
 
 sub new {
     my ($class) = @_;
@@ -57,7 +58,9 @@ sub getMainPath {
         return $org::allbinary::globals::URLGLOBALS::urlGlobalsInterface->getMainPath();
 }
 
-use org::allbinary::globals::AppUrlGlobals;
+use java::lang::Object ();
+use java::lang::LazyStatic ();
+use org::allbinary::globals::AppUrlGlobals ();
 
 1;
 

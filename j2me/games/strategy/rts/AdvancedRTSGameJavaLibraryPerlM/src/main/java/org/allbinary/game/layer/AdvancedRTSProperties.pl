@@ -17,6 +17,7 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
 
 sub _init_fields {
@@ -43,7 +44,7 @@ sub createProperties {
 sub new {
     my ($class, $shakeListener, $vibration, $duration, $waypointBehaviorBase) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
         $self->{shakeListener} = $shakeListener;
         $self->{vibration} = $vibration;
         $self->{duration} = $duration;
@@ -51,15 +52,16 @@ sub new {
     return $self;
 }
 
-use org::allbinary::animation::transition::shake::NoShakeAnimationListener;
-use org::allbinary::animation::transition::shake::ShakeAnimationListener;
-use org::allbinary::animation::transition::shake::ShakeAnimationListenerFactory;
-use org::allbinary::game::configuration::GameConfigurationCentral;
-use org::allbinary::game::tick::TickableInterface;
-use org::allbinary::media::AllBinaryNoVibration;
-use org::allbinary::media::AllBinaryVibration;
-use org::allbinary::media::AllBinaryVibrationME;
-use org::allbinary::game::layer::WaypointBehaviorBase;
+use java::lang::Object ();
+use org::allbinary::animation::transition::shake::NoShakeAnimationListener ();
+use org::allbinary::animation::transition::shake::ShakeAnimationListener ();
+use org::allbinary::animation::transition::shake::ShakeAnimationListenerFactory ();
+use org::allbinary::game::configuration::GameConfigurationCentral ();
+use org::allbinary::game::tick::TickableInterface ();
+use org::allbinary::media::AllBinaryNoVibration ();
+use org::allbinary::media::AllBinaryVibration ();
+use org::allbinary::media::AllBinaryVibrationME ();
+use org::allbinary::game::layer::WaypointBehaviorBase ();
 
 1;
 

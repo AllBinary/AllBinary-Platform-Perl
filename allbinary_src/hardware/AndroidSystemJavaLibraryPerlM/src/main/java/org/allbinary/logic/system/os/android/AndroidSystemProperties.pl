@@ -17,8 +17,9 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
-our $SINGLETON = 'org::allbinary::logic::system::os::android::AndroidSystemProperties'->new('org::allbinary::data::resource::ResourceUtil'->getInstance()->getContext());
+tie our $SINGLETON, 'java::lang::LazyStatic', sub { 'org::allbinary::logic::system::os::android::AndroidSystemProperties'->new('org::allbinary::data::resource::ResourceUtil'->getInstance()->getContext()) };
 
 sub _init_fields {
     my ($self) = @_;
@@ -35,7 +36,7 @@ sub getInstance {
 sub new {
     my ($class, $context) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
     return $self;
 }
 
@@ -201,11 +202,13 @@ sub getUser {
         return $android::os::Build::USER;
 }
 
-use android::content::Context;
-use android::os::Build;
-use org::allbinary::data::resource::ResourceUtil;
-use org::allbinary::logic::string::StringUtil;
-use org::allbinary::string::CommonStrings;
+use java::lang::Object ();
+use java::lang::LazyStatic ();
+# use android::content::Context ();
+# use android::os::Build ();
+use org::allbinary::data::resource::ResourceUtil ();
+use org::allbinary::logic::string::StringUtil ();
+use org::allbinary::string::CommonStrings ();
 
 1;
 

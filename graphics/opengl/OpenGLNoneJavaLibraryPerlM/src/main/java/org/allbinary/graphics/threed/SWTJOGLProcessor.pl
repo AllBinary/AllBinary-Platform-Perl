@@ -18,8 +18,9 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
-our $instance = 'org::allbinary::graphics::threed::SWTJOGLProcessor'->new();
+tie our $instance, 'java::lang::LazyStatic', sub { 'org::allbinary::graphics::threed::SWTJOGLProcessor'->new() };
 
 sub new {
     my ($class) = @_;
@@ -140,8 +141,10 @@ sub substringWidth {
         die ("RuntimeException");
 }
 
-# use javax::microedition::lcdui::Font;
-# use javax::microedition::midlet::MIDlet;
+use java::lang::Object ();
+use java::lang::LazyStatic ();
+use javax::microedition::lcdui::Font ();
+use javax::microedition::midlet::MIDlet ();
 
 1;
 

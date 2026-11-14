@@ -17,7 +17,7 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
-use parent -norequire,'org::allbinary::animation::AnimationInterfaceFactoryInterface','org::allbinary::animation::ProceduralAnimationInterfaceFactoryInterface';
+use parent -norequire,'java::lang::Object','org::allbinary::animation::AnimationInterfaceFactoryInterface','org::allbinary::animation::ProceduralAnimationInterfaceFactoryInterface';
 
 
 
@@ -53,12 +53,13 @@ sub setInitialScale {
     my ($self, $scaleProperties) = @_;
 }
 
-use org::allbinary::animation::Animation;
-use org::allbinary::animation::AnimationInterfaceFactoryInterface;
-use org::allbinary::animation::ProceduralAnimationInterfaceFactoryInterface;
-use org::allbinary::layer::AllBinaryLayer;
-use org::allbinary::media::ScaleProperties;
-use org::allbinary::game::health::HealthBarThreedAnimation;
+use java::lang::Object ();
+use org::allbinary::animation::Animation ();
+use org::allbinary::animation::AnimationInterfaceFactoryInterface ();
+use org::allbinary::animation::ProceduralAnimationInterfaceFactoryInterface ();
+use org::allbinary::layer::AllBinaryLayer ();
+use org::allbinary::media::ScaleProperties ();
+use org::allbinary::game::health::HealthBarThreedAnimation ();
 
 1;
 

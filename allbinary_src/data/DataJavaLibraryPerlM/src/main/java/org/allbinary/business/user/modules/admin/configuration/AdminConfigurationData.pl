@@ -17,6 +17,7 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
 our $CONTEXTNAME = "Admin";
 
@@ -26,6 +27,7 @@ sub new {
     return $self;
 }
 
+use java::lang::Object ();
 
 1;
 

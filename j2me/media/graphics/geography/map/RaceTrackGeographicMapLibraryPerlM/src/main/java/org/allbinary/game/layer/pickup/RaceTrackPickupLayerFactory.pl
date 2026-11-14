@@ -17,7 +17,7 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
-use parent -norequire,'org::allbinary::layer::AllBinaryLayerFactoryInterface';
+use parent -norequire,'java::lang::Object','org::allbinary::layer::AllBinaryLayerFactoryInterface';
 
 
 sub new {
@@ -33,9 +33,10 @@ sub getInstance {
         return 'org::allbinary::game::layer::pickup::RaceTrackPickupLayer'->new();
 }
 
-use org::allbinary::layer::AllBinaryLayer;
-use org::allbinary::layer::AllBinaryLayerFactoryInterface;
-use org::allbinary::game::layer::pickup::RaceTrackPickupLayer;
+use java::lang::Object ();
+use org::allbinary::layer::AllBinaryLayer ();
+use org::allbinary::layer::AllBinaryLayerFactoryInterface ();
+use org::allbinary::game::layer::pickup::RaceTrackPickupLayer ();
 
 1;
 

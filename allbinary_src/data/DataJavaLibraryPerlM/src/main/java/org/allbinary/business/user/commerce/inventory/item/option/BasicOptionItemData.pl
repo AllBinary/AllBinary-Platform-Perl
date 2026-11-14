@@ -17,6 +17,7 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
 our $OPTION_ONE_TITLE = "BASICOPTIONITEM_OPTION_ONE_TITLE";
 our $DEFAULT_OPTION_ITEM = "BASICOPTIONITEM_DEFAULT_OPTION_ITEM";
@@ -46,6 +47,7 @@ sub new {
     return $self;
 }
 
+use java::lang::Object ();
 
 1;
 

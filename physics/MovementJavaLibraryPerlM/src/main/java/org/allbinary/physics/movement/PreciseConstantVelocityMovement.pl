@@ -20,7 +20,7 @@ sub _init_fields {
 sub new {
     my ($class, $basicDecimal, $velocityProperties) = @_;
     my $self = $class->SUPER::new($basicDecimal, $velocityProperties);
-    $self->_init_fields();
+    _init_fields($self);
         # super(...) made $self above
     return $self;
 }
@@ -51,12 +51,13 @@ sub process {
         }
 }
 
-use org::allbinary::game::layer::AllBinaryGameLayer;
-use org::allbinary::game::physics::velocity::BasicVelocityProperties;
-use org::allbinary::logic::math::BasicDecimal;
-use org::allbinary::logic::math::MathUtil;
-use org::allbinary::logic::math::ScaleFactorFactory;
-use org::allbinary::physics::movement::BasicConstantVelocityMovement;
+use java::lang::Object ();
+use org::allbinary::game::layer::AllBinaryGameLayer ();
+use org::allbinary::game::physics::velocity::BasicVelocityProperties ();
+use org::allbinary::logic::math::BasicDecimal ();
+use org::allbinary::logic::math::MathUtil ();
+use org::allbinary::logic::math::ScaleFactorFactory ();
+use org::allbinary::physics::movement::BasicConstantVelocityMovement ();
 
 1;
 

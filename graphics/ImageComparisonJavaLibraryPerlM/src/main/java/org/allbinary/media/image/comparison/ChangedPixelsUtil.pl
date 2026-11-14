@@ -17,6 +17,7 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
 our $START_X = 0;
 our $START_Y = 0;
@@ -59,16 +60,17 @@ sub generateBufferedImageChacheables {
         return $bufferedImageCacheables;
 }
 
-# use java::awt::image::BufferedImage;
-use org::allbinary::util::BasicArrayList;
-use org::allbinary::util::BasicArrayListD;
-use org::allbinary::logic::util::cache::PoolInterface;
-use org::allbinary::media::image::cache::BufferedImageCacheable;
-use org::allbinary::media::image::cache::BufferedImageInfo;
-use org::allbinary::media::image::cache::BufferedImageInfoFactory;
-use org::allbinary::media::image::cache::BufferedImagePoolSingleton;
-use org::allbinary::media::image::comparison::pixel::PixelDelta;
-use java::lang::System;
+use java::lang::Object ();
+# use java::awt::image::BufferedImage ();
+use org::allbinary::util::BasicArrayList ();
+use org::allbinary::util::BasicArrayListD ();
+use org::allbinary::logic::util::cache::PoolInterface ();
+use org::allbinary::media::image::cache::BufferedImageCacheable ();
+use org::allbinary::media::image::cache::BufferedImageInfo ();
+use org::allbinary::media::image::cache::BufferedImageInfoFactory ();
+use org::allbinary::media::image::cache::BufferedImagePoolSingleton ();
+use org::allbinary::media::image::comparison::pixel::PixelDelta ();
+use java::lang::System ();
 
 1;
 

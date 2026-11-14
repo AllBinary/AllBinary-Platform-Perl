@@ -19,7 +19,7 @@ use feature 'try';
 no warnings 'experimental::try';
 use parent -norequire,'org::allbinary::game::input::Input';
 
-our $NULL_GAME_KEY = 'org::allbinary::game::input::GameKey'->new(-1, 'org::allbinary::logic::string::StringUtil'->getInstance()->{NULL_STRING});
+tie our $NULL_GAME_KEY, 'java::lang::LazyStatic', sub { 'org::allbinary::game::input::GameKey'->new(-1, 'org::allbinary::logic::string::StringUtil'->getInstance()->{NULL_STRING}) };
 
 
 sub new {
@@ -35,9 +35,11 @@ sub toString {
         return 'org::allbinary::logic::string::StringMaker'->new()->append("GameKey ")->append($self->SUPER::toString())->toString();
 }
 
-use org::allbinary::logic::string::StringMaker;
-use org::allbinary::logic::string::StringUtil;
-use org::allbinary::game::input::Input;
+use java::lang::Object ();
+use java::lang::LazyStatic ();
+use org::allbinary::logic::string::StringMaker ();
+use org::allbinary::logic::string::StringUtil ();
+use org::allbinary::game::input::Input ();
 
 1;
 

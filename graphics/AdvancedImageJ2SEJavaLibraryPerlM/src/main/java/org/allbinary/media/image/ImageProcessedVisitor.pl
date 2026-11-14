@@ -28,9 +28,9 @@ sub visit {
     die "abstract method visit";
 }
 
-# use java::awt::image::BufferedImage;
-# use java::io::IOException;
-use org::allbinary::media::image::ImageProcessorInputCompositeInterface;
+# use java::awt::image::BufferedImage ();
+# use java::io::IOException ();
+use org::allbinary::media::image::ImageProcessorInputCompositeInterface ();
 
 1;
 

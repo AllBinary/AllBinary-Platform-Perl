@@ -17,6 +17,7 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
 our $allBinaryAccelerometerSensor = undef;
 
@@ -49,10 +50,11 @@ sub getInstance {
         return $org::allbinary::input::accelerometer::AccelerometerSensorFactory::allBinaryAccelerometerSensor;
 }
 
-use org::allbinary::game::configuration::feature::Features;
-use org::allbinary::game::configuration::feature::SensorFeatureFactory;
-use org::allbinary::input::gyro::AllBinaryOrientationSensor;
-use org::allbinary::input::accelerometer::NoAccelerometerSensor;
+use java::lang::Object ();
+use org::allbinary::game::configuration::feature::Features ();
+use org::allbinary::game::configuration::feature::SensorFeatureFactory ();
+use org::allbinary::input::gyro::AllBinaryOrientationSensor ();
+use org::allbinary::input::accelerometer::NoAccelerometerSensor ();
 
 1;
 

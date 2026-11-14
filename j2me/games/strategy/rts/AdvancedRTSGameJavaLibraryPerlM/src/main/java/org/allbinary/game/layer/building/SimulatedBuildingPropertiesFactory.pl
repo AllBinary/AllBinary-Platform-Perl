@@ -19,7 +19,7 @@ use feature 'try';
 no warnings 'experimental::try';
 use parent -norequire,'org::allbinary::game::layer::building::BuildingPropertiesFactory';
 
-our $instanceC = 'org::allbinary::game::layer::building::SimulatedBuildingPropertiesFactory'->new();
+tie our $instanceC, 'java::lang::LazyStatic', sub { 'org::allbinary::game::layer::building::SimulatedBuildingPropertiesFactory'->new() };
 
 sub new {
     my ($class) = @_;
@@ -66,14 +66,16 @@ sub getTrackingEvent {
         return 'org::allbinary::game::tracking::TrackingEvent'->new('org::allbinary::game::tracking::TrackingEventHandler'->getInstance());
 }
 
-use org::allbinary::game::combat::damage::DamageFloaters;
-use org::allbinary::game::tracking::TrackingEvent;
-use org::allbinary::game::tracking::TrackingEventHandler;
-use org::allbinary::graphics::paint::NullPaintable;
-use org::allbinary::graphics::paint::Paintable;
-use org::allbinary::logic::StdUtil;
-use org::allbinary::util::ABHashtable;
-use org::allbinary::game::layer::building::BuildingPropertiesFactory;
+use java::lang::Object ();
+use java::lang::LazyStatic ();
+use org::allbinary::game::combat::damage::DamageFloaters ();
+use org::allbinary::game::tracking::TrackingEvent ();
+use org::allbinary::game::tracking::TrackingEventHandler ();
+use org::allbinary::graphics::paint::NullPaintable ();
+use org::allbinary::graphics::paint::Paintable ();
+use org::allbinary::logic::StdUtil ();
+use org::allbinary::util::ABHashtable ();
+use org::allbinary::game::layer::building::BuildingPropertiesFactory ();
 
 1;
 

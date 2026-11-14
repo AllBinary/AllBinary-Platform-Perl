@@ -37,7 +37,7 @@ sub _init_fields {
 sub new {
     my ($class) = @_;
     my $self = $class->SUPER::new('org::allbinary::business::init::db::UserDbInitInfo'->new());
-    $self->_init_fields();
+    _init_fields($self);
         # super(...) made $self above
         $self->setTableName($self->{tableName});
     return $self;
@@ -232,28 +232,35 @@ sub createTable {
         return $self->SUPER::createTable($self->createTableStatement());
 }
 
-use java::util::HashMap;
-use org::allbinary::util::BasicArrayList;
-use org::allbinary::util::BasicArrayListD;
-use org::allbinary::business::context::modules::storefront::StoreFrontData;
-use org::allbinary::business::context::modules::storefront::StoreFrontInterface;
-use org::allbinary::business::entry::EntryData;
-use org::allbinary::business::init::db::UserDbInitInfo;
-use org::allbinary::business::user::CreateUserFactory;
-use org::allbinary::business::user::UserData;
-use org::allbinary::business::user::UserInterface;
-use org::allbinary::business::user::modules::User;
-use org::allbinary::business::user::role::UserRole;
-use org::allbinary::business::user::role::UserRoleData;
-use org::allbinary::business::user::role::UserRoleFactory;
-use org::allbinary::globals::GLOBALS2;
-use org::allbinary::logic::StdUtil;
-use org::allbinary::logic::communication::log::LogUtil;
-use org::allbinary::logic::communication::sql::AbSqlBean;
-use org::allbinary::logic::control::crypt::SuperCrypt;
-use org::allbinary::logic::string::StringMaker;
-use org::allbinary::string::CommonSeps;
-use org::allbinary::data::tables::user::UserEntityInterface;
+
+sub dropTable {
+    my ($self) = @_;
+        return $self->SUPER::dropTable();
+}
+
+use java::lang::Object ();
+use java::util::HashMap ();
+use org::allbinary::util::BasicArrayList ();
+use org::allbinary::util::BasicArrayListD ();
+use org::allbinary::business::context::modules::storefront::StoreFrontData ();
+use org::allbinary::business::context::modules::storefront::StoreFrontInterface ();
+use org::allbinary::business::entry::EntryData ();
+use org::allbinary::business::init::db::UserDbInitInfo ();
+use org::allbinary::business::user::CreateUserFactory ();
+use org::allbinary::business::user::UserData ();
+use org::allbinary::business::user::UserInterface ();
+use org::allbinary::business::user::modules::User ();
+use org::allbinary::business::user::role::UserRole ();
+use org::allbinary::business::user::role::UserRoleData ();
+use org::allbinary::business::user::role::UserRoleFactory ();
+use org::allbinary::globals::GLOBALS2 ();
+use org::allbinary::logic::StdUtil ();
+use org::allbinary::logic::communication::log::LogUtil ();
+use org::allbinary::logic::communication::sql::AbSqlBean ();
+use org::allbinary::logic::control::crypt::SuperCrypt ();
+use org::allbinary::logic::string::StringMaker ();
+use org::allbinary::string::CommonSeps ();
+use org::allbinary::data::tables::user::UserEntityInterface ();
 
 1;
 

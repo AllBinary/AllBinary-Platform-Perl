@@ -17,7 +17,7 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
-use parent -norequire,'org::allbinary::logic::util::cache::CacheableInterfaceFactoryInterface';
+use parent -norequire,'java::lang::Object','org::allbinary::logic::util::cache::CacheableInterfaceFactoryInterface';
 
 
 
@@ -33,9 +33,10 @@ sub getInstance {
         return 'org::allbinary::media::image::io::IIOImageCacheable'->new($key);
 }
 
-use org::allbinary::logic::util::cache::CacheableInterface;
-use org::allbinary::logic::util::cache::CacheableInterfaceFactoryInterface;
-use org::allbinary::media::image::io::IIOImageCacheable;
+use java::lang::Object ();
+use org::allbinary::logic::util::cache::CacheableInterface ();
+use org::allbinary::logic::util::cache::CacheableInterfaceFactoryInterface ();
+use org::allbinary::media::image::io::IIOImageCacheable ();
 
 1;
 

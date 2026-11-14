@@ -17,6 +17,7 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
 
 sub _init_fields {
@@ -38,7 +39,7 @@ sub new {
 sub _new1 {
     my ($class, $node) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
         $self->setName('org::allbinary::data::tree::dom::DomNodeHelper'->getTextNodeValue($node));
         $self->{vector} = 'org::allbinary::util::BasicArrayListD'->new();
         my $nodeList = $node->getChildNodes();
@@ -58,7 +59,7 @@ sub _new1 {
 sub _new1 {
     my ($class, $name) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
         $self->setName($name);
         $self->{vector} = 'org::allbinary::util::BasicArrayListD'->new();
     return $self;
@@ -121,19 +122,20 @@ sub setGenericProfileActions {
         $self->{genericProfileActions} = $genericProfileActions;
 }
 
-use org::allbinary::util::BasicArrayList;
-use org::allbinary::util::BasicArrayListD;
-use org::allbinary::data::tree::dom::DomNodeHelper;
-use org::allbinary::data::tree::dom::ModDomHelper;
-use org::allbinary::input::automation::module::generic::configuration::profile::actions::GenericProfileActions;
-use org::allbinary::logic::StdUtil;
-use org::allbinary::logic::communication::log::LogUtil;
-use org::w3c::dom::Document;
-use org::w3c::dom::Node;
-use org::w3c::dom::NodeList;
-use org::allbinary::input::automation::module::generic::configuration::profile::GenericProfileDataWorkerData;
-use org::allbinary::input::automation::module::generic::configuration::profile::GenericProfileDataWorkerType;
-use org::allbinary::input::automation::module::generic::configuration::profile::GenericProfileData;
+use java::lang::Object ();
+use org::allbinary::util::BasicArrayList ();
+use org::allbinary::util::BasicArrayListD ();
+use org::allbinary::data::tree::dom::DomNodeHelper ();
+use org::allbinary::data::tree::dom::ModDomHelper ();
+use org::allbinary::input::automation::module::generic::configuration::profile::actions::GenericProfileActions ();
+use org::allbinary::logic::StdUtil ();
+use org::allbinary::logic::communication::log::LogUtil ();
+use org::w3c::dom::Document ();
+use org::w3c::dom::Node ();
+use org::w3c::dom::NodeList ();
+use org::allbinary::input::automation::module::generic::configuration::profile::GenericProfileDataWorkerData ();
+use org::allbinary::input::automation::module::generic::configuration::profile::GenericProfileDataWorkerType ();
+use org::allbinary::input::automation::module::generic::configuration::profile::GenericProfileData ();
 
 1;
 

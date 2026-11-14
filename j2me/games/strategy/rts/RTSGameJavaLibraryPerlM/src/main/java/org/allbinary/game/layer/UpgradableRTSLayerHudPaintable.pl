@@ -19,7 +19,7 @@ use feature 'try';
 no warnings 'experimental::try';
 use parent -norequire,'org::allbinary::game::layer::SelectionHudPaintable';
 
-our $instance = 'org::allbinary::game::layer::UpgradableRTSLayerHudPaintable'->new();
+tie our $instance, 'java::lang::LazyStatic', sub { 'org::allbinary::game::layer::UpgradableRTSLayerHudPaintable'->new() };
 
 sub _init_fields {
     my ($self) = @_;
@@ -47,7 +47,7 @@ sub getInstance {
 sub new {
     my ($class) = @_;
     my $self = $class->SUPER::new();
-    $self->_init_fields();
+    _init_fields($self);
     return $self;
 }
 
@@ -123,16 +123,18 @@ sub getRtsLayer {
         return $self->{rtsLayer};
 }
 
-# use javax::microedition::lcdui::Font;
-# use javax::microedition::lcdui::Graphics;
-use org::allbinary::game::layer::special::CollidableDestroyableDamageableLayer;
-use org::allbinary::logic::java::character::CharArrayFactory;
-use org::allbinary::graphics::displayable::DisplayInfoSingleton;
-use org::allbinary::graphics::font::MyFontProcessor;
-use org::allbinary::input::motion::button::CommonButtons;
-use org::allbinary::game::layer::SelectionHudPaintable;
-use org::allbinary::game::layer::RTSLayerCompositePaintable;
-use org::allbinary::game::layer::UpgradableWideRTSLayerPaintable;
+use java::lang::Object ();
+use java::lang::LazyStatic ();
+use javax::microedition::lcdui::Font ();
+use javax::microedition::lcdui::Graphics ();
+use org::allbinary::game::layer::special::CollidableDestroyableDamageableLayer ();
+use org::allbinary::logic::java::character::CharArrayFactory ();
+use org::allbinary::graphics::displayable::DisplayInfoSingleton ();
+use org::allbinary::graphics::font::MyFontProcessor ();
+use org::allbinary::input::motion::button::CommonButtons ();
+use org::allbinary::game::layer::SelectionHudPaintable ();
+use org::allbinary::game::layer::RTSLayerCompositePaintable ();
+use org::allbinary::game::layer::UpgradableWideRTSLayerPaintable ();
 
 1;
 

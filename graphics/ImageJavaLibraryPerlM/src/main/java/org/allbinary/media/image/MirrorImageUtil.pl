@@ -17,8 +17,9 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
-our $instance = 'org::allbinary::media::image::MirrorImageUtil'->new();
+tie our $instance, 'java::lang::LazyStatic', sub { 'org::allbinary::media::image::MirrorImageUtil'->new() };
 
 sub _init_fields {
     my ($self) = @_;
@@ -36,7 +37,7 @@ sub getInstance {
 sub new {
     my ($class) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
     return $self;
 }
 
@@ -91,12 +92,14 @@ sub getImages {
         return $bufferedImageArray;
 }
 
-# use java::awt;
-# use java::awt::geom::AffineTransform;
-# use java::awt::image::AffineTransformOp;
-# use java::awt::image::BufferedImage;
-use org::allbinary::logic::communication::log::LogUtil;
-use org::allbinary::media::image::ImageUtil;
+use java::lang::Object ();
+use java::lang::LazyStatic ();
+# use java::awt ();
+# use java::awt::geom::AffineTransform ();
+# use java::awt::image::AffineTransformOp ();
+# use java::awt::image::BufferedImage ();
+use org::allbinary::logic::communication::log::LogUtil ();
+use org::allbinary::media::image::ImageUtil ();
 
 1;
 

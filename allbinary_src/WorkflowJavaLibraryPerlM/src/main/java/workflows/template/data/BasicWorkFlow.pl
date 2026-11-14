@@ -17,7 +17,7 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
-use parent -norequire,'org::allbinary::logic::control::workflow::WorkFlowInterface';
+use parent -norequire,'java::lang::Object','org::allbinary::logic::control::workflow::WorkFlowInterface';
 
 
 sub _init_fields {
@@ -34,7 +34,7 @@ sub _init_fields {
 sub new {
     my ($class, $propertiesHashMap, $pageContext) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
         if ($workflows::template::data::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($workflows::template::data::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{WORKFLOW})) {
             $self->{logUtil}->putF("Properties: " . $propertiesHashMap->toString(), $self, "BasicWorkFlow()");
         }
@@ -79,17 +79,18 @@ sub process {
         }
 }
 
-use java::util::HashMap;
-# use javax::servlet::jsp::PageContext;
-# use javax::servlet::jsp::tagext::TagSupport;
-use org::allbinary::logic::communication::log::LogUtil;
-use org::allbinary::logic::control::validate::ValidationComponentInterface;
-use org::allbinary::logic::control::workflow::WorkFlowData;
-use org::allbinary::logic::control::workflow::WorkFlowInterface;
-use org::allbinary::logic::system::security::licensing::AbeClientInformationInterface;
-use org::allbinary::logic::system::security::licensing::ServiceClientInformationInterfaceFactory;
-use org::allbinary::logic::visual::transform::TransformFactory;
-use org::allbinary::string::CommonStrings;
+use java::lang::Object ();
+use java::util::HashMap ();
+# use javax::servlet::jsp::PageContext ();
+# use javax::servlet::jsp::tagext::TagSupport ();
+use org::allbinary::logic::communication::log::LogUtil ();
+use org::allbinary::logic::control::validate::ValidationComponentInterface ();
+use org::allbinary::logic::control::workflow::WorkFlowData ();
+use org::allbinary::logic::control::workflow::WorkFlowInterface ();
+use org::allbinary::logic::system::security::licensing::AbeClientInformationInterface ();
+use org::allbinary::logic::system::security::licensing::ServiceClientInformationInterfaceFactory ();
+use org::allbinary::logic::visual::transform::TransformFactory ();
+use org::allbinary::string::CommonStrings ();
 
 1;
 

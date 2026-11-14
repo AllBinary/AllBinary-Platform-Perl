@@ -5,8 +5,9 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
-our $instance = 'org::allbinary::game::configuration::feature::MultiPlayerGameFeatureFactory'->new();
+tie our $instance, 'java::lang::LazyStatic', sub { 'org::allbinary::game::configuration::feature::MultiPlayerGameFeatureFactory'->new() };
 
 
 sub getInstance {
@@ -26,6 +27,8 @@ sub addCommands {
     my ($self, $anyType) = @_;
 }
 
+use java::lang::Object ();
+use java::lang::LazyStatic ();
 
 1;
 

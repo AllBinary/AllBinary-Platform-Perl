@@ -17,6 +17,7 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
 our $FRAME = "frame";
 our $ROTATE = "rotate";
@@ -50,7 +51,7 @@ sub new {
 sub _new1 {
     my ($class, $canvasNode) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
         $self->{grid} = 'org::allbinary::graphics::j2me::workarea::canvas::Grid'->new();
         $self->{grid}->{grid} = 'org::allbinary::graphics::PointFactory'->getInstance()->createXY(0, 0);
         $self->{dimension} = 'org::allbinary::graphics::j2me::workarea::canvas::IntegerDimension'->new(0, 0);
@@ -101,7 +102,7 @@ sub _new1 {
 sub _new1 {
     my ($class, $canvasJPanel) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
         $self->{angle} = $canvasJPanel->getAngle();
         $self->{graphicItemHashMap} = $canvasJPanel->getGraphicItemHashMap();
         $self->{dimension} = $canvasJPanel->getCanvasDimension();
@@ -231,21 +232,22 @@ sub getGrid {
         return $self->{grid};
 }
 
-use java::util::HashMap;
-use org::allbinary::animation::vector::VectorCenterGenerator;
-use org::allbinary::dom::DomHelper;
-use org::allbinary::graphics::GPoint;
-use org::allbinary::graphics::GraphicsStrings;
-use org::allbinary::graphics::PointFactory;
-use org::allbinary::graphics::j2me::workarea::WorkAreaJPanel;
-use org::allbinary::graphics::j2me::workarea::tools::GraphicItemFactory;
-use org::allbinary::graphics::j2me::workarea::tools::GraphicItemInterface;
-use org::allbinary::graphics::j2me::workarea::tools::LinesGraphicItem;
-use org::allbinary::logic::StdUtil;
-use org::allbinary::util::BasicArrayList;
-use org::w3c::dom::Node;
-use org::allbinary::graphics::j2me::workarea::canvas::Grid;
-use org::allbinary::graphics::j2me::workarea::canvas::IntegerDimension;
+use java::lang::Object ();
+use java::util::HashMap ();
+use org::allbinary::animation::vector::VectorCenterGenerator ();
+use org::allbinary::dom::DomHelper ();
+use org::allbinary::graphics::GPoint ();
+use org::allbinary::graphics::GraphicsStrings ();
+use org::allbinary::graphics::PointFactory ();
+use org::allbinary::graphics::j2me::workarea::WorkAreaJPanel ();
+use org::allbinary::graphics::j2me::workarea::tools::GraphicItemFactory ();
+use org::allbinary::graphics::j2me::workarea::tools::GraphicItemInterface ();
+use org::allbinary::graphics::j2me::workarea::tools::LinesGraphicItem ();
+use org::allbinary::logic::StdUtil ();
+use org::allbinary::util::BasicArrayList ();
+use org::w3c::dom::Node ();
+use org::allbinary::graphics::j2me::workarea::canvas::Grid ();
+use org::allbinary::graphics::j2me::workarea::canvas::IntegerDimension ();
 
 1;
 

@@ -17,9 +17,9 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
-use parent -norequire,'org::allbinary::logic::system::hardware::components::interfaces::HardwareComponentInterface';
+use parent -norequire,'java::lang::Object','org::allbinary::logic::system::hardware::components::interfaces::HardwareComponentInterface';
 
-our $instance = 'org::allbinary::logic::system::hardware::components::interfaces::NoHardwareComponent'->new();
+tie our $instance, 'java::lang::LazyStatic', sub { 'org::allbinary::logic::system::hardware::components::interfaces::NoHardwareComponent'->new() };
 
 sub new {
     my ($class) = @_;
@@ -48,8 +48,10 @@ sub toString {
         return 'org::allbinary::logic::string::StringUtil'->getInstance()->{NULL_STRING};
 }
 
-use org::allbinary::logic::string::StringUtil;
-use org::allbinary::logic::system::hardware::components::interfaces::HardwareComponentInterface;
+use java::lang::Object ();
+use java::lang::LazyStatic ();
+use org::allbinary::logic::string::StringUtil ();
+use org::allbinary::logic::system::hardware::components::interfaces::HardwareComponentInterface ();
 
 1;
 

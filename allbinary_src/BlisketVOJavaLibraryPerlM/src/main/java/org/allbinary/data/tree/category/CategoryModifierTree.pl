@@ -31,7 +31,7 @@ sub _init_fields {
 sub new {
     my ($class, $categoryFactoryInterface) = @_;
     my $self = $class->SUPER::new($categoryFactoryInterface);
-    $self->_init_fields();
+    _init_fields($self);
         # super(...) made $self above
         if ($org::allbinary::data::tree::category::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($org::allbinary::data::tree::category::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{CATEGORY})) {
             $self->{logUtil}->putF($self->{commonStrings}->{START}, $self, "CategoryModifierTree(CategoryFactoryInterface categoryFactoryInterface)");
@@ -86,15 +86,16 @@ sub delete {
         }
 }
 
-use org::allbinary::business::category::CategoryFactoryInterface;
-use org::allbinary::business::category::CategoryInterface;
-use org::allbinary::logic::communication::log::LogUtil;
-use org::allbinary::logic::io::file::directory::Directory;
-use org::allbinary::logic::io::path::AbPath;
-use org::allbinary::logic::string::StringUtil;
-use org::allbinary::string::CommonStrings;
-use org::allbinary::data::tree::category::CategoryPrivateTree;
-use org::allbinary::data::tree::category::CategoryModifierTreeInterface;
+use java::lang::Object ();
+use org::allbinary::business::category::CategoryFactoryInterface ();
+use org::allbinary::business::category::CategoryInterface ();
+use org::allbinary::logic::communication::log::LogUtil ();
+use org::allbinary::logic::io::file::directory::Directory ();
+use org::allbinary::logic::io::path::AbPath ();
+use org::allbinary::logic::string::StringUtil ();
+use org::allbinary::string::CommonStrings ();
+use org::allbinary::data::tree::category::CategoryPrivateTree ();
+use org::allbinary::data::tree::category::CategoryModifierTreeInterface ();
 
 1;
 

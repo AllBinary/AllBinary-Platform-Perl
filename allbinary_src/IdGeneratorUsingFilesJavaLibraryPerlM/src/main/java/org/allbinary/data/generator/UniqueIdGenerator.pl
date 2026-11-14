@@ -17,7 +17,7 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
-use parent -norequire,'org::allbinary::data::generator::IdGeneratorInterface';
+use parent -norequire,'java::lang::Object','org::allbinary::data::generator::IdGeneratorInterface';
 
 our $EXT = ".unq";
 
@@ -32,7 +32,7 @@ sub _init_fields {
 sub new {
     my ($class) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
     return $self;
 }
 
@@ -65,7 +65,7 @@ sub getNext {
         my $idData = undef;
         my $idOutData = undef;
         try {
-            my $idFile = 'org::allbinary::logic::io::AbFileInputStream'->new($self->{newFile});
+            my $idFile = 'org::allbinary::logic::io::AbFileInputStream'->createFromAbFile($self->{newFile});
             $idData = 'org::allbinary::logic::io::AbDataInputStream'->new($idFile);
             $self->{id} = $idData->readLong();
             my $idOutFile = 'org::allbinary::logic::io::AbFileOutputStream'->createFromAbFile($self->{newFile});
@@ -85,17 +85,18 @@ sub getNext {
         }
 }
 
-# use java::io::IOException;
-use org::allbinary::logic::communication::log::LogUtil;
-use org::allbinary::logic::io::AbDataInputStream;
-use org::allbinary::logic::io::AbDataOutputStream;
-use org::allbinary::logic::io::AbFileInputStream;
-use org::allbinary::logic::io::AbFileOutputStream;
-use org::allbinary::logic::io::DataOutputStreamFactory;
-use org::allbinary::logic::io::StreamUtil;
-use org::allbinary::logic::io::file::AbFile;
-use org::allbinary::string::CommonStrings;
-use org::allbinary::data::generator::IdGeneratorInterface;
+use java::lang::Object ();
+# use java::io::IOException ();
+use org::allbinary::logic::communication::log::LogUtil ();
+use org::allbinary::logic::io::AbDataInputStream ();
+use org::allbinary::logic::io::AbDataOutputStream ();
+use org::allbinary::logic::io::AbFileInputStream ();
+use org::allbinary::logic::io::AbFileOutputStream ();
+use org::allbinary::logic::io::DataOutputStreamFactory ();
+use org::allbinary::logic::io::StreamUtil ();
+use org::allbinary::logic::io::file::AbFile ();
+use org::allbinary::string::CommonStrings ();
+use org::allbinary::data::generator::IdGeneratorInterface ();
 
 1;
 

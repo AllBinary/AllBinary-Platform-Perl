@@ -19,7 +19,7 @@ use feature 'try';
 no warnings 'experimental::try';
 use parent -norequire,'org::allbinary::game::layer::RTSLayerLogHelper';
 
-our $instanceC = 'org::allbinary::game::layer::RTSLayerSelectedLogHelper'->new();
+tie our $instanceC, 'java::lang::LazyStatic', sub { 'org::allbinary::game::layer::RTSLayerSelectedLogHelper'->new() };
 
 sub _init_fields {
     my ($self) = @_;
@@ -32,7 +32,7 @@ sub _init_fields {
 sub new {
     my ($class) = @_;
     my $self = $class->SUPER::new();
-    $self->_init_fields();
+    _init_fields($self);
     return $self;
 }
 
@@ -178,18 +178,20 @@ sub notOnPath {
         $self->{logUtil}->putF('org::allbinary::logic::string::StringMaker'->new()->append($associatedAdvancedRTSGameLayer->getName())->append('org::allbinary::string::CommonSeps'->getInstance()->{SPACE})->appendint(int($geographicMapCellHistory->getTotalVisited()))->append('org::allbinary::string::CommonSeps'->getInstance()->{SPACE})->append($stringUtil->toString($currentGeographicMapCellPosition))->append(" - trying to move but not on path: ")->append($stringUtil->toString($pathList))->toString(), $self, "turnTo");
 }
 
-use org::allbinary::logic::communication::log::LogUtil;
-use org::allbinary::string::CommonLabels;
-use org::allbinary::string::CommonSeps;
-use org::allbinary::logic::string::StringMaker;
-use org::allbinary::logic::string::StringUtil;
-use org::allbinary::math::AngleInfo;
-use org::allbinary::math::NamedAngle;
-use org::allbinary::math::PositionStrings;
-use org::allbinary::media::graphics::geography::map::GeographicMapCellHistory;
-use org::allbinary::media::graphics::geography::map::GeographicMapCellPosition;
-use org::allbinary::util::BasicArrayList;
-use org::allbinary::game::layer::RTSLayerLogHelper;
+use java::lang::Object ();
+use java::lang::LazyStatic ();
+use org::allbinary::logic::communication::log::LogUtil ();
+use org::allbinary::string::CommonLabels ();
+use org::allbinary::string::CommonSeps ();
+use org::allbinary::logic::string::StringMaker ();
+use org::allbinary::logic::string::StringUtil ();
+use org::allbinary::math::AngleInfo ();
+use org::allbinary::math::NamedAngle ();
+use org::allbinary::math::PositionStrings ();
+use org::allbinary::media::graphics::geography::map::GeographicMapCellHistory ();
+use org::allbinary::media::graphics::geography::map::GeographicMapCellPosition ();
+use org::allbinary::util::BasicArrayList ();
+use org::allbinary::game::layer::RTSLayerLogHelper ();
 
 1;
 

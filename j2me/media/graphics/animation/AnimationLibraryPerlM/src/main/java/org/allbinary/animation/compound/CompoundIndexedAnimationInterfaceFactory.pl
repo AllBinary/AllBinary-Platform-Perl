@@ -40,12 +40,13 @@ sub createAnimation {
         return 'org::allbinary::animation::compound::CompoundIndexedAnimation'->new($animationArray, $self->{animationBehaviorFactory}->getOrCreateInstance());
 }
 
-use org::allbinary::animation::Animation;
-use org::allbinary::animation::AnimationBehaviorFactory;
-use org::allbinary::animation::AnimationInterfaceFactoryInterface;
-use org::allbinary::logic::communication::log::ForcedLogUtil;
-use org::allbinary::animation::compound::CompoundAnimationInterfaceFactory;
-use org::allbinary::animation::compound::CompoundIndexedAnimation;
+use java::lang::Object ();
+use org::allbinary::animation::Animation ();
+use org::allbinary::animation::AnimationBehaviorFactory ();
+use org::allbinary::animation::AnimationInterfaceFactoryInterface ();
+use org::allbinary::logic::communication::log::ForcedLogUtil ();
+use org::allbinary::animation::compound::CompoundAnimationInterfaceFactory ();
+use org::allbinary::animation::compound::CompoundIndexedAnimation ();
 
 1;
 

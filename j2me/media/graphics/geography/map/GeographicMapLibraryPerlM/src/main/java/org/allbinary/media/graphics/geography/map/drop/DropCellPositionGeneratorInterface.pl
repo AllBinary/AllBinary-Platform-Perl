@@ -47,10 +47,10 @@ sub isDropAllowedAt {
     die "abstract method isDropAllowedAt";
 }
 
-use org::allbinary::game::layer::AllBinaryGameLayerManager;
-use org::allbinary::layer::AllBinaryLayerManager;
-use org::allbinary::media::graphics::geography::map::BasicGeographicMap;
-use org::allbinary::media::graphics::geography::map::GeographicMapCellPosition;
+use org::allbinary::game::layer::AllBinaryGameLayerManager ();
+use org::allbinary::layer::AllBinaryLayerManager ();
+use org::allbinary::media::graphics::geography::map::BasicGeographicMap ();
+use org::allbinary::media::graphics::geography::map::GeographicMapCellPosition ();
 
 1;
 

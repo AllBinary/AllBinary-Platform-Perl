@@ -41,13 +41,14 @@ sub getInstance {
         }
 }
 
-# use javax::microedition::lcdui::Image;
-use org::allbinary::animation::Animation;
-use org::allbinary::animation::AnimationBehaviorFactory;
-use org::allbinary::logic::math::PrimitiveIntUtil;
-use org::allbinary::animation::image::BaseImageAnimationFactory;
-use org::allbinary::animation::image::RightToLeftImageAnimation;
-use org::allbinary::animation::image::AdjustedRightToLeftImageAnimation;
+use java::lang::Object ();
+use javax::microedition::lcdui::Image ();
+use org::allbinary::animation::Animation ();
+use org::allbinary::animation::AnimationBehaviorFactory ();
+use org::allbinary::logic::math::PrimitiveIntUtil ();
+use org::allbinary::animation::image::BaseImageAnimationFactory ();
+use org::allbinary::animation::image::RightToLeftImageAnimation ();
+use org::allbinary::animation::image::AdjustedRightToLeftImageAnimation ();
 
 1;
 

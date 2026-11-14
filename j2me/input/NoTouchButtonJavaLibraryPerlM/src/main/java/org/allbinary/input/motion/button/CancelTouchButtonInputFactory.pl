@@ -17,8 +17,9 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
-our $instance = 'org::allbinary::logic::NullUtil'->getInstance()->{NULL_OBJECT};
+tie our $instance, 'java::lang::LazyStatic', sub { 'org::allbinary::logic::NullUtil'->getInstance()->{NULL_OBJECT} };
 
 sub _init_fields {
     my ($self) = @_;
@@ -38,7 +39,7 @@ sub getInstance {
 sub new {
     my ($class) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
         my $basicTouchInputFactory = 'org::allbinary::input::motion::button::BasicTouchInputFactory'->getInstance();
         for (my $index = scalar(@{$self->{cancelInputArray}}) - 1; $index >= 0; $index--) {
             $self->{cancelInputArray}->[$index] = $basicTouchInputFactory->{NONE};
@@ -56,9 +57,11 @@ sub getCancel {
         return $self->{cancelInputArray}->[$touchButtonInput->getId()];
 }
 
-use org::allbinary::game::input::InputFactory;
-use org::allbinary::logic::NullUtil;
-use org::allbinary::input::motion::button::BasicTouchInputFactory;
+use java::lang::Object ();
+use java::lang::LazyStatic ();
+use org::allbinary::game::input::InputFactory ();
+use org::allbinary::logic::NullUtil ();
+use org::allbinary::input::motion::button::BasicTouchInputFactory ();
 
 1;
 

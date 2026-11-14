@@ -17,6 +17,7 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
 
 sub new {
@@ -32,8 +33,9 @@ sub removeAllListeners {
         'org::allbinary::game::input::event::DownGameKeyEventHandler'->getInstance()->removeAllListeners();
 }
 
-use org::allbinary::game::input::event::DownGameKeyEventHandler;
-use org::allbinary::game::input::event::UpGameKeyEventHandler;
+use java::lang::Object ();
+use org::allbinary::game::input::event::DownGameKeyEventHandler ();
+use org::allbinary::game::input::event::UpGameKeyEventHandler ();
 
 1;
 

@@ -21,7 +21,7 @@ no warnings 'experimental::try';
 use parent -norequire,'org::allbinary::business::advertisement::image::AdvertisementImageInterface';
 
 
-use org::allbinary::business::advertisement::image::AdvertisementImageInterface;
+use org::allbinary::business::advertisement::image::AdvertisementImageInterface ();
 
 1;
 

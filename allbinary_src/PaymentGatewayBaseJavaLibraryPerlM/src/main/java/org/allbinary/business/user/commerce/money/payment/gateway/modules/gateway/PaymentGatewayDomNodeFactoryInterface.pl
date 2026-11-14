@@ -26,8 +26,8 @@ sub getInstance {
     die "abstract method getInstance";
 }
 
-use org::allbinary::business::user::commerce::money::payment::gateway::PaymentGatewayInterface;
-use org::allbinary::data::tree::dom::DomNodeInterface;
+use org::allbinary::business::user::commerce::money::payment::gateway::PaymentGatewayInterface ();
+use org::allbinary::data::tree::dom::DomNodeInterface ();
 
 1;
 

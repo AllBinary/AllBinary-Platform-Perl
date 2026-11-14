@@ -17,6 +17,7 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
 our $CLASSNAME = "taghelpers.OrderHistoryHelper";
 our $FACTORYNAME = "taghelpers.OrderHistoryHelperFactory";
@@ -35,10 +36,11 @@ sub getInstance {
         return 'admin::taghelpers::HelperFactory'->getInstance($FACTORYNAME, $CLASSNAME, $hashMap, $pageContext);
 }
 
-use java::util::HashMap;
-# use javax::servlet::jsp::PageContext;
-use org::allbinary::logic::system::security::licensing::LicensingException;
-use admin::taghelpers::HelperFactory;
+use java::lang::Object ();
+use java::util::HashMap ();
+# use javax::servlet::jsp::PageContext ();
+use org::allbinary::logic::system::security::licensing::LicensingException ();
+use admin::taghelpers::HelperFactory ();
 
 1;
 

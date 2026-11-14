@@ -29,7 +29,7 @@ sub _init_fields {
 sub new {
     my ($class, $numberOfEnemiesLeft, $artificialIntelligenceInterface, $ownerLayerInterface, $gameInput) = @_;
     my $self = $class->SUPER::new($artificialIntelligenceInterface, $ownerLayerInterface, $gameInput);
-    $self->_init_fields();
+    _init_fields($self);
         # super(...) made $self above
         $self->{numberOfLayersLeft} = $numberOfEnemiesLeft;
     return $self;
@@ -47,11 +47,12 @@ sub processAI {
         $self->SUPER::processAI($allBinaryLayerManager);
 }
 
-use org::allbinary::ai::ArtificialIntelligenceInterface;
-use org::allbinary::game::input::GameInput;
-use org::allbinary::layer::AllBinaryLayer;
-use org::allbinary::layer::AllBinaryLayerManager;
-use org::allbinary::game::ag::ai::sequence::SequenceAI;
+use java::lang::Object ();
+use org::allbinary::ai::ArtificialIntelligenceInterface ();
+use org::allbinary::game::input::GameInput ();
+use org::allbinary::layer::AllBinaryLayer ();
+use org::allbinary::layer::AllBinaryLayerManager ();
+use org::allbinary::game::ag::ai::sequence::SequenceAI ();
 
 1;
 

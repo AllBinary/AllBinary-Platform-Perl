@@ -28,7 +28,8 @@ sub new {
     return $self;
 }
 
-use org::allbinary::game::configuration::feature::Feature;
+use java::lang::Object ();
+use org::allbinary::game::configuration::feature::Feature ();
 
 1;
 

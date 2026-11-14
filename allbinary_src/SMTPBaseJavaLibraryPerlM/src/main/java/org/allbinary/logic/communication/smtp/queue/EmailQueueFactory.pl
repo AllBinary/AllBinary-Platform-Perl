@@ -17,8 +17,9 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
-our $emailQueueInterface = 'org::allbinary::logic::communication::smtp::queue::BasicEmailQueue'->getInstance();
+tie our $emailQueueInterface, 'java::lang::LazyStatic', sub { 'org::allbinary::logic::communication::smtp::queue::BasicEmailQueue'->getInstance() };
 
 
 sub new {
@@ -33,7 +34,9 @@ sub getInstance {
         return $org::allbinary::logic::communication::smtp::queue::EmailQueueFactory::emailQueueInterface;
 }
 
-use org::allbinary::logic::communication::smtp::queue::BasicEmailQueue;
+use java::lang::Object ();
+use java::lang::LazyStatic ();
+use org::allbinary::logic::communication::smtp::queue::BasicEmailQueue ();
 
 1;
 

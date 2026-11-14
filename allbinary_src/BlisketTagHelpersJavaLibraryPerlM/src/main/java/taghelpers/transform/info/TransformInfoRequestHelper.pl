@@ -30,7 +30,7 @@ sub _init_fields {
 sub new {
     my ($class, $propertiesHashMap, $pageContext) = @_;
     my $self = $class->SUPER::new();
-    $self->_init_fields();
+    _init_fields($self);
         $self->{transformInfoInterface} = 'org::allbinary::logic::visual::transform::info::TransformInfoHttpStoreNoManipulation'->new($propertiesHashMap, $pageContext);
     return $self;
 }
@@ -94,15 +94,16 @@ sub delete {
         }
 }
 
-use java::util::HashMap;
-use org::allbinary::util::BasicArrayList;
-use org::allbinary::util::BasicArrayListD;
-# use javax::servlet::jsp::PageContext;
-use admin::taghelpers::ModifyTable;
-use org::allbinary::data::tables::transform::info::TransformInfoEntityBuilder;
-use org::allbinary::logic::communication::log::LogUtil;
-use org::allbinary::logic::visual::transform::info::TransformInfoHttpInterface;
-use org::allbinary::logic::visual::transform::info::TransformInfoHttpStoreNoManipulation;
+use java::lang::Object ();
+use java::util::HashMap ();
+use org::allbinary::util::BasicArrayList ();
+use org::allbinary::util::BasicArrayListD ();
+# use javax::servlet::jsp::PageContext ();
+use admin::taghelpers::ModifyTable ();
+use org::allbinary::data::tables::transform::info::TransformInfoEntityBuilder ();
+use org::allbinary::logic::communication::log::LogUtil ();
+use org::allbinary::logic::visual::transform::info::TransformInfoHttpInterface ();
+use org::allbinary::logic::visual::transform::info::TransformInfoHttpStoreNoManipulation ();
 
 1;
 

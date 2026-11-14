@@ -33,7 +33,7 @@ sub _init_fields {
 sub new {
     my ($class, $tileTypeToTileIdsMap, $maxTileId) = @_;
     my $self = $class->SUPER::new();
-    $self->_init_fields();
+    _init_fields($self);
         my $commonStrings = 'org::allbinary::string::CommonStrings'->getInstance();
         $self->{logUtil}->putF($commonStrings->{START}, $self, $commonStrings->{INIT});
         $self->{maxTileId} = $maxTileId;
@@ -98,14 +98,15 @@ sub isPath {
         return 0;
 }
 
-use java::util::Enumeration;
-use org::allbinary::string::CommonStrings;
-use org::allbinary::media::graphics::geography::map::GeographicMapCellType;
-use org::allbinary::media::graphics::geography::map::GeographicMapCellTypeFactory;
-use org::allbinary::util::ABHashtable;
-use org::allbinary::util::BasicArrayList;
-use org::allbinary::util::EnumerationUtil;
-use org::allbinary::media::graphics::geography::map::platform::BasicPlatormGeographicMapCellType;
+use java::lang::Object ();
+use java::util::Enumeration ();
+use org::allbinary::string::CommonStrings ();
+use org::allbinary::media::graphics::geography::map::GeographicMapCellType ();
+use org::allbinary::media::graphics::geography::map::GeographicMapCellTypeFactory ();
+use org::allbinary::util::ABHashtable ();
+use org::allbinary::util::BasicArrayList ();
+use org::allbinary::util::EnumerationUtil ();
+use org::allbinary::media::graphics::geography::map::platform::BasicPlatormGeographicMapCellType ();
 
 1;
 

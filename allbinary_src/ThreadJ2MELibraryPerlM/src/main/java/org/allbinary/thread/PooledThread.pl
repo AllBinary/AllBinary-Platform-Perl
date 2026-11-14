@@ -33,7 +33,7 @@ sub _init_fields {
 sub new {
     my ($class, $threadPool) = @_;
     my $self = $class->SUPER::new($threadPool->createName());
-    $self->_init_fields();
+    _init_fields($self);
         # super(...) made $self above
         $self->{logUtil}->putF($self->{commonStrings}->{CONSTRUCTOR}, $self, $self->{commonStrings}->{CONSTRUCTOR});
         $self->{threadPool} = $threadPool;
@@ -70,12 +70,13 @@ sub run {
         $self->{threadPool}->threadStopped();
 }
 
-use org::allbinary::logic::communication::log::LogUtil;
-use org::allbinary::logic::string::StringMaker;
-use org::allbinary::logic::string::StringUtil;
-use org::allbinary::string::CommonStrings;
-use java::lang::Thread;
-use org::allbinary::thread::ThreadObjectUtil;
+use java::lang::Object ();
+use org::allbinary::logic::communication::log::LogUtil ();
+use org::allbinary::logic::string::StringMaker ();
+use org::allbinary::logic::string::StringUtil ();
+use org::allbinary::string::CommonStrings ();
+use java::lang::Thread ();
+use org::allbinary::thread::ThreadObjectUtil ();
 
 1;
 

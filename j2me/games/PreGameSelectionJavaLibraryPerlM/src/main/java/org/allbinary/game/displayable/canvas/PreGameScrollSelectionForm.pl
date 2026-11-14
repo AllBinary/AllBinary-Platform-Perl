@@ -35,12 +35,13 @@ sub init {
         $self->SUPER::init($rectangle, 'org::allbinary::graphics::form::FormTypeFactory'->getInstance()->{TEMP_HORIZONTAL_FORM});
 }
 
-use org::allbinary::graphics::form::item::ABCustomItem;
-use org::allbinary::graphics::Rectangle;
-use org::allbinary::graphics::color::BasicColor;
-use org::allbinary::graphics::form::FormTypeFactory;
-use org::allbinary::graphics::form::ItemPaintableFactory;
-use org::allbinary::graphics::form::ScrollCurrentSelectionForm;
+use java::lang::Object ();
+use org::allbinary::graphics::form::item::ABCustomItem ();
+use org::allbinary::graphics::Rectangle ();
+use org::allbinary::graphics::color::BasicColor ();
+use org::allbinary::graphics::form::FormTypeFactory ();
+use org::allbinary::graphics::form::ItemPaintableFactory ();
+use org::allbinary::graphics::form::ScrollCurrentSelectionForm ();
 
 1;
 

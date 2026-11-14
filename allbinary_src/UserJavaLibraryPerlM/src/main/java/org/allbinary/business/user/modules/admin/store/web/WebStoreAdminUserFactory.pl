@@ -17,7 +17,7 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
-use parent -norequire,'org::allbinary::business::user::UserFactoryInterface';
+use parent -norequire,'java::lang::Object','org::allbinary::business::user::UserFactoryInterface';
 
 
 
@@ -42,10 +42,11 @@ sub getInstance {
         return 'org::allbinary::business::user::modules::admin::store::web::WebStoreAdminUser'->new($hashMap);
 }
 
-use java::util::HashMap;
-use org::allbinary::business::user::UserFactoryInterface;
-use org::allbinary::business::user::UserInterface;
-use org::allbinary::business::user::modules::admin::store::web::WebStoreAdminUser;
+use java::lang::Object ();
+use java::util::HashMap ();
+use org::allbinary::business::user::UserFactoryInterface ();
+use org::allbinary::business::user::UserInterface ();
+use org::allbinary::business::user::modules::admin::store::web::WebStoreAdminUser ();
 
 1;
 

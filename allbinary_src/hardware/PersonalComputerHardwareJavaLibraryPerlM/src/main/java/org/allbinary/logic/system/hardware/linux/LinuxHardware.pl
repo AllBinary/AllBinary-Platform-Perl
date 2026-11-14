@@ -17,7 +17,7 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
-use parent -norequire,'org::allbinary::logic::system::hardware::HardwareInterface';
+use parent -norequire,'java::lang::Object','org::allbinary::logic::system::hardware::HardwareInterface';
 
 our $PCIFILE = "/proc/pci";
 
@@ -52,7 +52,7 @@ sub new {
 sub _new1 {
     my ($class, $path) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
         $self->init($path);
     return $self;
 }
@@ -61,7 +61,7 @@ sub _new1 {
 sub _new0 {
     my ($class) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
         $self->init($PCIFILE);
         if ($self->{componentInterfaceVector}->size() < $self->{MINHARDWARE}) {
             die ("Not Enough Data For A Valid License On Linux");
@@ -127,7 +127,7 @@ sub init {
                     $self->{logUtil}->putF("PCI File Found", $self, $self->{commonStrings}->{CONSTRUCTOR});
                 }
                 my $nextLine = $lineNumberReader->readLine();
-                while (defined($lineNumberReader) && defined($nextLine)) {
+                while (defined($nextLine)) {
                     if ($self->isNextHardware($nextLine)) {
                         last;
                     }
@@ -142,7 +142,7 @@ sub init {
                     $componentData->append('org::allbinary::string::CommonSeps'->getInstance()->{NEW_LINE});
                     $nextLine = $lineNumberReader->readLine();
                     my $componentType = 'org::allbinary::logic::system::hardware::linux::PCComponentFactory'->getInstance()->getComponentType($nextLine);
-                    while (defined($lineNumberReader)) {
+                    while (1) {
                         $componentData->append($nextLine);
                         $componentData->append('org::allbinary::string::CommonSeps'->getInstance()->{NEW_LINE});
                         $nextLine = $lineNumberReader->readLine();
@@ -280,36 +280,37 @@ sub isNextHardware {
         return 0;
 }
 
-# use java::io::FileReader;
-# use java::io::LineNumberReader;
-use org::allbinary::util::BasicArrayListD;
-use org::allbinary::logic::StdUtil;
-use org::allbinary::logic::communication::log::LogUtil;
-use org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory;
-use org::allbinary::logic::communication::log::config::type::LogConfigTypes;
-use org::allbinary::logic::io::file::AbFile;
-use org::allbinary::logic::io::file::FilePathData;
-use org::allbinary::logic::io::file::directory::SubDirectory;
-use org::allbinary::logic::string::StringMaker;
-use org::allbinary::logic::system::hardware::HardwareInterface;
-use org::allbinary::logic::system::hardware::components::interfaces::BridgeInterface;
-use org::allbinary::logic::system::hardware::components::interfaces::CpuInterface;
-use org::allbinary::logic::system::hardware::components::interfaces::EthernetInterface;
-use org::allbinary::logic::system::hardware::components::interfaces::FireWireInterface;
-use org::allbinary::logic::system::hardware::components::interfaces::HardDriveControllerInterface;
-use org::allbinary::logic::system::hardware::components::interfaces::HardDriveInterface;
-use org::allbinary::logic::system::hardware::components::interfaces::HardwareComponentInterface;
-use org::allbinary::logic::system::hardware::components::interfaces::MachineAccessControlAddressInterface;
-use org::allbinary::logic::system::hardware::components::interfaces::MediaInterface;
-use org::allbinary::logic::system::hardware::components::interfaces::MonitorInterface;
-use org::allbinary::logic::system::hardware::components::interfaces::UsbInterface;
-use org::allbinary::logic::system::hardware::components::interfaces::VideoInterface;
-use org::allbinary::logic::system::hardware::components::linux::Cpu;
-use org::allbinary::string::CommonSeps;
-use org::allbinary::string::CommonStrings;
-use org::allbinary::util::ABHashtable;
-use org::allbinary::util::BasicArrayList;
-use org::allbinary::logic::system::hardware::linux::PCComponentFactory;
+use java::lang::Object ();
+# use java::io::FileReader ();
+# use java::io::LineNumberReader ();
+use org::allbinary::util::BasicArrayListD ();
+use org::allbinary::logic::StdUtil ();
+use org::allbinary::logic::communication::log::LogUtil ();
+use org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory ();
+use org::allbinary::logic::communication::log::config::type::LogConfigTypes ();
+use org::allbinary::logic::io::file::AbFile ();
+use org::allbinary::logic::io::file::FilePathData ();
+use org::allbinary::logic::io::file::directory::SubDirectory ();
+use org::allbinary::logic::string::StringMaker ();
+use org::allbinary::logic::system::hardware::HardwareInterface ();
+use org::allbinary::logic::system::hardware::components::interfaces::BridgeInterface ();
+use org::allbinary::logic::system::hardware::components::interfaces::CpuInterface ();
+use org::allbinary::logic::system::hardware::components::interfaces::EthernetInterface ();
+use org::allbinary::logic::system::hardware::components::interfaces::FireWireInterface ();
+use org::allbinary::logic::system::hardware::components::interfaces::HardDriveControllerInterface ();
+use org::allbinary::logic::system::hardware::components::interfaces::HardDriveInterface ();
+use org::allbinary::logic::system::hardware::components::interfaces::HardwareComponentInterface ();
+use org::allbinary::logic::system::hardware::components::interfaces::MachineAccessControlAddressInterface ();
+use org::allbinary::logic::system::hardware::components::interfaces::MediaInterface ();
+use org::allbinary::logic::system::hardware::components::interfaces::MonitorInterface ();
+use org::allbinary::logic::system::hardware::components::interfaces::UsbInterface ();
+use org::allbinary::logic::system::hardware::components::interfaces::VideoInterface ();
+use org::allbinary::logic::system::hardware::components::linux::Cpu ();
+use org::allbinary::string::CommonSeps ();
+use org::allbinary::string::CommonStrings ();
+use org::allbinary::util::ABHashtable ();
+use org::allbinary::util::BasicArrayList ();
+use org::allbinary::logic::system::hardware::linux::PCComponentFactory ();
 
 1;
 

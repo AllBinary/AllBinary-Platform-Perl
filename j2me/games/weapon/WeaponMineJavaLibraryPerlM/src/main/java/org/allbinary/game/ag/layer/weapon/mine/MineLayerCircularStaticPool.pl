@@ -17,8 +17,9 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
-our $WEAPON_LAYER_CIRCULAR_STATIC_POOL = 'org::allbinary::game::layer::weapon::WeaponLayerCircularPool'->new();
+tie our $WEAPON_LAYER_CIRCULAR_STATIC_POOL, 'java::lang::LazyStatic', sub { 'org::allbinary::game::layer::weapon::WeaponLayerCircularPool'->new() };
 
 sub new {
     my ($class) = @_;
@@ -40,10 +41,12 @@ sub getInstance {
         return $org::allbinary::game::ag::layer::weapon::mine::MineLayerCircularStaticPool::WEAPON_LAYER_CIRCULAR_STATIC_POOL;
 }
 
-use org::allbinary::game::layer::weapon::WeaponLayerCircularPool;
-use org::allbinary::view::ViewPositionFactoryInterface;
-use org::allbinary::game::ag::layer::weapon::mine::MineCountedPickedUpLayerInterfaceFactory;
-use org::allbinary::game::ag::layer::weapon::mine::MineLayerFactory;
+use java::lang::Object ();
+use java::lang::LazyStatic ();
+use org::allbinary::game::layer::weapon::WeaponLayerCircularPool ();
+use org::allbinary::view::ViewPositionFactoryInterface ();
+use org::allbinary::game::ag::layer::weapon::mine::MineCountedPickedUpLayerInterfaceFactory ();
+use org::allbinary::game::ag::layer::weapon::mine::MineLayerFactory ();
 
 1;
 

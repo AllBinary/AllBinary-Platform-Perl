@@ -17,7 +17,7 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
-use parent -norequire,'org::allbinary::game::tick::TickableInterface';
+use parent -norequire,'java::lang::Object','org::allbinary::game::tick::TickableInterface';
 
 
 sub _init_fields {
@@ -32,7 +32,7 @@ sub _init_fields {
 sub new {
     my ($class) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
         $self->{ownedWaypointList} = 'org::allbinary::util::BasicArrayListS'->new(1);
     return $self;
 }
@@ -184,15 +184,16 @@ sub updatePathOnTargetMove {
     my ($self, $reason) = @_;
 }
 
-use org::allbinary::game::layer::special::CollidableDestroyableDamageableLayer;
-use org::allbinary::game::layer::waypoint::WaypointBase;
-use org::allbinary::util::BasicArrayList;
-use org::allbinary::util::BasicArrayListD;
-use org::allbinary::game::tick::TickableInterface;
-use org::allbinary::layer::AllBinaryLayerManager;
-use org::allbinary::media::graphics::geography::map::GeographicMapCellHistory;
-use org::allbinary::media::graphics::geography::map::GeographicMapCellPosition;
-use org::allbinary::util::BasicArrayListS;
+use java::lang::Object ();
+use org::allbinary::game::layer::special::CollidableDestroyableDamageableLayer ();
+use org::allbinary::game::layer::waypoint::WaypointBase ();
+use org::allbinary::util::BasicArrayList ();
+use org::allbinary::util::BasicArrayListD ();
+use org::allbinary::game::tick::TickableInterface ();
+use org::allbinary::layer::AllBinaryLayerManager ();
+use org::allbinary::media::graphics::geography::map::GeographicMapCellHistory ();
+use org::allbinary::media::graphics::geography::map::GeographicMapCellPosition ();
+use org::allbinary::util::BasicArrayListS ();
 
 1;
 

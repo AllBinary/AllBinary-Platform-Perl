@@ -17,7 +17,7 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
-use parent -norequire,'org::allbinary::input::motion::gesture::observer::CompleteMotionGestureListenerInterface';
+use parent -norequire,'java::lang::Object','org::allbinary::input::motion::gesture::observer::CompleteMotionGestureListenerInterface';
 
 
 sub _init_fields {
@@ -29,7 +29,7 @@ sub _init_fields {
 sub new {
     my ($class) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
         my $commonStrings = 'org::allbinary::string::CommonStrings'->getInstance();
         $self->{logUtil}->putF("Null Gesture Reciever", $self, $commonStrings->{CONSTRUCTOR});
     return $self;
@@ -41,10 +41,11 @@ sub onMotionGestureCompleted {
     my ($self, $list) = @_;
 }
 
-use org::allbinary::logic::communication::log::LogUtil;
-use org::allbinary::string::CommonStrings;
-use org::allbinary::util::BasicArrayList;
-use org::allbinary::input::motion::gesture::observer::CompleteMotionGestureListenerInterface;
+use java::lang::Object ();
+use org::allbinary::logic::communication::log::LogUtil ();
+use org::allbinary::string::CommonStrings ();
+use org::allbinary::util::BasicArrayList ();
+use org::allbinary::input::motion::gesture::observer::CompleteMotionGestureListenerInterface ();
 
 1;
 

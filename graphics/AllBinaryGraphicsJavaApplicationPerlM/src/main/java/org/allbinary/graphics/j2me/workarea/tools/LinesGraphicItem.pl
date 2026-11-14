@@ -19,7 +19,7 @@ use feature 'try';
 no warnings 'experimental::try';
 use POSIX ();
 use List::Util ();
-use parent -norequire,'org::allbinary::graphics::j2me::workarea::tools::GraphicItemInterface';
+use parent -norequire,'java::lang::Object','org::allbinary::graphics::j2me::workarea::tools::GraphicItemInterface';
 
 our $RECT = "rect";
 our $ARC = "arc";
@@ -55,7 +55,7 @@ sub new {
 sub _new0 {
     my ($class) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
         $self->{points} = 'org::allbinary::graphics::j2me::workarea::tools::Points'->new();
         try {
             $self->init();
@@ -70,7 +70,7 @@ sub _new0 {
 sub _new1 {
     my ($class, $linesNode) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
         $self->{points} = 'org::allbinary::graphics::j2me::workarea::tools::Points'->new();
         $self->init();
         $self->{active} = 0;
@@ -412,33 +412,34 @@ sub keyTyped {
     my ($self, $keyEvent) = @_;
 }
 
-# use java::awt;
-use org::allbinary::util::BasicArrayList;
-use org::allbinary::util::BasicArrayListD;
-# use javax::swing::tree::DefaultMutableTreeNode;
-# use javax::swing::tree::MutableTreeNode;
-use org::allbinary::dom::DomHelper;
-use org::allbinary::game::input::GameInputStrings;
-use org::allbinary::graphics::GPoint;
-use org::allbinary::graphics::PointFactory;
-use org::allbinary::graphics::color::BasicColorFactory;
-use org::allbinary::graphics::j2me::StatusFactory;
-use org::allbinary::graphics::j2me::workarea::canvas::CanvasDom;
-use org::allbinary::graphics::j2me::workarea::canvas::IntegerDimension;
-use org::allbinary::graphics::pipeline::BasicGraphicsPipeline;
-use org::allbinary::logic::StdUtil;
-use org::allbinary::logic::communication::log::LogUtil;
-use org::allbinary::math::PositionStrings;
-use org::allbinary::string::CommonStrings;
-use org::allbinary::util::BasicArrayList;
-use org::w3c::dom::Node;
-use org::w3c::dom::NodeList;
-use org::allbinary::graphics::j2me::workarea::tools::GraphicItemInterface;
-use org::allbinary::graphics::j2me::workarea::tools::Color;
-use org::allbinary::graphics::j2me::workarea::tools::Points;
-use org::allbinary::graphics::j2me::workarea::tools::PointsDomUtil;
-use org::allbinary::graphics::j2me::workarea::tools::BasicStroke;
-use org::allbinary::graphics::j2me::workarea::tools::PointsUtil;
+use java::lang::Object ();
+# use java::awt ();
+use org::allbinary::util::BasicArrayList ();
+use org::allbinary::util::BasicArrayListD ();
+# use javax::swing::tree::DefaultMutableTreeNode ();
+# use javax::swing::tree::MutableTreeNode ();
+use org::allbinary::dom::DomHelper ();
+use org::allbinary::game::input::GameInputStrings ();
+use org::allbinary::graphics::GPoint ();
+use org::allbinary::graphics::PointFactory ();
+use org::allbinary::graphics::color::BasicColorFactory ();
+use org::allbinary::graphics::j2me::StatusFactory ();
+use org::allbinary::graphics::j2me::workarea::canvas::CanvasDom ();
+use org::allbinary::graphics::j2me::workarea::canvas::IntegerDimension ();
+use org::allbinary::graphics::pipeline::BasicGraphicsPipeline ();
+use org::allbinary::logic::StdUtil ();
+use org::allbinary::logic::communication::log::LogUtil ();
+use org::allbinary::math::PositionStrings ();
+use org::allbinary::string::CommonStrings ();
+use org::allbinary::util::BasicArrayList ();
+use org::w3c::dom::Node ();
+use org::w3c::dom::NodeList ();
+use org::allbinary::graphics::j2me::workarea::tools::GraphicItemInterface ();
+use org::allbinary::graphics::j2me::workarea::tools::Color ();
+use org::allbinary::graphics::j2me::workarea::tools::Points ();
+use org::allbinary::graphics::j2me::workarea::tools::PointsDomUtil ();
+use org::allbinary::graphics::j2me::workarea::tools::BasicStroke ();
+use org::allbinary::graphics::j2me::workarea::tools::PointsUtil ();
 
 1;
 

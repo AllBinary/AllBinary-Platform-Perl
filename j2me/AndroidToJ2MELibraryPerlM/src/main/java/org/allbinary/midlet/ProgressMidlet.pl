@@ -30,7 +30,7 @@ sub _init_fields {
 sub new {
     my ($class, $clientInformationFactory) = @_;
     my $self = $class->SUPER::new();
-    $self->_init_fields();
+    _init_fields($self);
         'org::allbinary::globals::Globals'->getInstance()->init('org::allbinary::TsUtil'->getInstance()->getClassClassLoader($self), 'org::allbinary::logic::string::StringUtil'->getInstance()->{EMPTY_STRING});
         $self->preInit();
         $self->{abeClientInformation} = $clientInformationFactory->getInstance();
@@ -60,17 +60,18 @@ sub exitProgress {
         }
 }
 
-use org::allbinary::TsUtil;
-use org::allbinary::canvas::Processor;
-use org::allbinary::globals::Globals;
-use org::allbinary::logic::string::StringUtil;
-use org::allbinary::logic::system::security::licensing::AbeClientInformationInterface;
-use org::allbinary::logic::system::security::licensing::ClientInformationFactory;
-use org::allbinary::thread::PrimaryThreadPool;
-use org::allbinary::thread::ThreadPool;
-use org::allbinary::midlet::AllBinaryMidlet;
-use org::allbinary::midlet::MidletExitProcessorFactory;
-use org::allbinary::midlet::ExitRunnable;
+use java::lang::Object ();
+use org::allbinary::TsUtil ();
+use org::allbinary::canvas::Processor ();
+use org::allbinary::globals::Globals ();
+use org::allbinary::logic::string::StringUtil ();
+use org::allbinary::logic::system::security::licensing::AbeClientInformationInterface ();
+use org::allbinary::logic::system::security::licensing::ClientInformationFactory ();
+use org::allbinary::thread::PrimaryThreadPool ();
+use org::allbinary::thread::ThreadPool ();
+use org::allbinary::midlet::AllBinaryMidlet ();
+use org::allbinary::midlet::MidletExitProcessorFactory ();
+use org::allbinary::midlet::ExitRunnable ();
 
 1;
 

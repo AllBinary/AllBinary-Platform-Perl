@@ -17,9 +17,9 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
-use parent -norequire,'org::osgi::framework::ServiceFactory';
+use parent -norequire,'java::lang::Object','org::osgi::framework::ServiceFactory';
 
-our $inputAutomationServiceFactory = 'org::allbinary::input::automation::osgi::InputAutomationServiceFactory'->new();
+tie our $inputAutomationServiceFactory, 'java::lang::LazyStatic', sub { 'org::allbinary::input::automation::osgi::InputAutomationServiceFactory'->new() };
 
 sub _init_fields {
     my ($self) = @_;
@@ -31,7 +31,7 @@ sub _init_fields {
 sub new {
     my ($class) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
     return $self;
 }
 
@@ -53,12 +53,14 @@ sub ungetService {
     my ($self, $bundle, $registration, $service) = @_;
 }
 
-use org::osgi::framework::Bundle;
-use org::osgi::framework::ServiceFactory;
-use org::osgi::framework::ServiceRegistration;
-use org::allbinary::input::automation::InputAutomationJFrame;
-use org::allbinary::logic::communication::log::LogUtil;
-use org::allbinary::string::CommonStrings;
+use java::lang::Object ();
+use java::lang::LazyStatic ();
+use org::osgi::framework::Bundle ();
+use org::osgi::framework::ServiceFactory ();
+use org::osgi::framework::ServiceRegistration ();
+use org::allbinary::input::automation::InputAutomationJFrame ();
+use org::allbinary::logic::communication::log::LogUtil ();
+use org::allbinary::string::CommonStrings ();
 
 1;
 

@@ -27,8 +27,8 @@ sub getInputRobotInterfaceArray {
     die "abstract method getInputRobotInterfaceArray";
 }
 
-use org::allbinary::input::automation::robot::InputRobotInterface;
-use org::allbinary::osgi::OSGIServiceInterface;
+use org::allbinary::input::automation::robot::InputRobotInterface ();
+use org::allbinary::osgi::OSGIServiceInterface ();
 
 1;
 

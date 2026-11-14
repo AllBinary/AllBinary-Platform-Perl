@@ -120,7 +120,7 @@
 
         <module>../../media/motion/AllBinaryVibrationJavaLibraryPerlM</module>
         <module>../../media/motion/NoVibrateJavaLibraryPerlM</module>
-        <module>../../media/motion/VibrateAndroidJavaLibraryPerlM</module>
+        <!--<module>../../media/motion/VibrateAndroidJavaLibraryPerlM</module>-->
 
         <module>../../media/graphics/NullCustomUIJavaLibraryPerlM</module>
         <module>../../media/graphics/NullCustomUIBaseJavaLibraryPerlM</module>
@@ -144,13 +144,13 @@
         <module>../../games/GameResourceJavaLibraryPerlM</module>
         <module>../../games/GameSoundsJavaLibraryPerlM</module>
 
-        <module>../../input/TouchInputLibraryP</module>
+        <module>../../input/TouchInputLibraryPerlP</module>
 
         <module>../../media/MediaDataPerlM</module>
         <module>../../media/sound/NotDeviceSpecificNoMediaMIDP1LibraryPerlM</module>
 
         <module>../../../allbinary_src/content/ContentNoneJavaLibraryPerlM</module>
-        <module>../../../allbinary_src/content/ContentAndroidJavaLibraryPerlM</module>
+        <!--<module>../../../allbinary_src/content/ContentAndroidJavaLibraryPerlM</module>-->
 
         <module>../../games/GameConfigurationFormJavaLibraryPerlM</module>
 

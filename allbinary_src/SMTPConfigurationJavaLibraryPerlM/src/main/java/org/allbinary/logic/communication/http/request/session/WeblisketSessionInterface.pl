@@ -167,8 +167,8 @@ sub setUserName {
     die "abstract method setUserName";
 }
 
-use org::allbinary::business::user::commerce::inventory::order::OrderInterface;
-use org::allbinary::business::user::role::UserRole;
+use org::allbinary::business::user::commerce::inventory::order::OrderInterface ();
+use org::allbinary::business::user::role::UserRole ();
 
 1;
 

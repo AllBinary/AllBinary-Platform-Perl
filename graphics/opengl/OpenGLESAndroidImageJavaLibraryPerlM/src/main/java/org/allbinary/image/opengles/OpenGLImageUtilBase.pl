@@ -17,6 +17,7 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
 
 sub new {
@@ -52,10 +53,11 @@ sub createImageFromInputStream {
         die ("RuntimeException");
 }
 
-# use java::io::IOException;
-# use java::io::InputStream;
-use org::allbinary::graphics::OpenGLBitmap;
-use org::allbinary::graphics::color::BasicColor;
+use java::lang::Object ();
+# use java::io::IOException ();
+# use java::io::InputStream ();
+use org::allbinary::graphics::OpenGLBitmap ();
+use org::allbinary::graphics::color::BasicColor ();
 
 1;
 

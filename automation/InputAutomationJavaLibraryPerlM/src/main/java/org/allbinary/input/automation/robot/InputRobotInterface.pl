@@ -150,9 +150,9 @@ sub mouseMoveToTarget {
     die "abstract method mouseMoveToTarget";
 }
 
-# use java::awt;
-# use java::awt::image::BufferedImage;
-# use javax::help::HelpSet;
+# use java::awt ();
+# use java::awt::image::BufferedImage ();
+# use javax::help::HelpSet ();
 
 1;
 

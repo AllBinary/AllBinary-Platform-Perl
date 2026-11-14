@@ -27,7 +27,7 @@ sub getInstanceForApp {
     die "abstract method getInstanceForApp";
 }
 
-use org::allbinary::logic::system::SoftwareInformation;
+use org::allbinary::logic::system::SoftwareInformation ();
 
 1;
 

@@ -17,6 +17,7 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
 
 
@@ -39,10 +40,11 @@ sub get {
         }
 }
 
-use org::allbinary::business::error::ErrorData;
-use org::w3c::dom::Document;
-use org::w3c::dom::Node;
-use org::allbinary::data::tree::dom::ModDomHelper;
+use java::lang::Object ();
+use org::allbinary::business::error::ErrorData ();
+use org::w3c::dom::Document ();
+use org::w3c::dom::Node ();
+use org::allbinary::data::tree::dom::ModDomHelper ();
 
 1;
 

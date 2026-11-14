@@ -132,7 +132,7 @@ sub _init_fields {
 sub new {
     my ($class) = @_;
     my $self = $class->SUPER::new();
-    $self->_init_fields();
+    _init_fields($self);
     return $self;
 }
 
@@ -218,13 +218,14 @@ sub isEnter {
         return 0;
 }
 
-use android::view::KeyEvent;
-use org::allbinary::android::ActivityFractureUtil;
-use org::allbinary::string::CommonPhoneStrings;
-use org::allbinary::logic::io::path::AbPathData;
-use org::allbinary::string::CommonStrings;
-use org::allbinary::logic::communication::log::LogUtil;
-use org::allbinary::game::input::AndroidGameKey;
+use java::lang::Object ();
+# use android::view::KeyEvent ();
+use org::allbinary::android::ActivityFractureUtil ();
+use org::allbinary::string::CommonPhoneStrings ();
+use org::allbinary::logic::io::path::AbPathData ();
+use org::allbinary::string::CommonStrings ();
+use org::allbinary::logic::communication::log::LogUtil ();
+use org::allbinary::game::input::AndroidGameKey ();
 
 1;
 

@@ -27,7 +27,7 @@ sub visit {
     die "abstract method visit";
 }
 
-use org::allbinary::logic::util::visitor::VisitorInterface;
+use org::allbinary::logic::util::visitor::VisitorInterface ();
 
 1;
 

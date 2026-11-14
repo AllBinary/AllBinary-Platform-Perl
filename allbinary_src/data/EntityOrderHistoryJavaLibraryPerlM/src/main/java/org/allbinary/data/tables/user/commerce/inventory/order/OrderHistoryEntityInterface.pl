@@ -75,13 +75,13 @@ sub update {
     die "abstract method update";
 }
 
-use java::util::HashMap;
-use org::allbinary::util::BasicArrayList;
-use org::allbinary::util::BasicArrayListD;
-use org::allbinary::business::context::modules::storefront::StoreFrontInterface;
-use org::allbinary::business::user::commerce::inventory::order::Order;
-use org::allbinary::business::user::commerce::inventory::order::OrderHistory;
-use org::allbinary::data::tables::BasicDataTableInterface;
+use java::util::HashMap ();
+use org::allbinary::util::BasicArrayList ();
+use org::allbinary::util::BasicArrayListD ();
+use org::allbinary::business::context::modules::storefront::StoreFrontInterface ();
+use org::allbinary::business::user::commerce::inventory::order::Order ();
+use org::allbinary::business::user::commerce::inventory::order::OrderHistory ();
+use org::allbinary::data::tables::BasicDataTableInterface ();
 
 1;
 

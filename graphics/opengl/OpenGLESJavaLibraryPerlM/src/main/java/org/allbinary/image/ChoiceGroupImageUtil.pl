@@ -17,8 +17,9 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
-our $instance = 'org::allbinary::image::ChoiceGroupImageUtil'->new();
+tie our $instance, 'java::lang::LazyStatic', sub { 'org::allbinary::image::ChoiceGroupImageUtil'->new() };
 
 sub new {
     my ($class) = @_;
@@ -81,13 +82,15 @@ sub update {
         $choiceGroupFactory->init($imageArray);
 }
 
-# use javax::microedition::khronos::opengles::GL;
-# use javax::microedition::lcdui::ChoiceGroupImageFactory;
-# use javax::microedition::lcdui::Graphics;
-# use javax::microedition::lcdui::Image;
-use org::allbinary::graphics::opengles::OpenGLFeatureFactory;
-use org::allbinary::game::configuration::feature::Features;
-use org::allbinary::image::PreResourceImageUtil;
+use java::lang::Object ();
+use java::lang::LazyStatic ();
+use javax::microedition::khronos::opengles::GL ();
+use javax::microedition::lcdui::ChoiceGroupImageFactory ();
+use javax::microedition::lcdui::Graphics ();
+use javax::microedition::lcdui::Image ();
+use org::allbinary::graphics::opengles::OpenGLFeatureFactory ();
+use org::allbinary::game::configuration::feature::Features ();
+use org::allbinary::image::PreResourceImageUtil ();
 
 1;
 

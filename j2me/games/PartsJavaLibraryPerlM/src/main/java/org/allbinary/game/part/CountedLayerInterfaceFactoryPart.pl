@@ -18,9 +18,9 @@ use warnings;
 use feature 'try';
 no warnings 'experimental::try';
 use POSIX ();
-use parent -norequire,'org::allbinary::game::part::PartInterface','org::allbinary::graphics::font::UpdateMyFontInterface';
+use parent -norequire,'java::lang::Object','org::allbinary::game::part::PartInterface','org::allbinary::graphics::font::UpdateMyFontInterface';
 
-our $NULL_COUNTED_LAYER_INTERFACE_FACTORY = 'org::allbinary::game::part::CountedLayerInterfaceFactoryPart'->new(0, $org::allbinary::game::layer::pickup::CountedPickedUpLayerInterfaceFactory::NULL_COUNTED_PICKUP_LAYER_FACTORY);
+tie our $NULL_COUNTED_LAYER_INTERFACE_FACTORY, 'java::lang::LazyStatic', sub { 'org::allbinary::game::part::CountedLayerInterfaceFactoryPart'->new(0, $org::allbinary::game::layer::pickup::CountedPickedUpLayerInterfaceFactory::NULL_COUNTED_PICKUP_LAYER_FACTORY) };
 
 sub _init_fields {
     my ($self) = @_;
@@ -38,7 +38,7 @@ sub _init_fields {
 sub new {
     my ($class, $total, $countedPickedUpLayerInterfaceFactory) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
         $self->{primitiveLongUtil} = 'org::allbinary::logic::math::PrimitiveLongUtil'->createPowerOfTen(1000);
         $self->init($total, $countedPickedUpLayerInterfaceFactory);
     return $self;
@@ -138,19 +138,21 @@ sub setCountedPickedUpLayerInterfaceFactory {
         $self->{countedPickedUpLayerInterfaceFactory} = $countedPickedUpLayerInterfaceFactory;
 }
 
-# use javax::microedition::lcdui::Font;
-# use javax::microedition::lcdui::Graphics;
-use org::allbinary::animation::Animation;
-use org::allbinary::animation::NullAnimationFactory;
-use org::allbinary::game::layer::pickup::CountedPickedUpLayerInterfaceFactory;
-use org::allbinary::graphics::font::MyFontProcessor;
-use org::allbinary::graphics::font::UpdateMyFontInterface;
-use org::allbinary::graphics::font::UpdateMyFontProcessor;
-use org::allbinary::layer::AllBinaryLayer;
-use org::allbinary::logic::NullUtil;
-use org::allbinary::logic::math::PrimitiveLongUtil;
-use org::allbinary::util::ABHashtable;
-use org::allbinary::game::part::PartInterface;
+use java::lang::Object ();
+use java::lang::LazyStatic ();
+use javax::microedition::lcdui::Font ();
+use javax::microedition::lcdui::Graphics ();
+use org::allbinary::animation::Animation ();
+use org::allbinary::animation::NullAnimationFactory ();
+use org::allbinary::game::layer::pickup::CountedPickedUpLayerInterfaceFactory ();
+use org::allbinary::graphics::font::MyFontProcessor ();
+use org::allbinary::graphics::font::UpdateMyFontInterface ();
+use org::allbinary::graphics::font::UpdateMyFontProcessor ();
+use org::allbinary::layer::AllBinaryLayer ();
+use org::allbinary::logic::NullUtil ();
+use org::allbinary::logic::math::PrimitiveLongUtil ();
+use org::allbinary::util::ABHashtable ();
+use org::allbinary::game::part::PartInterface ();
 
 1;
 

@@ -17,8 +17,9 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
-our $instance = 'org::allbinary::media::graphics::geography::map::racetrack::threed::AllBinaryThreedTiledLayerFactory'->new();
+tie our $instance, 'java::lang::LazyStatic', sub { 'org::allbinary::media::graphics::geography::map::racetrack::threed::AllBinaryThreedTiledLayerFactory'->new() };
 
 sub new {
     my ($class) = @_;
@@ -40,9 +41,11 @@ sub getInstance {
         die ("No Threed");
 }
 
-use org::allbinary::game::layer::AllBinaryTiledLayer;
-use org::allbinary::media::graphics::geography::map::racetrack::RaceTrackData;
-use org::allbinary::media::graphics::geography::map::racetrack::RaceTrackInfo;
+use java::lang::Object ();
+use java::lang::LazyStatic ();
+use org::allbinary::game::layer::AllBinaryTiledLayer ();
+use org::allbinary::media::graphics::geography::map::racetrack::RaceTrackData ();
+use org::allbinary::media::graphics::geography::map::racetrack::RaceTrackInfo ();
 
 1;
 

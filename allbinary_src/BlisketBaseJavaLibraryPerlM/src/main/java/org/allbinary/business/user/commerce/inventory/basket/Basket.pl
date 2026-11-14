@@ -17,7 +17,7 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
-use parent -norequire,'org::allbinary::business::user::commerce::inventory::basket::BasketInterface','java::io::Serializable';
+use parent -norequire,'java::lang::Object','org::allbinary::business::user::commerce::inventory::basket::BasketInterface';
 
 
 sub _init_fields {
@@ -29,7 +29,7 @@ sub _init_fields {
 sub new {
     my ($class) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
     return $self;
 }
 
@@ -133,16 +133,17 @@ sub getSubTotal {
         return $subTotal;
 }
 
-# use java::io::Serializable;
-use java::util::HashMap;
-# use java::util::Set;
-use org::allbinary::business::user::commerce::inventory::item::ItemInterface;
-use org::allbinary::business::user::commerce::money::Money;
-use org::allbinary::business::user::commerce::money::MoneyException;
-use org::allbinary::data::tables::user::commerce::inventory::item::InventoryEntity;
-use org::allbinary::data::tables::user::commerce::inventory::item::InventoryEntityFactory;
-use org::allbinary::logic::StdUtil;
-use org::allbinary::business::user::commerce::inventory::basket::BasketInterface;
+use java::lang::Object ();
+# use java::io::Serializable ();
+use java::util::HashMap ();
+# use java::util::Set ();
+use org::allbinary::business::user::commerce::inventory::item::ItemInterface ();
+use org::allbinary::business::user::commerce::money::Money ();
+use org::allbinary::business::user::commerce::money::MoneyException ();
+use org::allbinary::data::tables::user::commerce::inventory::item::InventoryEntity ();
+use org::allbinary::data::tables::user::commerce::inventory::item::InventoryEntityFactory ();
+use org::allbinary::logic::StdUtil ();
+use org::allbinary::business::user::commerce::inventory::basket::BasketInterface ();
 
 1;
 

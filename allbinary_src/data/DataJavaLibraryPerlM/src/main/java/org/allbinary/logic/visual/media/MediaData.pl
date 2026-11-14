@@ -17,8 +17,9 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
-our $hashMap = 'org::allbinary::logic::StdUtil'->getInstance()->createHashMap();
+tie our $hashMap, 'java::lang::LazyStatic', sub { 'org::allbinary::logic::StdUtil'->getInstance()->createHashMap() };
 
 sub _init_fields {
     my ($self) = @_;
@@ -31,7 +32,7 @@ sub _init_fields {
 sub new {
     my ($class, $a_Name) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
         $self->{name} = $a_Name;
         $self->{extension} = "." . $self->{name};
         $self->{type} = 'org::allbinary::logic::visual::media::MediaTypeData'->getInstance()->{NOT_RESIZABLE_MEDIA};
@@ -96,10 +97,12 @@ sub toHashMap {
         return $org::allbinary::logic::visual::media::MediaData::hashMap;
 }
 
-use java::util::HashMap;
-use org::allbinary::logic::StdUtil;
-use org::allbinary::logic::visual::media::MediaTypeData;
-use org::allbinary::logic::visual::media::MediaDataFactory;
+use java::lang::Object ();
+use java::lang::LazyStatic ();
+use java::util::HashMap ();
+use org::allbinary::logic::StdUtil ();
+use org::allbinary::logic::visual::media::MediaTypeData ();
+use org::allbinary::logic::visual::media::MediaDataFactory ();
 
 1;
 

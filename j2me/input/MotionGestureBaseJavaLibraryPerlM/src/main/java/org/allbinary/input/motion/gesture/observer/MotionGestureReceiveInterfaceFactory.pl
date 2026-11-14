@@ -17,6 +17,7 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
 
 sub new {
@@ -36,10 +37,11 @@ sub getInstance {
         }
 }
 
-use org::allbinary::input::motion::gesture::configuration::MotionGestureConfiguration;
-use org::allbinary::input::motion::gesture::configuration::MotionGestureConfigurationFactory;
-use org::allbinary::input::motion::gesture::observer::ResolveCompleteMotionGestureListener;
-use org::allbinary::input::motion::gesture::observer::NullCompleteMotionGestureReceiver;
+use java::lang::Object ();
+use org::allbinary::input::motion::gesture::configuration::MotionGestureConfiguration ();
+use org::allbinary::input::motion::gesture::configuration::MotionGestureConfigurationFactory ();
+use org::allbinary::input::motion::gesture::observer::ResolveCompleteMotionGestureListener ();
+use org::allbinary::input::motion::gesture::observer::NullCompleteMotionGestureReceiver ();
 
 1;
 

@@ -27,9 +27,9 @@ sub createList {
     die "abstract method createList";
 }
 
-use org::allbinary::media::graphics::geography::map::BasicGeographicMap;
-use org::allbinary::media::graphics::geography::map::GeographicMapCellHistory;
-use org::allbinary::util::BasicArrayList;
+use org::allbinary::media::graphics::geography::map::BasicGeographicMap ();
+use org::allbinary::media::graphics::geography::map::GeographicMapCellHistory ();
+use org::allbinary::util::BasicArrayList ();
 
 1;
 

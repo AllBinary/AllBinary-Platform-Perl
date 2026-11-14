@@ -29,7 +29,7 @@ sub _init_fields {
 sub new {
     my ($class, $securedNativeLibraryInterface) = @_;
     my $self = $class->SUPER::new($securedNativeLibraryInterface->getLibraryName());
-    $self->_init_fields();
+    _init_fields($self);
         # super(...) made $self above
         $self->{securedNativeLibraryInterface} = $securedNativeLibraryInterface;
     return $self;
@@ -42,10 +42,11 @@ sub unlock {
         return $self->{securedNativeLibraryInterface}->unlock('org::allbinary::logic::system::security::AbKeys'->getInstance()->getKey($abeClientInformation, $self->{securedNativeLibraryInterface}->getName()));
 }
 
-use org::allbinary::logic::system::security::AbKeys;
-use org::allbinary::logic::system::security::licensing::AbeClientInformationInterface;
-use org::allbinary::logic::system::security::licensing::LicensingException;
-use org::allbinary::logic::system::loader::NativeLibraryHelperWrapper;
+use java::lang::Object ();
+use org::allbinary::logic::system::security::AbKeys ();
+use org::allbinary::logic::system::security::licensing::AbeClientInformationInterface ();
+use org::allbinary::logic::system::security::licensing::LicensingException ();
+use org::allbinary::logic::system::loader::NativeLibraryHelperWrapper ();
 
 1;
 

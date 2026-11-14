@@ -27,8 +27,8 @@ sub getInstance {
     die "abstract method getInstance";
 }
 
-use org::allbinary::game::identification::Group;
-use org::allbinary::graphics::form::item::ABCustomItem;
+use org::allbinary::game::identification::Group ();
+use org::allbinary::graphics::form::item::ABCustomItem ();
 
 1;
 

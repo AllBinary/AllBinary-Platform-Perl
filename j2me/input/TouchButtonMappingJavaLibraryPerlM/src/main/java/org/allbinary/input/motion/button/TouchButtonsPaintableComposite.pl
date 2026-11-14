@@ -38,7 +38,7 @@ sub _init_fields {
 sub new {
     my ($class, $inputMappingInterface, $basicColor) = @_;
     my $self = $class->SUPER::new();
-    $self->_init_fields();
+    _init_fields($self);
         $self->{inputMappingInterface} = $inputMappingInterface;
         'org::allbinary::game::input::CompleteMotionGestureInputEventHandler'->getInstance()->addListenerInterface($self);
         $self->{touchButtonsPaintable} = 'org::allbinary::input::motion::button::TouchButtonsMappingPaintable'->new($basicColor);
@@ -87,25 +87,26 @@ sub process {
         'org::allbinary::game::input::CompleteMotionGestureInputEventHandler'->getInstance()->removeListener($self);
 }
 
-use org::allbinary::game::input::CompleteMotionGestureInputEvent;
-use org::allbinary::game::input::CompleteMotionGestureInputEventHandler;
-use org::allbinary::game::input::CompleteMotionGestureInputEventListenerInterface;
-use org::allbinary::game::input::GameKey;
-use org::allbinary::game::input::mapping::InputMappingInterface;
-use org::allbinary::game::input::motion::action::GameKeyCompleteMotionGestureInputEvent;
-use org::allbinary::graphics::color::BasicColor;
-use org::allbinary::graphics::paint::ProcessPaintable;
-use org::allbinary::input::motion::gesture::MotionGestureInput;
-use org::allbinary::input::motion::gesture::TouchMotionGestureFactory;
-use org::allbinary::logic::communication::log::ForcedLogUtil;
-use org::allbinary::logic::communication::log::LogUtil;
-use org::allbinary::logic::string::StringMaker;
-use org::allbinary::logic::string::StringUtil;
-use org::allbinary::logic::util::event::AllBinaryEventObject;
-use org::allbinary::logic::util::event::EventStrings;
-use org::allbinary::string::CommonStrings;
-use org::allbinary::time::TimeDelayHelper;
-use org::allbinary::input::motion::button::TouchButtonsMappingPaintable;
+use java::lang::Object ();
+use org::allbinary::game::input::CompleteMotionGestureInputEvent ();
+use org::allbinary::game::input::CompleteMotionGestureInputEventHandler ();
+use org::allbinary::game::input::CompleteMotionGestureInputEventListenerInterface ();
+use org::allbinary::game::input::GameKey ();
+use org::allbinary::game::input::mapping::InputMappingInterface ();
+use org::allbinary::game::input::motion::action::GameKeyCompleteMotionGestureInputEvent ();
+use org::allbinary::graphics::color::BasicColor ();
+use org::allbinary::graphics::paint::ProcessPaintable ();
+use org::allbinary::input::motion::gesture::MotionGestureInput ();
+use org::allbinary::input::motion::gesture::TouchMotionGestureFactory ();
+use org::allbinary::logic::communication::log::ForcedLogUtil ();
+use org::allbinary::logic::communication::log::LogUtil ();
+use org::allbinary::logic::string::StringMaker ();
+use org::allbinary::logic::string::StringUtil ();
+use org::allbinary::logic::util::event::AllBinaryEventObject ();
+use org::allbinary::logic::util::event::EventStrings ();
+use org::allbinary::string::CommonStrings ();
+use org::allbinary::time::TimeDelayHelper ();
+use org::allbinary::input::motion::button::TouchButtonsMappingPaintable ();
 
 1;
 

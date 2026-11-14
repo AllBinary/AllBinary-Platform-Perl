@@ -36,7 +36,7 @@ sub _init_fields {
 sub new {
     my ($class, $databaseConnectionInfoInterface) = @_;
     my $self = $class->SUPER::new($databaseConnectionInfoInterface);
-    $self->_init_fields();
+    _init_fields($self);
         # super(...) made $self above
     return $self;
 }
@@ -170,36 +170,37 @@ sub addTables {
         }
 }
 
-use org::allbinary::business::init::InitInfoEntity;
-use org::allbinary::business::init::db::DatabaseConnectionInfoInterface;
-use org::allbinary::business::init::db::DbConnectionInfo;
-use org::allbinary::business::init::db::HistoryDbInitInfo;
-use org::allbinary::business::init::db::InventoryDbInitInfo;
-use org::allbinary::business::init::db::LogDbInitInfo;
-use org::allbinary::business::init::db::StaticPagesDbInitInfo;
-use org::allbinary::business::init::db::UserDbInitInfo;
-use org::allbinary::data::tables::context::module::storefronts::StoreFrontsEntityFactory;
-use org::allbinary::data::tables::log::LogTableEntityFactory;
-use org::allbinary::data::tables::staticpages::StaticPagesEntityFactory;
-use org::allbinary::data::tables::transform::info::TransformInfoEntityBuilder;
-use org::allbinary::data::tables::user::UserEntityFactory;
-use org::allbinary::data::tables::user::address::billing::BillingAddressesEntityFactory;
-use org::allbinary::data::tables::user::address::shipping::ShippingAddressesEntityFactory;
-use org::allbinary::data::tables::user::commerce::inventory::item::InventoryEntityFactory;
-use org::allbinary::data::tables::user::commerce::inventory::order::OrderHistoryEntityFactory;
-use org::allbinary::data::tables::user::commerce::inventory::order::OrderItemsEntityFactory;
-use org::allbinary::data::tables::user::commerce::money::payment::PaymentEntityFactory;
-use org::allbinary::data::tables::user::commerce::money::payment::gateway::PaymentGatewayEntityFactory;
-use org::allbinary::data::tables::user::commerce::money::payment::transaction::TransactionEntityFactory;
-use org::allbinary::data::tables::user::commerce::money::payment::transaction::TransactionResultEntityFactory;
-use org::allbinary::data::tables::user::quoterequest::QuoteRequestEntityFactory;
-use org::allbinary::logic::communication::log::LogUtil;
-use org::allbinary::logic::communication::sql::AbDatabaseManagement;
-use org::allbinary::logic::io::AbDataOutputStream;
-use org::allbinary::logic::io::DataOutputStreamFactory;
-use org::allbinary::logic::io::file::AbFile;
-use org::allbinary::logic::io::file::FileFactory;
-use org::allbinary::logic::string::StringMaker;
+use java::lang::Object ();
+use org::allbinary::business::init::InitInfoEntity ();
+use org::allbinary::business::init::db::DatabaseConnectionInfoInterface ();
+use org::allbinary::business::init::db::DbConnectionInfo ();
+use org::allbinary::business::init::db::HistoryDbInitInfo ();
+use org::allbinary::business::init::db::InventoryDbInitInfo ();
+use org::allbinary::business::init::db::LogDbInitInfo ();
+use org::allbinary::business::init::db::StaticPagesDbInitInfo ();
+use org::allbinary::business::init::db::UserDbInitInfo ();
+use org::allbinary::data::tables::context::module::storefronts::StoreFrontsEntityFactory ();
+use org::allbinary::data::tables::log::LogTableEntityFactory ();
+use org::allbinary::data::tables::staticpages::StaticPagesEntityFactory ();
+use org::allbinary::data::tables::transform::info::TransformInfoEntityBuilder ();
+use org::allbinary::data::tables::user::UserEntityFactory ();
+use org::allbinary::data::tables::user::address::billing::BillingAddressesEntityFactory ();
+use org::allbinary::data::tables::user::address::shipping::ShippingAddressesEntityFactory ();
+use org::allbinary::data::tables::user::commerce::inventory::item::InventoryEntityFactory ();
+use org::allbinary::data::tables::user::commerce::inventory::order::OrderHistoryEntityFactory ();
+use org::allbinary::data::tables::user::commerce::inventory::order::OrderItemsEntityFactory ();
+use org::allbinary::data::tables::user::commerce::money::payment::PaymentEntityFactory ();
+use org::allbinary::data::tables::user::commerce::money::payment::gateway::PaymentGatewayEntityFactory ();
+use org::allbinary::data::tables::user::commerce::money::payment::transaction::TransactionEntityFactory ();
+use org::allbinary::data::tables::user::commerce::money::payment::transaction::TransactionResultEntityFactory ();
+use org::allbinary::data::tables::user::quoterequest::QuoteRequestEntityFactory ();
+use org::allbinary::logic::communication::log::LogUtil ();
+use org::allbinary::logic::communication::sql::AbDatabaseManagement ();
+use org::allbinary::logic::io::AbDataOutputStream ();
+use org::allbinary::logic::io::DataOutputStreamFactory ();
+use org::allbinary::logic::io::file::AbFile ();
+use org::allbinary::logic::io::file::FileFactory ();
+use org::allbinary::logic::string::StringMaker ();
 
 1;
 

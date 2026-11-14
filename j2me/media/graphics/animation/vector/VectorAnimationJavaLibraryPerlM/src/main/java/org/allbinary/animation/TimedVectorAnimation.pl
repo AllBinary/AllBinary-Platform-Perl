@@ -29,7 +29,7 @@ sub _init_fields {
 sub new {
     my ($class, $currentPoints, $basicColor, $animationBehavior) = @_;
     my $self = $class->SUPER::new($currentPoints, $basicColor, $animationBehavior);
-    $self->_init_fields();
+    _init_fields($self);
         # super(...) made $self above
     return $self;
 }
@@ -42,10 +42,11 @@ sub nextFrame {
         }
 }
 
-use org::allbinary::graphics::color::BasicColor;
-use org::allbinary::time::GameTickTimeDelayHelperFactory;
-use org::allbinary::time::TimeDelayHelper;
-use org::allbinary::animation::VectorAnimation;
+use java::lang::Object ();
+use org::allbinary::graphics::color::BasicColor ();
+use org::allbinary::time::GameTickTimeDelayHelperFactory ();
+use org::allbinary::time::TimeDelayHelper ();
+use org::allbinary::animation::VectorAnimation ();
 
 1;
 

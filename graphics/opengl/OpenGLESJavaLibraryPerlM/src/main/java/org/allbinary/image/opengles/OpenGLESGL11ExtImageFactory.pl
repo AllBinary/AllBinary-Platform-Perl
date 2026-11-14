@@ -32,11 +32,12 @@ sub getInstance {
         return 'org::allbinary::image::opengles::OpenGLESGL11ExtImage'->new($image, $bitmapFactory, $textureFactory);
 }
 
-# use javax::microedition::lcdui::Image;
-use org::allbinary::platform::graphics::PlatformBitmapBaseFactory;
-use org::allbinary::platform::opengles::PlatformTextureBaseFactory;
-use org::allbinary::image::opengles::OpenGLImageFactory;
-use org::allbinary::image::opengles::OpenGLESGL11ExtImage;
+use java::lang::Object ();
+use javax::microedition::lcdui::Image ();
+use org::allbinary::platform::graphics::PlatformBitmapBaseFactory ();
+use org::allbinary::platform::opengles::PlatformTextureBaseFactory ();
+use org::allbinary::image::opengles::OpenGLImageFactory ();
+use org::allbinary::image::opengles::OpenGLESGL11ExtImage ();
 
 1;
 

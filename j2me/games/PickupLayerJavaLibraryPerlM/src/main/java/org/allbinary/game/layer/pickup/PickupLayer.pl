@@ -31,7 +31,7 @@ sub _init_fields {
 sub new {
     my ($class, $name, $remoteInfo, $total, $pickedUpLayerInterfaceFactoryInterface, $animationInterface, $rectangle, $viewPosition) = @_;
     my $self = $class->SUPER::new($remoteInfo, 'org::allbinary::game::identification::BasicGroupFactory'->getInstance()->{NONE_ARRAY}, $name, $rectangle, $viewPosition);
-    $self->_init_fields();
+    _init_fields($self);
         # super(...) made $self above
         $self->setCollidableInferface('org::allbinary::game::collision::CollidableAlwaysPickupNeverCollideBehaviorFactory'->getInstance()->createBehavior());
         $self->setLayerWidth(10);
@@ -118,21 +118,22 @@ sub set {
         $openGLSurfaceChangedInterface->set($gl);
 }
 
-# use javax::microedition::khronos::opengles::GL;
-# use javax::microedition::lcdui::Graphics;
-use org::allbinary::animation::Animation;
-use org::allbinary::animation::NullAnimationFactory;
-use org::allbinary::game::collision::CollidableAlwaysPickupNeverCollideBehaviorFactory;
-use org::allbinary::game::combat::destroy::DestroyedLayerProcessor;
-use org::allbinary::game::identification::BasicGroupFactory;
-use org::allbinary::game::multiplayer::layer::MultiPlayerGameLayer;
-use org::allbinary::game::multiplayer::layer::RemoteInfo;
-use org::allbinary::graphics::Rectangle;
-use org::allbinary::image::opengles::OpenGLSurfaceChangedInterface;
-use org::allbinary::view::ViewPositionBase;
-use org::allbinary::game::layer::pickup::PickedUpLayerInterface;
-use org::allbinary::game::layer::pickup::PickupableInterface;
-use org::allbinary::game::layer::pickup::CountedPickedUpLayerInterfaceFactory;
+use java::lang::Object ();
+use javax::microedition::khronos::opengles::GL ();
+use javax::microedition::lcdui::Graphics ();
+use org::allbinary::animation::Animation ();
+use org::allbinary::animation::NullAnimationFactory ();
+use org::allbinary::game::collision::CollidableAlwaysPickupNeverCollideBehaviorFactory ();
+use org::allbinary::game::combat::destroy::DestroyedLayerProcessor ();
+use org::allbinary::game::identification::BasicGroupFactory ();
+use org::allbinary::game::multiplayer::layer::MultiPlayerGameLayer ();
+use org::allbinary::game::multiplayer::layer::RemoteInfo ();
+use org::allbinary::graphics::Rectangle ();
+use org::allbinary::image::opengles::OpenGLSurfaceChangedInterface ();
+use org::allbinary::view::ViewPositionBase ();
+use org::allbinary::game::layer::pickup::PickedUpLayerInterface ();
+use org::allbinary::game::layer::pickup::PickupableInterface ();
+use org::allbinary::game::layer::pickup::CountedPickedUpLayerInterfaceFactory ();
 
 1;
 

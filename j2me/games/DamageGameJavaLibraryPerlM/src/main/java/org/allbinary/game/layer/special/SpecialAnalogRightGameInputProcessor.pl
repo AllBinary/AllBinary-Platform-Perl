@@ -35,9 +35,10 @@ sub processAnalog {
         $self->{collidableDestroyableDamageableLayer}->rightAnalog($xAnalogValue);
 }
 
-use org::allbinary::game::input::event::GameKeyEvent;
-use org::allbinary::layer::AllBinaryLayerManager;
-use org::allbinary::game::layer::special::SpecialGameInputProcessor;
+use java::lang::Object ();
+use org::allbinary::game::input::event::GameKeyEvent ();
+use org::allbinary::layer::AllBinaryLayerManager ();
+use org::allbinary::game::layer::special::SpecialGameInputProcessor ();
 
 1;
 

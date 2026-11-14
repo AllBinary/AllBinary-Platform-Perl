@@ -20,7 +20,7 @@ use feature 'try';
 no warnings 'experimental::try';
 use parent -norequire,'org::allbinary::media::graphics::geography::map::racetrack::BasePathFindingInfoFactory';
 
-our $instance = 'org::allbinary::game::media::graphics::geography::map::racetrack::PathFindingInfoFactory'->new();
+tie our $instance, 'java::lang::LazyStatic', sub { 'org::allbinary::game::media::graphics::geography::map::racetrack::PathFindingInfoFactory'->new() };
 our $MAX = 32768;
 
 sub _init_fields {
@@ -45,7 +45,7 @@ sub initMax {
 sub new {
     my ($class) = @_;
     my $self = $class->SUPER::new();
-    $self->_init_fields();
+    _init_fields($self);
         $self->{pathFindingInfo} = 'org::allbinary::media::graphics::geography::pathfinding::PathFindingInfo'->new('org::allbinary::media::graphics::geography::pathfinding::PathFindingNodeCostInfoFactory'->new($org::allbinary::game::media::graphics::geography::map::racetrack::PathFindingInfoFactory::MAX), 'org::allbinary::util::BasicArrayListS'->new(1), 'org::allbinary::util::BasicArrayListS'->new(1));
         $self->{pathFinder} = 'org::allbinary::media::graphics::geography::pathfinding::PathFinder'->new();
     return $self;
@@ -92,16 +92,18 @@ sub buildPathFindingNodes {
         }
 }
 
-use org::allbinary::game::layer::AllBinaryTiledLayer;
-use org::allbinary::media::graphics::geography::map::BasicGeographicMap;
-use org::allbinary::media::graphics::geography::map::BasicGeographicMapCellPositionFactory;
-use org::allbinary::media::graphics::geography::map::GeographicMapCellPosition;
-use org::allbinary::media::graphics::geography::map::racetrack::BasePathFindingInfoFactory;
-use org::allbinary::media::graphics::geography::map::racetrack::RaceTrackRoadsGeographicMapCellHistoryFactory;
-use org::allbinary::media::graphics::geography::pathfinding::PathFinder;
-use org::allbinary::media::graphics::geography::pathfinding::PathFindingInfo;
-use org::allbinary::media::graphics::geography::pathfinding::PathFindingNodeCostInfoFactory;
-use org::allbinary::util::BasicArrayListS;
+use java::lang::Object ();
+use java::lang::LazyStatic ();
+use org::allbinary::game::layer::AllBinaryTiledLayer ();
+use org::allbinary::media::graphics::geography::map::BasicGeographicMap ();
+use org::allbinary::media::graphics::geography::map::BasicGeographicMapCellPositionFactory ();
+use org::allbinary::media::graphics::geography::map::GeographicMapCellPosition ();
+use org::allbinary::media::graphics::geography::map::racetrack::BasePathFindingInfoFactory ();
+use org::allbinary::media::graphics::geography::map::racetrack::RaceTrackRoadsGeographicMapCellHistoryFactory ();
+use org::allbinary::media::graphics::geography::pathfinding::PathFinder ();
+use org::allbinary::media::graphics::geography::pathfinding::PathFindingInfo ();
+use org::allbinary::media::graphics::geography::pathfinding::PathFindingNodeCostInfoFactory ();
+use org::allbinary::util::BasicArrayListS ();
 
 1;
 

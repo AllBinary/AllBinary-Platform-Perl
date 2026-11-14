@@ -17,6 +17,7 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
 
 sub _init_fields {
@@ -41,7 +42,7 @@ sub new {
 sub _new2 {
     my ($class, $key, $value) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
         $self->{hashMap} = 'org::allbinary::logic::StdUtil'->getInstance()->createHashMap();
         $self->{hashMap}->put([$key], [$value]);
     return $self;
@@ -51,7 +52,7 @@ sub _new2 {
 sub _new2 {
     my ($class, $keys, $values) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
         $self->{hashMap} = 'org::allbinary::logic::StdUtil'->getInstance()->createHashMap();
         $self->{hashMap}->put($keys, $values);
     return $self;
@@ -61,7 +62,7 @@ sub _new2 {
 sub _new1 {
     my ($class, $hashMap) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
         $self->{hashMap} = $hashMap;
     return $self;
 }
@@ -192,16 +193,17 @@ sub main {
         }
 }
 
-use java::util::HashMap;
-use org::allbinary::J2SEUtil;
-use org::allbinary::globals::AppUrlGlobals;
-use org::allbinary::globals::URLGLOBALS;
-use org::allbinary::logic::StdUtil;
-use org::allbinary::logic::communication::log::LogUtil;
-use org::allbinary::logic::string::StringMaker;
-use org::allbinary::logic::string::StringUtil;
-use org::allbinary::logic::communication::log::config::type::LogConfigTypes;
-use java::lang::System;
+use java::lang::Object ();
+use java::util::HashMap ();
+use org::allbinary::J2SEUtil ();
+use org::allbinary::globals::AppUrlGlobals ();
+use org::allbinary::globals::URLGLOBALS ();
+use org::allbinary::logic::StdUtil ();
+use org::allbinary::logic::communication::log::LogUtil ();
+use org::allbinary::logic::string::StringMaker ();
+use org::allbinary::logic::string::StringUtil ();
+use org::allbinary::logic::communication::log::config::type::LogConfigTypes ();
+use java::lang::System ();
 
 1;
 

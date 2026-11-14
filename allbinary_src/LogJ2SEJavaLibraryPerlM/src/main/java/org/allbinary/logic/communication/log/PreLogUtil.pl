@@ -18,6 +18,7 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
 our $LOG_SUCCESS = "org.allbinary: ";
 
@@ -60,10 +61,11 @@ sub putSE {
         print($message, "\n");
 }
 
-use org::allbinary::logic::NullUtil;
-use org::allbinary::string::CommonStrings;
-use org::allbinary::logic::communication::log::LogFormatUtil;
-use java::lang::System;
+use java::lang::Object ();
+use org::allbinary::logic::NullUtil ();
+use org::allbinary::string::CommonStrings ();
+use org::allbinary::logic::communication::log::LogFormatUtil ();
+use java::lang::System ();
 
 1;
 

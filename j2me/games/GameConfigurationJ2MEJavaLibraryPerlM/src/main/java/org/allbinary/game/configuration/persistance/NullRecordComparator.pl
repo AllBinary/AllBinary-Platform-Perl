@@ -17,9 +17,9 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
-use parent -norequire,'javax::microedition::rms::RecordComparator';
+use parent -norequire,'java::lang::Object','javax::microedition::rms::RecordComparator';
 
-our $NULL_RECORD_COMPARATOR = 'org::allbinary::game::configuration::persistance::NullRecordComparator'->new();
+tie our $NULL_RECORD_COMPARATOR, 'java::lang::LazyStatic', sub { 'org::allbinary::game::configuration::persistance::NullRecordComparator'->new() };
 
 sub new {
     my ($class) = @_;
@@ -33,7 +33,9 @@ sub compare {
         return 0;
 }
 
-# use javax::microedition::rms::RecordComparator;
+use java::lang::Object ();
+use java::lang::LazyStatic ();
+use javax::microedition::rms::RecordComparator ();
 
 1;
 

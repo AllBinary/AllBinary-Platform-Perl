@@ -28,7 +28,7 @@ sub _init_fields {
 sub new {
     my ($class) = @_;
     my $self = $class->SUPER::new();
-    $self->_init_fields();
+    _init_fields($self);
     return $self;
 }
 
@@ -51,15 +51,16 @@ sub onCompleteMotionGestureInputEvent {
         }
 }
 
-use org::allbinary::game::input::CompleteMotionGestureInputEvent;
-use org::allbinary::game::input::CompleteMotionGestureInputEventListener;
-use org::allbinary::game::input::event::GameKeyEvent;
-use org::allbinary::game::input::event::PressGameKeyEventHandler;
-use org::allbinary::logic::communication::log::ForcedLogUtil;
-use org::allbinary::logic::communication::log::LogUtil;
-use org::allbinary::logic::util::event::AllBinaryEventObject;
-use org::allbinary::logic::util::event::EventStrings;
-use org::allbinary::string::CommonStrings;
+use java::lang::Object ();
+use org::allbinary::game::input::CompleteMotionGestureInputEvent ();
+use org::allbinary::game::input::CompleteMotionGestureInputEventListener ();
+use org::allbinary::game::input::event::GameKeyEvent ();
+use org::allbinary::game::input::event::PressGameKeyEventHandler ();
+use org::allbinary::logic::communication::log::ForcedLogUtil ();
+use org::allbinary::logic::communication::log::LogUtil ();
+use org::allbinary::logic::util::event::AllBinaryEventObject ();
+use org::allbinary::logic::util::event::EventStrings ();
+use org::allbinary::string::CommonStrings ();
 
 1;
 

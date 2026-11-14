@@ -321,12 +321,12 @@ sub isSessionValid {
     die "abstract method isSessionValid";
 }
 
-use java::util::HashMap;
-use org::allbinary::business::user::modules::configuration::UserConfigurationInterface;
-use org::allbinary::business::user::role::UserRole;
-use org::allbinary::data::tables::TableMappingInterface;
-use org::allbinary::logic::communication::http::request::session::WeblisketSessionInterface;
-use org::allbinary::logic::control::validate::ValidationInterface;
+use java::util::HashMap ();
+use org::allbinary::business::user::modules::configuration::UserConfigurationInterface ();
+use org::allbinary::business::user::role::UserRole ();
+use org::allbinary::data::tables::TableMappingInterface ();
+use org::allbinary::logic::communication::http::request::session::WeblisketSessionInterface ();
+use org::allbinary::logic::control::validate::ValidationInterface ();
 
 1;
 

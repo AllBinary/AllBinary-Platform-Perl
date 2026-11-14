@@ -32,7 +32,7 @@ sub _init_fields {
 sub new {
     my ($class) = @_;
     my $self = $class->SUPER::new('taghelpers::StoreTagWorkFlowHelperFactory'->new());
-    $self->_init_fields();
+    _init_fields($self);
         # super(...) made $self above
         if ($tags::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($tags::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{JSPTAG})) {
             $self->{logUtil}->putF($self->{commonStrings}->{START}, $self, $self->{commonStrings}->{CONSTRUCTOR});
@@ -83,14 +83,15 @@ sub doStartTag {
         }
 }
 
-# use java::lang::reflect::Method;
-# use javax::servlet::jsp::JspTagException;
-use org::allbinary::logic::communication::http::request::AbResponseHandler;
-use org::allbinary::logic::communication::log::LogUtil;
-use org::allbinary::logic::system::security::licensing::LicensingException;
-use org::allbinary::logic::visual::transform::info::TransformInfoData;
-use taghelpers::StoreTagWorkFlowHelperFactory;
-use tags::HelperTag;
+use java::lang::Object ();
+# use java::lang::reflect::Method ();
+# use javax::servlet::jsp::JspTagException ();
+use org::allbinary::logic::communication::http::request::AbResponseHandler ();
+use org::allbinary::logic::communication::log::LogUtil ();
+use org::allbinary::logic::system::security::licensing::LicensingException ();
+use org::allbinary::logic::visual::transform::info::TransformInfoData ();
+use taghelpers::StoreTagWorkFlowHelperFactory ();
+use tags::HelperTag ();
 
 1;
 

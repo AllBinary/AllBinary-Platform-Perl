@@ -12,35 +12,22 @@
 #   
 # Generated Code Do Not Modify
 
-#Handle the differences in the public platform vs the raw JS build
-package org::allbinary::logic::MEUtil;
+package org::allbinary::util::ABHashSet;
 use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
-our $instance = 'org::allbinary::logic::MEUtil'->new();
 
 sub new {
     my ($class) = @_;
-    my $self = bless({}, $class);
+    my $self = $class->SUPER::new();
     return $self;
 }
 
-
-sub getInstance {
-    my ($class) = @_;
-        return $org::allbinary::logic::MEUtil::instance;
-}
-
-
-sub appendItem {
-    my ($self, $form, $item) = @_;
-        $form->append($item);
-}
-
-# use javax::microedition::lcdui::Item;
-use org::allbinary::graphics::displayable::screen::CommandForm;
+use java::lang::Object ();
+# use java::util::HashSet ();
 
 1;
 

@@ -18,8 +18,9 @@ use warnings;
 use feature 'try';
 no warnings 'experimental::try';
 use POSIX ();
+use parent -norequire,'java::lang::Object';
 
-our $instance = 'org::allbinary::media::image::ImageRotationUtil'->new();
+tie our $instance, 'java::lang::LazyStatic', sub { 'org::allbinary::media::image::ImageRotationUtil'->new() };
 
 sub _init_fields {
     my ($self) = @_;
@@ -37,7 +38,7 @@ sub getInstance {
 sub new {
     my ($class) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
     return $self;
 }
 
@@ -60,13 +61,15 @@ sub createRotatedImage {
         }
 }
 
-# use javax::microedition::lcdui::Image;
-use org::allbinary::graphics::Anchor;
-use android::graphics::Bitmap;
-use android::graphics::Canvas;
-use android::graphics::Matrix;
-use org::microemu::android::device::AndroidImageInterface;
-use org::allbinary::media::image::ImageCreationUtil;
+use java::lang::Object ();
+use java::lang::LazyStatic ();
+use javax::microedition::lcdui::Image ();
+use org::allbinary::graphics::Anchor ();
+# use android::graphics::Bitmap ();
+# use android::graphics::Canvas ();
+# use android::graphics::Matrix ();
+use org::microemu::android::device::AndroidImageInterface ();
+use org::allbinary::media::image::ImageCreationUtil ();
 
 1;
 

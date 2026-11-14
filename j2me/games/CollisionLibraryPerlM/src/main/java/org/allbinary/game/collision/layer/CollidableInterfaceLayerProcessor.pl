@@ -48,13 +48,14 @@ sub isProcessorLayer {
         }
 }
 
-use org::allbinary::game::collision::CollidableInterfaceCompositeInterface;
-use org::allbinary::game::layer::CollidableCompositeLayer;
-use org::allbinary::layer::AllBinaryLayer;
-use org::allbinary::layer::AllBinaryLayerManager;
-use org::allbinary::layer::LayerProcessor;
-use org::allbinary::game::collision::layer::CollidableInterfaceLayerManager;
-use org::allbinary::game::collision::layer::AllBinaryCollisionManager;
+use java::lang::Object ();
+use org::allbinary::game::collision::CollidableInterfaceCompositeInterface ();
+use org::allbinary::game::layer::CollidableCompositeLayer ();
+use org::allbinary::layer::AllBinaryLayer ();
+use org::allbinary::layer::AllBinaryLayerManager ();
+use org::allbinary::layer::LayerProcessor ();
+use org::allbinary::game::collision::layer::CollidableInterfaceLayerManager ();
+use org::allbinary::game::collision::layer::AllBinaryCollisionManager ();
 
 1;
 

@@ -16,8 +16,9 @@ sub new {
     return $self;
 }
 
-use org::allbinary::logic::string::StringUtil;
-use org::allbinary::business::advertisement::AdConfiguration;
+use java::lang::Object ();
+use org::allbinary::logic::string::StringUtil ();
+use org::allbinary::business::advertisement::AdConfiguration ();
 
 1;
 

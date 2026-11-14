@@ -61,12 +61,13 @@ sub adjustFrameToAngle {
         $self->adjustFrame($newAngle->getValue());
 }
 
-use org::allbinary::direction::Direction;
-use org::allbinary::graphics::color::BasicColor;
-use org::allbinary::math::Angle;
-use org::allbinary::math::AngleFactory;
-use org::allbinary::math::AngleInfo;
-use org::allbinary::animation::VectorBaseRotationAnimation;
+use java::lang::Object ();
+use org::allbinary::direction::Direction ();
+use org::allbinary::graphics::color::BasicColor ();
+use org::allbinary::math::Angle ();
+use org::allbinary::math::AngleFactory ();
+use org::allbinary::math::AngleInfo ();
+use org::allbinary::animation::VectorBaseRotationAnimation ();
 
 1;
 

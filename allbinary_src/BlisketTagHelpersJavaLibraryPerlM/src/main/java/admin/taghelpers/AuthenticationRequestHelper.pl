@@ -39,7 +39,7 @@ sub new {
 sub _new2 {
     my ($class, $hashMap, $pageContext) = @_;
     my $self = $class->SUPER::new();
-    $self->_init_fields();
+    _init_fields($self);
         $self->{weblisketSession} = 'org::allbinary::logic::communication::http::request::session::WeblisketSession'->new($hashMap, $pageContext);
         $self->{request} = $pageContext->getRequest();
     return $self;
@@ -49,7 +49,7 @@ sub _new2 {
 sub _new2 {
     my ($class, $hashMap, $httpServletRequest) = @_;
     my $self = $class->SUPER::new();
-    $self->_init_fields();
+    _init_fields($self);
         $self->{weblisketSession} = 'org::allbinary::logic::communication::http::request::session::WeblisketSession'->new($hashMap, $httpServletRequest);
         $self->{request} = $httpServletRequest;
     return $self;
@@ -196,27 +196,28 @@ sub isRoleValid {
         }
 }
 
-use java::util::HashMap;
-use org::allbinary::util::BasicArrayList;
-use org::allbinary::util::BasicArrayListD;
-# use javax::servlet::http::HttpServletRequest;
-# use javax::servlet::jsp::PageContext;
-use org::allbinary::business::user::UserData;
-use org::allbinary::business::user::UserInterface;
-use org::allbinary::business::user::password::Password;
-use org::allbinary::business::user::role::BasicUserRole;
-use org::allbinary::data::tables::user::UserEntityFactory;
-use org::allbinary::data::tables::user::UserEntityInterface;
-use org::allbinary::globals::GLOBALS2;
-use org::allbinary::logic::communication::http::request::session::WeblisketSession;
-use org::allbinary::logic::communication::http::request::session::WeblisketSessionData;
-use org::allbinary::logic::communication::http::request::session::WeblisketSessionInterface;
-use org::allbinary::logic::communication::log::LogUtil;
-use org::allbinary::logic::communication::smtp::email::NewPasswordEmail;
-use org::allbinary::logic::string::StringMaker;
-use org::allbinary::logic::system::security::licensing::AbeClientInformationInterface;
-use org::allbinary::logic::system::security::licensing::ServiceClientInformationInterfaceFactory;
-use admin::taghelpers::TagHelper;
+use java::lang::Object ();
+use java::util::HashMap ();
+use org::allbinary::util::BasicArrayList ();
+use org::allbinary::util::BasicArrayListD ();
+# use javax::servlet::http::HttpServletRequest ();
+# use javax::servlet::jsp::PageContext ();
+use org::allbinary::business::user::UserData ();
+use org::allbinary::business::user::UserInterface ();
+use org::allbinary::business::user::password::Password ();
+use org::allbinary::business::user::role::BasicUserRole ();
+use org::allbinary::data::tables::user::UserEntityFactory ();
+use org::allbinary::data::tables::user::UserEntityInterface ();
+use org::allbinary::globals::GLOBALS2 ();
+use org::allbinary::logic::communication::http::request::session::WeblisketSession ();
+use org::allbinary::logic::communication::http::request::session::WeblisketSessionData ();
+use org::allbinary::logic::communication::http::request::session::WeblisketSessionInterface ();
+use org::allbinary::logic::communication::log::LogUtil ();
+use org::allbinary::logic::communication::smtp::email::NewPasswordEmail ();
+use org::allbinary::logic::string::StringMaker ();
+use org::allbinary::logic::system::security::licensing::AbeClientInformationInterface ();
+use org::allbinary::logic::system::security::licensing::ServiceClientInformationInterfaceFactory ();
+use admin::taghelpers::TagHelper ();
 
 1;
 

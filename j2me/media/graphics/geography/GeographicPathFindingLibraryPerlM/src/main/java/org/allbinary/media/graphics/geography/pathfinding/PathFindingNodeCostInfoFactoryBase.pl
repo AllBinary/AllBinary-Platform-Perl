@@ -17,9 +17,9 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
-use parent -norequire,'org::allbinary::media::graphics::geography::pathfinding::PathFindingNodeCostInfoFactoryBaseInterface';
+use parent -norequire,'java::lang::Object','org::allbinary::media::graphics::geography::pathfinding::PathFindingNodeCostInfoFactoryBaseInterface';
 
-our $NULL_PATH_FINDING_NODE_COST_INFO_FACTORY_BASE = 'org::allbinary::media::graphics::geography::pathfinding::PathFindingNodeCostInfoFactoryBase'->new();
+tie our $NULL_PATH_FINDING_NODE_COST_INFO_FACTORY_BASE, 'java::lang::LazyStatic', sub { 'org::allbinary::media::graphics::geography::pathfinding::PathFindingNodeCostInfoFactoryBase'->new() };
 
 sub new {
     my ($class) = @_;
@@ -41,9 +41,11 @@ sub getTotalCost {
         die ("RuntimeException");
 }
 
-use org::allbinary::media::graphics::geography::map::BasicGeographicMap;
-use org::allbinary::media::graphics::geography::map::GeographicMapCellPosition;
-use org::allbinary::media::graphics::geography::pathfinding::PathFindingNodeCostInfoFactoryBaseInterface;
+use java::lang::Object ();
+use java::lang::LazyStatic ();
+use org::allbinary::media::graphics::geography::map::BasicGeographicMap ();
+use org::allbinary::media::graphics::geography::map::GeographicMapCellPosition ();
+use org::allbinary::media::graphics::geography::pathfinding::PathFindingNodeCostInfoFactoryBaseInterface ();
 
 1;
 

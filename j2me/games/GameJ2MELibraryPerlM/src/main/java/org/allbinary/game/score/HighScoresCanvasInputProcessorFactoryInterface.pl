@@ -26,7 +26,7 @@ sub getInstance {
     die "abstract method getInstance";
 }
 
-use org::allbinary::game::score::displayable::HighScoresCanvas;
+use org::allbinary::game::score::displayable::HighScoresCanvas ();
 
 1;
 

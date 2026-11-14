@@ -18,6 +18,7 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
 
 sub new {
@@ -88,8 +89,9 @@ sub getData {
         return 'org::allbinary::logic::NullUtil'->getInstance()->{NULL_INT_ARRAY};
 }
 
-use org::allbinary::logic::NullUtil;
-use javax::microedition::lcdui::NullImage;
+use java::lang::Object ();
+use org::allbinary::logic::NullUtil ();
+use javax::microedition::lcdui::NullImage ();
 
 1;
 

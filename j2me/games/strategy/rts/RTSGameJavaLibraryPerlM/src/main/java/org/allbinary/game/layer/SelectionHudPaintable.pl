@@ -42,7 +42,7 @@ sub _init_fields {
 sub new {
     my ($class) = @_;
     my $self = $class->SUPER::new();
-    $self->_init_fields();
+    _init_fields($self);
         $self->update();
         $self->{primitiveLongUtil} = 'org::allbinary::logic::math::PrimitiveLongUtil'->createPowerOfTen(10000);
     return $self;
@@ -169,21 +169,22 @@ sub paint {
         $graphics->drawString($self->getName(), $self->{textX}, $self->{y}, 0);
 }
 
-# use javax::microedition::lcdui::Font;
-# use javax::microedition::lcdui::Graphics;
-use org::allbinary::logic::string::StringUtil;
-use org::allbinary::animation::Animation;
-use org::allbinary::animation::NullAnimationFactory;
-use org::allbinary::graphics::color::BasicColor;
-use org::allbinary::graphics::color::BasicColorFactory;
-use org::allbinary::graphics::displayable::DisplayInfoSingleton;
-use org::allbinary::graphics::font::MyFontProcessor;
-use org::allbinary::graphics::font::UpdateMyFontInterface;
-use org::allbinary::graphics::font::UpdateMyFontProcessor;
-use org::allbinary::graphics::paint::InitUpdatePaintable;
-use org::allbinary::input::motion::button::CommonButtons;
-use org::allbinary::input::motion::button::TouchButtonLocationHelper;
-use org::allbinary::logic::math::PrimitiveLongUtil;
+use java::lang::Object ();
+use javax::microedition::lcdui::Font ();
+use javax::microedition::lcdui::Graphics ();
+use org::allbinary::logic::string::StringUtil ();
+use org::allbinary::animation::Animation ();
+use org::allbinary::animation::NullAnimationFactory ();
+use org::allbinary::graphics::color::BasicColor ();
+use org::allbinary::graphics::color::BasicColorFactory ();
+use org::allbinary::graphics::displayable::DisplayInfoSingleton ();
+use org::allbinary::graphics::font::MyFontProcessor ();
+use org::allbinary::graphics::font::UpdateMyFontInterface ();
+use org::allbinary::graphics::font::UpdateMyFontProcessor ();
+use org::allbinary::graphics::paint::InitUpdatePaintable ();
+use org::allbinary::input::motion::button::CommonButtons ();
+use org::allbinary::input::motion::button::TouchButtonLocationHelper ();
+use org::allbinary::logic::math::PrimitiveLongUtil ();
 
 1;
 

@@ -17,6 +17,7 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
 our $POINT_LABEL = "Point: ";
 
@@ -37,7 +38,7 @@ sub getInstance {
 sub new {
     my ($class, $x, $y, $z) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
         $self->{x} = $x;
         $self->{y} = $y;
         $self->{z} = $z;
@@ -103,12 +104,13 @@ sub toStringStatic {
         return $stringBuffer->toString();
 }
 
-# use jsinterop::annotations::JsType;
-# use jsinterop::annotations::JsMethod;
-# use jsinterop::annotations::JsConstructor;
-use org::allbinary::logic::string::StringMaker;
-use org::allbinary::math::PositionStrings;
-use org::allbinary::string::CommonSeps;
+use java::lang::Object ();
+# use jsinterop::annotations::JsType ();
+# use jsinterop::annotations::JsMethod ();
+# use jsinterop::annotations::JsConstructor ();
+use org::allbinary::logic::string::StringMaker ();
+use org::allbinary::math::PositionStrings ();
+use org::allbinary::string::CommonSeps ();
 
 1;
 

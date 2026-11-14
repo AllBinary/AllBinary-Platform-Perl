@@ -17,8 +17,9 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
-our $instance = 'org::allbinary::graphics::opengles::shader::ShaderManagerFactory'->new();
+tie our $instance, 'java::lang::LazyStatic', sub { 'org::allbinary::graphics::opengles::shader::ShaderManagerFactory'->new() };
 
 sub new {
     my ($class) = @_;
@@ -38,7 +39,9 @@ sub create {
         return 'org::allbinary::graphics::opengles::shader::ShaderManager'->getInstance();
 }
 
-use org::allbinary::graphics::opengles::shader::ShaderManager;
+use java::lang::Object ();
+use java::lang::LazyStatic ();
+use org::allbinary::graphics::opengles::shader::ShaderManager ();
 
 1;
 

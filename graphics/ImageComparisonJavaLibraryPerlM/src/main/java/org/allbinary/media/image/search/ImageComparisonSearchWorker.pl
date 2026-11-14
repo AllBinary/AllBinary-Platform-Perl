@@ -34,7 +34,7 @@ sub _init_fields {
 sub new {
     my ($class, $imageSearchConstraintsInterface) = @_;
     my $self = $class->SUPER::new();
-    $self->_init_fields();
+    _init_fields($self);
         $self->{imageComparisonInfoVector} = 'org::allbinary::util::BasicArrayListD'->new();
         $self->{imageSearchConstraintsInterface} = $imageSearchConstraintsInterface;
     return $self;
@@ -86,19 +86,20 @@ sub run {
         }
 }
 
-# use java::awt::image::BufferedImage;
-use org::allbinary::util::BasicArrayList;
-use org::allbinary::util::BasicArrayListD;
-use org::allbinary::logic::StdUtil;
-use org::allbinary::logic::communication::log::LogUtil;
-use org::allbinary::logic::util::event::AllBinaryEventObject;
-use org::allbinary::logic::util::event::handler::BasicEventHandler;
-use org::allbinary::media::image::comparison::ImageComparisonResult;
-use org::allbinary::media::image::comparison::ImageComparisonResultsEvent;
-use org::allbinary::media::image::comparison::ImageComparisonResultsListener;
-use org::allbinary::string::CommonLabels;
-use org::allbinary::string::CommonStrings;
-use org::allbinary::time::TimeDelayHelper;
+use java::lang::Object ();
+# use java::awt::image::BufferedImage ();
+use org::allbinary::util::BasicArrayList ();
+use org::allbinary::util::BasicArrayListD ();
+use org::allbinary::logic::StdUtil ();
+use org::allbinary::logic::communication::log::LogUtil ();
+use org::allbinary::logic::util::event::AllBinaryEventObject ();
+use org::allbinary::logic::util::event::handler::BasicEventHandler ();
+use org::allbinary::media::image::comparison::ImageComparisonResult ();
+use org::allbinary::media::image::comparison::ImageComparisonResultsEvent ();
+use org::allbinary::media::image::comparison::ImageComparisonResultsListener ();
+use org::allbinary::string::CommonLabels ();
+use org::allbinary::string::CommonStrings ();
+use org::allbinary::time::TimeDelayHelper ();
 
 1;
 

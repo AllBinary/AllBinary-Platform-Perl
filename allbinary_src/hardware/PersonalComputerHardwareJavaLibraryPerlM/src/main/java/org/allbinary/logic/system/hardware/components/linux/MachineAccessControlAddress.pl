@@ -17,7 +17,7 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
-use parent -norequire,'org::allbinary::logic::system::hardware::components::interfaces::HardwareComponentInterface','org::allbinary::logic::system::hardware::components::interfaces::MachineAccessControlAddressInterface';
+use parent -norequire,'java::lang::Object','org::allbinary::logic::system::hardware::components::interfaces::HardwareComponentInterface','org::allbinary::logic::system::hardware::components::interfaces::MachineAccessControlAddressInterface';
 
 
 
@@ -39,9 +39,10 @@ sub toString {
         return 'org::allbinary::logic::string::StringUtil'->getInstance()->{EMPTY_STRING};
 }
 
-use org::allbinary::logic::string::StringUtil;
-use org::allbinary::logic::system::hardware::components::interfaces::HardwareComponentInterface;
-use org::allbinary::logic::system::hardware::components::interfaces::MachineAccessControlAddressInterface;
+use java::lang::Object ();
+use org::allbinary::logic::string::StringUtil ();
+use org::allbinary::logic::system::hardware::components::interfaces::HardwareComponentInterface ();
+use org::allbinary::logic::system::hardware::components::interfaces::MachineAccessControlAddressInterface ();
 
 1;
 

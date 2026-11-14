@@ -5,8 +5,9 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
-our $NULL_ANALOG_LOCATION_INPUT = 'org::allbinary::game::input::analog::AnalogLocationInput'->new(-1);
+tie our $NULL_ANALOG_LOCATION_INPUT, 'java::lang::LazyStatic', sub { 'org::allbinary::game::input::analog::AnalogLocationInput'->new(-1) };
 
 sub _init_fields {
     my ($self) = @_;
@@ -21,7 +22,7 @@ sub _init_fields {
 sub new {
     my ($class, $playerId) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
         $self->{playerId} = $playerId;
         $self->{customGPoint} = 'org::allbinary::graphics::CustomGPoint'->new(0, 0, 0);
     return $self;
@@ -75,7 +76,9 @@ sub setLeftTrigger {
         $self->{leftTrigger} = $leftTrigger;
 }
 
-use org::allbinary::graphics::CustomGPoint;
+use java::lang::Object ();
+use java::lang::LazyStatic ();
+use org::allbinary::graphics::CustomGPoint ();
 
 1;
 

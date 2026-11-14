@@ -29,7 +29,7 @@ sub _init_fields {
 sub new {
     my ($class, $groupInterface, $isUnitProducer) = @_;
     my $self = $class->SUPER::new($groupInterface, $isUnitProducer);
-    $self->_init_fields();
+    _init_fields($self);
         # super(...) made $self above
         my $basicColorFactory = 'org::allbinary::graphics::color::BasicColorFactory'->getInstance();
         $self->{atLeastOneHouseGameNotificationEvent} = 'org::allbinary::game::layer::hud::event::GameNotificationEvent'->new($self, "Build At Least One House First", 'org::allbinary::logic::math::SmallIntegerSingletonFactory'->getInstance()->getAt(2), $basicColorFactory->{WHITE}, 'org::allbinary::logic::java::bool::BooleanFactory'->getInstance()->{FALSE});
@@ -85,28 +85,29 @@ sub add {
         $self->SUPER::add($rtsPlayerLayerInterface, $layerManager, $layerInterface);
 }
 
-use org::allbinary::game::layer::AdvancedPlayerOwnedRTSLayers;
-use org::allbinary::game::layer::AdvancedRTSPlayerLayerInterface;
-use org::allbinary::game::layer::RTSLayer;
-use org::allbinary::game::layer::RTSLayerEvent;
-use org::allbinary::game::layer::RTSPlayerLayerInterface;
-use org::allbinary::game::layer::building::event::BuildingEventHandler;
-use org::allbinary::game::layer::building::event::LocalPlayerBuildingEventHandler;
-use org::allbinary::game::layer::waypoint::WaypointCellPositionHistory;
-use org::allbinary::logic::java::bool::BooleanFactory;
-use org::allbinary::game::identification::Group;
-use org::allbinary::game::layer::AllBinaryGameLayerManager;
-use org::allbinary::game::layer::NullPathFindingLayer;
-use org::allbinary::game::layer::hud::event::GameNotificationEvent;
-use org::allbinary::game::layer::hud::event::GameNotificationEventHandler;
-use org::allbinary::graphics::color::BasicColorFactory;
-use org::allbinary::layer::AllBinaryLayerManager;
-use org::allbinary::logic::math::SmallIntegerSingletonFactory;
-use org::allbinary::media::audio::ErrorSound;
-use org::allbinary::media::graphics::geography::map::BasicGeographicMap;
-use org::allbinary::media::graphics::geography::map::GeographicMapCompositeInterface;
-use org::allbinary::media::graphics::geography::map::drop::DropCellPositionHistory;
-use org::allbinary::game::input::form::BuildingRTSFormInput;
+use java::lang::Object ();
+use org::allbinary::game::layer::AdvancedPlayerOwnedRTSLayers ();
+use org::allbinary::game::layer::AdvancedRTSPlayerLayerInterface ();
+use org::allbinary::game::layer::RTSLayer ();
+use org::allbinary::game::layer::RTSLayerEvent ();
+use org::allbinary::game::layer::RTSPlayerLayerInterface ();
+use org::allbinary::game::layer::building::event::BuildingEventHandler ();
+use org::allbinary::game::layer::building::event::LocalPlayerBuildingEventHandler ();
+use org::allbinary::game::layer::waypoint::WaypointCellPositionHistory ();
+use org::allbinary::logic::java::bool::BooleanFactory ();
+use org::allbinary::game::identification::Group ();
+use org::allbinary::game::layer::AllBinaryGameLayerManager ();
+use org::allbinary::game::layer::NullPathFindingLayer ();
+use org::allbinary::game::layer::hud::event::GameNotificationEvent ();
+use org::allbinary::game::layer::hud::event::GameNotificationEventHandler ();
+use org::allbinary::graphics::color::BasicColorFactory ();
+use org::allbinary::layer::AllBinaryLayerManager ();
+use org::allbinary::logic::math::SmallIntegerSingletonFactory ();
+use org::allbinary::media::audio::ErrorSound ();
+use org::allbinary::media::graphics::geography::map::BasicGeographicMap ();
+use org::allbinary::media::graphics::geography::map::GeographicMapCompositeInterface ();
+use org::allbinary::media::graphics::geography::map::drop::DropCellPositionHistory ();
+use org::allbinary::game::input::form::BuildingRTSFormInput ();
 
 1;
 

@@ -17,7 +17,7 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
-use parent -norequire,'org::allbinary::logic::system::hardware::components::interfaces::CpuInterface','org::allbinary::logic::system::hardware::components::interfaces::HardwareComponentInterface';
+use parent -norequire,'java::lang::Object','org::allbinary::logic::system::hardware::components::interfaces::CpuInterface','org::allbinary::logic::system::hardware::components::interfaces::HardwareComponentInterface';
 
 
 sub _init_fields {
@@ -39,7 +39,7 @@ sub new {
 sub _new1 {
     my ($class, $filePath) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
         $self->init($filePath);
     return $self;
 }
@@ -48,7 +48,7 @@ sub _new1 {
 sub _new0 {
     my ($class) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
         $self->init($self->{CPUFILE});
     return $self;
 }
@@ -89,7 +89,7 @@ sub init {
             }
             if (defined($lineNumberReader)) {
                 my $nextLine = $lineNumberReader->readLine();
-                while (defined($lineNumberReader) && defined($nextLine)) {
+                while (defined($nextLine)) {
                     my $index = index($nextLine, ":");
                     if ($index >= 0) {
                         my $key = substr($nextLine, 0, ($index) - (0));
@@ -215,24 +215,25 @@ sub toString {
         return $stringMaker->toString();
 }
 
-# use java::io::FileReader;
-# use java::io::LineNumberReader;
-use java::util::HashMap;
-use org::allbinary::logic::StdUtil;
-use org::allbinary::logic::communication::log::LogUtil;
-use org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory;
-use org::allbinary::logic::communication::log::config::type::LogConfigTypes;
-use org::allbinary::logic::io::file::AbFile;
-use org::allbinary::logic::io::file::FilePathData;
-use org::allbinary::logic::io::file::directory::SubDirectory;
-use org::allbinary::logic::string::StringMaker;
-use org::allbinary::logic::system::hardware::components::interfaces::CpuInterface;
-use org::allbinary::logic::system::hardware::components::interfaces::HardwareComponentInterface;
-use org::allbinary::string::CommonLabels;
-use org::allbinary::string::CommonSeps;
-use org::allbinary::string::CommonStrings;
-use org::allbinary::util::BasicArrayList;
-use org::allbinary::logic::system::hardware::components::linux::CpuInfo;
+use java::lang::Object ();
+# use java::io::FileReader ();
+# use java::io::LineNumberReader ();
+use java::util::HashMap ();
+use org::allbinary::logic::StdUtil ();
+use org::allbinary::logic::communication::log::LogUtil ();
+use org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory ();
+use org::allbinary::logic::communication::log::config::type::LogConfigTypes ();
+use org::allbinary::logic::io::file::AbFile ();
+use org::allbinary::logic::io::file::FilePathData ();
+use org::allbinary::logic::io::file::directory::SubDirectory ();
+use org::allbinary::logic::string::StringMaker ();
+use org::allbinary::logic::system::hardware::components::interfaces::CpuInterface ();
+use org::allbinary::logic::system::hardware::components::interfaces::HardwareComponentInterface ();
+use org::allbinary::string::CommonLabels ();
+use org::allbinary::string::CommonSeps ();
+use org::allbinary::string::CommonStrings ();
+use org::allbinary::util::BasicArrayList ();
+use org::allbinary::logic::system::hardware::components::linux::CpuInfo ();
 
 1;
 

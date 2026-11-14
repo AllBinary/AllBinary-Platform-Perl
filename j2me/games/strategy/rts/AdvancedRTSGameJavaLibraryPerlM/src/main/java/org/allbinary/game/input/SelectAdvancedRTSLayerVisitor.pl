@@ -29,7 +29,7 @@ sub _init_fields {
 sub new {
     my ($class, $selectedRTSLayersPlayerGameInput) = @_;
     my $self = $class->SUPER::new();
-    $self->_init_fields();
+    _init_fields($self);
         $self->{selectedRTSLayersPlayerGameInput} = $selectedRTSLayersPlayerGameInput;
     return $self;
 }
@@ -56,15 +56,16 @@ sub visit {
         return 'org::allbinary::logic::NullUtil'->getInstance()->{NULL_OBJECT};
 }
 
-use org::allbinary::game::input::form::AssignWaypointsUtil;
-use org::allbinary::game::layer::AdvancedRTSGameLayer;
-use org::allbinary::game::layer::RTSLayer;
-use org::allbinary::game::layer::building::BuildingLayer;
-use org::allbinary::game::layer::special::CollidableDestroyableDamageableLayer;
-use org::allbinary::game::layer::unit::UnitLayer;
-use org::allbinary::logic::NullUtil;
-use org::allbinary::util::BasicArrayList;
-use org::allbinary::logic::util::visitor::Visitor;
+use java::lang::Object ();
+use org::allbinary::game::input::form::AssignWaypointsUtil ();
+use org::allbinary::game::layer::AdvancedRTSGameLayer ();
+use org::allbinary::game::layer::RTSLayer ();
+use org::allbinary::game::layer::building::BuildingLayer ();
+use org::allbinary::game::layer::special::CollidableDestroyableDamageableLayer ();
+use org::allbinary::game::layer::unit::UnitLayer ();
+use org::allbinary::logic::NullUtil ();
+use org::allbinary::util::BasicArrayList ();
+use org::allbinary::logic::util::visitor::Visitor ();
 
 1;
 

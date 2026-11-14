@@ -5,6 +5,7 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
 
 sub _init_fields {
@@ -22,7 +23,7 @@ sub _init_fields {
 sub new {
     my ($class, $androidMediaPlayerWrapper) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
         try {
             $self->{logUtil}->putF($self->{commonStrings}->{START}, $self, $self->{commonStrings}->{CONSTRUCTOR});
             $self->{androidMediaPlayerWrapper} = $androidMediaPlayerWrapper;
@@ -42,7 +43,7 @@ sub new {
     use warnings;
     use feature 'try';
     no warnings 'experimental::try';
-    use parent -norequire,'MediaPlayer::OnBufferingUpdateListener';
+    use parent -norequire,'java::lang::Object','MediaPlayer::OnBufferingUpdateListener';
     
 
     sub new {
@@ -63,7 +64,7 @@ sub new {
     use warnings;
     use feature 'try';
     no warnings 'experimental::try';
-    use parent -norequire,'MediaPlayer::OnPreparedListener';
+    use parent -norequire,'java::lang::Object','MediaPlayer::OnPreparedListener';
     
 
     sub new {
@@ -84,7 +85,7 @@ sub new {
     use warnings;
     use feature 'try';
     no warnings 'experimental::try';
-    use parent -norequire,'MediaPlayer::OnErrorListener';
+    use parent -norequire,'java::lang::Object','MediaPlayer::OnErrorListener';
     
 
     sub new {
@@ -106,7 +107,7 @@ sub new {
     use warnings;
     use feature 'try';
     no warnings 'experimental::try';
-    use parent -norequire,'MediaPlayer::OnCompletionListener';
+    use parent -norequire,'java::lang::Object','MediaPlayer::OnCompletionListener';
     
 
     sub new {
@@ -140,7 +141,7 @@ sub new {
     sub new {
         my ($class, $androidMediaPlayerWrapperListener) = @_;
         my $self = $class->SUPER::new();
-        $self->_init_fields();
+        _init_fields($self);
             $self->{androidMediaPlayerWrapperListener} = $androidMediaPlayerWrapperListener;
         return $self;
     }
@@ -173,7 +174,7 @@ sub new {
     sub new {
         my ($class, $androidMediaPlayerWrapperListener) = @_;
         my $self = $class->SUPER::new();
-        $self->_init_fields();
+        _init_fields($self);
             $self->{androidMediaPlayerWrapperListener} = $androidMediaPlayerWrapperListener;
         return $self;
     }
@@ -207,7 +208,7 @@ sub new {
     sub new {
         my ($class, $androidMediaPlayerWrapperListener) = @_;
         my $self = $class->SUPER::new();
-        $self->_init_fields();
+        _init_fields($self);
             $self->{androidMediaPlayerWrapperListener} = $androidMediaPlayerWrapperListener;
         return $self;
     }
@@ -241,7 +242,7 @@ sub new {
     sub new {
         my ($class, $androidMediaPlayerWrapperListener) = @_;
         my $self = $class->SUPER::new();
-        $self->_init_fields();
+        _init_fields($self);
             $self->{androidMediaPlayerWrapperListener} = $androidMediaPlayerWrapperListener;
         return $self;
     }
@@ -257,13 +258,14 @@ sub new {
     }
 
 
-# use javax::microedition::media::PlayerListener;
-use android::media::MediaPlayer;
-use org::allbinary::logic::communication::log::LogUtil;
-use org::allbinary::logic::string::StringMaker;
-use org::allbinary::string::CommonLabels;
-use org::allbinary::string::CommonStrings;
-use org::allbinary::media::audio::AndroidMediaPlayerWrapper;
+use java::lang::Object ();
+use javax::microedition::media::PlayerListener ();
+# use android::media::MediaPlayer ();
+use org::allbinary::logic::communication::log::LogUtil ();
+use org::allbinary::logic::string::StringMaker ();
+use org::allbinary::string::CommonLabels ();
+use org::allbinary::string::CommonStrings ();
+use org::allbinary::media::audio::AndroidMediaPlayerWrapper ();
 
 1;
 

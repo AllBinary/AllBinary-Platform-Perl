@@ -17,7 +17,7 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
-use parent -norequire,'org::allbinary::init::crypt::jcehelper::CryptInterface';
+use parent -norequire,'java::lang::Object','org::allbinary::init::crypt::jcehelper::CryptInterface';
 
 
 sub _init_fields {
@@ -32,7 +32,7 @@ sub _init_fields {
 sub new {
     my ($class, $algorithm, $key) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
         try {
             $self->{algorithm} = $algorithm;
             $self->{key} = $key->getBytes();
@@ -104,16 +104,17 @@ sub decrypt {
         }
 }
 
-# use java::security::Provider;
-# use java::security::Security;
-# use java::security::spec::KeySpec;
-# use javax::crypto::Cipher;
-# use javax::crypto::SecretKey;
-# use javax::crypto::SecretKeyFactory;
-use org::allbinary::init::crypt::jcehelper::CryptInterface;
-use org::allbinary::logic::communication::log::PreLogUtil;
-use org::allbinary::string::CommonStrings;
-use org::allbinary::logic::system::security::crypt::jcehelper::KeySpecFactory;
+use java::lang::Object ();
+# use java::security::Provider ();
+# use java::security::Security ();
+# use java::security::spec::KeySpec ();
+# use javax::crypto::Cipher ();
+# use javax::crypto::SecretKey ();
+# use javax::crypto::SecretKeyFactory ();
+use org::allbinary::init::crypt::jcehelper::CryptInterface ();
+use org::allbinary::logic::communication::log::PreLogUtil ();
+use org::allbinary::string::CommonStrings ();
+use org::allbinary::logic::system::security::crypt::jcehelper::KeySpecFactory ();
 
 1;
 

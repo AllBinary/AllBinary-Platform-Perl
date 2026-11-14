@@ -33,7 +33,7 @@ sub _init_fields {
 sub new {
     my ($class, $ownerLayerInterface, $gameInput) = @_;
     my $self = $class->SUPER::new($ownerLayerInterface, $gameInput);
-    $self->_init_fields();
+    _init_fields($self);
         # super(...) made $self above
         my $rotationAnimationInterfaceCompositeInterface = $self->getOwnerLayerInterface();
         $self->{rotationAnimationInterface} = $rotationAnimationInterfaceCompositeInterface->getRotationAnimationInterface();
@@ -133,22 +133,23 @@ sub getId {
         return $org::allbinary::ai::ArtificialIntelligence::AI_ID;
 }
 
-# use javax::microedition::lcdui::Canvas;
-use org::allbinary::ai::ArtificialIntelligence;
-use org::allbinary::ai::ArtificialIntelligenceTransitionInterface;
-use org::allbinary::animation::IndexedAnimation;
-use org::allbinary::animation::RotationAnimationInterface;
-use org::allbinary::animation::RotationAnimationInterfaceCompositeInterface;
-use org::allbinary::game::ai::BasicAI;
-use org::allbinary::game::input::GameInput;
-use org::allbinary::game::physics::velocity::BasicVelocityProperties;
-use org::allbinary::game::physics::velocity::VelocityInterface;
-use org::allbinary::game::physics::velocity::VelocityInterfaceCompositeInterface;
-use org::allbinary::graphics::displayable::DisplayInfoSingleton;
-use org::allbinary::layer::AllBinaryLayer;
-use org::allbinary::layer::AllBinaryLayerManager;
-use org::allbinary::math::AngleIncrementInfo;
-use org::allbinary::util::CircularIndexUtil;
+use java::lang::Object ();
+use javax::microedition::lcdui::Canvas ();
+use org::allbinary::ai::ArtificialIntelligence ();
+use org::allbinary::ai::ArtificialIntelligenceTransitionInterface ();
+use org::allbinary::animation::IndexedAnimation ();
+use org::allbinary::animation::RotationAnimationInterface ();
+use org::allbinary::animation::RotationAnimationInterfaceCompositeInterface ();
+use org::allbinary::game::ai::BasicAI ();
+use org::allbinary::game::input::GameInput ();
+use org::allbinary::game::physics::velocity::BasicVelocityProperties ();
+use org::allbinary::game::physics::velocity::VelocityInterface ();
+use org::allbinary::game::physics::velocity::VelocityInterfaceCompositeInterface ();
+use org::allbinary::graphics::displayable::DisplayInfoSingleton ();
+use org::allbinary::layer::AllBinaryLayer ();
+use org::allbinary::layer::AllBinaryLayerManager ();
+use org::allbinary::math::AngleIncrementInfo ();
+use org::allbinary::util::CircularIndexUtil ();
 
 1;
 

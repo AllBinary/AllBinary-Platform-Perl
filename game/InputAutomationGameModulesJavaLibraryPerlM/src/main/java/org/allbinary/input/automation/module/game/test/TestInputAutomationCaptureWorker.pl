@@ -34,7 +34,7 @@ sub _init_fields {
 sub new {
     my ($class, $inputAutomationActionInterface, $genericProfileActions, $imageComparatorConstraintsInterface, $motionRectangleConstraintsInterface) = @_;
     my $self = $class->SUPER::new($inputAutomationActionInterface);
-    $self->_init_fields();
+    _init_fields($self);
         # super(...) made $self above
         $self->{logUtil}->putF($self->{MESSAGE}, $self, $self->{commonStrings}->{CONSTRUCTOR});
         $self->setGenericProfileActions($genericProfileActions);
@@ -86,20 +86,21 @@ sub setGenericProfileActions {
         $self->{genericProfileActions} = $genericProfileActions;
 }
 
-use java::util::HashMap;
-# use java::util::Set;
-use org::allbinary::util::BasicArrayList;
-use org::allbinary::util::BasicArrayListD;
-use org::allbinary::input::automation::module::AbstractInputAutomationWorker;
-use org::allbinary::input::automation::module::InputAutomationActionInterface;
-use org::allbinary::input::automation::module::generic::configuration::profile::actions::GenericProfileAction;
-use org::allbinary::input::automation::module::generic::configuration::profile::actions::GenericProfileActions;
-use org::allbinary::input::automation::module::generic::configuration::profile::actions::script::GenericProfileActionScript;
-use org::allbinary::input::media::image::capture::CapturedBufferedImagesCacheSingleton;
-use org::allbinary::logic::communication::log::LogUtil;
-use org::allbinary::logic::util::cache::J2SECacheInterface;
-use org::allbinary::media::image::comparison::ImageComparatorConstraintsInterface;
-use org::allbinary::media::image::comparison::motion::MotionRectangleConstraintsInterface;
+use java::lang::Object ();
+use java::util::HashMap ();
+# use java::util::Set ();
+use org::allbinary::util::BasicArrayList ();
+use org::allbinary::util::BasicArrayListD ();
+use org::allbinary::input::automation::module::AbstractInputAutomationWorker ();
+use org::allbinary::input::automation::module::InputAutomationActionInterface ();
+use org::allbinary::input::automation::module::generic::configuration::profile::actions::GenericProfileAction ();
+use org::allbinary::input::automation::module::generic::configuration::profile::actions::GenericProfileActions ();
+use org::allbinary::input::automation::module::generic::configuration::profile::actions::script::GenericProfileActionScript ();
+use org::allbinary::input::media::image::capture::CapturedBufferedImagesCacheSingleton ();
+use org::allbinary::logic::communication::log::LogUtil ();
+use org::allbinary::logic::util::cache::J2SECacheInterface ();
+use org::allbinary::media::image::comparison::ImageComparatorConstraintsInterface ();
+use org::allbinary::media::image::comparison::motion::MotionRectangleConstraintsInterface ();
 
 1;
 

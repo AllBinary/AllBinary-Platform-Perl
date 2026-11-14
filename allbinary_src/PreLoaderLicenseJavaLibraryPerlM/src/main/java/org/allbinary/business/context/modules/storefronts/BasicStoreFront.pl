@@ -17,7 +17,7 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
-use parent -norequire,'org::allbinary::business::context::modules::storefronts::BasicStoreFrontInterface';
+use parent -norequire,'java::lang::Object','org::allbinary::business::context::modules::storefronts::BasicStoreFrontInterface';
 
 
 sub _init_fields {
@@ -63,7 +63,7 @@ sub new {
 sub _new0 {
     my ($class) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
     return $self;
 }
 
@@ -71,7 +71,7 @@ sub _new0 {
 sub _new1 {
     my ($class, $storeHashMap) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
         my $storeFrontData = 'org::allbinary::business::context::modules::storefront::StoreFrontData'->getInstance();
         $self->{name} = $storeHashMap->get($storeFrontData->{NAME});
         $self->{userName} = $storeHashMap->get($org::allbinary::business::user::UserData::USERNAME);
@@ -327,15 +327,16 @@ sub getLastModified {
         return $self->{lastModified};
 }
 
-use java::util::HashMap;
-use org::allbinary::business::context::modules::storefront::StoreFrontData;
-use org::allbinary::business::entry::EntryData;
-use org::allbinary::business::user::UserData;
-use org::allbinary::logic::string::tokens::Tokenizer;
-use org::allbinary::string::CommonSeps;
-use org::allbinary::util::BasicArrayList;
-use org::allbinary::util::BasicArrayListD;
-use org::allbinary::business::context::modules::storefronts::BasicStoreFrontInterface;
+use java::lang::Object ();
+use java::util::HashMap ();
+use org::allbinary::business::context::modules::storefront::StoreFrontData ();
+use org::allbinary::business::entry::EntryData ();
+use org::allbinary::business::user::UserData ();
+use org::allbinary::logic::string::tokens::Tokenizer ();
+use org::allbinary::string::CommonSeps ();
+use org::allbinary::util::BasicArrayList ();
+use org::allbinary::util::BasicArrayListD ();
+use org::allbinary::business::context::modules::storefronts::BasicStoreFrontInterface ();
 
 1;
 

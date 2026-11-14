@@ -53,12 +53,12 @@ sub update {
     die "abstract method update";
 }
 
-use java::util::HashMap;
-use org::allbinary::util::BasicArrayList;
-use org::allbinary::util::BasicArrayListD;
-use org::allbinary::data::tables::BasicDataTableInterface;
-use org::allbinary::logic::control::workflow::WorkFlowInterface;
-use org::allbinary::logic::system::security::licensing::LicensingException;
+use java::util::HashMap ();
+use org::allbinary::util::BasicArrayList ();
+use org::allbinary::util::BasicArrayListD ();
+use org::allbinary::data::tables::BasicDataTableInterface ();
+use org::allbinary::logic::control::workflow::WorkFlowInterface ();
+use org::allbinary::logic::system::security::licensing::LicensingException ();
 
 1;
 

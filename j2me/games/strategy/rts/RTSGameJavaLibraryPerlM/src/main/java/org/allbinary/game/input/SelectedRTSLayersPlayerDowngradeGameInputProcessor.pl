@@ -35,9 +35,10 @@ sub processEvent {
         $self->{selectedRTSLayersPlayerGameInput}->downgrade();
 }
 
-use org::allbinary::game::input::event::GameKeyEvent;
-use org::allbinary::layer::AllBinaryLayerManager;
-use org::allbinary::game::input::SelectedRTSLayersPlayerGameInputProcessor;
+use java::lang::Object ();
+use org::allbinary::game::input::event::GameKeyEvent ();
+use org::allbinary::layer::AllBinaryLayerManager ();
+use org::allbinary::game::input::SelectedRTSLayersPlayerGameInputProcessor ();
 
 1;
 

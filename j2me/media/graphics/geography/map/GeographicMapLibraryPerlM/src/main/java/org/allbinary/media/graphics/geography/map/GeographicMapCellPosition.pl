@@ -31,7 +31,7 @@ sub _init_fields {
 sub new {
     my ($class, $column, $row, $columns, $rows, $width, $height) = @_;
     my $self = $class->SUPER::new($column, $row, $columns, $rows);
-    $self->_init_fields();
+    _init_fields($self);
         # super(...) made $self above
         my $x = $self->getColumn() * $width;
         my $y = $self->getRow() * $height;
@@ -59,9 +59,10 @@ sub setMidPoint {
         $self->{midPoint} = $midPoint;
 }
 
-use org::allbinary::graphics::CellPosition;
-use org::allbinary::graphics::GPoint;
-use org::allbinary::graphics::PointFactory;
+use java::lang::Object ();
+use org::allbinary::graphics::CellPosition ();
+use org::allbinary::graphics::GPoint ();
+use org::allbinary::graphics::PointFactory ();
 
 1;
 

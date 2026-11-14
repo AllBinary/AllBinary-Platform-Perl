@@ -38,8 +38,8 @@ sub getSystemProperties {
     die "abstract method getSystemProperties";
 }
 
-# use java::util::Map;
-use org::osgi::framework::BundleContext;
+# use java::util::Map ();
+use org::osgi::framework::BundleContext ();
 
 1;
 

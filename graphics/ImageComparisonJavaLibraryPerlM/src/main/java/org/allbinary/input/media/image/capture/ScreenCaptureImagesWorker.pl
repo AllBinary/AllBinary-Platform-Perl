@@ -33,7 +33,7 @@ sub _init_fields {
 sub new {
     my ($class) = @_;
     my $self = $class->SUPER::new();
-    $self->_init_fields();
+    _init_fields($self);
         $self->{screenScavangerRobot} = 'org::allbinary::input::media::image::capture::ScreenScavangerRobot'->new();
         $org::allbinary::input::media::image::capture::ScreenCaptureImagesWorker::index = 'org::allbinary::input::media::image::capture::ProcessingFrameIndexFactory'->next();
     return $self;
@@ -81,18 +81,19 @@ sub run {
         }
 }
 
-# use java::awt::image::BufferedImage;
-use org::allbinary::logic::communication::log::LogUtil;
-use org::allbinary::logic::util::event::handler::BasicEventHandler;
-use org::allbinary::media::image::cache::BufferedImageFrameCacheable;
-use org::allbinary::string::CommonLabels;
-use org::allbinary::string::CommonStrings;
-use org::allbinary::time::TimeDelayHelper;
-use org::allbinary::input::media::image::capture::CaptureWorkerInterface;
-use org::allbinary::input::media::image::capture::ScreenScavangerRobot;
-use org::allbinary::input::media::image::capture::ProcessingFrameIndexFactory;
-use org::allbinary::input::media::image::capture::CapturedBufferedImagesCacheSingleton;
-use org::allbinary::input::media::image::capture::CapturedImageWorkerResultsEvent;
+use java::lang::Object ();
+# use java::awt::image::BufferedImage ();
+use org::allbinary::logic::communication::log::LogUtil ();
+use org::allbinary::logic::util::event::handler::BasicEventHandler ();
+use org::allbinary::media::image::cache::BufferedImageFrameCacheable ();
+use org::allbinary::string::CommonLabels ();
+use org::allbinary::string::CommonStrings ();
+use org::allbinary::time::TimeDelayHelper ();
+use org::allbinary::input::media::image::capture::CaptureWorkerInterface ();
+use org::allbinary::input::media::image::capture::ScreenScavangerRobot ();
+use org::allbinary::input::media::image::capture::ProcessingFrameIndexFactory ();
+use org::allbinary::input::media::image::capture::CapturedBufferedImagesCacheSingleton ();
+use org::allbinary::input::media::image::capture::CapturedImageWorkerResultsEvent ();
 
 1;
 

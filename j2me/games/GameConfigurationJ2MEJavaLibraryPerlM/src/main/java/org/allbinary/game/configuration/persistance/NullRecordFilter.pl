@@ -17,9 +17,9 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
-use parent -norequire,'javax::microedition::rms::RecordFilter';
+use parent -norequire,'java::lang::Object','javax::microedition::rms::RecordFilter';
 
-our $NULL_RECORD_FILTER = 'org::allbinary::game::configuration::persistance::NullRecordFilter'->new();
+tie our $NULL_RECORD_FILTER, 'java::lang::LazyStatic', sub { 'org::allbinary::game::configuration::persistance::NullRecordFilter'->new() };
 
 sub new {
     my ($class) = @_;
@@ -33,7 +33,9 @@ sub matches {
         return 1;
 }
 
-# use javax::microedition::rms::RecordFilter;
+use java::lang::Object ();
+use java::lang::LazyStatic ();
+use javax::microedition::rms::RecordFilter ();
 
 1;
 

@@ -57,8 +57,8 @@ sub setDefault {
     die "abstract method setDefault";
 }
 
-use org::allbinary::business::user::address::StreetAddress;
-use org::allbinary::data::tables::BasicDataTableInterface;
+use org::allbinary::business::user::address::StreetAddress ();
+use org::allbinary::data::tables::BasicDataTableInterface ();
 
 1;
 

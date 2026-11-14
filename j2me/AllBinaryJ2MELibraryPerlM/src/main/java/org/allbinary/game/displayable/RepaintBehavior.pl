@@ -17,8 +17,9 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
-our $instance = 'org::allbinary::game::displayable::RepaintBehavior'->new();
+tie our $instance, 'java::lang::LazyStatic', sub { 'org::allbinary::game::displayable::RepaintBehavior'->new() };
 
 sub _init_fields {
     my ($self) = @_;
@@ -29,7 +30,7 @@ sub _init_fields {
 sub new {
     my ($class) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
     return $self;
 }
 
@@ -52,37 +53,22 @@ sub onChangeRepaint {
         if ($features->isFeature($openGLFeatureFactory->{OPENGL})) {
             'org::allbinary::graphics::displayable::DisplayInfoSingleton'->getInstance()->process();
         } else {
-            my $thread = 'java::lang::Thread'->new(do {
-                package org::allbinary::thread::ARunnable::AnonymousN66243 { our @ISA = ('org::allbinary::thread::ARunnable');
-                
-
-                sub run {
-                    my ($self) = @_;
-                    try {
-                        $canvas->repaint();
-                        'org::allbinary::graphics::displayable::DisplayInfoSingleton'->getInstance()->process();
-                    } catch ($e) {
-                        my $commonStrings = 'org::allbinary::string::CommonStrings'->getInstance();
-                        my $logUtil = 'org::allbinary::logic::communication::log::LogUtil'->getInstance();
-                        $logUtil->put($commonStrings->{EXCEPTION}, $self, $commonStrings->{RUN}, $e);
-                    }
-                }
-                }
-                'org::allbinary::thread::ARunnable::AnonymousN66243'->can('new') ? 'org::allbinary::thread::ARunnable::AnonymousN66243'->new() : bless({}, 'org::allbinary::thread::ARunnable::AnonymousN66243')
-            }, $self->{NAME});
+            my $thread = 'java::lang::Thread'->new('org::allbinary::game::displayable::RepaintRunnable'->new($canvas), $self->{NAME});
             $thread->start();
         }
 }
 
-use org::allbinary::thread::ARunnable;
-# use javax::microedition::lcdui::Canvas;
-use org::allbinary::game::configuration::feature::Features;
-use org::allbinary::graphics::displayable::DisplayInfoSingleton;
-use org::allbinary::graphics::opengles::OpenGLFeatureFactory;
-use org::allbinary::logic::communication::log::LogUtil;
-use org::allbinary::string::CommonStrings;
-use org::allbinary::thread::NullRunnable;
-use java::lang::Thread;
+use java::lang::Object ();
+use java::lang::LazyStatic ();
+use javax::microedition::lcdui::Canvas ();
+use org::allbinary::game::configuration::feature::Features ();
+use org::allbinary::graphics::displayable::DisplayInfoSingleton ();
+use org::allbinary::graphics::opengles::OpenGLFeatureFactory ();
+use org::allbinary::logic::communication::log::LogUtil ();
+use org::allbinary::string::CommonStrings ();
+use org::allbinary::thread::NullRunnable ();
+use java::lang::Thread ();
+use org::allbinary::game::displayable::RepaintRunnable ();
 
 1;
 

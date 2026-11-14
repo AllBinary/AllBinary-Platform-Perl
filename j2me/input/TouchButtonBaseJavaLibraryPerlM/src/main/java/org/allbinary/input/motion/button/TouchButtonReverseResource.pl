@@ -19,7 +19,7 @@ use feature 'try';
 no warnings 'experimental::try';
 use parent -norequire,'org::allbinary::input::motion::button::TouchButtonResource';
 
-our $instance = 'org::allbinary::input::motion::button::TouchButtonReverseResource'->new();
+tie our $instance, 'java::lang::LazyStatic', sub { 'org::allbinary::input::motion::button::TouchButtonReverseResource'->new() };
 
 
 sub getInstance {
@@ -35,7 +35,9 @@ sub new {
     return $self;
 }
 
-use org::allbinary::input::motion::button::TouchButtonResource;
+use java::lang::Object ();
+use java::lang::LazyStatic ();
+use org::allbinary::input::motion::button::TouchButtonResource ();
 
 1;
 

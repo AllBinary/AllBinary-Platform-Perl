@@ -17,8 +17,9 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
-our $instance = 'org::allbinary::image::sprite::AnimationFactorySpriteScaleUtil'->new();
+tie our $instance, 'java::lang::LazyStatic', sub { 'org::allbinary::image::sprite::AnimationFactorySpriteScaleUtil'->new() };
 
 sub _init_fields {
     my ($self) = @_;
@@ -32,7 +33,7 @@ sub _init_fields {
 sub new {
     my ($class) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
     return $self;
 }
 
@@ -82,19 +83,21 @@ sub createImage {
         return $sprite;
 }
 
-# use javax::microedition::lcdui::Image;
-# use javax::microedition::lcdui::game::Sprite;
-use org::allbinary::game::layer::SpriteFactory;
-use org::allbinary::graphics::opengles::OpenGLUtil;
-use org::allbinary::image::ImageCache;
-use org::allbinary::image::ImageCacheFactory;
-use org::allbinary::image::opengles::OpenGLESImageExclusionUtil;
-use org::allbinary::logic::communication::log::LogUtil;
-use org::allbinary::logic::math::J2SEMath;
-use org::allbinary::logic::string::StringMaker;
-use org::allbinary::media::image::ImageScaleUtil;
-use org::allbinary::string::CommonLabels;
-use org::allbinary::string::CommonStrings;
+use java::lang::Object ();
+use java::lang::LazyStatic ();
+use javax::microedition::lcdui::Image ();
+use javax::microedition::lcdui::game::Sprite ();
+use org::allbinary::game::layer::SpriteFactory ();
+use org::allbinary::graphics::opengles::OpenGLUtil ();
+use org::allbinary::image::ImageCache ();
+use org::allbinary::image::ImageCacheFactory ();
+use org::allbinary::image::opengles::OpenGLESImageExclusionUtil ();
+use org::allbinary::logic::communication::log::LogUtil ();
+use org::allbinary::logic::math::J2SEMath ();
+use org::allbinary::logic::string::StringMaker ();
+use org::allbinary::media::image::ImageScaleUtil ();
+use org::allbinary::string::CommonLabels ();
+use org::allbinary::string::CommonStrings ();
 
 1;
 

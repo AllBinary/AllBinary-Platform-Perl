@@ -37,7 +37,7 @@ sub new {
 sub _new0 {
     my ($class) = @_;
     my $self = $class->SUPER::new();
-    $self->_init_fields();
+    _init_fields($self);
         # super(...) made $self above
     return $self;
 }
@@ -46,7 +46,7 @@ sub _new0 {
 sub _new1 {
     my ($class, $node) = @_;
     my $self = $class->SUPER::new($node);
-    $self->_init_fields();
+    _init_fields($self);
         # super(...) made $self above
     return $self;
 }
@@ -55,7 +55,7 @@ sub _new1 {
 sub _new1 {
     my ($class, $hashMap) = @_;
     my $self = $class->SUPER::new($hashMap);
-    $self->_init_fields();
+    _init_fields($self);
         # super(...) made $self above
     return $self;
 }
@@ -110,15 +110,16 @@ sub toValidationInfoNode {
         return undef;
 }
 
-use java::util::HashMap;
-use org::allbinary::logic::communication::log::LogUtil;
-use org::allbinary::logic::control::validate::ValidationInterface;
-use org::allbinary::logic::string::StringMaker;
-use org::allbinary::logic::string::StringValidationUtil;
-use org::w3c::dom::Document;
-use org::w3c::dom::Node;
-use org::allbinary::logic::visual::transform::template::customizer::widgets::title::TitleView;
-use org::allbinary::logic::visual::transform::template::customizer::widgets::title::TitleData;
+use java::lang::Object ();
+use java::util::HashMap ();
+use org::allbinary::logic::communication::log::LogUtil ();
+use org::allbinary::logic::control::validate::ValidationInterface ();
+use org::allbinary::logic::string::StringMaker ();
+use org::allbinary::logic::string::StringValidationUtil ();
+use org::w3c::dom::Document ();
+use org::w3c::dom::Node ();
+use org::allbinary::logic::visual::transform::template::customizer::widgets::title::TitleView ();
+use org::allbinary::logic::visual::transform::template::customizer::widgets::title::TitleData ();
 
 1;
 

@@ -17,6 +17,7 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
 
 sub _init_fields {
@@ -35,7 +36,7 @@ sub createPool {
 sub new {
     my ($class, $id) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
         $self->{eventPool}->initAllBinaryEventCircularPool('org::allbinary::input::motion::gesture::observer::MotionEventFactory'->new($self->{eventPool}, $id));
     return $self;
 }
@@ -47,11 +48,12 @@ sub getInstance {
         return $self->{eventPool}->getInstance($motionGestureInput->getId() - $self->{MIN});
 }
 
-use org::allbinary::game::input::InputFactory;
-use org::allbinary::input::motion::gesture::MotionGestureInput;
-use org::allbinary::input::motion::gesture::TouchMotionGestureFactory;
-use org::allbinary::logic::util::event::AllBinaryEventCircularPool;
-use org::allbinary::input::motion::gesture::observer::MotionEventFactory;
+use java::lang::Object ();
+use org::allbinary::game::input::InputFactory ();
+use org::allbinary::input::motion::gesture::MotionGestureInput ();
+use org::allbinary::input::motion::gesture::TouchMotionGestureFactory ();
+use org::allbinary::logic::util::event::AllBinaryEventCircularPool ();
+use org::allbinary::input::motion::gesture::observer::MotionEventFactory ();
 
 1;
 

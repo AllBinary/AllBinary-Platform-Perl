@@ -62,7 +62,7 @@ sub createFactory {
 sub new {
     my ($class, $image, $sequenceArray, $width, $height, $dx, $dy, $animationBehaviorFactory) = @_;
     my $self = $class->SUPER::new($image, $sequenceArray, $width, $height, $dx, $dy, $animationBehaviorFactory);
-    $self->_init_fields();
+    _init_fields($self);
         # super(...) made $self above
     return $self;
 }
@@ -93,16 +93,17 @@ sub getInstance {
         }
 }
 
-# use javax::microedition::lcdui::Image;
-# use javax::microedition::lcdui::game::Sprite;
-use org::allbinary::animation::Animation;
-use org::allbinary::animation::AnimationBehaviorFactory;
-use org::allbinary::animation::image::BaseImageAnimationFactory;
-use org::allbinary::graphics::color::BasicColorUtil;
-use org::allbinary::image::sprite::AnimationFactorySpriteScaleUtil;
-use org::allbinary::logic::math::PrimitiveIntUtil;
-use org::allbinary::animation::image::sprite::SpriteIndexedAnimation;
-use org::allbinary::animation::image::sprite::AdjustedSpriteIndexedAnimation;
+use java::lang::Object ();
+use javax::microedition::lcdui::Image ();
+use javax::microedition::lcdui::game::Sprite ();
+use org::allbinary::animation::Animation ();
+use org::allbinary::animation::AnimationBehaviorFactory ();
+use org::allbinary::animation::image::BaseImageAnimationFactory ();
+use org::allbinary::graphics::color::BasicColorUtil ();
+use org::allbinary::image::sprite::AnimationFactorySpriteScaleUtil ();
+use org::allbinary::logic::math::PrimitiveIntUtil ();
+use org::allbinary::animation::image::sprite::SpriteIndexedAnimation ();
+use org::allbinary::animation::image::sprite::AdjustedSpriteIndexedAnimation ();
 
 1;
 

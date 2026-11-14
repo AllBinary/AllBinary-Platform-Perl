@@ -17,6 +17,7 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
 
 sub _init_fields {
@@ -40,7 +41,7 @@ sub _init_fields {
 sub new {
     my ($class, $storeFrontInterface, $itemInterface) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
         $self->{storeFrontInterface} = $storeFrontInterface;
         $self->{itemInterface} = $itemInterface;
     return $self;
@@ -175,21 +176,22 @@ sub setFileNames {
         $self->{itemInterface}->setLargeImage($newImageFileName);
 }
 
-# use java::io::ByteArrayInputStream;
-use org::allbinary::business::context::modules::storefront::StoreFrontInterface;
-use org::allbinary::business::user::commerce::inventory::item::ItemInterface;
-use org::allbinary::globals::URLGLOBALS;
-use org::allbinary::logic::communication::http::file::upload::media::UploadMediaSingleton;
-use org::allbinary::logic::communication::log::LogUtil;
-use org::allbinary::logic::io::file::AbFile;
-use org::allbinary::logic::io::file::FileUtil;
-use org::allbinary::logic::io::path::AbPathData;
-use org::allbinary::logic::string::StringMaker;
-use org::allbinary::logic::string::StringValidationUtil;
-use org::allbinary::logic::visual::media::MediaData;
-use org::allbinary::logic::visual::media::MediaTypeData;
-use org::allbinary::logic::visual::media::MediaUtil;
-use org::allbinary::string::CommonStrings;
+use java::lang::Object ();
+# use java::io::ByteArrayInputStream ();
+use org::allbinary::business::context::modules::storefront::StoreFrontInterface ();
+use org::allbinary::business::user::commerce::inventory::item::ItemInterface ();
+use org::allbinary::globals::URLGLOBALS ();
+use org::allbinary::logic::communication::http::file::upload::media::UploadMediaSingleton ();
+use org::allbinary::logic::communication::log::LogUtil ();
+use org::allbinary::logic::io::file::AbFile ();
+use org::allbinary::logic::io::file::FileUtil ();
+use org::allbinary::logic::io::path::AbPathData ();
+use org::allbinary::logic::string::StringMaker ();
+use org::allbinary::logic::string::StringValidationUtil ();
+use org::allbinary::logic::visual::media::MediaData ();
+use org::allbinary::logic::visual::media::MediaTypeData ();
+use org::allbinary::logic::visual::media::MediaUtil ();
+use org::allbinary::string::CommonStrings ();
 
 1;
 

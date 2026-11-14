@@ -17,9 +17,9 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
-use parent -norequire,'org::allbinary::logic::control::validate::ValidatorBaseInterface';
+use parent -norequire,'java::lang::Object','org::allbinary::logic::control::validate::ValidatorBaseInterface';
 
-our $instance = 'org::allbinary::logic::control::validate::ValidatorBase'->new();
+tie our $instance, 'java::lang::LazyStatic', sub { 'org::allbinary::logic::control::validate::ValidatorBase'->new() };
 
 
 sub getInstance {
@@ -58,13 +58,15 @@ sub toList {
         return 'org::allbinary::util::BasicArrayListUtil'->getInstance()->getImmutableInstance();
 }
 
-use org::allbinary::logic::StdUtil;
-use org::allbinary::logic::java::bool::BooleanFactory;
-use org::allbinary::logic::string::StringUtil;
-use org::allbinary::util::BasicArrayList;
-use org::allbinary::util::BasicArrayListUtil;
-use org::allbinary::util::ABHashtable;
-use org::allbinary::logic::control::validate::ValidatorBaseInterface;
+use java::lang::Object ();
+use java::lang::LazyStatic ();
+use org::allbinary::logic::StdUtil ();
+use org::allbinary::logic::java::bool::BooleanFactory ();
+use org::allbinary::logic::string::StringUtil ();
+use org::allbinary::util::BasicArrayList ();
+use org::allbinary::util::BasicArrayListUtil ();
+use org::allbinary::util::ABHashtable ();
+use org::allbinary::logic::control::validate::ValidatorBaseInterface ();
 
 1;
 

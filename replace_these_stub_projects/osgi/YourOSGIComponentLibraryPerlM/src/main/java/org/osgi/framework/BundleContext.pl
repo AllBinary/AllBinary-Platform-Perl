@@ -46,7 +46,7 @@ sub getServiceReference {
     die "abstract method getServiceReference";
 }
 
-# use java::util::Dictionary;
+# use java::util::Dictionary ();
 
 1;
 

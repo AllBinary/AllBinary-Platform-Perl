@@ -30,7 +30,7 @@ sub _init_fields {
 sub new {
     my ($class, $sprite, $image, $angleInfo, $animationBehavior) = @_;
     my $self = $class->SUPER::new($angleInfo, 'org::allbinary::util::CircularIndexUtil'->createInstance(360 / $angleInfo->getAngleIncrementInfo()->getAngleIncrement()), $animationBehavior);
-    $self->_init_fields();
+    _init_fields($self);
         # super(...) made $self above
         $self->{sprite} = $sprite;
         $self->{image} = $image;
@@ -105,14 +105,15 @@ sub getSequence {
         return 'org::allbinary::logic::math::PrimitiveIntUtil'->getArrayInstance();
 }
 
-# use javax::microedition::lcdui::Graphics;
-# use javax::microedition::lcdui::Image;
-# use javax::microedition::lcdui::game::Sprite;
-use org::allbinary::animation::AnimationBehavior;
-use org::allbinary::animation::RotationAnimation;
-use org::allbinary::logic::math::PrimitiveIntUtil;
-use org::allbinary::math::AngleInfo;
-use org::allbinary::util::CircularIndexUtil;
+use java::lang::Object ();
+use javax::microedition::lcdui::Graphics ();
+use javax::microedition::lcdui::Image ();
+use javax::microedition::lcdui::game::Sprite ();
+use org::allbinary::animation::AnimationBehavior ();
+use org::allbinary::animation::RotationAnimation ();
+use org::allbinary::logic::math::PrimitiveIntUtil ();
+use org::allbinary::math::AngleInfo ();
+use org::allbinary::util::CircularIndexUtil ();
 
 1;
 

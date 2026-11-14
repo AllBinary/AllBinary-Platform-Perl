@@ -37,7 +37,7 @@ sub _init_fields {
 sub new {
     my ($class, $inputProcessorArray) = @_;
     my $self = $class->SUPER::new();
-    $self->_init_fields();
+    _init_fields($self);
         $self->{inputProcessorArray} = $inputProcessorArray;
         try {
             $self->{leftGameKeyEvent} = 'org::allbinary::game::input::event::GameKeyEventFactory'->getInstance()->getInstanceForInput($self, $self->{gameKeyFactory}->{LEFT});
@@ -91,17 +91,18 @@ sub getSourceId {
         return 0;
 }
 
-use org::allbinary::android::input::motion::AnalogLocationInputProcessor;
-use org::allbinary::game::input::GameInputProcessor;
-use org::allbinary::game::input::GameKeyEventSourceInterface;
-use org::allbinary::game::input::GameKeyFactory;
-use org::allbinary::game::input::analog::AnalogLocationInput;
-use org::allbinary::game::input::event::GameKeyEvent;
-use org::allbinary::game::input::event::GameKeyEventFactory;
-use org::allbinary::graphics::CustomGPoint;
-use org::allbinary::layer::AllBinaryLayerManager;
-use org::allbinary::logic::communication::log::LogUtil;
-use org::allbinary::string::CommonStrings;
+use java::lang::Object ();
+use org::allbinary::android::input::motion::AnalogLocationInputProcessor ();
+use org::allbinary::game::input::GameInputProcessor ();
+use org::allbinary::game::input::GameKeyEventSourceInterface ();
+use org::allbinary::game::input::GameKeyFactory ();
+use org::allbinary::game::input::analog::AnalogLocationInput ();
+use org::allbinary::game::input::event::GameKeyEvent ();
+use org::allbinary::game::input::event::GameKeyEventFactory ();
+use org::allbinary::graphics::CustomGPoint ();
+use org::allbinary::layer::AllBinaryLayerManager ();
+use org::allbinary::logic::communication::log::LogUtil ();
+use org::allbinary::string::CommonStrings ();
 
 1;
 

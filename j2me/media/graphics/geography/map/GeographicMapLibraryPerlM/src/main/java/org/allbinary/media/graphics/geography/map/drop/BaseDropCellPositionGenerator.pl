@@ -17,7 +17,7 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
-use parent -norequire,'org::allbinary::media::graphics::geography::map::drop::DropCellPositionGeneratorInterface';
+use parent -norequire,'java::lang::Object','org::allbinary::media::graphics::geography::map::drop::DropCellPositionGeneratorInterface';
 
 
 sub new {
@@ -51,11 +51,12 @@ sub processTick {
     my ($self, $allBinaryLayerManager) = @_;
 }
 
-use org::allbinary::game::layer::AllBinaryGameLayerManager;
-use org::allbinary::layer::AllBinaryLayerManager;
-use org::allbinary::media::graphics::geography::map::GeographicMapCellPosition;
-use org::allbinary::media::graphics::geography::map::BasicGeographicMap;
-use org::allbinary::media::graphics::geography::map::drop::DropCellPositionGeneratorInterface;
+use java::lang::Object ();
+use org::allbinary::game::layer::AllBinaryGameLayerManager ();
+use org::allbinary::layer::AllBinaryLayerManager ();
+use org::allbinary::media::graphics::geography::map::GeographicMapCellPosition ();
+use org::allbinary::media::graphics::geography::map::BasicGeographicMap ();
+use org::allbinary::media::graphics::geography::map::drop::DropCellPositionGeneratorInterface ();
 
 1;
 

@@ -29,7 +29,7 @@ sub _init_fields {
 sub new {
     my ($class) = @_;
     my $self = $class->SUPER::new();
-    $self->_init_fields();
+    _init_fields($self);
         my $stringBuffer = 'org::allbinary::logic::string::StringMaker'->new();
         $stringBuffer->append('org::allbinary::globals::URLGLOBALS'->getMainPath());
         $stringBuffer->append('org::allbinary::globals::PATH_GLOBALS'->getInstance()->{INIT_PATH});
@@ -39,10 +39,11 @@ sub new {
     return $self;
 }
 
-use org::allbinary::globals::PATH_GLOBALS;
-use org::allbinary::globals::URLGLOBALS;
-use org::allbinary::logic::string::StringMaker;
-use org::allbinary::data::generator::UniqueIdGenerator;
+use java::lang::Object ();
+use org::allbinary::globals::PATH_GLOBALS ();
+use org::allbinary::globals::URLGLOBALS ();
+use org::allbinary::logic::string::StringMaker ();
+use org::allbinary::data::generator::UniqueIdGenerator ();
 
 1;
 

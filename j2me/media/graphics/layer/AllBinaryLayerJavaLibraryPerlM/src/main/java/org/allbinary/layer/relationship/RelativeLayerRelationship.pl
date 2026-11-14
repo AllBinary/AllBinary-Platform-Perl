@@ -29,7 +29,7 @@ sub _init_fields {
 sub new {
     my ($class, $layer, $point, $typesAllowedList) = @_;
     my $self = $class->SUPER::new($point, $typesAllowedList);
-    $self->_init_fields();
+    _init_fields($self);
         # super(...) made $self above
         $self->{layer} = $layer;
     return $self;
@@ -53,10 +53,11 @@ sub getZ {
         return $self->{layer}->getZP() + $self->SUPER::getZ();
 }
 
-use org::allbinary::graphics::GPoint;
-use org::allbinary::graphics::RelativeRelationship;
-use org::allbinary::layer::AllBinaryLayer;
-use org::allbinary::util::BasicArrayList;
+use java::lang::Object ();
+use org::allbinary::graphics::GPoint ();
+use org::allbinary::graphics::RelativeRelationship ();
+use org::allbinary::layer::AllBinaryLayer ();
+use org::allbinary::util::BasicArrayList ();
 
 1;
 

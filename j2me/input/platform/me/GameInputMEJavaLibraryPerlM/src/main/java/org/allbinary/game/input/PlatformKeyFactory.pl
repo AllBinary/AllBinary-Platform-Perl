@@ -17,8 +17,9 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
-our $instance = 'org::allbinary::logic::NullUtil'->getInstance()->{NULL_OBJECT};
+tie our $instance, 'java::lang::LazyStatic', sub { 'org::allbinary::logic::NullUtil'->getInstance()->{NULL_OBJECT} };
 
 sub new {
     my ($class) = @_;
@@ -89,9 +90,11 @@ sub isEnter {
         return 'org::allbinary::game::input::J2MEKeyFactory'->getInstance()->isEnter($input);
 }
 
-use org::allbinary::logic::NullUtil;
-use org::allbinary::game::input::J2MEGameKey;
-use org::allbinary::game::input::J2MEKeyFactory;
+use java::lang::Object ();
+use java::lang::LazyStatic ();
+use org::allbinary::logic::NullUtil ();
+use org::allbinary::game::input::J2MEGameKey ();
+use org::allbinary::game::input::J2MEKeyFactory ();
 
 1;
 

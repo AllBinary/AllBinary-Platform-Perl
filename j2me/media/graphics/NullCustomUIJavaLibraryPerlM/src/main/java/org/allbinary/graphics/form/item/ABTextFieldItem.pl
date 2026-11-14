@@ -17,7 +17,7 @@ sub _init_fields {
 sub new {
     my ($class, $canvas, $visitor, $label, $value, $maxSize, $layout, $altText, $font, $backgroundBasicColor, $foregroundBasicColor) = @_;
     my $self = $class->SUPER::new($label, $layout, $altText, $backgroundBasicColor, $foregroundBasicColor);
-    $self->_init_fields();
+    _init_fields($self);
         # super(...) made $self above
         $self->{font} = $font;
     return $self;
@@ -66,12 +66,13 @@ sub setForegroundBasicColorP {
     my ($self, $basicColor) = @_;
 }
 
-# use javax::microedition::lcdui::Canvas;
-# use javax::microedition::lcdui::Font;
-use org::allbinary::graphics::color::BasicColor;
-use org::allbinary::logic::string::StringUtil;
-use org::allbinary::logic::util::visitor::Visitor;
-use org::allbinary::graphics::form::item::ABTextItem;
+use java::lang::Object ();
+use javax::microedition::lcdui::Canvas ();
+use javax::microedition::lcdui::Font ();
+use org::allbinary::graphics::color::BasicColor ();
+use org::allbinary::logic::string::StringUtil ();
+use org::allbinary::logic::util::visitor::Visitor ();
+use org::allbinary::graphics::form::item::ABTextItem ();
 
 1;
 

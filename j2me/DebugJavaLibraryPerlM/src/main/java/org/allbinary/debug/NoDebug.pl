@@ -17,9 +17,9 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
-use parent -norequire,'org::allbinary::debug::DebugInterface';
+use parent -norequire,'java::lang::Object','org::allbinary::debug::DebugInterface';
 
-our $SINGLETON = 'org::allbinary::debug::NoDebug'->new();
+tie our $SINGLETON, 'java::lang::LazyStatic', sub { 'org::allbinary::debug::NoDebug'->new() };
 
 sub new {
     my ($class) = @_;
@@ -61,7 +61,9 @@ sub isRunning {
         return 0;
 }
 
-use org::allbinary::debug::DebugInterface;
+use java::lang::Object ();
+use java::lang::LazyStatic ();
+use org::allbinary::debug::DebugInterface ();
 
 1;
 

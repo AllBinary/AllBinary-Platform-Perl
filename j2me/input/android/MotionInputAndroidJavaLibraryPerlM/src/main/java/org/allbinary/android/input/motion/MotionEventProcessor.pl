@@ -17,6 +17,7 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
 
 
@@ -32,7 +33,8 @@ sub process {
     my ($self, $motionEvent) = @_;
 }
 
-use android::view::MotionEvent;
+use java::lang::Object ();
+# use android::view::MotionEvent ();
 
 1;
 

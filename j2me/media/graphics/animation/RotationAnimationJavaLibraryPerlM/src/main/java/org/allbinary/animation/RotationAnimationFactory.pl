@@ -17,7 +17,7 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
-use parent -norequire,'org::allbinary::animation::AnimationInterfaceFactoryInterface','org::allbinary::animation::ProceduralAnimationInterfaceFactoryInterface';
+use parent -norequire,'java::lang::Object','org::allbinary::animation::AnimationInterfaceFactoryInterface','org::allbinary::animation::ProceduralAnimationInterfaceFactoryInterface';
 
 
 sub _init_fields {
@@ -37,7 +37,7 @@ sub createFactory {
 sub new {
     my ($class, $totalAngle, $angleIncrement) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
         $self->{totalAngle} = $totalAngle;
         $self->{angleIncrement} = $angleIncrement;
     return $self;
@@ -62,14 +62,15 @@ sub setInitialScale {
     my ($self, $scaleProperties) = @_;
 }
 
-use org::allbinary::game::configuration::GameConfigurationCentral;
-use org::allbinary::math::AngleFactory;
-use org::allbinary::math::AngleInfo;
-use org::allbinary::media::ScaleProperties;
-use org::allbinary::animation::AnimationInterfaceFactoryInterface;
-use org::allbinary::animation::ProceduralAnimationInterfaceFactoryInterface;
-use org::allbinary::animation::NullRotationAnimation;
-use org::allbinary::animation::AnimationBehavior;
+use java::lang::Object ();
+use org::allbinary::game::configuration::GameConfigurationCentral ();
+use org::allbinary::math::AngleFactory ();
+use org::allbinary::math::AngleInfo ();
+use org::allbinary::media::ScaleProperties ();
+use org::allbinary::animation::AnimationInterfaceFactoryInterface ();
+use org::allbinary::animation::ProceduralAnimationInterfaceFactoryInterface ();
+use org::allbinary::animation::NullRotationAnimation ();
+use org::allbinary::animation::AnimationBehavior ();
 
 1;
 

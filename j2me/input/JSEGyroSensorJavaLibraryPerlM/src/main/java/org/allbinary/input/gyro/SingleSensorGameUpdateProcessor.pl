@@ -29,7 +29,7 @@ sub _init_fields {
 sub new {
     my ($class) = @_;
     my $self = $class->SUPER::new();
-    $self->_init_fields();
+    _init_fields($self);
     return $self;
 }
 
@@ -46,10 +46,11 @@ sub sendNotifications {
     my ($self, $anyType) = @_;
 }
 
-use org::allbinary::canvas::Processor;
-use org::allbinary::input::gyro::SensorGameUpdateProcessor;
-use org::allbinary::input::gyro::AccelerometerSensorUpdateProcessor;
-use org::allbinary::input::gyro::GyroSensorUpdateProcessor;
+use java::lang::Object ();
+use org::allbinary::canvas::Processor ();
+use org::allbinary::input::gyro::SensorGameUpdateProcessor ();
+use org::allbinary::input::gyro::AccelerometerSensorUpdateProcessor ();
+use org::allbinary::input::gyro::GyroSensorUpdateProcessor ();
 
 1;
 

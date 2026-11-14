@@ -24,8 +24,9 @@ sub isCollision {
         }
 }
 
-use org::allbinary::layer::AllBinaryLayer;
-use org::allbinary::game::collision::CollisionProcessor;
+use java::lang::Object ();
+use org::allbinary::layer::AllBinaryLayer ();
+use org::allbinary::game::collision::CollisionProcessor ();
 
 1;
 

@@ -17,6 +17,7 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
 
 sub new {
@@ -34,11 +35,12 @@ sub init {
         $viewPosition->setTiledLayer($tiledLayer);
 }
 
-use org::allbinary::game::view::TileLayerPositionIntoViewPosition;
-use org::allbinary::game::displayable::canvas::AllBinaryGameCanvas;
-use org::allbinary::game::layer::AllBinaryTiledLayer;
-use org::allbinary::media::graphics::geography::map::BasicGeographicMap;
-use org::allbinary::media::graphics::geography::map::GeographicMapCompositeInterface;
+use java::lang::Object ();
+use org::allbinary::game::view::TileLayerPositionIntoViewPosition ();
+use org::allbinary::game::displayable::canvas::AllBinaryGameCanvas ();
+use org::allbinary::game::layer::AllBinaryTiledLayer ();
+use org::allbinary::media::graphics::geography::map::BasicGeographicMap ();
+use org::allbinary::media::graphics::geography::map::GeographicMapCompositeInterface ();
 
 1;
 

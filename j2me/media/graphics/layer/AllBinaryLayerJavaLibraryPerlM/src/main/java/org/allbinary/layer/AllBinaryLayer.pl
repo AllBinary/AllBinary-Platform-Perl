@@ -20,7 +20,7 @@ no warnings 'experimental::try';
 use POSIX ();
 use parent -norequire,'org::allbinary::layer::Layer','org::allbinary::layer::LayerInterface';
 
-our $NULL_ALLBINARY_LAYER = 'org::allbinary::layer::AllBinaryLayer'->new('org::allbinary::logic::string::StringUtil'->getInstance()->{EMPTY_STRING}, $org::allbinary::graphics::RectangleFactory::SINGLETON, $org::allbinary::view::ViewPositionBase::NULL_VIEW_POSITION);
+tie our $NULL_ALLBINARY_LAYER, 'java::lang::LazyStatic', sub { 'org::allbinary::layer::AllBinaryLayer'->new('org::allbinary::logic::string::StringUtil'->getInstance()->{EMPTY_STRING}, $org::allbinary::graphics::RectangleFactory::SINGLETON, $org::allbinary::view::ViewPositionBase::NULL_VIEW_POSITION) };
 our $TYPE = "Type: ";
 
 sub _init_fields {
@@ -36,14 +36,10 @@ sub _init_fields {
 sub new {
     my ($class, $name, $rectangle, $viewPosition) = @_;
     my $self = $class->SUPER::new($rectangle->getWidth(), $rectangle->getHeight());
-    $self->_init_fields();
+    _init_fields($self);
         # super(...) made $self above
         my $localName = undef;
-        if (!defined($name)) {
-            $localName = ref($self);
-        } else {
-            $localName = 'org::allbinary::logic::string::StringMaker'->new()->append($name)->append('org::allbinary::string::CommonSeps'->getInstance()->{COLON})->append(sprintf("%x", 'org::allbinary::TsUtil'->getInstance()->hashCode($self)))->toString();
-        }
+        $localName = 'org::allbinary::logic::string::StringMaker'->new()->append($name)->append('org::allbinary::string::CommonSeps'->getInstance()->{COLON})->append(sprintf("%x", 'org::allbinary::TsUtil'->getInstance()->hashCode($self)))->toString();
         $self->{name} = $localName;
         my $point = $rectangle->getPoint();
         $self->setPosition($point->getX(), $point->getY(), $point->getZ());
@@ -52,6 +48,66 @@ sub new {
         $self->{viewPosition} = $viewPosition;
         $self->{viewPosition}->setAllbinaryLayer($self);
     return $self;
+}
+
+
+sub setPosition {
+    my ($self, $x, $y, $z) = @_;
+        $self->SUPER::setPosition($x, $y, $z);
+}
+
+
+sub moveDXYZ {
+    my ($self, $dx, $dy, $dz) = @_;
+        $self->SUPER::moveDXYZ($dx, $dy, $dz);
+}
+
+
+sub getXP {
+    my ($self) = @_;
+        return $self->SUPER::getXP();
+}
+
+
+sub getYP {
+    my ($self) = @_;
+        return $self->SUPER::getYP();
+}
+
+
+sub getZP {
+    my ($self) = @_;
+        return $self->SUPER::getZP();
+}
+
+
+sub getWidth {
+    my ($self) = @_;
+        return $self->SUPER::getWidth();
+}
+
+
+sub getHeight {
+    my ($self) = @_;
+        return $self->SUPER::getHeight();
+}
+
+
+sub setVisible {
+    my ($self, $visible) = @_;
+        $self->SUPER::setVisible($visible);
+}
+
+
+sub isVisible {
+    my ($self) = @_;
+        return $self->SUPER::isVisible();
+}
+
+
+sub paint {
+    my ($self, $graphics) = @_;
+        $self->SUPER::paint($graphics);
 }
 
 
@@ -191,19 +247,19 @@ sub toStringAppend {
         $stringBuffer->appendint($self->getType());
         $stringBuffer->append($commonSeps->{SPACE});
         $stringBuffer->append($positionStrings->{X_LABEL});
-        $stringBuffer->appendint(int($self->getXP()));
+        $stringBuffer->appendint($self->getXP());
         $stringBuffer->append($commonSeps->{SPACE});
         $stringBuffer->append($positionStrings->{Y_LABEL});
-        $stringBuffer->appendint(int($self->getYP()));
+        $stringBuffer->appendint($self->getYP());
         $stringBuffer->append($commonSeps->{SPACE});
         $stringBuffer->append($positionStrings->{Z_LABEL});
-        $stringBuffer->appendint(int($self->getZP()));
+        $stringBuffer->appendint($self->getZP());
         $stringBuffer->append($commonSeps->{SPACE});
         $stringBuffer->append($commonLabels->{WIDTH_LABEL});
-        $stringBuffer->appendint(int($self->getWidth()));
+        $stringBuffer->appendint($self->getWidth());
         $stringBuffer->append($commonSeps->{SPACE});
         $stringBuffer->append($commonLabels->{HEIGHT_LABEL});
-        $stringBuffer->appendint(int($self->getHeight()));
+        $stringBuffer->appendint($self->getHeight());
 }
 
 
@@ -214,23 +270,25 @@ sub toString {
         return $stringBuffer->toString();
 }
 
-# use javax::microedition::lcdui::Graphics;
-use org::allbinary::game::identification::BasicGroupFactory;
-use org::allbinary::game::identification::Group;
-use org::allbinary::graphics::GPoint;
-use org::allbinary::graphics::Rectangle;
-use org::allbinary::graphics::RectangleFactory;
-use org::allbinary::graphics::opengles::OpenGLFeatureUtil;
-use org::allbinary::TsUtil;
-use org::allbinary::logic::string::StringMaker;
-use org::allbinary::logic::string::StringUtil;
-use org::allbinary::math::PositionStrings;
-use org::allbinary::string::CommonLabels;
-use org::allbinary::string::CommonSeps;
-use org::allbinary::view::ViewPositionBase;
-use org::allbinary::view::event::ViewPositionEvent;
-use org::allbinary::layer::Layer;
-use org::allbinary::layer::LayerInterface;
+use java::lang::Object ();
+use java::lang::LazyStatic ();
+use javax::microedition::lcdui::Graphics ();
+use org::allbinary::game::identification::BasicGroupFactory ();
+use org::allbinary::game::identification::Group ();
+use org::allbinary::graphics::GPoint ();
+use org::allbinary::graphics::Rectangle ();
+use org::allbinary::graphics::RectangleFactory ();
+use org::allbinary::graphics::opengles::OpenGLFeatureUtil ();
+use org::allbinary::TsUtil ();
+use org::allbinary::logic::string::StringMaker ();
+use org::allbinary::logic::string::StringUtil ();
+use org::allbinary::math::PositionStrings ();
+use org::allbinary::string::CommonLabels ();
+use org::allbinary::string::CommonSeps ();
+use org::allbinary::view::ViewPositionBase ();
+use org::allbinary::view::event::ViewPositionEvent ();
+use org::allbinary::layer::Layer ();
+use org::allbinary::layer::LayerInterface ();
 
 1;
 

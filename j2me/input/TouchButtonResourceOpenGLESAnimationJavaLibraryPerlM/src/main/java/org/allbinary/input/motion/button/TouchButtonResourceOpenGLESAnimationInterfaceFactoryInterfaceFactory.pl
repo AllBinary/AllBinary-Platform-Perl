@@ -45,10 +45,11 @@ sub isFeature {
         }
 }
 
-use org::allbinary::game::configuration::feature::Features;
-use org::allbinary::graphics::opengles::OpenGLFeatureFactory;
-use org::allbinary::image::opengles::OpenGLImageCacheFactory;
-use org::allbinary::input::motion::button::TouchButtonResourceAnimationInterfaceFactoryInterfaceFactory;
+use java::lang::Object ();
+use org::allbinary::game::configuration::feature::Features ();
+use org::allbinary::graphics::opengles::OpenGLFeatureFactory ();
+use org::allbinary::image::opengles::OpenGLImageCacheFactory ();
+use org::allbinary::input::motion::button::TouchButtonResourceAnimationInterfaceFactoryInterfaceFactory ();
 
 1;
 

@@ -17,7 +17,7 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
-use parent -norequire,'org::allbinary::animation::ProceduralAnimationInterfaceFactoryInterface';
+use parent -norequire,'java::lang::Object','org::allbinary::animation::ProceduralAnimationInterfaceFactoryInterface';
 
 
 sub _init_fields {
@@ -33,7 +33,7 @@ sub _init_fields {
 sub new {
     my ($class, $vectorInfo, $basicColor, $vectorAnimationFactoryInterface) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
         $self->{vectorInfo} = $vectorInfo;
         $self->{basicColor} = $basicColor;
         $self->{vectorAnimationFactoryInterface} = $vectorAnimationFactoryInterface;
@@ -61,12 +61,13 @@ sub getInstanceAnimation {
         return $self->{vectorAnimationFactoryInterface}->getInstance($points, $self->{basicColor});
 }
 
-use org::allbinary::graphics::color::BasicColor;
-use org::allbinary::logic::NullUtil;
-use org::allbinary::vector::VectorInfo;
-use org::allbinary::animation::ProceduralAnimationInterfaceFactoryInterface;
-use org::allbinary::animation::VectorRotationGenerator;
-use org::allbinary::animation::VectorExplosionGenerator;
+use java::lang::Object ();
+use org::allbinary::graphics::color::BasicColor ();
+use org::allbinary::logic::NullUtil ();
+use org::allbinary::vector::VectorInfo ();
+use org::allbinary::animation::ProceduralAnimationInterfaceFactoryInterface ();
+use org::allbinary::animation::VectorRotationGenerator ();
+use org::allbinary::animation::VectorExplosionGenerator ();
 
 1;
 

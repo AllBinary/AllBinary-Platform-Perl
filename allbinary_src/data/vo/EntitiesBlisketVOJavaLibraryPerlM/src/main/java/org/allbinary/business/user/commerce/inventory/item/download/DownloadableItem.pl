@@ -17,6 +17,7 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
 
 sub _init_fields {
@@ -47,7 +48,7 @@ sub new {
 sub _new1 {
     my ($class, $id) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
         my $EMPTY_STRING = 'org::allbinary::logic::string::StringUtil'->getInstance()->{EMPTY_STRING};
         $self->{id} = 'org::allbinary::data::generator::ProductIdGenerator'->new()->getNext();
         $self->{basicItemId} = $id;
@@ -69,7 +70,7 @@ sub _new1 {
 sub _new1 {
     my ($class, $hashMap) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
         $self->{id} = $hashMap->get($org::allbinary::business::user::commerce::inventory::item::download::DownloadItemData::ID);
         $self->{basicItemId} = $hashMap->get('org::allbinary::business::user::commerce::inventory::item::BasicItemData'->getInstance()->{ID});
         $self->{enabled} = $hashMap->get('org::allbinary::business::entry::EntryData'->getInstance()->{ENABLE});
@@ -216,18 +217,19 @@ sub getRetries {
         return $self->{retries};
 }
 
-use java::util::Calendar;
-use java::util::HashMap;
-use org::allbinary::util::BasicArrayList;
-use org::allbinary::util::BasicArrayListD;
-use org::allbinary::business::entry::EntryData;
-use org::allbinary::business::user::commerce::inventory::item::BasicItemData;
-use org::allbinary::data::generator::ProductIdGenerator;
-use org::allbinary::logic::StdUtil;
-use org::allbinary::logic::string::StringUtil;
-use org::allbinary::logic::string::StringValidationUtil;
-use org::allbinary::time::TimeUtil;
-use org::allbinary::business::user::commerce::inventory::item::download::DownloadItemData;
+use java::lang::Object ();
+use java::util::Calendar ();
+use java::util::HashMap ();
+use org::allbinary::util::BasicArrayList ();
+use org::allbinary::util::BasicArrayListD ();
+use org::allbinary::business::entry::EntryData ();
+use org::allbinary::business::user::commerce::inventory::item::BasicItemData ();
+use org::allbinary::data::generator::ProductIdGenerator ();
+use org::allbinary::logic::StdUtil ();
+use org::allbinary::logic::string::StringUtil ();
+use org::allbinary::logic::string::StringValidationUtil ();
+use org::allbinary::time::TimeUtil ();
+use org::allbinary::business::user::commerce::inventory::item::download::DownloadItemData ();
 
 1;
 

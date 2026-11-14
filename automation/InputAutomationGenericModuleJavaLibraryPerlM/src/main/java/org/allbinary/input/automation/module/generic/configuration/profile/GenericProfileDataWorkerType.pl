@@ -17,13 +17,13 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
-use parent -norequire,'org::allbinary::input::automation::module::generic::configuration::profile::GenericProfileDataWorkerTypeInterface';
+use parent -norequire,'java::lang::Object','org::allbinary::input::automation::module::generic::configuration::profile::GenericProfileDataWorkerTypeInterface';
 
-our $hashMap = 'org::allbinary::logic::StdUtil'->getInstance()->createHashMap();
-our $SAVED_CAPTURE = $org::allbinary::input::automation::module::generic::configuration::profile::SavedCaptureGenericProfileDataWorkerType::SAVED_CAPTURE;
-our $SCREEN_CAPTURE = 'org::allbinary::input::automation::module::generic::configuration::profile::GenericProfileDataWorkerType'->new("Screen " . $org::allbinary::input::media::image::InputImageType::CAPTURE->getName());
-our $COMPARISON = 'org::allbinary::input::automation::module::generic::configuration::profile::GenericProfileDataWorkerType'->new($org::allbinary::input::media::image::InputImageType::COMPARISON->getName());
-our $MOTION = 'org::allbinary::input::automation::module::generic::configuration::profile::GenericProfileDataWorkerType'->new($org::allbinary::input::media::image::InputImageType::MOTION->getName());
+tie our $hashMap, 'java::lang::LazyStatic', sub { 'org::allbinary::logic::StdUtil'->getInstance()->createHashMap() };
+tie our $SAVED_CAPTURE, 'java::lang::LazyStatic', sub { $org::allbinary::input::automation::module::generic::configuration::profile::SavedCaptureGenericProfileDataWorkerType::SAVED_CAPTURE };
+tie our $SCREEN_CAPTURE, 'java::lang::LazyStatic', sub { 'org::allbinary::input::automation::module::generic::configuration::profile::GenericProfileDataWorkerType'->new("Screen " . $org::allbinary::input::media::image::InputImageType::CAPTURE->getName()) };
+tie our $COMPARISON, 'java::lang::LazyStatic', sub { 'org::allbinary::input::automation::module::generic::configuration::profile::GenericProfileDataWorkerType'->new($org::allbinary::input::media::image::InputImageType::COMPARISON->getName()) };
+tie our $MOTION, 'java::lang::LazyStatic', sub { 'org::allbinary::input::automation::module::generic::configuration::profile::GenericProfileDataWorkerType'->new($org::allbinary::input::media::image::InputImageType::MOTION->getName()) };
 
 sub _init_fields {
     my ($self) = @_;
@@ -34,7 +34,7 @@ sub _init_fields {
 sub new {
     my ($class, $name) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
         $self->setName($name);
         $org::allbinary::input::automation::module::generic::configuration::profile::GenericProfileDataWorkerType::hashMap->put($self->getName(), $self);
     return $self;
@@ -73,16 +73,18 @@ sub getInstance {
         return $org::allbinary::input::automation::module::generic::configuration::profile::GenericProfileDataWorkerType::hashMap->get($name);
 }
 
-use java::util::HashMap;
-use org::allbinary::data::tree::dom::DomNodeHelper;
-use org::allbinary::data::tree::dom::ModDomHelper;
-use org::allbinary::input::media::image::InputImageType;
-use org::allbinary::logic::StdUtil;
-use org::w3c::dom::Document;
-use org::w3c::dom::Node;
-use org::allbinary::input::automation::module::generic::configuration::profile::GenericProfileDataWorkerTypeInterface;
-use org::allbinary::input::automation::module::generic::configuration::profile::SavedCaptureGenericProfileDataWorkerType;
-use org::allbinary::input::automation::module::generic::configuration::profile::GenericProfileDataWorkerData;
+use java::lang::Object ();
+use java::lang::LazyStatic ();
+use java::util::HashMap ();
+use org::allbinary::data::tree::dom::DomNodeHelper ();
+use org::allbinary::data::tree::dom::ModDomHelper ();
+use org::allbinary::input::media::image::InputImageType ();
+use org::allbinary::logic::StdUtil ();
+use org::w3c::dom::Document ();
+use org::w3c::dom::Node ();
+use org::allbinary::input::automation::module::generic::configuration::profile::GenericProfileDataWorkerTypeInterface ();
+use org::allbinary::input::automation::module::generic::configuration::profile::SavedCaptureGenericProfileDataWorkerType ();
+use org::allbinary::input::automation::module::generic::configuration::profile::GenericProfileDataWorkerData ();
 
 1;
 

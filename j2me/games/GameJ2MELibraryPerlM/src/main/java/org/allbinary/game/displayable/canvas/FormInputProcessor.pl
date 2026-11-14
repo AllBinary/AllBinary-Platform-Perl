@@ -36,7 +36,7 @@ sub _init_fields {
 sub new {
     my ($class, $allBinaryGameCanvas) = @_;
     my $self = $class->SUPER::new();
-    $self->_init_fields();
+    _init_fields($self);
         $self->{allBinaryGameCanvas} = $allBinaryGameCanvas;
     return $self;
 }
@@ -72,23 +72,24 @@ sub keyReleasedByDevice {
         }
 }
 
-# use javax::microedition::lcdui::Canvas;
-use org::allbinary::game::input::GameKey;
-use org::allbinary::game::input::GameKeyEventSourceInterface;
-use org::allbinary::game::input::GameKeyFactory;
-use org::allbinary::game::input::Input;
-use org::allbinary::game::input::InputFactory;
-use org::allbinary::game::input::InputProcessor;
-use org::allbinary::game::input::PlatformKeyFactory;
-use org::allbinary::game::input::event::DownKeyEventHandler;
-use org::allbinary::game::input::event::GameKeyEvent;
-use org::allbinary::game::input::event::GameKeyEventFactory;
-use org::allbinary::game::input::event::UpGameKeyEventHandler;
-use org::allbinary::logic::communication::log::LogUtil;
-use org::allbinary::logic::communication::log::PreLogUtil;
-use org::allbinary::logic::string::StringMaker;
-use org::allbinary::string::CommonSeps;
-use org::allbinary::string::CommonStrings;
+use java::lang::Object ();
+use javax::microedition::lcdui::Canvas ();
+use org::allbinary::game::input::GameKey ();
+use org::allbinary::game::input::GameKeyEventSourceInterface ();
+use org::allbinary::game::input::GameKeyFactory ();
+use org::allbinary::game::input::Input ();
+use org::allbinary::game::input::InputFactory ();
+use org::allbinary::game::input::InputProcessor ();
+use org::allbinary::game::input::PlatformKeyFactory ();
+use org::allbinary::game::input::event::DownKeyEventHandler ();
+use org::allbinary::game::input::event::GameKeyEvent ();
+use org::allbinary::game::input::event::GameKeyEventFactory ();
+use org::allbinary::game::input::event::UpGameKeyEventHandler ();
+use org::allbinary::logic::communication::log::LogUtil ();
+use org::allbinary::logic::communication::log::PreLogUtil ();
+use org::allbinary::logic::string::StringMaker ();
+use org::allbinary::string::CommonSeps ();
+use org::allbinary::string::CommonStrings ();
 
 1;
 

@@ -17,7 +17,7 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
-use parent -norequire,'java::io::OutputStream';
+use parent -norequire,'java::lang::Object';
 
 
 sub _init_fields {
@@ -57,7 +57,7 @@ sub createFromFilePathAppend {
 sub new {
     my ($class, $fileOutputStream) = @_;
     my $self = $class->SUPER::new();
-    $self->_init_fields();
+    _init_fields($self);
         $self->{fileOutputStream} = $fileOutputStream;
     return $self;
 }
@@ -98,13 +98,14 @@ sub write {
         $self->{fileOutputStream}->write($b);
 }
 
-# use java::io::FileNotFoundException;
-# use java::io::FileOutputStream;
-# use java::io::IOException;
-# use java::io::OutputStream;
-# use java::nio::channels::FileChannel;
-use org::allbinary::logic::io::file::AbFile;
-use org::allbinary::logic::io::file::AbFileNativeUtil;
+use java::lang::Object ();
+# use java::io::FileNotFoundException ();
+# use java::io::FileOutputStream ();
+# use java::io::IOException ();
+# use java::io::OutputStream ();
+# use java::nio::channels::FileChannel ();
+use org::allbinary::logic::io::file::AbFile ();
+use org::allbinary::logic::io::file::AbFileNativeUtil ();
 
 1;
 

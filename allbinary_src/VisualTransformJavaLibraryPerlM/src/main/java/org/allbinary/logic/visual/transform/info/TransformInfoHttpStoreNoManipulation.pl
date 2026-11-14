@@ -43,10 +43,11 @@ sub setObjectConfig {
         die ("Should not set from config");
 }
 
-use java::util::HashMap;
-# use javax::servlet::jsp::PageContext;
-use org::allbinary::logic::visual::transform::info::objectConfig::TransformInfoObjectConfigNoManipulationFactory;
-use org::allbinary::logic::visual::transform::info::TransformInfoHttpStore;
+use java::lang::Object ();
+use java::util::HashMap ();
+# use javax::servlet::jsp::PageContext ();
+use org::allbinary::logic::visual::transform::info::objectConfig::TransformInfoObjectConfigNoManipulationFactory ();
+use org::allbinary::logic::visual::transform::info::TransformInfoHttpStore ();
 
 1;
 

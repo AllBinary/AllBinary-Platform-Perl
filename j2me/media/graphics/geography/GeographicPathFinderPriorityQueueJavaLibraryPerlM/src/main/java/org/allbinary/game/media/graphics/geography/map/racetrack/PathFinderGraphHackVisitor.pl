@@ -74,9 +74,10 @@ sub isValid {
         return 0;
 }
 
-use org::allbinary::util::BasicArrayList;
-use org::allbinary::media::graphics::geography::map::BasicGeographicMap;
-use org::allbinary::game::media::graphics::geography::map::racetrack::BasePathFinderGraphVisitor;
+use java::lang::Object ();
+use org::allbinary::util::BasicArrayList ();
+use org::allbinary::media::graphics::geography::map::BasicGeographicMap ();
+use org::allbinary::game::media::graphics::geography::map::racetrack::BasePathFinderGraphVisitor ();
 
 1;
 

@@ -17,7 +17,7 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
-use parent -norequire,'org::allbinary::media::graphics::geography::map::GeographicMapCellPositionFactoryInitVisitorInterface';
+use parent -norequire,'java::lang::Object','org::allbinary::media::graphics::geography::map::GeographicMapCellPositionFactoryInitVisitorInterface';
 
 
 sub new {
@@ -34,9 +34,10 @@ sub visit {
         $geologicalGeographicMapCellPosition->getGeologicalResource()->init();
 }
 
-use org::allbinary::game::layer::AllBinaryTiledLayer;
-use org::allbinary::media::graphics::geography::map::GeographicMapCellPosition;
-use org::allbinary::media::graphics::geography::map::GeographicMapCellPositionFactoryInitVisitorInterface;
+use java::lang::Object ();
+use org::allbinary::game::layer::AllBinaryTiledLayer ();
+use org::allbinary::media::graphics::geography::map::GeographicMapCellPosition ();
+use org::allbinary::media::graphics::geography::map::GeographicMapCellPositionFactoryInitVisitorInterface ();
 
 1;
 

@@ -18,13 +18,13 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
-use parent -norequire,'org::allbinary::input::automation::actions::script::condition::CustomTreeNodeInterface','org::allbinary::data::tree::dom::DomNodeInterface','javax::swing::tree::MutableTreeNode','org::allbinary::input::automation::actions::script::ProfileActionScriptItemInterface';
+use parent -norequire,'org::allbinary::input::automation::actions::script::condition::CustomTreeNodeInterface','org::allbinary::data::tree::dom::DomNodeInterface','org::allbinary::input::automation::actions::script::ProfileActionScriptItemInterface';
 
 
-# use javax::swing::tree::MutableTreeNode;
-use org::allbinary::data::tree::dom::DomNodeInterface;
-use org::allbinary::input::automation::actions::script::ProfileActionScriptItemInterface;
-use org::allbinary::input::automation::actions::script::condition::CustomTreeNodeInterface;
+# use javax::swing::tree::MutableTreeNode ();
+use org::allbinary::data::tree::dom::DomNodeInterface ();
+use org::allbinary::input::automation::actions::script::ProfileActionScriptItemInterface ();
+use org::allbinary::input::automation::actions::script::condition::CustomTreeNodeInterface ();
 
 1;
 

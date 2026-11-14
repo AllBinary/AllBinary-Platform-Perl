@@ -18,6 +18,7 @@ use warnings;
 use feature 'try';
 no warnings 'experimental::try';
 use Time::HiRes ();
+use parent -norequire,'java::lang::Object';
 
 
 sub _init_fields {
@@ -30,7 +31,7 @@ sub _init_fields {
 sub new {
     my ($class) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
     return $self;
 }
 
@@ -52,14 +53,15 @@ sub onSurfaceCreated {
         }
 }
 
-# use javax::microedition::khronos::egl::EGLConfig;
-# use javax::microedition::khronos::opengles::GL10;
-use org::allbinary::emulator::InitEmulatorFactory;
-use org::allbinary::string::CommonStrings;
-use org::allbinary::logic::communication::log::LogUtil;
-use org::allbinary::logic::communication::log::PreLogUtil;
-use org::allbinary::graphics::opengles::renderer::RendererStrings;
-use java::lang::Thread;
+use java::lang::Object ();
+use javax::microedition::khronos::egl::EGLConfig ();
+use javax::microedition::khronos::opengles::GL10 ();
+use org::allbinary::emulator::InitEmulatorFactory ();
+use org::allbinary::string::CommonStrings ();
+use org::allbinary::logic::communication::log::LogUtil ();
+use org::allbinary::logic::communication::log::PreLogUtil ();
+use org::allbinary::graphics::opengles::renderer::RendererStrings ();
+use java::lang::Thread ();
 
 1;
 

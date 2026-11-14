@@ -17,8 +17,9 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
-our $instance = 'views::business::context::modules::storefront::customizer::StoreCustomizerComponentUtil'->new();
+tie our $instance, 'java::lang::LazyStatic', sub { 'views::business::context::modules::storefront::customizer::StoreCustomizerComponentUtil'->new() };
 
 sub _init_fields {
     my ($self) = @_;
@@ -35,7 +36,7 @@ sub getInstance {
 sub new {
     my ($class) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
     return $self;
 }
 
@@ -77,15 +78,17 @@ sub generate {
         }
 }
 
-use org::allbinary::util::BasicArrayList;
-use org::allbinary::util::BasicArrayListD;
-use org::allbinary::logic::communication::log::LogUtil;
-use org::allbinary::logic::string::StringUtil;
-use org::allbinary::logic::system::security::licensing::AbeClientInformationInterface;
-use org::allbinary::logic::visual::transform::generator::TransformGeneratorUtil;
-use org::allbinary::logic::visual::transform::info::TransformInfo;
-use org::allbinary::logic::visual::transform::info::TransformInfoInterface;
-use views::business::context::modules::storefront::customizer::CustomizerUtil;
+use java::lang::Object ();
+use java::lang::LazyStatic ();
+use org::allbinary::util::BasicArrayList ();
+use org::allbinary::util::BasicArrayListD ();
+use org::allbinary::logic::communication::log::LogUtil ();
+use org::allbinary::logic::string::StringUtil ();
+use org::allbinary::logic::system::security::licensing::AbeClientInformationInterface ();
+use org::allbinary::logic::visual::transform::generator::TransformGeneratorUtil ();
+use org::allbinary::logic::visual::transform::info::TransformInfo ();
+use org::allbinary::logic::visual::transform::info::TransformInfoInterface ();
+use views::business::context::modules::storefront::customizer::CustomizerUtil ();
 
 1;
 

@@ -30,7 +30,7 @@ sub _init_fields {
 sub new {
     my ($class, $storeFrontInterface, $propertiesHashMap, $pageContext) = @_;
     my $self = $class->SUPER::new($propertiesHashMap, $pageContext);
-    $self->_init_fields();
+    _init_fields($self);
         # super(...) made $self above
         $self->{storeFrontInterface} = $storeFrontInterface;
     return $self;
@@ -207,16 +207,36 @@ sub toHashMap {
         return undef;
 }
 
-use java::util::HashMap;
-use org::allbinary::util::BasicArrayList;
-use org::allbinary::util::BasicArrayListD;
-# use javax::servlet::jsp::PageContext;
-use org::allbinary::business::context::AbContext;
-use org::allbinary::business::context::modules::storefront::StoreFrontInterface;
-use org::allbinary::logic::io::path::AbPath;
-use org::allbinary::logic::visual::transform::info::objectConfig::TransformInfoObjectConfigInterface;
-use org::w3c::dom::Document;
-use org::allbinary::logic::visual::transform::info::TransformInfoHttpInterface;
+
+sub getWeblisketSession {
+    my ($self) = @_;
+        return $self->SUPER::getWeblisketSession();
+}
+
+
+sub getPageContext {
+    my ($self) = @_;
+        return $self->SUPER::getPageContext();
+}
+
+
+sub getPropertiesHashMap {
+    my ($self) = @_;
+        return $self->SUPER::getPropertiesHashMap();
+}
+
+use java::lang::Object ();
+use java::util::HashMap ();
+use org::allbinary::util::BasicArrayList ();
+use org::allbinary::util::BasicArrayListD ();
+# use javax::servlet::jsp::PageContext ();
+use org::allbinary::business::context::AbContext ();
+use org::allbinary::business::context::modules::storefront::StoreFrontInterface ();
+use org::allbinary::logic::io::path::AbPath ();
+use org::allbinary::logic::visual::transform::info::objectConfig::TransformInfoObjectConfigInterface ();
+use org::w3c::dom::Document ();
+use org::allbinary::logic::communication::http::request::session::WeblisketSessionInterface ();
+use org::allbinary::logic::visual::transform::info::TransformInfoHttpInterface ();
 
 1;
 

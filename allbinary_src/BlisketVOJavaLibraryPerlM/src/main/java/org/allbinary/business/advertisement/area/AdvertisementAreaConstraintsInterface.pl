@@ -32,8 +32,8 @@ sub getTwoDimensionContraints {
     die "abstract method getTwoDimensionContraints";
 }
 
-use org::allbinary::logic::control::contraints::display::browser::DisplayInBrowserContraintsInterface;
-use org::allbinary::logic::control::contraints::size::TwoDimensionalConstraintInterface;
+use org::allbinary::logic::control::contraints::display::browser::DisplayInBrowserContraintsInterface ();
+use org::allbinary::logic::control::contraints::size::TwoDimensionalConstraintInterface ();
 
 1;
 

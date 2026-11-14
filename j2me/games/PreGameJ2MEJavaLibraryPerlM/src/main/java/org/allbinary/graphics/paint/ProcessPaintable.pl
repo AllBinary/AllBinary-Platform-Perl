@@ -31,7 +31,8 @@ sub process {
     my ($self) = @_;
 }
 
-use org::allbinary::graphics::paint::Paintable;
+use java::lang::Object ();
+use org::allbinary::graphics::paint::Paintable ();
 
 1;
 

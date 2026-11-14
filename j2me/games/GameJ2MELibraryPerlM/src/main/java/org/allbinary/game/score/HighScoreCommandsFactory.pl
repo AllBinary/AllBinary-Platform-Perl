@@ -19,7 +19,7 @@ use feature 'try';
 no warnings 'experimental::try';
 use parent -norequire,'org::allbinary::game::score::HighScoreCommandsBaseFactory';
 
-our $instance = 'org::allbinary::game::score::HighScoreCommandsFactory'->new();
+tie our $instance, 'java::lang::LazyStatic', sub { 'org::allbinary::game::score::HighScoreCommandsFactory'->new() };
 
 
 sub getInstance {
@@ -35,9 +35,11 @@ sub new {
     return $self;
 }
 
-# use javax::microedition::lcdui::Command;
-use org::allbinary::game::score::HighScoreCommandsBaseFactory;
-use org::allbinary::game::score::HighScoreCommands;
+use java::lang::Object ();
+use java::lang::LazyStatic ();
+use javax::microedition::lcdui::Command ();
+use org::allbinary::game::score::HighScoreCommandsBaseFactory ();
+use org::allbinary::game::score::HighScoreCommands ();
 
 1;
 

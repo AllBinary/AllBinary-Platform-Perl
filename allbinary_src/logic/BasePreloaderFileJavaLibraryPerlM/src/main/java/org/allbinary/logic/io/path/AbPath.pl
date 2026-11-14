@@ -17,6 +17,7 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
 our $NETWORK_SEP = ":/";
 
@@ -48,7 +49,7 @@ sub createAbPath {
 sub new {
     my ($class, $aPath, $name) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
         my $stringValidationUtil = 'org::allbinary::logic::string::StringValidationUtil'->getInstance();
         if (!$stringValidationUtil->isEmpty($aPath)) {
             $self->{schema} = $self->getSchema($aPath);
@@ -168,14 +169,15 @@ sub setPath {
         $self->{path} = $path;
 }
 
-use org::allbinary::logic::io::file::FilePathData;
-use org::allbinary::logic::io::file::FilePathUtil;
-use org::allbinary::logic::string::StringMaker;
-use org::allbinary::logic::string::StringUtil;
-use org::allbinary::logic::string::StringValidationUtil;
-use org::allbinary::string::CommonSeps;
-use org::allbinary::logic::io::path::AbPathData;
-use org::allbinary::logic::io::path::PathUtil;
+use java::lang::Object ();
+use org::allbinary::logic::io::file::FilePathData ();
+use org::allbinary::logic::io::file::FilePathUtil ();
+use org::allbinary::logic::string::StringMaker ();
+use org::allbinary::logic::string::StringUtil ();
+use org::allbinary::logic::string::StringValidationUtil ();
+use org::allbinary::string::CommonSeps ();
+use org::allbinary::logic::io::path::AbPathData ();
+use org::allbinary::logic::io::path::PathUtil ();
 
 1;
 

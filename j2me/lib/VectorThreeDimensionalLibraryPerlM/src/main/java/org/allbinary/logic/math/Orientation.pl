@@ -17,9 +17,10 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
-our $NONE = 'org::allbinary::logic::math::Orientation'->new(0, 0, 0);
-our $SINGLETON = 'org::allbinary::logic::math::Orientation'->new(0, 0, 0);
+tie our $NONE, 'java::lang::LazyStatic', sub { 'org::allbinary::logic::math::Orientation'->new(0, 0, 0) };
+tie our $SINGLETON, 'java::lang::LazyStatic', sub { 'org::allbinary::logic::math::Orientation'->new(0, 0, 0) };
 
 sub _init_fields {
     my ($self) = @_;
@@ -41,7 +42,7 @@ sub getInstance {
 sub new {
     my ($class, $yaw, $pitch, $roll) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
         $self->{yaw}->setint($yaw);
         $self->{pitch}->setint($pitch);
         $self->{roll}->setint($roll);
@@ -61,8 +62,10 @@ sub toString {
         return $stringBuffer->toString();
 }
 
-use org::allbinary::logic::string::StringMaker;
-use org::allbinary::logic::math::BasicDecimal;
+use java::lang::Object ();
+use java::lang::LazyStatic ();
+use org::allbinary::logic::string::StringMaker ();
+use org::allbinary::logic::math::BasicDecimal ();
 
 1;
 

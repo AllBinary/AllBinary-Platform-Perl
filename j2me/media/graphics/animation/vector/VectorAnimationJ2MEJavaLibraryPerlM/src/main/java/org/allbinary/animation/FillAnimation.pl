@@ -19,7 +19,7 @@ sub _init_fields {
 sub new {
     my ($class, $pixelBuffer, $width, $height, $animationBehavior) = @_;
     my $self = $class->SUPER::new($animationBehavior);
-    $self->_init_fields();
+    _init_fields($self);
         # super(...) made $self above
         $self->{width} = 100;
         $self->{height} = 100;
@@ -87,9 +87,10 @@ sub paint {
         $g->drawRGB($self->{pixelBuffer}, 0, $self->{width}, 0, 0, $self->{width}, $self->{height}, 1);
 }
 
-# use javax::microedition::lcdui::Graphics;
-use org::allbinary::graphics::color::BasicColor;
-use org::allbinary::animation::IndexedAnimation;
+use java::lang::Object ();
+use javax::microedition::lcdui::Graphics ();
+use org::allbinary::graphics::color::BasicColor ();
+use org::allbinary::animation::IndexedAnimation ();
 
 1;
 

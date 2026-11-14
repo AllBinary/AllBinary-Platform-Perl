@@ -19,7 +19,7 @@ use feature 'try';
 no warnings 'experimental::try';
 use parent -norequire,'org::allbinary::game::collision::CollidableBaseBehaviorFactory';
 
-our $instanceC = 'org::allbinary::game::collision::CollidableNeverCollideBehaviorFactory'->new();
+tie our $instanceC, 'java::lang::LazyStatic', sub { 'org::allbinary::game::collision::CollidableNeverCollideBehaviorFactory'->new() };
 
 sub _init_fields {
     my ($self) = @_;
@@ -29,7 +29,7 @@ sub _init_fields {
 sub new {
     my ($class) = @_;
     my $self = $class->SUPER::new();
-    $self->_init_fields();
+    _init_fields($self);
     return $self;
 }
 
@@ -45,8 +45,10 @@ sub createBehavior {
         return $self->{instance};
 }
 
-use org::allbinary::game::collision::CollidableBaseBehaviorFactory;
-use org::allbinary::game::collision::CollidableNeverCollideBehavior;
+use java::lang::Object ();
+use java::lang::LazyStatic ();
+use org::allbinary::game::collision::CollidableBaseBehaviorFactory ();
+use org::allbinary::game::collision::CollidableNeverCollideBehavior ();
 
 1;
 

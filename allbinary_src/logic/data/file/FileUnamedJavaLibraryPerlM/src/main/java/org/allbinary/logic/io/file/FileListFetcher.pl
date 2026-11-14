@@ -17,8 +17,9 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
-our $instance = 'org::allbinary::logic::io::file::FileListFetcher'->new();
+tie our $instance, 'java::lang::LazyStatic', sub { 'org::allbinary::logic::io::file::FileListFetcher'->new() };
 
 sub _init_fields {
     my ($self) = @_;
@@ -28,7 +29,7 @@ sub _init_fields {
 sub new {
     my ($class) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
     return $self;
 }
 
@@ -155,15 +156,17 @@ sub getDirectories {
         return undef;
 }
 
-use org::allbinary::logic::io::file::directory::DirectoryBooleanFileVisitor;
-use org::allbinary::logic::io::file::directory::DirectoryOrIncludeFileExtensionAndTrackedBooleanFileVisitor;
-use org::allbinary::logic::io::file::directory::DirectoryOrIncludeFileExtensionBooleanFileVisitor;
-use org::allbinary::logic::io::file::directory::SubDirectory;
-use org::allbinary::logic::io::file::filter::VisitorFileFilter;
-use org::allbinary::util::BasicArrayList;
-use org::allbinary::util::BasicArrayListD;
-use org::allbinary::logic::io::file::AbFile;
-use java::lang::System;
+use java::lang::Object ();
+use java::lang::LazyStatic ();
+use org::allbinary::logic::io::file::directory::DirectoryBooleanFileVisitor ();
+use org::allbinary::logic::io::file::directory::DirectoryOrIncludeFileExtensionAndTrackedBooleanFileVisitor ();
+use org::allbinary::logic::io::file::directory::DirectoryOrIncludeFileExtensionBooleanFileVisitor ();
+use org::allbinary::logic::io::file::directory::SubDirectory ();
+use org::allbinary::logic::io::file::filter::VisitorFileFilter ();
+use org::allbinary::util::BasicArrayList ();
+use org::allbinary::util::BasicArrayListD ();
+use org::allbinary::logic::io::file::AbFile ();
+use java::lang::System ();
 
 1;
 

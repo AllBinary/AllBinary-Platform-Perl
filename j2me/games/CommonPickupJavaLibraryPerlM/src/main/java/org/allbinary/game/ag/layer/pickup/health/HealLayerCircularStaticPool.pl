@@ -38,11 +38,12 @@ sub visit {
         $healLayer->visit($healthInterface);
 }
 
-use org::allbinary::game::health::HealthInterface;
-use org::allbinary::game::health::HealthInterfaceCompositeInterface;
-use org::allbinary::layer::AllBinaryLayer;
-use org::allbinary::layer::AllBinaryLayerCircularPool;
-use org::allbinary::layer::AllBinaryLayerFactoryInterface;
+use java::lang::Object ();
+use org::allbinary::game::health::HealthInterface ();
+use org::allbinary::game::health::HealthInterfaceCompositeInterface ();
+use org::allbinary::layer::AllBinaryLayer ();
+use org::allbinary::layer::AllBinaryLayerCircularPool ();
+use org::allbinary::layer::AllBinaryLayerFactoryInterface ();
 
 1;
 

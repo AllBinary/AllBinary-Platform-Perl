@@ -30,7 +30,7 @@ sub _init_fields {
 sub new {
     my ($class, $geographicMapCellHistoryArray) = @_;
     my $self = $class->SUPER::new();
-    $self->_init_fields();
+    _init_fields($self);
         $self->{geographicMapCellHistoryArray} = $geographicMapCellHistoryArray;
         $self->init();
     return $self;
@@ -60,9 +60,10 @@ sub isAnyProgress {
         return $isProgressing;
 }
 
-use org::allbinary::logic::NullUtil;
-use org::allbinary::media::graphics::geography::map::GeographicMapCellHistoryProgressBase;
-use org::allbinary::media::graphics::geography::map::GeographicMapCellHistory;
+use java::lang::Object ();
+use org::allbinary::logic::NullUtil ();
+use org::allbinary::media::graphics::geography::map::GeographicMapCellHistoryProgressBase ();
+use org::allbinary::media::graphics::geography::map::GeographicMapCellHistory ();
 
 1;
 

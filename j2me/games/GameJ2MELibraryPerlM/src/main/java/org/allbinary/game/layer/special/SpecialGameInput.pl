@@ -17,7 +17,7 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
-use parent -norequire,'org::allbinary::game::layer::special::SpecialGameInputInterface';
+use parent -norequire,'java::lang::Object','org::allbinary::game::layer::special::SpecialGameInputInterface';
 
 
 sub new {
@@ -108,10 +108,11 @@ sub paintThreed {
     my ($self, $graphics) = @_;
 }
 
-# use javax::microedition::lcdui::Graphics;
-use org::allbinary::game::input::event::GameKeyEvent;
-use org::allbinary::layer::AllBinaryLayerManager;
-use org::allbinary::game::layer::special::SpecialGameInputInterface;
+use java::lang::Object ();
+use javax::microedition::lcdui::Graphics ();
+use org::allbinary::game::input::event::GameKeyEvent ();
+use org::allbinary::layer::AllBinaryLayerManager ();
+use org::allbinary::game::layer::special::SpecialGameInputInterface ();
 
 1;
 

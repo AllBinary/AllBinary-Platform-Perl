@@ -75,14 +75,15 @@ sub adjustFrame {
         $self->setFrame($self->{frameUtil}->getFrameForAngle($angle, int($self->{angleInfo}->getAngleIncrementInfo()->getAngleIncrement())));
 }
 
-# use javax::microedition::lcdui::Image;
-# use javax::microedition::lcdui::game::Sprite;
-use org::allbinary::animation::AnimationBehavior;
-use org::allbinary::direction::Direction;
-use org::allbinary::math::Angle;
-use org::allbinary::math::AngleFactory;
-use org::allbinary::math::AngleInfo;
-use org::allbinary::animation::image::sprite::HackRotationSpriteIndexedAnimation;
+use java::lang::Object ();
+use javax::microedition::lcdui::Image ();
+use javax::microedition::lcdui::game::Sprite ();
+use org::allbinary::animation::AnimationBehavior ();
+use org::allbinary::direction::Direction ();
+use org::allbinary::math::Angle ();
+use org::allbinary::math::AngleFactory ();
+use org::allbinary::math::AngleInfo ();
+use org::allbinary::animation::image::sprite::HackRotationSpriteIndexedAnimation ();
 
 1;
 

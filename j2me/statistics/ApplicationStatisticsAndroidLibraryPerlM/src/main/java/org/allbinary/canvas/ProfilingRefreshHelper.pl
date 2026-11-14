@@ -20,7 +20,7 @@ no warnings 'experimental::try';
 use Time::HiRes ();
 use parent -norequire,'org::allbinary::canvas::AndroidGameStatistics';
 
-our $instance = 'org::allbinary::canvas::ProfilingRefreshHelper'->new();
+tie our $instance, 'java::lang::LazyStatic', sub { 'org::allbinary::canvas::ProfilingRefreshHelper'->new() };
 
 sub _init_fields {
     my ($self) = @_;
@@ -40,7 +40,7 @@ sub getInstance {
 sub new {
     my ($class) = @_;
     my $self = $class->SUPER::new();
-    $self->_init_fields();
+    _init_fields($self);
     return $self;
 }
 
@@ -76,10 +76,12 @@ sub toString {
         return 'org::allbinary::logic::string::StringMaker'->new()->append($self->SUPER::toString())->append(" Worst: ")->appendint($self->{worstFrameProcessingTime})->append(" Best: ")->appendint($self->{bestFrameProcessingTime})->toString();
 }
 
-use android::view::View;
-use org::allbinary::logic::string::StringMaker;
-use org::allbinary::canvas::AndroidGameStatistics;
-use java::lang::System;
+use java::lang::Object ();
+use java::lang::LazyStatic ();
+# use android::view::View ();
+use org::allbinary::logic::string::StringMaker ();
+use org::allbinary::canvas::AndroidGameStatistics ();
+use java::lang::System ();
 
 1;
 

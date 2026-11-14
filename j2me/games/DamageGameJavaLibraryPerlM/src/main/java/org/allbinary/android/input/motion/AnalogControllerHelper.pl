@@ -18,6 +18,7 @@ use warnings;
 use feature 'try';
 no warnings 'experimental::try';
 use POSIX ();
+use parent -norequire,'java::lang::Object';
 
 
 sub _init_fields {
@@ -34,7 +35,7 @@ sub _init_fields {
 sub new {
     my ($class, $reduceTimeFactor) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
         $self->{reduceTimeFactor} = $reduceTimeFactor;
     return $self;
 }
@@ -79,9 +80,10 @@ sub down {
         }
 }
 
-use org::allbinary::game::layer::special::CollidableDestroyableDamageableLayer;
-use org::allbinary::time::TimeDelayHelper;
-use org::allbinary::android::input::motion::AnalogControllerConfigurationFactory;
+use java::lang::Object ();
+use org::allbinary::game::layer::special::CollidableDestroyableDamageableLayer ();
+use org::allbinary::time::TimeDelayHelper ();
+use org::allbinary::android::input::motion::AnalogControllerConfigurationFactory ();
 
 1;
 

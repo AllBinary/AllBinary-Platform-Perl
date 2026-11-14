@@ -40,7 +40,7 @@ sub new {
 sub _new4 {
     my ($class, $htmlMetaAttributeData, $label, $attributeValue, $contentValue) = @_;
     my $self = $class->SUPER::new();
-    $self->_init_fields();
+    _init_fields($self);
         $self->{label} = $label;
         if ($htmlMetaAttributeData->equals('org::allbinary::logic::visual::dhtml::html::head::meta::HtmlMetaAttributeDataFactory'->getInstance()->{HTTP_EQUIV})) {
             $self->{httpEquiv} = $attributeValue;
@@ -55,7 +55,7 @@ sub _new4 {
 sub _new1 {
     my ($class, $document) = @_;
     my $self = $class->SUPER::new();
-    $self->_init_fields();
+    _init_fields($self);
         die ('org::allbinary::string::CommonStrings'->getInstance()->{NOT_IMPLEMENTED});
     return $self;
 }
@@ -120,19 +120,20 @@ sub toXmlNode {
         return $node;
 }
 
-use java::util::HashMap;
-use org::allbinary::data::tree::dom::DomNodeInterface;
-use org::allbinary::data::tree::dom::ModDomHelper;
-use org::allbinary::logic::StdUtil;
-use org::allbinary::logic::communication::log::LogUtil;
-use org::allbinary::logic::control::validate::Validation;
-use org::allbinary::logic::string::StringMaker;
-use org::allbinary::logic::visual::dhtml::html::head::meta::HtmlMetaAttributeData;
-use org::allbinary::logic::visual::dhtml::html::head::meta::HtmlMetaAttributeDataFactory;
-use org::allbinary::logic::visual::dhtml::html::head::meta::HtmlMetaData;
-use org::allbinary::string::CommonStrings;
-use org::w3c::dom::Document;
-use org::w3c::dom::Node;
+use java::lang::Object ();
+use java::util::HashMap ();
+use org::allbinary::data::tree::dom::DomNodeInterface ();
+use org::allbinary::data::tree::dom::ModDomHelper ();
+use org::allbinary::logic::StdUtil ();
+use org::allbinary::logic::communication::log::LogUtil ();
+use org::allbinary::logic::control::validate::Validation ();
+use org::allbinary::logic::string::StringMaker ();
+use org::allbinary::logic::visual::dhtml::html::head::meta::HtmlMetaAttributeData ();
+use org::allbinary::logic::visual::dhtml::html::head::meta::HtmlMetaAttributeDataFactory ();
+use org::allbinary::logic::visual::dhtml::html::head::meta::HtmlMetaData ();
+use org::allbinary::string::CommonStrings ();
+use org::w3c::dom::Document ();
+use org::w3c::dom::Node ();
 
 1;
 

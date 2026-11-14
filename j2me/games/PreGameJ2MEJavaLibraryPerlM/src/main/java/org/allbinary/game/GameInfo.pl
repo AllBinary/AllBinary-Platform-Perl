@@ -17,8 +17,9 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
-our $NONE = 'org::allbinary::game::GameInfo'->new('org::allbinary::game::GameTypeFactory'->getInstance()->{NONE}, $org::allbinary::game::GameMode::NONE, 'org::allbinary::game::PlayerTypesFactory'->getInstance()->{PLAYER_TYPE_ONE}, -1, -1);
+tie our $NONE, 'java::lang::LazyStatic', sub { 'org::allbinary::game::GameInfo'->new('org::allbinary::game::GameTypeFactory'->getInstance()->{NONE}, $org::allbinary::game::GameMode::NONE, 'org::allbinary::game::PlayerTypesFactory'->getInstance()->{PLAYER_TYPE_ONE}, -1, -1) };
 our $LEVEL_NAME = "LEVEL";
 
 sub _init_fields {
@@ -39,7 +40,7 @@ sub _init_fields {
 sub new {
     my ($class, $gameType, $gameMode, $playerType, $highestLevel, $currentLevel) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
         $self->{gameType} = $gameType;
         $self->{gameMode} = $gameMode;
         $self->setHighestLevel($highestLevel);
@@ -157,17 +158,19 @@ sub toString {
         return $stringBuffer->toString();
 }
 
-use org::allbinary::logic::communication::log::LogUtil;
-use org::allbinary::logic::string::StringMaker;
-use org::allbinary::logic::string::StringUtil;
-use org::allbinary::string::CommonSeps;
-use org::allbinary::logic::StdUtil;
-use org::allbinary::string::CommonLabels;
-use org::allbinary::util::ABHashtable;
-use org::allbinary::game::GameTypeFactory;
-use org::allbinary::game::GameMode;
-use org::allbinary::game::PlayerTypesFactory;
-use org::allbinary::game::GameInfoData;
+use java::lang::Object ();
+use java::lang::LazyStatic ();
+use org::allbinary::logic::communication::log::LogUtil ();
+use org::allbinary::logic::string::StringMaker ();
+use org::allbinary::logic::string::StringUtil ();
+use org::allbinary::string::CommonSeps ();
+use org::allbinary::logic::StdUtil ();
+use org::allbinary::string::CommonLabels ();
+use org::allbinary::util::ABHashtable ();
+use org::allbinary::game::GameTypeFactory ();
+use org::allbinary::game::GameMode ();
+use org::allbinary::game::PlayerTypesFactory ();
+use org::allbinary::game::GameInfoData ();
 
 1;
 

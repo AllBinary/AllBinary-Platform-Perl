@@ -44,7 +44,7 @@ sub adjustFrame {
     die "abstract method adjustFrame";
 }
 
-use org::allbinary::math::Angle;
+use org::allbinary::math::Angle ();
 
 1;
 

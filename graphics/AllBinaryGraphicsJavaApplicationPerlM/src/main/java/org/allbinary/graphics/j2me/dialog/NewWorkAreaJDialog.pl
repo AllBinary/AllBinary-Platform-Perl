@@ -17,7 +17,7 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
-use parent -norequire,'javax::swing::JDialog';
+use parent -norequire,'java::lang::Object';
 
 
 sub _init_fields {
@@ -33,7 +33,7 @@ sub _init_fields {
 sub new {
     my ($class, $parent, $modal, $dimension, $newName) = @_;
     my $self = $class->SUPER::new($parent, $modal);
-    $self->_init_fields();
+    _init_fields($self);
         # super(...) made $self above
         try {
             $self->initComponents();
@@ -44,7 +44,7 @@ sub new {
             $self->{dimension} = $dimension;
             my $submitButton = 'org::allbinary::graphics::j2me::dialog::JButton'->new("Ok");
             $submitButton->addActionListener(do {
-                package java::awt::event::ActionListener::AnonymousN66301 { our @ISA = ('java::awt::event::ActionListener');
+                package java::awt::event::ActionListener::AnonymousN66301 { our @ISA = ('java::awt::event::ActionListener', 'java::lang::Object');
                 
 
                 sub actionPerformed {
@@ -99,7 +99,7 @@ sub disposeNewDialog {
 sub initComponents {
     my ($self) = @_;
         $self->addWindowListener(do {
-            package java::awt::event::WindowAdapter::AnonymousN67540 { our @ISA = ('java::awt::event::WindowAdapter');
+            package java::awt::event::WindowAdapter::AnonymousN67540 { our @ISA = ('java::awt::event::WindowAdapter', 'java::lang::Object');
             
 
             sub windowClosing {
@@ -128,19 +128,20 @@ sub main {
         }
 }
 
-# use java::awt;
-# use java::awt::event::ActionEvent;
-# use java::awt::event::ActionListener;
-# use javax::swing;
-use org::allbinary::graphics::j2me::GraphicsException;
-use org::allbinary::graphics::j2me::MyFrame;
-use org::allbinary::graphics::j2me::workarea::WorkAreaJPanel;
-use org::allbinary::graphics::j2me::workarea::WorkAreaJPanelInterface;
-use org::allbinary::graphics::j2me::dialog::JTextField;
-use org::allbinary::graphics::j2me::dialog::JButton;
-use org::allbinary::graphics::j2me::dialog::GridLayout;
-use org::allbinary::graphics::j2me::dialog::JLabel;
-use org::allbinary::graphics::j2me::dialog::Dimension;
+use java::lang::Object ();
+# use java::awt ();
+# use java::awt::event::ActionEvent ();
+# use java::awt::event::ActionListener ();
+# use javax::swing ();
+use org::allbinary::graphics::j2me::GraphicsException ();
+use org::allbinary::graphics::j2me::MyFrame ();
+use org::allbinary::graphics::j2me::workarea::WorkAreaJPanel ();
+use org::allbinary::graphics::j2me::workarea::WorkAreaJPanelInterface ();
+use org::allbinary::graphics::j2me::dialog::JTextField ();
+use org::allbinary::graphics::j2me::dialog::JButton ();
+use org::allbinary::graphics::j2me::dialog::GridLayout ();
+use org::allbinary::graphics::j2me::dialog::JLabel ();
+use org::allbinary::graphics::j2me::dialog::Dimension ();
 
 1;
 

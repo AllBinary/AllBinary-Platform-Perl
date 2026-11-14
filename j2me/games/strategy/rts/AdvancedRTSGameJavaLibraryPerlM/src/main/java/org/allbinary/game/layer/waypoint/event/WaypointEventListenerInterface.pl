@@ -27,8 +27,8 @@ sub onWaypointEvent {
     die "abstract method onWaypointEvent";
 }
 
-use org::allbinary::game::layer::RTSLayerEvent;
-use org::allbinary::logic::util::event::EventListenerInterface;
+use org::allbinary::game::layer::RTSLayerEvent ();
+use org::allbinary::logic::util::event::EventListenerInterface ();
 
 1;
 

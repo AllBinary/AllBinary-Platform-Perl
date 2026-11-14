@@ -36,8 +36,9 @@ sub process {
         $self->processAt($allBinaryLayerManager, $layerManager->getLayerAt(0), 0);
 }
 
-use org::allbinary::layer::LayerProcessor;
-use org::allbinary::layer::SingleLayerLayerManager;
+use java::lang::Object ();
+use org::allbinary::layer::LayerProcessor ();
+use org::allbinary::layer::SingleLayerLayerManager ();
 
 1;
 

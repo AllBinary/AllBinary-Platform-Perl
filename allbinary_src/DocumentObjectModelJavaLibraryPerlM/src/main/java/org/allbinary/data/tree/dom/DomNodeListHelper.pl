@@ -17,6 +17,7 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
 
 sub new {
@@ -36,11 +37,12 @@ sub getVector {
         return $vector;
 }
 
-use org::allbinary::util::BasicArrayList;
-use org::allbinary::util::BasicArrayListD;
-use org::allbinary::logic::StdUtil;
-use org::w3c::dom::NodeList;
-use org::allbinary::data::tree::dom::DomNodeHelper;
+use java::lang::Object ();
+use org::allbinary::util::BasicArrayList ();
+use org::allbinary::util::BasicArrayListD ();
+use org::allbinary::logic::StdUtil ();
+use org::w3c::dom::NodeList ();
+use org::allbinary::data::tree::dom::DomNodeHelper ();
 
 1;
 

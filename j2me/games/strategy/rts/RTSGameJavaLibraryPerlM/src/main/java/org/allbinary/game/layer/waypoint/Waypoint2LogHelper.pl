@@ -17,8 +17,9 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
-our $instance = 'org::allbinary::game::layer::waypoint::Waypoint2LogHelper'->new();
+tie our $instance, 'java::lang::LazyStatic', sub { 'org::allbinary::game::layer::waypoint::Waypoint2LogHelper'->new() };
 
 sub new {
     my ($class) = @_;
@@ -137,10 +138,12 @@ sub targetMovedSoRetarget {
     my ($self, $associatedAdvancedRTSGameLayer) = @_;
 }
 
-use org::allbinary::game::layer::PathFindingLayerInterface;
-use org::allbinary::game::layer::WaypointBehaviorBase;
-use org::allbinary::media::graphics::geography::map::GeographicMapCellPosition;
-use org::allbinary::util::BasicArrayList;
+use java::lang::Object ();
+use java::lang::LazyStatic ();
+use org::allbinary::game::layer::PathFindingLayerInterface ();
+use org::allbinary::game::layer::WaypointBehaviorBase ();
+use org::allbinary::media::graphics::geography::map::GeographicMapCellPosition ();
+use org::allbinary::util::BasicArrayList ();
 
 1;
 

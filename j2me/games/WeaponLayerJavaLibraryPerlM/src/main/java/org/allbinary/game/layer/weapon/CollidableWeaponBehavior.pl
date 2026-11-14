@@ -19,7 +19,7 @@ use feature 'try';
 no warnings 'experimental::try';
 use parent -norequire,'org::allbinary::game::layer::special::CollidableDestroyableDamageableBehavior';
 
-our $NULL_COLLIDABLE_WEAPON_BEHAVIOR = 'org::allbinary::logic::NullUtil'->getInstance()->{NULL_OBJECT};
+tie our $NULL_COLLIDABLE_WEAPON_BEHAVIOR, 'java::lang::LazyStatic', sub { 'org::allbinary::logic::NullUtil'->getInstance()->{NULL_OBJECT} };
 
 sub _init_fields {
     my ($self) = @_;
@@ -40,7 +40,7 @@ sub getNullInstance {
 sub new {
     my ($class, $collidable) = @_;
     my $self = $class->SUPER::new($collidable);
-    $self->_init_fields();
+    _init_fields($self);
         # super(...) made $self above
         $self->setCollided(0);
         $self->setCollidable(1);
@@ -116,16 +116,18 @@ sub setCollided {
         $self->{collided} = $collided;
 }
 
-use org::allbinary::game::collision::CollidableHelperFactory;
-use org::allbinary::game::collision::CollidableInterfaceCompositeInterface;
-use org::allbinary::game::collision::CollisionHelper;
-use org::allbinary::game::collision::CollisionType;
-use org::allbinary::game::collision::CollisionTypeFactory;
-use org::allbinary::game::combat::damage::DamageableInterface;
-use org::allbinary::game::layer::CollidableCompositeLayer;
-use org::allbinary::game::layer::special::CollidableDestroyableDamageableBehavior;
-use org::allbinary::layer::AllBinaryLayer;
-use org::allbinary::logic::NullUtil;
+use java::lang::Object ();
+use java::lang::LazyStatic ();
+use org::allbinary::game::collision::CollidableHelperFactory ();
+use org::allbinary::game::collision::CollidableInterfaceCompositeInterface ();
+use org::allbinary::game::collision::CollisionHelper ();
+use org::allbinary::game::collision::CollisionType ();
+use org::allbinary::game::collision::CollisionTypeFactory ();
+use org::allbinary::game::combat::damage::DamageableInterface ();
+use org::allbinary::game::layer::CollidableCompositeLayer ();
+use org::allbinary::game::layer::special::CollidableDestroyableDamageableBehavior ();
+use org::allbinary::layer::AllBinaryLayer ();
+use org::allbinary::logic::NullUtil ();
 
 1;
 

@@ -18,6 +18,7 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
 
 sub _init_fields {
@@ -31,7 +32,7 @@ sub _init_fields {
 sub new {
     my ($class) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
         my $motionGesturesHandler = $self->{motionRecognizer}->getMotionGestureRecognizer()->getMotionGesturesHandler();
         $motionGesturesHandler->addListenerInterface('org::allbinary::input::motion::gesture::observer::GameMotionGestureListener'->new('org::allbinary::input::motion::gesture::observer::MotionGestureReceiveInterfaceFactory'->getInstance()));
     return $self;
@@ -70,12 +71,13 @@ sub pointerReleased {
         }
 }
 
-use org::allbinary::input::motion::AllMotionRecognizer;
-use org::allbinary::input::motion::gesture::observer::BasicMotionGesturesHandler;
-use org::allbinary::input::motion::gesture::observer::GameMotionGestureListener;
-use org::allbinary::input::motion::gesture::observer::MotionGestureReceiveInterfaceFactory;
-use org::allbinary::logic::communication::log::LogUtil;
-use org::allbinary::string::CommonStrings;
+use java::lang::Object ();
+use org::allbinary::input::motion::AllMotionRecognizer ();
+use org::allbinary::input::motion::gesture::observer::BasicMotionGesturesHandler ();
+use org::allbinary::input::motion::gesture::observer::GameMotionGestureListener ();
+use org::allbinary::input::motion::gesture::observer::MotionGestureReceiveInterfaceFactory ();
+use org::allbinary::logic::communication::log::LogUtil ();
+use org::allbinary::string::CommonStrings ();
 
 1;
 

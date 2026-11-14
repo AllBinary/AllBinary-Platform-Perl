@@ -17,7 +17,7 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
-use parent -norequire,'org::apache::commons::fileupload::FileItem';
+use parent -norequire,'java::lang::Object','org::apache::commons::fileupload::FileItem';
 
 
 sub _init_fields {
@@ -33,7 +33,7 @@ sub _init_fields {
 sub new {
     my ($class, $name, $fieldName, $byteArray) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
         $self->{name} = $name;
         $self->{fieldName} = $fieldName;
         $self->{byteArray} = $byteArray;
@@ -81,7 +81,7 @@ sub get {
 # throws UnsupportedEncodingException
 sub getString {
     my ($self, $encoding) = @_;
-        return pack("C*", @{$self->{byteArray}, $encoding});
+        return pack("C*", @{$self->{byteArray}});
 }
 
 
@@ -165,20 +165,21 @@ sub setHeaders {
         die ($self->{commonStrings}->{NOT_IMPLEMENTED});
 }
 
-use java::io::File;
-# use java::io::IOException;
-# use java::io::InputStream;
-# use java::io::OutputStream;
-# use java::io::UnsupportedEncodingException;
-use org::allbinary::logic::communication::log::ForcedLogUtil;
-use org::allbinary::logic::communication::log::LogUtil;
-use org::allbinary::logic::io::file::AbFile;
-use org::allbinary::logic::string::StringUtil;
-use org::allbinary::logic::string::StringValidationUtil;
-use org::allbinary::string::CommonStrings;
-use org::apache::commons::fileupload::FileItem;
-use org::apache::commons::fileupload::FileItemHeaders;
-use org::apache::commons::fileupload::FileItemUtil;
+use java::lang::Object ();
+use java::io::File ();
+# use java::io::IOException ();
+# use java::io::InputStream ();
+# use java::io::OutputStream ();
+# use java::io::UnsupportedEncodingException ();
+use org::allbinary::logic::communication::log::ForcedLogUtil ();
+use org::allbinary::logic::communication::log::LogUtil ();
+use org::allbinary::logic::io::file::AbFile ();
+use org::allbinary::logic::string::StringUtil ();
+use org::allbinary::logic::string::StringValidationUtil ();
+use org::allbinary::string::CommonStrings ();
+use org::apache::commons::fileupload::FileItem ();
+use org::apache::commons::fileupload::FileItemHeaders ();
+use org::apache::commons::fileupload::FileItemUtil ();
 
 1;
 

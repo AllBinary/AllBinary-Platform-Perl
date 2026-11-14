@@ -29,7 +29,7 @@ sub _init_fields {
 sub new {
     my ($class, $value) = @_;
     my $self = $class->SUPER::new();
-    $self->_init_fields();
+    _init_fields($self);
         $self->{value} = $value;
     return $self;
 }
@@ -40,8 +40,9 @@ sub paintXY {
         $graphics->drawString($self->{value}, $x, $y, 0);
 }
 
-# use javax::microedition::lcdui::Graphics;
-use org::allbinary::graphics::paint::LocationPaintable;
+use java::lang::Object ();
+use javax::microedition::lcdui::Graphics ();
+use org::allbinary::graphics::paint::LocationPaintable ();
 
 1;
 

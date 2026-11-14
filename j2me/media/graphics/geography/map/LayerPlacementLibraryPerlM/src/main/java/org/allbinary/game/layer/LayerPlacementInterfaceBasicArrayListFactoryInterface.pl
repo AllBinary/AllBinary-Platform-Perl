@@ -32,7 +32,7 @@ sub getOnDemandResources {
     die "abstract method getOnDemandResources";
 }
 
-use org::allbinary::util::BasicArrayList;
+use org::allbinary::util::BasicArrayList ();
 
 1;
 

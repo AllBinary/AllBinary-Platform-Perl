@@ -17,7 +17,7 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
-use parent -norequire,'org::allbinary::data::tree::dom::DomNodeInterface';
+use parent -norequire,'java::lang::Object','org::allbinary::data::tree::dom::DomNodeInterface';
 
 
 sub _init_fields {
@@ -38,7 +38,7 @@ sub new {
 sub _new1 {
     my ($class, $node) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
         $self->{userEmailEventsConfigurationInterface} = 'org::allbinary::logic::communication::smtp::configuration::user::event::UserEmailEventsConfiguration'->new();
         my $childNodeList = $node->getChildNodes();
         my $emailEventConfigurationNodeVector = 'org::allbinary::data::tree::dom::DomSearchHelper'->getAllNodesNoThrow($org::allbinary::logic::communication::smtp::configuration::user::event::UserEmailEventConfigurationData::NAME, $childNodeList);
@@ -55,7 +55,7 @@ sub _new1 {
 sub _new1 {
     my ($class, $userEmailEventsConfigurationInterface) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
         $self->{userEmailEventsConfigurationInterface} = $userEmailEventsConfigurationInterface;
     return $self;
 }
@@ -88,22 +88,23 @@ sub toXmlNode {
         return $node;
 }
 
-use java::util::HashMap;
-# use java::util::Set;
-use org::allbinary::util::BasicArrayList;
-use org::allbinary::util::BasicArrayListD;
-use org::allbinary::data::tree::dom::DomNodeInterface;
-use org::allbinary::data::tree::dom::DomSearchHelper;
-use org::allbinary::logic::communication::log::LogUtil;
-use org::allbinary::string::CommonStrings;
-use org::w3c::dom::Document;
-use org::w3c::dom::Node;
-use org::w3c::dom::NodeList;
-use org::allbinary::logic::communication::smtp::configuration::user::event::UserEmailEventsConfiguration;
-use org::allbinary::logic::communication::smtp::configuration::user::event::UserEmailEventConfigurationData;
-use org::allbinary::logic::communication::smtp::configuration::user::event::UserEmailEventConfigurationView;
-use org::allbinary::logic::communication::smtp::configuration::user::event::UserEmailEventsConfigurationMapping;
-use org::allbinary::logic::communication::smtp::configuration::user::event::UserEmailEventsConfigurationData;
+use java::lang::Object ();
+use java::util::HashMap ();
+# use java::util::Set ();
+use org::allbinary::util::BasicArrayList ();
+use org::allbinary::util::BasicArrayListD ();
+use org::allbinary::data::tree::dom::DomNodeInterface ();
+use org::allbinary::data::tree::dom::DomSearchHelper ();
+use org::allbinary::logic::communication::log::LogUtil ();
+use org::allbinary::string::CommonStrings ();
+use org::w3c::dom::Document ();
+use org::w3c::dom::Node ();
+use org::w3c::dom::NodeList ();
+use org::allbinary::logic::communication::smtp::configuration::user::event::UserEmailEventsConfiguration ();
+use org::allbinary::logic::communication::smtp::configuration::user::event::UserEmailEventConfigurationData ();
+use org::allbinary::logic::communication::smtp::configuration::user::event::UserEmailEventConfigurationView ();
+use org::allbinary::logic::communication::smtp::configuration::user::event::UserEmailEventsConfigurationMapping ();
+use org::allbinary::logic::communication::smtp::configuration::user::event::UserEmailEventsConfigurationData ();
 
 1;
 

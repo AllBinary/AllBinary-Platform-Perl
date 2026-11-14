@@ -30,7 +30,7 @@ sub _init_fields {
 sub new {
     my ($class, $anyType) = @_;
     my $self = $class->SUPER::new($anyType);
-    $self->_init_fields();
+    _init_fields($self);
         # super(...) made $self above
     return $self;
 }
@@ -61,9 +61,10 @@ sub getResourceLoadingLevel {
         return $self->{resourceLoadingLevel};
 }
 
-use org::allbinary::game::resource::ResourceLoadingLevel;
-use org::allbinary::game::resource::ResourceLoadingLevelFactory;
-use org::allbinary::logic::util::event::AllBinaryEventObject;
+use java::lang::Object ();
+use org::allbinary::game::resource::ResourceLoadingLevel ();
+use org::allbinary::game::resource::ResourceLoadingLevelFactory ();
+use org::allbinary::logic::util::event::AllBinaryEventObject ();
 
 1;
 

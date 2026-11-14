@@ -20,8 +20,8 @@ no warnings 'experimental::try';
 use POSIX ();
 use parent -norequire,'org::allbinary::graphics::form::PaintableForm';
 
-our $NULL_SCROLL_SELECTION_FORM = 'org::allbinary::logic::NullUtil'->getInstance()->{NULL_OBJECT};
-our $NULL_SCROLL_SELECTION_HORIZONTAL_FORM = 'org::allbinary::logic::NullUtil'->getInstance()->{NULL_OBJECT};
+tie our $NULL_SCROLL_SELECTION_FORM, 'java::lang::LazyStatic', sub { 'org::allbinary::logic::NullUtil'->getInstance()->{NULL_OBJECT} };
+tie our $NULL_SCROLL_SELECTION_HORIZONTAL_FORM, 'java::lang::LazyStatic', sub { 'org::allbinary::logic::NullUtil'->getInstance()->{NULL_OBJECT} };
 our $INSIDE_FORM = " inside form";
 our $IS_IN_FORM = "isInForm";
 our $GET_SELECTED_INDEX = "getSelectedIndexForPoint";
@@ -80,7 +80,7 @@ sub getNullScrollSelectionFormHorizontal {
 sub new {
     my ($class, $title, $items, $formPaintableFactory, $border, $adjustedExtraBorder, $backgroundBasicColor, $foregroundBasicColor) = @_;
     my $self = $class->SUPER::new($title, $items, $backgroundBasicColor, $foregroundBasicColor);
-    $self->_init_fields();
+    _init_fields($self);
         # super(...) made $self above
         $self->{adjustedExtraBorder} = $adjustedExtraBorder;
         $self->{buttonBasicColor} = $foregroundBasicColor;
@@ -339,219 +339,35 @@ sub getButtonBasicColor {
     my ($self) = @_;
         return $self->{buttonBasicColor};
 }
-{
-    package org::allbinary::graphics::form::ScrollSelectionFormHorizontalPaintable;
-    use strict;
-    use warnings;
-    use feature 'try';
-    no warnings 'experimental::try';
-    use POSIX ();
-    use parent -norequire,'org::allbinary::graphics::form::ItemIndexPaintable';
-    
 
-    sub _init_fields {
-        my ($self) = @_;
-        $self->{scrollSelectionForm} = undef;
-    }
-    
-
-    sub new {
-        my ($class, $scrollSelectionForm) = @_;
-        my $self = $class->SUPER::new();
-        $self->_init_fields();
-            $self->{scrollSelectionForm} = $scrollSelectionForm;
-        return $self;
-    }
-    
-
-    # throws Exception
-    sub paint {
-        my ($self, $graphics, $index, $item, $dx, $dy) = @_;
-            return $self->{scrollSelectionForm}->paintItemHorizontal($graphics, $index, $item, $dx, $dy);
-    }
-    }
-
-{
-    package org::allbinary::graphics::form::ScrollSelectionFormVerticalPaintable;
-    use strict;
-    use warnings;
-    use feature 'try';
-    no warnings 'experimental::try';
-    use POSIX ();
-    use parent -norequire,'org::allbinary::graphics::form::ItemIndexPaintable';
-    
-
-    sub _init_fields {
-        my ($self) = @_;
-        $self->{scrollSelectionForm} = undef;
-    }
-    
-
-    sub new {
-        my ($class, $scrollSelectionForm) = @_;
-        my $self = $class->SUPER::new();
-        $self->_init_fields();
-            $self->{scrollSelectionForm} = $scrollSelectionForm;
-        return $self;
-    }
-    
-
-    # throws Exception
-    sub paint {
-        my ($self, $graphics, $index, $item, $dx, $dy) = @_;
-            return $self->{scrollSelectionForm}->paintItemVertical($graphics, $index, $item, $dx, $dy);
-    }
-    }
-
-{
-    package org::allbinary::graphics::form::ScrollSelectionFormTempHorizontalPaintable;
-    use strict;
-    use warnings;
-    use feature 'try';
-    no warnings 'experimental::try';
-    use POSIX ();
-    use parent -norequire,'org::allbinary::graphics::form::ItemIndexPaintable';
-    
-
-    sub _init_fields {
-        my ($self) = @_;
-        $self->{scrollSelectionForm} = undef;
-    }
-    
-
-    sub new {
-        my ($class, $scrollSelectionForm) = @_;
-        my $self = $class->SUPER::new();
-        $self->_init_fields();
-            $self->{scrollSelectionForm} = $scrollSelectionForm;
-        return $self;
-    }
-    
-
-    # throws Exception
-    sub paint {
-        my ($self, $graphics, $index, $item, $dx, $dy) = @_;
-            return $self->{scrollSelectionForm}->paintItemTempHorizontal($graphics, $index, $item, $dx, $dy);
-    }
-    }
-
-{
-    package org::allbinary::graphics::form::ScrollSelectionFormHorizontalDx;
-    use strict;
-    use warnings;
-    use feature 'try';
-    no warnings 'experimental::try';
-    use POSIX ();
-    use parent -norequire,'org::allbinary::graphics::form::ItemIndexDx';
-    
-
-    sub _init_fields {
-        my ($self) = @_;
-        $self->{scrollSelectionForm} = undef;
-    }
-    
-
-    sub new {
-        my ($class, $multipleScrollSelectionForm) = @_;
-        my $self = $class->SUPER::new();
-        $self->_init_fields();
-            $self->{scrollSelectionForm} = $multipleScrollSelectionForm;
-        return $self;
-    }
-    
-
-    # throws Exception
-    sub getDx {
-        my ($self, $index, $item, $dx, $dy) = @_;
-            return $self->{scrollSelectionForm}->getSelectedIndexForPointHorizontalDx($index, $item, $dx, $dy);
-    }
-    }
-
-{
-    package org::allbinary::graphics::form::ScrollSelectionFormVericalDx;
-    use strict;
-    use warnings;
-    use feature 'try';
-    no warnings 'experimental::try';
-    use POSIX ();
-    use parent -norequire,'org::allbinary::graphics::form::ItemIndexDx';
-    
-
-    sub _init_fields {
-        my ($self) = @_;
-        $self->{scrollSelectionForm} = undef;
-    }
-    
-
-    sub new {
-        my ($class, $multipleScrollSelectionForm) = @_;
-        my $self = $class->SUPER::new();
-        $self->_init_fields();
-            $self->{scrollSelectionForm} = $multipleScrollSelectionForm;
-        return $self;
-    }
-    
-
-    # throws Exception
-    sub getDx {
-        my ($self, $index, $item, $dx, $dy) = @_;
-            return $self->{scrollSelectionForm}->getSelectedIndexForPointVerticalDx($index, $item, $dx, $dy);
-    }
-    }
-
-{
-    package org::allbinary::graphics::form::ScrollSelectionFormTempHorizontalDx;
-    use strict;
-    use warnings;
-    use feature 'try';
-    no warnings 'experimental::try';
-    use POSIX ();
-    use parent -norequire,'org::allbinary::graphics::form::ItemIndexDx';
-    
-
-    sub _init_fields {
-        my ($self) = @_;
-        $self->{scrollSelectionForm} = undef;
-    }
-    
-
-    sub new {
-        my ($class, $multipleScrollSelectionForm) = @_;
-        my $self = $class->SUPER::new();
-        $self->_init_fields();
-            $self->{scrollSelectionForm} = $multipleScrollSelectionForm;
-        return $self;
-    }
-    
-
-    # throws Exception
-    sub getDx {
-        my ($self, $index, $item, $dx, $dy) = @_;
-            return $self->{scrollSelectionForm}->getSelectedIndexForPointTempHorizontalDx($index, $item, $dx, $dy);
-    }
-    }
-
-
-# use javax::microedition::lcdui::Canvas;
-# use javax::microedition::lcdui::Graphics;
-use org::allbinary::graphics::GPoint;
-use org::allbinary::graphics::Rectangle;
-use org::allbinary::graphics::color::BasicColor;
-use org::allbinary::graphics::color::BasicColorFactory;
-use org::allbinary::graphics::form::item::ABCustomItem;
-use org::allbinary::logic::NullUtil;
-use org::allbinary::logic::communication::log::LogUtil;
-use org::allbinary::logic::string::StringMaker;
-use org::allbinary::logic::string::StringUtil;
-use org::allbinary::math::RectangleCollisionUtil;
-use org::allbinary::string::CommonLabels;
-use org::allbinary::string::CommonSeps;
-use org::allbinary::string::CommonStrings;
-use org::allbinary::graphics::form::PaintableForm;
-use org::allbinary::graphics::form::ItemPaintableFactory;
-use org::allbinary::graphics::form::ItemIndexPaintable;
-use org::allbinary::graphics::form::ItemIndexDx;
-use org::allbinary::graphics::form::FormTypeFactory;
+use java::lang::Object ();
+use java::lang::LazyStatic ();
+use javax::microedition::lcdui::Canvas ();
+use javax::microedition::lcdui::Graphics ();
+use org::allbinary::graphics::GPoint ();
+use org::allbinary::graphics::Rectangle ();
+use org::allbinary::graphics::color::BasicColor ();
+use org::allbinary::graphics::color::BasicColorFactory ();
+use org::allbinary::graphics::form::item::ABCustomItem ();
+use org::allbinary::logic::NullUtil ();
+use org::allbinary::logic::communication::log::LogUtil ();
+use org::allbinary::logic::string::StringMaker ();
+use org::allbinary::logic::string::StringUtil ();
+use org::allbinary::math::RectangleCollisionUtil ();
+use org::allbinary::string::CommonLabels ();
+use org::allbinary::string::CommonSeps ();
+use org::allbinary::string::CommonStrings ();
+use org::allbinary::graphics::form::PaintableForm ();
+use org::allbinary::graphics::form::ItemPaintableFactory ();
+use org::allbinary::graphics::form::ItemIndexPaintable ();
+use org::allbinary::graphics::form::ItemIndexDx ();
+use org::allbinary::graphics::form::FormTypeFactory ();
+use org::allbinary::graphics::form::ScrollSelectionFormTempHorizontalPaintable ();
+use org::allbinary::graphics::form::ScrollSelectionFormTempHorizontalDx ();
+use org::allbinary::graphics::form::ScrollSelectionFormVerticalPaintable ();
+use org::allbinary::graphics::form::ScrollSelectionFormVericalDx ();
+use org::allbinary::graphics::form::ScrollSelectionFormHorizontalPaintable ();
+use org::allbinary::graphics::form::ScrollSelectionFormHorizontalDx ();
 
 1;
 

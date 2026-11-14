@@ -17,7 +17,7 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
-use parent -norequire,'admin::taghelpers::TagHelperFactoryInterface';
+use parent -norequire,'java::lang::Object','admin::taghelpers::TagHelperFactoryInterface';
 
 our $CLASSNAME = "admin.taghelpers.CustomLoaderHelper";
 our $FACTORYNAME = "CustomLoaderHelperFactory";
@@ -45,13 +45,14 @@ sub getInstance {
         return 'admin::taghelpers::HelperFactory'->getInstance($abeClientInformation, $FACTORYNAME, $admin::taghelpers::CustomLoaderHelperFactory::CLASSNAME);
 }
 
-use java::util::HashMap;
-# use javax::servlet::jsp::PageContext;
-use org::allbinary::logic::system::security::licensing::AbeClientInformationInterface;
-use org::allbinary::logic::system::security::licensing::LicensingException;
-use org::allbinary::logic::system::security::licensing::ServiceClientInformationInterfaceFactory;
-use admin::taghelpers::TagHelperFactoryInterface;
-use admin::taghelpers::HelperFactory;
+use java::lang::Object ();
+use java::util::HashMap ();
+# use javax::servlet::jsp::PageContext ();
+use org::allbinary::logic::system::security::licensing::AbeClientInformationInterface ();
+use org::allbinary::logic::system::security::licensing::LicensingException ();
+use org::allbinary::logic::system::security::licensing::ServiceClientInformationInterfaceFactory ();
+use admin::taghelpers::TagHelperFactoryInterface ();
+use admin::taghelpers::HelperFactory ();
 
 1;
 

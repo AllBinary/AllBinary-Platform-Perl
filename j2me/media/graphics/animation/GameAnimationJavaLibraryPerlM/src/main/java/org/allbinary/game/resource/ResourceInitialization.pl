@@ -26,7 +26,8 @@ sub new {
     return $self;
 }
 
-use org::allbinary::init::Init;
+use java::lang::Object ();
+use org::allbinary::init::Init ();
 
 1;
 

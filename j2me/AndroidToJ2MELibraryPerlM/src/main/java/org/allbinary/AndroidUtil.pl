@@ -17,9 +17,10 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
-our $NULL_ACTIVITY = 'android::app::Activity'->new();
-our $version = int($android::os::Build::VERSION->{SDK});
+tie our $NULL_ACTIVITY, 'java::lang::LazyStatic', sub { 'android::app::Activity'->new() };
+tie our $version, 'java::lang::LazyStatic', sub { int($android::os::Build::VERSION->{SDK}) };
 
 sub new {
     my ($class) = @_;
@@ -42,8 +43,10 @@ sub isAndroid {
         return 1;
 }
 
-use android::app::Activity;
-use android::os::Build;
+use java::lang::Object ();
+use java::lang::LazyStatic ();
+# use android::app::Activity ();
+# use android::os::Build ();
 
 1;
 

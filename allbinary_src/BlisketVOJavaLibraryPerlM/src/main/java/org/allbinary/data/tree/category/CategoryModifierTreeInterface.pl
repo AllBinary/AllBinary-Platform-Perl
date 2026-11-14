@@ -32,7 +32,7 @@ sub delete {
     die "abstract method delete";
 }
 
-use org::allbinary::business::category::CategoryInterface;
+use org::allbinary::business::category::CategoryInterface ();
 
 1;
 

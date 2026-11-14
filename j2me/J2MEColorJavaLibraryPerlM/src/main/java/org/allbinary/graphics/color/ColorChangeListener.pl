@@ -21,8 +21,8 @@ no warnings 'experimental::try';
 use parent -norequire,'org::allbinary::logic::util::event::EventListenerInterface';
 
 
-# use jsinterop::annotations::JsType;
-use org::allbinary::logic::util::event::EventListenerInterface;
+# use jsinterop::annotations::JsType ();
+use org::allbinary::logic::util::event::EventListenerInterface ();
 
 1;
 

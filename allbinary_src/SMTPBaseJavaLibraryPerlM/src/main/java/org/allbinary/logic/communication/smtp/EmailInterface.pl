@@ -40,9 +40,9 @@ sub log {
     die "abstract method log";
 }
 
-# use javax::mail::internet::MimeMessage;
-use org::allbinary::data::tree::dom::DomNodeInterface;
-use org::allbinary::data::tree::dom::document::mapping::DomDocumentMappingInterface;
+# use javax::mail::internet::MimeMessage ();
+use org::allbinary::data::tree::dom::DomNodeInterface ();
+use org::allbinary::data::tree::dom::document::mapping::DomDocumentMappingInterface ();
 
 1;
 

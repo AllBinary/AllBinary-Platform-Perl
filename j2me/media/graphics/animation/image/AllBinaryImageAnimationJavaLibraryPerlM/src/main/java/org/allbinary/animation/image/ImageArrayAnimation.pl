@@ -32,7 +32,7 @@ sub _init_fields {
 sub new {
     my ($class, $imageArray, $animationBehavior) = @_;
     my $self = $class->SUPER::new($animationBehavior);
-    $self->_init_fields();
+    _init_fields($self);
         # super(...) made $self above
         $self->setImageArray($imageArray);
     return $self;
@@ -112,14 +112,15 @@ sub paintXY {
         $graphics->drawImage($self->{imageArray}->[$self->{circularIndexUtil}->getIndex()], $x, $y, $self->{anchor});
 }
 
-# use javax::microedition::lcdui::Graphics;
-# use javax::microedition::lcdui::Image;
-# use javax::microedition::lcdui::NullImage;
-use org::allbinary::animation::AnimationBehavior;
-use org::allbinary::animation::IndexedAnimation;
-use org::allbinary::graphics::Anchor;
-use org::allbinary::logic::math::PrimitiveIntUtil;
-use org::allbinary::util::CircularIndexUtil;
+use java::lang::Object ();
+use javax::microedition::lcdui::Graphics ();
+use javax::microedition::lcdui::Image ();
+use javax::microedition::lcdui::NullImage ();
+use org::allbinary::animation::AnimationBehavior ();
+use org::allbinary::animation::IndexedAnimation ();
+use org::allbinary::graphics::Anchor ();
+use org::allbinary::logic::math::PrimitiveIntUtil ();
+use org::allbinary::util::CircularIndexUtil ();
 
 1;
 

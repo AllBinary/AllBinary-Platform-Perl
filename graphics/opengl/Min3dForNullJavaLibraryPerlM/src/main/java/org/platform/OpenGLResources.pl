@@ -5,8 +5,9 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
-our $instance = 'org::platform::OpenGLResources'->new();
+tie our $instance, 'java::lang::LazyStatic', sub { 'org::platform::OpenGLResources'->new() };
 
 sub new {
     my ($class) = @_;
@@ -64,7 +65,9 @@ sub getPackageName {
         die ("RuntimeException");
 }
 
-# use java::io::InputStream;
+use java::lang::Object ();
+use java::lang::LazyStatic ();
+# use java::io::InputStream ();
 
 1;
 

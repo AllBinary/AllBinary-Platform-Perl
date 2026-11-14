@@ -17,8 +17,9 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
-our $instance = 'org::allbinary::canvas::FullScreenUtil'->new();
+tie our $instance, 'java::lang::LazyStatic', sub { 'org::allbinary::canvas::FullScreenUtil'->new() };
 
 sub new {
     my ($class) = @_;
@@ -71,10 +72,12 @@ sub isScreenChangeCanvas {
         return $self->isScreenChange($fullScreenInterface->isFullScreenMode());
 }
 
-# use javax::microedition::lcdui::Canvas;
-use org::allbinary::game::configuration::feature::Features;
-use org::allbinary::game::configuration::feature::MainFeatureFactory;
-# use javax::microedition::lcdui::CommandListener;
+use java::lang::Object ();
+use java::lang::LazyStatic ();
+use javax::microedition::lcdui::Canvas ();
+use org::allbinary::game::configuration::feature::Features ();
+use org::allbinary::game::configuration::feature::MainFeatureFactory ();
+use javax::microedition::lcdui::CommandListener ();
 
 1;
 

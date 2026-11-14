@@ -19,7 +19,7 @@ use feature 'try';
 no warnings 'experimental::try';
 use parent -norequire,'org::allbinary::animation::image::ScaleBaseProcessor';
 
-our $instanceC = 'org::allbinary::animation::image::ScaleProcessor'->new();
+tie our $instanceC, 'java::lang::LazyStatic', sub { 'org::allbinary::animation::image::ScaleProcessor'->new() };
 
 sub _init_fields {
     my ($self) = @_;
@@ -31,7 +31,7 @@ sub _init_fields {
 sub new {
     my ($class) = @_;
     my $self = $class->SUPER::new();
-    $self->_init_fields();
+    _init_fields($self);
     return $self;
 }
 
@@ -51,11 +51,13 @@ sub update {
         }
 }
 
-# use javax::microedition::lcdui::Image;
-use org::allbinary::logic::communication::log::LogUtil;
-use org::allbinary::media::image::ImageScaleUtil;
-use org::allbinary::string::CommonStrings;
-use org::allbinary::animation::image::ScaleBaseProcessor;
+use java::lang::Object ();
+use java::lang::LazyStatic ();
+use javax::microedition::lcdui::Image ();
+use org::allbinary::logic::communication::log::LogUtil ();
+use org::allbinary::media::image::ImageScaleUtil ();
+use org::allbinary::string::CommonStrings ();
+use org::allbinary::animation::image::ScaleBaseProcessor ();
 
 1;
 

@@ -34,7 +34,7 @@ sub _init_fields {
 sub new {
     my ($class, $propertiesHashMap, $pageContext) = @_;
     my $self = $class->SUPER::new($propertiesHashMap, $pageContext);
-    $self->_init_fields();
+    _init_fields($self);
         # super(...) made $self above
         $self->{request} = $pageContext->getRequest();
         $self->{xslFile} = $propertiesHashMap->get('org::allbinary::logic::visual::transform::info::TransformInfoData'->getInstance()->{TEMPLATEFILENAME});
@@ -118,35 +118,36 @@ sub makePublic {
         }
 }
 
-use java::util::HashMap;
-# use javax::servlet::http::HttpServletRequest;
-# use javax::servlet::jsp::PageContext;
-use org::allbinary::business::context::AbContext;
-use org::allbinary::business::context::modules::storefront::StoreFrontData;
-use org::allbinary::business::context::modules::storefront::StoreFrontFactory;
-use org::allbinary::business::context::modules::storefront::StoreFrontInterface;
-use org::allbinary::globals::URLGLOBALS;
-use org::allbinary::logic::communication::http::AcceptableResponseGenerator;
-use org::allbinary::logic::communication::log::LogUtil;
-use org::allbinary::logic::communication::smtp::event::UserEmailEventNameData;
-use org::allbinary::logic::communication::smtp::event::handler::UserEmailEventHandler;
-use org::allbinary::logic::communication::smtp::event::handler::factory::AdminUserEmailEventHandlerSingletons;
-use org::allbinary::logic::communication::smtp::event::handler::factory::StoreAdminUserEmailEventHandlerSingletons;
-use org::allbinary::logic::communication::smtp::info::AdminEmailInfo;
-use org::allbinary::logic::communication::smtp::info::BasicEmailInfo;
-use org::allbinary::logic::communication::smtp::info::EmailInfo;
-use org::allbinary::logic::communication::smtp::info::StoreEmailInfo;
-use org::allbinary::logic::control::search::SearchParams;
-use org::allbinary::logic::control::search::SearchRequest;
-use org::allbinary::logic::io::file::FileUtil;
-use org::allbinary::logic::io::path::AbPath;
-use org::allbinary::logic::io::path::AbPathData;
-use org::allbinary::logic::string::StringUtil;
-use org::allbinary::logic::system::security::licensing::AbeClientInformationInterface;
-use org::allbinary::logic::system::security::licensing::ServiceClientInformationInterfaceFactory;
-use org::allbinary::logic::visual::transform::info::TransformInfoData;
-use views::admin::inventory::listings::ProductListingFactory;
-use admin::taghelpers::TagHelperInterface;
+use java::lang::Object ();
+use java::util::HashMap ();
+# use javax::servlet::http::HttpServletRequest ();
+# use javax::servlet::jsp::PageContext ();
+use org::allbinary::business::context::AbContext ();
+use org::allbinary::business::context::modules::storefront::StoreFrontData ();
+use org::allbinary::business::context::modules::storefront::StoreFrontFactory ();
+use org::allbinary::business::context::modules::storefront::StoreFrontInterface ();
+use org::allbinary::globals::URLGLOBALS ();
+use org::allbinary::logic::communication::http::AcceptableResponseGenerator ();
+use org::allbinary::logic::communication::log::LogUtil ();
+use org::allbinary::logic::communication::smtp::event::UserEmailEventNameData ();
+use org::allbinary::logic::communication::smtp::event::handler::UserEmailEventHandler ();
+use org::allbinary::logic::communication::smtp::event::handler::factory::AdminUserEmailEventHandlerSingletons ();
+use org::allbinary::logic::communication::smtp::event::handler::factory::StoreAdminUserEmailEventHandlerSingletons ();
+use org::allbinary::logic::communication::smtp::info::AdminEmailInfo ();
+use org::allbinary::logic::communication::smtp::info::BasicEmailInfo ();
+use org::allbinary::logic::communication::smtp::info::EmailInfo ();
+use org::allbinary::logic::communication::smtp::info::StoreEmailInfo ();
+use org::allbinary::logic::control::search::SearchParams ();
+use org::allbinary::logic::control::search::SearchRequest ();
+use org::allbinary::logic::io::file::FileUtil ();
+use org::allbinary::logic::io::path::AbPath ();
+use org::allbinary::logic::io::path::AbPathData ();
+use org::allbinary::logic::string::StringUtil ();
+use org::allbinary::logic::system::security::licensing::AbeClientInformationInterface ();
+use org::allbinary::logic::system::security::licensing::ServiceClientInformationInterfaceFactory ();
+use org::allbinary::logic::visual::transform::info::TransformInfoData ();
+use views::admin::inventory::listings::ProductListingFactory ();
+use admin::taghelpers::TagHelperInterface ();
 
 1;
 

@@ -7,7 +7,7 @@ use feature 'try';
 no warnings 'experimental::try';
 use parent -norequire,'org::allbinary::image::opengles::OpenGLImageUtilBase';
 
-our $instance = 'org::platform::graphics::OpenGLImageUtil'->new();
+tie our $instance, 'java::lang::LazyStatic', sub { 'org::platform::graphics::OpenGLImageUtil'->new() };
 
 sub new {
     my ($class) = @_;
@@ -21,7 +21,9 @@ sub getInstance {
         return $org::platform::graphics::OpenGLImageUtil::instance;
 }
 
-use org::allbinary::image::opengles::OpenGLImageUtilBase;
+use java::lang::Object ();
+use java::lang::LazyStatic ();
+use org::allbinary::image::opengles::OpenGLImageUtilBase ();
 
 1;
 

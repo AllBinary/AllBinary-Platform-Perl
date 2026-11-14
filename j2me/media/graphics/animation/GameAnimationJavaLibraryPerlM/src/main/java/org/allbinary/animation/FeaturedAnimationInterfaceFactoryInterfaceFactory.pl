@@ -20,7 +20,7 @@ no warnings 'experimental::try';
 use POSIX ();
 use parent -norequire,'org::allbinary::game::resource::FeaturedResourceFactory';
 
-our $INSTANCE = 'org::allbinary::animation::FeaturedAnimationInterfaceFactoryInterfaceFactory'->new();
+tie our $INSTANCE, 'java::lang::LazyStatic', sub { 'org::allbinary::animation::FeaturedAnimationInterfaceFactoryInterfaceFactory'->new() };
 
 
 sub new {
@@ -138,18 +138,20 @@ sub getBasicAnimationInterfaceFactoryInstance {
         }
 }
 
-use org::allbinary::animation::resource::FeatureResourceAnimationInterfaceFactoryInterface;
-use org::allbinary::game::configuration::GameConfigurationCentral;
-use org::allbinary::game::resource::FeaturedResourceFactory;
-use org::allbinary::graphics::PointFactory;
-use org::allbinary::graphics::Rectangle;
-use org::allbinary::graphics::RectangleFactory;
-use org::allbinary::logic::string::StringMaker;
-use org::allbinary::logic::string::StringUtil;
-use org::allbinary::string::CommonSeps;
-use org::allbinary::util::BasicArrayList;
-use org::allbinary::util::BasicArrayListD;
-use org::allbinary::animation::NullAnimationFactory;
+use java::lang::Object ();
+use java::lang::LazyStatic ();
+use org::allbinary::animation::resource::FeatureResourceAnimationInterfaceFactoryInterface ();
+use org::allbinary::game::configuration::GameConfigurationCentral ();
+use org::allbinary::game::resource::FeaturedResourceFactory ();
+use org::allbinary::graphics::PointFactory ();
+use org::allbinary::graphics::Rectangle ();
+use org::allbinary::graphics::RectangleFactory ();
+use org::allbinary::logic::string::StringMaker ();
+use org::allbinary::logic::string::StringUtil ();
+use org::allbinary::string::CommonSeps ();
+use org::allbinary::util::BasicArrayList ();
+use org::allbinary::util::BasicArrayListD ();
+use org::allbinary::animation::NullAnimationFactory ();
 
 1;
 

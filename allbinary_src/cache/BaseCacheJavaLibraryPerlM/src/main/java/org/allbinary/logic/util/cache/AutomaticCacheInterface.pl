@@ -28,7 +28,7 @@ sub get {
     die "abstract method get";
 }
 
-use org::allbinary::logic::util::cache::CacheInterface;
+use org::allbinary::logic::util::cache::CacheInterface ();
 
 1;
 

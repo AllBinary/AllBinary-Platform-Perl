@@ -17,8 +17,9 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
-our $instance = 'org::allbinary::logic::visual::transform::template::util::TransformTemplateCustomizerUtil'->new();
+tie our $instance, 'java::lang::LazyStatic', sub { 'org::allbinary::logic::visual::transform::template::util::TransformTemplateCustomizerUtil'->new() };
 
 sub _init_fields {
     my ($self) = @_;
@@ -43,7 +44,7 @@ sub getInstance {
 sub new {
     my ($class) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
         my $commonStrings = 'org::allbinary::string::CommonStrings'->getInstance();
         my $SPACE = 'org::allbinary::string::CommonSeps'->getInstance()->{SPACE};
         $self->{CUSTOMIZER_NAME} = $SPACE . $org::allbinary::logic::visual::transform::info::CustomizerTransformInfoData::NAME;
@@ -81,17 +82,19 @@ sub getPageNameHack {
         return $rootViewName;
 }
 
-use java::util::HashMap;
-use org::allbinary::globals::GLOBALS2;
-use org::allbinary::logic::StdUtil;
-use org::allbinary::logic::communication::log::LogUtil;
-use org::allbinary::logic::string::StringUtil;
-use org::allbinary::logic::string::regex::replace::Replace;
-use org::allbinary::logic::visual::transform::info::CustomizerTransformInfoData;
-use org::allbinary::logic::visual::transform::template::customizer::bodies::BodyData;
-use org::allbinary::logic::visual::transform::template::customizer::widgets::title::TitleData;
-use org::allbinary::string::CommonSeps;
-use org::allbinary::string::CommonStrings;
+use java::lang::Object ();
+use java::lang::LazyStatic ();
+use java::util::HashMap ();
+use org::allbinary::globals::GLOBALS2 ();
+use org::allbinary::logic::StdUtil ();
+use org::allbinary::logic::communication::log::LogUtil ();
+use org::allbinary::logic::string::StringUtil ();
+use org::allbinary::logic::string::regex::replace::Replace ();
+use org::allbinary::logic::visual::transform::info::CustomizerTransformInfoData ();
+use org::allbinary::logic::visual::transform::template::customizer::bodies::BodyData ();
+use org::allbinary::logic::visual::transform::template::customizer::widgets::title::TitleData ();
+use org::allbinary::string::CommonSeps ();
+use org::allbinary::string::CommonStrings ();
 
 1;
 

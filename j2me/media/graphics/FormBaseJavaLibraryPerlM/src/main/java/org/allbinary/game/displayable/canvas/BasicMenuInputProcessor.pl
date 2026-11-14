@@ -30,7 +30,7 @@ sub _init_fields {
 sub new {
     my ($class, $gameKeyEventList, $playerInputId, $gameCanvas) = @_;
     my $self = $class->SUPER::new($gameKeyEventList, 'org::allbinary::util::BasicArrayListD'->new(), $playerInputId);
-    $self->_init_fields();
+    _init_fields($self);
         # super(...) made $self above
         $self->{canvas} = $gameCanvas;
     return $self;
@@ -66,14 +66,15 @@ sub processInputList {
         return -1;
 }
 
-# use javax::microedition::lcdui::Canvas;
-# use javax::microedition::lcdui::NullCanvas;
-use org::allbinary::game::input::PlayerGameInput;
-use org::allbinary::graphics::displayable::MyCanvas;
-use org::allbinary::input::motion::gesture::observer::BaseMotionGestureEventListener;
-use org::allbinary::input::motion::gesture::observer::MotionGestureEvent;
-use org::allbinary::util::BasicArrayList;
-use org::allbinary::util::BasicArrayListD;
+use java::lang::Object ();
+use javax::microedition::lcdui::Canvas ();
+use javax::microedition::lcdui::NullCanvas ();
+use org::allbinary::game::input::PlayerGameInput ();
+use org::allbinary::graphics::displayable::MyCanvas ();
+use org::allbinary::input::motion::gesture::observer::BaseMotionGestureEventListener ();
+use org::allbinary::input::motion::gesture::observer::MotionGestureEvent ();
+use org::allbinary::util::BasicArrayList ();
+use org::allbinary::util::BasicArrayListD ();
 
 1;
 

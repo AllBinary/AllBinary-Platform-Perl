@@ -19,7 +19,7 @@ use feature 'try';
 no warnings 'experimental::try';
 use parent -norequire,'org::allbinary::animation::transition::shake::ShakeAnimationListener';
 
-our $NO_SHAKE_ANIMATION_LISTENER = 'org::allbinary::animation::transition::shake::NoShakeAnimationListener'->new();
+tie our $NO_SHAKE_ANIMATION_LISTENER, 'java::lang::LazyStatic', sub { 'org::allbinary::animation::transition::shake::NoShakeAnimationListener'->new() };
 
 sub new {
     my ($class) = @_;
@@ -27,7 +27,9 @@ sub new {
     return $self;
 }
 
-use org::allbinary::animation::transition::shake::ShakeAnimationListener;
+use java::lang::Object ();
+use java::lang::LazyStatic ();
+use org::allbinary::animation::transition::shake::ShakeAnimationListener ();
 
 1;
 

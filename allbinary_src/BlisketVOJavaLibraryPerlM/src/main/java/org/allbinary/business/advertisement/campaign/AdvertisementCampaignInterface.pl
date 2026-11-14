@@ -50,8 +50,8 @@ sub search {
     die "abstract method search";
 }
 
-use org::allbinary::business::advertisement::AdvertisementsInterface;
-use org::allbinary::business::advertisement::search::AdvertisementSearchInterface;
+use org::allbinary::business::advertisement::AdvertisementsInterface ();
+use org::allbinary::business::advertisement::search::AdvertisementSearchInterface ();
 
 1;
 

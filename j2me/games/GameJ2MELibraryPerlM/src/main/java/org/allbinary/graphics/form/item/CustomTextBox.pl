@@ -30,7 +30,7 @@ sub _init_fields {
 sub new {
     my ($class, $cmdListener, $label, $text, $maxSize, $constraints, $font, $backgroundBasicColor, $foregroundBasicColor) = @_;
     my $self = $class->SUPER::new($cmdListener, $label, $backgroundBasicColor, $foregroundBasicColor);
-    $self->_init_fields();
+    _init_fields($self);
         # super(...) made $self above
         my $stringUtil = 'org::allbinary::logic::string::StringUtil'->getInstance();
         my $textFieldItem = 'org::allbinary::graphics::form::item::ABTextFieldItem'->new($self, 'org::allbinary::graphics::form::item::validation::TextItemVisitor'->new(), $stringUtil->{EMPTY_STRING}, $stringUtil->{EMPTY_STRING}, $maxSize, 0, $stringUtil->{EMPTY_STRING}, $font, $backgroundBasicColor, $foregroundBasicColor);
@@ -117,21 +117,22 @@ sub getTextFieldItem {
         return $self->{textFieldItem};
 }
 
-# use javax::microedition::lcdui::CommandListener;
-# use javax::microedition::lcdui::Font;
-# use javax::microedition::lcdui::Graphics;
-use org::allbinary::J2MEUtil;
-use org::allbinary::game::displayable::canvas::GameCommandCanvas;
-use org::allbinary::game::input::Input;
-use org::allbinary::game::input::InputFactory;
-use org::allbinary::game::input::PlatformKeyFactory;
-use org::allbinary::game::input::event::RawKeyEventListener;
-use org::allbinary::graphics::color::BasicColor;
-use org::allbinary::graphics::form::item::validation::TextItemVisitor;
-use org::allbinary::logic::string::StringMaker;
-use org::allbinary::logic::string::StringUtil;
-use org::allbinary::string::CommonSeps;
-use org::allbinary::graphics::form::item::ABTextFieldItem;
+use java::lang::Object ();
+use javax::microedition::lcdui::CommandListener ();
+use javax::microedition::lcdui::Font ();
+use javax::microedition::lcdui::Graphics ();
+use org::allbinary::J2MEUtil ();
+use org::allbinary::game::displayable::canvas::GameCommandCanvas ();
+use org::allbinary::game::input::Input ();
+use org::allbinary::game::input::InputFactory ();
+use org::allbinary::game::input::PlatformKeyFactory ();
+use org::allbinary::game::input::event::RawKeyEventListener ();
+use org::allbinary::graphics::color::BasicColor ();
+use org::allbinary::graphics::form::item::validation::TextItemVisitor ();
+use org::allbinary::logic::string::StringMaker ();
+use org::allbinary::logic::string::StringUtil ();
+use org::allbinary::string::CommonSeps ();
+use org::allbinary::graphics::form::item::ABTextFieldItem ();
 
 1;
 

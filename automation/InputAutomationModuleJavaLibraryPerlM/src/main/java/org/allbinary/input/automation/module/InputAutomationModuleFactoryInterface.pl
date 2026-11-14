@@ -17,6 +17,7 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
 
 sub new {
@@ -50,9 +51,10 @@ sub getInstance {
         return undef;
 }
 
-# use javax::help::HelpSet;
-# use javax::swing;
-use org::allbinary::thread::RunnableInterface;
+use java::lang::Object ();
+# use javax::help::HelpSet ();
+# use javax::swing ();
+use org::allbinary::thread::RunnableInterface ();
 
 1;
 

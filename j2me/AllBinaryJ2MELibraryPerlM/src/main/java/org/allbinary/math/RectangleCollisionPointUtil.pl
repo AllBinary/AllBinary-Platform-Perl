@@ -17,6 +17,7 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
 
 
@@ -54,9 +55,10 @@ sub allPointsInsideCell {
         return 1;
 }
 
-use org::allbinary::graphics::GPoint;
-use org::allbinary::util::BasicArrayList;
-use org::allbinary::math::RectangleCollisionUtil;
+use java::lang::Object ();
+use org::allbinary::graphics::GPoint ();
+use org::allbinary::util::BasicArrayList ();
+use org::allbinary::math::RectangleCollisionUtil ();
 
 1;
 

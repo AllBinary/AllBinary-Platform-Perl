@@ -5,6 +5,7 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
 
 sub new {
@@ -19,7 +20,8 @@ sub isCollision {
         return 0;
 }
 
-use org::allbinary::layer::AllBinaryLayer;
+use java::lang::Object ();
+use org::allbinary::layer::AllBinaryLayer ();
 
 1;
 

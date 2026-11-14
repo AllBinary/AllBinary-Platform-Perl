@@ -31,7 +31,7 @@ sub _init_fields {
 sub new {
     my ($class) = @_;
     my $self = $class->SUPER::new(undef);
-    $self->_init_fields();
+    _init_fields($self);
         # super(...) made $self above
     return $self;
 }
@@ -139,13 +139,36 @@ sub waitForIdle {
     my ($self) = @_;
 }
 
-# use java::awt;
-# use java::awt::image::BufferedImage;
-# use javax::help::HelpSet;
-use org::allbinary::input::automation::AbstractInputRobot;
-use org::allbinary::input::automation::PointFactory;
-use org::allbinary::logic::communication::log::LogUtil;
-use org::allbinary::input::automation::robot::InputRobotInterface;
+
+# Java overloaded method: Perl keeps the last definition
+sub mouseMove {
+    my ($self, $point) = @_;
+        $self->SUPER::mouseMove($point);
+}
+
+
+# throws Exception
+sub mouseMoveToTarget {
+    my ($self, $rectangle) = @_;
+        $self->SUPER::mouseMoveToTarget($rectangle);
+}
+
+
+# throws Exception
+# Java overloaded method: Perl keeps the last definition
+sub mouseMoveToTarget {
+    my ($self, $rectangle, $x, $y) = @_;
+        $self->SUPER::mouseMoveToTarget($rectangle, $x, $y);
+}
+
+use java::lang::Object ();
+# use java::awt ();
+# use java::awt::image::BufferedImage ();
+# use javax::help::HelpSet ();
+use org::allbinary::input::automation::AbstractInputRobot ();
+use org::allbinary::input::automation::PointFactory ();
+use org::allbinary::logic::communication::log::LogUtil ();
+use org::allbinary::input::automation::robot::InputRobotInterface ();
 
 1;
 

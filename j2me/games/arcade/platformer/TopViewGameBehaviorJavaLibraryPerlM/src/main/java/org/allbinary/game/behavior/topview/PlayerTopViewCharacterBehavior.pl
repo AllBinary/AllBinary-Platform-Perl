@@ -28,7 +28,7 @@ sub _init_fields {
 sub new {
     my ($class) = @_;
     my $self = $class->SUPER::new();
-    $self->_init_fields();
+    _init_fields($self);
     return $self;
 }
 
@@ -57,17 +57,18 @@ sub isTiledLayerMoveable {
         return ($terrainTiledLayer->getXP() + 'org::allbinary::graphics::displayable::DisplayInfoSingleton'->getInstance()->getLastWidth() < $terrainTiledLayer->getWidth() || $x < 0) && ($terrainTiledLayer->getXP() > 0 || $x > 0);
 }
 
-use org::allbinary::direction::Direction;
-use org::allbinary::game::layer::AllBinaryTiledLayer;
-use org::allbinary::game::tracking::TrackingEventCircularStaticPool;
-use org::allbinary::game::tracking::TrackingEventHandler;
-use org::allbinary::graphics::displayable::DisplayInfoSingleton;
-use org::allbinary::layer::AllBinaryLayer;
-use org::allbinary::logic::communication::log::LogUtil;
-use org::allbinary::media::graphics::geography::map::BasicGeographicMap;
-use org::allbinary::media::graphics::geography::map::BasicGeographicMapUtil;
-use org::allbinary::media::graphics::geography::map::GeographicMapCellPosition;
-use org::allbinary::game::behavior::topview::TopViewCharacterBehavior;
+use java::lang::Object ();
+use org::allbinary::direction::Direction ();
+use org::allbinary::game::layer::AllBinaryTiledLayer ();
+use org::allbinary::game::tracking::TrackingEventCircularStaticPool ();
+use org::allbinary::game::tracking::TrackingEventHandler ();
+use org::allbinary::graphics::displayable::DisplayInfoSingleton ();
+use org::allbinary::layer::AllBinaryLayer ();
+use org::allbinary::logic::communication::log::LogUtil ();
+use org::allbinary::media::graphics::geography::map::BasicGeographicMap ();
+use org::allbinary::media::graphics::geography::map::BasicGeographicMapUtil ();
+use org::allbinary::media::graphics::geography::map::GeographicMapCellPosition ();
+use org::allbinary::game::behavior::topview::TopViewCharacterBehavior ();
 
 1;
 

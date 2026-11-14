@@ -17,7 +17,7 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
-use parent -norequire,'javax::swing::JPanel','org::allbinary::media::image::ImageProcessedVisitor';
+use parent -norequire,'java::lang::Object','org::allbinary::media::image::ImageProcessedVisitor';
 
 
 sub _init_fields {
@@ -53,7 +53,7 @@ sub _init_fields {
 sub new {
     my ($class, $imageProcessorInput) = @_;
     my $self = $class->SUPER::new();
-    $self->_init_fields();
+    _init_fields($self);
         # super(...) made $self above
         $self->initComponents();
         $self->{imageProcessorInput} = $imageProcessorInput;
@@ -64,7 +64,7 @@ sub new {
 sub process {
     my ($self) = @_;
         do {
-            package java::lang::Thread::AnonymousN66422 { our @ISA = ('java::lang::Thread');
+            package java::lang::Thread::AnonymousN66422 { our @ISA = ('java::lang::Thread', 'java::lang::Object');
             
 
             sub run {
@@ -96,7 +96,7 @@ sub initComponents {
         $self->{widthReductionTextField} = 'javax::swing::JTextField'->new();
         $self->{jLabel5} = 'javax::swing::JLabel'->new();
         $self->{jPanel1} = do {
-            package javax::swing::JPanel::AnonymousN67446 { our @ISA = ('javax::swing::JPanel');
+            package javax::swing::JPanel::AnonymousN67446 { our @ISA = ('javax::swing::JPanel', 'java::lang::Object');
             
 
             sub paint {
@@ -137,7 +137,7 @@ sub initComponents {
         $self->{increaseHeightTextField} = 'javax::swing::JTextField'->new();
         $self->{writeOverOriginalJCheckBox}->setText("Write Over Original");
         $self->{writeOverOriginalJCheckBox}->addActionListener(do {
-            package java::awt::event::ActionListener::AnonymousN69291 { our @ISA = ('java::awt::event::ActionListener');
+            package java::awt::event::ActionListener::AnonymousN69291 { our @ISA = ('java::awt::event::ActionListener', 'java::lang::Object');
             
 
             sub actionPerformed {
@@ -149,7 +149,7 @@ sub initComponents {
         });
         $self->{widthReductionTextField}->setText('org::allbinary::string::CommonPhoneStrings'->getInstance()->{ZERO});
         $self->{widthReductionTextField}->addActionListener(do {
-            package java::awt::event::ActionListener::AnonymousN69498 { our @ISA = ('java::awt::event::ActionListener');
+            package java::awt::event::ActionListener::AnonymousN69498 { our @ISA = ('java::awt::event::ActionListener', 'java::lang::Object');
             
 
             sub actionPerformed {
@@ -169,7 +169,7 @@ sub initComponents {
         $self->{heightReductionTextField}->setText('org::allbinary::string::CommonPhoneStrings'->getInstance()->{ZERO});
         $self->{generateJButton}->setText("Generate");
         $self->{generateJButton}->addActionListener(do {
-            package java::awt::event::ActionListener::AnonymousN70270 { our @ISA = ('java::awt::event::ActionListener');
+            package java::awt::event::ActionListener::AnonymousN70270 { our @ISA = ('java::awt::event::ActionListener', 'java::lang::Object');
             
 
             sub actionPerformed {
@@ -182,7 +182,7 @@ sub initComponents {
         $self->{jLabel1}->setText("Row Total:");
         $self->{totalFramesJComboBox}->setSelectedIndex(1);
         $self->{totalFramesJComboBox}->addActionListener(do {
-            package java::awt::event::ActionListener::AnonymousN70487 { our @ISA = ('java::awt::event::ActionListener');
+            package java::awt::event::ActionListener::AnonymousN70487 { our @ISA = ('java::awt::event::ActionListener', 'java::lang::Object');
             
 
             sub actionPerformed {
@@ -195,7 +195,7 @@ sub initComponents {
         $self->{jLabel2}->setText("Column Total :");
         $self->{totalAnimationsJComboBox}->setSelectedIndex(3);
         $self->{totalAnimationsJComboBox}->addActionListener(do {
-            package java::awt::event::ActionListener::AnonymousN70704 { our @ISA = ('java::awt::event::ActionListener');
+            package java::awt::event::ActionListener::AnonymousN70704 { our @ISA = ('java::awt::event::ActionListener', 'java::lang::Object');
             
 
             sub actionPerformed {
@@ -207,7 +207,7 @@ sub initComponents {
         });
         $self->{jLabel3}->setText("Type:");
         $self->{spriteTypeJComboBox}->addActionListener(do {
-            package java::awt::event::ActionListener::AnonymousN70891 { our @ISA = ('java::awt::event::ActionListener');
+            package java::awt::event::ActionListener::AnonymousN70891 { our @ISA = ('java::awt::event::ActionListener', 'java::lang::Object');
             
 
             sub actionPerformed {
@@ -224,7 +224,7 @@ sub initComponents {
         $self->{jLabel7}->setText("More Width:");
         $self->{increaseWidthTextField}->setText('org::allbinary::string::CommonPhoneStrings'->getInstance()->{ZERO});
         $self->{increaseWidthTextField}->addActionListener(do {
-            package java::awt::event::ActionListener::AnonymousN72676 { our @ISA = ('java::awt::event::ActionListener');
+            package java::awt::event::ActionListener::AnonymousN72676 { our @ISA = ('java::awt::event::ActionListener', 'java::lang::Object');
             
 
             sub actionPerformed {
@@ -311,23 +311,24 @@ sub visit {
         $self->{logUtil}->putF('org::allbinary::logic::string::StringMaker'->new()->append("File: ")->append('org::allbinary::logic::string::StringUtil'->getInstance()->toString($file))->append(" Wrote: ")->appendboolean($isWritten)->toString(), $self, $self->{commonStrings}->{RUN});
 }
 
-# use java::awt;
-# use java::awt::image::BufferedImage;
-# use java::awt::image::RenderedImage;
-use java::io::File;
-# use java::io::IOException;
-# use javax::imageio::ImageIO;
-use org::allbinary::logic::communication::log::LogUtil;
-use org::allbinary::logic::string::StringMaker;
-use org::allbinary::logic::string::StringUtil;
-use org::allbinary::media::image::ImageProcessedVisitor;
-use org::allbinary::media::image::ImageProcessorInput;
-use org::allbinary::media::image::ImageStrings;
-use org::allbinary::media::image::SpriteSplitterUtil;
-use org::allbinary::string::CommonPhoneStrings;
-use org::allbinary::string::CommonSeps;
-use org::allbinary::string::CommonStrings;
-use java::lang::Thread;
+use java::lang::Object ();
+# use java::awt ();
+# use java::awt::image::BufferedImage ();
+# use java::awt::image::RenderedImage ();
+use java::io::File ();
+# use java::io::IOException ();
+# use javax::imageio::ImageIO ();
+use org::allbinary::logic::communication::log::LogUtil ();
+use org::allbinary::logic::string::StringMaker ();
+use org::allbinary::logic::string::StringUtil ();
+use org::allbinary::media::image::ImageProcessedVisitor ();
+use org::allbinary::media::image::ImageProcessorInput ();
+use org::allbinary::media::image::ImageStrings ();
+use org::allbinary::media::image::SpriteSplitterUtil ();
+use org::allbinary::string::CommonPhoneStrings ();
+use org::allbinary::string::CommonSeps ();
+use org::allbinary::string::CommonStrings ();
+use java::lang::Thread ();
 
 1;
 

@@ -17,8 +17,9 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
-our $hashMap = 'org::allbinary::logic::StdUtil'->getInstance()->createHashMap();
+tie our $hashMap, 'java::lang::LazyStatic', sub { 'org::allbinary::logic::StdUtil'->getInstance()->createHashMap() };
 
 
 sub new {
@@ -43,10 +44,12 @@ sub getInstance {
         return $bufferedImageInfo;
 }
 
-use java::util::HashMap;
-use org::allbinary::logic::StdUtil;
-use org::allbinary::logic::string::StringMaker;
-use org::allbinary::media::image::cache::BufferedImageInfo;
+use java::lang::Object ();
+use java::lang::LazyStatic ();
+use java::util::HashMap ();
+use org::allbinary::logic::StdUtil ();
+use org::allbinary::logic::string::StringMaker ();
+use org::allbinary::media::image::cache::BufferedImageInfo ();
 
 1;
 

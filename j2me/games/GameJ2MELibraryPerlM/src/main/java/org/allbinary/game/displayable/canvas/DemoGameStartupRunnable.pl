@@ -31,7 +31,7 @@ sub _init_fields {
 sub new {
     my ($class, $demoCanvas) = @_;
     my $self = $class->SUPER::new();
-    $self->_init_fields();
+    _init_fields($self);
         $self->{demoCanvas} = $demoCanvas;
     return $self;
 }
@@ -58,9 +58,10 @@ sub getType {
         return $org::allbinary::game::displayable::canvas::DemoGameStartupRunnable::TYPE;
 }
 
-use org::allbinary::logic::communication::log::LogUtil;
-use org::allbinary::string::CommonStrings;
-use org::allbinary::thread::ABRunnable;
+use java::lang::Object ();
+use org::allbinary::logic::communication::log::LogUtil ();
+use org::allbinary::string::CommonStrings ();
+use org::allbinary::thread::ABRunnable ();
 
 1;
 

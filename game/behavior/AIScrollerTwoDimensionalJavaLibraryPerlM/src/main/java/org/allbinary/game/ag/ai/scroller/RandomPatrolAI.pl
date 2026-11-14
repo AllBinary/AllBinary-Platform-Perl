@@ -29,7 +29,7 @@ sub _init_fields {
 sub new {
     my ($class, $hashtable, $ownerLayerInterface, $gameInput) = @_;
     my $self = $class->SUPER::new($hashtable, $ownerLayerInterface, $gameInput);
-    $self->_init_fields();
+    _init_fields($self);
         # super(...) made $self above
         $self->updateRandomDistance();
     return $self;
@@ -61,13 +61,14 @@ sub nextDirection {
         $self->{changedDirection} = 1;
 }
 
-# use javax::microedition::lcdui::Canvas;
-use org::allbinary::game::input::GameInput;
-use org::allbinary::game::rand::MyRandomFactory;
-use org::allbinary::layer::AllBinaryLayer;
-use org::allbinary::layer::AllBinaryLayerManager;
-use org::allbinary::util::ABHashtable;
-use org::allbinary::game::ag::ai::scroller::BasePatrolAI;
+use java::lang::Object ();
+use javax::microedition::lcdui::Canvas ();
+use org::allbinary::game::input::GameInput ();
+use org::allbinary::game::rand::MyRandomFactory ();
+use org::allbinary::layer::AllBinaryLayer ();
+use org::allbinary::layer::AllBinaryLayerManager ();
+use org::allbinary::util::ABHashtable ();
+use org::allbinary::game::ag::ai::scroller::BasePatrolAI ();
 
 1;
 

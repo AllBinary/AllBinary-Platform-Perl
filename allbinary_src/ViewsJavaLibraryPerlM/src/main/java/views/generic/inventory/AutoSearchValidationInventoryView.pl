@@ -52,10 +52,11 @@ sub validationInfo {
         return undef;
 }
 
-use org::allbinary::logic::control::search::SearchRequest;
-use org::w3c::dom::Document;
-use org::w3c::dom::Node;
-use views::generic::inventory::InventorySearch;
+use java::lang::Object ();
+use org::allbinary::logic::control::search::SearchRequest ();
+use org::w3c::dom::Document ();
+use org::w3c::dom::Node ();
+use views::generic::inventory::InventorySearch ();
 
 1;
 

@@ -17,8 +17,9 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
-our $allBinaryGyroSensor = $org::allbinary::input::gyro::AllBinaryOrientationSensor::NULL_ALLBINARY_ORIENTATION_SENSOR;
+tie our $allBinaryGyroSensor, 'java::lang::LazyStatic', sub { $org::allbinary::input::gyro::AllBinaryOrientationSensor::NULL_ALLBINARY_ORIENTATION_SENSOR };
 
 sub new {
     my ($class) = @_;
@@ -39,8 +40,10 @@ sub getInstance {
         return $org::allbinary::input::gyro::GyroSensorFactory::allBinaryGyroSensor;
 }
 
-use org::allbinary::input::gyro::AllBinaryOrientationSensor;
-use org::allbinary::input::gyro::NoGyroSensor;
+use java::lang::Object ();
+use java::lang::LazyStatic ();
+use org::allbinary::input::gyro::AllBinaryOrientationSensor ();
+use org::allbinary::input::gyro::NoGyroSensor ();
 
 1;
 

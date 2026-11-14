@@ -18,7 +18,7 @@ use warnings;
 use feature 'try';
 no warnings 'experimental::try';
 use Time::HiRes ();
-use parent -norequire,'org::allbinary::thread::RunnableInterface';
+use parent -norequire,'java::lang::Object','org::allbinary::thread::RunnableInterface';
 
 
 sub _init_fields {
@@ -38,7 +38,7 @@ sub _init_fields {
 sub new {
     my ($class, $inputAutomationActionInterface) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
     return $self;
 }
 
@@ -173,15 +173,16 @@ sub setMotionRectanglesWorker {
         $self->{motionRectanglesWorker} = $motionRectanglesWorker;
 }
 
-use org::allbinary::input::media::image::capture::CaptureWorkerInterface;
-use org::allbinary::logic::communication::log::LogUtil;
-use org::allbinary::media::image::comparison::ImageComparisonWorker;
-use org::allbinary::media::image::comparison::motion::MotionRectanglesWorker;
-use org::allbinary::string::CommonLabels;
-use org::allbinary::string::CommonStrings;
-use org::allbinary::thread::RunnableInterface;
-use org::allbinary::time::TimeDelayHelper;
-use java::lang::Thread;
+use java::lang::Object ();
+use org::allbinary::input::media::image::capture::CaptureWorkerInterface ();
+use org::allbinary::logic::communication::log::LogUtil ();
+use org::allbinary::media::image::comparison::ImageComparisonWorker ();
+use org::allbinary::media::image::comparison::motion::MotionRectanglesWorker ();
+use org::allbinary::string::CommonLabels ();
+use org::allbinary::string::CommonStrings ();
+use org::allbinary::thread::RunnableInterface ();
+use org::allbinary::time::TimeDelayHelper ();
+use java::lang::Thread ();
 
 1;
 

@@ -17,8 +17,9 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
-our $instance = 'org::allbinary::game::layer::building::BuildingPropertiesFactory'->new();
+tie our $instance, 'java::lang::LazyStatic', sub { 'org::allbinary::game::layer::building::BuildingPropertiesFactory'->new() };
 
 sub _init_fields {
     my ($self) = @_;
@@ -28,7 +29,7 @@ sub _init_fields {
 sub new {
     my ($class) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
     return $self;
 }
 
@@ -80,19 +81,21 @@ sub getTrackingEvent {
         return 'org::allbinary::game::tracking::TrackingEvent'->new($buildingLayer);
 }
 
-use org::allbinary::game::combat::damage::DamageFloaters;
-use org::allbinary::game::combat::damage::PtsDamageFloaters;
-use org::allbinary::game::configuration::feature::Features;
-use org::allbinary::game::configuration::feature::GameFeatureFactory;
-use org::allbinary::game::graphics::hud::BasicHudFactory;
-use org::allbinary::game::health::HealthBar;
-use org::allbinary::game::health::HealthBarTwodAnimation;
-use org::allbinary::game::tracking::TrackingEvent;
-use org::allbinary::graphics::paint::NullPaintable;
-use org::allbinary::graphics::paint::Paintable;
-use org::allbinary::layer::AllBinaryLayer;
-use org::allbinary::logic::StdUtil;
-use org::allbinary::util::ABHashtable;
+use java::lang::Object ();
+use java::lang::LazyStatic ();
+use org::allbinary::game::combat::damage::DamageFloaters ();
+use org::allbinary::game::combat::damage::PtsDamageFloaters ();
+use org::allbinary::game::configuration::feature::Features ();
+use org::allbinary::game::configuration::feature::GameFeatureFactory ();
+use org::allbinary::game::graphics::hud::BasicHudFactory ();
+use org::allbinary::game::health::HealthBar ();
+use org::allbinary::game::health::HealthBarTwodAnimation ();
+use org::allbinary::game::tracking::TrackingEvent ();
+use org::allbinary::graphics::paint::NullPaintable ();
+use org::allbinary::graphics::paint::Paintable ();
+use org::allbinary::layer::AllBinaryLayer ();
+use org::allbinary::logic::StdUtil ();
+use org::allbinary::util::ABHashtable ();
 
 1;
 

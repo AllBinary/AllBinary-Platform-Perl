@@ -17,10 +17,11 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
-our $hashtable = 'org::allbinary::logic::StdUtil'->getInstance()->createHashtable();
-our $SIMULATOR_IP = 'org::allbinary::game::configuration::GameConfigurationTextInput'->new("IP: ", "192.168.1.3");
-our $SIMULATOR_PORT = 'org::allbinary::game::configuration::GameConfigurationTextInput'->new("Port: ", "8010");
+tie our $hashtable, 'java::lang::LazyStatic', sub { 'org::allbinary::logic::StdUtil'->getInstance()->createHashtable() };
+tie our $SIMULATOR_IP, 'java::lang::LazyStatic', sub { 'org::allbinary::game::configuration::GameConfigurationTextInput'->new("IP: ", "192.168.1.3") };
+tie our $SIMULATOR_PORT, 'java::lang::LazyStatic', sub { 'org::allbinary::game::configuration::GameConfigurationTextInput'->new("Port: ", "8010") };
 
 sub _init_fields {
     my ($self) = @_;
@@ -32,7 +33,7 @@ sub _init_fields {
 sub new {
     my ($class, $label, $text) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
         $self->setText($text);
         $self->setLabel($label);
         $org::allbinary::game::configuration::GameConfigurationTextInput::hashtable->put($self->getLabel(), $self);
@@ -77,10 +78,12 @@ sub getHashtable {
         return $org::allbinary::game::configuration::GameConfigurationTextInput::hashtable;
 }
 
-# use javax::microedition::lcdui::TextField;
-use org::allbinary::logic::StdUtil;
-use org::allbinary::logic::string::StringUtil;
-use org::allbinary::util::ABHashtable;
+use java::lang::Object ();
+use java::lang::LazyStatic ();
+use javax::microedition::lcdui::TextField ();
+use org::allbinary::logic::StdUtil ();
+use org::allbinary::logic::string::StringUtil ();
+use org::allbinary::util::ABHashtable ();
 
 1;
 

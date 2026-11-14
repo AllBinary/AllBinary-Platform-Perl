@@ -19,7 +19,7 @@ use feature 'try';
 no warnings 'experimental::try';
 use parent -norequire,'org::allbinary::input::automation::module::generic::configuration::profile::GenericProfileDataWorkerType';
 
-our $SAVED_CAPTURE = 'org::allbinary::input::automation::module::generic::configuration::profile::SavedCaptureGenericProfileDataWorkerType'->new("Saved " . $org::allbinary::input::media::image::InputImageType::CAPTURE->getName(), "c:\\share\\captures\\2\\", 100);
+tie our $SAVED_CAPTURE, 'java::lang::LazyStatic', sub { 'org::allbinary::input::automation::module::generic::configuration::profile::SavedCaptureGenericProfileDataWorkerType'->new("Saved " . $org::allbinary::input::media::image::InputImageType::CAPTURE->getName(), "c:\\share\\captures\\2\\", 100) };
 
 sub _init_fields {
     my ($self) = @_;
@@ -31,7 +31,7 @@ sub _init_fields {
 sub new {
     my ($class, $name, $path, $lastFrame) = @_;
     my $self = $class->SUPER::new($name);
-    $self->_init_fields();
+    _init_fields($self);
         # super(...) made $self above
         $self->setPath($path);
         $self->setLastFrame($lastFrame);
@@ -62,8 +62,10 @@ sub setLastFrame {
         $self->{lastFrame} = $lastFrame;
 }
 
-use org::allbinary::input::media::image::InputImageType;
-use org::allbinary::input::automation::module::generic::configuration::profile::GenericProfileDataWorkerType;
+use java::lang::Object ();
+use java::lang::LazyStatic ();
+use org::allbinary::input::media::image::InputImageType ();
+use org::allbinary::input::automation::module::generic::configuration::profile::GenericProfileDataWorkerType ();
 
 1;
 

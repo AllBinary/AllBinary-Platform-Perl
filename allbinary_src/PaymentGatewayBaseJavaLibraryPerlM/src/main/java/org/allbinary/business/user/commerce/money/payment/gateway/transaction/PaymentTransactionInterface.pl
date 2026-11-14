@@ -27,9 +27,9 @@ sub getOrderHistory {
     die "abstract method getOrderHistory";
 }
 
-use org::allbinary::business::user::commerce::inventory::order::OrderHistory;
-use org::allbinary::data::tables::TableMappingInterface;
-use org::allbinary::data::tree::dom::DomNodeInterface;
+use org::allbinary::business::user::commerce::inventory::order::OrderHistory ();
+use org::allbinary::data::tables::TableMappingInterface ();
+use org::allbinary::data::tree::dom::DomNodeInterface ();
 
 1;
 

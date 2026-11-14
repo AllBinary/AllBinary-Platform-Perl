@@ -32,7 +32,7 @@ sub _init_fields {
 sub new {
     my ($class, $captionAnimation, $captionDx, $captionDy, $dx, $dy) = @_;
     my $self = $class->SUPER::new();
-    $self->_init_fields();
+    _init_fields($self);
         $self->{captionAnimation} = 'org::allbinary::animation::caption::CaptionAnimation'->new($captionAnimation, $self->{textAnimation}, $captionDx, $captionDy, $dx, $dy);
     return $self;
 }
@@ -70,17 +70,18 @@ sub paintXY {
         $self->{animation}->paintXY($graphics, $x, $y);
 }
 
-# use javax::microedition::lcdui::Graphics;
-use org::allbinary::animation::Animation;
-use org::allbinary::animation::AnimationBehavior;
-use org::allbinary::animation::NullAnimationFactory;
-use org::allbinary::animation::text::TextAnimation;
-use org::allbinary::graphics::color::BasicColor;
-use org::allbinary::logic::string::StringUtil;
-use org::allbinary::time::GameTickTimeDelayHelperFactory;
-use org::allbinary::time::TimeDelayHelper;
-use org::allbinary::animation::caption::CaptionAnimationHelperBase;
-use org::allbinary::animation::caption::CaptionAnimation;
+use java::lang::Object ();
+use javax::microedition::lcdui::Graphics ();
+use org::allbinary::animation::Animation ();
+use org::allbinary::animation::AnimationBehavior ();
+use org::allbinary::animation::NullAnimationFactory ();
+use org::allbinary::animation::text::TextAnimation ();
+use org::allbinary::graphics::color::BasicColor ();
+use org::allbinary::logic::string::StringUtil ();
+use org::allbinary::time::GameTickTimeDelayHelperFactory ();
+use org::allbinary::time::TimeDelayHelper ();
+use org::allbinary::animation::caption::CaptionAnimationHelperBase ();
+use org::allbinary::animation::caption::CaptionAnimation ();
 
 1;
 

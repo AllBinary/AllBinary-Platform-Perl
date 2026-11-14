@@ -18,8 +18,9 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
-our $LOG = 'org::allbinary::logic::communication::log::Log'->new('org::allbinary::logic::string::StringUtil'->getInstance()->{EMPTY_STRING}, 'org::allbinary::logic::NullUtil'->getInstance()->{NULL_OBJECT}, 'org::allbinary::logic::string::StringUtil'->getInstance()->{EMPTY_STRING}, 'org::allbinary::logic::NullUtil'->getInstance()->{NULL_OBJECT});
+tie our $LOG, 'java::lang::LazyStatic', sub { 'org::allbinary::logic::communication::log::Log'->new('org::allbinary::logic::string::StringUtil'->getInstance()->{EMPTY_STRING}, 'org::allbinary::logic::NullUtil'->getInstance()->{NULL_OBJECT}, 'org::allbinary::logic::string::StringUtil'->getInstance()->{EMPTY_STRING}, 'org::allbinary::logic::NullUtil'->getInstance()->{NULL_OBJECT}) };
 
 sub new {
     my ($class) = @_;
@@ -39,9 +40,11 @@ sub getInstanceF {
         return $org::allbinary::logic::communication::log::LogFactory::LOG;
 }
 
-use org::allbinary::logic::NullUtil;
-use org::allbinary::logic::string::StringUtil;
-use org::allbinary::logic::communication::log::Log;
+use java::lang::Object ();
+use java::lang::LazyStatic ();
+use org::allbinary::logic::NullUtil ();
+use org::allbinary::logic::string::StringUtil ();
+use org::allbinary::logic::communication::log::Log ();
 
 1;
 

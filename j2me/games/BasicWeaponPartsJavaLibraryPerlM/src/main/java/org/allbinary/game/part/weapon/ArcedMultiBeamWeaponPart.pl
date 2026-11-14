@@ -32,7 +32,7 @@ sub _init_fields {
 sub new {
     my ($class, $animationInterface, $sourceLayerInterface, $weaponLayerCircularStaticPool, $total, $weaponProperties, $scoreableInterface, $relativeRelationship) = @_;
     my $self = $class->SUPER::new($animationInterface, $sourceLayerInterface, $weaponProperties, $scoreableInterface, $relativeRelationship);
-    $self->_init_fields();
+    _init_fields($self);
         # super(...) made $self above
         $self->{total} = $total;
         $self->{weaponLayerCircularStaticPool} = $weaponLayerCircularStaticPool;
@@ -54,16 +54,17 @@ sub processScore {
         }
 }
 
-use org::allbinary::animation::Animation;
-use org::allbinary::game::combat::weapon::WeaponProperties;
-use org::allbinary::game::layer::weapon::WeaponLayer;
-use org::allbinary::game::layer::weapon::WeaponLayerCircularPool;
-use org::allbinary::game::score::ScoreableInterface;
-use org::allbinary::graphics::RelativeRelationship;
-use org::allbinary::layer::AllBinaryLayer;
-use org::allbinary::layer::AllBinaryLayerManager;
-use org::allbinary::math::AngleFactory;
-use org::allbinary::game::part::weapon::BasicWeaponPart;
+use java::lang::Object ();
+use org::allbinary::animation::Animation ();
+use org::allbinary::game::combat::weapon::WeaponProperties ();
+use org::allbinary::game::layer::weapon::WeaponLayer ();
+use org::allbinary::game::layer::weapon::WeaponLayerCircularPool ();
+use org::allbinary::game::score::ScoreableInterface ();
+use org::allbinary::graphics::RelativeRelationship ();
+use org::allbinary::layer::AllBinaryLayer ();
+use org::allbinary::layer::AllBinaryLayerManager ();
+use org::allbinary::math::AngleFactory ();
+use org::allbinary::game::part::weapon::BasicWeaponPart ();
 
 1;
 

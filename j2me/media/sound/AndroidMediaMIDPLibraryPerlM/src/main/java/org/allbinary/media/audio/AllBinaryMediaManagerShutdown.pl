@@ -17,8 +17,9 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
-our $instance = 'org::allbinary::media::audio::AllBinaryMediaManagerShutdown'->new();
+tie our $instance, 'java::lang::LazyStatic', sub { 'org::allbinary::media::audio::AllBinaryMediaManagerShutdown'->new() };
 
 sub new {
     my ($class) = @_;
@@ -34,7 +35,9 @@ sub shutdown {
         $logUtil->putF("No Media Shutdown for Android Process", $org::allbinary::media::audio::AllBinaryMediaManagerShutdown::instance, "shutdown");
 }
 
-use org::allbinary::logic::communication::log::LogUtil;
+use java::lang::Object ();
+use java::lang::LazyStatic ();
+use org::allbinary::logic::communication::log::LogUtil ();
 
 1;
 

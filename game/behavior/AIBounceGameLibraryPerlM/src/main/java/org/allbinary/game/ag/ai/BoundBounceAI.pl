@@ -31,7 +31,7 @@ sub _init_fields {
 sub new {
     my ($class, $ownerLayerInterface, $gameInput, $layerBounds, $boundsVisitorInterface) = @_;
     my $self = $class->SUPER::new($ownerLayerInterface, $gameInput);
-    $self->_init_fields();
+    _init_fields($self);
         # super(...) made $self above
         $self->{layerBounds} = $layerBounds;
         $self->{boundsVisitorInterface} = $boundsVisitorInterface;
@@ -52,14 +52,15 @@ sub processAI {
         $self->{layerBounds}->visit($self->{boundsVisitorInterface});
 }
 
-# use javax::microedition::lcdui::Graphics;
-use org::allbinary::bounds::BoundsVisitorInterface;
-use org::allbinary::bounds::LayerBounds;
-use org::allbinary::game::ai::BasicAI;
-use org::allbinary::game::input::GameInput;
-use org::allbinary::graphics::Rectangle;
-use org::allbinary::layer::AllBinaryLayer;
-use org::allbinary::layer::AllBinaryLayerManager;
+use java::lang::Object ();
+use javax::microedition::lcdui::Graphics ();
+use org::allbinary::bounds::BoundsVisitorInterface ();
+use org::allbinary::bounds::LayerBounds ();
+use org::allbinary::game::ai::BasicAI ();
+use org::allbinary::game::input::GameInput ();
+use org::allbinary::graphics::Rectangle ();
+use org::allbinary::layer::AllBinaryLayer ();
+use org::allbinary::layer::AllBinaryLayerManager ();
 
 1;
 

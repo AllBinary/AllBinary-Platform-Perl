@@ -17,8 +17,9 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
-our $instance = 'org::allbinary::logic::communication::http::file::upload::AbFileUploadFactory'->new();
+tie our $instance, 'java::lang::LazyStatic', sub { 'org::allbinary::logic::communication::http::file::upload::AbFileUploadFactory'->new() };
 
 sub _init_fields {
     my ($self) = @_;
@@ -35,7 +36,7 @@ sub getInstance {
 sub new {
     my ($class) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
     return $self;
 }
 
@@ -79,18 +80,20 @@ sub getFileItemList {
         }
 }
 
-use java::util::ArrayList;
-# use java::util::List;
-# use javax::servlet::http::HttpServletRequest;
-use org::allbinary::logic::communication::http::AbFileItemFactory;
-use org::allbinary::logic::communication::log::LogUtil;
-use org::allbinary::string::CommonStrings;
-use org::apache::commons::fileupload::FileItemIterator;
-use org::apache::commons::fileupload::FileItemStream;
-use org::apache::commons::fileupload::FileItemUtil;
-use org::allbinary::logic::communication::http::file::upload::AbFileUpload;
-use org::allbinary::logic::communication::http::file::upload::HttpFileUploadUtil;
-use org::allbinary::logic::communication::http::file::upload::AbFileItem;
+use java::lang::Object ();
+use java::lang::LazyStatic ();
+use java::util::ArrayList ();
+# use java::util::List ();
+# use javax::servlet::http::HttpServletRequest ();
+use org::allbinary::logic::communication::http::AbFileItemFactory ();
+use org::allbinary::logic::communication::log::LogUtil ();
+use org::allbinary::string::CommonStrings ();
+use org::apache::commons::fileupload::FileItemIterator ();
+use org::apache::commons::fileupload::FileItemStream ();
+use org::apache::commons::fileupload::FileItemUtil ();
+use org::allbinary::logic::communication::http::file::upload::AbFileUpload ();
+use org::allbinary::logic::communication::http::file::upload::HttpFileUploadUtil ();
+use org::allbinary::logic::communication::http::file::upload::AbFileItem ();
 
 1;
 

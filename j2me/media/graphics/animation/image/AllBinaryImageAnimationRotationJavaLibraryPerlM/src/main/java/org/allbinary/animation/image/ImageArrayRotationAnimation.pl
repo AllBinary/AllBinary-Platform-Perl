@@ -37,7 +37,7 @@ sub createAnimation {
 sub new {
     my ($class, $imageArray, $angleInfo, $totalAngle, $animationBehavior) = @_;
     my $self = $class->SUPER::new($imageArray, $angleInfo, $animationBehavior);
-    $self->_init_fields();
+    _init_fields($self);
         # super(...) made $self above
         $self->init($imageArray, $angleInfo, $totalAngle);
     return $self;
@@ -61,10 +61,11 @@ sub setImageArray {
         $self->{angleInfo}->adjustAngle(0);
 }
 
-# use javax::microedition::lcdui::Image;
-use org::allbinary::animation::AnimationBehavior;
-use org::allbinary::math::AngleInfo;
-use org::allbinary::animation::image::ImageArrayBaseRotationAnimation;
+use java::lang::Object ();
+use javax::microedition::lcdui::Image ();
+use org::allbinary::animation::AnimationBehavior ();
+use org::allbinary::math::AngleInfo ();
+use org::allbinary::animation::image::ImageArrayBaseRotationAnimation ();
 
 1;
 

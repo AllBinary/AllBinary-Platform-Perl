@@ -44,8 +44,8 @@ sub difference {
     die "abstract method difference";
 }
 
-use org::allbinary::logic::system::hardware::components::interfaces::HardwareComponentInterface;
-use org::allbinary::util::ABHashtable;
+use org::allbinary::logic::system::hardware::components::interfaces::HardwareComponentInterface ();
+use org::allbinary::util::ABHashtable ();
 
 1;
 

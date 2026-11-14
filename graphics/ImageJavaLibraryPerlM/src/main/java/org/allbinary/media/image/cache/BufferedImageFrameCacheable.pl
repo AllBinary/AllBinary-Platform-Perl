@@ -17,7 +17,7 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
-use parent -norequire,'org::allbinary::logic::util::cache::CacheableInterface';
+use parent -norequire,'java::lang::Object','org::allbinary::logic::util::cache::CacheableInterface';
 
 
 sub _init_fields {
@@ -30,7 +30,7 @@ sub _init_fields {
 sub new {
     my ($class, $bufferedImage, $frame) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
         $self->{frame} = $frame;
         $self->setBufferedImage($bufferedImage);
     return $self;
@@ -76,9 +76,10 @@ sub toString {
         return $stringBuffer->toString();
 }
 
-# use java::awt::image::BufferedImage;
-use org::allbinary::logic::string::StringMaker;
-use org::allbinary::logic::util::cache::CacheableInterface;
+use java::lang::Object ();
+# use java::awt::image::BufferedImage ();
+use org::allbinary::logic::string::StringMaker ();
+use org::allbinary::logic::util::cache::CacheableInterface ();
 
 1;
 

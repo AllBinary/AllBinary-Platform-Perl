@@ -27,7 +27,7 @@ sub onEnd {
     die "abstract method onEnd";
 }
 
-use org::allbinary::logic::util::event::EventListenerInterface;
+use org::allbinary::logic::util::event::EventListenerInterface ();
 
 1;
 

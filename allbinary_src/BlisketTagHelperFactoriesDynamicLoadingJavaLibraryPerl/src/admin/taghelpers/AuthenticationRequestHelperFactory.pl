@@ -17,7 +17,7 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
-use parent -norequire,'admin::taghelpers::TagHelperFactoryInterface';
+use parent -norequire,'java::lang::Object','admin::taghelpers::TagHelperFactoryInterface';
 
 our $CLASSNAME = "admin.taghelpers.AuthenticationRequestHelper";
 our $FACTORYNAME = "AuthenticationRequestHelperFactory";
@@ -44,12 +44,13 @@ sub getInstance {
         return 'admin::taghelpers::HelperFactory'->getInstance($admin::taghelpers::AuthenticationRequestHelperFactory::FACTORYNAME, $admin::taghelpers::AuthenticationRequestHelperFactory::CLASSNAME, $hashMap, $httpServletRequest);
 }
 
-use java::util::HashMap;
-# use javax::servlet::jsp::PageContext;
-use org::allbinary::logic::system::security::licensing::LicensingException;
-# use javax::servlet::http::HttpServletRequest;
-use admin::taghelpers::TagHelperFactoryInterface;
-use admin::taghelpers::HelperFactory;
+use java::lang::Object ();
+use java::util::HashMap ();
+# use javax::servlet::jsp::PageContext ();
+use org::allbinary::logic::system::security::licensing::LicensingException ();
+# use javax::servlet::http::HttpServletRequest ();
+use admin::taghelpers::TagHelperFactoryInterface ();
+use admin::taghelpers::HelperFactory ();
 
 1;
 

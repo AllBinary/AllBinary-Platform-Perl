@@ -17,7 +17,7 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
-use parent -norequire,'org::osgi::framework::BundleActivator','bundle::input::automation::InputAutomationBundleActivatorListenerInterface';
+use parent -norequire,'java::lang::Object','org::osgi::framework::BundleActivator','bundle::input::automation::InputAutomationBundleActivatorListenerInterface';
 
 our $moduleManagementThread = undef;
 our $bundleContext = undef;
@@ -31,7 +31,7 @@ sub _init_fields {
 sub new {
     my ($class) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
     return $self;
 }
 
@@ -85,20 +85,21 @@ sub stop {
         }
 }
 
-use org::osgi::framework::BundleActivator;
-use org::osgi::framework::BundleContext;
-use bundle::input::automation::module::configuration::InputAutomationConfigurationModuleChangeListener;
-use bundle::input::automation::robot::InputAutomationRobotChangeListener;
-use org::allbinary::input::automation::InputAutomationJFrame;
-use org::allbinary::input::automation::module::osgi::InputAutomationModuleServiceConsumer;
-use org::allbinary::input::automation::module::osgi::InputAutomationNewBundleRunnable;
-use org::allbinary::input::automation::osgi::InputAutomationServiceFactory;
-use org::allbinary::input::automation::robot::osgi::InputAutomationRobotServiceConsumer;
-use org::allbinary::logic::communication::log::LogUtil;
-use org::allbinary::osgi::OSGIActivatorUtil;
-use org::allbinary::string::CommonStrings;
-use bundle::input::automation::InputAutomationBundleActivatorListenerInterface;
-use java::lang::Thread;
+use java::lang::Object ();
+use org::osgi::framework::BundleActivator ();
+use org::osgi::framework::BundleContext ();
+use bundle::input::automation::module::configuration::InputAutomationConfigurationModuleChangeListener ();
+use bundle::input::automation::robot::InputAutomationRobotChangeListener ();
+use org::allbinary::input::automation::InputAutomationJFrame ();
+use org::allbinary::input::automation::module::osgi::InputAutomationModuleServiceConsumer ();
+use org::allbinary::input::automation::module::osgi::InputAutomationNewBundleRunnable ();
+use org::allbinary::input::automation::osgi::InputAutomationServiceFactory ();
+use org::allbinary::input::automation::robot::osgi::InputAutomationRobotServiceConsumer ();
+use org::allbinary::logic::communication::log::LogUtil ();
+use org::allbinary::osgi::OSGIActivatorUtil ();
+use org::allbinary::string::CommonStrings ();
+use bundle::input::automation::InputAutomationBundleActivatorListenerInterface ();
+use java::lang::Thread ();
 
 1;
 

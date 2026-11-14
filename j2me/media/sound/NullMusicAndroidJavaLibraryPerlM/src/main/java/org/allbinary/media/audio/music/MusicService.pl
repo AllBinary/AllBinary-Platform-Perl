@@ -26,7 +26,8 @@ sub new {
     return $self;
 }
 
-use org::allbinary::media::audio::music::BaseMusicService;
+use java::lang::Object ();
+use org::allbinary::media::audio::music::BaseMusicService ();
 
 1;
 

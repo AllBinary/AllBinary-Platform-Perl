@@ -20,7 +20,7 @@ no warnings 'experimental::try';
 use Time::HiRes ();
 use parent -norequire,'org::allbinary::thread::ThreadPool';
 
-our $THREAD_POOL = 'org::allbinary::thread::ThreadPool'->new("Primary", 1, $org::allbinary::thread::ThreadPool::NORMAL_PRIORITY);
+tie our $THREAD_POOL, 'java::lang::LazyStatic', sub { 'org::allbinary::thread::ThreadPool'->new("Primary", 1, $org::allbinary::thread::ThreadPool::NORMAL_PRIORITY) };
 
 
 sub getInstance {
@@ -55,10 +55,12 @@ sub completedTask {
         $self->{logUtil}->putF('org::allbinary::logic::string::StringMaker'->new()->append($self->{threadPoolStrings}->{COMPLETE_TASK})->append('org::allbinary::logic::string::StringUtil'->getInstance()->toString($task))->toString(), $self, $self->{commonStrings}->{RUN});
 }
 
-use org::allbinary::logic::string::StringMaker;
-use org::allbinary::logic::string::StringUtil;
-use org::allbinary::thread::ThreadPool;
-use java::lang::System;
+use java::lang::Object ();
+use java::lang::LazyStatic ();
+use org::allbinary::logic::string::StringMaker ();
+use org::allbinary::logic::string::StringUtil ();
+use org::allbinary::thread::ThreadPool ();
+use java::lang::System ();
 
 1;
 

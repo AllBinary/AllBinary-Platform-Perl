@@ -17,6 +17,7 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
 
 sub new {
@@ -39,7 +40,8 @@ sub getMiniInstance {
         return 'javax::microedition::lcdui::game::TiledLayer'->new(scalar(@{$mapArray->[0]}), scalar(@{$mapArray}), $raceTrackData->getMiniTileSetImage(), $raceTrackData->getMiniCellWidth(), $raceTrackData->getMiniCellHeight());
 }
 
-# use javax::microedition::lcdui::game::TiledLayer;
+use java::lang::Object ();
+use javax::microedition::lcdui::game::TiledLayer ();
 
 1;
 

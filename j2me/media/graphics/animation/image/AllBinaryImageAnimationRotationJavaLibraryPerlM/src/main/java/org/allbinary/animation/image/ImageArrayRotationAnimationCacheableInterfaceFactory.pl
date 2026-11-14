@@ -17,7 +17,7 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
-use parent -norequire,'org::allbinary::logic::util::cache::CacheableInterfaceFactoryInterface';
+use parent -norequire,'java::lang::Object','org::allbinary::logic::util::cache::CacheableInterfaceFactoryInterface';
 
 
 sub new {
@@ -33,10 +33,11 @@ sub getInstance {
         return 'org::allbinary::animation::image::ImageArrayRotationAnimationCacheable'->new($key, 'org::allbinary::animation::AnimationBehavior'->getInstance());
 }
 
-use org::allbinary::animation::AnimationBehavior;
-use org::allbinary::logic::util::cache::CacheableInterface;
-use org::allbinary::logic::util::cache::CacheableInterfaceFactoryInterface;
-use org::allbinary::animation::image::ImageArrayRotationAnimationCacheable;
+use java::lang::Object ();
+use org::allbinary::animation::AnimationBehavior ();
+use org::allbinary::logic::util::cache::CacheableInterface ();
+use org::allbinary::logic::util::cache::CacheableInterfaceFactoryInterface ();
+use org::allbinary::animation::image::ImageArrayRotationAnimationCacheable ();
 
 1;
 

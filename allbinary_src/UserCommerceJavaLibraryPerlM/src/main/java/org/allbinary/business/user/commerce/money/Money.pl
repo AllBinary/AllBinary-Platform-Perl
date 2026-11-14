@@ -17,6 +17,7 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
 
 sub _init_fields {
@@ -38,7 +39,7 @@ sub new {
 sub _new1 {
     my ($class, $money) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
         $self->{units} = $money->getUnits();
     return $self;
 }
@@ -47,7 +48,7 @@ sub _new1 {
 sub _new0 {
     my ($class) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
         $self->{units} = 0;
     return $self;
 }
@@ -56,7 +57,7 @@ sub _new0 {
 sub _new1 {
     my ($class, $usDollarStr) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
         if (defined($usDollarStr) && 'org::allbinary::logic::string::StringValidationUtil'->getInstance()->isNumber($usDollarStr)) {
             $self->{units} = $self->convertUsdToUnits($usDollarStr);
         }
@@ -67,7 +68,7 @@ sub _new1 {
 sub _new1 {
     my ($class, $units) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
         $self->{units} = $units;
     return $self;
 }
@@ -169,11 +170,12 @@ sub toString {
         return ("" . $self->convertUnitsTo($self->{DEFAULT_CURRENCY}));
 }
 
-use org::allbinary::logic::io::path::AbPathData;
-use org::allbinary::logic::string::StringMaker;
-use org::allbinary::logic::string::StringUtil;
-use org::allbinary::logic::string::StringValidationUtil;
-use org::allbinary::string::CommonPhoneStrings;
+use java::lang::Object ();
+use org::allbinary::logic::io::path::AbPathData ();
+use org::allbinary::logic::string::StringMaker ();
+use org::allbinary::logic::string::StringUtil ();
+use org::allbinary::logic::string::StringValidationUtil ();
+use org::allbinary::string::CommonPhoneStrings ();
 
 1;
 

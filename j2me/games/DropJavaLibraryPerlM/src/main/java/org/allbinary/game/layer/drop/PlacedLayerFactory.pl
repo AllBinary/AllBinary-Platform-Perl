@@ -5,8 +5,9 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
-our $instance = 'org::allbinary::game::layer::drop::PlacedLayerFactory'->new();
+tie our $instance, 'java::lang::LazyStatic', sub { 'org::allbinary::game::layer::drop::PlacedLayerFactory'->new() };
 
 sub _init_fields {
     my ($self) = @_;
@@ -18,7 +19,7 @@ sub _init_fields {
 sub new {
     my ($class) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
     return $self;
 }
 
@@ -52,10 +53,12 @@ sub add {
         $self->{list}->add($layerInterfaceFactoryInterface);
 }
 
-use org::allbinary::layer::AllBinaryLayerFactoryInterface;
-use org::allbinary::util::BasicArrayList;
-use org::allbinary::util::BasicArrayListD;
-use org::allbinary::util::BasicArrayListUtil;
+use java::lang::Object ();
+use java::lang::LazyStatic ();
+use org::allbinary::layer::AllBinaryLayerFactoryInterface ();
+use org::allbinary::util::BasicArrayList ();
+use org::allbinary::util::BasicArrayListD ();
+use org::allbinary::util::BasicArrayListUtil ();
 
 1;
 

@@ -19,6 +19,7 @@ use warnings;
 use feature 'try';
 no warnings 'experimental::try';
 use Scalar::Util ();
+use parent -norequire,'java::lang::Object';
 
 our $THIS = "AllBinaryMediaManagerAndroid";
 our $mostUsedTotal = 0;
@@ -134,22 +135,23 @@ sub isInitialized {
         return 1;
 }
 
-# use java::io::IOException;
-# use java::io::InputStream;
-# use javax::microedition::media::MediaException;
-# use javax::microedition::media::Player;
-use org::allbinary::TsUtil;
-use org::allbinary::game::configuration::feature::Features;
-use org::allbinary::game::configuration::feature::GameFeatureFactory;
-use org::allbinary::graphics::canvas::transition::progress::ProgressCanvasFactory;
-use org::allbinary::logic::ABSystemWrapper;
-use org::allbinary::logic::communication::log::LogUtil;
-use org::allbinary::string::CommonLabels;
-use org::allbinary::string::CommonStrings;
-use org::allbinary::media::audio::Sounds;
-use org::allbinary::media::audio::MediaPlayerUtil;
-use org::allbinary::media::audio::NoPlayer;
-use org::allbinary::media::audio::AndroidMediaPlayerWrapper;
+use java::lang::Object ();
+# use java::io::IOException ();
+# use java::io::InputStream ();
+use javax::microedition::media::MediaException ();
+use javax::microedition::media::Player ();
+use org::allbinary::TsUtil ();
+use org::allbinary::game::configuration::feature::Features ();
+use org::allbinary::game::configuration::feature::GameFeatureFactory ();
+use org::allbinary::graphics::canvas::transition::progress::ProgressCanvasFactory ();
+use org::allbinary::logic::ABSystemWrapper ();
+use org::allbinary::logic::communication::log::LogUtil ();
+use org::allbinary::string::CommonLabels ();
+use org::allbinary::string::CommonStrings ();
+use org::allbinary::media::audio::Sounds ();
+use org::allbinary::media::audio::MediaPlayerUtil ();
+use org::allbinary::media::audio::NoPlayer ();
+use org::allbinary::media::audio::AndroidMediaPlayerWrapper ();
 
 1;
 

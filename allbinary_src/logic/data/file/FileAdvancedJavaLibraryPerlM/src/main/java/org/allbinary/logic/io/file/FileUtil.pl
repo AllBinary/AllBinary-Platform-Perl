@@ -18,8 +18,9 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
-our $instance = 'org::allbinary::logic::io::file::FileUtil'->new();
+tie our $instance, 'java::lang::LazyStatic', sub { 'org::allbinary::logic::io::file::FileUtil'->new() };
 
 sub _init_fields {
     my ($self) = @_;
@@ -43,7 +44,7 @@ sub getInstance {
 sub new {
     my ($class) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
     return $self;
 }
 
@@ -272,7 +273,7 @@ sub copyFile {
                 return;
             }
             my $dataOutputStream = 'org::allbinary::logic::io::DataOutputStreamFactory'->getInstance()->getInstanceForAbFile($toFile);
-            my $fileInputStream = 'org::allbinary::logic::io::AbFileInputStream'->new($fromFile);
+            my $fileInputStream = 'org::allbinary::logic::io::AbFileInputStream'->createFromAbFile($fromFile);
             $self->copy($fileInputStream, $dataOutputStream);
         } catch ($e) {
             if ($org::allbinary::logic::io::file::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($self->{logConfigTypeFactory}->{FILEERROR})) {
@@ -533,31 +534,33 @@ sub loadFileAsList {
         return 'org::allbinary::logic::io::file::FileUtil2'->getInstance()->loadFileAsList($file, $max, $byteArray1);
 }
 
-# use java::io::InputStream;
-# use java::io::OutputStream;
-use org::allbinary::globals::URLGLOBALS;
-use org::allbinary::logic::communication::log::LogUtil;
-use org::allbinary::logic::communication::log::PreLogUtil;
-use org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory;
-use org::allbinary::logic::io::AbDataOutputStream;
-use org::allbinary::logic::io::AbFileInputStream;
-use org::allbinary::logic::io::AbFileLocalInputStream;
-use org::allbinary::logic::io::AbIOSystem;
-use org::allbinary::logic::io::DataOutputStreamFactory;
-use org::allbinary::logic::io::FileStreamFactory;
-use org::allbinary::logic::io::StreamUtil;
-use org::allbinary::logic::io::file::directory::Directory;
-use org::allbinary::logic::io::path::AbPath;
-use org::allbinary::logic::io::path::AbPathData;
-use org::allbinary::logic::string::StringMaker;
-use org::allbinary::logic::string::StringUtil;
-use org::allbinary::string::CommonLabels;
-use org::allbinary::string::CommonStrings;
-use org::allbinary::util::BasicArrayList;
-use org::allbinary::logic::io::file::AbFile;
-use org::allbinary::logic::io::file::FilePathData;
-use org::allbinary::logic::io::file::FileWrapperUtil;
-use org::allbinary::logic::io::file::FileUtil2;
+use java::lang::Object ();
+use java::lang::LazyStatic ();
+# use java::io::InputStream ();
+# use java::io::OutputStream ();
+use org::allbinary::globals::URLGLOBALS ();
+use org::allbinary::logic::communication::log::LogUtil ();
+use org::allbinary::logic::communication::log::PreLogUtil ();
+use org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory ();
+use org::allbinary::logic::io::AbDataOutputStream ();
+use org::allbinary::logic::io::AbFileInputStream ();
+use org::allbinary::logic::io::AbFileLocalInputStream ();
+use org::allbinary::logic::io::AbIOSystem ();
+use org::allbinary::logic::io::DataOutputStreamFactory ();
+use org::allbinary::logic::io::FileStreamFactory ();
+use org::allbinary::logic::io::StreamUtil ();
+use org::allbinary::logic::io::file::directory::Directory ();
+use org::allbinary::logic::io::path::AbPath ();
+use org::allbinary::logic::io::path::AbPathData ();
+use org::allbinary::logic::string::StringMaker ();
+use org::allbinary::logic::string::StringUtil ();
+use org::allbinary::string::CommonLabels ();
+use org::allbinary::string::CommonStrings ();
+use org::allbinary::util::BasicArrayList ();
+use org::allbinary::logic::io::file::AbFile ();
+use org::allbinary::logic::io::file::FilePathData ();
+use org::allbinary::logic::io::file::FileWrapperUtil ();
+use org::allbinary::logic::io::file::FileUtil2 ();
 
 1;
 

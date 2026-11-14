@@ -30,7 +30,7 @@ sub _init_fields {
 sub new {
     my ($class, $geographicMapInterface, $viewPosition) = @_;
     my $self = $class->SUPER::new($geographicMapInterface, $viewPosition);
-    $self->_init_fields();
+    _init_fields($self);
         # super(...) made $self above
     return $self;
 }
@@ -51,14 +51,15 @@ sub paint {
         $self->paintDots($graphics);
 }
 
-# use javax::microedition::lcdui::Graphics;
-# use javax::microedition::lcdui::Image;
-# use javax::microedition::lcdui::NullImage;
-use org::allbinary::graphics::Anchor;
-use org::allbinary::image::PaintableToImageUtil;
-use org::allbinary::media::graphics::geography::map::BasicGeographicMap;
-use org::allbinary::view::ViewPositionBase;
-use org::allbinary::game::layer::geographic::map::MiniMapLayer;
+use java::lang::Object ();
+use javax::microedition::lcdui::Graphics ();
+use javax::microedition::lcdui::Image ();
+use javax::microedition::lcdui::NullImage ();
+use org::allbinary::graphics::Anchor ();
+use org::allbinary::image::PaintableToImageUtil ();
+use org::allbinary::media::graphics::geography::map::BasicGeographicMap ();
+use org::allbinary::view::ViewPositionBase ();
+use org::allbinary::game::layer::geographic::map::MiniMapLayer ();
 
 1;
 

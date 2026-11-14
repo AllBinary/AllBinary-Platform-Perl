@@ -17,6 +17,7 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
 
 sub new {
@@ -43,7 +44,8 @@ sub releaseAll {
         'org::allbinary::image::ImageCacheFactory'->getInstance()->releaseAll();
 }
 
-use org::allbinary::image::ImageCacheFactory;
+use java::lang::Object ();
+use org::allbinary::image::ImageCacheFactory ();
 
 1;
 

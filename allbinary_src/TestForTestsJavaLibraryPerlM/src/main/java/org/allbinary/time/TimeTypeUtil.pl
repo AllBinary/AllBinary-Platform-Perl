@@ -5,8 +5,9 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
-our $instance = 'org::allbinary::time::TimeTypeUtil'->new();
+tie our $instance, 'java::lang::LazyStatic', sub { 'org::allbinary::time::TimeTypeUtil'->new() };
 
 sub _init_fields {
     my ($self) = @_;
@@ -17,7 +18,7 @@ sub _init_fields {
 sub new {
     my ($class) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
     return $self;
 }
 
@@ -71,8 +72,10 @@ sub getNightOrDay {
         return ($self->isNight($timeInMillis) ? $self->{NIGHT} : $self->{DAY});
 }
 
-use java::util::Calendar;
-# use java::util::TimeZone;
+use java::lang::Object ();
+use java::lang::LazyStatic ();
+use java::util::Calendar ();
+# use java::util::TimeZone ();
 
 1;
 

@@ -17,6 +17,7 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
 
 
@@ -41,12 +42,13 @@ sub getInstance {
         return 'org::allbinary::business::user::commerce::inventory::item::Item'->new('org::allbinary::logic::communication::http::request::RequestParams'->new($request)->toHashMap());
 }
 
-use java::util::HashMap;
-# use javax::servlet::http::HttpServletRequest;
-use org::allbinary::business::user::commerce::money::MoneyException;
-use org::allbinary::data::tables::TableMappingInterface;
-use org::allbinary::logic::communication::http::request::RequestParams;
-use org::allbinary::business::user::commerce::inventory::item::Item;
+use java::lang::Object ();
+use java::util::HashMap ();
+# use javax::servlet::http::HttpServletRequest ();
+use org::allbinary::business::user::commerce::money::MoneyException ();
+use org::allbinary::data::tables::TableMappingInterface ();
+use org::allbinary::logic::communication::http::request::RequestParams ();
+use org::allbinary::business::user::commerce::inventory::item::Item ();
 
 1;
 

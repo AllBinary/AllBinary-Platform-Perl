@@ -17,8 +17,9 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
-our $instance = 'org::allbinary::graphics::j2me::StatusFactory'->new();
+tie our $instance, 'java::lang::LazyStatic', sub { 'org::allbinary::graphics::j2me::StatusFactory'->new() };
 
 sub _init_fields {
     my ($self) = @_;
@@ -30,7 +31,7 @@ sub _init_fields {
 sub new {
     my ($class) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
     return $self;
 }
 
@@ -53,8 +54,10 @@ sub setStatus {
         $self->{logUtil}->putF($self->{STATUS_LABEL} . $status, $self, $self->{SETSTATUS});
 }
 
-use org::allbinary::logic::communication::log::LogUtil;
-use org::allbinary::graphics::j2me::MyFrame;
+use java::lang::Object ();
+use java::lang::LazyStatic ();
+use org::allbinary::logic::communication::log::LogUtil ();
+use org::allbinary::graphics::j2me::MyFrame ();
 
 1;
 

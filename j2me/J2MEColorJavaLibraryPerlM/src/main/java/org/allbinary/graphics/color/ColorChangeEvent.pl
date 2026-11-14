@@ -29,7 +29,7 @@ sub _init_fields {
 sub new {
     my ($class, $anyType) = @_;
     my $self = $class->SUPER::new($anyType);
-    $self->_init_fields();
+    _init_fields($self);
         # super(...) made $self above
     return $self;
 }
@@ -46,8 +46,9 @@ sub getBasicColorP {
         return $self->{basicColor};
 }
 
-use org::allbinary::logic::util::event::AllBinaryEventObject;
-use org::allbinary::graphics::color::BasicColorFactory;
+use java::lang::Object ();
+use org::allbinary::logic::util::event::AllBinaryEventObject ();
+use org::allbinary::graphics::color::BasicColorFactory ();
 
 1;
 

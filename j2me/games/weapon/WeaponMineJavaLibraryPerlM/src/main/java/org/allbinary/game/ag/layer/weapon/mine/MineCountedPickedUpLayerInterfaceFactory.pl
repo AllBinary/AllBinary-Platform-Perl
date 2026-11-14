@@ -19,7 +19,7 @@ use feature 'try';
 no warnings 'experimental::try';
 use parent -norequire,'org::allbinary::game::layer::pickup::CountedPickedUpLayerInterfaceFactory';
 
-our $pickedUpLayerInterfaceFactoryInterface = $org::allbinary::game::layer::pickup::CountedPickedUpLayerInterfaceFactory::NULL_COUNTED_PICKUP_LAYER_FACTORY;
+tie our $pickedUpLayerInterfaceFactoryInterface, 'java::lang::LazyStatic', sub { $org::allbinary::game::layer::pickup::CountedPickedUpLayerInterfaceFactory::NULL_COUNTED_PICKUP_LAYER_FACTORY };
 
 sub _init_fields {
     my ($self) = @_;
@@ -39,7 +39,7 @@ sub init {
 sub new {
     my ($class) = @_;
     my $self = $class->SUPER::new('org::allbinary::game::layer::pickup::PickedUpLayerTypeFactory'->getInstance()->{MINE}, 'org::allbinary::game::layer::pickup::IconLayerFactory'->getInstance('org::allbinary::animation::FeaturedAnimationInterfaceFactoryInterfaceFactory'->getInstance()->get('org::allbinary::game::ag::layer::weapon::mine::MineWeaponResources'->getInstance()->{DROP_ICON_RESOURCE})->getInstance(0), 10, 10), 'org::allbinary::animation::FeaturedAnimationInterfaceFactoryInterfaceFactory'->getInstance()->get('org::allbinary::game::ag::layer::weapon::mine::MineWeaponResources'->getInstance()->{DROP_RESOURCE})->getInstance(0));
-    $self->_init_fields();
+    _init_fields($self);
         # super(...) made $self above
     return $self;
 }
@@ -66,19 +66,21 @@ sub getNextInstance {
         return $self->{weaponLayerCircularStaticPool}->getInstanceWeaponLayer($sourceLayerInterface, $x, $y, $z, int(int($angle)), 0, $self->{weaponProperties}, $scoreableInterface);
 }
 
-use org::allbinary::animation::FeaturedAnimationInterfaceFactoryInterfaceFactory;
-use org::allbinary::game::combat::weapon::WeaponProperties;
-use org::allbinary::game::layer::pickup::CountedPickedUpLayerInterfaceFactory;
-use org::allbinary::game::layer::pickup::IconLayerFactory;
-use org::allbinary::game::layer::pickup::PickedUpLayerInterfaceFactoryInterface;
-use org::allbinary::game::layer::pickup::PickedUpLayerTypeFactory;
-use org::allbinary::game::layer::weapon::WeaponLayerCircularPool;
-use org::allbinary::game::score::ScoreableInterface;
-use org::allbinary::layer::AllBinaryLayer;
-use org::allbinary::logic::math::SmallIntegerSingletonFactory;
-use org::allbinary::util::ABHashtable;
-use org::allbinary::game::ag::layer::weapon::mine::MineLayerCircularStaticPool;
-use org::allbinary::game::ag::layer::weapon::mine::MineWeaponResources;
+use java::lang::Object ();
+use java::lang::LazyStatic ();
+use org::allbinary::animation::FeaturedAnimationInterfaceFactoryInterfaceFactory ();
+use org::allbinary::game::combat::weapon::WeaponProperties ();
+use org::allbinary::game::layer::pickup::CountedPickedUpLayerInterfaceFactory ();
+use org::allbinary::game::layer::pickup::IconLayerFactory ();
+use org::allbinary::game::layer::pickup::PickedUpLayerInterfaceFactoryInterface ();
+use org::allbinary::game::layer::pickup::PickedUpLayerTypeFactory ();
+use org::allbinary::game::layer::weapon::WeaponLayerCircularPool ();
+use org::allbinary::game::score::ScoreableInterface ();
+use org::allbinary::layer::AllBinaryLayer ();
+use org::allbinary::logic::math::SmallIntegerSingletonFactory ();
+use org::allbinary::util::ABHashtable ();
+use org::allbinary::game::ag::layer::weapon::mine::MineLayerCircularStaticPool ();
+use org::allbinary::game::ag::layer::weapon::mine::MineWeaponResources ();
 
 1;
 

@@ -17,9 +17,9 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
-use parent -norequire,'org::allbinary::game::displayable::canvas::DemoPaintableInterface';
+use parent -norequire,'java::lang::Object','org::allbinary::game::displayable::canvas::DemoPaintableInterface';
 
-our $NULL_DEMO_PAINTABLE = 'org::allbinary::game::displayable::canvas::NullDemoPaintable'->new();
+tie our $NULL_DEMO_PAINTABLE, 'java::lang::LazyStatic', sub { 'org::allbinary::game::displayable::canvas::NullDemoPaintable'->new() };
 
 sub new {
     my ($class) = @_;
@@ -32,7 +32,9 @@ sub showGamePaintable {
     my ($self) = @_;
 }
 
-use org::allbinary::game::displayable::canvas::DemoPaintableInterface;
+use java::lang::Object ();
+use java::lang::LazyStatic ();
+use org::allbinary::game::displayable::canvas::DemoPaintableInterface ();
 
 1;
 

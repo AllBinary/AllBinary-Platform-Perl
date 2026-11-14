@@ -17,8 +17,9 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
-our $SINGLETON = 'org::allbinary::logic::system::security::licensing::AbeLicenseInterfaceFactory'->new();
+tie our $SINGLETON, 'java::lang::LazyStatic', sub { 'org::allbinary::logic::system::security::licensing::AbeLicenseInterfaceFactory'->new() };
 
 sub _init_fields {
     my ($self) = @_;
@@ -40,7 +41,7 @@ sub getInstance {
 sub new {
     my ($class) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
     return $self;
 }
 
@@ -100,13 +101,15 @@ sub isCheck {
         return $self->{check};
 }
 
-# use java::io::IOException;
-use java::util::Calendar;
-use org::allbinary::logic::communication::log::LogUtil;
-use org::allbinary::logic::system::security::licensing::client::AbeLicenseClient;
-use org::allbinary::string::CommonStrings;
-use org::allbinary::logic::system::security::licensing::AbeNoLicense;
-use org::allbinary::logic::system::security::licensing::AbeClientInformationData;
+use java::lang::Object ();
+use java::lang::LazyStatic ();
+# use java::io::IOException ();
+use java::util::Calendar ();
+use org::allbinary::logic::communication::log::LogUtil ();
+use org::allbinary::logic::system::security::licensing::client::AbeLicenseClient ();
+use org::allbinary::string::CommonStrings ();
+use org::allbinary::logic::system::security::licensing::AbeNoLicense ();
+use org::allbinary::logic::system::security::licensing::AbeClientInformationData ();
 
 1;
 

@@ -31,7 +31,7 @@ sub _init_fields {
 sub new {
     my ($class, $abeClientInformation, $transformInfoInterface) = @_;
     my $self = $class->SUPER::new($transformInfoInterface);
-    $self->_init_fields();
+    _init_fields($self);
         # super(...) made $self above
         $self->{abeClientInformation} = $abeClientInformation;
         $self->setTemplateAsInputStream();
@@ -46,7 +46,7 @@ sub setEncryptedTemplateFileAsInputStream {
         my $inputStream = undef;
         try {
             $outputStream = 'java::io::ByteArrayOutputStream'->new();
-            $inputStream = 'org::allbinary::logic::io::AbFileInputStream'->new($file);
+            $inputStream = 'org::allbinary::logic::io::AbFileInputStream'->createFromAbFile($file);
             $outputStream = $self->{streamUtil}->get($inputStream, $outputStream, [(0) x (16384)]);
             my $abCrypt = 'org::allbinary::logic::control::crypt::jcehelper::AbCrypt'->new($org::allbinary::logic::control::crypt::jcehelper::KeySpecFactory::DESEDE, 'org::allbinary::logic::system::security::AbKeys'->getInstance()->getKey($self->{abeClientInformation}, $file->getAbsolutePath()));
             my $decrypted = $abCrypt->decrypt($outputStream->toByteArray());
@@ -146,7 +146,7 @@ sub setTemplateAsInputStream {
                             $self->{logUtil}->putF("Template File isFile=" . $file->isFile(), $self, "setTemplateAsInputStream()");
                         }
                         if ($file->isFile()) {
-                            $inputStream = 'org::allbinary::logic::io::AbFileInputStream'->new($file);
+                            $inputStream = 'org::allbinary::logic::io::AbFileInputStream'->createFromAbFile($file);
                             $outputStream = 'java::io::ByteArrayOutputStream'->new();
                             $outputStream = $self->{streamUtil}->get($inputStream, $outputStream, [(0) x (16384)]);
                             if ($org::allbinary::logic::visual::transform::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($org::allbinary::logic::visual::transform::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{TAGHELPERFACTORY})) {
@@ -184,25 +184,26 @@ sub setTemplateAsInputStream {
         die ("Error setTemplateAsInputStream()");
 }
 
-# use java::io::ByteArrayInputStream;
-# use java::io::ByteArrayOutputStream;
-# use java::io::InputStream;
-# use javax::xml::transform::URIResolver;
-use org::allbinary::data::tree::dom::BasicUriResolver;
-use org::allbinary::logic::communication::log::LogUtil;
-use org::allbinary::logic::control::crypt::jcehelper::AbCrypt;
-use org::allbinary::logic::control::crypt::jcehelper::KeySpecFactory;
-use org::allbinary::logic::io::AbFileInputStream;
-use org::allbinary::logic::io::StreamUtil;
-use org::allbinary::logic::io::file::AbFile;
-use org::allbinary::logic::io::path::AbPathData;
-use org::allbinary::logic::io::path::PathUtil;
-use org::allbinary::logic::string::StringMaker;
-use org::allbinary::logic::system::security::AbKeys;
-use org::allbinary::logic::system::security::licensing::AbeClientInformationInterface;
-use org::allbinary::logic::visual::transform::info::TransformInfoInterface;
-use org::allbinary::logic::visual::transform::info::template::TransformInfoTemplateData;
-use org::allbinary::logic::visual::transform::AbTransformer;
+use java::lang::Object ();
+# use java::io::ByteArrayInputStream ();
+# use java::io::ByteArrayOutputStream ();
+# use java::io::InputStream ();
+# use javax::xml::transform::URIResolver ();
+use org::allbinary::data::tree::dom::BasicUriResolver ();
+use org::allbinary::logic::communication::log::LogUtil ();
+use org::allbinary::logic::control::crypt::jcehelper::AbCrypt ();
+use org::allbinary::logic::control::crypt::jcehelper::KeySpecFactory ();
+use org::allbinary::logic::io::AbFileInputStream ();
+use org::allbinary::logic::io::StreamUtil ();
+use org::allbinary::logic::io::file::AbFile ();
+use org::allbinary::logic::io::path::AbPathData ();
+use org::allbinary::logic::io::path::PathUtil ();
+use org::allbinary::logic::string::StringMaker ();
+use org::allbinary::logic::system::security::AbKeys ();
+use org::allbinary::logic::system::security::licensing::AbeClientInformationInterface ();
+use org::allbinary::logic::visual::transform::info::TransformInfoInterface ();
+use org::allbinary::logic::visual::transform::info::template::TransformInfoTemplateData ();
+use org::allbinary::logic::visual::transform::AbTransformer ();
 
 1;
 

@@ -18,8 +18,9 @@ use warnings;
 use feature 'try';
 no warnings 'experimental::try';
 use Time::HiRes ();
+use parent -norequire,'java::lang::Object';
 
-our $SINGLETON = 'org::allbinary::content::NotificationUtil'->new();
+tie our $SINGLETON, 'java::lang::LazyStatic', sub { 'org::allbinary::content::NotificationUtil'->new() };
 
 sub _init_fields {
     my ($self) = @_;
@@ -29,7 +30,7 @@ sub _init_fields {
 sub new {
     my ($class) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
     return $self;
 }
 
@@ -51,14 +52,16 @@ sub notify {
         $self->{notificationManager}->notify('org::allbinary::TsUtil'->getInstance()->hashCode($command), $notification);
 }
 
-# use javax::microedition::lcdui::Command;
-use org::allbinary::data::resource::ResourceUtil;
-use org::allbinary::TsUtil;
-use org::allbinary::content::Context;
-use org::allbinary::content::CommandUriAction;
-use org::allbinary::content::Notification;
-use java::lang::System;
-use org::allbinary::content::PendingIntent;
+use java::lang::Object ();
+use java::lang::LazyStatic ();
+use javax::microedition::lcdui::Command ();
+use org::allbinary::data::resource::ResourceUtil ();
+use org::allbinary::TsUtil ();
+use org::allbinary::content::Context ();
+use org::allbinary::content::CommandUriAction ();
+use org::allbinary::content::Notification ();
+use java::lang::System ();
+use org::allbinary::content::PendingIntent ();
 
 1;
 

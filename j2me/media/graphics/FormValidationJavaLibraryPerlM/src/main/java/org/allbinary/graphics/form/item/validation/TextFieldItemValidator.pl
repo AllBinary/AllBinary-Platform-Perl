@@ -32,7 +32,7 @@ sub _init_fields {
 sub new {
     my ($class, $textFieldItem, $min, $max, $allowOnEmpty) = @_;
     my $self = $class->SUPER::new();
-    $self->_init_fields();
+    _init_fields($self);
         $self->{textFieldItem} = $textFieldItem;
         $self->{min} = $min;
         $self->{max} = $max;
@@ -77,12 +77,13 @@ sub toList {
         return $list;
 }
 
-use org::allbinary::graphics::form::item::ABTextFieldItem;
-use org::allbinary::logic::control::validate::ValidatorBase;
-use org::allbinary::logic::java::bool::BooleanFactory;
-use org::allbinary::logic::string::StringMaker;
-use org::allbinary::util::BasicArrayList;
-use org::allbinary::util::BasicArrayListD;
+use java::lang::Object ();
+use org::allbinary::graphics::form::item::ABTextFieldItem ();
+use org::allbinary::logic::control::validate::ValidatorBase ();
+use org::allbinary::logic::java::bool::BooleanFactory ();
+use org::allbinary::logic::string::StringMaker ();
+use org::allbinary::util::BasicArrayList ();
+use org::allbinary::util::BasicArrayListD ();
 
 1;
 

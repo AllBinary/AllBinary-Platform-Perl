@@ -17,6 +17,7 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
 
 
@@ -61,14 +62,15 @@ sub getInstance {
         }
 }
 
-use java::util::HashMap;
-# use javax::servlet::http::HttpServletRequest;
-use org::allbinary::business::user::modules::User;
-use org::allbinary::business::user::role::UserRoleData;
-use org::allbinary::logic::communication::http::request::RequestParams;
-use org::allbinary::logic::visual::transform::info::TransformInfoHttpInterface;
-use org::allbinary::logic::visual::transform::info::TransformInfoInterface;
-use org::allbinary::business::user::CreateUserFactory;
+use java::lang::Object ();
+use java::util::HashMap ();
+# use javax::servlet::http::HttpServletRequest ();
+use org::allbinary::business::user::modules::User ();
+use org::allbinary::business::user::role::UserRoleData ();
+use org::allbinary::logic::communication::http::request::RequestParams ();
+use org::allbinary::logic::visual::transform::info::TransformInfoHttpInterface ();
+use org::allbinary::logic::visual::transform::info::TransformInfoInterface ();
+use org::allbinary::business::user::CreateUserFactory ();
 
 1;
 

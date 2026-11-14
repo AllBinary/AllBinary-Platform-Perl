@@ -80,7 +80,7 @@ sub toString {
     die "abstract method toString";
 }
 
-use org::allbinary::logic::java::character::CharacterSet;
+use org::allbinary::logic::java::character::CharacterSet ();
 
 1;
 

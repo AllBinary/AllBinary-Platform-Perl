@@ -17,6 +17,7 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
 
 sub new {
@@ -31,10 +32,11 @@ sub getInstance {
         return 'org::allbinary::data::tables::transform::info::TransformInfoEntityFactory'->getInstance('org::allbinary::logic::visual::transform::info::objectConfig::generator::TransformInfoObjectConfigGeneratorFactory'->getInstance(), 'org::allbinary::logic::visual::transform::info::objectConfig::TransformInfoObjectConfigAndManipulatorFactory'->getInstance(), 'org::allbinary::logic::visual::transform::info::TransformInfoHttpStoreFactory'->getInstance());
 }
 
-use org::allbinary::logic::visual::transform::info::TransformInfoHttpStoreFactory;
-use org::allbinary::logic::visual::transform::info::objectConfig::TransformInfoObjectConfigAndManipulatorFactory;
-use org::allbinary::logic::visual::transform::info::objectConfig::generator::TransformInfoObjectConfigGeneratorFactory;
-use org::allbinary::data::tables::transform::info::TransformInfoEntityFactory;
+use java::lang::Object ();
+use org::allbinary::logic::visual::transform::info::TransformInfoHttpStoreFactory ();
+use org::allbinary::logic::visual::transform::info::objectConfig::TransformInfoObjectConfigAndManipulatorFactory ();
+use org::allbinary::logic::visual::transform::info::objectConfig::generator::TransformInfoObjectConfigGeneratorFactory ();
+use org::allbinary::data::tables::transform::info::TransformInfoEntityFactory ();
 
 1;
 

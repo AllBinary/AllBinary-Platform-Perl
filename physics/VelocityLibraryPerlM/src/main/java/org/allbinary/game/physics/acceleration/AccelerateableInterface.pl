@@ -26,7 +26,7 @@ sub accelerate {
     die "abstract method accelerate";
 }
 
-use org::allbinary::logic::math::BasicDecimal;
+use org::allbinary::logic::math::BasicDecimal ();
 
 1;
 

@@ -17,7 +17,7 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
-use parent -norequire,'org::allbinary::logic::util::cache::CacheableInterface';
+use parent -norequire,'java::lang::Object','org::allbinary::logic::util::cache::CacheableInterface';
 
 
 sub _init_fields {
@@ -30,7 +30,7 @@ sub _init_fields {
 sub new {
     my ($class, $key) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
         $self->{key} = $key;
         $self->{color} = 'org::allbinary::graphics::color::Color'->new(int(($key)));
     return $self;
@@ -54,9 +54,10 @@ sub setColor {
         $self->{color} = $color;
 }
 
-# use java::awt;
-use org::allbinary::logic::util::cache::CacheableInterface;
-use org::allbinary::graphics::color::Color;
+use java::lang::Object ();
+# use java::awt ();
+use org::allbinary::logic::util::cache::CacheableInterface ();
+use org::allbinary::graphics::color::Color ();
 
 1;
 

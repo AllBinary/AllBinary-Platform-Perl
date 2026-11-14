@@ -17,7 +17,7 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
-use parent -norequire,'javax::swing::JPanel';
+use parent -norequire,'java::lang::Object';
 
 
 sub _init_fields {
@@ -43,7 +43,7 @@ sub _init_fields {
 sub new {
     my ($class) = @_;
     my $self = $class->SUPER::new();
-    $self->_init_fields();
+    _init_fields($self);
         $self->initComponents();
     return $self;
 }
@@ -67,7 +67,7 @@ sub initComponents {
         $self->{newProfileActionJLabel}->setText("New Action Name");
         $self->{okNewProfileActionJButton}->setText("Ok");
         $self->{okNewProfileActionJButton}->addActionListener(do {
-            package java::awt::event::ActionListener::AnonymousN66660 { our @ISA = ('java::awt::event::ActionListener');
+            package java::awt::event::ActionListener::AnonymousN66660 { our @ISA = ('java::awt::event::ActionListener', 'java::lang::Object');
             
 
             sub actionPerformed {
@@ -83,7 +83,7 @@ sub initComponents {
         $newProfileActionJDialogLayout->setVerticalGroup($newProfileActionJDialogLayout->createParallelGroup($org::allbinary::input::automation::module::generic::configuration::profile::actions::javax::swing->{GroupLayout}->{Alignment}->{LEADING})->addGroup($org::allbinary::input::automation::module::generic::configuration::profile::actions::javax::swing->{GroupLayout}->{Alignment}->{TRAILING}, $newProfileActionJDialogLayout->createSequentialGroup()->addContainerGap()->addComponent($self->{newProfileActionJLabel})->addGap(21, 21, 21)->addComponent($self->{newProfileActionJTextField}, $org::allbinary::input::automation::module::generic::configuration::profile::actions::javax::swing->{GroupLayout}->{PREFERRED_SIZE}, $org::allbinary::input::automation::module::generic::configuration::profile::actions::javax::swing->{GroupLayout}->{DEFAULT_SIZE}, $org::allbinary::input::automation::module::generic::configuration::profile::actions::javax::swing->{GroupLayout}->{PREFERRED_SIZE})->addPreferredGap($org::allbinary::input::automation::module::generic::configuration::profile::actions::javax::swing->{LayoutStyle}->{ComponentPlacement}->{RELATED}, 20, 32767)->addComponent($self->{okNewProfileActionJButton})->addContainerGap()));
         $self->{genericProfileActionsJPanel}->setPreferredSize('java::awt::Dimension'->new(10000, 10000));
         $self->{genericProfileActionsJList}->addListSelectionListener(do {
-            package javax::swing::event::ListSelectionListener::AnonymousN67914 { our @ISA = ('javax::swing::event::ListSelectionListener');
+            package javax::swing::event::ListSelectionListener::AnonymousN67914 { our @ISA = ('javax::swing::event::ListSelectionListener', 'java::lang::Object');
             
 
             sub valueChanged {
@@ -96,7 +96,7 @@ sub initComponents {
         $self->{genericProfileActionsJScrollPane}->setViewportView($self->{genericProfileActionsJList});
         $self->{newActionJButton}->setText("New");
         $self->{newActionJButton}->addActionListener(do {
-            package java::awt::event::ActionListener::AnonymousN68138 { our @ISA = ('java::awt::event::ActionListener');
+            package java::awt::event::ActionListener::AnonymousN68138 { our @ISA = ('java::awt::event::ActionListener', 'java::lang::Object');
             
 
             sub actionPerformed {
@@ -108,7 +108,7 @@ sub initComponents {
         });
         $self->{deleteActionJButton}->setText("Delete");
         $self->{deleteActionJButton}->addActionListener(do {
-            package java::awt::event::ActionListener::AnonymousN68325 { our @ISA = ('java::awt::event::ActionListener');
+            package java::awt::event::ActionListener::AnonymousN68325 { our @ISA = ('java::awt::event::ActionListener', 'java::lang::Object');
             
 
             sub actionPerformed {
@@ -120,7 +120,7 @@ sub initComponents {
         });
         $self->{saveJButton}->setText("Save");
         $self->{saveJButton}->addActionListener(do {
-            package java::awt::event::ActionListener::AnonymousN68512 { our @ISA = ('java::awt::event::ActionListener');
+            package java::awt::event::ActionListener::AnonymousN68512 { our @ISA = ('java::awt::event::ActionListener', 'java::lang::Object');
             
 
             sub actionPerformed {
@@ -265,10 +265,11 @@ sub newActionJButtonActionPerformed {
         $self->{newProfileActionJDialog}->setVisible(1);
 }
 
-use org::allbinary::input::automation::module::DefaultListModelHelper;
-use org::allbinary::logic::communication::log::LogUtil;
-use org::allbinary::string::CommonStrings;
-use org::allbinary::input::automation::module::generic::configuration::profile::actions::GenericProfileActionJPanel;
+use java::lang::Object ();
+use org::allbinary::input::automation::module::DefaultListModelHelper ();
+use org::allbinary::logic::communication::log::LogUtil ();
+use org::allbinary::string::CommonStrings ();
+use org::allbinary::input::automation::module::generic::configuration::profile::actions::GenericProfileActionJPanel ();
 
 1;
 

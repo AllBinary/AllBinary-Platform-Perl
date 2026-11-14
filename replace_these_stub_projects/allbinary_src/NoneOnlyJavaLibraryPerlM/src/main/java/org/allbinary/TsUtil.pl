@@ -18,8 +18,9 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
-our $instance = 'org::allbinary::TsUtil'->new();
+tie our $instance, 'java::lang::LazyStatic', sub { 'org::allbinary::TsUtil'->new() };
 
 sub new {
     my ($class) = @_;
@@ -106,7 +107,9 @@ sub gc {
         1;
 }
 
-use java::lang::System;
+use java::lang::Object ();
+use java::lang::LazyStatic ();
+use java::lang::System ();
 
 1;
 

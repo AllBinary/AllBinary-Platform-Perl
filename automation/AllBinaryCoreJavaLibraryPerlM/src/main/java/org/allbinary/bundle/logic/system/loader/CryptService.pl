@@ -17,6 +17,7 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
 
 sub _init_fields {
@@ -30,7 +31,7 @@ sub _init_fields {
 sub new {
     my ($class) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
         'org::allbinary::globals::Globals'->getInstance()->init(ref($self)->getClassLoader(), "./");
         $self->{logUtil}->putF("Set Globals: " . 'org::allbinary::globals::URLGLOBALS'->getWebappPath(), $self, $self->{commonStrings}->{CONSTRUCTOR});
     return $self;
@@ -72,21 +73,22 @@ sub showLicenseDialog {
         }
 }
 
-# use java::io::ByteArrayInputStream;
-# use java::io::InputStream;
-use org::allbinary::globals::Globals;
-use org::allbinary::globals::URLGLOBALS;
-use org::allbinary::gui::dialog::BasicTextJDialog;
-use org::allbinary::gui::dialog::ExitCloseListener;
-use org::allbinary::logic::communication::log::LogUtil;
-use org::allbinary::logic::system::security::AbCryptUtil;
-use org::allbinary::logic::system::security::AbKeys;
-use org::allbinary::logic::system::security::licensing::AbeClientInformationInterface;
-use org::allbinary::logic::system::security::licensing::AbeLicenseInterface;
-use org::allbinary::logic::system::security::licensing::AbeLicenseInterfaceFactory;
-use org::allbinary::logic::system::security::licensing::AbeNoLicense;
-use org::allbinary::logic::system::security::licensing::LicensingException;
-use org::allbinary::string::CommonStrings;
+use java::lang::Object ();
+# use java::io::ByteArrayInputStream ();
+# use java::io::InputStream ();
+use org::allbinary::globals::Globals ();
+use org::allbinary::globals::URLGLOBALS ();
+use org::allbinary::gui::dialog::BasicTextJDialog ();
+use org::allbinary::gui::dialog::ExitCloseListener ();
+use org::allbinary::logic::communication::log::LogUtil ();
+use org::allbinary::logic::system::security::AbCryptUtil ();
+use org::allbinary::logic::system::security::AbKeys ();
+use org::allbinary::logic::system::security::licensing::AbeClientInformationInterface ();
+use org::allbinary::logic::system::security::licensing::AbeLicenseInterface ();
+use org::allbinary::logic::system::security::licensing::AbeLicenseInterfaceFactory ();
+use org::allbinary::logic::system::security::licensing::AbeNoLicense ();
+use org::allbinary::logic::system::security::licensing::LicensingException ();
+use org::allbinary::string::CommonStrings ();
 
 1;
 

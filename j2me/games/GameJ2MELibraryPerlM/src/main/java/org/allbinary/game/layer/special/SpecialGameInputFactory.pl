@@ -17,8 +17,9 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
-our $NO_SPECIAL_GAME_INPUT = 'org::allbinary::game::layer::special::SpecialGameInput'->new();
+tie our $NO_SPECIAL_GAME_INPUT, 'java::lang::LazyStatic', sub { 'org::allbinary::game::layer::special::SpecialGameInput'->new() };
 
 sub new {
     my ($class) = @_;
@@ -26,7 +27,9 @@ sub new {
     return $self;
 }
 
-use org::allbinary::game::layer::special::SpecialGameInput;
+use java::lang::Object ();
+use java::lang::LazyStatic ();
+use org::allbinary::game::layer::special::SpecialGameInput ();
 
 1;
 

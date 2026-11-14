@@ -9,9 +9,10 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
 our $NEW_PLAYER_ID = 0;
-our $REMOTE_INFO = 'org::allbinary::game::multiplayer::layer::RemoteInfo'->new('org::allbinary::logic::string::StringUtil'->getInstance()->{EMPTY_STRING}, -1, -1, $org::allbinary::game::multiplayer::layer::RemoteInfo::NEW_PLAYER_ID);
+tie our $REMOTE_INFO, 'java::lang::LazyStatic', sub { 'org::allbinary::game::multiplayer::layer::RemoteInfo'->new('org::allbinary::logic::string::StringUtil'->getInstance()->{EMPTY_STRING}, -1, -1, $org::allbinary::game::multiplayer::layer::RemoteInfo::NEW_PLAYER_ID) };
 
 
 sub new {
@@ -20,7 +21,9 @@ sub new {
     return $self;
 }
 
-use org::allbinary::logic::string::StringUtil;
+use java::lang::Object ();
+use java::lang::LazyStatic ();
+use org::allbinary::logic::string::StringUtil ();
 
 1;
 

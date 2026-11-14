@@ -62,21 +62,22 @@ sub init {
         }
 }
 
-use org::allbinary::AndroidResources;
-use org::allbinary::data::resource::ResourceUtil;
-use org::allbinary::init::Init;
-use org::allbinary::input::motion::button::CommonButtons;
-use org::allbinary::input::motion::button::TouchButtonBlankResource;
-use org::allbinary::input::motion::button::TouchButtonDownResource;
-use org::allbinary::input::motion::button::TouchButtonGenericActionResource;
-use org::allbinary::input::motion::button::TouchButtonResource;
-use org::allbinary::input::motion::button::TouchButtonStartResource;
-use org::allbinary::input::motion::button::TouchButtonStrafeLeftResource;
-use org::allbinary::input::motion::button::TouchButtonStrafeRightResource;
-use org::allbinary::input::motion::button::TouchButtonTurnLeftResource;
-use org::allbinary::input::motion::button::TouchButtonTurnRightResource;
-use org::allbinary::input::motion::button::TouchButtonUpResource;
-use org::allbinary::logic::system::os::OperatingSystemFactory;
+use java::lang::Object ();
+use org::allbinary::AndroidResources ();
+use org::allbinary::data::resource::ResourceUtil ();
+use org::allbinary::init::Init ();
+use org::allbinary::input::motion::button::CommonButtons ();
+use org::allbinary::input::motion::button::TouchButtonBlankResource ();
+use org::allbinary::input::motion::button::TouchButtonDownResource ();
+use org::allbinary::input::motion::button::TouchButtonGenericActionResource ();
+use org::allbinary::input::motion::button::TouchButtonResource ();
+use org::allbinary::input::motion::button::TouchButtonStartResource ();
+use org::allbinary::input::motion::button::TouchButtonStrafeLeftResource ();
+use org::allbinary::input::motion::button::TouchButtonStrafeRightResource ();
+use org::allbinary::input::motion::button::TouchButtonTurnLeftResource ();
+use org::allbinary::input::motion::button::TouchButtonTurnRightResource ();
+use org::allbinary::input::motion::button::TouchButtonUpResource ();
+use org::allbinary::logic::system::os::OperatingSystemFactory ();
 
 1;
 

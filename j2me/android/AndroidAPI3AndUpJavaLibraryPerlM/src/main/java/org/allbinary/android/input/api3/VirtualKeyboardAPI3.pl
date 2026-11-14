@@ -19,7 +19,7 @@ use feature 'try';
 no warnings 'experimental::try';
 use parent -norequire,'org::allbinary::android::input::VirtualKeyboard','org::allbinary::input::event::VirtualKeyboardEventListenerInterface';
 
-our $MAX_API = 2147483647;
+tie our $MAX_API, 'java::lang::LazyStatic', sub { 2147483647 };
 our $MIN_API = 3;
 
 sub _init_fields {
@@ -34,7 +34,7 @@ sub _init_fields {
 sub new {
     my ($class, $activity) = @_;
     my $self = $class->SUPER::new();
-    $self->_init_fields();
+    _init_fields($self);
         # super(...) made $self above
         $self->{activity} = $activity;
         $self->{showVirtualKeyboardRunnable} = 'org::allbinary::android::input::api3::ShowVirtualKeyboardRunnable'->new($self->{activity});
@@ -90,16 +90,18 @@ sub hideVirtualKeyboard {
         $self->{virtualKeyboard} = 0;
 }
 
-use android::app::Activity;
-use org::allbinary::android::input::VirtualKeyboard;
-use org::allbinary::input::event::VirtualKeyboardEvent;
-use org::allbinary::input::event::VirtualKeyboardEventHandler;
-use org::allbinary::input::event::VirtualKeyboardEventListenerInterface;
-use org::allbinary::logic::communication::log::ForcedLogUtil;
-use org::allbinary::logic::util::event::AllBinaryEventObject;
-use org::allbinary::logic::util::event::EventStrings;
-use org::allbinary::android::input::api3::ShowVirtualKeyboardRunnable;
-use org::allbinary::android::input::api3::HideVirtualKeyboardRunnable;
+use java::lang::Object ();
+use java::lang::LazyStatic ();
+# use android::app::Activity ();
+use org::allbinary::android::input::VirtualKeyboard ();
+use org::allbinary::input::event::VirtualKeyboardEvent ();
+use org::allbinary::input::event::VirtualKeyboardEventHandler ();
+use org::allbinary::input::event::VirtualKeyboardEventListenerInterface ();
+use org::allbinary::logic::communication::log::ForcedLogUtil ();
+use org::allbinary::logic::util::event::AllBinaryEventObject ();
+use org::allbinary::logic::util::event::EventStrings ();
+use org::allbinary::android::input::api3::ShowVirtualKeyboardRunnable ();
+use org::allbinary::android::input::api3::HideVirtualKeyboardRunnable ();
 
 1;
 

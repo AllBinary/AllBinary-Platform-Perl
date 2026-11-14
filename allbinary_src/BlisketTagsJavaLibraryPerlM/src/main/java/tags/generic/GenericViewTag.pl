@@ -31,7 +31,7 @@ sub _init_fields {
 sub new {
     my ($class) = @_;
     my $self = $class->SUPER::new();
-    $self->_init_fields();
+    _init_fields($self);
         if ($tags::generic::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($tags::generic::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{JSPTAG})) {
             $self->{logUtil}->putF($self->{commonStrings}->{START}, $self, $self->{commonStrings}->{CONSTRUCTOR});
         }
@@ -52,9 +52,10 @@ sub setFile {
         $self->getPropertiesHashMap()->put('org::allbinary::logic::io::InputOutputTypeData'->getInstance()->{FILE}, $self->{file});
 }
 
-use org::allbinary::logic::communication::log::LogUtil;
-use org::allbinary::logic::io::InputOutputTypeData;
-use tags::TransformTag;
+use java::lang::Object ();
+use org::allbinary::logic::communication::log::LogUtil ();
+use org::allbinary::logic::io::InputOutputTypeData ();
+use tags::TransformTag ();
 
 1;
 

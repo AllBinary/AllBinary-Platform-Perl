@@ -18,8 +18,9 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
-our $instance = 'org::allbinary::J2SEUtil'->new();
+tie our $instance, 'java::lang::LazyStatic', sub { 'org::allbinary::J2SEUtil'->new() };
 
 sub new {
     my ($class) = @_;
@@ -54,9 +55,11 @@ sub getSetAsArray {
         return $objectArray;
 }
 
-use java::util::HashMap;
-# use java::util::Map;
-# use java::util::Set;
+use java::lang::Object ();
+use java::lang::LazyStatic ();
+use java::util::HashMap ();
+# use java::util::Map ();
+# use java::util::Set ();
 
 1;
 

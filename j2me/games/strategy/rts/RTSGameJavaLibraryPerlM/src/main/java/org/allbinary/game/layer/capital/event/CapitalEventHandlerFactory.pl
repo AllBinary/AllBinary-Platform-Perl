@@ -17,8 +17,9 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
-our $capitalEventHandlerArray = undef;
+our $capitalEventHandlerArray = [(undef) x (10)];
 
 sub new {
     my ($class) = @_;
@@ -28,7 +29,6 @@ sub new {
 
 
 { # Java static initializer
-        $capitalEventHandlerArray = [(undef) x (10)];
         for (my $index = scalar(@{$org::allbinary::game::layer::capital::event::CapitalEventHandlerFactory::capitalEventHandlerArray}) - 1; $index >= 0; $index--) {
             $org::allbinary::game::layer::capital::event::CapitalEventHandlerFactory::capitalEventHandlerArray->[$index] = 'org::allbinary::game::layer::capital::event::CapitalEventHandler'->new();
         }
@@ -37,7 +37,8 @@ sub new {
 
 sub getInstance {
     my ($class, $groupInterface) = @_;
-        return $org::allbinary::game::layer::capital::event::CapitalEventHandlerFactory::capitalEventHandlerArray->[int($groupInterface->getGroupId())];
+        my $groupId = int($groupInterface->getGroupId());
+        return $org::allbinary::game::layer::capital::event::CapitalEventHandlerFactory::capitalEventHandlerArray->[$groupId];
 }
 
 
@@ -48,8 +49,10 @@ sub removeAll {
         }
 }
 
-use org::allbinary::game::identification::Group;
-use org::allbinary::game::layer::capital::event::CapitalEventHandler;
+use java::lang::Object ();
+use java::lang::LazyStatic ();
+use org::allbinary::game::identification::Group ();
+use org::allbinary::game::layer::capital::event::CapitalEventHandler ();
 
 1;
 

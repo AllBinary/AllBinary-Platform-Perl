@@ -19,7 +19,7 @@ use feature 'try';
 no warnings 'experimental::try';
 use parent -norequire,'org::allbinary::layer::AllBinaryLayerCircularPool';
 
-our $SINGLETON = 'org::allbinary::game::layer::pickup::PickupLayerCircularStaticPool'->new();
+tie our $SINGLETON, 'java::lang::LazyStatic', sub { 'org::allbinary::game::layer::pickup::PickupLayerCircularStaticPool'->new() };
 
 
 sub new {
@@ -44,7 +44,9 @@ sub getInstanceXYZ {
         return $pickupLayer;
 }
 
-use org::allbinary::layer::AllBinaryLayerCircularPool;
+use java::lang::Object ();
+use java::lang::LazyStatic ();
+use org::allbinary::layer::AllBinaryLayerCircularPool ();
 
 1;
 

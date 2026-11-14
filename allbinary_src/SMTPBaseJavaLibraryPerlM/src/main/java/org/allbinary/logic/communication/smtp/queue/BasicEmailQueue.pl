@@ -19,7 +19,7 @@ use feature 'try';
 no warnings 'experimental::try';
 use parent -norequire,'org::allbinary::logic::util::queue::BasicQueue','org::allbinary::logic::communication::smtp::queue::EmailQueueInterface';
 
-our $instance = 'org::allbinary::logic::communication::smtp::queue::BasicEmailQueue'->new();
+tie our $instance, 'java::lang::LazyStatic', sub { 'org::allbinary::logic::communication::smtp::queue::BasicEmailQueue'->new() };
 our $basicEmailQueue = undef;
 
 sub _init_fields {
@@ -31,7 +31,7 @@ sub _init_fields {
 sub new {
     my ($class) = @_;
     my $self = $class->SUPER::new();
-    $self->_init_fields();
+    _init_fields($self);
     return $self;
 }
 
@@ -110,11 +110,13 @@ sub send {
         }
 }
 
-# use javax::mail::Transport;
-use org::allbinary::logic::communication::log::LogUtil;
-use org::allbinary::logic::communication::smtp::EmailInterface;
-use org::allbinary::logic::util::queue::BasicQueue;
-use org::allbinary::logic::communication::smtp::queue::EmailQueueInterface;
+use java::lang::Object ();
+use java::lang::LazyStatic ();
+# use javax::mail::Transport ();
+use org::allbinary::logic::communication::log::LogUtil ();
+use org::allbinary::logic::communication::smtp::EmailInterface ();
+use org::allbinary::logic::util::queue::BasicQueue ();
+use org::allbinary::logic::communication::smtp::queue::EmailQueueInterface ();
 
 1;
 

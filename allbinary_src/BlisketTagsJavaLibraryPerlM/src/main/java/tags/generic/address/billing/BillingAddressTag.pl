@@ -66,11 +66,12 @@ sub doStartTag {
         }
 }
 
-# use javax::servlet::jsp::JspTagException;
-use org::allbinary::business::user::address::BillingAddressData;
-use org::allbinary::logic::communication::http::request::AbResponseHandler;
-use org::allbinary::logic::system::security::licensing::LicensingException;
-use tags::StoreValidationTransformTag;
+use java::lang::Object ();
+# use javax::servlet::jsp::JspTagException ();
+use org::allbinary::business::user::address::BillingAddressData ();
+use org::allbinary::logic::communication::http::request::AbResponseHandler ();
+use org::allbinary::logic::system::security::licensing::LicensingException ();
+use tags::StoreValidationTransformTag ();
 
 1;
 

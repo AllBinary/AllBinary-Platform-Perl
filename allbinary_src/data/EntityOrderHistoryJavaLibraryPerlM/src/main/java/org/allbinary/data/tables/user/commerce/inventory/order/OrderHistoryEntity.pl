@@ -30,7 +30,7 @@ sub _init_fields {
 sub new {
     my ($class) = @_;
     my $self = $class->SUPER::new('org::allbinary::business::init::db::HistoryDbInitInfo'->new());
-    $self->_init_fields();
+    _init_fields($self);
         # super(...) made $self above
         $self->setTableName($self->{tableName});
     return $self;
@@ -385,47 +385,48 @@ sub update {
         }
 }
 
-use java::util::Calendar;
-use java::util::HashMap;
-use java::util::Random;
-use org::allbinary::util::BasicArrayList;
-use org::allbinary::util::BasicArrayListD;
-use org::allbinary::business::context::modules::storefront::StoreFrontData;
-use org::allbinary::business::context::modules::storefront::StoreFrontFactory;
-use org::allbinary::business::context::modules::storefront::StoreFrontInterface;
-use org::allbinary::business::entry::EntryData;
-use org::allbinary::business::init::db::HistoryDbInitInfo;
-use org::allbinary::business::user::UserData;
-use org::allbinary::business::user::address::BillingAddressData;
-use org::allbinary::business::user::address::ShippingAddressData;
-use org::allbinary::business::user::address::StreetAddress;
-use org::allbinary::business::user::commerce::inventory::basket::Basket;
-use org::allbinary::business::user::commerce::inventory::basket::BasketInterface;
-use org::allbinary::business::user::commerce::inventory::order::Order;
-use org::allbinary::business::user::commerce::inventory::order::OrderData;
-use org::allbinary::business::user::commerce::inventory::order::OrderHistory;
-use org::allbinary::business::user::commerce::inventory::order::OrderHistoryData;
-use org::allbinary::business::user::commerce::money::Money;
-use org::allbinary::business::user::commerce::money::payment::PaymentData;
-use org::allbinary::business::user::commerce::money::payment::PaymentInterface;
-use org::allbinary::business::user::commerce::money::tax::TaxFactory;
-use org::allbinary::business::user::commerce::shipping::ShippingMethodData;
-use org::allbinary::business::user::commerce::shipping::ShippingMethods;
-use org::allbinary::business::user::commerce::shipping::modules::ShippingInterface;
-use org::allbinary::data::generator::OrderHistoryIdGenerator;
-use org::allbinary::data::tables::TableDataFactory;
-use org::allbinary::data::tables::user::address::billing::BillingAddressesEntity;
-use org::allbinary::data::tables::user::address::shipping::ShippingAddressesEntity;
-use org::allbinary::data::tables::user::commerce::money::payment::PaymentEntity;
-use org::allbinary::logic::StdUtil;
-use org::allbinary::logic::communication::log::LogUtil;
-use org::allbinary::logic::communication::sql::AbSqlBean;
-use org::allbinary::logic::control::crypt::SuperCrypt;
-use org::allbinary::logic::string::StringMaker;
-use org::allbinary::logic::string::StringUtil;
-use org::allbinary::logic::system::security::licensing::AbeClientInformationInterface;
-use org::allbinary::logic::system::security::licensing::ServiceClientInformationInterfaceFactory;
-use org::allbinary::data::tables::user::commerce::inventory::order::OrderHistoryEntityInterface;
+use java::lang::Object ();
+use java::util::Calendar ();
+use java::util::HashMap ();
+use java::util::Random ();
+use org::allbinary::util::BasicArrayList ();
+use org::allbinary::util::BasicArrayListD ();
+use org::allbinary::business::context::modules::storefront::StoreFrontData ();
+use org::allbinary::business::context::modules::storefront::StoreFrontFactory ();
+use org::allbinary::business::context::modules::storefront::StoreFrontInterface ();
+use org::allbinary::business::entry::EntryData ();
+use org::allbinary::business::init::db::HistoryDbInitInfo ();
+use org::allbinary::business::user::UserData ();
+use org::allbinary::business::user::address::BillingAddressData ();
+use org::allbinary::business::user::address::ShippingAddressData ();
+use org::allbinary::business::user::address::StreetAddress ();
+use org::allbinary::business::user::commerce::inventory::basket::Basket ();
+use org::allbinary::business::user::commerce::inventory::basket::BasketInterface ();
+use org::allbinary::business::user::commerce::inventory::order::Order ();
+use org::allbinary::business::user::commerce::inventory::order::OrderData ();
+use org::allbinary::business::user::commerce::inventory::order::OrderHistory ();
+use org::allbinary::business::user::commerce::inventory::order::OrderHistoryData ();
+use org::allbinary::business::user::commerce::money::Money ();
+use org::allbinary::business::user::commerce::money::payment::PaymentData ();
+use org::allbinary::business::user::commerce::money::payment::PaymentInterface ();
+use org::allbinary::business::user::commerce::money::tax::TaxFactory ();
+use org::allbinary::business::user::commerce::shipping::ShippingMethodData ();
+use org::allbinary::business::user::commerce::shipping::ShippingMethods ();
+use org::allbinary::business::user::commerce::shipping::modules::ShippingInterface ();
+use org::allbinary::data::generator::OrderHistoryIdGenerator ();
+use org::allbinary::data::tables::TableDataFactory ();
+use org::allbinary::data::tables::user::address::billing::BillingAddressesEntity ();
+use org::allbinary::data::tables::user::address::shipping::ShippingAddressesEntity ();
+use org::allbinary::data::tables::user::commerce::money::payment::PaymentEntity ();
+use org::allbinary::logic::StdUtil ();
+use org::allbinary::logic::communication::log::LogUtil ();
+use org::allbinary::logic::communication::sql::AbSqlBean ();
+use org::allbinary::logic::control::crypt::SuperCrypt ();
+use org::allbinary::logic::string::StringMaker ();
+use org::allbinary::logic::string::StringUtil ();
+use org::allbinary::logic::system::security::licensing::AbeClientInformationInterface ();
+use org::allbinary::logic::system::security::licensing::ServiceClientInformationInterfaceFactory ();
+use org::allbinary::data::tables::user::commerce::inventory::order::OrderHistoryEntityInterface ();
 
 1;
 

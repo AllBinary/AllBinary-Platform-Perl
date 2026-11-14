@@ -26,8 +26,8 @@ sub getLayerInterface {
     die "abstract method getLayerInterface";
 }
 
-use org::allbinary::layer::AllBinaryLayer;
-use org::allbinary::media::graphics::geography::map::GeographicMapCellPosition;
+use org::allbinary::layer::AllBinaryLayer ();
+use org::allbinary::media::graphics::geography::map::GeographicMapCellPosition ();
 
 1;
 

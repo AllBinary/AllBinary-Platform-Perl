@@ -17,7 +17,7 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
-use parent -norequire,'javax::swing::JPanel';
+use parent -norequire,'java::lang::Object';
 
 
 sub _init_fields {
@@ -40,7 +40,7 @@ sub _init_fields {
 sub new {
     my ($class, $capturedImageActionScriptOutputInterface) = @_;
     my $self = $class->SUPER::new();
-    $self->_init_fields();
+    _init_fields($self);
         $self->{logUtil}->putF($self->{commonStrings}->{START}, $self, $self->{commonStrings}->{CONSTRUCTOR});
         $self->initComponents();
         $self->{capturedImageActionScriptOutputInterface} = $capturedImageActionScriptOutputInterface;
@@ -130,7 +130,7 @@ sub initComponents {
         $self->{titleJLabel}->setText("Image Output Options");
         $self->{okJButton}->setText("OK");
         $self->{okJButton}->addActionListener(do {
-            package java::awt::event::ActionListener::AnonymousN68202 { our @ISA = ('java::awt::event::ActionListener');
+            package java::awt::event::ActionListener::AnonymousN68202 { our @ISA = ('java::awt::event::ActionListener', 'java::lang::Object');
             
 
             sub actionPerformed {
@@ -147,7 +147,7 @@ sub initComponents {
         $self->{displayJCheckBox}->setBorder($org::allbinary::input::automation::module::actions::script::condition::processors::output::javax::swing->{BorderFactory}->createEmptyBorder(0, 0, 0, 0));
         $self->{displayJCheckBox}->setMargin('java::awt::Insets'->new(0, 0, 0, 0));
         $self->{displayJCheckBox}->addActionListener(do {
-            package java::awt::event::ActionListener::AnonymousN68719 { our @ISA = ('java::awt::event::ActionListener');
+            package java::awt::event::ActionListener::AnonymousN68719 { our @ISA = ('java::awt::event::ActionListener', 'java::lang::Object');
             
 
             sub actionPerformed {
@@ -158,8 +158,7 @@ sub initComponents {
             'java::awt::event::ActionListener::AnonymousN68719'->can('new') ? 'java::awt::event::ActionListener::AnonymousN68719'->new() : bless({}, 'java::awt::event::ActionListener::AnonymousN68719')
         });
         $self->{itemTypesJList}->setModel(do {
-            package javax::swing::AbstractListModel::AnonymousN68876 { our @ISA = ('javax::swing::AbstractListModel');
-            $self->{strings} = ["Item 1", "Item 2", "Item 3", "Item 4", "Item 5"];
+            package javax::swing::AbstractListModel::AnonymousN68876 { our @ISA = ('javax::swing::AbstractListModel', 'java::lang::Object');
             
 
             sub getSize {
@@ -172,8 +171,12 @@ sub initComponents {
                 my ($self, $i) = @_;
                 return $strings->[$i];
             }
+            sub _init_anonymous_fields {
+                my ($self) = @_;
+                $self->{strings} = ["Item 1", "Item 2", "Item 3", "Item 4", "Item 5"];
             }
-            'javax::swing::AbstractListModel::AnonymousN68876'->can('new') ? 'javax::swing::AbstractListModel::AnonymousN68876'->new() : bless({}, 'javax::swing::AbstractListModel::AnonymousN68876')
+            }
+            my $anonymous = 'javax::swing::AbstractListModel::AnonymousN68876'->can('new') ? 'javax::swing::AbstractListModel::AnonymousN68876'->new() : bless({}, 'javax::swing::AbstractListModel::AnonymousN68876'); $anonymous->_init_anonymous_fields(); $anonymous
         });
         $self->{jScrollPane1}->setViewportView($self->{itemTypesJList});
         my $capturedImageActionJDialogLayout = 'javax::swing::GroupLayout'->new($self->{capturedImageActionJDialog}->getContentPane());
@@ -183,7 +186,7 @@ sub initComponents {
         $self->setMinimumSize('java::awt::Dimension'->new(100, 0));
         $self->{capturedImageActionJButton}->setText("Edit");
         $self->{capturedImageActionJButton}->addActionListener(do {
-            package java::awt::event::ActionListener::AnonymousN70456 { our @ISA = ('java::awt::event::ActionListener');
+            package java::awt::event::ActionListener::AnonymousN70456 { our @ISA = ('java::awt::event::ActionListener', 'java::lang::Object');
             
 
             sub actionPerformed {
@@ -218,14 +221,15 @@ sub capturedImageActionJButtonActionPerformed {
         $self->getCapturedImageActionJDialog()->setVisible(1);
 }
 
-use org::allbinary::util::BasicArrayList;
-use org::allbinary::util::BasicArrayListD;
-# use javax::swing;
-use org::allbinary::input::media::image::InputImageType;
-use org::allbinary::logic::communication::log::LogUtil;
-use org::allbinary::string::CommonStrings;
-use org::allbinary::input::automation::module::actions::script::condition::processors::output::ImageTypes;
-use org::allbinary::input::automation::module::actions::script::condition::processors::output::DefaultListModel;
+use java::lang::Object ();
+use org::allbinary::util::BasicArrayList ();
+use org::allbinary::util::BasicArrayListD ();
+# use javax::swing ();
+use org::allbinary::input::media::image::InputImageType ();
+use org::allbinary::logic::communication::log::LogUtil ();
+use org::allbinary::string::CommonStrings ();
+use org::allbinary::input::automation::module::actions::script::condition::processors::output::ImageTypes ();
+use org::allbinary::input::automation::module::actions::script::condition::processors::output::DefaultListModel ();
 
 1;
 

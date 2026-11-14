@@ -29,7 +29,7 @@ sub _init_fields {
 sub new {
     my ($class, $bufferedImage, $minX, $maxX, $y) = @_;
     my $self = $class->SUPER::new($bufferedImage, $minX, $maxX, $y);
-    $self->_init_fields();
+    _init_fields($self);
         # super(...) made $self above
     return $self;
 }
@@ -44,11 +44,12 @@ sub toString {
         return $stringBuffer->toString();
 }
 
-# use java::awt::image::BufferedImage;
-use org::allbinary::logic::string::StringMaker;
-use org::allbinary::string::CommonSeps;
-use org::allbinary::input::automation::module::game::MeteredGameObject;
-use org::allbinary::input::automation::module::game::MagicGameObjectInterface;
+use java::lang::Object ();
+# use java::awt::image::BufferedImage ();
+use org::allbinary::logic::string::StringMaker ();
+use org::allbinary::string::CommonSeps ();
+use org::allbinary::input::automation::module::game::MeteredGameObject ();
+use org::allbinary::input::automation::module::game::MagicGameObjectInterface ();
 
 1;
 

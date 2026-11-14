@@ -33,8 +33,9 @@ sub create {
         return 'org::allbinary::media::graphics::geography::map::racetrack::CustomMapGenerator'->new($raceTrackGeographicMap);
 }
 
-use org::allbinary::media::graphics::geography::map::racetrack::CustomMapGeneratorBaseFactory;
-use org::allbinary::media::graphics::geography::map::racetrack::CustomMapGenerator;
+use java::lang::Object ();
+use org::allbinary::media::graphics::geography::map::racetrack::CustomMapGeneratorBaseFactory ();
+use org::allbinary::media::graphics::geography::map::racetrack::CustomMapGenerator ();
 
 1;
 

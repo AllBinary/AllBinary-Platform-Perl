@@ -17,9 +17,9 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
-use parent -norequire,'javax::microedition::khronos::opengles::GL10';
+use parent -norequire,'java::lang::Object','javax::microedition::khronos::opengles::GL10';
 
-our $NULL_GL10 = 'org::allbinary::device::NullGL10'->new();
+tie our $NULL_GL10, 'java::lang::LazyStatic', sub { 'org::allbinary::device::NullGL10'->new() };
 
 sub new {
     my ($class) = @_;
@@ -601,11 +601,13 @@ sub glPolygonMode {
         return;
 }
 
-# use javax::microedition::khronos::opengles::GL10;
-# use java::nio::Buffer;
-# use java::nio::FloatBuffer;
-# use java::nio::IntBuffer;
-use org::allbinary::logic::string::StringUtil;
+use java::lang::Object ();
+use java::lang::LazyStatic ();
+use javax::microedition::khronos::opengles::GL10 ();
+# use java::nio::Buffer ();
+# use java::nio::FloatBuffer ();
+# use java::nio::IntBuffer ();
+use org::allbinary::logic::string::StringUtil ();
 
 1;
 

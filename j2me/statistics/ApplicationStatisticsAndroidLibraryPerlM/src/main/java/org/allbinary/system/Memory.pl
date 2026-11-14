@@ -18,6 +18,7 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
 
 sub new {
@@ -45,8 +46,9 @@ sub getInfo {
         return $stringBuffer->toString();
 }
 
-use org::allbinary::logic::string::StringMaker;
-use java::lang::Runtime;
+use java::lang::Object ();
+use org::allbinary::logic::string::StringMaker ();
+use java::lang::Runtime ();
 
 1;
 

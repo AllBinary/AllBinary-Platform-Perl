@@ -28,7 +28,7 @@ sub onMoveEvent {
     die "abstract method onMoveEvent";
 }
 
-use org::allbinary::logic::util::event::EventListenerInterface;
+use org::allbinary::logic::util::event::EventListenerInterface ();
 
 1;
 

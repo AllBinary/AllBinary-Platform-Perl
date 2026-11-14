@@ -17,7 +17,7 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
-use parent -norequire,'java::io::FileFilter';
+use parent -norequire,'java::lang::Object';
 
 
 sub _init_fields {
@@ -29,7 +29,7 @@ sub _init_fields {
 sub new {
     my ($class, $booleanVisitorInterface) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
         $self->{booleanVisitorInterface} = $booleanVisitorInterface;
     return $self;
 }
@@ -50,11 +50,12 @@ sub accept {
         return $isFileAcceptable || $file->isDirectory();
 }
 
-use java::io::File;
-# use java::io::FileFilter;
-use org::allbinary::logic::io::file::AbFile;
-use org::allbinary::logic::io::file::FileWrapperUtil;
-use org::allbinary::logic::util::visitor::VisitorInterface;
+use java::lang::Object ();
+use java::io::File ();
+# use java::io::FileFilter ();
+use org::allbinary::logic::io::file::AbFile ();
+use org::allbinary::logic::io::file::FileWrapperUtil ();
+use org::allbinary::logic::util::visitor::VisitorInterface ();
 
 1;
 

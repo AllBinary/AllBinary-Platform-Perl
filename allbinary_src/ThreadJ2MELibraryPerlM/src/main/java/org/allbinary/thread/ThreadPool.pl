@@ -17,9 +17,10 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
 our $ROOT_NAME = "-PooledThread-";
-our $NORMAL_PRIORITY = $java::lang::Thread::NORM_PRIORITY;
+tie our $NORMAL_PRIORITY, 'java::lang::LazyStatic', sub { $java::lang::Thread::NORM_PRIORITY };
 
 sub _init_fields {
     my ($self) = @_;
@@ -41,7 +42,7 @@ sub _init_fields {
 sub new {
     my ($class, $poolName, $numThreads, $priority) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
         $self->{poolName} = $poolName;
         $self->{priority} = $priority;
         $self->{numThreads} = $numThreads;
@@ -73,7 +74,7 @@ sub runAPriorityTask {
 
 sub runTaskWithPriority {
     my ($self, $task) = @_;
-        { # synchronized ($self)
+        {; # synchronized ($self)
             if (!$self->{isAlive}) {
                 $self->init();
             }
@@ -102,7 +103,7 @@ sub runTaskWithPriority {
 
 sub runTask {
     my ($self, $task) = @_;
-        { # synchronized ($self)
+        {; # synchronized ($self)
             if (!$self->{isAlive}) {
                 $self->init();
             }
@@ -117,7 +118,7 @@ sub runTask {
 # throws InterruptedException
 sub getTask {
     my ($self) = @_;
-        { # synchronized ($self)
+        {; # synchronized ($self)
             while ($self->{taskQueue}->size() == 0) {
                 if (!$self->{isAlive}) {
                     return $self->{NULL_RUNNABLE};
@@ -132,7 +133,7 @@ sub getTask {
 
 sub clear {
     my ($self) = @_;
-        { # synchronized ($self)
+        {; # synchronized ($self)
             if ($self->{isAlive}) {
                 $self->{taskQueue}->clear();
             }
@@ -142,7 +143,7 @@ sub clear {
 
 sub close {
     my ($self) = @_;
-        { # synchronized ($self)
+        {; # synchronized ($self)
             if ($self->{isAlive}) {
                 $self->{isAlive} = 0;
                 $self->{taskQueue}->clear();
@@ -153,7 +154,7 @@ sub close {
 
 sub join {
     my ($self) = @_;
-        { # synchronized ($self)
+        {; # synchronized ($self)
             $self->{isAlive} = 0;
             $self->{taskQueue}->clear();
             $self->notifyAll();
@@ -205,17 +206,19 @@ sub createName {
         return 'org::allbinary::logic::string::StringMaker'->new()->append($self->{poolName})->append($org::allbinary::thread::ThreadPool::ROOT_NAME)->appendint($self->{threadID}++)->toString();
 }
 
-use org::allbinary::logic::communication::log::LogUtil;
-use org::allbinary::logic::string::StringMaker;
-use org::allbinary::string::CommonStrings;
-use org::allbinary::util::BasicArrayList;
-use org::allbinary::util::BasicArrayListD;
-use org::allbinary::util::BasicArrayListUtil;
-use java::lang::Thread;
-use org::allbinary::thread::NullRunnable;
-use org::allbinary::thread::ThreadPoolStrings;
-use org::allbinary::thread::ThreadObjectUtil;
-use org::allbinary::thread::PooledThread;
+use java::lang::Object ();
+use java::lang::LazyStatic ();
+use org::allbinary::logic::communication::log::LogUtil ();
+use org::allbinary::logic::string::StringMaker ();
+use org::allbinary::string::CommonStrings ();
+use org::allbinary::util::BasicArrayList ();
+use org::allbinary::util::BasicArrayListD ();
+use org::allbinary::util::BasicArrayListUtil ();
+use java::lang::Thread ();
+use org::allbinary::thread::NullRunnable ();
+use org::allbinary::thread::ThreadPoolStrings ();
+use org::allbinary::thread::ThreadObjectUtil ();
+use org::allbinary::thread::PooledThread ();
 
 1;
 

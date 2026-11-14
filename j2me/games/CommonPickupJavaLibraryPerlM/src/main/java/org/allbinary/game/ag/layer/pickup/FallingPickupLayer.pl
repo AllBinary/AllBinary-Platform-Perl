@@ -41,15 +41,16 @@ sub implmentsTickableInterface {
         return 1;
 }
 
-use org::allbinary::animation::NullAnimationFactory;
-use org::allbinary::game::layer::pickup::CountedPickedUpLayerInterfaceFactory;
-use org::allbinary::game::layer::pickup::PickupLayer;
-use org::allbinary::game::multiplayer::layer::RemoteInfo;
-use org::allbinary::game::tick::TickableInterface;
-use org::allbinary::graphics::PointFactory;
-use org::allbinary::graphics::Rectangle;
-use org::allbinary::layer::AllBinaryLayerManager;
-use org::allbinary::view::ViewPosition;
+use java::lang::Object ();
+use org::allbinary::animation::NullAnimationFactory ();
+use org::allbinary::game::layer::pickup::CountedPickedUpLayerInterfaceFactory ();
+use org::allbinary::game::layer::pickup::PickupLayer ();
+use org::allbinary::game::multiplayer::layer::RemoteInfo ();
+use org::allbinary::game::tick::TickableInterface ();
+use org::allbinary::graphics::PointFactory ();
+use org::allbinary::graphics::Rectangle ();
+use org::allbinary::layer::AllBinaryLayerManager ();
+use org::allbinary::view::ViewPosition ();
 
 1;
 

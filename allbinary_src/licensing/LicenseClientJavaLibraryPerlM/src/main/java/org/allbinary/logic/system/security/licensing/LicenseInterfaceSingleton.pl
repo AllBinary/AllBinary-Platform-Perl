@@ -17,8 +17,9 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
-our $licenseInterface = 'org::allbinary::logic::system::security::licensing::AbeNoLicense'->getInstance();
+tie our $licenseInterface, 'java::lang::LazyStatic', sub { 'org::allbinary::logic::system::security::licensing::AbeNoLicense'->getInstance() };
 
 sub new {
     my ($class) = @_;
@@ -40,7 +41,9 @@ sub init {
         }
 }
 
-use org::allbinary::logic::system::security::licensing::AbeNoLicense;
+use java::lang::Object ();
+use java::lang::LazyStatic ();
+use org::allbinary::logic::system::security::licensing::AbeNoLicense ();
 
 1;
 

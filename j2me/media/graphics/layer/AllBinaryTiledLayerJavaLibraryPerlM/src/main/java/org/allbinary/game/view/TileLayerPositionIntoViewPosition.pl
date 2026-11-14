@@ -29,7 +29,7 @@ sub _init_fields {
 sub new {
     my ($class) = @_;
     my $self = $class->SUPER::new(0, 0, 0);
-    $self->_init_fields();
+    _init_fields($self);
         # super(...) made $self above
     return $self;
 }
@@ -58,10 +58,11 @@ sub setTiledLayer {
         $self->{tiledLayer} = $tiledLayer;
 }
 
-use org::allbinary::game::layer::AllBinaryTiledLayer;
-use org::allbinary::layer::Layer;
-use org::allbinary::layer::NullLayer;
-use org::allbinary::view::ViewPosition;
+use java::lang::Object ();
+use org::allbinary::game::layer::AllBinaryTiledLayer ();
+use org::allbinary::layer::Layer ();
+use org::allbinary::layer::NullLayer ();
+use org::allbinary::view::ViewPosition ();
 
 1;
 

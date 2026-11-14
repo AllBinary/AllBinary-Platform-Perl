@@ -19,7 +19,7 @@ use warnings;
 use feature 'try';
 no warnings 'experimental::try';
 use POSIX ();
-use parent -norequire,'org::allbinary::animation::AnimationInterfaceFactoryInterface';
+use parent -norequire,'java::lang::Object','org::allbinary::animation::AnimationInterfaceFactoryInterface';
 
 
 sub _init_fields {
@@ -50,7 +50,7 @@ sub createDXY {
 sub new {
     my ($class, $image, $width, $height, $dx, $dy, $angleIncrement, $animationBehaviorFactory) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
         $self->{animationBehaviorFactory} = $animationBehaviorFactory;
         my $totalAngle = int('org::allbinary::math::AngleFactory'->getInstance()->{TOTAL_ANGLE});
         my $imageArray = 'org::allbinary::media::image::ImageToRotationImageArrayUtil'->getInstance()->generate($image, $angleIncrement, $totalAngle);
@@ -70,17 +70,18 @@ sub setInitialScale {
     my ($self, $scaleProperties) = @_;
 }
 
-# use javax::microedition::lcdui::Image;
-use org::allbinary::animation::Animation;
-use org::allbinary::animation::AnimationBehaviorFactory;
-use org::allbinary::animation::AnimationInterfaceFactoryInterface;
-use org::allbinary::game::configuration::GameConfigurationCentral;
-use org::allbinary::logic::NullUtil;
-use org::allbinary::math::AngleFactory;
-use org::allbinary::media::ScaleProperties;
-use org::allbinary::media::image::ImageToRotationImageArrayUtil;
-use org::allbinary::animation::image::ImageArrayRotationAnimationInfo;
-use org::allbinary::animation::image::AdjustedImageArrayRotationAnimation;
+use java::lang::Object ();
+use javax::microedition::lcdui::Image ();
+use org::allbinary::animation::Animation ();
+use org::allbinary::animation::AnimationBehaviorFactory ();
+use org::allbinary::animation::AnimationInterfaceFactoryInterface ();
+use org::allbinary::game::configuration::GameConfigurationCentral ();
+use org::allbinary::logic::NullUtil ();
+use org::allbinary::math::AngleFactory ();
+use org::allbinary::media::ScaleProperties ();
+use org::allbinary::media::image::ImageToRotationImageArrayUtil ();
+use org::allbinary::animation::image::ImageArrayRotationAnimationInfo ();
+use org::allbinary::animation::image::AdjustedImageArrayRotationAnimation ();
 
 1;
 

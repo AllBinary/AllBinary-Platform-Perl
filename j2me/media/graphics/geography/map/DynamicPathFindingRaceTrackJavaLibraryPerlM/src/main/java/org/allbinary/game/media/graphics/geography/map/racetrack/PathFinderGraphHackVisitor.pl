@@ -29,7 +29,7 @@ sub _init_fields {
 sub new {
     my ($class, $geographicMapInterface, $edgeMinimum, $minPathWeight, $maxPathWeight) = @_;
     my $self = $class->SUPER::new($geographicMapInterface, $edgeMinimum, $minPathWeight, $maxPathWeight);
-    $self->_init_fields();
+    _init_fields($self);
         # super(...) made $self above
     return $self;
 }
@@ -147,20 +147,21 @@ sub isValid {
         }
 }
 
-use org::jgrapht::GraphPath;
-use org::jgrapht::graph::DefaultWeightedEdge;
-use org::jgrapht::graph::SimpleWeightedGraph;
-use org::allbinary::util::BasicArrayList;
-use org::allbinary::logic::communication::log::LogUtil;
-use org::allbinary::game::layer::AllBinaryTiledLayer;
-use org::allbinary::graphics::CellPosition;
-use org::allbinary::media::graphics::geography::map::BasicGeographicMap;
-use org::allbinary::media::graphics::geography::map::BasicGeographicMapCellPositionFactory;
-use org::allbinary::media::graphics::geography::map::BasicGeographicMapUtil;
-use org::allbinary::media::graphics::geography::map::GeographicMapCellPosition;
-use org::allbinary::media::graphics::geography::map::racetrack::RaceTrackGeographicMap;
-use org::allbinary::media::graphics::geography::pathfinding::PathFindingNode;
-use org::allbinary::game::media::graphics::geography::map::racetrack::BasePathFinderGraphVisitor;
+use java::lang::Object ();
+use org::jgrapht::GraphPath ();
+use org::jgrapht::graph::DefaultWeightedEdge ();
+use org::jgrapht::graph::SimpleWeightedGraph ();
+use org::allbinary::util::BasicArrayList ();
+use org::allbinary::logic::communication::log::LogUtil ();
+use org::allbinary::game::layer::AllBinaryTiledLayer ();
+use org::allbinary::graphics::CellPosition ();
+use org::allbinary::media::graphics::geography::map::BasicGeographicMap ();
+use org::allbinary::media::graphics::geography::map::BasicGeographicMapCellPositionFactory ();
+use org::allbinary::media::graphics::geography::map::BasicGeographicMapUtil ();
+use org::allbinary::media::graphics::geography::map::GeographicMapCellPosition ();
+use org::allbinary::media::graphics::geography::map::racetrack::RaceTrackGeographicMap ();
+use org::allbinary::media::graphics::geography::pathfinding::PathFindingNode ();
+use org::allbinary::game::media::graphics::geography::map::racetrack::BasePathFinderGraphVisitor ();
 
 1;
 

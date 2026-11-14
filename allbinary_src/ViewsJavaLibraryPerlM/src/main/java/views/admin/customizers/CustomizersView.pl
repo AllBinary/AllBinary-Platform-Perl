@@ -31,7 +31,7 @@ sub _init_fields {
 sub new {
     my ($class, $transformInfoInterface) = @_;
     my $self = $class->SUPER::new($transformInfoInterface);
-    $self->_init_fields();
+    _init_fields($self);
         # super(...) made $self above
         $self->{customizersVector} = 'org::allbinary::data::tables::transform::info::TransformInfoEntityBuilder'->getInstance()->getNames($self->getWeblisketSession()->getStoreName());
     return $self;
@@ -87,27 +87,28 @@ sub view {
         }
 }
 
-# use java::util::Arrays;
-use org::allbinary::util::BasicArrayList;
-use org::allbinary::util::BasicArrayListD;
-use org::allbinary::data::tables::transform::info::TransformInfoEntityBuilder;
-use org::allbinary::data::tree::dom::DomNodeInterface;
-use org::allbinary::data::tree::dom::ModDomHelper;
-use org::allbinary::globals::GLOBALS2;
-use org::allbinary::logic::StdUtil;
-use org::allbinary::logic::communication::log::LogUtil;
-use org::allbinary::logic::control::sort::StringComparator;
-use org::allbinary::logic::visual::transform::info::CustomizerTransformInfoData;
-use org::allbinary::logic::visual::transform::info::TransformInfoInterface;
-use org::allbinary::logic::visual::transform::template::customizer::TransformTemplateCustomizerData;
-use org::allbinary::logic::visual::transform::template::customizer::TransformTemplateCustomizersData;
-use org::allbinary::logic::visual::transform::template::customizer::bodies::BodyData;
-use org::allbinary::logic::visual::transform::template::customizer::widgets::title::TitleData;
-use org::allbinary::logic::visual::transform::template::util::TransformTemplateCustomizerUtil;
-use org::allbinary::string::CommonStrings;
-use org::w3c::dom::Document;
-use org::w3c::dom::Node;
-use views::business::context::modules::storefront::HttpStoreComponentView;
+use java::lang::Object ();
+# use java::util::Arrays ();
+use org::allbinary::util::BasicArrayList ();
+use org::allbinary::util::BasicArrayListD ();
+use org::allbinary::data::tables::transform::info::TransformInfoEntityBuilder ();
+use org::allbinary::data::tree::dom::DomNodeInterface ();
+use org::allbinary::data::tree::dom::ModDomHelper ();
+use org::allbinary::globals::GLOBALS2 ();
+use org::allbinary::logic::StdUtil ();
+use org::allbinary::logic::communication::log::LogUtil ();
+use org::allbinary::logic::control::sort::StringComparator ();
+use org::allbinary::logic::visual::transform::info::CustomizerTransformInfoData ();
+use org::allbinary::logic::visual::transform::info::TransformInfoInterface ();
+use org::allbinary::logic::visual::transform::template::customizer::TransformTemplateCustomizerData ();
+use org::allbinary::logic::visual::transform::template::customizer::TransformTemplateCustomizersData ();
+use org::allbinary::logic::visual::transform::template::customizer::bodies::BodyData ();
+use org::allbinary::logic::visual::transform::template::customizer::widgets::title::TitleData ();
+use org::allbinary::logic::visual::transform::template::util::TransformTemplateCustomizerUtil ();
+use org::allbinary::string::CommonStrings ();
+use org::w3c::dom::Document ();
+use org::w3c::dom::Node ();
+use views::business::context::modules::storefront::HttpStoreComponentView ();
 
 1;
 

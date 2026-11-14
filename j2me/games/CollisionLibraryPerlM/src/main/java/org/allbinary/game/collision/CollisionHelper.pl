@@ -17,6 +17,7 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
 
 sub _init_fields {
@@ -28,7 +29,7 @@ sub _init_fields {
 sub new {
     my ($class, $sourceLayerInterface) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
         $self->{sourceLayerInterface} = $sourceLayerInterface;
     return $self;
 }
@@ -51,8 +52,9 @@ sub setOwnerLayerInterface {
         $self->{sourceLayerInterface} = $sourceLayerInterface;
 }
 
-use org::allbinary::game::layer::CollidableCompositeLayer;
-use org::allbinary::layer::AllBinaryLayer;
+use java::lang::Object ();
+use org::allbinary::game::layer::CollidableCompositeLayer ();
+use org::allbinary::layer::AllBinaryLayer ();
 
 1;
 

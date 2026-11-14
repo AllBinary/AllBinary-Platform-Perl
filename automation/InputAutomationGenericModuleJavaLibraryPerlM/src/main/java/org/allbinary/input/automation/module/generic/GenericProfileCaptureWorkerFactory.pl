@@ -17,6 +17,7 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
 
 
@@ -43,14 +44,15 @@ sub getInstance {
         die ("No CaptureWorkerInterface specified in GenericProfile");
 }
 
-use org::allbinary::util::BasicArrayList;
-use org::allbinary::util::BasicArrayListD;
-use org::allbinary::input::automation::module::generic::configuration::profile::GenericProfile;
-use org::allbinary::input::automation::module::generic::configuration::profile::GenericProfileDataWorkerType;
-use org::allbinary::input::automation::module::generic::configuration::profile::SavedCaptureGenericProfileDataWorkerType;
-use org::allbinary::input::media::image::capture::CaptureWorkerInterface;
-use org::allbinary::input::media::image::capture::ScreenCaptureImagesWorker;
-use org::allbinary::input::automation::module::generic::SavedCaptureImagesWorker;
+use java::lang::Object ();
+use org::allbinary::util::BasicArrayList ();
+use org::allbinary::util::BasicArrayListD ();
+use org::allbinary::input::automation::module::generic::configuration::profile::GenericProfile ();
+use org::allbinary::input::automation::module::generic::configuration::profile::GenericProfileDataWorkerType ();
+use org::allbinary::input::automation::module::generic::configuration::profile::SavedCaptureGenericProfileDataWorkerType ();
+use org::allbinary::input::media::image::capture::CaptureWorkerInterface ();
+use org::allbinary::input::media::image::capture::ScreenCaptureImagesWorker ();
+use org::allbinary::input::automation::module::generic::SavedCaptureImagesWorker ();
 
 1;
 

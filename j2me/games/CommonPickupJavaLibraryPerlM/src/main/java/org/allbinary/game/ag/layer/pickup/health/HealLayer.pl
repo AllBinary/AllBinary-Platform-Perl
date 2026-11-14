@@ -43,14 +43,15 @@ sub visit {
         }
 }
 
-# use javax::microedition::lcdui::Graphics;
-use org::allbinary::game::health::HealthInterface;
-use org::allbinary::game::health::HealthVisitorInterface;
-use org::allbinary::graphics::PointFactory;
-use org::allbinary::graphics::Rectangle;
-use org::allbinary::layer::AllBinaryLayer;
-use org::allbinary::logic::string::StringUtil;
-use org::allbinary::view::ViewPosition;
+use java::lang::Object ();
+use javax::microedition::lcdui::Graphics ();
+use org::allbinary::game::health::HealthInterface ();
+use org::allbinary::game::health::HealthVisitorInterface ();
+use org::allbinary::graphics::PointFactory ();
+use org::allbinary::graphics::Rectangle ();
+use org::allbinary::layer::AllBinaryLayer ();
+use org::allbinary::logic::string::StringUtil ();
+use org::allbinary::view::ViewPosition ();
 
 1;
 

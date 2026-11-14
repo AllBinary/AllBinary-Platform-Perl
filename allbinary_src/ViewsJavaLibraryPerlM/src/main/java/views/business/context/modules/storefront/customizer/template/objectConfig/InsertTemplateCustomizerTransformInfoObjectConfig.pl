@@ -37,7 +37,7 @@ sub new {
 sub _new1 {
     my ($class, $transformInfoInterface) = @_;
     my $self = $class->SUPER::new($transformInfoInterface);
-    $self->_init_fields();
+    _init_fields($self);
         # super(...) made $self above
     return $self;
 }
@@ -46,7 +46,7 @@ sub _new1 {
 sub _new2 {
     my ($class, $transformInfoInterface, $document) = @_;
     my $self = $class->SUPER::new($transformInfoInterface, $document);
-    $self->_init_fields();
+    _init_fields($self);
         # super(...) made $self above
         $self->setDocument($self->generate($self->toXmlDoc()));
     return $self;
@@ -56,7 +56,7 @@ sub _new2 {
 sub _new3 {
     my ($class, $transformInfoInterface, $name, $type) = @_;
     my $self = $class->SUPER::new($transformInfoInterface, $name, $type);
-    $self->_init_fields();
+    _init_fields($self);
         # super(...) made $self above
         $self->setDocument($self->generate($self->toXmlDoc()));
     return $self;
@@ -92,15 +92,16 @@ sub set {
         }
 }
 
-use org::allbinary::logic::communication::log::LogUtil;
-use org::allbinary::logic::visual::transform::info::TransformInfoDomNodeView;
-use org::allbinary::logic::visual::transform::info::TransformInfoInterface;
-use org::allbinary::logic::visual::transform::info::TransformInfosData;
-use org::allbinary::logic::visual::transform::info::objectConfig::TransformInfoObjectConfigData;
-use org::w3c::dom::Document;
-use org::w3c::dom::Node;
-use org::w3c::dom::NodeList;
-use views::business::context::modules::storefront::customizer::template::objectConfig::NoTemplateTransformInfoObjectConfig;
+use java::lang::Object ();
+use org::allbinary::logic::communication::log::LogUtil ();
+use org::allbinary::logic::visual::transform::info::TransformInfoDomNodeView ();
+use org::allbinary::logic::visual::transform::info::TransformInfoInterface ();
+use org::allbinary::logic::visual::transform::info::TransformInfosData ();
+use org::allbinary::logic::visual::transform::info::objectConfig::TransformInfoObjectConfigData ();
+use org::w3c::dom::Document ();
+use org::w3c::dom::Node ();
+use org::w3c::dom::NodeList ();
+use views::business::context::modules::storefront::customizer::template::objectConfig::NoTemplateTransformInfoObjectConfig ();
 
 1;
 

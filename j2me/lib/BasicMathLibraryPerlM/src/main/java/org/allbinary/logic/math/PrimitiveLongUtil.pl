@@ -17,6 +17,7 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
 
 sub _init_fields {
@@ -46,7 +47,7 @@ sub createPowerOfTen {
 sub new {
     my ($class, $powerOfTen, $unused) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
         $self->{maxDigits} = 'org::allbinary::logic::math::MathUtil'->getInstance()->getTotalDigits($powerOfTen);
         $self->{powerOfTen} = $powerOfTen;
         $self->{maxValue} = ($powerOfTen * 10) - 1;
@@ -101,11 +102,12 @@ sub getMaxDigits {
         return $self->{maxDigits};
 }
 
-use org::allbinary::logic::NullUtil;
-use org::allbinary::logic::communication::log::LogUtil;
-use org::allbinary::string::CommonStrings;
-use org::allbinary::logic::math::PrimitiveLongSingleton;
-use org::allbinary::logic::math::MathUtil;
+use java::lang::Object ();
+use org::allbinary::logic::NullUtil ();
+use org::allbinary::logic::communication::log::LogUtil ();
+use org::allbinary::string::CommonStrings ();
+use org::allbinary::logic::math::PrimitiveLongSingleton ();
+use org::allbinary::logic::math::MathUtil ();
 
 1;
 

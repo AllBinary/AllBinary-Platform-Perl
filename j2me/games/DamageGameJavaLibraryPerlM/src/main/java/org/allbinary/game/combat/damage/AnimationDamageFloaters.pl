@@ -34,7 +34,7 @@ sub _init_fields {
 sub new {
     my ($class, $layerInterface, $animationInterfaceArray, $dx, $dy) = @_;
     my $self = $class->SUPER::new();
-    $self->_init_fields();
+    _init_fields($self);
         $self->{animationInterfaceArray} = $animationInterfaceArray;
         for (my $index = scalar(@{$self->{animationInterfaceArray}}) - 1; $index >= 0; $index--) {
             $self->{animationInterfaceArray}->[$index]->setFrame($self->{animationInterfaceArray}->[$index]->getSize() - 1);
@@ -76,16 +76,17 @@ sub paint {
         }
 }
 
-# use javax::microedition::lcdui::Graphics;
-use org::allbinary::animation::IndexedAnimation;
-use org::allbinary::graphics::displayable::CanvasStrings;
-use org::allbinary::layer::AllBinaryLayer;
-use org::allbinary::logic::communication::log::LogUtil;
-use org::allbinary::string::CommonStrings;
-use org::allbinary::util::CircularIndexUtil;
-use org::allbinary::view::ViewPosition;
-use org::allbinary::view::ViewPositionBase;
-use org::allbinary::game::combat::damage::DamageFloaters;
+use java::lang::Object ();
+use javax::microedition::lcdui::Graphics ();
+use org::allbinary::animation::IndexedAnimation ();
+use org::allbinary::graphics::displayable::CanvasStrings ();
+use org::allbinary::layer::AllBinaryLayer ();
+use org::allbinary::logic::communication::log::LogUtil ();
+use org::allbinary::string::CommonStrings ();
+use org::allbinary::util::CircularIndexUtil ();
+use org::allbinary::view::ViewPosition ();
+use org::allbinary::view::ViewPositionBase ();
+use org::allbinary::game::combat::damage::DamageFloaters ();
 
 1;
 

@@ -50,8 +50,8 @@ sub log {
     die "abstract method log";
 }
 
-# use java::awt;
-use org::allbinary::media::image::analysis::ColorRangeInterface;
+# use java::awt ();
+use org::allbinary::media::image::analysis::ColorRangeInterface ();
 
 1;
 

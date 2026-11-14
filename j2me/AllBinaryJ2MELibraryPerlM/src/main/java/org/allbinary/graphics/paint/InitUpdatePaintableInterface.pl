@@ -21,9 +21,9 @@ no warnings 'experimental::try';
 use parent -norequire,'org::allbinary::init::InitInterface','org::allbinary::init::UpdateInterface','org::allbinary::graphics::paint::PaintableInterface';
 
 
-use org::allbinary::init::InitInterface;
-use org::allbinary::init::UpdateInterface;
-use org::allbinary::graphics::paint::PaintableInterface;
+use org::allbinary::init::InitInterface ();
+use org::allbinary::init::UpdateInterface ();
+use org::allbinary::graphics::paint::PaintableInterface ();
 
 1;
 

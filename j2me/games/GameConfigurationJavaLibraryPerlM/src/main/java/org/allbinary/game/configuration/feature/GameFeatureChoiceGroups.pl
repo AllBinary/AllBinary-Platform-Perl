@@ -17,9 +17,10 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
-our $gameFeatureChoiceGroupsExclusive = 'org::allbinary::game::configuration::feature::GameFeatureChoiceGroups'->new();
-our $gameFeatureChoiceGroupsMultiple = 'org::allbinary::game::configuration::feature::GameFeatureChoiceGroups'->new();
+tie our $gameFeatureChoiceGroupsExclusive, 'java::lang::LazyStatic', sub { 'org::allbinary::game::configuration::feature::GameFeatureChoiceGroups'->new() };
+tie our $gameFeatureChoiceGroupsMultiple, 'java::lang::LazyStatic', sub { 'org::allbinary::game::configuration::feature::GameFeatureChoiceGroups'->new() };
 
 sub _init_fields {
     my ($self) = @_;
@@ -30,7 +31,7 @@ sub _init_fields {
 sub new {
     my ($class) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
     return $self;
 }
 
@@ -58,9 +59,11 @@ sub add {
         $self->{hashtable}->put($name, $list);
 }
 
-use org::allbinary::logic::StdUtil;
-use org::allbinary::util::ABHashtable;
-use org::allbinary::util::BasicArrayList;
+use java::lang::Object ();
+use java::lang::LazyStatic ();
+use org::allbinary::logic::StdUtil ();
+use org::allbinary::util::ABHashtable ();
+use org::allbinary::util::BasicArrayList ();
 
 1;
 

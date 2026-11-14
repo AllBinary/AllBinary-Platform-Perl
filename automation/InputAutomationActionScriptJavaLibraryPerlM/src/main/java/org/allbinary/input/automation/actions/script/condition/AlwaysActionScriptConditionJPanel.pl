@@ -17,7 +17,7 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
-use parent -norequire,'javax::swing::JPanel';
+use parent -norequire,'java::lang::Object';
 
 
 sub _init_fields {
@@ -38,7 +38,7 @@ sub _init_fields {
 sub new {
     my ($class, $alwaysActionScriptConditionInterface) = @_;
     my $self = $class->SUPER::new();
-    $self->_init_fields();
+    _init_fields($self);
         $self->{logUtil}->putF($self->{commonStrings}->{START}, $self, $self->{commonStrings}->{CONSTRUCTOR});
         $self->initComponents();
         $self->{alwaysActionScriptConditionInterface} = $alwaysActionScriptConditionInterface;
@@ -94,7 +94,7 @@ sub initComponents {
         $self->{titleJLabel}->setText("Always Condition Options");
         $self->{okJButton}->setText("OK");
         $self->{okJButton}->addActionListener(do {
-            package java::awt::event::ActionListener::AnonymousN66931 { our @ISA = ('java::awt::event::ActionListener');
+            package java::awt::event::ActionListener::AnonymousN66931 { our @ISA = ('java::awt::event::ActionListener', 'java::lang::Object');
             
 
             sub actionPerformed {
@@ -113,7 +113,7 @@ sub initComponents {
         $self->setMinimumSize('java::awt::Dimension'->new(100, 0));
         $self->{alwaysActionJButton}->setText("Edit");
         $self->{alwaysActionJButton}->addActionListener(do {
-            package java::awt::event::ActionListener::AnonymousN68562 { our @ISA = ('java::awt::event::ActionListener');
+            package java::awt::event::ActionListener::AnonymousN68562 { our @ISA = ('java::awt::event::ActionListener', 'java::lang::Object');
             
 
             sub actionPerformed {
@@ -143,8 +143,9 @@ sub alwaysActionJButtonActionPerformed {
         $self->getAlwaysActionJDialog()->setVisible(1);
 }
 
-use org::allbinary::logic::communication::log::LogUtil;
-use org::allbinary::string::CommonStrings;
+use java::lang::Object ();
+use org::allbinary::logic::communication::log::LogUtil ();
+use org::allbinary::string::CommonStrings ();
 
 1;
 

@@ -19,7 +19,7 @@ use feature 'try';
 no warnings 'experimental::try';
 use parent -norequire,'org::allbinary::game::layer::SelectionHudPaintable','org::allbinary::graphics::font::UpdateMyFontInterface';
 
-our $instance = 'org::allbinary::game::layer::RTSLayerHudPaintable'->new();
+tie our $instance, 'java::lang::LazyStatic', sub { 'org::allbinary::game::layer::RTSLayerHudPaintable'->new() };
 
 sub _init_fields {
     my ($self) = @_;
@@ -40,7 +40,7 @@ sub getInstance {
 sub new {
     my ($class) = @_;
     my $self = $class->SUPER::new();
-    $self->_init_fields();
+    _init_fields($self);
     return $self;
 }
 
@@ -89,14 +89,16 @@ sub getRtsLayer {
         return $self->{rtsLayer};
 }
 
-# use javax::microedition::lcdui::Font;
-# use javax::microedition::lcdui::Graphics;
-use org::allbinary::logic::string::StringUtil;
-use org::allbinary::AndroidUtil;
-use org::allbinary::game::layer::special::CollidableDestroyableDamageableLayer;
-use org::allbinary::game::part::weapon::BasicWeaponPart;
-use org::allbinary::graphics::font::UpdateMyFontInterface;
-use org::allbinary::game::layer::SelectionHudPaintable;
+use java::lang::Object ();
+use java::lang::LazyStatic ();
+use javax::microedition::lcdui::Font ();
+use javax::microedition::lcdui::Graphics ();
+use org::allbinary::logic::string::StringUtil ();
+use org::allbinary::AndroidUtil ();
+use org::allbinary::game::layer::special::CollidableDestroyableDamageableLayer ();
+use org::allbinary::game::part::weapon::BasicWeaponPart ();
+use org::allbinary::graphics::font::UpdateMyFontInterface ();
+use org::allbinary::game::layer::SelectionHudPaintable ();
 
 1;
 

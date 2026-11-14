@@ -29,7 +29,7 @@ sub _init_fields {
 sub new {
     my ($class, $transformInfoInterface) = @_;
     my $self = $class->SUPER::new($transformInfoInterface);
-    $self->_init_fields();
+    _init_fields($self);
         # super(...) made $self above
         my $httpTransformInfoInterface = $self->getTransformInfoInterface();
         my $role = $httpTransformInfoInterface->getPropertiesHashMap()->get($org::allbinary::business::user::role::UserRoleData::NAME->toString());
@@ -80,17 +80,25 @@ sub toValidationInfoNode {
         return undef;
 }
 
-use org::allbinary::business::user::role::UserRole;
-use org::allbinary::business::user::role::UserRoleB;
-use org::allbinary::business::user::role::UserRoleData;
-use org::allbinary::data::tables::user::UserEntityFactory;
-use org::allbinary::logic::communication::log::LogUtil;
-use org::allbinary::logic::control::validate::ValidationComponentInterface;
-use org::allbinary::logic::visual::transform::info::TransformInfoHttpInterface;
-use org::allbinary::logic::visual::transform::info::TransformInfoInterface;
-use org::w3c::dom::Document;
-use org::w3c::dom::Node;
-use views::admin::user::UsersView;
+
+# throws Exception
+sub getTransformInfoInterface {
+    my ($self) = @_;
+        return $self->SUPER::getTransformInfoInterface();
+}
+
+use java::lang::Object ();
+use org::allbinary::business::user::role::UserRole ();
+use org::allbinary::business::user::role::UserRoleB ();
+use org::allbinary::business::user::role::UserRoleData ();
+use org::allbinary::data::tables::user::UserEntityFactory ();
+use org::allbinary::logic::communication::log::LogUtil ();
+use org::allbinary::logic::control::validate::ValidationComponentInterface ();
+use org::allbinary::logic::visual::transform::info::TransformInfoHttpInterface ();
+use org::allbinary::logic::visual::transform::info::TransformInfoInterface ();
+use org::w3c::dom::Document ();
+use org::w3c::dom::Node ();
+use views::admin::user::UsersView ();
 
 1;
 

@@ -34,7 +34,7 @@ sub _init_fields {
 sub new {
     my ($class, $image, $sequenceArray, $animationBehavior) = @_;
     my $self = $class->SUPER::new($image, $animationBehavior);
-    $self->_init_fields();
+    _init_fields($self);
         # super(...) made $self above
         $self->{startX} = 0;
         $self->{startY} = 0;
@@ -140,11 +140,12 @@ sub setDrawHeight {
         $self->{drawHeight} = $drawHeight;
 }
 
-# use javax::microedition::lcdui::Graphics;
-# use javax::microedition::lcdui::Image;
-use org::allbinary::animation::AnimationBehavior;
-use org::allbinary::util::CircularIndexUtil;
-use org::allbinary::animation::image::ImageAnimation;
+use java::lang::Object ();
+use javax::microedition::lcdui::Graphics ();
+use javax::microedition::lcdui::Image ();
+use org::allbinary::animation::AnimationBehavior ();
+use org::allbinary::util::CircularIndexUtil ();
+use org::allbinary::animation::image::ImageAnimation ();
 
 1;
 

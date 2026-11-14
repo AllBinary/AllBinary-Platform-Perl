@@ -17,8 +17,9 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
-our $hashtable = 'org::allbinary::logic::StdUtil'->getInstance()->createHashtable();
+tie our $hashtable, 'java::lang::LazyStatic', sub { 'org::allbinary::logic::StdUtil'->getInstance()->createHashtable() };
 
 sub _init_fields {
     my ($self) = @_;
@@ -29,7 +30,7 @@ sub _init_fields {
 sub new {
     my ($class, $name) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
         $self->{name} = $name;
         'org::allbinary::game::configuration::feature::Feature'->add($name, $self);
         'org::allbinary::game::configuration::event::ChangedGameFeatureListener'->getInstance()->add($self);
@@ -60,9 +61,11 @@ sub getName {
         return $self->{name};
 }
 
-use org::allbinary::game::configuration::event::ChangedGameFeatureListener;
-use org::allbinary::logic::StdUtil;
-use org::allbinary::util::ABHashtable;
+use java::lang::Object ();
+use java::lang::LazyStatic ();
+use org::allbinary::game::configuration::event::ChangedGameFeatureListener ();
+use org::allbinary::logic::StdUtil ();
+use org::allbinary::util::ABHashtable ();
 
 1;
 

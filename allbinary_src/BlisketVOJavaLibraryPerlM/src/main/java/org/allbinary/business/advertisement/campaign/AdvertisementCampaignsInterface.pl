@@ -44,7 +44,7 @@ sub isEnabled {
     die "abstract method isEnabled";
 }
 
-use org::allbinary::business::advertisement::AdvertisementInterface;
+use org::allbinary::business::advertisement::AdvertisementInterface ();
 
 1;
 

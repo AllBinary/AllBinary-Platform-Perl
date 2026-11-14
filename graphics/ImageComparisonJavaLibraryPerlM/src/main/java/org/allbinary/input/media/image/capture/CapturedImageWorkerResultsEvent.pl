@@ -30,7 +30,7 @@ sub _init_fields {
 sub new {
     my ($class, $anyType, $frame, $bufferedImage) = @_;
     my $self = $class->SUPER::new($anyType);
-    $self->_init_fields();
+    _init_fields($self);
         # super(...) made $self above
         $self->{frame} = $frame;
         $self->setBufferedImage($bufferedImage);
@@ -55,8 +55,9 @@ sub getFrame {
         return $self->{frame};
 }
 
-# use java::awt::image::BufferedImage;
-use org::allbinary::logic::util::event::AllBinaryEventObject;
+use java::lang::Object ();
+# use java::awt::image::BufferedImage ();
+use org::allbinary::logic::util::event::AllBinaryEventObject ();
 
 1;
 

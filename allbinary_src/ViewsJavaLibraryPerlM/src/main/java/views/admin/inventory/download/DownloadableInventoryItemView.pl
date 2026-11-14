@@ -43,7 +43,7 @@ sub new {
 sub _new1 {
     my ($class, $transformInfoInterface) = @_;
     my $self = $class->SUPER::new($transformInfoInterface);
-    $self->_init_fields();
+    _init_fields($self);
         # super(...) made $self above
         $self->{request} = $self->getPageContext()->getRequest();
         $self->getFormData();
@@ -54,7 +54,7 @@ sub _new1 {
 sub _new2 {
     my ($class, $transformInfoInterface, $empty) = @_;
     my $self = $class->SUPER::new($transformInfoInterface);
-    $self->_init_fields();
+    _init_fields($self);
         # super(...) made $self above
         $self->{request} = $self->getPageContext()->getRequest();
     return $self;
@@ -168,31 +168,32 @@ sub getDownloadableItem {
         return $self->{downloadableItem};
 }
 
-# use java::io::ByteArrayInputStream;
-use java::util::HashMap;
-use org::allbinary::util::BasicArrayList;
-use org::allbinary::util::BasicArrayListD;
-# use javax::servlet::http::HttpServletRequest;
-use org::allbinary::business::context::modules::storefront::StoreFrontFactory;
-use org::allbinary::business::context::modules::storefront::StoreFrontInterface;
-use org::allbinary::business::user::commerce::inventory::item::BasicItemData;
-use org::allbinary::business::user::commerce::inventory::item::BasicItemView;
-use org::allbinary::business::user::commerce::inventory::item::ItemInterface;
-use org::allbinary::business::user::commerce::inventory::item::download::DownloadableItem;
-use org::allbinary::business::user::commerce::inventory::item::download::DownloadableItemView;
-use org::allbinary::globals::URLGLOBALS;
-use org::allbinary::logic::StdUtil;
-use org::allbinary::logic::communication::http::request::MultipartRequestParams;
-use org::allbinary::logic::communication::http::request::RequestMapInterface;
-use org::allbinary::logic::communication::log::LogUtil;
-use org::allbinary::logic::io::file::AbFile;
-use org::allbinary::logic::io::file::FilePathData;
-use org::allbinary::logic::io::file::FileUtil;
-use org::allbinary::logic::io::file::zip::ZipFileUtil;
-use org::allbinary::logic::string::StringMaker;
-use org::allbinary::logic::visual::transform::info::TransformInfoInterface;
-use org::apache::commons::fileupload::FileItem;
-use views::business::context::modules::storefront::HttpStoreComponentView;
+use java::lang::Object ();
+# use java::io::ByteArrayInputStream ();
+use java::util::HashMap ();
+use org::allbinary::util::BasicArrayList ();
+use org::allbinary::util::BasicArrayListD ();
+# use javax::servlet::http::HttpServletRequest ();
+use org::allbinary::business::context::modules::storefront::StoreFrontFactory ();
+use org::allbinary::business::context::modules::storefront::StoreFrontInterface ();
+use org::allbinary::business::user::commerce::inventory::item::BasicItemData ();
+use org::allbinary::business::user::commerce::inventory::item::BasicItemView ();
+use org::allbinary::business::user::commerce::inventory::item::ItemInterface ();
+use org::allbinary::business::user::commerce::inventory::item::download::DownloadableItem ();
+use org::allbinary::business::user::commerce::inventory::item::download::DownloadableItemView ();
+use org::allbinary::globals::URLGLOBALS ();
+use org::allbinary::logic::StdUtil ();
+use org::allbinary::logic::communication::http::request::MultipartRequestParams ();
+use org::allbinary::logic::communication::http::request::RequestMapInterface ();
+use org::allbinary::logic::communication::log::LogUtil ();
+use org::allbinary::logic::io::file::AbFile ();
+use org::allbinary::logic::io::file::FilePathData ();
+use org::allbinary::logic::io::file::FileUtil ();
+use org::allbinary::logic::io::file::zip::ZipFileUtil ();
+use org::allbinary::logic::string::StringMaker ();
+use org::allbinary::logic::visual::transform::info::TransformInfoInterface ();
+use org::apache::commons::fileupload::FileItem ();
+use views::business::context::modules::storefront::HttpStoreComponentView ();
 
 1;
 

@@ -26,7 +26,7 @@ sub create {
     die "abstract method create";
 }
 
-use org::allbinary::logic::util::visitor::Visitor;
+use org::allbinary::logic::util::visitor::Visitor ();
 
 1;
 

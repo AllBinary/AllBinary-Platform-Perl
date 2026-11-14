@@ -33,9 +33,9 @@ sub insert {
     die "abstract method insert";
 }
 
-use org::allbinary::util::BasicArrayList;
-use org::allbinary::util::BasicArrayListD;
-use org::allbinary::data::tables::BasicDataTableInterface;
+use org::allbinary::util::BasicArrayList ();
+use org::allbinary::util::BasicArrayListD ();
+use org::allbinary::data::tables::BasicDataTableInterface ();
 
 1;
 

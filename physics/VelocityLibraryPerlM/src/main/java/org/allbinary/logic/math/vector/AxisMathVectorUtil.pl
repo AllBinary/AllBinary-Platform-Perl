@@ -17,8 +17,9 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
-our $instance = 'org::allbinary::logic::math::vector::AxisMathVectorUtil'->new();
+tie our $instance, 'java::lang::LazyStatic', sub { 'org::allbinary::logic::math::vector::AxisMathVectorUtil'->new() };
 
 sub _init_fields {
     my ($self) = @_;
@@ -28,7 +29,7 @@ sub _init_fields {
 sub new {
     my ($class) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
     return $self;
 }
 
@@ -56,7 +57,9 @@ sub calculateZ {
         return $magnitude * $self->{noDecimalTrigTable}->sin($otherAngle) / 10;
 }
 
-use org::allbinary::math::NoDecimalTrigTable;
+use java::lang::Object ();
+use java::lang::LazyStatic ();
+use org::allbinary::math::NoDecimalTrigTable ();
 
 1;
 

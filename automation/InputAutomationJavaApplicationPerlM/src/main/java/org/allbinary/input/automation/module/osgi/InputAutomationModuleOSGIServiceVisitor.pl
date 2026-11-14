@@ -17,7 +17,7 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
-use parent -norequire,'org::allbinary::osgi::OSGIServiceVisitorInterface';
+use parent -norequire,'java::lang::Object','org::allbinary::osgi::OSGIServiceVisitorInterface';
 
 
 sub _init_fields {
@@ -30,7 +30,7 @@ sub _init_fields {
 sub new {
     my ($class) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
     return $self;
 }
 
@@ -57,14 +57,15 @@ sub visit {
         }
 }
 
-use bundle::input::automation::module::InputAutomationModuleService;
-use org::allbinary::input::automation::InputAutomationJFrame;
-use org::allbinary::input::automation::configuration::InputAutomationConfigurationUtil;
-use org::allbinary::input::automation::module::InputAutomationModuleFactoryInterface;
-use org::allbinary::logic::communication::log::LogUtil;
-use org::allbinary::osgi::OSGIServiceInterface;
-use org::allbinary::osgi::OSGIServiceVisitorInterface;
-use org::allbinary::string::CommonStrings;
+use java::lang::Object ();
+use bundle::input::automation::module::InputAutomationModuleService ();
+use org::allbinary::input::automation::InputAutomationJFrame ();
+use org::allbinary::input::automation::configuration::InputAutomationConfigurationUtil ();
+use org::allbinary::input::automation::module::InputAutomationModuleFactoryInterface ();
+use org::allbinary::logic::communication::log::LogUtil ();
+use org::allbinary::osgi::OSGIServiceInterface ();
+use org::allbinary::osgi::OSGIServiceVisitorInterface ();
+use org::allbinary::string::CommonStrings ();
 
 1;
 

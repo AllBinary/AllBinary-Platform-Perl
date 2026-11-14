@@ -31,7 +31,7 @@ sub _init_fields {
 sub new {
     my ($class, $name, $gameInputProcessorInterface) = @_;
     my $self = $class->SUPER::new('org::allbinary::util::BasicArrayListD'->new(), 'org::allbinary::util::BasicArrayListD'->new(), -1);
-    $self->_init_fields();
+    _init_fields($self);
         # super(...) made $self above
         $self->{name} = $name;
         $self->{gameInputProcessorInterface} = $gameInputProcessorInterface;
@@ -55,11 +55,12 @@ sub toString {
         return 'org::allbinary::logic::string::StringMaker'->new()->append($self->SUPER::toString())->append($self->{NAME_LABEL})->append($self->{name})->toString();
 }
 
-use org::allbinary::logic::communication::log::LogUtil;
-use org::allbinary::logic::string::StringMaker;
-use org::allbinary::util::BasicArrayList;
-use org::allbinary::util::BasicArrayListD;
-use org::allbinary::game::input::PlayerGameInput;
+use java::lang::Object ();
+use org::allbinary::logic::communication::log::LogUtil ();
+use org::allbinary::logic::string::StringMaker ();
+use org::allbinary::util::BasicArrayList ();
+use org::allbinary::util::BasicArrayListD ();
+use org::allbinary::game::input::PlayerGameInput ();
 
 1;
 

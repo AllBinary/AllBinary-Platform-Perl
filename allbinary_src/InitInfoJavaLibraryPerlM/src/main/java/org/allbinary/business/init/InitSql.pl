@@ -17,6 +17,7 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
 
 sub _init_fields {
@@ -50,7 +51,7 @@ sub _init_fields {
 sub new {
     my ($class, $databaseConnectionInfoInterface) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
         $self->setDatabaseConnectionInfoInterface($databaseConnectionInfoInterface);
     return $self;
 }
@@ -306,29 +307,30 @@ sub getDatabaseConnectionInfoInterface {
         return $self->{databaseConnectionInfoInterface};
 }
 
-# use java::sql::Connection;
-# use java::sql::DriverManager;
-# use java::sql::ResultSet;
-# use java::sql::ResultSetMetaData;
-# use java::sql::SQLException;
-# use java::sql::Statement;
-use java::util::HashMap;
-# use java::util::Set;
-use org::allbinary::util::BasicArrayList;
-use org::allbinary::util::BasicArrayListD;
-use org::allbinary::business::init::db::DatabaseConnectionInfoInterface;
-use org::allbinary::business::init::db::DbConnectionInfo;
-use org::allbinary::logic::StdUtil;
-use org::allbinary::logic::communication::log::PreLogUtil;
-use org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory;
-use org::allbinary::logic::communication::log::config::type::LogConfigTypes;
-use org::allbinary::logic::communication::sql::SqlStrings;
-use org::allbinary::logic::communication::sql::SqlTypeStrings;
-use org::allbinary::logic::string::StringMaker;
-use org::allbinary::logic::string::StringUtil;
-use org::allbinary::logic::string::StringValidationUtil;
-use org::allbinary::string::CommonSeps;
-use org::allbinary::string::CommonStrings;
+use java::lang::Object ();
+# use java::sql::Connection ();
+# use java::sql::DriverManager ();
+# use java::sql::ResultSet ();
+# use java::sql::ResultSetMetaData ();
+# use java::sql::SQLException ();
+# use java::sql::Statement ();
+use java::util::HashMap ();
+# use java::util::Set ();
+use org::allbinary::util::BasicArrayList ();
+use org::allbinary::util::BasicArrayListD ();
+use org::allbinary::business::init::db::DatabaseConnectionInfoInterface ();
+use org::allbinary::business::init::db::DbConnectionInfo ();
+use org::allbinary::logic::StdUtil ();
+use org::allbinary::logic::communication::log::PreLogUtil ();
+use org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory ();
+use org::allbinary::logic::communication::log::config::type::LogConfigTypes ();
+use org::allbinary::logic::communication::sql::SqlStrings ();
+use org::allbinary::logic::communication::sql::SqlTypeStrings ();
+use org::allbinary::logic::string::StringMaker ();
+use org::allbinary::logic::string::StringUtil ();
+use org::allbinary::logic::string::StringValidationUtil ();
+use org::allbinary::string::CommonSeps ();
+use org::allbinary::string::CommonStrings ();
 
 1;
 

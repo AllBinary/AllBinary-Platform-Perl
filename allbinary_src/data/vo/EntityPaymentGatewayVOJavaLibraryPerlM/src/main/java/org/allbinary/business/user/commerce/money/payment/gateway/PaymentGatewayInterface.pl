@@ -442,10 +442,10 @@ sub toVector {
     die "abstract method toVector";
 }
 
-use java::util::HashMap;
-use org::allbinary::util::BasicArrayList;
-use org::allbinary::util::BasicArrayListD;
-use org::allbinary::data::tables::TableMappingInterface;
+use java::util::HashMap ();
+use org::allbinary::util::BasicArrayList ();
+use org::allbinary::util::BasicArrayListD ();
+use org::allbinary::data::tables::TableMappingInterface ();
 
 1;
 

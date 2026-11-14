@@ -27,8 +27,8 @@ sub setKeyInputView {
     die "abstract method setKeyInputView";
 }
 
-use android::view::View;
-use org::allbinary::android::activity::ViewCompositeInterface;
+# use android::view::View ();
+use org::allbinary::android::activity::ViewCompositeInterface ();
 
 1;
 

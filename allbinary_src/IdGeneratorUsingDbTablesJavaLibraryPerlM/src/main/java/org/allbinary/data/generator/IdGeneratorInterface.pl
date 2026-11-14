@@ -27,7 +27,7 @@ sub getNext {
     die "abstract method getNext";
 }
 
-# use java::io::IOException;
+# use java::io::IOException ();
 
 1;
 

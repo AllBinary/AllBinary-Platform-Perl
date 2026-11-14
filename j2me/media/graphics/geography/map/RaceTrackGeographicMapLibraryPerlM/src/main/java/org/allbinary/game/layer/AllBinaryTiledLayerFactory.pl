@@ -17,7 +17,7 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
-use parent -norequire,'org::allbinary::media::graphics::geography::map::racetrack::AllBinaryTiledLayerFactoryInterface';
+use parent -norequire,'java::lang::Object','org::allbinary::media::graphics::geography::map::racetrack::AllBinaryTiledLayerFactoryInterface';
 
 
 sub new {
@@ -48,14 +48,15 @@ sub getMiniInstance {
         return $allbinaryTiledLayer;
 }
 
-# use javax::microedition::lcdui::game::TiledLayer;
-use org::allbinary::graphics::color::BasicColorFactory;
-use org::allbinary::logic::math::SmallIntegerSingletonFactory;
-use org::allbinary::media::graphics::geography::map::racetrack::AllBinaryTiledLayerFactoryInterface;
-use org::allbinary::media::graphics::geography::map::racetrack::RaceTrackData;
-use org::allbinary::media::graphics::geography::map::racetrack::RaceTrackInfo;
-use org::allbinary::media::graphics::geography::map::racetrack::TiledLayerFactory;
-use org::allbinary::game::layer::AllBinaryJ2METiledLayer;
+use java::lang::Object ();
+use javax::microedition::lcdui::game::TiledLayer ();
+use org::allbinary::graphics::color::BasicColorFactory ();
+use org::allbinary::logic::math::SmallIntegerSingletonFactory ();
+use org::allbinary::media::graphics::geography::map::racetrack::AllBinaryTiledLayerFactoryInterface ();
+use org::allbinary::media::graphics::geography::map::racetrack::RaceTrackData ();
+use org::allbinary::media::graphics::geography::map::racetrack::RaceTrackInfo ();
+use org::allbinary::media::graphics::geography::map::racetrack::TiledLayerFactory ();
+use org::allbinary::game::layer::AllBinaryJ2METiledLayer ();
 
 1;
 

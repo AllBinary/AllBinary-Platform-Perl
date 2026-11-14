@@ -40,7 +40,7 @@ sub getTotalLevels {
     die "abstract method getTotalLevels";
 }
 
-use org::allbinary::media::graphics::geography::map::racetrack::RaceTrackGeographicMapInterfaceFactoryInterface;
+use org::allbinary::media::graphics::geography::map::racetrack::RaceTrackGeographicMapInterfaceFactoryInterface ();
 
 1;
 

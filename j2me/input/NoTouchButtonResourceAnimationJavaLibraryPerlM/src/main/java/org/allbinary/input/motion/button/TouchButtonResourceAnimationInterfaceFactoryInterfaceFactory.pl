@@ -72,13 +72,14 @@ sub isFeature {
         }
 }
 
-use org::allbinary::animation::resource::BaseResourceAnimationInterfaceFactoryInterfaceFactory;
-use org::allbinary::game::configuration::feature::Features;
-use org::allbinary::game::resource::ResourceLoadingLevelFactory;
-use org::allbinary::graphics::opengles::OpenGLFeatureFactory;
-use org::allbinary::image::ImageCache;
-use org::allbinary::image::ImageCacheFactory;
-use org::allbinary::logic::StdUtil;
+use java::lang::Object ();
+use org::allbinary::animation::resource::BaseResourceAnimationInterfaceFactoryInterfaceFactory ();
+use org::allbinary::game::configuration::feature::Features ();
+use org::allbinary::game::resource::ResourceLoadingLevelFactory ();
+use org::allbinary::graphics::opengles::OpenGLFeatureFactory ();
+use org::allbinary::image::ImageCache ();
+use org::allbinary::image::ImageCacheFactory ();
+use org::allbinary::logic::StdUtil ();
 
 1;
 

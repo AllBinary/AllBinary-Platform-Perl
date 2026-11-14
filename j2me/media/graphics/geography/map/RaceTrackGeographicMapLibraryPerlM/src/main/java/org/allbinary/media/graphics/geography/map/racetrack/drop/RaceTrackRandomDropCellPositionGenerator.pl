@@ -19,7 +19,7 @@ use feature 'try';
 no warnings 'experimental::try';
 use parent -norequire,'org::allbinary::media::graphics::geography::map::racetrack::drop::RaceTrackDropCellPositionGenerator';
 
-our $SINGLETON = 'org::allbinary::media::graphics::geography::map::racetrack::drop::RaceTrackRandomDropCellPositionGenerator'->new();
+tie our $SINGLETON, 'java::lang::LazyStatic', sub { 'org::allbinary::media::graphics::geography::map::racetrack::drop::RaceTrackRandomDropCellPositionGenerator'->new() };
 
 sub _init_fields {
     my ($self) = @_;
@@ -42,7 +42,7 @@ sub getInstance {
 sub new {
     my ($class) = @_;
     my $self = $class->SUPER::new();
-    $self->_init_fields();
+    _init_fields($self);
     return $self;
 }
 
@@ -74,18 +74,20 @@ sub drop {
         $allBinaryLayerManager->append($pickupLayer);
 }
 
-use org::allbinary::game::layer::pickup::PickedUpLayerInterfaceFactoryInterface;
-use org::allbinary::game::layer::AllBinaryGameLayerManager;
-use org::allbinary::game::layer::AllBinaryTiledLayer;
-use org::allbinary::game::layer::drop::DropLayerFactory;
-use org::allbinary::game::layer::pickup::PickupLayerCircularStaticPool;
-use org::allbinary::game::layer::pickup::RaceTrackPickupLayer;
-use org::allbinary::game::rand::MyRandomFactory;
-use org::allbinary::graphics::GPoint;
-use org::allbinary::layer::AllBinaryLayerManager;
-use org::allbinary::media::graphics::geography::map::BasicGeographicMap;
-use org::allbinary::media::graphics::geography::map::GeographicMapCellPosition;
-use org::allbinary::media::graphics::geography::map::racetrack::drop::RaceTrackDropCellPositionGenerator;
+use java::lang::Object ();
+use java::lang::LazyStatic ();
+use org::allbinary::game::layer::pickup::PickedUpLayerInterfaceFactoryInterface ();
+use org::allbinary::game::layer::AllBinaryGameLayerManager ();
+use org::allbinary::game::layer::AllBinaryTiledLayer ();
+use org::allbinary::game::layer::drop::DropLayerFactory ();
+use org::allbinary::game::layer::pickup::PickupLayerCircularStaticPool ();
+use org::allbinary::game::layer::pickup::RaceTrackPickupLayer ();
+use org::allbinary::game::rand::MyRandomFactory ();
+use org::allbinary::graphics::GPoint ();
+use org::allbinary::layer::AllBinaryLayerManager ();
+use org::allbinary::media::graphics::geography::map::BasicGeographicMap ();
+use org::allbinary::media::graphics::geography::map::GeographicMapCellPosition ();
+use org::allbinary::media::graphics::geography::map::racetrack::drop::RaceTrackDropCellPositionGenerator ();
 
 1;
 

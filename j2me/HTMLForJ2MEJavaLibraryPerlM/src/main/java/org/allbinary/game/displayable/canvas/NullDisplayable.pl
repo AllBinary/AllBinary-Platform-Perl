@@ -8,7 +8,7 @@ use feature 'try';
 no warnings 'experimental::try';
 use parent -norequire,'javax::microedition::lcdui::Canvas';
 
-our $SINGLETON = 'org::allbinary::game::displayable::canvas::NullDisplayable'->new();
+tie our $SINGLETON, 'java::lang::LazyStatic', sub { 'org::allbinary::game::displayable::canvas::NullDisplayable'->new() };
 
 sub _init_fields {
     my ($self) = @_;
@@ -25,7 +25,7 @@ sub getInstance {
 sub new {
     my ($class) = @_;
     my $self = $class->SUPER::new();
-    $self->_init_fields();
+    _init_fields($self);
     return $self;
 }
 
@@ -35,10 +35,12 @@ sub paint {
         $self->{baseGameStatistics}->nextRefresh();
 }
 
-# use javax::microedition::lcdui::Canvas;
-# use javax::microedition::lcdui::Graphics;
-use org::allbinary::canvas::BaseGameStatistics;
-use org::allbinary::canvas::GameStatisticsFactory;
+use java::lang::Object ();
+use java::lang::LazyStatic ();
+use javax::microedition::lcdui::Canvas ();
+use javax::microedition::lcdui::Graphics ();
+use org::allbinary::canvas::BaseGameStatistics ();
+use org::allbinary::canvas::GameStatisticsFactory ();
 
 1;
 

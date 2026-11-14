@@ -17,6 +17,7 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
 
 sub _init_fields {
@@ -35,7 +36,7 @@ sub _init_fields {
 sub new {
     my ($class, $id, $name, $raceTrackFrictionProperties, $foregroundBasicColor, $backgroundBasicColor, $qualifyTime, $worstContinuePosition, $totalLaps) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
         $self->{id} = $id;
         $self->{name} = $name;
         $self->{raceTrackFrictionProperties} = $raceTrackFrictionProperties;
@@ -143,7 +144,8 @@ sub setRaceTrackFrictionProperties {
         $self->{raceTrackFrictionProperties} = $raceTrackFrictionProperties;
 }
 
-use org::allbinary::graphics::color::BasicColor;
+use java::lang::Object ();
+use org::allbinary::graphics::color::BasicColor ();
 
 1;
 

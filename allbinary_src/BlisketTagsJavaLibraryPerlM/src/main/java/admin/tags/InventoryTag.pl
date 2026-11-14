@@ -29,7 +29,7 @@ sub _init_fields {
 sub new {
     my ($class) = @_;
     my $self = $class->SUPER::new();
-    $self->_init_fields();
+    _init_fields($self);
         # super(...) made $self above
         $self->setTagHelperFactory('admin::taghelpers::InventoryHelperFactory'->new());
         $self->setTagRequestHelperFactory('admin::taghelpers::InventoryRequestHelperFactory'->new());
@@ -65,15 +65,16 @@ sub doStartTag {
         }
 }
 
-# use javax::servlet::jsp::JspTagException;
-# use javax::servlet::jsp::tagext::Tag;
-use admin::taghelpers::InventoryHelperFactory;
-use admin::taghelpers::InventoryRequestHelperFactory;
-use org::allbinary::business::context::modules::storefront::StoreFrontData;
-use org::allbinary::logic::communication::http::request::AbResponseHandler;
-use admin::tags::TableTag;
-use admin::tags::ParentInventoryTagHelper;
-use admin::tags::AbTagData;
+use java::lang::Object ();
+# use javax::servlet::jsp::JspTagException ();
+# use javax::servlet::jsp::tagext::Tag ();
+use admin::taghelpers::InventoryHelperFactory ();
+use admin::taghelpers::InventoryRequestHelperFactory ();
+use org::allbinary::business::context::modules::storefront::StoreFrontData ();
+use org::allbinary::logic::communication::http::request::AbResponseHandler ();
+use admin::tags::TableTag ();
+use admin::tags::ParentInventoryTagHelper ();
+use admin::tags::AbTagData ();
 
 1;
 

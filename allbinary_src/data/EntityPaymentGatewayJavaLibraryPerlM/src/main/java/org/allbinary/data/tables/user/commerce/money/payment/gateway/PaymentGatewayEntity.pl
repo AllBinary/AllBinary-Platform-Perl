@@ -30,7 +30,7 @@ sub _init_fields {
 sub new {
     my ($class) = @_;
     my $self = $class->SUPER::new('org::allbinary::business::init::db::UserDbInitInfo'->new());
-    $self->_init_fields();
+    _init_fields($self);
         # super(...) made $self above
         $self->setTableName($self->{tableName});
         if ($org::allbinary::data::tables::user::commerce::money::payment::gateway::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($org::allbinary::data::tables::user::commerce::money::payment::gateway::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{SQLLOGGING})) {
@@ -280,28 +280,29 @@ sub dropTable {
         return $self->SUPER::dropTable();
 }
 
-use java::util::Calendar;
-use java::util::HashMap;
-use org::allbinary::util::BasicArrayList;
-use org::allbinary::util::BasicArrayListD;
-use org::allbinary::business::context::modules::storefront::StoreFrontData;
-use org::allbinary::business::entry::EntryData;
-use org::allbinary::business::init::db::UserDbInitInfo;
-use org::allbinary::business::user::UserData;
-use org::allbinary::business::user::commerce::money::payment::PaymentData;
-use org::allbinary::business::user::commerce::money::payment::gateway::PaymentGatewayData;
-use org::allbinary::business::user::commerce::money::payment::gateway::PaymentGatewayEncryptedMapping;
-use org::allbinary::business::user::commerce::money::payment::gateway::PaymentGatewayInterface;
-use org::allbinary::business::user::commerce::money::payment::gateway::PaymentGatewayInterfaceFactory;
-use org::allbinary::business::user::commerce::money::payment::types::BasicPaymentType;
-use org::allbinary::business::user::commerce::money::payment::types::BasicPaymentTypeUtil;
-use org::allbinary::data::generator::PaymentGatewayIdGenerator;
-use org::allbinary::logic::StdUtil;
-use org::allbinary::logic::communication::log::LogUtil;
-use org::allbinary::logic::communication::sql::AbSqlBean;
-use org::allbinary::logic::control::crypt::SuperCrypt;
-use org::allbinary::logic::string::StringMaker;
-use org::allbinary::data::tables::user::commerce::money::payment::gateway::PaymentGatewayEntityInterface;
+use java::lang::Object ();
+use java::util::Calendar ();
+use java::util::HashMap ();
+use org::allbinary::util::BasicArrayList ();
+use org::allbinary::util::BasicArrayListD ();
+use org::allbinary::business::context::modules::storefront::StoreFrontData ();
+use org::allbinary::business::entry::EntryData ();
+use org::allbinary::business::init::db::UserDbInitInfo ();
+use org::allbinary::business::user::UserData ();
+use org::allbinary::business::user::commerce::money::payment::PaymentData ();
+use org::allbinary::business::user::commerce::money::payment::gateway::PaymentGatewayData ();
+use org::allbinary::business::user::commerce::money::payment::gateway::PaymentGatewayEncryptedMapping ();
+use org::allbinary::business::user::commerce::money::payment::gateway::PaymentGatewayInterface ();
+use org::allbinary::business::user::commerce::money::payment::gateway::PaymentGatewayInterfaceFactory ();
+use org::allbinary::business::user::commerce::money::payment::types::BasicPaymentType ();
+use org::allbinary::business::user::commerce::money::payment::types::BasicPaymentTypeUtil ();
+use org::allbinary::data::generator::PaymentGatewayIdGenerator ();
+use org::allbinary::logic::StdUtil ();
+use org::allbinary::logic::communication::log::LogUtil ();
+use org::allbinary::logic::communication::sql::AbSqlBean ();
+use org::allbinary::logic::control::crypt::SuperCrypt ();
+use org::allbinary::logic::string::StringMaker ();
+use org::allbinary::data::tables::user::commerce::money::payment::gateway::PaymentGatewayEntityInterface ();
 
 1;
 

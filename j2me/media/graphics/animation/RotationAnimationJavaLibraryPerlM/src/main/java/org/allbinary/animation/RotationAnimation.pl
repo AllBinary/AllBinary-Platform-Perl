@@ -32,7 +32,7 @@ sub _init_fields {
 sub new {
     my ($class, $angleInfo, $circularIndexUtil, $animationBehavior) = @_;
     my $self = $class->SUPER::new($animationBehavior);
-    $self->_init_fields();
+    _init_fields($self);
         # super(...) made $self above
         $self->{angleInfo} = $angleInfo;
         $self->{circularIndexUtil} = $circularIndexUtil;
@@ -128,15 +128,16 @@ sub toString {
         return 'org::allbinary::logic::string::StringMaker'->new()->append($self->SUPER::toString())->append("circularIndexUtil: ")->append($self->{circularIndexUtil}->toString())->append("angleInfo: ")->append($self->{angleInfo}->toString())->toString();
 }
 
-use org::allbinary::direction::Direction;
-use org::allbinary::direction::DirectionUtil;
-use org::allbinary::logic::string::StringMaker;
-use org::allbinary::math::Angle;
-use org::allbinary::math::AngleInfo;
-use org::allbinary::math::FrameUtil;
-use org::allbinary::util::CircularIndexUtil;
-use org::allbinary::animation::IndexedAnimation;
-use org::allbinary::animation::RotationAnimationInterface;
+use java::lang::Object ();
+use org::allbinary::direction::Direction ();
+use org::allbinary::direction::DirectionUtil ();
+use org::allbinary::logic::string::StringMaker ();
+use org::allbinary::math::Angle ();
+use org::allbinary::math::AngleInfo ();
+use org::allbinary::math::FrameUtil ();
+use org::allbinary::util::CircularIndexUtil ();
+use org::allbinary::animation::IndexedAnimation ();
+use org::allbinary::animation::RotationAnimationInterface ();
 
 1;
 

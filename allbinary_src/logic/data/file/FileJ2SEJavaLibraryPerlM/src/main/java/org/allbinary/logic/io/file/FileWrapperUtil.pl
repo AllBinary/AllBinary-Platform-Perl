@@ -17,6 +17,7 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
 
 sub new {
@@ -51,9 +52,10 @@ sub wrapFile {
         }
 }
 
-use java::io::File;
-use org::allbinary::logic::communication::log::PreLogUtil;
-use org::allbinary::logic::io::file::AbFile;
+use java::lang::Object ();
+use java::io::File ();
+use org::allbinary::logic::communication::log::PreLogUtil ();
+use org::allbinary::logic::io::file::AbFile ();
 
 1;
 

@@ -17,6 +17,7 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
 
 
@@ -41,14 +42,15 @@ sub getInstance {
         return $profileActionScriptConditionInterface;
 }
 
-use org::allbinary::data::tree::dom::DomSearchHelper;
-use org::w3c::dom::Node;
-use org::allbinary::input::automation::actions::script::condition::ColorAtActionScriptConditionData;
-use org::allbinary::input::automation::actions::script::condition::TimeIntervalActionScriptConditionData;
-use org::allbinary::input::automation::actions::script::condition::AlwaysActionScriptConditionData;
-use org::allbinary::input::automation::actions::script::condition::AlwaysActionScriptCondition;
-use org::allbinary::input::automation::actions::script::condition::TimeIntervalActionScriptCondition;
-use org::allbinary::input::automation::actions::script::condition::ColorAtActionScriptCondition;
+use java::lang::Object ();
+use org::allbinary::data::tree::dom::DomSearchHelper ();
+use org::w3c::dom::Node ();
+use org::allbinary::input::automation::actions::script::condition::ColorAtActionScriptConditionData ();
+use org::allbinary::input::automation::actions::script::condition::TimeIntervalActionScriptConditionData ();
+use org::allbinary::input::automation::actions::script::condition::AlwaysActionScriptConditionData ();
+use org::allbinary::input::automation::actions::script::condition::AlwaysActionScriptCondition ();
+use org::allbinary::input::automation::actions::script::condition::TimeIntervalActionScriptCondition ();
+use org::allbinary::input::automation::actions::script::condition::ColorAtActionScriptCondition ();
 
 1;
 

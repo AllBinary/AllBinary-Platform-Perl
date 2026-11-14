@@ -102,10 +102,10 @@ sub toString {
     die "abstract method toString";
 }
 
-use org::allbinary::util::BasicArrayList;
-use org::allbinary::util::BasicArrayListD;
-use org::allbinary::data::tree::dom::document::mapping::DomDocumentMappingInterface;
-use org::allbinary::logic::visual::transform::info::TransformInfoInterface;
+use org::allbinary::util::BasicArrayList ();
+use org::allbinary::util::BasicArrayListD ();
+use org::allbinary::data::tree::dom::document::mapping::DomDocumentMappingInterface ();
+use org::allbinary::logic::visual::transform::info::TransformInfoInterface ();
 
 1;
 

@@ -17,7 +17,7 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
-use parent -norequire,'org::allbinary::business::user::commerce::money::payment::PaymentInterface','org::allbinary::data::tree::dom::DomNodeInterface';
+use parent -norequire,'java::lang::Object','org::allbinary::business::user::commerce::money::payment::PaymentInterface','org::allbinary::data::tree::dom::DomNodeInterface';
 
 
 sub _init_fields {
@@ -53,7 +53,7 @@ sub new {
 sub _new1 {
     my ($class, $payment) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
         $self->{name} = $payment->get($org::allbinary::business::user::commerce::money::payment::PaymentData::NAME);
         $self->{type} = $payment->get($org::allbinary::business::user::commerce::money::payment::PaymentData::TYPE);
         $self->{expiration} = $payment->get($org::allbinary::business::user::commerce::money::payment::PaymentData::EXPIRATION);
@@ -83,7 +83,7 @@ sub _new1 {
 sub _new1 {
     my ($class, $request) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
         $self->{name} = $request->getParameter($org::allbinary::business::user::commerce::money::payment::PaymentData::NAME);
         $self->{type} = $request->getParameter($org::allbinary::business::user::commerce::money::payment::PaymentData::TYPE);
         $self->{expiration} = $request->getParameter($org::allbinary::business::user::commerce::money::payment::PaymentData::EXPIRATION);
@@ -105,7 +105,7 @@ sub _new1 {
 sub _new0 {
     my ($class) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
     return $self;
 }
 
@@ -386,18 +386,19 @@ sub validationInfo {
         return undef;
 }
 
-use java::util::HashMap;
-# use javax::servlet::ServletRequest;
-use org::allbinary::business::entry::EntryData;
-use org::allbinary::data::tree::dom::DomNodeInterface;
-use org::allbinary::data::tree::dom::ModDomHelper;
-use org::allbinary::logic::StdUtil;
-use org::allbinary::logic::control::crypt::SuperCrypt;
-use org::allbinary::logic::string::StringUtil;
-use org::w3c::dom::Document;
-use org::w3c::dom::Node;
-use org::allbinary::business::user::commerce::money::payment::PaymentInterface;
-use org::allbinary::business::user::commerce::money::payment::PaymentData;
+use java::lang::Object ();
+use java::util::HashMap ();
+# use javax::servlet::ServletRequest ();
+use org::allbinary::business::entry::EntryData ();
+use org::allbinary::data::tree::dom::DomNodeInterface ();
+use org::allbinary::data::tree::dom::ModDomHelper ();
+use org::allbinary::logic::StdUtil ();
+use org::allbinary::logic::control::crypt::SuperCrypt ();
+use org::allbinary::logic::string::StringUtil ();
+use org::w3c::dom::Document ();
+use org::w3c::dom::Node ();
+use org::allbinary::business::user::commerce::money::payment::PaymentInterface ();
+use org::allbinary::business::user::commerce::money::payment::PaymentData ();
 
 1;
 

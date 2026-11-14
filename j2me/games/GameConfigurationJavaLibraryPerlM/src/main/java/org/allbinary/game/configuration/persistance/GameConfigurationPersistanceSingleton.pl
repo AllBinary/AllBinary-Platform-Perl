@@ -19,7 +19,7 @@ use feature 'try';
 no warnings 'experimental::try';
 use parent -norequire,'org::allbinary::game::configuration::persistance::KeyValuePersistance';
 
-our $GAME_PERSISTANCE = 'org::allbinary::game::configuration::persistance::GameConfigurationPersistanceSingleton'->new();
+tie our $GAME_PERSISTANCE, 'java::lang::LazyStatic', sub { 'org::allbinary::game::configuration::persistance::GameConfigurationPersistanceSingleton'->new() };
 
 
 sub getInstance {
@@ -35,8 +35,10 @@ sub new {
     return $self;
 }
 
-use org::allbinary::game::configuration::persistance::KeyValuePersistance;
-use org::allbinary::game::configuration::persistance::GamePersistanceStrings;
+use java::lang::Object ();
+use java::lang::LazyStatic ();
+use org::allbinary::game::configuration::persistance::KeyValuePersistance ();
+use org::allbinary::game::configuration::persistance::GamePersistanceStrings ();
 
 1;
 

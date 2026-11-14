@@ -33,7 +33,7 @@ sub _init_fields {
 sub new {
     my ($class, $ownerLayerInterface, $gameInput, $inputProbability, $visitor) = @_;
     my $self = $class->SUPER::new($ownerLayerInterface, $gameInput);
-    $self->_init_fields();
+    _init_fields($self);
         # super(...) made $self above
         $self->{inputProbability} = $inputProbability;
         $self->{visitor} = $visitor;
@@ -71,15 +71,16 @@ sub processAI {
         }
 }
 
-# use javax::microedition::lcdui::Canvas;
-use org::allbinary::game::ai::BasicAI;
-use org::allbinary::game::ag::ai::InputProbability;
-use org::allbinary::game::input::GameInput;
-use org::allbinary::game::rand::MyRandomFactory;
-use org::allbinary::layer::AllBinaryLayer;
-use org::allbinary::layer::AllBinaryLayerManager;
-use org::allbinary::logic::util::visitor::Visitor;
-use org::allbinary::time::GameTickTimeDelayHelperFactory;
+use java::lang::Object ();
+use javax::microedition::lcdui::Canvas ();
+use org::allbinary::game::ai::BasicAI ();
+use org::allbinary::game::ag::ai::InputProbability ();
+use org::allbinary::game::input::GameInput ();
+use org::allbinary::game::rand::MyRandomFactory ();
+use org::allbinary::layer::AllBinaryLayer ();
+use org::allbinary::layer::AllBinaryLayerManager ();
+use org::allbinary::logic::util::visitor::Visitor ();
+use org::allbinary::time::GameTickTimeDelayHelperFactory ();
 
 1;
 

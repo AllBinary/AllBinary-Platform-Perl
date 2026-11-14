@@ -17,6 +17,7 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
 
 sub _init_fields {
@@ -29,7 +30,7 @@ sub _init_fields {
 sub new {
     my ($class) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
     return $self;
 }
 
@@ -79,17 +80,18 @@ sub write {
         }
 }
 
-# use java::io::InputStream;
-# use java::io::OutputStream;
-use org::allbinary::business::init::LicenseInitInfoUtil;
-use org::allbinary::data::resource::ResourceUtil;
-use org::allbinary::logic::communication::log::LogUtil;
-use org::allbinary::logic::io::FileStreamFactory;
-use org::allbinary::logic::io::StreamUtil;
-use org::allbinary::logic::io::file::FileFactory;
-use org::allbinary::logic::io::file::SimpleFileUtil;
-use org::allbinary::logic::string::StringUtil;
-use org::allbinary::string::CommonStrings;
+use java::lang::Object ();
+# use java::io::InputStream ();
+# use java::io::OutputStream ();
+use org::allbinary::business::init::LicenseInitInfoUtil ();
+use org::allbinary::data::resource::ResourceUtil ();
+use org::allbinary::logic::communication::log::LogUtil ();
+use org::allbinary::logic::io::FileStreamFactory ();
+use org::allbinary::logic::io::StreamUtil ();
+use org::allbinary::logic::io::file::FileFactory ();
+use org::allbinary::logic::io::file::SimpleFileUtil ();
+use org::allbinary::logic::string::StringUtil ();
+use org::allbinary::string::CommonStrings ();
 
 1;
 

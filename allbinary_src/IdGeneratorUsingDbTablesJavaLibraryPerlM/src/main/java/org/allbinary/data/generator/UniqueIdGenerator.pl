@@ -17,7 +17,7 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
-use parent -norequire,'org::allbinary::data::generator::IdGeneratorInterface';
+use parent -norequire,'java::lang::Object','org::allbinary::data::generator::IdGeneratorInterface';
 
 our $EXT = ".unq";
 
@@ -32,7 +32,7 @@ sub _init_fields {
 sub new {
     my ($class) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
         $self->{idGeneratorEntity} = 'org::allbinary::data::tables::generator::IdGeneratorEntityFactory'->getInstance();
     return $self;
 }
@@ -78,15 +78,16 @@ sub getNext {
         }
 }
 
-# use java::io::IOException;
-use org::allbinary::util::BasicArrayList;
-use org::allbinary::util::BasicArrayListD;
-use org::allbinary::data::tables::generator::IdGeneratorEntity;
-use org::allbinary::data::tables::generator::IdGeneratorEntityFactory;
-use org::allbinary::logic::StdUtil;
-use org::allbinary::string::CommonStrings;
-use org::allbinary::logic::communication::log::LogUtil;
-use org::allbinary::data::generator::IdGeneratorInterface;
+use java::lang::Object ();
+# use java::io::IOException ();
+use org::allbinary::util::BasicArrayList ();
+use org::allbinary::util::BasicArrayListD ();
+use org::allbinary::data::tables::generator::IdGeneratorEntity ();
+use org::allbinary::data::tables::generator::IdGeneratorEntityFactory ();
+use org::allbinary::logic::StdUtil ();
+use org::allbinary::string::CommonStrings ();
+use org::allbinary::logic::communication::log::LogUtil ();
+use org::allbinary::data::generator::IdGeneratorInterface ();
 
 1;
 

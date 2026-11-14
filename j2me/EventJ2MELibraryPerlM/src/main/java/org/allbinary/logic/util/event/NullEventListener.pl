@@ -17,9 +17,9 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
-use parent -norequire,'org::allbinary::logic::util::event::EventListenerInterface';
+use parent -norequire,'java::lang::Object','org::allbinary::logic::util::event::EventListenerInterface';
 
-our $NULL_EVENT_LISTENER = 'org::allbinary::logic::util::event::NullEventListener'->new();
+tie our $NULL_EVENT_LISTENER, 'java::lang::LazyStatic', sub { 'org::allbinary::logic::util::event::NullEventListener'->new() };
 
 sub new {
     my ($class) = @_;
@@ -32,7 +32,9 @@ sub onEvent {
     my ($self, $eventObject) = @_;
 }
 
-use org::allbinary::logic::util::event::EventListenerInterface;
+use java::lang::Object ();
+use java::lang::LazyStatic ();
+use org::allbinary::logic::util::event::EventListenerInterface ();
 
 1;
 

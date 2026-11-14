@@ -17,7 +17,7 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
-use parent -norequire,'org::allbinary::business::user::UserInterface';
+use parent -norequire,'java::lang::Object','org::allbinary::business::user::UserInterface';
 
 
 sub _init_fields {
@@ -60,7 +60,7 @@ sub new {
 sub _new0 {
     my ($class) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
         $self->{userConfigurationInterface} = 'org::allbinary::business::user::modules::configuration::UserConfigurationInterfaceFactory'->getInstance();
         $self->{password} = 'org::allbinary::business::user::password::Password'->new('org::allbinary::logic::string::StringUtil'->getInstance()->{EMPTY_STRING});
     return $self;
@@ -70,7 +70,7 @@ sub _new0 {
 sub _new1 {
     my ($class, $request) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
         $self->getFormData('org::allbinary::logic::communication::http::request::RequestParams'->new($request)->toHashMap());
         $self->{userConfigurationInterface} = 'org::allbinary::business::user::modules::configuration::UserConfigurationInterfaceFactory'->getInstance($self->getRole());
     return $self;
@@ -80,7 +80,7 @@ sub _new1 {
 sub _new1 {
     my ($class, $userHashMap) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
         $self->getFormData($userHashMap);
         $self->{userConfigurationInterface} = 'org::allbinary::business::user::modules::configuration::UserConfigurationInterfaceFactory'->getInstance($self->getRole());
     return $self;
@@ -578,34 +578,35 @@ sub setUserConfigurationInterface {
         $self->{userConfigurationInterface} = $userConfigurationInterface;
 }
 
-use java::util::Calendar;
-use java::util::HashMap;
-use org::allbinary::util::BasicArrayList;
-use org::allbinary::util::BasicArrayListD;
-# use javax::servlet::http::HttpServletRequest;
-use org::allbinary::business::context::modules::storefront::StoreFrontData;
-use org::allbinary::business::entry::EntryData;
-use org::allbinary::business::user::UserData;
-use org::allbinary::business::user::UserInterface;
-use org::allbinary::business::user::modules::configuration::UserConfigurationDomDocumentMapping;
-use org::allbinary::business::user::modules::configuration::UserConfigurationInterface;
-use org::allbinary::business::user::modules::configuration::UserConfigurationInterfaceFactory;
-use org::allbinary::business::user::password::Password;
-use org::allbinary::business::user::role::UserRole;
-use org::allbinary::business::user::role::UserRoleB;
-use org::allbinary::business::user::role::UserRoleData;
-use org::allbinary::business::user::username::UserName;
-use org::allbinary::logic::StdUtil;
-use org::allbinary::logic::communication::http::request::RequestParams;
-use org::allbinary::logic::communication::http::request::session::WeblisketSessionData;
-use org::allbinary::logic::communication::http::request::session::WeblisketSessionInterface;
-use org::allbinary::logic::communication::log::LogUtil;
-use org::allbinary::logic::string::StringMaker;
-use org::allbinary::logic::string::StringUtil;
-use org::allbinary::logic::string::StringValidationUtil;
-use org::allbinary::string::CommonStrings;
-use org::w3c::dom::Document;
-use org::w3c::dom::Node;
+use java::lang::Object ();
+use java::util::Calendar ();
+use java::util::HashMap ();
+use org::allbinary::util::BasicArrayList ();
+use org::allbinary::util::BasicArrayListD ();
+# use javax::servlet::http::HttpServletRequest ();
+use org::allbinary::business::context::modules::storefront::StoreFrontData ();
+use org::allbinary::business::entry::EntryData ();
+use org::allbinary::business::user::UserData ();
+use org::allbinary::business::user::UserInterface ();
+use org::allbinary::business::user::modules::configuration::UserConfigurationDomDocumentMapping ();
+use org::allbinary::business::user::modules::configuration::UserConfigurationInterface ();
+use org::allbinary::business::user::modules::configuration::UserConfigurationInterfaceFactory ();
+use org::allbinary::business::user::password::Password ();
+use org::allbinary::business::user::role::UserRole ();
+use org::allbinary::business::user::role::UserRoleB ();
+use org::allbinary::business::user::role::UserRoleData ();
+use org::allbinary::business::user::username::UserName ();
+use org::allbinary::logic::StdUtil ();
+use org::allbinary::logic::communication::http::request::RequestParams ();
+use org::allbinary::logic::communication::http::request::session::WeblisketSessionData ();
+use org::allbinary::logic::communication::http::request::session::WeblisketSessionInterface ();
+use org::allbinary::logic::communication::log::LogUtil ();
+use org::allbinary::logic::string::StringMaker ();
+use org::allbinary::logic::string::StringUtil ();
+use org::allbinary::logic::string::StringValidationUtil ();
+use org::allbinary::string::CommonStrings ();
+use org::w3c::dom::Document ();
+use org::w3c::dom::Node ();
 
 1;
 

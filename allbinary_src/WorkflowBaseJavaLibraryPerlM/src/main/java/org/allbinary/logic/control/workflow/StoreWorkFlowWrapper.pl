@@ -29,7 +29,7 @@ sub _init_fields {
 sub new {
     my ($class, $anyType) = @_;
     my $self = $class->SUPER::new($anyType);
-    $self->_init_fields();
+    _init_fields($self);
         # super(...) made $self above
     return $self;
 }
@@ -53,10 +53,11 @@ sub getStoreName {
         }
 }
 
-# use java::lang::reflect::Method;
-use org::allbinary::logic::communication::log::LogUtil;
-use org::allbinary::string::CommonStrings;
-use org::allbinary::logic::control::workflow::WorkFlowWrapper;
+use java::lang::Object ();
+# use java::lang::reflect::Method ();
+use org::allbinary::logic::communication::log::LogUtil ();
+use org::allbinary::string::CommonStrings ();
+use org::allbinary::logic::control::workflow::WorkFlowWrapper ();
 
 1;
 

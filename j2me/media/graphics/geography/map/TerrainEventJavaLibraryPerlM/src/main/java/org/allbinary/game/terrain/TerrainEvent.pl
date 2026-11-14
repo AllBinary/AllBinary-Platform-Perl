@@ -29,7 +29,7 @@ sub _init_fields {
 sub new {
     my ($class, $basicTerrainInfo) = @_;
     my $self = $class->SUPER::new($basicTerrainInfo);
-    $self->_init_fields();
+    _init_fields($self);
         # super(...) made $self above
         $self->setBasicTerrainInfo($self->{basicTerrainInfo});
     return $self;
@@ -63,10 +63,11 @@ sub setBasicTerrainInfoForCircularStaticPool {
         $self->{basicTerrainInfo} = $basicTerrainInfo;
 }
 
-use org::allbinary::logic::NullUtil;
-use org::allbinary::logic::string::StringMaker;
-use org::allbinary::logic::util::event::AllBinaryEventObject;
-use org::allbinary::game::terrain::BasicTerrainInfo;
+use java::lang::Object ();
+use org::allbinary::logic::NullUtil ();
+use org::allbinary::logic::string::StringMaker ();
+use org::allbinary::logic::util::event::AllBinaryEventObject ();
+use org::allbinary::game::terrain::BasicTerrainInfo ();
 
 1;
 

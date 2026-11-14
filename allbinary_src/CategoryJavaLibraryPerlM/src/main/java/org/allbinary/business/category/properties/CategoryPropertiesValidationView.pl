@@ -29,7 +29,7 @@ sub _init_fields {
 sub new {
     my ($class, $categoryPropertiesInterface) = @_;
     my $self = $class->SUPER::new($categoryPropertiesInterface);
-    $self->_init_fields();
+    _init_fields($self);
         # super(...) made $self above
     return $self;
 }
@@ -71,12 +71,13 @@ sub toValidationInfoNode {
         return undef;
 }
 
-use org::allbinary::logic::communication::log::LogUtil;
-use org::allbinary::logic::control::validate::ValidationInterface;
-use org::allbinary::logic::string::StringMaker;
-use org::w3c::dom::Document;
-use org::w3c::dom::Node;
-use org::allbinary::business::category::properties::CategoryPropertiesView;
+use java::lang::Object ();
+use org::allbinary::logic::communication::log::LogUtil ();
+use org::allbinary::logic::control::validate::ValidationInterface ();
+use org::allbinary::logic::string::StringMaker ();
+use org::w3c::dom::Document ();
+use org::w3c::dom::Node ();
+use org::allbinary::business::category::properties::CategoryPropertiesView ();
 
 1;
 

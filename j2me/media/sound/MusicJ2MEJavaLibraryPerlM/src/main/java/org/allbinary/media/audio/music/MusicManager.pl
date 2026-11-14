@@ -6,6 +6,7 @@ use warnings;
 use feature 'try';
 no warnings 'experimental::try';
 use Time::HiRes ();
+use parent -norequire,'java::lang::Object';
 
 
 sub _init_fields {
@@ -16,7 +17,7 @@ sub _init_fields {
     $self->{gameTickTimeDelayHelper} = 'org::allbinary::time::GameTickTimeDelayHelperFactory'->getInstance();
     $self->{playerStateUtil} = 'org::allbinary::media::audio::PlayerStateUtil'->getInstance();
     $self->{timeDelayHelper} = 'org::allbinary::time::TimeDelayHelper'->new(0);
-    $self->{playerListener} = 'org::allbinary::media::audio::music::MusicManagerPlayerListener'->new();
+    $self->{playerListener} = 'org::allbinary::media::audio::music::MusicManagerPlayerListener'->new($self);
     $self->{PLAY} = "Play ";
     $self->{SONG} = " for: ";
     $self->{NEXT_SONG} = 'org::allbinary::string::CommonLabels'->getInstance()->{NEXT} . " Song: ";
@@ -37,7 +38,7 @@ sub _init_fields {
 sub new {
     my ($class, $musicServiceClass, $songList) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
         $self->{songList} = $songList;
     return $self;
 }
@@ -172,45 +173,54 @@ sub stop {
     use feature 'try';
     no warnings 'experimental::try';
     use Time::HiRes ();
-    use parent -norequire,'javax::microedition::media::PlayerListener';
+    use parent -norequire,'java::lang::Object','javax::microedition::media::PlayerListener';
+    
+
+    sub _init_fields {
+        my ($self) = @_;
+        $self->{musicManager} = undef;
+    }
     
 
     sub new {
-        my ($class) = @_;
+        my ($class, $musicManager) = @_;
         my $self = bless({}, $class);
+        _init_fields($self);
+            $self->{musicManager} = $musicManager;
         return $self;
     }
     
 
     sub playerUpdate {
         my ($self, $player, $event, $eventData) = @_;
-            'org::allbinary::logic::communication::log::PreLogUtil'->put($event, $self, $self->{commonStrings}->{PROCESS});
+            'org::allbinary::logic::communication::log::PreLogUtil'->put($event, $self, $self->{musicManager}->{commonStrings}->{PROCESS});
             if ($event eq $javax::microedition::media::PlayerListener::END_OF_MEDIA || $event eq $javax::microedition::media::PlayerListener::STOPPED || $event eq $javax::microedition::media::PlayerListener::CLOSED) {
-                $self->reset();
+                $self->{musicManager}->reset();
             }
     }
     }
 
 
-use org::allbinary::thread::ARunnable;
-# use javax::microedition::media::Player;
-# use javax::microedition::media::PlayerListener;
-use org::allbinary::AvianUtil;
-use org::allbinary::logic::communication::log::PreLogUtil;
-use org::allbinary::logic::string::StringMaker;
-use org::allbinary::logic::string::StringUtil;
-use org::allbinary::media::audio::NoSound;
-use org::allbinary::media::audio::PlayerStateUtil;
-use org::allbinary::media::audio::Sound;
-use org::allbinary::string::CommonLabels;
-use org::allbinary::string::CommonSeps;
-use org::allbinary::string::CommonStrings;
-use org::allbinary::time::GameTickTimeDelayHelper;
-use org::allbinary::time::GameTickTimeDelayHelperFactory;
-use org::allbinary::time::TimeDelayHelper;
-use org::allbinary::util::BasicArrayList;
-use org::allbinary::util::BasicArrayListUtil;
-use java::lang::Thread;
+use java::lang::Object ();
+use org::allbinary::thread::ARunnable ();
+use javax::microedition::media::Player ();
+use javax::microedition::media::PlayerListener ();
+use org::allbinary::AvianUtil ();
+use org::allbinary::logic::communication::log::PreLogUtil ();
+use org::allbinary::logic::string::StringMaker ();
+use org::allbinary::logic::string::StringUtil ();
+use org::allbinary::media::audio::NoSound ();
+use org::allbinary::media::audio::PlayerStateUtil ();
+use org::allbinary::media::audio::Sound ();
+use org::allbinary::string::CommonLabels ();
+use org::allbinary::string::CommonSeps ();
+use org::allbinary::string::CommonStrings ();
+use org::allbinary::time::GameTickTimeDelayHelper ();
+use org::allbinary::time::GameTickTimeDelayHelperFactory ();
+use org::allbinary::time::TimeDelayHelper ();
+use org::allbinary::util::BasicArrayList ();
+use org::allbinary::util::BasicArrayListUtil ();
+use java::lang::Thread ();
 
 1;
 

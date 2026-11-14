@@ -17,7 +17,7 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
-use parent -norequire,'org::allbinary::media::audio::SoundInterface';
+use parent -norequire,'java::lang::Object','org::allbinary::media::audio::SoundInterface';
 
 
 sub _init_fields {
@@ -30,7 +30,7 @@ sub _init_fields {
 sub new {
     my ($class, $resource) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
         $self->{resource} = $resource;
     return $self;
 }
@@ -76,11 +76,12 @@ sub run {
         }
 }
 
-# use javax::microedition::media::Player;
-use org::allbinary::logic::communication::log::PreLogUtil;
-use org::allbinary::string::CommonStrings;
-use org::allbinary::media::audio::SoundInterface;
-use org::allbinary::media::audio::NoPlayer;
+use java::lang::Object ();
+use javax::microedition::media::Player ();
+use org::allbinary::logic::communication::log::PreLogUtil ();
+use org::allbinary::string::CommonStrings ();
+use org::allbinary::media::audio::SoundInterface ();
+use org::allbinary::media::audio::NoPlayer ();
 
 1;
 

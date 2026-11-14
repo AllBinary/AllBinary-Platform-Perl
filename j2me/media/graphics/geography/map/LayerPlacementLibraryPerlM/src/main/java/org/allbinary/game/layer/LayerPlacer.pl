@@ -17,6 +17,7 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
 
 sub _init_fields {
@@ -30,7 +31,7 @@ sub _init_fields {
 sub new {
     my ($class, $layerInterfaceVisitor, $dimension) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
         $self->{layerInterfaceVisitor} = $layerInterfaceVisitor;
         $self->{dimension} = $dimension;
     return $self;
@@ -96,16 +97,17 @@ sub getPoint {
         }
 }
 
-use java::util::Enumeration;
-use org::allbinary::graphics::GPoint;
-use org::allbinary::graphics::PointFactory;
-use org::allbinary::layer::AllBinaryLayer;
-use org::allbinary::layer::LayerInterfaceFactory;
-use org::allbinary::layer::LayerInterfaceVisitor;
-use org::allbinary::util::ABHashtable;
-use org::allbinary::util::BasicArrayList;
-use org::allbinary::util::EnumerationUtil;
-use org::allbinary::game::layer::LayerPlacementTypeFactory;
+use java::lang::Object ();
+use java::util::Enumeration ();
+use org::allbinary::graphics::GPoint ();
+use org::allbinary::graphics::PointFactory ();
+use org::allbinary::layer::AllBinaryLayer ();
+use org::allbinary::layer::LayerInterfaceFactory ();
+use org::allbinary::layer::LayerInterfaceVisitor ();
+use org::allbinary::util::ABHashtable ();
+use org::allbinary::util::BasicArrayList ();
+use org::allbinary::util::EnumerationUtil ();
+use org::allbinary::game::layer::LayerPlacementTypeFactory ();
 
 1;
 

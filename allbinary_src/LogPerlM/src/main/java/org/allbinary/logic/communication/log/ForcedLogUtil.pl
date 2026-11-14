@@ -17,6 +17,7 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
 
 sub new {
@@ -35,8 +36,9 @@ sub log {
         }
 }
 
-use org::allbinary::string::CommonStrings;
-use org::allbinary::logic::communication::log::PreLogUtil;
+use java::lang::Object ();
+use org::allbinary::string::CommonStrings ();
+use org::allbinary::logic::communication::log::PreLogUtil ();
 
 1;
 

@@ -17,8 +17,9 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
-our $NULL_PLATFORM_BITMAP_BASE_FACTORY = 'org::allbinary::platform::graphics::PlatformBitmapBaseFactory'->new();
+tie our $NULL_PLATFORM_BITMAP_BASE_FACTORY, 'java::lang::LazyStatic', sub { 'org::allbinary::platform::graphics::PlatformBitmapBaseFactory'->new() };
 
 sub new {
     my ($class) = @_;
@@ -32,8 +33,10 @@ sub createBitmap {
         return $org::allbinary::platform::graphics::PlatformBitmapBase::NULL_PLATFORM_BITMAP_BASE;
 }
 
-# use javax::microedition::lcdui::Image;
-use org::allbinary::platform::graphics::PlatformBitmapBase;
+use java::lang::Object ();
+use java::lang::LazyStatic ();
+use javax::microedition::lcdui::Image ();
+use org::allbinary::platform::graphics::PlatformBitmapBase ();
 
 1;
 

@@ -31,7 +31,7 @@ sub _init_fields {
 sub new {
     my ($class) = @_;
     my $self = $class->SUPER::new();
-    $self->_init_fields();
+    _init_fields($self);
         $self->{keyvalueDrawString} = 'org::allbinary::graphics::draw::KeyValueDrawString'->new("Owner: ", $self->{textX});
     return $self;
 }
@@ -73,13 +73,14 @@ sub paint {
         $self->getAnimationInterface()->paintXY($graphics, $self->{imageX}, $self->{y});
 }
 
-# use javax::microedition::lcdui::Font;
-# use javax::microedition::lcdui::Graphics;
-use org::allbinary::game::layer::NullPathFindingLayer;
-use org::allbinary::game::layer::PathFindingLayerInterface;
-use org::allbinary::game::layer::RTSLayer;
-use org::allbinary::game::layer::SelectionHudPaintable;
-use org::allbinary::graphics::draw::KeyValueDrawString;
+use java::lang::Object ();
+use javax::microedition::lcdui::Font ();
+use javax::microedition::lcdui::Graphics ();
+use org::allbinary::game::layer::NullPathFindingLayer ();
+use org::allbinary::game::layer::PathFindingLayerInterface ();
+use org::allbinary::game::layer::RTSLayer ();
+use org::allbinary::game::layer::SelectionHudPaintable ();
+use org::allbinary::graphics::draw::KeyValueDrawString ();
 
 1;
 

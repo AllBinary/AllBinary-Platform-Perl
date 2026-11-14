@@ -46,9 +46,9 @@ sub view {
     die "abstract method view";
 }
 
-use org::allbinary::data::tree::dom::document::mapping::DomDocumentMappingInterface;
-use org::allbinary::logic::visual::transform::data::TransformDocumentInterface;
-use org::allbinary::logic::visual::transform::info::CompositeTransformInfoInterface;
+use org::allbinary::data::tree::dom::document::mapping::DomDocumentMappingInterface ();
+use org::allbinary::logic::visual::transform::data::TransformDocumentInterface ();
+use org::allbinary::logic::visual::transform::info::CompositeTransformInfoInterface ();
 
 1;
 

@@ -44,7 +44,7 @@ sub setListener {
     die "abstract method setListener";
 }
 
-use org::allbinary::time::TimeDelayHelper;
+use org::allbinary::time::TimeDelayHelper ();
 
 1;
 

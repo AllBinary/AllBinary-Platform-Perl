@@ -18,6 +18,7 @@ use warnings;
 use feature 'try';
 no warnings 'experimental::try';
 use Time::HiRes ();
+use parent -norequire,'java::lang::Object';
 
 
 sub _init_fields {
@@ -53,7 +54,7 @@ sub _init_fields {
 sub new {
     my ($class, $databaseConnectionInfoInterface) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
         $self->{databaseConnectionInfoInterface} = $databaseConnectionInfoInterface;
         $self->{connectAttemptCounter} = 0;
         $self->{conn} = undef;
@@ -128,7 +129,7 @@ sub createConnection {
 sub initialize {
     my ($self) = @_;
         try {
-            {
+            {;
                 try {
                     my $loader = 'java::lang::Thread'->currentThread()->getContextClassLoader();
                     my $jdbcDriverClass = $loader->loadClass($self->getDatabaseConnectionInfoInterface()->getJdbcDriver());
@@ -159,21 +160,22 @@ sub setDatabaseConnectionInfoInterface {
         $self->{databaseConnectionInfoInterface} = $databaseConnectionInfoInterface;
 }
 
-# use java::sql::Connection;
-# use java::sql::ResultSet;
-# use java::sql::SQLException;
-# use java::sql::Statement;
-use org::allbinary::business::init::db::DatabaseConnectionInfoInterface;
-use org::allbinary::business::init::db::DbConnectionInfo;
-use org::allbinary::logic::StdUtil;
-use org::allbinary::logic::communication::log::LogUtil;
-use org::allbinary::logic::communication::sql::connection::pool::SqlConnectionPool;
-use org::allbinary::logic::string::StringUtil;
-use org::allbinary::string::CommonSeps;
-use org::allbinary::string::CommonStrings;
-use org::allbinary::logic::communication::sql::SqlTypeStrings;
-use org::allbinary::logic::communication::sql::SqlStrings;
-use java::lang::Thread;
+use java::lang::Object ();
+# use java::sql::Connection ();
+# use java::sql::ResultSet ();
+# use java::sql::SQLException ();
+# use java::sql::Statement ();
+use org::allbinary::business::init::db::DatabaseConnectionInfoInterface ();
+use org::allbinary::business::init::db::DbConnectionInfo ();
+use org::allbinary::logic::StdUtil ();
+use org::allbinary::logic::communication::log::LogUtil ();
+use org::allbinary::logic::communication::sql::connection::pool::SqlConnectionPool ();
+use org::allbinary::logic::string::StringUtil ();
+use org::allbinary::string::CommonSeps ();
+use org::allbinary::string::CommonStrings ();
+use org::allbinary::logic::communication::sql::SqlTypeStrings ();
+use org::allbinary::logic::communication::sql::SqlStrings ();
+use java::lang::Thread ();
 
 1;
 

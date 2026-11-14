@@ -33,8 +33,9 @@ sub processAI {
     my ($self, $allBinaryLayerManager) = @_;
 }
 
-use org::allbinary::ai::ArtificialIntelligence;
-use org::allbinary::layer::AllBinaryLayerManager;
+use java::lang::Object ();
+use org::allbinary::ai::ArtificialIntelligence ();
+use org::allbinary::layer::AllBinaryLayerManager ();
 
 1;
 

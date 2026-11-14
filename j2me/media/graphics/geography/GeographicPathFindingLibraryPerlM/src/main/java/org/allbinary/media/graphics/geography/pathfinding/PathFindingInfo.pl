@@ -17,9 +17,9 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
-use parent -norequire,'org::allbinary::media::graphics::geography::pathfinding::PathFindingInfoInterface';
+use parent -norequire,'java::lang::Object','org::allbinary::media::graphics::geography::pathfinding::PathFindingInfoInterface';
 
-our $NULL_PATH_FINDING_INFO = 'org::allbinary::media::graphics::geography::pathfinding::PathFindingInfo'->new($org::allbinary::media::graphics::geography::pathfinding::PathFindingNodeCostInfoFactoryBase::NULL_PATH_FINDING_NODE_COST_INFO_FACTORY_BASE, 'org::allbinary::util::BasicArrayListUtil'->getInstance()->getImmutableInstance(), 'org::allbinary::util::BasicArrayListUtil'->getInstance()->getImmutableInstance());
+tie our $NULL_PATH_FINDING_INFO, 'java::lang::LazyStatic', sub { 'org::allbinary::media::graphics::geography::pathfinding::PathFindingInfo'->new($org::allbinary::media::graphics::geography::pathfinding::PathFindingNodeCostInfoFactoryBase::NULL_PATH_FINDING_NODE_COST_INFO_FACTORY_BASE, 'org::allbinary::util::BasicArrayListUtil'->getInstance()->getImmutableInstance(), 'org::allbinary::util::BasicArrayListUtil'->getInstance()->getImmutableInstance()) };
 
 sub _init_fields {
     my ($self) = @_;
@@ -33,7 +33,7 @@ sub _init_fields {
 sub new {
     my ($class, $pathFindingNodeCostInfoFactoryInterface, $startPathFindingNodeList, $endPathFindingNodeList) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
         $self->{pathFindingNodeCostInfoFactoryInterface} = $pathFindingNodeCostInfoFactoryInterface;
         $self->{startPathFindingNodeList} = $startPathFindingNodeList;
         $self->{endPathFindingNodeList} = $endPathFindingNodeList;
@@ -82,11 +82,13 @@ sub getPathFindingNodeCostInfoFactoryInterface {
         return $self->{pathFindingNodeCostInfoFactoryInterface};
 }
 
-use org::allbinary::util::BasicArrayList;
-use org::allbinary::util::BasicArrayListUtil;
-use org::allbinary::media::graphics::geography::pathfinding::PathFindingInfoInterface;
-use org::allbinary::media::graphics::geography::pathfinding::PathFindingNodeCostInfoFactoryBase;
-use org::allbinary::media::graphics::geography::pathfinding::GeographicPathFinderBase;
+use java::lang::Object ();
+use java::lang::LazyStatic ();
+use org::allbinary::util::BasicArrayList ();
+use org::allbinary::util::BasicArrayListUtil ();
+use org::allbinary::media::graphics::geography::pathfinding::PathFindingInfoInterface ();
+use org::allbinary::media::graphics::geography::pathfinding::PathFindingNodeCostInfoFactoryBase ();
+use org::allbinary::media::graphics::geography::pathfinding::GeographicPathFinderBase ();
 
 1;
 

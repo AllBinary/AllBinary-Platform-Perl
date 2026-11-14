@@ -29,7 +29,7 @@ sub _init_fields {
 sub new {
     my ($class, $midletActivity, $progressCanvas) = @_;
     my $self = $class->SUPER::new($midletActivity, $progressCanvas);
-    $self->_init_fields();
+    _init_fields($self);
         # super(...) made $self above
     return $self;
 }
@@ -45,10 +45,11 @@ sub run {
         }
 }
 
-use org::allbinary::string::CommonStrings;
-use org::allbinary::logic::communication::log::LogUtil;
-use android::app::Activity;
-use org::allbinary::graphics::canvas::transition::progress::ProgressRunnable;
+use java::lang::Object ();
+use org::allbinary::string::CommonStrings ();
+use org::allbinary::logic::communication::log::LogUtil ();
+# use android::app::Activity ();
+use org::allbinary::graphics::canvas::transition::progress::ProgressRunnable ();
 
 1;
 

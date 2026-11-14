@@ -17,7 +17,7 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
-use parent -norequire,'org::allbinary::animation::AnimationInterfaceFactoryInterface';
+use parent -norequire,'java::lang::Object','org::allbinary::animation::AnimationInterfaceFactoryInterface';
 
 
 sub _init_fields {
@@ -41,7 +41,7 @@ sub createFactoryBase {
 sub new {
     my ($class, $image, $sequenceArray, $width, $height, $dx, $dy, $animationBehaviorFactory) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
         $self->{animationFactoryInitializationVisitor} = 'org::allbinary::animation::image::AnimationFactoryInitializationVisitor'->new();
         $self->{image} = $image;
         $self->{animationFactoryInitializationVisitor}->{width} = $width;
@@ -109,18 +109,19 @@ sub toString {
         return $stringBuffer->toString();
 }
 
-# use javax::microedition::lcdui::Image;
-use org::allbinary::animation::Animation;
-use org::allbinary::animation::AnimationBehaviorFactory;
-use org::allbinary::animation::AnimationInterfaceFactoryInterface;
-use org::allbinary::animation::NullAnimationFactory;
-use org::allbinary::image::AnimationFactoryImageScaleUtil;
-use org::allbinary::logic::communication::log::ForcedLogUtil;
-use org::allbinary::logic::string::StringMaker;
-use org::allbinary::media::ScaleProperties;
-use org::allbinary::string::CommonLabels;
-use org::allbinary::string::CommonSeps;
-use org::allbinary::animation::image::AnimationFactoryInitializationVisitor;
+use java::lang::Object ();
+use javax::microedition::lcdui::Image ();
+use org::allbinary::animation::Animation ();
+use org::allbinary::animation::AnimationBehaviorFactory ();
+use org::allbinary::animation::AnimationInterfaceFactoryInterface ();
+use org::allbinary::animation::NullAnimationFactory ();
+use org::allbinary::image::AnimationFactoryImageScaleUtil ();
+use org::allbinary::logic::communication::log::ForcedLogUtil ();
+use org::allbinary::logic::string::StringMaker ();
+use org::allbinary::media::ScaleProperties ();
+use org::allbinary::string::CommonLabels ();
+use org::allbinary::string::CommonSeps ();
+use org::allbinary::animation::image::AnimationFactoryInitializationVisitor ();
 
 1;
 

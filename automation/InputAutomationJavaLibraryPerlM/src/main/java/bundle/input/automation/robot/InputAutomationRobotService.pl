@@ -17,7 +17,7 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
-use parent -norequire,'bundle::input::automation::robot::InputAutomationRobotServiceInterface';
+use parent -norequire,'java::lang::Object','bundle::input::automation::robot::InputAutomationRobotServiceInterface';
 
 
 sub _init_fields {
@@ -29,7 +29,7 @@ sub _init_fields {
 sub new {
     my ($class, $inputRobotInterfaceArray) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
         $self->setInputRobotInterfaceArray($inputRobotInterfaceArray);
     return $self;
 }
@@ -46,8 +46,9 @@ sub setInputRobotInterfaceArray {
         $self->{inputRobotInterfaceArray} = $inputRobotInterfaceArray;
 }
 
-use org::allbinary::input::automation::robot::InputRobotInterface;
-use bundle::input::automation::robot::InputAutomationRobotServiceInterface;
+use java::lang::Object ();
+use org::allbinary::input::automation::robot::InputRobotInterface ();
+use bundle::input::automation::robot::InputAutomationRobotServiceInterface ();
 
 1;
 

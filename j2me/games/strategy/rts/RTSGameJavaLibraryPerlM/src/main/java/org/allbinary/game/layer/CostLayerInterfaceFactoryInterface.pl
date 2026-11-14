@@ -28,7 +28,7 @@ sub getCost {
     die "abstract method getCost";
 }
 
-use org::allbinary::layer::LayerInterfaceFactoryInterface;
+use org::allbinary::layer::LayerInterfaceFactoryInterface ();
 
 1;
 

@@ -18,8 +18,9 @@ use warnings;
 use feature 'try';
 no warnings 'experimental::try';
 use Time::HiRes ();
+use parent -norequire,'java::lang::Object';
 
-our $instance = 'org::allbinary::emulator::swt::SWTProcessor'->new();
+tie our $instance, 'java::lang::LazyStatic', sub { 'org::allbinary::emulator::swt::SWTProcessor'->new() };
 
 sub _init_fields {
     my ($self) = @_;
@@ -29,7 +30,7 @@ sub _init_fields {
 sub new {
     my ($class) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
     return $self;
 }
 
@@ -45,8 +46,10 @@ sub process {
         $display->sleep();
 }
 
-use org::eclipse::swt::widgets::Display;
-use org::allbinary::thread::NullRunnable;
+use java::lang::Object ();
+use java::lang::LazyStatic ();
+use org::eclipse::swt::widgets::Display ();
+use org::allbinary::thread::NullRunnable ();
 
 1;
 

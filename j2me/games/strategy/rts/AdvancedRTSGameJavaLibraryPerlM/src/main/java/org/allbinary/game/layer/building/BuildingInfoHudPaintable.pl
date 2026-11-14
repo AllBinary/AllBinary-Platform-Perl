@@ -19,7 +19,7 @@ use feature 'try';
 no warnings 'experimental::try';
 use parent -norequire,'org::allbinary::game::layer::SelectionHudPaintable';
 
-our $instance = 'org::allbinary::game::layer::building::BuildingInfoHudPaintable'->new();
+tie our $instance, 'java::lang::LazyStatic', sub { 'org::allbinary::game::layer::building::BuildingInfoHudPaintable'->new() };
 
 sub _init_fields {
     my ($self) = @_;
@@ -43,7 +43,7 @@ sub getInstance {
 sub new {
     my ($class) = @_;
     my $self = $class->SUPER::new();
-    $self->_init_fields();
+    _init_fields($self);
         my $numberStringHudFactory = 'org::allbinary::game::ag::layer::hud::basic::NumberStringHudFactory'->getInstance();
         my $productivityHud = $numberStringHudFactory->{NULL_NUMBER_STRING_HUD};
         my $efficiencyHud = $numberStringHudFactory->{NULL_NUMBER_STRING_HUD};
@@ -237,19 +237,21 @@ sub setRtsLayer {
         $self->{rtsLayer} = $rtsLayer;
 }
 
-# use javax::microedition::lcdui::Font;
-# use javax::microedition::lcdui::Graphics;
-use org::allbinary::game::ag::layer::hud::basic::NumberStringHud;
-use org::allbinary::game::ag::layer::hud::basic::NumberStringHudFactory;
-use org::allbinary::game::layer::SelectionHudPaintable;
-use org::allbinary::string::CommonStrings;
-use org::allbinary::logic::communication::log::LogUtil;
-use org::allbinary::game::graphics::hud::BasicHudFactory;
-use org::allbinary::game::layer::NullPathFindingLayer;
-use org::allbinary::game::layer::PathFindingLayerInterface;
-use org::allbinary::graphics::color::BasicColor;
-use org::allbinary::graphics::font::MyFontProcessor;
-use org::allbinary::logic::math::MathUtil;
+use java::lang::Object ();
+use java::lang::LazyStatic ();
+use javax::microedition::lcdui::Font ();
+use javax::microedition::lcdui::Graphics ();
+use org::allbinary::game::ag::layer::hud::basic::NumberStringHud ();
+use org::allbinary::game::ag::layer::hud::basic::NumberStringHudFactory ();
+use org::allbinary::game::layer::SelectionHudPaintable ();
+use org::allbinary::string::CommonStrings ();
+use org::allbinary::logic::communication::log::LogUtil ();
+use org::allbinary::game::graphics::hud::BasicHudFactory ();
+use org::allbinary::game::layer::NullPathFindingLayer ();
+use org::allbinary::game::layer::PathFindingLayerInterface ();
+use org::allbinary::graphics::color::BasicColor ();
+use org::allbinary::graphics::font::MyFontProcessor ();
+use org::allbinary::logic::math::MathUtil ();
 
 1;
 

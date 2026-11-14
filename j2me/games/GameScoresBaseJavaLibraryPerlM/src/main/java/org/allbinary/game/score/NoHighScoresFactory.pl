@@ -19,7 +19,7 @@ use feature 'try';
 no warnings 'experimental::try';
 use parent -norequire,'org::allbinary::game::score::HighScoresBase';
 
-our $instance = 'org::allbinary::game::score::NoHighScoresFactory'->new();
+tie our $instance, 'java::lang::LazyStatic', sub { 'org::allbinary::game::score::NoHighScoresFactory'->new() };
 
 sub _init_fields {
     my ($self) = @_;
@@ -37,7 +37,7 @@ sub getInstance {
 sub new {
     my ($class) = @_;
     my $self = $class->SUPER::new();
-    $self->_init_fields();
+    _init_fields($self);
     return $self;
 }
 
@@ -54,10 +54,12 @@ sub createHighScoresHelper {
         return 'org::allbinary::game::score::HighScoresHelperBase'->new();
 }
 
-use org::allbinary::game::GameInfo;
-use org::allbinary::logic::communication::log::LogUtil;
-use org::allbinary::game::score::HighScoresBase;
-use org::allbinary::game::score::HighScoresHelperBase;
+use java::lang::Object ();
+use java::lang::LazyStatic ();
+use org::allbinary::game::GameInfo ();
+use org::allbinary::logic::communication::log::LogUtil ();
+use org::allbinary::game::score::HighScoresBase ();
+use org::allbinary::game::score::HighScoresHelperBase ();
 
 1;
 

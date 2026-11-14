@@ -17,7 +17,7 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
-use parent -norequire,'org::allbinary::media::image::io::ImageIOInterface';
+use parent -norequire,'java::lang::Object','org::allbinary::media::image::io::ImageIOInterface';
 
 
 sub _init_fields {
@@ -28,7 +28,7 @@ sub _init_fields {
 sub new {
     my ($class) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
     return $self;
 }
 
@@ -58,19 +58,20 @@ sub save {
         $imagePersistanceUtil->saveWithImageIO($filePath, $bufferedImage);
 }
 
-# use java::awt::image::BufferedImage;
-use org::allbinary::input::automation::ImageOutputData;
-use org::allbinary::logic::communication::log::LogUtil;
-use org::allbinary::logic::java::number::LongUtil;
-use org::allbinary::logic::string::StringMaker;
-use org::allbinary::logic::util::cache::AutomaticCacheInterface;
-use org::allbinary::logic::visual::media::MediaDataFactory;
-use org::allbinary::media::image::ImagePersistanceUtil;
-use org::allbinary::media::image::ImageUtil;
-use org::allbinary::media::image::cache::BufferedImageFrameCacheable;
-use org::allbinary::media::image::io::ImageIOInterface;
-use org::allbinary::string::CommonStrings;
-use org::allbinary::input::media::image::capture::CapturedBufferedImagesCacheSingleton;
+use java::lang::Object ();
+# use java::awt::image::BufferedImage ();
+use org::allbinary::input::automation::ImageOutputData ();
+use org::allbinary::logic::communication::log::LogUtil ();
+use org::allbinary::logic::java::number::LongUtil ();
+use org::allbinary::logic::string::StringMaker ();
+use org::allbinary::logic::util::cache::AutomaticCacheInterface ();
+use org::allbinary::logic::visual::media::MediaDataFactory ();
+use org::allbinary::media::image::ImagePersistanceUtil ();
+use org::allbinary::media::image::ImageUtil ();
+use org::allbinary::media::image::cache::BufferedImageFrameCacheable ();
+use org::allbinary::media::image::io::ImageIOInterface ();
+use org::allbinary::string::CommonStrings ();
+use org::allbinary::input::media::image::capture::CapturedBufferedImagesCacheSingleton ();
 
 1;
 

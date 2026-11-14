@@ -45,9 +45,10 @@ sub paintXY {
         $graphics->drawString($self->getLabel(), $x + 2, $y, 0);
 }
 
-# use javax::microedition::lcdui::Graphics;
-use org::allbinary::graphics::color::BasicColor;
-use org::allbinary::graphics::form::item::ABTextItem;
+use java::lang::Object ();
+use javax::microedition::lcdui::Graphics ();
+use org::allbinary::graphics::color::BasicColor ();
+use org::allbinary::graphics::form::item::ABTextItem ();
 
 1;
 

@@ -27,9 +27,9 @@ sub getBasicColorP {
     die "abstract method getBasicColorP";
 }
 
-# use jsinterop::annotations::JsType;
-# use jsinterop::annotations::JsMethod;
-use org::allbinary::graphics::color::BasicColorCompositeSetterInterface;
+# use jsinterop::annotations::JsType ();
+# use jsinterop::annotations::JsMethod ();
+use org::allbinary::graphics::color::BasicColorCompositeSetterInterface ();
 
 1;
 

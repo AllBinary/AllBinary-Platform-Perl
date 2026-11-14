@@ -17,9 +17,9 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
-use parent -norequire,'org::allbinary::logic::util::visitor::VisitorInterface';
+use parent -norequire,'java::lang::Object','org::allbinary::logic::util::visitor::VisitorInterface';
 
-our $instance = 'org::allbinary::logic::util::visitor::Visitor'->new();
+tie our $instance, 'java::lang::LazyStatic', sub { 'org::allbinary::logic::util::visitor::Visitor'->new() };
 
 sub _init_fields {
     my ($self) = @_;
@@ -29,7 +29,7 @@ sub _init_fields {
 sub new {
     my ($class) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
     return $self;
 }
 
@@ -45,8 +45,10 @@ sub getInstance {
         return $org::allbinary::logic::util::visitor::Visitor::instance;
 }
 
-use org::allbinary::logic::NullUtil;
-use org::allbinary::logic::util::visitor::VisitorInterface;
+use java::lang::Object ();
+use java::lang::LazyStatic ();
+use org::allbinary::logic::NullUtil ();
+use org::allbinary::logic::util::visitor::VisitorInterface ();
 
 1;
 

@@ -18,7 +18,7 @@ use warnings;
 use feature 'try';
 no warnings 'experimental::try';
 use Time::HiRes ();
-use parent -norequire,'org::allbinary::debug::DebugInterface';
+use parent -norequire,'java::lang::Object','org::allbinary::debug::DebugInterface';
 
 
 sub _init_fields {
@@ -31,7 +31,7 @@ sub _init_fields {
 sub new {
     my ($class) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
     return $self;
 }
 
@@ -81,9 +81,10 @@ sub isRunning {
         return $self->{running};
 }
 
-use android::os::Debug;
-use org::allbinary::debug::DebugInterface;
-use java::lang::System;
+use java::lang::Object ();
+# use android::os::Debug ();
+use org::allbinary::debug::DebugInterface ();
+use java::lang::System ();
 
 1;
 

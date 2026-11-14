@@ -17,11 +17,11 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
-use parent -norequire,'javax::swing::JPanel','java::awt::event::MouseListener','java::awt::event::MouseMotionListener','java::awt::event::KeyListener','org::allbinary::graphics::j2me::workarea::tools::event::MyGraphicItemEventListener';
+use parent -norequire,'java::lang::Object','org::allbinary::graphics::j2me::workarea::tools::event::MyGraphicItemEventListener';
 
 our $frame = 0;
-our $gridColor = 'org::allbinary::graphics::j2me::workarea::canvas::Color'->new(int('org::allbinary::graphics::color::BasicColorFactory'->getInstance()->{WHITE}));
-our $backgroundColor = 'org::allbinary::graphics::j2me::workarea::canvas::Color'->new(int('org::allbinary::graphics::color::BasicColorFactory'->getInstance()->{CLEAR_COLOR}));
+tie our $gridColor, 'java::lang::LazyStatic', sub { 'org::allbinary::graphics::j2me::workarea::canvas::Color'->new(int('org::allbinary::graphics::color::BasicColorFactory'->getInstance()->{WHITE})) };
+tie our $backgroundColor, 'java::lang::LazyStatic', sub { 'org::allbinary::graphics::j2me::workarea::canvas::Color'->new(int('org::allbinary::graphics::color::BasicColorFactory'->getInstance()->{CLEAR_COLOR})) };
 
 sub _init_fields {
     my ($self) = @_;
@@ -49,7 +49,7 @@ sub new {
 sub _new4 {
     my ($class, $workAreaJTreeJPanel, $dimension, $x, $y) = @_;
     my $self = $class->SUPER::new();
-    $self->_init_fields();
+    _init_fields($self);
         $self->{grid} = 'org::allbinary::graphics::j2me::workarea::canvas::Grid'->new();
         try {
             $self->{workAreaJTreeJPanel} = $workAreaJTreeJPanel;
@@ -69,7 +69,7 @@ sub _new4 {
 sub _new3 {
     my ($class, $workAreaJTreeJPanel, $dimension, $canvasDom) = @_;
     my $self = $class->SUPER::new();
-    $self->_init_fields();
+    _init_fields($self);
         $self->{grid} = 'org::allbinary::graphics::j2me::workarea::canvas::Grid'->new($canvasDom->getGrid());
         try {
             $self->{workAreaJTreeJPanel} = $workAreaJTreeJPanel;
@@ -652,46 +652,48 @@ sub getGrid {
         return $self->{grid};
 }
 
-# use java::awt;
-use java::util::HashMap;
-# use javax::swing::tree::DefaultMutableTreeNode;
-# use javax::swing::tree::MutableTreeNode;
-use org::allbinary::animation::VectorExplosionGenerator;
-use org::allbinary::animation::VectorMirrorGenerator;
-use org::allbinary::animation::vector::VectorCenterGenerator;
-use org::allbinary::game::input::GameInputStrings;
-use org::allbinary::graphics::GPoint;
-use org::allbinary::graphics::PointFactory;
-use org::allbinary::graphics::color::BasicColorFactory;
-use org::allbinary::graphics::j2me::GraphicsException;
-use org::allbinary::graphics::j2me::StatusFactory;
-use org::allbinary::graphics::j2me::workarea::WorkAreaJTreeJPanel;
-use org::allbinary::graphics::j2me::workarea::tools::GraphicItemFactory;
-use org::allbinary::graphics::j2me::workarea::tools::GraphicItemInterface;
-use org::allbinary::graphics::j2me::workarea::tools::LinesGraphicItem;
-use org::allbinary::graphics::j2me::workarea::tools::MouseStrings;
-use org::allbinary::graphics::j2me::workarea::tools::Points;
-use org::allbinary::graphics::j2me::workarea::tools::ToolFactory;
-use org::allbinary::graphics::j2me::workarea::tools::event::MyGraphicItemEvent;
-use org::allbinary::graphics::j2me::workarea::tools::event::MyGraphicItemEventListener;
-use org::allbinary::graphics::j2me::workarea::tools::event::MyGraphicItemEventService;
-use org::allbinary::graphics::pipeline::RandomRotationFactory;
-use org::allbinary::log::LOGGING;
-use org::allbinary::logic::StdUtil;
-use org::allbinary::logic::communication::log::GuiLog;
-use org::allbinary::logic::communication::log::LogUtil;
-use org::allbinary::logic::string::StringMaker;
-use org::allbinary::math::PositionStrings;
-use org::allbinary::string::CommonSeps;
-use org::allbinary::string::CommonStrings;
-use org::allbinary::util::BasicArrayList;
-use org::allbinary::util::BasicArrayListD;
-use org::w3c::dom::Node;
-use org::allbinary::graphics::j2me::workarea::canvas::Color;
-use org::allbinary::graphics::j2me::workarea::canvas::Grid;
-use org::allbinary::graphics::j2me::workarea::canvas::CanvasTreeLabel;
-use org::allbinary::graphics::j2me::workarea::canvas::IntegerDimension;
-use org::allbinary::graphics::j2me::workarea::canvas::CanvasDom;
+use java::lang::Object ();
+use java::lang::LazyStatic ();
+# use java::awt ();
+use java::util::HashMap ();
+# use javax::swing::tree::DefaultMutableTreeNode ();
+# use javax::swing::tree::MutableTreeNode ();
+use org::allbinary::animation::VectorExplosionGenerator ();
+use org::allbinary::animation::VectorMirrorGenerator ();
+use org::allbinary::animation::vector::VectorCenterGenerator ();
+use org::allbinary::game::input::GameInputStrings ();
+use org::allbinary::graphics::GPoint ();
+use org::allbinary::graphics::PointFactory ();
+use org::allbinary::graphics::color::BasicColorFactory ();
+use org::allbinary::graphics::j2me::GraphicsException ();
+use org::allbinary::graphics::j2me::StatusFactory ();
+use org::allbinary::graphics::j2me::workarea::WorkAreaJTreeJPanel ();
+use org::allbinary::graphics::j2me::workarea::tools::GraphicItemFactory ();
+use org::allbinary::graphics::j2me::workarea::tools::GraphicItemInterface ();
+use org::allbinary::graphics::j2me::workarea::tools::LinesGraphicItem ();
+use org::allbinary::graphics::j2me::workarea::tools::MouseStrings ();
+use org::allbinary::graphics::j2me::workarea::tools::Points ();
+use org::allbinary::graphics::j2me::workarea::tools::ToolFactory ();
+use org::allbinary::graphics::j2me::workarea::tools::event::MyGraphicItemEvent ();
+use org::allbinary::graphics::j2me::workarea::tools::event::MyGraphicItemEventListener ();
+use org::allbinary::graphics::j2me::workarea::tools::event::MyGraphicItemEventService ();
+use org::allbinary::graphics::pipeline::RandomRotationFactory ();
+use org::allbinary::log::LOGGING ();
+use org::allbinary::logic::StdUtil ();
+use org::allbinary::logic::communication::log::GuiLog ();
+use org::allbinary::logic::communication::log::LogUtil ();
+use org::allbinary::logic::string::StringMaker ();
+use org::allbinary::math::PositionStrings ();
+use org::allbinary::string::CommonSeps ();
+use org::allbinary::string::CommonStrings ();
+use org::allbinary::util::BasicArrayList ();
+use org::allbinary::util::BasicArrayListD ();
+use org::w3c::dom::Node ();
+use org::allbinary::graphics::j2me::workarea::canvas::Color ();
+use org::allbinary::graphics::j2me::workarea::canvas::Grid ();
+use org::allbinary::graphics::j2me::workarea::canvas::CanvasTreeLabel ();
+use org::allbinary::graphics::j2me::workarea::canvas::IntegerDimension ();
+use org::allbinary::graphics::j2me::workarea::canvas::CanvasDom ();
 
 1;
 

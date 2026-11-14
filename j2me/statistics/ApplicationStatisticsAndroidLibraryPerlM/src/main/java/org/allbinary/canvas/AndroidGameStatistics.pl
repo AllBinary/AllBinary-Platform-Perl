@@ -33,7 +33,7 @@ sub _init_fields {
 sub new {
     my ($class) = @_;
     my $self = $class->SUPER::new();
-    $self->_init_fields();
+    _init_fields($self);
         my $stringUtil = 'org::allbinary::logic::string::StringUtil'->getInstance();
         for (my $index = 0; $index < scalar(@{$self->{ANDROID_STRING_ARRAY}}); $index++) {
             $self->{ANDROID_STRING_ARRAY}->[$index] = $stringUtil->{EMPTY_STRING};
@@ -98,12 +98,13 @@ sub toString {
         }
 }
 
-use android::view::View;
-use org::allbinary::android::view::BaseViewWrapper;
-use org::allbinary::android::view::ViewWrapper;
-use org::allbinary::logic::string::StringMaker;
-use org::allbinary::logic::string::StringUtil;
-use org::allbinary::canvas::BaseGameStatistics;
+use java::lang::Object ();
+# use android::view::View ();
+use org::allbinary::android::view::BaseViewWrapper ();
+use org::allbinary::android::view::ViewWrapper ();
+use org::allbinary::logic::string::StringMaker ();
+use org::allbinary::logic::string::StringUtil ();
+use org::allbinary::canvas::BaseGameStatistics ();
 
 1;
 

@@ -17,6 +17,7 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
 our $XML_FILE_STATUS = "XMLOPTIONITEM_XML_FILE_STATUS";
 our $OPTION_XML_FILE = "XMLOPTIONITEM_OPTION_XML_FILE";
@@ -27,6 +28,7 @@ sub new {
     return $self;
 }
 
+use java::lang::Object ();
 
 1;
 

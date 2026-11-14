@@ -17,19 +17,20 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
 our $JVM_STATISTICS = "JVM_STATISTICS_";
-our $NAME = $org::allbinary::logic::communication::java::vm::stats::JvmStatisticsData::JVM_STATISTICS . "NAME";
-our $TOTAL_MEMORY_BYTES = $org::allbinary::logic::communication::java::vm::stats::JvmStatisticsData::JVM_STATISTICS . "TOTAL_MEMORY_BYTES";
-our $TOTAL_MEMORY_KILOBYTES = $org::allbinary::logic::communication::java::vm::stats::JvmStatisticsData::JVM_STATISTICS . "TOTAL_MEMORY_KILOBYTES";
-our $TOTAL_MEMORY_MEGABYTES = $org::allbinary::logic::communication::java::vm::stats::JvmStatisticsData::JVM_STATISTICS . "TOTAL_MEMORY_MEGABYTES";
-our $FREE_MEMORY_BYTES = $org::allbinary::logic::communication::java::vm::stats::JvmStatisticsData::JVM_STATISTICS . "FREE_MEMORY_BYTES";
-our $FREE_MEMORY_KILOBYTES = $org::allbinary::logic::communication::java::vm::stats::JvmStatisticsData::JVM_STATISTICS . "FREE_MEMORY_KILOBYTES";
-our $FREE_MEMORY_MEGABYTES = $org::allbinary::logic::communication::java::vm::stats::JvmStatisticsData::JVM_STATISTICS . "FREE_MEMORY_MEGABYTES";
-our $MAX_MEMORY_BYTES = $org::allbinary::logic::communication::java::vm::stats::JvmStatisticsData::JVM_STATISTICS . "MAX_MEMORY_BYTES";
-our $MAX_MEMORY_KILOBYTES = $org::allbinary::logic::communication::java::vm::stats::JvmStatisticsData::JVM_STATISTICS . "MAX_MEMORY_KILOBYTES";
-our $MAX_MEMORY_MEGABYTES = $org::allbinary::logic::communication::java::vm::stats::JvmStatisticsData::JVM_STATISTICS . "MAX_MEMORY_MEGABYTES";
-our $NUMBER_OF_THREADS = $org::allbinary::logic::communication::java::vm::stats::JvmStatisticsData::JVM_STATISTICS . "NUMBER_OF_THREADS";
+tie our $NAME, 'java::lang::LazyStatic', sub { $org::allbinary::logic::communication::java::vm::stats::JvmStatisticsData::JVM_STATISTICS . "NAME" };
+tie our $TOTAL_MEMORY_BYTES, 'java::lang::LazyStatic', sub { $org::allbinary::logic::communication::java::vm::stats::JvmStatisticsData::JVM_STATISTICS . "TOTAL_MEMORY_BYTES" };
+tie our $TOTAL_MEMORY_KILOBYTES, 'java::lang::LazyStatic', sub { $org::allbinary::logic::communication::java::vm::stats::JvmStatisticsData::JVM_STATISTICS . "TOTAL_MEMORY_KILOBYTES" };
+tie our $TOTAL_MEMORY_MEGABYTES, 'java::lang::LazyStatic', sub { $org::allbinary::logic::communication::java::vm::stats::JvmStatisticsData::JVM_STATISTICS . "TOTAL_MEMORY_MEGABYTES" };
+tie our $FREE_MEMORY_BYTES, 'java::lang::LazyStatic', sub { $org::allbinary::logic::communication::java::vm::stats::JvmStatisticsData::JVM_STATISTICS . "FREE_MEMORY_BYTES" };
+tie our $FREE_MEMORY_KILOBYTES, 'java::lang::LazyStatic', sub { $org::allbinary::logic::communication::java::vm::stats::JvmStatisticsData::JVM_STATISTICS . "FREE_MEMORY_KILOBYTES" };
+tie our $FREE_MEMORY_MEGABYTES, 'java::lang::LazyStatic', sub { $org::allbinary::logic::communication::java::vm::stats::JvmStatisticsData::JVM_STATISTICS . "FREE_MEMORY_MEGABYTES" };
+tie our $MAX_MEMORY_BYTES, 'java::lang::LazyStatic', sub { $org::allbinary::logic::communication::java::vm::stats::JvmStatisticsData::JVM_STATISTICS . "MAX_MEMORY_BYTES" };
+tie our $MAX_MEMORY_KILOBYTES, 'java::lang::LazyStatic', sub { $org::allbinary::logic::communication::java::vm::stats::JvmStatisticsData::JVM_STATISTICS . "MAX_MEMORY_KILOBYTES" };
+tie our $MAX_MEMORY_MEGABYTES, 'java::lang::LazyStatic', sub { $org::allbinary::logic::communication::java::vm::stats::JvmStatisticsData::JVM_STATISTICS . "MAX_MEMORY_MEGABYTES" };
+tie our $NUMBER_OF_THREADS, 'java::lang::LazyStatic', sub { $org::allbinary::logic::communication::java::vm::stats::JvmStatisticsData::JVM_STATISTICS . "NUMBER_OF_THREADS" };
 
 
 sub new {
@@ -39,6 +40,8 @@ sub new {
     return $self;
 }
 
+use java::lang::Object ();
+use java::lang::LazyStatic ();
 
 1;
 

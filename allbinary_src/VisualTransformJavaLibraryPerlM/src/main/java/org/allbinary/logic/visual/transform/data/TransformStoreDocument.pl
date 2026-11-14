@@ -36,7 +36,7 @@ sub new {
 sub _new2 {
     my ($class, $pageContext, $weblisketSession) = @_;
     my $self = $class->SUPER::new($pageContext, $weblisketSession);
-    $self->_init_fields();
+    _init_fields($self);
         # super(...) made $self above
         try {
             my $storeName = $weblisketSession->getStoreName();
@@ -58,7 +58,7 @@ sub _new2 {
 sub _new1 {
     my ($class, $searchRequest) = @_;
     my $self = $class->SUPER::new($searchRequest);
-    $self->_init_fields();
+    _init_fields($self);
         # super(...) made $self above
         try {
             $self->getBaseNode()->appendChild('org::allbinary::business::context::modules::storefront::StoreFrontViewFactory'->getInstance($searchRequest->getStoreFront()->getName())->toXmlNode($self->getDoc()));
@@ -72,14 +72,15 @@ sub _new1 {
     return $self;
 }
 
-# use javax::servlet::http::HttpServletRequest;
-# use javax::servlet::jsp::PageContext;
-use org::allbinary::business::context::modules::storefront::StoreFrontViewFactory;
-use org::allbinary::logic::communication::http::request::RequestParams;
-use org::allbinary::logic::communication::http::request::session::WeblisketSession;
-use org::allbinary::logic::communication::log::LogUtil;
-use org::allbinary::logic::control::search::SearchRequest;
-use org::allbinary::logic::visual::transform::data::TransformHttpRequestDocument;
+use java::lang::Object ();
+# use javax::servlet::http::HttpServletRequest ();
+# use javax::servlet::jsp::PageContext ();
+use org::allbinary::business::context::modules::storefront::StoreFrontViewFactory ();
+use org::allbinary::logic::communication::http::request::RequestParams ();
+use org::allbinary::logic::communication::http::request::session::WeblisketSession ();
+use org::allbinary::logic::communication::log::LogUtil ();
+use org::allbinary::logic::control::search::SearchRequest ();
+use org::allbinary::logic::visual::transform::data::TransformHttpRequestDocument ();
 
 1;
 

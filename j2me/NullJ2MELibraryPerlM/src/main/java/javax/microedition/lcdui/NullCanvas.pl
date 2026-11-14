@@ -7,7 +7,7 @@ use feature 'try';
 no warnings 'experimental::try';
 use parent -norequire,'javax::microedition::lcdui::Canvas';
 
-our $NULL_CANVAS = 'javax::microedition::lcdui::NullCanvas'->new();
+tie our $NULL_CANVAS, 'java::lang::LazyStatic', sub { 'javax::microedition::lcdui::NullCanvas'->new() };
 
 
 sub new {
@@ -122,8 +122,10 @@ sub pointerReleased {
     my ($self, $x, $y) = @_;
 }
 
-use java::util::Stack;
-use javax::microedition::lcdui::Canvas;
+use java::lang::Object ();
+use java::lang::LazyStatic ();
+use java::util::Stack ();
+use javax::microedition::lcdui::Canvas ();
 
 1;
 

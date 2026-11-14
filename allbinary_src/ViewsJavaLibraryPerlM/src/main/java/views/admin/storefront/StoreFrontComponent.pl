@@ -30,7 +30,7 @@ sub _init_fields {
 sub new {
     my ($class, $transformInfoInterface) = @_;
     my $self = $class->SUPER::new($transformInfoInterface);
-    $self->_init_fields();
+    _init_fields($self);
         # super(...) made $self above
         $self->{newStoreFrontInterface} = 'org::allbinary::business::context::modules::storefront::StoreFront'->new($self->getPageContext()->getRequest());
         if (!defined($self->{newStoreFrontInterface}->getName())) {
@@ -53,12 +53,13 @@ sub view {
         }
 }
 
-# use javax::servlet::http::HttpServletRequest;
-use org::allbinary::business::context::modules::storefront::StoreFront;
-use org::allbinary::business::context::modules::storefront::StoreFrontInterface;
-use org::allbinary::logic::communication::log::LogUtil;
-use org::allbinary::logic::visual::transform::info::TransformInfoInterface;
-use views::business::context::modules::storefront::HttpStoreComponentView;
+use java::lang::Object ();
+# use javax::servlet::http::HttpServletRequest ();
+use org::allbinary::business::context::modules::storefront::StoreFront ();
+use org::allbinary::business::context::modules::storefront::StoreFrontInterface ();
+use org::allbinary::logic::communication::log::LogUtil ();
+use org::allbinary::logic::visual::transform::info::TransformInfoInterface ();
+use views::business::context::modules::storefront::HttpStoreComponentView ();
 
 1;
 

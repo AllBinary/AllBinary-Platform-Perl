@@ -17,8 +17,9 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
-our $instance = 'org::allbinary::image::opengles::OpenGLESImageProcessor'->new();
+tie our $instance, 'java::lang::LazyStatic', sub { 'org::allbinary::image::opengles::OpenGLESImageProcessor'->new() };
 
 sub new {
     my ($class) = @_;
@@ -55,7 +56,9 @@ sub colorMask {
     my ($self, $gl, $red, $green, $blue, $alpha) = @_;
 }
 
-# use javax::microedition::khronos::opengles::GL10;
+use java::lang::Object ();
+use java::lang::LazyStatic ();
+use javax::microedition::khronos::opengles::GL10 ();
 
 1;
 

@@ -70,13 +70,14 @@ sub toVector {
         return $vector;
 }
 
-use java::util::HashMap;
-use org::allbinary::util::BasicArrayList;
-use org::allbinary::util::BasicArrayListD;
-use org::allbinary::data::tables::TableMappingInterface;
-use org::allbinary::logic::StdUtil;
-use org::allbinary::logic::communication::java::vm::stats::JvmStatistics;
-use org::allbinary::logic::communication::java::vm::stats::JvmStatisticsData;
+use java::lang::Object ();
+use java::util::HashMap ();
+use org::allbinary::util::BasicArrayList ();
+use org::allbinary::util::BasicArrayListD ();
+use org::allbinary::data::tables::TableMappingInterface ();
+use org::allbinary::logic::StdUtil ();
+use org::allbinary::logic::communication::java::vm::stats::JvmStatistics ();
+use org::allbinary::logic::communication::java::vm::stats::JvmStatisticsData ();
 
 1;
 

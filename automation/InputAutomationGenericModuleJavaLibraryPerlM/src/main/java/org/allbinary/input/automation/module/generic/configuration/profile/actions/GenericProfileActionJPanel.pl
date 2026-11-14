@@ -17,7 +17,7 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
-use parent -norequire,'javax::swing::JPanel';
+use parent -norequire,'java::lang::Object';
 
 
 sub _init_fields {
@@ -37,7 +37,7 @@ sub _init_fields {
 sub new {
     my ($class) = @_;
     my $self = $class->SUPER::new();
-    $self->_init_fields();
+    _init_fields($self);
         $self->initComponents();
     return $self;
 }
@@ -102,7 +102,7 @@ sub initComponents {
         $self->{ifJLabel}->setText("Conditions:");
         $self->{newColorAtJButton}->setText("Color Range At");
         $self->{newColorAtJButton}->addActionListener(do {
-            package java::awt::event::ActionListener::AnonymousN68172 { our @ISA = ('java::awt::event::ActionListener');
+            package java::awt::event::ActionListener::AnonymousN68172 { our @ISA = ('java::awt::event::ActionListener', 'java::lang::Object');
             
 
             sub actionPerformed {
@@ -114,7 +114,7 @@ sub initComponents {
         });
         $self->{newTimeIntervalJButton}->setText("Time Interval");
         $self->{newTimeIntervalJButton}->addActionListener(do {
-            package java::awt::event::ActionListener::AnonymousN68359 { our @ISA = ('java::awt::event::ActionListener');
+            package java::awt::event::ActionListener::AnonymousN68359 { our @ISA = ('java::awt::event::ActionListener', 'java::lang::Object');
             
 
             sub actionPerformed {
@@ -126,7 +126,7 @@ sub initComponents {
         });
         $self->{newAlwaysJButton}->setText("Always On/Off");
         $self->{newAlwaysJButton}->addActionListener(do {
-            package java::awt::event::ActionListener::AnonymousN68546 { our @ISA = ('java::awt::event::ActionListener');
+            package java::awt::event::ActionListener::AnonymousN68546 { our @ISA = ('java::awt::event::ActionListener', 'java::lang::Object');
             
 
             sub actionPerformed {
@@ -166,13 +166,14 @@ sub newColorAtJButtonActionPerformed {
         $self->updateProfileActionUI();
 }
 
-use org::allbinary::input::automation::actions::script::JTreeInterfaceFactory;
-use org::allbinary::input::automation::actions::script::condition::AlwaysActionScriptCondition;
-use org::allbinary::input::automation::actions::script::condition::ColorAtActionScriptCondition;
-use org::allbinary::input::automation::actions::script::condition::ProfileActionScriptConditionInterface;
-use org::allbinary::input::automation::actions::script::condition::TimeIntervalActionScriptCondition;
-use org::allbinary::input::automation::module::generic::configuration::profile::actions::script::GenericProfileActionScriptJPanel;
-use org::allbinary::logic::communication::log::LogUtil;
+use java::lang::Object ();
+use org::allbinary::input::automation::actions::script::JTreeInterfaceFactory ();
+use org::allbinary::input::automation::actions::script::condition::AlwaysActionScriptCondition ();
+use org::allbinary::input::automation::actions::script::condition::ColorAtActionScriptCondition ();
+use org::allbinary::input::automation::actions::script::condition::ProfileActionScriptConditionInterface ();
+use org::allbinary::input::automation::actions::script::condition::TimeIntervalActionScriptCondition ();
+use org::allbinary::input::automation::module::generic::configuration::profile::actions::script::GenericProfileActionScriptJPanel ();
+use org::allbinary::logic::communication::log::LogUtil ();
 
 1;
 

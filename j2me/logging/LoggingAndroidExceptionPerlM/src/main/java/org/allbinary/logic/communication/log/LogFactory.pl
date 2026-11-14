@@ -18,6 +18,7 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
 
 sub new {
@@ -44,7 +45,8 @@ sub getInstanceSE {
         return 'org::allbinary::logic::communication::log::LogFactory'->getInstance($specialMessage, $className, $functionName, $exception);
 }
 
-use org::allbinary::logic::communication::log::Log;
+use java::lang::Object ();
+use org::allbinary::logic::communication::log::Log ();
 
 1;
 

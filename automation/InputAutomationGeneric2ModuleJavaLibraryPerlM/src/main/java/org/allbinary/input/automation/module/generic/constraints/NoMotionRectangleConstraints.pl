@@ -37,10 +37,11 @@ sub isValid {
         return 1;
 }
 
-# use java::awt;
-# use java::awt::image::BufferedImage;
-use org::allbinary::input::automation::module::MotionRectangleConstraints;
-use org::allbinary::input::automation::module::generic::constraints::Dimension;
+use java::lang::Object ();
+# use java::awt ();
+# use java::awt::image::BufferedImage ();
+use org::allbinary::input::automation::module::MotionRectangleConstraints ();
+use org::allbinary::input::automation::module::generic::constraints::Dimension ();
 
 1;
 

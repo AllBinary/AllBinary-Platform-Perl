@@ -30,7 +30,7 @@ sub _init_fields {
 sub new {
     my ($class, $transformInfoInterface) = @_;
     my $self = $class->SUPER::new($transformInfoInterface);
-    $self->_init_fields();
+    _init_fields($self);
         # super(...) made $self above
         $self->{user} = 'org::allbinary::business::user::NewUserFactory'->getInstance($transformInfoInterface);
     return $self;
@@ -100,16 +100,24 @@ sub view {
         return $self->{views}->{ValidationOnlyTempUtil}->getInstance()->view($self);
 }
 
-use org::allbinary::business::user::NewUserFactory;
-use org::allbinary::business::user::UserInterface;
-use org::allbinary::data::tables::user::UserEntityFactory;
-use org::allbinary::logic::communication::log::LogUtil;
-use org::allbinary::logic::control::validate::ValidationComponentInterface;
-use org::allbinary::logic::string::StringMaker;
-use org::allbinary::logic::visual::transform::info::TransformInfoInterface;
-use org::w3c::dom::Document;
-use org::w3c::dom::Node;
-use views::business::context::HttpContextView;
+
+# throws Exception
+sub getTransformInfoInterface {
+    my ($self) = @_;
+        return $self->SUPER::getTransformInfoInterface();
+}
+
+use java::lang::Object ();
+use org::allbinary::business::user::NewUserFactory ();
+use org::allbinary::business::user::UserInterface ();
+use org::allbinary::data::tables::user::UserEntityFactory ();
+use org::allbinary::logic::communication::log::LogUtil ();
+use org::allbinary::logic::control::validate::ValidationComponentInterface ();
+use org::allbinary::logic::string::StringMaker ();
+use org::allbinary::logic::visual::transform::info::TransformInfoInterface ();
+use org::w3c::dom::Document ();
+use org::w3c::dom::Node ();
+use views::business::context::HttpContextView ();
 
 1;
 

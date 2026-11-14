@@ -17,8 +17,9 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
-our $NULL_ON_DEMAND_RESOURCES = 'org::allbinary::game::layer::resources::OnDemandResources'->new();
+tie our $NULL_ON_DEMAND_RESOURCES, 'java::lang::LazyStatic', sub { 'org::allbinary::game::layer::resources::OnDemandResources'->new() };
 
 sub _init_fields {
     my ($self) = @_;
@@ -29,7 +30,7 @@ sub _init_fields {
 sub new {
     my ($class) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
     return $self;
 }
 
@@ -52,9 +53,11 @@ sub initAt {
         return 0;
 }
 
-use org::allbinary::animation::resource::BaseResourceAnimationInterfaceFactoryInterfaceFactory;
-use org::allbinary::image::ImageCache;
-use org::allbinary::logic::communication::log::LogUtil;
+use java::lang::Object ();
+use java::lang::LazyStatic ();
+use org::allbinary::animation::resource::BaseResourceAnimationInterfaceFactoryInterfaceFactory ();
+use org::allbinary::image::ImageCache ();
+use org::allbinary::logic::communication::log::LogUtil ();
 
 1;
 

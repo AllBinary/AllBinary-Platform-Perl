@@ -17,8 +17,9 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
-our $geographicMapCellHistory = 'org::allbinary::media::graphics::geography::map::GeographicMapCellHistory'->new();
+tie our $geographicMapCellHistory, 'java::lang::LazyStatic', sub { 'org::allbinary::media::graphics::geography::map::GeographicMapCellHistory'->new() };
 
 
 sub new {
@@ -33,7 +34,9 @@ sub getInstance {
         return $org::allbinary::media::graphics::geography::map::racetrack::RaceTrackRoadsGeographicMapCellHistoryFactory::geographicMapCellHistory;
 }
 
-use org::allbinary::media::graphics::geography::map::GeographicMapCellHistory;
+use java::lang::Object ();
+use java::lang::LazyStatic ();
+use org::allbinary::media::graphics::geography::map::GeographicMapCellHistory ();
 
 1;
 

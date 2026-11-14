@@ -19,11 +19,11 @@ use feature 'try';
 no warnings 'experimental::try';
 use parent -norequire,'org::allbinary::game::layer::WaypointBehaviorBase','org::allbinary::game::layer::waypoint::event::WaypointEventListenerInterface';
 
-our $PATHING = "Pathing";
 
 sub _init_fields {
     my ($self) = @_;
     $self->{commonSeps} = 'org::allbinary::string::CommonSeps'->getInstance();
+    $self->{unitWaypointStrings} = 'org::allbinary::game::layer::unit::UnitWaypointStrings'->getInstance();
     $self->{longWeaponRange} = 0;
     $self->{sensorAction} = 'org::allbinary::game::layer::SensorActionFactory'->getInstance()->{ATTACK};
     $self->{completeTimeDelayHelper} = undef;
@@ -47,7 +47,7 @@ sub _init_fields {
 sub new {
     my ($class, $associatedAdvancedRTSGameLayer, $fakeWaypoint) = @_;
     my $self = $class->SUPER::new();
-    $self->_init_fields();
+    _init_fields($self);
         $self->{associatedAdvancedRTSGameLayer} = $associatedAdvancedRTSGameLayer;
         $self->{completeTimeDelayHelper} = 'org::allbinary::time::TimeDelayHelper'->new(30000);
         $self->{targetList} = 'org::allbinary::util::BasicArrayListD'->new();
@@ -156,7 +156,7 @@ sub setGeographicMapCellHistoryPath {
     my ($self, $geographicMapCellPositionBasicArrayList) = @_;
         $self->{lastPathGeographicMapCellPosition} = $org::allbinary::media::graphics::geography::map::SimpleGeographicMapCellPositionFactory::NULL_GEOGRAPHIC_MAP_CELL_POSITION;
         if ($self->{associatedAdvancedRTSGameLayer}->{showMoreCaptionStates}) {
-            $self->{associatedAdvancedRTSGameLayer}->getCaptionAnimationHelper()->update($org::allbinary::game::layer::unit::UnitWaypointBehavior::PATHING, 'org::allbinary::graphics::color::BasicColorFactory'->getInstance()->{GREEN});
+            $self->{associatedAdvancedRTSGameLayer}->getCaptionAnimationHelper()->update($self->{unitWaypointStrings}->{PATHING}, 'org::allbinary::graphics::color::BasicColorFactory'->getInstance()->{GREEN});
         }
         $self->{currentGeographicMapCellHistoryP}->init();
         $self->{associatedAdvancedRTSGameLayer}->init($self->{currentGeographicMapCellHistoryP}, $geographicMapCellPositionBasicArrayList);
@@ -357,30 +357,32 @@ sub setTrackingWaypoint {
         $self->{trackingWaypoint} = $trackingWaypoint;
 }
 
-use org::allbinary::game::input::form::PrimaryWaypointHelper;
-use org::allbinary::game::layer::AdvancedRTSGameLayer;
-use org::allbinary::game::layer::RTSLayerEvent;
-use org::allbinary::game::layer::SensorAction;
-use org::allbinary::game::layer::SensorActionFactory;
-use org::allbinary::game::layer::WaypointBehaviorBase;
-use org::allbinary::game::layer::building::BuildingLayer;
-use org::allbinary::game::layer::special::CollidableDestroyableDamageableLayer;
-use org::allbinary::game::layer::waypoint::event::WaypointEventListenerInterface;
-use org::allbinary::graphics::color::BasicColorFactory;
-use org::allbinary::layer::AllBinaryLayer;
-use org::allbinary::logic::communication::log::ForcedLogUtil;
-use org::allbinary::logic::string::StringMaker;
-use org::allbinary::logic::string::StringUtil;
-use org::allbinary::logic::util::event::AllBinaryEventObject;
-use org::allbinary::logic::util::event::EventStrings;
-use org::allbinary::media::graphics::geography::map::GeographicMapCellHistory;
-use org::allbinary::media::graphics::geography::map::GeographicMapCellPosition;
-use org::allbinary::media::graphics::geography::map::SimpleGeographicMapCellPositionFactory;
-use org::allbinary::string::CommonSeps;
-use org::allbinary::time::TimeDelayHelper;
-use org::allbinary::util::BasicArrayList;
-use org::allbinary::util::BasicArrayListD;
-use org::allbinary::util::BasicArrayListUtil;
+use java::lang::Object ();
+use org::allbinary::game::input::form::PrimaryWaypointHelper ();
+use org::allbinary::game::layer::AdvancedRTSGameLayer ();
+use org::allbinary::game::layer::RTSLayerEvent ();
+use org::allbinary::game::layer::SensorAction ();
+use org::allbinary::game::layer::SensorActionFactory ();
+use org::allbinary::game::layer::WaypointBehaviorBase ();
+use org::allbinary::game::layer::building::BuildingLayer ();
+use org::allbinary::game::layer::special::CollidableDestroyableDamageableLayer ();
+use org::allbinary::game::layer::waypoint::event::WaypointEventListenerInterface ();
+use org::allbinary::graphics::color::BasicColorFactory ();
+use org::allbinary::layer::AllBinaryLayer ();
+use org::allbinary::logic::communication::log::ForcedLogUtil ();
+use org::allbinary::logic::string::StringMaker ();
+use org::allbinary::logic::string::StringUtil ();
+use org::allbinary::logic::util::event::AllBinaryEventObject ();
+use org::allbinary::logic::util::event::EventStrings ();
+use org::allbinary::media::graphics::geography::map::GeographicMapCellHistory ();
+use org::allbinary::media::graphics::geography::map::GeographicMapCellPosition ();
+use org::allbinary::media::graphics::geography::map::SimpleGeographicMapCellPositionFactory ();
+use org::allbinary::string::CommonSeps ();
+use org::allbinary::time::TimeDelayHelper ();
+use org::allbinary::util::BasicArrayList ();
+use org::allbinary::util::BasicArrayListD ();
+use org::allbinary::util::BasicArrayListUtil ();
+use org::allbinary::game::layer::unit::UnitWaypointStrings ();
 
 1;
 

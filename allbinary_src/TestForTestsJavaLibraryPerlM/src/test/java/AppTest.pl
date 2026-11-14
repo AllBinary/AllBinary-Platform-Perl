@@ -5,6 +5,7 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
 
 sub new {
@@ -34,9 +35,10 @@ sub testBooleanAssertions {
         'org::junit::jupiter::api::Assertions'->assertFalse(0);
 }
 
-use org::junit::jupiter::api::Assertions;
-use org::junit::jupiter::api::DisplayName;
-use org::junit::jupiter::api::Test;
+use java::lang::Object ();
+use org::junit::jupiter::api::Assertions ();
+use org::junit::jupiter::api::DisplayName ();
+use org::junit::jupiter::api::Test ();
 
 1;
 

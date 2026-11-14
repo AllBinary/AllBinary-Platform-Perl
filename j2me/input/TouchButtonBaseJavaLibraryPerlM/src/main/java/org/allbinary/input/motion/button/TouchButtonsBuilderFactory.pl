@@ -17,8 +17,9 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
-our $NO_TOUCH_BUTTON_BUILDER_FACTORY = 'org::allbinary::input::motion::button::TouchButtonsBuilderFactory'->new();
+tie our $NO_TOUCH_BUTTON_BUILDER_FACTORY, 'java::lang::LazyStatic', sub { 'org::allbinary::input::motion::button::TouchButtonsBuilderFactory'->new() };
 
 sub new {
     my ($class) = @_;
@@ -32,7 +33,9 @@ sub getInstance {
         return 'org::allbinary::input::motion::button::NoButtonsTouchInputFactory'->getInstance();
 }
 
-use org::allbinary::input::motion::button::NoButtonsTouchInputFactory;
+use java::lang::Object ();
+use java::lang::LazyStatic ();
+use org::allbinary::input::motion::button::NoButtonsTouchInputFactory ();
 
 1;
 

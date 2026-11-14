@@ -19,7 +19,7 @@ use feature 'try';
 no warnings 'experimental::try';
 use parent -norequire,'org::allbinary::media::graphics::geography::map::GeographicMapCellTypeFactory';
 
-our $instanceC = 'org::allbinary::media::graphics::geography::map::racetrack::RaceTrackGeographicMapCellTypeFactory'->new();
+tie our $instanceC, 'java::lang::LazyStatic', sub { 'org::allbinary::media::graphics::geography::map::racetrack::RaceTrackGeographicMapCellTypeFactory'->new() };
 
 sub _init_fields {
     my ($self) = @_;
@@ -46,7 +46,7 @@ sub getInstance {
 sub new {
     my ($class) = @_;
     my $self = $class->SUPER::new();
-    $self->_init_fields();
+    _init_fields($self);
         my $raceTrackGeographicMapCellTypes = 'org::allbinary::media::graphics::geography::map::racetrack::RaceTrackGeographicMapCellTypes'->getInstance();
         $self->{BOTTOM_LEFT_TURN_ROAD_CELL_TYPE} = $raceTrackGeographicMapCellTypes->{BOTTOM_LEFT_TURN_ROAD_CELL_TYPE};
         $self->{BOTTOM_RIGHT_TURN_ROAD_CELL_TYPE} = $raceTrackGeographicMapCellTypes->{BOTTOM_RIGHT_TURN_ROAD_CELL_TYPE};
@@ -86,9 +86,11 @@ sub isPath {
         return 0;
 }
 
-use org::allbinary::media::graphics::geography::map::GeographicMapCellType;
-use org::allbinary::media::graphics::geography::map::GeographicMapCellTypeFactory;
-use org::allbinary::media::graphics::geography::map::racetrack::RaceTrackGeographicMapCellTypes;
+use java::lang::Object ();
+use java::lang::LazyStatic ();
+use org::allbinary::media::graphics::geography::map::GeographicMapCellType ();
+use org::allbinary::media::graphics::geography::map::GeographicMapCellTypeFactory ();
+use org::allbinary::media::graphics::geography::map::racetrack::RaceTrackGeographicMapCellTypes ();
 
 1;
 

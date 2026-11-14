@@ -51,8 +51,8 @@ sub getTotal {
     die "abstract method getTotal";
 }
 
-use org::allbinary::business::user::commerce::money::Money;
-use org::allbinary::data::tables::TableMappingInterface;
+use org::allbinary::business::user::commerce::money::Money ();
+use org::allbinary::data::tables::TableMappingInterface ();
 
 1;
 

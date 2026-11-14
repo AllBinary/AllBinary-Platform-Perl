@@ -26,8 +26,8 @@ sub onEvent {
     die "abstract method onEvent";
 }
 
-# use jsinterop::annotations::JsType;
-# use jsinterop::annotations::JsMethod;
+# use jsinterop::annotations::JsType ();
+# use jsinterop::annotations::JsMethod ();
 
 1;
 

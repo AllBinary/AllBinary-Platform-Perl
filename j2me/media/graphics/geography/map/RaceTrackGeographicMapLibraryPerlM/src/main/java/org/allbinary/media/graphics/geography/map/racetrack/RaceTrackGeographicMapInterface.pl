@@ -45,7 +45,7 @@ sub setRaceTrackData {
     die "abstract method setRaceTrackData";
 }
 
-use org::allbinary::media::graphics::geography::map::GeographicMapInterface;
+use org::allbinary::media::graphics::geography::map::GeographicMapInterface ();
 
 1;
 

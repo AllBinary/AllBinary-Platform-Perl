@@ -19,7 +19,7 @@ use feature 'try';
 no warnings 'experimental::try';
 use parent -norequire,'org::allbinary::thread::ABRunnable';
 
-our $instance = 'org::allbinary::thread::NullABRunnable'->new();
+tie our $instance, 'java::lang::LazyStatic', sub { 'org::allbinary::thread::NullABRunnable'->new() };
 
 sub new {
     my ($class) = @_;
@@ -39,7 +39,9 @@ sub isRunning {
         return 0;
 }
 
-use org::allbinary::thread::ABRunnable;
+use java::lang::Object ();
+use java::lang::LazyStatic ();
+use org::allbinary::thread::ABRunnable ();
 
 1;
 

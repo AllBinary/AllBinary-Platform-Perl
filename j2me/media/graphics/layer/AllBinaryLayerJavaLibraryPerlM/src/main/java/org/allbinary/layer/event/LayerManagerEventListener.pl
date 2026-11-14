@@ -17,7 +17,7 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
-use parent -norequire,'org::allbinary::layer::event::LayerManagerEventListenerInterface';
+use parent -norequire,'java::lang::Object','org::allbinary::layer::event::LayerManagerEventListenerInterface';
 
 
 sub new {
@@ -43,8 +43,9 @@ sub onDeleteLayerManagerEvent {
     my ($self, $layerManagerEvent) = @_;
 }
 
-use org::allbinary::logic::util::event::AllBinaryEventObject;
-use org::allbinary::layer::event::LayerManagerEventListenerInterface;
+use java::lang::Object ();
+use org::allbinary::logic::util::event::AllBinaryEventObject ();
+use org::allbinary::layer::event::LayerManagerEventListenerInterface ();
 
 1;
 

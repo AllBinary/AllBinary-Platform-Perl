@@ -27,8 +27,8 @@ sub getInstance {
     die "abstract method getInstance";
 }
 
-use org::allbinary::graphics::RelativeRelationship;
-use org::allbinary::layer::AllBinaryLayer;
+use org::allbinary::graphics::RelativeRelationship ();
+use org::allbinary::layer::AllBinaryLayer ();
 
 1;
 

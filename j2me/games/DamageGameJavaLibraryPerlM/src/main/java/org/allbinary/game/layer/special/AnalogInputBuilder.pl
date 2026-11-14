@@ -17,8 +17,9 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
-our $instance = 'org::allbinary::game::layer::special::AnalogInputBuilder'->new();
+tie our $instance, 'java::lang::LazyStatic', sub { 'org::allbinary::game::layer::special::AnalogInputBuilder'->new() };
 
 sub new {
     my ($class) = @_;
@@ -54,20 +55,22 @@ sub enable {
         $inputProcessorArray->[$javax::microedition::lcdui::Canvas::KEY_NUM5] = 'org::allbinary::game::layer::special::SpecialAnalogRightTriggerGameInputProcessor'->new($collidableDestroyableDamageableLayer);
 }
 
-# use javax::microedition::lcdui::Canvas;
-use org::allbinary::game::input::GameInputProcessor;
-use org::allbinary::game::layer::special::SpecialUpGameInputProcessor;
-use org::allbinary::game::layer::special::SpecialDownGameInputProcessor;
-use org::allbinary::game::layer::special::SpecialRightGameInputProcessor;
-use org::allbinary::game::layer::special::SpecialLeftGameInputProcessor;
-use org::allbinary::game::layer::special::Special1GameInputProcessor;
-use org::allbinary::game::layer::special::Special3GameInputProcessor;
-use org::allbinary::game::layer::special::SpecialAnalogUpGameInputProcessor;
-use org::allbinary::game::layer::special::SpecialAnalogDownGameInputProcessor;
-use org::allbinary::game::layer::special::SpecialAnalogRightGameInputProcessor;
-use org::allbinary::game::layer::special::SpecialAnalogLeftGameInputProcessor;
-use org::allbinary::game::layer::special::SpecialAnalogLeftTriggerGameInputProcessor;
-use org::allbinary::game::layer::special::SpecialAnalogRightTriggerGameInputProcessor;
+use java::lang::Object ();
+use java::lang::LazyStatic ();
+use javax::microedition::lcdui::Canvas ();
+use org::allbinary::game::input::GameInputProcessor ();
+use org::allbinary::game::layer::special::SpecialUpGameInputProcessor ();
+use org::allbinary::game::layer::special::SpecialDownGameInputProcessor ();
+use org::allbinary::game::layer::special::SpecialRightGameInputProcessor ();
+use org::allbinary::game::layer::special::SpecialLeftGameInputProcessor ();
+use org::allbinary::game::layer::special::Special1GameInputProcessor ();
+use org::allbinary::game::layer::special::Special3GameInputProcessor ();
+use org::allbinary::game::layer::special::SpecialAnalogUpGameInputProcessor ();
+use org::allbinary::game::layer::special::SpecialAnalogDownGameInputProcessor ();
+use org::allbinary::game::layer::special::SpecialAnalogRightGameInputProcessor ();
+use org::allbinary::game::layer::special::SpecialAnalogLeftGameInputProcessor ();
+use org::allbinary::game::layer::special::SpecialAnalogLeftTriggerGameInputProcessor ();
+use org::allbinary::game::layer::special::SpecialAnalogRightTriggerGameInputProcessor ();
 
 1;
 

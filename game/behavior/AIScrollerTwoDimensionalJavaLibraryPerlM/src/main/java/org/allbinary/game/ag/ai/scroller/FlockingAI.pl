@@ -29,7 +29,7 @@ sub _init_fields {
 sub new {
     my ($class, $hashtable, $ownerLayerInterface, $gameInput) = @_;
     my $self = $class->SUPER::new($ownerLayerInterface, $gameInput);
-    $self->_init_fields();
+    _init_fields($self);
         # super(...) made $self above
         my $allowedDistance = $hashtable->get($org::allbinary::game::ag::ai::scroller::BasePatrolAI::MAX_DISTANCE);
         $self->{allowedDistance} = int($allowedDistance);
@@ -87,18 +87,19 @@ sub getXYDistance {
         return $totalDistance;
 }
 
-# use javax::microedition::lcdui::Canvas;
-use org::allbinary::game::ai::BasicAI;
-use org::allbinary::game::identification::BasicGroupFactory;
-use org::allbinary::game::input::GameInput;
-use org::allbinary::game::layer::identification::GroupLayerManagerListener;
-use org::allbinary::game::layer::weapon::WeaponLayer;
-use org::allbinary::layer::AllBinaryLayer;
-use org::allbinary::layer::AllBinaryLayerManager;
-use org::allbinary::logic::math::MathUtil;
-use org::allbinary::util::ABHashtable;
-use org::allbinary::util::BasicArrayList;
-use org::allbinary::game::ag::ai::scroller::BasePatrolAI;
+use java::lang::Object ();
+use javax::microedition::lcdui::Canvas ();
+use org::allbinary::game::ai::BasicAI ();
+use org::allbinary::game::identification::BasicGroupFactory ();
+use org::allbinary::game::input::GameInput ();
+use org::allbinary::game::layer::identification::GroupLayerManagerListener ();
+use org::allbinary::game::layer::weapon::WeaponLayer ();
+use org::allbinary::layer::AllBinaryLayer ();
+use org::allbinary::layer::AllBinaryLayerManager ();
+use org::allbinary::logic::math::MathUtil ();
+use org::allbinary::util::ABHashtable ();
+use org::allbinary::util::BasicArrayList ();
+use org::allbinary::game::ag::ai::scroller::BasePatrolAI ();
 
 1;
 

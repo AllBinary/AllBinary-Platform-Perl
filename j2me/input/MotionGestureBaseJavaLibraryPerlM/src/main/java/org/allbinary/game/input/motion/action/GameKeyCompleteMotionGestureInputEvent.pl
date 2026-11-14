@@ -33,7 +33,7 @@ sub _init_fields {
 sub new {
     my ($class, $name, $motionGestureInput, $inputToGameKeyMapping) = @_;
     my $self = $class->SUPER::new($name, $motionGestureInput);
-    $self->_init_fields();
+    _init_fields($self);
         # super(...) made $self above
         $self->{inputToGameKeyMapping} = $inputToGameKeyMapping;
         'org::allbinary::game::input::motion::action::GameKeyCompleteMotionGestureInputEventFactory'->getInstance()->add($self);
@@ -83,15 +83,16 @@ sub getGameKey {
         return $self->{gameKey};
 }
 
-use org::allbinary::game::input::CompleteMotionGestureInputEvent;
-use org::allbinary::game::input::GameKey;
-use org::allbinary::game::input::GameKeyEventSourceInterface;
-use org::allbinary::game::input::event::GameKeyEvent;
-use org::allbinary::game::input::event::GameKeyEventFactory;
-use org::allbinary::game::input::mapping::InputToGameKeyMapping;
-use org::allbinary::input::motion::gesture::MotionGestureInput;
-use org::allbinary::string::CommonStrings;
-use org::allbinary::game::input::motion::action::GameKeyCompleteMotionGestureInputEventFactory;
+use java::lang::Object ();
+use org::allbinary::game::input::CompleteMotionGestureInputEvent ();
+use org::allbinary::game::input::GameKey ();
+use org::allbinary::game::input::GameKeyEventSourceInterface ();
+use org::allbinary::game::input::event::GameKeyEvent ();
+use org::allbinary::game::input::event::GameKeyEventFactory ();
+use org::allbinary::game::input::mapping::InputToGameKeyMapping ();
+use org::allbinary::input::motion::gesture::MotionGestureInput ();
+use org::allbinary::string::CommonStrings ();
+use org::allbinary::game::input::motion::action::GameKeyCompleteMotionGestureInputEventFactory ();
 
 1;
 

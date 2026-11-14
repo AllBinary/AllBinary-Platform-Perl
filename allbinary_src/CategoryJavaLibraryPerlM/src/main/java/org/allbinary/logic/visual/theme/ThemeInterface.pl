@@ -45,7 +45,7 @@ sub getPreviewImagePath {
     die "abstract method getPreviewImagePath";
 }
 
-use org::allbinary::data::tables::TableMappingInterface;
+use org::allbinary::data::tables::TableMappingInterface ();
 
 1;
 

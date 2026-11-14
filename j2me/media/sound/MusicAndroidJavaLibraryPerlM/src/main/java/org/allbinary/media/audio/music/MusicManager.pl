@@ -5,6 +5,7 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
 
 sub _init_fields {
@@ -33,7 +34,7 @@ sub _init_fields {
 sub new {
     my ($class, $musicServiceClass, $songList) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
         'org::allbinary::logic::communication::log::PreLogUtil'->put($self->{commonStateStrings}->{CONTEXT} + $self->{resourceUtil}->getContext(), $self, $self->{commonStrings}->{CONSTRUCTOR});
         $self->{musicServiceClass} = $musicServiceClass;
         $self->{currentIntent} = 'android::content::Intent'->new($self->{resourceUtil}->getContext(), $musicServiceClass);
@@ -141,24 +142,25 @@ sub resume {
         }
 }
 
-use android::app::Activity;
-use android::content::Context;
-use android::content::Intent;
-use org::allbinary::android::AndroidServicesUtil;
-use org::allbinary::data::resource::ResourceUtil;
-use org::allbinary::logic::communication::log::PreLogUtil;
-use org::allbinary::logic::string::StringMaker;
-use org::allbinary::logic::string::StringUtil;
-use org::allbinary::media::audio::NoSound;
-use org::allbinary::media::audio::Sound;
-use org::allbinary::string::CommonStateStrings;
-use org::allbinary::string::CommonStrings;
-use org::allbinary::time::GameTickTimeDelayHelper;
-use org::allbinary::time::GameTickTimeDelayHelperFactory;
-use org::allbinary::time::TimeDelayHelper;
-use org::allbinary::util::BasicArrayList;
-use org::allbinary::util::BasicArrayListUtil;
-use org::allbinary::media::audio::music::MusicStrings;
+use java::lang::Object ();
+# use android::app::Activity ();
+# use android::content::Context ();
+# use android::content::Intent ();
+use org::allbinary::android::AndroidServicesUtil ();
+use org::allbinary::data::resource::ResourceUtil ();
+use org::allbinary::logic::communication::log::PreLogUtil ();
+use org::allbinary::logic::string::StringMaker ();
+use org::allbinary::logic::string::StringUtil ();
+use org::allbinary::media::audio::NoSound ();
+use org::allbinary::media::audio::Sound ();
+use org::allbinary::string::CommonStateStrings ();
+use org::allbinary::string::CommonStrings ();
+use org::allbinary::time::GameTickTimeDelayHelper ();
+use org::allbinary::time::GameTickTimeDelayHelperFactory ();
+use org::allbinary::time::TimeDelayHelper ();
+use org::allbinary::util::BasicArrayList ();
+use org::allbinary::util::BasicArrayListUtil ();
+use org::allbinary::media::audio::music::MusicStrings ();
 
 1;
 

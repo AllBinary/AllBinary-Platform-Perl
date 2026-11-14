@@ -19,7 +19,7 @@ use feature 'try';
 no warnings 'experimental::try';
 use parent -norequire,'org::allbinary::game::layer::NullPathFindingLayer','org::allbinary::game::layer::RTSPlayerLayerInterface';
 
-our $NULL_RTS_LAYER = 'org::allbinary::game::layer::NullRTSLayer'->new();
+tie our $NULL_RTS_LAYER, 'java::lang::LazyStatic', sub { 'org::allbinary::game::layer::NullRTSLayer'->new() };
 
 sub new {
     my ($class) = @_;
@@ -126,18 +126,20 @@ sub implmentsArtificialIntelligenceCompositeInterface {
         die ("RuntimeException");
 }
 
-use org::allbinary::game::ag::layer::hud::basic::notification::GameNotificationHud;
-use org::allbinary::game::combat::destroy::event::DestroyedEvent;
-use org::allbinary::game::input::PlayerGameInput;
-use org::allbinary::game::input::form::NullRTSFormInputFactory;
-use org::allbinary::game::input::form::RTSFormInput;
-use org::allbinary::game::layer::capital::Capital;
-use org::allbinary::graphics::form::ScrollSelectionForm;
-use org::allbinary::layer::AllBinaryLayerManager;
-use org::allbinary::logic::util::event::AllBinaryEventObject;
-use org::allbinary::media::audio::Sound;
-use org::allbinary::game::layer::NullPathFindingLayer;
-use org::allbinary::game::layer::RTSPlayerLayerInterface;
+use java::lang::Object ();
+use java::lang::LazyStatic ();
+use org::allbinary::game::ag::layer::hud::basic::notification::GameNotificationHud ();
+use org::allbinary::game::combat::destroy::event::DestroyedEvent ();
+use org::allbinary::game::input::PlayerGameInput ();
+use org::allbinary::game::input::form::NullRTSFormInputFactory ();
+use org::allbinary::game::input::form::RTSFormInput ();
+use org::allbinary::game::layer::capital::Capital ();
+use org::allbinary::graphics::form::ScrollSelectionForm ();
+use org::allbinary::layer::AllBinaryLayerManager ();
+use org::allbinary::logic::util::event::AllBinaryEventObject ();
+use org::allbinary::media::audio::Sound ();
+use org::allbinary::game::layer::NullPathFindingLayer ();
+use org::allbinary::game::layer::RTSPlayerLayerInterface ();
 
 1;
 

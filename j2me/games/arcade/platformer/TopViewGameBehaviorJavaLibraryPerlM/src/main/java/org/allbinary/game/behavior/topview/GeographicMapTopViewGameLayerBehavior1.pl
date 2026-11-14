@@ -34,7 +34,7 @@ sub _init_fields {
 sub new {
     my ($class, $maxGravityActionIndex, $autoStepBlocks, $offsetY) = @_;
     my $self = $class->SUPER::new($maxGravityActionIndex);
-    $self->_init_fields();
+    _init_fields($self);
         # super(...) made $self above
         $self->{autoStepBlocks} = $autoStepBlocks;
         $self->{offsetY} = $offsetY;
@@ -179,17 +179,18 @@ sub right {
         }
 }
 
-use org::allbinary::media::graphics::geography::map::MultiGeographicMapBehavior;
-use org::allbinary::game::layer::AllBinaryTiledLayer;
-use org::allbinary::game::physics::acceleration::GravityUtil;
-use org::allbinary::game::physics::velocity::VelocityProperties;
-use org::allbinary::layer::AllBinaryLayer;
-use org::allbinary::logic::communication::log::LogUtil;
-use org::allbinary::media::graphics::geography::map::BasicGeographicMap;
-use org::allbinary::media::graphics::geography::map::GeographicMapCellPosition;
-use org::allbinary::media::graphics::geography::map::GeographicMapCellType;
-use org::allbinary::media::graphics::geography::map::SimpleGeographicMapCellPositionFactory;
-use org::allbinary::game::behavior::topview::GeographicMapTopViewLayerBehavior;
+use java::lang::Object ();
+use org::allbinary::media::graphics::geography::map::MultiGeographicMapBehavior ();
+use org::allbinary::game::layer::AllBinaryTiledLayer ();
+use org::allbinary::game::physics::acceleration::GravityUtil ();
+use org::allbinary::game::physics::velocity::VelocityProperties ();
+use org::allbinary::layer::AllBinaryLayer ();
+use org::allbinary::logic::communication::log::LogUtil ();
+use org::allbinary::media::graphics::geography::map::BasicGeographicMap ();
+use org::allbinary::media::graphics::geography::map::GeographicMapCellPosition ();
+use org::allbinary::media::graphics::geography::map::GeographicMapCellType ();
+use org::allbinary::media::graphics::geography::map::SimpleGeographicMapCellPositionFactory ();
+use org::allbinary::game::behavior::topview::GeographicMapTopViewLayerBehavior ();
 
 1;
 

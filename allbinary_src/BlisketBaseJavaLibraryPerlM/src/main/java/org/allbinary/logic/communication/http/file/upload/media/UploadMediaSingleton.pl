@@ -17,6 +17,7 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
 our $uploadMedia = undef;
 
@@ -32,7 +33,7 @@ sub _init_fields {
 sub new {
     my ($class) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
         $self->{readerFileTypesHashMap} = 'org::allbinary::logic::StdUtil'->getInstance()->createHashMap();
         $self->{writerFileTypesHashMap} = 'org::allbinary::logic::StdUtil'->getInstance()->createHashMap();
         my $hashMap = 'org::allbinary::logic::visual::media::MediaData'->toHashMap();
@@ -126,15 +127,16 @@ sub isMedia {
         }
 }
 
-use java::util::HashMap;
-# use java::util::Set;
-use org::allbinary::logic::StdUtil;
-use org::allbinary::logic::communication::log::LogUtil;
-use org::allbinary::logic::string::StringMaker;
-use org::allbinary::logic::visual::media::MediaData;
-use org::allbinary::logic::visual::media::MediaIOUtil;
-use org::allbinary::logic::visual::media::MediaTypeData;
-use org::allbinary::string::CommonStrings;
+use java::lang::Object ();
+use java::util::HashMap ();
+# use java::util::Set ();
+use org::allbinary::logic::StdUtil ();
+use org::allbinary::logic::communication::log::LogUtil ();
+use org::allbinary::logic::string::StringMaker ();
+use org::allbinary::logic::visual::media::MediaData ();
+use org::allbinary::logic::visual::media::MediaIOUtil ();
+use org::allbinary::logic::visual::media::MediaTypeData ();
+use org::allbinary::string::CommonStrings ();
 
 1;
 

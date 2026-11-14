@@ -17,8 +17,9 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
-our $instance = 'org::allbinary::logic::math::permutations::OrderedIntArrayPermutationUtil'->new();
+tie our $instance, 'java::lang::LazyStatic', sub { 'org::allbinary::logic::math::permutations::OrderedIntArrayPermutationUtil'->new() };
 
 sub _init_fields {
     my ($self) = @_;
@@ -36,7 +37,7 @@ sub getInstance {
 sub new {
     my ($class) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
     return $self;
 }
 
@@ -106,13 +107,16 @@ sub main {
         my $permutationVisitor = 'org::allbinary::logic::math::permutations::IntPermutationVisitor'->new($data);
         my $ORIGINAL_DATA_LABEL = "Original Data: ";
         print($ORIGINAL_DATA_LABEL);
-        $permutationVisitor->print($data);
+        $permutationVisitor->print($data, 'org::allbinary::logic::string::StringMaker'->new());
         'org::allbinary::logic::math::permutations::OrderedIntArrayPermutationUtil'->getInstance()->generate($data, $permutationVisitor);
 }
 
-use org::allbinary::logic::util::visitor::Visitor;
-use java::lang::System;
-use org::allbinary::logic::math::permutations::IntPermutationVisitor;
+use java::lang::Object ();
+use java::lang::LazyStatic ();
+use org::allbinary::logic::util::visitor::Visitor ();
+use org::allbinary::logic::string::StringMaker ();
+use java::lang::System ();
+use org::allbinary::logic::math::permutations::IntPermutationVisitor ();
 
 1;
 

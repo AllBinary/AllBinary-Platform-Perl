@@ -40,7 +40,7 @@ sub new {
 sub _new1 {
     my ($class, $node) = @_;
     my $self = $class->SUPER::new($NAME, $node);
-    $self->_init_fields();
+    _init_fields($self);
         # super(...) made $self above
         $self->{logUtil}->putF($self->{commonStrings}->{START}, $self, $self->{commonStrings}->{CONSTRUCTOR});
         $self->{point} = 'org::allbinary::input::automation::actions::script::condition::processors::input::Point'->new();
@@ -77,7 +77,7 @@ sub _new1 {
 sub _new0 {
     my ($class) = @_;
     my $self = $class->SUPER::new($NAME);
-    $self->_init_fields();
+    _init_fields($self);
         # super(...) made $self above
         $self->{point} = 'org::allbinary::input::automation::actions::script::condition::processors::input::Point'->new();
         $self->setAllowsChildren(0);
@@ -171,25 +171,26 @@ sub log {
         $self->{logUtil}->putF("Input Type: " . $self->getInputRobotInterface()->getName() . " Point: " . $self->getPoint() . " Buttons Clicked: " . $buttonStringBuffer->toString(), $self, "log");
 }
 
-# use java::awt;
-# use java::awt::event::InputEvent;
-use java::util::HashMap;
-use org::allbinary::data::tree::dom::DomNodeHelper;
-use org::allbinary::data::tree::dom::DomSearchHelper;
-use org::allbinary::data::tree::dom::ModDomHelper;
-use org::allbinary::logic::StdUtil;
-use org::allbinary::logic::communication::log::LogUtil;
-use org::allbinary::logic::java::bool::BooleanFactory;
-use org::allbinary::logic::string::StringMaker;
-use org::w3c::dom::Document;
-use org::w3c::dom::Node;
-use org::w3c::dom::NodeList;
-use org::allbinary::input::automation::actions::script::condition::processors::input::BasicProfileActionScriptInput;
-use org::allbinary::input::automation::actions::script::condition::processors::input::MouseActionScriptInputInterface;
-use org::allbinary::input::automation::actions::script::condition::processors::input::Point;
-use org::allbinary::input::automation::actions::script::condition::processors::input::MouseActionScriptInputData;
-use org::allbinary::input::automation::actions::script::condition::processors::input::MouseActionScriptInputJPanel;
-use org::allbinary::input::automation::actions::script::condition::processors::input::MouseInputAutomationProcessor;
+use java::lang::Object ();
+# use java::awt ();
+# use java::awt::event::InputEvent ();
+use java::util::HashMap ();
+use org::allbinary::data::tree::dom::DomNodeHelper ();
+use org::allbinary::data::tree::dom::DomSearchHelper ();
+use org::allbinary::data::tree::dom::ModDomHelper ();
+use org::allbinary::logic::StdUtil ();
+use org::allbinary::logic::communication::log::LogUtil ();
+use org::allbinary::logic::java::bool::BooleanFactory ();
+use org::allbinary::logic::string::StringMaker ();
+use org::w3c::dom::Document ();
+use org::w3c::dom::Node ();
+use org::w3c::dom::NodeList ();
+use org::allbinary::input::automation::actions::script::condition::processors::input::BasicProfileActionScriptInput ();
+use org::allbinary::input::automation::actions::script::condition::processors::input::MouseActionScriptInputInterface ();
+use org::allbinary::input::automation::actions::script::condition::processors::input::Point ();
+use org::allbinary::input::automation::actions::script::condition::processors::input::MouseActionScriptInputData ();
+use org::allbinary::input::automation::actions::script::condition::processors::input::MouseActionScriptInputJPanel ();
+use org::allbinary::input::automation::actions::script::condition::processors::input::MouseInputAutomationProcessor ();
 
 1;
 

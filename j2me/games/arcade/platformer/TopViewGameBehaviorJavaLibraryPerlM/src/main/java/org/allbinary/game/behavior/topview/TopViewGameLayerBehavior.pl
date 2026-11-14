@@ -33,7 +33,7 @@ sub _init_fields {
 sub new {
     my ($class, $maxGravityActionIndex) = @_;
     my $self = $class->SUPER::new();
-    $self->_init_fields();
+    _init_fields($self);
         $self->{maxGravityActionIndex} = $maxGravityActionIndex;
     return $self;
 }
@@ -90,9 +90,10 @@ sub inputFrames {
         }
 }
 
-use org::allbinary::game::layer::behavior::GameLayerBehavior;
-use org::allbinary::game::physics::acceleration::BasicAccelerationProperties;
-use org::allbinary::game::physics::velocity::VelocityProperties;
+use java::lang::Object ();
+use org::allbinary::game::layer::behavior::GameLayerBehavior ();
+use org::allbinary::game::physics::acceleration::BasicAccelerationProperties ();
+use org::allbinary::game::physics::velocity::VelocityProperties ();
 
 1;
 

@@ -17,8 +17,9 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
-our $NULL_GAME_NOTIFICATION_EVENT = 'org::allbinary::game::layer::hud::event::GameNotificationEvent'->new('org::allbinary::logic::NullUtil'->getInstance()->{NULL_OBJECT}, 'org::allbinary::logic::string::StringUtil'->getInstance()->{EMPTY_STRING}, 0, 'org::allbinary::graphics::color::BasicColorFactory'->getInstance()->{RED}, 'org::allbinary::logic::java::bool::BooleanFactory'->getInstance()->{FALSE});
+tie our $NULL_GAME_NOTIFICATION_EVENT, 'java::lang::LazyStatic', sub { 'org::allbinary::game::layer::hud::event::GameNotificationEvent'->new('org::allbinary::logic::NullUtil'->getInstance()->{NULL_OBJECT}, 'org::allbinary::logic::string::StringUtil'->getInstance()->{EMPTY_STRING}, 0, 'org::allbinary::graphics::color::BasicColorFactory'->getInstance()->{RED}, 'org::allbinary::logic::java::bool::BooleanFactory'->getInstance()->{FALSE}) };
 
 sub _init_fields {
     my ($self) = @_;
@@ -30,7 +31,7 @@ sub _init_fields {
 sub new {
     my ($class) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
     return $self;
 }
 
@@ -58,14 +59,16 @@ sub getSize {
         return $self->{stringList}->size();
 }
 
-use org::allbinary::game::layer::hud::event::GameNotificationEvent;
-use org::allbinary::graphics::color::BasicColor;
-use org::allbinary::graphics::color::BasicColorFactory;
-use org::allbinary::logic::NullUtil;
-use org::allbinary::logic::java::bool::BooleanFactory;
-use org::allbinary::logic::string::StringUtil;
-use org::allbinary::util::BasicArrayList;
-use org::allbinary::util::BasicArrayListD;
+use java::lang::Object ();
+use java::lang::LazyStatic ();
+use org::allbinary::game::layer::hud::event::GameNotificationEvent ();
+use org::allbinary::graphics::color::BasicColor ();
+use org::allbinary::graphics::color::BasicColorFactory ();
+use org::allbinary::logic::NullUtil ();
+use org::allbinary::logic::java::bool::BooleanFactory ();
+use org::allbinary::logic::string::StringUtil ();
+use org::allbinary::util::BasicArrayList ();
+use org::allbinary::util::BasicArrayListD ();
 
 1;
 

@@ -17,6 +17,7 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
 our $NAME = "EMAIL_EVENT_CONFIGURATION_NAME";
 our $LISTENER_CLASSPATH = "EMAIL_EVENT_CONFIGURATION_LISTENER_CLASSPATH";
@@ -28,6 +29,7 @@ sub new {
     return $self;
 }
 
+use java::lang::Object ();
 
 1;
 

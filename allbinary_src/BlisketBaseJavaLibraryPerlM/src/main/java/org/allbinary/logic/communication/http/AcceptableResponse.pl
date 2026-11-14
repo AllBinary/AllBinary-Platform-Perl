@@ -17,6 +17,7 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
 
 sub _init_fields {
@@ -29,7 +30,7 @@ sub _init_fields {
 sub new {
     my ($class, $candidate, $tagName, $index) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
         $self->{logUtil}->putF($tagName, $self, $self->{commonStrings}->{CONSTRUCTOR});
         my $acceptableResponseUtil = 'org::allbinary::logic::communication::http::AcceptableResponseUtil'->getInstance();
         $acceptableResponseUtil->{candidateVector}->addAt($index, $candidate);
@@ -37,9 +38,10 @@ sub new {
     return $self;
 }
 
-use org::allbinary::logic::communication::log::LogUtil;
-use org::allbinary::string::CommonStrings;
-use org::allbinary::logic::communication::http::AcceptableResponseUtil;
+use java::lang::Object ();
+use org::allbinary::logic::communication::log::LogUtil ();
+use org::allbinary::string::CommonStrings ();
+use org::allbinary::logic::communication::http::AcceptableResponseUtil ();
 
 1;
 

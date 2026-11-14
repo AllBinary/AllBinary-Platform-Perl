@@ -36,7 +36,7 @@ sub _init_fields {
 sub new {
     my ($class, $layoutIndex, $instanceId, $scaleProperties, $animationInterfaceFactoryInterface, $animationBehavior) = @_;
     my $self = $class->SUPER::new('org::allbinary::math::AngleInfo'->getInstance('org::allbinary::math::AngleFactory'->getInstance()->{QUARTER_TOTAL_ANGLE}), 'org::allbinary::util::CircularIndexUtil'->createInstance(4), $animationBehavior);
-    $self->_init_fields();
+    _init_fields($self);
         # super(...) made $self above
         $self->{layoutIndex} = $layoutIndex;
         $self->{instanceId} = $instanceId;
@@ -64,7 +64,7 @@ sub new {
         sub new {
             my ($class, $lazyImageRotationAnimation) = @_;
             my $self = $class->SUPER::new('org::allbinary::math::AngleInfo'->getInstance('org::allbinary::math::AngleFactory'->getInstance()->{QUARTER_TOTAL_ANGLE}), 'org::allbinary::util::CircularIndexUtil'->createInstance(4), $self->{animationBehavior});
-            $self->_init_fields();
+            _init_fields($self);
                 # super(...) made $self above
                 $self->{lazyImageRotationAnimation} = $lazyImageRotationAnimation;
             return $self;
@@ -353,23 +353,24 @@ sub toString {
         return 'org::allbinary::logic::string::StringMaker'->new()->append($self->SUPER::toString())->append($commonSeps->{SPACE})->append($image->getName())->append($commonSeps->{SPACE})->appendint(int($image->getWidth()))->append($commonSeps->{SPACE})->appendint(int($image->getHeight()))->toString();
 }
 
-# use javax::microedition::khronos::opengles::GL;
-# use javax::microedition::lcdui::Graphics;
-# use javax::microedition::lcdui::Image;
-use org::allbinary::animation::AnimationBehavior;
-use org::allbinary::animation::IndexedAnimation;
-use org::allbinary::animation::NullRotationAnimationFactory;
-use org::allbinary::animation::RotationAnimation;
-use org::allbinary::graphics::color::BasicColor;
-use org::allbinary::image::ImageCache;
-use org::allbinary::image::ImageCacheFactory;
-use org::allbinary::logic::communication::log::LogUtil;
-use org::allbinary::math::AngleFactory;
-use org::allbinary::math::AngleInfo;
-use org::allbinary::string::CommonSeps;
-use org::allbinary::logic::string::StringMaker;
-use org::allbinary::media::ScaleProperties;
-use org::allbinary::util::CircularIndexUtil;
+use java::lang::Object ();
+use javax::microedition::khronos::opengles::GL ();
+use javax::microedition::lcdui::Graphics ();
+use javax::microedition::lcdui::Image ();
+use org::allbinary::animation::AnimationBehavior ();
+use org::allbinary::animation::IndexedAnimation ();
+use org::allbinary::animation::NullRotationAnimationFactory ();
+use org::allbinary::animation::RotationAnimation ();
+use org::allbinary::graphics::color::BasicColor ();
+use org::allbinary::image::ImageCache ();
+use org::allbinary::image::ImageCacheFactory ();
+use org::allbinary::logic::communication::log::LogUtil ();
+use org::allbinary::math::AngleFactory ();
+use org::allbinary::math::AngleInfo ();
+use org::allbinary::string::CommonSeps ();
+use org::allbinary::logic::string::StringMaker ();
+use org::allbinary::media::ScaleProperties ();
+use org::allbinary::util::CircularIndexUtil ();
 
 1;
 

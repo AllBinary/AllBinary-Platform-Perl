@@ -60,12 +60,12 @@ sub update {
     die "abstract method update";
 }
 
-use java::util::HashMap;
-use org::allbinary::util::BasicArrayList;
-use org::allbinary::util::BasicArrayListD;
-# use javax::servlet::jsp::PageContext;
-use org::allbinary::data::tables::BasicDataTableInterface;
-use org::allbinary::logic::visual::transform::info::TransformInfoInterface;
+use java::util::HashMap ();
+use org::allbinary::util::BasicArrayList ();
+use org::allbinary::util::BasicArrayListD ();
+# use javax::servlet::jsp::PageContext ();
+use org::allbinary::data::tables::BasicDataTableInterface ();
+use org::allbinary::logic::visual::transform::info::TransformInfoInterface ();
 
 1;
 

@@ -17,6 +17,7 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
 our $RESOURCE_TITLE = "/title_sprite_100_by_100.png";
 
@@ -26,6 +27,7 @@ sub new {
     return $self;
 }
 
+use java::lang::Object ();
 
 1;
 

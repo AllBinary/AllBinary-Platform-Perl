@@ -19,7 +19,7 @@ use feature 'try';
 no warnings 'experimental::try';
 use parent -norequire,'org::allbinary::game::layer::AllBinaryGameLayer','org::allbinary::game::collision::CollidableInterfaceCompositeInterface';
 
-our $NULL_COLLIDABLE_COMPOSITE_LAYER = 'org::allbinary::logic::NullUtil'->getInstance()->{NULL_OBJECT};
+tie our $NULL_COLLIDABLE_COMPOSITE_LAYER, 'java::lang::LazyStatic', sub { 'org::allbinary::logic::NullUtil'->getInstance()->{NULL_OBJECT} };
 
 sub _init_fields {
     my ($self) = @_;
@@ -39,7 +39,7 @@ sub getNullInstance {
 sub new {
     my ($class, $name, $layerInfo, $viewPosition, $collidableBaseBehaviorFactory) = @_;
     my $self = $class->SUPER::new($name, $layerInfo, $viewPosition);
-    $self->_init_fields();
+    _init_fields($self);
         # super(...) made $self above
         if ($collidableBaseBehaviorFactory != 'org::allbinary::game::collision::CollidableNeverCollideBehaviorFactory'->getInstance()) {
             $self->setCollidableInferface($collidableBaseBehaviorFactory->createBehavior());
@@ -89,21 +89,23 @@ sub toString {
         return $stringBuffer->toString();
 }
 
-use org::allbinary::ai::ArtificialIntelligence;
-use org::allbinary::ai::ArtificialIntelligenceInterface;
-use org::allbinary::game::collision::CollidableBaseBehavior;
-use org::allbinary::game::collision::CollidableBaseBehaviorFactory;
-use org::allbinary::game::collision::CollidableInterfaceCompositeInterface;
-use org::allbinary::game::collision::CollidableNeverCollideBehaviorFactory;
-use org::allbinary::graphics::Rectangle;
-use org::allbinary::graphics::RectangleFactory;
-use org::allbinary::logic::communication::log::ForcedLogUtil;
-use org::allbinary::logic::string::StringMaker;
-use org::allbinary::logic::string::StringUtil;
-use org::allbinary::string::CommonSeps;
-use org::allbinary::view::ViewPositionBase;
-use org::allbinary::logic::NullUtil;
-use org::allbinary::game::layer::AllBinaryGameLayer;
+use java::lang::Object ();
+use java::lang::LazyStatic ();
+use org::allbinary::ai::ArtificialIntelligence ();
+use org::allbinary::ai::ArtificialIntelligenceInterface ();
+use org::allbinary::game::collision::CollidableBaseBehavior ();
+use org::allbinary::game::collision::CollidableBaseBehaviorFactory ();
+use org::allbinary::game::collision::CollidableInterfaceCompositeInterface ();
+use org::allbinary::game::collision::CollidableNeverCollideBehaviorFactory ();
+use org::allbinary::graphics::Rectangle ();
+use org::allbinary::graphics::RectangleFactory ();
+use org::allbinary::logic::communication::log::ForcedLogUtil ();
+use org::allbinary::logic::string::StringMaker ();
+use org::allbinary::logic::string::StringUtil ();
+use org::allbinary::string::CommonSeps ();
+use org::allbinary::view::ViewPositionBase ();
+use org::allbinary::logic::NullUtil ();
+use org::allbinary::game::layer::AllBinaryGameLayer ();
 
 1;
 

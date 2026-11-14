@@ -17,7 +17,7 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
-use parent -norequire,'javax::swing::JDialog';
+use parent -norequire,'java::lang::Object';
 
 
 sub _init_fields {
@@ -38,7 +38,7 @@ sub new {
 sub _new3 {
     my ($class, $parent, $modal, $text) = @_;
     my $self = $class->SUPER::new($parent, $modal);
-    $self->_init_fields();
+    _init_fields($self);
         # super(...) made $self above
         $self->initComponents();
         $self->setText($text);
@@ -61,7 +61,7 @@ sub addCloseListener {
 sub _new1 {
     my ($class, $text) = @_;
     my $self = $class->SUPER::new();
-    $self->_init_fields();
+    _init_fields($self);
         $self->initComponents();
         $self->{textJLabel}->setText($text);
     return $self;
@@ -75,7 +75,7 @@ sub initComponents {
         $self->setDefaultCloseOperation($org::allbinary::gui::dialog::javax::swing->{WindowConstants}->{DISPOSE_ON_CLOSE});
         $self->{jButton1}->setText("OK");
         $self->{jButton1}->addActionListener(do {
-            package java::awt::event::ActionListener::AnonymousN66270 { our @ISA = ('java::awt::event::ActionListener');
+            package java::awt::event::ActionListener::AnonymousN66270 { our @ISA = ('java::awt::event::ActionListener', 'java::lang::Object');
             
 
             sub actionPerformed {
@@ -106,7 +106,7 @@ sub jButton1ActionPerformed {
 sub main {
     my ($class, $args) = @_;
         $org::allbinary::gui::dialog::java::awt->{EventQueue}->invokeLater(do {
-            package org::allbinary::thread::ARunnable::AnonymousN67413 { our @ISA = ('org::allbinary::thread::ARunnable');
+            package org::allbinary::thread::ARunnable::AnonymousN67413 { our @ISA = ('org::allbinary::thread::ARunnable', 'java::lang::Object');
             
 
             sub run {
@@ -118,7 +118,8 @@ sub main {
         });
 }
 
-use org::allbinary::thread::ARunnable;
+use java::lang::Object ();
+use org::allbinary::thread::ARunnable ();
 
 1;
 

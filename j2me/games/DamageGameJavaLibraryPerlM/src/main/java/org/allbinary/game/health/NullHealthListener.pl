@@ -17,9 +17,9 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
-use parent -norequire,'org::allbinary::game::health::HealthListenerInterface';
+use parent -norequire,'java::lang::Object','org::allbinary::game::health::HealthListenerInterface';
 
-our $NULL_HEALTH_LISTENER = 'org::allbinary::game::health::NullHealthListener'->new();
+tie our $NULL_HEALTH_LISTENER, 'java::lang::LazyStatic', sub { 'org::allbinary::game::health::NullHealthListener'->new() };
 
 sub new {
     my ($class) = @_;
@@ -32,7 +32,9 @@ sub onHealthChange {
     my ($self) = @_;
 }
 
-use org::allbinary::game::health::HealthListenerInterface;
+use java::lang::Object ();
+use java::lang::LazyStatic ();
+use org::allbinary::game::health::HealthListenerInterface ();
 
 1;
 

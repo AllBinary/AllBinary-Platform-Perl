@@ -38,8 +38,8 @@ sub getDisplayable {
     die "abstract method getDisplayable";
 }
 
-# use javax::microedition::lcdui::Displayable;
-# use javax::microedition::midlet::MIDlet;
+use javax::microedition::lcdui::Displayable ();
+use javax::microedition::midlet::MIDlet ();
 
 1;
 

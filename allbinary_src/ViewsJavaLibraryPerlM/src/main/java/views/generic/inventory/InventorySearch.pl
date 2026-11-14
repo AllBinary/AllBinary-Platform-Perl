@@ -17,7 +17,7 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
-use parent -norequire,'views::admin::inventory::listings::InventoryViewSearchInterface';
+use parent -norequire,'java::lang::Object','views::admin::inventory::listings::InventoryViewSearchInterface';
 
 
 sub _init_fields {
@@ -32,7 +32,7 @@ sub _init_fields {
 sub new {
     my ($class, $searchRequest) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
         # super(...) made $self above
         $self->{searchRequest} = $searchRequest;
     return $self;
@@ -102,27 +102,28 @@ sub getProduct {
         return 'views::generic::inventory::InventorySearchProductUtil'->getInstance()->getProduct($abeClientInformation, $self->{searchRequest}, $product);
 }
 
-use java::util::HashMap;
-use org::allbinary::util::BasicArrayList;
-use org::allbinary::util::BasicArrayListD;
-use org::allbinary::business::context::modules::storefront::StoreFrontInterface;
-use org::allbinary::business::user::commerce::inventory::item::BasicItemData;
-use org::allbinary::data::tables::staticpages::StaticPagesEntity;
-use org::allbinary::logic::communication::log::LogUtil;
-use org::allbinary::logic::control::search::SearchParams;
-use org::allbinary::logic::control::search::SearchRequest;
-use org::allbinary::logic::io::InputOutputTypeData;
-use org::allbinary::logic::io::path::AbPathData;
-use org::allbinary::logic::string::StringMaker;
-use org::allbinary::logic::string::StringValidationUtil;
-use org::allbinary::logic::string::regex::replace::Replace;
-use org::allbinary::logic::system::security::licensing::AbeClientInformationInterface;
-use org::allbinary::logic::system::security::licensing::ServiceClientInformationInterfaceFactory;
-use org::allbinary::string::CommonSeps;
-use org::allbinary::string::CommonStrings;
-use views::admin::inventory::listings::InventoryViewSearchInterface;
-use views::generic::inventory::InventorySearchUtil;
-use views::generic::inventory::InventorySearchProductUtil;
+use java::lang::Object ();
+use java::util::HashMap ();
+use org::allbinary::util::BasicArrayList ();
+use org::allbinary::util::BasicArrayListD ();
+use org::allbinary::business::context::modules::storefront::StoreFrontInterface ();
+use org::allbinary::business::user::commerce::inventory::item::BasicItemData ();
+use org::allbinary::data::tables::staticpages::StaticPagesEntity ();
+use org::allbinary::logic::communication::log::LogUtil ();
+use org::allbinary::logic::control::search::SearchParams ();
+use org::allbinary::logic::control::search::SearchRequest ();
+use org::allbinary::logic::io::InputOutputTypeData ();
+use org::allbinary::logic::io::path::AbPathData ();
+use org::allbinary::logic::string::StringMaker ();
+use org::allbinary::logic::string::StringValidationUtil ();
+use org::allbinary::logic::string::regex::replace::Replace ();
+use org::allbinary::logic::system::security::licensing::AbeClientInformationInterface ();
+use org::allbinary::logic::system::security::licensing::ServiceClientInformationInterfaceFactory ();
+use org::allbinary::string::CommonSeps ();
+use org::allbinary::string::CommonStrings ();
+use views::admin::inventory::listings::InventoryViewSearchInterface ();
+use views::generic::inventory::InventorySearchUtil ();
+use views::generic::inventory::InventorySearchProductUtil ();
 
 1;
 

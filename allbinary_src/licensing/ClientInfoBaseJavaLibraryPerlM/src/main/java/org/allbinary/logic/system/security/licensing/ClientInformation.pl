@@ -18,7 +18,7 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
-use parent -norequire,'org::allbinary::logic::system::security::licensing::AbeClientInformationInterface';
+use parent -norequire,'java::lang::Object','org::allbinary::logic::system::security::licensing::AbeClientInformationInterface';
 
 
 sub _init_fields {
@@ -38,7 +38,7 @@ sub _init_fields {
 sub new {
     my ($class, $name, $version, $specialName, $shortName) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
         $self->{name} = $name;
         $self->{version} = $version;
         $self->{specialName} = $specialName;
@@ -186,20 +186,21 @@ sub toShortString {
         return $self->{shortName};
 }
 
-use org::allbinary::TsUtil;
-use org::allbinary::logic::string::StringMaker;
-use org::allbinary::logic::string::StringUtil;
-use org::allbinary::logic::system::hardware::HardwareInterface;
-use org::allbinary::logic::system::hardware::SystemHardwareFactory;
-use org::allbinary::logic::system::os::GenericOperatingSystem;
-use org::allbinary::logic::system::os::NoOperatingSystem;
-use org::allbinary::string::CommonSeps;
-use org::allbinary::util::BasicArrayList;
-use org::allbinary::util::BasicArrayListUtil;
-use org::allbinary::logic::StdUtil;
-use org::allbinary::util::ABHashtable;
-use org::allbinary::logic::system::security::licensing::AbeClientInformationInterface;
-use org::allbinary::logic::system::security::licensing::AbeClientInformationData;
+use java::lang::Object ();
+use org::allbinary::TsUtil ();
+use org::allbinary::logic::string::StringMaker ();
+use org::allbinary::logic::string::StringUtil ();
+use org::allbinary::logic::system::hardware::HardwareInterface ();
+use org::allbinary::logic::system::hardware::SystemHardwareFactory ();
+use org::allbinary::logic::system::os::GenericOperatingSystem ();
+use org::allbinary::logic::system::os::NoOperatingSystem ();
+use org::allbinary::string::CommonSeps ();
+use org::allbinary::util::BasicArrayList ();
+use org::allbinary::util::BasicArrayListUtil ();
+use org::allbinary::logic::StdUtil ();
+use org::allbinary::util::ABHashtable ();
+use org::allbinary::logic::system::security::licensing::AbeClientInformationInterface ();
+use org::allbinary::logic::system::security::licensing::AbeClientInformationData ();
 
 1;
 

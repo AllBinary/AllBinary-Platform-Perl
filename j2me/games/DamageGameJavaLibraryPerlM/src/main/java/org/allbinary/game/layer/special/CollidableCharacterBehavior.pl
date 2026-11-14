@@ -49,13 +49,14 @@ sub collideInterface {
         'org::allbinary::logic::communication::log::ForcedLogUtil'->log($self->{commonStrings}->{NOT_IMPLEMENTED}, $self);
 }
 
-use org::allbinary::game::collision::CollidableInterfaceCompositeInterface;
-use org::allbinary::game::collision::CollisionType;
-use org::allbinary::game::collision::CollisionTypeFactory;
-use org::allbinary::game::layer::CollidableCompositeLayer;
-use org::allbinary::game::layer::pickup::PickedUpLayerInterface;
-use org::allbinary::logic::communication::log::ForcedLogUtil;
-use org::allbinary::game::layer::special::CollidableDestroyableDamageableBehavior;
+use java::lang::Object ();
+use org::allbinary::game::collision::CollidableInterfaceCompositeInterface ();
+use org::allbinary::game::collision::CollisionType ();
+use org::allbinary::game::collision::CollisionTypeFactory ();
+use org::allbinary::game::layer::CollidableCompositeLayer ();
+use org::allbinary::game::layer::pickup::PickedUpLayerInterface ();
+use org::allbinary::logic::communication::log::ForcedLogUtil ();
+use org::allbinary::game::layer::special::CollidableDestroyableDamageableBehavior ();
 
 1;
 

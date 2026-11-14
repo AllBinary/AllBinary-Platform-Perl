@@ -17,8 +17,9 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
-our $SINGLETON = 'org::allbinary::logic::NullUtil'->getInstance()->{NULL_OBJECT};
+tie our $SINGLETON, 'java::lang::LazyStatic', sub { 'org::allbinary::logic::NullUtil'->getInstance()->{NULL_OBJECT} };
 
 sub _init_fields {
     my ($self) = @_;
@@ -54,7 +55,7 @@ sub getInstance {
 sub new {
     my ($class) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
         my $smallIntegerSingletonFactory = 'org::allbinary::logic::math::SmallIntegerSingletonFactory'->getInstance();
         $self->{SCALE} = 'org::allbinary::game::configuration::GameConfiguration'->new("Scale", $smallIntegerSingletonFactory->getAt(2), $smallIntegerSingletonFactory->getAt(2), $smallIntegerSingletonFactory->getAt(3));
         $self->{ORIENTATION} = 'org::allbinary::game::configuration::GameConfiguration'->new("Orientation", $smallIntegerSingletonFactory->getAt(0), $smallIntegerSingletonFactory->getAt(0), $smallIntegerSingletonFactory->getAt(8));
@@ -169,18 +170,20 @@ sub toString {
         return $stringBuffer->toString();
 }
 
-use org::allbinary::game::configuration::persistance::GameConfigurationPersistanceSingleton;
-use org::allbinary::game::configuration::persistance::KeyValuePersistance;
-use org::allbinary::logic::NullUtil;
-use org::allbinary::logic::communication::log::LogUtil;
-use org::allbinary::logic::math::SmallIntegerSingletonFactory;
-use org::allbinary::logic::string::StringMaker;
-use org::allbinary::logic::system::security::licensing::AbeClientInformationInterface;
-use org::allbinary::string::CommonSeps;
-use org::allbinary::string::CommonStrings;
-use org::allbinary::util::ABHashtable;
-use org::allbinary::util::BasicArrayList;
-use org::allbinary::game::configuration::GameConfiguration;
+use java::lang::Object ();
+use java::lang::LazyStatic ();
+use org::allbinary::game::configuration::persistance::GameConfigurationPersistanceSingleton ();
+use org::allbinary::game::configuration::persistance::KeyValuePersistance ();
+use org::allbinary::logic::NullUtil ();
+use org::allbinary::logic::communication::log::LogUtil ();
+use org::allbinary::logic::math::SmallIntegerSingletonFactory ();
+use org::allbinary::logic::string::StringMaker ();
+use org::allbinary::logic::system::security::licensing::AbeClientInformationInterface ();
+use org::allbinary::string::CommonSeps ();
+use org::allbinary::string::CommonStrings ();
+use org::allbinary::util::ABHashtable ();
+use org::allbinary::util::BasicArrayList ();
+use org::allbinary::game::configuration::GameConfiguration ();
 
 1;
 

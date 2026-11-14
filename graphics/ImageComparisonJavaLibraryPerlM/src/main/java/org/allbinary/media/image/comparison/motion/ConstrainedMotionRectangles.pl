@@ -31,7 +31,7 @@ sub _init_fields {
 sub new {
     my ($class, $motionRectangleConstraintsInterface, $motionRectangles) = @_;
     my $self = $class->SUPER::new($NAME, $motionRectangles->getImageComparisonResult());
-    $self->_init_fields();
+    _init_fields($self);
         # super(...) made $self above
         $self->setMotionRectangleConstraintsInterface($motionRectangleConstraintsInterface);
     return $self;
@@ -85,13 +85,14 @@ sub setMotionRectangleConstraintsInterface {
         $self->{motionRectangleConstraintsInterface} = $motionRectangleConstraintsInterface;
 }
 
-# use java::awt::Rectangle;
-# use java::awt::image::BufferedImage;
-use org::allbinary::util::BasicArrayList;
-use org::allbinary::util::BasicArrayListD;
-use org::allbinary::logic::StdUtil;
-use org::allbinary::logic::communication::log::LogUtil;
-use org::allbinary::media::image::comparison::motion::MotionRectangles;
+use java::lang::Object ();
+# use java::awt::Rectangle ();
+# use java::awt::image::BufferedImage ();
+use org::allbinary::util::BasicArrayList ();
+use org::allbinary::util::BasicArrayListD ();
+use org::allbinary::logic::StdUtil ();
+use org::allbinary::logic::communication::log::LogUtil ();
+use org::allbinary::media::image::comparison::motion::MotionRectangles ();
 
 1;
 

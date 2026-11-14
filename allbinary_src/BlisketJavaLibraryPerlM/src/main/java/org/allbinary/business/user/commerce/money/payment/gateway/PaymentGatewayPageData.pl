@@ -17,12 +17,13 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
 our $EXTENSION = ".jsp";
-our $NAME = 'org::allbinary::logic::string::StringUtil'->getInstance()->{EMPTY_STRING};
+tie our $NAME, 'java::lang::LazyStatic', sub { 'org::allbinary::logic::string::StringUtil'->getInstance()->{EMPTY_STRING} };
 our $FORWARDMAKEPAYMENT = "MakePayment.jsp";
-our $PAYMENTOPTIONS = "PaymentOptions" . $org::allbinary::business::user::commerce::money::payment::gateway::PaymentGatewayPageData::EXTENSION;
-our $STARTCHECKOUT = "StartCheckout" . $org::allbinary::business::user::commerce::money::payment::gateway::PaymentGatewayPageData::EXTENSION;
+tie our $PAYMENTOPTIONS, 'java::lang::LazyStatic', sub { "PaymentOptions" . $org::allbinary::business::user::commerce::money::payment::gateway::PaymentGatewayPageData::EXTENSION };
+tie our $STARTCHECKOUT, 'java::lang::LazyStatic', sub { "StartCheckout" . $org::allbinary::business::user::commerce::money::payment::gateway::PaymentGatewayPageData::EXTENSION };
 
 sub _init_fields {
     my ($self) = @_;
@@ -41,7 +42,7 @@ sub _init_fields {
 sub new {
     my ($class, $location, $paymentMethod) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
         my $paymentMethodString = $org::allbinary::business::user::commerce::money::payment::gateway::PaymentGatewayPageData::NAME . $paymentMethod;
         my $stringBuffer = 'org::allbinary::logic::string::StringMaker'->new();
         $stringBuffer->append($location);
@@ -91,8 +92,10 @@ sub new {
     return $self;
 }
 
-use org::allbinary::logic::string::StringMaker;
-use org::allbinary::logic::string::StringUtil;
+use java::lang::Object ();
+use java::lang::LazyStatic ();
+use org::allbinary::logic::string::StringMaker ();
+use org::allbinary::logic::string::StringUtil ();
 
 1;
 

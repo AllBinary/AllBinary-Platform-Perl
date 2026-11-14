@@ -17,6 +17,7 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
 
 sub new {
@@ -30,8 +31,9 @@ sub run {
     my ($self) = @_;
 }
 
-# use jsinterop::annotations::JsType;
-# use jsinterop::annotations::JsMethod;
+use java::lang::Object ();
+# use jsinterop::annotations::JsType ();
+# use jsinterop::annotations::JsMethod ();
 
 1;
 

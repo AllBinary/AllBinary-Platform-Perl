@@ -36,8 +36,9 @@ sub init {
         $self->setServiceFactory($inputAutomationGenericModuleServiceFactory);
 }
 
-use org::allbinary::input::automation::module::generic::InputAutomationGenericModuleServiceFactory;
-use org::allbinary::input::automation::module::osgi::InputAutomationModuleBundleActivator;
+use java::lang::Object ();
+use org::allbinary::input::automation::module::generic::InputAutomationGenericModuleServiceFactory ();
+use org::allbinary::input::automation::module::osgi::InputAutomationModuleBundleActivator ();
 
 1;
 

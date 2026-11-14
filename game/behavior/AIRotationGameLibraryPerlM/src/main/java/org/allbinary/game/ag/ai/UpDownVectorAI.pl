@@ -30,7 +30,7 @@ sub _init_fields {
 sub new {
     my ($class, $ownerLayerInterface, $gameInput) = @_;
     my $self = $class->SUPER::new($ownerLayerInterface, $gameInput);
-    $self->_init_fields();
+    _init_fields($self);
         # super(...) made $self above
         my $velocityInterfaceCompositeInterface = $self->getOwnerLayerInterface();
         $self->{velocityInterface} = $velocityInterfaceCompositeInterface->getVelocityProperties();
@@ -59,13 +59,14 @@ sub processAI {
         }
 }
 
-use org::allbinary::game::ai::BasicAI;
-use org::allbinary::game::input::GameInput;
-use org::allbinary::game::physics::velocity::BasicVelocityProperties;
-use org::allbinary::game::physics::velocity::VelocityInterfaceCompositeInterface;
-use org::allbinary::layer::AllBinaryLayer;
-use org::allbinary::layer::AllBinaryLayerManager;
-use org::allbinary::logic::math::BasicDecimal;
+use java::lang::Object ();
+use org::allbinary::game::ai::BasicAI ();
+use org::allbinary::game::input::GameInput ();
+use org::allbinary::game::physics::velocity::BasicVelocityProperties ();
+use org::allbinary::game::physics::velocity::VelocityInterfaceCompositeInterface ();
+use org::allbinary::layer::AllBinaryLayer ();
+use org::allbinary::layer::AllBinaryLayerManager ();
+use org::allbinary::logic::math::BasicDecimal ();
 
 1;
 

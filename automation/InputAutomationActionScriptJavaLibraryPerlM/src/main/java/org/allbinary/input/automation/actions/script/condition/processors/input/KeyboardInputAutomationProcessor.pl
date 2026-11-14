@@ -18,6 +18,7 @@ use warnings;
 use feature 'try';
 no warnings 'experimental::try';
 use Time::HiRes ();
+use parent -norequire,'java::lang::Object';
 
 
 
@@ -67,12 +68,13 @@ sub process {
         }
 }
 
-use org::allbinary::input::automation::robot::InputRobotInterface;
-use org::allbinary::logic::communication::log::LogUtil;
-use org::allbinary::string::CommonLabels;
-use org::allbinary::string::CommonStrings;
-use org::allbinary::time::TimeDelayHelper;
-use java::lang::Thread;
+use java::lang::Object ();
+use org::allbinary::input::automation::robot::InputRobotInterface ();
+use org::allbinary::logic::communication::log::LogUtil ();
+use org::allbinary::string::CommonLabels ();
+use org::allbinary::string::CommonStrings ();
+use org::allbinary::time::TimeDelayHelper ();
+use java::lang::Thread ();
 
 1;
 

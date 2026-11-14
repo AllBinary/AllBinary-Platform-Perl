@@ -18,6 +18,7 @@ use warnings;
 use feature 'try';
 no warnings 'experimental::try';
 use Time::HiRes ();
+use parent -norequire,'java::lang::Object';
 
 
 
@@ -47,11 +48,12 @@ sub process {
         Time::HiRes::sleep(($mouseActionScriptInputInterface->getTime()) / 1000);
 }
 
-use org::allbinary::input::automation::robot::InputRobotInterface;
-use org::allbinary::logic::communication::log::LogUtil;
-use org::allbinary::logic::string::StringMaker;
-use org::allbinary::string::CommonStrings;
-use java::lang::Thread;
+use java::lang::Object ();
+use org::allbinary::input::automation::robot::InputRobotInterface ();
+use org::allbinary::logic::communication::log::LogUtil ();
+use org::allbinary::logic::string::StringMaker ();
+use org::allbinary::string::CommonStrings ();
+use java::lang::Thread ();
 
 1;
 

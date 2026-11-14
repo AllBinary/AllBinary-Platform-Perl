@@ -39,7 +39,7 @@ sub new {
 sub _new0 {
     my ($class) = @_;
     my $self = $class->SUPER::new();
-    $self->_init_fields();
+    _init_fields($self);
         if ($org::allbinary::logic::visual::transform::template::customizer::bodies::title::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($org::allbinary::logic::visual::transform::template::customizer::bodies::title::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{VIEW})) {
             $self->{logUtil}->putF($self->{commonStrings}->{START}, $self, $self->{commonStrings}->{CONSTRUCTOR});
         }
@@ -53,7 +53,7 @@ sub _new0 {
 sub _new1 {
     my ($class, $document) = @_;
     my $self = $class->SUPER::new();
-    $self->_init_fields();
+    _init_fields($self);
         if ($org::allbinary::logic::visual::transform::template::customizer::bodies::title::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($org::allbinary::logic::visual::transform::template::customizer::bodies::title::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{VIEW})) {
             $self->{logUtil}->putF($self->{commonStrings}->{CONSTRUCTOR}, $self, "Constructor(document)");
         }
@@ -77,7 +77,7 @@ sub _new1 {
 sub _new1 {
     my ($class, $hashMap) = @_;
     my $self = $class->SUPER::new();
-    $self->_init_fields();
+    _init_fields($self);
         if ($org::allbinary::logic::visual::transform::template::customizer::bodies::title::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($org::allbinary::logic::visual::transform::template::customizer::bodies::title::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{VIEW})) {
             $self->{logUtil}->putF($self->{commonStrings}->{START}, $self, "Constructor(hashmap)");
         }
@@ -124,7 +124,7 @@ sub validationInfo {
     my ($self) = @_;
         try {
             my $stringBuffer = 'org::allbinary::logic::string::StringMaker'->new();
-            {
+            {;
                 $stringBuffer->append("Error: Data submitted is < ");
                 $stringBuffer->appendint(int('org::allbinary::logic::visual::transform::template::customizer::bodies::BodyData'->getInstance()->{MIN}));
                 $stringBuffer->append(" or > ");
@@ -163,24 +163,25 @@ sub toXmlNode {
         return $node;
 }
 
-use java::util::HashMap;
-use org::allbinary::data::tree::dom::DomData;
-use org::allbinary::data::tree::dom::DomNodeHelper;
-use org::allbinary::data::tree::dom::DomNodeInterface;
-use org::allbinary::data::tree::dom::DomSearchHelper;
-use org::allbinary::data::tree::dom::ModDomHelper;
-use org::allbinary::logic::communication::log::LogUtil;
-use org::allbinary::logic::communication::sql::AbSqlData;
-use org::allbinary::logic::control::validate::Validation;
-use org::allbinary::logic::string::StringMaker;
-use org::allbinary::logic::string::StringUtil;
-use org::allbinary::logic::string::StringValidationUtil;
-use org::allbinary::logic::visual::transform::template::customizer::bodies::BodyData;
-use org::allbinary::logic::visual::transform::template::customizer::widgets::title::TitleData;
-use org::allbinary::logic::visual::transform::template::customizer::widgets::title::TitleNotRequiredValidation;
-use org::w3c::dom::Document;
-use org::w3c::dom::Node;
-use org::w3c::dom::NodeList;
+use java::lang::Object ();
+use java::util::HashMap ();
+use org::allbinary::data::tree::dom::DomData ();
+use org::allbinary::data::tree::dom::DomNodeHelper ();
+use org::allbinary::data::tree::dom::DomNodeInterface ();
+use org::allbinary::data::tree::dom::DomSearchHelper ();
+use org::allbinary::data::tree::dom::ModDomHelper ();
+use org::allbinary::logic::communication::log::LogUtil ();
+use org::allbinary::logic::communication::sql::AbSqlData ();
+use org::allbinary::logic::control::validate::Validation ();
+use org::allbinary::logic::string::StringMaker ();
+use org::allbinary::logic::string::StringUtil ();
+use org::allbinary::logic::string::StringValidationUtil ();
+use org::allbinary::logic::visual::transform::template::customizer::bodies::BodyData ();
+use org::allbinary::logic::visual::transform::template::customizer::widgets::title::TitleData ();
+use org::allbinary::logic::visual::transform::template::customizer::widgets::title::TitleNotRequiredValidation ();
+use org::w3c::dom::Document ();
+use org::w3c::dom::Node ();
+use org::w3c::dom::NodeList ();
 
 1;
 

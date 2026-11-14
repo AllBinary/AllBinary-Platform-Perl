@@ -39,7 +39,7 @@ sub new {
 sub _new3 {
     my ($class, $transformInfoInterface, $categoryPropertiesFactoryInterface, $level) = @_;
     my $self = $class->SUPER::new($categoryPropertiesFactoryInterface, $level);
-    $self->_init_fields();
+    _init_fields($self);
         # super(...) made $self above
         $self->{transformInfoInterface} = $transformInfoInterface;
         $self->{themeVector} = 'org::allbinary::util::BasicArrayListD'->new();
@@ -50,7 +50,7 @@ sub _new3 {
 sub _new4 {
     my ($class, $transformInfoInterface, $rootCategoryInterface, $parentCategoryInterface, $categoryPropertiesFactoryInterface) = @_;
     my $self = $class->SUPER::new($rootCategoryInterface, $parentCategoryInterface, $categoryPropertiesFactoryInterface);
-    $self->_init_fields();
+    _init_fields($self);
         # super(...) made $self above
         $self->{transformInfoInterface} = $transformInfoInterface;
         $self->{themeVector} = 'org::allbinary::util::BasicArrayListD'->new();
@@ -61,7 +61,7 @@ sub _new4 {
 sub _new4 {
     my ($class, $transformInfoInterface, $node, $categoryPropertiesFactoryInterface, $level) = @_;
     my $self = $class->SUPER::new($categoryPropertiesFactoryInterface, $level);
-    $self->_init_fields();
+    _init_fields($self);
         # super(...) made $self above
         $self->{transformInfoInterface} = $transformInfoInterface;
         $self->{themeVector} = 'org::allbinary::util::BasicArrayListD'->new();
@@ -73,7 +73,7 @@ sub _new4 {
 sub _new5 {
     my ($class, $transformInfoInterface, $node, $rootCategoryInterface, $parentCategoryInterface, $categoryPropertiesFactoryInterface) = @_;
     my $self = $class->SUPER::new($rootCategoryInterface, $parentCategoryInterface, $categoryPropertiesFactoryInterface);
-    $self->_init_fields();
+    _init_fields($self);
         # super(...) made $self above
         $self->{transformInfoInterface} = $transformInfoInterface;
         $self->{themeVector} = 'org::allbinary::util::BasicArrayListD'->new();
@@ -140,21 +140,22 @@ sub toVector {
         return $categoryVector;
 }
 
-use java::util::HashMap;
-use org::allbinary::util::BasicArrayList;
-use org::allbinary::util::BasicArrayListD;
-use org::allbinary::business::category::Category;
-use org::allbinary::business::category::CategoryInterface;
-use org::allbinary::business::category::properties::CategoryPropertiesFactoryInterface;
-use org::allbinary::data::tree::dom::DomSearchHelper;
-use org::allbinary::logic::StdUtil;
-use org::allbinary::logic::visual::theme::ThemeData;
-use org::allbinary::logic::visual::theme::ThemeValidation;
-use org::allbinary::logic::visual::theme::ThemesData;
-use org::allbinary::logic::visual::transform::info::TransformInfoInterface;
-use org::w3c::dom::Node;
-use org::w3c::dom::NodeList;
-use org::allbinary::business::category::store::theme::StoreThemeCategoryInterface;
+use java::lang::Object ();
+use java::util::HashMap ();
+use org::allbinary::util::BasicArrayList ();
+use org::allbinary::util::BasicArrayListD ();
+use org::allbinary::business::category::Category ();
+use org::allbinary::business::category::CategoryInterface ();
+use org::allbinary::business::category::properties::CategoryPropertiesFactoryInterface ();
+use org::allbinary::data::tree::dom::DomSearchHelper ();
+use org::allbinary::logic::StdUtil ();
+use org::allbinary::logic::visual::theme::ThemeData ();
+use org::allbinary::logic::visual::theme::ThemeValidation ();
+use org::allbinary::logic::visual::theme::ThemesData ();
+use org::allbinary::logic::visual::transform::info::TransformInfoInterface ();
+use org::w3c::dom::Node ();
+use org::w3c::dom::NodeList ();
+use org::allbinary::business::category::store::theme::StoreThemeCategoryInterface ();
 
 1;
 

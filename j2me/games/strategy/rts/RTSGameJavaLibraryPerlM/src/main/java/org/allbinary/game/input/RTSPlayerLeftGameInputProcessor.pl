@@ -35,9 +35,10 @@ sub processEvent {
         $self->{rtsPlayerGameInput}->left();
 }
 
-use org::allbinary::game::input::event::GameKeyEvent;
-use org::allbinary::layer::AllBinaryLayerManager;
-use org::allbinary::game::input::RTSPlayerGameInputProcessor;
+use java::lang::Object ();
+use org::allbinary::game::input::event::GameKeyEvent ();
+use org::allbinary::layer::AllBinaryLayerManager ();
+use org::allbinary::game::input::RTSPlayerGameInputProcessor ();
 
 1;
 

@@ -39,7 +39,7 @@ sub new {
 sub _new0 {
     my ($class) = @_;
     my $self = $class->SUPER::new();
-    $self->_init_fields();
+    _init_fields($self);
         $self->{title} = 'org::allbinary::logic::visual::transform::template::customizer::widgets::title::TitleValidation'->new();
         $self->{logo} = 'org::allbinary::logic::visual::transform::template::customizer::widgets::logo::LogoValidation'->new();
     return $self;
@@ -49,7 +49,7 @@ sub _new0 {
 sub _new1 {
     my ($class, $document) = @_;
     my $self = $class->SUPER::new();
-    $self->_init_fields();
+    _init_fields($self);
         my $headingNodeList = $document->getElementsByTagName($org::allbinary::logic::visual::transform::template::customizer::hedges::heading::HeadingData::NAME);
         my $titleNode = 'org::allbinary::data::tree::dom::DomSearchHelper'->getNode('org::allbinary::logic::visual::transform::template::customizer::widgets::title::TitleData'->getInstance()->{NAME}, $headingNodeList->item(0)->getChildNodes());
         my $logoNode = 'org::allbinary::data::tree::dom::DomSearchHelper'->getNode('org::allbinary::logic::visual::transform::template::customizer::widgets::logo::LogoData'->getInstance()->{NAME}, $headingNodeList->item(0)->getChildNodes());
@@ -62,7 +62,7 @@ sub _new1 {
 sub _new1 {
     my ($class, $hashMap) = @_;
     my $self = $class->SUPER::new();
-    $self->_init_fields();
+    _init_fields($self);
         $self->getFormData($hashMap);
     return $self;
 }
@@ -159,20 +159,21 @@ sub toXmlNode {
         return $node;
 }
 
-use java::util::HashMap;
-use org::allbinary::data::tree::dom::DomNodeInterface;
-use org::allbinary::data::tree::dom::DomSearchHelper;
-use org::allbinary::logic::communication::log::LogUtil;
-use org::allbinary::logic::control::validate::Validation;
-use org::allbinary::logic::string::StringMaker;
-use org::allbinary::logic::visual::transform::template::customizer::widgets::logo::LogoData;
-use org::allbinary::logic::visual::transform::template::customizer::widgets::logo::LogoValidation;
-use org::allbinary::logic::visual::transform::template::customizer::widgets::title::TitleData;
-use org::allbinary::logic::visual::transform::template::customizer::widgets::title::TitleValidation;
-use org::w3c::dom::Document;
-use org::w3c::dom::Node;
-use org::w3c::dom::NodeList;
-use org::allbinary::logic::visual::transform::template::customizer::hedges::heading::HeadingData;
+use java::lang::Object ();
+use java::util::HashMap ();
+use org::allbinary::data::tree::dom::DomNodeInterface ();
+use org::allbinary::data::tree::dom::DomSearchHelper ();
+use org::allbinary::logic::communication::log::LogUtil ();
+use org::allbinary::logic::control::validate::Validation ();
+use org::allbinary::logic::string::StringMaker ();
+use org::allbinary::logic::visual::transform::template::customizer::widgets::logo::LogoData ();
+use org::allbinary::logic::visual::transform::template::customizer::widgets::logo::LogoValidation ();
+use org::allbinary::logic::visual::transform::template::customizer::widgets::title::TitleData ();
+use org::allbinary::logic::visual::transform::template::customizer::widgets::title::TitleValidation ();
+use org::w3c::dom::Document ();
+use org::w3c::dom::Node ();
+use org::w3c::dom::NodeList ();
+use org::allbinary::logic::visual::transform::template::customizer::hedges::heading::HeadingData ();
 
 1;
 

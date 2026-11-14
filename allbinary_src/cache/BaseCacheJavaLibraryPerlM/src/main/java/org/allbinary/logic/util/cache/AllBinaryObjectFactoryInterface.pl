@@ -26,8 +26,8 @@ sub getInstance {
     die "abstract method getInstance";
 }
 
-# use jsinterop::annotations::JsType;
-# use jsinterop::annotations::JsMethod;
+# use jsinterop::annotations::JsType ();
+# use jsinterop::annotations::JsMethod ();
 
 1;
 

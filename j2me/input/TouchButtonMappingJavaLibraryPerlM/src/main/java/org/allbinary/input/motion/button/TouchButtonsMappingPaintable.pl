@@ -32,7 +32,7 @@ sub _init_fields {
 sub new {
     my ($class, $basicColor) = @_;
     my $self = $class->SUPER::new();
-    $self->_init_fields();
+    _init_fields($self);
         $self->{foregroundColor} = int($basicColor);
         $self->init();
     return $self;
@@ -78,17 +78,18 @@ sub paint {
         }
 }
 
-# use javax::microedition::lcdui::Graphics;
-use org::allbinary::graphics::CellPositionFactory;
-use org::allbinary::graphics::color::BasicColor;
-use org::allbinary::graphics::paint::Paintable;
-use org::allbinary::logic::communication::log::LogUtil;
-use org::allbinary::string::CommonStrings;
-use org::allbinary::input::motion::button::TouchButtonLocationHelper;
-use org::allbinary::input::motion::button::CommonButtons;
-use org::allbinary::input::motion::button::TouchButton;
-use org::allbinary::input::motion::button::BasicTouchInputFactory;
-use org::allbinary::input::motion::button::TouchButtonBlankResource;
+use java::lang::Object ();
+use javax::microedition::lcdui::Graphics ();
+use org::allbinary::graphics::CellPositionFactory ();
+use org::allbinary::graphics::color::BasicColor ();
+use org::allbinary::graphics::paint::Paintable ();
+use org::allbinary::logic::communication::log::LogUtil ();
+use org::allbinary::string::CommonStrings ();
+use org::allbinary::input::motion::button::TouchButtonLocationHelper ();
+use org::allbinary::input::motion::button::CommonButtons ();
+use org::allbinary::input::motion::button::TouchButton ();
+use org::allbinary::input::motion::button::BasicTouchInputFactory ();
+use org::allbinary::input::motion::button::TouchButtonBlankResource ();
 
 1;
 

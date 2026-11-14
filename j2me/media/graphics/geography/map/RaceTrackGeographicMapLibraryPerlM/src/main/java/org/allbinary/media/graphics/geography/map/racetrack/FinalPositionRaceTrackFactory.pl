@@ -17,9 +17,10 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
 our $FIRST_POSITION = 1;
-our $index = $org::allbinary::media::graphics::geography::map::racetrack::FinalPositionRaceTrackFactory::FIRST_POSITION;
+tie our $index, 'java::lang::LazyStatic', sub { $org::allbinary::media::graphics::geography::map::racetrack::FinalPositionRaceTrackFactory::FIRST_POSITION };
 
 
 sub new {
@@ -40,6 +41,8 @@ sub reset {
         $org::allbinary::media::graphics::geography::map::racetrack::FinalPositionRaceTrackFactory::index = $org::allbinary::media::graphics::geography::map::racetrack::FinalPositionRaceTrackFactory::FIRST_POSITION;
 }
 
+use java::lang::Object ();
+use java::lang::LazyStatic ();
 
 1;
 

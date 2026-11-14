@@ -17,7 +17,7 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
-use parent -norequire,'org::allbinary::data::tree::dom::DomNodeInterface';
+use parent -norequire,'java::lang::Object','org::allbinary::data::tree::dom::DomNodeInterface';
 
 
 sub _init_fields {
@@ -36,7 +36,7 @@ sub new {
 sub _new1 {
     my ($class, $node) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
         $self->setFtpConfigurationInterface('org::allbinary::logic::communication::ftp::configuration::FtpConfiguration'->new());
         my $chileNodeList = $node->getChildNodes();
         my $server = 'org::allbinary::data::tree::dom::DomNodeHelper'->getTextNodeValue($org::allbinary::logic::communication::ftp::configuration::FtpConfigurationData::SERVER, $chileNodeList);
@@ -54,7 +54,7 @@ sub _new1 {
 sub _new1 {
     my ($class, $ftpConfigurationInterface) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
         $self->setFtpConfigurationInterface($ftpConfigurationInterface);
     return $self;
 }
@@ -81,16 +81,17 @@ sub setFtpConfigurationInterface {
         $self->{ftpConfigurationInterface} = $ftpConfigurationInterface;
 }
 
-use java::util::HashMap;
-use org::allbinary::data::tree::dom::DomNodeHelper;
-use org::allbinary::data::tree::dom::DomNodeInterface;
-use org::allbinary::data::tree::dom::ModDomHelper;
-use org::w3c::dom::Document;
-use org::w3c::dom::Node;
-use org::w3c::dom::NodeList;
-use org::allbinary::logic::communication::ftp::configuration::FtpConfiguration;
-use org::allbinary::logic::communication::ftp::configuration::FtpConfigurationData;
-use org::allbinary::logic::communication::ftp::configuration::FtpConfigurationMapping;
+use java::lang::Object ();
+use java::util::HashMap ();
+use org::allbinary::data::tree::dom::DomNodeHelper ();
+use org::allbinary::data::tree::dom::DomNodeInterface ();
+use org::allbinary::data::tree::dom::ModDomHelper ();
+use org::w3c::dom::Document ();
+use org::w3c::dom::Node ();
+use org::w3c::dom::NodeList ();
+use org::allbinary::logic::communication::ftp::configuration::FtpConfiguration ();
+use org::allbinary::logic::communication::ftp::configuration::FtpConfigurationData ();
+use org::allbinary::logic::communication::ftp::configuration::FtpConfigurationMapping ();
 
 1;
 

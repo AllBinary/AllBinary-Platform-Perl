@@ -17,6 +17,7 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
 
 sub new {
@@ -36,9 +37,10 @@ sub getInstance {
         }
 }
 
-use org::allbinary::android::AndroidInfoFactory;
-use org::allbinary::android::input::motion::api1::GameInputMotionEventProcessorAPI1;
-use org::allbinary::android::input::motion::api5::GameInputMotionEventProcessorAPI5;
+use java::lang::Object ();
+use org::allbinary::android::AndroidInfoFactory ();
+use org::allbinary::android::input::motion::api1::GameInputMotionEventProcessorAPI1 ();
+use org::allbinary::android::input::motion::api5::GameInputMotionEventProcessorAPI5 ();
 
 1;
 

@@ -38,7 +38,7 @@ sub _init_fields {
 sub new {
     my ($class, $powerOfTenVelocity, $location, $direction, $basicColor) = @_;
     my $self = $class->SUPER::new($location, $direction, 2, $basicColor);
-    $self->_init_fields();
+    _init_fields($self);
         # super(...) made $self above
         $self->{powerOfTenVelocity} = $powerOfTenVelocity;
         $self->{maxVelocity} = $powerOfTenVelocity;
@@ -101,15 +101,16 @@ sub paint {
         $self->SUPER::paintDXY($graphics, $self->{string}, 0, $self->{totalDigits}, $self->{KILOMETERS_PER_HOUR_STR}, 0, $self->{totalChars}, $self->{offset2}, $self->{offset});
 }
 
-# use javax::microedition::lcdui::Font;
-# use javax::microedition::lcdui::Graphics;
-use org::allbinary::graphics::opengles::OpenGLFeatureUtil;
-use org::allbinary::game::graphics::hud::BasicHud;
-use org::allbinary::graphics::color::BasicColor;
-use org::allbinary::graphics::font::MyFontProcessor;
-use org::allbinary::logic::math::MathUtil;
-use org::allbinary::logic::math::PrimitiveLongSingleton;
-use org::allbinary::logic::math::PrimitiveLongUtil;
+use java::lang::Object ();
+use javax::microedition::lcdui::Font ();
+use javax::microedition::lcdui::Graphics ();
+use org::allbinary::graphics::opengles::OpenGLFeatureUtil ();
+use org::allbinary::game::graphics::hud::BasicHud ();
+use org::allbinary::graphics::color::BasicColor ();
+use org::allbinary::graphics::font::MyFontProcessor ();
+use org::allbinary::logic::math::MathUtil ();
+use org::allbinary::logic::math::PrimitiveLongSingleton ();
+use org::allbinary::logic::math::PrimitiveLongUtil ();
 
 1;
 

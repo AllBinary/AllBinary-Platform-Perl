@@ -50,7 +50,7 @@ sub _new2 {
 sub _new2 {
     my ($class, $hashMap, $httpServletRequest) = @_;
     my $self = $class->SUPER::new();
-    $self->_init_fields();
+    _init_fields($self);
         $self->{weblisketSession} = 'org::allbinary::logic::communication::http::request::session::WeblisketSession'->new($hashMap, $httpServletRequest);
         $self->getFormData();
         if ($admin::taghelpers::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($admin::taghelpers::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{AUTHENTICATION})) {
@@ -275,7 +275,7 @@ sub processInvalidation {
                 $self->invalidateSession();
                 return 1;
             }
-            {
+            {;
                 $self->{weblisketSession}->setTimeout('org::allbinary::logic::java::bool::BooleanFactory'->getInstance()->{TRUE_STRING});
                 return 0;
             }
@@ -328,27 +328,28 @@ sub getRole {
         return $self->{role};
 }
 
-use java::util::Calendar;
-use java::util::HashMap;
-use org::allbinary::util::BasicArrayList;
-use org::allbinary::util::BasicArrayListD;
-# use javax::servlet::http::HttpServletRequest;
-# use javax::servlet::jsp::PageContext;
-# use javax::servlet::jsp::tagext::TagSupport;
-use org::allbinary::business::user::UserInterface;
-use org::allbinary::business::user::role::BasicUserRole;
-use org::allbinary::business::user::role::UserRole;
-use org::allbinary::business::user::role::UserRoleFactory;
-use org::allbinary::data::tables::user::UserEntityFactory;
-use org::allbinary::data::tables::user::UserEntityInterface;
-use org::allbinary::globals::GLOBALS2;
-use org::allbinary::logic::communication::http::request::session::WeblisketSession;
-use org::allbinary::logic::communication::log::LogUtil;
-use org::allbinary::logic::java::bool::BooleanFactory;
-use org::allbinary::logic::java::bool::BooleanUtil;
-use org::allbinary::logic::string::StringMaker;
-use org::allbinary::logic::string::StringUtil;
-use admin::taghelpers::TagHelper;
+use java::lang::Object ();
+use java::util::Calendar ();
+use java::util::HashMap ();
+use org::allbinary::util::BasicArrayList ();
+use org::allbinary::util::BasicArrayListD ();
+# use javax::servlet::http::HttpServletRequest ();
+# use javax::servlet::jsp::PageContext ();
+# use javax::servlet::jsp::tagext::TagSupport ();
+use org::allbinary::business::user::UserInterface ();
+use org::allbinary::business::user::role::BasicUserRole ();
+use org::allbinary::business::user::role::UserRole ();
+use org::allbinary::business::user::role::UserRoleFactory ();
+use org::allbinary::data::tables::user::UserEntityFactory ();
+use org::allbinary::data::tables::user::UserEntityInterface ();
+use org::allbinary::globals::GLOBALS2 ();
+use org::allbinary::logic::communication::http::request::session::WeblisketSession ();
+use org::allbinary::logic::communication::log::LogUtil ();
+use org::allbinary::logic::java::bool::BooleanFactory ();
+use org::allbinary::logic::java::bool::BooleanUtil ();
+use org::allbinary::logic::string::StringMaker ();
+use org::allbinary::logic::string::StringUtil ();
+use admin::taghelpers::TagHelper ();
 
 1;
 

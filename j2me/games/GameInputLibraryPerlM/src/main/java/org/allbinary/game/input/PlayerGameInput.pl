@@ -30,7 +30,7 @@ sub _init_fields {
 sub new {
     my ($class, $gameKeyEventList, $removalGameKeyEventList, $playerInputId) = @_;
     my $self = $class->SUPER::new($gameKeyEventList, $removalGameKeyEventList);
-    $self->_init_fields();
+    _init_fields($self);
         # super(...) made $self above
         $self->{playerInputId} = $playerInputId;
     return $self;
@@ -85,17 +85,18 @@ sub getPlayerInputId {
         return $self->{playerInputId};
 }
 
-use org::allbinary::game::input::event::GameKeyEvent;
-use org::allbinary::game::input::event::GameKeyEventListenerInterface;
-use org::allbinary::logic::communication::log::ForcedLogUtil;
-use org::allbinary::logic::communication::log::PreLogUtil;
-use org::allbinary::logic::string::StringMaker;
-use org::allbinary::logic::util::event::AllBinaryEventObject;
-use org::allbinary::logic::util::event::EventStrings;
-use org::allbinary::string::CommonLabels;
-use org::allbinary::util::BasicArrayList;
-use org::allbinary::game::input::GameInput;
-use org::allbinary::game::input::GameInputStrings;
+use java::lang::Object ();
+use org::allbinary::game::input::event::GameKeyEvent ();
+use org::allbinary::game::input::event::GameKeyEventListenerInterface ();
+use org::allbinary::logic::communication::log::ForcedLogUtil ();
+use org::allbinary::logic::communication::log::PreLogUtil ();
+use org::allbinary::logic::string::StringMaker ();
+use org::allbinary::logic::util::event::AllBinaryEventObject ();
+use org::allbinary::logic::util::event::EventStrings ();
+use org::allbinary::string::CommonLabels ();
+use org::allbinary::util::BasicArrayList ();
+use org::allbinary::game::input::GameInput ();
+use org::allbinary::game::input::GameInputStrings ();
 
 1;
 

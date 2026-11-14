@@ -17,6 +17,7 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
 
 
@@ -44,8 +45,9 @@ sub getKeyName {
         return "UNKNOWN KEY";
 }
 
-# use javax::microedition::lcdui::Canvas;
-use org::allbinary::string::CommonPhoneStrings;
+use java::lang::Object ();
+use javax::microedition::lcdui::Canvas ();
+use org::allbinary::string::CommonPhoneStrings ();
 
 1;
 

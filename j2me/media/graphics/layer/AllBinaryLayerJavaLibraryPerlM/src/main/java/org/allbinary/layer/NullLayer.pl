@@ -19,7 +19,7 @@ use feature 'try';
 no warnings 'experimental::try';
 use parent -norequire,'org::allbinary::layer::Layer';
 
-our $instance = 'org::allbinary::layer::NullLayer'->new();
+tie our $instance, 'java::lang::LazyStatic', sub { 'org::allbinary::layer::NullLayer'->new() };
 
 
 sub getInstance {
@@ -40,8 +40,10 @@ sub paint {
     my ($self, $graphics) = @_;
 }
 
-# use javax::microedition::lcdui::Graphics;
-use org::allbinary::layer::Layer;
+use java::lang::Object ();
+use java::lang::LazyStatic ();
+use javax::microedition::lcdui::Graphics ();
+use org::allbinary::layer::Layer ();
 
 1;
 

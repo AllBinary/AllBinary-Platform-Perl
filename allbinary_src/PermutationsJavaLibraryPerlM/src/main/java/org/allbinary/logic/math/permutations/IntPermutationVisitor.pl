@@ -18,7 +18,7 @@ sub _init_fields {
 sub new {
     my ($class, $data) = @_;
     my $self = $class->SUPER::new();
-    $self->_init_fields();
+    _init_fields($self);
         $self->{data} = $data;
     return $self;
 }
@@ -51,11 +51,12 @@ sub print {
         print($stringBuilder->toString(), "\n");
 }
 
-use org::allbinary::logic::NullUtil;
-use org::allbinary::logic::string::StringMaker;
-use org::allbinary::logic::util::visitor::Visitor;
-use org::allbinary::string::CommonSeps;
-use java::lang::System;
+use java::lang::Object ();
+use org::allbinary::logic::NullUtil ();
+use org::allbinary::logic::string::StringMaker ();
+use org::allbinary::logic::util::visitor::Visitor ();
+use org::allbinary::string::CommonSeps ();
+use java::lang::System ();
 
 1;
 

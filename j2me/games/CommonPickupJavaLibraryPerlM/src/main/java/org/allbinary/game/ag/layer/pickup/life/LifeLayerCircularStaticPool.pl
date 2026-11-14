@@ -38,11 +38,12 @@ sub visit {
         $lifeLayer->visit($lifeInterface);
 }
 
-use org::allbinary::game::ag::life::Life;
-use org::allbinary::game::ag::life::LifeInterfaceCompositeInterface;
-use org::allbinary::layer::AllBinaryLayer;
-use org::allbinary::layer::AllBinaryLayerCircularPool;
-use org::allbinary::layer::AllBinaryLayerFactoryInterface;
+use java::lang::Object ();
+use org::allbinary::game::ag::life::Life ();
+use org::allbinary::game::ag::life::LifeInterfaceCompositeInterface ();
+use org::allbinary::layer::AllBinaryLayer ();
+use org::allbinary::layer::AllBinaryLayerCircularPool ();
+use org::allbinary::layer::AllBinaryLayerFactoryInterface ();
 
 1;
 

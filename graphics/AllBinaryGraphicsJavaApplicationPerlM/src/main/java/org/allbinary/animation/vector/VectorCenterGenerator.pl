@@ -17,6 +17,7 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
 
 sub _init_fields {
@@ -37,7 +38,7 @@ sub _init_fields {
 sub new {
     my ($class) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
     return $self;
 }
 
@@ -148,17 +149,18 @@ sub setHeight {
         $self->{height} = $height;
 }
 
-use java::util::HashMap;
-use org::allbinary::graphics::GPoint;
-use org::allbinary::graphics::j2me::workarea::tools::GraphicItemInterface;
-use org::allbinary::graphics::j2me::workarea::tools::LinesGraphicItem;
-use org::allbinary::graphics::j2me::workarea::tools::Points;
-use org::allbinary::graphics::pipeline::BasicGraphicsPipeline;
-use org::allbinary::logic::communication::log::LogUtil;
-use org::allbinary::logic::string::StringMaker;
-use org::allbinary::string::CommonLabels;
-use org::allbinary::string::CommonStrings;
-use org::allbinary::util::BasicArrayList;
+use java::lang::Object ();
+use java::util::HashMap ();
+use org::allbinary::graphics::GPoint ();
+use org::allbinary::graphics::j2me::workarea::tools::GraphicItemInterface ();
+use org::allbinary::graphics::j2me::workarea::tools::LinesGraphicItem ();
+use org::allbinary::graphics::j2me::workarea::tools::Points ();
+use org::allbinary::graphics::pipeline::BasicGraphicsPipeline ();
+use org::allbinary::logic::communication::log::LogUtil ();
+use org::allbinary::logic::string::StringMaker ();
+use org::allbinary::string::CommonLabels ();
+use org::allbinary::string::CommonStrings ();
+use org::allbinary::util::BasicArrayList ();
 
 1;
 

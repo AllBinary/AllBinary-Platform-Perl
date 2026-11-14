@@ -229,19 +229,37 @@
                                 <argument>${perl.executable}</argument>
                                 <argument>${perl.fail.on.error}</argument>
                                 <!-- Sources of the dependency closure since Maven does not unpack the optional dependencies of dependencies. Written by PerlPomUpdater. -->
+                                <argument>G:/mnt/bc/mydev/workingperl/j2me/lib/VectorThreeDimensionalLibraryPerlM/src/main/java</argument>
+                                <argument>G:/mnt/bc/mydev/workingperl/j2me/media/graphics/geography/map/LayerPlacementLibraryPerlM/src/main/java</argument>
+                                <argument>G:/mnt/bc/mydev/workingperl/j2me/lib/TrigJ2MELibraryPerlM/src/main/java</argument>
+                                <argument>G:/mnt/bc/mydev/workingperl/j2me/media/graphics/animation/AnimationResourceJavaLibraryPerlM/src/main/java</argument>
+                                <argument>G:/mnt/bc/mydev/workingperl/j2me/media/graphics/animation/RotationAnimationJavaLibraryPerlM/src/main/java</argument>
+                                <argument>G:/mnt/bc/mydev/workingperl/j2me/media/graphics/animation/AnimationLibraryPerlM/src/main/java</argument>
+                                <argument>G:/mnt/bc/mydev/workingperl/j2me/media/graphics/animation/GameAnimationJavaLibraryPerlM/src/main/java</argument>
+                                <argument>G:/mnt/bc/mydev/workingperl/j2me/input/TouchScreenJavaLibraryPerlM/src/main/java</argument>
+                                <argument>G:/mnt/bc/mydev/workingperl/j2me/input/platform/pc/GameInputPCBaseJavaLibraryPerlM/src/main/java</argument>
+                                <argument>G:/mnt/bc/mydev/workingperl/j2me/input/MotionGestureBaseJavaLibraryPerlM/src/main/java</argument>
+                                <argument>G:/mnt/bc/mydev/workingperl/j2me/input/TouchButtonBaseJavaLibraryPerlM/src/main/java</argument>
+                                <argument>G:/mnt/bc/mydev/workingperl/j2me/input/TouchButtonJavaLibraryPerlM/src/main/java</argument>
                                 <argument>G:/mnt/bc/mydev/workingperl/j2me/media/sound/NoPlayerJavaLibraryPerlM/src/main/java</argument>
                                 <argument>G:/mnt/bc/mydev/workingperl/j2me/media/sound/NotDeviceSpecificNoMediaMIDP1LibraryPerlM/src/main/java</argument>
                                 <argument>G:/mnt/bc/mydev/workingperl/j2me/media/sound/BasicPlayerJavaLibraryPerlM/src/main/java</argument>
                                 <argument>G:/mnt/bc/mydev/workingperl/j2me/GroupLibraryPerlM/src/main/java</argument>
                                 <argument>G:/mnt/bc/mydev/workingperl/j2me/media/graphics/layer/AllBinaryLayerJavaLibraryPerlM/src/main/java</argument>
                                 <argument>G:/mnt/bc/mydev/workingperl/j2me/media/graphics/FormJavaLibraryPerlM/src/main/java</argument>
+                                <argument>G:/mnt/bc/mydev/workingperl/j2me/input/platform/pc/GameInputPCJavaLibraryPerlM/src/main/java</argument>
+                                <argument>G:/mnt/bc/mydev/workingperl/j2me/input/platform/pc/GameInputPCMotionJavaLibraryPerlM/src/main/java</argument>
                                 <argument>G:/mnt/bc/mydev/workingperl/j2me/input/AllBinarySensorJavaLibraryPerlM/src/main/java</argument>
                                 <argument>G:/mnt/bc/mydev/workingperl/j2me/media/graphics/FormValidationJavaLibraryPerlM/src/main/java</argument>
                                 <argument>G:/mnt/bc/mydev/workingperl/graphics/opengl/NoSWTJavaLibraryPerlM/src/main/java</argument>
                                 <argument>G:/mnt/bc/mydev/workingperl/j2me/games/GameInputPersistanceLibraryPerlM/src/main/java</argument>
                                 <argument>G:/mnt/bc/mydev/workingperl/j2me/media/graphics/NullCustomUIJavaLibraryPerlM/src/main/java</argument>
+                                <argument>G:/mnt/bc/mydev/AllBinary-Platform-Integrationperl/embedded/j2me/microemulator/3.0.0/TempMIDPJavaLibraryPerlM/src/main/java</argument>
+                                <argument>G:/mnt/bc/mydev/AllBinary-Platform-Integrationperl/embedded/j2me/microemulator/3.0.0/microemulator/microemu-cldcPerl/src/main/java</argument>
+                                <argument>G:/mnt/bc/mydev/working_thirdpartyperl/embedded/j2me/microemulator/2_0_4/microemu-extensions/microemu-jsr-135Perl/src/main/java</argument>
                                 <argument>G:/mnt/bc/mydev/workingperl/j2me/media/graphics/geography/map/GraphBaseJavaLibraryPerlM/src/main/java</argument>
                                 <argument>G:/mnt/bc/mydev/workingperl/j2me/media/sound/SoundJ2MELibraryPerlM/src/main/java</argument>
+                                <argument>G:/mnt/bc/mydev/workingperl/j2me/input/platform/me/TouchJ2MENoneJavaLibraryPerlM/src/main/java</argument>
                                 <argument>G:/mnt/bc/mydev/workingperl/replace_these_stub_projects/allbinary_src/NoneOnlyJavaLibraryPerlM/src/main/java</argument>
                                 <argument>G:/mnt/bc/mydev/workingperl/allbinary_src/J2SEExceptionLibraryPerlM/src/main/java</argument>
                                 <argument>G:/mnt/bc/mydev/workingperl/allbinary_src/hardware/AndroidSystemJavaLibraryPerlM/src/main/java</argument>
@@ -251,6 +269,7 @@
                                 <argument>G:/mnt/bc/mydev/workingperl/j2me/games/GameInputLibraryPerlM/src/main/java</argument>
                                 <argument>G:/mnt/bc/mydev/workingperl/j2me/media/graphics/FormBaseJavaLibraryPerlM/src/main/java</argument>
                                 <argument>G:/mnt/bc/mydev/workingperl/allbinary_src/allbinary_src_designpatterns_srcPerlM/src/main/java</argument>
+                                <argument>G:/mnt/bc/mydev/AllBinary-Platform-Integrationperl/embedded/j2me/microemulator/3.0.0/microemulator/microemu-javase/microemu-javase-nullPerl/src/main/java</argument>
                                 <argument>G:/mnt/bc/mydev/workingperl/j2me/logging/LoggingJ2MEExceptionPerlM/src/main/java</argument>
                                 <argument>G:/mnt/bc/mydev/workingperl/allbinary_src/cache/BaseCacheJavaLibraryPerlM/src/main/java</argument>
                                 <argument>G:/mnt/bc/mydev/workingperl/allbinary_src/hardware/BaseSystemJavaLibraryPerlM/src/main/java</argument>
@@ -264,6 +283,8 @@
                                 <argument>G:/mnt/bc/mydev/workingperl/allbinary_src/hardware/BaseOperatingSystemJavaLibraryPerlM/src/main/java</argument>
                                 <argument>G:/mnt/bc/mydev/workingperl/allbinary_src/hardware/BaseHardwareJavaLibraryPerlM/src/main/java</argument>
                                 <argument>G:/mnt/bc/mydev/workingperl/allbinary_src/hardware/NoHardwareJavaLibraryPerlM/src/main/java</argument>
+                                <argument>G:/mnt/bc/mydev/working_thirdpartyperl/embedded/j2me/microemulator/2_0_4/microemu-cldcPerl/src/main/java</argument>
+                                <argument>G:/mnt/bc/mydev/AllBinary-Platform-Integrationperl/embedded/j2me/microemulator/3.0.0/microemulator/microemu-midpPerl/src/main/java</argument>
                                 <argument>G:/mnt/bc/mydev/workingperl/allbinary_src/logic/data/file/FileJ2SEJavaLibraryPerlM/src/main/java</argument>
                                 <argument>G:/mnt/bc/mydev/AllBinary-Platform-Integrationperl/graphics/opengl/min3d/Min3dBaseJavaLibraryPerlM/src/main/java</argument>
                                 <argument>G:/mnt/bc/mydev/workingperl/j2me/lib/TrigBaseLibraryPerlM/src/main/java</argument>
@@ -276,11 +297,14 @@
                                 <argument>G:/mnt/bc/mydev/workingperl/graphics/opengl/OpenGLJ2MENoneJavaLibraryPerlM/src/main/java</argument>
                                 <argument>G:/mnt/bc/mydev/workingperl/graphics/opengl/SWTWithoutJOGLJavaLibraryPerlM/src/main/java</argument>
                                 <argument>G:/mnt/bc/mydev/workingperl/replace_these_stub_projects/allbinary_src/J2MEJsInteropCompatibilityJavaLibraryPerlM/src/main/java</argument>
+                                <argument>G:/mnt/bc/mydev/working_thirdpartyperl/embedded/j2me/microemulator/2_0_4/microemu-injectedPerl/src/main/java</argument>
+                                <argument>G:/mnt/bc/mydev/working_thirdpartyperl/embedded/j2me/microemulator/2_0_4/microemu-javasePerl/src/main/java</argument>
                                 <argument>G:/mnt/bc/mydev/workingperl/j2me/AndroidResourceLibraryPerlM/src/main/java</argument>
                                 <argument>G:/mnt/bc/mydev/workperl/j2me/android/AndroidToNullLibraryPerlM/src/main/java</argument>
                                 <argument>G:/mnt/bc/mydev/workingperl/j2me/J2MEWindowingJavaLibraryPerlM/src/main/java</argument>
                                 <argument>G:/mnt/bc/mydev/workingperl/j2me/media/graphics/FormJMEJavaLibraryPerlM/src/main/java</argument>
                                 <argument>G:/mnt/bc/mydev/workingperl/allbinary_src/logic/BasePreloaderJ2MEJavaLibraryPerlM/src/main/java</argument>
+                                <argument>G:/mnt/bc/mydev/working_thirdpartyperl/embedded/j2me/microemulator/allbinary_custom_android_version/microemulator/microemu-cldcPerl/src/main/java</argument>
                                 <argument>G:/mnt/bc/mydev/workingperl/j2me/lib/BasicMathLibraryPerlM/src/main/java</argument>
                                 <argument>G:/mnt/bc/mydev/workingperl/j2me/EventJ2MELibraryPerlM/src/main/java</argument>
                                 <argument>G:/mnt/bc/mydev/workingperl/allbinary_src/licensing/ClientInfoBaseJavaLibraryPerlM/src/main/java</argument>
@@ -296,6 +320,7 @@
                                 <argument>G:/mnt/bc/mydev/workingperl/j2me/J2MEForJ2MEJavaLibraryPerlM/src/main/java</argument>
                                 <argument>G:/mnt/bc/mydev/workingperl/j2me/games/PreGameJ2MEJavaLibraryPerlM/src/main/java</argument>
                                 <argument>G:/mnt/bc/mydev/workingperl/allbinary_src/hardware/NoSystemJavaLibraryPerlM/src/main/java</argument>
+                                <argument>G:/mnt/bc/mydev/working_thirdpartyperl/embedded/j2me/microemulator/2_0_4/microemu-midpPerl/src/main/java</argument>
                                 <argument>G:/mnt/bc/mydev/workingperl/j2me/J2MEColorJavaLibraryPerlM/src/main/java</argument>
                                 <argument>G:/mnt/bc/mydev/workingperl/graphics/opengl/OpenGLNoneJavaLibraryPerlM/src/main/java</argument>
                                 <argument>G:/mnt/bc/mydev/AllBinary-Platform-Integrationperl/embedded/j2me/microemulator/custom/MicroEmulatorCustomJavaLibraryPerlM/src/main/java</argument>
@@ -310,6 +335,9 @@
                                 <argument>G:/mnt/bc/mydev/workingperl/j2me/CommonJavaLibraryPerlM/src/main/java</argument>
                                 <argument>G:/mnt/bc/mydev/workingperl/allbinary_src/LogPerlM/src/main/java</argument>
                                 <argument>G:/mnt/bc/mydev/workingperl/j2me/TempBaseJavaLibraryPerlM/src/main/java</argument>
+                                <argument>G:/mnt/bc/mydev/working_thirdpartyperl/graphics/swt/org.eclipse.swt.win32.win32.x86_64/src/main/java</argument>
+                                <argument>G:/mnt/bc/mydev/working_thirdpartyperl/embedded/j2me/microemulator/2_0_4/microemu-javase-swtPerl/src/main/java</argument>
+                                <argument>G:/mnt/bc/mydev/working_thirdpartyperl/embedded/j2me/microemulator/allbinary_custom_android_version/microemulator/microemu-midpPerl/src/main/java</argument>
                                 <argument>G:/mnt/bc/mydev/workingperl/j2me/games/GameConfigurationJavaLibraryPerlM/src/main/java</argument>
                                 <argument>G:/mnt/bc/mydev/workingperl/j2me/media/graphics/ImageCacheJ2MEJavaLibraryPerlM/src/main/java</argument>
                                 <argument>G:/mnt/bc/mydev/workingperl/graphics/opengl/OpenGLNoneOtherJavaLibraryPerlM/src/main/java</argument>

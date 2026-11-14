@@ -51,14 +51,15 @@ sub doStartTag {
         }
 }
 
-# use javax::servlet::jsp::JspTagException;
-# use javax::servlet::jsp::tagext::Tag;
-use admin::taghelpers::DownloadItemsHelperFactory;
-use admin::taghelpers::DownloadItemsRequestHelperFactory;
-use org::allbinary::logic::communication::http::request::AbResponseHandler;
-use admin::tags::TableTag;
-use admin::tags::ParentInventoryTagHelper;
-use admin::tags::AbTagData;
+use java::lang::Object ();
+# use javax::servlet::jsp::JspTagException ();
+# use javax::servlet::jsp::tagext::Tag ();
+use admin::taghelpers::DownloadItemsHelperFactory ();
+use admin::taghelpers::DownloadItemsRequestHelperFactory ();
+use org::allbinary::logic::communication::http::request::AbResponseHandler ();
+use admin::tags::TableTag ();
+use admin::tags::ParentInventoryTagHelper ();
+use admin::tags::AbTagData ();
 
 1;
 

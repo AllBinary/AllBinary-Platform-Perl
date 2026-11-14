@@ -29,10 +29,11 @@ sub new {
     return $self;
 }
 
-# use javax::microedition::lcdui::CommandListener;
-# use javax::microedition::lcdui::Font;
-use org::allbinary::graphics::color::BasicColor;
-use org::allbinary::graphics::form::item::CustomTextBox;
+use java::lang::Object ();
+use javax::microedition::lcdui::CommandListener ();
+use javax::microedition::lcdui::Font ();
+use org::allbinary::graphics::color::BasicColor ();
+use org::allbinary::graphics::form::item::CustomTextBox ();
 
 1;
 

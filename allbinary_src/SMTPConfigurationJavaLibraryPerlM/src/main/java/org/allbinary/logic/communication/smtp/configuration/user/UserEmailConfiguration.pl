@@ -17,7 +17,7 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
-use parent -norequire,'org::allbinary::logic::communication::smtp::configuration::user::UserEmailConfigurationInterface';
+use parent -norequire,'java::lang::Object','org::allbinary::logic::communication::smtp::configuration::user::UserEmailConfigurationInterface';
 
 
 sub _init_fields {
@@ -38,7 +38,7 @@ sub new {
 sub _new0 {
     my ($class) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
         if ($org::allbinary::logic::communication::smtp::configuration::user::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($org::allbinary::logic::communication::smtp::configuration::user::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{EMAILLOGGING})) {
             $self->{logUtil}->putF($self->{commonStrings}->{CONSTRUCTOR}, $self, $self->{commonStrings}->{CONSTRUCTOR});
         }
@@ -50,7 +50,7 @@ sub _new0 {
 sub _new1 {
     my ($class, $hashMap) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
         if ($org::allbinary::logic::communication::smtp::configuration::user::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($org::allbinary::logic::communication::smtp::configuration::user::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{EMAILLOGGING})) {
             $self->{logUtil}->putF($self->{commonStrings}->{CONSTRUCTOR}, $self, $self->{commonStrings}->{CONSTRUCTOR});
         }
@@ -70,12 +70,13 @@ sub setUserEmailEventsConfigurationInterface {
         $self->{userEmailEventsConfigurationInterface} = $userEmailEventsConfigurationInterface;
 }
 
-use java::util::HashMap;
-use org::allbinary::logic::communication::log::LogUtil;
-use org::allbinary::logic::communication::smtp::configuration::user::event::UserEmailEventsConfiguration;
-use org::allbinary::logic::communication::smtp::configuration::user::event::UserEmailEventsConfigurationInterface;
-use org::allbinary::string::CommonStrings;
-use org::allbinary::logic::communication::smtp::configuration::user::UserEmailConfigurationInterface;
+use java::lang::Object ();
+use java::util::HashMap ();
+use org::allbinary::logic::communication::log::LogUtil ();
+use org::allbinary::logic::communication::smtp::configuration::user::event::UserEmailEventsConfiguration ();
+use org::allbinary::logic::communication::smtp::configuration::user::event::UserEmailEventsConfigurationInterface ();
+use org::allbinary::string::CommonStrings ();
+use org::allbinary::logic::communication::smtp::configuration::user::UserEmailConfigurationInterface ();
 
 1;
 

@@ -32,11 +32,12 @@ sub new {
     return $self;
 }
 
-# use jsinterop::annotations::JsType;
-use org::allbinary::logic::NullUtil;
-use org::allbinary::logic::string::StringMaker;
-# use jsinterop::annotations::JsConstructor;
-use org::allbinary::util::BasicArrayList;
+use java::lang::Object ();
+# use jsinterop::annotations::JsType ();
+use org::allbinary::logic::NullUtil ();
+use org::allbinary::logic::string::StringMaker ();
+# use jsinterop::annotations::JsConstructor ();
+use org::allbinary::util::BasicArrayList ();
 
 1;
 

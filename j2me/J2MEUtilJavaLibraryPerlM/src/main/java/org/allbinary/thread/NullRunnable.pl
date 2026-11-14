@@ -19,7 +19,7 @@ use feature 'try';
 no warnings 'experimental::try';
 use parent -norequire,'org::allbinary::thread::ARunnable';
 
-our $instance = 'org::allbinary::thread::NullRunnable'->new();
+tie our $instance, 'java::lang::LazyStatic', sub { 'org::allbinary::thread::NullRunnable'->new() };
 
 
 sub getInstance {
@@ -34,10 +34,12 @@ sub new {
     return $self;
 }
 
-# use jsinterop::annotations::JsType;
-# use jsinterop::annotations::JsMethod;
-# use jsinterop::annotations::JsConstructor;
-use org::allbinary::thread::ARunnable;
+use java::lang::Object ();
+use java::lang::LazyStatic ();
+# use jsinterop::annotations::JsType ();
+# use jsinterop::annotations::JsMethod ();
+# use jsinterop::annotations::JsConstructor ();
+use org::allbinary::thread::ARunnable ();
 
 1;
 

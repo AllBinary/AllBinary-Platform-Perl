@@ -60,16 +60,17 @@ sub setColor {
         }
 }
 
-use org::allbinary::graphics::color::BasicColor;
-use org::allbinary::graphics::color::ColorChangeEventHandler;
-use org::allbinary::graphics::color::ColorChangeListener;
-use org::allbinary::graphics::form::FormPaintable;
-use org::allbinary::graphics::form::ScrollSelectionForm;
-use org::allbinary::graphics::form::item::ABStringComponent;
-use org::allbinary::graphics::form::item::ABTextItem;
-use org::allbinary::graphics::paint::Paintable;
-use org::allbinary::logic::util::event::AllBinaryEventObject;
-use org::allbinary::game::paint::BasicGameDemoPaintable;
+use java::lang::Object ();
+use org::allbinary::graphics::color::BasicColor ();
+use org::allbinary::graphics::color::ColorChangeEventHandler ();
+use org::allbinary::graphics::color::ColorChangeListener ();
+use org::allbinary::graphics::form::FormPaintable ();
+use org::allbinary::graphics::form::ScrollSelectionForm ();
+use org::allbinary::graphics::form::item::ABStringComponent ();
+use org::allbinary::graphics::form::item::ABTextItem ();
+use org::allbinary::graphics::paint::Paintable ();
+use org::allbinary::logic::util::event::AllBinaryEventObject ();
+use org::allbinary::game::paint::BasicGameDemoPaintable ();
 
 1;
 

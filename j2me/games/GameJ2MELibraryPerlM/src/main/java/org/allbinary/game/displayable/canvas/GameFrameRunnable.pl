@@ -32,7 +32,7 @@ sub _init_fields {
 sub new {
     my ($class, $allBinaryGameCanvas) = @_;
     my $self = $class->SUPER::new();
-    $self->_init_fields();
+    _init_fields($self);
         $self->{allBinaryGameCanvas} = $allBinaryGameCanvas;
     return $self;
 }
@@ -54,12 +54,13 @@ sub run {
         }
 }
 
-use org::allbinary::graphics::displayable::GameTickDisplayInfoSingleton;
-use org::allbinary::logic::communication::log::LogUtil;
-use org::allbinary::string::CommonStrings;
-use org::allbinary::time::GameTickTimeDelayHelper;
-use org::allbinary::time::GameTickTimeDelayHelperFactory;
-use org::allbinary::game::displayable::canvas::GameRunnable;
+use java::lang::Object ();
+use org::allbinary::graphics::displayable::GameTickDisplayInfoSingleton ();
+use org::allbinary::logic::communication::log::LogUtil ();
+use org::allbinary::string::CommonStrings ();
+use org::allbinary::time::GameTickTimeDelayHelper ();
+use org::allbinary::time::GameTickTimeDelayHelperFactory ();
+use org::allbinary::game::displayable::canvas::GameRunnable ();
 
 1;
 

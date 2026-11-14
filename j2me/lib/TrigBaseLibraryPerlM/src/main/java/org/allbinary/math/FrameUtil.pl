@@ -17,8 +17,9 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
-our $instance = 'org::allbinary::math::FrameUtil'->new();
+tie our $instance, 'java::lang::LazyStatic', sub { 'org::allbinary::math::FrameUtil'->new() };
 
 
 sub getInstance {
@@ -65,10 +66,12 @@ sub adjustAngleToFrameAngle {
         return $currentAngle;
 }
 
-# use jsinterop::annotations::JsType;
-# use jsinterop::annotations::JsMethod;
-# use jsinterop::annotations::JsConstructor;
-use org::allbinary::math::AngleFactory;
+use java::lang::Object ();
+use java::lang::LazyStatic ();
+# use jsinterop::annotations::JsType ();
+# use jsinterop::annotations::JsMethod ();
+# use jsinterop::annotations::JsConstructor ();
+use org::allbinary::math::AngleFactory ();
 
 1;
 

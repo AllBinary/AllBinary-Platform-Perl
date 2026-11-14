@@ -17,9 +17,9 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
-use parent -norequire,'org::allbinary::media::graphics::geography::pathfinding::PathGeneratorInterface';
+use parent -norequire,'java::lang::Object','org::allbinary::media::graphics::geography::pathfinding::PathGeneratorInterface';
 
-our $SINGLETON = 'org::allbinary::media::graphics::geography::pathfinding::PathGenerator'->new();
+tie our $SINGLETON, 'java::lang::LazyStatic', sub { 'org::allbinary::media::graphics::geography::pathfinding::PathGenerator'->new() };
 
 
 sub getInstance {
@@ -84,10 +84,12 @@ sub isValid {
         die ("RuntimeException");
 }
 
-use org::allbinary::media::graphics::geography::map::BasicGeographicMap;
-use org::allbinary::media::graphics::geography::map::GeographicMapCellHistory;
-use org::allbinary::util::BasicArrayList;
-use org::allbinary::media::graphics::geography::pathfinding::PathGeneratorInterface;
+use java::lang::Object ();
+use java::lang::LazyStatic ();
+use org::allbinary::media::graphics::geography::map::BasicGeographicMap ();
+use org::allbinary::media::graphics::geography::map::GeographicMapCellHistory ();
+use org::allbinary::util::BasicArrayList ();
+use org::allbinary::media::graphics::geography::pathfinding::PathGeneratorInterface ();
 
 1;
 

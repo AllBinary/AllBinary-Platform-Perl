@@ -17,7 +17,7 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
-use parent -norequire,'org::allbinary::business::advertisement::campaign::AdvertisementCampaignInterface';
+use parent -norequire,'java::lang::Object','org::allbinary::business::advertisement::campaign::AdvertisementCampaignInterface';
 
 
 sub _init_fields {
@@ -29,7 +29,7 @@ sub _init_fields {
 sub new {
     my ($class, $hashMap) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
         $self->{hashMap} = $hashMap;
     return $self;
 }
@@ -64,12 +64,13 @@ sub search {
         return undef;
 }
 
-use java::util::HashMap;
-use org::allbinary::business::DynamicObjectData;
-use org::allbinary::business::advertisement::AdvertisementsInterface;
-use org::allbinary::business::advertisement::search::AdvertisementSearchInterface;
-use org::allbinary::business::advertisement::campaign::AdvertisementCampaignInterface;
-use org::allbinary::business::advertisement::campaign::AdvertisementCampaignData;
+use java::lang::Object ();
+use java::util::HashMap ();
+use org::allbinary::business::DynamicObjectData ();
+use org::allbinary::business::advertisement::AdvertisementsInterface ();
+use org::allbinary::business::advertisement::search::AdvertisementSearchInterface ();
+use org::allbinary::business::advertisement::campaign::AdvertisementCampaignInterface ();
+use org::allbinary::business::advertisement::campaign::AdvertisementCampaignData ();
 
 1;
 

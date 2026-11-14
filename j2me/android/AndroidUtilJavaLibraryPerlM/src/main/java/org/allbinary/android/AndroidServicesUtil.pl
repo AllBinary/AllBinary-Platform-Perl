@@ -17,8 +17,9 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
-our $instance = 'org::allbinary::android::AndroidServicesUtil'->new();
+tie our $instance, 'java::lang::LazyStatic', sub { 'org::allbinary::android::AndroidServicesUtil'->new() };
 
 sub _init_fields {
     my ($self) = @_;
@@ -32,7 +33,7 @@ sub _init_fields {
 sub new {
     my ($class) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
     return $self;
 }
 
@@ -63,13 +64,15 @@ sub isServiceRunning {
         return 0;
 }
 
-# use java::util::List;
-use android::app::ActivityManager;
-use android::app::ActivityManager::RunningServiceInfo;
-use android::content::ComponentName;
-use android::content::Context;
-use org::allbinary::data::resource::ResourceUtil;
-use org::allbinary::logic::communication::log::LogUtil;
+use java::lang::Object ();
+use java::lang::LazyStatic ();
+# use java::util::List ();
+# use android::app::ActivityManager ();
+# use android::app::ActivityManager::RunningServiceInfo ();
+# use android::content::ComponentName ();
+# use android::content::Context ();
+use org::allbinary::data::resource::ResourceUtil ();
+use org::allbinary::logic::communication::log::LogUtil ();
 
 1;
 

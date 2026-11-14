@@ -21,7 +21,7 @@ no warnings 'experimental::try';
 use parent -norequire,'org::allbinary::layer::NamedInterface';
 
 
-use org::allbinary::layer::NamedInterface;
+use org::allbinary::layer::NamedInterface ();
 
 1;
 

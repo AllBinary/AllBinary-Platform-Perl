@@ -17,7 +17,7 @@ sub _init_fields {
 sub new {
     my ($class, $bitmap) = @_;
     my $self = $class->SUPER::new();
-    $self->_init_fields();
+    _init_fields($self);
         $self->{image} = $bitmap;
     return $self;
 }
@@ -76,11 +76,12 @@ sub recycle {
         'org::allbinary::DisposalUtil'->getInstance()->disposeImage($self->{image});
 }
 
-# use javax::microedition::lcdui::Image;
-use org::allbinary::DisposalUtil;
-use org::allbinary::platform::graphics::PlatformBitmapBase;
-use org::microemu::device::swt::SwtImmutableImage;
-use org::microemu::device::swt::SwtMutableImage;
+use java::lang::Object ();
+use javax::microedition::lcdui::Image ();
+use org::allbinary::DisposalUtil ();
+use org::allbinary::platform::graphics::PlatformBitmapBase ();
+use org::microemu::device::swt::SwtImmutableImage ();
+use org::microemu::device::swt::SwtMutableImage ();
 
 1;
 

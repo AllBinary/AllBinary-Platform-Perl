@@ -35,13 +35,14 @@ sub getItemIterator {
         return $self->SUPER::getItemIterator('org::apache::commons::fileupload::servlet::ServletRequestContext'->new($request));
 }
 
-# use java::io::IOException;
-# use javax::servlet::http::HttpServletRequest;
-use org::apache::commons::fileupload::FileItemFactory;
-use org::apache::commons::fileupload::FileItemIterator;
-use org::apache::commons::fileupload::FileUpload;
-use org::apache::commons::fileupload::FileUploadException;
-use org::apache::commons::fileupload::servlet::ServletRequestContext;
+use java::lang::Object ();
+# use java::io::IOException ();
+# use javax::servlet::http::HttpServletRequest ();
+use org::apache::commons::fileupload::FileItemFactory ();
+use org::apache::commons::fileupload::FileItemIterator ();
+use org::apache::commons::fileupload::FileUpload ();
+use org::apache::commons::fileupload::FileUploadException ();
+use org::apache::commons::fileupload::servlet::ServletRequestContext ();
 
 1;
 

@@ -18,7 +18,7 @@ use feature 'try';
 no warnings 'experimental::try';
 use parent -norequire,'org::allbinary::game::input::form::RTSFormInput';
 
-our $DECAL_ID = 'org::allbinary::logic::math::SmallIntegerSingletonFactory'->getInstance()->getAt(23);
+tie our $DECAL_ID, 'java::lang::LazyStatic', sub { 'org::allbinary::logic::math::SmallIntegerSingletonFactory'->getInstance()->getAt(23) };
 
 sub _init_fields {
     my ($self) = @_;
@@ -30,7 +30,7 @@ sub _init_fields {
 sub new {
     my ($class, $groupInterface) = @_;
     my $self = $class->SUPER::new($groupInterface);
-    $self->_init_fields();
+    _init_fields($self);
         # super(...) made $self above
         my $smallIntegerSingletonFactory = 'org::allbinary::logic::math::SmallIntegerSingletonFactory'->getInstance();
         my $basicColorFactory = 'org::allbinary::graphics::color::BasicColorFactory'->getInstance();
@@ -112,37 +112,39 @@ sub attemptBuild {
         }
 }
 
-use org::allbinary::graphics::form::item::ABCustomItem;
-use org::allbinary::logic::string::StringMaker;
-use org::allbinary::game::layer::AdvancedPlayerOwnedRTSLayers;
-use org::allbinary::game::layer::AdvancedRTSGameLayer;
-use org::allbinary::game::layer::AdvancedRTSPlayerLayerInterface;
-use org::allbinary::game::layer::RTSGameStrings;
-use org::allbinary::game::layer::RTSLayer;
-use org::allbinary::game::layer::RTSPlayerLayerInterface;
-use org::allbinary::game::layer::capital::Capital;
-use org::allbinary::game::layer::unit::UnitLayer;
-use org::allbinary::game::layer::waypoint::WorkWaypoint;
-use org::allbinary::media::audio::BuildingSound;
-use org::allbinary::logic::java::bool::BooleanFactory;
-use org::allbinary::game::identification::Group;
-use org::allbinary::game::layer::AllBinaryGameLayerManager;
-use org::allbinary::game::layer::GeographicMapCellPositionAreaBase;
-use org::allbinary::game::layer::hud::event::GameNotificationEvent;
-use org::allbinary::game::layer::hud::event::GameNotificationEventHandler;
-use org::allbinary::game::layer::special::CollidableDestroyableDamageableLayer;
-use org::allbinary::graphics::GPoint;
-use org::allbinary::graphics::color::BasicColorFactory;
-use org::allbinary::layer::AllBinaryLayerManager;
-use org::allbinary::layer::Layer;
-use org::allbinary::logic::math::SmallIntegerSingletonFactory;
-use org::allbinary::media::audio::ErrorSound;
-use org::allbinary::media::graphics::geography::map::BasicGeographicMap;
-use org::allbinary::media::graphics::geography::map::GeographicMapCellPosition;
-use org::allbinary::media::graphics::geography::map::GeographicMapCompositeInterface;
-use org::allbinary::game::input::form::RTSFormInput;
-use org::allbinary::game::input::form::AssignWaypointsUtil;
-use org::allbinary::game::input::form::PlayersSingletonFactory;
+use java::lang::Object ();
+use java::lang::LazyStatic ();
+use org::allbinary::graphics::form::item::ABCustomItem ();
+use org::allbinary::logic::string::StringMaker ();
+use org::allbinary::game::layer::AdvancedPlayerOwnedRTSLayers ();
+use org::allbinary::game::layer::AdvancedRTSGameLayer ();
+use org::allbinary::game::layer::AdvancedRTSPlayerLayerInterface ();
+use org::allbinary::game::layer::RTSGameStrings ();
+use org::allbinary::game::layer::RTSLayer ();
+use org::allbinary::game::layer::RTSPlayerLayerInterface ();
+use org::allbinary::game::layer::capital::Capital ();
+use org::allbinary::game::layer::unit::UnitLayer ();
+use org::allbinary::game::layer::waypoint::WorkWaypoint ();
+use org::allbinary::media::audio::BuildingSound ();
+use org::allbinary::logic::java::bool::BooleanFactory ();
+use org::allbinary::game::identification::Group ();
+use org::allbinary::game::layer::AllBinaryGameLayerManager ();
+use org::allbinary::game::layer::GeographicMapCellPositionAreaBase ();
+use org::allbinary::game::layer::hud::event::GameNotificationEvent ();
+use org::allbinary::game::layer::hud::event::GameNotificationEventHandler ();
+use org::allbinary::game::layer::special::CollidableDestroyableDamageableLayer ();
+use org::allbinary::graphics::GPoint ();
+use org::allbinary::graphics::color::BasicColorFactory ();
+use org::allbinary::layer::AllBinaryLayerManager ();
+use org::allbinary::layer::Layer ();
+use org::allbinary::logic::math::SmallIntegerSingletonFactory ();
+use org::allbinary::media::audio::ErrorSound ();
+use org::allbinary::media::graphics::geography::map::BasicGeographicMap ();
+use org::allbinary::media::graphics::geography::map::GeographicMapCellPosition ();
+use org::allbinary::media::graphics::geography::map::GeographicMapCompositeInterface ();
+use org::allbinary::game::input::form::RTSFormInput ();
+use org::allbinary::game::input::form::AssignWaypointsUtil ();
+use org::allbinary::game::input::form::PlayersSingletonFactory ();
 
 1;
 

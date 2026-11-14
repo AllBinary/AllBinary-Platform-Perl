@@ -26,7 +26,8 @@ sub new {
     return $self;
 }
 
-use java::util::Stack;
+use java::lang::Object ();
+use java::util::Stack ();
 
 1;
 

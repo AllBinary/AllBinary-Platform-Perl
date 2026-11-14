@@ -82,7 +82,7 @@ sub released {
     die "abstract method released";
 }
 
-use org::allbinary::input::motion::gesture::observer::BaseMotionGestureEventListener;
+use org::allbinary::input::motion::gesture::observer::BaseMotionGestureEventListener ();
 
 1;
 

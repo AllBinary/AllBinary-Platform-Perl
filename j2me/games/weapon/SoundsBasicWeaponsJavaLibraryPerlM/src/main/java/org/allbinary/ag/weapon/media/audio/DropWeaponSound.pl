@@ -19,7 +19,7 @@ use feature 'try';
 no warnings 'experimental::try';
 use parent -norequire,'org::allbinary::media::audio::CompositeSound';
 
-our $soundInterface = 'org::allbinary::ag::weapon::media::audio::DropWeaponSound'->new();
+tie our $soundInterface, 'java::lang::LazyStatic', sub { 'org::allbinary::ag::weapon::media::audio::DropWeaponSound'->new() };
 
 
 sub new {
@@ -35,8 +35,10 @@ sub getInstance {
         return $org::allbinary::ag::weapon::media::audio::DropWeaponSound::soundInterface;
 }
 
-use org::allbinary::media::audio::CompositeSound;
-use org::allbinary::media::audio::Sound;
+use java::lang::Object ();
+use java::lang::LazyStatic ();
+use org::allbinary::media::audio::CompositeSound ();
+use org::allbinary::media::audio::Sound ();
 
 1;
 

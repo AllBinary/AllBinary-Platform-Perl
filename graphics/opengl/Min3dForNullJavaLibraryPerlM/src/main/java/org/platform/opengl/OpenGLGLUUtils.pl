@@ -5,8 +5,9 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
-our $instance = 'org::platform::opengl::OpenGLGLUUtils'->new();
+tie our $instance, 'java::lang::LazyStatic', sub { 'org::platform::opengl::OpenGLGLUUtils'->new() };
 
 sub new {
     my ($class) = @_;
@@ -39,10 +40,12 @@ sub texImage2D {
         die ("RuntimeException");
 }
 
-# use java::nio::ByteBuffer;
-# use javax::microedition::khronos::opengles::GL10;
-use org::allbinary::graphics::OpenGLBitmap;
-use org::allbinary::image::opengles::OpenGLESImage;
+use java::lang::Object ();
+use java::lang::LazyStatic ();
+# use java::nio::ByteBuffer ();
+use javax::microedition::khronos::opengles::GL10 ();
+use org::allbinary::graphics::OpenGLBitmap ();
+use org::allbinary::image::opengles::OpenGLESImage ();
 
 1;
 

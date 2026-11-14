@@ -18,7 +18,7 @@ sub _init_fields {
 sub new {
     my ($class) = @_;
     my $self = $class->SUPER::new(0, 0, 'org::allbinary::graphics::color::BasicColorFactory'->getInstance()->{BLACK});
-    $self->_init_fields();
+    _init_fields($self);
         # super(...) made $self above
     return $self;
 }
@@ -34,9 +34,10 @@ sub paintXY {
         $self->SUPER::paintXY($graphics, $self->{x}, $self->{y});
 }
 
-# use javax::microedition::lcdui::Graphics;
-use org::allbinary::graphics::color::BasicColorFactory;
-use org::allbinary::animation::vector::RectangleFilledAnimation;
+use java::lang::Object ();
+use javax::microedition::lcdui::Graphics ();
+use org::allbinary::graphics::color::BasicColorFactory ();
+use org::allbinary::animation::vector::RectangleFilledAnimation ();
 
 1;
 

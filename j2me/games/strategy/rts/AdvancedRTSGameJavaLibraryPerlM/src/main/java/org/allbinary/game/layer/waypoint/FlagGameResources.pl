@@ -22,7 +22,7 @@ use parent -norequire,'org::allbinary::game::layer::resources::BasicGameResource
 our $ICON = "_icon";
 our $BUILD = "_build";
 our $DESTROY = "_destroy";
-our $ICON_BUILD = "_icon" . $org::allbinary::game::layer::waypoint::FlagGameResources::BUILD;
+tie our $ICON_BUILD, 'java::lang::LazyStatic', sub { "_icon" . $org::allbinary::game::layer::waypoint::FlagGameResources::BUILD };
 
 sub _init_fields {
     my ($self) = @_;
@@ -37,7 +37,7 @@ sub _init_fields {
 sub new {
     my ($class) = @_;
     my $self = $class->SUPER::new();
-    $self->_init_fields();
+    _init_fields($self);
     return $self;
 }
 
@@ -71,9 +71,11 @@ sub append {
         $self->{RESOURCE_ICON_BUILD} = $org::allbinary::game::layer::resources::BasicGameResources::stringBuffer->toString();
 }
 
-use org::allbinary::game::layer::resources::BasicGameResources;
-use org::allbinary::game::layer::resources::GameGraphicsResourceUtil;
-use org::allbinary::logic::string::StringUtil;
+use java::lang::Object ();
+use java::lang::LazyStatic ();
+use org::allbinary::game::layer::resources::BasicGameResources ();
+use org::allbinary::game::layer::resources::GameGraphicsResourceUtil ();
+use org::allbinary::logic::string::StringUtil ();
 
 1;
 

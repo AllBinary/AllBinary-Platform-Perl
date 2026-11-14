@@ -37,7 +37,7 @@ sub _init_fields {
 sub new {
     my ($class, $abeClientInformation, $softwareInformation) = @_;
     my $self = $class->SUPER::new();
-    $self->_init_fields();
+    _init_fields($self);
         $self->{abeClientInformation} = $abeClientInformation;
         $self->{softwareInformation} = $softwareInformation;
     return $self;
@@ -54,7 +54,7 @@ sub fetchHighScores {
 sub fetchHighScoresPreload {
     my ($self, $gameInfo, $highScoresResultsListener, $preload) = @_;
         'org::allbinary::thread::SecondaryThreadPool'->getInstance()->runTask(do {
-            package org::allbinary::thread::ARunnable::AnonymousN66612 { our @ISA = ('org::allbinary::thread::ARunnable');
+            package org::allbinary::thread::ARunnable::AnonymousN66612 { our @ISA = ('org::allbinary::thread::ARunnable', 'java::lang::Object');
             
 
             sub run {
@@ -99,22 +99,23 @@ sub loaded {
         return 0;
 }
 
-use org::allbinary::thread::ARunnable;
-use org::allbinary::game::BasicHighScoresGameInfoFactory;
-use org::allbinary::game::GameInfo;
-use org::allbinary::game::GameType;
-use org::allbinary::game::GameTypeFactory;
-use org::allbinary::game::score::remote::RemoteHighScores;
-use org::allbinary::logic::communication::log::LogUtil;
-use org::allbinary::logic::java::bool::BooleanFactory;
-use org::allbinary::logic::system::SoftwareInformation;
-use org::allbinary::logic::system::security::licensing::AbeClientInformationInterface;
-use org::allbinary::thread::SecondaryThreadPool;
-use org::allbinary::game::score::HighScoresBase;
-use org::allbinary::game::score::RecordStoreHighScores;
-use org::allbinary::game::score::ScoreComparator;
-use org::allbinary::game::score::LastFetchHighScoresFactory;
-use org::allbinary::game::score::HighScoresHelper2;
+use java::lang::Object ();
+use org::allbinary::thread::ARunnable ();
+use org::allbinary::game::BasicHighScoresGameInfoFactory ();
+use org::allbinary::game::GameInfo ();
+use org::allbinary::game::GameType ();
+use org::allbinary::game::GameTypeFactory ();
+use org::allbinary::game::score::remote::RemoteHighScores ();
+use org::allbinary::logic::communication::log::LogUtil ();
+use org::allbinary::logic::java::bool::BooleanFactory ();
+use org::allbinary::logic::system::SoftwareInformation ();
+use org::allbinary::logic::system::security::licensing::AbeClientInformationInterface ();
+use org::allbinary::thread::SecondaryThreadPool ();
+use org::allbinary::game::score::HighScoresBase ();
+use org::allbinary::game::score::RecordStoreHighScores ();
+use org::allbinary::game::score::ScoreComparator ();
+use org::allbinary::game::score::LastFetchHighScoresFactory ();
+use org::allbinary::game::score::HighScoresHelper2 ();
 
 1;
 

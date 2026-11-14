@@ -40,7 +40,7 @@ sub _init_fields {
 sub new {
     my ($class, $rectangle, $backgroundBasicColor, $foregroundBasicColor) = @_;
     my $self = $class->SUPER::new();
-    $self->_init_fields();
+    _init_fields($self);
         $self->{foregroundBasicColor} = $foregroundBasicColor;
         $self->{label} = $org::allbinary::game::displayable::canvas::BasicPopupMenuPaintable::NAME;
         $self->{rectangle} = $rectangle;
@@ -112,28 +112,29 @@ sub paint {
         $graphics->drawRect($x, $y, $width, $height);
 }
 
-# use javax::microedition::lcdui::Font;
-# use javax::microedition::lcdui::Graphics;
-use org::allbinary::AndroidUtil;
-use org::allbinary::J2MEUtil;
-use org::allbinary::animation::Animation;
-use org::allbinary::animation::NullAnimationFactory;
-use org::allbinary::animation::vector::RectangleFilledAnimation;
-use org::allbinary::game::configuration::feature::Features;
-use org::allbinary::game::layer::SWTUtil;
-use org::allbinary::graphics::GPoint;
-use org::allbinary::graphics::Rectangle;
-use org::allbinary::graphics::color::BasicColor;
-use org::allbinary::graphics::color::BasicColorFactory;
-use org::allbinary::graphics::color::BasicColorSetUtil;
-use org::allbinary::graphics::draw::DrawVerticalStringUtil;
-use org::allbinary::graphics::font::MyFontProcessor;
-use org::allbinary::graphics::font::UpdateMyFontInterface;
-use org::allbinary::graphics::font::UpdateMyFontProcessor;
-use org::allbinary::graphics::opengles::OpenGLFeatureFactory;
-use org::allbinary::graphics::opengles::OpenGLFeatureUtil;
-use org::allbinary::graphics::paint::Paintable;
-use org::allbinary::graphics::threed::SWTJOGLProcessor;
+use java::lang::Object ();
+use javax::microedition::lcdui::Font ();
+use javax::microedition::lcdui::Graphics ();
+use org::allbinary::AndroidUtil ();
+use org::allbinary::J2MEUtil ();
+use org::allbinary::animation::Animation ();
+use org::allbinary::animation::NullAnimationFactory ();
+use org::allbinary::animation::vector::RectangleFilledAnimation ();
+use org::allbinary::game::configuration::feature::Features ();
+use org::allbinary::game::layer::SWTUtil ();
+use org::allbinary::graphics::GPoint ();
+use org::allbinary::graphics::Rectangle ();
+use org::allbinary::graphics::color::BasicColor ();
+use org::allbinary::graphics::color::BasicColorFactory ();
+use org::allbinary::graphics::color::BasicColorSetUtil ();
+use org::allbinary::graphics::draw::DrawVerticalStringUtil ();
+use org::allbinary::graphics::font::MyFontProcessor ();
+use org::allbinary::graphics::font::UpdateMyFontInterface ();
+use org::allbinary::graphics::font::UpdateMyFontProcessor ();
+use org::allbinary::graphics::opengles::OpenGLFeatureFactory ();
+use org::allbinary::graphics::opengles::OpenGLFeatureUtil ();
+use org::allbinary::graphics::paint::Paintable ();
+use org::allbinary::graphics::threed::SWTJOGLProcessor ();
 
 1;
 

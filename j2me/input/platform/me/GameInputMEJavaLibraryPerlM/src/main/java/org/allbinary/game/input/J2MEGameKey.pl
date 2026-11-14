@@ -50,10 +50,11 @@ sub getString {
         }
 }
 
-use org::allbinary::logic::string::StringMaker;
-use org::allbinary::logic::string::StringUtil;
-use org::allbinary::game::input::Input;
-use org::allbinary::game::input::InputFactory;
+use java::lang::Object ();
+use org::allbinary::logic::string::StringMaker ();
+use org::allbinary::logic::string::StringUtil ();
+use org::allbinary::game::input::Input ();
+use org::allbinary::game::input::InputFactory ();
 
 1;
 

@@ -51,15 +51,15 @@ sub implmentsArtificialIntelligenceCompositeInterface {
     die "abstract method implmentsArtificialIntelligenceCompositeInterface";
 }
 
-use org::allbinary::game::ag::layer::hud::basic::notification::GameNotificationHudCompositeInterface;
-use org::allbinary::game::input::BuildMenuCompositeInterface;
-use org::allbinary::game::input::form::RTSFormInput;
-use org::allbinary::game::layer::capital::Capital;
-use org::allbinary::game::combat::destroy::event::DestroyedEventListenerInterface;
-use org::allbinary::game::input::PlayerGameInputCompositeInterface;
-use org::allbinary::game::tick::TickableInterface;
-use org::allbinary::media::audio::Sound;
-use org::allbinary::game::layer::PathFindingLayerInterface;
+use org::allbinary::game::ag::layer::hud::basic::notification::GameNotificationHudCompositeInterface ();
+use org::allbinary::game::input::BuildMenuCompositeInterface ();
+use org::allbinary::game::input::form::RTSFormInput ();
+use org::allbinary::game::layer::capital::Capital ();
+use org::allbinary::game::combat::destroy::event::DestroyedEventListenerInterface ();
+use org::allbinary::game::input::PlayerGameInputCompositeInterface ();
+use org::allbinary::game::tick::TickableInterface ();
+use org::allbinary::media::audio::Sound ();
+use org::allbinary::game::layer::PathFindingLayerInterface ();
 
 1;
 

@@ -31,7 +31,7 @@ sub _init_fields {
 sub new {
     my ($class, $animationBehavior) = @_;
     my $self = $class->SUPER::new();
-    $self->_init_fields();
+    _init_fields($self);
         $self->{animationBehaviorP} = $animationBehavior;
     return $self;
 }
@@ -119,11 +119,12 @@ sub getHeight {
         return 0;
 }
 
-use org::allbinary::logic::communication::log::LogUtil;
-use org::allbinary::logic::math::PrimitiveIntUtil;
-use org::allbinary::string::CommonStrings;
-use org::allbinary::animation::Animation;
-use org::allbinary::animation::IndexedAnimationInterface;
+use java::lang::Object ();
+use org::allbinary::logic::communication::log::LogUtil ();
+use org::allbinary::logic::math::PrimitiveIntUtil ();
+use org::allbinary::string::CommonStrings ();
+use org::allbinary::animation::Animation ();
+use org::allbinary::animation::IndexedAnimationInterface ();
 
 1;
 

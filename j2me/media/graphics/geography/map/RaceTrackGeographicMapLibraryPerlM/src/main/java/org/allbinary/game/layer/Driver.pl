@@ -17,8 +17,9 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
-our $NULL_DRIVER = 'org::allbinary::game::layer::Driver'->new('org::allbinary::logic::math::SmallIntegerSingletonFactory'->getInstance()->getAt(0), 'org::allbinary::logic::math::SmallIntegerSingletonFactory'->getInstance()->getAt(0), 'org::allbinary::game::layer::Aggression'->new('org::allbinary::logic::math::SmallIntegerSingletonFactory'->getInstance()->getAt(0), 'org::allbinary::logic::math::SmallIntegerSingletonFactory'->getInstance()->getAt(0), 'org::allbinary::logic::math::SmallIntegerSingletonFactory'->getInstance()->getAt(0)));
+tie our $NULL_DRIVER, 'java::lang::LazyStatic', sub { 'org::allbinary::game::layer::Driver'->new('org::allbinary::logic::math::SmallIntegerSingletonFactory'->getInstance()->getAt(0), 'org::allbinary::logic::math::SmallIntegerSingletonFactory'->getInstance()->getAt(0), 'org::allbinary::game::layer::Aggression'->new('org::allbinary::logic::math::SmallIntegerSingletonFactory'->getInstance()->getAt(0), 'org::allbinary::logic::math::SmallIntegerSingletonFactory'->getInstance()->getAt(0), 'org::allbinary::logic::math::SmallIntegerSingletonFactory'->getInstance()->getAt(0))) };
 
 sub _init_fields {
     my ($self) = @_;
@@ -31,7 +32,7 @@ sub _init_fields {
 sub new {
     my ($class, $turnSpeed, $trackPathSelectionSkill, $aggression) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
         $self->setTurnSpeed($turnSpeed);
         $self->setTrackPathSelectionSkill($trackPathSelectionSkill);
         $self->{aggression} = $aggression;
@@ -74,8 +75,10 @@ sub setAggression {
         $self->{aggression} = $aggression;
 }
 
-use org::allbinary::logic::math::SmallIntegerSingletonFactory;
-use org::allbinary::game::layer::Aggression;
+use java::lang::Object ();
+use java::lang::LazyStatic ();
+use org::allbinary::logic::math::SmallIntegerSingletonFactory ();
+use org::allbinary::game::layer::Aggression ();
 
 1;
 

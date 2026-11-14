@@ -17,6 +17,7 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
 
 sub _init_fields {
@@ -34,7 +35,7 @@ sub _init_fields {
 sub new {
     my ($class) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
         if ('org::allbinary::input::motion::button::TouchScreenFactory'->getInstance()->isMultiTouch()) {
             $self->{releaseHelper} = 'org::allbinary::input::motion::button::MultitouchReleaseHelper'->new($self);
         } else {
@@ -111,95 +112,22 @@ sub pressTouchButtonInput {
         }
         return 0;
 }
-{
-    #CurrentlyPressedTouchButtonSingletonDebug.getInstance();
-    package org::allbinary::input::motion::button::ReleaseHelper;
-    use strict;
-    use warnings;
-    use feature 'try';
-    no warnings 'experimental::try';
-    
 
-    sub _init_fields {
-        my ($self) = @_;
-        $self->{touchButtonRecognizer} = undef;
-    }
-    
-
-    sub new {
-        my ($class, $touchButtonRecognizer) = @_;
-        my $self = bless({}, $class);
-        $self->_init_fields();
-            $self->{touchButtonRecognizer} = $touchButtonRecognizer;
-        return $self;
-    }
-    
-
-    # throws Exception
-    sub release {
-        my ($self, $touchButtonInput, $deviceId) = @_;
-            my $nextTouchButtonInput = undef;
-            my $gameKeyEvent = undef;
-            for (my $index = $self->{touchButtonRecognizer}->{currentlyPressedTouchButtonSingleton}->size() - 1; $index >= 0; $index--) {
-                $nextTouchButtonInput = $self->{touchButtonRecognizer}->{currentlyPressedTouchButtonSingleton}->get($index);
-                $gameKeyEvent = $nextTouchButtonInput->getGameKeyEvent();
-                $self->{touchButtonRecognizer}->{upGameKeyEventHandler}->fireEvent($gameKeyEvent);
-                $self->{touchButtonRecognizer}->{upGameKeyEventHandler}->getInstanceForDevice($deviceId)->fireEvent($gameKeyEvent);
-                $self->{touchButtonRecognizer}->{currentlyPressedTouchButtonSingleton}->removeAt($index);
-            }
-    }
-    }
-
-{
-    package org::allbinary::input::motion::button::MultitouchReleaseHelper;
-    use strict;
-    use warnings;
-    use feature 'try';
-    no warnings 'experimental::try';
-    use parent -norequire,'org::allbinary::input::motion::button::ReleaseHelper';
-    
-    
-
-    sub new {
-        my ($class, $touchButtonRecognizer) = @_;
-        my $self = $class->SUPER::new($touchButtonRecognizer);
-            # super(...) made $self above
-        return $self;
-    }
-    
-
-    # throws Exception
-    sub release {
-        my ($self, $touchButtonInput, $deviceId) = @_;
-            my $cancelTouchButtonInput = 'org::allbinary::input::motion::button::CancelTouchButtonInputFactory'->getInstance()->getCancel($touchButtonInput);
-            my $nextTouchButtonInput = undef;
-            my $gameKeyEvent = undef;
-            for (my $index = $self->{touchButtonRecognizer}->{currentlyPressedTouchButtonSingleton}->size() - 1; $index >= 0; $index--) {
-                $nextTouchButtonInput = $self->{touchButtonRecognizer}->{currentlyPressedTouchButtonSingleton}->get($index);
-                if ($cancelTouchButtonInput == $nextTouchButtonInput) {
-                    $gameKeyEvent = $nextTouchButtonInput->getGameKeyEvent();
-                    $self->{touchButtonRecognizer}->{upGameKeyEventHandler}->fireEvent($gameKeyEvent);
-                    $self->{touchButtonRecognizer}->{upGameKeyEventHandler}->getInstanceForDevice($deviceId)->fireEvent($gameKeyEvent);
-                    $self->{touchButtonRecognizer}->{currentlyPressedTouchButtonSingleton}->removeAt($index);
-                }
-            }
-    }
-    }
-
-
-use org::allbinary::game::input::event::DownGameKeyEventHandler;
-use org::allbinary::game::input::event::GameKeyEvent;
-use org::allbinary::game::input::event::UpGameKeyEventHandler;
-use org::allbinary::graphics::GPoint;
-use org::allbinary::graphics::Rectangle;
-use org::allbinary::logic::communication::log::LogUtil;
-use org::allbinary::math::RectangleCollisionUtil;
-use org::allbinary::util::BasicArrayList;
-use org::allbinary::input::motion::button::BasicTouchInputFactory;
-use org::allbinary::input::motion::button::CurrentlyPressedTouchButtonSingleton;
-use org::allbinary::input::motion::button::CancelTouchButtonInputFactory;
-use org::allbinary::input::motion::button::TouchScreenFactory;
-use org::allbinary::input::motion::button::TouchButtonFactory;
+use java::lang::Object ();
+use org::allbinary::game::input::event::DownGameKeyEventHandler ();
+use org::allbinary::game::input::event::GameKeyEvent ();
+use org::allbinary::game::input::event::UpGameKeyEventHandler ();
+use org::allbinary::graphics::GPoint ();
+use org::allbinary::graphics::Rectangle ();
+use org::allbinary::logic::communication::log::LogUtil ();
+use org::allbinary::math::RectangleCollisionUtil ();
+use org::allbinary::util::BasicArrayList ();
+use org::allbinary::input::motion::button::BasicTouchInputFactory ();
+use org::allbinary::input::motion::button::CurrentlyPressedTouchButtonSingleton ();
+use org::allbinary::input::motion::button::TouchScreenFactory ();
+use org::allbinary::input::motion::button::ReleaseHelper ();
+use org::allbinary::input::motion::button::MultitouchReleaseHelper ();
+use org::allbinary::input::motion::button::TouchButtonFactory ();
 
 1;
 

@@ -18,7 +18,7 @@ use warnings;
 use feature 'try';
 no warnings 'experimental::try';
 use Scalar::Util ();
-use parent -norequire,'javax::microedition::lcdui::ItemCommandListener';
+use parent -norequire,'java::lang::Object','javax::microedition::lcdui::ItemCommandListener';
 
 
 sub _init_fields {
@@ -31,7 +31,7 @@ sub _init_fields {
 sub new {
     my ($class, $gameOptionsForm) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
         $self->{gameOptionsForm} = $gameOptionsForm;
     return $self;
 }
@@ -51,17 +51,18 @@ sub commandAction {
         }
 }
 
-# use javax::microedition::lcdui::Command;
-# use javax::microedition::lcdui::Item;
-# use javax::microedition::lcdui::ItemCommandListener;
-use org::allbinary::game::configuration::GameConfigurationGauge;
-use org::allbinary::game::configuration::GameConfigurationUtil;
-use org::allbinary::game::configuration::GameOptionsForm;
-use org::allbinary::logic::communication::log::LogUtil;
-use org::allbinary::logic::string::StringMaker;
-use org::allbinary::midlet::MidletStrings;
-use org::allbinary::string::CommonLabels;
-use org::allbinary::string::CommonStrings;
+use java::lang::Object ();
+use javax::microedition::lcdui::Command ();
+use javax::microedition::lcdui::Item ();
+use javax::microedition::lcdui::ItemCommandListener ();
+use org::allbinary::game::configuration::GameConfigurationGauge ();
+use org::allbinary::game::configuration::GameConfigurationUtil ();
+use org::allbinary::game::configuration::GameOptionsForm ();
+use org::allbinary::logic::communication::log::LogUtil ();
+use org::allbinary::logic::string::StringMaker ();
+use org::allbinary::midlet::MidletStrings ();
+use org::allbinary::string::CommonLabels ();
+use org::allbinary::string::CommonStrings ();
 
 1;
 

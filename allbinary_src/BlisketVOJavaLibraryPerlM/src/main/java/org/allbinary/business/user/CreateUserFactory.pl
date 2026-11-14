@@ -17,6 +17,7 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
 
 
@@ -43,11 +44,12 @@ sub getInstance {
         }
 }
 
-use java::util::HashMap;
-use org::allbinary::business::user::role::UserRole;
-use org::allbinary::business::user::role::UserRoleB;
-use org::allbinary::business::user::role::UserRoleData;
-use org::allbinary::logic::string::StringValidationUtil;
+use java::lang::Object ();
+use java::util::HashMap ();
+use org::allbinary::business::user::role::UserRole ();
+use org::allbinary::business::user::role::UserRoleB ();
+use org::allbinary::business::user::role::UserRoleData ();
+use org::allbinary::logic::string::StringValidationUtil ();
 
 1;
 

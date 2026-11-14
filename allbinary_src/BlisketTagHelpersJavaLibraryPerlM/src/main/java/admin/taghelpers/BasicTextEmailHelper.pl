@@ -31,7 +31,7 @@ sub _init_fields {
 sub new {
     my ($class, $hashMap, $pageContext) = @_;
     my $self = $class->SUPER::new();
-    $self->_init_fields();
+    _init_fields($self);
         $self->{pageContext} = $pageContext;
         $self->{hashMap} = $hashMap;
     return $self;
@@ -49,17 +49,18 @@ sub send {
         $adminUserEmailEventHandler->receiveEmailInfo($org::allbinary::logic::communication::smtp::event::UserEmailEventNameData::INSTALLER, $adminEmailInfo);
 }
 
-use java::util::HashMap;
-# use javax::servlet::jsp::PageContext;
-use org::allbinary::logic::communication::smtp::event::UserEmailEventNameData;
-use org::allbinary::logic::communication::smtp::event::handler::UserEmailEventHandler;
-use org::allbinary::logic::communication::smtp::event::handler::factory::AdminUserEmailEventHandlerSingletons;
-use org::allbinary::logic::communication::smtp::info::AdminEmailInfo;
-use org::allbinary::logic::communication::smtp::info::BasicEmailInfo;
-use org::allbinary::logic::communication::smtp::info::EmailInfo;
-use org::allbinary::logic::system::security::licensing::AbeClientInformationInterface;
-use org::allbinary::logic::system::security::licensing::ServiceClientInformationInterfaceFactory;
-use admin::taghelpers::TagHelper;
+use java::lang::Object ();
+use java::util::HashMap ();
+# use javax::servlet::jsp::PageContext ();
+use org::allbinary::logic::communication::smtp::event::UserEmailEventNameData ();
+use org::allbinary::logic::communication::smtp::event::handler::UserEmailEventHandler ();
+use org::allbinary::logic::communication::smtp::event::handler::factory::AdminUserEmailEventHandlerSingletons ();
+use org::allbinary::logic::communication::smtp::info::AdminEmailInfo ();
+use org::allbinary::logic::communication::smtp::info::BasicEmailInfo ();
+use org::allbinary::logic::communication::smtp::info::EmailInfo ();
+use org::allbinary::logic::system::security::licensing::AbeClientInformationInterface ();
+use org::allbinary::logic::system::security::licensing::ServiceClientInformationInterfaceFactory ();
+use admin::taghelpers::TagHelper ();
 
 1;
 

@@ -17,7 +17,7 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
-use parent -norequire,'org::allbinary::game::input::RTSLayerFormFactoryInterface';
+use parent -norequire,'java::lang::Object','org::allbinary::game::input::RTSLayerFormFactoryInterface';
 
 
 sub new {
@@ -32,9 +32,10 @@ sub getInstance {
         die ("RuntimeException");
 }
 
-use org::allbinary::game::layer::RTSLayer;
-use org::allbinary::graphics::form::ScrollSelectionForm;
-use org::allbinary::game::input::RTSLayerFormFactoryInterface;
+use java::lang::Object ();
+use org::allbinary::game::layer::RTSLayer ();
+use org::allbinary::graphics::form::ScrollSelectionForm ();
+use org::allbinary::game::input::RTSLayerFormFactoryInterface ();
 
 1;
 

@@ -35,9 +35,9 @@ sub addResourceRelativeRelationship {
     die "abstract method addResourceRelativeRelationship";
 }
 
-use org::allbinary::game::configuration::feature::GameFeatureControlledInterface;
-use org::allbinary::graphics::RelativeRelationship;
-use org::allbinary::util::BasicArrayList;
+use org::allbinary::game::configuration::feature::GameFeatureControlledInterface ();
+use org::allbinary::graphics::RelativeRelationship ();
+use org::allbinary::util::BasicArrayList ();
 
 1;
 

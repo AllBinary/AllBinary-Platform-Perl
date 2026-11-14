@@ -17,7 +17,7 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
-use parent -norequire,'org::allbinary::logic::util::visitor::VisitorInterface';
+use parent -norequire,'java::lang::Object','org::allbinary::logic::util::visitor::VisitorInterface';
 
 
 
@@ -43,8 +43,9 @@ sub visit {
         return 0;
 }
 
-use org::allbinary::logic::io::file::AbFile;
-use org::allbinary::logic::util::visitor::VisitorInterface;
+use java::lang::Object ();
+use org::allbinary::logic::io::file::AbFile ();
+use org::allbinary::logic::util::visitor::VisitorInterface ();
 
 1;
 

@@ -34,7 +34,7 @@ sub close {
     die "abstract method close";
 }
 
-use org::allbinary::game::input::GameKeyEventSourceInterface;
+use org::allbinary::game::input::GameKeyEventSourceInterface ();
 
 1;
 

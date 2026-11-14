@@ -29,7 +29,7 @@ sub _init_fields {
 sub new {
     my ($class) = @_;
     my $self = $class->SUPER::new();
-    $self->_init_fields();
+    _init_fields($self);
     return $self;
 }
 
@@ -61,21 +61,22 @@ sub terrainMove {
         $layer->moveDXY($x, $y);
 }
 
-use org::allbinary::media::graphics::geography::map::MultiGeographicMapBehavior;
-use org::allbinary::direction::Direction;
-use org::allbinary::direction::DirectionFactory;
-use org::allbinary::game::terrain::BasicTerrainInfo;
-use org::allbinary::game::terrain::TerrainEvent;
-use org::allbinary::game::terrain::TerrainEventCircularStaticPool;
-use org::allbinary::game::terrain::TerrainEventHandler;
-use org::allbinary::layer::AllBinaryLayer;
-use org::allbinary::math::AngleFactory;
-use org::allbinary::media::graphics::geography::map::BasicGeographicMap;
-use org::allbinary::media::graphics::geography::map::BasicGeographicMapCellPositionFactory;
-use org::allbinary::media::graphics::geography::map::GeographicMapCellPosition;
-use org::allbinary::media::graphics::geography::map::GeographicMapCellType;
-use org::allbinary::media::graphics::geography::map::SimpleGeographicMapCellPositionFactory;
-use org::allbinary::game::behavior::topview::TopViewCharacterBehavior;
+use java::lang::Object ();
+use org::allbinary::media::graphics::geography::map::MultiGeographicMapBehavior ();
+use org::allbinary::direction::Direction ();
+use org::allbinary::direction::DirectionFactory ();
+use org::allbinary::game::terrain::BasicTerrainInfo ();
+use org::allbinary::game::terrain::TerrainEvent ();
+use org::allbinary::game::terrain::TerrainEventCircularStaticPool ();
+use org::allbinary::game::terrain::TerrainEventHandler ();
+use org::allbinary::layer::AllBinaryLayer ();
+use org::allbinary::math::AngleFactory ();
+use org::allbinary::media::graphics::geography::map::BasicGeographicMap ();
+use org::allbinary::media::graphics::geography::map::BasicGeographicMapCellPositionFactory ();
+use org::allbinary::media::graphics::geography::map::GeographicMapCellPosition ();
+use org::allbinary::media::graphics::geography::map::GeographicMapCellType ();
+use org::allbinary::media::graphics::geography::map::SimpleGeographicMapCellPositionFactory ();
+use org::allbinary::game::behavior::topview::TopViewCharacterBehavior ();
 
 1;
 

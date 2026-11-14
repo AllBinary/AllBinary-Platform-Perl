@@ -26,8 +26,8 @@ sub createSprite {
     die "abstract method createSprite";
 }
 
-# use javax::microedition::lcdui::Image;
-# use javax::microedition::lcdui::game::Sprite;
+use javax::microedition::lcdui::Image ();
+use javax::microedition::lcdui::game::Sprite ();
 
 1;
 

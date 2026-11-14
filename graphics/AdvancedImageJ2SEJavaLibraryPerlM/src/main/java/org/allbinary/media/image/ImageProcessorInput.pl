@@ -17,6 +17,7 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
 
 sub _init_fields {
@@ -29,7 +30,7 @@ sub _init_fields {
 sub new {
     my ($class, $files, $bufferedImageArray) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
         # super(...) made $self above
         $self->{bufferedImageArray} = $bufferedImageArray;
         $self->{files} = $files;
@@ -48,8 +49,9 @@ sub getFiles {
         return $self->{files};
 }
 
-# use java::awt::image::BufferedImage;
-use java::io::File;
+use java::lang::Object ();
+# use java::awt::image::BufferedImage ();
+use java::io::File ();
 
 1;
 

@@ -20,7 +20,7 @@ use feature 'try';
 no warnings 'experimental::try';
 use parent -norequire,'org::allbinary::canvas::BaseGameStatistics';
 
-our $instance = 'org::allbinary::canvas::GameStatisticsFactory'->new();
+tie our $instance, 'java::lang::LazyStatic', sub { 'org::allbinary::canvas::GameStatisticsFactory'->new() };
 
 sub _init_fields {
     my ($self) = @_;
@@ -30,7 +30,7 @@ sub _init_fields {
 sub new {
     my ($class) = @_;
     my $self = $class->SUPER::new();
-    $self->_init_fields();
+    _init_fields($self);
     return $self;
 }
 
@@ -56,8 +56,10 @@ sub toString {
         return 'org::allbinary::logic::string::StringMaker'->new()->append($self->SUPER::toString())->append($self->{stringBuffer}->toString())->toString();
 }
 
-use org::allbinary::logic::string::StringMaker;
-use org::allbinary::canvas::BaseGameStatistics;
+use java::lang::Object ();
+use java::lang::LazyStatic ();
+use org::allbinary::logic::string::StringMaker ();
+use org::allbinary::canvas::BaseGameStatistics ();
 
 1;
 

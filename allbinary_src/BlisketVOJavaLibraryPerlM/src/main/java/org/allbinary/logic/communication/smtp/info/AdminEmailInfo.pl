@@ -29,7 +29,7 @@ sub _init_fields {
 sub new {
     my ($class, $subject, $textBody) = @_;
     my $self = $class->SUPER::new($subject, $textBody);
-    $self->_init_fields();
+    _init_fields($self);
         # super(...) made $self above
         if ($org::allbinary::logic::communication::smtp::info::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($org::allbinary::logic::communication::smtp::info::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{EMAILLOGGING})) {
             my $commonStrings = 'org::allbinary::string::CommonStrings'->getInstance();
@@ -49,13 +49,14 @@ sub init {
         $self->setEmailServerConfigurationInterface($emailServerConfigurationInterface);
 }
 
-use org::allbinary::business::context::configuration::ContextConfigurationInterface;
-use org::allbinary::business::user::modules::admin::configuration::AdminConfiguration;
-use org::allbinary::business::user::modules::admin::configuration::AdminConfigurationInterface;
-use org::allbinary::logic::communication::log::LogUtil;
-use org::allbinary::logic::communication::smtp::configuration::server::EmailServerConfigurationInterface;
-use org::allbinary::string::CommonStrings;
-use org::allbinary::logic::communication::smtp::info::BasicEmailInfo;
+use java::lang::Object ();
+use org::allbinary::business::context::configuration::ContextConfigurationInterface ();
+use org::allbinary::business::user::modules::admin::configuration::AdminConfiguration ();
+use org::allbinary::business::user::modules::admin::configuration::AdminConfigurationInterface ();
+use org::allbinary::logic::communication::log::LogUtil ();
+use org::allbinary::logic::communication::smtp::configuration::server::EmailServerConfigurationInterface ();
+use org::allbinary::string::CommonStrings ();
+use org::allbinary::logic::communication::smtp::info::BasicEmailInfo ();
 
 1;
 

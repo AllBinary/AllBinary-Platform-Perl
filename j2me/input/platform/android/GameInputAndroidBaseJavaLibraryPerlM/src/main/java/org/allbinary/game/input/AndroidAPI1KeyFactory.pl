@@ -7,7 +7,7 @@ use feature 'try';
 no warnings 'experimental::try';
 use parent -norequire,'org::allbinary::game::input::AndroidKeyFactory';
 
-our $instance = 'org::allbinary::logic::NullUtil'->getInstance()->{NULL_OBJECT};
+tie our $instance, 'java::lang::LazyStatic', sub { 'org::allbinary::logic::NullUtil'->getInstance()->{NULL_OBJECT} };
 
 
 sub getInstance {
@@ -25,8 +25,10 @@ sub new {
     return $self;
 }
 
-use org::allbinary::logic::NullUtil;
-use org::allbinary::game::input::AndroidKeyFactory;
+use java::lang::Object ();
+use java::lang::LazyStatic ();
+use org::allbinary::logic::NullUtil ();
+use org::allbinary::game::input::AndroidKeyFactory ();
 
 1;
 

@@ -39,7 +39,7 @@ sub init {
     die "abstract method init";
 }
 
-# use javax::microedition::media::Player;
+use javax::microedition::media::Player ();
 
 1;
 

@@ -53,10 +53,11 @@ sub new {
     return $self;
 }
 
-use org::allbinary::game::configuration::persistance::GamePersistanceStrings;
-use org::allbinary::game::input::mapping::InputToGameKeyMapping;
-use org::allbinary::game::input::mapping::PersistentInputMapping;
-use org::allbinary::game::input::GameKeyFactory;
+use java::lang::Object ();
+use org::allbinary::game::configuration::persistance::GamePersistanceStrings ();
+use org::allbinary::game::input::mapping::InputToGameKeyMapping ();
+use org::allbinary::game::input::mapping::PersistentInputMapping ();
+use org::allbinary::game::input::GameKeyFactory ();
 
 1;
 

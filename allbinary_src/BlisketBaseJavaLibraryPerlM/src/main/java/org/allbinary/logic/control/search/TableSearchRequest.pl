@@ -17,6 +17,7 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
 
 sub _init_fields {
@@ -32,7 +33,7 @@ sub _init_fields {
 sub new {
     my ($class, $keywords, $searchParams, $xslFile, $contentType) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
         $self->{keywords} = $keywords;
         $self->{searchParams} = $searchParams;
         $self->{xslFile} = $xslFile;
@@ -110,12 +111,13 @@ sub getFileBaseNameNode {
         return 'org::allbinary::data::tree::dom::ModDomHelper'->createNameValueNodes($document, $org::allbinary::logic::control::search::SearchData::FILENAME, $self->getFileBaseName());
 }
 
-use org::allbinary::data::tree::dom::ModDomHelper;
-use org::allbinary::globals::FREEBLISKET_PATH_GLOBALS;
-use org::allbinary::globals::URLGLOBALS;
-use org::w3c::dom::Document;
-use org::w3c::dom::Node;
-use org::allbinary::logic::control::search::SearchData;
+use java::lang::Object ();
+use org::allbinary::data::tree::dom::ModDomHelper ();
+use org::allbinary::globals::FREEBLISKET_PATH_GLOBALS ();
+use org::allbinary::globals::URLGLOBALS ();
+use org::w3c::dom::Document ();
+use org::w3c::dom::Node ();
+use org::allbinary::logic::control::search::SearchData ();
 
 1;
 

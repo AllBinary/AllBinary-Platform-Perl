@@ -34,7 +34,7 @@ sub getRootFilePath {
     die "abstract method getRootFilePath";
 }
 
-use org::allbinary::logic::io::path::AbPath;
+use org::allbinary::logic::io::path::AbPath ();
 
 1;
 

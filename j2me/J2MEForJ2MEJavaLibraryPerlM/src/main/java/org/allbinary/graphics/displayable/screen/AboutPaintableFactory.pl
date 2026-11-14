@@ -17,8 +17,9 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
-our $instance = 'org::allbinary::graphics::displayable::screen::AboutPaintableFactory'->new();
+tie our $instance, 'java::lang::LazyStatic', sub { 'org::allbinary::graphics::displayable::screen::AboutPaintableFactory'->new() };
 
 sub _init_fields {
     my ($self) = @_;
@@ -35,17 +36,19 @@ sub getInstance {
 sub new {
     my ($class) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
         my $INFO = ["Built with the", "AllBinary Platform", 'org::allbinary::logic::string::StringUtil'->getInstance()->{EMPTY_STRING}, "Comments or Questions:", "support\@allbinary.com"];
         my $DEVELOPERS = ["Developed By:", "Travis Berthelot"];
         $self->{paintableArray} = 'org::allbinary::game::paint::AboutPaintable'->getInstance($INFO, $DEVELOPERS)->getPaintableArrayInstance();
     return $self;
 }
 
-use org::allbinary::game::paint::AboutPaintable;
-use org::allbinary::graphics::paint::NullPaintable;
-use org::allbinary::graphics::paint::Paintable;
-use org::allbinary::logic::string::StringUtil;
+use java::lang::Object ();
+use java::lang::LazyStatic ();
+use org::allbinary::game::paint::AboutPaintable ();
+use org::allbinary::graphics::paint::NullPaintable ();
+use org::allbinary::graphics::paint::Paintable ();
+use org::allbinary::logic::string::StringUtil ();
 
 1;
 

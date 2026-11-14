@@ -17,8 +17,9 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
-our $instance = 'org::allbinary::media::image::ImageCopyUtil'->new();
+tie our $instance, 'java::lang::LazyStatic', sub { 'org::allbinary::media::image::ImageCopyUtil'->new() };
 
 sub _init_fields {
     my ($self) = @_;
@@ -38,7 +39,7 @@ sub getInstance {
 sub new {
     my ($class) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
     return $self;
 }
 
@@ -82,13 +83,15 @@ sub createImageScale {
         return $image;
 }
 
-# use java::awt::image::BufferedImage;
-# use javax::microedition::lcdui::Image;
-use org::allbinary::graphics::Anchor;
-use org::allbinary::logic::communication::log::LogUtil;
-use org::microemu::device::j2se::J2SEImmutableImage;
-use org::allbinary::media::image::ImageUtil;
-use org::allbinary::media::image::ImageCreationUtil;
+use java::lang::Object ();
+use java::lang::LazyStatic ();
+# use java::awt::image::BufferedImage ();
+use javax::microedition::lcdui::Image ();
+use org::allbinary::graphics::Anchor ();
+use org::allbinary::logic::communication::log::LogUtil ();
+use org::microemu::device::j2se::J2SEImmutableImage ();
+use org::allbinary::media::image::ImageUtil ();
+use org::allbinary::media::image::ImageCreationUtil ();
 
 1;
 

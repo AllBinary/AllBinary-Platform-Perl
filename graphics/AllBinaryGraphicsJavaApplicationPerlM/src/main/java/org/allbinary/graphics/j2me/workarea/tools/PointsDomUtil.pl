@@ -17,8 +17,9 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
-our $instance = 'org::allbinary::graphics::j2me::workarea::tools::PointsDomUtil'->new();
+tie our $instance, 'java::lang::LazyStatic', sub { 'org::allbinary::graphics::j2me::workarea::tools::PointsDomUtil'->new() };
 
 sub _init_fields {
     my ($self) = @_;
@@ -33,7 +34,7 @@ sub _init_fields {
 sub new {
     my ($class) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
     return $self;
 }
 
@@ -96,14 +97,16 @@ sub getPointNode {
         return $pointNode;
 }
 
-use org::allbinary::graphics::GPoint;
-use org::allbinary::graphics::PointFactory;
-use org::allbinary::graphics::j2me::workarea::WorkAreaJPanel;
-use org::allbinary::graphics::j2me::workarea::canvas::CanvasDom;
-use org::allbinary::math::PositionStrings;
-use org::allbinary::util::BasicArrayList;
-use org::w3c::dom::Node;
-use org::allbinary::graphics::j2me::workarea::tools::PointsUtil;
+use java::lang::Object ();
+use java::lang::LazyStatic ();
+use org::allbinary::graphics::GPoint ();
+use org::allbinary::graphics::PointFactory ();
+use org::allbinary::graphics::j2me::workarea::WorkAreaJPanel ();
+use org::allbinary::graphics::j2me::workarea::canvas::CanvasDom ();
+use org::allbinary::math::PositionStrings ();
+use org::allbinary::util::BasicArrayList ();
+use org::w3c::dom::Node ();
+use org::allbinary::graphics::j2me::workarea::tools::PointsUtil ();
 
 1;
 

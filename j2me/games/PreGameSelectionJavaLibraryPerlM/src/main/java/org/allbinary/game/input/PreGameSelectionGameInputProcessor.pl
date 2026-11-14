@@ -29,35 +29,14 @@ sub _init_fields {
     $self->{nextGameState} = undef;
     $self->{playerGameInput} = undef;
     $self->{lockedIndex} = undef;
-    $self->{abRunnable} = do {
-        package org::allbinary::thread::ABRunnable::AnonymousN66446 { our @ISA = ('org::allbinary::thread::ABRunnable');
-        
-
-        sub run {
-            my ($self) = @_;
-            try {
-                $self->setRunning(1);
-                'org::allbinary::media::audio::SecondaryPlayerQueueFactory'->getInstance()->add('org::allbinary::media::audio::SelectSound'->getInstance());
-                $self->{gameCanvas}->setGameState($self->{nextGameState});
-                'org::allbinary::game::input::event::GameKeyEventHandler'->getInstance()->removeListener($self->getPlayerGameInput());
-                $self->setRunning(0);
-            } catch ($e) {
-                $self->setRunning(0);
-                my $logUtil = 'org::allbinary::logic::communication::log::LogUtil'->getInstance();
-                my $commonStrings = 'org::allbinary::string::CommonStrings'->getInstance();
-                $logUtil->put($commonStrings->{EXCEPTION}, $self, $commonStrings->{RUN}, $e);
-            }
-        }
-        }
-        'org::allbinary::thread::ABRunnable::AnonymousN66446'->can('new') ? 'org::allbinary::thread::ABRunnable::AnonymousN66446'->new() : bless({}, 'org::allbinary::thread::ABRunnable::AnonymousN66446')
-    };
+    $self->{abRunnable} = 'org::allbinary::game::input::PreGameSelectionRunnable'->new($self);
 }
 
 
 sub new {
     my ($class, $gameCanvas, $preGameSelectorPaintable, $nextGameState, $lockedIndex) = @_;
     my $self = $class->SUPER::new();
-    $self->_init_fields();
+    _init_fields($self);
         $self->{gameCanvas} = $gameCanvas;
         $self->{preGameSelectorPaintable} = $preGameSelectorPaintable;
         $self->{nextGameState} = $nextGameState;
@@ -131,28 +110,70 @@ sub getPlayerGameInput {
     my ($self) = @_;
         return $self->{playerGameInput};
 }
+{
+    package org::allbinary::game::input::PreGameSelectionRunnable;
+    use strict;
+    use warnings;
+    use feature 'try';
+    no warnings 'experimental::try';
+    use parent -norequire,'org::allbinary::thread::ABRunnable';
+    
 
-# use javax::microedition::lcdui::Canvas;
-use org::allbinary::util::BasicArrayList;
-use org::allbinary::logic::system::security::licensing::LockedFeatureNotificationUtil;
-use org::allbinary::logic::system::security::licensing::LockedUtil;
-use org::allbinary::canvas::Processor;
-use org::allbinary::game::displayable::canvas::AllBinaryGameCanvas;
-use org::allbinary::game::displayable::canvas::PreGameSelectorPaintable;
-use org::allbinary::game::input::event::GameKeyEventHandler;
-use org::allbinary::game::input::event::GameKeyEventUtil;
-use org::allbinary::game::state::GameState;
-use org::allbinary::layer::AllBinaryLayerManager;
-use org::allbinary::logic::communication::log::LogUtil;
-use org::allbinary::string::CommonStrings;
-use org::allbinary::media::audio::SecondaryPlayerQueueFactory;
-use org::allbinary::media::audio::SelectSound;
-use org::allbinary::thread::ABRunnable;
-use org::allbinary::thread::ThreadObjectUtil;
-use org::allbinary::time::TimeDelayHelper;
-use org::allbinary::game::input::GameInputProcessorInterface;
-use org::allbinary::game::input::PlayerGameInputCompositeInterface;
-use org::allbinary::game::input::GameInputProcessorComposite;
+    sub _init_fields {
+        my ($self) = @_;
+        $self->{inputProcessor} = undef;
+    }
+    
+
+    sub new {
+        my ($class, $inputProcessor) = @_;
+        my $self = $class->SUPER::new();
+        _init_fields($self);
+            $self->{inputProcessor} = $inputProcessor;
+        return $self;
+    }
+    
+
+    sub run {
+        my ($self) = @_;
+            try {
+                $self->setRunning(1);
+                'org::allbinary::media::audio::SecondaryPlayerQueueFactory'->getInstance()->add('org::allbinary::media::audio::SelectSound'->getInstance());
+                $self->{inputProcessor}->{gameCanvas}->setGameState($self->{inputProcessor}->{nextGameState});
+                'org::allbinary::game::input::event::GameKeyEventHandler'->getInstance()->removeListener($self->{inputProcessor}->getPlayerGameInput());
+                $self->setRunning(0);
+            } catch ($e) {
+                $self->setRunning(0);
+                my $logUtil = 'org::allbinary::logic::communication::log::LogUtil'->getInstance();
+                my $commonStrings = 'org::allbinary::string::CommonStrings'->getInstance();
+                $logUtil->put($commonStrings->{EXCEPTION}, $self, $commonStrings->{RUN}, $e);
+            }
+    }
+    }
+
+
+use java::lang::Object ();
+use javax::microedition::lcdui::Canvas ();
+use org::allbinary::util::BasicArrayList ();
+use org::allbinary::logic::system::security::licensing::LockedFeatureNotificationUtil ();
+use org::allbinary::logic::system::security::licensing::LockedUtil ();
+use org::allbinary::canvas::Processor ();
+use org::allbinary::game::displayable::canvas::AllBinaryGameCanvas ();
+use org::allbinary::game::displayable::canvas::PreGameSelectorPaintable ();
+use org::allbinary::game::input::event::GameKeyEventHandler ();
+use org::allbinary::game::input::event::GameKeyEventUtil ();
+use org::allbinary::game::state::GameState ();
+use org::allbinary::layer::AllBinaryLayerManager ();
+use org::allbinary::logic::communication::log::LogUtil ();
+use org::allbinary::string::CommonStrings ();
+use org::allbinary::media::audio::SecondaryPlayerQueueFactory ();
+use org::allbinary::media::audio::SelectSound ();
+use org::allbinary::thread::ABRunnable ();
+use org::allbinary::thread::ThreadObjectUtil ();
+use org::allbinary::time::TimeDelayHelper ();
+use org::allbinary::game::input::GameInputProcessorInterface ();
+use org::allbinary::game::input::PlayerGameInputCompositeInterface ();
+use org::allbinary::game::input::GameInputProcessorComposite ();
 
 1;
 

@@ -22,7 +22,7 @@ sub getMiniInstance {
     die "abstract method getMiniInstance";
 }
 
-use org::allbinary::game::layer::AllBinaryTiledLayer;
+use org::allbinary::game::layer::AllBinaryTiledLayer ();
 
 1;
 

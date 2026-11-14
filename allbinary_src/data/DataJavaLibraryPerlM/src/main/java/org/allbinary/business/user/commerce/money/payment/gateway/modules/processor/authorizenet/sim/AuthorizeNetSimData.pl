@@ -17,6 +17,7 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
 our $X_FP_HASH = "x_fp_hash";
 our $X_FP_SEQUENCE = "x_fp_sequence";
@@ -42,6 +43,7 @@ sub new {
     return $self;
 }
 
+use java::lang::Object ();
 
 1;
 

@@ -41,7 +41,7 @@ sub _init_fields {
 sub new {
     my ($class) = @_;
     my $self = $class->SUPER::new();
-    $self->_init_fields();
+    _init_fields($self);
     return $self;
 }
 
@@ -326,7 +326,7 @@ sub processInvalidation {
                 $self->invalidateSession();
                 return 1;
             }
-            {
+            {;
                 $self->{weblisketSession}->setTimeout('org::allbinary::logic::java::bool::BooleanFactory'->getInstance()->{TRUE_STRING});
                 return 0;
             }
@@ -457,25 +457,26 @@ sub doStartTag {
         }
 }
 
-use java::util::Calendar;
-use org::allbinary::util::BasicArrayList;
-use org::allbinary::util::BasicArrayListD;
-# use javax::servlet::http::HttpServletRequest;
-# use javax::servlet::jsp::JspTagException;
-# use javax::servlet::jsp::tagext::TagSupport;
-use org::allbinary::business::init::InstallerInfo;
-use org::allbinary::business::user::role::BasicUserRole;
-use org::allbinary::business::user::role::BasicUserRoleFactory;
-use org::allbinary::logic::communication::http::request::AbResponseHandler;
-use org::allbinary::logic::communication::http::request::session::BasicWeblisketSession;
-use org::allbinary::logic::communication::http::request::session::WeblisketSessionData;
-use org::allbinary::logic::communication::log::LogUtil;
-use org::allbinary::logic::java::bool::BooleanFactory;
-use org::allbinary::logic::java::bool::BooleanUtil;
-use org::allbinary::logic::string::StringMaker;
-use org::allbinary::logic::string::StringUtil;
-use org::allbinary::logic::system::security::licensing::LicensingException;
-use tags::CustomTagSupport;
+use java::lang::Object ();
+use java::util::Calendar ();
+use org::allbinary::util::BasicArrayList ();
+use org::allbinary::util::BasicArrayListD ();
+# use javax::servlet::http::HttpServletRequest ();
+# use javax::servlet::jsp::JspTagException ();
+# use javax::servlet::jsp::tagext::TagSupport ();
+use org::allbinary::business::init::InstallerInfo ();
+use org::allbinary::business::user::role::BasicUserRole ();
+use org::allbinary::business::user::role::BasicUserRoleFactory ();
+use org::allbinary::logic::communication::http::request::AbResponseHandler ();
+use org::allbinary::logic::communication::http::request::session::BasicWeblisketSession ();
+use org::allbinary::logic::communication::http::request::session::WeblisketSessionData ();
+use org::allbinary::logic::communication::log::LogUtil ();
+use org::allbinary::logic::java::bool::BooleanFactory ();
+use org::allbinary::logic::java::bool::BooleanUtil ();
+use org::allbinary::logic::string::StringMaker ();
+use org::allbinary::logic::string::StringUtil ();
+use org::allbinary::logic::system::security::licensing::LicensingException ();
+use tags::CustomTagSupport ();
 
 1;
 

@@ -26,7 +26,7 @@ sub getInstance {
     die "abstract method getInstance";
 }
 
-use org::allbinary::graphics::j2me::workarea::canvas::CanvasJPanel;
+use org::allbinary::graphics::j2me::workarea::canvas::CanvasJPanel ();
 
 1;
 

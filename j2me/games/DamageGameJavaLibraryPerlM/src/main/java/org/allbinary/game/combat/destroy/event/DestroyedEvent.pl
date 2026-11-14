@@ -30,7 +30,7 @@ sub _init_fields {
 sub new {
     my ($class, $combatGameCanvas) = @_;
     my $self = $class->SUPER::new('org::allbinary::game::combat::destroy::event::DestroyedEventHandler'->getInstance());
-    $self->_init_fields();
+    _init_fields($self);
         # super(...) made $self above
         $self->setAllBinaryGameCanvas($combatGameCanvas);
     return $self;
@@ -72,13 +72,14 @@ sub toString {
         return $stringBuffer->toString();
 }
 
-use org::allbinary::game::displayable::canvas::AllBinaryGameCanvas;
-use org::allbinary::game::displayable::canvas::NullGameCanvas;
-use org::allbinary::layer::AllBinaryLayer;
-use org::allbinary::logic::string::StringMaker;
-use org::allbinary::logic::string::StringUtil;
-use org::allbinary::logic::util::event::AllBinaryEventObject;
-use org::allbinary::game::combat::destroy::event::DestroyedEventHandler;
+use java::lang::Object ();
+use org::allbinary::game::displayable::canvas::AllBinaryGameCanvas ();
+use org::allbinary::game::displayable::canvas::NullGameCanvas ();
+use org::allbinary::layer::AllBinaryLayer ();
+use org::allbinary::logic::string::StringMaker ();
+use org::allbinary::logic::string::StringUtil ();
+use org::allbinary::logic::util::event::AllBinaryEventObject ();
+use org::allbinary::game::combat::destroy::event::DestroyedEventHandler ();
 
 1;
 

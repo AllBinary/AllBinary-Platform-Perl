@@ -29,7 +29,7 @@ sub _init_fields {
 sub new {
     my ($class, $anyType, $geographicMapCellPosition) = @_;
     my $self = $class->SUPER::new($anyType);
-    $self->_init_fields();
+    _init_fields($self);
         # super(...) made $self above
         $self->{geographicMapCellPosition} = $geographicMapCellPosition;
     return $self;
@@ -63,12 +63,13 @@ sub toString {
         return $stringBuffer->toString();
 }
 
-use org::allbinary::graphics::CellPosition;
-use org::allbinary::graphics::CellPositionFactory;
-use org::allbinary::logic::string::StringMaker;
-use org::allbinary::logic::string::StringUtil;
-use org::allbinary::logic::util::event::AllBinaryEventObject;
-use org::allbinary::media::graphics::geography::map::GeographicMapCellPosition;
+use java::lang::Object ();
+use org::allbinary::graphics::CellPosition ();
+use org::allbinary::graphics::CellPositionFactory ();
+use org::allbinary::logic::string::StringMaker ();
+use org::allbinary::logic::string::StringUtil ();
+use org::allbinary::logic::util::event::AllBinaryEventObject ();
+use org::allbinary::media::graphics::geography::map::GeographicMapCellPosition ();
 
 1;
 

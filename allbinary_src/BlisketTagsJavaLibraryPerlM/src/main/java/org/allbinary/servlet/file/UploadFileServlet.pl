@@ -17,7 +17,7 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
-use parent -norequire,'javax::servlet::http::HttpServlet';
+use parent -norequire,'java::lang::Object';
 
 
 sub _init_fields {
@@ -31,7 +31,7 @@ sub _init_fields {
 sub new {
     my ($class) = @_;
     my $self = $class->SUPER::new();
-    $self->_init_fields();
+    _init_fields($self);
     return $self;
 }
 
@@ -137,30 +137,31 @@ sub getServletInfo {
         return "Upload Cloud Files";
 }
 
-# use java::io::IOException;
-# use java::io::InputStream;
-use java::util::HashMap;
-# use javax::servlet::ServletException;
-# use javax::servlet::http::HttpServlet;
-# use javax::servlet::http::HttpServletRequest;
-# use javax::servlet::http::HttpServletResponse;
-use admin::taghelpers::AuthenticationHelper;
-use admin::taghelpers::AuthenticationHelperFactory;
-use admin::taghelpers::AuthenticationHelperUtil;
-use org::allbinary::globals::URLGLOBALS;
-use org::allbinary::logic::StdUtil;
-use org::allbinary::logic::communication::http::file::upload::FileUploadData;
-use org::allbinary::logic::communication::http::file::upload::HttpFileUploadUtil;
-use org::allbinary::logic::communication::http::request::HttpRequestUtil;
-use org::allbinary::logic::communication::http::request::MultipartRequestParams;
-use org::allbinary::logic::communication::log::LogUtil;
-use org::allbinary::logic::io::AbFileOutputStream;
-use org::allbinary::logic::io::StreamUtil;
-use org::allbinary::logic::io::file::AbFile;
-use org::allbinary::logic::string::StringMaker;
-use org::allbinary::servlet::BlisketServletUtil;
-use org::allbinary::string::CommonStrings;
-use org::apache::commons::fileupload::FileItem;
+use java::lang::Object ();
+# use java::io::IOException ();
+# use java::io::InputStream ();
+use java::util::HashMap ();
+# use javax::servlet::ServletException ();
+# use javax::servlet::http::HttpServlet ();
+# use javax::servlet::http::HttpServletRequest ();
+# use javax::servlet::http::HttpServletResponse ();
+use admin::taghelpers::AuthenticationHelper ();
+use admin::taghelpers::AuthenticationHelperFactory ();
+use admin::taghelpers::AuthenticationHelperUtil ();
+use org::allbinary::globals::URLGLOBALS ();
+use org::allbinary::logic::StdUtil ();
+use org::allbinary::logic::communication::http::file::upload::FileUploadData ();
+use org::allbinary::logic::communication::http::file::upload::HttpFileUploadUtil ();
+use org::allbinary::logic::communication::http::request::HttpRequestUtil ();
+use org::allbinary::logic::communication::http::request::MultipartRequestParams ();
+use org::allbinary::logic::communication::log::LogUtil ();
+use org::allbinary::logic::io::AbFileOutputStream ();
+use org::allbinary::logic::io::StreamUtil ();
+use org::allbinary::logic::io::file::AbFile ();
+use org::allbinary::logic::string::StringMaker ();
+use org::allbinary::servlet::BlisketServletUtil ();
+use org::allbinary::string::CommonStrings ();
+use org::apache::commons::fileupload::FileItem ();
 
 1;
 

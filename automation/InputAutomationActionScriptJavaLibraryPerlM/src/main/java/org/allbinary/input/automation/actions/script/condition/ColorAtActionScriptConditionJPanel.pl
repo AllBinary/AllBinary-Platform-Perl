@@ -17,7 +17,7 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
-use parent -norequire,'javax::swing::JPanel';
+use parent -norequire,'java::lang::Object';
 
 
 sub _init_fields {
@@ -53,7 +53,7 @@ sub _init_fields {
 sub new {
     my ($class, $colorAtActionScriptConditionInterface) = @_;
     my $self = $class->SUPER::new();
-    $self->_init_fields();
+    _init_fields($self);
         $self->{logUtil}->putF($self->{commonStrings}->{START}, $self, $self->{commonStrings}->{CONSTRUCTOR});
         $self->initComponents();
         $self->{colorAtActionScriptConditionInterface} = $colorAtActionScriptConditionInterface;
@@ -255,7 +255,7 @@ sub initComponents {
         $self->{blueJLabel}->setText("Blue:");
         $self->{okJButton}->setText("OK");
         $self->{okJButton}->addActionListener(do {
-            package java::awt::event::ActionListener::AnonymousN70549 { our @ISA = ('java::awt::event::ActionListener');
+            package java::awt::event::ActionListener::AnonymousN70549 { our @ISA = ('java::awt::event::ActionListener', 'java::lang::Object');
             
 
             sub actionPerformed {
@@ -272,7 +272,7 @@ sub initComponents {
         $self->setPreferredSize('java::awt::Dimension'->new(100, 0));
         $self->{colorAtActionJButton}->setText("Edit");
         $self->{colorAtActionJButton}->addActionListener(do {
-            package java::awt::event::ActionListener::AnonymousN75550 { our @ISA = ('java::awt::event::ActionListener');
+            package java::awt::event::ActionListener::AnonymousN75550 { our @ISA = ('java::awt::event::ActionListener', 'java::lang::Object');
             
 
             sub actionPerformed {
@@ -302,10 +302,11 @@ sub colorAtActionJButtonActionPerformed {
         $self->getColorAtActionJDialog()->setVisible(1);
 }
 
-use org::allbinary::logic::communication::log::LogUtil;
-use org::allbinary::logic::string::StringValidationUtil;
-use org::allbinary::media::image::analysis::ColorRangeInterface;
-use org::allbinary::string::CommonStrings;
+use java::lang::Object ();
+use org::allbinary::logic::communication::log::LogUtil ();
+use org::allbinary::logic::string::StringValidationUtil ();
+use org::allbinary::media::image::analysis::ColorRangeInterface ();
+use org::allbinary::string::CommonStrings ();
 
 1;
 

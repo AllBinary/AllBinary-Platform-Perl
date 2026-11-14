@@ -33,7 +33,7 @@ sub _init_fields {
 sub new {
     my ($class, $bufferedImage, $minX, $maxX, $y) = @_;
     my $self = $class->SUPER::new($bufferedImage, $minX, $maxX, $y);
-    $self->_init_fields();
+    _init_fields($self);
         # super(...) made $self above
         if ($self->getRatios()->[scalar(@{$bufferedImage}) - 1] < 1.0) {
             $self->setDamaged(1);
@@ -98,11 +98,12 @@ sub toString {
         return $stringBuffer->toString();
 }
 
-# use java::awt::image::BufferedImage;
-use org::allbinary::logic::string::StringMaker;
-use org::allbinary::string::CommonSeps;
-use org::allbinary::input::automation::module::game::MeteredGameObject;
-use org::allbinary::input::automation::module::game::HitPointGameObjectInterface;
+use java::lang::Object ();
+# use java::awt::image::BufferedImage ();
+use org::allbinary::logic::string::StringMaker ();
+use org::allbinary::string::CommonSeps ();
+use org::allbinary::input::automation::module::game::MeteredGameObject ();
+use org::allbinary::input::automation::module::game::HitPointGameObjectInterface ();
 
 1;
 

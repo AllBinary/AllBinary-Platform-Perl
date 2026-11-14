@@ -19,8 +19,9 @@ use warnings;
 use feature 'try';
 no warnings 'experimental::try';
 use Scalar::Util ();
+use parent -norequire,'java::lang::Object';
 
-our $instance = 'org::allbinary::TsUtil'->new();
+tie our $instance, 'java::lang::LazyStatic', sub { 'org::allbinary::TsUtil'->new() };
 
 sub new {
     my ($class) = @_;
@@ -32,6 +33,18 @@ sub new {
 sub getInstance {
     my ($class) = @_;
         return $org::allbinary::TsUtil::instance;
+}
+
+
+sub longBitsToDouble {
+    my ($self, $bits) = @_;
+        return unpack('d', pack('q', $bits));
+}
+
+
+sub intBitsToFloat {
+    my ($self, $bits) = @_;
+        return unpack('f', pack('l', $bits));
 }
 
 
@@ -54,7 +67,7 @@ sub getRecord {
     my ($self, $anyType, $recordId) = @_;
         my $recordStore = $anyType;
         my $data = undef;
-        { # synchronized ($self)
+        {; # synchronized ($self)
             $data = [(0) x ($recordStore->getRecordSize($recordId))];
             $recordStore->getRecord($recordId, $data, 0);
         }
@@ -119,14 +132,16 @@ sub gc {
         1;
 }
 
-# use javax::microedition::lcdui::Displayable;
-# use javax::microedition::lcdui::Form;
-# use javax::microedition::rms::InvalidRecordIDException;
-# use javax::microedition::rms::RecordStore;
-# use javax::microedition::rms::RecordStoreException;
-# use javax::microedition::rms::RecordStoreNotOpenException;
-use org::allbinary::logic::NullUtil;
-use java::lang::System;
+use java::lang::Object ();
+use java::lang::LazyStatic ();
+use javax::microedition::lcdui::Displayable ();
+use javax::microedition::lcdui::Form ();
+use javax::microedition::rms::InvalidRecordIDException ();
+use javax::microedition::rms::RecordStore ();
+use javax::microedition::rms::RecordStoreException ();
+use javax::microedition::rms::RecordStoreNotOpenException ();
+use org::allbinary::logic::NullUtil ();
+use java::lang::System ();
 
 1;
 

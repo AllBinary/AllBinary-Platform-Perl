@@ -31,7 +31,7 @@ sub _init_fields {
 sub new {
     my ($class, $groupInterface, $isPrimaryWaypointCreator, $itemIndex) = @_;
     my $self = $class->SUPER::new($groupInterface);
-    $self->_init_fields();
+    _init_fields($self);
         # super(...) made $self above
         $self->{itemIndex} = $itemIndex;
         $self->{isPrimaryWaypointCreator} = $isPrimaryWaypointCreator;
@@ -128,21 +128,22 @@ sub setSelectedStickyItem {
         $self->{rtsFormInputArray}->[0]->setSelectedStickyItem($selectedStickyItem);
 }
 
-use org::allbinary::game::layer::RTSPlayerLayerInterface;
-use org::allbinary::graphics::form::item::ABCustomItem;
-use org::allbinary::string::CommonStrings;
-use org::allbinary::game::identification::Group;
-use org::allbinary::game::layer::AllBinaryGameLayerManager;
-use org::allbinary::game::layer::special::CollidableDestroyableDamageableLayer;
-use org::allbinary::graphics::GPoint;
-use org::allbinary::graphics::form::ScrollSelectionForm;
-use org::allbinary::layer::AllBinaryLayerManager;
-use org::allbinary::media::graphics::geography::map::BasicGeographicMap;
-use org::allbinary::media::graphics::geography::map::GeographicMapCompositeInterface;
-use org::allbinary::string::CommonLabels;
-use org::allbinary::game::input::form::RTSFormInput;
-use org::allbinary::game::input::form::WaypointRTSFormInput;
-use org::allbinary::game::input::form::UnitRTSFormInput;
+use java::lang::Object ();
+use org::allbinary::game::layer::RTSPlayerLayerInterface ();
+use org::allbinary::graphics::form::item::ABCustomItem ();
+use org::allbinary::string::CommonStrings ();
+use org::allbinary::game::identification::Group ();
+use org::allbinary::game::layer::AllBinaryGameLayerManager ();
+use org::allbinary::game::layer::special::CollidableDestroyableDamageableLayer ();
+use org::allbinary::graphics::GPoint ();
+use org::allbinary::graphics::form::ScrollSelectionForm ();
+use org::allbinary::layer::AllBinaryLayerManager ();
+use org::allbinary::media::graphics::geography::map::BasicGeographicMap ();
+use org::allbinary::media::graphics::geography::map::GeographicMapCompositeInterface ();
+use org::allbinary::string::CommonLabels ();
+use org::allbinary::game::input::form::RTSFormInput ();
+use org::allbinary::game::input::form::WaypointRTSFormInput ();
+use org::allbinary::game::input::form::UnitRTSFormInput ();
 
 1;
 

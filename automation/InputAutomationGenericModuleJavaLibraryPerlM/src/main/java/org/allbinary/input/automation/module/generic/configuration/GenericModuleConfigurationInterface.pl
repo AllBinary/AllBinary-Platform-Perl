@@ -32,7 +32,7 @@ sub setSelectedGenericProfile {
     die "abstract method setSelectedGenericProfile";
 }
 
-use org::allbinary::input::automation::module::generic::configuration::profile::GenericProfile;
+use org::allbinary::input::automation::module::generic::configuration::profile::GenericProfile ();
 
 1;
 

@@ -17,6 +17,7 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
 
 sub new {
@@ -31,7 +32,8 @@ sub get {
         return $file->getFile();
 }
 
-use java::io::File;
+use java::lang::Object ();
+use java::io::File ();
 
 1;
 

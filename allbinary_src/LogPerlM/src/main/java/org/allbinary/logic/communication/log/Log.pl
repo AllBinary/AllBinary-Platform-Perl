@@ -17,6 +17,7 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
 
 sub _init_fields {
@@ -32,7 +33,7 @@ sub _init_fields {
 sub new {
     my ($class, $specialMessage, $anyType, $functionName, $exception) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
         $self->{specialMessage} = $specialMessage;
         $self->{anyType} = $anyType;
         $self->{functionName} = $functionName;
@@ -75,8 +76,9 @@ sub toString {
         return $self->{logFormatUtil}->get($className, $self->{functionName}, $self->{specialMessage}, $self->{exception});
 }
 
-use org::allbinary::string::CommonStrings;
-use org::allbinary::logic::communication::log::LogFormatUtil;
+use java::lang::Object ();
+use org::allbinary::string::CommonStrings ();
+use org::allbinary::logic::communication::log::LogFormatUtil ();
 
 1;
 

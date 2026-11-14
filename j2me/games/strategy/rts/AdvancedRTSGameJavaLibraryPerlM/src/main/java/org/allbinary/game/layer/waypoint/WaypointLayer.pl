@@ -96,24 +96,25 @@ sub isSelfUpgradeable {
         return 0;
 }
 
-# use javax::microedition::lcdui::Graphics;
-use org::allbinary::animation::AnimationInterfaceFactoryInterface;
-use org::allbinary::animation::ProceduralAnimationInterfaceFactoryInterface;
-use org::allbinary::game::health::Health;
-use org::allbinary::game::identification::Group;
-use org::allbinary::game::input::form::NullRTSFormInputFactory;
-use org::allbinary::game::layer::AdvancedRTSGameLayer;
-use org::allbinary::game::layer::AdvancedRTSProperties;
-use org::allbinary::game::layer::PathFindingLayerInterface;
-use org::allbinary::game::view::TileLayerPositionIntoViewPosition;
-use org::allbinary::graphics::Rectangle;
-use org::allbinary::layer::AllBinaryLayerManager;
-use org::allbinary::game::layer::RTSPlayerLayerInterface;
-use org::allbinary::game::multiplayer::layer::RemoteInfo;
-use org::allbinary::media::audio::AttackSound;
-use org::allbinary::game::layer::waypoint::CollidableWaypointBehavior;
-use org::allbinary::game::layer::waypoint::Waypoint;
-use org::allbinary::game::layer::waypoint::WaypointCellPositionHistory;
+use java::lang::Object ();
+use javax::microedition::lcdui::Graphics ();
+use org::allbinary::animation::AnimationInterfaceFactoryInterface ();
+use org::allbinary::animation::ProceduralAnimationInterfaceFactoryInterface ();
+use org::allbinary::game::health::Health ();
+use org::allbinary::game::identification::Group ();
+use org::allbinary::game::input::form::NullRTSFormInputFactory ();
+use org::allbinary::game::layer::AdvancedRTSGameLayer ();
+use org::allbinary::game::layer::AdvancedRTSProperties ();
+use org::allbinary::game::layer::PathFindingLayerInterface ();
+use org::allbinary::game::view::TileLayerPositionIntoViewPosition ();
+use org::allbinary::graphics::Rectangle ();
+use org::allbinary::layer::AllBinaryLayerManager ();
+use org::allbinary::game::layer::RTSPlayerLayerInterface ();
+use org::allbinary::game::multiplayer::layer::RemoteInfo ();
+use org::allbinary::media::audio::AttackSound ();
+use org::allbinary::game::layer::waypoint::CollidableWaypointBehavior ();
+use org::allbinary::game::layer::waypoint::Waypoint ();
+use org::allbinary::game::layer::waypoint::WaypointCellPositionHistory ();
 
 1;
 

@@ -18,8 +18,9 @@ use warnings;
 use feature 'try';
 no warnings 'experimental::try';
 use POSIX ();
+use parent -norequire,'java::lang::Object';
 
-our $instance = 'org::allbinary::math::AngleIncrementInfoFactory'->new();
+tie our $instance, 'java::lang::LazyStatic', sub { 'org::allbinary::math::AngleIncrementInfoFactory'->new() };
 
 sub _init_fields {
     my ($self) = @_;
@@ -29,7 +30,7 @@ sub _init_fields {
 sub new {
     my ($class) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
     return $self;
 }
 
@@ -55,8 +56,10 @@ sub getAt {
         return $angleIncrementInfo;
 }
 
-use org::allbinary::math::AngleFactory;
-use org::allbinary::math::AngleIncrementInfo;
+use java::lang::Object ();
+use java::lang::LazyStatic ();
+use org::allbinary::math::AngleFactory ();
+use org::allbinary::math::AngleIncrementInfo ();
 
 1;
 

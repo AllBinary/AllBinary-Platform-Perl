@@ -6,8 +6,9 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
-our $instance = 'org::allbinary::logic::visual::media::MediaUtil'->new();
+tie our $instance, 'java::lang::LazyStatic', sub { 'org::allbinary::logic::visual::media::MediaUtil'->new() };
 
 sub _init_fields {
     my ($self) = @_;
@@ -24,7 +25,7 @@ sub getInstance {
 sub new {
     my ($class) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
     return $self;
 }
 
@@ -88,18 +89,20 @@ sub getImageBufferPropertyHashMap {
         return $hashMap;
 }
 
-# use java::awt::image::BufferedImage;
-# use java::awt::image::RenderedImage;
-use java::util::HashMap;
-use org::allbinary::logic::StdUtil;
-use org::allbinary::logic::communication::log::LogUtil;
-use org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory;
-use org::allbinary::logic::communication::log::config::type::LogConfigTypes;
-use org::allbinary::logic::io::file::AbFile;
-use org::allbinary::logic::string::StringMaker;
-use org::allbinary::media::image::ImageUtil;
-use org::allbinary::string::CommonLabels;
-use org::allbinary::logic::visual::media::ImageIOUtil;
+use java::lang::Object ();
+use java::lang::LazyStatic ();
+# use java::awt::image::BufferedImage ();
+# use java::awt::image::RenderedImage ();
+use java::util::HashMap ();
+use org::allbinary::logic::StdUtil ();
+use org::allbinary::logic::communication::log::LogUtil ();
+use org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory ();
+use org::allbinary::logic::communication::log::config::type::LogConfigTypes ();
+use org::allbinary::logic::io::file::AbFile ();
+use org::allbinary::logic::string::StringMaker ();
+use org::allbinary::media::image::ImageUtil ();
+use org::allbinary::string::CommonLabels ();
+use org::allbinary::logic::visual::media::ImageIOUtil ();
 
 1;
 

@@ -32,7 +32,7 @@ sub _init_fields {
 sub new {
     my ($class, $customTextBox) = @_;
     my $self = $class->SUPER::new('org::allbinary::animation::AnimationBehavior'->getInstance());
-    $self->_init_fields();
+    _init_fields($self);
         # super(...) made $self above
         $self->{customTextBox} = $customTextBox;
     return $self;
@@ -104,17 +104,24 @@ sub paintThreedXYZ {
     my ($self, $graphics, $x, $y, $z) = @_;
 }
 
-# use javax::microedition::lcdui::Font;
-# use javax::microedition::lcdui::Graphics;
-use org::allbinary::animation::AnimationBehavior;
-use org::allbinary::animation::IndexedAnimation;
-use org::allbinary::game::input::event::RawKeyEventListener;
-use org::allbinary::graphics::color::BasicColor;
-use org::allbinary::graphics::font::UpdateMyFontInterface;
-use org::allbinary::graphics::form::item::CustomTextBox;
-use org::allbinary::logic::string::StringUtil;
-use org::allbinary::animation::text::TextInterface;
-use org::allbinary::animation::text::TextChangeListener;
+
+sub getWidth {
+    my ($self) = @_;
+        return $self->SUPER::getWidth();
+}
+
+use java::lang::Object ();
+use javax::microedition::lcdui::Font ();
+use javax::microedition::lcdui::Graphics ();
+use org::allbinary::animation::AnimationBehavior ();
+use org::allbinary::animation::IndexedAnimation ();
+use org::allbinary::game::input::event::RawKeyEventListener ();
+use org::allbinary::graphics::color::BasicColor ();
+use org::allbinary::graphics::font::UpdateMyFontInterface ();
+use org::allbinary::graphics::form::item::CustomTextBox ();
+use org::allbinary::logic::string::StringUtil ();
+use org::allbinary::animation::text::TextInterface ();
+use org::allbinary::animation::text::TextChangeListener ();
 
 1;
 

@@ -19,7 +19,7 @@ use feature 'try';
 no warnings 'experimental::try';
 use parent -norequire,'org::allbinary::animation::Animation';
 
-our $INSTANCE = 'org::allbinary::animation::caption::CaptionAnimationHelperBase'->new();
+tie our $INSTANCE, 'java::lang::LazyStatic', sub { 'org::allbinary::animation::caption::CaptionAnimationHelperBase'->new() };
 
 sub new {
     my ($class) = @_;
@@ -48,9 +48,11 @@ sub paintXY {
     my ($self, $graphics, $x, $y) = @_;
 }
 
-# use javax::microedition::lcdui::Graphics;
-use org::allbinary::animation::Animation;
-use org::allbinary::graphics::color::BasicColor;
+use java::lang::Object ();
+use java::lang::LazyStatic ();
+use javax::microedition::lcdui::Graphics ();
+use org::allbinary::animation::Animation ();
+use org::allbinary::graphics::color::BasicColor ();
 
 1;
 

@@ -17,7 +17,7 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
-use parent -norequire,'javax::swing::JPanel','org::allbinary::media::image::ImageProcessorInputCompositeInterface';
+use parent -norequire,'java::lang::Object','org::allbinary::media::image::ImageProcessorInputCompositeInterface';
 
 
 sub _init_fields {
@@ -42,7 +42,7 @@ sub _init_fields {
 sub new {
     my ($class, $imageProcessorInput) = @_;
     my $self = $class->SUPER::new();
-    $self->_init_fields();
+    _init_fields($self);
         # super(...) made $self above
         $self->initComponents();
         $self->{imageProcessorInput} = $imageProcessorInput;
@@ -65,7 +65,7 @@ sub new {
 sub process {
     my ($self) = @_;
         do {
-            package java::lang::Thread::AnonymousN66634 { our @ISA = ('java::lang::Thread');
+            package java::lang::Thread::AnonymousN66634 { our @ISA = ('java::lang::Thread', 'java::lang::Object');
             
 
             sub run {
@@ -111,7 +111,7 @@ sub process {
 sub update {
     my ($self) = @_;
         do {
-            package java::lang::Thread::AnonymousN68107 { our @ISA = ('java::lang::Thread');
+            package java::lang::Thread::AnonymousN68107 { our @ISA = ('java::lang::Thread', 'java::lang::Object');
             
 
             sub run {
@@ -141,7 +141,7 @@ sub update {
 sub updateFor16Above {
     my ($self) = @_;
         do {
-            package java::lang::Thread::AnonymousN68806 { our @ISA = ('java::lang::Thread');
+            package java::lang::Thread::AnonymousN68806 { our @ISA = ('java::lang::Thread', 'java::lang::Object');
             
 
             sub run {
@@ -171,7 +171,7 @@ sub updateFor16Above {
 sub updateFor16Below {
     my ($self) = @_;
         do {
-            package java::lang::Thread::AnonymousN69541 { our @ISA = ('java::lang::Thread');
+            package java::lang::Thread::AnonymousN69541 { our @ISA = ('java::lang::Thread', 'java::lang::Object');
             
 
             sub run {
@@ -227,7 +227,7 @@ sub initComponents {
         $self->{jComboBox1}->setModel('javax::swing::DefaultComboBoxModel'->new(["Item 1", "Item 2", "Item 3", "Item 4"]));
         $self->{aboveJButton}->setText("Process");
         $self->{aboveJButton}->addActionListener(do {
-            package java::awt::event::ActionListener::AnonymousN71131 { our @ISA = ('java::awt::event::ActionListener');
+            package java::awt::event::ActionListener::AnonymousN71131 { our @ISA = ('java::awt::event::ActionListener', 'java::lang::Object');
             
 
             sub actionPerformed {
@@ -241,7 +241,7 @@ sub initComponents {
         $self->{jLabel3}->setText("Height:");
         $self->{updateJButton}->setText("Update");
         $self->{updateJButton}->addActionListener(do {
-            package java::awt::event::ActionListener::AnonymousN71378 { our @ISA = ('java::awt::event::ActionListener');
+            package java::awt::event::ActionListener::AnonymousN71378 { our @ISA = ('java::awt::event::ActionListener', 'java::lang::Object');
             
 
             sub actionPerformed {
@@ -255,7 +255,7 @@ sub initComponents {
         $self->{floatPercentJTextField}->setMinimumSize('java::awt::Dimension'->new(120, 22));
         $self->{adjustFor16AboveJButton}->setText("Adjust for 16 Above");
         $self->{adjustFor16AboveJButton}->addActionListener(do {
-            package java::awt::event::ActionListener::AnonymousN71660 { our @ISA = ('java::awt::event::ActionListener');
+            package java::awt::event::ActionListener::AnonymousN71660 { our @ISA = ('java::awt::event::ActionListener', 'java::lang::Object');
             
 
             sub actionPerformed {
@@ -267,7 +267,7 @@ sub initComponents {
         });
         $self->{adjustFor16BelowJButton}->setText("Adjust for 16 Below");
         $self->{adjustFor16BelowJButton}->addActionListener(do {
-            package java::awt::event::ActionListener::AnonymousN71847 { our @ISA = ('java::awt::event::ActionListener');
+            package java::awt::event::ActionListener::AnonymousN71847 { our @ISA = ('java::awt::event::ActionListener', 'java::lang::Object');
             
 
             sub actionPerformed {
@@ -307,18 +307,19 @@ sub adjustFor16BelowJButtonActionPerformed {
         $self->updateFor16Below();
 }
 
-# use java::awt::image::BufferedImage;
-# use java::awt::image::Raster;
-use java::io::File;
-use org::allbinary::logic::communication::log::LogUtil;
-use org::allbinary::logic::io::file::FileWrapperUtil;
-use org::allbinary::media::image::ImagePersistanceUtil;
-use org::allbinary::media::image::ImageProcessorInput;
-use org::allbinary::media::image::ImageProcessorInputCompositeInterface;
-use org::allbinary::media::image::ImageUtil;
-use org::allbinary::string::CommonStrings;
-use java::lang::System;
-use java::lang::Thread;
+use java::lang::Object ();
+# use java::awt::image::BufferedImage ();
+# use java::awt::image::Raster ();
+use java::io::File ();
+use org::allbinary::logic::communication::log::LogUtil ();
+use org::allbinary::logic::io::file::FileWrapperUtil ();
+use org::allbinary::media::image::ImagePersistanceUtil ();
+use org::allbinary::media::image::ImageProcessorInput ();
+use org::allbinary::media::image::ImageProcessorInputCompositeInterface ();
+use org::allbinary::media::image::ImageUtil ();
+use org::allbinary::string::CommonStrings ();
+use java::lang::System ();
+use java::lang::Thread ();
 
 1;
 

@@ -17,7 +17,7 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
-use parent -norequire,'org::allbinary::data::tree::dom::DomNodeInterface';
+use parent -norequire,'java::lang::Object','org::allbinary::data::tree::dom::DomNodeInterface';
 
 
 sub _init_fields {
@@ -37,7 +37,7 @@ sub new {
 sub _new1 {
     my ($class, $name) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
         $self->{cssProperty} = 'org::allbinary::logic::visual::dhtml::style::css::property::CssProperty'->new($name);
     return $self;
 }
@@ -46,7 +46,7 @@ sub _new1 {
 sub _new1 {
     my ($class, $node) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
         $self->{cssProperty} = 'org::allbinary::logic::visual::dhtml::style::css::property::CssProperty'->new($node);
     return $self;
 }
@@ -64,11 +64,12 @@ sub toXmlNode {
         return $self->{cssProperty}->toXmlNode($document);
 }
 
-use org::allbinary::data::tree::dom::DomNodeInterface;
-use org::allbinary::string::CommonStrings;
-use org::w3c::dom::Document;
-use org::w3c::dom::Node;
-use org::allbinary::logic::visual::dhtml::style::css::property::CssProperty;
+use java::lang::Object ();
+use org::allbinary::data::tree::dom::DomNodeInterface ();
+use org::allbinary::string::CommonStrings ();
+use org::w3c::dom::Document ();
+use org::w3c::dom::Node ();
+use org::allbinary::logic::visual::dhtml::style::css::property::CssProperty ();
 
 1;
 

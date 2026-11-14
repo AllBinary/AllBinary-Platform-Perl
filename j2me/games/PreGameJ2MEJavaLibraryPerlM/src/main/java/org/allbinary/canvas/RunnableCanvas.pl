@@ -50,7 +50,7 @@ sub _init_fields {
 sub new {
     my ($class, $commandListener, $childNameList, $hasParam) = @_;
     my $self = $class->SUPER::new('org::allbinary::string::CommonStrings'->getInstance()->{UNKNOWN}, $childNameList);
-    $self->_init_fields();
+    _init_fields($self);
         # super(...) made $self above
         $self->{logUtil}->putF('org::allbinary::logic::string::StringMaker'->new()->append("RunnableCanvas delay: ")->appendint(int($self->{loopTimeHelper}->{delay}))->toString(), $self, $self->{commonStrings}->{CONSTRUCTOR});
         $self->{runnableCanvasRefreshHelper} = 'org::allbinary::canvas::RunnableCanvasRefreshHelper'->new($self);
@@ -90,7 +90,7 @@ sub setRunning {
         $self->{running} = $running;
         if (!$self->{running}) {
             $self->{thread} = $org::allbinary::thread::NullThread::NULL_THREAD;
-            { # synchronized ($self)
+            {; # synchronized ($self)
                 $self->{threadObjectUtil}->notifyObject($self);
             }
         }
@@ -164,7 +164,7 @@ sub showNotify {
 sub stopWaiting {
     my ($self) = @_;
         $self->{notified} = 1;
-        { # synchronized ($self)
+        {; # synchronized ($self)
             $self->{threadObjectUtil}->notifyObject($self);
         }
         $self->repaint();
@@ -257,25 +257,26 @@ sub getType {
         return -1;
 }
 
-# use javax::microedition::lcdui::CommandListener;
-use org::allbinary::TsUtil;
-use org::allbinary::game::displayable::canvas::NullWaitGameRunnable;
-use org::allbinary::graphics::displayable::MyCanvas;
-use org::allbinary::logic::ABSystemWrapper;
-use org::allbinary::logic::NullUtil;
-use org::allbinary::logic::StdUtil;
-use org::allbinary::logic::string::StringMaker;
-use org::allbinary::logic::string::StringUtil;
-use org::allbinary::string::CommonLabels;
-use org::allbinary::string::CommonStrings;
-use org::allbinary::thread::NullThread;
-use org::allbinary::thread::RunnableInterface;
-use org::allbinary::thread::ThreadObjectUtil;
-use org::allbinary::time::TimeDelayHelper;
-use org::allbinary::util::BasicArrayList;
-use org::allbinary::canvas::Processor;
-use org::allbinary::canvas::RunnableCanvasRefreshHelper;
-use java::lang::Thread;
+use java::lang::Object ();
+use javax::microedition::lcdui::CommandListener ();
+use org::allbinary::TsUtil ();
+use org::allbinary::game::displayable::canvas::NullWaitGameRunnable ();
+use org::allbinary::graphics::displayable::MyCanvas ();
+use org::allbinary::logic::ABSystemWrapper ();
+use org::allbinary::logic::NullUtil ();
+use org::allbinary::logic::StdUtil ();
+use org::allbinary::logic::string::StringMaker ();
+use org::allbinary::logic::string::StringUtil ();
+use org::allbinary::string::CommonLabels ();
+use org::allbinary::string::CommonStrings ();
+use org::allbinary::thread::NullThread ();
+use org::allbinary::thread::RunnableInterface ();
+use org::allbinary::thread::ThreadObjectUtil ();
+use org::allbinary::time::TimeDelayHelper ();
+use org::allbinary::util::BasicArrayList ();
+use org::allbinary::canvas::Processor ();
+use org::allbinary::canvas::RunnableCanvasRefreshHelper ();
+use java::lang::Thread ();
 
 1;
 

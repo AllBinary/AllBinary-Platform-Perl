@@ -33,7 +33,7 @@ sub _init_fields {
 sub new {
     my ($class, $id, $name, $cellTypeIdToGeographicMapCellType, $tiledLayer, $foregroundBasicColor, $backgroundBasicColor, $geographicMapCellPositionFactoryInterface, $geographicMapCellPositionBaseFactory, $geographicMapCellTypeFactory) = @_;
     my $self = $class->SUPER::new($id, $name, $cellTypeIdToGeographicMapCellType, $tiledLayer, $foregroundBasicColor, $backgroundBasicColor);
-    $self->_init_fields();
+    _init_fields($self);
         # super(...) made $self above
         $self->{geographicMapCellPositionFactoryInterface} = $geographicMapCellPositionFactoryInterface;
         $self->{geographicMapCellPositionFactory} = $geographicMapCellPositionBaseFactory->getInstance($self);
@@ -228,14 +228,64 @@ sub getGeographicMapCellTypeFactory {
         return $self->{geographicMapCellTypeFactory};
 }
 
-use org::allbinary::game::layer::AllBinaryTiledLayer;
-use org::allbinary::graphics::color::BasicColor;
-use org::allbinary::layer::Layer;
-use org::allbinary::logic::math::MathUtil;
-use org::allbinary::util::BasicArrayList;
-use org::allbinary::media::graphics::geography::map::SimpleGeographicMap;
-use org::allbinary::media::graphics::geography::map::GeographicMapInterface;
-use org::allbinary::media::graphics::geography::map::SimpleGeographicMapCellPositionFactory;
+
+sub getId {
+    my ($self) = @_;
+        return $self->SUPER::getId();
+}
+
+
+sub getName {
+    my ($self) = @_;
+        return $self->SUPER::getName();
+}
+
+
+sub reset {
+    my ($self) = @_;
+        $self->SUPER::reset();
+}
+
+
+sub getAllBinaryTiledLayer {
+    my ($self) = @_;
+        return $self->SUPER::getAllBinaryTiledLayer();
+}
+
+
+sub getCellTypeFromMapCellTypeInt {
+    my ($self, $cellTypeId) = @_;
+        return $self->SUPER::getCellTypeFromMapCellTypeInt($cellTypeId);
+}
+
+
+# throws Exception
+sub getCellTypeAt {
+    my ($self, $cellPosition) = @_;
+        return $self->SUPER::getCellTypeAt($cellPosition);
+}
+
+
+sub getForegroundBasicColor {
+    my ($self) = @_;
+        return $self->SUPER::getForegroundBasicColor();
+}
+
+
+sub getBackgroundBasicColor {
+    my ($self) = @_;
+        return $self->SUPER::getBackgroundBasicColor();
+}
+
+use java::lang::Object ();
+use org::allbinary::game::layer::AllBinaryTiledLayer ();
+use org::allbinary::graphics::color::BasicColor ();
+use org::allbinary::layer::Layer ();
+use org::allbinary::logic::math::MathUtil ();
+use org::allbinary::util::BasicArrayList ();
+use org::allbinary::media::graphics::geography::map::SimpleGeographicMap ();
+use org::allbinary::media::graphics::geography::map::GeographicMapInterface ();
+use org::allbinary::media::graphics::geography::map::SimpleGeographicMapCellPositionFactory ();
 
 1;
 

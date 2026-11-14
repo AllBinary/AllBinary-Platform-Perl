@@ -38,7 +38,7 @@ sub _init_fields {
 sub new {
     my ($class, $image, $layerInterfaceFactoryInterface) = @_;
     my $self = $class->SUPER::new();
-    $self->_init_fields();
+    _init_fields($self);
         $self->{image} = $image;
         $self->{layerInterfaceFactoryInterface} = $layerInterfaceFactoryInterface;
         $self->update();
@@ -91,22 +91,23 @@ sub paintXY {
         $graphics->drawChars($self->{costString}, 0, $self->{len}, $x + $self->{adjustedCostX}, $y + $adjustedCostY, 0);
 }
 
-# use javax::microedition::lcdui::Font;
-# use javax::microedition::lcdui::Graphics;
-# use javax::microedition::lcdui::Image;
-use org::allbinary::game::layer::CostLayerInterfaceFactoryInterface;
-use org::allbinary::game::rts::technology::event::TechEventListenerInterface;
-use org::allbinary::string::CommonStrings;
-use org::allbinary::logic::communication::log::ForcedLogUtil;
-use org::allbinary::logic::communication::log::LogUtil;
-use org::allbinary::animation::Animation;
-use org::allbinary::graphics::font::MyFontProcessor;
-use org::allbinary::graphics::font::UpdateMyFontInterface;
-use org::allbinary::graphics::font::UpdateMyFontProcessor;
-use org::allbinary::logic::NullUtil;
-use org::allbinary::logic::util::event::AllBinaryEventObject;
-use org::allbinary::logic::math::PrimitiveLongUtil;
-use org::allbinary::logic::util::event::EventStrings;
+use java::lang::Object ();
+use javax::microedition::lcdui::Font ();
+use javax::microedition::lcdui::Graphics ();
+use javax::microedition::lcdui::Image ();
+use org::allbinary::game::layer::CostLayerInterfaceFactoryInterface ();
+use org::allbinary::game::rts::technology::event::TechEventListenerInterface ();
+use org::allbinary::string::CommonStrings ();
+use org::allbinary::logic::communication::log::ForcedLogUtil ();
+use org::allbinary::logic::communication::log::LogUtil ();
+use org::allbinary::animation::Animation ();
+use org::allbinary::graphics::font::MyFontProcessor ();
+use org::allbinary::graphics::font::UpdateMyFontInterface ();
+use org::allbinary::graphics::font::UpdateMyFontProcessor ();
+use org::allbinary::logic::NullUtil ();
+use org::allbinary::logic::util::event::AllBinaryEventObject ();
+use org::allbinary::logic::math::PrimitiveLongUtil ();
+use org::allbinary::logic::util::event::EventStrings ();
 
 1;
 

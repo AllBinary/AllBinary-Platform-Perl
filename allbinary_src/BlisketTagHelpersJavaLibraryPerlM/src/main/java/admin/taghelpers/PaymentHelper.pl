@@ -33,7 +33,7 @@ sub _init_fields {
 sub new {
     my ($class, $hashMap, $pageContext) = @_;
     my $self = $class->SUPER::new();
-    $self->_init_fields();
+    _init_fields($self);
         $self->{request} = $pageContext->getRequest();
         $self->{weblisketSession} = 'org::allbinary::logic::communication::http::request::session::WeblisketSession'->new($hashMap, $pageContext);
         $self->{portion} = 'org::allbinary::business::installer::Portion'->new($hashMap);
@@ -196,19 +196,20 @@ sub update {
         return $self->{commonStrings}->{NOT_IMPLEMENTED};
 }
 
-use java::util::HashMap;
-# use javax::servlet::http::HttpServletRequest;
-# use javax::servlet::jsp::PageContext;
-use org::allbinary::business::installer::Portion;
-use org::allbinary::business::user::commerce::money::payment::PaymentFactory;
-use org::allbinary::business::user::commerce::money::payment::PaymentInterface;
-use org::allbinary::data::tables::user::commerce::money::payment::PaymentEntity;
-use org::allbinary::data::tables::user::commerce::money::payment::PaymentEntityFactory;
-use org::allbinary::logic::communication::http::request::session::WeblisketSession;
-use org::allbinary::logic::communication::log::LogUtil;
-use org::allbinary::logic::communication::sql::AbSqlTableUtil;
-use org::allbinary::logic::system::security::licensing::LicensingException;
-use admin::taghelpers::Table;
+use java::lang::Object ();
+use java::util::HashMap ();
+# use javax::servlet::http::HttpServletRequest ();
+# use javax::servlet::jsp::PageContext ();
+use org::allbinary::business::installer::Portion ();
+use org::allbinary::business::user::commerce::money::payment::PaymentFactory ();
+use org::allbinary::business::user::commerce::money::payment::PaymentInterface ();
+use org::allbinary::data::tables::user::commerce::money::payment::PaymentEntity ();
+use org::allbinary::data::tables::user::commerce::money::payment::PaymentEntityFactory ();
+use org::allbinary::logic::communication::http::request::session::WeblisketSession ();
+use org::allbinary::logic::communication::log::LogUtil ();
+use org::allbinary::logic::communication::sql::AbSqlTableUtil ();
+use org::allbinary::logic::system::security::licensing::LicensingException ();
+use admin::taghelpers::Table ();
 
 1;
 

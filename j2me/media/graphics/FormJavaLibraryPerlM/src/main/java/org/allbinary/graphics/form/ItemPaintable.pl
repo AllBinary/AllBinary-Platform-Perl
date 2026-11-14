@@ -17,6 +17,7 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
 
 sub new {
@@ -30,7 +31,8 @@ sub paint {
     my ($self, $graphics, $currentIndex, $x, $y) = @_;
 }
 
-# use javax::microedition::lcdui::Graphics;
+use java::lang::Object ();
+use javax::microedition::lcdui::Graphics ();
 
 1;
 

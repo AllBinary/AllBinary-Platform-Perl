@@ -41,8 +41,8 @@ sub clear {
     die "abstract method clear";
 }
 
-# use jsinterop::annotations::JsType;
-# use jsinterop::annotations::JsMethod;
+# use jsinterop::annotations::JsType ();
+# use jsinterop::annotations::JsMethod ();
 
 1;
 

@@ -37,7 +37,7 @@ sub _init_fields {
 sub new {
     my ($class, $title, $items, $formPaintableFactory, $border, $adjustedExtraBorder, $moveForSmallScreen, $backgroundBasicColor, $foregroundBasicColor) = @_;
     my $self = $class->SUPER::new($title, $items, $formPaintableFactory, $border, $adjustedExtraBorder, $backgroundBasicColor, $foregroundBasicColor);
-    $self->_init_fields();
+    _init_fields($self);
         # super(...) made $self above
         $self->{moveForSmallScreen} = $moveForSmallScreen;
     return $self;
@@ -195,213 +195,25 @@ sub paint {
             $self->{logUtil}->put($self->{commonStrings}->{EXCEPTION}, $self, $self->{canvasStrings}->{PAINT}, $e);
         }
 }
-{
-    package org::allbinary::graphics::form::TempHorizontalFormProcessor;
-    use strict;
-    use warnings;
-    use feature 'try';
-    no warnings 'experimental::try';
-    use POSIX ();
-    use parent -norequire,'org::allbinary::canvas::Processor';
-    
 
-    sub _init_fields {
-        my ($self) = @_;
-        $self->{scrollCurrentSelectionForm} = undef;
-    }
-    
-
-    sub new {
-        my ($class, $scrollCurrentSelectionForm) = @_;
-        my $self = $class->SUPER::new();
-        $self->_init_fields();
-            $self->{scrollCurrentSelectionForm} = $scrollCurrentSelectionForm;
-        return $self;
-    }
-    
-
-    # throws Exception
-    sub process {
-        my ($self) = @_;
-            $self->{scrollCurrentSelectionForm}->processTempHorizontalForm();
-            $self->{scrollCurrentSelectionForm}->{processor} = 'org::allbinary::canvas::Processor'->getInstance();
-    }
-    }
-
-{
-    package org::allbinary::graphics::form::HorizontalFormProcessor;
-    use strict;
-    use warnings;
-    use feature 'try';
-    no warnings 'experimental::try';
-    use POSIX ();
-    use parent -norequire,'org::allbinary::canvas::Processor';
-    
-
-    sub _init_fields {
-        my ($self) = @_;
-        $self->{scrollCurrentSelectionForm} = undef;
-    }
-    
-
-    sub new {
-        my ($class, $scrollCurrentSelectionForm) = @_;
-        my $self = $class->SUPER::new();
-        $self->_init_fields();
-            $self->{scrollCurrentSelectionForm} = $scrollCurrentSelectionForm;
-        return $self;
-    }
-    
-
-    # throws Exception
-    sub process {
-        my ($self) = @_;
-            $self->{scrollCurrentSelectionForm}->processHorizontalForm();
-            $self->{scrollCurrentSelectionForm}->{processor} = 'org::allbinary::canvas::Processor'->getInstance();
-    }
-    }
-
-{
-    package org::allbinary::graphics::form::VerticalFormProcessor;
-    use strict;
-    use warnings;
-    use feature 'try';
-    no warnings 'experimental::try';
-    use POSIX ();
-    use parent -norequire,'org::allbinary::canvas::Processor';
-    
-
-    sub _init_fields {
-        my ($self) = @_;
-        $self->{scrollCurrentSelectionForm} = undef;
-    }
-    
-
-    sub new {
-        my ($class, $scrollCurrentSelectionForm) = @_;
-        my $self = $class->SUPER::new();
-        $self->_init_fields();
-            $self->{scrollCurrentSelectionForm} = $scrollCurrentSelectionForm;
-        return $self;
-    }
-    
-
-    # throws Exception
-    sub process {
-        my ($self) = @_;
-            $self->{scrollCurrentSelectionForm}->processVerticalForm();
-            $self->{scrollCurrentSelectionForm}->{processor} = 'org::allbinary::canvas::Processor'->getInstance();
-    }
-    }
-
-{
-    package org::allbinary::graphics::form::TempHorizontalItemIndexDx;
-    use strict;
-    use warnings;
-    use feature 'try';
-    no warnings 'experimental::try';
-    use POSIX ();
-    use parent -norequire,'org::allbinary::graphics::form::ItemIndexDx';
-    
-
-    sub _init_fields {
-        my ($self) = @_;
-        $self->{scrollCurrentSelectionForm} = undef;
-    }
-    
-
-    sub new {
-        my ($class, $scrollCurrentSelectionForm) = @_;
-        my $self = $class->SUPER::new();
-        $self->_init_fields();
-            $self->{scrollCurrentSelectionForm} = $scrollCurrentSelectionForm;
-        return $self;
-    }
-    
-
-    # throws Exception
-    sub getDx {
-        my ($self, $index, $item, $dx, $dy) = @_;
-            return $self->{scrollCurrentSelectionForm}->getXTempHorizontalForm($index, $item, $dx, $dy);
-    }
-    }
-
-{
-    package org::allbinary::graphics::form::HorizontalItemIndexDx;
-    use strict;
-    use warnings;
-    use feature 'try';
-    no warnings 'experimental::try';
-    use POSIX ();
-    use parent -norequire,'org::allbinary::graphics::form::ItemIndexDx';
-    
-
-    sub _init_fields {
-        my ($self) = @_;
-        $self->{scrollCurrentSelectionForm} = undef;
-    }
-    
-
-    sub new {
-        my ($class, $scrollCurrentSelectionForm) = @_;
-        my $self = $class->SUPER::new();
-        $self->_init_fields();
-            $self->{scrollCurrentSelectionForm} = $scrollCurrentSelectionForm;
-        return $self;
-    }
-    
-
-    # throws Exception
-    sub getDx {
-        my ($self, $index, $item, $dx, $dy) = @_;
-            return $self->{scrollCurrentSelectionForm}->getXHorizontalForm($index, $item, $dx, $dy);
-    }
-    }
-
-{
-    package org::allbinary::graphics::form::VerticalItemIndexDx;
-    use strict;
-    use warnings;
-    use feature 'try';
-    no warnings 'experimental::try';
-    use POSIX ();
-    use parent -norequire,'org::allbinary::graphics::form::ItemIndexDx';
-    
-
-    sub _init_fields {
-        my ($self) = @_;
-        $self->{scrollCurrentSelectionForm} = undef;
-    }
-    
-
-    sub new {
-        my ($class, $scrollCurrentSelectionForm) = @_;
-        my $self = $class->SUPER::new();
-        $self->_init_fields();
-            $self->{scrollCurrentSelectionForm} = $scrollCurrentSelectionForm;
-        return $self;
-    }
-    
-
-    # throws Exception
-    sub getDx {
-        my ($self, $index, $item, $dx, $dy) = @_;
-            return $self->{scrollCurrentSelectionForm}->getXVerticalForm($index, $item, $dx, $dy);
-    }
-    }
-
-
-# use javax::microedition::lcdui::Graphics;
-use org::allbinary::canvas::Processor;
-use org::allbinary::graphics::Rectangle;
-use org::allbinary::graphics::color::BasicColor;
-use org::allbinary::graphics::font::MyFontProcessor;
-use org::allbinary::graphics::font::UpdateMyFontInterface;
-use org::allbinary::graphics::font::UpdateMyFontProcessor;
-use org::allbinary::graphics::form::item::ABCustomItem;
-use org::allbinary::graphics::form::ScrollSelectionForm;
-use org::allbinary::graphics::form::ItemIndexDx;
-use org::allbinary::graphics::form::FormTypeFactory;
+use java::lang::Object ();
+use javax::microedition::lcdui::Graphics ();
+use org::allbinary::canvas::Processor ();
+use org::allbinary::graphics::Rectangle ();
+use org::allbinary::graphics::color::BasicColor ();
+use org::allbinary::graphics::font::MyFontProcessor ();
+use org::allbinary::graphics::font::UpdateMyFontInterface ();
+use org::allbinary::graphics::font::UpdateMyFontProcessor ();
+use org::allbinary::graphics::form::item::ABCustomItem ();
+use org::allbinary::graphics::form::ScrollSelectionForm ();
+use org::allbinary::graphics::form::ItemIndexDx ();
+use org::allbinary::graphics::form::FormTypeFactory ();
+use org::allbinary::graphics::form::VerticalFormProcessor ();
+use org::allbinary::graphics::form::VerticalItemIndexDx ();
+use org::allbinary::graphics::form::HorizontalFormProcessor ();
+use org::allbinary::graphics::form::HorizontalItemIndexDx ();
+use org::allbinary::graphics::form::TempHorizontalFormProcessor ();
+use org::allbinary::graphics::form::TempHorizontalItemIndexDx ();
 
 1;
 

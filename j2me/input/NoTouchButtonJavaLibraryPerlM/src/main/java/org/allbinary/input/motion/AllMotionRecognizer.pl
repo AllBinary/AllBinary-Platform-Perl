@@ -17,6 +17,7 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
 our $index = 0;
 
@@ -29,7 +30,7 @@ sub _init_fields {
 sub new {
     my ($class) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
         $self->{id} = $org::allbinary::input::motion::AllMotionRecognizer::index++;
     return $self;
 }
@@ -70,6 +71,7 @@ sub getId {
         return $self->{id};
 }
 
+use java::lang::Object ();
 
 1;
 

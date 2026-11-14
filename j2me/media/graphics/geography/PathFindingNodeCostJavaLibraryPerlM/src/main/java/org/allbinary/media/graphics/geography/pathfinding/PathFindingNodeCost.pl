@@ -31,7 +31,7 @@ sub _init_fields {
 sub new {
     my ($class, $parent, $geographicMapCellPosition, $pathFindingNodeCostInfo) = @_;
     my $self = $class->SUPER::new($parent, $geographicMapCellPosition);
-    $self->_init_fields();
+    _init_fields($self);
         # super(...) made $self above
         $self->{pathFindingNodeCostInfoP} = $pathFindingNodeCostInfo;
         if (!defined($self->{geographicMapCellPosition})) {
@@ -79,11 +79,12 @@ sub toString {
         return $stringBuffer->toString();
 }
 
-use org::allbinary::logic::string::StringMaker;
-use org::allbinary::string::CommonSeps;
-use org::allbinary::media::graphics::geography::map::GeographicMapCellPosition;
-use org::allbinary::string::CommonLabels;
-use org::allbinary::media::graphics::geography::pathfinding::PathFindingNode;
+use java::lang::Object ();
+use org::allbinary::logic::string::StringMaker ();
+use org::allbinary::string::CommonSeps ();
+use org::allbinary::media::graphics::geography::map::GeographicMapCellPosition ();
+use org::allbinary::string::CommonLabels ();
+use org::allbinary::media::graphics::geography::pathfinding::PathFindingNode ();
 
 1;
 

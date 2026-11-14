@@ -29,7 +29,7 @@ sub _init_fields {
 sub new {
     my ($class, $scoreVectorGraphic) = @_;
     my $self = $class->SUPER::new(0);
-    $self->_init_fields();
+    _init_fields($self);
         # super(...) made $self above
         $self->{scoreHudWidget} = $scoreVectorGraphic;
         $self->getScoreHudWidget()->set(0);
@@ -54,7 +54,8 @@ sub getScoreHudWidget {
         return $self->{scoreHudWidget};
 }
 
-use org::allbinary::game::score::Scoreable;
+use java::lang::Object ();
+use org::allbinary::game::score::Scoreable ();
 
 1;
 

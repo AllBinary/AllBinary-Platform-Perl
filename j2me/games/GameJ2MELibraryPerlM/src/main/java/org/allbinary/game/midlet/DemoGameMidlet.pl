@@ -108,18 +108,19 @@ sub isReady {
         return 1;
 }
 
-use org::allbinary::game::displayable::canvas::GameCanvasRunnableInterface;
-use org::allbinary::game::layer::AllBinaryGameLayerManager;
-use org::allbinary::graphics::canvas::transition::progress::ProgressCanvas;
-use org::allbinary::graphics::canvas::transition::progress::ProgressCanvasFactory;
-use org::allbinary::logic::StdUtil;
-use org::allbinary::logic::system::security::licensing::ClientInformationFactory;
-use org::allbinary::thread::PrimaryThreadPool;
-use org::allbinary::game::displayable::canvas::NullGameCanvasRunnable;
-use org::allbinary::util::ABHashtable;
-use org::allbinary::game::midlet::GameMidlet;
-use org::allbinary::game::midlet::DemoRunnable;
-use org::allbinary::game::midlet::CreateGameRunnable;
+use java::lang::Object ();
+use org::allbinary::game::displayable::canvas::GameCanvasRunnableInterface ();
+use org::allbinary::game::layer::AllBinaryGameLayerManager ();
+use org::allbinary::graphics::canvas::transition::progress::ProgressCanvas ();
+use org::allbinary::graphics::canvas::transition::progress::ProgressCanvasFactory ();
+use org::allbinary::logic::StdUtil ();
+use org::allbinary::logic::system::security::licensing::ClientInformationFactory ();
+use org::allbinary::thread::PrimaryThreadPool ();
+use org::allbinary::game::displayable::canvas::NullGameCanvasRunnable ();
+use org::allbinary::util::ABHashtable ();
+use org::allbinary::game::midlet::GameMidlet ();
+use org::allbinary::game::midlet::DemoRunnable ();
+use org::allbinary::game::midlet::CreateGameRunnable ();
 
 1;
 

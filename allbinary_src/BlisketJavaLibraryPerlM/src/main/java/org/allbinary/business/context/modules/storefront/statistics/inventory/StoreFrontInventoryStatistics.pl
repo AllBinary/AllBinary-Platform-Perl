@@ -17,7 +17,7 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
-use parent -norequire,'org::allbinary::business::context::modules::storefront::statistics::inventory::StoreFrontInventoryStatisticsInterface';
+use parent -norequire,'java::lang::Object','org::allbinary::business::context::modules::storefront::statistics::inventory::StoreFrontInventoryStatisticsInterface';
 
 
 sub _init_fields {
@@ -30,7 +30,7 @@ sub _init_fields {
 sub new {
     my ($class, $storeFrontInterface) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
         $self->{totalInventorySaleValueMoney} = 'org::allbinary::business::user::commerce::money::Money'->new();
         my $inventoryEntityInterface = 'org::allbinary::data::tables::user::commerce::inventory::item::InventoryEntityFactory'->getInstance()->getInventoryEntityInstance();
         my $itemVector = $inventoryEntityInterface->getItems($storeFrontInterface);
@@ -79,17 +79,18 @@ sub getKey {
         return undef;
 }
 
-use java::util::HashMap;
-use org::allbinary::util::BasicArrayList;
-use org::allbinary::util::BasicArrayListD;
-use org::allbinary::business::context::modules::storefront::StoreFrontInterface;
-use org::allbinary::business::user::commerce::inventory::item::ItemInterface;
-use org::allbinary::business::user::commerce::money::Money;
-use org::allbinary::data::tables::user::commerce::inventory::item::InventoryEntityFactory;
-use org::allbinary::data::tables::user::commerce::inventory::item::InventoryEntityInterface;
-use org::allbinary::logic::StdUtil;
-use org::allbinary::business::context::modules::storefront::statistics::inventory::StoreFrontInventoryStatisticsInterface;
-use org::allbinary::business::context::modules::storefront::statistics::inventory::StoreFrontInventoryStatisticsData;
+use java::lang::Object ();
+use java::util::HashMap ();
+use org::allbinary::util::BasicArrayList ();
+use org::allbinary::util::BasicArrayListD ();
+use org::allbinary::business::context::modules::storefront::StoreFrontInterface ();
+use org::allbinary::business::user::commerce::inventory::item::ItemInterface ();
+use org::allbinary::business::user::commerce::money::Money ();
+use org::allbinary::data::tables::user::commerce::inventory::item::InventoryEntityFactory ();
+use org::allbinary::data::tables::user::commerce::inventory::item::InventoryEntityInterface ();
+use org::allbinary::logic::StdUtil ();
+use org::allbinary::business::context::modules::storefront::statistics::inventory::StoreFrontInventoryStatisticsInterface ();
+use org::allbinary::business::context::modules::storefront::statistics::inventory::StoreFrontInventoryStatisticsData ();
 
 1;
 

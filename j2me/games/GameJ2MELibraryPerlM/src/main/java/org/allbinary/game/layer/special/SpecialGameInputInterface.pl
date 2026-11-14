@@ -105,9 +105,9 @@ sub special5 {
     die "abstract method special5";
 }
 
-use org::allbinary::game::input::event::GameKeyEvent;
-use org::allbinary::graphics::paint::PaintableInterface;
-use org::allbinary::layer::AllBinaryLayerManager;
+use org::allbinary::game::input::event::GameKeyEvent ();
+use org::allbinary::graphics::paint::PaintableInterface ();
+use org::allbinary::layer::AllBinaryLayerManager ();
 
 1;
 

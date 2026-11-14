@@ -17,8 +17,9 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
-our $NULL_VIEW_WRAPPER = 'org::allbinary::android::view::BaseViewWrapper'->new();
+tie our $NULL_VIEW_WRAPPER, 'java::lang::LazyStatic', sub { 'org::allbinary::android::view::BaseViewWrapper'->new() };
 
 sub new {
     my ($class) = @_;
@@ -36,6 +37,8 @@ sub postInvalidate {
     my ($self) = @_;
 }
 
+use java::lang::Object ();
+use java::lang::LazyStatic ();
 
 1;
 

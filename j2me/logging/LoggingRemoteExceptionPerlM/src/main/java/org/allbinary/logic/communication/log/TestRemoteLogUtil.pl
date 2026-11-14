@@ -17,6 +17,7 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
 our $PATH = "G:\\mnt\\bc\\mydev\\work\\allbinary_src\\licensing\\data\\";
 
@@ -38,9 +39,10 @@ sub main {
         'org::allbinary::logic::communication::log::TestRemoteLogUtil'->new();
 }
 
-use org::allbinary::globals::Globals;
-use org::allbinary::string::CommonStrings;
-use org::allbinary::logic::communication::log::LogUtil;
+use java::lang::Object ();
+use org::allbinary::globals::Globals ();
+use org::allbinary::string::CommonStrings ();
+use org::allbinary::logic::communication::log::LogUtil ();
 
 1;
 

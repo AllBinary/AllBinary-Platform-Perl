@@ -26,8 +26,8 @@ sub getStatisticalMatchConstraintsVector {
     die "abstract method getStatisticalMatchConstraintsVector";
 }
 
-use org::allbinary::util::BasicArrayList;
-use org::allbinary::util::BasicArrayListD;
+use org::allbinary::util::BasicArrayList ();
+use org::allbinary::util::BasicArrayListD ();
 
 1;
 

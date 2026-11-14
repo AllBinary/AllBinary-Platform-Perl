@@ -34,9 +34,10 @@ sub getCollisionTypeWith {
         return 'org::allbinary::game::collision::CollisionTypeFactory'->getInstance()->{PICKUP};
 }
 
-use org::allbinary::layer::AllBinaryLayer;
-use org::allbinary::game::collision::CollidableNeverCollideBehavior;
-use org::allbinary::game::collision::CollisionTypeFactory;
+use java::lang::Object ();
+use org::allbinary::layer::AllBinaryLayer ();
+use org::allbinary::game::collision::CollidableNeverCollideBehavior ();
+use org::allbinary::game::collision::CollisionTypeFactory ();
 
 1;
 

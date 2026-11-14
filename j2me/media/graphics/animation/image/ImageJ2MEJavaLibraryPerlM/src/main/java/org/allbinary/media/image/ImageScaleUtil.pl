@@ -17,8 +17,9 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
-our $instance = 'org::allbinary::media::image::ImageScaleUtil'->new();
+tie our $instance, 'java::lang::LazyStatic', sub { 'org::allbinary::media::image::ImageScaleUtil'->new() };
 
 
 sub getInstance {
@@ -47,8 +48,10 @@ sub createImage3 {
         return $originalImage;
 }
 
-# use javax::microedition::lcdui::Image;
-use org::allbinary::image::ImageCache;
+use java::lang::Object ();
+use java::lang::LazyStatic ();
+use javax::microedition::lcdui::Image ();
+use org::allbinary::image::ImageCache ();
 
 1;
 

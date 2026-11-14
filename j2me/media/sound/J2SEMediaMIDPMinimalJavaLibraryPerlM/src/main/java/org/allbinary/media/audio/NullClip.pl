@@ -17,9 +17,9 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
-use parent -norequire,'javax::sound::sampled::Clip';
+use parent -norequire,'java::lang::Object';
 
-our $NULL_CONTROL = 'org::allbinary::media::audio::NullJ2SEControl'->new($javax::sound::sampled::BooleanControl::Type->{MUTE});
+tie our $NULL_CONTROL, 'java::lang::LazyStatic', sub { 'org::allbinary::media::audio::NullJ2SEControl'->new($javax::sound::sampled::BooleanControl::Type->{MUTE}) };
 
 sub new {
     my ($class) = @_;
@@ -198,18 +198,20 @@ sub removeLineListener {
     my ($self, $listener) = @_;
 }
 
-# use java::io::IOException;
-# use javax::sound::sampled::AudioFormat;
-# use javax::sound::sampled::AudioInputStream;
-# use javax::sound::sampled::BooleanControl;
-# use javax::sound::sampled::Clip;
-# use javax::sound::sampled::Control;
-# use javax::sound::sampled::Control::Type;
-# use javax::sound::sampled::Line::Info;
-# use javax::sound::sampled::LineListener;
-# use javax::sound::sampled::LineUnavailableException;
-use org::allbinary::media::audio::NullJ2SEControl;
-use org::allbinary::media::audio::NullAudioFormat;
+use java::lang::Object ();
+use java::lang::LazyStatic ();
+# use java::io::IOException ();
+# use javax::sound::sampled::AudioFormat ();
+# use javax::sound::sampled::AudioInputStream ();
+# use javax::sound::sampled::BooleanControl ();
+# use javax::sound::sampled::Clip ();
+# use javax::sound::sampled::Control ();
+# use javax::sound::sampled::Control::Type ();
+# use javax::sound::sampled::Line::Info ();
+# use javax::sound::sampled::LineListener ();
+# use javax::sound::sampled::LineUnavailableException ();
+use org::allbinary::media::audio::NullJ2SEControl ();
+use org::allbinary::media::audio::NullAudioFormat ();
 
 1;
 

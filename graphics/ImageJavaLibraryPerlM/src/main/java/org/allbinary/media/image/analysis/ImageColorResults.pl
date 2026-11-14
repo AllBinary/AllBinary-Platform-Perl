@@ -17,6 +17,7 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
 
 sub _init_fields {
@@ -29,7 +30,7 @@ sub _init_fields {
 sub new {
     my ($class) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
         $self->setColorRange('org::allbinary::media::image::analysis::ColorRange'->new());
         $self->getColorRange()->setMaxRed(-1);
         $self->getColorRange()->setMaxGreen(-1);
@@ -65,8 +66,9 @@ sub setColorAverage {
         $self->{colorAverage} = $colorAverage;
 }
 
-use org::allbinary::media::image::analysis::ColorRange;
-use org::allbinary::media::image::analysis::ColorAverage;
+use java::lang::Object ();
+use org::allbinary::media::image::analysis::ColorRange ();
+use org::allbinary::media::image::analysis::ColorAverage ();
 
 1;
 

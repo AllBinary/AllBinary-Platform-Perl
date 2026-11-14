@@ -34,7 +34,7 @@ sub _init_fields {
 sub new {
     my ($class, $hashMap, $pageContext) = @_;
     my $self = $class->SUPER::new();
-    $self->_init_fields();
+    _init_fields($self);
         $self->{hashMap} = $hashMap;
         $self->{pageContext} = $pageContext;
         $self->{request} = $pageContext->getRequest();
@@ -191,26 +191,27 @@ sub backup {
         }
 }
 
-use java::util::HashMap;
-use org::allbinary::util::BasicArrayList;
-use org::allbinary::util::BasicArrayListD;
-# use javax::servlet::http::HttpServletRequest;
-# use javax::servlet::jsp::PageContext;
-use org::allbinary::business::entry::EntryData;
-use org::allbinary::business::installer::Portion;
-use org::allbinary::business::user::NewUserFactory;
-use org::allbinary::business::user::UserData;
-use org::allbinary::business::user::UserInterface;
-use org::allbinary::business::user::username::UserName;
-use org::allbinary::data::tables::user::UserEntityFactory;
-use org::allbinary::globals::FREEBLISKET_PATH_GLOBALS;
-use org::allbinary::globals::URLGLOBALS;
-use org::allbinary::logic::communication::http::request::RequestParams;
-use org::allbinary::logic::communication::log::LogUtil;
-use org::allbinary::logic::communication::sql::AbSqlTableUtil;
-use org::allbinary::logic::string::StringMaker;
-use org::allbinary::logic::string::StringValidationUtil;
-use admin::taghelpers::Table;
+use java::lang::Object ();
+use java::util::HashMap ();
+use org::allbinary::util::BasicArrayList ();
+use org::allbinary::util::BasicArrayListD ();
+# use javax::servlet::http::HttpServletRequest ();
+# use javax::servlet::jsp::PageContext ();
+use org::allbinary::business::entry::EntryData ();
+use org::allbinary::business::installer::Portion ();
+use org::allbinary::business::user::NewUserFactory ();
+use org::allbinary::business::user::UserData ();
+use org::allbinary::business::user::UserInterface ();
+use org::allbinary::business::user::username::UserName ();
+use org::allbinary::data::tables::user::UserEntityFactory ();
+use org::allbinary::globals::FREEBLISKET_PATH_GLOBALS ();
+use org::allbinary::globals::URLGLOBALS ();
+use org::allbinary::logic::communication::http::request::RequestParams ();
+use org::allbinary::logic::communication::log::LogUtil ();
+use org::allbinary::logic::communication::sql::AbSqlTableUtil ();
+use org::allbinary::logic::string::StringMaker ();
+use org::allbinary::logic::string::StringValidationUtil ();
+use admin::taghelpers::Table ();
 
 1;
 

@@ -17,7 +17,7 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
-use parent -norequire,'org::allbinary::graphics::ScreenListenerInterface';
+use parent -norequire,'java::lang::Object','org::allbinary::graphics::ScreenListenerInterface';
 
 
 sub new {
@@ -36,7 +36,8 @@ sub onFullScreenDisplay {
     my ($self) = @_;
 }
 
-use org::allbinary::graphics::ScreenListenerInterface;
+use java::lang::Object ();
+use org::allbinary::graphics::ScreenListenerInterface ();
 
 1;
 

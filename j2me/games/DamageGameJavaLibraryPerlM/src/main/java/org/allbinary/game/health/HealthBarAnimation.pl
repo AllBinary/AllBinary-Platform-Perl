@@ -34,7 +34,7 @@ sub _init_fields {
 sub new {
     my ($class, $layerInterface, $location) = @_;
     my $self = $class->SUPER::new();
-    $self->_init_fields();
+    _init_fields($self);
         $self->{allbinaryLayer} = $layerInterface;
         $self->{location} = $location;
         my $basicHudFactory = 'org::allbinary::game::graphics::hud::BasicHudFactory'->getInstance();
@@ -83,10 +83,11 @@ sub getY {
         return -1;
 }
 
-use org::allbinary::animation::Animation;
-use org::allbinary::game::graphics::hud::BasicHudFactory;
-use org::allbinary::graphics::color::BasicColorFactory;
-use org::allbinary::layer::AllBinaryLayer;
+use java::lang::Object ();
+use org::allbinary::animation::Animation ();
+use org::allbinary::game::graphics::hud::BasicHudFactory ();
+use org::allbinary::graphics::color::BasicColorFactory ();
+use org::allbinary::layer::AllBinaryLayer ();
 
 1;
 

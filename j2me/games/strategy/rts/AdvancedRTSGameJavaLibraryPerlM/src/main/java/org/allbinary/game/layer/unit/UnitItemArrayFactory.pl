@@ -17,9 +17,9 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
-use parent -norequire,'org::allbinary::graphics::form::item::ItemArraySingletonFactoryInterface';
+use parent -norequire,'java::lang::Object','org::allbinary::graphics::form::item::ItemArraySingletonFactoryInterface';
 
-our $ITEMS = 'org::allbinary::graphics::form::item::CustomItemUtil'->getInstance()->{CUSTOM_ITEM_ARRAY};
+tie our $ITEMS, 'java::lang::LazyStatic', sub { 'org::allbinary::graphics::form::item::CustomItemUtil'->getInstance()->{CUSTOM_ITEM_ARRAY} };
 
 sub _init_fields {
     my ($self) = @_;
@@ -32,7 +32,7 @@ sub _init_fields {
 sub new {
     my ($class, $resources) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
         $self->{resources} = $resources;
     return $self;
 }
@@ -83,23 +83,25 @@ sub indexOf {
         return -1;
 }
 
-# use javax::microedition::lcdui::Image;
-# use javax::microedition::lcdui::ImageItem;
-use org::allbinary::game::layer::RTSGameStrings;
-use org::allbinary::game::layer::item::LayerInterfaceFactoryImageItem;
-use org::allbinary::game::layer::item::RTSLayerTextAnimation;
-use org::allbinary::game::layer::resources::BasicGameResources;
-use org::allbinary::game::layer::waypoint::FlagGameResources;
-use org::allbinary::graphics::form::item::ABCustomItem;
-use org::allbinary::image::GameFeatureImageCacheFactory;
-use org::allbinary::string::CommonSeps;
-use org::allbinary::animation::Animation;
-use org::allbinary::graphics::color::BasicColor;
-use org::allbinary::graphics::color::BasicColorFactory;
-use org::allbinary::graphics::form::item::CustomItemUtil;
-use org::allbinary::graphics::form::item::ItemArraySingletonFactoryInterface;
-use org::allbinary::image::ImageCache;
-use org::allbinary::layer::LayerInterfaceFactoryInterface;
+use java::lang::Object ();
+use java::lang::LazyStatic ();
+use javax::microedition::lcdui::Image ();
+use javax::microedition::lcdui::ImageItem ();
+use org::allbinary::game::layer::RTSGameStrings ();
+use org::allbinary::game::layer::item::LayerInterfaceFactoryImageItem ();
+use org::allbinary::game::layer::item::RTSLayerTextAnimation ();
+use org::allbinary::game::layer::resources::BasicGameResources ();
+use org::allbinary::game::layer::waypoint::FlagGameResources ();
+use org::allbinary::graphics::form::item::ABCustomItem ();
+use org::allbinary::image::GameFeatureImageCacheFactory ();
+use org::allbinary::string::CommonSeps ();
+use org::allbinary::animation::Animation ();
+use org::allbinary::graphics::color::BasicColor ();
+use org::allbinary::graphics::color::BasicColorFactory ();
+use org::allbinary::graphics::form::item::CustomItemUtil ();
+use org::allbinary::graphics::form::item::ItemArraySingletonFactoryInterface ();
+use org::allbinary::image::ImageCache ();
+use org::allbinary::layer::LayerInterfaceFactoryInterface ();
 
 1;
 

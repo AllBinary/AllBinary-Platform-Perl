@@ -20,7 +20,7 @@ no warnings 'experimental::try';
 use parent -norequire,'org::allbinary::input::motion::MotionRecognizer';
 
 our $index = 0;
-our $pointCircularPool = 'org::allbinary::graphics::GPointCircularPool'->new(40);
+tie our $pointCircularPool, 'java::lang::LazyStatic', sub { 'org::allbinary::graphics::GPointCircularPool'->new(40) };
 
 sub _init_fields {
     my ($self) = @_;
@@ -32,7 +32,7 @@ sub _init_fields {
 sub new {
     my ($class) = @_;
     my $self = $class->SUPER::new();
-    $self->_init_fields();
+    _init_fields($self);
         $self->{id} = $org::allbinary::input::motion::GestureOnlyMotionRecognizer::index++;
         $self->{motionGestureRecognizer} = 'org::allbinary::input::motion::gesture::MotionGestureRecognizer'->new($self->{id});
     return $self;
@@ -68,10 +68,12 @@ sub processDraggedMotionEvent {
         $self->{motionGestureRecognizer}->processDraggedMotionEvent($point, $deviceId, $modifiers);
 }
 
-use org::allbinary::graphics::CustomGPoint;
-use org::allbinary::graphics::GPointCircularPool;
-use org::allbinary::input::motion::gesture::MotionGestureRecognizer;
-use org::allbinary::input::motion::MotionRecognizer;
+use java::lang::Object ();
+use java::lang::LazyStatic ();
+use org::allbinary::graphics::CustomGPoint ();
+use org::allbinary::graphics::GPointCircularPool ();
+use org::allbinary::input::motion::gesture::MotionGestureRecognizer ();
+use org::allbinary::input::motion::MotionRecognizer ();
 
 1;
 

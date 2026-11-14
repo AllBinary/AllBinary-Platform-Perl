@@ -30,7 +30,7 @@ sub _init_fields {
 sub new {
     my ($class, $width, $height, $offsetX, $offsetY, $basicColor) = @_;
     my $self = $class->SUPER::new($width, $height, $basicColor);
-    $self->_init_fields();
+    _init_fields($self);
         # super(...) made $self above
         $self->{offsetX} = $offsetX;
         $self->{offsetY} = $offsetY;
@@ -62,10 +62,23 @@ sub setOffsetY {
         $self->{offsetY} = $offsetY;
 }
 
-# use javax::microedition::lcdui::Graphics;
-use org::allbinary::graphics::color::BasicColor;
-use org::allbinary::graphics::color::ColorCompositeInterface;
-use org::allbinary::animation::vector::RectangleFilledAnimation;
+
+sub getBasicColorP {
+    my ($self) = @_;
+        return $self->SUPER::getBasicColorP();
+}
+
+
+sub setBasicColorP {
+    my ($self, $basicColor) = @_;
+        $self->SUPER::setBasicColorP($basicColor);
+}
+
+use java::lang::Object ();
+use javax::microedition::lcdui::Graphics ();
+use org::allbinary::graphics::color::BasicColor ();
+use org::allbinary::graphics::color::ColorCompositeInterface ();
+use org::allbinary::animation::vector::RectangleFilledAnimation ();
 
 1;
 

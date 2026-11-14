@@ -17,6 +17,7 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
 
 
@@ -49,16 +50,17 @@ sub getNameFromNode {
         return 'org::allbinary::logic::string::StringUtil'->getInstance()->{EMPTY_STRING};
 }
 
-use org::allbinary::data::tree::dom::DomNodeHelper;
-use org::allbinary::data::tree::dom::DomSearchHelper;
-use org::allbinary::logic::io::path::AbPath;
-use org::allbinary::logic::io::path::AbPathData;
-use org::allbinary::logic::string::StringUtil;
-use org::apache::commons::lang3::StringUtils;
-use org::w3c::dom::Attr;
-use org::w3c::dom::NamedNodeMap;
-use org::w3c::dom::Node;
-use org::allbinary::business::category::CategoryData;
+use java::lang::Object ();
+use org::allbinary::data::tree::dom::DomNodeHelper ();
+use org::allbinary::data::tree::dom::DomSearchHelper ();
+use org::allbinary::logic::io::path::AbPath ();
+use org::allbinary::logic::io::path::AbPathData ();
+use org::allbinary::logic::string::StringUtil ();
+use org::apache::commons::lang3::StringUtils ();
+use org::w3c::dom::Attr ();
+use org::w3c::dom::NamedNodeMap ();
+use org::w3c::dom::Node ();
+use org::allbinary::business::category::CategoryData ();
 
 1;
 

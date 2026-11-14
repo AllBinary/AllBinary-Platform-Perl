@@ -17,15 +17,15 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
-use parent -norequire,'org::allbinary::animation::AnimationInterfaceFactoryInterface','org::allbinary::animation::ProceduralAnimationInterfaceFactoryInterface';
+use parent -norequire,'java::lang::Object','org::allbinary::animation::AnimationInterfaceFactoryInterface','org::allbinary::animation::ProceduralAnimationInterfaceFactoryInterface';
 
-our $NULL_NOT_FOR_USE_ANIMATION_FACTORY = 'org::allbinary::animation::NullAnimationFactory'->new();
-our $NULL_ANIMATION_FACTORY = 'org::allbinary::animation::NullAnimationFactory'->new();
+tie our $NULL_NOT_FOR_USE_ANIMATION_FACTORY, 'java::lang::LazyStatic', sub { 'org::allbinary::animation::NullAnimationFactory'->new() };
+tie our $NULL_ANIMATION_FACTORY, 'java::lang::LazyStatic', sub { 'org::allbinary::animation::NullAnimationFactory'->new() };
 
 sub _init_fields {
     my ($self) = @_;
     $self->{NULL_ANIMATION} = do {
-        package org::allbinary::animation::Animation::AnonymousN65758 { our @ISA = ('org::allbinary::animation::Animation');
+        package org::allbinary::animation::Animation::AnonymousN65758 { our @ISA = ('org::allbinary::animation::Animation', 'java::lang::Object');
         
 
         sub paintXY {
@@ -41,7 +41,7 @@ sub _init_fields {
 sub new {
     my ($class) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
     return $self;
 }
 
@@ -69,11 +69,13 @@ sub setInitialScale {
     my ($self, $scaleProperties) = @_;
 }
 
-# use javax::microedition::lcdui::Graphics;
-use org::allbinary::media::ScaleProperties;
-use org::allbinary::animation::AnimationInterfaceFactoryInterface;
-use org::allbinary::animation::ProceduralAnimationInterfaceFactoryInterface;
-use org::allbinary::animation::Animation;
+use java::lang::Object ();
+use java::lang::LazyStatic ();
+use javax::microedition::lcdui::Graphics ();
+use org::allbinary::media::ScaleProperties ();
+use org::allbinary::animation::AnimationInterfaceFactoryInterface ();
+use org::allbinary::animation::ProceduralAnimationInterfaceFactoryInterface ();
+use org::allbinary::animation::Animation ();
 
 1;
 

@@ -17,8 +17,9 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
-our $instance = 'org::allbinary::input::motion::button::BaseTouchInput'->new();
+tie our $instance, 'java::lang::LazyStatic', sub { 'org::allbinary::input::motion::button::BaseTouchInput'->new() };
 
 sub new {
     my ($class) = @_;
@@ -32,7 +33,9 @@ sub getInstance {
         return $org::allbinary::input::motion::button::NoButtonsTouchInputFactory::instance;
 }
 
-use org::allbinary::input::motion::button::BaseTouchInput;
+use java::lang::Object ();
+use java::lang::LazyStatic ();
+use org::allbinary::input::motion::button::BaseTouchInput ();
 
 1;
 

@@ -39,7 +39,7 @@ sub _init_fields {
 sub new {
     my ($class, $gameKeyEventList, $playerInputId, $gameCanvas, $form) = @_;
     my $self = $class->SUPER::new($gameKeyEventList, $playerInputId, $gameCanvas);
-    $self->_init_fields();
+    _init_fields($self);
         # super(...) made $self above
         $self->{form} = $form;
     return $self;
@@ -167,30 +167,31 @@ sub toString {
         return 'org::allbinary::logic::string::StringMaker'->new()->append($self->SUPER::toString())->append($self->{NAME_LABEL})->append($self->{form}->toString())->toString();
 }
 
-# use javax::microedition::lcdui::Canvas;
-# use javax::microedition::lcdui::Command;
-use org::allbinary::game::commands::GameCommandsFactory;
-use org::allbinary::game::configuration::feature::Features;
-use org::allbinary::game::configuration::feature::InputFeatureFactory;
-use org::allbinary::game::input::event::GameKeyEvent;
-use org::allbinary::game::input::event::GameKeyEventFactory;
-use org::allbinary::game::layer::SWTUtil;
-use org::allbinary::graphics::GPoint;
-use org::allbinary::graphics::displayable::MyCanvas;
-use org::allbinary::graphics::form::CommandCurrentSelectionForm;
-use org::allbinary::graphics::form::ScrollSelectionForm;
-use org::allbinary::graphics::opengles::OpenGLFeatureFactory;
-use org::allbinary::input::motion::gesture::MotionGestureInput;
-use org::allbinary::input::motion::gesture::TouchMotionGestureFactory;
-use org::allbinary::input::motion::gesture::observer::MotionGestureEvent;
-use org::allbinary::logic::string::StringMaker;
-use org::allbinary::media::audio::PrimaryPlayerQueueFactory;
-use org::allbinary::media::audio::SelectSound;
-use org::allbinary::thread::PrimaryThreadPool;
-use org::allbinary::time::TimeDelayHelper;
-use org::allbinary::util::BasicArrayList;
-use org::allbinary::game::displayable::canvas::BasicMenuInputProcessor;
-use org::allbinary::game::displayable::canvas::CommandRunnable;
+use java::lang::Object ();
+use javax::microedition::lcdui::Canvas ();
+use javax::microedition::lcdui::Command ();
+use org::allbinary::game::commands::GameCommandsFactory ();
+use org::allbinary::game::configuration::feature::Features ();
+use org::allbinary::game::configuration::feature::InputFeatureFactory ();
+use org::allbinary::game::input::event::GameKeyEvent ();
+use org::allbinary::game::input::event::GameKeyEventFactory ();
+use org::allbinary::game::layer::SWTUtil ();
+use org::allbinary::graphics::GPoint ();
+use org::allbinary::graphics::displayable::MyCanvas ();
+use org::allbinary::graphics::form::CommandCurrentSelectionForm ();
+use org::allbinary::graphics::form::ScrollSelectionForm ();
+use org::allbinary::graphics::opengles::OpenGLFeatureFactory ();
+use org::allbinary::input::motion::gesture::MotionGestureInput ();
+use org::allbinary::input::motion::gesture::TouchMotionGestureFactory ();
+use org::allbinary::input::motion::gesture::observer::MotionGestureEvent ();
+use org::allbinary::logic::string::StringMaker ();
+use org::allbinary::media::audio::PrimaryPlayerQueueFactory ();
+use org::allbinary::media::audio::SelectSound ();
+use org::allbinary::thread::PrimaryThreadPool ();
+use org::allbinary::time::TimeDelayHelper ();
+use org::allbinary::util::BasicArrayList ();
+use org::allbinary::game::displayable::canvas::BasicMenuInputProcessor ();
+use org::allbinary::game::displayable::canvas::CommandRunnable ();
 
 1;
 

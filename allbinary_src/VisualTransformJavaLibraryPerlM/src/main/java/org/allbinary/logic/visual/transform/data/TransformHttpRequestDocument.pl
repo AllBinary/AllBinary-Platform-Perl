@@ -17,7 +17,7 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
-use parent -norequire,'org::allbinary::logic::visual::transform::data::TransformDocumentInterface';
+use parent -norequire,'java::lang::Object','org::allbinary::logic::visual::transform::data::TransformDocumentInterface';
 
 our $language = "en";
 our $local = "US";
@@ -41,7 +41,7 @@ sub new {
 sub _new2 {
     my ($class, $pageContext, $weblisketSession) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
         try {
             my $contentType = 'org::allbinary::logic::communication::http::AcceptableResponseGenerator'->getInstance()->get($pageContext->getRequest());
             $self->{document} = 'org::allbinary::data::tree::dom::document::DomDocumentHelper'->create();
@@ -68,7 +68,7 @@ sub _new2 {
 sub _new1 {
     my ($class, $searchRequest) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
         try {
             my $contentType = $searchRequest->getContentType();
             $self->{document} = 'org::allbinary::data::tree::dom::document::DomDocumentHelper'->create();
@@ -116,19 +116,20 @@ sub log {
         return $stringBuffer->toString();
 }
 
-# use javax::servlet::http::HttpServletRequest;
-# use javax::servlet::jsp::PageContext;
-use org::allbinary::data::tree::dom::document::DomDocumentHelper;
-use org::allbinary::data::tree::dom::document::XmlDocumentHelper;
-use org::allbinary::logic::communication::http::AcceptableResponseGenerator;
-use org::allbinary::logic::communication::http::request::session::WeblisketSession;
-use org::allbinary::logic::communication::log::LogUtil;
-use org::allbinary::logic::control::search::SearchRequest;
-use org::allbinary::logic::string::StringMaker;
-use org::allbinary::string::CommonStrings;
-use org::w3c::dom::Document;
-use org::w3c::dom::Node;
-use org::allbinary::logic::visual::transform::data::TransformDocumentInterface;
+use java::lang::Object ();
+# use javax::servlet::http::HttpServletRequest ();
+# use javax::servlet::jsp::PageContext ();
+use org::allbinary::data::tree::dom::document::DomDocumentHelper ();
+use org::allbinary::data::tree::dom::document::XmlDocumentHelper ();
+use org::allbinary::logic::communication::http::AcceptableResponseGenerator ();
+use org::allbinary::logic::communication::http::request::session::WeblisketSession ();
+use org::allbinary::logic::communication::log::LogUtil ();
+use org::allbinary::logic::control::search::SearchRequest ();
+use org::allbinary::logic::string::StringMaker ();
+use org::allbinary::string::CommonStrings ();
+use org::w3c::dom::Document ();
+use org::w3c::dom::Node ();
+use org::allbinary::logic::visual::transform::data::TransformDocumentInterface ();
 
 1;
 

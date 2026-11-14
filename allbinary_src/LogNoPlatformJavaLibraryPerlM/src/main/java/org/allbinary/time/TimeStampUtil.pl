@@ -18,8 +18,9 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
-our $instance = 'org::allbinary::time::TimeStampUtil'->new();
+tie our $instance, 'java::lang::LazyStatic', sub { 'org::allbinary::time::TimeStampUtil'->new() };
 
 
 sub getInstance {
@@ -40,8 +41,10 @@ sub getAsString {
         die ("RuntimeException");
 }
 
-use java::util::Calendar;
-use java::util::Date;
+use java::lang::Object ();
+use java::lang::LazyStatic ();
+use java::util::Calendar ();
+use java::util::Date ();
 
 1;
 

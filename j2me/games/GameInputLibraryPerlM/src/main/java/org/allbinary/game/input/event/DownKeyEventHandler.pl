@@ -19,8 +19,8 @@ use feature 'try';
 no warnings 'experimental::try';
 use parent -norequire,'org::allbinary::game::input::event::DownKeyEventHandlerBase';
 
-our $instance = 'org::allbinary::game::input::event::DownKeyEventHandler'->new();
-our $instanceArray = ['org::allbinary::game::input::event::DownKeyEventHandlerBase'->new(), 'org::allbinary::game::input::event::DownKeyEventHandlerBase'->new(), 'org::allbinary::game::input::event::DownKeyEventHandlerBase'->new(), 'org::allbinary::game::input::event::DownKeyEventHandlerBase'->new(), 'org::allbinary::game::input::event::DownKeyEventHandlerBase'->new(), 'org::allbinary::game::input::event::DownKeyEventHandlerBase'->new()];
+tie our $instance, 'java::lang::LazyStatic', sub { 'org::allbinary::game::input::event::DownKeyEventHandler'->new() };
+tie our $instanceArray, 'java::lang::LazyStatic', sub { ['org::allbinary::game::input::event::DownKeyEventHandlerBase'->new(), 'org::allbinary::game::input::event::DownKeyEventHandlerBase'->new(), 'org::allbinary::game::input::event::DownKeyEventHandlerBase'->new(), 'org::allbinary::game::input::event::DownKeyEventHandlerBase'->new(), 'org::allbinary::game::input::event::DownKeyEventHandlerBase'->new(), 'org::allbinary::game::input::event::DownKeyEventHandlerBase'->new()] };
 
 sub _init_fields {
     my ($self) = @_;
@@ -50,7 +50,7 @@ sub getInstanceForPlayer {
 sub new {
     my ($class) = @_;
     my $self = $class->SUPER::new();
-    $self->_init_fields();
+    _init_fields($self);
     return $self;
 }
 
@@ -81,9 +81,11 @@ sub removeListener {
         }
 }
 
-use org::allbinary::game::input::LocalPlayerInputIdFactory;
-use org::allbinary::logic::util::event::EventListenerInterface;
-use org::allbinary::game::input::event::DownKeyEventHandlerBase;
+use java::lang::Object ();
+use java::lang::LazyStatic ();
+use org::allbinary::game::input::LocalPlayerInputIdFactory ();
+use org::allbinary::logic::util::event::EventListenerInterface ();
+use org::allbinary::game::input::event::DownKeyEventHandlerBase ();
 
 1;
 

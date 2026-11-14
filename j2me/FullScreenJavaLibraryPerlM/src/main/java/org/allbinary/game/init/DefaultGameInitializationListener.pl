@@ -18,7 +18,7 @@ use warnings;
 use feature 'try';
 no warnings 'experimental::try';
 use Time::HiRes ();
-use parent -norequire,'org::allbinary::game::configuration::event::GameInitializedListenerInterface';
+use parent -norequire,'java::lang::Object','org::allbinary::game::configuration::event::GameInitializedListenerInterface';
 
 
 sub _init_fields {
@@ -32,7 +32,7 @@ sub _init_fields {
 sub new {
     my ($class) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
         my $gameInitializedEventHandler = 'org::allbinary::game::configuration::event::GameInitializedEventHandler'->getInstance();
         $gameInitializedEventHandler->removeAllListeners();
         $gameInitializedEventHandler->addListenerInterface($self);
@@ -67,17 +67,18 @@ sub onGameInitialized {
         }
 }
 
-use org::allbinary::string::CommonStrings;
-use org::allbinary::logic::communication::log::ForcedLogUtil;
-use org::allbinary::logic::communication::log::LogUtil;
-use org::allbinary::game::configuration::event::GameInitializedEvent;
-use org::allbinary::game::configuration::event::GameInitializedEventHandler;
-use org::allbinary::game::configuration::event::GameInitializedListenerInterface;
-use org::allbinary::game::resource::FeatureResourceInitializationUtil;
-use org::allbinary::graphics::threed::SWTJOGLProcessor;
-use org::allbinary::logic::util::event::AllBinaryEventObject;
-use org::allbinary::logic::util::event::EventStrings;
-use java::lang::Thread;
+use java::lang::Object ();
+use org::allbinary::string::CommonStrings ();
+use org::allbinary::logic::communication::log::ForcedLogUtil ();
+use org::allbinary::logic::communication::log::LogUtil ();
+use org::allbinary::game::configuration::event::GameInitializedEvent ();
+use org::allbinary::game::configuration::event::GameInitializedEventHandler ();
+use org::allbinary::game::configuration::event::GameInitializedListenerInterface ();
+use org::allbinary::game::resource::FeatureResourceInitializationUtil ();
+use org::allbinary::graphics::threed::SWTJOGLProcessor ();
+use org::allbinary::logic::util::event::AllBinaryEventObject ();
+use org::allbinary::logic::util::event::EventStrings ();
+use java::lang::Thread ();
 
 1;
 

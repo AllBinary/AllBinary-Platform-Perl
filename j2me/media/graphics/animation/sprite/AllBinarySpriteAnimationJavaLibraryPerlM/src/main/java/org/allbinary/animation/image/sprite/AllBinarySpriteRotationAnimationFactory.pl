@@ -78,7 +78,7 @@ sub createWHF {
 sub new {
     my ($class, $image, $sequenceArray, $width, $height, $dx, $dy, $animationBehaviorFactory) = @_;
     my $self = $class->SUPER::new($image, $sequenceArray, $width, $height, $dx, $dy, $animationBehaviorFactory);
-    $self->_init_fields();
+    _init_fields($self);
         # super(...) made $self above
         if ($animationBehaviorFactory == 'org::allbinary::animation::AnimationBehaviorFactory'->getInstance()) {
             'org::allbinary::logic::communication::log::ForcedLogUtil'->log("Using default AnimationBehaviorFactory with IndexedAnimationFactory", $self);
@@ -120,17 +120,18 @@ sub getInstanceAnimation {
         return $self->getInstance(0);
 }
 
-# use javax::microedition::lcdui::Image;
-# use javax::microedition::lcdui::game::Sprite;
-use org::allbinary::animation::Animation;
-use org::allbinary::animation::AnimationBehaviorFactory;
-use org::allbinary::animation::ProceduralAnimationInterfaceFactoryInterface;
-use org::allbinary::animation::image::BaseImageAnimationFactory;
-use org::allbinary::image::sprite::AnimationFactorySpriteScaleUtil;
-use org::allbinary::logic::communication::log::ForcedLogUtil;
-use org::allbinary::logic::math::PrimitiveIntUtil;
-use org::allbinary::animation::image::sprite::AllBinarySpriteRotationAnimation;
-use org::allbinary::animation::image::sprite::AllBinaryAdjustedSpriteRotationAnimation;
+use java::lang::Object ();
+use javax::microedition::lcdui::Image ();
+use javax::microedition::lcdui::game::Sprite ();
+use org::allbinary::animation::Animation ();
+use org::allbinary::animation::AnimationBehaviorFactory ();
+use org::allbinary::animation::ProceduralAnimationInterfaceFactoryInterface ();
+use org::allbinary::animation::image::BaseImageAnimationFactory ();
+use org::allbinary::image::sprite::AnimationFactorySpriteScaleUtil ();
+use org::allbinary::logic::communication::log::ForcedLogUtil ();
+use org::allbinary::logic::math::PrimitiveIntUtil ();
+use org::allbinary::animation::image::sprite::AllBinarySpriteRotationAnimation ();
+use org::allbinary::animation::image::sprite::AllBinaryAdjustedSpriteRotationAnimation ();
 
 1;
 

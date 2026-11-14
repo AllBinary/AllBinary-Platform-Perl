@@ -52,9 +52,10 @@ sub visit {
         return 1;
 }
 
-use org::allbinary::logic::io::file::AbFile;
-use org::allbinary::util::BasicArrayList;
-use org::allbinary::logic::io::file::visitor::BooleanFileVisitor;
+use java::lang::Object ();
+use org::allbinary::logic::io::file::AbFile ();
+use org::allbinary::util::BasicArrayList ();
+use org::allbinary::logic::io::file::visitor::BooleanFileVisitor ();
 
 1;
 

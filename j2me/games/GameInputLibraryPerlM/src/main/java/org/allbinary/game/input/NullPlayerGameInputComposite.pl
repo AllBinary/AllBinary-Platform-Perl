@@ -17,9 +17,9 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
-use parent -norequire,'org::allbinary::game::input::PlayerGameInputCompositeInterface';
+use parent -norequire,'java::lang::Object','org::allbinary::game::input::PlayerGameInputCompositeInterface';
 
-our $NULL_PLAYER_GAME_INPUT_COMPOSITE = 'org::allbinary::game::input::NullPlayerGameInputComposite'->new();
+tie our $NULL_PLAYER_GAME_INPUT_COMPOSITE, 'java::lang::LazyStatic', sub { 'org::allbinary::game::input::NullPlayerGameInputComposite'->new() };
 
 sub new {
     my ($class) = @_;
@@ -50,10 +50,12 @@ sub getPlayerGameInput {
         return 'org::allbinary::game::input::NoPlayerGameInput'->getInstance();
 }
 
-use org::allbinary::layer::AllBinaryLayerManager;
-use org::allbinary::logic::string::StringUtil;
-use org::allbinary::game::input::PlayerGameInputCompositeInterface;
-use org::allbinary::game::input::NoPlayerGameInput;
+use java::lang::Object ();
+use java::lang::LazyStatic ();
+use org::allbinary::layer::AllBinaryLayerManager ();
+use org::allbinary::logic::string::StringUtil ();
+use org::allbinary::game::input::PlayerGameInputCompositeInterface ();
+use org::allbinary::game::input::NoPlayerGameInput ();
 
 1;
 

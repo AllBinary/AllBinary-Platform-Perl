@@ -19,7 +19,7 @@ use feature 'try';
 no warnings 'experimental::try';
 use parent -norequire,'org::allbinary::media::audio::BasicPlayer';
 
-our $NO_PLAYER = 'org::allbinary::media::audio::NoPlayer'->new();
+tie our $NO_PLAYER, 'java::lang::LazyStatic', sub { 'org::allbinary::media::audio::NoPlayer'->new() };
 
 
 sub new {
@@ -51,10 +51,12 @@ sub getControls {
         return [(undef) x (0)];
 }
 
-# use javax::microedition::media::Control;
-use org::allbinary::logic::string::StringUtil;
-use org::allbinary::media::audio::BasicPlayer;
-use org::allbinary::media::audio::NullControl;
+use java::lang::Object ();
+use java::lang::LazyStatic ();
+use javax::microedition::media::Control ();
+use org::allbinary::logic::string::StringUtil ();
+use org::allbinary::media::audio::BasicPlayer ();
+use org::allbinary::media::audio::NullControl ();
 
 1;
 

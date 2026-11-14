@@ -34,7 +34,7 @@ sub _init_fields {
 sub new {
     my ($class, $animationInterface, $overlayAnimationInterface, $captionDx, $captionDy, $dx, $dy) = @_;
     my $self = $class->SUPER::new();
-    $self->_init_fields();
+    _init_fields($self);
         $self->{animationInterface} = $animationInterface;
         $self->{overlayAnimationInterface} = $overlayAnimationInterface;
         $self->{captionDx} = $captionDx;
@@ -64,8 +64,9 @@ sub paintThreedXYZ {
         $self->{overlayAnimationInterface}->paintThreedXYZ($graphics, $x + $self->{captionDx} + $self->{dx}, $y + $self->{captionDy} + $self->{dy}, $z);
 }
 
-# use javax::microedition::lcdui::Graphics;
-use org::allbinary::animation::Animation;
+use java::lang::Object ();
+use javax::microedition::lcdui::Graphics ();
+use org::allbinary::animation::Animation ();
 
 1;
 

@@ -17,7 +17,7 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
-use parent -norequire,'java::io::DataInputStream';
+use parent -norequire,'java::lang::Object';
 
 
 
@@ -28,8 +28,9 @@ sub new {
     return $self;
 }
 
-# use java::io::DataInputStream;
-# use java::io::InputStream;
+use java::lang::Object ();
+# use java::io::DataInputStream ();
+# use java::io::InputStream ();
 
 1;
 

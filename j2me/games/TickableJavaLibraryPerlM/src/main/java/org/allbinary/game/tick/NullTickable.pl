@@ -17,9 +17,9 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
-use parent -norequire,'org::allbinary::game::tick::TickableInterface';
+use parent -norequire,'java::lang::Object','org::allbinary::game::tick::TickableInterface';
 
-our $SINGLETON = 'org::allbinary::game::tick::NullTickable'->new();
+tie our $SINGLETON, 'java::lang::LazyStatic', sub { 'org::allbinary::game::tick::NullTickable'->new() };
 
 sub _init_fields {
     my ($self) = @_;
@@ -29,7 +29,7 @@ sub _init_fields {
 sub new {
     my ($class) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
     return $self;
 }
 
@@ -51,8 +51,10 @@ sub getName {
         return $self->{NAME};
 }
 
-use org::allbinary::layer::AllBinaryLayerManager;
-use org::allbinary::game::tick::TickableInterface;
+use java::lang::Object ();
+use java::lang::LazyStatic ();
+use org::allbinary::layer::AllBinaryLayerManager ();
+use org::allbinary::game::tick::TickableInterface ();
 
 1;
 

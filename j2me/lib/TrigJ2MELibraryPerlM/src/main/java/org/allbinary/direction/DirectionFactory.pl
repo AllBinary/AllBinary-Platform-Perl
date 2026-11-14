@@ -17,8 +17,9 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
-our $instance = 'org::allbinary::direction::DirectionFactory'->new();
+tie our $instance, 'java::lang::LazyStatic', sub { 'org::allbinary::direction::DirectionFactory'->new() };
 
 sub _init_fields {
     my ($self) = @_;
@@ -48,7 +49,7 @@ sub getInstance {
 sub new {
     my ($class) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
         my $stringBuffer = 'org::allbinary::logic::string::StringMaker'->new();
         my $commonSeps = 'org::allbinary::string::CommonSeps'->getInstance();
         $self->{UP_LEFT} = 'org::allbinary::direction::Direction'->new("UP LEFT", $stringBuffer->append($self->{UP}->getOtherName())->append($commonSeps->{SPACE})->append($self->{LEFT}->getOtherName())->toString(), 4, 0);
@@ -61,10 +62,12 @@ sub new {
     return $self;
 }
 
-use org::allbinary::logic::string::StringMaker;
-use org::allbinary::string::CommonPhoneStrings;
-use org::allbinary::string::CommonSeps;
-use org::allbinary::direction::Direction;
+use java::lang::Object ();
+use java::lang::LazyStatic ();
+use org::allbinary::logic::string::StringMaker ();
+use org::allbinary::string::CommonPhoneStrings ();
+use org::allbinary::string::CommonSeps ();
+use org::allbinary::direction::Direction ();
 
 1;
 

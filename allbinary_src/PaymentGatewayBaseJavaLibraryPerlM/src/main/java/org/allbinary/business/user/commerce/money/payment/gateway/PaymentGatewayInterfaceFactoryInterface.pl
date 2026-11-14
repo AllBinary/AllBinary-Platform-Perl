@@ -27,7 +27,7 @@ sub getInstance {
     die "abstract method getInstance";
 }
 
-use java::util::HashMap;
+use java::util::HashMap ();
 
 1;
 

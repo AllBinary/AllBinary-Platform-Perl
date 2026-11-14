@@ -17,7 +17,7 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
-use parent -norequire,'org::allbinary::animation::ProceduralAnimationInterfaceFactoryInterface';
+use parent -norequire,'java::lang::Object','org::allbinary::animation::ProceduralAnimationInterfaceFactoryInterface';
 
 
 sub _init_fields {
@@ -31,7 +31,7 @@ sub _init_fields {
 sub new {
     my ($class, $basicColor, $animationBehaviorFactory) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
         $self->{animationBehaviorFactory} = $animationBehaviorFactory;
         $self->setBasicColorP($basicColor);
     return $self;
@@ -60,11 +60,12 @@ sub getBasicColorP {
         return $self->{basicColor};
 }
 
-use org::allbinary::graphics::color::BasicColor;
-use org::allbinary::graphics::color::BasicColorFactory;
-use org::allbinary::animation::ProceduralAnimationInterfaceFactoryInterface;
-use org::allbinary::animation::VectorExplosionGenerator;
-use org::allbinary::animation::VectorRotationAnimation;
+use java::lang::Object ();
+use org::allbinary::graphics::color::BasicColor ();
+use org::allbinary::graphics::color::BasicColorFactory ();
+use org::allbinary::animation::ProceduralAnimationInterfaceFactoryInterface ();
+use org::allbinary::animation::VectorExplosionGenerator ();
+use org::allbinary::animation::VectorRotationAnimation ();
 
 1;
 

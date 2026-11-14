@@ -44,8 +44,8 @@ sub toList {
     die "abstract method toList";
 }
 
-use org::allbinary::util::ABHashtable;
-use org::allbinary::util::BasicArrayList;
+use org::allbinary::util::ABHashtable ();
+use org::allbinary::util::BasicArrayList ();
 
 1;
 

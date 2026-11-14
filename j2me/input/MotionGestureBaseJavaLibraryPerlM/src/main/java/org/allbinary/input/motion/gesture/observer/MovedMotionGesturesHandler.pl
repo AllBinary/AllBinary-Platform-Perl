@@ -19,7 +19,7 @@ use feature 'try';
 no warnings 'experimental::try';
 use parent -norequire,'org::allbinary::logic::util::event::handler::BasicEventHandler';
 
-our $SINGLETON = 'org::allbinary::input::motion::gesture::observer::MovedMotionGesturesHandler'->new();
+tie our $SINGLETON, 'java::lang::LazyStatic', sub { 'org::allbinary::input::motion::gesture::observer::MovedMotionGesturesHandler'->new() };
 
 
 sub getInstance {
@@ -42,9 +42,11 @@ sub process {
         $baseMotionGestureEventListener->onMotionGestureEvent($eventObject);
 }
 
-use org::allbinary::logic::util::event::AllBinaryEventObject;
-use org::allbinary::logic::util::event::EventListenerInterface;
-use org::allbinary::logic::util::event::handler::BasicEventHandler;
+use java::lang::Object ();
+use java::lang::LazyStatic ();
+use org::allbinary::logic::util::event::AllBinaryEventObject ();
+use org::allbinary::logic::util::event::EventListenerInterface ();
+use org::allbinary::logic::util::event::handler::BasicEventHandler ();
 
 1;
 

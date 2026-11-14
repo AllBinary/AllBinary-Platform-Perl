@@ -35,11 +35,12 @@ sub getStoreName {
         return $self->getPropertiesHashMap()->get('org::allbinary::business::context::modules::storefront::StoreFrontData'->getInstance()->{NAME});
 }
 
-use java::util::HashMap;
-# use javax::servlet::jsp::PageContext;
-use org::allbinary::business::context::modules::storefront::StoreFrontData;
-use org::allbinary::logic::control::workflow::StoreWorkFlowInterface;
-use workflows::template::data::BasicWorkFlow;
+use java::lang::Object ();
+use java::util::HashMap ();
+# use javax::servlet::jsp::PageContext ();
+use org::allbinary::business::context::modules::storefront::StoreFrontData ();
+use org::allbinary::logic::control::workflow::StoreWorkFlowInterface ();
+use workflows::template::data::BasicWorkFlow ();
 
 1;
 

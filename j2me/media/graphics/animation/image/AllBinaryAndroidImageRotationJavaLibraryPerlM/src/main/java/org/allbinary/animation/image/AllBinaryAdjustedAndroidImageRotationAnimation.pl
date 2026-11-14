@@ -30,7 +30,7 @@ sub _init_fields {
 sub new {
     my ($class, $originalImage, $image, $angleInfo, $totalAngle, $dx, $dy, $animationBehavior) = @_;
     my $self = $class->SUPER::new($originalImage, $image, $angleInfo, $totalAngle, $animationBehavior);
-    $self->_init_fields();
+    _init_fields($self);
         # super(...) made $self above
         $self->init($dx, $dy);
     return $self;
@@ -74,11 +74,12 @@ sub paintXY {
         $self->SUPER::paintXY($graphics, $x + $self->{dx}, $y + $self->{dy});
 }
 
-# use javax::microedition::lcdui::Graphics;
-# use javax::microedition::lcdui::Image;
-use org::allbinary::animation::AnimationBehavior;
-use org::allbinary::math::AngleInfo;
-use org::allbinary::animation::image::AllBinaryFlickerAndroidImageRotationAnimation;
+use java::lang::Object ();
+use javax::microedition::lcdui::Graphics ();
+use javax::microedition::lcdui::Image ();
+use org::allbinary::animation::AnimationBehavior ();
+use org::allbinary::math::AngleInfo ();
+use org::allbinary::animation::image::AllBinaryFlickerAndroidImageRotationAnimation ();
 
 1;
 

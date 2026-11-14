@@ -17,9 +17,9 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
-use parent -norequire,'org::allbinary::data::tree::dom::DomNodeInterface','org::allbinary::data::tree::dom::document::mapping::DomDocumentMappingInterface';
+use parent -norequire,'java::lang::Object','org::allbinary::data::tree::dom::DomNodeInterface','org::allbinary::data::tree::dom::document::mapping::DomDocumentMappingInterface';
 
-our $DEFAULT_PROFILE_ACTIONS_PATH = $org::allbinary::input::automation::module::generic::configuration::profile::GenericProfiles::DEFAULT_PROFILES_PATH . "actions/";
+tie our $DEFAULT_PROFILE_ACTIONS_PATH, 'java::lang::LazyStatic', sub { $org::allbinary::input::automation::module::generic::configuration::profile::GenericProfiles::DEFAULT_PROFILES_PATH . "actions/" };
 
 sub _init_fields {
     my ($self) = @_;
@@ -43,7 +43,7 @@ sub new {
 sub _new2 {
     my ($class, $genericProfileActionsJPanel, $name) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
         $self->setName($name);
         $self->init($genericProfileActionsJPanel);
         $self->load();
@@ -54,7 +54,7 @@ sub _new2 {
 sub _new3 {
     my ($class, $genericProfileActionsJPanel, $abPath, $name) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
         $self->setName($name);
         $self->init($genericProfileActionsJPanel);
         $self->load();
@@ -65,7 +65,7 @@ sub _new3 {
 sub _new3 {
     my ($class, $genericProfileActionsJPanel, $fileInputStream, $name) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
         $self->setName($name);
         $self->init($genericProfileActionsJPanel);
         $self->fileInit($fileInputStream);
@@ -253,28 +253,30 @@ sub setName {
         $self->{name} = $name;
 }
 
-# use java::io::DataOutputStream;
-use java::io::File;
-# use java::io::FileInputStream;
-# use java::io::FileOutputStream;
-use java::util::HashMap;
-# use java::util::Set;
-use org::allbinary::data::tree::dom::DomNodeInterface;
-use org::allbinary::data::tree::dom::document::DomDocumentHelper;
-use org::allbinary::data::tree::dom::document::XmlDocumentHelper;
-use org::allbinary::data::tree::dom::document::mapping::DomDocumentMappingInterface;
-use org::allbinary::input::automation::module::DefaultListModelHelper;
-use org::allbinary::input::automation::module::generic::configuration::profile::GenericProfiles;
-use org::allbinary::logic::StdUtil;
-use org::allbinary::logic::communication::log::LogUtil;
-use org::allbinary::logic::io::file::CommonDataFileStrings;
-use org::allbinary::logic::io::path::AbPath;
-use org::w3c::dom::Document;
-use org::w3c::dom::Node;
-use org::w3c::dom::NodeList;
-use org::allbinary::input::automation::module::generic::configuration::profile::actions::GenericProfileActionsData;
-use org::allbinary::input::automation::module::generic::configuration::profile::actions::GenericProfileActionData;
-use org::allbinary::input::automation::module::generic::configuration::profile::actions::GenericProfileAction;
+use java::lang::Object ();
+use java::lang::LazyStatic ();
+# use java::io::DataOutputStream ();
+use java::io::File ();
+# use java::io::FileInputStream ();
+# use java::io::FileOutputStream ();
+use java::util::HashMap ();
+# use java::util::Set ();
+use org::allbinary::data::tree::dom::DomNodeInterface ();
+use org::allbinary::data::tree::dom::document::DomDocumentHelper ();
+use org::allbinary::data::tree::dom::document::XmlDocumentHelper ();
+use org::allbinary::data::tree::dom::document::mapping::DomDocumentMappingInterface ();
+use org::allbinary::input::automation::module::DefaultListModelHelper ();
+use org::allbinary::input::automation::module::generic::configuration::profile::GenericProfiles ();
+use org::allbinary::logic::StdUtil ();
+use org::allbinary::logic::communication::log::LogUtil ();
+use org::allbinary::logic::io::file::CommonDataFileStrings ();
+use org::allbinary::logic::io::path::AbPath ();
+use org::w3c::dom::Document ();
+use org::w3c::dom::Node ();
+use org::w3c::dom::NodeList ();
+use org::allbinary::input::automation::module::generic::configuration::profile::actions::GenericProfileActionsData ();
+use org::allbinary::input::automation::module::generic::configuration::profile::actions::GenericProfileActionData ();
+use org::allbinary::input::automation::module::generic::configuration::profile::actions::GenericProfileAction ();
 
 1;
 

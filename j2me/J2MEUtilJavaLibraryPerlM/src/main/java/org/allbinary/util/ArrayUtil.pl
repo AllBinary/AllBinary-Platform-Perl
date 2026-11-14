@@ -5,8 +5,9 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
-our $instance = 'org::allbinary::util::ArrayUtil'->new();
+tie our $instance, 'java::lang::LazyStatic', sub { 'org::allbinary::util::ArrayUtil'->new() };
 
 sub _init_fields {
     my ($self) = @_;
@@ -16,7 +17,7 @@ sub _init_fields {
 sub new {
     my ($class) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
     return $self;
 }
 
@@ -178,13 +179,15 @@ sub toStringFromByteArray {
         return $stringBuffer->toString();
 }
 
-# use jsinterop::annotations::JsType;
-use org::allbinary::logic::math::MathUtil;
-use org::allbinary::logic::string::StringMaker;
-use org::allbinary::logic::string::StringUtil;
-use org::allbinary::string::CommonSeps;
-# use jsinterop::annotations::JsMethod;
-use java::lang::System;
+use java::lang::Object ();
+use java::lang::LazyStatic ();
+# use jsinterop::annotations::JsType ();
+use org::allbinary::logic::math::MathUtil ();
+use org::allbinary::logic::string::StringMaker ();
+use org::allbinary::logic::string::StringUtil ();
+use org::allbinary::string::CommonSeps ();
+# use jsinterop::annotations::JsMethod ();
+use java::lang::System ();
 
 1;
 

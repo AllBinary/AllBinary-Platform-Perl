@@ -19,7 +19,7 @@ use feature 'try';
 no warnings 'experimental::try';
 use parent -norequire,'org::allbinary::game::resource::FeaturedResourceFactory';
 
-our $INSTANCE = 'org::allbinary::game::resource::FeaturedResourceRelativeRelationshipFactory'->new();
+tie our $INSTANCE, 'java::lang::LazyStatic', sub { 'org::allbinary::game::resource::FeaturedResourceRelativeRelationshipFactory'->new() };
 
 sub _init_fields {
     my ($self) = @_;
@@ -30,7 +30,7 @@ sub _init_fields {
 sub new {
     my ($class) = @_;
     my $self = $class->SUPER::new();
-    $self->_init_fields();
+    _init_fields($self);
     return $self;
 }
 
@@ -72,15 +72,17 @@ sub duplicate {
         return $newList;
 }
 
-use org::allbinary::graphics::PointFactory;
-use org::allbinary::graphics::RelativeRelationship;
-use org::allbinary::layer::AllBinaryLayer;
-use org::allbinary::layer::relationship::RelativeLayerRelationship;
-use org::allbinary::logic::string::StringMaker;
-use org::allbinary::util::BasicArrayList;
-use org::allbinary::util::BasicArrayListD;
-use org::allbinary::util::BasicArrayListUtil;
-use org::allbinary::game::resource::FeaturedResourceFactory;
+use java::lang::Object ();
+use java::lang::LazyStatic ();
+use org::allbinary::graphics::PointFactory ();
+use org::allbinary::graphics::RelativeRelationship ();
+use org::allbinary::layer::AllBinaryLayer ();
+use org::allbinary::layer::relationship::RelativeLayerRelationship ();
+use org::allbinary::logic::string::StringMaker ();
+use org::allbinary::util::BasicArrayList ();
+use org::allbinary::util::BasicArrayListD ();
+use org::allbinary::util::BasicArrayListUtil ();
+use org::allbinary::game::resource::FeaturedResourceFactory ();
 
 1;
 

@@ -17,7 +17,7 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
-use parent -norequire,'org::allbinary::logic::visual::theme::ThemeInterface','org::allbinary::logic::control::validate::ValidationInterface','org::allbinary::data::tree::dom::DomNodeInterface','org::allbinary::logic::visual::transform::info::CompositeTransformInfoInterface';
+use parent -norequire,'java::lang::Object','org::allbinary::logic::visual::theme::ThemeInterface','org::allbinary::logic::control::validate::ValidationInterface','org::allbinary::data::tree::dom::DomNodeInterface','org::allbinary::logic::visual::transform::info::CompositeTransformInfoInterface';
 
 
 sub _init_fields {
@@ -45,7 +45,7 @@ sub new {
 sub _new3 {
     my ($class, $transformInfoInterface, $cssStyleValidation, $categoryThemePath) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
         $self->{transformInfoInterface} = $transformInfoInterface;
         my $pathData = 'org::allbinary::logic::io::path::AbPathData'->getInstance();
         my $pathUtil = 'org::allbinary::logic::io::path::PathUtil'->getInstance();
@@ -60,7 +60,7 @@ sub _new3 {
 sub _new2 {
     my ($class, $transformInfoInterface, $hashMap) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
         $self->{transformInfoInterface} = $transformInfoInterface;
         my $categoryThemeAbPath = 'org::allbinary::logic::io::path::AbPath'->new($hashMap->get('org::allbinary::logic::visual::theme::ThemeData'->getInstance()->{PATH}), 'org::allbinary::logic::string::StringUtil'->getInstance()->{EMPTY_STRING});
         my $pathData = 'org::allbinary::logic::io::path::AbPathData'->getInstance();
@@ -85,7 +85,7 @@ sub _new2 {
 sub _new2 {
     my ($class, $storeThemeCategoryInterface, $node) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
         $self->{transformInfoInterface} = $storeThemeCategoryInterface->getTransformInfoInterface();
         $self->{categoryAbPath} = $storeThemeCategoryInterface->getPath();
         my $themeNameNode = 'org::allbinary::data::tree::dom::DomSearchHelper'->getNode('org::allbinary::logic::visual::theme::ThemeData'->getInstance()->{NAME}, $node->getChildNodes());
@@ -257,40 +257,41 @@ sub toXmlNode {
         return $node;
 }
 
-use java::util::HashMap;
-use org::allbinary::util::BasicArrayList;
-use org::allbinary::util::BasicArrayListD;
-use org::allbinary::business::category::CategoryData;
-use org::allbinary::business::category::CategoryFactoryInterface;
-use org::allbinary::business::category::store::theme::StoreThemeCategoryFactory;
-use org::allbinary::business::category::store::theme::StoreThemeCategoryInterface;
-use org::allbinary::data::tree::category::CategoryLoaderFactory;
-use org::allbinary::data::tree::category::CategoryLoaderInterface;
-use org::allbinary::data::tree::dom::DomData;
-use org::allbinary::data::tree::dom::DomNodeHelper;
-use org::allbinary::data::tree::dom::DomNodeInterface;
-use org::allbinary::data::tree::dom::DomSearchHelper;
-use org::allbinary::data::tree::dom::ModDomHelper;
-use org::allbinary::data::tree::dom::document::DomDocumentHelper;
-use org::allbinary::logic::StdUtil;
-use org::allbinary::logic::communication::log::LogUtil;
-use org::allbinary::logic::communication::sql::AbSqlData;
-use org::allbinary::logic::control::crypt::file::CryptFileReader;
-use org::allbinary::logic::control::validate::ValidationInterface;
-use org::allbinary::logic::io::path::AbPath;
-use org::allbinary::logic::io::path::AbPathData;
-use org::allbinary::logic::io::path::PathUtil;
-use org::allbinary::logic::string::StringMaker;
-use org::allbinary::logic::string::StringUtil;
-use org::allbinary::logic::string::StringValidationUtil;
-use org::allbinary::logic::visual::transform::info::CompositeTransformInfoInterface;
-use org::allbinary::logic::visual::transform::info::TransformInfoInterface;
-use org::allbinary::logic::visual::transform::template::customizer::includes::style::css::template::retail::CssStyleValidation;
-use org::allbinary::string::CommonStrings;
-use org::w3c::dom::Document;
-use org::w3c::dom::Node;
-use org::allbinary::logic::visual::theme::ThemeInterface;
-use org::allbinary::logic::visual::theme::ThemeData;
+use java::lang::Object ();
+use java::util::HashMap ();
+use org::allbinary::util::BasicArrayList ();
+use org::allbinary::util::BasicArrayListD ();
+use org::allbinary::business::category::CategoryData ();
+use org::allbinary::business::category::CategoryFactoryInterface ();
+use org::allbinary::business::category::store::theme::StoreThemeCategoryFactory ();
+use org::allbinary::business::category::store::theme::StoreThemeCategoryInterface ();
+use org::allbinary::data::tree::category::CategoryLoaderFactory ();
+use org::allbinary::data::tree::category::CategoryLoaderInterface ();
+use org::allbinary::data::tree::dom::DomData ();
+use org::allbinary::data::tree::dom::DomNodeHelper ();
+use org::allbinary::data::tree::dom::DomNodeInterface ();
+use org::allbinary::data::tree::dom::DomSearchHelper ();
+use org::allbinary::data::tree::dom::ModDomHelper ();
+use org::allbinary::data::tree::dom::document::DomDocumentHelper ();
+use org::allbinary::logic::StdUtil ();
+use org::allbinary::logic::communication::log::LogUtil ();
+use org::allbinary::logic::communication::sql::AbSqlData ();
+use org::allbinary::logic::control::crypt::file::CryptFileReader ();
+use org::allbinary::logic::control::validate::ValidationInterface ();
+use org::allbinary::logic::io::path::AbPath ();
+use org::allbinary::logic::io::path::AbPathData ();
+use org::allbinary::logic::io::path::PathUtil ();
+use org::allbinary::logic::string::StringMaker ();
+use org::allbinary::logic::string::StringUtil ();
+use org::allbinary::logic::string::StringValidationUtil ();
+use org::allbinary::logic::visual::transform::info::CompositeTransformInfoInterface ();
+use org::allbinary::logic::visual::transform::info::TransformInfoInterface ();
+use org::allbinary::logic::visual::transform::template::customizer::includes::style::css::template::retail::CssStyleValidation ();
+use org::allbinary::string::CommonStrings ();
+use org::w3c::dom::Document ();
+use org::w3c::dom::Node ();
+use org::allbinary::logic::visual::theme::ThemeInterface ();
+use org::allbinary::logic::visual::theme::ThemeData ();
 
 1;
 

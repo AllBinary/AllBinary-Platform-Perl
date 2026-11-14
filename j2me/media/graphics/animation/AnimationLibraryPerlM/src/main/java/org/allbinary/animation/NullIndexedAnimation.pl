@@ -23,7 +23,8 @@ sub getAnimationSize {
         return 0;
 }
 
-use org::allbinary::animation::IndexedAnimation;
+use java::lang::Object ();
+use org::allbinary::animation::IndexedAnimation ();
 
 1;
 

@@ -17,7 +17,7 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
-use parent -norequire,'org::allbinary::business::advertisement::search::website::AdvertisementWebsiteInterface';
+use parent -norequire,'java::lang::Object','org::allbinary::business::advertisement::search::website::AdvertisementWebsiteInterface';
 
 
 sub _init_fields {
@@ -29,7 +29,7 @@ sub _init_fields {
 sub new {
     my ($class, $websiteId) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
         $self->{websiteId} = $websiteId;
     return $self;
 }
@@ -40,7 +40,8 @@ sub toString {
         return $self->{websiteId};
 }
 
-use org::allbinary::business::advertisement::search::website::AdvertisementWebsiteInterface;
+use java::lang::Object ();
+use org::allbinary::business::advertisement::search::website::AdvertisementWebsiteInterface ();
 
 1;
 

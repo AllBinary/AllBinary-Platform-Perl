@@ -29,7 +29,7 @@ sub _init_fields {
 sub new {
     my ($class, $name, $version, $specialName, $shortName, $longArrayIdentifier) = @_;
     my $self = $class->SUPER::new($name, $version, $specialName, $shortName);
-    $self->_init_fields();
+    _init_fields($self);
         # super(...) made $self above
         $self->{longArrayIdentifier} = $longArrayIdentifier;
     return $self;
@@ -41,8 +41,9 @@ sub getLongArrayIdentifier {
         return $self->{longArrayIdentifier};
 }
 
-use org::allbinary::thirdparty::store::LongArrayIdentifierInterface;
-use org::allbinary::logic::system::security::licensing::AbeClientInformation;
+use java::lang::Object ();
+use org::allbinary::thirdparty::store::LongArrayIdentifierInterface ();
+use org::allbinary::logic::system::security::licensing::AbeClientInformation ();
 
 1;
 

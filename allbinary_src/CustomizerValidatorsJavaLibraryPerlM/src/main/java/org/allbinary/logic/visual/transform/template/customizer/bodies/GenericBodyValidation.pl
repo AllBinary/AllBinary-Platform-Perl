@@ -38,7 +38,7 @@ sub new {
 sub _new0 {
     my ($class) = @_;
     my $self = $class->SUPER::new();
-    $self->_init_fields();
+    _init_fields($self);
         $self->{body} = 'org::allbinary::logic::string::StringUtil'->getInstance()->{EMPTY_STRING};
     return $self;
 }
@@ -47,7 +47,7 @@ sub _new0 {
 sub _new1 {
     my ($class, $document) = @_;
     my $self = $class->SUPER::new();
-    $self->_init_fields();
+    _init_fields($self);
         my $nodeList = $document->getElementsByTagName('org::allbinary::logic::visual::transform::template::customizer::bodies::BodyData'->getInstance()->{NAME});
         for (my $index = 0; $index < $nodeList->getLength(); $index++) {
             my $aBodyNode = $nodeList->item($index);
@@ -61,7 +61,7 @@ sub _new1 {
 sub _new1 {
     my ($class, $hashMap) = @_;
     my $self = $class->SUPER::new();
-    $self->_init_fields();
+    _init_fields($self);
         $self->getFormData($hashMap);
     return $self;
 }
@@ -101,7 +101,7 @@ sub validationInfo {
     my ($self) = @_;
         try {
             my $stringBuffer = 'org::allbinary::logic::string::StringMaker'->new();
-            {
+            {;
                 $stringBuffer->append("Error: Data submitted is < ");
                 $stringBuffer->appendint(int('org::allbinary::logic::visual::transform::template::customizer::bodies::BodyData'->getInstance()->{MIN}));
                 $stringBuffer->append(" or > ");
@@ -136,22 +136,23 @@ sub toXmlNode {
         return $node;
 }
 
-use java::util::HashMap;
-use org::allbinary::data::tree::dom::DomData;
-use org::allbinary::data::tree::dom::DomNodeHelper;
-use org::allbinary::data::tree::dom::DomNodeInterface;
-use org::allbinary::data::tree::dom::DomSearchHelper;
-use org::allbinary::data::tree::dom::ModDomHelper;
-use org::allbinary::logic::communication::log::LogUtil;
-use org::allbinary::logic::communication::sql::AbSqlData;
-use org::allbinary::logic::control::validate::Validation;
-use org::allbinary::logic::string::StringMaker;
-use org::allbinary::logic::string::StringUtil;
-use org::allbinary::logic::string::StringValidationUtil;
-use org::w3c::dom::Document;
-use org::w3c::dom::Node;
-use org::w3c::dom::NodeList;
-use org::allbinary::logic::visual::transform::template::customizer::bodies::BodyData;
+use java::lang::Object ();
+use java::util::HashMap ();
+use org::allbinary::data::tree::dom::DomData ();
+use org::allbinary::data::tree::dom::DomNodeHelper ();
+use org::allbinary::data::tree::dom::DomNodeInterface ();
+use org::allbinary::data::tree::dom::DomSearchHelper ();
+use org::allbinary::data::tree::dom::ModDomHelper ();
+use org::allbinary::logic::communication::log::LogUtil ();
+use org::allbinary::logic::communication::sql::AbSqlData ();
+use org::allbinary::logic::control::validate::Validation ();
+use org::allbinary::logic::string::StringMaker ();
+use org::allbinary::logic::string::StringUtil ();
+use org::allbinary::logic::string::StringValidationUtil ();
+use org::w3c::dom::Document ();
+use org::w3c::dom::Node ();
+use org::w3c::dom::NodeList ();
+use org::allbinary::logic::visual::transform::template::customizer::bodies::BodyData ();
 
 1;
 

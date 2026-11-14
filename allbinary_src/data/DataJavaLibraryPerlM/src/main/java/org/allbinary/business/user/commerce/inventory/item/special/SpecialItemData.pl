@@ -17,6 +17,7 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
 our $START_TIME = "SPECIALITEM_START_TIME";
 our $END_TIME = "SPECIALITEM_END_TIME";
@@ -27,6 +28,7 @@ sub new {
     return $self;
 }
 
+use java::lang::Object ();
 
 1;
 

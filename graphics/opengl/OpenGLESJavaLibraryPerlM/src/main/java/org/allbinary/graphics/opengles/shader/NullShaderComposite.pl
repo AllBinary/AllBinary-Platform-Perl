@@ -19,16 +19,16 @@ use feature 'try';
 no warnings 'experimental::try';
 use parent -norequire,'org::allbinary::graphics::opengles::shader::ShaderComposite';
 
-our $instance = do {
-        package org::allbinary::graphics::opengles::shader::NullShaderComposite::AnonymousN65746 { our @ISA = ('org::allbinary::graphics::opengles::shader::NullShaderComposite');
+tie our $instance, 'java::lang::LazyStatic', sub { do {
+        package org::allbinary::graphics::opengles::shader::NullShaderComposite::AnonymousN65746 { our @ISA = ('org::allbinary::graphics::opengles::shader::NullShaderComposite', 'java::lang::Object');
         
 
         sub init {
             my ($self, $gl) = @_;
         }
         }
-        'org::allbinary::graphics::opengles::shader::NullShaderComposite::AnonymousN65746'->can('new') ? 'org::allbinary::graphics::opengles::shader::NullShaderComposite::AnonymousN65746'->new('org::allbinary::graphics::opengles::OpenGLCapabilities'->getInstance()->{VERSION_2_0}, ['org::allbinary::graphics::opengles::shader::Shader'->new(), 'org::allbinary::graphics::opengles::shader::Shader'->new()], 'org::allbinary::graphics::opengles::shader::CompositeShaderUpdater'->getInstance(), 'org::allbinary::graphics::opengles::shader::ShaderInitializer'->getInstance(), 'org::allbinary::graphics::opengles::shader::ModelViewProjection'->getInstance(), undef, undef, 'org::allbinary::graphics::opengles::NullOpenGLProcessorFactory'->getInstance()) : bless({}, 'org::allbinary::graphics::opengles::shader::NullShaderComposite::AnonymousN65746')
-    };
+        'org::allbinary::graphics::opengles::shader::NullShaderComposite::AnonymousN65746'->can('new') ? 'org::allbinary::graphics::opengles::shader::NullShaderComposite::AnonymousN65746'->new('org::allbinary::graphics::opengles::OpenGLCapabilities'->getInstance()->{VERSION_2_0}, ['org::allbinary::graphics::opengles::shader::Shader'->new(), 'org::allbinary::graphics::opengles::shader::Shader'->new()], 'org::allbinary::graphics::opengles::shader::CompositeShaderUpdater'->getInstance(), 'org::allbinary::graphics::opengles::shader::ShaderInitializer'->getInstance(), 'org::allbinary::graphics::opengles::shader::ModelViewProjection'->getInstance(), 'org::allbinary::graphics::opengles::NullOpenGLProcessorFactory'->getInstance(), 'org::allbinary::graphics::opengles::NullOpenGLProcessorFactory'->getInstance(), 'org::allbinary::graphics::opengles::NullOpenGLProcessorFactory'->getInstance()) : bless({}, 'org::allbinary::graphics::opengles::shader::NullShaderComposite::AnonymousN65746')
+    } };
 
 
 sub getInstance {
@@ -45,15 +45,17 @@ sub new {
     return $self;
 }
 
-# use javax::microedition::khronos::opengles::GL10;
-use org::allbinary::graphics::opengles::NullOpenGLProcessorFactory;
-use org::allbinary::graphics::opengles::OpenGLCapabilities;
-use org::allbinary::graphics::opengles::OpenGLProcessor;
-use org::allbinary::graphics::opengles::shader::ShaderComposite;
-use org::allbinary::graphics::opengles::shader::Shader;
-use org::allbinary::graphics::opengles::shader::CompositeShaderUpdater;
-use org::allbinary::graphics::opengles::shader::ShaderInitializer;
-use org::allbinary::graphics::opengles::shader::ModelViewProjection;
+use java::lang::Object ();
+use java::lang::LazyStatic ();
+use javax::microedition::khronos::opengles::GL10 ();
+use org::allbinary::graphics::opengles::NullOpenGLProcessorFactory ();
+use org::allbinary::graphics::opengles::OpenGLCapabilities ();
+use org::allbinary::graphics::opengles::OpenGLProcessor ();
+use org::allbinary::graphics::opengles::shader::ShaderComposite ();
+use org::allbinary::graphics::opengles::shader::Shader ();
+use org::allbinary::graphics::opengles::shader::CompositeShaderUpdater ();
+use org::allbinary::graphics::opengles::shader::ShaderInitializer ();
+use org::allbinary::graphics::opengles::shader::ModelViewProjection ();
 
 1;
 

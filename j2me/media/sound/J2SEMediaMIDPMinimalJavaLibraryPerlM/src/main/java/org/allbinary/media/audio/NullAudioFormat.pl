@@ -17,8 +17,9 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
-our $NULL_AUDIO_FORMAT = 'javax::sound::sampled::AudioFormat'->new($javax::sound::sampled::AudioFormat::Encoding->{PCM_UNSIGNED}, 0.0, 0, 0, 0, 0.0, 0);
+tie our $NULL_AUDIO_FORMAT, 'java::lang::LazyStatic', sub { 'javax::sound::sampled::AudioFormat'->new($javax::sound::sampled::AudioFormat::Encoding->{PCM_UNSIGNED}, 0.0, 0, 0, 0, 0.0, 0) };
 
 sub new {
     my ($class) = @_;
@@ -26,7 +27,9 @@ sub new {
     return $self;
 }
 
-# use javax::sound::sampled::AudioFormat;
+use java::lang::Object ();
+use java::lang::LazyStatic ();
+# use javax::sound::sampled::AudioFormat ();
 
 1;
 

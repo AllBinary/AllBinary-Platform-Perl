@@ -17,8 +17,9 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
-our $NULL_EVENT = 'org::allbinary::logic::util::event::AllBinaryEventObject'->new('org::allbinary::logic::NullUtil'->getInstance()->{NULL_OBJECT});
+tie our $NULL_EVENT, 'java::lang::LazyStatic', sub { 'org::allbinary::logic::util::event::AllBinaryEventObject'->new('org::allbinary::logic::NullUtil'->getInstance()->{NULL_OBJECT}) };
 
 sub _init_fields {
     my ($self) = @_;
@@ -29,7 +30,7 @@ sub _init_fields {
 sub new {
     my ($class, $anyType) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
         $self->{source} = $anyType;
     return $self;
 }
@@ -46,11 +47,13 @@ sub setSource {
         $self->{source} = $source;
 }
 
-# use jsinterop::annotations::JsType;
-use org::allbinary::logic::NullUtil;
-# use jsinterop::annotations::JsMethod;
-# use jsinterop::annotations::JsConstructor;
-# use jsinterop::annotations::JsProperty;
+use java::lang::Object ();
+use java::lang::LazyStatic ();
+# use jsinterop::annotations::JsType ();
+use org::allbinary::logic::NullUtil ();
+# use jsinterop::annotations::JsMethod ();
+# use jsinterop::annotations::JsConstructor ();
+# use jsinterop::annotations::JsProperty ();
 
 1;
 

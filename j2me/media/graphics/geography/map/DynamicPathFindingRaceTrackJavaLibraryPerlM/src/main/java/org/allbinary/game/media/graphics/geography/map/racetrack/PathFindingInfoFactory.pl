@@ -46,7 +46,7 @@ sub initMax {
 sub new {
     my ($class, $pathFinderGraphVisitorFactoryInterface, $max) = @_;
     my $self = $class->SUPER::new();
-    $self->_init_fields();
+    _init_fields($self);
         my $commonStrings = 'org::allbinary::string::CommonStrings'->getInstance();
         'org::allbinary::logic::communication::log::PreLogUtil'->put("Using Dynamic Path Finding", $self, $commonStrings->{GET_INSTANCE});
         $self->{basicGeographicMapPathFinder} = 'org::allbinary::media::graphics::geography::pathfinding::BasicGeographicMapPathFinder'->new($max);
@@ -119,26 +119,27 @@ sub buildPathFindingNodes {
         }
 }
 
-use org::allbinary::string::CommonStrings;
-use org::allbinary::logic::communication::log::PreLogUtil;
-use org::allbinary::game::layer::AllBinaryTiledLayer;
-use org::allbinary::media::graphics::geography::map::BasicGeographicMap;
-use org::allbinary::media::graphics::geography::map::BasicGeographicMapCellPositionFactory;
-use org::allbinary::media::graphics::geography::map::BasicGeographicMapUtil;
-use org::allbinary::media::graphics::geography::map::GeographicMapCellPosition;
-use org::allbinary::media::graphics::geography::map::GeographicMapCellType;
-use org::allbinary::media::graphics::geography::map::GeographicMapCellTypeFactory;
-use org::allbinary::media::graphics::geography::map::racetrack::BasePathFindingInfoFactory;
-use org::allbinary::media::graphics::geography::map::racetrack::RaceTrackGeographicMapCellType;
-use org::allbinary::media::graphics::geography::map::racetrack::RaceTrackRoadsGeographicMapCellHistoryFactory;
-use org::allbinary::media::graphics::geography::pathfinding::PathFindingNodeCostInfoFactoryBase;
-use org::allbinary::media::graphics::geography::pathfinding::BasicGeographicMapGraph;
-use org::allbinary::media::graphics::geography::pathfinding::BasicGeographicMapPathFinder;
-use org::allbinary::media::graphics::geography::pathfinding::PathFinderGraphVisitorFactoryBase;
-use org::allbinary::media::graphics::geography::pathfinding::PathFindingInfo;
-use org::allbinary::media::graphics::geography::pathfinding::PathFindingNodeCostInfoFactory;
-use org::allbinary::util::BasicArrayListS;
-use org::allbinary::game::media::graphics::geography::map::racetrack::SimplePathFinderGraphVisitorFactory;
+use java::lang::Object ();
+use org::allbinary::string::CommonStrings ();
+use org::allbinary::logic::communication::log::PreLogUtil ();
+use org::allbinary::game::layer::AllBinaryTiledLayer ();
+use org::allbinary::media::graphics::geography::map::BasicGeographicMap ();
+use org::allbinary::media::graphics::geography::map::BasicGeographicMapCellPositionFactory ();
+use org::allbinary::media::graphics::geography::map::BasicGeographicMapUtil ();
+use org::allbinary::media::graphics::geography::map::GeographicMapCellPosition ();
+use org::allbinary::media::graphics::geography::map::GeographicMapCellType ();
+use org::allbinary::media::graphics::geography::map::GeographicMapCellTypeFactory ();
+use org::allbinary::media::graphics::geography::map::racetrack::BasePathFindingInfoFactory ();
+use org::allbinary::media::graphics::geography::map::racetrack::RaceTrackGeographicMapCellType ();
+use org::allbinary::media::graphics::geography::map::racetrack::RaceTrackRoadsGeographicMapCellHistoryFactory ();
+use org::allbinary::media::graphics::geography::pathfinding::PathFindingNodeCostInfoFactoryBase ();
+use org::allbinary::media::graphics::geography::pathfinding::BasicGeographicMapGraph ();
+use org::allbinary::media::graphics::geography::pathfinding::BasicGeographicMapPathFinder ();
+use org::allbinary::media::graphics::geography::pathfinding::PathFinderGraphVisitorFactoryBase ();
+use org::allbinary::media::graphics::geography::pathfinding::PathFindingInfo ();
+use org::allbinary::media::graphics::geography::pathfinding::PathFindingNodeCostInfoFactory ();
+use org::allbinary::util::BasicArrayListS ();
+use org::allbinary::game::media::graphics::geography::map::racetrack::SimplePathFinderGraphVisitorFactory ();
 
 1;
 

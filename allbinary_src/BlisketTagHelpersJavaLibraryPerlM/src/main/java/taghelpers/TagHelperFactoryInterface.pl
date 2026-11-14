@@ -27,9 +27,9 @@ sub getInstance {
     die "abstract method getInstance";
 }
 
-use java::util::HashMap;
-# use javax::servlet::jsp::PageContext;
-use org::allbinary::logic::system::security::licensing::LicensingException;
+use java::util::HashMap ();
+# use javax::servlet::jsp::PageContext ();
+use org::allbinary::logic::system::security::licensing::LicensingException ();
 
 1;
 

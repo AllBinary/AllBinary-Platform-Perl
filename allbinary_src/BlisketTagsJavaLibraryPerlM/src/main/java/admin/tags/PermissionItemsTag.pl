@@ -29,9 +29,10 @@ sub new {
     return $self;
 }
 
-use admin::taghelpers::PermissionItemsHelperFactory;
-use admin::taghelpers::PermissionItemsRequestHelperFactory;
-use admin::tags::TableTag;
+use java::lang::Object ();
+use admin::taghelpers::PermissionItemsHelperFactory ();
+use admin::taghelpers::PermissionItemsRequestHelperFactory ();
+use admin::tags::TableTag ();
 
 1;
 

@@ -17,6 +17,7 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
 
 sub new {
@@ -32,8 +33,9 @@ sub getInstance {
         return 'org::allbinary::game::layer::pickup::IconLayer'->new($animationInterface, $width, $height);
 }
 
-use org::allbinary::animation::Animation;
-use org::allbinary::game::layer::pickup::IconLayer;
+use java::lang::Object ();
+use org::allbinary::animation::Animation ();
+use org::allbinary::game::layer::pickup::IconLayer ();
 
 1;
 

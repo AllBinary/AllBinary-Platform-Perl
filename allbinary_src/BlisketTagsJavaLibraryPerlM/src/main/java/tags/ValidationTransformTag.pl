@@ -31,7 +31,7 @@ sub _init_fields {
 sub new {
     my ($class) = @_;
     my $self = $class->SUPER::new('taghelpers::ValidatedViewHelperFactory'->new());
-    $self->_init_fields();
+    _init_fields($self);
         # super(...) made $self above
         $self->{logic} = 1;
     return $self;
@@ -149,15 +149,16 @@ sub doEndTag {
         return $self->SUPER::doEndTag();
 }
 
-# use java::lang::reflect::Method;
-# use javax::servlet::http::HttpServletRequest;
-# use javax::servlet::jsp::JspTagException;
-use org::allbinary::logic::communication::http::request::AbResponseHandler;
-use org::allbinary::logic::communication::log::LogUtil;
-use org::allbinary::logic::string::StringMaker;
-use org::allbinary::logic::system::security::licensing::LicensingException;
-use taghelpers::ValidatedViewHelperFactory;
-use tags::TransformTag;
+use java::lang::Object ();
+# use java::lang::reflect::Method ();
+# use javax::servlet::http::HttpServletRequest ();
+# use javax::servlet::jsp::JspTagException ();
+use org::allbinary::logic::communication::http::request::AbResponseHandler ();
+use org::allbinary::logic::communication::log::LogUtil ();
+use org::allbinary::logic::string::StringMaker ();
+use org::allbinary::logic::system::security::licensing::LicensingException ();
+use taghelpers::ValidatedViewHelperFactory ();
+use tags::TransformTag ();
 
 1;
 

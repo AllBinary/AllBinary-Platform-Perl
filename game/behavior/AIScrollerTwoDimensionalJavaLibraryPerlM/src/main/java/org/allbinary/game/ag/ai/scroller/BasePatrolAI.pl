@@ -19,10 +19,10 @@ use feature 'try';
 no warnings 'experimental::try';
 use parent -norequire,'org::allbinary::game::ai::BasicAI';
 
-our $MAX_DISTANCE = 'org::allbinary::logic::math::SmallIntegerSingletonFactory'->getInstance()->getAt(2);
-our $DIRECTION_ARRAY = 'org::allbinary::logic::math::SmallIntegerSingletonFactory'->getInstance()->getAt(3);
-our $FIRING_DISTANCE = 'org::allbinary::logic::math::SmallIntegerSingletonFactory'->getInstance()->getAt(4);
-our $SPEED = 'org::allbinary::logic::math::SmallIntegerSingletonFactory'->getInstance()->getAt(5);
+tie our $MAX_DISTANCE, 'java::lang::LazyStatic', sub { 'org::allbinary::logic::math::SmallIntegerSingletonFactory'->getInstance()->getAt(2) };
+tie our $DIRECTION_ARRAY, 'java::lang::LazyStatic', sub { 'org::allbinary::logic::math::SmallIntegerSingletonFactory'->getInstance()->getAt(3) };
+tie our $FIRING_DISTANCE, 'java::lang::LazyStatic', sub { 'org::allbinary::logic::math::SmallIntegerSingletonFactory'->getInstance()->getAt(4) };
+tie our $SPEED, 'java::lang::LazyStatic', sub { 'org::allbinary::logic::math::SmallIntegerSingletonFactory'->getInstance()->getAt(5) };
 
 sub _init_fields {
     my ($self) = @_;
@@ -37,7 +37,7 @@ sub _init_fields {
 sub new {
     my ($class, $hashtable, $ownerLayerInterface, $gameInput) = @_;
     my $self = $class->SUPER::new($ownerLayerInterface, $gameInput);
-    $self->_init_fields();
+    _init_fields($self);
         # super(...) made $self above
         $self->{maxDistance} = $hashtable->get($org::allbinary::game::ag::ai::scroller::BasePatrolAI::MAX_DISTANCE);
         $self->{currentDistance} = int($self->{maxDistance});
@@ -88,15 +88,17 @@ sub disable {
     my ($self) = @_;
 }
 
-# use javax::microedition::lcdui::Canvas;
-use org::allbinary::game::ai::BasicAI;
-use org::allbinary::game::input::GameInput;
-use org::allbinary::game::physics::velocity::BasicVelocityProperties;
-use org::allbinary::game::physics::velocity::VelocityInterfaceCompositeInterface;
-use org::allbinary::layer::AllBinaryLayer;
-use org::allbinary::logic::math::MathUtil;
-use org::allbinary::logic::math::SmallIntegerSingletonFactory;
-use org::allbinary::util::ABHashtable;
+use java::lang::Object ();
+use java::lang::LazyStatic ();
+use javax::microedition::lcdui::Canvas ();
+use org::allbinary::game::ai::BasicAI ();
+use org::allbinary::game::input::GameInput ();
+use org::allbinary::game::physics::velocity::BasicVelocityProperties ();
+use org::allbinary::game::physics::velocity::VelocityInterfaceCompositeInterface ();
+use org::allbinary::layer::AllBinaryLayer ();
+use org::allbinary::logic::math::MathUtil ();
+use org::allbinary::logic::math::SmallIntegerSingletonFactory ();
+use org::allbinary::util::ABHashtable ();
 
 1;
 

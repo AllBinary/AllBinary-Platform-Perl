@@ -19,7 +19,7 @@ use feature 'try';
 no warnings 'experimental::try';
 use parent -norequire,'org::allbinary::game::layer::LinePathAnimation';
 
-our $instanceC = 'org::allbinary::game::layer::LinePathRelativeAnimation'->new();
+tie our $instanceC, 'java::lang::LazyStatic', sub { 'org::allbinary::game::layer::LinePathRelativeAnimation'->new() };
 
 sub new {
     my ($class) = @_;
@@ -39,10 +39,12 @@ sub paint {
         $graphics->drawLine($nextPoint->getX() - $tiledLayer->getXP(), $nextPoint->getY() - $tiledLayer->getYP(), $point->getX() - $tiledLayer->getXP(), $point->getY() - $tiledLayer->getYP());
 }
 
-# use javax::microedition::lcdui::Graphics;
-use org::allbinary::graphics::GPoint;
-use org::allbinary::layer::Layer;
-use org::allbinary::game::layer::LinePathAnimation;
+use java::lang::Object ();
+use java::lang::LazyStatic ();
+use javax::microedition::lcdui::Graphics ();
+use org::allbinary::graphics::GPoint ();
+use org::allbinary::layer::Layer ();
+use org::allbinary::game::layer::LinePathAnimation ();
 
 1;
 

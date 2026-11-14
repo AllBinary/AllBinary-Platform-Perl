@@ -17,6 +17,7 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
 our $XMLROOT = "<?xml version=\"1.0\" encoding=\"UTF-8\"?>";
 our $XMLROOTSTART = "<?xml";
@@ -65,8 +66,9 @@ sub remove {
         return $documentString;
 }
 
-use org::allbinary::logic::string::StringUtil;
-use org::allbinary::logic::string::regex::replace::Replace;
+use java::lang::Object ();
+use org::allbinary::logic::string::StringUtil ();
+use org::allbinary::logic::string::regex::replace::Replace ();
 
 1;
 

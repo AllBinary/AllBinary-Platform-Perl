@@ -37,7 +37,7 @@ sub new {
 sub _new1 {
     my ($class, $request) = @_;
     my $self = $class->SUPER::new();
-    $self->_init_fields();
+    _init_fields($self);
         # super(...) made $self above
         $self->processMultipartRequest($request);
     return $self;
@@ -47,7 +47,7 @@ sub _new1 {
 sub _new1 {
     my ($class, $pageContext) = @_;
     my $self = $class->SUPER::new();
-    $self->_init_fields();
+    _init_fields($self);
         # super(...) made $self above
         $self->processMultipartRequest($pageContext->getRequest());
     return $self;
@@ -105,17 +105,18 @@ sub toHashMap {
         }
 }
 
-use java::util::HashMap;
-# use java::util::List;
-# use javax::servlet::http::HttpServletRequest;
-# use javax::servlet::jsp::PageContext;
-use org::allbinary::logic::StdUtil;
-use org::allbinary::logic::communication::http::file::upload::AbFileUploadFactory;
-use org::allbinary::logic::communication::log::LogUtil;
-use org::allbinary::logic::string::StringValidationUtil;
-use org::apache::commons::fileupload::FileItem;
-use org::apache::commons::fileupload::FileUploadBase::InvalidContentTypeException;
-use org::allbinary::logic::communication::http::request::RequestParams;
+use java::lang::Object ();
+use java::util::HashMap ();
+# use java::util::List ();
+# use javax::servlet::http::HttpServletRequest ();
+# use javax::servlet::jsp::PageContext ();
+use org::allbinary::logic::StdUtil ();
+use org::allbinary::logic::communication::http::file::upload::AbFileUploadFactory ();
+use org::allbinary::logic::communication::log::LogUtil ();
+use org::allbinary::logic::string::StringValidationUtil ();
+use org::apache::commons::fileupload::FileItem ();
+use org::apache::commons::fileupload::FileUploadBase::InvalidContentTypeException ();
+use org::allbinary::logic::communication::http::request::RequestParams ();
 
 1;
 

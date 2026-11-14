@@ -39,7 +39,7 @@ sub getFrame {
     die "abstract method getFrame";
 }
 
-use org::allbinary::animation::SequentialAnimationInterface;
+use org::allbinary::animation::SequentialAnimationInterface ();
 
 1;
 

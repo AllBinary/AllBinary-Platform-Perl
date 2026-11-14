@@ -38,8 +38,8 @@ sub onDrawFrame {
     die "abstract method onDrawFrame";
 }
 
-# use javax::microedition::khronos::egl::EGLConfig;
-# use javax::microedition::khronos::opengles::GL10;
+use javax::microedition::khronos::egl::EGLConfig ();
+use javax::microedition::khronos::opengles::GL10 ();
 
 1;
 

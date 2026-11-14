@@ -17,8 +17,9 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
-our $NULL_NOTIFICATION_BUILDER = 'org::allbinary::content::NotificationBuilder'->new();
+tie our $NULL_NOTIFICATION_BUILDER, 'java::lang::LazyStatic', sub { 'org::allbinary::content::NotificationBuilder'->new() };
 
 sub new {
     my ($class) = @_;
@@ -32,11 +33,13 @@ sub build {
         return $org::allbinary::android::NullParcelable::NULL_PARCELABLE;
 }
 
-use org::allbinary::android::NullParcelable;
-# use javax::microedition::lcdui::Command;
-use android::app::PendingIntent;
-use android::content::Context;
-use android::os::Parcelable;
+use java::lang::Object ();
+use java::lang::LazyStatic ();
+use org::allbinary::android::NullParcelable ();
+use javax::microedition::lcdui::Command ();
+# use android::app::PendingIntent ();
+# use android::content::Context ();
+# use android::os::Parcelable ();
 
 1;
 

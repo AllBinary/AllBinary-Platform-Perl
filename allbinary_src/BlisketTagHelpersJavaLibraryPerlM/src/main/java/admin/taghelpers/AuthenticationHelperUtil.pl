@@ -17,8 +17,9 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
-our $instance = 'admin::taghelpers::AuthenticationHelperUtil'->new();
+tie our $instance, 'java::lang::LazyStatic', sub { 'admin::taghelpers::AuthenticationHelperUtil'->new() };
 
 sub _init_fields {
     my ($self) = @_;
@@ -28,7 +29,7 @@ sub _init_fields {
 sub new {
     my ($class) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
     return $self;
 }
 
@@ -64,17 +65,19 @@ sub isAuthorized {
         }
 }
 
-use org::allbinary::util::BasicArrayList;
-use org::allbinary::util::BasicArrayListD;
-use org::allbinary::business::user::role::BasicUserRole;
-use org::allbinary::business::user::role::UserRole;
-use org::allbinary::globals::URLGLOBALS;
-use org::allbinary::logic::communication::http::file::upload::HttpFilePermissions;
-use org::allbinary::logic::communication::http::request::HttpRequestUtil;
-use org::allbinary::logic::communication::log::LogUtil;
-use org::allbinary::logic::io::path::AbPath;
-use org::allbinary::logic::string::StringUtil;
-use org::allbinary::string::CommonLabels;
+use java::lang::Object ();
+use java::lang::LazyStatic ();
+use org::allbinary::util::BasicArrayList ();
+use org::allbinary::util::BasicArrayListD ();
+use org::allbinary::business::user::role::BasicUserRole ();
+use org::allbinary::business::user::role::UserRole ();
+use org::allbinary::globals::URLGLOBALS ();
+use org::allbinary::logic::communication::http::file::upload::HttpFilePermissions ();
+use org::allbinary::logic::communication::http::request::HttpRequestUtil ();
+use org::allbinary::logic::communication::log::LogUtil ();
+use org::allbinary::logic::io::path::AbPath ();
+use org::allbinary::logic::string::StringUtil ();
+use org::allbinary::string::CommonLabels ();
 
 1;
 

@@ -17,7 +17,7 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
-use parent -norequire,'org::allbinary::business::category::CategoryInterface';
+use parent -norequire,'java::lang::Object','org::allbinary::business::category::CategoryInterface';
 
 our $NOT_ROOT = "This is not the root so it has no file path.";
 
@@ -45,7 +45,7 @@ sub new {
 sub _new1 {
     my ($class, $categoryPropertiesFactoryInterface) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
         if ($org::allbinary::business::category::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($org::allbinary::business::category::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{CATEGORY})) {
             $self->{logUtil}->putF($self->{commonStrings}->{CONSTRUCTOR}, $self, "Category(CategoryPropertiesFactoryInterface)");
         }
@@ -59,7 +59,7 @@ sub _new1 {
 sub _new2 {
     my ($class, $categoryPropertiesFactoryInterface, $level) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
         $self->{categoryPropertiesInterface} = $categoryPropertiesFactoryInterface->getInstance();
         $self->{categoryHierarchyInterface} = 'org::allbinary::business::category::hierarchy::CategoryHierarchy'->new($self, $self, $level);
         $self->log();
@@ -70,7 +70,7 @@ sub _new2 {
 sub _new3 {
     my ($class, $rootCategoryInterface, $parentCategoryInterface, $categoryPropertiesFactoryInterface) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
         $self->{categoryPropertiesInterface} = $categoryPropertiesFactoryInterface->getInstance();
         $self->{categoryHierarchyInterface} = 'org::allbinary::business::category::hierarchy::CategoryHierarchy'->new($rootCategoryInterface, $parentCategoryInterface);
         $self->log();
@@ -325,23 +325,24 @@ sub log {
         }
 }
 
-use java::util::HashMap;
-use org::allbinary::util::BasicArrayList;
-use org::allbinary::util::BasicArrayListD;
-use org::allbinary::business::category::hierarchy::CategoryHierarchy;
-use org::allbinary::business::category::hierarchy::CategoryHierarchyInterface;
-use org::allbinary::business::category::properties::CategoryPropertiesFactoryInterface;
-use org::allbinary::business::category::properties::CategoryPropertiesInterface;
-use org::allbinary::business::category::properties::root::RootCategoryPropertiesInterface;
-use org::allbinary::logic::StdUtil;
-use org::allbinary::logic::communication::log::LogUtil;
-use org::allbinary::logic::io::path::AbPath;
-use org::allbinary::logic::string::StringMaker;
-use org::allbinary::logic::string::StringUtil;
-use org::allbinary::string::CommonStrings;
-use org::w3c::dom::Document;
-use org::w3c::dom::Node;
-use org::allbinary::business::category::CategoryInterface;
+use java::lang::Object ();
+use java::util::HashMap ();
+use org::allbinary::util::BasicArrayList ();
+use org::allbinary::util::BasicArrayListD ();
+use org::allbinary::business::category::hierarchy::CategoryHierarchy ();
+use org::allbinary::business::category::hierarchy::CategoryHierarchyInterface ();
+use org::allbinary::business::category::properties::CategoryPropertiesFactoryInterface ();
+use org::allbinary::business::category::properties::CategoryPropertiesInterface ();
+use org::allbinary::business::category::properties::root::RootCategoryPropertiesInterface ();
+use org::allbinary::logic::StdUtil ();
+use org::allbinary::logic::communication::log::LogUtil ();
+use org::allbinary::logic::io::path::AbPath ();
+use org::allbinary::logic::string::StringMaker ();
+use org::allbinary::logic::string::StringUtil ();
+use org::allbinary::string::CommonStrings ();
+use org::w3c::dom::Document ();
+use org::w3c::dom::Node ();
+use org::allbinary::business::category::CategoryInterface ();
 
 1;
 

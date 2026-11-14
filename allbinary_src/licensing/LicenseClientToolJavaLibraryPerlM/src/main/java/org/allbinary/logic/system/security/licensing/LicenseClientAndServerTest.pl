@@ -17,6 +17,7 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
 
 sub _init_fields {
@@ -29,7 +30,7 @@ sub _init_fields {
 sub new {
     my ($class, $options) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
         'org::allbinary::business::init::LicenseInitInfoUtil'->getInstance()->setFilePath($org::allbinary::logic::system::security::licensing::PrintLicenseInitInfo::PATH + 'org::allbinary::globals::PATH_GLOBALS'->getInstance()->{INIT_PATH});
         for (my $index = 1; $index < scalar(@{$options}); $index++) {
             $self->{vector}->add($options->[$index]);
@@ -38,13 +39,8 @@ sub new {
             my $file = 'java::io::File'->new($org::allbinary::logic::system::security::licensing::PrintLicenseInitInfo::PATH . "testlicenseservers.txt");
             my $reader = 'java::io::FileReader'->new($file);
             my $lineNumberReader = 'java::io::LineNumberReader'->new($reader);
-            while (1) {
-                my $line = $lineNumberReader->readLine();
-                if (defined($line)) {
-                    $self->{vector}->add($line);
-                } else {
-                    last;
-                }
+            while ($lineNumberReader->ready()) {
+                $self->{vector}->add($lineNumberReader->readLine());
             }
         }
     return $self;
@@ -97,23 +93,25 @@ sub main {
             $licensingTest->test();
         } catch ($e) {
             my $logUtil = 'org::allbinary::logic::communication::log::LogUtil'->getInstance();
-            $self->{logUtil}->put($self->{commonStrings}->{EXCEPTION}, "main()", "main()", $e);
+            $logUtil->put('org::allbinary::string::CommonStrings'->getInstance()->{EXCEPTION}, "main()", "main()", $e);
         }
 }
 
-use java::io::File;
-# use java::io::FileReader;
-# use java::io::LineNumberReader;
-use org::allbinary::logic::string::StringMaker;
-use org::allbinary::business::init::LicenseInitInfo;
-use org::allbinary::business::init::LicenseInitInfoUtil;
-use org::allbinary::logic::communication::log::LogUtil;
-use org::allbinary::logic::system::security::licensing::client::XmlRpcAbeLicenseRetrievalClient;
-use org::allbinary::globals::PATH_GLOBALS;
-use org::allbinary::util::BasicArrayList;
-use org::allbinary::logic::system::security::licensing::BasicArrayListD;
-use org::allbinary::logic::system::security::licensing::PrintLicenseInitInfo;
-use org::allbinary::logic::system::security::licensing::AbeClientInformationInterfaceFactory;
+use java::lang::Object ();
+use java::io::File ();
+# use java::io::FileReader ();
+# use java::io::LineNumberReader ();
+use org::allbinary::logic::string::StringMaker ();
+use org::allbinary::business::init::LicenseInitInfo ();
+use org::allbinary::business::init::LicenseInitInfoUtil ();
+use org::allbinary::logic::communication::log::LogUtil ();
+use org::allbinary::logic::system::security::licensing::client::XmlRpcAbeLicenseRetrievalClient ();
+use org::allbinary::globals::PATH_GLOBALS ();
+use org::allbinary::util::BasicArrayList ();
+use org::allbinary::string::CommonStrings ();
+use org::allbinary::logic::system::security::licensing::BasicArrayListD ();
+use org::allbinary::logic::system::security::licensing::PrintLicenseInitInfo ();
+use org::allbinary::logic::system::security::licensing::AbeClientInformationInterfaceFactory ();
 
 1;
 

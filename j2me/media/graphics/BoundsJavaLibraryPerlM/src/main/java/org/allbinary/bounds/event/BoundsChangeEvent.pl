@@ -34,8 +34,9 @@ sub getRectangle {
         return $self->getSource();
 }
 
-use org::allbinary::graphics::Rectangle;
-use org::allbinary::logic::util::event::AllBinaryEventObject;
+use java::lang::Object ();
+use org::allbinary::graphics::Rectangle ();
+use org::allbinary::logic::util::event::AllBinaryEventObject ();
 
 1;
 

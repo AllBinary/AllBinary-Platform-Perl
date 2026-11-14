@@ -33,8 +33,9 @@ sub visit {
         return 'org::allbinary::logic::java::bool::BooleanFactory'->getInstance()->{TRUE};
 }
 
-use org::allbinary::logic::java::bool::BooleanFactory;
-use org::allbinary::logic::util::visitor::Visitor;
+use java::lang::Object ();
+use org::allbinary::logic::java::bool::BooleanFactory ();
+use org::allbinary::logic::util::visitor::Visitor ();
 
 1;
 

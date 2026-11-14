@@ -38,8 +38,8 @@ sub getAnimationInterface {
     die "abstract method getAnimationInterface";
 }
 
-use org::allbinary::animation::Animation;
-use org::allbinary::layer::AllBinaryLayer;
+use org::allbinary::animation::Animation ();
+use org::allbinary::layer::AllBinaryLayer ();
 
 1;
 

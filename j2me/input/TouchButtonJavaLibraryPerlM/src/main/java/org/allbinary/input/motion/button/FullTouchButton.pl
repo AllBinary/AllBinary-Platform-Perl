@@ -53,13 +53,14 @@ sub updateRectangle {
         }
 }
 
-use org::allbinary::animation::Animation;
-use org::allbinary::animation::FeaturedAnimationInterfaceFactoryInterfaceFactory;
-use org::allbinary::graphics::CellPosition;
-use org::allbinary::graphics::GPoint;
-use org::allbinary::graphics::PointFactory;
-use org::allbinary::graphics::Rectangle;
-use org::allbinary::input::motion::button::TouchButton;
+use java::lang::Object ();
+use org::allbinary::animation::Animation ();
+use org::allbinary::animation::FeaturedAnimationInterfaceFactoryInterfaceFactory ();
+use org::allbinary::graphics::CellPosition ();
+use org::allbinary::graphics::GPoint ();
+use org::allbinary::graphics::PointFactory ();
+use org::allbinary::graphics::Rectangle ();
+use org::allbinary::input::motion::button::TouchButton ();
 
 1;
 

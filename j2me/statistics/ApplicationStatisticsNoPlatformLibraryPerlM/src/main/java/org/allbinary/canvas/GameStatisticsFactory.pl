@@ -20,7 +20,7 @@ use feature 'try';
 no warnings 'experimental::try';
 use parent -norequire,'org::allbinary::canvas::BaseGameStatistics';
 
-our $instance = 'org::allbinary::canvas::GameStatisticsFactory'->new();
+tie our $instance, 'java::lang::LazyStatic', sub { 'org::allbinary::canvas::GameStatisticsFactory'->new() };
 
 sub new {
     my ($class) = @_;
@@ -45,7 +45,9 @@ sub toString {
         die ("RuntimeException");
 }
 
-use org::allbinary::canvas::BaseGameStatistics;
+use java::lang::Object ();
+use java::lang::LazyStatic ();
+use org::allbinary::canvas::BaseGameStatistics ();
 
 1;
 

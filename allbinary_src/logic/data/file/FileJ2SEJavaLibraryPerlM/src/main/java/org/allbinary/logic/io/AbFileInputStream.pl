@@ -17,19 +17,11 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
-use parent -norequire,'java::io::FileInputStream';
+use parent -norequire,'java::lang::Object';
+
 
 
 sub new {
-    my ($class, @arguments) = @_;
-    return $class->_new1(@arguments) if scalar(@arguments) == 1;
-    return $class->_new1(@arguments) if scalar(@arguments) == 1;
-    return $class->_new1(@arguments) if scalar(@arguments) == 1;
-    die "No constructor of AbFileInputStream takes " . scalar(@arguments) . " arguments";
-}
-
-
-sub _new1 {
     my ($class, $name) = @_;
     my $self = $class->SUPER::new($name);
         # super(...) made $self above
@@ -37,26 +29,25 @@ sub _new1 {
 }
 
 
-sub _new1 {
+# throws FileNotFoundException
+sub createFromAbFile {
     my ($class, $file) = @_;
-    my $self = $class->SUPER::new('org::allbinary::logic::io::file::AbFileNativeUtil'->get($file));
-        # super(...) made $self above
-    return $self;
+        return 'org::allbinary::logic::io::AbFileInputStream'->new('org::allbinary::logic::io::file::AbFileNativeUtil'->get($file)->getPath());
 }
 
 
-sub _new1 {
+# throws FileNotFoundException
+sub createFromFile {
     my ($class, $file) = @_;
-    my $self = $class->SUPER::new($file);
-        # super(...) made $self above
-    return $self;
+        return 'org::allbinary::logic::io::AbFileInputStream'->new($file->getPath());
 }
 
-use java::io::File;
-# use java::io::FileInputStream;
-# use java::io::FileNotFoundException;
-use org::allbinary::logic::io::file::AbFile;
-use org::allbinary::logic::io::file::AbFileNativeUtil;
+use java::lang::Object ();
+use java::io::File ();
+# use java::io::FileInputStream ();
+# use java::io::FileNotFoundException ();
+use org::allbinary::logic::io::file::AbFile ();
+use org::allbinary::logic::io::file::AbFileNativeUtil ();
 
 1;
 

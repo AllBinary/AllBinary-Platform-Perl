@@ -17,7 +17,7 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
-use parent -norequire,'org::allbinary::business::user::commerce::money::payment::gateway::PaymentGatewayInterface';
+use parent -norequire,'java::lang::Object','org::allbinary::business::user::commerce::money::payment::gateway::PaymentGatewayInterface';
 
 
 sub _init_fields {
@@ -62,7 +62,7 @@ sub _init_fields {
 sub new {
     my ($class, $hashMap) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
         $self->getFormData($hashMap);
     return $self;
 }
@@ -733,19 +733,20 @@ sub getKey {
         return 'org::allbinary::business::user::commerce::money::payment::gateway::PaymentGatewayPrimaryKey'->new($self->getStoreName(), $self->getName());
 }
 
-use java::util::HashMap;
-use org::allbinary::util::BasicArrayList;
-use org::allbinary::util::BasicArrayListD;
-use org::allbinary::business::context::modules::storefront::StoreFrontData;
-use org::allbinary::business::entry::EntryData;
-use org::allbinary::business::user::UserData;
-use org::allbinary::business::user::commerce::money::payment::PaymentData;
-use org::allbinary::logic::StdUtil;
-use org::allbinary::logic::control::crypt::SuperCrypt;
-use org::allbinary::logic::string::StringUtil;
-use org::allbinary::business::user::commerce::money::payment::gateway::PaymentGatewayInterface;
-use org::allbinary::business::user::commerce::money::payment::gateway::PaymentGatewayData;
-use org::allbinary::business::user::commerce::money::payment::gateway::PaymentGatewayPrimaryKey;
+use java::lang::Object ();
+use java::util::HashMap ();
+use org::allbinary::util::BasicArrayList ();
+use org::allbinary::util::BasicArrayListD ();
+use org::allbinary::business::context::modules::storefront::StoreFrontData ();
+use org::allbinary::business::entry::EntryData ();
+use org::allbinary::business::user::UserData ();
+use org::allbinary::business::user::commerce::money::payment::PaymentData ();
+use org::allbinary::logic::StdUtil ();
+use org::allbinary::logic::control::crypt::SuperCrypt ();
+use org::allbinary::logic::string::StringUtil ();
+use org::allbinary::business::user::commerce::money::payment::gateway::PaymentGatewayInterface ();
+use org::allbinary::business::user::commerce::money::payment::gateway::PaymentGatewayData ();
+use org::allbinary::business::user::commerce::money::payment::gateway::PaymentGatewayPrimaryKey ();
 
 1;
 

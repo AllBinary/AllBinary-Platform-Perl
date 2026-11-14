@@ -17,6 +17,7 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
 
 sub _init_fields {
@@ -28,7 +29,7 @@ sub _init_fields {
 sub new {
     my ($class) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
     return $self;
 }
 
@@ -136,16 +137,17 @@ sub toXmlNode {
         return $node;
 }
 
-# use java::util::HashSet;
-# use java::util::Set;
-use org::allbinary::util::BasicArrayList;
-use org::allbinary::util::BasicArrayListD;
-use org::allbinary::business::user::commerce::inventory::item::Item;
-use org::allbinary::business::user::commerce::inventory::item::ItemView;
-use org::allbinary::logic::StdUtil;
-use org::w3c::dom::Document;
-use org::w3c::dom::Node;
-use org::allbinary::business::user::commerce::inventory::basket::BasketData;
+use java::lang::Object ();
+# use java::util::HashSet ();
+# use java::util::Set ();
+use org::allbinary::util::BasicArrayList ();
+use org::allbinary::util::BasicArrayListD ();
+use org::allbinary::business::user::commerce::inventory::item::Item ();
+use org::allbinary::business::user::commerce::inventory::item::ItemView ();
+use org::allbinary::logic::StdUtil ();
+use org::w3c::dom::Document ();
+use org::w3c::dom::Node ();
+use org::allbinary::business::user::commerce::inventory::basket::BasketData ();
 
 1;
 

@@ -19,7 +19,7 @@ use feature 'try';
 no warnings 'experimental::try';
 use parent -norequire,'org::allbinary::layer::BasicLayerProcessor';
 
-our $DESTROYED_LAYER_PROCESSOR = $org::allbinary::layer::BasicLayerProcessor::NULL_LAYER_PROCESSOR;
+tie our $DESTROYED_LAYER_PROCESSOR, 'java::lang::LazyStatic', sub { $org::allbinary::layer::BasicLayerProcessor::NULL_LAYER_PROCESSOR };
 
 
 sub new {
@@ -64,16 +64,18 @@ sub process {
         $list->clear();
 }
 
-use org::allbinary::game::combat::destroy::event::DestroyEventCircularStaticPool;
-use org::allbinary::game::combat::destroy::event::DestroyedEvent;
-use org::allbinary::game::combat::destroy::event::DestroyedEventHandler;
-use org::allbinary::layer::AllBinaryLayer;
-use org::allbinary::layer::AllBinaryLayerManager;
-use org::allbinary::layer::BasicLayerProcessor;
-use org::allbinary::logic::string::StringMaker;
-use org::allbinary::logic::string::StringUtil;
-use org::allbinary::string::CommonStrings;
-use org::allbinary::util::BasicArrayList;
+use java::lang::Object ();
+use java::lang::LazyStatic ();
+use org::allbinary::game::combat::destroy::event::DestroyEventCircularStaticPool ();
+use org::allbinary::game::combat::destroy::event::DestroyedEvent ();
+use org::allbinary::game::combat::destroy::event::DestroyedEventHandler ();
+use org::allbinary::layer::AllBinaryLayer ();
+use org::allbinary::layer::AllBinaryLayerManager ();
+use org::allbinary::layer::BasicLayerProcessor ();
+use org::allbinary::logic::string::StringMaker ();
+use org::allbinary::logic::string::StringUtil ();
+use org::allbinary::string::CommonStrings ();
+use org::allbinary::util::BasicArrayList ();
 
 1;
 

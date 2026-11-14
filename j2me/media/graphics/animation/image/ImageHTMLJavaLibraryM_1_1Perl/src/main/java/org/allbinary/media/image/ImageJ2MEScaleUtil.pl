@@ -17,8 +17,9 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
-our $instance = 'org::allbinary::media::image::ImageJ2MEScaleUtil'->new();
+tie our $instance, 'java::lang::LazyStatic', sub { 'org::allbinary::media::image::ImageJ2MEScaleUtil'->new() };
 
 sub _init_fields {
     my ($self) = @_;
@@ -35,7 +36,7 @@ sub getInstance {
 sub new {
     my ($class) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
     return $self;
 }
 
@@ -70,12 +71,14 @@ sub scale {
         return $scaledImage;
 }
 
-# use javax::microedition::lcdui::Image;
-use org::allbinary::logic::communication::log::LogUtil;
-use org::microemu::device::playn::PlaynImmutableImage;
-use org::microemu::device::playn::PlaynMutableImage;
-use playn::core::CanvasImage;
-use playn::core::CanvasSurface;
+use java::lang::Object ();
+use java::lang::LazyStatic ();
+use javax::microedition::lcdui::Image ();
+use org::allbinary::logic::communication::log::LogUtil ();
+use org::microemu::device::playn::PlaynImmutableImage ();
+use org::microemu::device::playn::PlaynMutableImage ();
+use playn::core::CanvasImage ();
+use playn::core::CanvasSurface ();
 
 1;
 

@@ -17,8 +17,9 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
-our $instance = 'org::allbinary::logic::string::StringValidationUtil'->new();
+tie our $instance, 'java::lang::LazyStatic', sub { 'org::allbinary::logic::string::StringValidationUtil'->new() };
 
 sub _init_fields {
     my ($self) = @_;
@@ -36,7 +37,7 @@ sub getInstance {
 sub new {
     my ($class) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
     return $self;
 }
 
@@ -80,7 +81,7 @@ sub isNumberFromChar {
 
 sub isValidRequired {
     my ($self, $value, $min, $max) = @_;
-        if (!defined($value) || length($value) < $min || length($value) > $max) {
+        if (length($value) < $min || length($value) > $max) {
             return 0;
         }
         return 1;
@@ -101,7 +102,7 @@ sub isValidRequiredNumber {
 
 sub isValidNotRequired {
     my ($self, $value, $min, $max) = @_;
-        if (defined($value)) {
+        if (length($value) > 0) {
             if (length($value) < $min || length($value) > $max) {
                 return 0;
             }
@@ -112,7 +113,7 @@ sub isValidNotRequired {
 
 sub isValidNotRequiredNumber {
     my ($self, $value, $min, $max) = @_;
-        if (defined($value)) {
+        if (length($value) > 0) {
             if ($self->{tsUtil}->compareTo($value, $self->{stringUtil}->{NULL_STRING}) == 0 || length($value) < $min || length($value) > $max) {
                 return 0;
             }
@@ -126,15 +127,17 @@ sub isValidNotRequiredNumber {
 
 sub isEmpty {
     my ($self, $string) = @_;
-        if (defined($string) && $self->{tsUtil}->compareTo($string, $self->{stringUtil}->{NULL_STRING}) != 0 && $self->{tsUtil}->compareTo($string, $self->{stringUtil}->{EMPTY_STRING}) != 0) {
+        if ($self->{tsUtil}->compareTo($string, $self->{stringUtil}->{NULL_STRING}) != 0 && $self->{tsUtil}->compareTo($string, $self->{stringUtil}->{EMPTY_STRING}) != 0) {
             return 0;
         } else {
             return 1;
         }
 }
 
-use org::allbinary::TsUtil;
-use org::allbinary::logic::string::StringUtil;
+use java::lang::Object ();
+use java::lang::LazyStatic ();
+use org::allbinary::TsUtil ();
+use org::allbinary::logic::string::StringUtil ();
 
 1;
 

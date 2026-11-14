@@ -17,8 +17,9 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
-our $instance = 'org::allbinary::thread::ThreadFactoryUtil'->new();
+tie our $instance, 'java::lang::LazyStatic', sub { 'org::allbinary::thread::ThreadFactoryUtil'->new() };
 
 sub _init_fields {
     my ($self) = @_;
@@ -28,7 +29,7 @@ sub _init_fields {
 sub new {
     my ($class) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
     return $self;
 }
 
@@ -77,19 +78,21 @@ sub start {
         $thread->start();
 }
 
-use org::allbinary::J2MEUtil;
-use org::allbinary::canvas::RunnableCanvas;
-use org::allbinary::game::displayable::canvas::AllBinaryGameCanvas;
-use org::allbinary::game::displayable::canvas::DemoCanvas;
-use org::allbinary::game::displayable::canvas::GameCanvasRunnableInterface;
-use org::allbinary::game::displayable::canvas::RunnableCanvasSingleThreadStartRunnable;
-use org::allbinary::logic::communication::log::LogUtil;
-use org::allbinary::logic::communication::log::PreLogUtil;
-use org::allbinary::logic::string::StringMaker;
-use org::allbinary::logic::string::StringUtil;
-use org::allbinary::string::CommonStrings;
-use org::allbinary::thread::PrimaryThreadPool;
-use java::lang::Thread;
+use java::lang::Object ();
+use java::lang::LazyStatic ();
+use org::allbinary::J2MEUtil ();
+use org::allbinary::canvas::RunnableCanvas ();
+use org::allbinary::game::displayable::canvas::AllBinaryGameCanvas ();
+use org::allbinary::game::displayable::canvas::DemoCanvas ();
+use org::allbinary::game::displayable::canvas::GameCanvasRunnableInterface ();
+use org::allbinary::game::displayable::canvas::RunnableCanvasSingleThreadStartRunnable ();
+use org::allbinary::logic::communication::log::LogUtil ();
+use org::allbinary::logic::communication::log::PreLogUtil ();
+use org::allbinary::logic::string::StringMaker ();
+use org::allbinary::logic::string::StringUtil ();
+use org::allbinary::string::CommonStrings ();
+use org::allbinary::thread::PrimaryThreadPool ();
+use java::lang::Thread ();
 
 1;
 

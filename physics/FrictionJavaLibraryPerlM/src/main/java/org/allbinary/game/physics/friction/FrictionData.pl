@@ -17,6 +17,7 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
 our $FRICTION_DENOMINATOR = 100;
 
@@ -33,6 +34,7 @@ sub getFrictionDenominator {
         return $org::allbinary::game::physics::friction::FrictionData::FRICTION_DENOMINATOR;
 }
 
+use java::lang::Object ();
 
 1;
 

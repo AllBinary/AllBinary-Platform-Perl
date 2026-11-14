@@ -18,6 +18,7 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
 our $THIS = "AllBinaryMediaManagerPC";
 our $CREATE_PLAYER = "createPlayer";
@@ -108,25 +109,26 @@ sub isInitialized {
         return 1;
 }
 
-# use java::io::BufferedInputStream;
-# use java::io::ByteArrayInputStream;
-# use java::io::IOException;
-# use java::io::InputStream;
-# use javax::microedition::media::Manager;
-# use javax::microedition::media::MediaException;
-# use javax::microedition::media::Player;
-use org::allbinary::TsUtil;
-use org::allbinary::audio::AudioContentTypeDataFactory;
-use org::allbinary::data::resource::ResourceUtil;
-use org::allbinary::game::configuration::feature::Features;
-use org::allbinary::game::configuration::feature::GameFeatureFactory;
-use org::allbinary::graphics::canvas::transition::progress::ProgressCanvasFactory;
-use org::allbinary::logic::NullUtil;
-use org::allbinary::logic::communication::log::LogUtil;
-use org::allbinary::string::CommonStrings;
-use org::allbinary::media::audio::Sounds;
-use org::allbinary::media::audio::NoPlayer;
-use org::allbinary::media::audio::PCClipWavPlayer;
+use java::lang::Object ();
+# use java::io::BufferedInputStream ();
+# use java::io::ByteArrayInputStream ();
+# use java::io::IOException ();
+# use java::io::InputStream ();
+use javax::microedition::media::Manager ();
+use javax::microedition::media::MediaException ();
+use javax::microedition::media::Player ();
+use org::allbinary::TsUtil ();
+use org::allbinary::audio::AudioContentTypeDataFactory ();
+use org::allbinary::data::resource::ResourceUtil ();
+use org::allbinary::game::configuration::feature::Features ();
+use org::allbinary::game::configuration::feature::GameFeatureFactory ();
+use org::allbinary::graphics::canvas::transition::progress::ProgressCanvasFactory ();
+use org::allbinary::logic::NullUtil ();
+use org::allbinary::logic::communication::log::LogUtil ();
+use org::allbinary::string::CommonStrings ();
+use org::allbinary::media::audio::Sounds ();
+use org::allbinary::media::audio::NoPlayer ();
+use org::allbinary::media::audio::PCClipWavPlayer ();
 
 1;
 

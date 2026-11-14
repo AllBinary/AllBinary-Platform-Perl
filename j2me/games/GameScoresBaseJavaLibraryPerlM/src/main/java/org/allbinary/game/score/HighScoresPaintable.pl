@@ -35,7 +35,7 @@ sub _init_fields {
 sub new {
     my ($class) = @_;
     my $self = $class->SUPER::new();
-    $self->_init_fields();
+    _init_fields($self);
     return $self;
 }
 
@@ -111,21 +111,22 @@ sub setHighScores {
         $self->{highScores} = $highScores;
 }
 
-# use javax::microedition::lcdui::Font;
-# use javax::microedition::lcdui::Graphics;
-use org::allbinary::graphics::Anchor;
-use org::allbinary::graphics::color::BasicColor;
-use org::allbinary::graphics::color::BasicColorFactory;
-use org::allbinary::graphics::color::ColorChangeEvent;
-use org::allbinary::graphics::color::ColorChangeListener;
-use org::allbinary::graphics::displayable::DisplayInfoSingleton;
-use org::allbinary::graphics::font::MyFontProcessor;
-use org::allbinary::graphics::font::UpdateMyFontInterface;
-use org::allbinary::graphics::font::UpdateMyFontProcessor;
-use org::allbinary::graphics::paint::Paintable;
-use org::allbinary::logic::util::event::AllBinaryEventObject;
-use org::allbinary::util::BasicArrayList;
-use org::allbinary::game::score::NullHighScoresSingletonFactory;
+use java::lang::Object ();
+use javax::microedition::lcdui::Font ();
+use javax::microedition::lcdui::Graphics ();
+use org::allbinary::graphics::Anchor ();
+use org::allbinary::graphics::color::BasicColor ();
+use org::allbinary::graphics::color::BasicColorFactory ();
+use org::allbinary::graphics::color::ColorChangeEvent ();
+use org::allbinary::graphics::color::ColorChangeListener ();
+use org::allbinary::graphics::displayable::DisplayInfoSingleton ();
+use org::allbinary::graphics::font::MyFontProcessor ();
+use org::allbinary::graphics::font::UpdateMyFontInterface ();
+use org::allbinary::graphics::font::UpdateMyFontProcessor ();
+use org::allbinary::graphics::paint::Paintable ();
+use org::allbinary::logic::util::event::AllBinaryEventObject ();
+use org::allbinary::util::BasicArrayList ();
+use org::allbinary::game::score::NullHighScoresSingletonFactory ();
 
 1;
 

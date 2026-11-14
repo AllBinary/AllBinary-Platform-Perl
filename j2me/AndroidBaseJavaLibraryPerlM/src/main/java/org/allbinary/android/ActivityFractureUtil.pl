@@ -17,6 +17,7 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
 
 sub new {
@@ -36,7 +37,8 @@ sub setFullScreen {
     my ($self, $activity) = @_;
 }
 
-use android::app::Activity;
+use java::lang::Object ();
+# use android::app::Activity ();
 
 1;
 

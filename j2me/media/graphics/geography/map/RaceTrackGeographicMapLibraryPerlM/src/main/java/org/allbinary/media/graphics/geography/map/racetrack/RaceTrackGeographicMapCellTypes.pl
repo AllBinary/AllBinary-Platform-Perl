@@ -17,8 +17,9 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
-our $instance = 'org::allbinary::media::graphics::geography::map::racetrack::RaceTrackGeographicMapCellTypes'->new();
+tie our $instance, 'java::lang::LazyStatic', sub { 'org::allbinary::media::graphics::geography::map::racetrack::RaceTrackGeographicMapCellTypes'->new() };
 
 sub _init_fields {
     my ($self) = @_;
@@ -42,7 +43,7 @@ sub getInstance {
 sub new {
     my ($class) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
         $self->{BOTTOM_LEFT_TURN_ROAD_CELL_TYPE} = 'org::allbinary::media::graphics::geography::map::racetrack::RaceTrackGeographicMapCellType'->new("Bottom Left Turn", 1, 1, 0);
         $self->{BOTTOM_RIGHT_TURN_ROAD_CELL_TYPE} = 'org::allbinary::media::graphics::geography::map::racetrack::RaceTrackGeographicMapCellType'->new("Bottom Right Turn", 2, 1, 0);
         $self->{TOP_LEFT_TURN_ROAD_CELL_TYPE} = 'org::allbinary::media::graphics::geography::map::racetrack::RaceTrackGeographicMapCellType'->new("Top Left Turn", 3, 1, 0);
@@ -54,7 +55,9 @@ sub new {
     return $self;
 }
 
-use org::allbinary::media::graphics::geography::map::racetrack::RaceTrackGeographicMapCellType;
+use java::lang::Object ();
+use java::lang::LazyStatic ();
+use org::allbinary::media::graphics::geography::map::racetrack::RaceTrackGeographicMapCellType ();
 
 1;
 

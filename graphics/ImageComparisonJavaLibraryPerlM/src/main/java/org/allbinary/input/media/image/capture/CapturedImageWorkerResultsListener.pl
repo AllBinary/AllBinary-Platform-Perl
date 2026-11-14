@@ -27,7 +27,7 @@ sub onCaptureEvent {
     die "abstract method onCaptureEvent";
 }
 
-use org::allbinary::logic::util::event::BasicEventListenerInterface;
+use org::allbinary::logic::util::event::BasicEventListenerInterface ();
 
 1;
 

@@ -17,8 +17,9 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
-our $instance = 'org::allbinary::media::image::ImageCreationUtil'->new();
+tie our $instance, 'java::lang::LazyStatic', sub { 'org::allbinary::media::image::ImageCreationUtil'->new() };
 
 
 sub getInstance {
@@ -49,8 +50,10 @@ sub createImage {
         return $image;
 }
 
-# use javax::microedition::lcdui::Image;
-use org::allbinary::image::GameFeatureImageCacheFactory;
+use java::lang::Object ();
+use java::lang::LazyStatic ();
+use javax::microedition::lcdui::Image ();
+use org::allbinary::image::GameFeatureImageCacheFactory ();
 
 1;
 

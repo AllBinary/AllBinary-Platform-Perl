@@ -17,6 +17,7 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
 
 
@@ -33,9 +34,10 @@ sub getInstance {
         return 'org::allbinary::logic::visual::dhtml::style::css::CssElementValidation'->new($node);
 }
 
-use org::allbinary::logic::control::validate::ValidationInterface;
-use org::w3c::dom::Node;
-use org::allbinary::logic::visual::dhtml::style::css::CssElementValidation;
+use java::lang::Object ();
+use org::allbinary::logic::control::validate::ValidationInterface ();
+use org::w3c::dom::Node ();
+use org::allbinary::logic::visual::dhtml::style::css::CssElementValidation ();
 
 1;
 

@@ -17,6 +17,7 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
 
 
@@ -41,12 +42,13 @@ sub getInstance {
         return $profileActionScriptInputInterface;
 }
 
-use org::allbinary::data::tree::dom::DomSearchHelper;
-use org::w3c::dom::Node;
-use org::allbinary::input::automation::actions::script::condition::processors::input::KeyboardActionScriptInputData;
-use org::allbinary::input::automation::actions::script::condition::processors::input::MouseActionScriptInputData;
-use org::allbinary::input::automation::actions::script::condition::processors::input::MouseActionScriptInput;
-use org::allbinary::input::automation::actions::script::condition::processors::input::KeyboardActionScriptInput;
+use java::lang::Object ();
+use org::allbinary::data::tree::dom::DomSearchHelper ();
+use org::w3c::dom::Node ();
+use org::allbinary::input::automation::actions::script::condition::processors::input::KeyboardActionScriptInputData ();
+use org::allbinary::input::automation::actions::script::condition::processors::input::MouseActionScriptInputData ();
+use org::allbinary::input::automation::actions::script::condition::processors::input::MouseActionScriptInput ();
+use org::allbinary::input::automation::actions::script::condition::processors::input::KeyboardActionScriptInput ();
 
 1;
 

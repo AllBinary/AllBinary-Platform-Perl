@@ -17,9 +17,9 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
-use parent -norequire,'org::allbinary::game::IntermissionEnableListenerInterface';
+use parent -norequire,'java::lang::Object','org::allbinary::game::IntermissionEnableListenerInterface';
 
-our $SINGLETON = 'org::allbinary::game::NullIntermissionEnableListener'->new();
+tie our $SINGLETON, 'java::lang::LazyStatic', sub { 'org::allbinary::game::NullIntermissionEnableListener'->new() };
 
 
 sub getInstance {
@@ -39,7 +39,9 @@ sub notifyIntermission {
     my ($self, $enable) = @_;
 }
 
-use org::allbinary::game::IntermissionEnableListenerInterface;
+use java::lang::Object ();
+use java::lang::LazyStatic ();
+use org::allbinary::game::IntermissionEnableListenerInterface ();
 
 1;
 

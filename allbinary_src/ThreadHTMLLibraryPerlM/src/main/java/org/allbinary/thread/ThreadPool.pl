@@ -17,6 +17,7 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
 our $NORMAL_PRIORITY = 5;
 
@@ -38,7 +39,7 @@ sub _init_fields {
 sub new {
     my ($class, $poolName, $numThreads, $priority) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
     return $self;
 }
 
@@ -191,13 +192,14 @@ sub completedTask {
     my ($self, $task) = @_;
 }
 
-use org::allbinary::logic::communication::log::LogUtil;
-use org::allbinary::string::CommonStrings;
-use org::allbinary::util::BasicArrayList;
-use org::allbinary::util::BasicArrayListD;
-use org::allbinary::thread::NullRunnable;
-use org::allbinary::thread::ThreadPoolStrings;
-use org::allbinary::thread::ThreadObjectUtil;
+use java::lang::Object ();
+use org::allbinary::logic::communication::log::LogUtil ();
+use org::allbinary::string::CommonStrings ();
+use org::allbinary::util::BasicArrayList ();
+use org::allbinary::util::BasicArrayListD ();
+use org::allbinary::thread::NullRunnable ();
+use org::allbinary::thread::ThreadPoolStrings ();
+use org::allbinary::thread::ThreadObjectUtil ();
 
 1;
 

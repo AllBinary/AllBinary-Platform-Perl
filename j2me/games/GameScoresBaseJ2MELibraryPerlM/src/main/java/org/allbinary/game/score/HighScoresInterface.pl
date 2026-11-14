@@ -45,7 +45,7 @@ sub isBestScore {
     die "abstract method isBestScore";
 }
 
-use org::allbinary::util::BasicArrayList;
+use org::allbinary::util::BasicArrayList ();
 
 1;
 

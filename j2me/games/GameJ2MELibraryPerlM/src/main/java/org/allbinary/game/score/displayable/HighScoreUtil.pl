@@ -17,9 +17,9 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
-use parent -norequire,'org::allbinary::game::score::HighScoresResultsListener';
+use parent -norequire,'java::lang::Object','org::allbinary::game::score::HighScoresResultsListener';
 
-our $SUBMIT_TEXTBOX_COMMAND = 'javax::microedition::lcdui::Command'->new("Submit", 'org::allbinary::logic::string::StringUtil'->getInstance()->{EMPTY_STRING}, $javax::microedition::lcdui::Command::SCREEN, 1);
+tie our $SUBMIT_TEXTBOX_COMMAND, 'java::lang::LazyStatic', sub { 'javax::microedition::lcdui::Command'->new("Submit", 'org::allbinary::logic::string::StringUtil'->getInstance()->{EMPTY_STRING}, $javax::microedition::lcdui::Command::SCREEN, 1) };
 
 sub _init_fields {
     my ($self) = @_;
@@ -38,7 +38,7 @@ sub _init_fields {
 sub new {
     my ($class, $highScoresFactoryInterface, $highScoresHelper, $abeClientInformation, $gameInfo, $cmdListener, $name, $highScore) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
         $self->{highScoresFactoryInterface} = $highScoresFactoryInterface;
         $self->{highScoresHelper} = $highScoresHelper;
         $self->{highScoresArray} = $self->{highScoresHelper}->getHighScoresArray();
@@ -91,21 +91,23 @@ sub submit {
         $commandListener->commandAction($org::allbinary::game::score::displayable::HighScoreUtil::SUBMIT_TEXTBOX_COMMAND, $myCanvas);
 }
 
-# use javax::microedition::lcdui::Command;
-# use javax::microedition::lcdui::CommandListener;
-use org::allbinary::game::GameInfo;
-use org::allbinary::game::score::HighScore;
-use org::allbinary::game::score::HighScoreNamePersistanceSingleton;
-use org::allbinary::game::score::HighScores;
-use org::allbinary::game::score::HighScoresFactoryInterface;
-use org::allbinary::game::score::HighScoresHelperBaseInterface;
-use org::allbinary::game::score::HighScoresResultsListener;
-use org::allbinary::graphics::displayable::MyCanvas;
-use org::allbinary::logic::communication::log::LogUtil;
-use org::allbinary::logic::string::StringMaker;
-use org::allbinary::logic::string::StringUtil;
-use org::allbinary::logic::system::security::licensing::AbeClientInformationInterface;
-use org::allbinary::string::CommonStrings;
+use java::lang::Object ();
+use java::lang::LazyStatic ();
+use javax::microedition::lcdui::Command ();
+use javax::microedition::lcdui::CommandListener ();
+use org::allbinary::game::GameInfo ();
+use org::allbinary::game::score::HighScore ();
+use org::allbinary::game::score::HighScoreNamePersistanceSingleton ();
+use org::allbinary::game::score::HighScores ();
+use org::allbinary::game::score::HighScoresFactoryInterface ();
+use org::allbinary::game::score::HighScoresHelperBaseInterface ();
+use org::allbinary::game::score::HighScoresResultsListener ();
+use org::allbinary::graphics::displayable::MyCanvas ();
+use org::allbinary::logic::communication::log::LogUtil ();
+use org::allbinary::logic::string::StringMaker ();
+use org::allbinary::logic::string::StringUtil ();
+use org::allbinary::logic::system::security::licensing::AbeClientInformationInterface ();
+use org::allbinary::string::CommonStrings ();
 
 1;
 

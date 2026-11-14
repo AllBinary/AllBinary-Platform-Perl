@@ -17,39 +17,40 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
 our $CRYPTNUM = 5;
-our $ID = 'org::allbinary::business::user::commerce::money::payment::gateway::PaymentGatewayData'->new("PAYMENTGATEWAY_ID");
-our $NAME = 'org::allbinary::business::user::commerce::money::payment::gateway::PaymentGatewayData'->new("PAYMENTGATEWAY_NAME");
-our $VALUE = 'org::allbinary::business::user::commerce::money::payment::gateway::PaymentGatewayData'->new("PAYMENTGATEWAY_VALUE");
-our $PAYMENTTRANSACTIONINTERFACEFACTORYINTERFACE = 'org::allbinary::business::user::commerce::money::payment::gateway::PaymentGatewayData'->new("PAYMENTGATEWAY_PAYMENTTRANSACTIONINTERFACEFACTORYINTERFACE");
-our $PAYMENTPROCESSORINTERFACEFACTORYINTERFACE = 'org::allbinary::business::user::commerce::money::payment::gateway::PaymentGatewayData'->new("PAYMENTGATEWAY_PAYMENTPROCESSORINTERFACEFACTORYINTERFACE");
-our $MODE = 'org::allbinary::business::user::commerce::money::payment::gateway::PaymentGatewayData'->new("MODE");
-our $SERVERPROTOCOL = 'org::allbinary::business::user::commerce::money::payment::gateway::PaymentGatewayData'->new("SERVERPROTOCOL");
-our $SERVER = 'org::allbinary::business::user::commerce::money::payment::gateway::PaymentGatewayData'->new("SERVER");
-our $SERVERPORT = 'org::allbinary::business::user::commerce::money::payment::gateway::PaymentGatewayData'->new("SERVERPORT");
-our $SERVERPATH = 'org::allbinary::business::user::commerce::money::payment::gateway::PaymentGatewayData'->new("SERVERPATH");
-our $TESTPROTOCOL = 'org::allbinary::business::user::commerce::money::payment::gateway::PaymentGatewayData'->new("TESTSERVERPROTOCOL");
-our $TESTSERVER = 'org::allbinary::business::user::commerce::money::payment::gateway::PaymentGatewayData'->new("TESTSERVER");
-our $TESTPORT = 'org::allbinary::business::user::commerce::money::payment::gateway::PaymentGatewayData'->new("TESTPORT");
-our $TESTPATH = 'org::allbinary::business::user::commerce::money::payment::gateway::PaymentGatewayData'->new("TESTSERVERPATH");
-our $TIMEOUT = 'org::allbinary::business::user::commerce::money::payment::gateway::PaymentGatewayData'->new("TIMEOUT");
-our $PROXYPROTOCOL = 'org::allbinary::business::user::commerce::money::payment::gateway::PaymentGatewayData'->new("PROXYPROTOCOL");
-our $PROXYSERVER = 'org::allbinary::business::user::commerce::money::payment::gateway::PaymentGatewayData'->new("PROXYSERVER");
-our $PROXYPATH = 'org::allbinary::business::user::commerce::money::payment::gateway::PaymentGatewayData'->new("PROXYPATH");
-our $PROXYUSERNAME = 'org::allbinary::business::user::commerce::money::payment::gateway::PaymentGatewayData'->new("PROXYUSERNAME");
-our $PROXYPASSWORD = 'org::allbinary::business::user::commerce::money::payment::gateway::PaymentGatewayData'->new("PROXYPASSWORD");
-our $PROXYPORT = 'org::allbinary::business::user::commerce::money::payment::gateway::PaymentGatewayData'->new("PROXYPORT");
-our $PROXYTIMEOUT = 'org::allbinary::business::user::commerce::money::payment::gateway::PaymentGatewayData'->new("PROXYTIMEOUT");
-our $SPECIAL1 = 'org::allbinary::business::user::commerce::money::payment::gateway::PaymentGatewayData'->new("SPECIAL1");
-our $SPECIAL2 = 'org::allbinary::business::user::commerce::money::payment::gateway::PaymentGatewayData'->new("SPECIAL2");
-our $SPECIAL3 = 'org::allbinary::business::user::commerce::money::payment::gateway::PaymentGatewayData'->new("SPECIAL3");
-our $SPECIAL4 = 'org::allbinary::business::user::commerce::money::payment::gateway::PaymentGatewayData'->new("SPECIAL4");
-our $SPECIAL5 = 'org::allbinary::business::user::commerce::money::payment::gateway::PaymentGatewayData'->new("SPECIAL5");
-our $SPECIAL6 = 'org::allbinary::business::user::commerce::money::payment::gateway::PaymentGatewayData'->new("SPECIAL6");
-our $SPECIAL7 = 'org::allbinary::business::user::commerce::money::payment::gateway::PaymentGatewayData'->new("SPECIAL7");
-our $SPECIAL8 = 'org::allbinary::business::user::commerce::money::payment::gateway::PaymentGatewayData'->new("SPECIAL8");
-our $SPECIAL9 = 'org::allbinary::business::user::commerce::money::payment::gateway::PaymentGatewayData'->new("SPECIAL9");
+tie our $ID, 'java::lang::LazyStatic', sub { 'org::allbinary::business::user::commerce::money::payment::gateway::PaymentGatewayData'->new("PAYMENTGATEWAY_ID") };
+tie our $NAME, 'java::lang::LazyStatic', sub { 'org::allbinary::business::user::commerce::money::payment::gateway::PaymentGatewayData'->new("PAYMENTGATEWAY_NAME") };
+tie our $VALUE, 'java::lang::LazyStatic', sub { 'org::allbinary::business::user::commerce::money::payment::gateway::PaymentGatewayData'->new("PAYMENTGATEWAY_VALUE") };
+tie our $PAYMENTTRANSACTIONINTERFACEFACTORYINTERFACE, 'java::lang::LazyStatic', sub { 'org::allbinary::business::user::commerce::money::payment::gateway::PaymentGatewayData'->new("PAYMENTGATEWAY_PAYMENTTRANSACTIONINTERFACEFACTORYINTERFACE") };
+tie our $PAYMENTPROCESSORINTERFACEFACTORYINTERFACE, 'java::lang::LazyStatic', sub { 'org::allbinary::business::user::commerce::money::payment::gateway::PaymentGatewayData'->new("PAYMENTGATEWAY_PAYMENTPROCESSORINTERFACEFACTORYINTERFACE") };
+tie our $MODE, 'java::lang::LazyStatic', sub { 'org::allbinary::business::user::commerce::money::payment::gateway::PaymentGatewayData'->new("MODE") };
+tie our $SERVERPROTOCOL, 'java::lang::LazyStatic', sub { 'org::allbinary::business::user::commerce::money::payment::gateway::PaymentGatewayData'->new("SERVERPROTOCOL") };
+tie our $SERVER, 'java::lang::LazyStatic', sub { 'org::allbinary::business::user::commerce::money::payment::gateway::PaymentGatewayData'->new("SERVER") };
+tie our $SERVERPORT, 'java::lang::LazyStatic', sub { 'org::allbinary::business::user::commerce::money::payment::gateway::PaymentGatewayData'->new("SERVERPORT") };
+tie our $SERVERPATH, 'java::lang::LazyStatic', sub { 'org::allbinary::business::user::commerce::money::payment::gateway::PaymentGatewayData'->new("SERVERPATH") };
+tie our $TESTPROTOCOL, 'java::lang::LazyStatic', sub { 'org::allbinary::business::user::commerce::money::payment::gateway::PaymentGatewayData'->new("TESTSERVERPROTOCOL") };
+tie our $TESTSERVER, 'java::lang::LazyStatic', sub { 'org::allbinary::business::user::commerce::money::payment::gateway::PaymentGatewayData'->new("TESTSERVER") };
+tie our $TESTPORT, 'java::lang::LazyStatic', sub { 'org::allbinary::business::user::commerce::money::payment::gateway::PaymentGatewayData'->new("TESTPORT") };
+tie our $TESTPATH, 'java::lang::LazyStatic', sub { 'org::allbinary::business::user::commerce::money::payment::gateway::PaymentGatewayData'->new("TESTSERVERPATH") };
+tie our $TIMEOUT, 'java::lang::LazyStatic', sub { 'org::allbinary::business::user::commerce::money::payment::gateway::PaymentGatewayData'->new("TIMEOUT") };
+tie our $PROXYPROTOCOL, 'java::lang::LazyStatic', sub { 'org::allbinary::business::user::commerce::money::payment::gateway::PaymentGatewayData'->new("PROXYPROTOCOL") };
+tie our $PROXYSERVER, 'java::lang::LazyStatic', sub { 'org::allbinary::business::user::commerce::money::payment::gateway::PaymentGatewayData'->new("PROXYSERVER") };
+tie our $PROXYPATH, 'java::lang::LazyStatic', sub { 'org::allbinary::business::user::commerce::money::payment::gateway::PaymentGatewayData'->new("PROXYPATH") };
+tie our $PROXYUSERNAME, 'java::lang::LazyStatic', sub { 'org::allbinary::business::user::commerce::money::payment::gateway::PaymentGatewayData'->new("PROXYUSERNAME") };
+tie our $PROXYPASSWORD, 'java::lang::LazyStatic', sub { 'org::allbinary::business::user::commerce::money::payment::gateway::PaymentGatewayData'->new("PROXYPASSWORD") };
+tie our $PROXYPORT, 'java::lang::LazyStatic', sub { 'org::allbinary::business::user::commerce::money::payment::gateway::PaymentGatewayData'->new("PROXYPORT") };
+tie our $PROXYTIMEOUT, 'java::lang::LazyStatic', sub { 'org::allbinary::business::user::commerce::money::payment::gateway::PaymentGatewayData'->new("PROXYTIMEOUT") };
+tie our $SPECIAL1, 'java::lang::LazyStatic', sub { 'org::allbinary::business::user::commerce::money::payment::gateway::PaymentGatewayData'->new("SPECIAL1") };
+tie our $SPECIAL2, 'java::lang::LazyStatic', sub { 'org::allbinary::business::user::commerce::money::payment::gateway::PaymentGatewayData'->new("SPECIAL2") };
+tie our $SPECIAL3, 'java::lang::LazyStatic', sub { 'org::allbinary::business::user::commerce::money::payment::gateway::PaymentGatewayData'->new("SPECIAL3") };
+tie our $SPECIAL4, 'java::lang::LazyStatic', sub { 'org::allbinary::business::user::commerce::money::payment::gateway::PaymentGatewayData'->new("SPECIAL4") };
+tie our $SPECIAL5, 'java::lang::LazyStatic', sub { 'org::allbinary::business::user::commerce::money::payment::gateway::PaymentGatewayData'->new("SPECIAL5") };
+tie our $SPECIAL6, 'java::lang::LazyStatic', sub { 'org::allbinary::business::user::commerce::money::payment::gateway::PaymentGatewayData'->new("SPECIAL6") };
+tie our $SPECIAL7, 'java::lang::LazyStatic', sub { 'org::allbinary::business::user::commerce::money::payment::gateway::PaymentGatewayData'->new("SPECIAL7") };
+tie our $SPECIAL8, 'java::lang::LazyStatic', sub { 'org::allbinary::business::user::commerce::money::payment::gateway::PaymentGatewayData'->new("SPECIAL8") };
+tie our $SPECIAL9, 'java::lang::LazyStatic', sub { 'org::allbinary::business::user::commerce::money::payment::gateway::PaymentGatewayData'->new("SPECIAL9") };
 
 sub _init_fields {
     my ($self) = @_;
@@ -60,7 +61,7 @@ sub _init_fields {
 sub new {
     my ($class, $value) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
         $self->{key} = $value;
     return $self;
 }
@@ -71,6 +72,8 @@ sub toString {
         return $self->{key};
 }
 
+use java::lang::Object ();
+use java::lang::LazyStatic ();
 
 1;
 

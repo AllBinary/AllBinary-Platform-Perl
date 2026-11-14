@@ -33,7 +33,7 @@ sub _init_fields {
 sub new {
     my ($class, $hashMap, $pageContext) = @_;
     my $self = $class->SUPER::new();
-    $self->_init_fields();
+    _init_fields($self);
         my $storeName = $hashMap->get('org::allbinary::business::context::modules::storefront::StoreFrontData'->getInstance()->{NAME});
         if (defined($storeName)) {
             $self->{storeFrontInterface} = 'org::allbinary::business::context::modules::storefront::StoreFrontFactory'->getInstance($storeName);
@@ -195,35 +195,36 @@ sub backup {
         }
 }
 
-use java::util::HashMap;
-use org::allbinary::util::BasicArrayList;
-use org::allbinary::util::BasicArrayListD;
-# use javax::servlet::jsp::PageContext;
-use org::allbinary::business::context::modules::storefront::StoreFront;
-use org::allbinary::business::context::modules::storefront::StoreFrontData;
-use org::allbinary::business::context::modules::storefront::StoreFrontFactory;
-use org::allbinary::business::context::modules::storefront::StoreFrontInterface;
-use org::allbinary::business::installer::Portion;
-use org::allbinary::business::user::UserInterface;
-use org::allbinary::business::user::quoterequest::QuoteRequest;
-use org::allbinary::data::tables::user::UserEntityFactory;
-use org::allbinary::data::tables::user::quoterequest::QuoteRequestEntity;
-use org::allbinary::data::tables::user::quoterequest::QuoteRequestEntityFactory;
-use org::allbinary::logic::communication::http::request::session::WeblisketSession;
-use org::allbinary::logic::communication::log::LogUtil;
-use org::allbinary::logic::communication::smtp::event::UserEmailEventNameData;
-use org::allbinary::logic::communication::smtp::event::handler::UserEmailEventHandler;
-use org::allbinary::logic::communication::smtp::event::handler::factory::AdminUserEmailEventHandlerSingletons;
-use org::allbinary::logic::communication::smtp::event::handler::factory::StoreAdminUserEmailEventHandlerSingletons;
-use org::allbinary::logic::communication::smtp::event::handler::factory::UserEmailEventHandlerSingletons;
-use org::allbinary::logic::communication::smtp::info::BasicEmailInfo;
-use org::allbinary::logic::communication::smtp::info::EmailInfo;
-use org::allbinary::logic::communication::smtp::info::StoreEmailInfo;
-use org::allbinary::logic::communication::sql::AbSqlTableUtil;
-use org::allbinary::logic::string::StringMaker;
-use org::allbinary::logic::system::security::licensing::AbeClientInformationInterface;
-use org::allbinary::logic::system::security::licensing::ServiceClientInformationInterfaceFactory;
-use admin::taghelpers::BasicTable;
+use java::lang::Object ();
+use java::util::HashMap ();
+use org::allbinary::util::BasicArrayList ();
+use org::allbinary::util::BasicArrayListD ();
+# use javax::servlet::jsp::PageContext ();
+use org::allbinary::business::context::modules::storefront::StoreFront ();
+use org::allbinary::business::context::modules::storefront::StoreFrontData ();
+use org::allbinary::business::context::modules::storefront::StoreFrontFactory ();
+use org::allbinary::business::context::modules::storefront::StoreFrontInterface ();
+use org::allbinary::business::installer::Portion ();
+use org::allbinary::business::user::UserInterface ();
+use org::allbinary::business::user::quoterequest::QuoteRequest ();
+use org::allbinary::data::tables::user::UserEntityFactory ();
+use org::allbinary::data::tables::user::quoterequest::QuoteRequestEntity ();
+use org::allbinary::data::tables::user::quoterequest::QuoteRequestEntityFactory ();
+use org::allbinary::logic::communication::http::request::session::WeblisketSession ();
+use org::allbinary::logic::communication::log::LogUtil ();
+use org::allbinary::logic::communication::smtp::event::UserEmailEventNameData ();
+use org::allbinary::logic::communication::smtp::event::handler::UserEmailEventHandler ();
+use org::allbinary::logic::communication::smtp::event::handler::factory::AdminUserEmailEventHandlerSingletons ();
+use org::allbinary::logic::communication::smtp::event::handler::factory::StoreAdminUserEmailEventHandlerSingletons ();
+use org::allbinary::logic::communication::smtp::event::handler::factory::UserEmailEventHandlerSingletons ();
+use org::allbinary::logic::communication::smtp::info::BasicEmailInfo ();
+use org::allbinary::logic::communication::smtp::info::EmailInfo ();
+use org::allbinary::logic::communication::smtp::info::StoreEmailInfo ();
+use org::allbinary::logic::communication::sql::AbSqlTableUtil ();
+use org::allbinary::logic::string::StringMaker ();
+use org::allbinary::logic::system::security::licensing::AbeClientInformationInterface ();
+use org::allbinary::logic::system::security::licensing::ServiceClientInformationInterfaceFactory ();
+use admin::taghelpers::BasicTable ();
 
 1;
 

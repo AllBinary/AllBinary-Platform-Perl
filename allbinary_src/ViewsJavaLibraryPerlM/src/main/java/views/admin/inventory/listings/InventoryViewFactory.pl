@@ -17,6 +17,7 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
 
 
@@ -42,11 +43,12 @@ sub getInstance {
         }
 }
 
-use org::allbinary::logic::communication::log::LogUtil;
-use org::allbinary::logic::control::search::SearchRequest;
-use org::allbinary::logic::system::security::licensing::LicensingException;
-use org::allbinary::string::CommonStrings;
-use views::generic::inventory::InventorySearch;
+use java::lang::Object ();
+use org::allbinary::logic::communication::log::LogUtil ();
+use org::allbinary::logic::control::search::SearchRequest ();
+use org::allbinary::logic::system::security::licensing::LicensingException ();
+use org::allbinary::string::CommonStrings ();
+use views::generic::inventory::InventorySearch ();
 
 1;
 

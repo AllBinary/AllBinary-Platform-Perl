@@ -17,8 +17,9 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
-our $SINGLETON = 'org::allbinary::game::score::remote::RemoteHighScoresProcessor'->new();
+tie our $SINGLETON, 'java::lang::LazyStatic', sub { 'org::allbinary::game::score::remote::RemoteHighScoresProcessor'->new() };
 
 sub new {
     my ($class) = @_;
@@ -32,7 +33,9 @@ sub getInstance {
         return $org::allbinary::game::score::remote::RemoteHighScoresProcessorFactory::SINGLETON;
 }
 
-use org::allbinary::game::score::remote::RemoteHighScoresProcessor;
+use java::lang::Object ();
+use java::lang::LazyStatic ();
+use org::allbinary::game::score::remote::RemoteHighScoresProcessor ();
 
 1;
 

@@ -28,7 +28,7 @@ sub onDestroyed {
     die "abstract method onDestroyed";
 }
 
-use org::allbinary::logic::util::event::EventListenerInterface;
+use org::allbinary::logic::util::event::EventListenerInterface ();
 
 1;
 

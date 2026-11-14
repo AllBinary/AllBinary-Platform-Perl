@@ -28,13 +28,14 @@ sub new {
     return $self;
 }
 
-# use javax::microedition::lcdui::Image;
-use org::allbinary::animation::Animation;
-use org::allbinary::animation::AnimationBehavior;
-use org::allbinary::animation::IndexedAnimation;
-use org::allbinary::animation::SingletonAnimationInterfaceFactory;
-use org::allbinary::image::IndexedAnimationToImageArrayUtil;
-use org::allbinary::animation::image::ImageArrayAnimation;
+use java::lang::Object ();
+use javax::microedition::lcdui::Image ();
+use org::allbinary::animation::Animation ();
+use org::allbinary::animation::AnimationBehavior ();
+use org::allbinary::animation::IndexedAnimation ();
+use org::allbinary::animation::SingletonAnimationInterfaceFactory ();
+use org::allbinary::image::IndexedAnimationToImageArrayUtil ();
+use org::allbinary::animation::image::ImageArrayAnimation ();
 
 1;
 

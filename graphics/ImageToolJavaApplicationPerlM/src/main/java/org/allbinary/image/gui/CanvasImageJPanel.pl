@@ -17,7 +17,7 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
-use parent -norequire,'javax::swing::JPanel','org::allbinary::media::image::ImageProcessedVisitor';
+use parent -norequire,'java::lang::Object','org::allbinary::media::image::ImageProcessedVisitor';
 
 
 sub _init_fields {
@@ -47,7 +47,7 @@ sub _init_fields {
 sub new {
     my ($class, $imageProcessorInput) = @_;
     my $self = $class->SUPER::new();
-    $self->_init_fields();
+    _init_fields($self);
         # super(...) made $self above
         $self->initComponents();
         $self->{imageProcessorInput} = $imageProcessorInput;
@@ -58,7 +58,7 @@ sub new {
 sub process {
     my ($self) = @_;
         do {
-            package java::lang::Thread::AnonymousN66452 { our @ISA = ('java::lang::Thread');
+            package java::lang::Thread::AnonymousN66452 { our @ISA = ('java::lang::Thread', 'java::lang::Object');
             
 
             sub run {
@@ -90,7 +90,7 @@ sub initComponents {
     my ($self) = @_;
         $self->{writeOverOriginalJCheckBox} = 'javax::swing::JCheckBox'->new();
         $self->{jPanel1} = do {
-            package javax::swing::JPanel::AnonymousN67366 { our @ISA = ('javax::swing::JPanel');
+            package javax::swing::JPanel::AnonymousN67366 { our @ISA = ('javax::swing::JPanel', 'java::lang::Object');
             
 
             sub paint {
@@ -116,7 +116,7 @@ sub initComponents {
         $self->{writeOverOriginalJCheckBox}->setSelected(1);
         $self->{writeOverOriginalJCheckBox}->setText("Write Over Original");
         $self->{writeOverOriginalJCheckBox}->addActionListener(do {
-            package java::awt::event::ActionListener::AnonymousN68200 { our @ISA = ('java::awt::event::ActionListener');
+            package java::awt::event::ActionListener::AnonymousN68200 { our @ISA = ('java::awt::event::ActionListener', 'java::lang::Object');
             
 
             sub actionPerformed {
@@ -132,7 +132,7 @@ sub initComponents {
         $jPanel1Layout->setVerticalGroup($jPanel1Layout->createParallelGroup($org::allbinary::image::gui::javax::swing->{GroupLayout}->{Alignment}->{LEADING})->addGap(0, 196, 32767));
         $self->{generateJButton}->setText("Generate");
         $self->{generateJButton}->addActionListener(do {
-            package java::awt::event::ActionListener::AnonymousN68740 { our @ISA = ('java::awt::event::ActionListener');
+            package java::awt::event::ActionListener::AnonymousN68740 { our @ISA = ('java::awt::event::ActionListener', 'java::lang::Object');
             
 
             sub actionPerformed {
@@ -146,7 +146,7 @@ sub initComponents {
         $self->{jLabel5}->setText("Right:");
         $self->{widthReductionTextField}->setText('org::allbinary::string::CommonPhoneStrings'->getInstance()->{ZERO});
         $self->{widthReductionTextField}->addActionListener(do {
-            package java::awt::event::ActionListener::AnonymousN69007 { our @ISA = ('java::awt::event::ActionListener');
+            package java::awt::event::ActionListener::AnonymousN69007 { our @ISA = ('java::awt::event::ActionListener', 'java::lang::Object');
             
 
             sub actionPerformed {
@@ -160,7 +160,7 @@ sub initComponents {
         $self->{heightReductionTextField}->setText('org::allbinary::string::CommonPhoneStrings'->getInstance()->{ZERO});
         $self->{widthReductionTextField1}->setText('org::allbinary::string::CommonPhoneStrings'->getInstance()->{ZERO});
         $self->{widthReductionTextField1}->addActionListener(do {
-            package java::awt::event::ActionListener::AnonymousN69294 { our @ISA = ('java::awt::event::ActionListener');
+            package java::awt::event::ActionListener::AnonymousN69294 { our @ISA = ('java::awt::event::ActionListener', 'java::lang::Object');
             
 
             sub actionPerformed {
@@ -234,24 +234,25 @@ sub visit {
         $self->{logUtil}->putF('org::allbinary::logic::string::StringMaker'->new()->append("File: ")->append('org::allbinary::logic::string::StringUtil'->getInstance()->toString($file))->append(" Wrote: ")->appendboolean($isWritten)->toString(), $self, $self->{commonStrings}->{RUN});
 }
 
-# use java::awt;
-# use java::awt::image::BufferedImage;
-# use java::awt::image::RenderedImage;
-use java::io::File;
-# use java::io::IOException;
-# use javax::imageio::ImageIO;
-use org::allbinary::logic::communication::log::LogUtil;
-use org::allbinary::logic::string::StringMaker;
-use org::allbinary::logic::string::StringUtil;
-use org::allbinary::media::image::CanvasExpandUtil;
-use org::allbinary::media::image::CanvasTrimUtil;
-use org::allbinary::media::image::ImageProcessedVisitor;
-use org::allbinary::media::image::ImageProcessorInput;
-use org::allbinary::media::image::ImageStrings;
-use org::allbinary::string::CommonPhoneStrings;
-use org::allbinary::string::CommonSeps;
-use org::allbinary::string::CommonStrings;
-use java::lang::Thread;
+use java::lang::Object ();
+# use java::awt ();
+# use java::awt::image::BufferedImage ();
+# use java::awt::image::RenderedImage ();
+use java::io::File ();
+# use java::io::IOException ();
+# use javax::imageio::ImageIO ();
+use org::allbinary::logic::communication::log::LogUtil ();
+use org::allbinary::logic::string::StringMaker ();
+use org::allbinary::logic::string::StringUtil ();
+use org::allbinary::media::image::CanvasExpandUtil ();
+use org::allbinary::media::image::CanvasTrimUtil ();
+use org::allbinary::media::image::ImageProcessedVisitor ();
+use org::allbinary::media::image::ImageProcessorInput ();
+use org::allbinary::media::image::ImageStrings ();
+use org::allbinary::string::CommonPhoneStrings ();
+use org::allbinary::string::CommonSeps ();
+use org::allbinary::string::CommonStrings ();
+use java::lang::Thread ();
 
 1;
 

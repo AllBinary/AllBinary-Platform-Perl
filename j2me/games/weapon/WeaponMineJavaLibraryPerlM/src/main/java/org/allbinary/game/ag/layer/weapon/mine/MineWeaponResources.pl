@@ -19,7 +19,7 @@ use feature 'try';
 no warnings 'experimental::try';
 use parent -norequire,'org::allbinary::game::layer::resources::BasicGameResources';
 
-our $instance = 'org::allbinary::logic::NullUtil'->getInstance()->{NULL_OBJECT};
+tie our $instance, 'java::lang::LazyStatic', sub { 'org::allbinary::logic::NullUtil'->getInstance()->{NULL_OBJECT} };
 
 sub _init_fields {
     my ($self) = @_;
@@ -41,7 +41,7 @@ sub getInstance {
 sub new {
     my ($class) = @_;
     my $self = $class->SUPER::new();
-    $self->_init_fields();
+    _init_fields($self);
         my $ROOT = "/mine";
         my $SMALL = "_20_by_20.png";
         my $MEDIUM = $SMALL;
@@ -53,8 +53,10 @@ sub new {
     return $self;
 }
 
-use org::allbinary::game::layer::resources::BasicGameResources;
-use org::allbinary::logic::NullUtil;
+use java::lang::Object ();
+use java::lang::LazyStatic ();
+use org::allbinary::game::layer::resources::BasicGameResources ();
+use org::allbinary::logic::NullUtil ();
 
 1;
 

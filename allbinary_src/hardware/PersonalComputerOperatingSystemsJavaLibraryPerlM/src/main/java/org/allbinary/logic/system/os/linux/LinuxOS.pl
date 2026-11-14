@@ -34,7 +34,8 @@ sub isAutoHide {
         return 1;
 }
 
-use org::allbinary::logic::system::os::GenericOperatingSystem;
+use java::lang::Object ();
+use org::allbinary::logic::system::os::GenericOperatingSystem ();
 
 1;
 

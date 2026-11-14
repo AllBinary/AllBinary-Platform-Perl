@@ -26,7 +26,8 @@ sub new {
     return $self;
 }
 
-use java::util::HashMap;
+use java::lang::Object ();
+use java::util::HashMap ();
 
 1;
 

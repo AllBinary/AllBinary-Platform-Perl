@@ -17,8 +17,9 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
-our $instance = 'org::allbinary::logic::io::file::FileLockUtil'->new();
+tie our $instance, 'java::lang::LazyStatic', sub { 'org::allbinary::logic::io::file::FileLockUtil'->new() };
 
 sub _init_fields {
     my ($self) = @_;
@@ -35,7 +36,7 @@ sub getInstance {
 sub new {
     my ($class) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
     return $self;
 }
 
@@ -126,14 +127,16 @@ sub getLock {
         }
 }
 
-# use java::nio::channels::FileChannel;
-# use java::nio::channels::FileLock;
-use org::allbinary::util::BasicArrayList;
-use org::allbinary::util::BasicArrayListD;
-use org::allbinary::logic::StdUtil;
-use org::allbinary::logic::communication::log::LogUtil;
-use org::allbinary::logic::io::AbFileOutputStream;
-use org::allbinary::logic::io::StreamUtil;
+use java::lang::Object ();
+use java::lang::LazyStatic ();
+# use java::nio::channels::FileChannel ();
+# use java::nio::channels::FileLock ();
+use org::allbinary::util::BasicArrayList ();
+use org::allbinary::util::BasicArrayListD ();
+use org::allbinary::logic::StdUtil ();
+use org::allbinary::logic::communication::log::LogUtil ();
+use org::allbinary::logic::io::AbFileOutputStream ();
+use org::allbinary::logic::io::StreamUtil ();
 
 1;
 

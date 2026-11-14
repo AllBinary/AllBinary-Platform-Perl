@@ -7,6 +7,7 @@ use warnings;
 use feature 'try';
 no warnings 'experimental::try';
 use POSIX ();
+use parent -norequire,'java::lang::Object';
 
 our $SIZE = ", Size: ";
 
@@ -21,7 +22,7 @@ sub _init_fields {
 sub new {
     my ($class, $objectArray) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
         $self->{objectArray} = $objectArray;
     return $self;
 }
@@ -303,16 +304,17 @@ sub toString {
         return $stringBuffer->toString();
 }
 
-# use jsinterop::annotations::JsType;
-use org::allbinary::logic::string::StringMaker;
-use org::allbinary::string::CommonLabels;
-use org::allbinary::string::CommonSeps;
-# use jsinterop::annotations::JsMethod;
-# use jsinterop::annotations::JsConstructor;
-# use jsinterop::annotations::JsProperty;
-use org::allbinary::util::ArrayUtil;
-use java::lang::System;
-use org::allbinary::util::BasicArrayListS;
+use java::lang::Object ();
+# use jsinterop::annotations::JsType ();
+use org::allbinary::logic::string::StringMaker ();
+use org::allbinary::string::CommonLabels ();
+use org::allbinary::string::CommonSeps ();
+# use jsinterop::annotations::JsMethod ();
+# use jsinterop::annotations::JsConstructor ();
+# use jsinterop::annotations::JsProperty ();
+use org::allbinary::util::ArrayUtil ();
+use java::lang::System ();
+use org::allbinary::util::BasicArrayListS ();
 
 1;
 

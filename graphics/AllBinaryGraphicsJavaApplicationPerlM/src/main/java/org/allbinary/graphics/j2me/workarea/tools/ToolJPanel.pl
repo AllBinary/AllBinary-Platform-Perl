@@ -17,7 +17,7 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
-use parent -norequire,'javax::swing::JPanel';
+use parent -norequire,'java::lang::Object';
 
 
 sub _init_fields {
@@ -46,7 +46,7 @@ sub _init_fields {
 sub new {
     my ($class) = @_;
     my $self = $class->SUPER::new();
-    $self->_init_fields();
+    _init_fields($self);
         $self->initComponents();
     return $self;
 }
@@ -76,7 +76,7 @@ sub initComponents {
         $self->{lineJButton}->setFont('java::awt::Font'->new("Dialog", 0, 10));
         $self->{lineJButton}->setText('org::allbinary::graphics::j2me::workarea::tools::LinesGraphicItem'->getStaticName());
         $self->{lineJButton}->addMouseListener(do {
-            package java::awt::event::MouseAdapter::AnonymousN66709 { our @ISA = ('java::awt::event::MouseAdapter');
+            package java::awt::event::MouseAdapter::AnonymousN66709 { our @ISA = ('java::awt::event::MouseAdapter', 'java::lang::Object');
             
 
             sub mouseClicked {
@@ -90,7 +90,7 @@ sub initComponents {
         $self->{rectJButton}->setFont('java::awt::Font'->new("Dialog", 0, 10));
         $self->{rectJButton}->setText("Rect");
         $self->{rectJButton}->addMouseListener(do {
-            package java::awt::event::MouseAdapter::AnonymousN66991 { our @ISA = ('java::awt::event::MouseAdapter');
+            package java::awt::event::MouseAdapter::AnonymousN66991 { our @ISA = ('java::awt::event::MouseAdapter', 'java::lang::Object');
             
 
             sub mouseClicked {
@@ -104,7 +104,7 @@ sub initComponents {
         $self->{arcJButton}->setFont('java::awt::Font'->new("Dialog", 0, 10));
         $self->{arcJButton}->setText("Arc");
         $self->{arcJButton}->addMouseListener(do {
-            package java::awt::event::MouseAdapter::AnonymousN67273 { our @ISA = ('java::awt::event::MouseAdapter');
+            package java::awt::event::MouseAdapter::AnonymousN67273 { our @ISA = ('java::awt::event::MouseAdapter', 'java::lang::Object');
             
 
             sub mousePressed {
@@ -118,7 +118,7 @@ sub initComponents {
         $self->{stringJButton}->setFont('java::awt::Font'->new("Dialog", 0, 10));
         $self->{stringJButton}->setText("String");
         $self->{stringJButton}->addMouseListener(do {
-            package java::awt::event::MouseAdapter::AnonymousN67555 { our @ISA = ('java::awt::event::MouseAdapter');
+            package java::awt::event::MouseAdapter::AnonymousN67555 { our @ISA = ('java::awt::event::MouseAdapter', 'java::lang::Object');
             
 
             sub mousePressed {
@@ -132,7 +132,7 @@ sub initComponents {
         $self->{charJButton}->setFont('java::awt::Font'->new("Dialog", 0, 10));
         $self->{charJButton}->setText("Char");
         $self->{charJButton}->addMouseListener(do {
-            package java::awt::event::MouseAdapter::AnonymousN67837 { our @ISA = ('java::awt::event::MouseAdapter');
+            package java::awt::event::MouseAdapter::AnonymousN67837 { our @ISA = ('java::awt::event::MouseAdapter', 'java::lang::Object');
             
 
             sub mousePressed {
@@ -146,7 +146,7 @@ sub initComponents {
         $self->{roundRectJButton}->setFont('java::awt::Font'->new("Dialog", 0, 10));
         $self->{roundRectJButton}->setText("Round Rect");
         $self->{roundRectJButton}->addMouseListener(do {
-            package java::awt::event::MouseAdapter::AnonymousN68119 { our @ISA = ('java::awt::event::MouseAdapter');
+            package java::awt::event::MouseAdapter::AnonymousN68119 { our @ISA = ('java::awt::event::MouseAdapter', 'java::lang::Object');
             
 
             sub mousePressed {
@@ -160,7 +160,7 @@ sub initComponents {
         $self->{imageJButton}->setFont('java::awt::Font'->new("Dialog", 0, 10));
         $self->{imageJButton}->setText("Image");
         $self->{imageJButton}->addMouseListener(do {
-            package java::awt::event::MouseAdapter::AnonymousN68401 { our @ISA = ('java::awt::event::MouseAdapter');
+            package java::awt::event::MouseAdapter::AnonymousN68401 { our @ISA = ('java::awt::event::MouseAdapter', 'java::lang::Object');
             
 
             sub mousePressed {
@@ -174,7 +174,7 @@ sub initComponents {
         $self->{fillArcJButton}->setFont('java::awt::Font'->new("Dialog", 0, 10));
         $self->{fillArcJButton}->setText("Fill Arc");
         $self->{fillArcJButton}->addMouseListener(do {
-            package java::awt::event::MouseAdapter::AnonymousN68683 { our @ISA = ('java::awt::event::MouseAdapter');
+            package java::awt::event::MouseAdapter::AnonymousN68683 { our @ISA = ('java::awt::event::MouseAdapter', 'java::lang::Object');
             
 
             sub mousePressed {
@@ -188,7 +188,7 @@ sub initComponents {
         $self->{fillRectJButton}->setFont('java::awt::Font'->new("Dialog", 0, 10));
         $self->{fillRectJButton}->setText("Fill Rect");
         $self->{fillRectJButton}->addMouseListener(do {
-            package java::awt::event::MouseAdapter::AnonymousN68965 { our @ISA = ('java::awt::event::MouseAdapter');
+            package java::awt::event::MouseAdapter::AnonymousN68965 { our @ISA = ('java::awt::event::MouseAdapter', 'java::lang::Object');
             
 
             sub mousePressed {
@@ -202,7 +202,7 @@ sub initComponents {
         $self->{fillRoundRectJButton}->setFont('java::awt::Font'->new("Dialog", 0, 10));
         $self->{fillRoundRectJButton}->setText("Fill Rnd Rect");
         $self->{fillRoundRectJButton}->addMouseListener(do {
-            package java::awt::event::MouseAdapter::AnonymousN69247 { our @ISA = ('java::awt::event::MouseAdapter');
+            package java::awt::event::MouseAdapter::AnonymousN69247 { our @ISA = ('java::awt::event::MouseAdapter', 'java::lang::Object');
             
 
             sub mousePressed {
@@ -216,7 +216,7 @@ sub initComponents {
         $self->{dottedLineJButton}->setFont('java::awt::Font'->new("Dialog", 0, 10));
         $self->{dottedLineJButton}->setText("Dot Line");
         $self->{dottedLineJButton}->addMouseListener(do {
-            package java::awt::event::MouseAdapter::AnonymousN69529 { our @ISA = ('java::awt::event::MouseAdapter');
+            package java::awt::event::MouseAdapter::AnonymousN69529 { our @ISA = ('java::awt::event::MouseAdapter', 'java::lang::Object');
             
 
             sub mousePressed {
@@ -230,7 +230,7 @@ sub initComponents {
         $self->{dottedRectButton}->setFont('java::awt::Font'->new("Dialog", 0, 10));
         $self->{dottedRectButton}->setText("Dot Rect");
         $self->{dottedRectButton}->addMouseListener(do {
-            package java::awt::event::MouseAdapter::AnonymousN69811 { our @ISA = ('java::awt::event::MouseAdapter');
+            package java::awt::event::MouseAdapter::AnonymousN69811 { our @ISA = ('java::awt::event::MouseAdapter', 'java::lang::Object');
             
 
             sub mousePressed {
@@ -244,7 +244,7 @@ sub initComponents {
         $self->{dottedArcJButton}->setFont('java::awt::Font'->new("Dialog", 0, 10));
         $self->{dottedArcJButton}->setText("Dot Arc");
         $self->{dottedArcJButton}->addMouseListener(do {
-            package java::awt::event::MouseAdapter::AnonymousN70093 { our @ISA = ('java::awt::event::MouseAdapter');
+            package java::awt::event::MouseAdapter::AnonymousN70093 { our @ISA = ('java::awt::event::MouseAdapter', 'java::lang::Object');
             
 
             sub mousePressed {
@@ -258,7 +258,7 @@ sub initComponents {
         $self->{dottedFillRectJButton}->setFont('java::awt::Font'->new("Dialog", 0, 10));
         $self->{dottedFillRectJButton}->setText("Dot Fill Rect");
         $self->{dottedFillRectJButton}->addMouseListener(do {
-            package java::awt::event::MouseAdapter::AnonymousN70375 { our @ISA = ('java::awt::event::MouseAdapter');
+            package java::awt::event::MouseAdapter::AnonymousN70375 { our @ISA = ('java::awt::event::MouseAdapter', 'java::lang::Object');
             
 
             sub mousePressed {
@@ -272,7 +272,7 @@ sub initComponents {
         $self->{dottedFillArcJButton}->setFont('java::awt::Font'->new("Dialog", 0, 10));
         $self->{dottedFillArcJButton}->setText("Dot Fill Arc");
         $self->{dottedFillArcJButton}->addMouseListener(do {
-            package java::awt::event::MouseAdapter::AnonymousN70657 { our @ISA = ('java::awt::event::MouseAdapter');
+            package java::awt::event::MouseAdapter::AnonymousN70657 { our @ISA = ('java::awt::event::MouseAdapter', 'java::lang::Object');
             
 
             sub mousePressed {
@@ -286,7 +286,7 @@ sub initComponents {
         $self->{dottedFillRountRectJButton}->setFont('java::awt::Font'->new("Dialog", 0, 10));
         $self->{dottedFillRountRectJButton}->setText("Dot Fill Rnd Rect");
         $self->{dottedFillRountRectJButton}->addMouseListener(do {
-            package java::awt::event::MouseAdapter::AnonymousN70939 { our @ISA = ('java::awt::event::MouseAdapter');
+            package java::awt::event::MouseAdapter::AnonymousN70939 { our @ISA = ('java::awt::event::MouseAdapter', 'java::lang::Object');
             
 
             sub mousePressed {
@@ -398,8 +398,9 @@ sub lineJButtonMouseClicked {
         'org::allbinary::graphics::j2me::workarea::tools::ToolFactory'->getInstance()->setSelectedTool($self->{lineJButton}->getText());
 }
 
-use org::allbinary::graphics::j2me::workarea::tools::LinesGraphicItem;
-use org::allbinary::graphics::j2me::workarea::tools::ToolFactory;
+use java::lang::Object ();
+use org::allbinary::graphics::j2me::workarea::tools::LinesGraphicItem ();
+use org::allbinary::graphics::j2me::workarea::tools::ToolFactory ();
 
 1;
 

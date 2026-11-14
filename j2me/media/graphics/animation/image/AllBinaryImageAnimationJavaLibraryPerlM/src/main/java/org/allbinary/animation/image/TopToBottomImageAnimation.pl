@@ -30,7 +30,7 @@ sub _init_fields {
 sub new {
     my ($class, $image, $sequenceArray, $animationBehavior) = @_;
     my $self = $class->SUPER::new($image, $sequenceArray, $animationBehavior);
-    $self->_init_fields();
+    _init_fields($self);
         # super(...) made $self above
         $self->{currentHeight} = 0;
         if ($self->getSequence()->[0] == -1) {
@@ -80,12 +80,13 @@ sub paintXY {
         $graphics->drawRegion($self->getImage(), $self->getStartX(), $self->getStartY(), $self->getDrawWidth(), $self->{currentHeight}, $javax::microedition::lcdui::game::Sprite::TRANS_NONE, $x, $y, $self->{anchor});
 }
 
-# use javax::microedition::lcdui::Graphics;
-# use javax::microedition::lcdui::Image;
-# use javax::microedition::lcdui::game::Sprite;
-use org::allbinary::animation::AnimationBehavior;
-use org::allbinary::graphics::Anchor;
-use org::allbinary::animation::image::ImageSegmentAnimation;
+use java::lang::Object ();
+use javax::microedition::lcdui::Graphics ();
+use javax::microedition::lcdui::Image ();
+use javax::microedition::lcdui::game::Sprite ();
+use org::allbinary::animation::AnimationBehavior ();
+use org::allbinary::graphics::Anchor ();
+use org::allbinary::animation::image::ImageSegmentAnimation ();
 
 1;
 

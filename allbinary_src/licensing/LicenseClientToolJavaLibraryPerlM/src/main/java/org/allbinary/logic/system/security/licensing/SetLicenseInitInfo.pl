@@ -17,8 +17,9 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
-our $stdinput = 'java::io::BufferedReader'->new('java::io::InputStreamReader'->new($java::lang::System::in));
+tie our $stdinput, 'java::lang::LazyStatic', sub { 'java::io::BufferedReader'->new('java::io::InputStreamReader'->new($java::lang::System::in)) };
 
 sub _init_fields {
     my ($self) = @_;
@@ -29,7 +30,7 @@ sub _init_fields {
 sub new {
     my ($class, $options) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
         'org::allbinary::business::init::LicenseInitInfoUtil'->getInstance()->setFilePath($org::allbinary::logic::system::security::licensing::PrintLicenseInitInfo::PATH + 'org::allbinary::globals::PATH_GLOBALS'->getInstance()->{INIT_PATH});
         for (my $index = 1; $index < scalar(@{$options}); $index++) {
             $self->{vector}->add($options->[$index]);
@@ -62,13 +63,8 @@ sub createNewLicenseInitInfo {
             my $file = 'java::io::File'->new($org::allbinary::logic::system::security::licensing::PrintLicenseInitInfo::PATH . "licenseservers.txt");
             my $reader = 'java::io::FileReader'->new($file);
             my $lineNumberReader = 'java::io::LineNumberReader'->new($reader);
-            while (1) {
-                my $line = $lineNumberReader->readLine();
-                if (defined($line)) {
-                    $licenseInitInfo->addServer($line);
-                } else {
-                    last;
-                }
+            while ($lineNumberReader->ready()) {
+                $licenseInitInfo->addServer($lineNumberReader->readLine());
             }
             'org::allbinary::business::init::LicenseInitInfoUtil'->getInstance()->write($licenseInitInfo);
             'org::allbinary::business::init::LicenseInitInfoUtil'->getInstance()->read();
@@ -86,19 +82,21 @@ sub main {
         $initInfo->createNewLicenseInitInfo('org::allbinary::logic::system::security::licensing::BasicArrayListD'->new());
 }
 
-# use java::io::BufferedReader;
-# use java::io::InputStreamReader;
-use org::allbinary::business::init::LicenseInitInfo;
-use org::allbinary::business::init::LicenseInitInfoUtil;
-use org::allbinary::logic::io::file::FileFactory;
-use org::allbinary::globals::PATH_GLOBALS;
-use java::io::File;
-# use java::io::FileReader;
-# use java::io::LineNumberReader;
-use org::allbinary::util::BasicArrayList;
-use java::lang::System;
-use org::allbinary::logic::system::security::licensing::BasicArrayListD;
-use org::allbinary::logic::system::security::licensing::PrintLicenseInitInfo;
+use java::lang::Object ();
+use java::lang::LazyStatic ();
+# use java::io::BufferedReader ();
+# use java::io::InputStreamReader ();
+use org::allbinary::business::init::LicenseInitInfo ();
+use org::allbinary::business::init::LicenseInitInfoUtil ();
+use org::allbinary::logic::io::file::FileFactory ();
+use org::allbinary::globals::PATH_GLOBALS ();
+use java::io::File ();
+# use java::io::FileReader ();
+# use java::io::LineNumberReader ();
+use org::allbinary::util::BasicArrayList ();
+use java::lang::System ();
+use org::allbinary::logic::system::security::licensing::BasicArrayListD ();
+use org::allbinary::logic::system::security::licensing::PrintLicenseInitInfo ();
 
 1;
 

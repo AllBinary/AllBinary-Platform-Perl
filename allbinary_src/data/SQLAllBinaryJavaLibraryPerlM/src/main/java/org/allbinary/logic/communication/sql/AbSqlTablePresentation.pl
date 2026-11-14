@@ -28,8 +28,9 @@ sub new {
     return $self;
 }
 
-use org::allbinary::business::init::db::DbConnectionInfo;
-use org::allbinary::logic::communication::sql::AbSqlBasic;
+use java::lang::Object ();
+use org::allbinary::business::init::db::DbConnectionInfo ();
+use org::allbinary::logic::communication::sql::AbSqlBasic ();
 
 1;
 

@@ -17,10 +17,10 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
-use parent -norequire,'org::allbinary::ai::ArtificialIntelligenceInterface';
+use parent -norequire,'java::lang::Object','org::allbinary::ai::ArtificialIntelligenceInterface';
 
 our $AI_ID = 2;
-our $instance = 'org::allbinary::ai::ArtificialIntelligence'->new();
+tie our $instance, 'java::lang::LazyStatic', sub { 'org::allbinary::ai::ArtificialIntelligence'->new() };
 
 
 sub getInstance {
@@ -47,8 +47,10 @@ sub getId {
         return 1;
 }
 
-use org::allbinary::layer::AllBinaryLayerManager;
-use org::allbinary::ai::ArtificialIntelligenceInterface;
+use java::lang::Object ();
+use java::lang::LazyStatic ();
+use org::allbinary::layer::AllBinaryLayerManager ();
+use org::allbinary::ai::ArtificialIntelligenceInterface ();
 
 1;
 

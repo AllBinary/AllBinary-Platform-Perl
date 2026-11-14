@@ -29,12 +29,13 @@ sub _init_fields {
 sub new {
     my ($class, $parent) = @_;
     my $self = $class->SUPER::new($parent);
-    $self->_init_fields();
+    _init_fields($self);
         # super(...) made $self above
     return $self;
 }
 
-use org::allbinary::logic::system::loader::ClassLoader;
+use java::lang::Object ();
+use org::allbinary::logic::system::loader::ClassLoader ();
 
 1;
 

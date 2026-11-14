@@ -28,8 +28,8 @@ sub process {
     die "abstract method process";
 }
 
-use org::allbinary::business::user::commerce::money::payment::PaymentException;
-use org::allbinary::data::tree::dom::DomNodeInterface;
+use org::allbinary::business::user::commerce::money::payment::PaymentException ();
+use org::allbinary::data::tree::dom::DomNodeInterface ();
 
 1;
 

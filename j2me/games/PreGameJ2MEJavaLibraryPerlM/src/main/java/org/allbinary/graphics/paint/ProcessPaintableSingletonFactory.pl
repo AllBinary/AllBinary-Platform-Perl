@@ -17,8 +17,9 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
-our $SINGLETON = 'org::allbinary::graphics::paint::ProcessPaintable'->new();
+tie our $SINGLETON, 'java::lang::LazyStatic', sub { 'org::allbinary::graphics::paint::ProcessPaintable'->new() };
 
 
 sub new {
@@ -33,7 +34,9 @@ sub getInstance {
         return $org::allbinary::graphics::paint::ProcessPaintableSingletonFactory::SINGLETON;
 }
 
-use org::allbinary::graphics::paint::ProcessPaintable;
+use java::lang::Object ();
+use java::lang::LazyStatic ();
+use org::allbinary::graphics::paint::ProcessPaintable ();
 
 1;
 

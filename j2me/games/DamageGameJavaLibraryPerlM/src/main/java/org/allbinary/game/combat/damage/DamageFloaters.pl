@@ -19,7 +19,7 @@ use feature 'try';
 no warnings 'experimental::try';
 use parent -norequire,'org::allbinary::graphics::paint::Paintable';
 
-our $SINGLETON = 'org::allbinary::game::combat::damage::DamageFloaters'->new();
+tie our $SINGLETON, 'java::lang::LazyStatic', sub { 'org::allbinary::game::combat::damage::DamageFloaters'->new() };
 
 sub new {
     my ($class) = @_;
@@ -38,7 +38,9 @@ sub add {
     my ($self, $damage) = @_;
 }
 
-use org::allbinary::graphics::paint::Paintable;
+use java::lang::Object ();
+use java::lang::LazyStatic ();
+use org::allbinary::graphics::paint::Paintable ();
 
 1;
 

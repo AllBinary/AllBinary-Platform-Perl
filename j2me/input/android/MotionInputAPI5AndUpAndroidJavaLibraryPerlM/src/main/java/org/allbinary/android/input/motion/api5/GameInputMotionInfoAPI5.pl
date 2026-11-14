@@ -19,7 +19,7 @@ use feature 'try';
 no warnings 'experimental::try';
 use parent -norequire,'org::allbinary::android::input::motion::GameInputMotionInfo';
 
-our $instance = 'org::allbinary::android::input::motion::api5::GameInputMotionInfoAPI5'->new();
+tie our $instance, 'java::lang::LazyStatic', sub { 'org::allbinary::android::input::motion::api5::GameInputMotionInfoAPI5'->new() };
 
 
 sub getInstance {
@@ -35,7 +35,9 @@ sub new {
     return $self;
 }
 
-use org::allbinary::android::input::motion::GameInputMotionInfo;
+use java::lang::Object ();
+use java::lang::LazyStatic ();
+use org::allbinary::android::input::motion::GameInputMotionInfo ();
 
 1;
 

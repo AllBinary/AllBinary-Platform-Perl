@@ -51,11 +51,11 @@ sub update {
     die "abstract method update";
 }
 
-use org::allbinary::util::BasicArrayList;
-use org::allbinary::util::BasicArrayListD;
-use org::allbinary::business::user::commerce::money::payment::gateway::PaymentGatewayInterface;
-use org::allbinary::business::user::commerce::money::payment::types::BasicPaymentType;
-use org::allbinary::data::tables::BasicDataTableInterface;
+use org::allbinary::util::BasicArrayList ();
+use org::allbinary::util::BasicArrayListD ();
+use org::allbinary::business::user::commerce::money::payment::gateway::PaymentGatewayInterface ();
+use org::allbinary::business::user::commerce::money::payment::types::BasicPaymentType ();
+use org::allbinary::data::tables::BasicDataTableInterface ();
 
 1;
 

@@ -40,10 +40,10 @@ sub shouldProcess {
     die "abstract method shouldProcess";
 }
 
-use org::allbinary::input::automation::actions::script::ProfileActionScriptItemInterface;
-use org::allbinary::input::automation::actions::script::ProfileActionScriptNodeInterface;
-use org::allbinary::input::automation::actions::script::condition::processors::ProfileActionScriptProcessorInterface;
-use org::allbinary::input::automation::actions::script::condition::CustomTreeNodeInterface;
+use org::allbinary::input::automation::actions::script::ProfileActionScriptItemInterface ();
+use org::allbinary::input::automation::actions::script::ProfileActionScriptNodeInterface ();
+use org::allbinary::input::automation::actions::script::condition::processors::ProfileActionScriptProcessorInterface ();
+use org::allbinary::input::automation::actions::script::condition::CustomTreeNodeInterface ();
 
 1;
 

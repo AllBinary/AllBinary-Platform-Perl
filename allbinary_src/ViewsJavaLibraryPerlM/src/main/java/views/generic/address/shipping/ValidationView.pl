@@ -67,13 +67,21 @@ sub toValidationInfoNode {
         return undef;
 }
 
-use org::allbinary::business::user::address::StreetAddress;
-use org::allbinary::data::tables::user::address::shipping::ShippingAddressesEntity;
-use org::allbinary::logic::control::validate::ValidationComponentInterface;
-use org::allbinary::logic::visual::transform::info::TransformInfoInterface;
-use org::w3c::dom::Document;
-use org::w3c::dom::Node;
-use views::generic::address::shipping::ShippingAddressesView;
+
+# throws Exception
+sub getTransformInfoInterface {
+    my ($self) = @_;
+        return $self->SUPER::getTransformInfoInterface();
+}
+
+use java::lang::Object ();
+use org::allbinary::business::user::address::StreetAddress ();
+use org::allbinary::data::tables::user::address::shipping::ShippingAddressesEntity ();
+use org::allbinary::logic::control::validate::ValidationComponentInterface ();
+use org::allbinary::logic::visual::transform::info::TransformInfoInterface ();
+use org::w3c::dom::Document ();
+use org::w3c::dom::Node ();
+use views::generic::address::shipping::ShippingAddressesView ();
 
 1;
 

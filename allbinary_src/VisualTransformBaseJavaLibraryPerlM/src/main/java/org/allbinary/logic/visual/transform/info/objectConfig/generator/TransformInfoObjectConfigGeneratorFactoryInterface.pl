@@ -27,7 +27,7 @@ sub getInstance {
     die "abstract method getInstance";
 }
 
-use org::allbinary::logic::visual::transform::info::TransformInfoInterface;
+use org::allbinary::logic::visual::transform::info::TransformInfoInterface ();
 
 1;
 

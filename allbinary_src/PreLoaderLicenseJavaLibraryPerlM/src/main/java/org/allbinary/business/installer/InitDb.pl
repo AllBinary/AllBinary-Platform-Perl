@@ -18,6 +18,7 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
 
 sub _init_fields {
@@ -42,7 +43,7 @@ sub new {
 sub _new0 {
     my ($class) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
     return $self;
 }
 
@@ -50,7 +51,7 @@ sub _new0 {
 sub _new1 {
     my ($class, $dbConnectionInfo) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
     return $self;
 }
 
@@ -144,9 +145,10 @@ sub useNormalMainPath {
         }
 }
 
-# use java::lang::reflect::Method;
-use org::allbinary::business::init::db::DbConnectionInfo;
-use org::allbinary::logic::system::security::licensing::LicensingException;
+use java::lang::Object ();
+# use java::lang::reflect::Method ();
+use org::allbinary::business::init::db::DbConnectionInfo ();
+use org::allbinary::logic::system::security::licensing::LicensingException ();
 
 1;
 

@@ -17,7 +17,7 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
-use parent -norequire,'views::admin::inventory::listings::ProductListingInterface';
+use parent -norequire,'java::lang::Object','views::admin::inventory::listings::ProductListingInterface';
 
 
 sub _init_fields {
@@ -36,7 +36,7 @@ sub _init_fields {
 sub new {
     my ($class, $searchRequest) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
         $self->{searchRequest} = $searchRequest;
         $self->{storeFronts} = 'org::allbinary::data::tables::context::module::storefronts::StoreFrontsEntity'->new();
         $self->{staticPages} = 'org::allbinary::data::tables::staticpages::StaticPagesEntity'->new();
@@ -225,43 +225,44 @@ sub generateAll {
         }
 }
 
-use java::util::HashMap;
-# use java::util::HashSet;
-# use java::util::Set;
-use org::allbinary::util::BasicArrayList;
-use org::allbinary::util::BasicArrayListD;
-use org::allbinary::business::context::modules::storefront::StoreFrontInterface;
-use org::allbinary::business::user::commerce::inventory::item::BasicItemData;
-use org::allbinary::data::tables::context::module::storefronts::StoreFrontsEntity;
-use org::allbinary::data::tables::staticpages::StaticPagesEntity;
-use org::allbinary::data::tables::user::commerce::inventory::item::InventoryEntity;
-use org::allbinary::globals::GLOBALS2;
-use org::allbinary::globals::URLGLOBALS;
-use org::allbinary::logic::StdUtil;
-use org::allbinary::logic::communication::log::LogUtil;
-use org::allbinary::logic::control::search::SearchParams;
-use org::allbinary::logic::control::search::SearchRequest;
-use org::allbinary::logic::io::AbDataOutputStream;
-use org::allbinary::logic::io::DataOutputStreamFactory;
-use org::allbinary::logic::io::InputOutputTypeData;
-use org::allbinary::logic::io::StreamUtil;
-use org::allbinary::logic::io::file::AbFile;
-use org::allbinary::logic::io::file::directory::Directory;
-use org::allbinary::logic::io::path::AbPath;
-use org::allbinary::logic::io::path::AbPathData;
-use org::allbinary::logic::string::SpecialCharacterUtil;
-use org::allbinary::logic::string::StringMaker;
-use org::allbinary::logic::string::StringUtil;
-use org::allbinary::logic::string::regex::replace::Replace;
-use org::allbinary::logic::string::tokens::UniqueTokens;
-use org::allbinary::logic::system::security::licensing::AbeClientInformationInterface;
-use org::allbinary::logic::system::security::licensing::ServiceClientInformationInterfaceFactory;
-use org::allbinary::string::CommonPhoneStrings;
-use org::allbinary::string::CommonSeps;
-use org::allbinary::util::BasicArrayList;
-use views::generic::inventory::InventoryColumnUtil;
-use views::generic::inventory::InventorySearchUtil;
-use views::admin::inventory::listings::ProductListingInterface;
+use java::lang::Object ();
+use java::util::HashMap ();
+# use java::util::HashSet ();
+# use java::util::Set ();
+use org::allbinary::util::BasicArrayList ();
+use org::allbinary::util::BasicArrayListD ();
+use org::allbinary::business::context::modules::storefront::StoreFrontInterface ();
+use org::allbinary::business::user::commerce::inventory::item::BasicItemData ();
+use org::allbinary::data::tables::context::module::storefronts::StoreFrontsEntity ();
+use org::allbinary::data::tables::staticpages::StaticPagesEntity ();
+use org::allbinary::data::tables::user::commerce::inventory::item::InventoryEntity ();
+use org::allbinary::globals::GLOBALS2 ();
+use org::allbinary::globals::URLGLOBALS ();
+use org::allbinary::logic::StdUtil ();
+use org::allbinary::logic::communication::log::LogUtil ();
+use org::allbinary::logic::control::search::SearchParams ();
+use org::allbinary::logic::control::search::SearchRequest ();
+use org::allbinary::logic::io::AbDataOutputStream ();
+use org::allbinary::logic::io::DataOutputStreamFactory ();
+use org::allbinary::logic::io::InputOutputTypeData ();
+use org::allbinary::logic::io::StreamUtil ();
+use org::allbinary::logic::io::file::AbFile ();
+use org::allbinary::logic::io::file::directory::Directory ();
+use org::allbinary::logic::io::path::AbPath ();
+use org::allbinary::logic::io::path::AbPathData ();
+use org::allbinary::logic::string::SpecialCharacterUtil ();
+use org::allbinary::logic::string::StringMaker ();
+use org::allbinary::logic::string::StringUtil ();
+use org::allbinary::logic::string::regex::replace::Replace ();
+use org::allbinary::logic::string::tokens::UniqueTokens ();
+use org::allbinary::logic::system::security::licensing::AbeClientInformationInterface ();
+use org::allbinary::logic::system::security::licensing::ServiceClientInformationInterfaceFactory ();
+use org::allbinary::string::CommonPhoneStrings ();
+use org::allbinary::string::CommonSeps ();
+use org::allbinary::util::BasicArrayList ();
+use views::generic::inventory::InventoryColumnUtil ();
+use views::generic::inventory::InventorySearchUtil ();
+use views::admin::inventory::listings::ProductListingInterface ();
 
 1;
 

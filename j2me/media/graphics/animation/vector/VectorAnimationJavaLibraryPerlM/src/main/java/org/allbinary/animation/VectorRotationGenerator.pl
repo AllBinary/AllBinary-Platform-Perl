@@ -18,8 +18,9 @@ use warnings;
 use feature 'try';
 no warnings 'experimental::try';
 use POSIX ();
+use parent -norequire,'java::lang::Object';
 
-our $instance = 'org::allbinary::animation::VectorRotationGenerator'->new();
+tie our $instance, 'java::lang::LazyStatic', sub { 'org::allbinary::animation::VectorRotationGenerator'->new() };
 
 sub _init_fields {
     my ($self) = @_;
@@ -38,7 +39,7 @@ sub getInstance {
 sub new {
     my ($class) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
     return $self;
 }
 
@@ -88,17 +89,19 @@ sub getListAtAngle {
         return $graphicsPipe->getMatrix();
 }
 
-use org::allbinary::graphics::PointFactory;
-use org::allbinary::graphics::pipeline::BasicGraphicsPipeline;
-use org::allbinary::logic::NullUtil;
-use org::allbinary::logic::communication::log::LogUtil;
-use org::allbinary::math::Angle;
-use org::allbinary::math::AngleFactory;
-use org::allbinary::string::CommonStrings;
-use org::allbinary::util::BasicArrayList;
-use org::allbinary::util::BasicArrayListS;
-use org::allbinary::vector::VectorInfo;
-use org::allbinary::animation::VectorAnimationUtil;
+use java::lang::Object ();
+use java::lang::LazyStatic ();
+use org::allbinary::graphics::PointFactory ();
+use org::allbinary::graphics::pipeline::BasicGraphicsPipeline ();
+use org::allbinary::logic::NullUtil ();
+use org::allbinary::logic::communication::log::LogUtil ();
+use org::allbinary::math::Angle ();
+use org::allbinary::math::AngleFactory ();
+use org::allbinary::string::CommonStrings ();
+use org::allbinary::util::BasicArrayList ();
+use org::allbinary::util::BasicArrayListS ();
+use org::allbinary::vector::VectorInfo ();
+use org::allbinary::animation::VectorAnimationUtil ();
 
 1;
 

@@ -17,7 +17,7 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
-use parent -norequire,'javax::swing::JPanel';
+use parent -norequire,'java::lang::Object';
 
 
 sub _init_fields {
@@ -54,7 +54,7 @@ sub _init_fields {
 sub new {
     my ($class, $imageAnalysisResultsArray) = @_;
     my $self = $class->SUPER::new();
-    $self->_init_fields();
+    _init_fields($self);
         $self->initComponents();
         my $imageAnalysisResults = $imageAnalysisResultsArray->[0];
         $self->updateImageColorRangeResults($imageAnalysisResults);
@@ -142,10 +142,11 @@ sub updateImageColorRangeResults {
         $self->{maxBlueJTextField}->setText($imageColorResults->getColorRange()->getMaxBlue()->toString());
 }
 
-use org::allbinary::media::image::analysis::ImageAnalysisResults;
-use org::allbinary::media::image::analysis::ImageColorRangeResults;
-use org::allbinary::media::image::analysis::ImageColorResults;
-use org::allbinary::string::CommonPhoneStrings;
+use java::lang::Object ();
+use org::allbinary::media::image::analysis::ImageAnalysisResults ();
+use org::allbinary::media::image::analysis::ImageColorRangeResults ();
+use org::allbinary::media::image::analysis::ImageColorResults ();
+use org::allbinary::string::CommonPhoneStrings ();
 
 1;
 

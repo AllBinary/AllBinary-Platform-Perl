@@ -29,7 +29,7 @@ sub _init_fields {
 sub new {
     my ($class, $max) = @_;
     my $self = $class->SUPER::new();
-    $self->_init_fields();
+    _init_fields($self);
         $self->{pathFindingNodeCostInfoAdjacencyList} = [map { [(undef) x ($max)] } 1 .. ($max)];
     return $self;
 }
@@ -71,10 +71,11 @@ sub getTotalCost {
         return $self->getInstance($comingFromGeographicMapCellPosition, $geographicMapCellPosition)->{totalCostP};
 }
 
-use org::allbinary::media::graphics::geography::map::BasicGeographicMap;
-use org::allbinary::media::graphics::geography::map::GeographicMapCellPosition;
-use org::allbinary::media::graphics::geography::pathfinding::PathFindingNodeCostInfoFactoryBase;
-use org::allbinary::media::graphics::geography::pathfinding::PathFindingNodeCostInfo;
+use java::lang::Object ();
+use org::allbinary::media::graphics::geography::map::BasicGeographicMap ();
+use org::allbinary::media::graphics::geography::map::GeographicMapCellPosition ();
+use org::allbinary::media::graphics::geography::pathfinding::PathFindingNodeCostInfoFactoryBase ();
+use org::allbinary::media::graphics::geography::pathfinding::PathFindingNodeCostInfo ();
 
 1;
 

@@ -17,8 +17,9 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
-our $NULL_VIRTUAL_KEYBOARD = 'org::allbinary::android::input::VirtualKeyboard'->new();
+tie our $NULL_VIRTUAL_KEYBOARD, 'java::lang::LazyStatic', sub { 'org::allbinary::android::input::VirtualKeyboard'->new() };
 
 sub new {
     my ($class) = @_;
@@ -47,10 +48,12 @@ sub hide {
     my ($self) = @_;
 }
 
-use org::allbinary::input::event::VirtualKeyboardEvent;
-use org::allbinary::logic::communication::log::ForcedLogUtil;
-use org::allbinary::logic::util::event::AllBinaryEventObject;
-use org::allbinary::logic::util::event::EventStrings;
+use java::lang::Object ();
+use java::lang::LazyStatic ();
+use org::allbinary::input::event::VirtualKeyboardEvent ();
+use org::allbinary::logic::communication::log::ForcedLogUtil ();
+use org::allbinary::logic::util::event::AllBinaryEventObject ();
+use org::allbinary::logic::util::event::EventStrings ();
 
 1;
 

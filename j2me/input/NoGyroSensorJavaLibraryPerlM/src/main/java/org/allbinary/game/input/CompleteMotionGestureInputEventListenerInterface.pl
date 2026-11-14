@@ -27,7 +27,7 @@ sub onCompleteMotionGestureInputEvent {
     die "abstract method onCompleteMotionGestureInputEvent";
 }
 
-use org::allbinary::logic::util::event::EventListenerInterface;
+use org::allbinary::logic::util::event::EventListenerInterface ();
 
 1;
 

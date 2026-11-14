@@ -30,7 +30,7 @@ sub _init_fields {
 sub new {
     my ($class, $midletActivity, $progressCanvas) = @_;
     my $self = $class->SUPER::new();
-    $self->_init_fields();
+    _init_fields($self);
         my $midletActivity2 = $midletActivity;
         $self->{midletActivity} = $midletActivity2;
         $self->{progressCanvas} = $progressCanvas;
@@ -42,10 +42,11 @@ sub run {
     my ($self) = @_;
 }
 
-use android::app::Activity;
-use org::allbinary::android::activity::MidletActivityBase;
-use org::allbinary::android::activity::SimpleProgressActivityInterface;
-use org::allbinary::thread::ARunnable;
+use java::lang::Object ();
+# use android::app::Activity ();
+use org::allbinary::android::activity::MidletActivityBase ();
+use org::allbinary::android::activity::SimpleProgressActivityInterface ();
+use org::allbinary::thread::ARunnable ();
 
 1;
 

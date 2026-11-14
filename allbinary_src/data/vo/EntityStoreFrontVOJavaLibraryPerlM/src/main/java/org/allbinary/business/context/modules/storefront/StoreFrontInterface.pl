@@ -410,9 +410,9 @@ sub install {
     die "abstract method install";
 }
 
-use org::allbinary::business::context::configuration::ContextConfigurationInterface;
-use org::allbinary::data::tables::TableMappingInterface;
-use org::allbinary::util::BasicArrayList;
+use org::allbinary::business::context::configuration::ContextConfigurationInterface ();
+use org::allbinary::data::tables::TableMappingInterface ();
+use org::allbinary::util::BasicArrayList ();
 
 1;
 

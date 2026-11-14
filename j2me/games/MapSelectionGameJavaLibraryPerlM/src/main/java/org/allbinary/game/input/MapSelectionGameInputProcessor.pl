@@ -29,38 +29,14 @@ sub _init_fields {
     $self->{inputTimeHelper} = 'org::allbinary::time::TimeDelayHelper'->new(650);
     $self->{playerGameInput} = undef;
     $self->{lockedIndex} = undef;
-    $self->{abRunnable} = do {
-        package org::allbinary::thread::ABRunnable::AnonymousN66461 { our @ISA = ('org::allbinary::thread::ABRunnable');
-        
-
-        sub run {
-            my ($self) = @_;
-            try {
-                $self->setRunning(1);
-                'org::allbinary::media::audio::SecondaryPlayerQueueFactory'->getInstance()->add('org::allbinary::media::audio::SelectSound'->getInstance());
-                my $track = $self->{preGameSelectorPaintable}->getPreGameSelectionForm()->getSelectedIndex() + 1;
-                my $wave = $self->{raceTrackGeographicMapInterfaceFactoryInterface}->getFirstWaveWithTrack($track);
-                $self->{gameCanvas}->getLayerManager()->getGameInfo()->setCurrentLevel($wave);
-                $self->{gameCanvas}->buildGameInit(0);
-                'org::allbinary::game::input::event::GameKeyEventHandler'->getInstance()->removeListener($self->getPlayerGameInput());
-                $self->setRunning(0);
-            } catch ($e) {
-                $self->setRunning(0);
-                my $logUtil = 'org::allbinary::logic::communication::log::LogUtil'->getInstance();
-                my $commonStrings = 'org::allbinary::string::CommonStrings'->getInstance();
-                $logUtil->put($commonStrings->{EXCEPTION}, $self, $commonStrings->{RUN}, $e);
-            }
-        }
-        }
-        'org::allbinary::thread::ABRunnable::AnonymousN66461'->can('new') ? 'org::allbinary::thread::ABRunnable::AnonymousN66461'->new() : bless({}, 'org::allbinary::thread::ABRunnable::AnonymousN66461')
-    };
+    $self->{abRunnable} = 'org::allbinary::game::input::MapSelectionRunnable'->new($self);
 }
 
 
 sub new {
     my ($class, $gameCanvas, $raceTrackGeographicMapInterfaceFactoryInterface, $mapSelectorPaintable, $lockedIndex) = @_;
     my $self = $class->SUPER::new();
-    $self->_init_fields();
+    _init_fields($self);
         $self->{gameCanvas} = $gameCanvas;
         $self->{raceTrackGeographicMapInterfaceFactoryInterface} = $raceTrackGeographicMapInterfaceFactoryInterface;
         $self->{preGameSelectorPaintable} = $mapSelectorPaintable;
@@ -128,28 +104,73 @@ sub getPlayerGameInput {
     my ($self) = @_;
         return $self->{playerGameInput};
 }
+{
+    package org::allbinary::game::input::MapSelectionRunnable;
+    use strict;
+    use warnings;
+    use feature 'try';
+    no warnings 'experimental::try';
+    use parent -norequire,'org::allbinary::thread::ABRunnable';
+    
 
-# use javax::microedition::lcdui::Canvas;
-use org::allbinary::util::BasicArrayList;
-use org::allbinary::logic::system::security::licensing::LockedFeatureNotificationUtil;
-use org::allbinary::logic::system::security::licensing::LockedUtil;
-use org::allbinary::canvas::Processor;
-use org::allbinary::game::displayable::canvas::AllBinaryGameCanvas;
-use org::allbinary::game::displayable::canvas::PreGameSelectorPaintable;
-use org::allbinary::game::input::event::GameKeyEventHandler;
-use org::allbinary::game::input::event::GameKeyEventUtil;
-use org::allbinary::layer::AllBinaryLayerManager;
-use org::allbinary::logic::communication::log::LogUtil;
-use org::allbinary::string::CommonStrings;
-use org::allbinary::media::audio::SecondaryPlayerQueueFactory;
-use org::allbinary::media::audio::SelectSound;
-use org::allbinary::media::graphics::geography::map::racetrack::MultiLevelRaceTrackGeographicMapInterfaceFactoryInterface;
-use org::allbinary::thread::ABRunnable;
-use org::allbinary::thread::ThreadObjectUtil;
-use org::allbinary::time::TimeDelayHelper;
-use org::allbinary::game::input::GameInputProcessorInterface;
-use org::allbinary::game::input::PlayerGameInputCompositeInterface;
-use org::allbinary::game::input::GameInputProcessorComposite;
+    sub _init_fields {
+        my ($self) = @_;
+        $self->{inputProcessor} = undef;
+    }
+    
+
+    sub new {
+        my ($class, $inputProcessor) = @_;
+        my $self = $class->SUPER::new();
+        _init_fields($self);
+            $self->{inputProcessor} = $inputProcessor;
+        return $self;
+    }
+    
+
+    sub run {
+        my ($self) = @_;
+            try {
+                $self->setRunning(1);
+                'org::allbinary::media::audio::SecondaryPlayerQueueFactory'->getInstance()->add('org::allbinary::media::audio::SelectSound'->getInstance());
+                my $track = $self->{inputProcessor}->{preGameSelectorPaintable}->getPreGameSelectionForm()->getSelectedIndex() + 1;
+                my $wave = $self->{inputProcessor}->{raceTrackGeographicMapInterfaceFactoryInterface}->getFirstWaveWithTrack($track);
+                $self->{inputProcessor}->{gameCanvas}->getLayerManager()->getGameInfo()->setCurrentLevel($wave);
+                $self->{inputProcessor}->{gameCanvas}->buildGameInit(0);
+                'org::allbinary::game::input::event::GameKeyEventHandler'->getInstance()->removeListener($self->{inputProcessor}->getPlayerGameInput());
+                $self->setRunning(0);
+            } catch ($e) {
+                $self->setRunning(0);
+                my $logUtil = 'org::allbinary::logic::communication::log::LogUtil'->getInstance();
+                my $commonStrings = 'org::allbinary::string::CommonStrings'->getInstance();
+                $logUtil->put($commonStrings->{EXCEPTION}, $self, $commonStrings->{RUN}, $e);
+            }
+    }
+    }
+
+
+use java::lang::Object ();
+use javax::microedition::lcdui::Canvas ();
+use org::allbinary::util::BasicArrayList ();
+use org::allbinary::logic::system::security::licensing::LockedFeatureNotificationUtil ();
+use org::allbinary::logic::system::security::licensing::LockedUtil ();
+use org::allbinary::canvas::Processor ();
+use org::allbinary::game::displayable::canvas::AllBinaryGameCanvas ();
+use org::allbinary::game::displayable::canvas::PreGameSelectorPaintable ();
+use org::allbinary::game::input::event::GameKeyEventHandler ();
+use org::allbinary::game::input::event::GameKeyEventUtil ();
+use org::allbinary::layer::AllBinaryLayerManager ();
+use org::allbinary::logic::communication::log::LogUtil ();
+use org::allbinary::string::CommonStrings ();
+use org::allbinary::media::audio::SecondaryPlayerQueueFactory ();
+use org::allbinary::media::audio::SelectSound ();
+use org::allbinary::media::graphics::geography::map::racetrack::MultiLevelRaceTrackGeographicMapInterfaceFactoryInterface ();
+use org::allbinary::thread::ABRunnable ();
+use org::allbinary::thread::ThreadObjectUtil ();
+use org::allbinary::time::TimeDelayHelper ();
+use org::allbinary::game::input::GameInputProcessorInterface ();
+use org::allbinary::game::input::PlayerGameInputCompositeInterface ();
+use org::allbinary::game::input::GameInputProcessorComposite ();
 
 1;
 

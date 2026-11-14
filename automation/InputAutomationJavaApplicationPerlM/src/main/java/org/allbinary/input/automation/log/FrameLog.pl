@@ -17,10 +17,11 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
-our $frameBytes = ("" . "Frame: ")->getBytes();
-our $info = ("" . "Info: \n")->getBytes();
-our $actions = ("" . "Actions: \n")->getBytes();
+tie our $frameBytes, 'java::lang::LazyStatic', sub { ("" . "Frame: ")->getBytes() };
+tie our $info, 'java::lang::LazyStatic', sub { ("" . "Info: \n")->getBytes() };
+tie our $actions, 'java::lang::LazyStatic', sub { ("" . "Actions: \n")->getBytes() };
 
 sub _init_fields {
     my ($self) = @_;
@@ -33,7 +34,7 @@ sub _init_fields {
 sub new {
     my ($class, $frame) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
         $self->{frame} = $frame;
     return $self;
 }
@@ -87,14 +88,16 @@ sub getFrame {
         return $self->{frame};
 }
 
-use java::io::File;
-# use java::io::FileOutputStream;
-use org::allbinary::util::BasicArrayList;
-use org::allbinary::util::BasicArrayListD;
-use org::allbinary::input::automation::ImageOutputData;
-use org::allbinary::logic::java::number::LongUtil;
-use org::allbinary::logic::string::StringMaker;
-use org::allbinary::string::CommonSeps;
+use java::lang::Object ();
+use java::lang::LazyStatic ();
+use java::io::File ();
+# use java::io::FileOutputStream ();
+use org::allbinary::util::BasicArrayList ();
+use org::allbinary::util::BasicArrayListD ();
+use org::allbinary::input::automation::ImageOutputData ();
+use org::allbinary::logic::java::number::LongUtil ();
+use org::allbinary::logic::string::StringMaker ();
+use org::allbinary::string::CommonSeps ();
 
 1;
 

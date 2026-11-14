@@ -44,10 +44,10 @@ sub getOrders {
     die "abstract method getOrders";
 }
 
-use org::allbinary::business::context::modules::storefront::statistics::advertisements::StoreFrontAdvertisementsStatisticsInterface;
-use org::allbinary::business::context::modules::storefront::statistics::inventory::StoreFrontInventoryStatisticsInterface;
-use org::allbinary::business::context::modules::storefront::statistics::orders::history::StoreFrontOrdersHistoryStatisticsInterface;
-use org::allbinary::business::context::modules::storefront::statistics::users::StoreFrontUsersStatisticsInterface;
+use org::allbinary::business::context::modules::storefront::statistics::advertisements::StoreFrontAdvertisementsStatisticsInterface ();
+use org::allbinary::business::context::modules::storefront::statistics::inventory::StoreFrontInventoryStatisticsInterface ();
+use org::allbinary::business::context::modules::storefront::statistics::orders::history::StoreFrontOrdersHistoryStatisticsInterface ();
+use org::allbinary::business::context::modules::storefront::statistics::users::StoreFrontUsersStatisticsInterface ();
 
 1;
 

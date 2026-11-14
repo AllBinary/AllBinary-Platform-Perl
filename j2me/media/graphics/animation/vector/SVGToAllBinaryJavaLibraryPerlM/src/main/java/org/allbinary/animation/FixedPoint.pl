@@ -6,8 +6,9 @@ use warnings;
 use feature 'try';
 no warnings 'experimental::try';
 use POSIX ();
+use parent -norequire,'java::lang::Object';
 
-our $instance = 'org::allbinary::animation::FixedPoint'->new();
+tie our $instance, 'java::lang::LazyStatic', sub { 'org::allbinary::animation::FixedPoint'->new() };
 
 sub _init_fields {
     my ($self) = @_;
@@ -17,7 +18,7 @@ sub _init_fields {
 sub new {
     my ($class) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
     return $self;
 }
 
@@ -58,6 +59,8 @@ sub toInt {
         return POSIX::floor(($fixed) / (2 ** (16)));
 }
 
+use java::lang::Object ();
+use java::lang::LazyStatic ();
 
 1;
 

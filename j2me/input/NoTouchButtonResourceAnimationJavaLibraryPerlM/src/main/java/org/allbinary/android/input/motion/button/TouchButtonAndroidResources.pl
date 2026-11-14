@@ -31,7 +31,8 @@ sub init {
     my ($self) = @_;
 }
 
-use org::allbinary::init::Init;
+use java::lang::Object ();
+use org::allbinary::init::Init ();
 
 1;
 

@@ -34,7 +34,7 @@ sub remove {
     die "abstract method remove";
 }
 
-use org::allbinary::logic::communication::smtp::EmailInterface;
+use org::allbinary::logic::communication::smtp::EmailInterface ();
 
 1;
 

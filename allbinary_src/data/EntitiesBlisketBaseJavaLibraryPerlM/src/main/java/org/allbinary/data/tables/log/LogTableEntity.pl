@@ -29,7 +29,7 @@ sub _init_fields {
 sub new {
     my ($class) = @_;
     my $self = $class->SUPER::new('org::allbinary::business::init::db::LogDbInitInfo'->new());
-    $self->_init_fields();
+    _init_fields($self);
         # super(...) made $self above
         $self->setTableName($self->{tableName});
     return $self;
@@ -50,12 +50,32 @@ sub createTable {
         return $self->SUPER::createTable($self->createTableStatement());
 }
 
-use org::allbinary::business::entry::EntryData;
-use org::allbinary::business::init::db::LogDbInitInfo;
-use org::allbinary::logic::communication::http::request::AbeHttpRequestInfoData;
-use org::allbinary::logic::communication::sql::AbSqlBean;
-use org::allbinary::logic::string::StringMaker;
-use org::allbinary::data::tables::log::LogTableEntityInterface;
+
+sub deleteWhere {
+    my ($self, $key, $value) = @_;
+        $self->SUPER::deleteWhere($key, $value);
+}
+
+
+sub insert {
+    my ($self, $values) = @_;
+        $self->SUPER::insert($values);
+}
+
+
+sub dropTable {
+    my ($self) = @_;
+        return $self->SUPER::dropTable();
+}
+
+use java::lang::Object ();
+use org::allbinary::business::entry::EntryData ();
+use org::allbinary::business::init::db::LogDbInitInfo ();
+use org::allbinary::logic::communication::http::request::AbeHttpRequestInfoData ();
+use org::allbinary::logic::communication::sql::AbSqlBean ();
+use org::allbinary::logic::string::StringMaker ();
+use org::allbinary::util::BasicArrayList ();
+use org::allbinary::data::tables::log::LogTableEntityInterface ();
 
 1;
 

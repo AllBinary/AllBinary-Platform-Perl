@@ -20,8 +20,8 @@ no warnings 'experimental::try';
 use POSIX ();
 use parent -norequire,'org::allbinary::game::displayable::canvas::GameCommandCanvas';
 
-our $DISPLAY = 'javax::microedition::lcdui::Command'->new("Help", 'org::allbinary::logic::string::StringUtil'->getInstance()->{EMPTY_STRING}, $javax::microedition::lcdui::Command::SCREEN, 1);
-our $CLOSE = 'javax::microedition::lcdui::Command'->new("Close", 'org::allbinary::logic::string::StringUtil'->getInstance()->{EMPTY_STRING}, $javax::microedition::lcdui::Command::SCREEN, 1);
+tie our $DISPLAY, 'java::lang::LazyStatic', sub { 'javax::microedition::lcdui::Command'->new("Help", 'org::allbinary::logic::string::StringUtil'->getInstance()->{EMPTY_STRING}, $javax::microedition::lcdui::Command::SCREEN, 1) };
+tie our $CLOSE, 'java::lang::LazyStatic', sub { 'javax::microedition::lcdui::Command'->new("Close", 'org::allbinary::logic::string::StringUtil'->getInstance()->{EMPTY_STRING}, $javax::microedition::lcdui::Command::SCREEN, 1) };
 our $NAME = "GameInputMappingInstructionsCanvas";
 
 sub _init_fields {
@@ -37,7 +37,7 @@ sub _init_fields {
 sub new {
     my ($class, $commandListener, $allBinaryGameLayerManager) = @_;
     my $self = $class->SUPER::new($commandListener, $org::allbinary::game::displayable::canvas::GameInputMappingInstructionsCanvas::NAME, $allBinaryGameLayerManager->getBackgroundBasicColor(), $allBinaryGameLayerManager->getForegroundBasicColor());
-    $self->_init_fields();
+    _init_fields($self);
         # super(...) made $self above
         $self->{logUtil}->putF($self->{commonStrings}->{START}, $self, $self->{commonStrings}->{CONSTRUCTOR});
         $self->{colorFillPaintable} = 'org::allbinary::game::paint::ColorFillPaintableFactory'->getInstance()->getInstance($allBinaryGameLayerManager->getBackgroundBasicColor(), 0);
@@ -65,16 +65,18 @@ sub paint {
         $self->SUPER::paint($graphics);
 }
 
-# use javax::microedition::lcdui::Command;
-# use javax::microedition::lcdui::CommandListener;
-# use javax::microedition::lcdui::Graphics;
-use org::allbinary::game::layer::AllBinaryGameLayerManager;
-use org::allbinary::game::paint::ColorFillBasePaintable;
-use org::allbinary::game::paint::ColorFillPaintableFactory;
-use org::allbinary::graphics::Anchor;
-use org::allbinary::graphics::draw::DrawStringUtil;
-use org::allbinary::logic::string::StringUtil;
-use org::allbinary::game::displayable::canvas::GameCommandCanvas;
+use java::lang::Object ();
+use java::lang::LazyStatic ();
+use javax::microedition::lcdui::Command ();
+use javax::microedition::lcdui::CommandListener ();
+use javax::microedition::lcdui::Graphics ();
+use org::allbinary::game::layer::AllBinaryGameLayerManager ();
+use org::allbinary::game::paint::ColorFillBasePaintable ();
+use org::allbinary::game::paint::ColorFillPaintableFactory ();
+use org::allbinary::graphics::Anchor ();
+use org::allbinary::graphics::draw::DrawStringUtil ();
+use org::allbinary::logic::string::StringUtil ();
+use org::allbinary::game::displayable::canvas::GameCommandCanvas ();
 
 1;
 

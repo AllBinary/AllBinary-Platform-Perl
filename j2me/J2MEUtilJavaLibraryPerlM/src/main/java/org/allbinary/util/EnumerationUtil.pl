@@ -18,8 +18,9 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
-our $instance = 'org::allbinary::util::EnumerationUtil'->new();
+tie our $instance, 'java::lang::LazyStatic', sub { 'org::allbinary::util::EnumerationUtil'->new() };
 
 sub new {
     my ($class) = @_;
@@ -55,10 +56,12 @@ sub getAsArray {
         return $basicArrayList->toArray();
 }
 
-# use jsinterop::annotations::JsType;
-use java::util::Enumeration;
-# use jsinterop::annotations::JsMethod;
-use org::allbinary::util::BasicArrayListD;
+use java::lang::Object ();
+use java::lang::LazyStatic ();
+# use jsinterop::annotations::JsType ();
+use java::util::Enumeration ();
+# use jsinterop::annotations::JsMethod ();
+use org::allbinary::util::BasicArrayListD ();
 
 1;
 

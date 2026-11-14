@@ -31,7 +31,7 @@ sub _init_fields {
 sub new {
     my ($class, $width, $height, $basicColor) = @_;
     my $self = $class->SUPER::new();
-    $self->_init_fields();
+    _init_fields($self);
         $self->{width} = $width;
         $self->{height} = $height;
         $self->setBasicColorP($basicColor);
@@ -50,11 +50,24 @@ sub paintXY {
         $graphics->drawArc($x, $y, $self->{width}, $self->{height}, 0, $self->{TOTAL_ANGLE});
 }
 
-# use javax::microedition::lcdui::Graphics;
-use org::allbinary::animation::Animation;
-use org::allbinary::graphics::color::BasicColor;
-use org::allbinary::graphics::color::ColorCompositeInterface;
-use org::allbinary::math::AngleFactory;
+
+sub getBasicColorP {
+    my ($self) = @_;
+        return $self->SUPER::getBasicColorP();
+}
+
+
+sub setBasicColorP {
+    my ($self, $basicColor) = @_;
+        $self->SUPER::setBasicColorP($basicColor);
+}
+
+use java::lang::Object ();
+use javax::microedition::lcdui::Graphics ();
+use org::allbinary::animation::Animation ();
+use org::allbinary::graphics::color::BasicColor ();
+use org::allbinary::graphics::color::ColorCompositeInterface ();
+use org::allbinary::math::AngleFactory ();
 
 1;
 

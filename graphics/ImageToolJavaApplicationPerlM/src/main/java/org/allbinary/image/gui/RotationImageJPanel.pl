@@ -17,7 +17,7 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
-use parent -norequire,'javax::swing::JPanel','org::allbinary::media::image::ImageProcessedVisitor';
+use parent -norequire,'java::lang::Object','org::allbinary::media::image::ImageProcessedVisitor';
 
 
 sub _init_fields {
@@ -42,7 +42,7 @@ sub _init_fields {
 sub new {
     my ($class, $imageProcessorInput) = @_;
     my $self = $class->SUPER::new();
-    $self->_init_fields();
+    _init_fields($self);
         # super(...) made $self above
         $self->initComponents();
         $self->{imageProcessorInput} = $imageProcessorInput;
@@ -53,7 +53,7 @@ sub new {
 sub process {
     my ($self) = @_;
         do {
-            package java::lang::Thread::AnonymousN66309 { our @ISA = ('java::lang::Thread');
+            package java::lang::Thread::AnonymousN66309 { our @ISA = ('java::lang::Thread', 'java::lang::Object');
             
 
             sub run {
@@ -75,7 +75,7 @@ sub process {
 sub initComponents {
     my ($self) = @_;
         $self->{jPanel1} = do {
-            package javax::swing::JPanel::AnonymousN66685 { our @ISA = ('javax::swing::JPanel');
+            package javax::swing::JPanel::AnonymousN66685 { our @ISA = ('javax::swing::JPanel', 'java::lang::Object');
             
 
             sub paint {
@@ -101,7 +101,7 @@ sub initComponents {
         $jPanel1Layout->setVerticalGroup($jPanel1Layout->createParallelGroup($org::allbinary::image::gui::org::jdesktop->{layout}->{GroupLayout}->{LEADING})->add(0, 227, 32767));
         $self->{generateJButton}->setText("Generate");
         $self->{generateJButton}->addActionListener(do {
-            package java::awt::event::ActionListener::AnonymousN67714 { our @ISA = ('java::awt::event::ActionListener');
+            package java::awt::event::ActionListener::AnonymousN67714 { our @ISA = ('java::awt::event::ActionListener', 'java::lang::Object');
             
 
             sub actionPerformed {
@@ -113,7 +113,7 @@ sub initComponents {
         });
         $self->{totalAngleJComboBox}->setModel('javax::swing::DefaultComboBoxModel'->new([$self->{commonStrings}->{UP}, $self->{commonStrings}->{DOWN}, "-90", "90"]));
         $self->{totalAngleJComboBox}->addActionListener(do {
-            package java::awt::event::ActionListener::AnonymousN67999 { our @ISA = ('java::awt::event::ActionListener');
+            package java::awt::event::ActionListener::AnonymousN67999 { our @ISA = ('java::awt::event::ActionListener', 'java::lang::Object');
             
 
             sub actionPerformed {
@@ -180,21 +180,22 @@ sub visit {
         $self->{logUtil}->putF("File: " . $file . " Wrote: " . $isWritten, $self, $self->{commonStrings}->{RUN});
 }
 
-# use java::awt;
-# use java::awt::image::BufferedImage;
-# use java::awt::image::RenderedImage;
-use java::io::File;
-# use java::io::IOException;
-# use javax::imageio::ImageIO;
-use org::allbinary::logic::communication::log::LogUtil;
-use org::allbinary::logic::string::StringMaker;
-use org::allbinary::media::image::ImageArrayRotationUtil;
-use org::allbinary::media::image::ImageProcessedVisitor;
-use org::allbinary::media::image::ImageProcessorInput;
-use org::allbinary::media::image::ImageStrings;
-use org::allbinary::string::CommonSeps;
-use org::allbinary::string::CommonStrings;
-use java::lang::Thread;
+use java::lang::Object ();
+# use java::awt ();
+# use java::awt::image::BufferedImage ();
+# use java::awt::image::RenderedImage ();
+use java::io::File ();
+# use java::io::IOException ();
+# use javax::imageio::ImageIO ();
+use org::allbinary::logic::communication::log::LogUtil ();
+use org::allbinary::logic::string::StringMaker ();
+use org::allbinary::media::image::ImageArrayRotationUtil ();
+use org::allbinary::media::image::ImageProcessedVisitor ();
+use org::allbinary::media::image::ImageProcessorInput ();
+use org::allbinary::media::image::ImageStrings ();
+use org::allbinary::string::CommonSeps ();
+use org::allbinary::string::CommonStrings ();
+use java::lang::Thread ();
 
 1;
 

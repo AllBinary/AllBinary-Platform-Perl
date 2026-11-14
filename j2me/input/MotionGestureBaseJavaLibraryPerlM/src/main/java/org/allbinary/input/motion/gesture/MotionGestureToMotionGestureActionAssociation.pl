@@ -17,6 +17,7 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
 
 sub _init_fields {
@@ -29,7 +30,7 @@ sub _init_fields {
 sub new {
     my ($class, $list, $commandAction) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
         $self->{list} = $list;
         $self->{motionGestureAction} = $commandAction;
     return $self;
@@ -74,8 +75,9 @@ sub isMotionGestureArrayEquals {
         return 1;
 }
 
-use org::allbinary::game::input::CompleteMotionGestureInputEvent;
-use org::allbinary::util::BasicArrayList;
+use java::lang::Object ();
+use org::allbinary::game::input::CompleteMotionGestureInputEvent ();
+use org::allbinary::util::BasicArrayList ();
 
 1;
 

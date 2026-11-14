@@ -34,7 +34,7 @@ sub _init_fields {
 sub new {
     my ($class, $savedCaptureGenericProfileDataWorkerType) = @_;
     my $self = $class->SUPER::new();
-    $self->_init_fields();
+    _init_fields($self);
         $self->{savedCaptureGenericProfileDataWorkerType} = $savedCaptureGenericProfileDataWorkerType;
         $self->{screenScavangerRobot} = 'org::allbinary::input::media::image::capture::ScreenScavangerRobot'->new();
         $org::allbinary::input::automation::module::generic::SavedCaptureImagesWorker::index = 'org::allbinary::input::media::image::capture::ProcessingFrameIndexFactory'->next();
@@ -94,24 +94,25 @@ sub run {
         }
 }
 
-# use java::awt::image::BufferedImage;
-use java::io::File;
-# use javax::imageio::ImageIO;
-use org::allbinary::input::automation::module::generic::configuration::profile::SavedCaptureGenericProfileDataWorkerType;
-use org::allbinary::input::media::image::capture::CaptureWorkerInterface;
-use org::allbinary::input::media::image::capture::CapturedBufferedImagesCacheSingleton;
-use org::allbinary::input::media::image::capture::CapturedImageWorkerResultsEvent;
-use org::allbinary::input::media::image::capture::ProcessingFrameIndexFactory;
-use org::allbinary::input::media::image::capture::ScreenScavangerRobot;
-use org::allbinary::logic::communication::log::LogUtil;
-use org::allbinary::logic::java::number::LongUtil;
-use org::allbinary::logic::string::StringMaker;
-use org::allbinary::logic::util::event::handler::BasicEventHandler;
-use org::allbinary::logic::visual::media::MediaDataFactory;
-use org::allbinary::media::image::cache::BufferedImageFrameCacheable;
-use org::allbinary::string::CommonLabels;
-use org::allbinary::string::CommonStrings;
-use org::allbinary::time::TimeDelayHelper;
+use java::lang::Object ();
+# use java::awt::image::BufferedImage ();
+use java::io::File ();
+# use javax::imageio::ImageIO ();
+use org::allbinary::input::automation::module::generic::configuration::profile::SavedCaptureGenericProfileDataWorkerType ();
+use org::allbinary::input::media::image::capture::CaptureWorkerInterface ();
+use org::allbinary::input::media::image::capture::CapturedBufferedImagesCacheSingleton ();
+use org::allbinary::input::media::image::capture::CapturedImageWorkerResultsEvent ();
+use org::allbinary::input::media::image::capture::ProcessingFrameIndexFactory ();
+use org::allbinary::input::media::image::capture::ScreenScavangerRobot ();
+use org::allbinary::logic::communication::log::LogUtil ();
+use org::allbinary::logic::java::number::LongUtil ();
+use org::allbinary::logic::string::StringMaker ();
+use org::allbinary::logic::util::event::handler::BasicEventHandler ();
+use org::allbinary::logic::visual::media::MediaDataFactory ();
+use org::allbinary::media::image::cache::BufferedImageFrameCacheable ();
+use org::allbinary::string::CommonLabels ();
+use org::allbinary::string::CommonStrings ();
+use org::allbinary::time::TimeDelayHelper ();
 
 1;
 

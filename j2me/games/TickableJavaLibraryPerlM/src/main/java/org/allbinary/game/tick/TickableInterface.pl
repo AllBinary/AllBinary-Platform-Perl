@@ -28,8 +28,8 @@ sub processTick {
     die "abstract method processTick";
 }
 
-use org::allbinary::layer::AllBinaryLayerManager;
-use org::allbinary::layer::NamedInterface;
+use org::allbinary::layer::AllBinaryLayerManager ();
+use org::allbinary::layer::NamedInterface ();
 
 1;
 

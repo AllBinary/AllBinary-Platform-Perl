@@ -32,9 +32,10 @@ sub getDefault {
         return 'org::allbinary::game::input::LaptopDefaultGameInputMapping'->new()->getInputMapping();
 }
 
-use org::allbinary::game::input::mapping::InputToGameKeyMapping;
-use org::allbinary::game::input::PCGameInputMapping;
-use org::allbinary::game::input::LaptopDefaultGameInputMapping;
+use java::lang::Object ();
+use org::allbinary::game::input::mapping::InputToGameKeyMapping ();
+use org::allbinary::game::input::PCGameInputMapping ();
+use org::allbinary::game::input::LaptopDefaultGameInputMapping ();
 
 1;
 

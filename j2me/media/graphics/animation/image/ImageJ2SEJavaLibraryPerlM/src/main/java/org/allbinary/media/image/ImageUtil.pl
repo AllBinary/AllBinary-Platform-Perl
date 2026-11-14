@@ -17,8 +17,9 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
-our $instance = 'org::allbinary::media::image::ImageUtil'->new();
+tie our $instance, 'java::lang::LazyStatic', sub { 'org::allbinary::media::image::ImageUtil'->new() };
 
 sub _init_fields {
     my ($self) = @_;
@@ -38,7 +39,7 @@ sub getInstance {
 sub new {
     my ($class) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
     return $self;
 }
 
@@ -207,20 +208,22 @@ sub toString {
         return $stringBuffer->toString();
 }
 
-# use java::awt::Graphics2D;
-# use java::awt::GraphicsConfiguration;
-# use java::awt::GraphicsDevice;
-# use java::awt::GraphicsEnvironment;
-# use java::awt::Transparency;
-# use java::awt::geom::AffineTransform;
-# use java::awt::image::BufferedImage;
-# use javax::microedition::lcdui::Image;
-use org::allbinary::logic::string::StringMaker;
-use org::allbinary::string::CommonLabels;
-use org::allbinary::string::CommonSeps;
-use org::allbinary::string::CommonStrings;
-use org::microemu::device::j2se::J2SEImmutableImage;
-use org::microemu::device::j2se::J2SEMutableImage;
+use java::lang::Object ();
+use java::lang::LazyStatic ();
+# use java::awt::Graphics2D ();
+# use java::awt::GraphicsConfiguration ();
+# use java::awt::GraphicsDevice ();
+# use java::awt::GraphicsEnvironment ();
+# use java::awt::Transparency ();
+# use java::awt::geom::AffineTransform ();
+# use java::awt::image::BufferedImage ();
+use javax::microedition::lcdui::Image ();
+use org::allbinary::logic::string::StringMaker ();
+use org::allbinary::string::CommonLabels ();
+use org::allbinary::string::CommonSeps ();
+use org::allbinary::string::CommonStrings ();
+use org::microemu::device::j2se::J2SEImmutableImage ();
+use org::microemu::device::j2se::J2SEMutableImage ();
 
 1;
 

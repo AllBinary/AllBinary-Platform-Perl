@@ -17,7 +17,7 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
-use parent -norequire,'org::allbinary::graphics::displayable::ScalableListener';
+use parent -norequire,'java::lang::Object','org::allbinary::graphics::displayable::ScalableListener';
 
 
 sub new {
@@ -49,7 +49,8 @@ sub scale {
     my ($self, $ratio) = @_;
 }
 
-use org::allbinary::graphics::displayable::ScalableListener;
+use java::lang::Object ();
+use org::allbinary::graphics::displayable::ScalableListener ();
 
 1;
 

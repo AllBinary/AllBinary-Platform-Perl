@@ -39,14 +39,15 @@ sub visit {
         $lifeInterface->add(((int(1) + 32768) % 65536 - 32768));
 }
 
-# use javax::microedition::lcdui::Graphics;
-use org::allbinary::game::ag::life::Life;
-use org::allbinary::game::ag::life::LifeVisitorInterface;
-use org::allbinary::graphics::PointFactory;
-use org::allbinary::graphics::Rectangle;
-use org::allbinary::layer::AllBinaryLayer;
-use org::allbinary::logic::string::StringUtil;
-use org::allbinary::view::ViewPosition;
+use java::lang::Object ();
+use javax::microedition::lcdui::Graphics ();
+use org::allbinary::game::ag::life::Life ();
+use org::allbinary::game::ag::life::LifeVisitorInterface ();
+use org::allbinary::graphics::PointFactory ();
+use org::allbinary::graphics::Rectangle ();
+use org::allbinary::layer::AllBinaryLayer ();
+use org::allbinary::logic::string::StringUtil ();
+use org::allbinary::view::ViewPosition ();
 
 1;
 

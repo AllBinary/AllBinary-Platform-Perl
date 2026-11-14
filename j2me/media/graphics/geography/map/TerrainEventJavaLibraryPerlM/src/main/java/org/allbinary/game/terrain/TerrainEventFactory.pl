@@ -17,7 +17,7 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
-use parent -norequire,'org::allbinary::logic::util::event::AllBinaryEventObjectFactoryInterface';
+use parent -norequire,'java::lang::Object','org::allbinary::logic::util::event::AllBinaryEventObjectFactoryInterface';
 
 
 
@@ -33,10 +33,11 @@ sub getInstance {
         return 'org::allbinary::game::terrain::TerrainEvent'->new('org::allbinary::logic::NullUtil'->getInstance()->{NULL_OBJECT});
 }
 
-use org::allbinary::logic::NullUtil;
-use org::allbinary::logic::util::event::AllBinaryEventObject;
-use org::allbinary::logic::util::event::AllBinaryEventObjectFactoryInterface;
-use org::allbinary::game::terrain::TerrainEvent;
+use java::lang::Object ();
+use org::allbinary::logic::NullUtil ();
+use org::allbinary::logic::util::event::AllBinaryEventObject ();
+use org::allbinary::logic::util::event::AllBinaryEventObjectFactoryInterface ();
+use org::allbinary::game::terrain::TerrainEvent ();
 
 1;
 

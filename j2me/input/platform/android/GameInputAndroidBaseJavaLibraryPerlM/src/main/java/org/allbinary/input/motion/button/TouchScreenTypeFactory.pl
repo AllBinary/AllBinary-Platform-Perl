@@ -17,8 +17,9 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
-our $instance = 'org::allbinary::input::motion::button::TouchScreenTypeFactory'->new();
+tie our $instance, 'java::lang::LazyStatic', sub { 'org::allbinary::input::motion::button::TouchScreenTypeFactory'->new() };
 
 sub new {
     my ($class) = @_;
@@ -59,12 +60,14 @@ sub update {
         }
 }
 
-use android::app::Activity;
-use android::content::res::Configuration;
-use org::allbinary::string::CommonStrings;
-use org::allbinary::logic::communication::log::PreLogUtil;
-use org::allbinary::input::motion::button::TouchScreenFactory;
-use org::allbinary::input::motion::button::TouchScreenTypesFactory;
+use java::lang::Object ();
+use java::lang::LazyStatic ();
+# use android::app::Activity ();
+# use android::content::res::Configuration ();
+use org::allbinary::string::CommonStrings ();
+use org::allbinary::logic::communication::log::PreLogUtil ();
+use org::allbinary::input::motion::button::TouchScreenFactory ();
+use org::allbinary::input::motion::button::TouchScreenTypesFactory ();
 
 1;
 

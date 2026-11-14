@@ -17,6 +17,7 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
 
 sub _init_fields {
@@ -29,7 +30,7 @@ sub _init_fields {
 sub new {
     my ($class, $hashMap) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
         $self->{current} = $hashMap->get("current");
         $self->{total} = $hashMap->get("total");
     return $self;
@@ -47,7 +48,8 @@ sub getTotal {
         return $self->{total};
 }
 
-use java::util::HashMap;
+use java::lang::Object ();
+use java::util::HashMap ();
 
 1;
 

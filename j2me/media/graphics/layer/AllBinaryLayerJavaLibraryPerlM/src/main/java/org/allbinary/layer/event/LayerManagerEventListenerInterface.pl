@@ -35,7 +35,7 @@ sub onDeleteLayerManagerEvent {
     die "abstract method onDeleteLayerManagerEvent";
 }
 
-use org::allbinary::logic::util::event::EventListenerInterface;
+use org::allbinary::logic::util::event::EventListenerInterface ();
 
 1;
 

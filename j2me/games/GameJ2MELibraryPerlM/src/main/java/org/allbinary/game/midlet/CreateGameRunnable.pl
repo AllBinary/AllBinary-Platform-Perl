@@ -17,6 +17,7 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
 
 sub _init_fields {
@@ -32,7 +33,7 @@ sub _init_fields {
 sub new {
     my ($class, $demoGameMidlet, $hashtable) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
         $self->{demoGameMidlet} = $demoGameMidlet;
         $self->{hashtable} = $hashtable;
         $self->{startGameMidletEvent} = 'org::allbinary::game::midlet::DemoGameMidletEvent'->new($self, 'org::allbinary::game::midlet::DemoGameMidletStateFactory'->getInstance()->{START_GAME});
@@ -57,15 +58,16 @@ sub run {
         }
 }
 
-use org::allbinary::graphics::canvas::transition::progress::ProgressCanvas;
-use org::allbinary::graphics::canvas::transition::progress::ProgressCanvasFactory;
-use org::allbinary::graphics::displayable::command::MyCommandsFactory;
-use org::allbinary::logic::communication::log::LogUtil;
-use org::allbinary::string::CommonStrings;
-use org::allbinary::util::ABHashtable;
-use org::allbinary::game::midlet::DemoGameMidletEvent;
-use org::allbinary::game::midlet::DemoGameMidletStateFactory;
-use org::allbinary::game::midlet::DemoGameMidletEventHandler;
+use java::lang::Object ();
+use org::allbinary::graphics::canvas::transition::progress::ProgressCanvas ();
+use org::allbinary::graphics::canvas::transition::progress::ProgressCanvasFactory ();
+use org::allbinary::graphics::displayable::command::MyCommandsFactory ();
+use org::allbinary::logic::communication::log::LogUtil ();
+use org::allbinary::string::CommonStrings ();
+use org::allbinary::util::ABHashtable ();
+use org::allbinary::game::midlet::DemoGameMidletEvent ();
+use org::allbinary::game::midlet::DemoGameMidletStateFactory ();
+use org::allbinary::game::midlet::DemoGameMidletEventHandler ();
 
 1;
 

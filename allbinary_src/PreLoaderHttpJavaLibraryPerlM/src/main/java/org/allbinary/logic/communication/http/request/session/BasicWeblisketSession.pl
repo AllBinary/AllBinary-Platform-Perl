@@ -17,6 +17,7 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
 
 sub _init_fields {
@@ -29,7 +30,7 @@ sub _init_fields {
 sub new {
     my ($class, $pageContext) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
         $self->{pageContext} = $pageContext;
         my $request = $pageContext->getRequest();
         $self->{session} = $request->getSession(1);
@@ -167,16 +168,17 @@ sub getLastAccessedTime {
         return $lastAccessedTime;
 }
 
-# use javax::servlet::http::HttpServletRequest;
-# use javax::servlet::http::HttpSession;
-# use javax::servlet::jsp::PageContext;
-use org::allbinary::business::context::modules::storefront::StoreFrontData;
-use org::allbinary::business::user::UserData;
-use org::allbinary::business::user::commerce::money::payment::gateway::PaymentGatewayData;
-use org::allbinary::business::user::role::BasicUserRole;
-use org::allbinary::business::user::role::BasicUserRoleData;
-use org::allbinary::logic::java::bool::BooleanFactory;
-use org::allbinary::logic::communication::http::request::session::WeblisketSessionData;
+use java::lang::Object ();
+# use javax::servlet::http::HttpServletRequest ();
+# use javax::servlet::http::HttpSession ();
+# use javax::servlet::jsp::PageContext ();
+use org::allbinary::business::context::modules::storefront::StoreFrontData ();
+use org::allbinary::business::user::UserData ();
+use org::allbinary::business::user::commerce::money::payment::gateway::PaymentGatewayData ();
+use org::allbinary::business::user::role::BasicUserRole ();
+use org::allbinary::business::user::role::BasicUserRoleData ();
+use org::allbinary::logic::java::bool::BooleanFactory ();
+use org::allbinary::logic::communication::http::request::session::WeblisketSessionData ();
 
 1;
 

@@ -36,9 +36,10 @@ sub paintXY {
         $graphics->fillRect($ax, $self->getY() - 1, $self->{x2}, $self->{thickness});
 }
 
-# use javax::microedition::lcdui::Graphics;
-use org::allbinary::layer::AllBinaryLayer;
-use org::allbinary::game::health::HealthBarAnimation;
+use java::lang::Object ();
+use javax::microedition::lcdui::Graphics ();
+use org::allbinary::layer::AllBinaryLayer ();
+use org::allbinary::game::health::HealthBarAnimation ();
 
 1;
 

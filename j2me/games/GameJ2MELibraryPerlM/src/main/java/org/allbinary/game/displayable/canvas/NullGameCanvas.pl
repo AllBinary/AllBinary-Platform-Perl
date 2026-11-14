@@ -19,7 +19,7 @@ use feature 'try';
 no warnings 'experimental::try';
 use parent -norequire,'org::allbinary::game::displayable::canvas::AllBinaryGameCanvas';
 
-our $instance = 'org::allbinary::logic::NullUtil'->getInstance()->{NULL_OBJECT};
+tie our $instance, 'java::lang::LazyStatic', sub { 'org::allbinary::logic::NullUtil'->getInstance()->{NULL_OBJECT} };
 our $NO_GAME = "No Background Game";
 our $TYPE = 1;
 
@@ -62,7 +62,7 @@ sub createCanvas {
 sub new {
     my ($class, $gameLayerManager) = @_;
     my $self = $class->SUPER::new($javax::microedition::lcdui::NullCommandListener::NULL_COMMAND_LISTENER, $gameLayerManager, 'org::allbinary::game::score::NoHighScoresFactory'->getInstance(), $org::allbinary::game::init::BasicBuildGameInitializerFactory::NULL_BASE_BUILD_GMAE_INITIALIZER_FACTORY, 0);
-    $self->_init_fields();
+    _init_fields($self);
         # super(...) made $self above
         $self->SUPER::setWait(1200);
     return $self;
@@ -133,16 +133,18 @@ sub getType {
         return $org::allbinary::game::displayable::canvas::NullGameCanvas::TYPE;
 }
 
-# use javax::microedition::lcdui::CommandListener;
-# use javax::microedition::lcdui::Graphics;
-# use javax::microedition::lcdui::NullCommandListener;
-use org::allbinary::game::init::BasicBuildGameInitializerFactory;
-use org::allbinary::game::layer::AllBinaryGameLayerManager;
-use org::allbinary::game::score::NoHighScoresFactory;
-use org::allbinary::logic::NullUtil;
-use org::allbinary::logic::communication::log::LogUtil;
-use org::allbinary::string::CommonStrings;
-use org::allbinary::game::displayable::canvas::AllBinaryGameCanvas;
+use java::lang::Object ();
+use java::lang::LazyStatic ();
+use javax::microedition::lcdui::CommandListener ();
+use javax::microedition::lcdui::Graphics ();
+use javax::microedition::lcdui::NullCommandListener ();
+use org::allbinary::game::init::BasicBuildGameInitializerFactory ();
+use org::allbinary::game::layer::AllBinaryGameLayerManager ();
+use org::allbinary::game::score::NoHighScoresFactory ();
+use org::allbinary::logic::NullUtil ();
+use org::allbinary::logic::communication::log::LogUtil ();
+use org::allbinary::string::CommonStrings ();
+use org::allbinary::game::displayable::canvas::AllBinaryGameCanvas ();
 
 1;
 

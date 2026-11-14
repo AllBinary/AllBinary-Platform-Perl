@@ -17,6 +17,7 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
 
 
@@ -54,8 +55,9 @@ sub isCollision {
         }
 }
 
-# use java::awt;
-use org::allbinary::graphics::GPoint;
+use java::lang::Object ();
+# use java::awt ();
+use org::allbinary::graphics::GPoint ();
 
 1;
 

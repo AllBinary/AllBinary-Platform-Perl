@@ -17,7 +17,7 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
-use parent -norequire,'org::allbinary::input::automation::module::InputAutomationActionInterface';
+use parent -norequire,'java::lang::Object','org::allbinary::input::automation::module::InputAutomationActionInterface';
 
 
 
@@ -39,8 +39,9 @@ sub getInputRobotInterfaceArray {
         return undef;
 }
 
-use org::allbinary::input::automation::module::InputAutomationActionInterface;
-use org::allbinary::input::automation::robot::InputRobotInterface;
+use java::lang::Object ();
+use org::allbinary::input::automation::module::InputAutomationActionInterface ();
+use org::allbinary::input::automation::robot::InputRobotInterface ();
 
 1;
 

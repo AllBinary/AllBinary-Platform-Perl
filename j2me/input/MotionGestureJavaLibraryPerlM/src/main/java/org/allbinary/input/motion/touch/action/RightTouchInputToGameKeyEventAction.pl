@@ -19,7 +19,7 @@ use feature 'try';
 no warnings 'experimental::try';
 use parent -norequire,'org::allbinary::game::input::motion::action::GameKeyCompleteMotionGestureInputEvent';
 
-our $instance = 'org::allbinary::logic::NullUtil'->getInstance()->{NULL_OBJECT};
+tie our $instance, 'java::lang::LazyStatic', sub { 'org::allbinary::logic::NullUtil'->getInstance()->{NULL_OBJECT} };
 
 
 sub getInstance {
@@ -38,10 +38,12 @@ sub new {
     return $self;
 }
 
-use org::allbinary::game::input::PlatformInputMappingFactory;
-use org::allbinary::game::input::motion::action::GameKeyCompleteMotionGestureInputEvent;
-use org::allbinary::input::motion::gesture::TouchMotionGestureFactory;
-use org::allbinary::logic::NullUtil;
+use java::lang::Object ();
+use java::lang::LazyStatic ();
+use org::allbinary::game::input::PlatformInputMappingFactory ();
+use org::allbinary::game::input::motion::action::GameKeyCompleteMotionGestureInputEvent ();
+use org::allbinary::input::motion::gesture::TouchMotionGestureFactory ();
+use org::allbinary::logic::NullUtil ();
 
 1;
 

@@ -30,7 +30,7 @@ sub _init_fields {
 sub new {
     my ($class, $groupInterface) = @_;
     my $self = $class->SUPER::new($groupInterface);
-    $self->_init_fields();
+    _init_fields($self);
         # super(...) made $self above
         my $basicColorFactory = 'org::allbinary::graphics::color::BasicColorFactory'->getInstance();
         $self->{noMoneyGameNotificationEvent} = 'org::allbinary::game::layer::hud::event::GameNotificationEvent'->new($self, 'org::allbinary::game::layer::RTSGameStrings'->getInstance()->{NO_MONEY}, 'org::allbinary::logic::math::SmallIntegerSingletonFactory'->getInstance()->getAt(2), $basicColorFactory->{WHITE}, 'org::allbinary::logic::java::bool::BooleanFactory'->getInstance()->{FALSE});
@@ -77,30 +77,31 @@ sub processGameSpecific {
         }
 }
 
-use org::allbinary::game::layer::RTSGameStrings;
-use org::allbinary::game::layer::RTSInterface;
-use org::allbinary::game::layer::RTSPlayerLayerInterface;
-use org::allbinary::game::layer::TechnologyRTSInterfaceImageItem;
-use org::allbinary::game::layer::capital::Capital;
-use org::allbinary::game::rts::technology::event::TechEventHandler;
-use org::allbinary::graphics::form::item::ABCustomItem;
-use org::allbinary::media::audio::BuildingSound;
-use org::allbinary::string::CommonStrings;
-use org::allbinary::logic::java::bool::BooleanFactory;
-use org::allbinary::game::identification::Group;
-use org::allbinary::game::layer::AllBinaryGameLayerManager;
-use org::allbinary::game::layer::hud::event::GameNotificationEvent;
-use org::allbinary::game::layer::hud::event::GameNotificationEventHandler;
-use org::allbinary::game::layer::special::CollidableDestroyableDamageableLayer;
-use org::allbinary::graphics::color::BasicColorFactory;
-use org::allbinary::layer::AllBinaryLayerManager;
-use org::allbinary::logic::util::event::AllBinaryEventObject;
-use org::allbinary::logic::math::SmallIntegerSingletonFactory;
-use org::allbinary::logic::string::StringMaker;
-use org::allbinary::media::audio::ErrorSound;
-use org::allbinary::media::graphics::geography::map::BasicGeographicMap;
-use org::allbinary::media::graphics::geography::map::GeographicMapCompositeInterface;
-use org::allbinary::game::input::form::RTSFormInput;
+use java::lang::Object ();
+use org::allbinary::game::layer::RTSGameStrings ();
+use org::allbinary::game::layer::RTSInterface ();
+use org::allbinary::game::layer::RTSPlayerLayerInterface ();
+use org::allbinary::game::layer::TechnologyRTSInterfaceImageItem ();
+use org::allbinary::game::layer::capital::Capital ();
+use org::allbinary::game::rts::technology::event::TechEventHandler ();
+use org::allbinary::graphics::form::item::ABCustomItem ();
+use org::allbinary::media::audio::BuildingSound ();
+use org::allbinary::string::CommonStrings ();
+use org::allbinary::logic::java::bool::BooleanFactory ();
+use org::allbinary::game::identification::Group ();
+use org::allbinary::game::layer::AllBinaryGameLayerManager ();
+use org::allbinary::game::layer::hud::event::GameNotificationEvent ();
+use org::allbinary::game::layer::hud::event::GameNotificationEventHandler ();
+use org::allbinary::game::layer::special::CollidableDestroyableDamageableLayer ();
+use org::allbinary::graphics::color::BasicColorFactory ();
+use org::allbinary::layer::AllBinaryLayerManager ();
+use org::allbinary::logic::util::event::AllBinaryEventObject ();
+use org::allbinary::logic::math::SmallIntegerSingletonFactory ();
+use org::allbinary::logic::string::StringMaker ();
+use org::allbinary::media::audio::ErrorSound ();
+use org::allbinary::media::graphics::geography::map::BasicGeographicMap ();
+use org::allbinary::media::graphics::geography::map::GeographicMapCompositeInterface ();
+use org::allbinary::game::input::form::RTSFormInput ();
 
 1;
 

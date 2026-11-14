@@ -17,9 +17,9 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
-use parent -norequire,'org::allbinary::game::layer::PathFindingLayerInterface';
+use parent -norequire,'java::lang::Object','org::allbinary::game::layer::PathFindingLayerInterface';
 
-our $NULL_PATH_FINDING_LAYER = 'org::allbinary::game::layer::NullPathFindingLayer'->new();
+tie our $NULL_PATH_FINDING_LAYER, 'java::lang::LazyStatic', sub { 'org::allbinary::game::layer::NullPathFindingLayer'->new() };
 
 sub new {
     my ($class) = @_;
@@ -244,17 +244,19 @@ sub getSourceId {
         die ("RuntimeException");
 }
 
-use org::allbinary::animation::caption::CaptionAnimationHelperBase;
-use org::allbinary::game::identification::Group;
-use org::allbinary::game::layer::waypoint::Waypoint2LogHelper;
-use org::allbinary::game::layer::waypoint::WaypointLogHelper;
-use org::allbinary::game::layer::waypoint::WaypointRunnableLogHelper;
-use org::allbinary::game::tracking::TrackingEvent;
-use org::allbinary::layer::AllBinaryLayer;
-use org::allbinary::media::graphics::geography::map::GeographicMapCellHistory;
-use org::allbinary::media::graphics::geography::map::GeographicMapCellPosition;
-use org::allbinary::util::BasicArrayList;
-use org::allbinary::game::layer::PathFindingLayerInterface;
+use java::lang::Object ();
+use java::lang::LazyStatic ();
+use org::allbinary::animation::caption::CaptionAnimationHelperBase ();
+use org::allbinary::game::identification::Group ();
+use org::allbinary::game::layer::waypoint::Waypoint2LogHelper ();
+use org::allbinary::game::layer::waypoint::WaypointLogHelper ();
+use org::allbinary::game::layer::waypoint::WaypointRunnableLogHelper ();
+use org::allbinary::game::tracking::TrackingEvent ();
+use org::allbinary::layer::AllBinaryLayer ();
+use org::allbinary::media::graphics::geography::map::GeographicMapCellHistory ();
+use org::allbinary::media::graphics::geography::map::GeographicMapCellPosition ();
+use org::allbinary::util::BasicArrayList ();
+use org::allbinary::game::layer::PathFindingLayerInterface ();
 
 1;
 

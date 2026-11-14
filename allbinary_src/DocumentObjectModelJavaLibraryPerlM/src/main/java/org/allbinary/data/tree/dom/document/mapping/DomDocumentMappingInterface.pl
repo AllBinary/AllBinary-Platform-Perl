@@ -27,7 +27,7 @@ sub toXmlDoc {
     die "abstract method toXmlDoc";
 }
 
-use org::w3c::dom::Document;
+use org::w3c::dom::Document ();
 
 1;
 

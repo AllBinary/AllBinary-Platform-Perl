@@ -17,7 +17,7 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
-use parent -norequire,'javax::swing::JPanel','org::allbinary::media::image::ImageProcessorInputCompositeInterface';
+use parent -norequire,'java::lang::Object','org::allbinary::media::image::ImageProcessorInputCompositeInterface';
 
 
 sub _init_fields {
@@ -43,7 +43,7 @@ sub _init_fields {
 sub new {
     my ($class, $imageProcessorInput) = @_;
     my $self = $class->SUPER::new();
-    $self->_init_fields();
+    _init_fields($self);
         # super(...) made $self above
         $self->{logUtil}->putF("Starting", $self, $self->{commonStrings}->{CONSTRUCTOR});
         $self->initComponents();
@@ -55,7 +55,7 @@ sub new {
 sub process {
     my ($self) = @_;
         do {
-            package java::lang::Thread::AnonymousN66316 { our @ISA = ('java::lang::Thread');
+            package java::lang::Thread::AnonymousN66316 { our @ISA = ('java::lang::Thread', 'java::lang::Object');
             
 
             sub run {
@@ -94,7 +94,7 @@ sub initComponents {
     my ($self) = @_;
         $self->{jLayeredPane1} = 'javax::swing::JLayeredPane'->new();
         $self->{jPanel1} = do {
-            package javax::swing::JPanel::AnonymousN67571 { our @ISA = ('javax::swing::JPanel');
+            package javax::swing::JPanel::AnonymousN67571 { our @ISA = ('javax::swing::JPanel', 'java::lang::Object');
             
 
             sub paint {
@@ -122,7 +122,7 @@ sub initComponents {
         $self->{imageHeightIsFrameSizeJCheckBox}->setText("Image Height Is Frame Size");
         $self->{imageHeightIsFrameSizeJCheckBox}->setEnabled(0);
         $self->{imageHeightIsFrameSizeJCheckBox}->addActionListener(do {
-            package java::awt::event::ActionListener::AnonymousN68660 { our @ISA = ('java::awt::event::ActionListener');
+            package java::awt::event::ActionListener::AnonymousN68660 { our @ISA = ('java::awt::event::ActionListener', 'java::lang::Object');
             
 
             sub actionPerformed {
@@ -140,7 +140,7 @@ sub initComponents {
         $self->{writeOverOriginalJCheckBox}->setText("Write Over Original");
         $self->{generateJButton}->setText("Generate");
         $self->{generateJButton}->addActionListener(do {
-            package java::awt::event::ActionListener::AnonymousN69031 { our @ISA = ('java::awt::event::ActionListener');
+            package java::awt::event::ActionListener::AnonymousN69031 { our @ISA = ('java::awt::event::ActionListener', 'java::lang::Object');
             
 
             sub actionPerformed {
@@ -188,19 +188,20 @@ sub setImageProcessorInput {
         $self->{imageProcessorInput} = $imageProcessorInput;
 }
 
-# use java::awt;
-# use java::awt::image::BufferedImage;
-# use java::awt::image::RenderedImage;
-use java::io::File;
-# use javax::imageio::ImageIO;
-use org::allbinary::logic::communication::log::LogUtil;
-use org::allbinary::media::image::BufferedImageUtil2;
-use org::allbinary::media::image::ImageProcessorInput;
-use org::allbinary::media::image::ImageProcessorInputCompositeInterface;
-use org::allbinary::media::image::ImageStrings;
-use org::allbinary::media::image::MirrorImageUtil;
-use org::allbinary::string::CommonStrings;
-use java::lang::Thread;
+use java::lang::Object ();
+# use java::awt ();
+# use java::awt::image::BufferedImage ();
+# use java::awt::image::RenderedImage ();
+use java::io::File ();
+# use javax::imageio::ImageIO ();
+use org::allbinary::logic::communication::log::LogUtil ();
+use org::allbinary::media::image::BufferedImageUtil2 ();
+use org::allbinary::media::image::ImageProcessorInput ();
+use org::allbinary::media::image::ImageProcessorInputCompositeInterface ();
+use org::allbinary::media::image::ImageStrings ();
+use org::allbinary::media::image::MirrorImageUtil ();
+use org::allbinary::string::CommonStrings ();
+use java::lang::Thread ();
 
 1;
 

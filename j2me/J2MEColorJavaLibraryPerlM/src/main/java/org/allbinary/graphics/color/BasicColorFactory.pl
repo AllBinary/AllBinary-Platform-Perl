@@ -17,8 +17,9 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
-our $instance = 'org::allbinary::graphics::color::BasicColorFactory'->new();
+tie our $instance, 'java::lang::LazyStatic', sub { 'org::allbinary::graphics::color::BasicColorFactory'->new() };
 
 sub _init_fields {
     my ($self) = @_;
@@ -56,7 +57,7 @@ sub _init_fields {
 sub new {
     my ($class) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
     return $self;
 }
 
@@ -91,12 +92,14 @@ sub createInstanceARGB {
         return 'org::allbinary::graphics::color::BasicColor'->new($alphaValue, (($alphaValue << 24) & $ALPHA_MASK) + (($r << 16) & 0x00FF0000) + (($g << 8) & 0x0000FF00) + ($b & 0x000000FF), 'org::allbinary::logic::string::StringUtil'->getInstance()->{EMPTY_STRING});
 }
 
-# use jsinterop::annotations::JsType;
-use org::allbinary::logic::string::StringUtil;
-# use jsinterop::annotations::JsMethod;
-# use jsinterop::annotations::JsProperty;
-use org::allbinary::graphics::color::BasicColor;
-use org::allbinary::graphics::color::BasicColorUtil;
+use java::lang::Object ();
+use java::lang::LazyStatic ();
+# use jsinterop::annotations::JsType ();
+use org::allbinary::logic::string::StringUtil ();
+# use jsinterop::annotations::JsMethod ();
+# use jsinterop::annotations::JsProperty ();
+use org::allbinary::graphics::color::BasicColor ();
+use org::allbinary::graphics::color::BasicColorUtil ();
 
 1;
 

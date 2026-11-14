@@ -29,7 +29,7 @@ sub _init_fields {
 sub new {
     my ($class, $collidable) = @_;
     my $self = $class->SUPER::new($collidable);
-    $self->_init_fields();
+    _init_fields($self);
         # super(...) made $self above
     return $self;
 }
@@ -66,11 +66,12 @@ sub collideInterface {
         'org::allbinary::logic::communication::log::ForcedLogUtil'->log("No Longer Used", $self);
 }
 
-use org::allbinary::game::collision::CollidableBaseBehavior;
-use org::allbinary::game::collision::CollidableInterfaceCompositeInterface;
-use org::allbinary::game::combat::damage::DamageUtil;
-use org::allbinary::game::layer::CollidableCompositeLayer;
-use org::allbinary::logic::communication::log::ForcedLogUtil;
+use java::lang::Object ();
+use org::allbinary::game::collision::CollidableBaseBehavior ();
+use org::allbinary::game::collision::CollidableInterfaceCompositeInterface ();
+use org::allbinary::game::combat::damage::DamageUtil ();
+use org::allbinary::game::layer::CollidableCompositeLayer ();
+use org::allbinary::logic::communication::log::ForcedLogUtil ();
 
 1;
 

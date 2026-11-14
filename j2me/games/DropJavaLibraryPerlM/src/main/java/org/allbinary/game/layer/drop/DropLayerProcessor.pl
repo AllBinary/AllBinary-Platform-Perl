@@ -19,7 +19,7 @@ use feature 'try';
 no warnings 'experimental::try';
 use parent -norequire,'org::allbinary::layer::BasicLayerProcessor';
 
-our $LAYER_PROCESSOR = 'org::allbinary::game::layer::drop::DropLayerProcessor'->new();
+tie our $LAYER_PROCESSOR, 'java::lang::LazyStatic', sub { 'org::allbinary::game::layer::drop::DropLayerProcessor'->new() };
 
 
 sub new {
@@ -51,10 +51,12 @@ sub process {
         $list->clear();
 }
 
-use org::allbinary::layer::AllBinaryLayer;
-use org::allbinary::layer::AllBinaryLayerManager;
-use org::allbinary::layer::BasicLayerProcessor;
-use org::allbinary::util::BasicArrayList;
+use java::lang::Object ();
+use java::lang::LazyStatic ();
+use org::allbinary::layer::AllBinaryLayer ();
+use org::allbinary::layer::AllBinaryLayerManager ();
+use org::allbinary::layer::BasicLayerProcessor ();
+use org::allbinary::util::BasicArrayList ();
 
 1;
 

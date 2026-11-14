@@ -19,7 +19,7 @@ use feature 'try';
 no warnings 'experimental::try';
 use parent -norequire,'org::allbinary::game::displayable::canvas::BaseMenuBehavior';
 
-our $instanceC = 'org::allbinary::game::displayable::canvas::InGameMenuBehavior'->new();
+tie our $instanceC, 'java::lang::LazyStatic', sub { 'org::allbinary::game::displayable::canvas::InGameMenuBehavior'->new() };
 
 sub new {
     my ($class) = @_;
@@ -73,9 +73,11 @@ sub closeMenu {
         $allBinaryGameCanvas->closeMenu2();
 }
 
-use org::allbinary::graphics::displayable::event::DisplayChangeEvent;
-use org::allbinary::game::displayable::canvas::BaseMenuBehavior;
-use org::allbinary::game::displayable::canvas::GameCanvasNonBotPaintable;
+use java::lang::Object ();
+use java::lang::LazyStatic ();
+use org::allbinary::graphics::displayable::event::DisplayChangeEvent ();
+use org::allbinary::game::displayable::canvas::BaseMenuBehavior ();
+use org::allbinary::game::displayable::canvas::GameCanvasNonBotPaintable ();
 
 1;
 

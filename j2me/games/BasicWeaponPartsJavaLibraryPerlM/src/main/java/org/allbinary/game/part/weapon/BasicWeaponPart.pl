@@ -17,9 +17,9 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
-use parent -norequire,'org::allbinary::game::part::PartInterface','org::allbinary::game::part::weapon::SalvoInterface';
+use parent -norequire,'java::lang::Object','org::allbinary::game::part::PartInterface','org::allbinary::game::part::weapon::SalvoInterface';
 
-our $NULL_BASIC_WEAPON_PART = 'org::allbinary::game::part::weapon::BasicWeaponPart'->createBasicWeaponPart('org::allbinary::animation::NullAnimationFactory'->getFactoryInstance()->getInstance(0));
+tie our $NULL_BASIC_WEAPON_PART, 'java::lang::LazyStatic', sub { 'org::allbinary::game::part::weapon::BasicWeaponPart'->createBasicWeaponPart('org::allbinary::animation::NullAnimationFactory'->getFactoryInstance()->getInstance(0)) };
 
 sub _init_fields {
     my ($self) = @_;
@@ -40,7 +40,7 @@ sub createBasicWeaponPart {
 sub new {
     my ($class, $animationInterface, $sourceLayerInterface, $weaponProperties, $scoreableInterface, $relativeRelationship) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
         $self->init($sourceLayerInterface, $weaponProperties, $scoreableInterface, $relativeRelationship);
         $self->setAnimationInterface($animationInterface);
     return $self;
@@ -119,19 +119,21 @@ sub setWeaponProperties {
         $self->{weaponProperties} = $weaponProperties;
 }
 
-# use javax::microedition::lcdui::Graphics;
-use org::allbinary::animation::Animation;
-use org::allbinary::animation::NullAnimationFactory;
-use org::allbinary::game::combat::weapon::WeaponProperties;
-use org::allbinary::game::part::PartInterface;
-use org::allbinary::game::score::NoScoreable;
-use org::allbinary::game::score::ScoreableInterface;
-use org::allbinary::graphics::RelativeRelationship;
-use org::allbinary::layer::AllBinaryLayer;
-use org::allbinary::layer::AllBinaryLayerManager;
-use org::allbinary::string::CommonStrings;
-use org::allbinary::view::ViewPositionBase;
-use org::allbinary::game::part::weapon::SalvoInterface;
+use java::lang::Object ();
+use java::lang::LazyStatic ();
+use javax::microedition::lcdui::Graphics ();
+use org::allbinary::animation::Animation ();
+use org::allbinary::animation::NullAnimationFactory ();
+use org::allbinary::game::combat::weapon::WeaponProperties ();
+use org::allbinary::game::part::PartInterface ();
+use org::allbinary::game::score::NoScoreable ();
+use org::allbinary::game::score::ScoreableInterface ();
+use org::allbinary::graphics::RelativeRelationship ();
+use org::allbinary::layer::AllBinaryLayer ();
+use org::allbinary::layer::AllBinaryLayerManager ();
+use org::allbinary::string::CommonStrings ();
+use org::allbinary::view::ViewPositionBase ();
+use org::allbinary::game::part::weapon::SalvoInterface ();
 
 1;
 

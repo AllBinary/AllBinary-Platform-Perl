@@ -19,7 +19,7 @@ use feature 'try';
 no warnings 'experimental::try';
 use parent -norequire,'org::allbinary::game::physics::velocity::BasicVelocityProperties','org::allbinary::game::physics::velocity::VelocityInterface';
 
-our $NULL_VELOCITY_PROPERTIES = 'org::allbinary::game::physics::velocity::VelocityProperties'->new(0, 0);
+tie our $NULL_VELOCITY_PROPERTIES, 'java::lang::LazyStatic', sub { 'org::allbinary::game::physics::velocity::VelocityProperties'->new(0, 0) };
 
 sub _init_fields {
     my ($self) = @_;
@@ -31,7 +31,7 @@ sub _init_fields {
 sub new {
     my ($class, $maxForwardVelocity, $maxReverseVelocity) = @_;
     my $self = $class->SUPER::new();
-    $self->_init_fields();
+    _init_fields($self);
         $self->setMaxForwardVelocity($maxForwardVelocity);
         $self->setMaxReverseVelocity($maxReverseVelocity);
     return $self;
@@ -189,8 +189,10 @@ sub addVelocityi {
         $self->limitXYToForwardAndReverseMaxVelocity();
 }
 
-use org::allbinary::game::physics::velocity::BasicVelocityProperties;
-use org::allbinary::game::physics::velocity::VelocityInterface;
+use java::lang::Object ();
+use java::lang::LazyStatic ();
+use org::allbinary::game::physics::velocity::BasicVelocityProperties ();
+use org::allbinary::game::physics::velocity::VelocityInterface ();
 
 1;
 

@@ -17,6 +17,7 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
 
 
@@ -49,18 +50,19 @@ sub getInstance {
         return 'org::allbinary::data::tables::workflow::WorkFlowEntityFactory'->getInstance()->create2()->get($workFlowName, $storeName);
 }
 
-use java::util::HashMap;
-# use javax::servlet::ServletConfig;
-# use javax::servlet::ServletContext;
-# use javax::servlet::ServletRequest;
-# use javax::servlet::ServletResponse;
-# use javax::servlet::http::HttpServletRequest;
-# use javax::servlet::jsp::PageContext;
-use org::allbinary::data::tables::workflow::WorkFlowEntityFactory;
-use org::allbinary::logic::communication::http::request::session::WeblisketSession;
-use org::allbinary::logic::io::path::AbPathData;
-use org::allbinary::logic::system::security::licensing::LicensingException;
-use org::allbinary::logic::control::workflow::WorkFlowData;
+use java::lang::Object ();
+use java::util::HashMap ();
+# use javax::servlet::ServletConfig ();
+# use javax::servlet::ServletContext ();
+# use javax::servlet::ServletRequest ();
+# use javax::servlet::ServletResponse ();
+# use javax::servlet::http::HttpServletRequest ();
+# use javax::servlet::jsp::PageContext ();
+use org::allbinary::data::tables::workflow::WorkFlowEntityFactory ();
+use org::allbinary::logic::communication::http::request::session::WeblisketSession ();
+use org::allbinary::logic::io::path::AbPathData ();
+use org::allbinary::logic::system::security::licensing::LicensingException ();
+use org::allbinary::logic::control::workflow::WorkFlowData ();
 
 1;
 

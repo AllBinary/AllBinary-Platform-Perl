@@ -17,7 +17,7 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
-use parent -norequire,'org::allbinary::logic::util::cache::PoolInterface';
+use parent -norequire,'java::lang::Object','org::allbinary::logic::util::cache::PoolInterface';
 
 
 sub _init_fields {
@@ -31,7 +31,7 @@ sub _init_fields {
 sub new {
     my ($class, $cacheableInterfaceFactoryInterface) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
         $self->{cacheableInterfaceFactoryInterface} = $cacheableInterfaceFactoryInterface;
     return $self;
 }
@@ -66,10 +66,11 @@ sub addArray {
         }
 }
 
-use org::allbinary::string::CommonStrings;
-use org::allbinary::util::BasicArrayList;
-use org::allbinary::util::BasicArrayListD;
-use org::allbinary::logic::util::cache::PoolInterface;
+use java::lang::Object ();
+use org::allbinary::string::CommonStrings ();
+use org::allbinary::util::BasicArrayList ();
+use org::allbinary::util::BasicArrayListD ();
+use org::allbinary::logic::util::cache::PoolInterface ();
 
 1;
 

@@ -44,13 +44,14 @@ sub toXmlNode {
         return $node;
 }
 
-use org::allbinary::business::category::CategoryView;
-use org::allbinary::data::tree::dom::DomNodeInterface;
-use org::allbinary::logic::visual::theme::ThemeInterface;
-use org::allbinary::logic::visual::theme::ThemePropertiesView;
-use org::allbinary::logic::visual::theme::ThemeValidation;
-use org::w3c::dom::Document;
-use org::w3c::dom::Node;
+use java::lang::Object ();
+use org::allbinary::business::category::CategoryView ();
+use org::allbinary::data::tree::dom::DomNodeInterface ();
+use org::allbinary::logic::visual::theme::ThemeInterface ();
+use org::allbinary::logic::visual::theme::ThemePropertiesView ();
+use org::allbinary::logic::visual::theme::ThemeValidation ();
+use org::w3c::dom::Document ();
+use org::w3c::dom::Node ();
 
 1;
 

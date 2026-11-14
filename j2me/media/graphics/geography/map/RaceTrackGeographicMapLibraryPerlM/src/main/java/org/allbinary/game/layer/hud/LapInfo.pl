@@ -17,8 +17,9 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
-our $NULL_LAP_INFO = 'org::allbinary::game::layer::hud::LapInfo'->new(-1);
+tie our $NULL_LAP_INFO, 'java::lang::LazyStatic', sub { 'org::allbinary::game::layer::hud::LapInfo'->new(-1) };
 
 sub _init_fields {
     my ($self) = @_;
@@ -30,7 +31,7 @@ sub _init_fields {
 sub new {
     my ($class, $totalLaps) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
         $self->{totalLaps} = $totalLaps;
         $self->{numberOfLaps} = 1;
     return $self;
@@ -76,7 +77,9 @@ sub toString {
         return $stringBuffer->toString();
 }
 
-use org::allbinary::logic::string::StringMaker;
+use java::lang::Object ();
+use java::lang::LazyStatic ();
+use org::allbinary::logic::string::StringMaker ();
 
 1;
 

@@ -19,7 +19,7 @@ use feature 'try';
 no warnings 'experimental::try';
 use parent -norequire,'org::allbinary::game::graphics::hud::BasicHud','org::allbinary::game::layer::hud::event::GameNotificationListenerInterface';
 
-our $NULL_GAME_NOTIFICATION = 'org::allbinary::game::ag::layer::hud::basic::notification::GameNotificationHud'->new('org::allbinary::game::graphics::hud::BasicHudFactory'->getInstance()->{TOPCENTER}, 'org::allbinary::game::graphics::hud::BasicHudFactory'->getInstance()->{HORIZONTAL}, 0, 'org::allbinary::graphics::color::BasicColorFactory'->getInstance()->{RED});
+tie our $NULL_GAME_NOTIFICATION, 'java::lang::LazyStatic', sub { 'org::allbinary::game::ag::layer::hud::basic::notification::GameNotificationHud'->new('org::allbinary::game::graphics::hud::BasicHudFactory'->getInstance()->{TOPCENTER}, 'org::allbinary::game::graphics::hud::BasicHudFactory'->getInstance()->{HORIZONTAL}, 0, 'org::allbinary::graphics::color::BasicColorFactory'->getInstance()->{RED}) };
 
 sub _init_fields {
     my ($self) = @_;
@@ -31,7 +31,7 @@ sub _init_fields {
 sub new {
     my ($class, $location, $direction, $bufferZone, $basicColor) = @_;
     my $self = $class->SUPER::new($location, $direction, $bufferZone, $basicColor);
-    $self->_init_fields();
+    _init_fields($self);
         # super(...) made $self above
     return $self;
 }
@@ -74,17 +74,19 @@ sub clear {
     my ($self) = @_;
 }
 
-# use javax::microedition::lcdui::Graphics;
-use org::allbinary::game::graphics::hud::BasicHud;
-use org::allbinary::game::graphics::hud::BasicHudFactory;
-use org::allbinary::game::layer::hud::event::GameNotificationEvent;
-use org::allbinary::game::layer::hud::event::GameNotificationListenerInterface;
-use org::allbinary::graphics::color::BasicColor;
-use org::allbinary::graphics::color::BasicColorFactory;
-use org::allbinary::logic::communication::log::ForcedLogUtil;
-use org::allbinary::logic::util::event::AllBinaryEventObject;
-use org::allbinary::logic::util::event::EventStrings;
-use org::allbinary::game::ag::layer::hud::basic::notification::GameNotification;
+use java::lang::Object ();
+use java::lang::LazyStatic ();
+use javax::microedition::lcdui::Graphics ();
+use org::allbinary::game::graphics::hud::BasicHud ();
+use org::allbinary::game::graphics::hud::BasicHudFactory ();
+use org::allbinary::game::layer::hud::event::GameNotificationEvent ();
+use org::allbinary::game::layer::hud::event::GameNotificationListenerInterface ();
+use org::allbinary::graphics::color::BasicColor ();
+use org::allbinary::graphics::color::BasicColorFactory ();
+use org::allbinary::logic::communication::log::ForcedLogUtil ();
+use org::allbinary::logic::util::event::AllBinaryEventObject ();
+use org::allbinary::logic::util::event::EventStrings ();
+use org::allbinary::game::ag::layer::hud::basic::notification::GameNotification ();
 
 1;
 

@@ -17,8 +17,9 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
-our $instance = 'org::allbinary::util::BasicArrayListUtil'->new();
+tie our $instance, 'java::lang::LazyStatic', sub { 'org::allbinary::util::BasicArrayListUtil'->new() };
 
 sub _init_fields {
     my ($self) = @_;
@@ -30,7 +31,7 @@ sub _init_fields {
 sub new {
     my ($class) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
     return $self;
 }
 
@@ -108,16 +109,18 @@ sub main {
         print($list->toString(), "\n");
 }
 
-# use jsinterop::annotations::JsType;
-use org::allbinary::game::rand::MyRandomFactory;
-use org::allbinary::logic::string::StringMaker;
-use org::allbinary::string::CommonLabels;
-use org::allbinary::string::CommonPhoneStrings;
-# use jsinterop::annotations::JsMethod;
-# use jsinterop::annotations::JsProperty;
-use org::allbinary::util::ImmutableBasicArrayList;
-use org::allbinary::util::BasicArrayListD;
-use java::lang::System;
+use java::lang::Object ();
+use java::lang::LazyStatic ();
+# use jsinterop::annotations::JsType ();
+use org::allbinary::game::rand::MyRandomFactory ();
+use org::allbinary::logic::string::StringMaker ();
+use org::allbinary::string::CommonLabels ();
+use org::allbinary::string::CommonPhoneStrings ();
+# use jsinterop::annotations::JsMethod ();
+# use jsinterop::annotations::JsProperty ();
+use org::allbinary::util::ImmutableBasicArrayList ();
+use org::allbinary::util::BasicArrayListD ();
+use java::lang::System ();
 
 1;
 

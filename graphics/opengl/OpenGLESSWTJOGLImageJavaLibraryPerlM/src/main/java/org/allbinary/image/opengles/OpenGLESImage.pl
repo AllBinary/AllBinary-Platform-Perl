@@ -20,8 +20,8 @@ use feature 'try';
 no warnings 'experimental::try';
 use parent -norequire,'javax::microedition::lcdui::Image','org::allbinary::image::opengles::OpenGLSurfaceChangedInterface';
 
-our $NULL_OPENGL_IMAGE = 'org::allbinary::image::opengles::OpenGLESImage'->new($javax::microedition::lcdui::NullImage::NULL_IMAGE, $org::allbinary::platform::graphics::PlatformBitmapBaseFactory::NULL_PLATFORM_BITMAP_BASE_FACTORY, $org::allbinary::platform::opengles::PlatformTextureBaseFactory::NULL_PLATFORM_TEXTURE_BASE_FACTORY);
-our $texture2dList = 'org::allbinary::util::BasicArrayListD'->new();
+tie our $NULL_OPENGL_IMAGE, 'java::lang::LazyStatic', sub { 'org::allbinary::image::opengles::OpenGLESImage'->new($javax::microedition::lcdui::NullImage::NULL_IMAGE, $org::allbinary::platform::graphics::PlatformBitmapBaseFactory::NULL_PLATFORM_BITMAP_BASE_FACTORY, $org::allbinary::platform::opengles::PlatformTextureBaseFactory::NULL_PLATFORM_TEXTURE_BASE_FACTORY) };
+tie our $texture2dList, 'java::lang::LazyStatic', sub { 'org::allbinary::util::BasicArrayListD'->new() };
 our $TYPE = 4;
 
 sub _init_fields {
@@ -39,7 +39,7 @@ sub _init_fields {
 sub new {
     my ($class, $image, $bitmapFactory, $textureFactory) = @_;
     my $self = $class->SUPER::new($image->getName(), $javax::microedition::lcdui::PostLoadImageProcessor::NULL_POST_LOAD_IMAGE_PROCESSOR);
-    $self->_init_fields();
+    _init_fields($self);
         # super(...) made $self above
         $self->{openGLBitmap} = $bitmapFactory->createBitmap($image);
         $self->{textureFactory} = $textureFactory;
@@ -112,26 +112,28 @@ sub toString {
         return 'org::allbinary::logic::string::StringMaker'->new()->append($self->getName())->append($self->SUPER::toString())->append($graphicsStrings->{OPACITY})->appendfloat($self->{openGLESImageProperties}->{alphaf})->toString();
 }
 
-# use javax::microedition::khronos::opengles::GL;
-# use javax::microedition::khronos::opengles::GL10;
-# use javax::microedition::lcdui::Image;
-# use javax::microedition::lcdui::NullImage;
-# use javax::microedition::lcdui::OpenGLESPostLoadPlatformImage;
-# use javax::microedition::lcdui::PostLoadImageProcessor;
-use org::allbinary::graphics::GraphicsStrings;
-use org::allbinary::logic::communication::log::LogUtil;
-use org::allbinary::logic::string::StringMaker;
-use org::allbinary::platform::graphics::PlatformBitmapBase;
-use org::allbinary::platform::graphics::PlatformBitmapBaseFactory;
-use org::allbinary::platform::opengles::PlatformTextureBaseFactory;
-use org::allbinary::string::CommonStrings;
-use org::allbinary::util::BasicArrayList;
-use org::allbinary::util::BasicArrayListD;
-use org::allbinary::image::opengles::OpenGLSurfaceChangedInterface;
-use org::allbinary::image::opengles::OpenGLESImageProcessor;
-use org::allbinary::image::opengles::OpenGLESImageTranslate;
-use org::allbinary::image::opengles::OpenGLESImageProperties;
-use org::allbinary::image::opengles::OpenGLImageCacheFactory;
+use java::lang::Object ();
+use java::lang::LazyStatic ();
+use javax::microedition::khronos::opengles::GL ();
+use javax::microedition::khronos::opengles::GL10 ();
+use javax::microedition::lcdui::Image ();
+use javax::microedition::lcdui::NullImage ();
+use javax::microedition::lcdui::OpenGLESPostLoadPlatformImage ();
+use javax::microedition::lcdui::PostLoadImageProcessor ();
+use org::allbinary::graphics::GraphicsStrings ();
+use org::allbinary::logic::communication::log::LogUtil ();
+use org::allbinary::logic::string::StringMaker ();
+use org::allbinary::platform::graphics::PlatformBitmapBase ();
+use org::allbinary::platform::graphics::PlatformBitmapBaseFactory ();
+use org::allbinary::platform::opengles::PlatformTextureBaseFactory ();
+use org::allbinary::string::CommonStrings ();
+use org::allbinary::util::BasicArrayList ();
+use org::allbinary::util::BasicArrayListD ();
+use org::allbinary::image::opengles::OpenGLSurfaceChangedInterface ();
+use org::allbinary::image::opengles::OpenGLESImageProcessor ();
+use org::allbinary::image::opengles::OpenGLESImageTranslate ();
+use org::allbinary::image::opengles::OpenGLESImageProperties ();
+use org::allbinary::image::opengles::OpenGLImageCacheFactory ();
 
 1;
 

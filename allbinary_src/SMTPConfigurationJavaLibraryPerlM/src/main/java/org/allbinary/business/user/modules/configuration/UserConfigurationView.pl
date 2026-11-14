@@ -17,7 +17,7 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
-use parent -norequire,'org::allbinary::data::tree::dom::DomNodeInterface';
+use parent -norequire,'java::lang::Object','org::allbinary::data::tree::dom::DomNodeInterface';
 
 
 sub _init_fields {
@@ -36,7 +36,7 @@ sub new {
 sub _new1 {
     my ($class, $node) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
         $self->{userConfigurationInterface} = 'org::allbinary::business::user::modules::configuration::UserConfiguration'->new();
         my $childNodeList = $node->getChildNodes();
         my $emailConfigurationNode = 'org::allbinary::data::tree::dom::DomSearchHelper'->getNode($org::allbinary::logic::communication::smtp::configuration::user::UserEmailConfigurationData::NAME, $childNodeList);
@@ -56,7 +56,7 @@ sub _new1 {
 sub _new1 {
     my ($class, $userConfigurationInterface) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
         $self->{userConfigurationInterface} = $userConfigurationInterface;
     return $self;
 }
@@ -81,19 +81,20 @@ sub toXmlNode {
         return $node;
 }
 
-use org::allbinary::business::entry::EntryData;
-use org::allbinary::business::time::created::TimeCreatedView;
-use org::allbinary::business::time::modified::TimeLastModifiedView;
-use org::allbinary::data::tree::dom::DomNodeInterface;
-use org::allbinary::data::tree::dom::DomSearchHelper;
-use org::allbinary::logic::communication::smtp::configuration::user::UserEmailConfigurationData;
-use org::allbinary::logic::communication::smtp::configuration::user::UserEmailConfigurationInterface;
-use org::allbinary::logic::communication::smtp::configuration::user::UserEmailConfigurationView;
-use org::w3c::dom::Document;
-use org::w3c::dom::Node;
-use org::w3c::dom::NodeList;
-use org::allbinary::business::user::modules::configuration::UserConfiguration;
-use org::allbinary::business::user::modules::configuration::UserConfigurationData;
+use java::lang::Object ();
+use org::allbinary::business::entry::EntryData ();
+use org::allbinary::business::time::created::TimeCreatedView ();
+use org::allbinary::business::time::modified::TimeLastModifiedView ();
+use org::allbinary::data::tree::dom::DomNodeInterface ();
+use org::allbinary::data::tree::dom::DomSearchHelper ();
+use org::allbinary::logic::communication::smtp::configuration::user::UserEmailConfigurationData ();
+use org::allbinary::logic::communication::smtp::configuration::user::UserEmailConfigurationInterface ();
+use org::allbinary::logic::communication::smtp::configuration::user::UserEmailConfigurationView ();
+use org::w3c::dom::Document ();
+use org::w3c::dom::Node ();
+use org::w3c::dom::NodeList ();
+use org::allbinary::business::user::modules::configuration::UserConfiguration ();
+use org::allbinary::business::user::modules::configuration::UserConfigurationData ();
 
 1;
 

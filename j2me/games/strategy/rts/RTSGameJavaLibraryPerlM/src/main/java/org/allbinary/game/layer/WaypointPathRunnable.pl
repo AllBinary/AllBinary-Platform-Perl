@@ -30,7 +30,7 @@ sub _init_fields {
 sub new {
     my ($class) = @_;
     my $self = $class->SUPER::new();
-    $self->_init_fields();
+    _init_fields($self);
     return $self;
 }
 
@@ -60,11 +60,12 @@ sub isDone {
         return 1;
 }
 
-use org::allbinary::logic::communication::log::LogUtil;
-use org::allbinary::string::CommonStrings;
-use org::allbinary::media::graphics::geography::map::GeographicMapCellPosition;
-use org::allbinary::game::layer::WaypointPathRunnableBase;
-use java::lang::Thread;
+use java::lang::Object ();
+use org::allbinary::logic::communication::log::LogUtil ();
+use org::allbinary::string::CommonStrings ();
+use org::allbinary::media::graphics::geography::map::GeographicMapCellPosition ();
+use org::allbinary::game::layer::WaypointPathRunnableBase ();
+use java::lang::Thread ();
 
 1;
 

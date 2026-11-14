@@ -17,8 +17,9 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
-our $inputRobotFactory = 'org::allbinary::input::automation::robot::InputRobotFactory'->new();
+tie our $inputRobotFactory, 'java::lang::LazyStatic', sub { 'org::allbinary::input::automation::robot::InputRobotFactory'->new() };
 
 sub _init_fields {
     my ($self) = @_;
@@ -39,7 +40,7 @@ sub getInstance {
 sub new {
     my ($class) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
         try {
             my $graphenv = 'java::awt::GraphicsEnvironment'->getLocalGraphicsEnvironment();
             my $screens = $graphenv->getScreenDevices();
@@ -156,22 +157,24 @@ sub get {
         return $self->{hashtable}->get($name);
 }
 
-# use java::awt::GraphicsDevice;
-# use java::awt::GraphicsEnvironment;
-# use java::util::Collection;
-use java::util::Iterator;
-# use java::util::Set;
-# use javax::help::HelpSet;
-# use javax::help::event::HelpSetEvent;
-# use javax::help::event::HelpSetListener;
-use org::allbinary::logic::StdUtil;
-use org::allbinary::logic::communication::log::LogUtil;
-use org::allbinary::logic::java::help::JavaHelpSetNotifier;
-use org::allbinary::logic::java::anyType::InterfaceUtil;
-use org::allbinary::logic::system::loader::SecuredNativeLibraryInterface;
-use org::allbinary::string::CommonStrings;
-use org::allbinary::util::ABHashtable;
-use org::allbinary::input::automation::robot::InputRobot;
+use java::lang::Object ();
+use java::lang::LazyStatic ();
+# use java::awt::GraphicsDevice ();
+# use java::awt::GraphicsEnvironment ();
+# use java::util::Collection ();
+use java::util::Iterator ();
+# use java::util::Set ();
+# use javax::help::HelpSet ();
+# use javax::help::event::HelpSetEvent ();
+# use javax::help::event::HelpSetListener ();
+use org::allbinary::logic::StdUtil ();
+use org::allbinary::logic::communication::log::LogUtil ();
+use org::allbinary::logic::java::help::JavaHelpSetNotifier ();
+use org::allbinary::logic::java::anyType::InterfaceUtil ();
+use org::allbinary::logic::system::loader::SecuredNativeLibraryInterface ();
+use org::allbinary::string::CommonStrings ();
+use org::allbinary::util::ABHashtable ();
+use org::allbinary::input::automation::robot::InputRobot ();
 
 1;
 

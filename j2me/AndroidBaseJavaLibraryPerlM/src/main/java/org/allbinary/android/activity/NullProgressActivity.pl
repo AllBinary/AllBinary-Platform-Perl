@@ -17,9 +17,9 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
-use parent -norequire,'org::allbinary::android::activity::ProgressActivityInterface';
+use parent -norequire,'java::lang::Object','org::allbinary::android::activity::ProgressActivityInterface';
 
-our $NULL_PROGRESS_ACTIVITY = 'org::allbinary::android::activity::NullProgressActivity'->new();
+tie our $NULL_PROGRESS_ACTIVITY, 'java::lang::LazyStatic', sub { 'org::allbinary::android::activity::NullProgressActivity'->new() };
 
 sub new {
     my ($class) = @_;
@@ -47,7 +47,9 @@ sub onTitleProgressBarSetProgress {
     my ($self, $value) = @_;
 }
 
-use org::allbinary::android::activity::ProgressActivityInterface;
+use java::lang::Object ();
+use java::lang::LazyStatic ();
+use org::allbinary::android::activity::ProgressActivityInterface ();
 
 1;
 

@@ -17,7 +17,7 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
-use parent -norequire,'org::allbinary::logic::system::hardware::components::interfaces::HardwareComponentInterface','org::allbinary::logic::system::hardware::components::interfaces::MonitorInterface';
+use parent -norequire,'java::lang::Object','org::allbinary::logic::system::hardware::components::interfaces::HardwareComponentInterface','org::allbinary::logic::system::hardware::components::interfaces::MonitorInterface';
 
 
 sub _init_fields {
@@ -29,7 +29,7 @@ sub _init_fields {
 sub new {
     my ($class, $data) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
         $self->{data} = $data;
     return $self;
 }
@@ -46,8 +46,9 @@ sub toString {
         return $self->{data};
 }
 
-use org::allbinary::logic::system::hardware::components::interfaces::HardwareComponentInterface;
-use org::allbinary::logic::system::hardware::components::interfaces::MonitorInterface;
+use java::lang::Object ();
+use org::allbinary::logic::system::hardware::components::interfaces::HardwareComponentInterface ();
+use org::allbinary::logic::system::hardware::components::interfaces::MonitorInterface ();
 
 1;
 

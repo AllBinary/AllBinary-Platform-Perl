@@ -17,8 +17,9 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
-our $instance = 'org::allbinary::business::user::role::UserRoleFactory'->new();
+tie our $instance, 'java::lang::LazyStatic', sub { 'org::allbinary::business::user::role::UserRoleFactory'->new() };
 
 sub _init_fields {
     my ($self) = @_;
@@ -45,7 +46,7 @@ sub _init_fields {
 sub new {
     my ($class) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
     return $self;
 }
 
@@ -55,24 +56,26 @@ sub getInstance {
         return $org::allbinary::business::user::role::UserRoleFactory::instance;
 }
 
-use org::allbinary::business::user::modules::UserFactory;
-use org::allbinary::business::user::modules::admin::AdminUserFactory;
-use org::allbinary::business::user::modules::admin::store::StoreAdminUserFactory;
-use org::allbinary::business::user::modules::admin::store::customer::CustomerStoreAdminUserFactory;
-use org::allbinary::business::user::modules::admin::store::order::OrderStoreAdminUserFactory;
-use org::allbinary::business::user::modules::admin::store::order::adjust::AdjustOrderStoreAdminUserFactory;
-use org::allbinary::business::user::modules::admin::store::order::review::ReviewOrderStoreAdminUserFactory;
-use org::allbinary::business::user::modules::admin::store::order::ship::ShipOrderStoreAdminUserFactory;
-use org::allbinary::business::user::modules::admin::store::payment::PaymentStoreAdminUserFactory;
-use org::allbinary::business::user::modules::admin::store::product::ProductStoreAdminUserFactory;
-use org::allbinary::business::user::modules::admin::store::web::WebStoreAdminUserFactory;
-use org::allbinary::business::user::modules::admin::store::web::view::editor::ViewEditorWebStoreAdminUserFactory;
-use org::allbinary::business::user::modules::admin::store::web::wizard::WizardWebStoreAdminUserFactory;
-use org::allbinary::business::user::modules::admin::store::web::workflow::editor::WorkflowEditorWebStoreAdminUserFactory;
-use org::allbinary::business::user::modules::customer::subscriber::SubscriberUserFactory;
-use org::allbinary::business::user::modules::customer::wholesale::WholesaleUserFactory;
-use org::allbinary::business::user::role::BasicUserRoleFactory;
-use org::allbinary::business::user::role::UserRoleB;
+use java::lang::Object ();
+use java::lang::LazyStatic ();
+use org::allbinary::business::user::modules::UserFactory ();
+use org::allbinary::business::user::modules::admin::AdminUserFactory ();
+use org::allbinary::business::user::modules::admin::store::StoreAdminUserFactory ();
+use org::allbinary::business::user::modules::admin::store::customer::CustomerStoreAdminUserFactory ();
+use org::allbinary::business::user::modules::admin::store::order::OrderStoreAdminUserFactory ();
+use org::allbinary::business::user::modules::admin::store::order::adjust::AdjustOrderStoreAdminUserFactory ();
+use org::allbinary::business::user::modules::admin::store::order::review::ReviewOrderStoreAdminUserFactory ();
+use org::allbinary::business::user::modules::admin::store::order::ship::ShipOrderStoreAdminUserFactory ();
+use org::allbinary::business::user::modules::admin::store::payment::PaymentStoreAdminUserFactory ();
+use org::allbinary::business::user::modules::admin::store::product::ProductStoreAdminUserFactory ();
+use org::allbinary::business::user::modules::admin::store::web::WebStoreAdminUserFactory ();
+use org::allbinary::business::user::modules::admin::store::web::view::editor::ViewEditorWebStoreAdminUserFactory ();
+use org::allbinary::business::user::modules::admin::store::web::wizard::WizardWebStoreAdminUserFactory ();
+use org::allbinary::business::user::modules::admin::store::web::workflow::editor::WorkflowEditorWebStoreAdminUserFactory ();
+use org::allbinary::business::user::modules::customer::subscriber::SubscriberUserFactory ();
+use org::allbinary::business::user::modules::customer::wholesale::WholesaleUserFactory ();
+use org::allbinary::business::user::role::BasicUserRoleFactory ();
+use org::allbinary::business::user::role::UserRoleB ();
 
 1;
 

@@ -17,7 +17,7 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
-use parent -norequire,'javax::swing::JPanel';
+use parent -norequire,'java::lang::Object';
 
 
 sub _init_fields {
@@ -48,7 +48,7 @@ sub _init_fields {
 sub new {
     my ($class, $mouseActionScriptInputInterface) = @_;
     my $self = $class->SUPER::new();
-    $self->_init_fields();
+    _init_fields($self);
         $self->{logUtil}->putF('org::allbinary::string::CommonLabels'->getInstance()->{START} + $mouseActionScriptInputInterface, $self, $self->{commonStrings}->{CONSTRUCTOR});
         $self->initComponents();
         $self->{mouseActionScriptInputInterface} = $mouseActionScriptInputInterface;
@@ -169,7 +169,7 @@ sub initComponents {
         $self->{titleJLabel}->setText("Mouse Input Options");
         $self->{okJButton}->setText("OK");
         $self->{okJButton}->addActionListener(do {
-            package java::awt::event::ActionListener::AnonymousN69905 { our @ISA = ('java::awt::event::ActionListener');
+            package java::awt::event::ActionListener::AnonymousN69905 { our @ISA = ('java::awt::event::ActionListener', 'java::lang::Object');
             
 
             sub actionPerformed {
@@ -188,7 +188,7 @@ sub initComponents {
         $self->{button2JCheckBox}->setBorder($org::allbinary::input::automation::actions::script::condition::processors::input::javax::swing->{BorderFactory}->createEmptyBorder(0, 0, 0, 0));
         $self->{button2JCheckBox}->setMargin('java::awt::Insets'->new(0, 0, 0, 0));
         $self->{button2JCheckBox}->addActionListener(do {
-            package java::awt::event::ActionListener::AnonymousN70522 { our @ISA = ('java::awt::event::ActionListener');
+            package java::awt::event::ActionListener::AnonymousN70522 { our @ISA = ('java::awt::event::ActionListener', 'java::lang::Object');
             
 
             sub actionPerformed {
@@ -212,7 +212,7 @@ sub initComponents {
         $self->setMinimumSize('java::awt::Dimension'->new(100, 0));
         $self->{mouseActionJButton}->setText("Edit");
         $self->{mouseActionJButton}->addActionListener(do {
-            package java::awt::event::ActionListener::AnonymousN74399 { our @ISA = ('java::awt::event::ActionListener');
+            package java::awt::event::ActionListener::AnonymousN74399 { our @ISA = ('java::awt::event::ActionListener', 'java::lang::Object');
             
 
             sub actionPerformed {
@@ -251,17 +251,18 @@ sub mouseActionJButtonActionPerformed {
         $self->getMouseActionJDialog()->setVisible(1);
 }
 
-# use java::awt::event::InputEvent;
-# use javax::swing;
-use org::allbinary::input::automation::robot::InputRobot;
-use org::allbinary::input::automation::robot::InputRobotFactory;
-use org::allbinary::input::automation::robot::TempInputRobotNames;
-use org::allbinary::logic::communication::log::LogUtil;
-use org::allbinary::logic::string::StringValidationUtil;
-use org::allbinary::string::CommonLabels;
-use org::allbinary::string::CommonPhoneStrings;
-use org::allbinary::string::CommonStrings;
-use org::allbinary::input::automation::actions::script::condition::processors::input::DefaultComboBoxModel;
+use java::lang::Object ();
+# use java::awt::event::InputEvent ();
+# use javax::swing ();
+use org::allbinary::input::automation::robot::InputRobot ();
+use org::allbinary::input::automation::robot::InputRobotFactory ();
+use org::allbinary::input::automation::robot::TempInputRobotNames ();
+use org::allbinary::logic::communication::log::LogUtil ();
+use org::allbinary::logic::string::StringValidationUtil ();
+use org::allbinary::string::CommonLabels ();
+use org::allbinary::string::CommonPhoneStrings ();
+use org::allbinary::string::CommonStrings ();
+use org::allbinary::input::automation::actions::script::condition::processors::input::DefaultComboBoxModel ();
 
 1;
 

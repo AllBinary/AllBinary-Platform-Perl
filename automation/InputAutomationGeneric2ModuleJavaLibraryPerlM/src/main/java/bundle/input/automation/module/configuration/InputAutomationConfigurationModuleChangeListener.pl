@@ -32,7 +32,7 @@ sub onRemove {
     die "abstract method onRemove";
 }
 
-use org::allbinary::input::automation::configuration::InputAutomationConfigurationModuleChangeEvent;
+use org::allbinary::input::automation::configuration::InputAutomationConfigurationModuleChangeEvent ();
 
 1;
 

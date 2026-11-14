@@ -19,7 +19,7 @@ use feature 'try';
 no warnings 'experimental::try';
 use parent -norequire,'org::allbinary::media::audio::BasicPlayer';
 
-our $NULL_ANDROID_MEDIA_PLAYER_WRAPPER = 'org::allbinary::media::audio::AndroidMediaPlayerWrapper'->createPlayerWrapper();
+tie our $NULL_ANDROID_MEDIA_PLAYER_WRAPPER, 'java::lang::LazyStatic', sub { 'org::allbinary::media::audio::AndroidMediaPlayerWrapper'->createPlayerWrapper() };
 
 sub _init_fields {
     my ($self) = @_;
@@ -41,7 +41,7 @@ sub createPlayerWrapper {
 sub new {
     my ($class, $resource) = @_;
     my $self = $class->SUPER::new();
-    $self->_init_fields();
+    _init_fields($self);
         try {
             if ($resource eq 'org::allbinary::logic::string::StringUtil'->getInstance()->{EMPTY_STRING}) {
             } else {
@@ -169,17 +169,19 @@ sub getMediaPlayer {
         return $self->{mediaPlayer};
 }
 
-# use javax::microedition::media::MediaException;
-# use javax::microedition::media::Player;
-# use javax::microedition::media::PlayerListener;
-use android::media::MediaPlayer;
-use org::allbinary::android::NullAndroidCanvas;
-use org::allbinary::data::resource::ResourceUtil;
-use org::allbinary::logic::NullUtil;
-use org::allbinary::logic::communication::log::LogUtil;
-use org::allbinary::logic::string::StringMaker;
-use org::allbinary::logic::string::StringUtil;
-use org::allbinary::media::audio::BasicPlayer;
+use java::lang::Object ();
+use java::lang::LazyStatic ();
+use javax::microedition::media::MediaException ();
+use javax::microedition::media::Player ();
+use javax::microedition::media::PlayerListener ();
+# use android::media::MediaPlayer ();
+use org::allbinary::android::NullAndroidCanvas ();
+use org::allbinary::data::resource::ResourceUtil ();
+use org::allbinary::logic::NullUtil ();
+use org::allbinary::logic::communication::log::LogUtil ();
+use org::allbinary::logic::string::StringMaker ();
+use org::allbinary::logic::string::StringUtil ();
+use org::allbinary::media::audio::BasicPlayer ();
 
 1;
 

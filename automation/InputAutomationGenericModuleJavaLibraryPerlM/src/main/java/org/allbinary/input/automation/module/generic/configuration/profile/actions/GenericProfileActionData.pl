@@ -17,6 +17,7 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
 our $NAME = "GENERIC_CONFIGURATION_PROFILE_ACTION_NAME";
 our $SCRIPT = "GENERIC_CONFIGURATION_PROFILE_ACTION_SCRIPT";
@@ -28,6 +29,7 @@ sub new {
     return $self;
 }
 
+use java::lang::Object ();
 
 1;
 

@@ -45,8 +45,8 @@ sub toXmlNode {
     die "abstract method toXmlNode";
 }
 
-use org::w3c::dom::Document;
-use org::w3c::dom::Node;
+use org::w3c::dom::Document ();
+use org::w3c::dom::Node ();
 
 1;
 

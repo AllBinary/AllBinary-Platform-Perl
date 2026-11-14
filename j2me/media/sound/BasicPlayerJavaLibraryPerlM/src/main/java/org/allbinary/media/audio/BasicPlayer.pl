@@ -18,7 +18,7 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
-use parent -norequire,'javax::microedition::media::Player','org::allbinary::media::audio::Controllable2';
+use parent -norequire,'java::lang::Object','javax::microedition::media::Player','org::allbinary::media::audio::Controllable2';
 
 our $CONTROL_TYPE = "ToneControl";
 
@@ -34,7 +34,7 @@ sub _init_fields {
 sub new {
     my ($class) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
         $self->setLoopCount(0);
         $self->setState($javax::microedition::media::Player::UNREALIZED);
     return $self;
@@ -156,16 +156,17 @@ sub setVolume {
     my ($self, $leftVolume, $rightVolume) = @_;
 }
 
-# use javax::microedition::media::Control;
-# use javax::microedition::media::MediaException;
-# use javax::microedition::media::Player;
-# use javax::microedition::media::PlayerListener;
-use org::allbinary::logic::string::StringUtil;
-use org::allbinary::string::CommonStrings;
-use org::allbinary::util::BasicArrayList;
-use org::allbinary::util::BasicArrayListD;
-use org::allbinary::media::audio::Controllable2;
-use org::allbinary::media::audio::NullControl;
+use java::lang::Object ();
+use javax::microedition::media::Control ();
+use javax::microedition::media::MediaException ();
+use javax::microedition::media::Player ();
+use javax::microedition::media::PlayerListener ();
+use org::allbinary::logic::string::StringUtil ();
+use org::allbinary::string::CommonStrings ();
+use org::allbinary::util::BasicArrayList ();
+use org::allbinary::util::BasicArrayListD ();
+use org::allbinary::media::audio::Controllable2 ();
+use org::allbinary::media::audio::NullControl ();
 
 1;
 

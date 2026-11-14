@@ -65,14 +65,15 @@ sub toXmlNode {
         return $node;
 }
 
-# use java::awt::event::ActionEvent;
-use org::allbinary::input::automation::actions::script::JTreeInterfaceFactory;
-use org::allbinary::input::automation::actions::script::ProfileActionScriptItem;
-use org::allbinary::input::automation::actions::script::condition::ProfileActionScriptConditionInterface;
-use org::w3c::dom::Document;
-use org::w3c::dom::Node;
-use org::allbinary::input::automation::actions::script::condition::processors::ProfileActionScriptProcessorInterface;
-use org::allbinary::input::automation::actions::script::condition::processors::GenericProfileActionScriptProcessorData;
+use java::lang::Object ();
+# use java::awt::event::ActionEvent ();
+use org::allbinary::input::automation::actions::script::JTreeInterfaceFactory ();
+use org::allbinary::input::automation::actions::script::ProfileActionScriptItem ();
+use org::allbinary::input::automation::actions::script::condition::ProfileActionScriptConditionInterface ();
+use org::w3c::dom::Document ();
+use org::w3c::dom::Node ();
+use org::allbinary::input::automation::actions::script::condition::processors::ProfileActionScriptProcessorInterface ();
+use org::allbinary::input::automation::actions::script::condition::processors::GenericProfileActionScriptProcessorData ();
 
 1;
 

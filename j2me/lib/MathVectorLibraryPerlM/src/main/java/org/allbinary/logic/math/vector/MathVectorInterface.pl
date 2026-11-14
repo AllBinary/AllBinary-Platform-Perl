@@ -38,7 +38,7 @@ sub getResult {
     die "abstract method getResult";
 }
 
-use org::allbinary::logic::math::BasicDecimal;
+use org::allbinary::logic::math::BasicDecimal ();
 
 1;
 

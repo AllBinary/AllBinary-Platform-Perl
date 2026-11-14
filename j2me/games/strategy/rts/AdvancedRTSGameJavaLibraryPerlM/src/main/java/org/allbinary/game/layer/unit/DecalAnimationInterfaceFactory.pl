@@ -17,8 +17,9 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
-our $instance = 'org::allbinary::game::layer::unit::DecalAnimationInterfaceFactory'->new();
+tie our $instance, 'java::lang::LazyStatic', sub { 'org::allbinary::game::layer::unit::DecalAnimationInterfaceFactory'->new() };
 
 sub new {
     my ($class) = @_;
@@ -45,12 +46,14 @@ sub getAnimationFactory {
         return $animationInterfaceFactoryInterface;
 }
 
-use org::allbinary::game::layer::resources::BasicGameResources;
-use org::allbinary::animation::AnimationInterfaceFactoryInterface;
-use org::allbinary::animation::FeaturedAnimationInterfaceFactoryInterfaceFactory;
-use org::allbinary::animation::NullRotationAnimationFactory;
-use org::allbinary::graphics::color::BasicColor;
-use org::allbinary::graphics::color::BasicColorFactory;
+use java::lang::Object ();
+use java::lang::LazyStatic ();
+use org::allbinary::game::layer::resources::BasicGameResources ();
+use org::allbinary::animation::AnimationInterfaceFactoryInterface ();
+use org::allbinary::animation::FeaturedAnimationInterfaceFactoryInterfaceFactory ();
+use org::allbinary::animation::NullRotationAnimationFactory ();
+use org::allbinary::graphics::color::BasicColor ();
+use org::allbinary::graphics::color::BasicColorFactory ();
 
 1;
 

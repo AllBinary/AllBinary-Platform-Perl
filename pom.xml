@@ -35,15 +35,17 @@
         <module>../working_thirdpartyperl/embedded/j2me/microemulator/2_0_4/microemu-cldcPerl</module>
         <module>../working_thirdpartyperl/embedded/j2me/microemulator/2_0_4/microemu-midpPerl</module>
         <module>../working_thirdpartyperl/embedded/j2me/microemulator/2_0_4/microemu-extensions/microemu-jsr-135Perl</module>
-        
-        <module>./j2me/AllBinaryBaseLibraryPOPerlM</module>
-        <module>./j2me/AllBinaryJ2MELibraryP</module>
-        <module>./AllBinaryPersistenceLibraryP</module>
+        <!-- Hand written SWT stub (org.eclipse.swt.widgets.Display) for SWTJavaLibraryPerl -->
+        <module>../working_thirdpartyperl/graphics/swt/org.eclipse.swt.win32.win32.x86_64</module>
 
-        <module>./automation/InputAutomationToolsP</module>
-        <module>./graphics/GraphicsToolsP</module>
-        <module>./allbinary_src/FreeblisketJavaLibraryP</module>
-        <module>./j2me/games/platform/AllBinaryOnAllPlatformsJavaLibraryP</module>
+        <module>./j2me/AllBinaryBaseLibraryPOPerlM</module>
+        <module>./j2me/AllBinaryJ2MELibraryPerlP</module>
+        <module>./AllBinaryPersistenceLibraryPerlP</module>
+
+        <!--<module>./automation/InputAutomationToolsPerlP</module>-->
+        <module>./graphics/GraphicsToolsPerlP</module>
+        <!--<module>./allbinary_src/FreeblisketJavaLibraryPerlP</module>-->
+        <module>./j2me/games/platform/AllBinaryOnAllPlatformsJavaLibraryPerlP</module>
 
         <!--
         <module>./j2me/media/graphics/animation/image/AllBinaryHTMLImageAnimationRotationJavaLibraryPerlM</module>

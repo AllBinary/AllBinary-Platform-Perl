@@ -17,8 +17,9 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
-our $instance = 'org::allbinary::game::displayable::canvas::BaseMenuBehavior'->new();
+tie our $instance, 'java::lang::LazyStatic', sub { 'org::allbinary::game::displayable::canvas::BaseMenuBehavior'->new() };
 
 sub new {
     my ($class) = @_;
@@ -67,8 +68,10 @@ sub closeMenu {
     my ($self, $allBinaryGameCanvas) = @_;
 }
 
-use org::allbinary::graphics::displayable::event::DisplayChangeEvent;
-use org::allbinary::graphics::paint::NullPaintable;
+use java::lang::Object ();
+use java::lang::LazyStatic ();
+use org::allbinary::graphics::displayable::event::DisplayChangeEvent ();
+use org::allbinary::graphics::paint::NullPaintable ();
 
 1;
 

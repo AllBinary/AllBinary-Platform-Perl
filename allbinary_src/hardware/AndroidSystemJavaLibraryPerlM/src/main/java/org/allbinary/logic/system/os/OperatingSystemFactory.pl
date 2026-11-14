@@ -17,8 +17,9 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
-our $instance = 'org::allbinary::logic::system::os::OperatingSystemFactory'->new();
+tie our $instance, 'java::lang::LazyStatic', sub { 'org::allbinary::logic::system::os::OperatingSystemFactory'->new() };
 
 sub _init_fields {
     my ($self) = @_;
@@ -37,7 +38,7 @@ sub getInstance {
 sub new {
     my ($class) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
     return $self;
 }
 
@@ -69,13 +70,15 @@ sub getOperatingSystemInstance {
         return $self->{genericOperatingSystem};
 }
 
-use org::allbinary::logic::system::os::android::AndroidOperatingSystemFactory;
-use org::allbinary::logic::communication::log::LogUtil;
-use org::allbinary::logic::string::StringMaker;
-use org::allbinary::string::CommonStrings;
-use org::allbinary::logic::system::os::NoOperatingSystem;
-use org::allbinary::logic::system::os::SystemProperties;
-use org::allbinary::logic::system::os::OperatingSystems;
+use java::lang::Object ();
+use java::lang::LazyStatic ();
+use org::allbinary::logic::system::os::android::AndroidOperatingSystemFactory ();
+use org::allbinary::logic::communication::log::LogUtil ();
+use org::allbinary::logic::string::StringMaker ();
+use org::allbinary::string::CommonStrings ();
+use org::allbinary::logic::system::os::NoOperatingSystem ();
+use org::allbinary::logic::system::os::SystemProperties ();
+use org::allbinary::logic::system::os::OperatingSystems ();
 
 1;
 

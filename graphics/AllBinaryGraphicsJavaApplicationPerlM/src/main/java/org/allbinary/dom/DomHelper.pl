@@ -17,8 +17,9 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
-our $instance = 'org::allbinary::dom::DomHelper'->new();
+tie our $instance, 'java::lang::LazyStatic', sub { 'org::allbinary::dom::DomHelper'->new() };
 
 sub _init_fields {
     my ($self) = @_;
@@ -35,7 +36,7 @@ sub getInstance {
 sub new {
     my ($class) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
     return $self;
 }
 
@@ -176,20 +177,22 @@ sub searchNodeList {
         die ($nodeName . " Node Not Found in search");
 }
 
-# use java::io::ByteArrayOutputStream;
-use java::io::File;
-# use javax::xml::parsers::DocumentBuilder;
-# use javax::xml::parsers::DocumentBuilderFactory;
-# use javax::xml::transform::Transformer;
-# use javax::xml::transform::TransformerFactory;
-# use javax::xml::transform::dom::DOMSource;
-# use javax::xml::transform::stream::StreamResult;
-use org::allbinary::logic::communication::log::LogUtil;
-use org::allbinary::util::BasicArrayList;
-use org::allbinary::util::BasicArrayListD;
-use org::w3c::dom::Document;
-use org::w3c::dom::Node;
-use org::w3c::dom::NodeList;
+use java::lang::Object ();
+use java::lang::LazyStatic ();
+# use java::io::ByteArrayOutputStream ();
+use java::io::File ();
+# use javax::xml::parsers::DocumentBuilder ();
+# use javax::xml::parsers::DocumentBuilderFactory ();
+# use javax::xml::transform::Transformer ();
+# use javax::xml::transform::TransformerFactory ();
+# use javax::xml::transform::dom::DOMSource ();
+# use javax::xml::transform::stream::StreamResult ();
+use org::allbinary::logic::communication::log::LogUtil ();
+use org::allbinary::util::BasicArrayList ();
+use org::allbinary::util::BasicArrayListD ();
+use org::w3c::dom::Document ();
+use org::w3c::dom::Node ();
+use org::w3c::dom::NodeList ();
 
 1;
 

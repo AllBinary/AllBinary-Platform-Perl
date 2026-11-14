@@ -158,11 +158,11 @@ sub setThumbnail {
     die "abstract method setThumbnail";
 }
 
-use org::allbinary::business::advertisement::image::AdvertisementImageInterface;
-use org::allbinary::business::advertisement::product::AdvertisementProductInterface;
-use org::allbinary::business::advertisement::thumbnail::AdvertisementThumbnailInterface;
-use org::allbinary::business::user::commerce::money::Money;
-use org::allbinary::logic::control::contraints::display::browser::DisplayInBrowserContraintsInterface;
+use org::allbinary::business::advertisement::image::AdvertisementImageInterface ();
+use org::allbinary::business::advertisement::product::AdvertisementProductInterface ();
+use org::allbinary::business::advertisement::thumbnail::AdvertisementThumbnailInterface ();
+use org::allbinary::business::user::commerce::money::Money ();
+use org::allbinary::logic::control::contraints::display::browser::DisplayInBrowserContraintsInterface ();
 
 1;
 

@@ -17,7 +17,7 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
-use parent -norequire,'org::allbinary::business::user::commerce::shipping::ShippingMethodsInterface';
+use parent -norequire,'java::lang::Object','org::allbinary::business::user::commerce::shipping::ShippingMethodsInterface';
 
 
 sub _init_fields {
@@ -32,7 +32,7 @@ sub _init_fields {
 sub new {
     my ($class, $abeClientInformation, $storeFrontInterface) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
         $self->{defaultShippingMethodInterface} = 'org::allbinary::business::user::commerce::shipping::ShippingMethodsFactory'->new($abeClientInformation, $storeFrontInterface)->getDefaultInstance();
         $self->{shippingVector} = 'org::allbinary::business::user::commerce::shipping::ShippingMethodsFactory'->new($abeClientInformation, $storeFrontInterface)->getInstance();
     return $self;
@@ -70,15 +70,16 @@ sub getDefault {
         return $self->{defaultShippingMethodInterface};
 }
 
-use org::allbinary::util::BasicArrayList;
-use org::allbinary::util::BasicArrayListD;
-use org::allbinary::business::context::modules::storefront::StoreFrontInterface;
-use org::allbinary::business::user::commerce::shipping::modules::ShippingInterface;
-use org::allbinary::logic::communication::log::LogUtil;
-use org::allbinary::logic::system::security::licensing::AbeClientInformationInterface;
-use org::allbinary::string::CommonStrings;
-use org::allbinary::business::user::commerce::shipping::ShippingMethodsInterface;
-use org::allbinary::business::user::commerce::shipping::ShippingMethodsFactory;
+use java::lang::Object ();
+use org::allbinary::util::BasicArrayList ();
+use org::allbinary::util::BasicArrayListD ();
+use org::allbinary::business::context::modules::storefront::StoreFrontInterface ();
+use org::allbinary::business::user::commerce::shipping::modules::ShippingInterface ();
+use org::allbinary::logic::communication::log::LogUtil ();
+use org::allbinary::logic::system::security::licensing::AbeClientInformationInterface ();
+use org::allbinary::string::CommonStrings ();
+use org::allbinary::business::user::commerce::shipping::ShippingMethodsInterface ();
+use org::allbinary::business::user::commerce::shipping::ShippingMethodsFactory ();
 
 1;
 

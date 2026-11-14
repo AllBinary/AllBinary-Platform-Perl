@@ -38,8 +38,9 @@ sub visit {
         }
 }
 
-use org::allbinary::logic::java::bool::BooleanFactory;
-use org::allbinary::logic::util::visitor::Visitor;
+use java::lang::Object ();
+use org::allbinary::logic::java::bool::BooleanFactory ();
+use org::allbinary::logic::util::visitor::Visitor ();
 
 1;
 

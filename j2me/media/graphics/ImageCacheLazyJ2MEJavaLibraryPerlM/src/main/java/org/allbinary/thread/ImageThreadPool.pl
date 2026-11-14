@@ -20,7 +20,7 @@ use feature 'try';
 no warnings 'experimental::try';
 use parent -norequire,'org::allbinary::thread::ThreadPool';
 
-our $instance = 'org::allbinary::thread::ImageThreadPool'->new("ImageLoader", 1, $org::allbinary::thread::ThreadPool::NORMAL_PRIORITY);
+tie our $instance, 'java::lang::LazyStatic', sub { 'org::allbinary::thread::ImageThreadPool'->new("ImageLoader", 1, $org::allbinary::thread::ThreadPool::NORMAL_PRIORITY) };
 
 sub _init_fields {
     my ($self) = @_;
@@ -37,7 +37,7 @@ sub getInstance {
 sub new {
     my ($class, $poolName, $numThreads, $priority) = @_;
     my $self = $class->SUPER::new($poolName, $numThreads, $priority);
-    $self->_init_fields();
+    _init_fields($self);
         # super(...) made $self above
     return $self;
 }
@@ -58,11 +58,13 @@ sub completedTask {
     my ($self, $task) = @_;
 }
 
-use org::allbinary::string::CommonLabels;
-use org::allbinary::string::CommonStrings;
-use org::allbinary::logic::string::StringMaker;
-use org::allbinary::logic::communication::log::LogUtil;
-use org::allbinary::thread::ThreadPool;
+use java::lang::Object ();
+use java::lang::LazyStatic ();
+use org::allbinary::string::CommonLabels ();
+use org::allbinary::string::CommonStrings ();
+use org::allbinary::logic::string::StringMaker ();
+use org::allbinary::logic::communication::log::LogUtil ();
+use org::allbinary::thread::ThreadPool ();
 
 1;
 

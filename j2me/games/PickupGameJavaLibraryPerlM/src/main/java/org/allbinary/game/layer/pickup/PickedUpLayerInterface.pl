@@ -33,7 +33,7 @@ sub setPickedUp {
     die "abstract method setPickedUp";
 }
 
-use org::allbinary::layer::LayerInterface;
+use org::allbinary::layer::LayerInterface ();
 
 1;
 

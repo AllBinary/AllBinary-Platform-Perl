@@ -17,7 +17,7 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
-use parent -norequire,'org::allbinary::animation::VectorAnimationFactoryInterface';
+use parent -norequire,'java::lang::Object','org::allbinary::animation::VectorAnimationFactoryInterface';
 
 
 sub new {
@@ -32,10 +32,11 @@ sub getInstance {
         return 'org::allbinary::animation::VectorAnimation'->new($points, $basicColor, 'org::allbinary::animation::AnimationBehavior'->getInstance());
 }
 
-use org::allbinary::graphics::color::BasicColor;
-use org::allbinary::animation::VectorAnimationFactoryInterface;
-use org::allbinary::animation::VectorAnimation;
-use org::allbinary::animation::AnimationBehavior;
+use java::lang::Object ();
+use org::allbinary::graphics::color::BasicColor ();
+use org::allbinary::animation::VectorAnimationFactoryInterface ();
+use org::allbinary::animation::VectorAnimation ();
+use org::allbinary::animation::AnimationBehavior ();
 
 1;
 

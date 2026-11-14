@@ -17,6 +17,7 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
 our $HASHTABLE = "Hashtable: ";
 
@@ -46,11 +47,12 @@ sub toString {
         return $stringBuffer->toString();
 }
 
-use org::allbinary::string::CommonSeps;
-use org::allbinary::logic::string::StringMaker;
-use org::allbinary::logic::string::StringUtil;
-use org::allbinary::math::PositionStrings;
-use org::allbinary::util::ABHashtable;
+use java::lang::Object ();
+use org::allbinary::string::CommonSeps ();
+use org::allbinary::logic::string::StringMaker ();
+use org::allbinary::logic::string::StringUtil ();
+use org::allbinary::math::PositionStrings ();
+use org::allbinary::util::ABHashtable ();
 
 1;
 

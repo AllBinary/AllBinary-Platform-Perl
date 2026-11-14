@@ -36,7 +36,7 @@ sub _init_fields {
 sub new {
     my ($class, $originalImage, $image, $angleInfo, $totalAngle, $animationBehavior) = @_;
     my $self = $class->SUPER::new($image, $angleInfo, $totalAngle, $animationBehavior);
-    $self->_init_fields();
+    _init_fields($self);
         # super(...) made $self above
         $self->{originalImage} = $originalImage;
         $self->{imageToShow} = $image;
@@ -53,7 +53,8 @@ sub getCanvasSurface {
         my $htmlImage = $image;
         my $canvasImage = $htmlImage->getImage();
         my $playN = 'playn::core::PlayN'->getInstance();
-        my $canvas = ($playN->graphics())->get($canvasImage);
+        my $htmlGraphics = $playN->graphics();
+        my $canvas = $htmlGraphics->get($canvasImage);
         $canvas->translate($self->{originalImage}->getWidth() / 2, $self->{originalImage}->getHeight() / 2);
         return $canvas;
 }
@@ -135,23 +136,24 @@ sub paintXY {
         $graphics->drawImage($self->{imageToShow}, $x, $y, $self->{anchor});
 }
 
-# use javax::microedition::lcdui::Graphics;
-# use javax::microedition::lcdui::Image;
-use org::allbinary::animation::AnimationBehavior;
-use org::allbinary::math::AngleInfo;
-use org::allbinary::graphics::color::BasicColor;
-use org::allbinary::media::image::ImageCopyUtil;
-use org::allbinary::media::image::ImageModifierUtil;
-use org::allbinary::media::image::ImageRotationUtil;
-use org::microemu::device::playn::PlaynMutableImage;
-use playn::core::Canvas;
-use playn::core::ImageImpl;
-use playn::core::PlayN;
-use playn::html::HtmlGraphics;
-use playn::html::HtmlImage;
-use org::allbinary::animation::image::ImageBaseRotationAnimation;
-use org::allbinary::animation::image::AlphaBaseProcessor;
-use org::allbinary::animation::image::AlphaProcessor;
+use java::lang::Object ();
+use javax::microedition::lcdui::Graphics ();
+use javax::microedition::lcdui::Image ();
+use org::allbinary::animation::AnimationBehavior ();
+use org::allbinary::math::AngleInfo ();
+use org::allbinary::graphics::color::BasicColor ();
+use org::allbinary::media::image::ImageCopyUtil ();
+use org::allbinary::media::image::ImageModifierUtil ();
+use org::allbinary::media::image::ImageRotationUtil ();
+use org::microemu::device::playn::PlaynMutableImage ();
+use playn::core::Canvas ();
+use playn::core::ImageImpl ();
+use playn::core::PlayN ();
+use playn::html::HtmlGraphics ();
+use playn::html::HtmlImage ();
+use org::allbinary::animation::image::ImageBaseRotationAnimation ();
+use org::allbinary::animation::image::AlphaBaseProcessor ();
+use org::allbinary::animation::image::AlphaProcessor ();
 
 1;
 

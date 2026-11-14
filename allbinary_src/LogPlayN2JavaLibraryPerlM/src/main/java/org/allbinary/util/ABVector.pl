@@ -196,8 +196,9 @@ sub removeRange {
         $self->SUPER::removeRange($fromIndex, $toIndex);
 }
 
-use java::util::Vector;
-# use jsinterop::annotations::JsType;
+use java::lang::Object ();
+use java::util::Vector ();
+# use jsinterop::annotations::JsType ();
 
 1;
 

@@ -17,9 +17,9 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
-use parent -norequire,'org::allbinary::game::init::GameInitializationInterface';
+use parent -norequire,'java::lang::Object','org::allbinary::game::init::GameInitializationInterface';
 
-our $NULL_BASE_GAME_INITIALIZATION = 'org::allbinary::game::init::BaseGameInitialization'->new([(undef) x (0)], 0);
+tie our $NULL_BASE_GAME_INITIALIZATION, 'java::lang::LazyStatic', sub { 'org::allbinary::game::init::BaseGameInitialization'->new([(undef) x (0)], 0) };
 
 sub _init_fields {
     my ($self) = @_;
@@ -38,7 +38,7 @@ sub _init_fields {
 sub new {
     my ($class, $resourceInitializationArray, $portion) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
         $self->{resourceInitializationArray} = $resourceInitializationArray;
         $self->{portion} = $portion;
     return $self;
@@ -163,25 +163,27 @@ sub isInitialized {
         return $self->{initialized};
 }
 
-# use javax::microedition::lcdui::CommandListener;
-use org::allbinary::animation::FeaturedAnimationInterfaceFactoryInterfaceFactory;
-use org::allbinary::game::configuration::GameConfigurationCentral;
-use org::allbinary::game::configuration::event::ChangedGameFeatureListener;
-use org::allbinary::game::configuration::feature::InputFeatureFactory;
-use org::allbinary::game::configuration::feature::MainFeatureFactory;
-use org::allbinary::game::input::PlatformInputMappingFactory;
-use org::allbinary::game::input::event::GameKeyEventFactory;
-use org::allbinary::game::resource::FeaturedResourceRelativeRelationshipFactory;
-use org::allbinary::game::resource::ResourceInitialization;
-use org::allbinary::game::resource::ResourceLoadingLevelFactory;
-use org::allbinary::graphics::canvas::transition::progress::ProgressCanvas;
-use org::allbinary::graphics::canvas::transition::progress::ProgressCanvasFactory;
-use org::allbinary::image::GameFeatureImageCacheFactory;
-use org::allbinary::input::motion::CompleteMotionGestureInputToGameMotionGestureInput;
-use org::allbinary::input::motion::button::BasicTouchInputFactory;
-use org::allbinary::input::motion::button::CancelTouchButtonInputFactory;
-use org::allbinary::logic::system::security::licensing::AbeClientInformationInterface;
-use org::allbinary::game::init::GameInitializationInterface;
+use java::lang::Object ();
+use java::lang::LazyStatic ();
+use javax::microedition::lcdui::CommandListener ();
+use org::allbinary::animation::FeaturedAnimationInterfaceFactoryInterfaceFactory ();
+use org::allbinary::game::configuration::GameConfigurationCentral ();
+use org::allbinary::game::configuration::event::ChangedGameFeatureListener ();
+use org::allbinary::game::configuration::feature::InputFeatureFactory ();
+use org::allbinary::game::configuration::feature::MainFeatureFactory ();
+use org::allbinary::game::input::PlatformInputMappingFactory ();
+use org::allbinary::game::input::event::GameKeyEventFactory ();
+use org::allbinary::game::resource::FeaturedResourceRelativeRelationshipFactory ();
+use org::allbinary::game::resource::ResourceInitialization ();
+use org::allbinary::game::resource::ResourceLoadingLevelFactory ();
+use org::allbinary::graphics::canvas::transition::progress::ProgressCanvas ();
+use org::allbinary::graphics::canvas::transition::progress::ProgressCanvasFactory ();
+use org::allbinary::image::GameFeatureImageCacheFactory ();
+use org::allbinary::input::motion::CompleteMotionGestureInputToGameMotionGestureInput ();
+use org::allbinary::input::motion::button::BasicTouchInputFactory ();
+use org::allbinary::input::motion::button::CancelTouchButtonInputFactory ();
+use org::allbinary::logic::system::security::licensing::AbeClientInformationInterface ();
+use org::allbinary::game::init::GameInitializationInterface ();
 
 1;
 

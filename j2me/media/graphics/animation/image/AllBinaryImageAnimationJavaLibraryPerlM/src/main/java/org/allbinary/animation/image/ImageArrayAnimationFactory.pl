@@ -17,7 +17,7 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
-use parent -norequire,'org::allbinary::animation::AnimationInterfaceFactoryInterface';
+use parent -norequire,'java::lang::Object','org::allbinary::animation::AnimationInterfaceFactoryInterface';
 
 
 sub _init_fields {
@@ -32,7 +32,7 @@ sub _init_fields {
 sub new {
     my ($class, $imageArray, $dx, $dy, $animationBehaviorFactory) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
         $self->{imageArray} = $imageArray;
         $self->{animationBehaviorFactory} = $animationBehaviorFactory;
         $self->{dx} = $dx;
@@ -56,15 +56,16 @@ sub setInitialScale {
     my ($self, $scaleProperties) = @_;
 }
 
-# use javax::microedition::lcdui::Image;
-use org::allbinary::animation::Animation;
-use org::allbinary::animation::AnimationBehavior;
-use org::allbinary::animation::AnimationBehaviorFactory;
-use org::allbinary::animation::AnimationInterfaceFactoryInterface;
-use org::allbinary::logic::communication::log::ForcedLogUtil;
-use org::allbinary::media::ScaleProperties;
-use org::allbinary::animation::image::ImageArrayAnimation;
-use org::allbinary::animation::image::AdjustedImageArrayAnimation;
+use java::lang::Object ();
+use javax::microedition::lcdui::Image ();
+use org::allbinary::animation::Animation ();
+use org::allbinary::animation::AnimationBehavior ();
+use org::allbinary::animation::AnimationBehaviorFactory ();
+use org::allbinary::animation::AnimationInterfaceFactoryInterface ();
+use org::allbinary::logic::communication::log::ForcedLogUtil ();
+use org::allbinary::media::ScaleProperties ();
+use org::allbinary::animation::image::ImageArrayAnimation ();
+use org::allbinary::animation::image::AdjustedImageArrayAnimation ();
 
 1;
 

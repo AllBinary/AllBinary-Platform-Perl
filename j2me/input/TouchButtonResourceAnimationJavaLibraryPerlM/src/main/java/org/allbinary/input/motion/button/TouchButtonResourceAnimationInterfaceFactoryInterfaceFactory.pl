@@ -142,31 +142,32 @@ sub isFeature {
         }
 }
 
-# use javax::microedition::lcdui::Image;
-use org::allbinary::animation::AnimationBehaviorFactory;
-use org::allbinary::animation::NullAnimationFactory;
-use org::allbinary::animation::image::sprite::OneRowSpriteIndexedAnimationFactory;
-use org::allbinary::animation::resource::BaseResourceAnimationInterfaceFactoryInterfaceFactory;
-use org::allbinary::game::configuration::feature::Features;
-use org::allbinary::game::resource::ResourceLoadingLevelFactory;
-use org::allbinary::graphics::canvas::transition::progress::ProgressCanvas;
-use org::allbinary::graphics::canvas::transition::progress::ProgressCanvasFactory;
-use org::allbinary::graphics::opengles::OpenGLFeatureFactory;
-use org::allbinary::image::ImageCache;
-use org::allbinary::image::ImageCacheFactory;
-use org::allbinary::logic::StdUtil;
-use org::allbinary::logic::string::StringMaker;
-use org::allbinary::logic::system::os::OperatingSystemFactory;
-use org::allbinary::media::image::ImageCompleteUtil;
-use org::allbinary::input::motion::button::TouchButtonBlankResource;
-use org::allbinary::input::motion::button::TouchButtonGenericActionResource;
-use org::allbinary::input::motion::button::TouchButtonStartResource;
-use org::allbinary::input::motion::button::TouchButtonUpResource;
-use org::allbinary::input::motion::button::TouchButtonDownResource;
-use org::allbinary::input::motion::button::TouchButtonTurnLeftResource;
-use org::allbinary::input::motion::button::TouchButtonTurnRightResource;
-use org::allbinary::input::motion::button::TouchButtonStrafeLeftResource;
-use org::allbinary::input::motion::button::TouchButtonStrafeRightResource;
+use java::lang::Object ();
+use javax::microedition::lcdui::Image ();
+use org::allbinary::animation::AnimationBehaviorFactory ();
+use org::allbinary::animation::NullAnimationFactory ();
+use org::allbinary::animation::image::sprite::OneRowSpriteIndexedAnimationFactory ();
+use org::allbinary::animation::resource::BaseResourceAnimationInterfaceFactoryInterfaceFactory ();
+use org::allbinary::game::configuration::feature::Features ();
+use org::allbinary::game::resource::ResourceLoadingLevelFactory ();
+use org::allbinary::graphics::canvas::transition::progress::ProgressCanvas ();
+use org::allbinary::graphics::canvas::transition::progress::ProgressCanvasFactory ();
+use org::allbinary::graphics::opengles::OpenGLFeatureFactory ();
+use org::allbinary::image::ImageCache ();
+use org::allbinary::image::ImageCacheFactory ();
+use org::allbinary::logic::StdUtil ();
+use org::allbinary::logic::string::StringMaker ();
+use org::allbinary::logic::system::os::OperatingSystemFactory ();
+use org::allbinary::media::image::ImageCompleteUtil ();
+use org::allbinary::input::motion::button::TouchButtonBlankResource ();
+use org::allbinary::input::motion::button::TouchButtonGenericActionResource ();
+use org::allbinary::input::motion::button::TouchButtonStartResource ();
+use org::allbinary::input::motion::button::TouchButtonUpResource ();
+use org::allbinary::input::motion::button::TouchButtonDownResource ();
+use org::allbinary::input::motion::button::TouchButtonTurnLeftResource ();
+use org::allbinary::input::motion::button::TouchButtonTurnRightResource ();
+use org::allbinary::input::motion::button::TouchButtonStrafeLeftResource ();
+use org::allbinary::input::motion::button::TouchButtonStrafeRightResource ();
 
 1;
 

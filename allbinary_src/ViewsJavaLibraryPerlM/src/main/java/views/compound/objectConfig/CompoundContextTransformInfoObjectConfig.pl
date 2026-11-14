@@ -37,7 +37,7 @@ sub new {
 sub _new2 {
     my ($class, $abeClientInformation, $transformInfoInterface) = @_;
     my $self = $class->SUPER::new($abeClientInformation, $transformInfoInterface);
-    $self->_init_fields();
+    _init_fields($self);
         # super(...) made $self above
     return $self;
 }
@@ -46,7 +46,7 @@ sub _new2 {
 sub _new3 {
     my ($class, $abeClientInformation, $transformInfoInterface, $document) = @_;
     my $self = $class->SUPER::new($abeClientInformation, $transformInfoInterface, $document);
-    $self->_init_fields();
+    _init_fields($self);
         # super(...) made $self above
         $self->setDocument($self->generate($self->toXmlDoc()));
     return $self;
@@ -56,7 +56,7 @@ sub _new3 {
 sub _new4 {
     my ($class, $abeClientInformation, $transformInfoInterface, $name, $type) = @_;
     my $self = $class->SUPER::new($abeClientInformation, $transformInfoInterface, $name, $type);
-    $self->_init_fields();
+    _init_fields($self);
         # super(...) made $self above
         $self->setDocument($self->generate($self->toXmlDoc()));
     return $self;
@@ -123,26 +123,27 @@ sub createInputStream {
         return $bais;
 }
 
-# use java::io::ByteArrayInputStream;
-# use java::io::InputStream;
-use org::allbinary::util::BasicArrayList;
-use org::allbinary::util::BasicArrayListD;
-use org::allbinary::data::tree::dom::document::DocumentToNode;
-use org::allbinary::logic::communication::log::LogUtil;
-use org::allbinary::logic::string::StringMaker;
-use org::allbinary::logic::string::StringUtil;
-use org::allbinary::logic::string::regex::replace::Replace;
-use org::allbinary::logic::system::security::licensing::AbeClientInformationInterface;
-use org::allbinary::logic::visual::transform::TransformFactory;
-use org::allbinary::logic::visual::transform::TransformInterface;
-use org::allbinary::logic::visual::transform::info::RootTransformInfoData;
-use org::allbinary::logic::visual::transform::info::TransformInfoData;
-use org::allbinary::logic::visual::transform::info::TransformInfoDomNode;
-use org::allbinary::logic::visual::transform::info::TransformInfoHttpInterface;
-use org::allbinary::logic::visual::transform::info::TransformInfoInterface;
-use org::allbinary::logic::visual::transform::info::objectConfig::GenericStoreTransformInfoObjectConfig;
-use org::allbinary::string::CommonSeps;
-use org::w3c::dom::Document;
+use java::lang::Object ();
+# use java::io::ByteArrayInputStream ();
+# use java::io::InputStream ();
+use org::allbinary::util::BasicArrayList ();
+use org::allbinary::util::BasicArrayListD ();
+use org::allbinary::data::tree::dom::document::DocumentToNode ();
+use org::allbinary::logic::communication::log::LogUtil ();
+use org::allbinary::logic::string::StringMaker ();
+use org::allbinary::logic::string::StringUtil ();
+use org::allbinary::logic::string::regex::replace::Replace ();
+use org::allbinary::logic::system::security::licensing::AbeClientInformationInterface ();
+use org::allbinary::logic::visual::transform::TransformFactory ();
+use org::allbinary::logic::visual::transform::TransformInterface ();
+use org::allbinary::logic::visual::transform::info::RootTransformInfoData ();
+use org::allbinary::logic::visual::transform::info::TransformInfoData ();
+use org::allbinary::logic::visual::transform::info::TransformInfoDomNode ();
+use org::allbinary::logic::visual::transform::info::TransformInfoHttpInterface ();
+use org::allbinary::logic::visual::transform::info::TransformInfoInterface ();
+use org::allbinary::logic::visual::transform::info::objectConfig::GenericStoreTransformInfoObjectConfig ();
+use org::allbinary::string::CommonSeps ();
+use org::w3c::dom::Document ();
 
 1;
 

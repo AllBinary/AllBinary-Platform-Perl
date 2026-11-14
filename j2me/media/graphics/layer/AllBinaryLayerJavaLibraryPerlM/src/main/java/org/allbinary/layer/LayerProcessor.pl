@@ -17,7 +17,7 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
-use parent -norequire,'org::allbinary::layer::LayerProcessorInterface';
+use parent -norequire,'java::lang::Object','org::allbinary::layer::LayerProcessorInterface';
 
 
 sub _init_fields {
@@ -30,7 +30,7 @@ sub _init_fields {
 sub new {
     my ($class, $layerManager) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
         $self->{layerManager} = $layerManager;
     return $self;
 }
@@ -66,8 +66,9 @@ sub process {
         }
 }
 
-use org::allbinary::string::CommonStrings;
-use org::allbinary::layer::LayerProcessorInterface;
+use java::lang::Object ();
+use org::allbinary::string::CommonStrings ();
+use org::allbinary::layer::LayerProcessorInterface ();
 
 1;
 

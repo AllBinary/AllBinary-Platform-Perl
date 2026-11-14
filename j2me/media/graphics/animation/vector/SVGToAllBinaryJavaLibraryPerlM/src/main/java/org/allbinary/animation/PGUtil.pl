@@ -5,8 +5,9 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
-our $instance = 'org::allbinary::animation::PGUtil'->new();
+tie our $instance, 'java::lang::LazyStatic', sub { 'org::allbinary::animation::PGUtil'->new() };
 
 sub new {
     my ($class) = @_;
@@ -42,7 +43,9 @@ sub flattenCubicBezier {
         }
 }
 
-use org::allbinary::animation::FixedPoint;
+use java::lang::Object ();
+use java::lang::LazyStatic ();
+use org::allbinary::animation::FixedPoint ();
 
 1;
 

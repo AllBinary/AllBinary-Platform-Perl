@@ -51,8 +51,9 @@ sub isCollisionInterface {
         return 0;
 }
 
-use org::allbinary::game::layer::CollidableCompositeLayer;
-use org::allbinary::game::collision::CollidableBaseBehavior;
+use java::lang::Object ();
+use org::allbinary::game::layer::CollidableCompositeLayer ();
+use org::allbinary::game::collision::CollidableBaseBehavior ();
 
 1;
 

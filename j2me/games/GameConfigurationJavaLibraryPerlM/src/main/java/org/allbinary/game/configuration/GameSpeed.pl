@@ -17,8 +17,9 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
-our $instance = 'org::allbinary::game::configuration::GameSpeed'->new();
+tie our $instance, 'java::lang::LazyStatic', sub { 'org::allbinary::game::configuration::GameSpeed'->new() };
 
 sub new {
     my ($class) = @_;
@@ -46,7 +47,9 @@ sub getInstance {
         return $org::allbinary::game::configuration::GameSpeed::instance;
 }
 
-use org::allbinary::game::configuration::GameConfigurationCentral;
+use java::lang::Object ();
+use java::lang::LazyStatic ();
+use org::allbinary::game::configuration::GameConfigurationCentral ();
 
 1;
 

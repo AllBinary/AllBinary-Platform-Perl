@@ -22,7 +22,7 @@ use parent -norequire,'org::allbinary::graphics::displayable::screen::CommandFor
 
 sub _init_fields {
     my ($self) = @_;
-    $self->{meUtil} = 'org::allbinary::logic::MEUtil'->getInstance();
+    $self->{meUtil} = 'org::allbinary::MIDPUtil'->getInstance();
     $self->{list} = undef;
 }
 
@@ -30,7 +30,7 @@ sub _init_fields {
 sub new {
     my ($class, $commandListener, $title, $list, $backgrounBasicColor, $foregroundBasicColor) = @_;
     my $self = $class->SUPER::new($commandListener, $title, $backgrounBasicColor, $foregroundBasicColor);
-    $self->_init_fields();
+    _init_fields($self);
         # super(...) made $self above
         $self->{logUtil}->putF($self->{commonStrings}->{START}, $self, $self->{commonStrings}->{CONSTRUCTOR});
         $self->{list} = $list;
@@ -129,18 +129,19 @@ sub getSelectedText {
         return $value;
 }
 
-# use javax::microedition::lcdui::Choice;
-# use javax::microedition::lcdui::ChoiceGroup;
-# use javax::microedition::lcdui::CommandListener;
-# use javax::microedition::lcdui::NullImage;
-use org::allbinary::game::commands::GameCommandsFactory;
-use org::allbinary::game::configuration::persistance::GameDifficultyFactory;
-use org::allbinary::graphics::color::BasicColor;
-use org::allbinary::graphics::displayable::screen::CommandForm;
-use org::allbinary::logic::MEUtil;
-use org::allbinary::logic::string::StringMaker;
-use org::allbinary::logic::string::StringUtil;
-use org::allbinary::util::BasicArrayList;
+use java::lang::Object ();
+use javax::microedition::lcdui::Choice ();
+use javax::microedition::lcdui::ChoiceGroup ();
+use javax::microedition::lcdui::CommandListener ();
+use javax::microedition::lcdui::NullImage ();
+use org::allbinary::MIDPUtil ();
+use org::allbinary::game::commands::GameCommandsFactory ();
+use org::allbinary::game::configuration::persistance::GameDifficultyFactory ();
+use org::allbinary::graphics::color::BasicColor ();
+use org::allbinary::graphics::displayable::screen::CommandForm ();
+use org::allbinary::logic::string::StringMaker ();
+use org::allbinary::logic::string::StringUtil ();
+use org::allbinary::util::BasicArrayList ();
 
 1;
 

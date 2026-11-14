@@ -30,7 +30,7 @@ sub _init_fields {
 sub new {
     my ($class, $cmdListener, $name, $allBinaryGameLayerManager, $paintableArray) = @_;
     my $self = $class->SUPER::new($cmdListener, $name, $allBinaryGameLayerManager->getBackgroundBasicColor(), $allBinaryGameLayerManager->getForegroundBasicColor());
-    $self->_init_fields();
+    _init_fields($self);
         # super(...) made $self above
         $self->{paintableArray} = $paintableArray;
         $self->{colorFillPaintable} = 'org::allbinary::game::paint::ColorFillPaintableFactory'->getInstance()->getInstance($allBinaryGameLayerManager->getBackgroundBasicColor(), 0);
@@ -48,13 +48,14 @@ sub paint {
         $self->SUPER::paint($graphics);
 }
 
-# use javax::microedition::lcdui::CommandListener;
-# use javax::microedition::lcdui::Graphics;
-use org::allbinary::game::layer::AllBinaryGameLayerManager;
-use org::allbinary::game::paint::ColorFillBasePaintable;
-use org::allbinary::game::paint::ColorFillPaintableFactory;
-use org::allbinary::graphics::paint::Paintable;
-use org::allbinary::game::displayable::canvas::GameCommandCanvas;
+use java::lang::Object ();
+use javax::microedition::lcdui::CommandListener ();
+use javax::microedition::lcdui::Graphics ();
+use org::allbinary::game::layer::AllBinaryGameLayerManager ();
+use org::allbinary::game::paint::ColorFillBasePaintable ();
+use org::allbinary::game::paint::ColorFillPaintableFactory ();
+use org::allbinary::graphics::paint::Paintable ();
+use org::allbinary::game::displayable::canvas::GameCommandCanvas ();
 
 1;
 

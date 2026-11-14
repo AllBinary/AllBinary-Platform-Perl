@@ -34,9 +34,9 @@ sub processScore {
     die "abstract method processScore";
 }
 
-use org::allbinary::game::combat::weapon::WeaponProperties;
-use org::allbinary::game::score::ScoreableInterface;
-use org::allbinary::layer::AllBinaryLayerManager;
+use org::allbinary::game::combat::weapon::WeaponProperties ();
+use org::allbinary::game::score::ScoreableInterface ();
+use org::allbinary::layer::AllBinaryLayerManager ();
 
 1;
 

@@ -17,7 +17,7 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
-use parent -norequire,'javax::xml::transform::URIResolver';
+use parent -norequire,'java::lang::Object';
 
 
 sub _init_fields {
@@ -32,7 +32,7 @@ sub _init_fields {
 sub new {
     my ($class, $parentTransformInfoInterface, $basicURIResolver) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
         $self->{parentTransformInfoInterface} = $parentTransformInfoInterface;
         $self->{basicURIResolver} = $basicURIResolver;
     return $self;
@@ -78,22 +78,23 @@ sub toString {
         }
 }
 
-# use javax::xml::transform::Source;
-# use javax::xml::transform::TransformerException;
-# use javax::xml::transform::URIResolver;
-# use javax::xml::transform::stream::StreamSource;
-use org::allbinary::globals::FREEBLISKET_PATH_GLOBALS;
-use org::allbinary::globals::URLGLOBALS;
-use org::allbinary::logic::communication::log::LogUtil;
-use org::allbinary::logic::control::crypt::file::CryptFileReader;
-use org::allbinary::logic::io::path::AbFilePath;
-use org::allbinary::logic::io::path::AbPath;
-use org::allbinary::logic::io::path::AbPathData;
-use org::allbinary::logic::string::StringMaker;
-use org::allbinary::logic::visual::transform::info::TransformInfoHttpStoreInterface;
-use org::allbinary::logic::visual::transform::info::TransformInfoInterface;
-use org::allbinary::logic::visual::transform::info::template::TransformInfoTemplateData;
-use org::allbinary::data::tree::dom::URIResolverStrings;
+use java::lang::Object ();
+# use javax::xml::transform::Source ();
+# use javax::xml::transform::TransformerException ();
+# use javax::xml::transform::URIResolver ();
+# use javax::xml::transform::stream::StreamSource ();
+use org::allbinary::globals::FREEBLISKET_PATH_GLOBALS ();
+use org::allbinary::globals::URLGLOBALS ();
+use org::allbinary::logic::communication::log::LogUtil ();
+use org::allbinary::logic::control::crypt::file::CryptFileReader ();
+use org::allbinary::logic::io::path::AbFilePath ();
+use org::allbinary::logic::io::path::AbPath ();
+use org::allbinary::logic::io::path::AbPathData ();
+use org::allbinary::logic::string::StringMaker ();
+use org::allbinary::logic::visual::transform::info::TransformInfoHttpStoreInterface ();
+use org::allbinary::logic::visual::transform::info::TransformInfoInterface ();
+use org::allbinary::logic::visual::transform::info::template::TransformInfoTemplateData ();
+use org::allbinary::data::tree::dom::URIResolverStrings ();
 
 1;
 

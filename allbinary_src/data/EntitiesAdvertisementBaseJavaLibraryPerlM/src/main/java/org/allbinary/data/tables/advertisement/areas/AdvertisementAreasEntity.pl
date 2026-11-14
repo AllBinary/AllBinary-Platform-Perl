@@ -30,7 +30,7 @@ sub _init_fields {
 sub new {
     my ($class) = @_;
     my $self = $class->SUPER::new('org::allbinary::business::init::db::UserDbInitInfo'->new());
-    $self->_init_fields();
+    _init_fields($self);
         # super(...) made $self above
         $self->setTableName($self->{tableName});
     return $self;
@@ -116,21 +116,28 @@ sub dropTable {
         return $self->SUPER::dropTable();
 }
 
-use java::util::HashMap;
-use org::allbinary::util::BasicArrayList;
-use org::allbinary::util::BasicArrayListD;
-use org::allbinary::business::advertisement::area::AdvertisementArea;
-use org::allbinary::business::advertisement::area::AdvertisementAreaData;
-use org::allbinary::business::advertisement::area::AdvertisementAreaInterface;
-use org::allbinary::business::advertisement::campaign::AdvertisementCampaignData;
-use org::allbinary::business::context::modules::storefront::StoreFrontData;
-use org::allbinary::business::entry::EntryData;
-use org::allbinary::business::init::db::UserDbInitInfo;
-use org::allbinary::logic::StdUtil;
-use org::allbinary::logic::communication::log::LogUtil;
-use org::allbinary::logic::communication::sql::AbSqlBean;
-use org::allbinary::logic::string::StringMaker;
-use org::allbinary::data::tables::advertisement::areas::AdvertisementAreasEntityInterface;
+
+sub insert {
+    my ($self, $values) = @_;
+        $self->SUPER::insert($values);
+}
+
+use java::lang::Object ();
+use java::util::HashMap ();
+use org::allbinary::util::BasicArrayList ();
+use org::allbinary::util::BasicArrayListD ();
+use org::allbinary::business::advertisement::area::AdvertisementArea ();
+use org::allbinary::business::advertisement::area::AdvertisementAreaData ();
+use org::allbinary::business::advertisement::area::AdvertisementAreaInterface ();
+use org::allbinary::business::advertisement::campaign::AdvertisementCampaignData ();
+use org::allbinary::business::context::modules::storefront::StoreFrontData ();
+use org::allbinary::business::entry::EntryData ();
+use org::allbinary::business::init::db::UserDbInitInfo ();
+use org::allbinary::logic::StdUtil ();
+use org::allbinary::logic::communication::log::LogUtil ();
+use org::allbinary::logic::communication::sql::AbSqlBean ();
+use org::allbinary::logic::string::StringMaker ();
+use org::allbinary::data::tables::advertisement::areas::AdvertisementAreasEntityInterface ();
 
 1;
 

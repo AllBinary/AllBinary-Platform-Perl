@@ -30,8 +30,9 @@ sub new {
     return $self;
 }
 
-use org::allbinary::game::input::Input;
-use org::allbinary::game::input::InputFactory;
+use java::lang::Object ();
+use org::allbinary::game::input::Input ();
+use org::allbinary::game::input::InputFactory ();
 
 1;
 

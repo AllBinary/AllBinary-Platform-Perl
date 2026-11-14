@@ -20,8 +20,8 @@ no warnings 'experimental::try';
 use parent -norequire,'org::allbinary::game::displayable::canvas::GameCommandCanvas','org::allbinary::game::input::mapping::InputMappingInterface';
 
 our $NAME = "GameInputMappingCanvas";
-our $DISPLAY = 'javax::microedition::lcdui::Command'->new("Controls", 'org::allbinary::logic::string::StringUtil'->getInstance()->{EMPTY_STRING}, $javax::microedition::lcdui::Command::SCREEN, 2);
-our $DEFAULT = 'javax::microedition::lcdui::Command'->new("Default", 'org::allbinary::logic::string::StringUtil'->getInstance()->{EMPTY_STRING}, $javax::microedition::lcdui::Command::SCREEN, 2);
+tie our $DISPLAY, 'java::lang::LazyStatic', sub { 'javax::microedition::lcdui::Command'->new("Controls", 'org::allbinary::logic::string::StringUtil'->getInstance()->{EMPTY_STRING}, $javax::microedition::lcdui::Command::SCREEN, 2) };
+tie our $DEFAULT, 'java::lang::LazyStatic', sub { 'javax::microedition::lcdui::Command'->new("Default", 'org::allbinary::logic::string::StringUtil'->getInstance()->{EMPTY_STRING}, $javax::microedition::lcdui::Command::SCREEN, 2) };
 
 sub _init_fields {
     my ($self) = @_;
@@ -40,7 +40,7 @@ sub _init_fields {
 sub new {
     my ($class, $abeClientInformation, $commandListener, $allBinaryGameLayerManager, $helpPaintable) = @_;
     my $self = $class->SUPER::new($commandListener, $org::allbinary::game::displayable::canvas::GameInputMappingCanvas::NAME, $allBinaryGameLayerManager->getBackgroundBasicColor(), $allBinaryGameLayerManager->getForegroundBasicColor());
-    $self->_init_fields();
+    _init_fields($self);
         # super(...) made $self above
         $self->{logUtil}->putF($self->{commonStrings}->{START}, $self, $self->{commonStrings}->{CONSTRUCTOR});
         if (!defined($helpPaintable)) {
@@ -240,29 +240,31 @@ sub paint {
         $self->SUPER::paint($graphics);
 }
 
-# use javax::microedition::lcdui::Command;
-# use javax::microedition::lcdui::CommandListener;
-# use javax::microedition::lcdui::Graphics;
-use org::allbinary::game::commands::GameCommandsFactory;
-use org::allbinary::game::input::GameKey;
-use org::allbinary::game::input::GameKeyFactory;
-use org::allbinary::game::input::Input;
-use org::allbinary::game::input::InputFactory;
-use org::allbinary::game::input::PlatformInputMappingFactory;
-use org::allbinary::game::input::mapping::InputMappingInterface;
-use org::allbinary::game::input::mapping::PersistentInputMapping;
-use org::allbinary::game::layer::AllBinaryGameLayerManager;
-use org::allbinary::game::paint::ColorFillBasePaintable;
-use org::allbinary::game::paint::ColorFillPaintableFactory;
-use org::allbinary::game::paint::help::HelpPaintable;
-use org::allbinary::game::paint::help::InputMappingHelpPaintable;
-use org::allbinary::graphics::paint::ProcessPaintable;
-use org::allbinary::logic::string::StringMaker;
-use org::allbinary::logic::string::StringUtil;
-use org::allbinary::logic::system::security::licensing::AbeClientInformationInterface;
-use org::allbinary::util::BasicArrayList;
-use org::allbinary::game::displayable::canvas::GameCommandCanvas;
-use org::allbinary::game::displayable::canvas::GameInputMappingInstructionsCanvas;
+use java::lang::Object ();
+use java::lang::LazyStatic ();
+use javax::microedition::lcdui::Command ();
+use javax::microedition::lcdui::CommandListener ();
+use javax::microedition::lcdui::Graphics ();
+use org::allbinary::game::commands::GameCommandsFactory ();
+use org::allbinary::game::input::GameKey ();
+use org::allbinary::game::input::GameKeyFactory ();
+use org::allbinary::game::input::Input ();
+use org::allbinary::game::input::InputFactory ();
+use org::allbinary::game::input::PlatformInputMappingFactory ();
+use org::allbinary::game::input::mapping::InputMappingInterface ();
+use org::allbinary::game::input::mapping::PersistentInputMapping ();
+use org::allbinary::game::layer::AllBinaryGameLayerManager ();
+use org::allbinary::game::paint::ColorFillBasePaintable ();
+use org::allbinary::game::paint::ColorFillPaintableFactory ();
+use org::allbinary::game::paint::help::HelpPaintable ();
+use org::allbinary::game::paint::help::InputMappingHelpPaintable ();
+use org::allbinary::graphics::paint::ProcessPaintable ();
+use org::allbinary::logic::string::StringMaker ();
+use org::allbinary::logic::string::StringUtil ();
+use org::allbinary::logic::system::security::licensing::AbeClientInformationInterface ();
+use org::allbinary::util::BasicArrayList ();
+use org::allbinary::game::displayable::canvas::GameCommandCanvas ();
+use org::allbinary::game::displayable::canvas::GameInputMappingInstructionsCanvas ();
 
 1;
 

@@ -19,7 +19,7 @@ use feature 'try';
 no warnings 'experimental::try';
 use parent -norequire,'org::allbinary::android::input::motion::MotionEventProcessor';
 
-our $PROCESSOR = 'org::allbinary::android::input::motion::TrackballGameInputMotionEventProcessor'->new();
+tie our $PROCESSOR, 'java::lang::LazyStatic', sub { 'org::allbinary::android::input::motion::TrackballGameInputMotionEventProcessor'->new() };
 
 sub _init_fields {
     my ($self) = @_;
@@ -38,7 +38,7 @@ sub getInstance {
 sub new {
     my ($class) = @_;
     my $self = $class->SUPER::new();
-    $self->_init_fields();
+    _init_fields($self);
     return $self;
 }
 
@@ -63,15 +63,17 @@ sub process {
         }
 }
 
-use android::view::MotionEvent;
-use org::allbinary::game::input::motion::action::SingleKeyPressGameKeyFromMotionGestureEventListener;
-use org::allbinary::input::motion::trackball::action::DownTrackballInputToGameKeyEventAction;
-use org::allbinary::input::motion::trackball::action::LeftTrackballInputToGameKeyEventAction;
-use org::allbinary::input::motion::trackball::action::RightTrackballInputToGameKeyEventAction;
-use org::allbinary::input::motion::trackball::action::UpTrackballInputToGameKeyEventAction;
-use org::allbinary::logic::communication::log::LogUtil;
-use org::allbinary::string::CommonStrings;
-use org::allbinary::android::input::motion::MotionEventProcessor;
+use java::lang::Object ();
+use java::lang::LazyStatic ();
+# use android::view::MotionEvent ();
+use org::allbinary::game::input::motion::action::SingleKeyPressGameKeyFromMotionGestureEventListener ();
+use org::allbinary::input::motion::trackball::action::DownTrackballInputToGameKeyEventAction ();
+use org::allbinary::input::motion::trackball::action::LeftTrackballInputToGameKeyEventAction ();
+use org::allbinary::input::motion::trackball::action::RightTrackballInputToGameKeyEventAction ();
+use org::allbinary::input::motion::trackball::action::UpTrackballInputToGameKeyEventAction ();
+use org::allbinary::logic::communication::log::LogUtil ();
+use org::allbinary::string::CommonStrings ();
+use org::allbinary::android::input::motion::MotionEventProcessor ();
 
 1;
 

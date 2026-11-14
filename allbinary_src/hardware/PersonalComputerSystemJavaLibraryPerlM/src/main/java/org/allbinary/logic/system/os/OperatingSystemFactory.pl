@@ -17,8 +17,9 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
-our $instance = 'org::allbinary::logic::system::os::OperatingSystemFactory'->new();
+tie our $instance, 'java::lang::LazyStatic', sub { 'org::allbinary::logic::system::os::OperatingSystemFactory'->new() };
 
 sub _init_fields {
     my ($self) = @_;
@@ -38,7 +39,7 @@ sub getInstance {
 sub new {
     my ($class) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
     return $self;
 }
 
@@ -85,21 +86,23 @@ sub getOperatingSystemInstance {
         }
 }
 
-use org::allbinary::logic::communication::log::Log;
-use org::allbinary::logic::communication::log::LogFactory;
-use org::allbinary::logic::communication::log::LogUtil;
-use org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory;
-use org::allbinary::logic::communication::log::config::type::LogConfigTypes;
-use org::allbinary::logic::string::StringMaker;
-use org::allbinary::logic::string::StringUtil;
-use org::allbinary::logic::system::os::linux::LinuxOperatingSystemFactory;
-use org::allbinary::logic::system::os::solaris::SolarisOperatingSystemFactory;
-use org::allbinary::logic::system::os::windows::WindowsOperatingSystemFactory;
-use org::allbinary::string::CommonStrings;
-use org::allbinary::logic::system::os::NoOperatingSystem;
-use org::allbinary::logic::system::os::OperatingSystems;
-use org::allbinary::logic::system::os::SystemProperties;
-use java::lang::System;
+use java::lang::Object ();
+use java::lang::LazyStatic ();
+use org::allbinary::logic::communication::log::Log ();
+use org::allbinary::logic::communication::log::LogFactory ();
+use org::allbinary::logic::communication::log::LogUtil ();
+use org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory ();
+use org::allbinary::logic::communication::log::config::type::LogConfigTypes ();
+use org::allbinary::logic::string::StringMaker ();
+use org::allbinary::logic::string::StringUtil ();
+use org::allbinary::logic::system::os::linux::LinuxOperatingSystemFactory ();
+use org::allbinary::logic::system::os::solaris::SolarisOperatingSystemFactory ();
+use org::allbinary::logic::system::os::windows::WindowsOperatingSystemFactory ();
+use org::allbinary::string::CommonStrings ();
+use org::allbinary::logic::system::os::NoOperatingSystem ();
+use org::allbinary::logic::system::os::OperatingSystems ();
+use org::allbinary::logic::system::os::SystemProperties ();
+use java::lang::System ();
 
 1;
 

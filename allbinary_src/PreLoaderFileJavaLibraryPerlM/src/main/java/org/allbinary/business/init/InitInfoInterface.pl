@@ -81,7 +81,7 @@ sub isMainPathValid {
     die "abstract method isMainPathValid";
 }
 
-use org::allbinary::logic::io::path::AbPath;
+use org::allbinary::logic::io::path::AbPath ();
 
 1;
 

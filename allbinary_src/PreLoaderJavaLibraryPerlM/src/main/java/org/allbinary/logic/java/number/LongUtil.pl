@@ -17,6 +17,7 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
 
 
@@ -41,9 +42,10 @@ sub fillIn {
         return $frameStringBuffer->toString();
 }
 
-use org::allbinary::logic::string::StringMaker;
-use org::allbinary::string::CommonPhoneStrings;
-use org::allbinary::logic::java::number::LongData;
+use java::lang::Object ();
+use org::allbinary::logic::string::StringMaker ();
+use org::allbinary::string::CommonPhoneStrings ();
+use org::allbinary::logic::java::number::LongData ();
 
 1;
 

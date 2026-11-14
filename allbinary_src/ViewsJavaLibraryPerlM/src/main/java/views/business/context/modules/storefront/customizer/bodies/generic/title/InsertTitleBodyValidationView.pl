@@ -29,7 +29,7 @@ sub _init_fields {
 sub new {
     my ($class, $transformInfoInterface) = @_;
     my $self = $class->SUPER::new($transformInfoInterface);
-    $self->_init_fields();
+    _init_fields($self);
         # super(...) made $self above
         my $requestHashMap = 'org::allbinary::logic::communication::http::request::RequestParams'->new($self->getPageContext())->toHashMap();
         $self->{titleBody} = 'org::allbinary::logic::visual::transform::template::customizer::bodies::title::TitleBodyValidation'->new($requestHashMap);
@@ -104,19 +104,27 @@ sub view {
         }
 }
 
-use java::util::HashMap;
-use org::allbinary::data::tree::dom::DomNodeInterface;
-use org::allbinary::logic::communication::http::request::RequestParams;
-use org::allbinary::logic::communication::log::LogUtil;
-use org::allbinary::logic::control::validate::ValidationComponentInterface;
-use org::allbinary::logic::string::StringMaker;
-use org::allbinary::logic::visual::transform::info::TransformInfoInterface;
-use org::allbinary::logic::visual::transform::template::customizer::bodies::title::TitleBodyValidation;
-use org::w3c::dom::Document;
-use org::w3c::dom::Node;
-use views::business::context::modules::storefront::customizer::CustomizerUtil;
-use views::business::context::modules::storefront::customizer::StoreCustomizerComponentUtil;
-use views::business::context::modules::storefront::customizer::bodies::generic::title::TitleBodyCustomizerView;
+
+# throws Exception
+sub getTransformInfoInterface {
+    my ($self) = @_;
+        return $self->SUPER::getTransformInfoInterface();
+}
+
+use java::lang::Object ();
+use java::util::HashMap ();
+use org::allbinary::data::tree::dom::DomNodeInterface ();
+use org::allbinary::logic::communication::http::request::RequestParams ();
+use org::allbinary::logic::communication::log::LogUtil ();
+use org::allbinary::logic::control::validate::ValidationComponentInterface ();
+use org::allbinary::logic::string::StringMaker ();
+use org::allbinary::logic::visual::transform::info::TransformInfoInterface ();
+use org::allbinary::logic::visual::transform::template::customizer::bodies::title::TitleBodyValidation ();
+use org::w3c::dom::Document ();
+use org::w3c::dom::Node ();
+use views::business::context::modules::storefront::customizer::CustomizerUtil ();
+use views::business::context::modules::storefront::customizer::StoreCustomizerComponentUtil ();
+use views::business::context::modules::storefront::customizer::bodies::generic::title::TitleBodyCustomizerView ();
 
 1;
 

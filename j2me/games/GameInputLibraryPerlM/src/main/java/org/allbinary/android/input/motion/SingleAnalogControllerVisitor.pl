@@ -29,7 +29,7 @@ sub _init_fields {
 sub new {
     my ($class, $playerInputId) = @_;
     my $self = $class->SUPER::new();
-    $self->_init_fields();
+    _init_fields($self);
         $self->{playerInputId} = $playerInputId;
     return $self;
 }
@@ -41,10 +41,11 @@ sub process {
         $analogLocationInputProcessor->process($allbinaryLayerManager, $analogLocationInput);
 }
 
-use org::allbinary::game::input::analog::AnalogLocationInput;
-use org::allbinary::game::input::analog::AnalogLocationInputFactory;
-use org::allbinary::layer::AllBinaryLayerManager;
-use org::allbinary::android::input::motion::AnalogControllerVisitor;
+use java::lang::Object ();
+use org::allbinary::game::input::analog::AnalogLocationInput ();
+use org::allbinary::game::input::analog::AnalogLocationInputFactory ();
+use org::allbinary::layer::AllBinaryLayerManager ();
+use org::allbinary::android::input::motion::AnalogControllerVisitor ();
 
 1;
 

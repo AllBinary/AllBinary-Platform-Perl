@@ -26,7 +26,7 @@ sub getInstance {
     die "abstract method getInstance";
 }
 
-use org::allbinary::graphics::color::BasicColor;
+use org::allbinary::graphics::color::BasicColor ();
 
 1;
 

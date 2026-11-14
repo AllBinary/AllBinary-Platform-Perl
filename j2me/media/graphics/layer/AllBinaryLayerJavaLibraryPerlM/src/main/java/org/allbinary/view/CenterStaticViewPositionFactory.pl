@@ -18,6 +18,7 @@ use warnings;
 use feature 'try';
 no warnings 'experimental::try';
 use POSIX ();
+use parent -norequire,'java::lang::Object';
 
 
 
@@ -34,8 +35,9 @@ sub getInstance {
         return 'org::allbinary::view::StaticViewPosition'->new((POSIX::floor(($displayInfoSingleton->getLastWidth()) / (2 ** (1)))), (POSIX::floor(($displayInfoSingleton->getLastHeight()) / (2 ** (1)))), $z);
 }
 
-use org::allbinary::graphics::displayable::DisplayInfoSingleton;
-use org::allbinary::view::StaticViewPosition;
+use java::lang::Object ();
+use org::allbinary::graphics::displayable::DisplayInfoSingleton ();
+use org::allbinary::view::StaticViewPosition ();
 
 1;
 

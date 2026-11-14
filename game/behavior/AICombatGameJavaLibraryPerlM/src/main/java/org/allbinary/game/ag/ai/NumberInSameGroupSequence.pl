@@ -17,6 +17,7 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
 
 sub _init_fields {
@@ -44,7 +45,7 @@ sub getInstance {
 sub new {
     my ($class) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
         my $smallIntegerSingletonFactory = 'org::allbinary::logic::math::SmallIntegerSingletonFactory'->getInstance();
         $self->{NUMBER_ON_SAME_TEAM_SEQUENCE_ZERO} = $smallIntegerSingletonFactory->getAt(100);
         $self->{NUMBER_ON_SAME_TEAM_SEQUENCE_ONE} = $smallIntegerSingletonFactory->getAt(101);
@@ -60,7 +61,8 @@ sub new {
     return $self;
 }
 
-use org::allbinary::logic::math::SmallIntegerSingletonFactory;
+use java::lang::Object ();
+use org::allbinary::logic::math::SmallIntegerSingletonFactory ();
 
 1;
 

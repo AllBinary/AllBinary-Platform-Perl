@@ -17,8 +17,9 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
-our $instance = 'org::allbinary::logic::io::DataOutputStreamFactory'->new();
+tie our $instance, 'java::lang::LazyStatic', sub { 'org::allbinary::logic::io::DataOutputStreamFactory'->new() };
 
 sub new {
     my ($class) = @_;
@@ -52,10 +53,12 @@ sub getInstance {
         return $idOutData;
 }
 
-use org::allbinary::logic::io::file::AbFile;
-use org::allbinary::logic::io::AbFileOutputStream;
-use org::allbinary::logic::io::AbDataOutputStream;
-use org::allbinary::logic::io::FileStreamFactory;
+use java::lang::Object ();
+use java::lang::LazyStatic ();
+use org::allbinary::logic::io::file::AbFile ();
+use org::allbinary::logic::io::AbFileOutputStream ();
+use org::allbinary::logic::io::AbDataOutputStream ();
+use org::allbinary::logic::io::FileStreamFactory ();
 
 1;
 

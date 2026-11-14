@@ -17,8 +17,9 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
-our $instance = 'org::allbinary::game::input::GameInputProcessor'->new();
+tie our $instance, 'java::lang::LazyStatic', sub { 'org::allbinary::game::input::GameInputProcessor'->new() };
 
 
 sub getInstance {
@@ -63,8 +64,10 @@ sub processReleased {
     my ($self, $allbinaryLayerManager, $keyAsInteger) = @_;
 }
 
-use org::allbinary::game::input::event::GameKeyEvent;
-use org::allbinary::layer::AllBinaryLayerManager;
+use java::lang::Object ();
+use java::lang::LazyStatic ();
+use org::allbinary::game::input::event::GameKeyEvent ();
+use org::allbinary::layer::AllBinaryLayerManager ();
 
 1;
 

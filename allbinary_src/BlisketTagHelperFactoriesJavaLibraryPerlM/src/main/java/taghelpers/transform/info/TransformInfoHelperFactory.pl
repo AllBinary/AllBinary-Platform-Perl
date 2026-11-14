@@ -29,7 +29,7 @@ sub _init_fields {
 sub new {
     my ($class) = @_;
     my $self = $class->SUPER::new();
-    $self->_init_fields();
+    _init_fields($self);
     return $self;
 }
 
@@ -47,12 +47,13 @@ sub getInstance {
         }
 }
 
-use java::util::HashMap;
-# use javax::servlet::jsp::PageContext;
-use admin::taghelpers::TagHelperFactory;
-use org::allbinary::logic::communication::log::LogUtil;
-use org::allbinary::logic::system::security::licensing::LicensingException;
-use taghelpers::transform::info::TransformInfoHelper;
+use java::lang::Object ();
+use java::util::HashMap ();
+# use javax::servlet::jsp::PageContext ();
+use admin::taghelpers::TagHelperFactory ();
+use org::allbinary::logic::communication::log::LogUtil ();
+use org::allbinary::logic::system::security::licensing::LicensingException ();
+use taghelpers::transform::info::TransformInfoHelper ();
 
 1;
 

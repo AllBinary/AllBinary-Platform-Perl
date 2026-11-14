@@ -17,8 +17,9 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
-our $instance = 'org::allbinary::game::collision::LayerCollisionUtil'->new();
+tie our $instance, 'java::lang::LazyStatic', sub { 'org::allbinary::game::collision::LayerCollisionUtil'->new() };
 
 sub _init_fields {
     my ($self) = @_;
@@ -35,7 +36,7 @@ sub getInstance {
 sub new {
     my ($class) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
         my $features = 'org::allbinary::game::configuration::feature::Features'->getInstance();
         my $gameFeatureFactory = 'org::allbinary::game::configuration::feature::GameFeatureFactory'->getInstance();
         if ('org::allbinary::graphics::opengles::OpenGLFeatureUtil'->getInstance()->isAnyThreed() && !$features->isFeature($gameFeatureFactory->{COLLISIONS_FORCED_TWO_DIMENSIONAL})) {
@@ -52,12 +53,14 @@ sub isCollision {
         return $self->{collisionProcessor}->isCollision($myLayer, $myLayer2);
 }
 
-use org::allbinary::game::configuration::feature::Features;
-use org::allbinary::game::configuration::feature::GameFeatureFactory;
-use org::allbinary::graphics::opengles::OpenGLFeatureUtil;
-use org::allbinary::layer::AllBinaryLayer;
-use org::allbinary::game::collision::Collision2DProcessor;
-use org::allbinary::game::collision::CollisionThreedProcessor;
+use java::lang::Object ();
+use java::lang::LazyStatic ();
+use org::allbinary::game::configuration::feature::Features ();
+use org::allbinary::game::configuration::feature::GameFeatureFactory ();
+use org::allbinary::graphics::opengles::OpenGLFeatureUtil ();
+use org::allbinary::layer::AllBinaryLayer ();
+use org::allbinary::game::collision::Collision2DProcessor ();
+use org::allbinary::game::collision::CollisionThreedProcessor ();
 
 1;
 

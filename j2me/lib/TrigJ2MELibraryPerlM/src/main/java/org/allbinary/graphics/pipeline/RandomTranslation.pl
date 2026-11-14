@@ -17,6 +17,7 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
 
 sub new {
@@ -38,9 +39,10 @@ sub getInstance {
         return $graphicsPipe->getMatrix();
 }
 
-use org::allbinary::game::rand::MyRandomFactory;
-use org::allbinary::util::BasicArrayList;
-use org::allbinary::graphics::pipeline::BasicGraphicsPipeline;
+use java::lang::Object ();
+use org::allbinary::game::rand::MyRandomFactory ();
+use org::allbinary::util::BasicArrayList ();
+use org::allbinary::graphics::pipeline::BasicGraphicsPipeline ();
 
 1;
 

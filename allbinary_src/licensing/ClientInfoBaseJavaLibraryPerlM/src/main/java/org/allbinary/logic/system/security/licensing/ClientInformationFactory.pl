@@ -17,6 +17,7 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
 
 sub new {
@@ -35,10 +36,11 @@ sub getInstance {
         return 'org::allbinary::logic::system::security::licensing::ClientInformation'->new($stringUtil->{NULL_STRING}, $stringUtil->{NULL_STRING}, $stringUtil->{NULL_STRING}, $stringUtil->{NULL_STRING});
 }
 
-use org::allbinary::logic::communication::log::LogUtil;
-use org::allbinary::logic::string::StringUtil;
-use org::allbinary::string::CommonStrings;
-use org::allbinary::logic::system::security::licensing::ClientInformation;
+use java::lang::Object ();
+use org::allbinary::logic::communication::log::LogUtil ();
+use org::allbinary::logic::string::StringUtil ();
+use org::allbinary::string::CommonStrings ();
+use org::allbinary::logic::system::security::licensing::ClientInformation ();
 
 1;
 

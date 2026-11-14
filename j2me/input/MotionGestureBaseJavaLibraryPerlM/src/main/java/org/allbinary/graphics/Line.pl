@@ -17,6 +17,7 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
 
 sub _init_fields {
@@ -31,7 +32,7 @@ sub _init_fields {
 sub new {
     my ($class, $p1, $p2) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
         $self->{p1} = 'org::allbinary::graphics::PointFactory'->getInstance()->{ZERO_ZERO};
         $self->{p2} = $self->{p1};
         $self->setP1($p1);
@@ -90,7 +91,8 @@ sub setP2 {
         $self->update();
 }
 
-use org::allbinary::graphics::PointFactory;
+use java::lang::Object ();
+use org::allbinary::graphics::PointFactory ();
 
 1;
 

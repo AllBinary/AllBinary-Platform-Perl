@@ -34,7 +34,7 @@ sub getNumberOfUsersByRole {
     die "abstract method getNumberOfUsersByRole";
 }
 
-use org::allbinary::data::tables::TableMappingInterface;
+use org::allbinary::data::tables::TableMappingInterface ();
 
 1;
 

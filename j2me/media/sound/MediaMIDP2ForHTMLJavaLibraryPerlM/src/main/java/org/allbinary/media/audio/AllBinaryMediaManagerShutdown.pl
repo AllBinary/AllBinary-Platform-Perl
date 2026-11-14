@@ -17,8 +17,9 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
-our $instance = 'org::allbinary::media::audio::AllBinaryMediaManagerShutdown'->new();
+tie our $instance, 'java::lang::LazyStatic', sub { 'org::allbinary::media::audio::AllBinaryMediaManagerShutdown'->new() };
 
 sub new {
     my ($class) = @_;
@@ -36,9 +37,11 @@ sub shutdown {
         'org::allbinary::media::audio::AllBinaryMediaManager'->shutdown($soundsFactoryInterface);
 }
 
-use org::allbinary::logic::communication::log::LogUtil;
-use org::allbinary::string::CommonStrings;
-use org::allbinary::media::audio::AllBinaryMediaManager;
+use java::lang::Object ();
+use java::lang::LazyStatic ();
+use org::allbinary::logic::communication::log::LogUtil ();
+use org::allbinary::string::CommonStrings ();
+use org::allbinary::media::audio::AllBinaryMediaManager ();
 
 1;
 

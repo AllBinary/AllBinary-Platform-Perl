@@ -30,7 +30,7 @@ sub _init_fields {
 sub new {
     my ($class) = @_;
     my $self = $class->SUPER::new();
-    $self->_init_fields();
+    _init_fields($self);
         $self->{touchButtonRecognizer} = 'org::allbinary::input::motion::button::TouchButtonRecognizer'->new();
     return $self;
 }
@@ -65,8 +65,9 @@ sub processDraggedMotionEvent {
         }
 }
 
-use org::allbinary::input::motion::button::TouchButtonRecognizer;
-use org::allbinary::input::motion::MotionRecognizer;
+use java::lang::Object ();
+use org::allbinary::input::motion::button::TouchButtonRecognizer ();
+use org::allbinary::input::motion::MotionRecognizer ();
 
 1;
 

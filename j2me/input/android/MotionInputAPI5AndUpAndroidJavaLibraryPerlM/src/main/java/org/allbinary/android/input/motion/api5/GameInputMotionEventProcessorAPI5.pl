@@ -19,7 +19,7 @@ use feature 'try';
 no warnings 'experimental::try';
 use parent -norequire,'org::allbinary::android::input::motion::BaseGameInputMotionEventProcessor';
 
-our $instance = 'org::allbinary::logic::NullUtil'->getInstance()->{NULL_OBJECT};
+tie our $instance, 'java::lang::LazyStatic', sub { 'org::allbinary::logic::NullUtil'->getInstance()->{NULL_OBJECT} };
 
 sub _init_fields {
     my ($self) = @_;
@@ -42,7 +42,7 @@ sub getInstance {
 sub new {
     my ($class) = @_;
     my $self = $class->SUPER::new();
-    $self->_init_fields();
+    _init_fields($self);
         my $size = 'org::allbinary::android::input::motion::api5::GameInputMotionInfoAPI5'->getInstance()->{MAX_POINTERS};
         $self->{motionRecognizerArray} = [(undef) x ($size)];
         $self->{TOTAL_MINUS_ONE} = $size;
@@ -113,16 +113,18 @@ sub process {
         }
 }
 
-use android::view::MotionEvent;
-use org::allbinary::android::input::motion::BaseGameInputMotionEventProcessor;
-use org::allbinary::graphics::displayable::DisplayInfoSingleton;
-use org::allbinary::graphics::displayable::ScalableListener;
-use org::allbinary::input::motion::AllMotionRecognizer;
-use org::allbinary::input::motion::MotionRecognizer;
-use org::allbinary::logic::NullUtil;
-use org::allbinary::logic::communication::log::ForcedLogUtil;
-use org::allbinary::logic::communication::log::LogUtil;
-use org::allbinary::android::input::motion::api5::GameInputMotionInfoAPI5;
+use java::lang::Object ();
+use java::lang::LazyStatic ();
+# use android::view::MotionEvent ();
+use org::allbinary::android::input::motion::BaseGameInputMotionEventProcessor ();
+use org::allbinary::graphics::displayable::DisplayInfoSingleton ();
+use org::allbinary::graphics::displayable::ScalableListener ();
+use org::allbinary::input::motion::AllMotionRecognizer ();
+use org::allbinary::input::motion::MotionRecognizer ();
+use org::allbinary::logic::NullUtil ();
+use org::allbinary::logic::communication::log::ForcedLogUtil ();
+use org::allbinary::logic::communication::log::LogUtil ();
+use org::allbinary::android::input::motion::api5::GameInputMotionInfoAPI5 ();
 
 1;
 

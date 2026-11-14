@@ -41,10 +41,11 @@ sub isImageValid {
         return 1;
 }
 
-# use java::awt;
-# use java::awt::image::BufferedImage;
-use org::allbinary::graphics::GPoint;
-use org::allbinary::input::automation::module::ImageComparatorConstraints;
+use java::lang::Object ();
+# use java::awt ();
+# use java::awt::image::BufferedImage ();
+use org::allbinary::graphics::GPoint ();
+use org::allbinary::input::automation::module::ImageComparatorConstraints ();
 
 1;
 

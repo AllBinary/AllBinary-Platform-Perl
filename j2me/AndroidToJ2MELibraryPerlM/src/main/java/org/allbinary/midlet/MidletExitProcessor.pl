@@ -29,7 +29,7 @@ sub _init_fields {
 sub new {
     my ($class, $midlet) = @_;
     my $self = $class->SUPER::new();
-    $self->_init_fields();
+    _init_fields($self);
         $self->{midlet} = $midlet;
     return $self;
 }
@@ -41,8 +41,9 @@ sub process {
         $self->{midlet}->exit();
 }
 
-# use javax::microedition::midlet::MIDlet;
-use org::allbinary::canvas::Processor;
+use java::lang::Object ();
+use javax::microedition::midlet::MIDlet ();
+use org::allbinary::canvas::Processor ();
 
 1;
 

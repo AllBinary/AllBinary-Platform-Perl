@@ -17,7 +17,7 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
-use parent -norequire,'org::allbinary::thread::PriorityRunnable';
+use parent -norequire,'java::lang::Object','org::allbinary::thread::PriorityRunnable';
 
 
 sub new {
@@ -48,7 +48,8 @@ sub run {
     my ($self) = @_;
 }
 
-use org::allbinary::thread::PriorityRunnable;
+use java::lang::Object ();
+use org::allbinary::thread::PriorityRunnable ();
 
 1;
 

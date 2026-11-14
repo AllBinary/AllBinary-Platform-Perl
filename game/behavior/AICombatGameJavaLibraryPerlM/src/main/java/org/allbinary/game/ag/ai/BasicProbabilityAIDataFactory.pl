@@ -17,6 +17,7 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
 
 sub new {
@@ -56,11 +57,12 @@ sub getInstance {
         return $inputProbability->toHashtable();
 }
 
-# use javax::microedition::lcdui::Canvas;
-use org::allbinary::logic::math::SmallIntegerSingletonFactory;
-use org::allbinary::time::NoTimeDelayHelper;
-use org::allbinary::util::ABHashtable;
-use org::allbinary::game::ag::ai::InputProbability;
+use java::lang::Object ();
+use javax::microedition::lcdui::Canvas ();
+use org::allbinary::logic::math::SmallIntegerSingletonFactory ();
+use org::allbinary::time::NoTimeDelayHelper ();
+use org::allbinary::util::ABHashtable ();
+use org::allbinary::game::ag::ai::InputProbability ();
 
 1;
 

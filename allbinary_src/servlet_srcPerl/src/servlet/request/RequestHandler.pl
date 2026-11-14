@@ -28,7 +28,7 @@ sub _init_fields {
 sub new {
     my ($class) = @_;
     my $self = $class->SUPER::new();
-    $self->_init_fields();
+    _init_fields($self);
     return $self;
 }
 
@@ -85,15 +85,16 @@ sub getServletInfo {
         return "WorkFlow Request Handler";
 }
 
-# use java::io;
-# use java::net;
-# use javax::servlet;
-# use javax::servlet::http;
-use org::allbinary::logic::system::security::licensing::LicensingException;
-use org::allbinary::logic::communication::log::LogUtil;
-use org::allbinary::logic::control::workflow::WorkFlowInterface;
-use org::allbinary::logic::control::workflow::RequestWorkFlowFactory;
-use servlet::request::HttpServlet;
+use java::lang::Object ();
+# use java::io ();
+# use java::net ();
+# use javax::servlet ();
+# use javax::servlet::http ();
+use org::allbinary::logic::system::security::licensing::LicensingException ();
+use org::allbinary::logic::communication::log::LogUtil ();
+use org::allbinary::logic::control::workflow::WorkFlowInterface ();
+use org::allbinary::logic::control::workflow::RequestWorkFlowFactory ();
+use servlet::request::HttpServlet ();
 
 1;
 

@@ -17,6 +17,7 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
 
 sub new {
@@ -43,10 +44,11 @@ sub showProgressOptionallyInTheBackground {
         $demoCanvas->setPaintableInterface($demoCanvas->getDefaultPaintableInterface());
 }
 
-use org::allbinary::graphics::canvas::transition::progress::ProgressCanvas;
-use org::allbinary::graphics::canvas::transition::progress::ProgressCanvasFactory;
-use org::allbinary::graphics::paint::PaintableComposite;
-use org::allbinary::graphics::paint::PaintableInterface;
+use java::lang::Object ();
+use org::allbinary::graphics::canvas::transition::progress::ProgressCanvas ();
+use org::allbinary::graphics::canvas::transition::progress::ProgressCanvasFactory ();
+use org::allbinary::graphics::paint::PaintableComposite ();
+use org::allbinary::graphics::paint::PaintableInterface ();
 
 1;
 

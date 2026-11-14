@@ -21,7 +21,7 @@ no warnings 'experimental::try';
 use parent -norequire,'org::allbinary::input::automation::module::game::MeteredGameObjectInterface';
 
 
-use org::allbinary::input::automation::module::game::MeteredGameObjectInterface;
+use org::allbinary::input::automation::module::game::MeteredGameObjectInterface ();
 
 1;
 

@@ -42,12 +42,13 @@ sub process {
         }
 }
 
-use org::allbinary::canvas::Processor;
-use org::allbinary::game::configuration::feature::Features;
-use org::allbinary::game::configuration::feature::SensorFeatureFactory;
-use org::allbinary::game::input::motion::action::NoCompleteMotionGestureInputEventListener;
-use org::allbinary::game::input::motion::action::SingleKeyPressGameKeyFromMotionGestureEventListener;
-use org::allbinary::input::accelerometer::AccelerometerSensorFactory;
+use java::lang::Object ();
+use org::allbinary::canvas::Processor ();
+use org::allbinary::game::configuration::feature::Features ();
+use org::allbinary::game::configuration::feature::SensorFeatureFactory ();
+use org::allbinary::game::input::motion::action::NoCompleteMotionGestureInputEventListener ();
+use org::allbinary::game::input::motion::action::SingleKeyPressGameKeyFromMotionGestureEventListener ();
+use org::allbinary::input::accelerometer::AccelerometerSensorFactory ();
 
 1;
 

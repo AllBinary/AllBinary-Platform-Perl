@@ -17,7 +17,7 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
-use parent -norequire,'javax::swing::tree::DefaultMutableTreeNode','org::allbinary::input::automation::actions::script::ProfileActionScriptNodeInterface';
+use parent -norequire,'java::lang::Object','org::allbinary::input::automation::actions::script::ProfileActionScriptNodeInterface';
 
 our $NAME = "Root";
 
@@ -40,7 +40,7 @@ sub new {
 sub _new2 {
     my ($class, $genericProfileActionJPanel, $node) = @_;
     my $self = $class->SUPER::new($NAME);
-    $self->_init_fields();
+    _init_fields($self);
         # super(...) made $self above
         $self->{genericProfileActionJPanel} = $genericProfileActionJPanel;
         $self->setProfileActionConditionInterfaceVector('org::allbinary::util::BasicArrayListD'->new());
@@ -63,7 +63,7 @@ sub _new2 {
 sub _new1 {
     my ($class, $genericProfileActionJPanel) = @_;
     my $self = $class->SUPER::new();
-    $self->_init_fields();
+    _init_fields($self);
         $self->{genericProfileActionJPanel} = $genericProfileActionJPanel;
         $self->setProfileActionConditionInterfaceVector('org::allbinary::util::BasicArrayListD'->new());
     return $self;
@@ -119,22 +119,23 @@ sub toXmlNode {
         return $node;
 }
 
-use java::util::HashMap;
-use org::allbinary::util::BasicArrayList;
-use org::allbinary::util::BasicArrayListD;
-# use javax::swing::tree::DefaultMutableTreeNode;
-use org::allbinary::data::tree::dom::DomSearchHelper;
-use org::allbinary::input::automation::actions::script::ProfileActionScriptNodeInterface;
-use org::allbinary::input::automation::actions::script::condition::ProfileActionScriptConditionFactory;
-use org::allbinary::input::automation::actions::script::condition::ProfileActionScriptConditionInterface;
-use org::allbinary::input::automation::module::generic::configuration::profile::actions::GenericProfileActionData;
-use org::allbinary::input::automation::module::generic::configuration::profile::actions::GenericProfileActionJPanel;
-use org::allbinary::logic::StdUtil;
-use org::allbinary::logic::communication::log::LogUtil;
-use org::allbinary::string::CommonStrings;
-use org::w3c::dom::Document;
-use org::w3c::dom::Node;
-use org::w3c::dom::NodeList;
+use java::lang::Object ();
+use java::util::HashMap ();
+use org::allbinary::util::BasicArrayList ();
+use org::allbinary::util::BasicArrayListD ();
+# use javax::swing::tree::DefaultMutableTreeNode ();
+use org::allbinary::data::tree::dom::DomSearchHelper ();
+use org::allbinary::input::automation::actions::script::ProfileActionScriptNodeInterface ();
+use org::allbinary::input::automation::actions::script::condition::ProfileActionScriptConditionFactory ();
+use org::allbinary::input::automation::actions::script::condition::ProfileActionScriptConditionInterface ();
+use org::allbinary::input::automation::module::generic::configuration::profile::actions::GenericProfileActionData ();
+use org::allbinary::input::automation::module::generic::configuration::profile::actions::GenericProfileActionJPanel ();
+use org::allbinary::logic::StdUtil ();
+use org::allbinary::logic::communication::log::LogUtil ();
+use org::allbinary::string::CommonStrings ();
+use org::w3c::dom::Document ();
+use org::w3c::dom::Node ();
+use org::w3c::dom::NodeList ();
 
 1;
 

@@ -19,7 +19,7 @@ use feature 'try';
 no warnings 'experimental::try';
 use parent -norequire,'javax::microedition::lcdui::Form','org::allbinary::graphics::displayable::command::MyCommandInterface','org::allbinary::game::displayable::canvas::MenuListener';
 
-our $NULL_COMMAND_FORM = 'org::allbinary::logic::NullUtil'->getInstance()->{NULL_OBJECT};
+tie our $NULL_COMMAND_FORM, 'java::lang::LazyStatic', sub { 'org::allbinary::logic::NullUtil'->getInstance()->{NULL_OBJECT} };
 
 sub _init_fields {
     my ($self) = @_;
@@ -42,7 +42,7 @@ sub getNullCommandForm {
 sub new {
     my ($class, $commandListener, $formTitle, $backgrounBasicColor, $foregroundBasicColor) = @_;
     my $self = $class->SUPER::new($formTitle);
-    $self->_init_fields();
+    _init_fields($self);
         # super(...) made $self above
         $self->{commandStack} = 'org::allbinary::logic::StdUtil'->getInstance()->createStack();
         try {
@@ -100,22 +100,24 @@ sub removeAllCommands {
         }
 }
 
-# use javax::microedition::lcdui::Command;
-# use javax::microedition::lcdui::CommandListener;
-# use javax::microedition::lcdui::Form;
-# use javax::microedition::lcdui::NullCommandListener;
-use org::allbinary::canvas::Processor;
-use org::allbinary::game::displayable::canvas::MenuListener;
-use org::allbinary::graphics::color::BasicColor;
-use org::allbinary::graphics::color::BasicColorFactory;
-use org::allbinary::graphics::displayable::command::MyCommandInterface;
-use org::allbinary::logic::NullUtil;
-use org::allbinary::logic::communication::log::LogUtil;
-use org::allbinary::logic::string::StringUtil;
-use org::allbinary::string::CommonStrings;
-use org::allbinary::logic::StdUtil;
-use org::allbinary::util::ABStack;
-use org::allbinary::graphics::displayable::screen::ScreenRepaintProcessorFactory;
+use java::lang::Object ();
+use java::lang::LazyStatic ();
+use javax::microedition::lcdui::Command ();
+use javax::microedition::lcdui::CommandListener ();
+use javax::microedition::lcdui::Form ();
+use javax::microedition::lcdui::NullCommandListener ();
+use org::allbinary::canvas::Processor ();
+use org::allbinary::game::displayable::canvas::MenuListener ();
+use org::allbinary::graphics::color::BasicColor ();
+use org::allbinary::graphics::color::BasicColorFactory ();
+use org::allbinary::graphics::displayable::command::MyCommandInterface ();
+use org::allbinary::logic::NullUtil ();
+use org::allbinary::logic::communication::log::LogUtil ();
+use org::allbinary::logic::string::StringUtil ();
+use org::allbinary::string::CommonStrings ();
+use org::allbinary::logic::StdUtil ();
+use org::allbinary::util::ABStack ();
+use org::allbinary::graphics::displayable::screen::ScreenRepaintProcessorFactory ();
 
 1;
 

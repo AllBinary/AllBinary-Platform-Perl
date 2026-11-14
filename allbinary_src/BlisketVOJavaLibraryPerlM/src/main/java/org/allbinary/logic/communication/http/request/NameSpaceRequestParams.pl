@@ -39,7 +39,7 @@ sub new {
 sub _new0 {
     my ($class) = @_;
     my $self = $class->SUPER::new();
-    $self->_init_fields();
+    _init_fields($self);
         # super(...) made $self above
         if ($org::allbinary::logic::communication::http::request::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($org::allbinary::logic::communication::http::request::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{HTTPREQUEST})) {
             $self->{logUtil}->putF("Constructing empty", $self, $self->{commonStrings}->{CONSTRUCTOR});
@@ -51,7 +51,7 @@ sub _new0 {
 sub _new1 {
     my ($class, $httpServletRequest) = @_;
     my $self = $class->SUPER::new($httpServletRequest);
-    $self->_init_fields();
+    _init_fields($self);
         # super(...) made $self above
         if ($org::allbinary::logic::communication::http::request::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($org::allbinary::logic::communication::http::request::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{HTTPREQUEST})) {
             $self->{logUtil}->putF("Constructing from HttpServletRequest", $self, $self->{commonStrings}->{CONSTRUCTOR});
@@ -63,7 +63,7 @@ sub _new1 {
 sub _new1 {
     my ($class, $pageContext) = @_;
     my $self = $class->SUPER::new($pageContext);
-    $self->_init_fields();
+    _init_fields($self);
         # super(...) made $self above
         if ($org::allbinary::logic::communication::http::request::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($org::allbinary::logic::communication::http::request::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{HTTPREQUEST})) {
             $self->{logUtil}->putF("Constructing from PageContext", $self, $self->{commonStrings}->{CONSTRUCTOR});
@@ -327,28 +327,29 @@ sub toHashMap {
         return $hashMap;
 }
 
-use java::util::HashMap;
-# use java::util::Set;
-use org::allbinary::util::BasicArrayList;
-use org::allbinary::util::BasicArrayListD;
-# use javax::servlet::http::HttpServletRequest;
-# use javax::servlet::jsp::PageContext;
-use org::allbinary::data::tree::dom::DomData;
-use org::allbinary::data::tree::dom::DomNodeHelper;
-use org::allbinary::data::tree::dom::DomSearchHelper;
-use org::allbinary::data::tree::dom::ModDomHelper;
-use org::allbinary::data::tree::dom::document::DomDocumentHelper;
-use org::allbinary::data::tree::dom::document::XmlDocumentHelper;
-use org::allbinary::logic::StdUtil;
-use org::allbinary::logic::communication::log::LogUtil;
-use org::allbinary::logic::string::StringMaker;
-use org::allbinary::logic::string::StringUtil;
-use org::allbinary::string::CommonSeps;
-use org::w3c::dom::Document;
-use org::w3c::dom::Node;
-use org::allbinary::logic::communication::http::request::RequestParams;
-use org::allbinary::logic::communication::http::request::NameSpaceRequestParamData;
-use org::allbinary::logic::communication::http::request::NameSpaceRequestParam;
+use java::lang::Object ();
+use java::util::HashMap ();
+# use java::util::Set ();
+use org::allbinary::util::BasicArrayList ();
+use org::allbinary::util::BasicArrayListD ();
+# use javax::servlet::http::HttpServletRequest ();
+# use javax::servlet::jsp::PageContext ();
+use org::allbinary::data::tree::dom::DomData ();
+use org::allbinary::data::tree::dom::DomNodeHelper ();
+use org::allbinary::data::tree::dom::DomSearchHelper ();
+use org::allbinary::data::tree::dom::ModDomHelper ();
+use org::allbinary::data::tree::dom::document::DomDocumentHelper ();
+use org::allbinary::data::tree::dom::document::XmlDocumentHelper ();
+use org::allbinary::logic::StdUtil ();
+use org::allbinary::logic::communication::log::LogUtil ();
+use org::allbinary::logic::string::StringMaker ();
+use org::allbinary::logic::string::StringUtil ();
+use org::allbinary::string::CommonSeps ();
+use org::w3c::dom::Document ();
+use org::w3c::dom::Node ();
+use org::allbinary::logic::communication::http::request::RequestParams ();
+use org::allbinary::logic::communication::http::request::NameSpaceRequestParamData ();
+use org::allbinary::logic::communication::http::request::NameSpaceRequestParam ();
 
 1;
 

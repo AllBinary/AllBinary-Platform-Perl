@@ -38,7 +38,7 @@ sub new {
 sub _new2 {
     my ($class, $label, $node) = @_;
     my $self = $class->SUPER::new($label, $node);
-    $self->_init_fields();
+    _init_fields($self);
         # super(...) made $self above
         $self->{logUtil}->putF($self->{commonStrings}->{START} . $label, $self, $self->{commonStrings}->{CONSTRUCTOR});
         my $actionNode = 'org::allbinary::data::tree::dom::DomSearchHelper'->getNode($org::allbinary::input::automation::actions::script::condition::processors::input::GenericProfileActionScriptInputData::TYPE, $node->getChildNodes());
@@ -58,7 +58,7 @@ sub _new2 {
 sub _new1 {
     my ($class, $label) = @_;
     my $self = $class->SUPER::new($label);
-    $self->_init_fields();
+    _init_fields($self);
         # super(...) made $self above
         $self->{logUtil}->putF($self->{commonStrings}->{START} . $label, $self, $self->{commonStrings}->{CONSTRUCTOR});
         my $inputRobotFactory = 'org::allbinary::input::automation::robot::InputRobotFactory'->getInstance();
@@ -128,24 +128,25 @@ sub toString {
         return $stringBuffer->toString();
 }
 
-use java::util::HashMap;
-use java::util::Iterator;
-# use java::util::Set;
-use org::allbinary::data::tree::dom::DomNodeHelper;
-use org::allbinary::data::tree::dom::DomSearchHelper;
-use org::allbinary::data::tree::dom::ModDomHelper;
-use org::allbinary::input::automation::actions::script::condition::processors::BasicProfileActionScriptProcessor;
-use org::allbinary::input::automation::robot::InputRobotFactory;
-use org::allbinary::input::automation::robot::InputRobotInterface;
-use org::allbinary::logic::StdUtil;
-use org::allbinary::logic::communication::log::LogUtil;
-use org::allbinary::logic::string::StringMaker;
-use org::allbinary::logic::string::StringUtil;
-use org::allbinary::util::ABHashtable;
-use org::w3c::dom::Document;
-use org::w3c::dom::Node;
-use org::allbinary::input::automation::actions::script::condition::processors::input::ProfileActionScriptInputInterface;
-use org::allbinary::input::automation::actions::script::condition::processors::input::GenericProfileActionScriptInputData;
+use java::lang::Object ();
+use java::util::HashMap ();
+use java::util::Iterator ();
+# use java::util::Set ();
+use org::allbinary::data::tree::dom::DomNodeHelper ();
+use org::allbinary::data::tree::dom::DomSearchHelper ();
+use org::allbinary::data::tree::dom::ModDomHelper ();
+use org::allbinary::input::automation::actions::script::condition::processors::BasicProfileActionScriptProcessor ();
+use org::allbinary::input::automation::robot::InputRobotFactory ();
+use org::allbinary::input::automation::robot::InputRobotInterface ();
+use org::allbinary::logic::StdUtil ();
+use org::allbinary::logic::communication::log::LogUtil ();
+use org::allbinary::logic::string::StringMaker ();
+use org::allbinary::logic::string::StringUtil ();
+use org::allbinary::util::ABHashtable ();
+use org::w3c::dom::Document ();
+use org::w3c::dom::Node ();
+use org::allbinary::input::automation::actions::script::condition::processors::input::ProfileActionScriptInputInterface ();
+use org::allbinary::input::automation::actions::script::condition::processors::input::GenericProfileActionScriptInputData ();
 
 1;
 

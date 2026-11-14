@@ -27,8 +27,9 @@ sub new {
     return $self;
 }
 
-use org::allbinary::logic::visual::transform::info::TransformInfo;
-use org::allbinary::logic::visual::transform::info::TransformInfoInterface;
+use java::lang::Object ();
+use org::allbinary::logic::visual::transform::info::TransformInfo ();
+use org::allbinary::logic::visual::transform::info::TransformInfoInterface ();
 
 1;
 

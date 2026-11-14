@@ -17,8 +17,9 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
-our $NULL_HUD_GRAPHICS_POSITION = 'org::allbinary::game::graphics::hud::HudGraphicsPosition'->new('org::allbinary::graphics::PointFactory'->getInstance()->{ZERO_ZERO}, 9);
+tie our $NULL_HUD_GRAPHICS_POSITION, 'java::lang::LazyStatic', sub { 'org::allbinary::game::graphics::hud::HudGraphicsPosition'->new('org::allbinary::graphics::PointFactory'->getInstance()->{ZERO_ZERO}, 9) };
 
 sub _init_fields {
     my ($self) = @_;
@@ -30,7 +31,7 @@ sub _init_fields {
 sub new {
     my ($class, $point, $anchor) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
         $self->setAnchor($anchor);
         $self->setPoint($point);
     return $self;
@@ -60,8 +61,10 @@ sub setPoint {
         $self->{point} = $point;
 }
 
-use org::allbinary::graphics::GPoint;
-use org::allbinary::graphics::PointFactory;
+use java::lang::Object ();
+use java::lang::LazyStatic ();
+use org::allbinary::graphics::GPoint ();
+use org::allbinary::graphics::PointFactory ();
 
 1;
 

@@ -42,7 +42,7 @@ sub createSimulated {
 sub new {
     my ($class, $remoteInfo, $parentLayer, $advancedRTSProperties, $groupInterface, $rootName, $name, $healthInterface, $rtsFormInput, $animationInterfaceFactoryInterface, $emptyAnimationInterfaceFactoryInterface, $baseAnimationInterfaceFactoryInterface, $buildAnimationInterfaceFactoryInterface, $verticleBuildAnimationInterfaceFactoryInterface, $proceduralAnimationInterfaceFactoryInterface, $rectangle, $x, $y, $viewPosition) = @_;
     my $self = $class->SUPER::new($remoteInfo, $groupInterface, $rootName, $name, $healthInterface, $rtsFormInput, $animationInterfaceFactoryInterface, $emptyAnimationInterfaceFactoryInterface, $baseAnimationInterfaceFactoryInterface, $buildAnimationInterfaceFactoryInterface, $verticleBuildAnimationInterfaceFactoryInterface, $proceduralAnimationInterfaceFactoryInterface, $rectangle, $x, $y, $viewPosition);
-    $self->_init_fields();
+    _init_fields($self);
         # super(...) made $self above
         $self->setVisible(0);
         $self->setWaypointBehavior('org::allbinary::game::layer::WaypointBehaviorBase'->new());
@@ -141,7 +141,7 @@ sub shouldAddWaypointFromBuilding {
     my ($self) = @_;
         if ($self->{parentLayer} != $org::allbinary::game::layer::NullPathFindingLayer::NULL_PATH_FINDING_LAYER) {
             my $parentAdvancedRTSGameLayer = $self->{parentLayer};
-            if ($parentAdvancedRTSGameLayer->getType() != 'org::allbinary::game::layer::unit::UnitLayer'->getStaticType()) {
+            if ($parentAdvancedRTSGameLayer->getType() != 1) {
                 return 1;
             }
         }
@@ -151,7 +151,7 @@ sub shouldAddWaypointFromBuilding {
 
 sub isWaypointListEmptyOrOnlyTargets {
     my ($self) = @_;
-        if ($self->getType() != 'org::allbinary::game::layer::unit::UnitLayer'->getStaticType()) {
+        if ($self->getType() != 1) {
             return 1;
         }
         return 0;
@@ -274,55 +274,55 @@ sub onDestroyed {
         }
 }
 
-# use javax::microedition::lcdui::Canvas;
-use org::allbinary::animation::AnimationInterfaceFactoryInterface;
-use org::allbinary::animation::NullAnimationFactory;
-use org::allbinary::animation::NullIndexedAnimationFactory;
-use org::allbinary::animation::ProceduralAnimationInterfaceFactoryInterface;
-use org::allbinary::animation::transition::shake::ShakeAnimationListener;
-use org::allbinary::direction::Direction;
-use org::allbinary::direction::DirectionFactory;
-use org::allbinary::game::GameTypeFactory;
-use org::allbinary::game::combat::destroy::event::DestroyedEvent;
-use org::allbinary::game::combat::destroy::event::DestroyedEventHandler;
-use org::allbinary::game::combat::destroy::event::DestroyedEventListenerInterface;
-use org::allbinary::game::health::Health;
-use org::allbinary::game::identification::Group;
-use org::allbinary::game::identification::GroupFactory;
-use org::allbinary::game::input::event::GameKeyEventFactory;
-use org::allbinary::game::input::form::NullRTSFormInputFactory;
-use org::allbinary::game::input::form::RTSFormInput;
-use org::allbinary::game::layer::building::event::BuildingEventHandler;
-use org::allbinary::game::layer::unit::UnitLayer;
-use org::allbinary::game::layer::waypoint::Waypoint2LogHelper;
-use org::allbinary::game::layer::waypoint::Waypoint2SelectedLogHelper;
-use org::allbinary::game::layer::waypoint::WaypointBase;
-use org::allbinary::game::layer::waypoint::WaypointLogHelper;
-use org::allbinary::game::layer::waypoint::WaypointRunnableLogHelper;
-use org::allbinary::game::layer::waypoint::WaypointRunnableSelectedLogHelper;
-use org::allbinary::game::layer::waypoint::WaypointSelectedLogHelper;
-use org::allbinary::game::multiplayer::layer::RemoteInfo;
-use org::allbinary::game::tick::NullTickable;
-use org::allbinary::game::tick::TickableInterface;
-use org::allbinary::game::view::TileLayerPositionIntoViewPosition;
-use org::allbinary::graphics::Rectangle;
-use org::allbinary::graphics::RectangleFactory;
-use org::allbinary::layer::AllBinaryLayer;
-use org::allbinary::logic::string::StringUtil;
-use org::allbinary::math::AngleInfo;
-use org::allbinary::math::FrameUtil;
-use org::allbinary::media::AllBinaryVibrationME;
-use org::allbinary::media::graphics::geography::map::BasicGeographicMap;
-use org::allbinary::media::graphics::geography::map::GeographicMapCellPosition;
-use org::allbinary::media::graphics::geography::map::GeographicMapCompositeInterface;
-use org::allbinary::media::graphics::geography::map::GeographicMapDirectionUtil;
-use org::allbinary::util::BasicArrayList;
-use org::allbinary::view::ViewPositionBase;
-use org::allbinary::game::layer::RTSLayer;
-use org::allbinary::game::layer::NullPathFindingLayer;
-use org::allbinary::game::layer::AdvancedRTSProperties;
-use org::allbinary::game::layer::WaypointBehaviorBase;
-use org::allbinary::game::layer::RTSLayerUtil;
+use java::lang::Object ();
+use javax::microedition::lcdui::Canvas ();
+use org::allbinary::animation::AnimationInterfaceFactoryInterface ();
+use org::allbinary::animation::NullAnimationFactory ();
+use org::allbinary::animation::NullIndexedAnimationFactory ();
+use org::allbinary::animation::ProceduralAnimationInterfaceFactoryInterface ();
+use org::allbinary::animation::transition::shake::ShakeAnimationListener ();
+use org::allbinary::direction::Direction ();
+use org::allbinary::direction::DirectionFactory ();
+use org::allbinary::game::GameTypeFactory ();
+use org::allbinary::game::combat::destroy::event::DestroyedEvent ();
+use org::allbinary::game::combat::destroy::event::DestroyedEventHandler ();
+use org::allbinary::game::combat::destroy::event::DestroyedEventListenerInterface ();
+use org::allbinary::game::health::Health ();
+use org::allbinary::game::identification::Group ();
+use org::allbinary::game::identification::GroupFactory ();
+use org::allbinary::game::input::event::GameKeyEventFactory ();
+use org::allbinary::game::input::form::NullRTSFormInputFactory ();
+use org::allbinary::game::input::form::RTSFormInput ();
+use org::allbinary::game::layer::building::event::BuildingEventHandler ();
+use org::allbinary::game::layer::waypoint::Waypoint2LogHelper ();
+use org::allbinary::game::layer::waypoint::Waypoint2SelectedLogHelper ();
+use org::allbinary::game::layer::waypoint::WaypointBase ();
+use org::allbinary::game::layer::waypoint::WaypointLogHelper ();
+use org::allbinary::game::layer::waypoint::WaypointRunnableLogHelper ();
+use org::allbinary::game::layer::waypoint::WaypointRunnableSelectedLogHelper ();
+use org::allbinary::game::layer::waypoint::WaypointSelectedLogHelper ();
+use org::allbinary::game::multiplayer::layer::RemoteInfo ();
+use org::allbinary::game::tick::NullTickable ();
+use org::allbinary::game::tick::TickableInterface ();
+use org::allbinary::game::view::TileLayerPositionIntoViewPosition ();
+use org::allbinary::graphics::Rectangle ();
+use org::allbinary::graphics::RectangleFactory ();
+use org::allbinary::layer::AllBinaryLayer ();
+use org::allbinary::logic::string::StringUtil ();
+use org::allbinary::math::AngleInfo ();
+use org::allbinary::math::FrameUtil ();
+use org::allbinary::media::AllBinaryVibrationME ();
+use org::allbinary::media::graphics::geography::map::BasicGeographicMap ();
+use org::allbinary::media::graphics::geography::map::GeographicMapCellPosition ();
+use org::allbinary::media::graphics::geography::map::GeographicMapCompositeInterface ();
+use org::allbinary::media::graphics::geography::map::GeographicMapDirectionUtil ();
+use org::allbinary::util::BasicArrayList ();
+use org::allbinary::view::ViewPositionBase ();
+use org::allbinary::game::layer::RTSLayer ();
+use org::allbinary::game::layer::NullPathFindingLayer ();
+use org::allbinary::game::layer::AdvancedRTSProperties ();
+use org::allbinary::game::layer::WaypointBehaviorBase ();
+use org::allbinary::game::layer::RTSLayerUtil ();
 
 1;
 

@@ -17,9 +17,9 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
-use parent -norequire,'org::allbinary::game::input::LayerPositionFinderInterface';
+use parent -norequire,'java::lang::Object','org::allbinary::game::input::LayerPositionFinderInterface';
 
-our $instance = 'org::allbinary::game::input::RTSGameLayerPositionFinder'->new();
+tie our $instance, 'java::lang::LazyStatic', sub { 'org::allbinary::game::input::RTSGameLayerPositionFinder'->new() };
 
 
 sub getInstance {
@@ -40,10 +40,12 @@ sub getLayerInterface {
         return 'org::allbinary::media::graphics::geography::map::drop::DropCellPositionHistory'->getInstance()->getLayerInterface($geographicMapCellPosition);
 }
 
-use org::allbinary::layer::AllBinaryLayer;
-use org::allbinary::media::graphics::geography::map::GeographicMapCellPosition;
-use org::allbinary::media::graphics::geography::map::drop::DropCellPositionHistory;
-use org::allbinary::game::input::LayerPositionFinderInterface;
+use java::lang::Object ();
+use java::lang::LazyStatic ();
+use org::allbinary::layer::AllBinaryLayer ();
+use org::allbinary::media::graphics::geography::map::GeographicMapCellPosition ();
+use org::allbinary::media::graphics::geography::map::drop::DropCellPositionHistory ();
+use org::allbinary::game::input::LayerPositionFinderInterface ();
 
 1;
 

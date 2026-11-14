@@ -17,6 +17,7 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
 
 
@@ -37,10 +38,11 @@ sub getInstance {
         return 'org::allbinary::logic::system::loader::AbeFactory'->getInstance()->getInstance($abeClientInformation, $userEmailEventConfigurationInterface->getEventListenerClassPath(), $classes, $params);
 }
 
-use org::allbinary::business::user::UserInterface;
-use org::allbinary::logic::communication::smtp::event::UserEmailEventListenerInterface;
-use org::allbinary::logic::system::loader::AbeFactory;
-use org::allbinary::logic::system::security::licensing::AbeClientInformationInterface;
+use java::lang::Object ();
+use org::allbinary::business::user::UserInterface ();
+use org::allbinary::logic::communication::smtp::event::UserEmailEventListenerInterface ();
+use org::allbinary::logic::system::loader::AbeFactory ();
+use org::allbinary::logic::system::security::licensing::AbeClientInformationInterface ();
 
 1;
 

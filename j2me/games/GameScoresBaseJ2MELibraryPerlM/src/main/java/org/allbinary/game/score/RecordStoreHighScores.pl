@@ -19,7 +19,7 @@ use feature 'try';
 no warnings 'experimental::try';
 use parent -norequire,'org::allbinary::game::score::HighScores';
 
-our $hashTable = 'org::allbinary::logic::StdUtil'->getInstance()->createHashtable();
+tie our $hashTable, 'java::lang::LazyStatic', sub { 'org::allbinary::logic::StdUtil'->getInstance()->createHashtable() };
 
 sub _init_fields {
     my ($self) = @_;
@@ -38,7 +38,7 @@ sub _init_fields {
 sub new {
     my ($class, $abeClientInformation, $gameInfo, $name, $heading, $columnTwoHeading, $recordComparatorInterface) = @_;
     my $self = $class->SUPER::new($name, $heading, $columnTwoHeading);
-    $self->_init_fields();
+    _init_fields($self);
         # super(...) made $self above
         $self->{abeClientInformation} = $abeClientInformation;
         $self->{gameInfo} = $gameInfo;
@@ -242,33 +242,35 @@ sub toString {
         return $stringBuffer->toString();
 }
 
-# use java::io::ByteArrayInputStream;
-# use java::io::DataInputStream;
-# use java::io::EOFException;
-# use java::io::IOException;
-# use javax::microedition::rms::RecordComparator;
-# use javax::microedition::rms::RecordEnumeration;
-# use javax::microedition::rms::RecordStore;
-# use javax::microedition::rms::RecordStoreException;
-# use javax::microedition::rms::RecordStoreNotFoundException;
-use org::allbinary::TsUtil;
-use org::allbinary::game::GameInfo;
-use org::allbinary::game::configuration::persistance::NullRecordComparator;
-use org::allbinary::game::configuration::persistance::NullRecordFilter;
-use org::allbinary::game::configuration::persistance::NullRecordStore;
-use org::allbinary::logic::StdUtil;
-use org::allbinary::logic::communication::log::LogUtil;
-use org::allbinary::logic::communication::log::PreLogUtil;
-use org::allbinary::logic::string::StringMaker;
-use org::allbinary::logic::system::security::licensing::AbeClientInformationInterface;
-use org::allbinary::persistance::PlatformRecordIdUtil;
-use org::allbinary::string::CommonSeps;
-use org::allbinary::string::CommonStrings;
-use org::allbinary::util::ABHashtable;
-use org::allbinary::util::BasicArrayList;
-use org::allbinary::util::BasicArrayListD;
-use org::allbinary::game::score::HighScores;
-use org::allbinary::game::score::HighScore;
+use java::lang::Object ();
+use java::lang::LazyStatic ();
+# use java::io::ByteArrayInputStream ();
+# use java::io::DataInputStream ();
+# use java::io::EOFException ();
+# use java::io::IOException ();
+use javax::microedition::rms::RecordComparator ();
+use javax::microedition::rms::RecordEnumeration ();
+use javax::microedition::rms::RecordStore ();
+use javax::microedition::rms::RecordStoreException ();
+use javax::microedition::rms::RecordStoreNotFoundException ();
+use org::allbinary::TsUtil ();
+use org::allbinary::game::GameInfo ();
+use org::allbinary::game::configuration::persistance::NullRecordComparator ();
+use org::allbinary::game::configuration::persistance::NullRecordFilter ();
+use org::allbinary::game::configuration::persistance::NullRecordStore ();
+use org::allbinary::logic::StdUtil ();
+use org::allbinary::logic::communication::log::LogUtil ();
+use org::allbinary::logic::communication::log::PreLogUtil ();
+use org::allbinary::logic::string::StringMaker ();
+use org::allbinary::logic::system::security::licensing::AbeClientInformationInterface ();
+use org::allbinary::persistance::PlatformRecordIdUtil ();
+use org::allbinary::string::CommonSeps ();
+use org::allbinary::string::CommonStrings ();
+use org::allbinary::util::ABHashtable ();
+use org::allbinary::util::BasicArrayList ();
+use org::allbinary::util::BasicArrayListD ();
+use org::allbinary::game::score::HighScores ();
+use org::allbinary::game::score::HighScore ();
 
 1;
 

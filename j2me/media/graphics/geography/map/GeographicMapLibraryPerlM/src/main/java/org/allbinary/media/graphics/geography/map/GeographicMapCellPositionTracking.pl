@@ -17,6 +17,7 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
 
 sub _init_fields {
@@ -31,7 +32,7 @@ sub _init_fields {
 sub new {
     my ($class) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
     return $self;
 }
 
@@ -84,10 +85,11 @@ sub getCurrentGeographicMapCellPosition {
         return $self->{currentGeographicMapCellPosition};
 }
 
-use org::allbinary::game::displayable::canvas::AllBinaryGameCanvasInterface;
-use org::allbinary::layer::AllBinaryLayer;
-use org::allbinary::media::graphics::geography::map::SimpleGeographicMapCellPositionFactory;
-use org::allbinary::media::graphics::geography::map::GeographicMapCellType;
+use java::lang::Object ();
+use org::allbinary::game::displayable::canvas::AllBinaryGameCanvasInterface ();
+use org::allbinary::layer::AllBinaryLayer ();
+use org::allbinary::media::graphics::geography::map::SimpleGeographicMapCellPositionFactory ();
+use org::allbinary::media::graphics::geography::map::GeographicMapCellType ();
 
 1;
 

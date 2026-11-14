@@ -19,7 +19,7 @@ use feature 'try';
 no warnings 'experimental::try';
 use parent -norequire,'org::allbinary::media::AllBinaryVibrationME';
 
-our $NO_VIBRATION = 'org::allbinary::media::AllBinaryNoVibration'->new();
+tie our $NO_VIBRATION, 'java::lang::LazyStatic', sub { 'org::allbinary::media::AllBinaryNoVibration'->new() };
 
 sub new {
     my ($class) = @_;
@@ -32,7 +32,9 @@ sub vibrate {
     my ($self, $duration, $type, $volume) = @_;
 }
 
-use org::allbinary::media::AllBinaryVibrationME;
+use java::lang::Object ();
+use java::lang::LazyStatic ();
+use org::allbinary::media::AllBinaryVibrationME ();
 
 1;
 

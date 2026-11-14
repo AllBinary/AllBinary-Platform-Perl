@@ -35,7 +35,7 @@ sub getDamage {
     die "abstract method getDamage";
 }
 
-use org::allbinary::layer::NamedInterface;
+use org::allbinary::layer::NamedInterface ();
 
 1;
 

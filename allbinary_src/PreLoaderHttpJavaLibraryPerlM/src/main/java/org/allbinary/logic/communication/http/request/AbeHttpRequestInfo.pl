@@ -17,6 +17,7 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
 
 sub _init_fields {
@@ -43,7 +44,7 @@ sub new {
 sub _new1 {
     my ($class, $hashMap) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
         my $stringUtil = 'org::allbinary::logic::string::StringUtil'->getInstance();
         $self->{httpUserAgent} = $stringUtil->getNonNull($hashMap->get($self->{abeHttpRequestInfoData}->{HTTP_USER_AGENT}));
         $self->{remoteAddress} = $stringUtil->getNonNull($hashMap->get($self->{abeHttpRequestInfoData}->{REMOTE_ADDRESS}));
@@ -58,7 +59,7 @@ sub _new1 {
 sub _new1 {
     my ($class, $httpServletRequest) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
         my $stringUtil = 'org::allbinary::logic::string::StringUtil'->getInstance();
         $self->{httpUserAgent} = $stringUtil->{EMPTY_STRING};
         my $enumuration = $httpServletRequest->getHeaderNames();
@@ -109,16 +110,17 @@ sub toString {
         return 'org::allbinary::logic::string::StringMaker'->new()->append($self->{NAME})->append($self->{commonSeps}->{COLON_SEP})->append($self->{abeHttpRequestInfoData}->{HTTP_USER_AGENT})->append($self->{commonSeps}->{COLON_SEP})->append($self->{httpUserAgent})->append($self->{commonSeps}->{SPACE})->append($self->{abeHttpRequestInfoData}->{REMOTE_ADDRESS})->append($self->{commonSeps}->{COLON_SEP})->append($self->{remoteAddress})->append($self->{commonSeps}->{SPACE})->append($self->{abeHttpRequestInfoData}->{REMOTE_HOST})->append($self->{commonSeps}->{COLON_SEP})->append($self->{remoteHost})->append($self->{commonSeps}->{SPACE})->append($self->{abeHttpRequestInfoData}->{REMOTE_HOST_BY_ADDRESS})->append($self->{commonSeps}->{COLON_SEP})->append($self->{remoteHostByAddr})->append($self->{commonSeps}->{SPACE})->append($self->{abeHttpRequestInfoData}->{REMOTE_PORT})->append($self->{commonSeps}->{COLON_SEP})->append($self->{remotePort})->append($self->{commonSeps}->{SPACE})->append($self->{abeHttpRequestInfoData}->{REQUEST_FILE_PATH})->append($self->{commonSeps}->{COLON_SEP})->append($self->{requestedFilePath})->toString();
 }
 
-use java::util::Enumeration;
-use java::util::HashMap;
-use org::allbinary::util::BasicArrayList;
-use org::allbinary::util::BasicArrayListD;
-# use javax::servlet::http::HttpServletRequest;
-use org::allbinary::logic::StdUtil;
-use org::allbinary::logic::string::StringMaker;
-use org::allbinary::logic::string::StringUtil;
-use org::allbinary::string::CommonSeps;
-use org::allbinary::logic::communication::http::request::AbeHttpRequestInfoData;
+use java::lang::Object ();
+use java::util::Enumeration ();
+use java::util::HashMap ();
+use org::allbinary::util::BasicArrayList ();
+use org::allbinary::util::BasicArrayListD ();
+# use javax::servlet::http::HttpServletRequest ();
+use org::allbinary::logic::StdUtil ();
+use org::allbinary::logic::string::StringMaker ();
+use org::allbinary::logic::string::StringUtil ();
+use org::allbinary::string::CommonSeps ();
+use org::allbinary::logic::communication::http::request::AbeHttpRequestInfoData ();
 
 1;
 

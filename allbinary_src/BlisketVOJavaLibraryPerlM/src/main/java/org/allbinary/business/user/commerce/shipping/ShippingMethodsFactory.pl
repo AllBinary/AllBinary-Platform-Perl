@@ -17,8 +17,9 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
-our $SHIPPINGMETHODSFILEPATHSTRING = undef;
+tie our $SHIPPINGMETHODSFILEPATHSTRING, 'java::lang::LazyStatic', sub { undef }, sub { __PACKAGE__->_static_initializer1(); };
 our $SHIPPINGMETHODSFILENAME = "shippingMethods.xml";
 
 sub _init_fields {
@@ -29,7 +30,11 @@ sub _init_fields {
 }
 
 
-{ # Java static initializer
+# Java static initializer
+sub _static_initializer1 {
+    our $_static_initialized1;
+    return if $_static_initialized1;
+    $_static_initialized1 = 1;
         my $stringBuffer = 'org::allbinary::logic::string::StringMaker'->new();
         my $sep = 'org::allbinary::logic::io::path::AbPathData'->getInstance()->{SEPARATOR};
         $stringBuffer->append($sep);
@@ -44,7 +49,7 @@ sub _init_fields {
 sub new {
     my ($class, $abeClientInformation, $storeFrontInterface) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
         my $stringBuffer = 'org::allbinary::logic::string::StringMaker'->new();
         my $sep = 'org::allbinary::logic::io::path::AbPathData'->getInstance()->{SEPARATOR};
         $stringBuffer->append('org::allbinary::globals::URLGLOBALS'->getMainPath());
@@ -92,31 +97,33 @@ sub getDefaultInstance {
         return $self->{defaultShippingMethodInterface};
 }
 
-use org::allbinary::util::BasicArrayList;
-use org::allbinary::util::BasicArrayListD;
-use org::allbinary::business::DynamicObjectData;
-use org::allbinary::business::context::modules::storefront::StoreFrontInterface;
-use org::allbinary::business::user::commerce::shipping::modules::BasicWeightShippingModuleView;
-use org::allbinary::business::user::commerce::shipping::modules::NoShippingModuleView;
-use org::allbinary::business::user::commerce::shipping::modules::ShippingInterface;
-use org::allbinary::data::tree::dom::DomNodeHelper;
-use org::allbinary::data::tree::dom::DomSearchHelper;
-use org::allbinary::data::tree::dom::document::DomDocumentHelper;
-use org::allbinary::globals::FREEBLISKET_PATH_GLOBALS;
-use org::allbinary::globals::URLGLOBALS;
-use org::allbinary::logic::StdUtil;
-use org::allbinary::logic::control::crypt::file::CryptFileReader;
-use org::allbinary::logic::io::path::AbPath;
-use org::allbinary::logic::io::path::AbPathData;
-use org::allbinary::logic::string::StringMaker;
-use org::allbinary::logic::system::loader::AbeFactory;
-use org::allbinary::logic::system::security::licensing::AbeClientInformationInterface;
-use org::allbinary::logic::visual::transform::info::objectConfig::TransformInfoObjectConfigData;
-use org::w3c::dom::Document;
-use org::w3c::dom::Node;
-use org::w3c::dom::NodeList;
-use org::allbinary::business::user::commerce::shipping::ShippingMethodsData;
-use org::allbinary::business::user::commerce::shipping::ShippingMethodData;
+use java::lang::Object ();
+use java::lang::LazyStatic ();
+use org::allbinary::util::BasicArrayList ();
+use org::allbinary::util::BasicArrayListD ();
+use org::allbinary::business::DynamicObjectData ();
+use org::allbinary::business::context::modules::storefront::StoreFrontInterface ();
+use org::allbinary::business::user::commerce::shipping::modules::BasicWeightShippingModuleView ();
+use org::allbinary::business::user::commerce::shipping::modules::NoShippingModuleView ();
+use org::allbinary::business::user::commerce::shipping::modules::ShippingInterface ();
+use org::allbinary::data::tree::dom::DomNodeHelper ();
+use org::allbinary::data::tree::dom::DomSearchHelper ();
+use org::allbinary::data::tree::dom::document::DomDocumentHelper ();
+use org::allbinary::globals::FREEBLISKET_PATH_GLOBALS ();
+use org::allbinary::globals::URLGLOBALS ();
+use org::allbinary::logic::StdUtil ();
+use org::allbinary::logic::control::crypt::file::CryptFileReader ();
+use org::allbinary::logic::io::path::AbPath ();
+use org::allbinary::logic::io::path::AbPathData ();
+use org::allbinary::logic::string::StringMaker ();
+use org::allbinary::logic::system::loader::AbeFactory ();
+use org::allbinary::logic::system::security::licensing::AbeClientInformationInterface ();
+use org::allbinary::logic::visual::transform::info::objectConfig::TransformInfoObjectConfigData ();
+use org::w3c::dom::Document ();
+use org::w3c::dom::Node ();
+use org::w3c::dom::NodeList ();
+use org::allbinary::business::user::commerce::shipping::ShippingMethodsData ();
+use org::allbinary::business::user::commerce::shipping::ShippingMethodData ();
 
 1;
 

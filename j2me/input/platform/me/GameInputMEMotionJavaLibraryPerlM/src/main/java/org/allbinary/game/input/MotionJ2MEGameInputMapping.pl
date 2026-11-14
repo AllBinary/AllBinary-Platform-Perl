@@ -32,9 +32,10 @@ sub getDefault {
         return 'org::allbinary::game::input::MotionJ2MEDefaultGameInputMapping'->new()->getInputMapping();
 }
 
-use org::allbinary::game::input::mapping::InputToGameKeyMapping;
-use org::allbinary::game::input::J2MEGameInputMapping;
-use org::allbinary::game::input::MotionJ2MEDefaultGameInputMapping;
+use java::lang::Object ();
+use org::allbinary::game::input::mapping::InputToGameKeyMapping ();
+use org::allbinary::game::input::J2MEGameInputMapping ();
+use org::allbinary::game::input::MotionJ2MEDefaultGameInputMapping ();
 
 1;
 

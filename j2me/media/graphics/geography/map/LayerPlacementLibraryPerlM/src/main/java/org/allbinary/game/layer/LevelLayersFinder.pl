@@ -17,8 +17,9 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
+use parent -norequire,'java::lang::Object';
 
-our $instance = 'org::allbinary::game::layer::LevelLayersFinder'->new();
+tie our $instance, 'java::lang::LazyStatic', sub { 'org::allbinary::game::layer::LevelLayersFinder'->new() };
 
 sub _init_fields {
     my ($self) = @_;
@@ -28,7 +29,7 @@ sub _init_fields {
 sub new {
     my ($class) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
     return $self;
 }
 
@@ -58,13 +59,15 @@ sub get {
         return $list;
 }
 
-use java::util::Enumeration;
-use org::allbinary::layer::Layer;
-use org::allbinary::logic::math::SmallIntegerSingletonFactory;
-use org::allbinary::util::ABHashtable;
-use org::allbinary::util::BasicArrayList;
-use org::allbinary::util::BasicArrayListD;
-use org::allbinary::util::EnumerationUtil;
+use java::lang::Object ();
+use java::lang::LazyStatic ();
+use java::util::Enumeration ();
+use org::allbinary::layer::Layer ();
+use org::allbinary::logic::math::SmallIntegerSingletonFactory ();
+use org::allbinary::util::ABHashtable ();
+use org::allbinary::util::BasicArrayList ();
+use org::allbinary::util::BasicArrayListD ();
+use org::allbinary::util::EnumerationUtil ();
 
 1;
 

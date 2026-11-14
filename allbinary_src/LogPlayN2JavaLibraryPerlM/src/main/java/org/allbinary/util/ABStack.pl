@@ -62,8 +62,9 @@ sub removeElement {
         return $self->SUPER::removeElement($obj);
 }
 
-use java::util::Stack;
-# use jsinterop::annotations::JsType;
+use java::lang::Object ();
+use java::util::Stack ();
+# use jsinterop::annotations::JsType ();
 
 1;
 

@@ -28,11 +28,12 @@ sub new {
     return $self;
 }
 
-use org::allbinary::animation::Animation;
-use org::allbinary::animation::AnimationBehavior;
-use org::allbinary::animation::SingletonAnimationInterfaceFactory;
-use org::allbinary::image::AnimationFrameToImageUtil;
-use org::allbinary::animation::image::ImageAnimation;
+use java::lang::Object ();
+use org::allbinary::animation::Animation ();
+use org::allbinary::animation::AnimationBehavior ();
+use org::allbinary::animation::SingletonAnimationInterfaceFactory ();
+use org::allbinary::image::AnimationFrameToImageUtil ();
+use org::allbinary::animation::image::ImageAnimation ();
 
 1;
 

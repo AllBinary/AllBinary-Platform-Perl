@@ -29,7 +29,7 @@ sub _init_fields {
 sub new {
     my ($class, $bufferedImage, $index) = @_;
     my $self = $class->SUPER::new($bufferedImage);
-    $self->_init_fields();
+    _init_fields($self);
         # super(...) made $self above
         $self->setId($index);
     return $self;
@@ -47,9 +47,10 @@ sub setId {
         $self->{id} = $id;
 }
 
-# use java::awt::image::BufferedImage;
-# use javax::swing;
-use org::allbinary::image::gui::ImageIcon;
+use java::lang::Object ();
+# use java::awt::image::BufferedImage ();
+# use javax::swing ();
+use org::allbinary::image::gui::ImageIcon ();
 
 1;
 

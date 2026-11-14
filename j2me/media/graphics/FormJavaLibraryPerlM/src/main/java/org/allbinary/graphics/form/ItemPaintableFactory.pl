@@ -19,7 +19,7 @@ use feature 'try';
 no warnings 'experimental::try';
 use parent -norequire,'org::allbinary::graphics::form::ItemPaintable';
 
-our $instance = 'org::allbinary::graphics::form::ItemPaintableFactory'->new();
+tie our $instance, 'java::lang::LazyStatic', sub { 'org::allbinary::graphics::form::ItemPaintableFactory'->new() };
 
 sub new {
     my ($class) = @_;
@@ -40,7 +40,9 @@ sub getInstanceItemPaintable {
         return $org::allbinary::graphics::form::ItemPaintableFactory::instance;
 }
 
-use org::allbinary::graphics::form::ItemPaintable;
+use java::lang::Object ();
+use java::lang::LazyStatic ();
+use org::allbinary::graphics::form::ItemPaintable ();
 
 1;
 

@@ -31,7 +31,7 @@ sub _init_fields {
 sub new {
     my ($class, $layerInterface, $healthInterface, $animationInterface, $direction) = @_;
     my $self = $class->SUPER::new();
-    $self->_init_fields();
+    _init_fields($self);
         $self->{allbinaryLayer} = $layerInterface;
         $self->{animationInterface} = $animationInterface;
         $self->{healthInterface} = $healthInterface;
@@ -58,10 +58,11 @@ sub paintThreed {
         $self->{animationInterface}->paintThreedXYZ($graphics, 0, 0, 0);
 }
 
-# use javax::microedition::lcdui::Graphics;
-use org::allbinary::graphics::paint::Paintable;
-use org::allbinary::layer::AllBinaryLayer;
-use org::allbinary::game::health::HealthListenerInterface;
+use java::lang::Object ();
+use javax::microedition::lcdui::Graphics ();
+use org::allbinary::graphics::paint::Paintable ();
+use org::allbinary::layer::AllBinaryLayer ();
+use org::allbinary::game::health::HealthListenerInterface ();
 
 1;
 

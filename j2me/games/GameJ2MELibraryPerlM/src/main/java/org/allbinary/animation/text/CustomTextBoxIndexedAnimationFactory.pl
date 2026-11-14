@@ -17,7 +17,7 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
-use parent -norequire,'org::allbinary::animation::AnimationInterfaceFactoryInterface';
+use parent -norequire,'java::lang::Object','org::allbinary::animation::AnimationInterfaceFactoryInterface';
 
 
 sub _init_fields {
@@ -31,7 +31,7 @@ sub _init_fields {
 sub new {
     my ($class, $fontSize, $maxLength) = @_;
     my $self = bless({}, $class);
-    $self->_init_fields();
+    _init_fields($self);
         $self->{scaleProperties} = 'org::allbinary::media::ScaleProperties'->new();
         $self->{scaleProperties}->{scaleHeight} = $fontSize;
         $self->{maxLength} = $maxLength;
@@ -59,19 +59,20 @@ sub setInitialScale {
         }
 }
 
-# use javax::microedition::lcdui::Font;
-# use javax::microedition::lcdui::TextField;
-use org::allbinary::graphics::form::item::CustomTextBox;
-use org::allbinary::animation::Animation;
-use org::allbinary::animation::AnimationInterfaceFactoryInterface;
-use org::allbinary::game::canvas::ABToGBUtil;
-use org::allbinary::game::displayable::canvas::AllBinaryGameCanvas;
-use org::allbinary::logic::communication::log::LogUtil;
-use org::allbinary::string::CommonStrings;
-use org::allbinary::logic::string::StringUtil;
-use org::allbinary::media::ScaleProperties;
-use org::allbinary::animation::text::CustomTextBox2;
-use org::allbinary::animation::text::CustomTextBoxIndexedAnimation;
+use java::lang::Object ();
+use javax::microedition::lcdui::Font ();
+use javax::microedition::lcdui::TextField ();
+use org::allbinary::graphics::form::item::CustomTextBox ();
+use org::allbinary::animation::Animation ();
+use org::allbinary::animation::AnimationInterfaceFactoryInterface ();
+use org::allbinary::game::canvas::ABToGBUtil ();
+use org::allbinary::game::displayable::canvas::AllBinaryGameCanvas ();
+use org::allbinary::logic::communication::log::LogUtil ();
+use org::allbinary::string::CommonStrings ();
+use org::allbinary::logic::string::StringUtil ();
+use org::allbinary::media::ScaleProperties ();
+use org::allbinary::animation::text::CustomTextBox2 ();
+use org::allbinary::animation::text::CustomTextBoxIndexedAnimation ();
 
 1;
 
