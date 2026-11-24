@@ -35,12 +35,12 @@ sub new {
 
 
 # throws LicensingException
-sub getInstance {
+sub getInstance_j2_1 {
     my ($self, $hashMap, $pageContext) = @_;
         try {
             return 'admin::taghelpers::AuthenticationHelper'->new($hashMap, $pageContext);
         } catch ($e) {
-            if ($admin::taghelpers::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($admin::taghelpers::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{TAGHELPERFACTORYERROR})) {
+            if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{TAGHELPERFACTORYERROR})) {
                 $self->{logUtil}->put($self->{commonStrings}->{EXCEPTION}, $self, $self->{commonStrings}->{GET_INSTANCE}, $e);
             }
             return undef;
@@ -49,17 +49,28 @@ sub getInstance {
 
 
 # throws LicensingException
-# Java overloaded method: Perl keeps the last definition
-sub getInstance {
+sub getInstance_j2_2 {
     my ($self, $hashMap, $httpServletRequest) = @_;
         try {
             return 'admin::taghelpers::AuthenticationHelper'->new($hashMap, $httpServletRequest);
         } catch ($e) {
-            if ($admin::taghelpers::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($admin::taghelpers::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{TAGHELPERFACTORYERROR})) {
+            if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{TAGHELPERFACTORYERROR})) {
                 $self->{logUtil}->put($self->{commonStrings}->{EXCEPTION}, $self, $self->{commonStrings}->{GET_INSTANCE}, $e);
             }
             return undef;
         }
+}
+
+sub getInstance {
+    my ($invocant, @arguments) = @_;
+    return $invocant->getInstance_j2(@arguments) if scalar(@arguments) == 2;
+    die "No method getInstance takes " . scalar(@arguments) . " arguments";
+}
+
+sub getInstance_j2 {
+    my ($invocant, @arguments) = @_;
+    return $invocant->getInstance_j2_1(@arguments) if 1 && (!defined($arguments[0]) || (ref($arguments[0]) && ref($arguments[0]) ne 'ARRAY')) && (!defined($arguments[1]) || (ref($arguments[1]) && ref($arguments[1]) ne 'ARRAY'));
+    return $invocant->getInstance_j2_2(@arguments);
 }
 
 use java::lang::Object ();
@@ -68,8 +79,8 @@ use java::util::HashMap ();
 # use javax::servlet::jsp::PageContext ();
 use org::allbinary::logic::communication::log::LogUtil ();
 use org::allbinary::logic::system::security::licensing::LicensingException ();
-use admin::taghelpers::TagHelperFactory ();
-use admin::taghelpers::AuthenticationHelper ();
+use org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory ();
+use org::allbinary::logic::communication::log::config::type::LogConfigTypes ();
 
 1;
 

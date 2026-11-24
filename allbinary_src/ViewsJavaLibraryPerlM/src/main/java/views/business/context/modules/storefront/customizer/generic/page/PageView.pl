@@ -32,7 +32,7 @@ sub new {
     my $self = $class->SUPER::new($transformInfoInterface);
     _init_fields($self);
         # super(...) made $self above
-        if ($views::business::context::modules::storefront::customizer::generic::page::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($views::business::context::modules::storefront::customizer::generic::page::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{VIEW})) {
+        if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{VIEW})) {
             $self->{logUtil}->putF("View Name: " . $transformInfoInterface->getName(), $self, $self->{commonStrings}->{CONSTRUCTOR});
         }
     return $self;
@@ -45,7 +45,7 @@ sub view {
         try {
             return $self->SUPER::view();
         } catch ($e) {
-            if ($views::business::context::modules::storefront::customizer::generic::page::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($views::business::context::modules::storefront::customizer::generic::page::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{TAGHELPERERROR})) {
+            if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{TAGHELPERERROR})) {
                 $self->{logUtil}->put($self->{commonStrings}->{EXCEPTION}, $self, "view()", $e);
             }
             die $e;
@@ -56,6 +56,8 @@ use java::lang::Object ();
 use org::allbinary::logic::communication::log::LogUtil ();
 use org::allbinary::logic::visual::transform::info::TransformInfoInterface ();
 use views::business::context::modules::storefront::HttpStoreComponentView ();
+use org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory ();
+use org::allbinary::logic::communication::log::config::type::LogConfigTypes ();
 
 1;
 

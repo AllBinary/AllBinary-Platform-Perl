@@ -42,14 +42,14 @@ sub new {
 
 
 # throws Exception
-sub generateComponentsFromObjectConfig {
+sub generateComponentsFromObjectConfig_j3 {
     my ($self, $abeClientInformation, $transformInfoInterface, $group) = @_;
-        if ($org::allbinary::logic::visual::transform::generator::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($org::allbinary::logic::visual::transform::generator::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{VIEW})) {
+        if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{VIEW})) {
             $self->{logUtil}->putF("Started Group: " . $group, $self, "generateComponentsFromObjectConfig(2)");
         }
         my $transformInfoObjectConfigInterface = $transformInfoInterface->getObjectConfigInterface();
         my $result = $self->generateComponentsFromObjectConfig($abeClientInformation, $transformInfoObjectConfigInterface, $transformInfoInterface, $group);
-        if ($org::allbinary::logic::visual::transform::generator::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($org::allbinary::logic::visual::transform::generator::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{VIEW})) {
+        if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{VIEW})) {
             $self->{logUtil}->putF("End Group: " . $group, $self, "generateComponentsFromObjectConfig(2)");
         }
         return $result;
@@ -57,14 +57,13 @@ sub generateComponentsFromObjectConfig {
 
 
 # throws Exception
-# Java overloaded method: Perl keeps the last definition
-sub generateComponentsFromObjectConfig {
+sub generateComponentsFromObjectConfig_j4 {
     my ($self, $abeClientInformation, $transformInfoObjectConfigInterface, $transformInfoInterface, $group) = @_;
-        if ($org::allbinary::logic::visual::transform::generator::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($org::allbinary::logic::visual::transform::generator::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{VIEW})) {
+        if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{VIEW})) {
             $self->{logUtil}->putF("Started Group: " . $group, $self, "generateComponentsFromObjectConfig()");
         }
         my $transformInfoObjectConfigComponentVector = $transformInfoObjectConfigInterface->getTransformsGroup($group);
-        if ($org::allbinary::logic::visual::transform::generator::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($org::allbinary::logic::visual::transform::generator::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{VIEW})) {
+        if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{VIEW})) {
             my $stringBuffer = 'org::allbinary::logic::string::StringMaker'->new();
             $stringBuffer->append("Processing ");
             $stringBuffer->appendint($transformInfoObjectConfigComponentVector->size());
@@ -80,7 +79,7 @@ sub generateComponentsFromObjectConfig {
             my $transformInfoObjectConfigComponent = $transformInfoObjectConfigComponentVector->get($index);
             'org::allbinary::logic::visual::transform::generator::TransformGeneratorUtil'->getInstance()->generate($abeClientInformation, $transformInfoObjectConfigComponent, $transformInfoInterface);
         }
-        if ($org::allbinary::logic::visual::transform::generator::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($org::allbinary::logic::visual::transform::generator::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{VIEW})) {
+        if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{VIEW})) {
             $self->{logUtil}->putF("Done Group: " . $group, $self, "generateComponentsFromObjectConfig()");
         }
         my $stringBuffer = 'org::allbinary::logic::string::StringMaker'->new();
@@ -88,6 +87,13 @@ sub generateComponentsFromObjectConfig {
         $stringBuffer->append($transformInfoInterface->getName());
         $stringBuffer->append("-->");
         return $stringBuffer->toString();
+}
+
+sub generateComponentsFromObjectConfig {
+    my ($invocant, @arguments) = @_;
+    return $invocant->generateComponentsFromObjectConfig_j3(@arguments) if scalar(@arguments) == 3;
+    return $invocant->generateComponentsFromObjectConfig_j4(@arguments) if scalar(@arguments) == 4;
+    die "No method generateComponentsFromObjectConfig takes " . scalar(@arguments) . " arguments";
 }
 
 use java::lang::Object ();
@@ -100,6 +106,8 @@ use org::allbinary::logic::system::security::licensing::AbeClientInformationInte
 use org::allbinary::logic::visual::transform::info::TransformInfoDomNode ();
 use org::allbinary::logic::visual::transform::info::TransformInfoInterface ();
 use org::allbinary::logic::visual::transform::info::objectConfig::TransformInfoObjectConfigInterface ();
+use org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory ();
+use org::allbinary::logic::communication::log::config::type::LogConfigTypes ();
 use org::allbinary::logic::visual::transform::generator::TransformGeneratorUtil ();
 
 1;

@@ -23,7 +23,7 @@ use parent -norequire,'java::lang::Object','org::allbinary::media::audio::SoundI
 sub _init_fields {
     my ($self) = @_;
     $self->{resource} = undef;
-    $self->{player} = $org::allbinary::media::audio::NoPlayer::NO_PLAYER;
+    $self->{player} = java::lang::Object::jstatic('org::allbinary::media::audio::Sound', 'NoPlayer')->{NO_PLAYER};
 }
 
 
@@ -81,7 +81,6 @@ use javax::microedition::media::Player ();
 use org::allbinary::logic::communication::log::PreLogUtil ();
 use org::allbinary::string::CommonStrings ();
 use org::allbinary::media::audio::SoundInterface ();
-use org::allbinary::media::audio::NoPlayer ();
 
 1;
 

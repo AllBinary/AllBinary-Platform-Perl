@@ -71,6 +71,12 @@ sub new {
     die "No constructor of StoreFront takes " . scalar(@arguments) . " arguments";
 }
 
+sub _new1 {
+    my ($class, @arguments) = @_;
+    return $class->_new1_1(@arguments) if 1 && (!defined($arguments[0]) || (ref($arguments[0]) && ref($arguments[0]) ne 'ARRAY'));
+    return $class->_new1_2(@arguments);
+}
+
 
 sub _new0 {
     my ($class) = @_;
@@ -81,12 +87,12 @@ sub _new0 {
 }
 
 
-sub _new1 {
+sub _new1_1 {
     my ($class, $request) = @_;
     my $self = bless({}, $class);
     _init_fields($self);
         $self->getFormData('org::allbinary::logic::communication::http::request::RequestParams'->new($request)->toHashMap());
-        if ($org::allbinary::business::context::modules::storefront::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($org::allbinary::business::context::modules::storefront::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{EMAILLOGGING})) {
+        if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{EMAILLOGGING})) {
             $self->{logUtil}->putF("TWB- needs update for adding and updating context configuration - currently defaults to admin context config", $self, "StoreFront");
         }
         $self->setContextConfigurationInterface('org::allbinary::business::context::configuration::ContextConfigurationInterfaceFactory'->getInstance()->getInstance("Admin"));
@@ -94,12 +100,12 @@ sub _new1 {
 }
 
 
-sub _new1 {
+sub _new1_2 {
     my ($class, $hashMap) = @_;
     my $self = bless({}, $class);
     _init_fields($self);
         $self->getFormData($hashMap);
-        my $domDocumentString = $hashMap->get('org::allbinary::business::context::modules::storefront::StoreFrontData'->getInstance()->{CONFIGURATION});
+        my $domDocumentString = $hashMap->get(java::lang::Object::jstatic('org::allbinary::business::context::modules::storefront::StoreFront', 'StoreFrontData')->getInstance()->{CONFIGURATION});
         if (!defined($domDocumentString)) {
             my $document = 'org::allbinary::data::tree::dom::document::DomDocumentHelper'->create($domDocumentString);
             $self->setContextConfigurationInterface('org::allbinary::business::context::configuration::ContextConfigurationInterfaceFactory'->getInstance()->getInstance($document));
@@ -110,7 +116,7 @@ sub _new1 {
 
 sub isColumn {
     my ($self, $columnName) = @_;
-        if (($columnName cmp 'org::allbinary::business::context::modules::storefront::StoreFrontData'->getInstance()->{NAME}) == 0 || ($columnName cmp $org::allbinary::business::user::UserData::MAINEMAIL) == 0) {
+        if (($columnName cmp java::lang::Object::jstatic('org::allbinary::business::context::modules::storefront::StoreFront', 'StoreFrontData')->getInstance()->{NAME}) == 0 || ($columnName cmp $org::allbinary::business::user::UserData::MAINEMAIL) == 0) {
             return 1;
         } else {
             return 0;
@@ -119,17 +125,23 @@ sub isColumn {
 
 
 # throws Exception
-sub createPath {
+sub createPath_j2 {
     my ($self, $key, $hashMap) = @_;
         return 'org::allbinary::logic::io::path::AbPath'->new($self->create($self->{EMPTY_STRING}, $key, $hashMap), 'org::allbinary::logic::string::StringUtil'->getInstance()->{EMPTY_STRING});
 }
 
 
 # throws Exception
-# Java overloaded method: Perl keeps the last definition
-sub createPath {
+sub createPath_j3 {
     my ($self, $append, $key, $hashMap) = @_;
         return 'org::allbinary::logic::io::path::AbPath'->new($self->create($append, $key, $hashMap), 'org::allbinary::logic::string::StringUtil'->getInstance()->{EMPTY_STRING});
+}
+
+sub createPath {
+    my ($invocant, @arguments) = @_;
+    return $invocant->createPath_j2(@arguments) if scalar(@arguments) == 2;
+    return $invocant->createPath_j3(@arguments) if scalar(@arguments) == 3;
+    die "No method createPath takes " . scalar(@arguments) . " arguments";
 }
 
 
@@ -157,7 +169,7 @@ sub create {
 # throws Exception
 sub getFormData {
     my ($self, $storeHashMap) = @_;
-        my $storeFrontData = 'org::allbinary::business::context::modules::storefront::StoreFrontData'->getInstance();
+        my $storeFrontData = java::lang::Object::jstatic('org::allbinary::business::context::modules::storefront::StoreFront', 'StoreFrontData')->getInstance();
         $self->{name} = $storeHashMap->get($storeFrontData->{NAME});
         $self->{basketName} = $storeHashMap->get($storeFrontData->{NAME});
         $self->{homeHostName} = $storeHashMap->get($storeFrontData->{HOMEHOSTNAME});
@@ -402,7 +414,7 @@ sub validationInfo {
             }
             return $stringBuffer->toString();
         } catch ($e) {
-            if ($org::allbinary::business::context::modules::storefront::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($org::allbinary::business::context::modules::storefront::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{SQLTAGSERROR})) {
+            if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{SQLTAGSERROR})) {
                 $self->{logUtil}->put("Failed to generate validation error info", $self, "validationInfo()", $e);
             }
             return "Error Validating Form";
@@ -412,14 +424,14 @@ sub validationInfo {
 
 sub getTestHtmlPath {
     my ($self) = @_;
-        return $org::allbinary::business::context::modules::storefront::org::allbinary->{globals}->{URLGLOBALS}->getTestHtmlPath() + $self->getCurrentHostNamePath();
+        return 'org::allbinary::globals::URLGLOBALS'->getTestHtmlPath() + $self->getCurrentHostNamePath();
 }
 
 
 sub getCurrentHostName {
     my ($self) = @_;
         my $location = $self->{EMPTY_STRING};
-        if ($org::allbinary::business::context::modules::storefront::org::allbinary->{globals}->{URLGLOBALS}->isTestingMode()) {
+        if ('org::allbinary::globals::URLGLOBALS'->isTestingMode()) {
             $location = $self->getTestHostName();
         } else {
             $location = $self->getHostName();
@@ -431,7 +443,7 @@ sub getCurrentHostName {
 sub getCurrentHostNamePath {
     my ($self) = @_;
         my $location = $self->{EMPTY_STRING};
-        if ($org::allbinary::business::context::modules::storefront::org::allbinary->{globals}->{URLGLOBALS}->isTestingMode()) {
+        if ('org::allbinary::globals::URLGLOBALS'->isTestingMode()) {
             $location = $self->getTestHostNamePath();
         } else {
             $location = $self->getHostNamePath();
@@ -443,7 +455,7 @@ sub getCurrentHostNamePath {
 sub getCurrentHomeHostName {
     my ($self) = @_;
         my $location = $self->{EMPTY_STRING};
-        if ($org::allbinary::business::context::modules::storefront::org::allbinary->{globals}->{URLGLOBALS}->isTestingMode()) {
+        if ('org::allbinary::globals::URLGLOBALS'->isTestingMode()) {
             $location = $self->getTestHomeHostName();
         } else {
             $location = $self->getHomeHostName();
@@ -455,7 +467,7 @@ sub getCurrentHomeHostName {
 sub getCurrentHomeHostNamePath {
     my ($self) = @_;
         my $location = $self->{EMPTY_STRING};
-        if ($org::allbinary::business::context::modules::storefront::org::allbinary->{globals}->{URLGLOBALS}->isTestingMode()) {
+        if ('org::allbinary::globals::URLGLOBALS'->isTestingMode()) {
             $location = $self->getTestHomeHostNamePath();
         } else {
             $location = $self->getHomeHostNamePath();
@@ -561,7 +573,7 @@ sub getTagLocation {
 }
 
 
-sub getPackageLocation {
+sub getPackageLocation_j0 {
     my ($self) = @_;
         return $self->{packageLocation};
 }
@@ -736,10 +748,16 @@ sub setInventoryControl {
 }
 
 
-# Java overloaded method: Perl keeps the last definition
-sub getPackageLocation {
+sub getPackageLocation_j1 {
     my ($self, $value) = @_;
         $self->{packageLocation} = $value;
+}
+
+sub getPackageLocation {
+    my ($invocant, @arguments) = @_;
+    return $invocant->getPackageLocation_j0(@arguments) if scalar(@arguments) == 0;
+    return $invocant->getPackageLocation_j1(@arguments) if scalar(@arguments) == 1;
+    die "No method getPackageLocation takes " . scalar(@arguments) . " arguments";
 }
 
 
@@ -873,7 +891,7 @@ sub install {
                 $self->installMedia($fromDirectoryAbPath, $current - $installTotal, $total - $installTotal);
             }
         } catch ($e) {
-            if ($org::allbinary::business::context::modules::storefront::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($org::allbinary::business::context::modules::storefront::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{SQLTAGSERROR})) {
+            if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{SQLTAGSERROR})) {
                 $self->{logUtil}->put($self->{commonStrings}->{EXCEPTION}, $self, "install()", $e);
             }
             die $e;
@@ -963,7 +981,7 @@ sub toVector {
 # throws Exception
 sub toHashMap {
     my ($self) = @_;
-        my $storeFrontData = 'org::allbinary::business::context::modules::storefront::StoreFrontData'->getInstance();
+        my $storeFrontData = java::lang::Object::jstatic('org::allbinary::business::context::modules::storefront::StoreFront', 'StoreFrontData')->getInstance();
         my $dataHashMap = 'org::allbinary::logic::StdUtil'->getInstance()->createHashMap();
         $dataHashMap->put($storeFrontData->{NAME}, $self->{name});
         $dataHashMap->put($storeFrontData->{HOMEHOSTNAME}, $self->{homeHostName});
@@ -1052,8 +1070,9 @@ use org::allbinary::util::BasicArrayList ();
 use org::allbinary::util::BasicArrayListD ();
 use org::apache::commons::lang3::StringEscapeUtils ();
 use org::w3c::dom::Document ();
+use org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory ();
+use org::allbinary::logic::communication::log::config::type::LogConfigTypes ();
 use org::allbinary::business::context::modules::storefront::StoreFrontInterface ();
-use org::allbinary::business::context::modules::storefront::StoreFrontData ();
 
 1;
 

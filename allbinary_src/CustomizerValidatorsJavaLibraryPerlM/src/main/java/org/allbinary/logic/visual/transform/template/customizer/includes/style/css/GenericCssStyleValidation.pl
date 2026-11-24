@@ -33,6 +33,12 @@ sub new {
     die "No constructor of GenericCssStyleValidation takes " . scalar(@arguments) . " arguments";
 }
 
+sub _new1 {
+    my ($class, @arguments) = @_;
+    return $class->_new1_1(@arguments) if 1 && (!defined($arguments[0]) || (ref($arguments[0]) && ref($arguments[0]) ne 'ARRAY'));
+    return $class->_new1_2(@arguments);
+}
+
 
 sub _new0 {
     my ($class) = @_;
@@ -42,7 +48,7 @@ sub _new0 {
 }
 
 
-sub _new1 {
+sub _new1_1 {
     my ($class, $document) = @_;
     my $self = $class->SUPER::new();
     _init_fields($self);
@@ -51,7 +57,7 @@ sub _new1 {
 }
 
 
-sub _new1 {
+sub _new1_2 {
     my ($class, $hashMap) = @_;
     my $self = $class->SUPER::new();
     _init_fields($self);
@@ -70,15 +76,15 @@ sub isValid {
     my ($self) = @_;
         try {
             my $isValid = 1;
-            if ($org::allbinary::logic::visual::transform::template::customizer::includes::style::css::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($org::allbinary::logic::visual::transform::template::customizer::includes::style::css::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{VIEW})) {
+            if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{VIEW})) {
                 $self->{logUtil}->putF($self->{commonStrings}->{START}, $self, $self->{commonStrings}->{IS_VALID});
             }
-            if ($org::allbinary::logic::visual::transform::template::customizer::includes::style::css::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($org::allbinary::logic::visual::transform::template::customizer::includes::style::css::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{VIEW})) {
+            if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{VIEW})) {
                 $self->{logUtil}->putF("End: " . $isValid, $self, $self->{commonStrings}->{IS_VALID});
             }
             return $isValid;
         } catch ($e) {
-            if ($org::allbinary::logic::visual::transform::template::customizer::includes::style::css::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($org::allbinary::logic::visual::transform::template::customizer::includes::style::css::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{SQLTAGSERROR})) {
+            if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{SQLTAGSERROR})) {
                 $self->{logUtil}->put("Failed to validate form", $self, $self->{commonStrings}->{IS_VALID}, $e);
             }
             return 0;
@@ -92,7 +98,7 @@ sub validationInfo {
             my $stringBuffer = 'org::allbinary::logic::string::StringMaker'->new();
             return $stringBuffer->toString();
         } catch ($e) {
-            if ($org::allbinary::logic::visual::transform::template::customizer::includes::style::css::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($org::allbinary::logic::visual::transform::template::customizer::includes::style::css::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{VIEWERROR})) {
+            if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{VIEWERROR})) {
                 $self->{logUtil}->put("Failed to generate validation error info", $self, "validationInfo()", $e);
             }
             return "Error Validating Form";
@@ -132,6 +138,8 @@ use org::allbinary::logic::visual::transform::template::customizer::bodies::Body
 use org::w3c::dom::Document ();
 use org::w3c::dom::Node ();
 use org::w3c::dom::NodeList ();
+use org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory ();
+use org::allbinary::logic::communication::log::config::type::LogConfigTypes ();
 
 1;
 

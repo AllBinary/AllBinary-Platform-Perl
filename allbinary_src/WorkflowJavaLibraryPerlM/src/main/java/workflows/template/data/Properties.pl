@@ -32,7 +32,7 @@ sub new {
     my ($class) = @_;
     my $self = bless({}, $class);
     _init_fields($self);
-        if ($workflows::template::data::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($workflows::template::data::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{JSPTAG})) {
+        if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{JSPTAG})) {
             $self->{logUtil}->putF("Start/Tag", $self, $self->{commonStrings}->{CONSTRUCTOR});
         }
         $self->{propertiesHashMap} = 'org::allbinary::logic::StdUtil'->getInstance()->createHashMap();
@@ -48,7 +48,7 @@ sub getPropertiesHashMap {
 
 sub doEndTag {
     my ($self) = @_;
-        if ($workflows::template::data::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($workflows::template::data::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{JSPTAG})) {
+        if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{JSPTAG})) {
             $self->{logUtil}->putF("Tag Ended", $self, "doEndTag");
         }
         $self->{propertiesHashMap} = 'org::allbinary::logic::StdUtil'->getInstance()->createHashMap();
@@ -61,6 +61,8 @@ use java::util::HashMap ();
 use org::allbinary::logic::StdUtil ();
 use org::allbinary::logic::communication::log::LogUtil ();
 use org::allbinary::string::CommonStrings ();
+use org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory ();
+use org::allbinary::logic::communication::log::config::type::LogConfigTypes ();
 
 1;
 

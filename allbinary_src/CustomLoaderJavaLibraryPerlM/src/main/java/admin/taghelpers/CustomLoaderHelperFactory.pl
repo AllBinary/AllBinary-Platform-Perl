@@ -31,7 +31,7 @@ sub new {
 
 
 # throws LicensingException
-sub getInstance {
+sub getInstance_j2 {
     my ($self, $hashMap, $pageContext) = @_;
         my $abeClientInformation = 'org::allbinary::logic::system::security::licensing::ServiceClientInformationInterfaceFactory'->getInstance();
         return 'admin::taghelpers::HelperFactory'->getInstance($abeClientInformation, $FACTORYNAME, $CLASSNAME, $hashMap, $pageContext);
@@ -39,10 +39,16 @@ sub getInstance {
 
 
 # throws LicensingException
-# Java overloaded method: Perl keeps the last definition
-sub getInstance {
+sub getInstance_j1 {
     my ($self, $abeClientInformation) = @_;
         return 'admin::taghelpers::HelperFactory'->getInstance($abeClientInformation, $FACTORYNAME, $admin::taghelpers::CustomLoaderHelperFactory::CLASSNAME);
+}
+
+sub getInstance {
+    my ($invocant, @arguments) = @_;
+    return $invocant->getInstance_j2(@arguments) if scalar(@arguments) == 2;
+    return $invocant->getInstance_j1(@arguments) if scalar(@arguments) == 1;
+    die "No method getInstance takes " . scalar(@arguments) . " arguments";
 }
 
 use java::lang::Object ();
@@ -51,7 +57,6 @@ use java::util::HashMap ();
 use org::allbinary::logic::system::security::licensing::AbeClientInformationInterface ();
 use org::allbinary::logic::system::security::licensing::LicensingException ();
 use org::allbinary::logic::system::security::licensing::ServiceClientInformationInterfaceFactory ();
-use admin::taghelpers::TagHelperFactoryInterface ();
 use admin::taghelpers::HelperFactory ();
 
 1;

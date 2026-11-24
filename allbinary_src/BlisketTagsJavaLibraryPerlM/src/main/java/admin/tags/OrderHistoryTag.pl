@@ -82,10 +82,10 @@ sub doStartTag {
                     }
                 }
             }
-            return $self->{SKIP_BODY};
+            return java::lang::Object::jstatic('admin::tags::OrderHistoryTag', 'SKIP_BODY');
         } catch ($e) {
             'org::allbinary::logic::communication::http::request::AbResponseHandler'->sendJspTagLicensingRedirect($self->{pageContext}, $e);
-            return $self->{SKIP_BODY};
+            return java::lang::Object::jstatic('admin::tags::OrderHistoryTag', 'SKIP_BODY');
         }
 }
 
@@ -99,7 +99,8 @@ use org::allbinary::business::user::commerce::inventory::order::OrderHistoryData
 use org::allbinary::logic::communication::http::request::AbResponseHandler ();
 use org::allbinary::logic::communication::log::LogUtil ();
 use org::allbinary::logic::system::security::licensing::LicensingException ();
-use admin::tags::TableTag ();
+use org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory ();
+use org::allbinary::logic::communication::log::config::type::LogConfigTypes ();
 
 1;
 

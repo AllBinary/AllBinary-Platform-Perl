@@ -62,7 +62,6 @@ use org::allbinary::util::BasicArrayListD ();
 use org::allbinary::business::user::UserFactoryInterface ();
 use org::allbinary::logic::StdUtil ();
 use org::allbinary::logic::string::StringValidationUtil ();
-use org::allbinary::business::user::role::UserRole ();
 use org::allbinary::business::user::role::UserRoleFactory ();
 
 1;

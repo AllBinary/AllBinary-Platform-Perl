@@ -83,16 +83,22 @@ sub charsWidth {
 }
 
 
-sub stringWidth {
+sub stringWidth_j1 {
     my ($self, $string) = @_;
         die ("RuntimeException");
 }
 
 
-# Java overloaded method: Perl keeps the last definition
-sub stringWidth {
+sub stringWidth_j3 {
     my ($self, $string, $offset, $len) = @_;
         die ("RuntimeException");
+}
+
+sub stringWidth {
+    my ($invocant, @arguments) = @_;
+    return $invocant->stringWidth_j1(@arguments) if scalar(@arguments) == 1;
+    return $invocant->stringWidth_j3(@arguments) if scalar(@arguments) == 3;
+    die "No method stringWidth takes " . scalar(@arguments) . " arguments";
 }
 
 use java::lang::Object ();

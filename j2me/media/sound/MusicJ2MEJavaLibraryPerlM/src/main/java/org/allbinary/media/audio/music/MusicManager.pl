@@ -17,7 +17,7 @@ sub _init_fields {
     $self->{gameTickTimeDelayHelper} = 'org::allbinary::time::GameTickTimeDelayHelperFactory'->getInstance();
     $self->{playerStateUtil} = 'org::allbinary::media::audio::PlayerStateUtil'->getInstance();
     $self->{timeDelayHelper} = 'org::allbinary::time::TimeDelayHelper'->new(0);
-    $self->{playerListener} = 'org::allbinary::media::audio::music::MusicManagerPlayerListener'->new($self);
+    $self->{playerListener} = do { local $java::lang::Object::jouter = $self; 'org::allbinary::media::audio::music::MusicManagerPlayerListener'->new($self) };
     $self->{PLAY} = "Play ";
     $self->{SONG} = " for: ";
     $self->{NEXT_SONG} = 'org::allbinary::string::CommonLabels'->getInstance()->{NEXT} . " Song: ";
@@ -159,8 +159,8 @@ sub stop {
             'org::allbinary::logic::communication::log::PreLogUtil'->put('org::allbinary::logic::string::StringMaker'->new()->append($self->{commonStrings}->{END})->append('org::allbinary::logic::string::StringUtil'->getInstance()->toString($currentSongSound))->toString(), $self, $self->{commonStrings}->{END});
         } catch ($e) {
             my $resource = 'org::allbinary::logic::string::StringUtil'->getInstance()->{EMPTY_STRING};
-            if ($currentSongSound != 'org::allbinary::media::audio::NoSound'->getInstance()) {
-                $resource = $currentSongSound->getResource();
+            if ($self->{currentSongSound} != 'org::allbinary::media::audio::NoSound'->getInstance()) {
+                $resource = $self->{currentSongSound}->getResource();
             }
             'org::allbinary::logic::communication::log::PreLogUtil'->putOE($self->{commonStrings}->{EXCEPTION_LABEL} . $resource, $self, $self->{commonStrings}->{END}, $e);
         }
@@ -185,6 +185,7 @@ sub stop {
     sub new {
         my ($class, $musicManager) = @_;
         my $self = bless({}, $class);
+        $self->{jouter} = $java::lang::Object::jouter;
         _init_fields($self);
             $self->{musicManager} = $musicManager;
         return $self;

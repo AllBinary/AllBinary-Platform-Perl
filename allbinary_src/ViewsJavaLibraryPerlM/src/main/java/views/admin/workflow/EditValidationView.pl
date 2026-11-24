@@ -45,14 +45,14 @@ sub isValid {
                 return 0;
             }
             if (!defined('org::allbinary::data::tables::workflow::WorkFlowEntityFactory'->getInstance()->create2()->get($self->{workFlowName}, $self->getTransformInfoInterface()->getStoreName()))) {
-                if ($views::admin::workflow::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($views::admin::workflow::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{VIEW})) {
+                if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{VIEW})) {
                     $self->{logUtil}->putF("WorkFlow does not exist.", $self, $self->{commonStrings}->{IS_VALID});
                 }
                 return 0;
             }
             return 1;
         } catch ($e) {
-            if ($views::admin::workflow::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($views::admin::workflow::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{VIEWERROR})) {
+            if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{VIEWERROR})) {
                 $self->{logUtil}->put("Failed to validate form", $self, $self->{commonStrings}->{IS_VALID}, $e);
             }
             return 0;
@@ -68,14 +68,14 @@ sub validationInfo {
                 $stringBuffer->append("WorkFlow name is invalid<br />");
             }
             if (!defined('org::allbinary::data::tables::workflow::WorkFlowEntityFactory'->getInstance()->create2()->get($self->{workFlowName}, $self->getTransformInfoInterface()->getStoreName()))) {
-                if ($views::admin::workflow::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($views::admin::workflow::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{VIEW})) {
+                if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{VIEW})) {
                     $self->{logUtil}->putF("WorkFlow does not exist.", $self, "validationInfo()");
                 }
                 $stringBuffer->append("WorkFlow does not exist<br />");
             }
             return $stringBuffer->toString();
         } catch ($e) {
-            if ($views::admin::workflow::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($views::admin::workflow::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{VIEWERROR})) {
+            if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{VIEWERROR})) {
                 $self->{logUtil}->put("Failed to generate validation error info", $self, "validationInfo()", $e);
             }
             return "Error Validating Form";
@@ -111,6 +111,8 @@ use org::allbinary::logic::visual::transform::info::TransformInfoHttpInterface (
 use org::allbinary::logic::visual::transform::info::TransformInfoInterface ();
 use org::w3c::dom::Document ();
 use org::w3c::dom::Node ();
+use org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory ();
+use org::allbinary::logic::communication::log::config::type::LogConfigTypes ();
 use views::admin::workflow::WorkFlowView ();
 
 1;

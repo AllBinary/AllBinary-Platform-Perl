@@ -39,7 +39,7 @@ sub getInstance {
 }
 
 
-sub onSurfaceCreated {
+sub onSurfaceCreated_j1 {
     my ($self, $gl) = @_;
         try {
             if (!$self->{created}) {
@@ -52,8 +52,7 @@ sub onSurfaceCreated {
 }
 
 
-# Java overloaded method: Perl keeps the last definition
-sub onSurfaceCreated {
+sub onSurfaceCreated_j2 {
     my ($self, $gl, $loadTextures) = @_;
         try {
             $loadTextures->load($gl);
@@ -61,6 +60,13 @@ sub onSurfaceCreated {
         } catch ($e) {
             $self->{logUtil}->put($self->{commonStrings}->{EXCEPTION}, $self, $self->{renderStrings}->{ON_SURFACE_CREATED}, $e);
         }
+}
+
+sub onSurfaceCreated {
+    my ($invocant, @arguments) = @_;
+    return $invocant->onSurfaceCreated_j1(@arguments) if scalar(@arguments) == 1;
+    return $invocant->onSurfaceCreated_j2(@arguments) if scalar(@arguments) == 2;
+    die "No method onSurfaceCreated takes " . scalar(@arguments) . " arguments";
 }
 
 

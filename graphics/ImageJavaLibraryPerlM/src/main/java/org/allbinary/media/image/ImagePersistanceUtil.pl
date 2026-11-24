@@ -48,14 +48,13 @@ sub saveWithBatik {
 }
 
 
-sub saveWithImageIO {
+sub saveWithImageIO_j2_1 {
     my ($self, $filePath, $bufferedImage) = @_;
         $self->saveWithImageIO('java::io::File'->new($filePath), $bufferedImage);
 }
 
 
-# Java overloaded method: Perl keeps the last definition
-sub saveWithImageIO {
+sub saveWithImageIO_j2_2 {
     my ($self, $file, $bufferedImage) = @_;
         my $writer = undef;
         my $ios = undef;
@@ -95,6 +94,18 @@ sub saveWithImageIO {
                 $self->{logUtil}->put($self->{commonStrings}->{EXCEPTION}, $self, $self->{commonStrings}->{SAVE}, $e2);
             }
         }
+}
+
+sub saveWithImageIO {
+    my ($invocant, @arguments) = @_;
+    return $invocant->saveWithImageIO_j2(@arguments) if scalar(@arguments) == 2;
+    die "No method saveWithImageIO takes " . scalar(@arguments) . " arguments";
+}
+
+sub saveWithImageIO_j2 {
+    my ($invocant, @arguments) = @_;
+    return $invocant->saveWithImageIO_j2_1(@arguments) if 1 && !ref($arguments[0]) && (!defined($arguments[1]) || (ref($arguments[1]) && ref($arguments[1]) ne 'ARRAY'));
+    return $invocant->saveWithImageIO_j2_2(@arguments);
 }
 
 use java::lang::Object ();

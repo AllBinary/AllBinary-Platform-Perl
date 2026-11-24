@@ -57,7 +57,6 @@ use java::lang::Object ();
 use org::allbinary::canvas::RunnableCanvas ();
 use org::allbinary::logic::communication::log::LogUtil ();
 use org::allbinary::string::CommonStrings ();
-use org::allbinary::game::displayable::canvas::GameRunnable ();
 
 1;
 

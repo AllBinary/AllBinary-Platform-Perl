@@ -55,7 +55,7 @@ sub isDark {
 
 use java::lang::Object ();
 use java::lang::LazyStatic ();
-# use java::awt ();
+# use java::awt::Color ();
 
 1;
 

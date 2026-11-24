@@ -50,15 +50,21 @@ sub init {
             $self->{startLineId} = undef;
             $self->{finishLineId} = undef;
             $self->{pathFindingInfoFactory} = undef;
+            $self->{geographicMapInterface} = undef;
+            $self->{pathFindingInfo} = undef;
+            $self->{mapArray} = undef;
         }
         
 
         sub new {
-            my ($class, $pathFindingInfoFactory) = @_;
+            my ($class, $pathFindingInfoFactory, $geographicMapInterface, $pathFindingInfo, $mapArray) = @_;
             my $self = bless({}, $class);
             _init_fields($self);
                 $self->{pathFindingInfoFactory} = $pathFindingInfoFactory;
-                my $raceTrackGeographicMapCellTypeFactory = $self->{geographicMapInterface}->getGeographicMapCellTypeFactory();
+                $self->{geographicMapInterface} = $geographicMapInterface;
+                $self->{pathFindingInfo} = $pathFindingInfo;
+                $self->{mapArray} = $mapArray;
+                my $raceTrackGeographicMapCellTypeFactory = $geographicMapInterface->getGeographicMapCellTypeFactory();
                 $self->{startLineId} = $raceTrackGeographicMapCellTypeFactory->getStartType();
                 $self->{finishLineId} = $raceTrackGeographicMapCellTypeFactory->getEndType();
             return $self;
@@ -97,7 +103,7 @@ sub init {
         }
         }
 
-        $geographicMapInterface->getGeographicMapCellPositionFactory()->visit('org::allbinary::media::graphics::geography::map::racetrack::RaceTrackGeographicMapCellPositionFactoryInitVisitor'->new($self));
+        $geographicMapInterface->getGeographicMapCellPositionFactory()->visit('org::allbinary::media::graphics::geography::map::racetrack::RaceTrackGeographicMapCellPositionFactoryInitVisitor'->new($self, $geographicMapInterface, $pathFindingInfo, $mapArray));
 }
 
 

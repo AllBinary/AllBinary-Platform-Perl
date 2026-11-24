@@ -23,7 +23,7 @@ use parent -norequire,'java::lang::Object';
 sub _init_fields {
     my ($self) = @_;
     $self->{NAME} = "AbeHttpRequestInfo";
-    $self->{abeHttpRequestInfoData} = 'org::allbinary::logic::communication::http::request::AbeHttpRequestInfoData'->getInstance();
+    $self->{abeHttpRequestInfoData} = java::lang::Object::jstatic('org::allbinary::logic::communication::http::request::AbeHttpRequestInfo', 'AbeHttpRequestInfoData')->getInstance();
     $self->{commonSeps} = 'org::allbinary::string::CommonSeps'->getInstance();
     $self->{httpUserAgent} = undef;
     $self->{remoteAddress} = undef;
@@ -40,8 +40,14 @@ sub new {
     die "No constructor of AbeHttpRequestInfo takes " . scalar(@arguments) . " arguments";
 }
 
-
 sub _new1 {
+    my ($class, @arguments) = @_;
+    return $class->_new1_1(@arguments) if 1 && (!defined($arguments[0]) || (ref($arguments[0]) && ref($arguments[0]) ne 'ARRAY'));
+    return $class->_new1_2(@arguments);
+}
+
+
+sub _new1_1 {
     my ($class, $hashMap) = @_;
     my $self = bless({}, $class);
     _init_fields($self);
@@ -56,7 +62,7 @@ sub _new1 {
 }
 
 
-sub _new1 {
+sub _new1_2 {
     my ($class, $httpServletRequest) = @_;
     my $self = bless({}, $class);
     _init_fields($self);
@@ -120,7 +126,6 @@ use org::allbinary::logic::StdUtil ();
 use org::allbinary::logic::string::StringMaker ();
 use org::allbinary::logic::string::StringUtil ();
 use org::allbinary::string::CommonSeps ();
-use org::allbinary::logic::communication::http::request::AbeHttpRequestInfoData ();
 
 1;
 

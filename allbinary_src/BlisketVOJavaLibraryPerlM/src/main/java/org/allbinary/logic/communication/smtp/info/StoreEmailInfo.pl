@@ -32,7 +32,7 @@ sub new {
     my $self = $class->SUPER::new($subject, $textBody);
     _init_fields($self);
         # super(...) made $self above
-        if ($org::allbinary::logic::communication::smtp::info::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($org::allbinary::logic::communication::smtp::info::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{EMAILLOGGING})) {
+        if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{EMAILLOGGING})) {
             my $commonStrings = 'org::allbinary::string::CommonStrings'->getInstance();
             $self->{logUtil}->putF($commonStrings->{START}, $self, $commonStrings->{CONSTRUCTOR});
         }
@@ -56,7 +56,8 @@ use org::allbinary::business::context::modules::storefront::StoreFrontInterface 
 use org::allbinary::logic::communication::log::LogUtil ();
 use org::allbinary::logic::communication::smtp::configuration::server::EmailServerConfigurationInterface ();
 use org::allbinary::string::CommonStrings ();
-use org::allbinary::logic::communication::smtp::info::BasicEmailInfo ();
+use org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory ();
+use org::allbinary::logic::communication::log::config::type::LogConfigTypes ();
 
 1;
 

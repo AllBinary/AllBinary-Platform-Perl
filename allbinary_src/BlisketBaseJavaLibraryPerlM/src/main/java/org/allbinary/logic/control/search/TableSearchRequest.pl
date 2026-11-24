@@ -108,7 +108,7 @@ sub getContentType {
 # throws Exception
 sub getFileBaseNameNode {
     my ($self, $document) = @_;
-        return 'org::allbinary::data::tree::dom::ModDomHelper'->createNameValueNodes($document, $org::allbinary::logic::control::search::SearchData::FILENAME, $self->getFileBaseName());
+        return 'org::allbinary::data::tree::dom::ModDomHelper'->createNameValueNodes($document, java::lang::Object::jstatic('org::allbinary::logic::control::search::TableSearchRequest', 'SearchData')->{FILENAME}, $self->getFileBaseName());
 }
 
 use java::lang::Object ();
@@ -117,7 +117,6 @@ use org::allbinary::globals::FREEBLISKET_PATH_GLOBALS ();
 use org::allbinary::globals::URLGLOBALS ();
 use org::w3c::dom::Document ();
 use org::w3c::dom::Node ();
-use org::allbinary::logic::control::search::SearchData ();
 
 1;
 

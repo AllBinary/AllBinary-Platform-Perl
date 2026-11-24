@@ -27,16 +27,27 @@ sub getMaxNonMatchingPixelDeltas {
 }
 
 
-sub isCollisionWithAvoidRectangles {
+sub isCollisionWithAvoidRectangles_j1_1 {
     my ($self, $rectangle) = @_;
     die "abstract method isCollisionWithAvoidRectangles";
 }
 
 
-# Java overloaded method: Perl keeps the last definition
-sub isCollisionWithAvoidRectangles {
+sub isCollisionWithAvoidRectangles_j1_2 {
     my ($self, $point) = @_;
     die "abstract method isCollisionWithAvoidRectangles";
+}
+
+sub isCollisionWithAvoidRectangles {
+    my ($invocant, @arguments) = @_;
+    return $invocant->isCollisionWithAvoidRectangles_j1(@arguments) if scalar(@arguments) == 1;
+    die "No method isCollisionWithAvoidRectangles takes " . scalar(@arguments) . " arguments";
+}
+
+sub isCollisionWithAvoidRectangles_j1 {
+    my ($invocant, @arguments) = @_;
+    return $invocant->isCollisionWithAvoidRectangles_j1_1(@arguments) if 1 && (!defined($arguments[0]) || (ref($arguments[0]) && ref($arguments[0]) ne 'ARRAY'));
+    return $invocant->isCollisionWithAvoidRectangles_j1_2(@arguments);
 }
 
 
@@ -58,7 +69,8 @@ sub isFrameAllowed {
     die "abstract method isFrameAllowed";
 }
 
-# use java::awt ();
+# use java::awt::Rectangle ();
+# use java::awt::Color ();
 # use java::awt::image::BufferedImage ();
 use org::allbinary::graphics::GPoint ();
 

@@ -67,7 +67,6 @@ use java::lang::Object ();
 use org::allbinary::game::configuration::feature::Features ();
 use org::allbinary::game::configuration::feature::SensorFeatureFactory ();
 use org::allbinary::logic::math::Orientation ();
-use org::allbinary::input::gyro::NoGyroSensor ();
 
 1;
 

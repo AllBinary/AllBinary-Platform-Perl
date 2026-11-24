@@ -32,7 +32,7 @@ sub new {
 sub createDocument {
     my ($class, $xmlFile) = @_;
         try {
-            return 'org::allbinary::data::tree::dom::document::DomDocumentHelper'->create('org::allbinary::logic::io::AbFileInputStream'->createFromAbFile($xmlFile));
+            return java::lang::Object::jstatic('org::allbinary::data::tree::dom::document::DomDocumentFileHelper', 'DomDocumentHelper')->create('org::allbinary::logic::io::AbFileInputStream'->createFromAbFile($xmlFile));
         } catch ($e) {
             die $e;
         }
@@ -73,7 +73,6 @@ use org::allbinary::logic::io::DataOutputStreamFactory ();
 use org::allbinary::logic::io::StreamUtil ();
 use org::allbinary::logic::io::file::AbFile ();
 use org::w3c::dom::Document ();
-use org::allbinary::data::tree::dom::document::DomDocumentHelper ();
 
 1;
 

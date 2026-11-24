@@ -35,7 +35,7 @@ sub new {
     my ($class, $propertiesHashMap, $pageContext) = @_;
     my $self = bless({}, $class);
     _init_fields($self);
-        if ($workflows::template::data::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($workflows::template::data::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{WORKFLOW})) {
+        if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{WORKFLOW})) {
             $self->{logUtil}->putF("Properties: " . $propertiesHashMap->toString(), $self, "BasicWorkFlow()");
         }
         $self->{propertiesHashMap} = $propertiesHashMap;
@@ -67,7 +67,7 @@ sub getPageContext {
 # throws Exception
 sub process {
     my ($self) = @_;
-        if ($workflows::template::data::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($workflows::template::data::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{WORKFLOW})) {
+        if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{WORKFLOW})) {
             $self->{logUtil}->putF($self->{commonStrings}->{START}, $self, $self->{commonStrings}->{PROCESS});
         }
         if ($self->{validationDomNodeInterface}->isValid()) {
@@ -91,6 +91,8 @@ use org::allbinary::logic::system::security::licensing::AbeClientInformationInte
 use org::allbinary::logic::system::security::licensing::ServiceClientInformationInterfaceFactory ();
 use org::allbinary::logic::visual::transform::TransformFactory ();
 use org::allbinary::string::CommonStrings ();
+use org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory ();
+use org::allbinary::logic::communication::log::config::type::LogConfigTypes ();
 
 1;
 

@@ -29,7 +29,6 @@ sub new {
 }
 
 use java::lang::Object ();
-use org::allbinary::logic::system::security::licensing::AbeClientInformation ();
 
 1;
 

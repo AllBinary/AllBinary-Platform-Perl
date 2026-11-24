@@ -44,16 +44,22 @@ sub glDrawTexfOES {
 }
 
 
-sub glDrawTexfvOES {
+sub glDrawTexfvOES_j2 {
     my ($self, $coords, $offset) = @_;
     die "abstract method glDrawTexfvOES";
 }
 
 
-# Java overloaded method: Perl keeps the last definition
-sub glDrawTexfvOES {
+sub glDrawTexfvOES_j1 {
     my ($self, $coords) = @_;
     die "abstract method glDrawTexfvOES";
+}
+
+sub glDrawTexfvOES {
+    my ($invocant, @arguments) = @_;
+    return $invocant->glDrawTexfvOES_j2(@arguments) if scalar(@arguments) == 2;
+    return $invocant->glDrawTexfvOES_j1(@arguments) if scalar(@arguments) == 1;
+    die "No method glDrawTexfvOES takes " . scalar(@arguments) . " arguments";
 }
 
 
@@ -63,16 +69,22 @@ sub glDrawTexiOES {
 }
 
 
-sub glDrawTexivOES {
+sub glDrawTexivOES_j2 {
     my ($self, $coords, $offset) = @_;
     die "abstract method glDrawTexivOES";
 }
 
 
-# Java overloaded method: Perl keeps the last definition
-sub glDrawTexivOES {
+sub glDrawTexivOES_j1 {
     my ($self, $coords) = @_;
     die "abstract method glDrawTexivOES";
+}
+
+sub glDrawTexivOES {
+    my ($invocant, @arguments) = @_;
+    return $invocant->glDrawTexivOES_j2(@arguments) if scalar(@arguments) == 2;
+    return $invocant->glDrawTexivOES_j1(@arguments) if scalar(@arguments) == 1;
+    die "No method glDrawTexivOES takes " . scalar(@arguments) . " arguments";
 }
 
 
@@ -82,16 +94,22 @@ sub glDrawTexsOES {
 }
 
 
-sub glDrawTexsvOES {
+sub glDrawTexsvOES_j2 {
     my ($self, $coords, $offset) = @_;
     die "abstract method glDrawTexsvOES";
 }
 
 
-# Java overloaded method: Perl keeps the last definition
-sub glDrawTexsvOES {
+sub glDrawTexsvOES_j1 {
     my ($self, $coords) = @_;
     die "abstract method glDrawTexsvOES";
+}
+
+sub glDrawTexsvOES {
+    my ($invocant, @arguments) = @_;
+    return $invocant->glDrawTexsvOES_j2(@arguments) if scalar(@arguments) == 2;
+    return $invocant->glDrawTexsvOES_j1(@arguments) if scalar(@arguments) == 1;
+    die "No method glDrawTexsvOES takes " . scalar(@arguments) . " arguments";
 }
 
 
@@ -101,16 +119,22 @@ sub glDrawTexxOES {
 }
 
 
-sub glDrawTexxvOES {
+sub glDrawTexxvOES_j2 {
     my ($self, $coords, $offset) = @_;
     die "abstract method glDrawTexxvOES";
 }
 
 
-# Java overloaded method: Perl keeps the last definition
-sub glDrawTexxvOES {
+sub glDrawTexxvOES_j1 {
     my ($self, $coords) = @_;
     die "abstract method glDrawTexxvOES";
+}
+
+sub glDrawTexxvOES {
+    my ($invocant, @arguments) = @_;
+    return $invocant->glDrawTexxvOES_j2(@arguments) if scalar(@arguments) == 2;
+    return $invocant->glDrawTexxvOES_j1(@arguments) if scalar(@arguments) == 1;
+    die "No method glDrawTexxvOES takes " . scalar(@arguments) . " arguments";
 }
 
 
@@ -132,35 +156,58 @@ sub glLoadPaletteFromModelViewMatrixOES {
 }
 
 
-sub glMatrixIndexPointerOES {
+sub glMatrixIndexPointerOES_j4_1 {
     my ($self, $size, $type, $stride, $pointer) = @_;
     die "abstract method glMatrixIndexPointerOES";
 }
 
 
-# Java overloaded method: Perl keeps the last definition
-sub glMatrixIndexPointerOES {
+sub glMatrixIndexPointerOES_j4_2 {
     my ($self, $size, $type, $stride, $offset) = @_;
     die "abstract method glMatrixIndexPointerOES";
 }
 
+sub glMatrixIndexPointerOES {
+    my ($invocant, @arguments) = @_;
+    return $invocant->glMatrixIndexPointerOES_j4(@arguments) if scalar(@arguments) == 4;
+    die "No method glMatrixIndexPointerOES takes " . scalar(@arguments) . " arguments";
+}
 
-sub glWeightPointerOES {
+sub glMatrixIndexPointerOES_j4 {
+    my ($invocant, @arguments) = @_;
+    return $invocant->glMatrixIndexPointerOES_j4_1(@arguments) if 1 && !ref($arguments[0]) && !ref($arguments[1]) && !ref($arguments[2]) && (!defined($arguments[3]) || (ref($arguments[3]) && ref($arguments[3]) ne 'ARRAY'));
+    return $invocant->glMatrixIndexPointerOES_j4_2(@arguments);
+}
+
+
+sub glWeightPointerOES_j4_1 {
     my ($self, $size, $type, $stride, $pointer) = @_;
     die "abstract method glWeightPointerOES";
 }
 
 
-# Java overloaded method: Perl keeps the last definition
-sub glWeightPointerOES {
+sub glWeightPointerOES_j4_2 {
     my ($self, $size, $type, $stride, $offset) = @_;
     die "abstract method glWeightPointerOES";
+}
+
+sub glWeightPointerOES {
+    my ($invocant, @arguments) = @_;
+    return $invocant->glWeightPointerOES_j4(@arguments) if scalar(@arguments) == 4;
+    die "No method glWeightPointerOES takes " . scalar(@arguments) . " arguments";
+}
+
+sub glWeightPointerOES_j4 {
+    my ($invocant, @arguments) = @_;
+    return $invocant->glWeightPointerOES_j4_1(@arguments) if 1 && !ref($arguments[0]) && !ref($arguments[1]) && !ref($arguments[2]) && (!defined($arguments[3]) || (ref($arguments[3]) && ref($arguments[3]) ne 'ARRAY'));
+    return $invocant->glWeightPointerOES_j4_2(@arguments);
 }
 
 # use java::nio::Buffer ();
 # use java::nio::FloatBuffer ();
 # use java::nio::IntBuffer ();
 # use java::nio::ShortBuffer ();
+use javax::microedition::khronos::opengles::GL ();
 
 1;
 

@@ -34,7 +34,7 @@ sub new {
 
 
 # throws Exception
-sub save {
+sub save_j1 {
     my ($self, $frame) = @_;
         my $commonStrings = 'org::allbinary::string::CommonStrings'->getInstance();
         my $capturedBufferedImageCacheable = (('org::allbinary::input::media::image::capture::CapturedBufferedImagesCacheSingleton'->getInstance())->get($frame));
@@ -43,8 +43,7 @@ sub save {
 }
 
 
-# Java overloaded method: Perl keeps the last definition
-sub save {
+sub save_j2 {
     my ($self, $bufferedImage, $frame) = @_;
         my $commonStrings = 'org::allbinary::string::CommonStrings'->getInstance();
         my $imageUtil = 'org::allbinary::media::image::ImageUtil'->getInstance();
@@ -56,6 +55,13 @@ sub save {
         $self->{logUtil}->putF(("Image File Path: " . $filePath . $imageUtil->toString($bufferedImage)), $self, $commonStrings->{SAVE});
         my $imagePersistanceUtil = 'org::allbinary::media::image::ImagePersistanceUtil'->getInstance();
         $imagePersistanceUtil->saveWithImageIO($filePath, $bufferedImage);
+}
+
+sub save {
+    my ($invocant, @arguments) = @_;
+    return $invocant->save_j1(@arguments) if scalar(@arguments) == 1;
+    return $invocant->save_j2(@arguments) if scalar(@arguments) == 2;
+    die "No method save takes " . scalar(@arguments) . " arguments";
 }
 
 use java::lang::Object ();

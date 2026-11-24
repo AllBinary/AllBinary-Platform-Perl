@@ -60,25 +60,24 @@ sub remove {
             $whereHashMap->put($org::allbinary::business::user::UserData::USERNAME, $self->{userName});
             $whereHashMap->put($org::allbinary::business::user::address::StreetAddressData::ID, ("" . ($index)));
             $self->SUPER::deleteWhere($whereHashMap);
-            if ($org::allbinary::data::tables::user::address::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($org::allbinary::data::tables::user::address::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{SQLLOGGING})) {
+            if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{SQLLOGGING})) {
                 $self->{logUtil}->putF($self->{commonStrings}->{SUCCESS}, $self, "remove");
             }
         } catch ($e) {
-            if ($org::allbinary::data::tables::user::address::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($org::allbinary::data::tables::user::address::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{SQLLOGGING})) {
+            if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{SQLLOGGING})) {
                 $self->{logUtil}->put($self->{commonStrings}->{FAILURE}, $self, "remove", $e);
             }
         }
 }
 
 
-sub add {
+sub add_j1 {
     my ($self, $address) = @_;
         $self->add($address, 'org::allbinary::data::tables::TableDataFactory'->getInstance()->{INTEGER_MAX_VALUE_STRING});
 }
 
 
-# Java overloaded method: Perl keeps the last definition
-sub add {
+sub add_j2 {
     my ($self, $address, $index) = @_;
         try {
             my $values = 'org::allbinary::util::BasicArrayListD'->new();
@@ -96,14 +95,21 @@ sub add {
             $values->add($time);
             $self->SUPER::insert($values);
             $self->setDefault($self->getLastId());
-            if ($org::allbinary::data::tables::user::address::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($org::allbinary::data::tables::user::address::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{SQLLOGGING})) {
+            if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{SQLLOGGING})) {
                 $self->{logUtil}->putF($self->{commonStrings}->{SUCCESS}, $self, "add");
             }
         } catch ($e) {
-            if ($org::allbinary::data::tables::user::address::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($org::allbinary::data::tables::user::address::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{SQLLOGGING})) {
+            if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{SQLLOGGING})) {
                 $self->{logUtil}->put($self->{commonStrings}->{FAILURE}, $self, "add", $e);
             }
         }
+}
+
+sub add {
+    my ($invocant, @arguments) = @_;
+    return $invocant->add_j1(@arguments) if scalar(@arguments) == 1;
+    return $invocant->add_j2(@arguments) if scalar(@arguments) == 2;
+    die "No method add takes " . scalar(@arguments) . " arguments";
 }
 
 
@@ -116,11 +122,11 @@ sub update {
             $whereKeyValuePairs->put($org::allbinary::business::user::UserData::USERNAME, $self->{userName});
             $self->SUPER::updateWhere($whereKeyValuePairs, $addressHashMap);
             $self->setDefault($address->getId());
-            if ($org::allbinary::data::tables::user::address::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($org::allbinary::data::tables::user::address::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{SQLLOGGING})) {
+            if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{SQLLOGGING})) {
                 $self->{logUtil}->putF($self->{commonStrings}->{SUCCESS}, $self, "update");
             }
         } catch ($e) {
-            if ($org::allbinary::data::tables::user::address::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($org::allbinary::data::tables::user::address::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{SQLLOGGING})) {
+            if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{SQLLOGGING})) {
                 $self->{logUtil}->put($self->{commonStrings}->{FAILURE}, $self, "add", $e);
             }
         }
@@ -133,7 +139,7 @@ sub getLastId {
 }
 
 
-sub get {
+sub get_j0 {
     my ($self) = @_;
         try {
             my $streetAddressVector = 'org::allbinary::util::BasicArrayListD'->new();
@@ -150,7 +156,7 @@ sub get {
             }
             return $streetAddressVector;
         } catch ($e) {
-            if ($org::allbinary::data::tables::user::address::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($org::allbinary::data::tables::user::address::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{SQLLOGGING})) {
+            if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{SQLLOGGING})) {
                 $self->{logUtil}->put($self->{commonStrings}->{FAILURE}, $self, $self->{commonStrings}->{GET}, $e);
             }
             return undef;
@@ -158,8 +164,7 @@ sub get {
 }
 
 
-# Java overloaded method: Perl keeps the last definition
-sub get {
+sub get_j1 {
     my ($self, $index) = @_;
         try {
             my $keyAndValue = 'org::allbinary::logic::StdUtil'->getInstance()->createHashMap();
@@ -172,11 +177,18 @@ sub get {
                 return undef;
             }
         } catch ($e) {
-            if ($org::allbinary::data::tables::user::address::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($org::allbinary::data::tables::user::address::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{SQLLOGGING})) {
+            if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{SQLLOGGING})) {
                 $self->{logUtil}->put($self->{commonStrings}->{FAILURE}, $self, $self->{commonStrings}->{GET}, $e);
             }
             return undef;
         }
+}
+
+sub get {
+    my ($invocant, @arguments) = @_;
+    return $invocant->get_j0(@arguments) if scalar(@arguments) == 0;
+    return $invocant->get_j1(@arguments) if scalar(@arguments) == 1;
+    die "No method get takes " . scalar(@arguments) . " arguments";
 }
 
 
@@ -190,18 +202,18 @@ sub getDefault {
             $addressHashMap = $self->SUPER::getRow($updateKeyAndValue);
             if (defined($addressHashMap)) {
                 my $streetAddress = 'org::allbinary::business::user::address::StreetAddress'->new($addressHashMap);
-                if ($org::allbinary::data::tables::user::address::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($org::allbinary::data::tables::user::address::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{SQLLOGGING})) {
+                if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{SQLLOGGING})) {
                     $self->{logUtil}->putF($self->{commonStrings}->{SUCCESS}, $self, "getDefault");
                 }
                 return $streetAddress;
             } else {
-                if ($org::allbinary::data::tables::user::address::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($org::allbinary::data::tables::user::address::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{SQLLOGGING})) {
+                if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{SQLLOGGING})) {
                     $self->{logUtil}->putF("No Default Address Found", $self, "getDefault");
                 }
                 return undef;
             }
         } catch ($e) {
-            if ($org::allbinary::data::tables::user::address::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($org::allbinary::data::tables::user::address::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{SQLLOGGING})) {
+            if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{SQLLOGGING})) {
                 $self->{logUtil}->put($self->{commonStrings}->{FAILURE}, $self, "getDefault", $e);
             }
             return undef;
@@ -224,11 +236,11 @@ sub setDefault {
             $whereKeyAndValue->put($org::allbinary::business::user::address::StreetAddressData::ID, $value);
             $updateKeyAndValue->put($org::allbinary::business::user::address::StreetAddressData::DEFAULT, $org::allbinary::business::user::address::StreetAddressData::DEFAULT);
             $self->SUPER::updateWhere($whereKeyAndValue, $updateKeyAndValue);
-            if ($org::allbinary::data::tables::user::address::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($org::allbinary::data::tables::user::address::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{SQLLOGGING})) {
+            if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{SQLLOGGING})) {
                 $self->{logUtil}->putF($self->{commonStrings}->{SUCCESS}, $self, "setDefault");
             }
         } catch ($e) {
-            if ($org::allbinary::data::tables::user::address::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($org::allbinary::data::tables::user::address::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{SQLLOGGING})) {
+            if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{SQLLOGGING})) {
                 $self->{logUtil}->put($self->{commonStrings}->{FAILURE}, $self, "setShippingAddress", $e);
             }
         }
@@ -282,7 +294,8 @@ use org::allbinary::logic::communication::log::LogUtil ();
 use org::allbinary::logic::communication::sql::AbSqlBean ();
 use org::allbinary::logic::string::StringMaker ();
 use org::allbinary::logic::string::StringUtil ();
-use org::allbinary::data::tables::user::address::StreetAddressesEntityInterface ();
+use org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory ();
+use org::allbinary::logic::communication::log::config::type::LogConfigTypes ();
 
 1;
 

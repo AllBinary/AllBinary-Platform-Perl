@@ -29,7 +29,7 @@ sub _init_fields {
 
 sub new {
     my ($class) = @_;
-    my $self = $class->SUPER::new($NAME, $org::allbinary::game::multiplayer::layer::RemoteInfo::REMOTE_INFO, 0, $org::allbinary::game::layer::pickup::CountedPickedUpLayerInterfaceFactory::NULL_COUNTED_PICKUP_LAYER_FACTORY, 'org::allbinary::animation::NullAnimationFactory'->getFactoryInstance()->getInstance(0), 'org::allbinary::graphics::Rectangle'->new('org::allbinary::graphics::PointFactory'->getInstance()->{ZERO_ZERO}, 0, 0), 'org::allbinary::game::view::TileLayerPositionIntoViewPosition'->new());
+    my $self = $class->SUPER::new($NAME, $org::allbinary::game::multiplayer::layer::RemoteInfo::REMOTE_INFO, 0, java::lang::Object::jstatic($class, 'CountedPickedUpLayerInterfaceFactory')->{NULL_COUNTED_PICKUP_LAYER_FACTORY}, 'org::allbinary::animation::NullAnimationFactory'->getFactoryInstance()->getInstance(0), 'org::allbinary::graphics::Rectangle'->new('org::allbinary::graphics::PointFactory'->getInstance()->{ZERO_ZERO}, 0, 0), 'org::allbinary::game::view::TileLayerPositionIntoViewPosition'->new());
     _init_fields($self);
         # super(...) made $self above
     return $self;
@@ -63,8 +63,6 @@ use org::allbinary::graphics::Rectangle ();
 use org::allbinary::layer::AllBinaryLayer ();
 use org::allbinary::view::ViewPosition ();
 use org::allbinary::view::event::ViewPositionEventHandler ();
-use org::allbinary::game::layer::pickup::PickupLayer ();
-use org::allbinary::game::layer::pickup::CountedPickedUpLayerInterfaceFactory ();
 
 1;
 

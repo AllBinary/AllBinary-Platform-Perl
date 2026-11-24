@@ -32,11 +32,11 @@ sub new {
     my $self = $class->SUPER::new($transformInfoInterface);
     _init_fields($self);
         # super(...) made $self above
-        if ($views::business::context::modules::storefront::customizer::includes::style::theme::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($views::business::context::modules::storefront::customizer::includes::style::theme::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{VIEW})) {
+        if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{VIEW})) {
             $self->{logUtil}->putF($self->{commonStrings}->{CONSTRUCTOR}, $self, "started");
         }
         $self->{requestHashMap} = 'org::allbinary::logic::communication::http::request::NameSpaceRequestParams'->new($self->getPageContext())->toHashMap();
-        if ($views::business::context::modules::storefront::customizer::includes::style::theme::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($views::business::context::modules::storefront::customizer::includes::style::theme::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{VIEW})) {
+        if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{VIEW})) {
             $self->{logUtil}->putF($self->{commonStrings}->{CONSTRUCTOR}, $self, "begin loading theme");
         }
     return $self;
@@ -54,7 +54,7 @@ sub isValid {
     my ($self) = @_;
         try {
             my $isValid = 1;
-            if ($views::business::context::modules::storefront::customizer::includes::style::theme::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($views::business::context::modules::storefront::customizer::includes::style::theme::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{VIEW})) {
+            if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{VIEW})) {
                 $self->{logUtil}->putF("Started Validation", $self, $self->{commonStrings}->{IS_VALID});
             }
             my $themeValidation = 'org::allbinary::logic::visual::theme::ThemeValidation'->new($self->getTransformInfoInterface(), $self->{requestHashMap});
@@ -68,7 +68,7 @@ sub isValid {
             }
             return $isValid;
         } catch ($e) {
-            if ($views::business::context::modules::storefront::customizer::includes::style::theme::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($views::business::context::modules::storefront::customizer::includes::style::theme::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{VIEWERROR})) {
+            if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{VIEWERROR})) {
                 $self->{logUtil}->put("Failed to validate", $self, $self->{commonStrings}->{IS_VALID}, $e);
             }
             return 0;
@@ -82,7 +82,7 @@ sub validationInfo {
             my $stringBuffer = 'org::allbinary::logic::string::StringMaker'->new();
             return $stringBuffer->toString();
         } catch ($e) {
-            if ($views::business::context::modules::storefront::customizer::includes::style::theme::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($views::business::context::modules::storefront::customizer::includes::style::theme::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{VIEWERROR})) {
+            if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{VIEWERROR})) {
                 $self->{logUtil}->put("Failed to generate validation error info", $self, "validationInfo()", $e);
             }
             return "Error Getting Validation Info";
@@ -108,7 +108,7 @@ sub view {
         try {
             return 'views::business::context::modules::storefront::customizer::StoreCustomizerComponentUtil'->getInstance()->generate($self->{abeClientInformation}, $self->getTransformInfoInterface());
         } catch ($e) {
-            if ($views::business::context::modules::storefront::customizer::includes::style::theme::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($views::business::context::modules::storefront::customizer::includes::style::theme::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{TAGHELPERERROR})) {
+            if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{TAGHELPERERROR})) {
                 $self->{logUtil}->put($self->{commonStrings}->{EXCEPTION}, $self, "view()", $e);
             }
             die $e;
@@ -135,6 +135,8 @@ use org::w3c::dom::Document ();
 use org::w3c::dom::Node ();
 use views::business::context::modules::storefront::customizer::CustomizerUtil ();
 use views::business::context::modules::storefront::customizer::StoreCustomizerComponentUtil ();
+use org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory ();
+use org::allbinary::logic::communication::log::config::type::LogConfigTypes ();
 use views::business::context::modules::storefront::customizer::includes::style::theme::ThemeCustomizerView ();
 
 1;

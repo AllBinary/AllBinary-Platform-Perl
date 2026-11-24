@@ -38,11 +38,11 @@ sub getPathLevel {
 sub getNameFromNode {
     my ($class, $node) = @_;
         my $attributes = $node->getAttributes();
-        my $attrNode = $attributes->getNamedItem('org::allbinary::business::category::CategoryData'->getInstance()->{LABEL});
+        my $attrNode = $attributes->getNamedItem(java::lang::Object::jstatic('org::allbinary::business::category::CategoryUtil', 'CategoryData')->getInstance()->{LABEL});
         if (defined($attrNode)) {
             return $attrNode->getValue();
         } else {
-            my $labelNode = 'org::allbinary::data::tree::dom::DomSearchHelper'->getNodeNoThrow('org::allbinary::business::category::CategoryData'->getInstance()->{LABEL}, $node->getChildNodes());
+            my $labelNode = 'org::allbinary::data::tree::dom::DomSearchHelper'->getNodeNoThrow(java::lang::Object::jstatic('org::allbinary::business::category::CategoryUtil', 'CategoryData')->getInstance()->{LABEL}, $node->getChildNodes());
             if (defined($labelNode)) {
                 return 'org::allbinary::data::tree::dom::DomNodeHelper'->getTextNodeValue($labelNode);
             }
@@ -60,7 +60,6 @@ use org::apache::commons::lang3::StringUtils ();
 use org::w3c::dom::Attr ();
 use org::w3c::dom::NamedNodeMap ();
 use org::w3c::dom::Node ();
-use org::allbinary::business::category::CategoryData ();
 
 1;
 

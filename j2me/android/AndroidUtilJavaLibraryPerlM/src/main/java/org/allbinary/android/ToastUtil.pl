@@ -30,44 +30,49 @@ sub getInstance {
 
 sub makeToast {
     my ($self, $view, $context, $message, $time) = @_;
-        {
-        package org::allbinary::android::MakeToast;
-        use strict;
-        use warnings;
-        use feature 'try';
-        no warnings 'experimental::try';
-        use parent -norequire,'java::lang::Object';
-        
-
-        sub _init_fields {
-            my ($self) = @_;
-            $self->{string} = undef;
-        }
-        
-
-        sub new {
-            my ($class, $string) = @_;
-            my $self = bless({}, $class);
-            _init_fields($self);
-                $self->{string} = $string;
-            return $self;
-        }
-        
-
-        sub run {
-            my ($self) = @_;
-                my $logUtil = 'org::allbinary::logic::communication::log::LogUtil'->getInstance();
-                try {
-                    'android::widget::Toast'->makeText($self->{context}, $self->{string}, $self->{time})->show();
-                } catch ($e) {
-                    my $commonStrings = 'org::allbinary::string::CommonStrings'->getInstance();
-                    $logUtil->put($commonStrings->{EXCEPTION}, $self, $commonStrings->{RUN}, $e);
-                }
-        }
-        }
-
-        $view->post('org::allbinary::android::MakeToast'->new($message));
+        $view->post('org::allbinary::android::MakeToast'->new($context, $message, $time));
 }
+{
+    #A member class instead of a local class using the method parameters since most of the converted languages do not have local classes.
+    package org::allbinary::android::MakeToast;
+    use strict;
+    use warnings;
+    use feature 'try';
+    no warnings 'experimental::try';
+    use parent -norequire,'java::lang::Object';
+    
+
+    sub _init_fields {
+        my ($self) = @_;
+        $self->{context} = undef;
+        $self->{string} = undef;
+        $self->{time} = undef;
+    }
+    
+
+    sub new {
+        my ($class, $context, $string, $time) = @_;
+        my $self = bless({}, $class);
+        _init_fields($self);
+            $self->{context} = $context;
+            $self->{string} = $string;
+            $self->{time} = $time;
+        return $self;
+    }
+    
+
+    sub run {
+        my ($self) = @_;
+            my $logUtil = 'org::allbinary::logic::communication::log::LogUtil'->getInstance();
+            try {
+                'android::widget::Toast'->makeText($self->{context}, $self->{string}, $self->{time})->show();
+            } catch ($e) {
+                my $commonStrings = 'org::allbinary::string::CommonStrings'->getInstance();
+                $logUtil->put($commonStrings->{EXCEPTION}, $self, $commonStrings->{RUN}, $e);
+            }
+    }
+    }
+
 
 use java::lang::Object ();
 use java::lang::LazyStatic ();

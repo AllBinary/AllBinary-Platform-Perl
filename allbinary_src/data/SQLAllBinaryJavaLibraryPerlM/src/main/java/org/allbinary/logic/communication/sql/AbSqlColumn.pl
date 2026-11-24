@@ -63,7 +63,7 @@ sub getLargestIntegerInColumnWhere {
                 }
             }
             my $largestAsString = $largest->toString();
-            if ($org::allbinary::logic::communication::sql::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($org::allbinary::logic::communication::sql::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{SQLLOGGING})) {
+            if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{SQLLOGGING})) {
                 $stringBuffer->delete(0, $stringBuffer->length());
                 $stringBuffer->append($self->{sqlStrings}->{SQL_STATEMENT_LABEL});
                 $stringBuffer->append($sqlStatement);
@@ -73,7 +73,7 @@ sub getLargestIntegerInColumnWhere {
             }
             return $largestAsString;
         } catch ($e) {
-            if ($org::allbinary::logic::communication::sql::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($org::allbinary::logic::communication::sql::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{SQLLOGGINGERROR})) {
+            if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{SQLLOGGINGERROR})) {
                 $self->{logUtil}->put($self->{FAILED_SQL_STATEMENT} . $sqlStatement, $self, $self->{METHOD_GET_LARGETS_INTEGER_IN_COLUMN}, $e);
             }
             return $self->{INVALID_RESULT};
@@ -96,7 +96,7 @@ sub getColumn {
                 my $field = $rset->getObject($columnName)->toString();
                 $column->add($field);
             }
-            if ($org::allbinary::logic::communication::sql::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($org::allbinary::logic::communication::sql::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{SQLLOGGING})) {
+            if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{SQLLOGGING})) {
                 $stringBuffer->delete(0, $stringBuffer->length());
                 $stringBuffer->append($self->{sqlStrings}->{SQL_STATEMENT_LABEL});
                 $stringBuffer->append($sqlStatement);
@@ -106,7 +106,7 @@ sub getColumn {
             }
             return $column;
         } catch ($e) {
-            if ($org::allbinary::logic::communication::sql::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($org::allbinary::logic::communication::sql::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{SQLLOGGINGERROR})) {
+            if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{SQLLOGGINGERROR})) {
                 $self->{logUtil}->put($self->{FAILED_SQL_STATEMENT} . $sqlStatement, $self, $self->{METHOD_GET_COLUMN}, $e);
             }
             return $column;
@@ -136,7 +136,7 @@ sub getColumnWhere {
                 $field = $rset->getObject($columnName)->toString();
                 $column->add($field);
             }
-            if ($org::allbinary::logic::communication::sql::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($org::allbinary::logic::communication::sql::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{SQLLOGGING})) {
+            if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{SQLLOGGING})) {
                 $stringBuffer->delete(0, $stringBuffer->length());
                 $stringBuffer->append($self->{sqlStrings}->{SQL_STATEMENT_LABEL});
                 $stringBuffer->append($sqlStatement);
@@ -146,7 +146,7 @@ sub getColumnWhere {
             }
             return $column;
         } catch ($e) {
-            if ($org::allbinary::logic::communication::sql::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($org::allbinary::logic::communication::sql::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{SQLLOGGINGERROR})) {
+            if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{SQLLOGGINGERROR})) {
                 $self->{logUtil}->put($self->{FAILED_SQL_STATEMENT} . $sqlStatement, $self, $self->{METHOD_GET_COLUMN_WHERE}, $e);
             }
             return $column;
@@ -160,6 +160,8 @@ use org::allbinary::util::BasicArrayListD ();
 use org::allbinary::business::init::db::DbConnectionInfo ();
 use org::allbinary::logic::communication::log::LogUtil ();
 use org::allbinary::logic::string::StringMaker ();
+use org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory ();
+use org::allbinary::logic::communication::log::config::type::LogConfigTypes ();
 use org::allbinary::logic::communication::sql::AbSqlTable ();
 
 1;

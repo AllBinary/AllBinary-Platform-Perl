@@ -33,7 +33,7 @@ sub doStartTag {
     my ($self) = @_;
         try {
             if (defined($self->getCommand())) {
-                if ($self->getCommand()->compareTo($tags::admin::payment::gateways::org::allbinary->{globals}->{GLOBALS2}->{VIEW}) == 0) {
+                if ($self->getCommand()->compareTo($org::allbinary::globals::GLOBALS2::VIEW) == 0) {
                     $self->setName("Validation User View");
                     $self->setObjectFile("views.admin.payment.gateways.SelectNewValidationView");
                 } else {
@@ -44,7 +44,7 @@ sub doStartTag {
             die ("Command Null");
         } catch ($e) {
             'org::allbinary::logic::communication::http::request::AbResponseHandler'->sendJspTagRedirect($self->{pageContext}, $e);
-            return $self->{SKIP_BODY};
+            return java::lang::Object::jstatic('tags::admin::payment::gateways::ViewUnusedTag', 'SKIP_BODY');
         }
 }
 
@@ -52,6 +52,7 @@ use java::lang::Object ();
 # use javax::servlet::jsp::JspTagException ();
 use org::allbinary::logic::communication::http::request::AbResponseHandler ();
 use tags::StoreValidationTransformTag ();
+use org::allbinary::globals::GLOBALS2 ();
 
 1;
 

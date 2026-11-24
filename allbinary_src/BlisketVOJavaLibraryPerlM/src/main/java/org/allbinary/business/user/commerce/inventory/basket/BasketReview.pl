@@ -127,7 +127,7 @@ sub getNumberOf {
 # throws Exception
 sub toXmlNode {
     my ($self, $document) = @_;
-        my $node = $document->createElement($org::allbinary::business::user::commerce::inventory::basket::BasketData::BASKET);
+        my $node = $document->createElement(java::lang::Object::jstatic('org::allbinary::business::user::commerce::inventory::basket::BasketReview', 'BasketData')->{BASKET});
         my $itemArray = $self->{items}->toArray();
         my $size = scalar(@{$itemArray});
         for (my $index = 0; $index < $size; $index++) {
@@ -138,8 +138,8 @@ sub toXmlNode {
 }
 
 use java::lang::Object ();
-# use java::util::HashSet ();
-# use java::util::Set ();
+use java::util::HashSet ();
+use java::util::Set ();
 use org::allbinary::util::BasicArrayList ();
 use org::allbinary::util::BasicArrayListD ();
 use org::allbinary::business::user::commerce::inventory::item::Item ();
@@ -147,7 +147,6 @@ use org::allbinary::business::user::commerce::inventory::item::ItemView ();
 use org::allbinary::logic::StdUtil ();
 use org::w3c::dom::Document ();
 use org::w3c::dom::Node ();
-use org::allbinary::business::user::commerce::inventory::basket::BasketData ();
 
 1;
 

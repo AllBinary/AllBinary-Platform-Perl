@@ -29,7 +29,7 @@ sub new {
 
 
 # throws Exception, LicensingException
-sub getInstance {
+sub getInstance_j4 {
     my ($class, $request, $response, $servletConfig, $servletContext) = @_;
         my $httpRequest = $request;
         my $requestCommand = $httpRequest->getPathInfo();
@@ -41,13 +41,19 @@ sub getInstance {
 
 
 # throws Exception, LicensingException
-# Java overloaded method: Perl keeps the last definition
-sub getInstance {
+sub getInstance_j2 {
     my ($class, $hashMap, $pageContext) = @_;
-        my $workFlowName = $pageContext->getRequest()->getParameter('org::allbinary::logic::control::workflow::WorkFlowData'->getInstance()->{NAME});
+        my $workFlowName = $pageContext->getRequest()->getParameter(java::lang::Object::jstatic('org::allbinary::logic::control::workflow::RequestWorkFlowFactory', 'WorkFlowData')->getInstance()->{NAME});
         my $weblisketSession = 'org::allbinary::logic::communication::http::request::session::WeblisketSession'->new($hashMap, $pageContext);
         my $storeName = $weblisketSession->getStoreName();
         return 'org::allbinary::data::tables::workflow::WorkFlowEntityFactory'->getInstance()->create2()->get($workFlowName, $storeName);
+}
+
+sub getInstance {
+    my ($invocant, @arguments) = @_;
+    return $invocant->getInstance_j4(@arguments) if scalar(@arguments) == 4;
+    return $invocant->getInstance_j2(@arguments) if scalar(@arguments) == 2;
+    die "No method getInstance takes " . scalar(@arguments) . " arguments";
 }
 
 use java::lang::Object ();
@@ -62,7 +68,6 @@ use org::allbinary::data::tables::workflow::WorkFlowEntityFactory ();
 use org::allbinary::logic::communication::http::request::session::WeblisketSession ();
 use org::allbinary::logic::io::path::AbPathData ();
 use org::allbinary::logic::system::security::licensing::LicensingException ();
-use org::allbinary::logic::control::workflow::WorkFlowData ();
 
 1;
 

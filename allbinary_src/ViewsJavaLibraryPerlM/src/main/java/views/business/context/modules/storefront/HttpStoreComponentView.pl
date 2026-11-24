@@ -32,7 +32,7 @@ sub new {
     my $self = $class->SUPER::new($transformInfoInterface);
     _init_fields($self);
         # super(...) made $self above
-        if ($views::business::context::modules::storefront::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($views::business::context::modules::storefront::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{VIEW})) {
+        if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{VIEW})) {
             $self->{logUtil}->putF("View Name: " . $transformInfoInterface->getName(), $self, $self->{commonStrings}->{CONSTRUCTOR});
         }
         $self->setTransformDocumentInterface('org::allbinary::logic::visual::transform::data::TransformStoreDocumentFactory'->getInstance($self->getPageContext(), $self->getWeblisketSession()));
@@ -44,7 +44,7 @@ sub new {
 sub view {
     my ($self) = @_;
         try {
-            if ($views::business::context::modules::storefront::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($views::business::context::modules::storefront::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{VIEW})) {
+            if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{VIEW})) {
                 $self->{logUtil}->putF($self->{commonStrings}->{START}, $self, "view");
             }
             $self->toXmlDoc();
@@ -52,7 +52,7 @@ sub view {
             my $result = 'org::allbinary::logic::visual::transform::StoreTransformer'->new($self->{abeClientInformation}, $self->getTransformInfoInterface())->translate($success);
             return $result;
         } catch ($e) {
-            if ($views::business::context::modules::storefront::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($views::business::context::modules::storefront::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{VIEWERROR})) {
+            if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{VIEWERROR})) {
                 $self->{logUtil}->put($self->{commonStrings}->{EXCEPTION}, $self, "view", $e);
             }
             die $e;
@@ -67,6 +67,8 @@ use org::allbinary::logic::visual::transform::data::TransformStoreDocumentFactor
 use org::allbinary::logic::visual::transform::info::TransformInfoInterface ();
 use org::allbinary::string::CommonStrings ();
 use views::HttpComponentView ();
+use org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory ();
+use org::allbinary::logic::communication::log::config::type::LogConfigTypes ();
 
 1;
 

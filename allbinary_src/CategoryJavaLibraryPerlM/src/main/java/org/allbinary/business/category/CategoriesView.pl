@@ -53,7 +53,6 @@ use java::lang::Object ();
 use org::allbinary::data::tree::dom::DomNodeInterface ();
 use org::w3c::dom::Document ();
 use org::w3c::dom::Node ();
-use org::allbinary::business::category::CategoryView ();
 
 1;
 

@@ -40,7 +40,7 @@ sub _init_fields {
     $self->{waitingOnTargetPath} = 0;
     $self->{waitingOnWaypointPath} = 0;
     $self->{targetWithoutCachedPathLayerInterface} = 'org::allbinary::game::layer::special::CollidableDestroyableDamageableLayer'->getNullInstance();
-    $self->{buildingSteeringVisitor} = 'org::allbinary::game::layer::unit::BuildingSteeringVisitor'->new();
+    $self->{buildingSteeringVisitor} = do { local $java::lang::Object::jouter = $self; 'org::allbinary::game::layer::unit::BuildingSteeringVisitor'->new() };
 }
 
 
@@ -521,6 +521,7 @@ sub buildingChase {
     sub new {
         my ($class) = @_;
         my $self = $class->SUPER::new();
+        $self->{jouter} = $java::lang::Object::jouter;
         _init_fields($self);
         return $self;
     }
@@ -533,7 +534,7 @@ sub buildingChase {
                 if ($self->getList()->size() > 0) {
                     my $allbinaryLayer = $self->getList()->get(0);
                     my $cellPosition = $self->getPositionList()->get(0);
-                    my $clear = $self->buildingChase($allbinaryLayer, $cellPosition);
+                    my $clear = $self->{jouter}->buildingChase($allbinaryLayer, $cellPosition);
                     if ($clear) {
                         $self->getList()->clear();
                         $self->{positionList}->clear();

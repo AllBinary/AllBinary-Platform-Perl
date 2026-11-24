@@ -41,7 +41,7 @@ sub new {
 }
 
 
-sub createDocument {
+sub createDocument_j0 {
     my ($self) = @_;
         try {
             my $factory = 'javax::xml::parsers::DocumentBuilderFactory'->newInstance();
@@ -55,8 +55,7 @@ sub createDocument {
 
 
 # throws Exception
-# Java overloaded method: Perl keeps the last definition
-sub createDocument {
+sub createDocument_j1 {
     my ($self, $xmlFile) = @_;
         try {
             my $factory = 'javax::xml::parsers::DocumentBuilderFactory'->newInstance();
@@ -66,6 +65,13 @@ sub createDocument {
         } catch ($e) {
             die $e;
         }
+}
+
+sub createDocument {
+    my ($invocant, @arguments) = @_;
+    return $invocant->createDocument_j0(@arguments) if scalar(@arguments) == 0;
+    return $invocant->createDocument_j1(@arguments) if scalar(@arguments) == 1;
+    die "No method createDocument takes " . scalar(@arguments) . " arguments";
 }
 
 
@@ -148,7 +154,7 @@ sub getWithoutTextNodes {
 
 
 # throws Exception
-sub searchNodeList {
+sub searchNodeList_j2_1 {
     my ($self, $nodeName, $nodeList) = @_;
         my $numberOfNodes = $nodeList->getLength();
         for (my $index = 0; $index < $numberOfNodes; $index++) {
@@ -163,8 +169,7 @@ sub searchNodeList {
 
 
 # throws Exception
-# Java overloaded method: Perl keeps the last definition
-sub searchNodeList {
+sub searchNodeList_j2_2 {
     my ($self, $nodeName, $nodeList) = @_;
         my $numberOfNodes = $nodeList->size();
         for (my $index = 0; $index < $numberOfNodes; $index++) {
@@ -175,6 +180,18 @@ sub searchNodeList {
             }
         }
         die ($nodeName . " Node Not Found in search");
+}
+
+sub searchNodeList {
+    my ($invocant, @arguments) = @_;
+    return $invocant->searchNodeList_j2(@arguments) if scalar(@arguments) == 2;
+    die "No method searchNodeList takes " . scalar(@arguments) . " arguments";
+}
+
+sub searchNodeList_j2 {
+    my ($invocant, @arguments) = @_;
+    return $invocant->searchNodeList_j2_1(@arguments) if 1 && !ref($arguments[0]) && (!defined($arguments[1]) || (ref($arguments[1]) && ref($arguments[1]) ne 'ARRAY'));
+    return $invocant->searchNodeList_j2_2(@arguments);
 }
 
 use java::lang::Object ();

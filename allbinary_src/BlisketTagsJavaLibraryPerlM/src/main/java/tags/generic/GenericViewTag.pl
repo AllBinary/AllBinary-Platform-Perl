@@ -32,7 +32,7 @@ sub new {
     my ($class) = @_;
     my $self = $class->SUPER::new();
     _init_fields($self);
-        if ($tags::generic::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($tags::generic::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{JSPTAG})) {
+        if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{JSPTAG})) {
             $self->{logUtil}->putF($self->{commonStrings}->{START}, $self, $self->{commonStrings}->{CONSTRUCTOR});
         }
     return $self;
@@ -56,6 +56,8 @@ use java::lang::Object ();
 use org::allbinary::logic::communication::log::LogUtil ();
 use org::allbinary::logic::io::InputOutputTypeData ();
 use tags::TransformTag ();
+use org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory ();
+use org::allbinary::logic::communication::log::config::type::LogConfigTypes ();
 
 1;
 

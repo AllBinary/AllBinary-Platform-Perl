@@ -46,7 +46,6 @@ sub getInstanceSE {
 }
 
 use java::lang::Object ();
-use org::allbinary::logic::communication::log::Log ();
 
 1;
 

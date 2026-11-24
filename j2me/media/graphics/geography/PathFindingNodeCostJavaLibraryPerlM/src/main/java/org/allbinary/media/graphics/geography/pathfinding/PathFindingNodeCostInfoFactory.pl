@@ -43,7 +43,7 @@ sub create {
 
 
 # throws Exception
-sub getInstance {
+sub getInstance_j4 {
     my ($self, $goingToGeographicMapCellPosition, $geographicMapCellPosition, $costFromStart, $costToEnd) = @_;
         my $pathFindingNodeCostInfo = $self->getInstance($goingToGeographicMapCellPosition, $geographicMapCellPosition);
         if (!defined($pathFindingNodeCostInfo)) {
@@ -59,10 +59,16 @@ sub getInstance {
 }
 
 
-# Java overloaded method: Perl keeps the last definition
-sub getInstance {
+sub getInstance_j2 {
     my ($self, $goingToFromGeographicMapCellPosition, $geographicMapCellPosition) = @_;
         return $self->{pathFindingNodeCostInfoAdjacencyList}->[$geographicMapCellPosition->getId()]->[$goingToFromGeographicMapCellPosition->getId()];
+}
+
+sub getInstance {
+    my ($invocant, @arguments) = @_;
+    return $invocant->getInstance_j4(@arguments) if scalar(@arguments) == 4;
+    return $invocant->getInstance_j2(@arguments) if scalar(@arguments) == 2;
+    die "No method getInstance takes " . scalar(@arguments) . " arguments";
 }
 
 
@@ -74,7 +80,6 @@ sub getTotalCost {
 use java::lang::Object ();
 use org::allbinary::media::graphics::geography::map::BasicGeographicMap ();
 use org::allbinary::media::graphics::geography::map::GeographicMapCellPosition ();
-use org::allbinary::media::graphics::geography::pathfinding::PathFindingNodeCostInfoFactoryBase ();
 use org::allbinary::media::graphics::geography::pathfinding::PathFindingNodeCostInfo ();
 
 1;

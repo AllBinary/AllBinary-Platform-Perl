@@ -58,7 +58,7 @@ sub new {
 sub process {
     my ($self) = @_;
         do {
-            package java::lang::Thread::AnonymousN66452 { our @ISA = ('java::lang::Thread', 'java::lang::Object');
+            package java::lang::Thread::AnonymousN66627 { our @ISA = ('java::lang::Thread', 'java::lang::Object');
             
 
             sub run {
@@ -81,7 +81,7 @@ sub process {
                 }
             }
             }
-            'java::lang::Thread::AnonymousN66452'->can('new') ? 'java::lang::Thread::AnonymousN66452'->new() : bless({}, 'java::lang::Thread::AnonymousN66452')
+            'java::lang::Thread::AnonymousN66627'->can('new') ? 'java::lang::Thread::AnonymousN66627'->new() : bless({}, 'java::lang::Thread::AnonymousN66627')
         }->start();
 }
 
@@ -90,7 +90,7 @@ sub initComponents {
     my ($self) = @_;
         $self->{writeOverOriginalJCheckBox} = 'javax::swing::JCheckBox'->new();
         $self->{jPanel1} = do {
-            package javax::swing::JPanel::AnonymousN67366 { our @ISA = ('javax::swing::JPanel', 'java::lang::Object');
+            package javax::swing::JPanel::AnonymousN67525 { our @ISA = ('javax::swing::JPanel', 'java::lang::Object');
             
 
             sub paint {
@@ -100,7 +100,7 @@ sub initComponents {
                 }
             }
             }
-            'javax::swing::JPanel::AnonymousN67366'->can('new') ? 'javax::swing::JPanel::AnonymousN67366'->new() : bless({}, 'javax::swing::JPanel::AnonymousN67366')
+            'javax::swing::JPanel::AnonymousN67525'->can('new') ? 'javax::swing::JPanel::AnonymousN67525'->new() : bless({}, 'javax::swing::JPanel::AnonymousN67525')
         };
         $self->{generateJButton} = 'javax::swing::JButton'->new();
         $self->{jLabel4} = 'javax::swing::JLabel'->new();
@@ -116,7 +116,7 @@ sub initComponents {
         $self->{writeOverOriginalJCheckBox}->setSelected(1);
         $self->{writeOverOriginalJCheckBox}->setText("Write Over Original");
         $self->{writeOverOriginalJCheckBox}->addActionListener(do {
-            package java::awt::event::ActionListener::AnonymousN68200 { our @ISA = ('java::awt::event::ActionListener', 'java::lang::Object');
+            package java::awt::event::ActionListener::AnonymousN68167 { our @ISA = ('java::awt::event::ActionListener', 'java::lang::Object');
             
 
             sub actionPerformed {
@@ -124,15 +124,15 @@ sub initComponents {
                 $self->writeOverOriginalJCheckBoxActionPerformed($evt);
             }
             }
-            'java::awt::event::ActionListener::AnonymousN68200'->can('new') ? 'java::awt::event::ActionListener::AnonymousN68200'->new() : bless({}, 'java::awt::event::ActionListener::AnonymousN68200')
+            'java::awt::event::ActionListener::AnonymousN68167'->can('new') ? 'java::awt::event::ActionListener::AnonymousN68167'->new() : bless({}, 'java::awt::event::ActionListener::AnonymousN68167')
         });
         my $jPanel1Layout = 'javax::swing::GroupLayout'->new($self->{jPanel1});
         $self->{jPanel1}->setLayout($jPanel1Layout);
-        $jPanel1Layout->setHorizontalGroup($jPanel1Layout->createParallelGroup($org::allbinary::image::gui::javax::swing->{GroupLayout}->{Alignment}->{LEADING})->addGap(0, 0, 32767));
-        $jPanel1Layout->setVerticalGroup($jPanel1Layout->createParallelGroup($org::allbinary::image::gui::javax::swing->{GroupLayout}->{Alignment}->{LEADING})->addGap(0, 196, 32767));
+        $jPanel1Layout->setHorizontalGroup($jPanel1Layout->createParallelGroup($javax::swing::GroupLayout::Alignment->{LEADING})->addGap(0, 0, 32767));
+        $jPanel1Layout->setVerticalGroup($jPanel1Layout->createParallelGroup($javax::swing::GroupLayout::Alignment->{LEADING})->addGap(0, 196, 32767));
         $self->{generateJButton}->setText("Generate");
         $self->{generateJButton}->addActionListener(do {
-            package java::awt::event::ActionListener::AnonymousN68740 { our @ISA = ('java::awt::event::ActionListener', 'java::lang::Object');
+            package java::awt::event::ActionListener::AnonymousN68595 { our @ISA = ('java::awt::event::ActionListener', 'java::lang::Object');
             
 
             sub actionPerformed {
@@ -140,13 +140,13 @@ sub initComponents {
                 $self->generateJButtonActionPerformed($evt);
             }
             }
-            'java::awt::event::ActionListener::AnonymousN68740'->can('new') ? 'java::awt::event::ActionListener::AnonymousN68740'->new() : bless({}, 'java::awt::event::ActionListener::AnonymousN68740')
+            'java::awt::event::ActionListener::AnonymousN68595'->can('new') ? 'java::awt::event::ActionListener::AnonymousN68595'->new() : bless({}, 'java::awt::event::ActionListener::AnonymousN68595')
         });
         $self->{jLabel4}->setText("Results:");
         $self->{jLabel5}->setText("Right:");
         $self->{widthReductionTextField}->setText('org::allbinary::string::CommonPhoneStrings'->getInstance()->{ZERO});
         $self->{widthReductionTextField}->addActionListener(do {
-            package java::awt::event::ActionListener::AnonymousN69007 { our @ISA = ('java::awt::event::ActionListener', 'java::lang::Object');
+            package java::awt::event::ActionListener::AnonymousN68814 { our @ISA = ('java::awt::event::ActionListener', 'java::lang::Object');
             
 
             sub actionPerformed {
@@ -154,13 +154,13 @@ sub initComponents {
                 $self->widthReductionTextFieldActionPerformed($evt);
             }
             }
-            'java::awt::event::ActionListener::AnonymousN69007'->can('new') ? 'java::awt::event::ActionListener::AnonymousN69007'->new() : bless({}, 'java::awt::event::ActionListener::AnonymousN69007')
+            'java::awt::event::ActionListener::AnonymousN68814'->can('new') ? 'java::awt::event::ActionListener::AnonymousN68814'->new() : bless({}, 'java::awt::event::ActionListener::AnonymousN68814')
         });
         $self->{jLabel6}->setText("Bottom");
         $self->{heightReductionTextField}->setText('org::allbinary::string::CommonPhoneStrings'->getInstance()->{ZERO});
         $self->{widthReductionTextField1}->setText('org::allbinary::string::CommonPhoneStrings'->getInstance()->{ZERO});
         $self->{widthReductionTextField1}->addActionListener(do {
-            package java::awt::event::ActionListener::AnonymousN69294 { our @ISA = ('java::awt::event::ActionListener', 'java::lang::Object');
+            package java::awt::event::ActionListener::AnonymousN69053 { our @ISA = ('java::awt::event::ActionListener', 'java::lang::Object');
             
 
             sub actionPerformed {
@@ -168,19 +168,19 @@ sub initComponents {
                 $self->widthReductionTextField1ActionPerformed($evt);
             }
             }
-            'java::awt::event::ActionListener::AnonymousN69294'->can('new') ? 'java::awt::event::ActionListener::AnonymousN69294'->new() : bless({}, 'java::awt::event::ActionListener::AnonymousN69294')
+            'java::awt::event::ActionListener::AnonymousN69053'->can('new') ? 'java::awt::event::ActionListener::AnonymousN69053'->new() : bless({}, 'java::awt::event::ActionListener::AnonymousN69053')
         });
         $self->{jLabel7}->setText("Top");
         $self->{jLabel8}->setText("Left:");
         $self->{heightReductionTextField1}->setText('org::allbinary::string::CommonPhoneStrings'->getInstance()->{ZERO});
         my $jPanel2Layout = 'javax::swing::GroupLayout'->new($self->{jPanel2});
         $self->{jPanel2}->setLayout($jPanel2Layout);
-        $jPanel2Layout->setHorizontalGroup($jPanel2Layout->createParallelGroup($org::allbinary::image::gui::javax::swing->{GroupLayout}->{Alignment}->{LEADING})->addGroup($jPanel2Layout->createSequentialGroup()->addContainerGap()->addComponent($self->{jLabel8})->addPreferredGap($org::allbinary::image::gui::javax::swing->{LayoutStyle}->{ComponentPlacement}->{RELATED})->addComponent($self->{widthReductionTextField1}, $org::allbinary::image::gui::javax::swing->{GroupLayout}->{PREFERRED_SIZE}, 41, $org::allbinary::image::gui::javax::swing->{GroupLayout}->{PREFERRED_SIZE})->addPreferredGap($org::allbinary::image::gui::javax::swing->{LayoutStyle}->{ComponentPlacement}->{RELATED})->addComponent($self->{jLabel5})->addPreferredGap($org::allbinary::image::gui::javax::swing->{LayoutStyle}->{ComponentPlacement}->{RELATED})->addComponent($self->{widthReductionTextField}, $org::allbinary::image::gui::javax::swing->{GroupLayout}->{PREFERRED_SIZE}, 41, $org::allbinary::image::gui::javax::swing->{GroupLayout}->{PREFERRED_SIZE})->addPreferredGap($org::allbinary::image::gui::javax::swing->{LayoutStyle}->{ComponentPlacement}->{RELATED})->addComponent($self->{jLabel7})->addPreferredGap($org::allbinary::image::gui::javax::swing->{LayoutStyle}->{ComponentPlacement}->{RELATED})->addComponent($self->{heightReductionTextField1}, $org::allbinary::image::gui::javax::swing->{GroupLayout}->{PREFERRED_SIZE}, 46, $org::allbinary::image::gui::javax::swing->{GroupLayout}->{PREFERRED_SIZE})->addPreferredGap($org::allbinary::image::gui::javax::swing->{LayoutStyle}->{ComponentPlacement}->{RELATED})->addComponent($self->{jLabel6})->addPreferredGap($org::allbinary::image::gui::javax::swing->{LayoutStyle}->{ComponentPlacement}->{RELATED})->addComponent($self->{heightReductionTextField}, $org::allbinary::image::gui::javax::swing->{GroupLayout}->{PREFERRED_SIZE}, 46, $org::allbinary::image::gui::javax::swing->{GroupLayout}->{PREFERRED_SIZE})->addContainerGap(140, 32767)));
-        $jPanel2Layout->setVerticalGroup($jPanel2Layout->createParallelGroup($org::allbinary::image::gui::javax::swing->{GroupLayout}->{Alignment}->{LEADING})->addGroup($org::allbinary::image::gui::javax::swing->{GroupLayout}->{Alignment}->{TRAILING}, $jPanel2Layout->createSequentialGroup()->addGap(0, 16, 32767)->addGroup($jPanel2Layout->createParallelGroup($org::allbinary::image::gui::javax::swing->{GroupLayout}->{Alignment}->{LEADING})->addGroup($jPanel2Layout->createParallelGroup($org::allbinary::image::gui::javax::swing->{GroupLayout}->{Alignment}->{BASELINE})->addComponent($self->{jLabel6})->addComponent($self->{heightReductionTextField}, $org::allbinary::image::gui::javax::swing->{GroupLayout}->{PREFERRED_SIZE}, $org::allbinary::image::gui::javax::swing->{GroupLayout}->{DEFAULT_SIZE}, $org::allbinary::image::gui::javax::swing->{GroupLayout}->{PREFERRED_SIZE}))->addGroup($jPanel2Layout->createParallelGroup($org::allbinary::image::gui::javax::swing->{GroupLayout}->{Alignment}->{BASELINE})->addComponent($self->{jLabel8})->addComponent($self->{widthReductionTextField1}, $org::allbinary::image::gui::javax::swing->{GroupLayout}->{PREFERRED_SIZE}, 22, $org::allbinary::image::gui::javax::swing->{GroupLayout}->{PREFERRED_SIZE})->addComponent($self->{jLabel7})->addComponent($self->{heightReductionTextField1}, $org::allbinary::image::gui::javax::swing->{GroupLayout}->{PREFERRED_SIZE}, $org::allbinary::image::gui::javax::swing->{GroupLayout}->{DEFAULT_SIZE}, $org::allbinary::image::gui::javax::swing->{GroupLayout}->{PREFERRED_SIZE}))->addGroup($jPanel2Layout->createParallelGroup($org::allbinary::image::gui::javax::swing->{GroupLayout}->{Alignment}->{BASELINE})->addComponent($self->{jLabel5})->addComponent($self->{widthReductionTextField}, $org::allbinary::image::gui::javax::swing->{GroupLayout}->{PREFERRED_SIZE}, 22, $org::allbinary::image::gui::javax::swing->{GroupLayout}->{PREFERRED_SIZE})))));
+        $jPanel2Layout->setHorizontalGroup($jPanel2Layout->createParallelGroup($javax::swing::GroupLayout::Alignment->{LEADING})->addGroup($jPanel2Layout->createSequentialGroup()->addContainerGap()->addComponent($self->{jLabel8})->addPreferredGap($javax::swing::LayoutStyle::ComponentPlacement->{RELATED})->addComponent($self->{widthReductionTextField1}, $javax::swing::GroupLayout::PREFERRED_SIZE, 41, $javax::swing::GroupLayout::PREFERRED_SIZE)->addPreferredGap($javax::swing::LayoutStyle::ComponentPlacement->{RELATED})->addComponent($self->{jLabel5})->addPreferredGap($javax::swing::LayoutStyle::ComponentPlacement->{RELATED})->addComponent($self->{widthReductionTextField}, $javax::swing::GroupLayout::PREFERRED_SIZE, 41, $javax::swing::GroupLayout::PREFERRED_SIZE)->addPreferredGap($javax::swing::LayoutStyle::ComponentPlacement->{RELATED})->addComponent($self->{jLabel7})->addPreferredGap($javax::swing::LayoutStyle::ComponentPlacement->{RELATED})->addComponent($self->{heightReductionTextField1}, $javax::swing::GroupLayout::PREFERRED_SIZE, 46, $javax::swing::GroupLayout::PREFERRED_SIZE)->addPreferredGap($javax::swing::LayoutStyle::ComponentPlacement->{RELATED})->addComponent($self->{jLabel6})->addPreferredGap($javax::swing::LayoutStyle::ComponentPlacement->{RELATED})->addComponent($self->{heightReductionTextField}, $javax::swing::GroupLayout::PREFERRED_SIZE, 46, $javax::swing::GroupLayout::PREFERRED_SIZE)->addContainerGap(140, 32767)));
+        $jPanel2Layout->setVerticalGroup($jPanel2Layout->createParallelGroup($javax::swing::GroupLayout::Alignment->{LEADING})->addGroup($javax::swing::GroupLayout::Alignment->{TRAILING}, $jPanel2Layout->createSequentialGroup()->addGap(0, 16, 32767)->addGroup($jPanel2Layout->createParallelGroup($javax::swing::GroupLayout::Alignment->{LEADING})->addGroup($jPanel2Layout->createParallelGroup($javax::swing::GroupLayout::Alignment->{BASELINE})->addComponent($self->{jLabel6})->addComponent($self->{heightReductionTextField}, $javax::swing::GroupLayout::PREFERRED_SIZE, $javax::swing::GroupLayout::DEFAULT_SIZE, $javax::swing::GroupLayout::PREFERRED_SIZE))->addGroup($jPanel2Layout->createParallelGroup($javax::swing::GroupLayout::Alignment->{BASELINE})->addComponent($self->{jLabel8})->addComponent($self->{widthReductionTextField1}, $javax::swing::GroupLayout::PREFERRED_SIZE, 22, $javax::swing::GroupLayout::PREFERRED_SIZE)->addComponent($self->{jLabel7})->addComponent($self->{heightReductionTextField1}, $javax::swing::GroupLayout::PREFERRED_SIZE, $javax::swing::GroupLayout::DEFAULT_SIZE, $javax::swing::GroupLayout::PREFERRED_SIZE))->addGroup($jPanel2Layout->createParallelGroup($javax::swing::GroupLayout::Alignment->{BASELINE})->addComponent($self->{jLabel5})->addComponent($self->{widthReductionTextField}, $javax::swing::GroupLayout::PREFERRED_SIZE, 22, $javax::swing::GroupLayout::PREFERRED_SIZE)))));
         my $layout = 'javax::swing::GroupLayout'->new($self);
         $self->setLayout($layout);
-        $layout->setHorizontalGroup($layout->createParallelGroup($org::allbinary::image::gui::javax::swing->{GroupLayout}->{Alignment}->{LEADING})->addGroup($layout->createSequentialGroup()->addComponent($self->{jPanel2}, $org::allbinary::image::gui::javax::swing->{GroupLayout}->{DEFAULT_SIZE}, $org::allbinary::image::gui::javax::swing->{GroupLayout}->{DEFAULT_SIZE}, 32767)->addGap(78, 78, 78))->addGroup($layout->createSequentialGroup()->addGroup($layout->createParallelGroup($org::allbinary::image::gui::javax::swing->{GroupLayout}->{Alignment}->{LEADING})->addGroup($layout->createSequentialGroup()->addContainerGap()->addComponent($self->{jPanel1}, $org::allbinary::image::gui::javax::swing->{GroupLayout}->{DEFAULT_SIZE}, $org::allbinary::image::gui::javax::swing->{GroupLayout}->{DEFAULT_SIZE}, 32767))->addGroup($layout->createSequentialGroup()->addGroup($layout->createParallelGroup($org::allbinary::image::gui::javax::swing->{GroupLayout}->{Alignment}->{LEADING})->addComponent($self->{jLabel4})->addGroup($layout->createSequentialGroup()->addComponent($self->{writeOverOriginalJCheckBox})->addPreferredGap($org::allbinary::image::gui::javax::swing->{LayoutStyle}->{ComponentPlacement}->{RELATED})->addComponent($self->{generateJButton})))->addGap(0, 0, 32767)))->addContainerGap()));
-        $layout->setVerticalGroup($layout->createParallelGroup($org::allbinary::image::gui::javax::swing->{GroupLayout}->{Alignment}->{LEADING})->addGroup($layout->createSequentialGroup()->addComponent($self->{jPanel2}, $org::allbinary::image::gui::javax::swing->{GroupLayout}->{PREFERRED_SIZE}, $org::allbinary::image::gui::javax::swing->{GroupLayout}->{DEFAULT_SIZE}, $org::allbinary::image::gui::javax::swing->{GroupLayout}->{PREFERRED_SIZE})->addPreferredGap($org::allbinary::image::gui::javax::swing->{LayoutStyle}->{ComponentPlacement}->{RELATED})->addGroup($layout->createParallelGroup($org::allbinary::image::gui::javax::swing->{GroupLayout}->{Alignment}->{LEADING})->addComponent($self->{generateJButton})->addComponent($self->{writeOverOriginalJCheckBox}))->addPreferredGap($org::allbinary::image::gui::javax::swing->{LayoutStyle}->{ComponentPlacement}->{RELATED})->addComponent($self->{jLabel4})->addPreferredGap($org::allbinary::image::gui::javax::swing->{LayoutStyle}->{ComponentPlacement}->{RELATED})->addComponent($self->{jPanel1}, $org::allbinary::image::gui::javax::swing->{GroupLayout}->{DEFAULT_SIZE}, $org::allbinary::image::gui::javax::swing->{GroupLayout}->{DEFAULT_SIZE}, 32767)));
+        $layout->setHorizontalGroup($layout->createParallelGroup($javax::swing::GroupLayout::Alignment->{LEADING})->addGroup($layout->createSequentialGroup()->addComponent($self->{jPanel2}, $javax::swing::GroupLayout::DEFAULT_SIZE, $javax::swing::GroupLayout::DEFAULT_SIZE, 32767)->addGap(78, 78, 78))->addGroup($layout->createSequentialGroup()->addGroup($layout->createParallelGroup($javax::swing::GroupLayout::Alignment->{LEADING})->addGroup($layout->createSequentialGroup()->addContainerGap()->addComponent($self->{jPanel1}, $javax::swing::GroupLayout::DEFAULT_SIZE, $javax::swing::GroupLayout::DEFAULT_SIZE, 32767))->addGroup($layout->createSequentialGroup()->addGroup($layout->createParallelGroup($javax::swing::GroupLayout::Alignment->{LEADING})->addComponent($self->{jLabel4})->addGroup($layout->createSequentialGroup()->addComponent($self->{writeOverOriginalJCheckBox})->addPreferredGap($javax::swing::LayoutStyle::ComponentPlacement->{RELATED})->addComponent($self->{generateJButton})))->addGap(0, 0, 32767)))->addContainerGap()));
+        $layout->setVerticalGroup($layout->createParallelGroup($javax::swing::GroupLayout::Alignment->{LEADING})->addGroup($layout->createSequentialGroup()->addComponent($self->{jPanel2}, $javax::swing::GroupLayout::PREFERRED_SIZE, $javax::swing::GroupLayout::DEFAULT_SIZE, $javax::swing::GroupLayout::PREFERRED_SIZE)->addPreferredGap($javax::swing::LayoutStyle::ComponentPlacement->{RELATED})->addGroup($layout->createParallelGroup($javax::swing::GroupLayout::Alignment->{LEADING})->addComponent($self->{generateJButton})->addComponent($self->{writeOverOriginalJCheckBox}))->addPreferredGap($javax::swing::LayoutStyle::ComponentPlacement->{RELATED})->addComponent($self->{jLabel4})->addPreferredGap($javax::swing::LayoutStyle::ComponentPlacement->{RELATED})->addComponent($self->{jPanel1}, $javax::swing::GroupLayout::DEFAULT_SIZE, $javax::swing::GroupLayout::DEFAULT_SIZE, 32767)));
 }
 
 
@@ -235,7 +235,7 @@ sub visit {
 }
 
 use java::lang::Object ();
-# use java::awt ();
+# use java::awt::Graphics ();
 # use java::awt::image::BufferedImage ();
 # use java::awt::image::RenderedImage ();
 use java::io::File ();
@@ -252,6 +252,15 @@ use org::allbinary::media::image::ImageStrings ();
 use org::allbinary::string::CommonPhoneStrings ();
 use org::allbinary::string::CommonSeps ();
 use org::allbinary::string::CommonStrings ();
+# use java::awt::event::ActionEvent ();
+# use java::awt::event::ActionListener ();
+# use javax::swing::GroupLayout ();
+# use javax::swing::JButton ();
+# use javax::swing::JCheckBox ();
+# use javax::swing::JLabel ();
+# use javax::swing::JPanel ();
+# use javax::swing::JTextField ();
+# use javax::swing::LayoutStyle ();
 use java::lang::Thread ();
 
 1;

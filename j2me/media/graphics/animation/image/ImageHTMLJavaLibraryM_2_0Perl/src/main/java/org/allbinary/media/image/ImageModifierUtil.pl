@@ -113,7 +113,7 @@ sub handleImage {
             if ($image3->isReady() || $image3->width() + $image3->height() <= 0 || $image->getName() eq $self->{resourceCallbackStrings}->{FROM_DATA}) {
                 $self->copy($imageArray, $index, $image, $image3);
             } else {
-                my $callback = 'org::allbinary::media::image::ImageCopyCallback'->new($self, $imageArray, $index, $image, $image3);
+                my $callback = do { local $java::lang::Object::jouter = $self; 'org::allbinary::media::image::ImageCopyCallback'->new($self, $imageArray, $index, $image, $image3) };
                 $image3->addCallback($callback);
             }
         } else {
@@ -164,6 +164,7 @@ sub reset {
     sub new {
         my ($class, $imageModifierUtil, $imageArray, $index, $image, $image3) = @_;
         my $self = bless({}, $class);
+        $self->{jouter} = $java::lang::Object::jouter;
         _init_fields($self);
             $self->{imageModifierUtil} = $imageModifierUtil;
             $self->{imageArray} = $imageArray;

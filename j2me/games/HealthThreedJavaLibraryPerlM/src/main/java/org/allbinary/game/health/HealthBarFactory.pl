@@ -32,7 +32,7 @@ sub getInstance {
     my ($self, $layerInterface, $healthInterface, $location, $direction) = @_;
         if ('org::allbinary::graphics::opengles::OpenGLFeatureUtil'->getInstance()->isAnyThreed()) {
             my $featuredAnimationInterfaceFactoryInterfaceFactory = 'org::allbinary::animation::FeaturedAnimationInterfaceFactoryInterfaceFactory'->getInstance();
-            my $healthBarAnimationInterfaceFactory = $featuredAnimationInterfaceFactoryInterfaceFactory->get($org::allbinary::game::health::Health::NAME);
+            my $healthBarAnimationInterfaceFactory = $featuredAnimationInterfaceFactoryInterfaceFactory->get(java::lang::Object::jstatic('org::allbinary::game::health::HealthBarFactory', 'Health')->{NAME});
             return 'org::allbinary::game::health::HealthBar'->new($layerInterface, $healthInterface, $healthBarAnimationInterfaceFactory->getInstanceByLocation($layerInterface, $location), $direction);
         } else {
             return 'org::allbinary::game::health::HealthBar'->new($layerInterface, $healthInterface, 'org::allbinary::game::health::HealthBarTwodAnimation'->new($layerInterface, $location), $direction);
@@ -43,9 +43,6 @@ use java::lang::Object ();
 use org::allbinary::graphics::opengles::OpenGLFeatureUtil ();
 use org::allbinary::animation::FeaturedAnimationInterfaceFactoryInterfaceFactory ();
 use org::allbinary::layer::AllBinaryLayer ();
-use org::allbinary::game::health::HealthBar ();
-use org::allbinary::game::health::HealthBarTwodAnimation ();
-use org::allbinary::game::health::Health ();
 
 1;
 

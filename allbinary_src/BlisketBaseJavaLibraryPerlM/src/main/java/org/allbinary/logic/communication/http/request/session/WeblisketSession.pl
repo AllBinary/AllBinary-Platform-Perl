@@ -32,8 +32,14 @@ sub new {
     die "No constructor of WeblisketSession takes " . scalar(@arguments) . " arguments";
 }
 
-
 sub _new2 {
+    my ($class, @arguments) = @_;
+    return $class->_new2_1(@arguments) if 1 && (!defined($arguments[0]) || (ref($arguments[0]) && ref($arguments[0]) ne 'ARRAY')) && (!defined($arguments[1]) || (ref($arguments[1]) && ref($arguments[1]) ne 'ARRAY'));
+    return $class->_new2_2(@arguments);
+}
+
+
+sub _new2_1 {
     my ($class, $hashMap, $pageContext) = @_;
     my $self = $class->_new2($hashMap, $pageContext->getRequest());
         # this(...) made $self above
@@ -41,7 +47,7 @@ sub _new2 {
 }
 
 
-sub _new2 {
+sub _new2_2 {
     my ($class, $hashMap, $httpServletRequest) = @_;
     my $self = bless({}, $class);
     _init_fields($self);
@@ -79,9 +85,9 @@ sub setPaymentMethod {
 }
 
 
-sub setAuthenticated {
+sub setAuthenticated_j0 {
     my ($self) = @_;
-        $self->{session}->setAttribute($org::allbinary::logic::communication::http::request::session::WeblisketSessionData::AUTHENTICATED, 'org::allbinary::logic::java::bool::BooleanFactory'->getInstance()->{TRUE_STRING});
+        $self->{session}->setAttribute(java::lang::Object::jstatic('org::allbinary::logic::communication::http::request::session::WeblisketSession', 'WeblisketSessionData')->{AUTHENTICATED}, 'org::allbinary::logic::java::bool::BooleanFactory'->getInstance()->{TRUE_STRING});
 }
 
 
@@ -93,13 +99,13 @@ sub setRole {
 
 sub setAttempts {
     my ($self, $value) = @_;
-        $self->{session}->setAttribute($org::allbinary::logic::communication::http::request::session::WeblisketSessionData::ATTEMPTS, $value);
+        $self->{session}->setAttribute(java::lang::Object::jstatic('org::allbinary::logic::communication::http::request::session::WeblisketSession', 'WeblisketSessionData')->{ATTEMPTS}, $value);
 }
 
 
 sub setTimeout {
     my ($self, $value) = @_;
-        $self->{session}->setAttribute($org::allbinary::logic::communication::http::request::session::WeblisketSessionData::TIMEOUT, $value);
+        $self->{session}->setAttribute(java::lang::Object::jstatic('org::allbinary::logic::communication::http::request::session::WeblisketSession', 'WeblisketSessionData')->{TIMEOUT}, $value);
 }
 
 
@@ -111,7 +117,7 @@ sub setStoreName {
 
 sub getWebAppPath {
     my ($self) = @_;
-        return $self->{session}->getAttribute($org::allbinary::logic::communication::http::request::session::org::allbinary->{globals}->{GLOBALS2}->{WEBAPPPATH});
+        return $self->{session}->getAttribute($org::allbinary::globals::GLOBALS2::WEBAPPPATH);
 }
 
 
@@ -135,19 +141,19 @@ sub getPaymentMethod {
 
 sub getAuthentication {
     my ($self) = @_;
-        return $self->{session}->getAttribute($org::allbinary::logic::communication::http::request::session::WeblisketSessionData::AUTHENTICATED);
+        return $self->{session}->getAttribute(java::lang::Object::jstatic('org::allbinary::logic::communication::http::request::session::WeblisketSession', 'WeblisketSessionData')->{AUTHENTICATED});
 }
 
 
 sub getAttempts {
     my ($self) = @_;
-        return $self->{session}->getAttribute($org::allbinary::logic::communication::http::request::session::WeblisketSessionData::ATTEMPTS);
+        return $self->{session}->getAttribute(java::lang::Object::jstatic('org::allbinary::logic::communication::http::request::session::WeblisketSession', 'WeblisketSessionData')->{ATTEMPTS});
 }
 
 
 sub getTimeout {
     my ($self) = @_;
-        return $self->{session}->getAttribute($org::allbinary::logic::communication::http::request::session::WeblisketSessionData::TIMEOUT);
+        return $self->{session}->getAttribute(java::lang::Object::jstatic('org::allbinary::logic::communication::http::request::session::WeblisketSession', 'WeblisketSessionData')->{TIMEOUT});
 }
 
 
@@ -187,17 +193,23 @@ sub getOrder {
 }
 
 
-# Java overloaded method: Perl keeps the last definition
-sub setAuthenticated {
+sub setAuthenticated_j1 {
     my ($self, $value) = @_;
-        $self->{session}->setAttribute($org::allbinary::logic::communication::http::request::session::WeblisketSessionData::AUTHENTICATED, 'org::allbinary::logic::java::bool::BooleanFactory'->getInstance()->{FALSE_STRING});
+        $self->{session}->setAttribute(java::lang::Object::jstatic('org::allbinary::logic::communication::http::request::session::WeblisketSession', 'WeblisketSessionData')->{AUTHENTICATED}, 'org::allbinary::logic::java::bool::BooleanFactory'->getInstance()->{FALSE_STRING});
+}
+
+sub setAuthenticated {
+    my ($invocant, @arguments) = @_;
+    return $invocant->setAuthenticated_j0(@arguments) if scalar(@arguments) == 0;
+    return $invocant->setAuthenticated_j1(@arguments) if scalar(@arguments) == 1;
+    die "No method setAuthenticated takes " . scalar(@arguments) . " arguments";
 }
 
 
 sub clear {
     my ($self) = @_;
-        $self->{session}->removeAttribute($org::allbinary::logic::communication::http::request::session::WeblisketSessionData::AUTHENTICATED);
-        $self->{session}->removeAttribute($org::allbinary::logic::communication::http::request::session::WeblisketSessionData::TIMEOUT);
+        $self->{session}->removeAttribute(java::lang::Object::jstatic('org::allbinary::logic::communication::http::request::session::WeblisketSession', 'WeblisketSessionData')->{AUTHENTICATED});
+        $self->{session}->removeAttribute(java::lang::Object::jstatic('org::allbinary::logic::communication::http::request::session::WeblisketSession', 'WeblisketSessionData')->{TIMEOUT});
         $self->{session}->removeAttribute($org::allbinary::business::user::role::UserRoleData::NAME->toString());
         $self->{session}->removeAttribute($org::allbinary::business::user::UserData::USERNAME);
 }
@@ -242,8 +254,7 @@ use org::allbinary::business::user::role::UserRoleB ();
 use org::allbinary::business::user::role::UserRoleData ();
 use org::allbinary::logic::java::bool::BooleanFactory ();
 use org::allbinary::logic::string::StringValidationUtil ();
-use org::allbinary::logic::communication::http::request::session::WeblisketSessionInterface ();
-use org::allbinary::logic::communication::http::request::session::WeblisketSessionData ();
+use org::allbinary::globals::GLOBALS2 ();
 
 1;
 

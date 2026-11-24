@@ -41,11 +41,14 @@ sub initComponents {
         $self->{jLabel1}->setText("No Configuration Available");
         my $layout = 'javax::swing::GroupLayout'->new($self);
         $self->setLayout($layout);
-        $layout->setHorizontalGroup($layout->createParallelGroup($org::allbinary::input::automation::module::configuration::javax::swing->{GroupLayout}->{Alignment}->{LEADING})->addGroup($org::allbinary::input::automation::module::configuration::javax::swing->{GroupLayout}->{Alignment}->{TRAILING}, $layout->createSequentialGroup()->addContainerGap(231, 32767)->addComponent($self->{jLabel1})->addGap(225, 225, 225)));
-        $layout->setVerticalGroup($layout->createParallelGroup($org::allbinary::input::automation::module::configuration::javax::swing->{GroupLayout}->{Alignment}->{LEADING})->addGroup($layout->createSequentialGroup()->addContainerGap()->addComponent($self->{jLabel1})->addContainerGap(362, 32767)));
+        $layout->setHorizontalGroup($layout->createParallelGroup($javax::swing::GroupLayout::Alignment->{LEADING})->addGroup($javax::swing::GroupLayout::Alignment->{TRAILING}, $layout->createSequentialGroup()->addContainerGap(231, 32767)->addComponent($self->{jLabel1})->addGap(225, 225, 225)));
+        $layout->setVerticalGroup($layout->createParallelGroup($javax::swing::GroupLayout::Alignment->{LEADING})->addGroup($layout->createSequentialGroup()->addContainerGap()->addComponent($self->{jLabel1})->addContainerGap(362, 32767)));
 }
 
 use java::lang::Object ();
+# use javax::swing::GroupLayout ();
+# use javax::swing::JLabel ();
+# use javax::swing::JPanel ();
 
 1;
 

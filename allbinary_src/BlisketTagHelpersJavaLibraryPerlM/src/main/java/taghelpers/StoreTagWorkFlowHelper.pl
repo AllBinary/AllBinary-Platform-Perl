@@ -32,7 +32,7 @@ sub new {
     my ($class, $hashMap, $pageContext) = @_;
     my $self = $class->SUPER::new();
     _init_fields($self);
-        if ($taghelpers::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($taghelpers::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{TAGHELPER})) {
+        if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{TAGHELPER})) {
             $self->{logUtil}->putF("Properties: " . $hashMap->toString(), $self, "StoreTagWorkFlowHelper()");
         }
         $self->{storeWorkFlowInterface} = 'org::allbinary::logic::control::workflow::StoreTagWorkFlowFactory'->getInstance()->getInstance($self->{abeClientInformation}, $hashMap, $pageContext);
@@ -44,13 +44,13 @@ sub new {
 sub process {
     my ($self) = @_;
         try {
-            if ($taghelpers::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($taghelpers::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{TAGHELPER})) {
+            if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{TAGHELPER})) {
                 $self->{logUtil}->putF("Process", $self, $self->{commonStrings}->{PROCESS});
             }
             return $self->{storeWorkFlowInterface}->process();
         } catch ($e) {
             my $error = "Failed to process workflow: ";
-            if ($taghelpers::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($taghelpers::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{SQLTAGSERROR})) {
+            if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{SQLTAGSERROR})) {
                 $self->{logUtil}->put($self->{commonStrings}->{EXCEPTION}, $self, "view()", $e);
             }
             die $e;
@@ -66,6 +66,8 @@ use org::allbinary::logic::control::workflow::StoreTagWorkFlowFactory ();
 use org::allbinary::logic::control::workflow::StoreWorkFlowInterface ();
 use org::allbinary::logic::system::security::licensing::AbeClientInformationInterface ();
 use org::allbinary::logic::system::security::licensing::ServiceClientInformationInterfaceFactory ();
+use org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory ();
+use org::allbinary::logic::communication::log::config::type::LogConfigTypes ();
 
 1;
 

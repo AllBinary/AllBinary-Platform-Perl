@@ -29,7 +29,7 @@ sub _init_fields {
 }
 
 
-sub getInstance {
+sub getInstance_j0 {
     my ($class) = @_;
         return $org::allbinary::logic::communication::smtp::event::handler::factory::AdminUserEmailEventHandlerSingletons::instance;
 }
@@ -39,7 +39,7 @@ sub new {
     my ($class) = @_;
     my $self = bless({}, $class);
     _init_fields($self);
-        if ($org::allbinary::logic::communication::smtp::event::handler::factory::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($org::allbinary::logic::communication::smtp::event::handler::factory::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{EMAILLOGGING})) {
+        if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{EMAILLOGGING})) {
             $self->{logUtil}->putF($self->{commonStrings}->{START}, $self, $self->{commonStrings}->{CONSTRUCTOR});
         }
     return $self;
@@ -47,15 +47,14 @@ sub new {
 
 
 # throws Exception
-# Java overloaded method: Perl keeps the last definition
-sub getInstance {
+sub getInstance_j2 {
     my ($self, $abeClientInformation, $userEmailEventNameData) = @_;
-        if ($org::allbinary::logic::communication::smtp::event::handler::factory::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($org::allbinary::logic::communication::smtp::event::handler::factory::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{EMAILLOGGING})) {
+        if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{EMAILLOGGING})) {
             $self->{logUtil}->putF($self->{commonStrings}->{START}, $self, $self->{commonStrings}->{GET_INSTANCE});
         }
         my $userEmailEventHandler = $self->{userEmailEventHandlerHashMap}->get($userEmailEventNameData);
         if (!defined($userEmailEventHandler)) {
-            if ($org::allbinary::logic::communication::smtp::event::handler::factory::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($org::allbinary::logic::communication::smtp::event::handler::factory::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{EMAILLOGGING})) {
+            if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{EMAILLOGGING})) {
                 $self->{logUtil}->putF("Creating New Named UserEmailEventHandler", $self, $self->{commonStrings}->{GET_INSTANCE});
             }
             my $userVector = 'org::allbinary::data::tables::user::UserEntityFactory'->getInstance()->getAdministrators();
@@ -63,11 +62,18 @@ sub getInstance {
             $self->{userEmailEventHandlerHashMap}->put($userEmailEventNameData, $newUserEmailEventHandler);
             return $newUserEmailEventHandler;
         } else {
-            if ($org::allbinary::logic::communication::smtp::event::handler::factory::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($org::allbinary::logic::communication::smtp::event::handler::factory::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{EMAILLOGGING})) {
+            if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{EMAILLOGGING})) {
                 $self->{logUtil}->putF("Returning existing UserEmailEventHandler", $self, $self->{commonStrings}->{GET_INSTANCE});
             }
             return $userEmailEventHandler;
         }
+}
+
+sub getInstance {
+    my ($invocant, @arguments) = @_;
+    return $invocant->getInstance_j0(@arguments) if scalar(@arguments) == 0;
+    return $invocant->getInstance_j2(@arguments) if scalar(@arguments) == 2;
+    die "No method getInstance takes " . scalar(@arguments) . " arguments";
 }
 
 use java::lang::Object ();
@@ -83,6 +89,8 @@ use org::allbinary::logic::communication::smtp::event::handler::EmailEventHandle
 use org::allbinary::logic::communication::smtp::event::handler::UserEmailEventHandler ();
 use org::allbinary::logic::system::security::licensing::AbeClientInformationInterface ();
 use org::allbinary::string::CommonStrings ();
+use org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory ();
+use org::allbinary::logic::communication::log::config::type::LogConfigTypes ();
 
 1;
 

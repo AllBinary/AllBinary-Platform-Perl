@@ -76,7 +76,6 @@ use org::allbinary::math::Angle ();
 use org::allbinary::math::AngleFactory ();
 use org::allbinary::util::ABHashtable ();
 use org::allbinary::util::BasicArrayList ();
-use org::allbinary::game::ag::ai::scroller::PacePatrolAI ();
 
 1;
 

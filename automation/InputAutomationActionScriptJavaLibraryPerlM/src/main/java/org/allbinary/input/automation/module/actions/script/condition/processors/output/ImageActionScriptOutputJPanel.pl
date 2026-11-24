@@ -92,7 +92,7 @@ sub update {
 
 sub setImageTypeJlistModel {
     my ($self) = @_;
-        my $defaultListModel = 'org::allbinary::input::automation::module::actions::script::condition::processors::output::DefaultListModel'->new();
+        my $defaultListModel = 'javax::swing::DefaultListModel'->new();
         my $vector = 'org::allbinary::input::media::image::InputImageType'->getAllAsVector();
         my $size = $vector->size();
         for (my $index = 0; $index < $size; $index++) {
@@ -130,7 +130,7 @@ sub initComponents {
         $self->{titleJLabel}->setText("Image Output Options");
         $self->{okJButton}->setText("OK");
         $self->{okJButton}->addActionListener(do {
-            package java::awt::event::ActionListener::AnonymousN68202 { our @ISA = ('java::awt::event::ActionListener', 'java::lang::Object');
+            package java::awt::event::ActionListener::AnonymousN68305 { our @ISA = ('java::awt::event::ActionListener', 'java::lang::Object');
             
 
             sub actionPerformed {
@@ -138,16 +138,16 @@ sub initComponents {
                 $self->okJButtonActionPerformed($evt);
             }
             }
-            'java::awt::event::ActionListener::AnonymousN68202'->can('new') ? 'java::awt::event::ActionListener::AnonymousN68202'->new() : bless({}, 'java::awt::event::ActionListener::AnonymousN68202')
+            'java::awt::event::ActionListener::AnonymousN68305'->can('new') ? 'java::awt::event::ActionListener::AnonymousN68305'->new() : bless({}, 'java::awt::event::ActionListener::AnonymousN68305')
         });
         $self->{saveJCheckBox}->setText("Save To File");
-        $self->{saveJCheckBox}->setBorder($org::allbinary::input::automation::module::actions::script::condition::processors::output::javax::swing->{BorderFactory}->createEmptyBorder(0, 0, 0, 0));
+        $self->{saveJCheckBox}->setBorder('javax::swing::BorderFactory'->createEmptyBorder(0, 0, 0, 0));
         $self->{saveJCheckBox}->setMargin('java::awt::Insets'->new(0, 0, 0, 0));
         $self->{displayJCheckBox}->setText("Display");
-        $self->{displayJCheckBox}->setBorder($org::allbinary::input::automation::module::actions::script::condition::processors::output::javax::swing->{BorderFactory}->createEmptyBorder(0, 0, 0, 0));
+        $self->{displayJCheckBox}->setBorder('javax::swing::BorderFactory'->createEmptyBorder(0, 0, 0, 0));
         $self->{displayJCheckBox}->setMargin('java::awt::Insets'->new(0, 0, 0, 0));
         $self->{displayJCheckBox}->addActionListener(do {
-            package java::awt::event::ActionListener::AnonymousN68719 { our @ISA = ('java::awt::event::ActionListener', 'java::lang::Object');
+            package java::awt::event::ActionListener::AnonymousN68710 { our @ISA = ('java::awt::event::ActionListener', 'java::lang::Object');
             
 
             sub actionPerformed {
@@ -155,38 +155,38 @@ sub initComponents {
                 $self->displayJCheckBoxActionPerformed($evt);
             }
             }
-            'java::awt::event::ActionListener::AnonymousN68719'->can('new') ? 'java::awt::event::ActionListener::AnonymousN68719'->new() : bless({}, 'java::awt::event::ActionListener::AnonymousN68719')
+            'java::awt::event::ActionListener::AnonymousN68710'->can('new') ? 'java::awt::event::ActionListener::AnonymousN68710'->new() : bless({}, 'java::awt::event::ActionListener::AnonymousN68710')
         });
         $self->{itemTypesJList}->setModel(do {
-            package javax::swing::AbstractListModel::AnonymousN68876 { our @ISA = ('javax::swing::AbstractListModel', 'java::lang::Object');
+            package javax::swing::AbstractListModel::AnonymousN68819 { our @ISA = ('javax::swing::AbstractListModel', 'java::lang::Object');
             
 
             sub getSize {
                 my ($self) = @_;
-                return scalar(@{$strings});
+                return scalar(@{$self->{strings}});
             }
             
 
             sub getElementAt {
                 my ($self, $i) = @_;
-                return $strings->[$i];
+                return $self->{strings}->[$i];
             }
             sub _init_anonymous_fields {
                 my ($self) = @_;
                 $self->{strings} = ["Item 1", "Item 2", "Item 3", "Item 4", "Item 5"];
             }
             }
-            my $anonymous = 'javax::swing::AbstractListModel::AnonymousN68876'->can('new') ? 'javax::swing::AbstractListModel::AnonymousN68876'->new() : bless({}, 'javax::swing::AbstractListModel::AnonymousN68876'); $anonymous->_init_anonymous_fields(); $anonymous
+            my $anonymous = 'javax::swing::AbstractListModel::AnonymousN68819'->can('new') ? 'javax::swing::AbstractListModel::AnonymousN68819'->new() : bless({}, 'javax::swing::AbstractListModel::AnonymousN68819'); $anonymous->_init_anonymous_fields(); $anonymous
         });
         $self->{jScrollPane1}->setViewportView($self->{itemTypesJList});
         my $capturedImageActionJDialogLayout = 'javax::swing::GroupLayout'->new($self->{capturedImageActionJDialog}->getContentPane());
         $self->{capturedImageActionJDialog}->getContentPane()->setLayout($capturedImageActionJDialogLayout);
-        $capturedImageActionJDialogLayout->setHorizontalGroup($capturedImageActionJDialogLayout->createParallelGroup($org::allbinary::input::automation::module::actions::script::condition::processors::output::javax::swing->{GroupLayout}->{Alignment}->{LEADING})->addGroup($capturedImageActionJDialogLayout->createSequentialGroup()->addGroup($capturedImageActionJDialogLayout->createParallelGroup($org::allbinary::input::automation::module::actions::script::condition::processors::output::javax::swing->{GroupLayout}->{Alignment}->{LEADING})->addGroup($capturedImageActionJDialogLayout->createSequentialGroup()->addGap(61, 61, 61)->addComponent($self->{titleJLabel}))->addGroup($capturedImageActionJDialogLayout->createSequentialGroup()->addContainerGap()->addGroup($capturedImageActionJDialogLayout->createParallelGroup($org::allbinary::input::automation::module::actions::script::condition::processors::output::javax::swing->{GroupLayout}->{Alignment}->{LEADING})->addGroup($capturedImageActionJDialogLayout->createParallelGroup($org::allbinary::input::automation::module::actions::script::condition::processors::output::javax::swing->{GroupLayout}->{Alignment}->{LEADING})->addComponent($self->{displayJCheckBox})->addComponent($self->{saveJCheckBox}, $org::allbinary::input::automation::module::actions::script::condition::processors::output::javax::swing->{GroupLayout}->{Alignment}->{TRAILING}))->addGroup($capturedImageActionJDialogLayout->createSequentialGroup()->addGap(84, 84, 84)->addComponent($self->{okJButton}))))->addGroup($capturedImageActionJDialogLayout->createSequentialGroup()->addContainerGap()->addComponent($self->{jScrollPane1}, $org::allbinary::input::automation::module::actions::script::condition::processors::output::javax::swing->{GroupLayout}->{DEFAULT_SIZE}, 216, 32767)))->addContainerGap()));
-        $capturedImageActionJDialogLayout->setVerticalGroup($capturedImageActionJDialogLayout->createParallelGroup($org::allbinary::input::automation::module::actions::script::condition::processors::output::javax::swing->{GroupLayout}->{Alignment}->{LEADING})->addGroup($capturedImageActionJDialogLayout->createSequentialGroup()->addComponent($self->{titleJLabel})->addGap(5, 5, 5)->addComponent($self->{jScrollPane1}, $org::allbinary::input::automation::module::actions::script::condition::processors::output::javax::swing->{GroupLayout}->{DEFAULT_SIZE}, 105, 32767)->addPreferredGap($org::allbinary::input::automation::module::actions::script::condition::processors::output::javax::swing->{LayoutStyle}->{ComponentPlacement}->{RELATED})->addComponent($self->{saveJCheckBox})->addPreferredGap($org::allbinary::input::automation::module::actions::script::condition::processors::output::javax::swing->{LayoutStyle}->{ComponentPlacement}->{RELATED})->addComponent($self->{displayJCheckBox})->addGap(9, 9, 9)->addComponent($self->{okJButton})->addContainerGap()));
+        $capturedImageActionJDialogLayout->setHorizontalGroup($capturedImageActionJDialogLayout->createParallelGroup($javax::swing::GroupLayout::Alignment->{LEADING})->addGroup($capturedImageActionJDialogLayout->createSequentialGroup()->addGroup($capturedImageActionJDialogLayout->createParallelGroup($javax::swing::GroupLayout::Alignment->{LEADING})->addGroup($capturedImageActionJDialogLayout->createSequentialGroup()->addGap(61, 61, 61)->addComponent($self->{titleJLabel}))->addGroup($capturedImageActionJDialogLayout->createSequentialGroup()->addContainerGap()->addGroup($capturedImageActionJDialogLayout->createParallelGroup($javax::swing::GroupLayout::Alignment->{LEADING})->addGroup($capturedImageActionJDialogLayout->createParallelGroup($javax::swing::GroupLayout::Alignment->{LEADING})->addComponent($self->{displayJCheckBox})->addComponent($self->{saveJCheckBox}, $javax::swing::GroupLayout::Alignment->{TRAILING}))->addGroup($capturedImageActionJDialogLayout->createSequentialGroup()->addGap(84, 84, 84)->addComponent($self->{okJButton}))))->addGroup($capturedImageActionJDialogLayout->createSequentialGroup()->addContainerGap()->addComponent($self->{jScrollPane1}, $javax::swing::GroupLayout::DEFAULT_SIZE, 216, 32767)))->addContainerGap()));
+        $capturedImageActionJDialogLayout->setVerticalGroup($capturedImageActionJDialogLayout->createParallelGroup($javax::swing::GroupLayout::Alignment->{LEADING})->addGroup($capturedImageActionJDialogLayout->createSequentialGroup()->addComponent($self->{titleJLabel})->addGap(5, 5, 5)->addComponent($self->{jScrollPane1}, $javax::swing::GroupLayout::DEFAULT_SIZE, 105, 32767)->addPreferredGap($javax::swing::LayoutStyle::ComponentPlacement->{RELATED})->addComponent($self->{saveJCheckBox})->addPreferredGap($javax::swing::LayoutStyle::ComponentPlacement->{RELATED})->addComponent($self->{displayJCheckBox})->addGap(9, 9, 9)->addComponent($self->{okJButton})->addContainerGap()));
         $self->setMinimumSize('java::awt::Dimension'->new(100, 0));
         $self->{capturedImageActionJButton}->setText("Edit");
         $self->{capturedImageActionJButton}->addActionListener(do {
-            package java::awt::event::ActionListener::AnonymousN70456 { our @ISA = ('java::awt::event::ActionListener', 'java::lang::Object');
+            package java::awt::event::ActionListener::AnonymousN70175 { our @ISA = ('java::awt::event::ActionListener', 'java::lang::Object');
             
 
             sub actionPerformed {
@@ -194,13 +194,13 @@ sub initComponents {
                 $self->capturedImageActionJButtonActionPerformed($evt);
             }
             }
-            'java::awt::event::ActionListener::AnonymousN70456'->can('new') ? 'java::awt::event::ActionListener::AnonymousN70456'->new() : bless({}, 'java::awt::event::ActionListener::AnonymousN70456')
+            'java::awt::event::ActionListener::AnonymousN70175'->can('new') ? 'java::awt::event::ActionListener::AnonymousN70175'->new() : bless({}, 'java::awt::event::ActionListener::AnonymousN70175')
         });
         $self->{jLabel1}->setText("Capture Image:");
         my $layout = 'javax::swing::GroupLayout'->new($self);
         $self->setLayout($layout);
-        $layout->setHorizontalGroup($layout->createParallelGroup($org::allbinary::input::automation::module::actions::script::condition::processors::output::javax::swing->{GroupLayout}->{Alignment}->{LEADING})->addGroup($layout->createSequentialGroup()->addComponent($self->{jLabel1})->addPreferredGap($org::allbinary::input::automation::module::actions::script::condition::processors::output::javax::swing->{LayoutStyle}->{ComponentPlacement}->{RELATED}, $org::allbinary::input::automation::module::actions::script::condition::processors::output::javax::swing->{GroupLayout}->{DEFAULT_SIZE}, 32767)->addComponent($self->{capturedImageActionJButton})));
-        $layout->setVerticalGroup($layout->createParallelGroup($org::allbinary::input::automation::module::actions::script::condition::processors::output::javax::swing->{GroupLayout}->{Alignment}->{LEADING})->addGroup($layout->createParallelGroup($org::allbinary::input::automation::module::actions::script::condition::processors::output::javax::swing->{GroupLayout}->{Alignment}->{BASELINE})->addComponent($self->{jLabel1})->addComponent($self->{capturedImageActionJButton})));
+        $layout->setHorizontalGroup($layout->createParallelGroup($javax::swing::GroupLayout::Alignment->{LEADING})->addGroup($layout->createSequentialGroup()->addComponent($self->{jLabel1})->addPreferredGap($javax::swing::LayoutStyle::ComponentPlacement->{RELATED}, $javax::swing::GroupLayout::DEFAULT_SIZE, 32767)->addComponent($self->{capturedImageActionJButton})));
+        $layout->setVerticalGroup($layout->createParallelGroup($javax::swing::GroupLayout::Alignment->{LEADING})->addGroup($layout->createParallelGroup($javax::swing::GroupLayout::Alignment->{BASELINE})->addComponent($self->{jLabel1})->addComponent($self->{capturedImageActionJButton})));
 }
 
 
@@ -224,12 +224,26 @@ sub capturedImageActionJButtonActionPerformed {
 use java::lang::Object ();
 use org::allbinary::util::BasicArrayList ();
 use org::allbinary::util::BasicArrayListD ();
-# use javax::swing ();
+# use javax::swing::DefaultListModel ();
 use org::allbinary::input::media::image::InputImageType ();
 use org::allbinary::logic::communication::log::LogUtil ();
 use org::allbinary::string::CommonStrings ();
+# use java::awt::Dimension ();
+# use java::awt::Insets ();
+# use java::awt::event::ActionEvent ();
+# use java::awt::event::ActionListener ();
+# use javax::swing::AbstractListModel ();
+# use javax::swing::BorderFactory ();
+# use javax::swing::GroupLayout ();
+# use javax::swing::JButton ();
+# use javax::swing::JCheckBox ();
+# use javax::swing::JDialog ();
+# use javax::swing::JLabel ();
+# use javax::swing::JList ();
+# use javax::swing::JPanel ();
+# use javax::swing::JScrollPane ();
+# use javax::swing::LayoutStyle ();
 use org::allbinary::input::automation::module::actions::script::condition::processors::output::ImageTypes ();
-use org::allbinary::input::automation::module::actions::script::condition::processors::output::DefaultListModel ();
 
 1;
 

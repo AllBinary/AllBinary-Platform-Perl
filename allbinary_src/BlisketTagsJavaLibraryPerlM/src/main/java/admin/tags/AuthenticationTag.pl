@@ -234,7 +234,7 @@ sub doStartTag {
     my ($self) = @_;
         try {
             my $stringUtil = 'org::allbinary::logic::string::StringUtil'->getInstance();
-            if ($admin::tags::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($admin::tags::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{JSPTAG})) {
+            if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{JSPTAG})) {
                 my $request = $self->{pageContext}->getRequest();
                 my $stringBuffer = 'org::allbinary::logic::string::StringMaker'->new();
                 $stringBuffer->append(" Request URI: ");
@@ -243,50 +243,50 @@ sub doStartTag {
             }
             if (defined($self->{command})) {
                 $self->{propertiesHashMap} = 'org::allbinary::logic::StdUtil'->getInstance()->createHashMap();
-                if (($self->{command} cmp $admin::tags::org::allbinary->{globals}->{GLOBALS2}->{NEWPASSWORD}) == 0) {
-                    if ($admin::tags::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($admin::tags::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{JSPTAG})) {
+                if (($self->{command} cmp $org::allbinary::globals::GLOBALS2::NEWPASSWORD) == 0) {
+                    if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{JSPTAG})) {
                         $self->{logUtil}->putF("New Password", $self, $self->{tagStrings}->{DO_START_TAG});
                     }
                     if (!$self->newPassword()) {
                         $self->{pageContext}->getOut()->print("New Password Request Failed.<p/>");
-                        return $self->{EVAL_BODY_INCLUDE};
+                        return java::lang::Object::jstatic('admin::tags::AuthenticationTag', 'EVAL_BODY_INCLUDE');
                     } else {
                         $self->{pageContext}->getOut()->print("New Password Was Sent.<p/>");
-                        return $self->{SKIP_BODY};
+                        return java::lang::Object::jstatic('admin::tags::AuthenticationTag', 'SKIP_BODY');
                     }
-                } elsif (($self->{command} cmp $admin::tags::org::allbinary->{globals}->{GLOBALS2}->{CHANGEPASSWORD}) == 0) {
-                    if ($admin::tags::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($admin::tags::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{JSPTAG})) {
+                } elsif (($self->{command} cmp $org::allbinary::globals::GLOBALS2::CHANGEPASSWORD) == 0) {
+                    if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{JSPTAG})) {
                         $self->{logUtil}->putF("Change Password", $self, $self->{tagStrings}->{DO_START_TAG});
                     }
                     if (!$self->changePassword()) {
                         $self->{pageContext}->getOut()->print("Password Change Attempt Failed.<p/>");
-                        return $self->{EVAL_BODY_INCLUDE};
+                        return java::lang::Object::jstatic('admin::tags::AuthenticationTag', 'EVAL_BODY_INCLUDE');
                     } else {
                         $self->{pageContext}->getOut()->print("Password Changed Successfully.<p/>");
-                        return $self->{SKIP_BODY};
+                        return java::lang::Object::jstatic('admin::tags::AuthenticationTag', 'SKIP_BODY');
                     }
                 } elsif (($self->{command} cmp $org::allbinary::logic::communication::http::request::session::WeblisketSessionData::INVALIDATESESSION) == 0) {
-                    if ($admin::tags::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($admin::tags::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{JSPTAG})) {
+                    if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{JSPTAG})) {
                         $self->{logUtil}->putF("INVALIDATESESSION", $self, $self->{tagStrings}->{DO_START_TAG});
                     }
                     return $self->invalidateSession();
                 } else {
                     if ($self->isSessionOld()) {
                         if ($self->processInvalidation()) {
-                            if ($admin::tags::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($admin::tags::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{JSPTAG})) {
+                            if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{JSPTAG})) {
                                 $self->{logUtil}->putF("Processing Invalidation", $self, $self->{tagStrings}->{DO_START_TAG});
                             }
                             $self->{pageContext}->getOut()->print("Please login again.<p>");
-                            if (($self->{command} cmp $admin::tags::org::allbinary->{globals}->{GLOBALS2}->{PROCESSBODYIFAUTHENTICATED}) == 0) {
+                            if (($self->{command} cmp $org::allbinary::globals::GLOBALS2::PROCESSBODYIFAUTHENTICATED) == 0) {
                                 return $javax::servlet::jsp::tagext::TagSupport::SKIP_BODY;
                             } else {
                                 return $javax::servlet::jsp::tagext::TagSupport::EVAL_BODY_INCLUDE;
                             }
                         } else {
-                            if ($admin::tags::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($admin::tags::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{JSPTAG})) {
+                            if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{JSPTAG})) {
                                 $self->{logUtil}->putF("Preparing session for invalidation", $self, $self->{tagStrings}->{DO_START_TAG});
                             }
-                            if (($self->{command} cmp $admin::tags::org::allbinary->{globals}->{GLOBALS2}->{PROCESSBODYIFAUTHENTICATED}) == 0) {
+                            if (($self->{command} cmp $org::allbinary::globals::GLOBALS2::PROCESSBODYIFAUTHENTICATED) == 0) {
                                 return $javax::servlet::jsp::tagext::TagSupport::SKIP_BODY;
                             } else {
                                 return $javax::servlet::jsp::tagext::TagSupport::EVAL_BODY_INCLUDE;
@@ -294,62 +294,62 @@ sub doStartTag {
                         }
                     }
                     if ((!defined($self->{userName}) || ($self->{userName} cmp $stringUtil->{EMPTY_STRING}) == 0) && (!defined($self->{password}) || ($self->{password} cmp $stringUtil->{EMPTY_STRING}) == 0) && defined($self->{roles}) && $self->isAuthenticationSessionValid()) {
-                        if ($admin::tags::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($admin::tags::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{JSPTAG})) {
+                        if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{JSPTAG})) {
                             $self->{logUtil}->putF("Authenticated session is valid", $self, $self->{tagStrings}->{DO_START_TAG});
                         }
-                        if (($self->{command} cmp $admin::tags::org::allbinary->{globals}->{GLOBALS2}->{PROCESSBODYIFAUTHENTICATED}) == 0) {
+                        if (($self->{command} cmp $org::allbinary::globals::GLOBALS2::PROCESSBODYIFAUTHENTICATED) == 0) {
                             return $javax::servlet::jsp::tagext::TagSupport::EVAL_BODY_INCLUDE;
                         } else {
                             return $javax::servlet::jsp::tagext::TagSupport::SKIP_BODY;
                         }
                     }
                     if (defined($self->{userName}) && defined($self->{password}) && $self->processIfNewLogin()) {
-                        if ($admin::tags::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($admin::tags::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{JSPTAG})) {
+                        if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{JSPTAG})) {
                             $self->{logUtil}->putF("Processing new login.", $self, $self->{tagStrings}->{DO_START_TAG});
                         }
                         if ($self->isRoleValid()) {
-                            if ($admin::tags::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($admin::tags::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{JSPTAG})) {
+                            if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{JSPTAG})) {
                                 $self->{logUtil}->putF("Role is valid - Processing new login", $self, $self->{tagStrings}->{DO_START_TAG});
                             }
                             $self->{pageContext}->getOut()->print($self->validRole());
-                            if (($self->{command} cmp $admin::tags::org::allbinary->{globals}->{GLOBALS2}->{PROCESSBODYIFAUTHENTICATED}) == 0) {
-                                return $self->{EVAL_BODY_INCLUDE};
+                            if (($self->{command} cmp $org::allbinary::globals::GLOBALS2::PROCESSBODYIFAUTHENTICATED) == 0) {
+                                return java::lang::Object::jstatic('admin::tags::AuthenticationTag', 'EVAL_BODY_INCLUDE');
                             } else {
-                                return $self->{SKIP_BODY};
+                                return java::lang::Object::jstatic('admin::tags::AuthenticationTag', 'SKIP_BODY');
                             }
                         } else {
-                            if ($admin::tags::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($admin::tags::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{JSPTAG})) {
+                            if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{JSPTAG})) {
                                 $self->{logUtil}->putF("Role is not valid - Processing new login", $self, $self->{tagStrings}->{DO_START_TAG});
                             }
                             $self->{pageContext}->getOut()->print($self->invalidRole());
-                            if (($self->{command} cmp $admin::tags::org::allbinary->{globals}->{GLOBALS2}->{PROCESSBODYIFAUTHENTICATED}) == 0) {
-                                return $self->{SKIP_BODY};
+                            if (($self->{command} cmp $org::allbinary::globals::GLOBALS2::PROCESSBODYIFAUTHENTICATED) == 0) {
+                                return java::lang::Object::jstatic('admin::tags::AuthenticationTag', 'SKIP_BODY');
                             } else {
-                                return $self->{EVAL_BODY_INCLUDE};
+                                return java::lang::Object::jstatic('admin::tags::AuthenticationTag', 'EVAL_BODY_INCLUDE');
                             }
                         }
                     } else {
-                        if ($admin::tags::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($admin::tags::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{JSPTAG})) {
+                        if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{JSPTAG})) {
                             $self->{logUtil}->putF("Invalid Login", $self, $self->{tagStrings}->{DO_START_TAG});
                         }
                         if (defined($self->{userName}) && ($self->{userName} cmp $stringUtil->{EMPTY_STRING}) != 0 && defined($self->{password}) && ($self->{password} cmp $stringUtil->{EMPTY_STRING}) != 0) {
                             $self->{pageContext}->getOut()->print("Sorry your username and/or password is invalid.<p/>");
                         }
                     }
-                    if ($admin::tags::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($admin::tags::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{JSPTAG})) {
+                    if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{JSPTAG})) {
                         $self->{logUtil}->putF('org::allbinary::logic::string::StringMaker'->new()->append("Major authentication error - userName: ")->append($self->{userName})->append(" Password: ")->append($self->{password})->append(" Command: ")->append($self->{command})->toString(), $self, $self->{tagStrings}->{DO_START_TAG});
                     }
-                    if (($self->{command} cmp $admin::tags::org::allbinary->{globals}->{GLOBALS2}->{PROCESSBODYIFAUTHENTICATED}) == 0) {
+                    if (($self->{command} cmp $org::allbinary::globals::GLOBALS2::PROCESSBODYIFAUTHENTICATED) == 0) {
                         return $javax::servlet::jsp::tagext::TagSupport::SKIP_BODY;
                     } else {
                         return $javax::servlet::jsp::tagext::TagSupport::EVAL_BODY_INCLUDE;
                     }
                 }
             }
-            return $self->{SKIP_BODY};
+            return java::lang::Object::jstatic('admin::tags::AuthenticationTag', 'SKIP_BODY');
         } catch ($e) {
             'org::allbinary::logic::communication::http::request::AbResponseHandler'->sendJspTagLicensingRedirect($self->{pageContext}, $e);
-            return $self->{SKIP_BODY};
+            return java::lang::Object::jstatic('admin::tags::AuthenticationTag', 'SKIP_BODY');
         }
 }
 
@@ -371,6 +371,9 @@ use org::allbinary::logic::string::StringMaker ();
 use org::allbinary::logic::string::StringUtil ();
 use org::allbinary::logic::system::security::licensing::LicensingException ();
 use tags::CustomTagSupport ();
+use org::allbinary::globals::GLOBALS2 ();
+use org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory ();
+use org::allbinary::logic::communication::log::config::type::LogConfigTypes ();
 
 1;
 

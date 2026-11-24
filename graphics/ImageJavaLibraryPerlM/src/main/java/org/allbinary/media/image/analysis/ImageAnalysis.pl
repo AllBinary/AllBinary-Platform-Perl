@@ -42,7 +42,7 @@ sub new {
 
 
 # throws Exception
-sub process {
+sub process_j2_1 {
     my ($self, $bufferedImageArray, $colorRangeInterface) = @_;
         my $commonStrings = 'org::allbinary::string::CommonStrings'->getInstance();
         $self->{logUtil}->putF('org::allbinary::string::CommonLabels'->getInstance()->{START} . $colorRangeInterface->toString(), $self, $commonStrings->{PROCESS});
@@ -55,8 +55,7 @@ sub process {
 
 
 # throws Exception
-# Java overloaded method: Perl keeps the last definition
-sub process {
+sub process_j2_2 {
     my ($class, $bufferedImage, $colorRangeInterface) = @_;
         my $imageAnalysisResults = 'org::allbinary::media::image::analysis::ImageAnalysisResults'->new();
         my $redTotal = 0;
@@ -80,6 +79,18 @@ sub process {
         $colorAverage->setAvgGreen($greenTotal / $totalPixels);
         $colorAverage->setAvgBlue($blueTotal / $totalPixels);
         return $imageAnalysisResults;
+}
+
+sub process {
+    my ($invocant, @arguments) = @_;
+    return $invocant->process_j2(@arguments) if scalar(@arguments) == 2;
+    die "No method process takes " . scalar(@arguments) . " arguments";
+}
+
+sub process_j2 {
+    my ($invocant, @arguments) = @_;
+    return $invocant->process_j2_1(@arguments) if 1 && (!defined($arguments[0]) || ref($arguments[0]) eq 'ARRAY') && (!defined($arguments[1]) || (ref($arguments[1]) && ref($arguments[1]) ne 'ARRAY'));
+    return $invocant->process_j2_2(@arguments);
 }
 
 
@@ -117,7 +128,7 @@ sub processImageColorResults {
 
 use java::lang::Object ();
 use java::lang::LazyStatic ();
-# use java::awt ();
+# use java::awt::Color ();
 # use java::awt::image::BufferedImage ();
 use org::allbinary::graphics::color::ColorCacheFactory ();
 use org::allbinary::graphics::color::ColorCacheable ();

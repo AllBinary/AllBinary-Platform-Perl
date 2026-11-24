@@ -35,18 +35,24 @@ sub new {
     die "No constructor of AdminConfiguration takes " . scalar(@arguments) . " arguments";
 }
 
+sub _new1 {
+    my ($class, @arguments) = @_;
+    return $class->_new1_1(@arguments) if 1 && (!defined($arguments[0]) || (ref($arguments[0]) && ref($arguments[0]) ne 'ARRAY'));
+    return $class->_new1_2(@arguments);
+}
+
 
 sub _new0 {
     my ($class) = @_;
     my $self = bless({}, $class);
     _init_fields($self);
         $self->{logUtil}->putF($self->{commonStrings}->{START}, $self, $self->{commonStrings}->{CONSTRUCTOR});
-        $self->{contextConfigurationInterface} = 'org::allbinary::business::context::configuration::ContextConfigurationInterfaceFactory'->getInstance()->getInstance($org::allbinary::business::user::modules::admin::configuration::AdminConfigurationData::CONTEXTNAME);
+        $self->{contextConfigurationInterface} = 'org::allbinary::business::context::configuration::ContextConfigurationInterfaceFactory'->getInstance()->getInstance(java::lang::Object::jstatic('org::allbinary::business::user::modules::admin::configuration::AdminConfiguration', 'AdminConfigurationData')->{CONTEXTNAME});
     return $self;
 }
 
 
-sub _new1 {
+sub _new1_1 {
     my ($class, $request) = @_;
     my $self = bless({}, $class);
     _init_fields($self);
@@ -56,7 +62,7 @@ sub _new1 {
 }
 
 
-sub _new1 {
+sub _new1_2 {
     my ($class, $storeHashMap) = @_;
     my $self = bless({}, $class);
     _init_fields($self);
@@ -79,7 +85,7 @@ sub write {
     my ($self) = @_;
         my $contextConfigurationDomDocumentMapping = 'org::allbinary::business::context::configuration::ContextConfigurationDomDocumentMapping'->new($self->getContextConfigurationInterface());
         my $cryptFileWriter = 'org::allbinary::logic::control::crypt::file::CryptFileWriter'->new('org::allbinary::business::context::configuration::ContextConfigurationData'->getInstance()->{UNCRYPTED_EXTENSION}, 'org::allbinary::business::context::configuration::ContextConfigurationData'->getInstance()->{ENCRYPTED_EXTENSION});
-        $cryptFileWriter->write('org::allbinary::business::context::configuration::ContextConfigurationPathUtil'->getAbPath($org::allbinary::business::user::modules::admin::configuration::AdminConfigurationData::CONTEXTNAME), $contextConfigurationDomDocumentMapping->toXmlDoc());
+        $cryptFileWriter->write('org::allbinary::business::context::configuration::ContextConfigurationPathUtil'->getAbPath(java::lang::Object::jstatic('org::allbinary::business::user::modules::admin::configuration::AdminConfiguration', 'AdminConfigurationData')->{CONTEXTNAME}), $contextConfigurationDomDocumentMapping->toXmlDoc());
 }
 
 
@@ -108,7 +114,6 @@ use org::allbinary::logic::communication::log::LogUtil ();
 use org::allbinary::logic::control::crypt::file::CryptFileWriter ();
 use org::allbinary::string::CommonStrings ();
 use org::allbinary::business::user::modules::admin::configuration::AdminConfigurationInterface ();
-use org::allbinary::business::user::modules::admin::configuration::AdminConfigurationData ();
 
 1;
 

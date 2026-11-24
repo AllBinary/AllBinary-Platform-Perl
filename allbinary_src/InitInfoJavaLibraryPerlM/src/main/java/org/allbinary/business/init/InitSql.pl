@@ -125,7 +125,7 @@ sub getRow {
                 }
             }
             my $sqlStatement = $stringBuffer->toString();
-            if ($org::allbinary::business::init::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($org::allbinary::business::init::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{SQLLOGGING})) {
+            if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{SQLLOGGING})) {
                 'org::allbinary::logic::communication::log::PreLogUtil'->put($self->{sqlStrings}->{SQL_STATEMENT_LABEL} . $sqlStatement, $self->{INIT_SQL}, $self->{METHOD_GET_ROW});
             }
             my $rset = $self->executeSQLStatement($sqlStatement);
@@ -138,17 +138,17 @@ sub getRow {
                     my $field = $rset->getString($columnName);
                     $result->put($columnName, $field);
                 }
-                if ($org::allbinary::business::init::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($org::allbinary::business::init::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{SQLLOGGING})) {
+                if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{SQLLOGGING})) {
                     'org::allbinary::logic::communication::log::PreLogUtil'->put($self->{ROW_VALUE_LABEL} . $result->toString(), $self->{INIT_SQL}, $self->{METHOD_GET_ROW});
                 }
                 return $result;
             }
-            if ($org::allbinary::business::init::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($org::allbinary::business::init::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{SQLLOGGINGERROR})) {
+            if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{SQLLOGGINGERROR})) {
                 'org::allbinary::logic::communication::log::PreLogUtil'->put($self->{NO_RESULTS_IN_RESULT_SET}, $self->{INIT_SQL}, $self->{METHOD_GET_ROW});
             }
             return undef;
         } catch ($e) {
-            if ($org::allbinary::business::init::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($org::allbinary::business::init::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{SQLLOGGINGERROR})) {
+            if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{SQLLOGGINGERROR})) {
                 'org::allbinary::logic::communication::log::PreLogUtil'->putOE($self->{FAILED_SQL_STATEMENT} . $stringBuffer, $self->{INIT_SQL}, $self->{METHOD_GET_ROW}, $e);
             }
             return undef;
@@ -188,11 +188,11 @@ sub updateWhere {
             $stringBuffer->append($self->{sqlStrings}->{CLOSE_QUOTE});
             my $sqlStatement = $stringBuffer->toString();
             $self->executeSQLStatement($sqlStatement);
-            if ($org::allbinary::business::init::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($org::allbinary::business::init::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{SQLLOGGING})) {
+            if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{SQLLOGGING})) {
                 'org::allbinary::logic::communication::log::PreLogUtil'->put($self->{SUCCESS_SQL_STATEMENT} . $sqlStatement, $self->{INIT_SQL}, $self->{METHOD_UPDATE_WHERE});
             }
         } catch ($e) {
-            if ($org::allbinary::business::init::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($org::allbinary::business::init::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{SQLLOGGINGERROR})) {
+            if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{SQLLOGGINGERROR})) {
                 'org::allbinary::logic::communication::log::PreLogUtil'->putOE($self->{FAILED_SQL_STATEMENT} . $stringBuffer, $self->{INIT_SQL}, $self->{METHOD_UPDATE_WHERE}, $e);
             }
         }
@@ -217,11 +217,11 @@ sub insert {
             $stringBuffer->append($self->{INSERT_END});
             my $sqlStatement = $stringBuffer->toString();
             $self->executeSQLStatement($sqlStatement);
-            if ($org::allbinary::business::init::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($org::allbinary::business::init::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{SQLLOGGING})) {
+            if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{SQLLOGGING})) {
                 'org::allbinary::logic::communication::log::PreLogUtil'->put($self->{SUCCESS_SQL_STATEMENT} . $sqlStatement, $self->{INIT_SQL}, $self->{INSERT});
             }
         } catch ($e) {
-            if ($org::allbinary::business::init::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($org::allbinary::business::init::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{SQLLOGGINGERROR})) {
+            if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{SQLLOGGINGERROR})) {
                 'org::allbinary::logic::communication::log::PreLogUtil'->putOE($self->{FAILED_SQL_STATEMENT} . $stringBuffer->toString(), $self->{INIT_SQL}, $self->{INSERT}, $e);
             }
         }
@@ -282,7 +282,7 @@ sub initialize {
             try {
                 my $jdbcDriver = $self->{databaseConnectionInfoInterface}->getJdbcDriver();
                 'org::allbinary::logic::communication::log::PreLogUtil'->put('org::allbinary::logic::string::StringMaker'->new()->append("Loading DbConnnectionInfo: ")->append(ref($self->{databaseConnectionInfoInterface}))->append(" Driver: ")->append($jdbcDriver)->toString(), $self->{INIT_SQL}, "initialize()");
-                'org::allbinary::business::init::Class'->forName($jdbcDriver)->newInstance();
+                do { my $jclass = ($jdbcDriver) =~ s/\./::/gr; eval "require $jclass; 1" or die "ClassNotFoundException: $jclass\n"; $jclass }->newInstance();
             } catch ($e) {
                 if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{SQLLOGGINGERROR})) {
                     'org::allbinary::logic::communication::log::PreLogUtil'->putOE("LoadDriver Failed: " . $self->{databaseConnectionInfoInterface}->getJdbcDriver(), $self->{INIT_SQL}, "initialize()", $e);
@@ -315,7 +315,7 @@ use java::lang::Object ();
 # use java::sql::SQLException ();
 # use java::sql::Statement ();
 use java::util::HashMap ();
-# use java::util::Set ();
+use java::util::Set ();
 use org::allbinary::util::BasicArrayList ();
 use org::allbinary::util::BasicArrayListD ();
 use org::allbinary::business::init::db::DatabaseConnectionInfoInterface ();

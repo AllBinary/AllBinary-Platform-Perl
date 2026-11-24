@@ -37,14 +37,13 @@ sub new {
 }
 
 
-sub visit {
+sub visit_j1_1 {
     my ($self, $anyType) = @_;
         return $self->visit($anyType);
 }
 
 
-# Java overloaded method: Perl keeps the last definition
-sub visit {
+sub visit_j1_2 {
     my ($self, $file) = @_;
         my $list = $self->getFilterStringBasicArrayList();
         my $size = $list->size();
@@ -71,10 +70,22 @@ sub setFilterStringBasicArrayList {
 }
 
 
-# Java overloaded method: Perl keeps the last definition
-sub visit {
+sub visit_j2 {
     my ($self, $file, $fileNameString) = @_;
         return 0;
+}
+
+sub visit {
+    my ($invocant, @arguments) = @_;
+    return $invocant->visit_j1(@arguments) if scalar(@arguments) == 1;
+    return $invocant->visit_j2(@arguments) if scalar(@arguments) == 2;
+    die "No method visit takes " . scalar(@arguments) . " arguments";
+}
+
+sub visit_j1 {
+    my ($invocant, @arguments) = @_;
+    return $invocant->visit_j1_1(@arguments) if 1 && (!defined($arguments[0]) || (ref($arguments[0]) && ref($arguments[0]) ne 'ARRAY'));
+    return $invocant->visit_j1_2(@arguments);
 }
 
 use java::lang::Object ();

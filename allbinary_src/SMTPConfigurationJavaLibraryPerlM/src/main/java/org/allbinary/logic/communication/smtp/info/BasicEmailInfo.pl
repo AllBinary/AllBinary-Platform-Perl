@@ -33,7 +33,7 @@ sub new {
     my ($class, $subject, $textBody) = @_;
     my $self = bless({}, $class);
     _init_fields($self);
-        if ($org::allbinary::logic::communication::smtp::info::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($org::allbinary::logic::communication::smtp::info::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{EMAILLOGGING})) {
+        if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{EMAILLOGGING})) {
             my $commonStrings = 'org::allbinary::string::CommonStrings'->getInstance();
             $self->{logUtil}->putF($commonStrings->{START}, $self, $commonStrings->{CONSTRUCTOR});
         }
@@ -92,6 +92,8 @@ use org::allbinary::logic::communication::smtp::configuration::server::EmailServ
 use org::allbinary::logic::string::StringMaker ();
 use org::allbinary::string::CommonSeps ();
 use org::allbinary::string::CommonStrings ();
+use org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory ();
+use org::allbinary::logic::communication::log::config::type::LogConfigTypes ();
 
 1;
 

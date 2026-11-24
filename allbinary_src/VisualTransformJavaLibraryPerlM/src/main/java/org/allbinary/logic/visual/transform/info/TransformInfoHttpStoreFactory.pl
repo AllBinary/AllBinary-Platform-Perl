@@ -22,7 +22,7 @@ use parent -norequire,'java::lang::Object','org::allbinary::logic::visual::trans
 tie our $instance, 'java::lang::LazyStatic', sub { 'org::allbinary::logic::visual::transform::info::TransformInfoHttpStoreFactory'->new() };
 
 
-sub getInstance {
+sub getInstance_j0 {
     my ($class) = @_;
         return $org::allbinary::logic::visual::transform::info::TransformInfoHttpStoreFactory::instance;
 }
@@ -36,17 +36,22 @@ sub new {
 
 
 # throws Exception
-# Java overloaded method: Perl keeps the last definition
-sub getInstance {
+sub getInstance_j3 {
     my ($self, $databaseHashMap, $propertiesHashMap, $pageContext) = @_;
         return 'org::allbinary::logic::visual::transform::info::TransformInfoHttpStore'->new($databaseHashMap, $propertiesHashMap, $pageContext);
+}
+
+sub getInstance {
+    my ($invocant, @arguments) = @_;
+    return $invocant->getInstance_j0(@arguments) if scalar(@arguments) == 0;
+    return $invocant->getInstance_j3(@arguments) if scalar(@arguments) == 3;
+    die "No method getInstance takes " . scalar(@arguments) . " arguments";
 }
 
 use java::lang::Object ();
 use java::lang::LazyStatic ();
 use java::util::HashMap ();
 # use javax::servlet::jsp::PageContext ();
-use org::allbinary::logic::visual::transform::info::TransformInfoFactoryInterface ();
 use org::allbinary::logic::visual::transform::info::TransformInfoHttpStore ();
 
 1;

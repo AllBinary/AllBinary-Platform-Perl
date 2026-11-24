@@ -35,7 +35,7 @@ sub new {
         my $httpServletRequest = $self->getPageContext()->getRequest();
         my $hashMap = 'org::allbinary::logic::communication::http::request::RequestParams'->new($httpServletRequest)->toHashMap();
         $self->{userName} = 'org::allbinary::business::user::username::UserName'->new($hashMap)->get();
-        if ($views::generic::user::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($views::generic::user::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{VIEW})) {
+        if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{VIEW})) {
             $self->{logUtil}->putF("User Name: " . $self->{userName}, $self, $self->{commonStrings}->{CONSTRUCTOR});
         }
     return $self;
@@ -55,7 +55,7 @@ sub isValid {
             }
             return 1;
         } catch ($e) {
-            if ($views::generic::user::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($views::generic::user::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{VIEWERROR})) {
+            if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{VIEWERROR})) {
                 $self->{logUtil}->put("Failed to validate form", $self, $self->{commonStrings}->{IS_VALID}, $e);
             }
             return 0;
@@ -77,7 +77,7 @@ sub validationInfo {
             }
             return $stringBuffer->toString();
         } catch ($e) {
-            if ($views::generic::user::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($views::generic::user::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{VIEWERROR})) {
+            if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{VIEWERROR})) {
                 $self->{logUtil}->put("Failed to generate validation error info", $self, "validationInfo()", $e);
             }
             return "Error Validating Form";
@@ -115,6 +115,8 @@ use org::allbinary::logic::string::StringMaker ();
 use org::allbinary::logic::visual::transform::info::TransformInfoInterface ();
 use org::w3c::dom::Document ();
 use org::w3c::dom::Node ();
+use org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory ();
+use org::allbinary::logic::communication::log::config::type::LogConfigTypes ();
 use views::generic::user::UserView ();
 
 1;

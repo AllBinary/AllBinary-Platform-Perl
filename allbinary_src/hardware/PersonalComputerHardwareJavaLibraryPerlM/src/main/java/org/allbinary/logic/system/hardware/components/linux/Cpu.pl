@@ -55,7 +55,7 @@ sub _new0 {
 
 
 # throws Exception
-sub init {
+sub init_j1 {
     my ($self, $filePath) = @_;
         my $lineNumberReader = undef;
         try {
@@ -70,8 +70,7 @@ sub init {
 
 
 # throws Exception
-# Java overloaded method: Perl keeps the last definition
-sub init {
+sub init_j2 {
     my ($self, $lineNumberReader, $filePath) = @_;
         try {
             my $fileReader = 'java::io::FileReader'->new($filePath);
@@ -130,6 +129,13 @@ sub init {
         }
 }
 
+sub init {
+    my ($invocant, @arguments) = @_;
+    return $invocant->init_j1(@arguments) if scalar(@arguments) == 1;
+    return $invocant->init_j2(@arguments) if scalar(@arguments) == 2;
+    die "No method init takes " . scalar(@arguments) . " arguments";
+}
+
 
 sub getProcessor {
     my ($self) = @_;
@@ -179,16 +185,27 @@ sub getCacheSize {
 }
 
 
-sub compareTo {
+sub compareTo_j1_1 {
     my ($self, $cpuInterface) = @_;
         return 1;
 }
 
 
-# Java overloaded method: Perl keeps the last definition
-sub compareTo {
+sub compareTo_j1_2 {
     my ($self, $componentInterface) = @_;
         return 1;
+}
+
+sub compareTo {
+    my ($invocant, @arguments) = @_;
+    return $invocant->compareTo_j1(@arguments) if scalar(@arguments) == 1;
+    die "No method compareTo takes " . scalar(@arguments) . " arguments";
+}
+
+sub compareTo_j1 {
+    my ($invocant, @arguments) = @_;
+    return $invocant->compareTo_j1_1(@arguments) if 1 && (!defined($arguments[0]) || (ref($arguments[0]) && ref($arguments[0]) ne 'ARRAY'));
+    return $invocant->compareTo_j1_2(@arguments);
 }
 
 

@@ -48,7 +48,7 @@ sub processRequest {
             $response->setContentType("image/jpeg;charset=utf-8");
             $response->getOutputStream()->write($byteArray);
         } catch ($e) {
-            if ($org::allbinary::servlet::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($org::allbinary::servlet::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{VIEWERROR})) {
+            if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{VIEWERROR})) {
                 $self->{logUtil}->put($self->{commonStrings}->{EXCEPTION}, $self, "processRequest()", $e);
             }
         } finally {
@@ -93,6 +93,8 @@ use org::allbinary::logic::io::CloudStreamUtil ();
 use org::allbinary::logic::io::StreamUtil ();
 use org::allbinary::logic::io::file::AbFile ();
 use org::allbinary::string::CommonStrings ();
+use org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory ();
+use org::allbinary::logic::communication::log::config::type::LogConfigTypes ();
 use org::allbinary::servlet::BlisketServletUtil ();
 
 1;

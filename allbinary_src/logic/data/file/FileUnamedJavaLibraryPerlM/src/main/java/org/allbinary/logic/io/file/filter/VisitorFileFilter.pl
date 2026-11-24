@@ -35,7 +35,7 @@ sub new {
 }
 
 
-sub accept {
+sub accept_j1_1 {
     my ($self, $file) = @_;
         my $abFile = 'org::allbinary::logic::io::file::FileWrapperUtil'->wrapFile($file);
         my $isFileAcceptable = ($self->{booleanVisitorInterface}->visit($abFile));
@@ -43,11 +43,22 @@ sub accept {
 }
 
 
-# Java overloaded method: Perl keeps the last definition
-sub accept {
+sub accept_j1_2 {
     my ($self, $file) = @_;
         my $isFileAcceptable = ($self->{booleanVisitorInterface}->visit($file));
         return $isFileAcceptable || $file->isDirectory();
+}
+
+sub accept {
+    my ($invocant, @arguments) = @_;
+    return $invocant->accept_j1(@arguments) if scalar(@arguments) == 1;
+    die "No method accept takes " . scalar(@arguments) . " arguments";
+}
+
+sub accept_j1 {
+    my ($invocant, @arguments) = @_;
+    return $invocant->accept_j1_1(@arguments) if 1 && (!defined($arguments[0]) || (ref($arguments[0]) && ref($arguments[0]) ne 'ARRAY'));
+    return $invocant->accept_j1_2(@arguments);
 }
 
 use java::lang::Object ();

@@ -94,7 +94,7 @@ sub initComponents {
         $self->{titleJLabel}->setText("Always Condition Options");
         $self->{okJButton}->setText("OK");
         $self->{okJButton}->addActionListener(do {
-            package java::awt::event::ActionListener::AnonymousN66931 { our @ISA = ('java::awt::event::ActionListener', 'java::lang::Object');
+            package java::awt::event::ActionListener::AnonymousN66985 { our @ISA = ('java::awt::event::ActionListener', 'java::lang::Object');
             
 
             sub actionPerformed {
@@ -102,18 +102,18 @@ sub initComponents {
                 $self->okJButtonActionPerformed($evt);
             }
             }
-            'java::awt::event::ActionListener::AnonymousN66931'->can('new') ? 'java::awt::event::ActionListener::AnonymousN66931'->new() : bless({}, 'java::awt::event::ActionListener::AnonymousN66931')
+            'java::awt::event::ActionListener::AnonymousN66985'->can('new') ? 'java::awt::event::ActionListener::AnonymousN66985'->new() : bless({}, 'java::awt::event::ActionListener::AnonymousN66985')
         });
         $self->{jLabel2}->setText("On:");
         $self->{alwaysJComboBox}->setModel('javax::swing::DefaultComboBoxModel'->new(["true", "false"]));
         my $alwaysActionJDialogLayout = 'javax::swing::GroupLayout'->new($self->{alwaysActionJDialog}->getContentPane());
         $self->{alwaysActionJDialog}->getContentPane()->setLayout($alwaysActionJDialogLayout);
-        $alwaysActionJDialogLayout->setHorizontalGroup($alwaysActionJDialogLayout->createParallelGroup($org::allbinary::input::automation::actions::script::condition::javax::swing->{GroupLayout}->{Alignment}->{LEADING})->addGroup($alwaysActionJDialogLayout->createSequentialGroup()->addGroup($alwaysActionJDialogLayout->createParallelGroup($org::allbinary::input::automation::actions::script::condition::javax::swing->{GroupLayout}->{Alignment}->{LEADING})->addGroup($alwaysActionJDialogLayout->createSequentialGroup()->addGap(47, 47, 47)->addGroup($alwaysActionJDialogLayout->createParallelGroup($org::allbinary::input::automation::actions::script::condition::javax::swing->{GroupLayout}->{Alignment}->{LEADING}, 0)->addGroup($org::allbinary::input::automation::actions::script::condition::javax::swing->{GroupLayout}->{Alignment}->{TRAILING}, $alwaysActionJDialogLayout->createSequentialGroup()->addComponent($self->{jLabel2})->addPreferredGap($org::allbinary::input::automation::actions::script::condition::javax::swing->{LayoutStyle}->{ComponentPlacement}->{RELATED}, $org::allbinary::input::automation::actions::script::condition::javax::swing->{GroupLayout}->{DEFAULT_SIZE}, 32767)->addComponent($self->{alwaysJComboBox}, $org::allbinary::input::automation::actions::script::condition::javax::swing->{GroupLayout}->{PREFERRED_SIZE}, $org::allbinary::input::automation::actions::script::condition::javax::swing->{GroupLayout}->{DEFAULT_SIZE}, $org::allbinary::input::automation::actions::script::condition::javax::swing->{GroupLayout}->{PREFERRED_SIZE}))->addComponent($self->{titleJLabel})))->addGroup($alwaysActionJDialogLayout->createSequentialGroup()->addGap(79, 79, 79)->addComponent($self->{okJButton})))->addContainerGap(45, 32767)));
-        $alwaysActionJDialogLayout->setVerticalGroup($alwaysActionJDialogLayout->createParallelGroup($org::allbinary::input::automation::actions::script::condition::javax::swing->{GroupLayout}->{Alignment}->{LEADING})->addGroup($alwaysActionJDialogLayout->createSequentialGroup()->addContainerGap()->addComponent($self->{titleJLabel})->addGap(20, 20, 20)->addGroup($alwaysActionJDialogLayout->createParallelGroup($org::allbinary::input::automation::actions::script::condition::javax::swing->{GroupLayout}->{Alignment}->{BASELINE})->addComponent($self->{alwaysJComboBox}, $org::allbinary::input::automation::actions::script::condition::javax::swing->{GroupLayout}->{PREFERRED_SIZE}, $org::allbinary::input::automation::actions::script::condition::javax::swing->{GroupLayout}->{DEFAULT_SIZE}, $org::allbinary::input::automation::actions::script::condition::javax::swing->{GroupLayout}->{PREFERRED_SIZE})->addComponent($self->{jLabel2}))->addGap(15, 15, 15)->addComponent($self->{okJButton})->addContainerGap()));
+        $alwaysActionJDialogLayout->setHorizontalGroup($alwaysActionJDialogLayout->createParallelGroup($javax::swing::GroupLayout::Alignment->{LEADING})->addGroup($alwaysActionJDialogLayout->createSequentialGroup()->addGroup($alwaysActionJDialogLayout->createParallelGroup($javax::swing::GroupLayout::Alignment->{LEADING})->addGroup($alwaysActionJDialogLayout->createSequentialGroup()->addGap(47, 47, 47)->addGroup($alwaysActionJDialogLayout->createParallelGroup($javax::swing::GroupLayout::Alignment->{LEADING}, 0)->addGroup($javax::swing::GroupLayout::Alignment->{TRAILING}, $alwaysActionJDialogLayout->createSequentialGroup()->addComponent($self->{jLabel2})->addPreferredGap($javax::swing::LayoutStyle::ComponentPlacement->{RELATED}, $javax::swing::GroupLayout::DEFAULT_SIZE, 32767)->addComponent($self->{alwaysJComboBox}, $javax::swing::GroupLayout::PREFERRED_SIZE, $javax::swing::GroupLayout::DEFAULT_SIZE, $javax::swing::GroupLayout::PREFERRED_SIZE))->addComponent($self->{titleJLabel})))->addGroup($alwaysActionJDialogLayout->createSequentialGroup()->addGap(79, 79, 79)->addComponent($self->{okJButton})))->addContainerGap(45, 32767)));
+        $alwaysActionJDialogLayout->setVerticalGroup($alwaysActionJDialogLayout->createParallelGroup($javax::swing::GroupLayout::Alignment->{LEADING})->addGroup($alwaysActionJDialogLayout->createSequentialGroup()->addContainerGap()->addComponent($self->{titleJLabel})->addGap(20, 20, 20)->addGroup($alwaysActionJDialogLayout->createParallelGroup($javax::swing::GroupLayout::Alignment->{BASELINE})->addComponent($self->{alwaysJComboBox}, $javax::swing::GroupLayout::PREFERRED_SIZE, $javax::swing::GroupLayout::DEFAULT_SIZE, $javax::swing::GroupLayout::PREFERRED_SIZE)->addComponent($self->{jLabel2}))->addGap(15, 15, 15)->addComponent($self->{okJButton})->addContainerGap()));
         $self->setMinimumSize('java::awt::Dimension'->new(100, 0));
         $self->{alwaysActionJButton}->setText("Edit");
         $self->{alwaysActionJButton}->addActionListener(do {
-            package java::awt::event::ActionListener::AnonymousN68562 { our @ISA = ('java::awt::event::ActionListener', 'java::lang::Object');
+            package java::awt::event::ActionListener::AnonymousN68280 { our @ISA = ('java::awt::event::ActionListener', 'java::lang::Object');
             
 
             sub actionPerformed {
@@ -121,13 +121,13 @@ sub initComponents {
                 $self->alwaysActionJButtonActionPerformed($evt);
             }
             }
-            'java::awt::event::ActionListener::AnonymousN68562'->can('new') ? 'java::awt::event::ActionListener::AnonymousN68562'->new() : bless({}, 'java::awt::event::ActionListener::AnonymousN68562')
+            'java::awt::event::ActionListener::AnonymousN68280'->can('new') ? 'java::awt::event::ActionListener::AnonymousN68280'->new() : bless({}, 'java::awt::event::ActionListener::AnonymousN68280')
         });
         $self->{jLabel1}->setText("Always:");
         my $layout = 'javax::swing::GroupLayout'->new($self);
         $self->setLayout($layout);
-        $layout->setHorizontalGroup($layout->createParallelGroup($org::allbinary::input::automation::actions::script::condition::javax::swing->{GroupLayout}->{Alignment}->{LEADING})->addGroup($layout->createSequentialGroup()->addComponent($self->{jLabel1})->addPreferredGap($org::allbinary::input::automation::actions::script::condition::javax::swing->{LayoutStyle}->{ComponentPlacement}->{RELATED}, 33, 32767)->addComponent($self->{alwaysActionJButton})));
-        $layout->setVerticalGroup($layout->createParallelGroup($org::allbinary::input::automation::actions::script::condition::javax::swing->{GroupLayout}->{Alignment}->{LEADING})->addGroup($layout->createParallelGroup($org::allbinary::input::automation::actions::script::condition::javax::swing->{GroupLayout}->{Alignment}->{BASELINE})->addComponent($self->{jLabel1})->addComponent($self->{alwaysActionJButton})));
+        $layout->setHorizontalGroup($layout->createParallelGroup($javax::swing::GroupLayout::Alignment->{LEADING})->addGroup($layout->createSequentialGroup()->addComponent($self->{jLabel1})->addPreferredGap($javax::swing::LayoutStyle::ComponentPlacement->{RELATED}, 33, 32767)->addComponent($self->{alwaysActionJButton})));
+        $layout->setVerticalGroup($layout->createParallelGroup($javax::swing::GroupLayout::Alignment->{LEADING})->addGroup($layout->createParallelGroup($javax::swing::GroupLayout::Alignment->{BASELINE})->addComponent($self->{jLabel1})->addComponent($self->{alwaysActionJButton})));
 }
 
 
@@ -146,6 +146,17 @@ sub alwaysActionJButtonActionPerformed {
 use java::lang::Object ();
 use org::allbinary::logic::communication::log::LogUtil ();
 use org::allbinary::string::CommonStrings ();
+# use java::awt::Dimension ();
+# use java::awt::event::ActionEvent ();
+# use java::awt::event::ActionListener ();
+# use javax::swing::DefaultComboBoxModel ();
+# use javax::swing::GroupLayout ();
+# use javax::swing::JButton ();
+# use javax::swing::JComboBox ();
+# use javax::swing::JDialog ();
+# use javax::swing::JLabel ();
+# use javax::swing::JPanel ();
+# use javax::swing::LayoutStyle ();
 
 1;
 

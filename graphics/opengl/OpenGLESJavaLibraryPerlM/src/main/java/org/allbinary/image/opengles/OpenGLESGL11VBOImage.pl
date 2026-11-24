@@ -38,8 +38,8 @@ sub new {
     _init_fields($self);
         # super(...) made $self above
         $self->initVertices();
-        $self->{regionRectangleVertexFloatBuffer}->put('java::nio::FloatBuffer'->wrap($self->{regionRectangleFloatArray}));
-        $self->{regionTextureVertexFloatBuffer}->put('java::nio::FloatBuffer'->wrap($self->{regionTextureRectangleFloatArray}));
+        $self->{regionRectangleVertexFloatBuffer}->put($self->{regionRectangleFloatArray});
+        $self->{regionTextureVertexFloatBuffer}->put($self->{regionTextureRectangleFloatArray});
     return $self;
 }
 
@@ -138,7 +138,6 @@ use org::allbinary::graphics::displayable::DisplayInfoSingleton ();
 use org::allbinary::opengles::GLUtil ();
 use org::allbinary::platform::graphics::PlatformBitmapBaseFactory ();
 use org::allbinary::platform::opengles::PlatformTextureBaseFactory ();
-use org::allbinary::image::opengles::OpenGLESImage ();
 
 1;
 

@@ -17,7 +17,7 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
-use parent -norequire,'org::allbinary::image::gui::ImageIcon';
+use parent -norequire,'java::lang::Object';
 
 
 sub _init_fields {
@@ -49,8 +49,7 @@ sub setId {
 
 use java::lang::Object ();
 # use java::awt::image::BufferedImage ();
-# use javax::swing ();
-use org::allbinary::image::gui::ImageIcon ();
+# use javax::swing::ImageIcon ();
 
 1;
 

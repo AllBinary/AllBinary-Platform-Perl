@@ -45,13 +45,13 @@ sub insert {
             my $vector = $self->{downloadableItem}->toVector();
             'org::allbinary::data::tables::user::commerce::inventory::item::downloads::DownloadItemsEntityFactory'->getInstance()->getDownloadItemsEntityInstance()->insert($vector);
             my $success = "Successfully inserted " . $self->{downloadableItem}->getId() . " into downloaditems table";
-            if ($admin::taghelpers::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($admin::taghelpers::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{SQLTAGS})) {
+            if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{SQLTAGS})) {
                 $self->{logUtil}->putF($success, $self, "insert()");
             }
             return $success;
         } catch ($e) {
             my $error = "Failed to insert " . $self->{downloadableItem}->getId() . " into downloaditems table";
-            if ($admin::taghelpers::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($admin::taghelpers::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{SQLTAGSERROR})) {
+            if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{SQLTAGSERROR})) {
                 $self->{logUtil}->put($self->{commonStrings}->{EXCEPTION}, $self, "inserts()", $e);
             }
             return $error;
@@ -64,13 +64,13 @@ sub delete {
         try {
             'org::allbinary::data::tables::user::commerce::inventory::item::downloads::DownloadItemsEntityFactory'->getInstance()->getDownloadItemsEntityInstance()->delete($self->{downloadableItem}->getId());
             my $success = "Successfully deleted";
-            if ($admin::taghelpers::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($admin::taghelpers::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{SQLTAGS})) {
+            if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{SQLTAGS})) {
                 $self->{logUtil}->putF($success, $self, "delete()");
             }
             return $success;
         } catch ($e) {
             my $error = "Failed to delete";
-            if ($admin::taghelpers::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($admin::taghelpers::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{SQLTAGSERROR})) {
+            if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{SQLTAGSERROR})) {
                 $self->{logUtil}->put($self->{commonStrings}->{EXCEPTION}, $self, "delete()", $e);
             }
             return $error;
@@ -84,13 +84,13 @@ sub update {
             my $success = "Update Successful";
             my $values = $self->{downloadableItem}->toHashMap();
             'org::allbinary::data::tables::user::commerce::inventory::item::downloads::DownloadItemsEntityFactory'->getInstance()->getDownloadItemsEntityInstance()->update($values);
-            if ($admin::taghelpers::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($admin::taghelpers::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{SQLTAGS})) {
+            if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{SQLTAGS})) {
                 $self->{logUtil}->putF($self->{downloadableItem}->getId() + 'org::allbinary::string::CommonSeps'->getInstance()->{SPACE} . $success, $self, "update()");
             }
             return $success;
         } catch ($e) {
             my $error = "Failed to update: " . $self->{downloadableItem}->getId();
-            if ($admin::taghelpers::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($admin::taghelpers::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{SQLTAGSERROR})) {
+            if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{SQLTAGSERROR})) {
                 $self->{logUtil}->put($self->{commonStrings}->{EXCEPTION}, $self, "update()", $e);
             }
             return $error;
@@ -109,7 +109,8 @@ use org::allbinary::logic::communication::log::LogUtil ();
 use org::allbinary::string::CommonSeps ();
 use tags::HelperTag ();
 use views::admin::inventory::download::DownloadableInventoryItemView ();
-use admin::taghelpers::ModifyTable ();
+use org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory ();
+use org::allbinary::logic::communication::log::config::type::LogConfigTypes ();
 use admin::taghelpers::InventoryItemViewParentTagHelper ();
 
 1;

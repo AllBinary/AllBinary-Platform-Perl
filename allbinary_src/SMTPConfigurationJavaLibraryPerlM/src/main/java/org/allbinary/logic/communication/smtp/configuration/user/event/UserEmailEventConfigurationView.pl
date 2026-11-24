@@ -32,23 +32,29 @@ sub new {
     die "No constructor of UserEmailEventConfigurationView takes " . scalar(@arguments) . " arguments";
 }
 
-
 sub _new1 {
+    my ($class, @arguments) = @_;
+    return $class->_new1_1(@arguments) if 1 && (!defined($arguments[0]) || (ref($arguments[0]) && ref($arguments[0]) ne 'ARRAY'));
+    return $class->_new1_2(@arguments);
+}
+
+
+sub _new1_1 {
     my ($class, $node) = @_;
     my $self = bless({}, $class);
     _init_fields($self);
         my $childNodeList = $node->getChildNodes();
         my $hashMap = 'org::allbinary::logic::StdUtil'->getInstance()->createHashMap();
-        my $name = 'org::allbinary::data::tree::dom::DomNodeHelper'->getTextNodeValue($org::allbinary::logic::communication::smtp::configuration::user::event::UserEmailEventConfigurationData::NAME, $childNodeList);
-        $hashMap->put($org::allbinary::logic::communication::smtp::configuration::user::event::UserEmailEventConfigurationData::NAME, $name);
-        my $eventListenerClassPath = 'org::allbinary::data::tree::dom::DomNodeHelper'->getTextNodeValue($org::allbinary::logic::communication::smtp::configuration::user::event::UserEmailEventConfigurationData::LISTENER_CLASSPATH, $childNodeList);
-        $hashMap->put($org::allbinary::logic::communication::smtp::configuration::user::event::UserEmailEventConfigurationData::LISTENER_CLASSPATH, $eventListenerClassPath);
+        my $name = 'org::allbinary::data::tree::dom::DomNodeHelper'->getTextNodeValue(java::lang::Object::jstatic('org::allbinary::logic::communication::smtp::configuration::user::event::UserEmailEventConfigurationView', 'UserEmailEventConfigurationData')->{NAME}, $childNodeList);
+        $hashMap->put(java::lang::Object::jstatic('org::allbinary::logic::communication::smtp::configuration::user::event::UserEmailEventConfigurationView', 'UserEmailEventConfigurationData')->{NAME}, $name);
+        my $eventListenerClassPath = 'org::allbinary::data::tree::dom::DomNodeHelper'->getTextNodeValue(java::lang::Object::jstatic('org::allbinary::logic::communication::smtp::configuration::user::event::UserEmailEventConfigurationView', 'UserEmailEventConfigurationData')->{LISTENER_CLASSPATH}, $childNodeList);
+        $hashMap->put(java::lang::Object::jstatic('org::allbinary::logic::communication::smtp::configuration::user::event::UserEmailEventConfigurationView', 'UserEmailEventConfigurationData')->{LISTENER_CLASSPATH}, $eventListenerClassPath);
         $self->setUserEmailEventConfigurationInterface('org::allbinary::logic::communication::smtp::configuration::user::event::UserEmailEventConfiguration'->new($hashMap));
     return $self;
 }
 
 
-sub _new1 {
+sub _new1_2 {
     my ($class, $userEmailEventConfigurationInterface) = @_;
     my $self = bless({}, $class);
     _init_fields($self);
@@ -62,7 +68,7 @@ sub toXmlNode {
     my ($self, $document) = @_;
         my $userEmailEventConfigurationMapping = 'org::allbinary::logic::communication::smtp::configuration::user::event::UserEmailEventConfigurationMapping'->new($self->getUserEmailEventConfigurationInterface());
         my $hashMap = $userEmailEventConfigurationMapping->toHashMap();
-        my $node = 'org::allbinary::data::tree::dom::ModDomHelper'->createNameValueNodes($document, $org::allbinary::logic::communication::smtp::configuration::user::event::UserEmailEventConfigurationData::NAME, $hashMap);
+        my $node = 'org::allbinary::data::tree::dom::ModDomHelper'->createNameValueNodes($document, java::lang::Object::jstatic('org::allbinary::logic::communication::smtp::configuration::user::event::UserEmailEventConfigurationView', 'UserEmailEventConfigurationData')->{NAME}, $hashMap);
         return $node;
 }
 
@@ -87,7 +93,6 @@ use org::allbinary::logic::StdUtil ();
 use org::w3c::dom::Document ();
 use org::w3c::dom::Node ();
 use org::w3c::dom::NodeList ();
-use org::allbinary::logic::communication::smtp::configuration::user::event::UserEmailEventConfigurationData ();
 use org::allbinary::logic::communication::smtp::configuration::user::event::UserEmailEventConfiguration ();
 use org::allbinary::logic::communication::smtp::configuration::user::event::UserEmailEventConfigurationMapping ();
 

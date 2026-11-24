@@ -28,7 +28,7 @@ sub new {
 }
 
 
-sub viewAll {
+sub viewAll_j2_1 {
     my ($class, $anyType, $lineBreak) = @_;
         if (defined($anyType)) {
             return 'org::allbinary::logic::java::anyType::clazz::ClassUtil'->viewAll(ref($anyType), $lineBreak);
@@ -38,15 +38,14 @@ sub viewAll {
 }
 
 
-# Java overloaded method: Perl keeps the last definition
-sub viewAll {
+sub viewAll_j2_2 {
     my ($class, $myClass, $lineBreak) = @_;
         if (defined($myClass)) {
             my $stringBuffer = 'org::allbinary::logic::string::StringMaker'->new();
             my $classes = $myClass->getClasses();
             $stringBuffer->append($lineBreak);
             $stringBuffer->append("Class: ");
-            $stringBuffer->append($myClass->getName());
+            $stringBuffer->append((($myClass) =~ s/::/./gr));
             $stringBuffer->append(" uses ");
             $stringBuffer->appendint(scalar(@{$classes}));
             $stringBuffer->append(" other classes");
@@ -68,6 +67,18 @@ sub viewAll {
         } else {
             return "Class Null";
         }
+}
+
+sub viewAll {
+    my ($invocant, @arguments) = @_;
+    return $invocant->viewAll_j2(@arguments) if scalar(@arguments) == 2;
+    die "No method viewAll takes " . scalar(@arguments) . " arguments";
+}
+
+sub viewAll_j2 {
+    my ($invocant, @arguments) = @_;
+    return $invocant->viewAll_j2_1(@arguments) if 1 && (!defined($arguments[0]) || (ref($arguments[0]) && ref($arguments[0]) ne 'ARRAY')) && !ref($arguments[1]);
+    return $invocant->viewAll_j2_2(@arguments);
 }
 
 use java::lang::Object ();

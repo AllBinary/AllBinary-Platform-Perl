@@ -28,7 +28,7 @@ sub new {
 }
 
 
-sub toString {
+sub toString_j1_1 {
     my ($class, $array) = @_;
         my $stringBuffer = 'org::allbinary::logic::string::StringMaker'->new();
         for (my $index = 0; $index < scalar(@{$array}); $index++) {
@@ -41,8 +41,7 @@ sub toString {
 }
 
 
-# Java overloaded method: Perl keeps the last definition
-sub toString {
+sub toString_j1_2 {
     my ($class, $array) = @_;
         my $stringBuffer = 'org::allbinary::logic::string::StringMaker'->new();
         for (my $index = 0; $index < scalar(@{$array}); $index++) {
@@ -62,8 +61,7 @@ sub toString {
 }
 
 
-# Java overloaded method: Perl keeps the last definition
-sub toString {
+sub toString_j1_3 {
     my ($class, $array) = @_;
         my $stringBuffer = 'org::allbinary::logic::string::StringMaker'->new();
         for (my $index = 0; $index < scalar(@{$array}); $index++) {
@@ -87,6 +85,19 @@ sub toString {
             }
         }
         return $stringBuffer->toString();
+}
+
+sub toString {
+    my ($invocant, @arguments) = @_;
+    return $invocant->toString_j1(@arguments) if scalar(@arguments) == 1;
+    die "No method toString takes " . scalar(@arguments) . " arguments";
+}
+
+sub toString_j1 {
+    my ($invocant, @arguments) = @_;
+    return $invocant->toString_j1_1(@arguments) if 1 && (!defined($arguments[0]) || ref($arguments[0]) eq 'ARRAY');
+    return $invocant->toString_j1_2(@arguments) if 1 && (!defined($arguments[0]) || ref($arguments[0]) eq 'ARRAY');
+    return $invocant->toString_j1_3(@arguments);
 }
 
 use java::lang::Object ();

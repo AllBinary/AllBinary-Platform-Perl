@@ -44,7 +44,7 @@ sub new {
 # throws Exception
 sub getTransformInfoInterfaceToCustomize {
     my ($self, $customizerTransformInfoInterface, $transformInfoInterface) = @_;
-        if ($views::business::context::modules::storefront::customizer::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($views::business::context::modules::storefront::customizer::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{VIEW})) {
+        if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{VIEW})) {
             $self->{logUtil}->putF("View Name: " . $customizerTransformInfoInterface->getName(), $self, "getTransformInfoInterfaceToCustomize()");
         }
         my $transformInfoEntityInterface = 'org::allbinary::data::tables::transform::info::TransformInfoEntityBuilder'->getInstance();
@@ -58,7 +58,7 @@ sub getTransformInfoInterfaceToCustomize {
 # throws Exception
 sub getTransformInfoObjectConfigComponentNodesToCustomize {
     my ($self, $customizerTransformInfoInterface, $transformInfoInterface) = @_;
-        if ($views::business::context::modules::storefront::customizer::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($views::business::context::modules::storefront::customizer::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{VIEW})) {
+        if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{VIEW})) {
             $self->{logUtil}->putF("View Name: " . $customizerTransformInfoInterface->getName(), $self, "getTransformInfoObjectConfigComponentNodesToCustomize()");
         }
         my $transformInfoEntityInterface = 'org::allbinary::data::tables::transform::info::TransformInfoEntityBuilder'->getInstance();
@@ -72,7 +72,7 @@ sub getTransformInfoObjectConfigComponentNodesToCustomize {
 # throws Exception
 sub getTransformInfoObjectConfigComponentNodes {
     my ($self, $transformInfoInterface) = @_;
-        if ($views::business::context::modules::storefront::customizer::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($views::business::context::modules::storefront::customizer::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{VIEW})) {
+        if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{VIEW})) {
             $self->{logUtil}->putF("View Name: " . $transformInfoInterface->getName(), $self, "getTransformInfoObjectConfigComponentNodes()");
         }
         my $transformInfoObjectConfigInterface = $transformInfoInterface->getObjectConfigInterface();
@@ -83,7 +83,7 @@ sub getTransformInfoObjectConfigComponentNodes {
 # throws Exception
 sub getTransformInfoObjectConfigGroupComponentNodes {
     my ($self, $transformInfoInterface) = @_;
-        if ($views::business::context::modules::storefront::customizer::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($views::business::context::modules::storefront::customizer::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{VIEW})) {
+        if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{VIEW})) {
             $self->{logUtil}->putF("View Name: " . $transformInfoInterface->getName(), $self, "getTransformInfoObjectConfigComponentNodes()");
         }
         my $transformInfoObjectConfigInterface = $transformInfoInterface->getObjectConfigInterface();
@@ -94,7 +94,7 @@ sub getTransformInfoObjectConfigGroupComponentNodes {
 # throws Exception
 sub insert {
     my ($self, $transformInfoInterface, $domNodeInterface) = @_;
-        if ($views::business::context::modules::storefront::customizer::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($views::business::context::modules::storefront::customizer::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{VIEW})) {
+        if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{VIEW})) {
             $self->{logUtil}->putF("View Name: " . $transformInfoInterface->getName(), $self, "insert()");
         }
         my $transformInfoEntityInterface = 'org::allbinary::data::tables::transform::info::TransformInfoEntityBuilder'->getInstance();
@@ -103,7 +103,7 @@ sub insert {
         $document->appendChild($domNodeInterface->toXmlNode($document));
         my $documentString = 'org::allbinary::data::tree::dom::document::XmlDocumentHelper'->toString($document);
         my $stringBuffer = 'org::allbinary::logic::string::StringMaker'->new();
-        if ($views::business::context::modules::storefront::customizer::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($views::business::context::modules::storefront::customizer::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{VIEW})) {
+        if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{VIEW})) {
             $stringBuffer->append("Total Views For Modification: ");
             $stringBuffer->appendint($allViewsToBeModified->size());
             $stringBuffer->append(" New Xml/Data: ");
@@ -115,7 +115,7 @@ sub insert {
         for (my $index = 0; $index < $size; $index++) {
             my $transformInfo = $allViewsToBeModified->get($index);
             my $viewNameOfViewToBeModified = $transformInfo->getName();
-            if ($views::business::context::modules::storefront::customizer::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($views::business::context::modules::storefront::customizer::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{VIEW})) {
+            if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{VIEW})) {
                 $stringBuffer->delete(0, $stringBuffer->length());
                 $stringBuffer->append($transformInfoInterface->getName());
                 $stringBuffer->append(" is modifying view: ");
@@ -125,7 +125,7 @@ sub insert {
             my $httpTransformInfoInterface = $transformInfoInterface;
             my $specifiedTransformInfoInterface = $transformInfoEntityInterface->get($viewNameOfViewToBeModified, $httpTransformInfoInterface->getPropertiesHashMap(), $httpTransformInfoInterface->getPageContext());
             if (!defined($specifiedTransformInfoInterface)) {
-                if ($views::business::context::modules::storefront::customizer::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($views::business::context::modules::storefront::customizer::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{VIEW})) {
+                if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{VIEW})) {
                     $stringBuffer->delete(0, $stringBuffer->length());
                     $stringBuffer->append($transformInfoInterface->getName());
                     $stringBuffer->append(" is unable to add data to view: ");
@@ -134,10 +134,10 @@ sub insert {
                     $self->{logUtil}->putF($stringBuffer->toString(), $self, "insert()");
                 }
             } else {
-                if ($views::business::context::modules::storefront::customizer::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($views::business::context::modules::storefront::customizer::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{VIEW})) {
+                if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{VIEW})) {
                     $self->{logUtil}->putF($transformInfoInterface->getName() . " is adding data to view: " . $viewNameOfViewToBeModified, $self, "insert()");
                 }
-                if ($views::business::context::modules::storefront::customizer::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($views::business::context::modules::storefront::customizer::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{VIEW})) {
+                if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{VIEW})) {
                     $stringBuffer->delete(0, $stringBuffer->length());
                     $stringBuffer->append($viewNameOfViewToBeModified);
                     $stringBuffer->append(" is changing data in ");
@@ -155,7 +155,7 @@ sub insert {
 # throws Exception
 sub write {
     my ($self, $specifiedTransformInfoInterface, $documentString) = @_;
-        if ($views::business::context::modules::storefront::customizer::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($views::business::context::modules::storefront::customizer::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{VIEW})) {
+        if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{VIEW})) {
             $self->{logUtil}->putF("View Name: " . $specifiedTransformInfoInterface->getName(), $self, "write()");
         }
         my $transformInfoEntityInterface = 'org::allbinary::data::tables::transform::info::TransformInfoEntityBuilder'->getInstance();
@@ -167,7 +167,7 @@ sub write {
 # throws Exception
 sub getViewDataForComponentsInObjectConfig {
     my ($self, $transformInfoInterface) = @_;
-        if ($views::business::context::modules::storefront::customizer::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($views::business::context::modules::storefront::customizer::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{VIEW})) {
+        if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{VIEW})) {
             $self->{logUtil}->putF("View Name: " . $transformInfoInterface->getName(), $self, "getViewDataForComponentsInObjectConfig()");
         }
         my $transformInfoObjectConfigInterface = $transformInfoInterface->getObjectConfigInterface();
@@ -199,6 +199,8 @@ use org::allbinary::logic::visual::transform::info::TransformInfoHttpInterface (
 use org::allbinary::logic::visual::transform::info::TransformInfoInterface ();
 use org::allbinary::logic::visual::transform::info::objectConfig::TransformInfoObjectConfigInterface ();
 use org::w3c::dom::Document ();
+use org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory ();
+use org::allbinary::logic::communication::log::config::type::LogConfigTypes ();
 
 1;
 

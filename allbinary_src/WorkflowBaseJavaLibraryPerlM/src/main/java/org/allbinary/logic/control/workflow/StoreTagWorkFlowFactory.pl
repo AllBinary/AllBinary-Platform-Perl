@@ -27,7 +27,7 @@ sub _init_fields {
 }
 
 
-sub getInstance {
+sub getInstance_j0 {
     my ($class) = @_;
         return $org::allbinary::logic::control::workflow::StoreTagWorkFlowFactory::instance;
 }
@@ -42,12 +42,11 @@ sub new {
 
 
 # throws Exception, LicensingException
-# Java overloaded method: Perl keeps the last definition
-sub getInstance {
+sub getInstance_j3 {
     my ($self, $abeClientInformation, $propertiesHashMap, $pageContext) = @_;
         try {
             my $workFlowClassName = $propertiesHashMap->get($org::allbinary::business::DynamicObjectData::NAME);
-            if ($org::allbinary::logic::control::workflow::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($org::allbinary::logic::control::workflow::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{TAGHELPERFACTORY})) {
+            if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{TAGHELPERFACTORY})) {
                 my $stringBuffer = 'org::allbinary::logic::string::StringMaker'->new();
                 $stringBuffer->append("Creating WorkFlow: ");
                 $stringBuffer->append($workFlowClassName);
@@ -64,7 +63,7 @@ sub getInstance {
             $params->[1] = $pageContext;
             return 'org::allbinary::logic::system::loader::AbeFactory'->getInstance()->getInstance($abeClientInformation, $workFlowClassName, $classes, $params);
         } catch ($e) {
-            if ($org::allbinary::logic::control::workflow::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($org::allbinary::logic::control::workflow::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{TAGHELPERFACTORYERROR})) {
+            if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{TAGHELPERFACTORYERROR})) {
                 my $workFlowClassName = $propertiesHashMap->get($org::allbinary::business::DynamicObjectData::NAME);
                 my $stringBuffer = 'org::allbinary::logic::string::StringMaker'->new();
                 $stringBuffer->append("Error Creating WorkFlow: ");
@@ -78,6 +77,13 @@ sub getInstance {
         }
 }
 
+sub getInstance {
+    my ($invocant, @arguments) = @_;
+    return $invocant->getInstance_j0(@arguments) if scalar(@arguments) == 0;
+    return $invocant->getInstance_j3(@arguments) if scalar(@arguments) == 3;
+    die "No method getInstance takes " . scalar(@arguments) . " arguments";
+}
+
 use java::lang::Object ();
 use java::lang::LazyStatic ();
 use java::util::HashMap ();
@@ -89,6 +95,8 @@ use org::allbinary::logic::system::loader::AbeFactory ();
 use org::allbinary::logic::system::security::licensing::AbeClientInformationInterface ();
 use org::allbinary::logic::system::security::licensing::LicensingException ();
 use org::allbinary::string::CommonStrings ();
+use org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory ();
+use org::allbinary::logic::communication::log::config::type::LogConfigTypes ();
 
 1;
 

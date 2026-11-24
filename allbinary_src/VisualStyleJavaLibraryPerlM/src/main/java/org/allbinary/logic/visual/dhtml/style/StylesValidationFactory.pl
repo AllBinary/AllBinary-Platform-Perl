@@ -27,7 +27,7 @@ sub _init_fields {
 }
 
 
-sub getInstance {
+sub getInstance_j0 {
     my ($class) = @_;
         return $org::allbinary::logic::visual::dhtml::style::StylesValidationFactory::instance;
 }
@@ -42,33 +42,32 @@ sub new {
 
 
 # throws Exception
-# Java overloaded method: Perl keeps the last definition
-sub getInstance {
+sub getInstance_j1_1 {
     my ($self, $document) = @_;
         my $commonStrings = 'org::allbinary::string::CommonStrings'->getInstance();
-        my $nodeList = $document->getElementsByTagName('org::allbinary::logic::visual::dhtml::style::StylesData'->getInstance()->{NAME});
-        if ($org::allbinary::logic::visual::dhtml::style::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($org::allbinary::logic::visual::dhtml::style::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{VIEW})) {
+        my $nodeList = $document->getElementsByTagName(java::lang::Object::jstatic('org::allbinary::logic::visual::dhtml::style::StylesValidationFactory', 'StylesData')->getInstance()->{NAME});
+        if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{VIEW})) {
             $self->{logUtil}->putF("Style Present: " . 'org::allbinary::data::tree::dom::document::XmlDocumentHelper'->toString($document), $self, $commonStrings->{GET_INSTANCE});
         }
-        if ($org::allbinary::logic::visual::dhtml::style::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($org::allbinary::logic::visual::dhtml::style::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{VIEW})) {
+        if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{VIEW})) {
             $self->{logUtil}->putF("Styles Present: " . $nodeList->getLength(), $self, $commonStrings->{GET_INSTANCE});
         }
         for (my $index = 0; $index < $nodeList->getLength(); $index++) {
             my $stylesNode = $nodeList->item($index);
-            my $styleNodeList = 'org::allbinary::data::tree::dom::DomSearchHelper'->getAllNodes('org::allbinary::logic::visual::dhtml::style::StyleData'->getInstance()->{NAME}, $stylesNode->getChildNodes());
-            if ($org::allbinary::logic::visual::dhtml::style::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($org::allbinary::logic::visual::dhtml::style::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{VIEW})) {
+            my $styleNodeList = 'org::allbinary::data::tree::dom::DomSearchHelper'->getAllNodes(java::lang::Object::jstatic('org::allbinary::logic::visual::dhtml::style::StylesValidationFactory', 'StyleData')->getInstance()->{NAME}, $stylesNode->getChildNodes());
+            if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{VIEW})) {
                 $self->{logUtil}->putF("Number Of Style Nodes Present: " . $styleNodeList->size(), $self, $commonStrings->{GET_INSTANCE});
             }
             for (my $styleNodesIndex = 0; $styleNodesIndex < $styleNodeList->size(); $styleNodesIndex++) {
                 my $styleNode = $styleNodeList->get($styleNodesIndex);
                 my $cssElementStyleNodeList = 'org::allbinary::data::tree::dom::DomSearchHelper'->getAllNodes('org::allbinary::logic::visual::dhtml::style::css::CssElementData'->getInstance()->{NAME}, $styleNode->getChildNodes());
-                if ($org::allbinary::logic::visual::dhtml::style::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($org::allbinary::logic::visual::dhtml::style::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{VIEW})) {
+                if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{VIEW})) {
                     $self->{logUtil}->putF("Number Of Element Nodes Present: " . $cssElementStyleNodeList->size(), $self, $commonStrings->{GET_INSTANCE});
                 }
                 return 'org::allbinary::logic::visual::dhtml::style::css::CssElementsValidationFactory'->getInstance($cssElementStyleNodeList);
             }
         }
-        if ($org::allbinary::logic::visual::dhtml::style::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($org::allbinary::logic::visual::dhtml::style::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{VIEW})) {
+        if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{VIEW})) {
             $self->{logUtil}->putF("No Style Present", $self, $commonStrings->{GET_INSTANCE});
         }
         return 'org::allbinary::util::BasicArrayListD'->new();
@@ -76,11 +75,23 @@ sub getInstance {
 
 
 # throws Exception
-# Java overloaded method: Perl keeps the last definition
-sub getInstance {
+sub getInstance_j1_2 {
     my ($class, $hashMap) = @_;
         my $stylesDocument = $hashMap->get($org::allbinary::logic::communication::http::request::NameSpaceRequestParamData::DOCUMENT);
         return 'org::allbinary::logic::visual::dhtml::style::StylesValidationFactory'->getInstance()->getInstance($stylesDocument);
+}
+
+sub getInstance {
+    my ($invocant, @arguments) = @_;
+    return $invocant->getInstance_j0(@arguments) if scalar(@arguments) == 0;
+    return $invocant->getInstance_j1(@arguments) if scalar(@arguments) == 1;
+    die "No method getInstance takes " . scalar(@arguments) . " arguments";
+}
+
+sub getInstance_j1 {
+    my ($invocant, @arguments) = @_;
+    return $invocant->getInstance_j1_1(@arguments) if 1 && (!defined($arguments[0]) || (ref($arguments[0]) && ref($arguments[0]) ne 'ARRAY'));
+    return $invocant->getInstance_j1_2(@arguments);
 }
 
 use java::lang::Object ();
@@ -98,8 +109,8 @@ use org::allbinary::string::CommonStrings ();
 use org::w3c::dom::Document ();
 use org::w3c::dom::Node ();
 use org::w3c::dom::NodeList ();
-use org::allbinary::logic::visual::dhtml::style::StylesData ();
-use org::allbinary::logic::visual::dhtml::style::StyleData ();
+use org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory ();
+use org::allbinary::logic::communication::log::config::type::LogConfigTypes ();
 
 1;
 

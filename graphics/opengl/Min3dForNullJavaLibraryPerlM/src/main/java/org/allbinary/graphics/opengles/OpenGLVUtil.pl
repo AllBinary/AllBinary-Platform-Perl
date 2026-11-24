@@ -35,7 +35,6 @@ sub getInstance {
 
 use java::lang::Object ();
 use java::lang::LazyStatic ();
-use org::allbinary::graphics::opengles::OpenGLVUtilBase ();
 
 1;
 

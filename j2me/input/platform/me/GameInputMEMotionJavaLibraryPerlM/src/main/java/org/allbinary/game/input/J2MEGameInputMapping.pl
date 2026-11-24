@@ -33,7 +33,7 @@ sub new {
 sub init {
     my ($self, $abeClientInformation) = @_;
         $self->{logUtil}->putF($self->{commonStrings}->{START}, $self, $self->{commonStrings}->{INIT});
-        'org::allbinary::game::input::J2MEKeyFactory'->getInstance()->init();
+        java::lang::Object::jstatic('org::allbinary::game::input::J2MEGameInputMapping', 'J2MEKeyFactory')->getInstance()->init();
         $self->SUPER::init($abeClientInformation);
         if ($self->getTotalMapped() == 0 || $self->isDefaultNew()) {
             $self->getInputMapping()->addMapping($self->getDefault());
@@ -44,7 +44,7 @@ sub init {
 
 sub isDelete {
     my ($self, $input) = @_;
-        if ($input == 'org::allbinary::game::input::GameKeyFactory'->getInstance()->{GAME_D}) {
+        if ($input == java::lang::Object::jstatic('org::allbinary::game::input::J2MEGameInputMapping', 'GameKeyFactory')->getInstance()->{GAME_D}) {
             return 1;
         } else {
             return 0;
@@ -61,8 +61,6 @@ use java::lang::Object ();
 use org::allbinary::game::configuration::persistance::GamePersistanceStrings ();
 use org::allbinary::game::input::mapping::PersistentInputMapping ();
 use org::allbinary::logic::system::security::licensing::AbeClientInformationInterface ();
-use org::allbinary::game::input::J2MEKeyFactory ();
-use org::allbinary::game::input::GameKeyFactory ();
 
 1;
 

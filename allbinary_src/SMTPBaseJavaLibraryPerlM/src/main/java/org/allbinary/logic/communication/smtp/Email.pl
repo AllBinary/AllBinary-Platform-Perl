@@ -65,7 +65,7 @@ sub _new8 {
 
 
 # throws Exception
-sub init {
+sub init_j7 {
     my ($self, $from, $to, $subject, $server, $textBody, $htmlAttachment, $contentBase) = @_;
         try {
             my $stringValidationUtil = 'org::allbinary::logic::string::StringValidationUtil'->getInstance();
@@ -82,7 +82,7 @@ sub init {
             }
             $self->init($server, undef, ['javax::mail::internet::InternetAddress'->new($from)], ['javax::mail::internet::InternetAddress'->new($to)], undef, undef, $subject, $mimeBodyParts);
         } catch ($e) {
-            if ($org::allbinary::logic::communication::smtp::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($org::allbinary::logic::communication::smtp::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{EMAILLOGGINGERROR})) {
+            if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{EMAILLOGGINGERROR})) {
                 my $commonStrings = 'org::allbinary::string::CommonStrings'->getInstance();
                 $self->{logUtil}->put($commonStrings->{EXCEPTION}, $self, "emailConstructor", $e);
             }
@@ -92,21 +92,20 @@ sub init {
 
 
 # throws MessagingException
-# Java overloaded method: Perl keeps the last definition
-sub init {
+sub init_j8 {
     my ($self, $server, $authenticator, $addresses_from, $addresses_to, $addresses_cc, $addresses_bcc, $subject, $mimeBodyParts) = @_;
         $self->{properties} = 'java::util::Properties'->new();
         $self->{properties}->put($org::allbinary::logic::communication::smtp::Email::SMTP_HOST, $server);
         try {
             my $hostName = 'org::allbinary::logic::string::StringUtil'->getInstance()->{EMPTY_STRING};
             if ('org::allbinary::logic::string::StringValidationUtil'->getInstance()->isEmpty($hostName)) {
-                if ($org::allbinary::logic::communication::smtp::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($org::allbinary::logic::communication::smtp::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{EMAILLOGGINGERROR})) {
+                if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{EMAILLOGGINGERROR})) {
                     $self->{logUtil}->putF("Unable to get HostName so using fake", $self, "init()");
                 }
                 $self->{properties}->put($org::allbinary::logic::communication::smtp::Email::SMTP_LOCAL_HOST, "FakeHostName");
             }
         } catch ($e) {
-            if ($org::allbinary::logic::communication::smtp::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($org::allbinary::logic::communication::smtp::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{EMAILLOGGINGERROR})) {
+            if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{EMAILLOGGINGERROR})) {
                 $self->{logUtil}->put("Continuing on Exception: Unable to get HostName", $self, "init()", $e);
             }
             $self->{properties}->put($org::allbinary::logic::communication::smtp::Email::SMTP_LOCAL_HOST, "FakeHostName");
@@ -132,6 +131,13 @@ sub init {
             $mimeMultipart->addBodyPart($mimeBodyParts->[$i]);
         }
         $self->{msg}->setContent($mimeMultipart);
+}
+
+sub init {
+    my ($invocant, @arguments) = @_;
+    return $invocant->init_j7(@arguments) if scalar(@arguments) == 7;
+    return $invocant->init_j8(@arguments) if scalar(@arguments) == 8;
+    die "No method init takes " . scalar(@arguments) . " arguments";
 }
 
 
@@ -163,42 +169,42 @@ sub toHashMap {
     my ($self) = @_;
         try {
             my $hashMap = 'org::allbinary::logic::StdUtil'->getInstance()->createHashMap();
-            $hashMap->put($org::allbinary::logic::communication::smtp::EmailData::SERVER, $self->{properties}->get($org::allbinary::logic::communication::smtp::Email::SMTP_HOST));
+            $hashMap->put(java::lang::Object::jstatic('org::allbinary::logic::communication::smtp::Email', 'EmailData')->{SERVER}, $self->{properties}->get($org::allbinary::logic::communication::smtp::Email::SMTP_HOST));
             my $addresses = $self->{msg}->getFrom();
             if (defined($addresses)) {
                 for (my $index = 0; $index < scalar(@{$addresses}); $index++) {
-                    $hashMap->put($org::allbinary::logic::communication::smtp::EmailData::FROM, $addresses->[$index]->toString());
+                    $hashMap->put(java::lang::Object::jstatic('org::allbinary::logic::communication::smtp::Email', 'EmailData')->{FROM}, $addresses->[$index]->toString());
                 }
             }
             $addresses = $self->{msg}->getRecipients($javax::mail::Message::RecipientType->{TO});
             if (defined($addresses)) {
                 for (my $index = 0; $index < scalar(@{$addresses}); $index++) {
-                    $hashMap->put($org::allbinary::logic::communication::smtp::EmailData::TO, $addresses->[$index]->toString());
+                    $hashMap->put(java::lang::Object::jstatic('org::allbinary::logic::communication::smtp::Email', 'EmailData')->{TO}, $addresses->[$index]->toString());
                 }
             }
             $addresses = $self->{msg}->getRecipients($javax::mail::Message::RecipientType->{CC});
             if (defined($addresses)) {
                 for (my $index = 0; $index < scalar(@{$addresses}); $index++) {
-                    $hashMap->put($org::allbinary::logic::communication::smtp::EmailData::CC, $addresses->[$index]->toString());
+                    $hashMap->put(java::lang::Object::jstatic('org::allbinary::logic::communication::smtp::Email', 'EmailData')->{CC}, $addresses->[$index]->toString());
                 }
             }
             $addresses = $self->{msg}->getRecipients($javax::mail::Message::RecipientType->{BCC});
             if (defined($addresses)) {
                 for (my $index = 0; $index < scalar(@{$addresses}); $index++) {
-                    $hashMap->put($org::allbinary::logic::communication::smtp::EmailData::BCC, $addresses->[$index]->toString());
+                    $hashMap->put(java::lang::Object::jstatic('org::allbinary::logic::communication::smtp::Email', 'EmailData')->{BCC}, $addresses->[$index]->toString());
                 }
             }
-            $hashMap->put($org::allbinary::logic::communication::smtp::EmailData::SUBJECT, $self->{msg}->getSubject());
+            $hashMap->put(java::lang::Object::jstatic('org::allbinary::logic::communication::smtp::Email', 'EmailData')->{SUBJECT}, $self->{msg}->getSubject());
             my $mimeMultipart = $self->{msg}->getContent();
             if (defined($mimeMultipart)) {
                 for (my $index = 0; $index < $mimeMultipart->getCount(); $index++) {
                     my $content = $mimeMultipart->getBodyPart($index)->getContent();
-                    $hashMap->put($org::allbinary::logic::communication::smtp::EmailData::CONTENT, $content);
+                    $hashMap->put(java::lang::Object::jstatic('org::allbinary::logic::communication::smtp::Email', 'EmailData')->{CONTENT}, $content);
                 }
             }
             return $hashMap;
         } catch ($e) {
-            if ($org::allbinary::logic::communication::smtp::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($org::allbinary::logic::communication::smtp::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{EMAILLOGGINGERROR})) {
+            if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{EMAILLOGGINGERROR})) {
                 $self->{logUtil}->put($self->{commonStrings}->{EXCEPTION}, $self, "toHashMap()", $e);
             }
             die $e;
@@ -209,7 +215,7 @@ sub toHashMap {
 # throws Exception
 sub toXmlNode {
     my ($self, $document) = @_;
-        my $node = 'org::allbinary::data::tree::dom::ModDomHelper'->createNameValueNodes($document, $org::allbinary::logic::communication::smtp::EmailData::NAME, $self->toHashMap());
+        my $node = 'org::allbinary::data::tree::dom::ModDomHelper'->createNameValueNodes($document, java::lang::Object::jstatic('org::allbinary::logic::communication::smtp::Email', 'EmailData')->{NAME}, $self->toHashMap());
         return $node;
 }
 
@@ -224,7 +230,7 @@ use java::lang::Object ();
 # use java::io::ByteArrayOutputStream ();
 # use java::io::PrintStream ();
 use java::util::HashMap ();
-# use java::util::Properties ();
+use java::util::Properties ();
 # use javax::mail::Address ();
 # use javax::mail::Authenticator ();
 # use javax::mail::Message ();
@@ -243,8 +249,9 @@ use org::allbinary::logic::string::StringValidationUtil ();
 use org::allbinary::string::CommonStrings ();
 use org::w3c::dom::Document ();
 use org::w3c::dom::Node ();
+use org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory ();
+use org::allbinary::logic::communication::log::config::type::LogConfigTypes ();
 use org::allbinary::logic::communication::smtp::EmailInterface ();
-use org::allbinary::logic::communication::smtp::EmailData ();
 
 1;
 

@@ -11,7 +11,7 @@ tie our $instance, 'java::lang::LazyStatic', sub { 'org::allbinary::graphics::Op
 
 sub _init_fields {
     my ($self) = @_;
-    $self->{ARGB_8888} = 'org::allbinary::graphics::Config'->new(undef);
+    $self->{ARGB_8888} = 'org::allbinary::graphics::OpenGLBitmapConfig'->new(undef);
 }
 
 sub new {
@@ -28,7 +28,7 @@ sub getInstance {
 }
 
 
-sub createBitmap {
+sub createBitmap_j3 {
     my ($self, $width, $height, $config) = @_;
         return 'org::allbinary::graphics::OpenGLBitmap'->new('javax::microedition::lcdui::Image'->createImage($width, $height));
 }
@@ -41,35 +41,17 @@ sub decodeStream {
 }
 
 
-# Java overloaded method: Perl keeps the last definition
-sub createBitmap {
+sub createBitmap_j1 {
     my ($self, $image) = @_;
         return 'org::allbinary::graphics::OpenGLBitmap'->new($image);
 }
-{
-    package org::allbinary::graphics::Config;
-    use strict;
-    use warnings;
-    use feature 'try';
-    no warnings 'experimental::try';
-    use parent -norequire,'java::lang::Object';
-    
 
-    sub _init_fields {
-        my ($self) = @_;
-        $self->{bitmapConfig} = undef;
-    }
-    
-
-    sub new {
-        my ($class, $bitmapConfig) = @_;
-        my $self = bless({}, $class);
-        _init_fields($self);
-            $self->{bitmapConfig} = $bitmapConfig;
-        return $self;
-    }
-    }
-
+sub createBitmap {
+    my ($invocant, @arguments) = @_;
+    return $invocant->createBitmap_j3(@arguments) if scalar(@arguments) == 3;
+    return $invocant->createBitmap_j1(@arguments) if scalar(@arguments) == 1;
+    die "No method createBitmap takes " . scalar(@arguments) . " arguments";
+}
 
 use java::lang::Object ();
 use java::lang::LazyStatic ();
@@ -79,6 +61,7 @@ use javax::microedition::lcdui::Image ();
 use org::allbinary::image::ImageFactory ();
 use org::allbinary::platform::graphics::PlatformBitmapBaseFactory ();
 use org::allbinary::platform::graphics::PlatformBitmapBase ();
+use org::allbinary::graphics::OpenGLBitmapConfig ();
 use org::allbinary::graphics::OpenGLBitmap ();
 
 1;

@@ -29,15 +29,21 @@ sub new {
 
 
 # throws IOException
-sub write {
+sub write_j1 {
     my ($self, $b) = @_;
 }
 
 
 # throws IOException
-# Java overloaded method: Perl keeps the last definition
-sub write {
+sub write_j3 {
     my ($self, $b, $off, $len) = @_;
+}
+
+sub write {
+    my ($invocant, @arguments) = @_;
+    return $invocant->write_j1(@arguments) if scalar(@arguments) == 1;
+    return $invocant->write_j3(@arguments) if scalar(@arguments) == 3;
+    die "No method write takes " . scalar(@arguments) . " arguments";
 }
 
 

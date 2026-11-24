@@ -31,7 +31,7 @@ sub new {
     my $self = $class->SUPER::new($categoryFactoryInterface);
     _init_fields($self);
         # super(...) made $self above
-        if ($org::allbinary::data::tree::category::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($org::allbinary::data::tree::category::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{CATEGORY})) {
+        if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{CATEGORY})) {
             $self->{logUtil}->putF($self->{commonStrings}->{START}, $self, "CategoryLoader(CategoryFactoryInterface categoryFactoryInterface)");
         }
     return $self;
@@ -60,7 +60,7 @@ sub getDoc {
                 die ("Null Category");
             }
         } catch ($e) {
-            if ($org::allbinary::data::tree::category::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($org::allbinary::data::tree::category::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{SQLLOGGING})) {
+            if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{SQLLOGGING})) {
                 try {
                     $categoryInterface->log();
                 } catch ($e2) {
@@ -73,14 +73,14 @@ sub getDoc {
 }
 
 
-sub get {
+sub get_j1_1 {
     my ($self, $categoryInterface) = @_;
         try {
             my $document = $self->getDoc($categoryInterface);
             my $categoryNode = 'org::allbinary::data::tree::dom::DomSearchHelper'->getNode('org::allbinary::business::category::CategoryData'->getInstance()->{NAME}, $document->getChildNodes());
             return $self->addProperties($categoryInterface, $categoryNode->getChildNodes());
         } catch ($e) {
-            if ($org::allbinary::data::tree::category::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($org::allbinary::data::tree::category::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{SQLLOGGING})) {
+            if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{SQLLOGGING})) {
                 $self->{logUtil}->put($self->{commonStrings}->{FAILURE}, $self, $self->{commonStrings}->{GET}, $e);
             }
             return undef;
@@ -88,29 +88,40 @@ sub get {
 }
 
 
-# Java overloaded method: Perl keeps the last definition
-sub get {
+sub get_j1_2 {
     my ($self, $document) = @_;
         try {
             my $categoryNode = 'org::allbinary::data::tree::dom::DomSearchHelper'->getNode('org::allbinary::business::category::CategoryData'->getInstance()->{NAME}, $document->getChildNodes());
             my $loadedCategoryInterface = $self->{categoryFactoryInterface}->getRootInstanceFromNode($categoryNode);
             return $self->addProperties($loadedCategoryInterface, $categoryNode->getChildNodes());
         } catch ($e) {
-            if ($org::allbinary::data::tree::category::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($org::allbinary::data::tree::category::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{SQLLOGGING})) {
+            if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{SQLLOGGING})) {
                 $self->{logUtil}->put($self->{commonStrings}->{FAILURE}, $self, $self->{commonStrings}->{GET}, $e);
             }
             return undef;
         }
 }
 
+sub get {
+    my ($invocant, @arguments) = @_;
+    return $invocant->get_j1(@arguments) if scalar(@arguments) == 1;
+    die "No method get takes " . scalar(@arguments) . " arguments";
+}
 
-sub getAll {
+sub get_j1 {
+    my ($invocant, @arguments) = @_;
+    return $invocant->get_j1_1(@arguments) if 1 && (!defined($arguments[0]) || (ref($arguments[0]) && ref($arguments[0]) ne 'ARRAY'));
+    return $invocant->get_j1_2(@arguments);
+}
+
+
+sub getAll_j1_1 {
     my ($self, $categoryInterface) = @_;
         try {
             my $document = $self->getDoc($categoryInterface);
             return $self->getAll($document);
         } catch ($e) {
-            if ($org::allbinary::data::tree::category::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($org::allbinary::data::tree::category::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{SQLLOGGING})) {
+            if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{SQLLOGGING})) {
                 $self->{logUtil}->put($self->{commonStrings}->{FAILURE}, $self, $self->{commonStrings}->{GET}, $e);
             }
             return undef;
@@ -118,15 +129,14 @@ sub getAll {
 }
 
 
-# Java overloaded method: Perl keeps the last definition
-sub getAll {
+sub getAll_j1_2 {
     my ($self, $document) = @_;
         try {
             my $categoryNode = 'org::allbinary::data::tree::dom::DomSearchHelper'->getNode('org::allbinary::business::category::CategoryData'->getInstance()->{NAME}, $document->getChildNodes());
             my $loadedCategoryInterface = $self->{categoryFactoryInterface}->getRootInstanceFromNode($categoryNode);
             return $self->addProperties($loadedCategoryInterface, $categoryNode->getChildNodes());
         } catch ($e) {
-            if ($org::allbinary::data::tree::category::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($org::allbinary::data::tree::category::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{SQLLOGGING})) {
+            if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{SQLLOGGING})) {
                 $self->{logUtil}->put($self->{commonStrings}->{FAILURE}, $self, $self->{commonStrings}->{GET}, $e);
             }
             return undef;
@@ -134,8 +144,7 @@ sub getAll {
 }
 
 
-# Java overloaded method: Perl keeps the last definition
-sub getAll {
+sub getAll_j2 {
     my ($self, $parentCategoryInterface, $categoryNodeList) = @_;
         try {
             if (defined($categoryNodeList)) {
@@ -149,11 +158,24 @@ sub getAll {
             }
             return $parentCategoryInterface;
         } catch ($e) {
-            if ($org::allbinary::data::tree::category::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($org::allbinary::data::tree::category::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{SQLLOGGING})) {
+            if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{SQLLOGGING})) {
                 $self->{logUtil}->put($self->{commonStrings}->{FAILURE}, $self, $self->{commonStrings}->{GET}, $e);
             }
             return undef;
         }
+}
+
+sub getAll {
+    my ($invocant, @arguments) = @_;
+    return $invocant->getAll_j1(@arguments) if scalar(@arguments) == 1;
+    return $invocant->getAll_j2(@arguments) if scalar(@arguments) == 2;
+    die "No method getAll takes " . scalar(@arguments) . " arguments";
+}
+
+sub getAll_j1 {
+    my ($invocant, @arguments) = @_;
+    return $invocant->getAll_j1_1(@arguments) if 1 && (!defined($arguments[0]) || (ref($arguments[0]) && ref($arguments[0]) ne 'ARRAY'));
+    return $invocant->getAll_j1_2(@arguments);
 }
 
 
@@ -171,7 +193,7 @@ sub addProperties {
             }
             return $loadedCategoryInterface;
         } catch ($e) {
-            if ($org::allbinary::data::tree::category::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($org::allbinary::data::tree::category::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{SQLLOGGING})) {
+            if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{SQLLOGGING})) {
                 $self->{logUtil}->put($self->{commonStrings}->{FAILURE}, $self, $self->{commonStrings}->{GET}, $e);
             }
             return undef;
@@ -193,6 +215,8 @@ use org::allbinary::logic::io::path::AbPath ();
 use org::w3c::dom::Document ();
 use org::w3c::dom::Node ();
 use org::w3c::dom::NodeList ();
+use org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory ();
+use org::allbinary::logic::communication::log::config::type::LogConfigTypes ();
 use org::allbinary::data::tree::category::CategoryModifierTree ();
 use org::allbinary::data::tree::category::CategoryLoaderInterface ();
 

@@ -55,16 +55,18 @@ sub initComponents {
     my ($self) = @_;
         my $layout = 'javax::swing::GroupLayout'->new($self);
         $self->setLayout($layout);
-        $layout->setHorizontalGroup($layout->createParallelGroup($org::allbinary::image::gui::javax::swing->{GroupLayout}->{Alignment}->{LEADING})->addGap(0, 400, 32767));
-        $layout->setVerticalGroup($layout->createParallelGroup($org::allbinary::image::gui::javax::swing->{GroupLayout}->{Alignment}->{LEADING})->addGap(0, 300, 32767));
+        $layout->setHorizontalGroup($layout->createParallelGroup($javax::swing::GroupLayout::Alignment->{LEADING})->addGap(0, 400, 32767));
+        $layout->setVerticalGroup($layout->createParallelGroup($javax::swing::GroupLayout::Alignment->{LEADING})->addGap(0, 300, 32767));
 }
 
 use java::lang::Object ();
-# use java::awt ();
+# use java::awt::Graphics ();
 # use java::awt::image::BufferedImage ();
 use org::allbinary::graphics::displayable::CanvasStrings ();
 use org::allbinary::logic::communication::log::LogUtil ();
 use org::allbinary::string::CommonStrings ();
+# use javax::swing::GroupLayout ();
+# use javax::swing::JPanel ();
 
 1;
 

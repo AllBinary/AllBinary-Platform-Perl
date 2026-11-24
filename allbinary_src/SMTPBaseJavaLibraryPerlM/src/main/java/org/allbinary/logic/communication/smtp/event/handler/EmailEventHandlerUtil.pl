@@ -44,7 +44,7 @@ sub new {
 # throws Exception
 sub getEventHandler {
     my ($self, $abeClientInformation, $userEmailEventNameData, $userVector) = @_;
-        if ($org::allbinary::logic::communication::smtp::event::handler::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($org::allbinary::logic::communication::smtp::event::handler::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{EMAILLOGGING})) {
+        if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{EMAILLOGGING})) {
             my $stringBuffer = 'org::allbinary::logic::string::StringMaker'->new();
             $stringBuffer->append("Returning UserEmailEventHandler for ");
             $stringBuffer->appendint($userVector->size());
@@ -90,6 +90,8 @@ use org::allbinary::logic::communication::smtp::event::UserEmailEventNameData ()
 use org::allbinary::logic::communication::smtp::event::modules::log::LogUserEmailEventListenerModule ();
 use org::allbinary::logic::string::StringMaker ();
 use org::allbinary::logic::system::security::licensing::AbeClientInformationInterface ();
+use org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory ();
+use org::allbinary::logic::communication::log::config::type::LogConfigTypes ();
 use org::allbinary::logic::communication::smtp::event::handler::UserEmailEventHandler ();
 
 1;

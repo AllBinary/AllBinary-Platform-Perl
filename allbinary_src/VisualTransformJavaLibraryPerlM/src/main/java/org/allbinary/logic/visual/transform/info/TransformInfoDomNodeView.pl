@@ -29,8 +29,20 @@ sub new {
     die "No constructor of TransformInfoDomNodeView takes " . scalar(@arguments) . " arguments";
 }
 
-
 sub _new2 {
+    my ($class, @arguments) = @_;
+    return $class->_new2_1(@arguments) if 1 && (!defined($arguments[0]) || (ref($arguments[0]) && ref($arguments[0]) ne 'ARRAY')) && !ref($arguments[1]);
+    return $class->_new2_2(@arguments);
+}
+
+sub _new1 {
+    my ($class, @arguments) = @_;
+    return $class->_new1_1(@arguments) if 1 && (!defined($arguments[0]) || (ref($arguments[0]) && ref($arguments[0]) ne 'ARRAY'));
+    return $class->_new1_2(@arguments);
+}
+
+
+sub _new2_1 {
     my ($class, $transformInfoInterface, $mapping) = @_;
     my $self = $class->SUPER::new($transformInfoInterface, $mapping);
         # super(...) made $self above
@@ -38,7 +50,7 @@ sub _new2 {
 }
 
 
-sub _new1 {
+sub _new1_1 {
     my ($class, $transformInfoInterface) = @_;
     my $self = $class->SUPER::new($transformInfoInterface);
         # super(...) made $self above
@@ -46,7 +58,7 @@ sub _new1 {
 }
 
 
-sub _new2 {
+sub _new2_2 {
     my ($class, $name, $mappedName) = @_;
     my $self = $class->SUPER::new($name, $mappedName);
         # super(...) made $self above
@@ -54,7 +66,7 @@ sub _new2 {
 }
 
 
-sub _new1 {
+sub _new1_2 {
     my ($class, $name) = @_;
     my $self = $class->SUPER::new($name, undef);
         # super(...) made $self above
@@ -65,7 +77,7 @@ sub _new1 {
 # throws Exception
 sub toXmlNode {
     my ($self, $document) = @_;
-        my $transformInfoData = 'org::allbinary::logic::visual::transform::info::TransformInfoData'->getInstance();
+        my $transformInfoData = java::lang::Object::jstatic('org::allbinary::logic::visual::transform::info::TransformInfoDomNodeView', 'TransformInfoData')->getInstance();
         my $subViewNode = $document->createElement($transformInfoData->{NAME});
         my $viewNameAttr = $document->createAttribute($transformInfoData->{NAME});
         $viewNameAttr->setValue($self->getTransformInfoInterface()->getName());
@@ -86,7 +98,6 @@ use org::w3c::dom::Document ();
 use org::w3c::dom::NamedNodeMap ();
 use org::w3c::dom::Node ();
 use org::allbinary::logic::visual::transform::info::TransformInfoDomNode ();
-use org::allbinary::logic::visual::transform::info::TransformInfoData ();
 
 1;
 

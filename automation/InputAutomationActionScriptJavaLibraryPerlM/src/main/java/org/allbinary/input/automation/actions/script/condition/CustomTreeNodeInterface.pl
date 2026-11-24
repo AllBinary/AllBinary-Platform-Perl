@@ -26,7 +26,7 @@ sub getJPopupMenu {
     die "abstract method getJPopupMenu";
 }
 
-# use javax::swing ();
+# use javax::swing::JPopupMenu ();
 # use javax::swing::tree::MutableTreeNode ();
 
 1;

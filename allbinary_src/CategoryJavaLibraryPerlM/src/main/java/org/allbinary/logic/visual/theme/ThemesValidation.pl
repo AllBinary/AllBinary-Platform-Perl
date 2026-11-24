@@ -33,6 +33,12 @@ sub new {
     die "No constructor of ThemesValidation takes " . scalar(@arguments) . " arguments";
 }
 
+sub _new1 {
+    my ($class, @arguments) = @_;
+    return $class->_new1_1(@arguments) if 1 && (!defined($arguments[0]) || (ref($arguments[0]) && ref($arguments[0]) ne 'ARRAY'));
+    return $class->_new1_2(@arguments);
+}
+
 
 sub _new0 {
     my ($class) = @_;
@@ -43,7 +49,7 @@ sub _new0 {
 }
 
 
-sub _new1 {
+sub _new1_1 {
     my ($class, $node) = @_;
     my $self = $class->SUPER::new();
     _init_fields($self);
@@ -51,7 +57,7 @@ sub _new1 {
 }
 
 
-sub _new1 {
+sub _new1_2 {
     my ($class, $hashMap) = @_;
     my $self = $class->SUPER::new();
     _init_fields($self);
@@ -86,7 +92,7 @@ sub toValidationInfoNode {
 # throws Exception
 sub toXmlNode {
     my ($self, $document) = @_;
-        my $node = $document->createElement('org::allbinary::logic::visual::theme::ThemesData'->getInstance()->{NAME});
+        my $node = $document->createElement(java::lang::Object::jstatic('org::allbinary::logic::visual::theme::ThemesValidation', 'ThemesData')->getInstance()->{NAME});
         my $size = $self->{themeVector}->size();
         for (my $i = 0; $i < $size; $i++) {
             my $themeDomNodeInterface = $self->{themeVector}->get($i);
@@ -104,7 +110,6 @@ use org::allbinary::logic::StdUtil ();
 use org::allbinary::logic::control::validate::Validation ();
 use org::w3c::dom::Document ();
 use org::w3c::dom::Node ();
-use org::allbinary::logic::visual::theme::ThemesData ();
 
 1;
 

@@ -34,7 +34,7 @@ sub new {
         # super(...) made $self above
         $self->setURIResolver('org::allbinary::data::tree::dom::StoreUriResolver'->new($self->getTransformInfoInterface(), $self->getURIResolver()));
         my $objectConfig = 'views::compound::objectConfig::CompoundContextTransformInfoObjectConfig'->new($self->{abeClientInformation}, $self->getTransformInfoInterface(), $self->getTransformInfoInterface()->getObjectConfigInterface()->toXmlDoc());
-        if ($views::compound::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($views::compound::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{VIEW})) {
+        if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{VIEW})) {
             $self->{logUtil}->putF("\nObjectConfig: \n" . $objectConfig->toString(), $self, $self->{commonStrings}->{CONSTRUCTOR});
         }
         my $templateInputStream = $objectConfig->createInputStream();
@@ -53,6 +53,8 @@ use org::allbinary::logic::system::security::licensing::ServiceClientInformation
 use org::allbinary::logic::visual::transform::AbTransformer ();
 use org::allbinary::logic::visual::transform::info::TransformInfoInterface ();
 use views::compound::objectConfig::CompoundContextTransformInfoObjectConfig ();
+use org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory ();
+use org::allbinary::logic::communication::log::config::type::LogConfigTypes ();
 
 1;
 

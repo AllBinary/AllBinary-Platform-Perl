@@ -47,7 +47,7 @@ sub atBeginning {
             $idOutData->writeBytes($text . $self->{string});
             return 1;
         } catch ($e) {
-            if ($org::allbinary::logic::io::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($org::allbinary::logic::io::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{IDLOGGING})) {
+            if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{IDLOGGING})) {
                 $self->{logUtil}->put($self->{commonStrings}->{EXCEPTION}, $self, "insertAtBeginning", $e);
             }
             return 0;
@@ -73,7 +73,7 @@ sub after {
             $idFile->close();
             return 1;
         } catch ($e) {
-            if ($org::allbinary::logic::io::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($org::allbinary::logic::io::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{IDLOGGING})) {
+            if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{IDLOGGING})) {
                 $self->{logUtil}->put($self->{commonStrings}->{EXCEPTION}, $self, "after", $e);
             }
             return 0;
@@ -89,7 +89,7 @@ sub atEnd {
             $idOutData->writeBytes($self->{string} . $text);
             return 1;
         } catch ($e) {
-            if ($org::allbinary::logic::io::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($org::allbinary::logic::io::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{IDLOGGING})) {
+            if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{IDLOGGING})) {
                 $self->{logUtil}->put($self->{commonStrings}->{EXCEPTION}, $self, "insertAtEnd", $e);
             }
             return 0;
@@ -102,6 +102,8 @@ use java::lang::Object ();
 use org::allbinary::logic::communication::log::LogUtil ();
 use org::allbinary::logic::io::file::AbFileSystem ();
 use org::allbinary::string::CommonStrings ();
+use org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory ();
+use org::allbinary::logic::communication::log::config::type::LogConfigTypes ();
 use java::lang::System ();
 
 1;

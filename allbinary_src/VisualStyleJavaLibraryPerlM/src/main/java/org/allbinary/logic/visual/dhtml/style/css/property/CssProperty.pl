@@ -34,8 +34,14 @@ sub new {
     die "No constructor of CssProperty takes " . scalar(@arguments) . " arguments";
 }
 
-
 sub _new1 {
+    my ($class, @arguments) = @_;
+    return $class->_new1_1(@arguments) if 1 && !ref($arguments[0]);
+    return $class->_new1_2(@arguments);
+}
+
+
+sub _new1_1 {
     my ($class, $name) = @_;
     my $self = bless({}, $class);
     _init_fields($self);
@@ -45,16 +51,16 @@ sub _new1 {
 }
 
 
-sub _new1 {
+sub _new1_2 {
     my ($class, $node) = @_;
     my $self = bless({}, $class);
     _init_fields($self);
         my $propertyNode = 'org::allbinary::data::tree::dom::DomSearchHelper'->getNode($org::allbinary::data::tree::dom::DomData::VALUE, $node->getChildNodes());
         $self->{propertyName} = 'org::allbinary::data::tree::dom::DomNodeHelper'->getTextNodeValue($propertyNode);
-        if ($org::allbinary::logic::visual::dhtml::style::css::property::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($org::allbinary::logic::visual::dhtml::style::css::property::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{STYLE})) {
+        if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{STYLE})) {
             $self->{logUtil}->putF("Name: " . $self->getName(), $self, "CssProperty()");
         }
-        my $propertyValuesNode = 'org::allbinary::data::tree::dom::DomSearchHelper'->getNode('org::allbinary::logic::visual::dhtml::style::css::property::CssPropertyData'->getInstance()->{VALUES}, $node->getChildNodes());
+        my $propertyValuesNode = 'org::allbinary::data::tree::dom::DomSearchHelper'->getNode(java::lang::Object::jstatic('org::allbinary::logic::visual::dhtml::style::css::property::CssProperty', 'CssPropertyData')->getInstance()->{VALUES}, $node->getChildNodes());
         $self->{cssPropertyValues} = 'org::allbinary::logic::visual::dhtml::style::css::property::CssPropertyValues'->new($propertyValuesNode);
     return $self;
 }
@@ -69,7 +75,7 @@ sub getName {
 sub toHashMap {
     my ($self) = @_;
         my $hashMap = 'org::allbinary::logic::StdUtil'->getInstance()->createHashMap();
-        $hashMap->put('org::allbinary::logic::visual::dhtml::style::css::property::CssPropertyData'->getInstance()->{NAME}, $self->{propertyName});
+        $hashMap->put(java::lang::Object::jstatic('org::allbinary::logic::visual::dhtml::style::css::property::CssProperty', 'CssPropertyData')->getInstance()->{NAME}, $self->{propertyName});
         return $hashMap;
 }
 
@@ -78,10 +84,10 @@ sub toHashMap {
 sub toXmlNode {
     my ($self, $document) = @_;
         my $hashMap = $self->toHashMap();
-        if ($org::allbinary::logic::visual::dhtml::style::css::property::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($org::allbinary::logic::visual::dhtml::style::css::property::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{VIEW})) {
+        if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{VIEW})) {
             $self->{logUtil}->putF("CssView HashMap: " . $hashMap->toString(), $self, "toXmlNode()");
         }
-        my $node = 'org::allbinary::data::tree::dom::ModDomHelper'->createNameValueNodes($document, 'org::allbinary::logic::visual::dhtml::style::css::property::CssPropertyData'->getInstance()->{NAME}, $self->{propertyName});
+        my $node = 'org::allbinary::data::tree::dom::ModDomHelper'->createNameValueNodes($document, java::lang::Object::jstatic('org::allbinary::logic::visual::dhtml::style::css::property::CssProperty', 'CssPropertyData')->getInstance()->{NAME}, $self->{propertyName});
         $node->appendChild($self->{cssPropertyValues}->toXmlNode($document));
         return $node;
 }
@@ -97,8 +103,9 @@ use org::allbinary::logic::StdUtil ();
 use org::allbinary::logic::communication::log::LogUtil ();
 use org::w3c::dom::Document ();
 use org::w3c::dom::Node ();
+use org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory ();
+use org::allbinary::logic::communication::log::config::type::LogConfigTypes ();
 use org::allbinary::logic::visual::dhtml::style::css::property::CssPropertyValues ();
-use org::allbinary::logic::visual::dhtml::style::css::property::CssPropertyData ();
 
 1;
 

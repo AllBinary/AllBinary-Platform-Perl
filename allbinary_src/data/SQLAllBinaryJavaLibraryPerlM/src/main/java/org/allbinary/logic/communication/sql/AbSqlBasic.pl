@@ -32,8 +32,8 @@ sub _init_fields {
     $self->{commonStrings} = 'org::allbinary::string::CommonStrings'->getInstance();
     $self->{commonSeps} = 'org::allbinary::string::CommonSeps'->getInstance();
     $self->{stdUtil} = 'org::allbinary::logic::StdUtil'->getInstance();
-    $self->{sqlTypeStrings} = 'org::allbinary::logic::communication::sql::SqlTypeStrings'->getInstance();
-    $self->{sqlStrings} = 'org::allbinary::logic::communication::sql::SqlStrings'->getInstance();
+    $self->{sqlTypeStrings} = java::lang::Object::jstatic('org::allbinary::logic::communication::sql::AbSqlBasic', 'SqlTypeStrings')->getInstance();
+    $self->{sqlStrings} = java::lang::Object::jstatic('org::allbinary::logic::communication::sql::AbSqlBasic', 'SqlStrings')->getInstance();
     $self->{INSERT} = "insert";
     $self->{UPDATE} = "update";
     $self->{FAILED_SQL_STATEMENT} = "Failed\nSQL Statement: ";
@@ -76,7 +76,7 @@ sub executeSQLStatement {
             $self->{sqlConnectionPool}->add($self->getDatabaseConnectionInfoInterface()->getUrl(), $tempConnection);
             return $rset;
         } catch ($e) {
-            if ($org::allbinary::logic::communication::sql::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($org::allbinary::logic::communication::sql::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{SQLLOGGINGERROR})) {
+            if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{SQLLOGGINGERROR})) {
                 $self->{logUtil}->put($self->{FAILED_SQL_STATEMENT} . $statement, $self, $self->{METHOD_EXECUTED_SQL_STATEMENT}, $e);
             }
             $self->{conn}->close();
@@ -90,12 +90,12 @@ sub create {
     my ($self, $databaseName) = @_;
         try {
             $self->executeSQLStatement($self->{sqlStrings}->{CREATE_DATABASE} . $databaseName);
-            if ($org::allbinary::logic::communication::sql::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($org::allbinary::logic::communication::sql::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{SQLLOGGING})) {
+            if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{SQLLOGGING})) {
                 $self->{logUtil}->putF($self->{DATABASE_CREATED_LABEL} . $databaseName, $self, $self->{METHOD_CREATE});
             }
             return $databaseName . $self->{sqlStrings}->{CREATE_RETURN};
         } catch ($e) {
-            if ($org::allbinary::logic::communication::sql::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($org::allbinary::logic::communication::sql::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{SQLLOGGINGERROR})) {
+            if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{SQLLOGGINGERROR})) {
                 $self->{logUtil}->put($self->{DATABASE_CREATION_FAILED_LABEL} . $databaseName, $self, $self->{METHOD_CREATE}, $e);
             }
             return $self->{DATABASE_CREATION_FAILED_LABEL} . $databaseName;
@@ -108,7 +108,7 @@ sub createConnection {
         try {
             $self->{conn} = $self->{sqlConnectionPool}->get($self->getDatabaseConnectionInfoInterface()->getUrl());
         } catch ($se) {
-            if ($org::allbinary::logic::communication::sql::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($org::allbinary::logic::communication::sql::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{SQLLOGGINGERROR})) {
+            if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{SQLLOGGINGERROR})) {
                 $self->{logUtil}->put($self->{SQL_CONNECTION_RETRYING}, $self, $self->{METHOD_CREATE_CONNECTION}, $se);
             }
             try {
@@ -118,7 +118,7 @@ sub createConnection {
                     $self->initialize();
                 }
             } catch ($e) {
-                if ($org::allbinary::logic::communication::sql::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($org::allbinary::logic::communication::sql::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{SQLLOGGINGERROR})) {
+                if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{SQLLOGGINGERROR})) {
                     $self->{logUtil}->put($self->{SQL_CONNECTION_RETRY} . ("" . $se), $self, $self->{METHOD_CREATE_CONNECTION}, $e);
                 }
             }
@@ -135,14 +135,14 @@ sub initialize {
                     my $jdbcDriverClass = $loader->loadClass($self->getDatabaseConnectionInfoInterface()->getJdbcDriver());
                     $jdbcDriverClass->newInstance();
                 } catch ($e) {
-                    if ($org::allbinary::logic::communication::sql::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($org::allbinary::logic::communication::sql::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{SQLLOGGINGERROR})) {
+                    if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{SQLLOGGINGERROR})) {
                         $self->{logUtil}->put($self->{LOAD_JDBC_DRIVER_FAILED_LABEL} . $self->getDatabaseConnectionInfoInterface()->getJdbcDriver(), $self, $self->{METHOD_INITIALIZE}, $e);
                     }
                 }
             }
             $self->createConnection();
         } catch ($se) {
-            if ($org::allbinary::logic::communication::sql::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($org::allbinary::logic::communication::sql::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{SQLLOGGINGERROR})) {
+            if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{SQLLOGGINGERROR})) {
                 $self->{logUtil}->put($self->{SQL_CONNECTION_FAILED}, $self, $self->{METHOD_INITIALIZE}, $se);
             }
         }
@@ -173,8 +173,8 @@ use org::allbinary::logic::communication::sql::connection::pool::SqlConnectionPo
 use org::allbinary::logic::string::StringUtil ();
 use org::allbinary::string::CommonSeps ();
 use org::allbinary::string::CommonStrings ();
-use org::allbinary::logic::communication::sql::SqlTypeStrings ();
-use org::allbinary::logic::communication::sql::SqlStrings ();
+use org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory ();
+use org::allbinary::logic::communication::log::config::type::LogConfigTypes ();
 use java::lang::Thread ();
 
 1;

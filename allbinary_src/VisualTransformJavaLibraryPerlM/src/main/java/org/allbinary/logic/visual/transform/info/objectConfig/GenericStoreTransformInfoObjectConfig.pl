@@ -68,9 +68,9 @@ sub _new4 {
 
 
 # throws Exception
-sub generate {
+sub generate_j1 {
     my ($self, $objectConfigDocument) = @_;
-        if ($org::allbinary::logic::visual::transform::info::objectConfig::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($org::allbinary::logic::visual::transform::info::objectConfig::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{VIEW})) {
+        if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{VIEW})) {
             my $stringBuffer = 'org::allbinary::logic::string::StringMaker'->new();
             $stringBuffer->append("TransformInfo: ");
             if (defined($self->getTransformInfoInterface())) {
@@ -92,7 +92,7 @@ sub createReplaceHashMap {
     my ($self, $transformInfoHttpStoreInterface, $objectConfigDocumentString) = @_;
         my $storeName = $transformInfoHttpStoreInterface->getStoreName();
         my $hashMap = $self->createHashMap($transformInfoHttpStoreInterface, $objectConfigDocumentString);
-        my $transformInfoObjectConfigData = 'org::allbinary::logic::visual::transform::info::objectConfig::TransformInfoObjectConfigData'->getInstance();
+        my $transformInfoObjectConfigData = java::lang::Object::jstatic('org::allbinary::logic::visual::transform::info::objectConfig::GenericStoreTransformInfoObjectConfig', 'TransformInfoObjectConfigData')->getInstance();
         $hashMap->put($transformInfoObjectConfigData->{VARKEY} + 'org::allbinary::business::context::modules::storefront::StoreFrontData'->getInstance()->{NAME}, $storeName);
         my $pageName = 'org::allbinary::logic::visual::transform::template::util::TransformTemplateCustomizerUtil'->getInstance()->getPageNameHack($self->getTransformInfoInterface()->getName(), $storeName);
         $hashMap->put($transformInfoObjectConfigData->{VARKEY} + 'org::allbinary::logic::visual::transform::info::TransformInfoData'->getInstance()->{PARTIAL}, $pageName);
@@ -107,7 +107,7 @@ sub createHashMap {
         my $storeName = $transformInfoHttpStoreInterface->getStoreName();
         my $propertiesHashMap = $transformInfoHttpStoreInterface->getPropertiesHashMap();
         my $templateNameOverride = 'org::allbinary::logic::string::StringUtil'->getInstance()->getNonNull($propertiesHashMap->get('org::allbinary::logic::visual::transform::info::TransformInfoData'->getInstance()->{PARTIAL}));
-        if ($org::allbinary::logic::visual::transform::info::objectConfig::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($org::allbinary::logic::visual::transform::info::objectConfig::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{VIEW})) {
+        if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{VIEW})) {
             $self->{logUtil}->putF("TemplateNameOverride: " . $templateNameOverride, $self, "generate()");
         }
         my $templateNameStringBuffer = 'org::allbinary::logic::string::StringMaker'->new();
@@ -115,7 +115,7 @@ sub createHashMap {
         $templateNameStringBuffer->append($templateNameOverride);
         $templateNameStringBuffer->append('org::allbinary::string::CommonSeps'->getInstance()->{SPACE});
         $templateNameStringBuffer->append($org::allbinary::logic::visual::transform::info::RootTransformInfoData::NAME);
-        my $templateNameKey = 'org::allbinary::logic::visual::transform::info::objectConfig::TransformInfoObjectConfigData'->getInstance()->{VARKEY} + 'org::allbinary::logic::visual::transform::info::TransformInfoData'->getInstance()->{OWNER};
+        my $templateNameKey = java::lang::Object::jstatic('org::allbinary::logic::visual::transform::info::objectConfig::GenericStoreTransformInfoObjectConfig', 'TransformInfoObjectConfigData')->getInstance()->{VARKEY} + 'org::allbinary::logic::visual::transform::info::TransformInfoData'->getInstance()->{OWNER};
         if (index($objectConfigDocumentString, $templateNameKey) != -1) {
             my $templateInterface = 'org::allbinary::logic::visual::transform::template::TransformTemplateFactory'->getInstance()->getInstance($self->{abeClientInformation}, $templateNameStringBuffer->toString(), $transformInfoHttpStoreInterface->getPropertiesHashMap(), $transformInfoHttpStoreInterface->getPageContext());
             my $selectedTemplate = $templateInterface->getName();
@@ -126,15 +126,21 @@ sub createHashMap {
 
 
 # throws Exception
-# Java overloaded method: Perl keeps the last definition
-sub generate {
+sub generate_j2 {
     my ($self, $objectConfigDocumentString, $hashMap) = @_;
         my $replace = 'org::allbinary::logic::string::regex::replace::Replace'->new($hashMap);
         my $newObjectConfigDocument = 'org::allbinary::data::tree::dom::document::DomDocumentHelper'->create($replace->all($objectConfigDocumentString));
-        if ($org::allbinary::logic::visual::transform::info::objectConfig::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($org::allbinary::logic::visual::transform::info::objectConfig::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{VIEW})) {
+        if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{VIEW})) {
             $self->{logUtil}->putF("Final ObjectConfig: " . 'org::allbinary::data::tree::dom::document::XmlDocumentHelper'->toString($newObjectConfigDocument), $self, "generate()");
         }
         return $newObjectConfigDocument;
+}
+
+sub generate {
+    my ($invocant, @arguments) = @_;
+    return $invocant->generate_j1(@arguments) if scalar(@arguments) == 1;
+    return $invocant->generate_j2(@arguments) if scalar(@arguments) == 2;
+    die "No method generate takes " . scalar(@arguments) . " arguments";
 }
 
 use java::lang::Object ();
@@ -157,8 +163,9 @@ use org::allbinary::logic::visual::transform::template::TransformTemplateInterfa
 use org::allbinary::logic::visual::transform::template::util::TransformTemplateCustomizerUtil ();
 use org::allbinary::string::CommonSeps ();
 use org::w3c::dom::Document ();
+use org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory ();
+use org::allbinary::logic::communication::log::config::type::LogConfigTypes ();
 use org::allbinary::logic::visual::transform::info::objectConfig::TransformInfoObjectConfig ();
-use org::allbinary::logic::visual::transform::info::objectConfig::TransformInfoObjectConfigData ();
 
 1;
 

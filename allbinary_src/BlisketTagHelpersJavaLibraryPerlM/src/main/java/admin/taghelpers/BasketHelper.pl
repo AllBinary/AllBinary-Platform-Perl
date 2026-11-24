@@ -56,7 +56,7 @@ sub isBasketEmpty {
                 return 0;
             }
         } catch ($e) {
-            if ($admin::taghelpers::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($admin::taghelpers::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{SQLTAGSERROR})) {
+            if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{SQLTAGSERROR})) {
                 $self->{logUtil}->put($self->{commonStrings}->{EXCEPTION}, $self, "isBasketEmpty()", $e);
             }
             return 1;
@@ -72,7 +72,8 @@ use org::allbinary::business::context::modules::storefront::StoreFrontInterface 
 use org::allbinary::business::user::commerce::inventory::basket::BasketInterface ();
 use org::allbinary::logic::communication::http::request::session::WeblisketSession ();
 use org::allbinary::logic::communication::log::LogUtil ();
-use admin::taghelpers::TagHelper ();
+use org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory ();
+use org::allbinary::logic::communication::log::config::type::LogConfigTypes ();
 
 1;
 

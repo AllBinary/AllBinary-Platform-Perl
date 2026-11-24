@@ -56,11 +56,17 @@ sub initComponents {
         $self->{jLabel1}->setText("Input Type:");
         my $layout = 'javax::swing::GroupLayout'->new($self);
         $self->setLayout($layout);
-        $layout->setHorizontalGroup($layout->createParallelGroup($org::allbinary::input::automation::actions::script::condition::processors::input::javax::swing->{GroupLayout}->{Alignment}->{LEADING})->addGroup($layout->createSequentialGroup()->addComponent($self->{jLabel1})->addPreferredGap($org::allbinary::input::automation::actions::script::condition::processors::input::javax::swing->{LayoutStyle}->{ComponentPlacement}->{RELATED})->addComponent($self->{inputAutomationTypeJComboBox}, 0, 98, 32767)));
-        $layout->setVerticalGroup($layout->createParallelGroup($org::allbinary::input::automation::actions::script::condition::processors::input::javax::swing->{GroupLayout}->{Alignment}->{LEADING})->addGroup($layout->createParallelGroup($org::allbinary::input::automation::actions::script::condition::processors::input::javax::swing->{GroupLayout}->{Alignment}->{BASELINE})->addComponent($self->{jLabel1})->addComponent($self->{inputAutomationTypeJComboBox}, $org::allbinary::input::automation::actions::script::condition::processors::input::javax::swing->{GroupLayout}->{PREFERRED_SIZE}, $org::allbinary::input::automation::actions::script::condition::processors::input::javax::swing->{GroupLayout}->{DEFAULT_SIZE}, $org::allbinary::input::automation::actions::script::condition::processors::input::javax::swing->{GroupLayout}->{PREFERRED_SIZE})));
+        $layout->setHorizontalGroup($layout->createParallelGroup($javax::swing::GroupLayout::Alignment->{LEADING})->addGroup($layout->createSequentialGroup()->addComponent($self->{jLabel1})->addPreferredGap($javax::swing::LayoutStyle::ComponentPlacement->{RELATED})->addComponent($self->{inputAutomationTypeJComboBox}, 0, 98, 32767)));
+        $layout->setVerticalGroup($layout->createParallelGroup($javax::swing::GroupLayout::Alignment->{LEADING})->addGroup($layout->createParallelGroup($javax::swing::GroupLayout::Alignment->{BASELINE})->addComponent($self->{jLabel1})->addComponent($self->{inputAutomationTypeJComboBox}, $javax::swing::GroupLayout::PREFERRED_SIZE, $javax::swing::GroupLayout::DEFAULT_SIZE, $javax::swing::GroupLayout::PREFERRED_SIZE)));
 }
 
 use java::lang::Object ();
+# use javax::swing::DefaultComboBoxModel ();
+# use javax::swing::GroupLayout ();
+# use javax::swing::JComboBox ();
+# use javax::swing::JLabel ();
+# use javax::swing::JPanel ();
+# use javax::swing::LayoutStyle ();
 
 1;
 

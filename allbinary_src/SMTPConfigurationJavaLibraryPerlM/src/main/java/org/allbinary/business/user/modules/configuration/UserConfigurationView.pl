@@ -32,8 +32,14 @@ sub new {
     die "No constructor of UserConfigurationView takes " . scalar(@arguments) . " arguments";
 }
 
-
 sub _new1 {
+    my ($class, @arguments) = @_;
+    return $class->_new1_1(@arguments) if 1 && (!defined($arguments[0]) || (ref($arguments[0]) && ref($arguments[0]) ne 'ARRAY'));
+    return $class->_new1_2(@arguments);
+}
+
+
+sub _new1_1 {
     my ($class, $node) = @_;
     my $self = bless({}, $class);
     _init_fields($self);
@@ -53,7 +59,7 @@ sub _new1 {
 }
 
 
-sub _new1 {
+sub _new1_2 {
     my ($class, $userConfigurationInterface) = @_;
     my $self = bless({}, $class);
     _init_fields($self);
@@ -71,7 +77,7 @@ sub getUserConfigurationInterface {
 # throws Exception
 sub toXmlNode {
     my ($self, $document) = @_;
-        my $node = $document->createElement($org::allbinary::business::user::modules::configuration::UserConfigurationData::NAME);
+        my $node = $document->createElement(java::lang::Object::jstatic('org::allbinary::business::user::modules::configuration::UserConfigurationView', 'UserConfigurationData')->{NAME});
         my $userEmailConfigurationView = 'org::allbinary::logic::communication::smtp::configuration::user::UserEmailConfigurationView'->new($self->{userConfigurationInterface}->getUserEmailConfigurationInterface());
         $node->appendChild($userEmailConfigurationView->toXmlNode($document));
         my $timeCreatedView = 'org::allbinary::business::time::created::TimeCreatedView'->new($self->{userConfigurationInterface}->getTimeCreated());
@@ -94,7 +100,6 @@ use org::w3c::dom::Document ();
 use org::w3c::dom::Node ();
 use org::w3c::dom::NodeList ();
 use org::allbinary::business::user::modules::configuration::UserConfiguration ();
-use org::allbinary::business::user::modules::configuration::UserConfigurationData ();
 
 1;
 

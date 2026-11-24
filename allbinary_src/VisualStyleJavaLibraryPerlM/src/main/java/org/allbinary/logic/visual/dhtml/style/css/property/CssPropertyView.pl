@@ -30,11 +30,19 @@ sub new {
     my ($class, @arguments) = @_;
     return $class->_new1(@arguments) if scalar(@arguments) == 1;
     return $class->_new1(@arguments) if scalar(@arguments) == 1;
+    return $class->_new1(@arguments) if scalar(@arguments) == 1;
     die "No constructor of CssPropertyView takes " . scalar(@arguments) . " arguments";
 }
 
-
 sub _new1 {
+    my ($class, @arguments) = @_;
+    return $class->_new1_1(@arguments) if 1 && !ref($arguments[0]);
+    return $class->_new1_2(@arguments) if 1 && (!defined($arguments[0]) || (ref($arguments[0]) && ref($arguments[0]) ne 'ARRAY'));
+    return $class->_new1_3(@arguments);
+}
+
+
+sub _new1_1 {
     my ($class, $name) = @_;
     my $self = bless({}, $class);
     _init_fields($self);
@@ -43,11 +51,20 @@ sub _new1 {
 }
 
 
-sub _new1 {
+sub _new1_2 {
     my ($class, $node) = @_;
     my $self = bless({}, $class);
     _init_fields($self);
         $self->{cssProperty} = 'org::allbinary::logic::visual::dhtml::style::css::property::CssProperty'->new($node);
+    return $self;
+}
+
+
+sub _new1_3 {
+    my ($class, $cssProperty) = @_;
+    my $self = bless({}, $class);
+    _init_fields($self);
+        $self->{cssProperty} = $cssProperty;
     return $self;
 }
 

@@ -31,7 +31,7 @@ sub new {
     my ($class, $storeFrontInterface) = @_;
     my $self = bless({}, $class);
     _init_fields($self);
-        if ($org::allbinary::business::context::modules::storefront::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($org::allbinary::business::context::modules::storefront::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{VIEW})) {
+        if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{VIEW})) {
             my $commonStrings = 'org::allbinary::string::CommonStrings'->getInstance();
             $self->{logUtil}->putF("Constructing: StoreFrontView for: " . $storeFrontInterface->getName(), $self, $commonStrings->{GET_INSTANCE});
         }
@@ -44,7 +44,7 @@ sub new {
 sub toXmlNode {
     my ($self, $document) = @_;
         my $hashMap = $self->{storeFrontInterface}->toHashMap();
-        my $storeFrontData = 'org::allbinary::business::context::modules::storefront::StoreFrontData'->getInstance();
+        my $storeFrontData = java::lang::Object::jstatic('org::allbinary::business::context::modules::storefront::StoreFrontView', 'StoreFrontData')->getInstance();
         $hashMap->put($storeFrontData->{CURRENTHOMEHOSTNAME}, $self->{storeFrontInterface}->getCurrentHomeHostName());
         $hashMap->put($storeFrontData->{CURRENTHOMEHOSTNAMEPATH}, $self->{storeFrontInterface}->getCurrentHomeHostNamePath());
         $hashMap->put($storeFrontData->{CURRENTHOSTNAME}, $self->{storeFrontInterface}->getCurrentHostName());
@@ -63,7 +63,8 @@ use org::allbinary::logic::communication::log::LogUtil ();
 use org::allbinary::string::CommonStrings ();
 use org::w3c::dom::Document ();
 use org::w3c::dom::Node ();
-use org::allbinary::business::context::modules::storefront::StoreFrontData ();
+use org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory ();
+use org::allbinary::logic::communication::log::config::type::LogConfigTypes ();
 
 1;
 

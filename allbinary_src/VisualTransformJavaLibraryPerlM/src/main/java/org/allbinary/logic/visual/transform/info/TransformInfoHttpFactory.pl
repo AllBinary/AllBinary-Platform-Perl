@@ -45,7 +45,7 @@ sub getInstance {
                 return 'org::allbinary::logic::visual::transform::info::TransformInfoHttpContext'->new($propertiesHashMap, $pageContext);
             }
         } catch ($e) {
-            if ($org::allbinary::logic::visual::transform::info::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($org::allbinary::logic::visual::transform::info::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{TAGHELPERFACTORYERROR})) {
+            if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{TAGHELPERFACTORYERROR})) {
                 my $commonStrings = 'org::allbinary::string::CommonStrings'->getInstance();
                 $logUtil->put($commonStrings->{EXCEPTION}, "TransformInfoFactory", $commonStrings->{GET_INSTANCE}, $e);
             }
@@ -62,6 +62,8 @@ use org::allbinary::logic::communication::http::request::session::WeblisketSessi
 use org::allbinary::logic::communication::log::LogUtil ();
 use org::allbinary::logic::string::StringValidationUtil ();
 use org::allbinary::string::CommonStrings ();
+use org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory ();
+use org::allbinary::logic::communication::log::config::type::LogConfigTypes ();
 use org::allbinary::logic::visual::transform::info::TransformInfoHttpContext ();
 use org::allbinary::logic::visual::transform::info::TransformInfoHttpStore ();
 

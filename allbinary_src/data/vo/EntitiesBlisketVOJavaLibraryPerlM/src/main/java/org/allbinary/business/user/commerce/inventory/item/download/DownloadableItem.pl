@@ -44,8 +44,14 @@ sub new {
     die "No constructor of DownloadableItem takes " . scalar(@arguments) . " arguments";
 }
 
-
 sub _new1 {
+    my ($class, @arguments) = @_;
+    return $class->_new1_1(@arguments) if 1 && !ref($arguments[0]);
+    return $class->_new1_2(@arguments);
+}
+
+
+sub _new1_1 {
     my ($class, $id) = @_;
     my $self = bless({}, $class);
     _init_fields($self);
@@ -67,40 +73,40 @@ sub _new1 {
 }
 
 
-sub _new1 {
+sub _new1_2 {
     my ($class, $hashMap) = @_;
     my $self = bless({}, $class);
     _init_fields($self);
-        $self->{id} = $hashMap->get($org::allbinary::business::user::commerce::inventory::item::download::DownloadItemData::ID);
+        $self->{id} = $hashMap->get(java::lang::Object::jstatic('org::allbinary::business::user::commerce::inventory::item::download::DownloadableItem', 'DownloadItemData')->{ID});
         $self->{basicItemId} = $hashMap->get('org::allbinary::business::user::commerce::inventory::item::BasicItemData'->getInstance()->{ID});
         $self->{enabled} = $hashMap->get('org::allbinary::business::entry::EntryData'->getInstance()->{ENABLE});
-        $self->{system} = $hashMap->get($org::allbinary::business::user::commerce::inventory::item::download::DownloadItemData::SYSTEM);
-        $self->{platform} = $hashMap->get($org::allbinary::business::user::commerce::inventory::item::download::DownloadItemData::PLATFORM);
-        $self->{specialName} = $hashMap->get($org::allbinary::business::user::commerce::inventory::item::download::DownloadItemData::SPECIAL_NAME);
-        $self->{version} = $hashMap->get($org::allbinary::business::user::commerce::inventory::item::download::DownloadItemData::VERSION);
-        $self->{changes} = $hashMap->get($org::allbinary::business::user::commerce::inventory::item::download::DownloadItemData::CHANGES);
-        $self->{licenseFile} = $hashMap->get($org::allbinary::business::user::commerce::inventory::item::download::DownloadItemData::LICENSE_FILE);
-        $self->{file} = $hashMap->get($org::allbinary::business::user::commerce::inventory::item::download::DownloadItemData::FILE);
-        my $value = $hashMap->get($org::allbinary::business::user::commerce::inventory::item::download::DownloadItemData::SIZE);
+        $self->{system} = $hashMap->get(java::lang::Object::jstatic('org::allbinary::business::user::commerce::inventory::item::download::DownloadableItem', 'DownloadItemData')->{SYSTEM});
+        $self->{platform} = $hashMap->get(java::lang::Object::jstatic('org::allbinary::business::user::commerce::inventory::item::download::DownloadableItem', 'DownloadItemData')->{PLATFORM});
+        $self->{specialName} = $hashMap->get(java::lang::Object::jstatic('org::allbinary::business::user::commerce::inventory::item::download::DownloadableItem', 'DownloadItemData')->{SPECIAL_NAME});
+        $self->{version} = $hashMap->get(java::lang::Object::jstatic('org::allbinary::business::user::commerce::inventory::item::download::DownloadableItem', 'DownloadItemData')->{VERSION});
+        $self->{changes} = $hashMap->get(java::lang::Object::jstatic('org::allbinary::business::user::commerce::inventory::item::download::DownloadableItem', 'DownloadItemData')->{CHANGES});
+        $self->{licenseFile} = $hashMap->get(java::lang::Object::jstatic('org::allbinary::business::user::commerce::inventory::item::download::DownloadableItem', 'DownloadItemData')->{LICENSE_FILE});
+        $self->{file} = $hashMap->get(java::lang::Object::jstatic('org::allbinary::business::user::commerce::inventory::item::download::DownloadableItem', 'DownloadItemData')->{FILE});
+        my $value = $hashMap->get(java::lang::Object::jstatic('org::allbinary::business::user::commerce::inventory::item::download::DownloadableItem', 'DownloadItemData')->{SIZE});
         if (!'org::allbinary::logic::string::StringValidationUtil'->getInstance()->isEmpty($value)) {
             $self->{size} = ("" . ($value));
         } else {
             $self->{size} = 0;
         }
-        my $validTime = $hashMap->get($org::allbinary::business::user::commerce::inventory::item::download::DownloadItemData::VALID_TIME);
+        my $validTime = $hashMap->get(java::lang::Object::jstatic('org::allbinary::business::user::commerce::inventory::item::download::DownloadableItem', 'DownloadItemData')->{VALID_TIME});
         if (!'org::allbinary::logic::string::StringValidationUtil'->getInstance()->isEmpty($validTime)) {
             $self->{validTime} = ("" . ($validTime));
         } else {
-            my $totalYears = $hashMap->get($org::allbinary::business::user::commerce::inventory::item::download::DownloadItemData::VALID_TIME_YEARS);
-            my $totalMonths = $hashMap->get($org::allbinary::business::user::commerce::inventory::item::download::DownloadItemData::VALID_TIME_MONTHS);
-            my $totalDays = $hashMap->get($org::allbinary::business::user::commerce::inventory::item::download::DownloadItemData::VALID_TIME_DAYS);
-            my $totalHours = $hashMap->get($org::allbinary::business::user::commerce::inventory::item::download::DownloadItemData::VALID_TIME_HOURS);
-            my $totalMinutes = $hashMap->get($org::allbinary::business::user::commerce::inventory::item::download::DownloadItemData::VALID_TIME_MINUTES);
-            my $totalSeconds = $hashMap->get($org::allbinary::business::user::commerce::inventory::item::download::DownloadItemData::VALID_TIME_SECONDS);
+            my $totalYears = $hashMap->get(java::lang::Object::jstatic('org::allbinary::business::user::commerce::inventory::item::download::DownloadableItem', 'DownloadItemData')->{VALID_TIME_YEARS});
+            my $totalMonths = $hashMap->get(java::lang::Object::jstatic('org::allbinary::business::user::commerce::inventory::item::download::DownloadableItem', 'DownloadItemData')->{VALID_TIME_MONTHS});
+            my $totalDays = $hashMap->get(java::lang::Object::jstatic('org::allbinary::business::user::commerce::inventory::item::download::DownloadableItem', 'DownloadItemData')->{VALID_TIME_DAYS});
+            my $totalHours = $hashMap->get(java::lang::Object::jstatic('org::allbinary::business::user::commerce::inventory::item::download::DownloadableItem', 'DownloadItemData')->{VALID_TIME_HOURS});
+            my $totalMinutes = $hashMap->get(java::lang::Object::jstatic('org::allbinary::business::user::commerce::inventory::item::download::DownloadableItem', 'DownloadItemData')->{VALID_TIME_MINUTES});
+            my $totalSeconds = $hashMap->get(java::lang::Object::jstatic('org::allbinary::business::user::commerce::inventory::item::download::DownloadableItem', 'DownloadItemData')->{VALID_TIME_SECONDS});
             my $totalTime = 'org::allbinary::time::TimeUtil'->getInstance()->getTotalTime($totalYears, $totalMonths, $totalDays, $totalHours, $totalMinutes, $totalSeconds);
             $self->{validTime} = $totalTime;
         }
-        $self->{retries} = $hashMap->get($org::allbinary::business::user::commerce::inventory::item::download::DownloadItemData::RETRIES);
+        $self->{retries} = $hashMap->get(java::lang::Object::jstatic('org::allbinary::business::user::commerce::inventory::item::download::DownloadableItem', 'DownloadItemData')->{RETRIES});
     return $self;
 }
 
@@ -132,19 +138,19 @@ sub toVector {
 sub toHashMap {
     my ($self) = @_;
         my $values = 'org::allbinary::logic::StdUtil'->getInstance()->createHashMap();
-        $values->put($org::allbinary::business::user::commerce::inventory::item::download::DownloadItemData::ID, $self->getId());
+        $values->put(java::lang::Object::jstatic('org::allbinary::business::user::commerce::inventory::item::download::DownloadableItem', 'DownloadItemData')->{ID}, $self->getId());
         $values->put('org::allbinary::business::user::commerce::inventory::item::BasicItemData'->getInstance()->{ID}, $self->{basicItemId});
         $values->put('org::allbinary::business::entry::EntryData'->getInstance()->{ENABLE}, $self->{enabled});
-        $values->put($org::allbinary::business::user::commerce::inventory::item::download::DownloadItemData::SYSTEM, $self->getSystem());
-        $values->put($org::allbinary::business::user::commerce::inventory::item::download::DownloadItemData::PLATFORM, $self->getPlatform());
-        $values->put($org::allbinary::business::user::commerce::inventory::item::download::DownloadItemData::SPECIAL_NAME, $self->getSpecialName());
-        $values->put($org::allbinary::business::user::commerce::inventory::item::download::DownloadItemData::VERSION, $self->getVersion());
-        $values->put($org::allbinary::business::user::commerce::inventory::item::download::DownloadItemData::CHANGES, $self->getChanges());
-        $values->put($org::allbinary::business::user::commerce::inventory::item::download::DownloadItemData::LICENSE_FILE, $self->getLicenseFile());
-        $values->put($org::allbinary::business::user::commerce::inventory::item::download::DownloadItemData::FILE, $self->getFile());
-        $values->put($org::allbinary::business::user::commerce::inventory::item::download::DownloadItemData::SIZE, $self->getSize()->toString());
-        $values->put($org::allbinary::business::user::commerce::inventory::item::download::DownloadItemData::VALID_TIME, $self->getValidTime()->toString());
-        $values->put($org::allbinary::business::user::commerce::inventory::item::download::DownloadItemData::RETRIES, $self->getRetries());
+        $values->put(java::lang::Object::jstatic('org::allbinary::business::user::commerce::inventory::item::download::DownloadableItem', 'DownloadItemData')->{SYSTEM}, $self->getSystem());
+        $values->put(java::lang::Object::jstatic('org::allbinary::business::user::commerce::inventory::item::download::DownloadableItem', 'DownloadItemData')->{PLATFORM}, $self->getPlatform());
+        $values->put(java::lang::Object::jstatic('org::allbinary::business::user::commerce::inventory::item::download::DownloadableItem', 'DownloadItemData')->{SPECIAL_NAME}, $self->getSpecialName());
+        $values->put(java::lang::Object::jstatic('org::allbinary::business::user::commerce::inventory::item::download::DownloadableItem', 'DownloadItemData')->{VERSION}, $self->getVersion());
+        $values->put(java::lang::Object::jstatic('org::allbinary::business::user::commerce::inventory::item::download::DownloadableItem', 'DownloadItemData')->{CHANGES}, $self->getChanges());
+        $values->put(java::lang::Object::jstatic('org::allbinary::business::user::commerce::inventory::item::download::DownloadableItem', 'DownloadItemData')->{LICENSE_FILE}, $self->getLicenseFile());
+        $values->put(java::lang::Object::jstatic('org::allbinary::business::user::commerce::inventory::item::download::DownloadableItem', 'DownloadItemData')->{FILE}, $self->getFile());
+        $values->put(java::lang::Object::jstatic('org::allbinary::business::user::commerce::inventory::item::download::DownloadableItem', 'DownloadItemData')->{SIZE}, $self->getSize()->toString());
+        $values->put(java::lang::Object::jstatic('org::allbinary::business::user::commerce::inventory::item::download::DownloadableItem', 'DownloadItemData')->{VALID_TIME}, $self->getValidTime()->toString());
+        $values->put(java::lang::Object::jstatic('org::allbinary::business::user::commerce::inventory::item::download::DownloadableItem', 'DownloadItemData')->{RETRIES}, $self->getRetries());
         my $calendar = 'java::util::Calendar'->getInstance();
         my $time = ("" . $calendar->getTimeInMillis()->toString());
         $values->put('org::allbinary::business::entry::EntryData'->getInstance()->{LASTMODIFIED}, $time);
@@ -229,7 +235,6 @@ use org::allbinary::logic::StdUtil ();
 use org::allbinary::logic::string::StringUtil ();
 use org::allbinary::logic::string::StringValidationUtil ();
 use org::allbinary::time::TimeUtil ();
-use org::allbinary::business::user::commerce::inventory::item::download::DownloadItemData ();
 
 1;
 

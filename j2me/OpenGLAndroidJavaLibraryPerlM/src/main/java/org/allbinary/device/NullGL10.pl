@@ -150,16 +150,22 @@ sub glCullFace {
 }
 
 
-sub glDeleteTextures {
+sub glDeleteTextures_j3 {
     my ($self, $n, $textures, $offset) = @_;
         return;
 }
 
 
-# Java overloaded method: Perl keeps the last definition
-sub glDeleteTextures {
+sub glDeleteTextures_j2 {
     my ($self, $n, $textures) = @_;
         return;
+}
+
+sub glDeleteTextures {
+    my ($invocant, @arguments) = @_;
+    return $invocant->glDeleteTextures_j3(@arguments) if scalar(@arguments) == 3;
+    return $invocant->glDeleteTextures_j2(@arguments) if scalar(@arguments) == 2;
+    die "No method glDeleteTextures takes " . scalar(@arguments) . " arguments";
 }
 
 
@@ -240,16 +246,22 @@ sub glFogf {
 }
 
 
-sub glFogfv {
+sub glFogfv_j3 {
     my ($self, $pname, $params, $offset) = @_;
         return;
 }
 
 
-# Java overloaded method: Perl keeps the last definition
-sub glFogfv {
+sub glFogfv_j2 {
     my ($self, $pname, $params) = @_;
         return;
+}
+
+sub glFogfv {
+    my ($invocant, @arguments) = @_;
+    return $invocant->glFogfv_j3(@arguments) if scalar(@arguments) == 3;
+    return $invocant->glFogfv_j2(@arguments) if scalar(@arguments) == 2;
+    die "No method glFogfv takes " . scalar(@arguments) . " arguments";
 }
 
 
@@ -258,14 +270,20 @@ sub glFogx {
 }
 
 
-sub glFogxv {
+sub glFogxv_j3 {
     my ($self, $pname, $params, $offset) = @_;
 }
 
 
-# Java overloaded method: Perl keeps the last definition
-sub glFogxv {
+sub glFogxv_j2 {
     my ($self, $pname, $params) = @_;
+}
+
+sub glFogxv {
+    my ($invocant, @arguments) = @_;
+    return $invocant->glFogxv_j3(@arguments) if scalar(@arguments) == 3;
+    return $invocant->glFogxv_j2(@arguments) if scalar(@arguments) == 2;
+    die "No method glFogxv takes " . scalar(@arguments) . " arguments";
 }
 
 
@@ -286,16 +304,22 @@ sub glFrustumx {
 }
 
 
-sub glGenTextures {
+sub glGenTextures_j3 {
     my ($self, $n, $textures, $offset) = @_;
         return;
 }
 
 
-# Java overloaded method: Perl keeps the last definition
-sub glGenTextures {
+sub glGenTextures_j2 {
     my ($self, $n, $textures) = @_;
         return;
+}
+
+sub glGenTextures {
+    my ($invocant, @arguments) = @_;
+    return $invocant->glGenTextures_j3(@arguments) if scalar(@arguments) == 3;
+    return $invocant->glGenTextures_j2(@arguments) if scalar(@arguments) == 2;
+    die "No method glGenTextures takes " . scalar(@arguments) . " arguments";
 }
 
 
@@ -305,16 +329,22 @@ sub glGetError {
 }
 
 
-sub glGetIntegerv {
+sub glGetIntegerv_j3 {
     my ($self, $pname, $params, $offset) = @_;
         return;
 }
 
 
-# Java overloaded method: Perl keeps the last definition
-sub glGetIntegerv {
+sub glGetIntegerv_j2 {
     my ($self, $pname, $params) = @_;
         return;
+}
+
+sub glGetIntegerv {
+    my ($invocant, @arguments) = @_;
+    return $invocant->glGetIntegerv_j3(@arguments) if scalar(@arguments) == 3;
+    return $invocant->glGetIntegerv_j2(@arguments) if scalar(@arguments) == 2;
+    die "No method glGetIntegerv takes " . scalar(@arguments) . " arguments";
 }
 
 
@@ -336,16 +366,22 @@ sub glLightModelf {
 }
 
 
-sub glLightModelfv {
+sub glLightModelfv_j3 {
     my ($self, $pname, $params, $offset) = @_;
         return;
 }
 
 
-# Java overloaded method: Perl keeps the last definition
-sub glLightModelfv {
+sub glLightModelfv_j2 {
     my ($self, $pname, $params) = @_;
         return;
+}
+
+sub glLightModelfv {
+    my ($invocant, @arguments) = @_;
+    return $invocant->glLightModelfv_j3(@arguments) if scalar(@arguments) == 3;
+    return $invocant->glLightModelfv_j2(@arguments) if scalar(@arguments) == 2;
+    die "No method glLightModelfv takes " . scalar(@arguments) . " arguments";
 }
 
 
@@ -354,14 +390,20 @@ sub glLightModelx {
 }
 
 
-sub glLightModelxv {
+sub glLightModelxv_j3 {
     my ($self, $pname, $params, $offset) = @_;
 }
 
 
-# Java overloaded method: Perl keeps the last definition
-sub glLightModelxv {
+sub glLightModelxv_j2 {
     my ($self, $pname, $params) = @_;
+}
+
+sub glLightModelxv {
+    my ($invocant, @arguments) = @_;
+    return $invocant->glLightModelxv_j3(@arguments) if scalar(@arguments) == 3;
+    return $invocant->glLightModelxv_j2(@arguments) if scalar(@arguments) == 2;
+    die "No method glLightModelxv takes " . scalar(@arguments) . " arguments";
 }
 
 
@@ -371,16 +413,22 @@ sub glLightf {
 }
 
 
-sub glLightfv {
+sub glLightfv_j4 {
     my ($self, $light, $pname, $params, $offset) = @_;
         return;
 }
 
 
-# Java overloaded method: Perl keeps the last definition
-sub glLightfv {
+sub glLightfv_j3 {
     my ($self, $light, $pname, $params) = @_;
         return;
+}
+
+sub glLightfv {
+    my ($invocant, @arguments) = @_;
+    return $invocant->glLightfv_j4(@arguments) if scalar(@arguments) == 4;
+    return $invocant->glLightfv_j3(@arguments) if scalar(@arguments) == 3;
+    die "No method glLightfv takes " . scalar(@arguments) . " arguments";
 }
 
 
@@ -389,14 +437,20 @@ sub glLightx {
 }
 
 
-sub glLightxv {
+sub glLightxv_j4 {
     my ($self, $light, $pname, $params, $offset) = @_;
 }
 
 
-# Java overloaded method: Perl keeps the last definition
-sub glLightxv {
+sub glLightxv_j3 {
     my ($self, $light, $pname, $params) = @_;
+}
+
+sub glLightxv {
+    my ($invocant, @arguments) = @_;
+    return $invocant->glLightxv_j4(@arguments) if scalar(@arguments) == 4;
+    return $invocant->glLightxv_j3(@arguments) if scalar(@arguments) == 3;
+    die "No method glLightxv takes " . scalar(@arguments) . " arguments";
 }
 
 
@@ -417,27 +471,39 @@ sub glLoadIdentity {
 }
 
 
-sub glLoadMatrixf {
+sub glLoadMatrixf_j2 {
     my ($self, $m, $offset) = @_;
         return;
 }
 
 
-# Java overloaded method: Perl keeps the last definition
-sub glLoadMatrixf {
+sub glLoadMatrixf_j1 {
     my ($self, $m) = @_;
         return;
 }
 
+sub glLoadMatrixf {
+    my ($invocant, @arguments) = @_;
+    return $invocant->glLoadMatrixf_j2(@arguments) if scalar(@arguments) == 2;
+    return $invocant->glLoadMatrixf_j1(@arguments) if scalar(@arguments) == 1;
+    die "No method glLoadMatrixf takes " . scalar(@arguments) . " arguments";
+}
 
-sub glLoadMatrixx {
+
+sub glLoadMatrixx_j2 {
     my ($self, $m, $offset) = @_;
 }
 
 
-# Java overloaded method: Perl keeps the last definition
-sub glLoadMatrixx {
+sub glLoadMatrixx_j1 {
     my ($self, $m) = @_;
+}
+
+sub glLoadMatrixx {
+    my ($invocant, @arguments) = @_;
+    return $invocant->glLoadMatrixx_j2(@arguments) if scalar(@arguments) == 2;
+    return $invocant->glLoadMatrixx_j1(@arguments) if scalar(@arguments) == 1;
+    die "No method glLoadMatrixx takes " . scalar(@arguments) . " arguments";
 }
 
 
@@ -453,16 +519,22 @@ sub glMaterialf {
 }
 
 
-sub glMaterialfv {
+sub glMaterialfv_j4 {
     my ($self, $face, $pname, $params, $offset) = @_;
         return;
 }
 
 
-# Java overloaded method: Perl keeps the last definition
-sub glMaterialfv {
+sub glMaterialfv_j3 {
     my ($self, $face, $pname, $params) = @_;
         return;
+}
+
+sub glMaterialfv {
+    my ($invocant, @arguments) = @_;
+    return $invocant->glMaterialfv_j4(@arguments) if scalar(@arguments) == 4;
+    return $invocant->glMaterialfv_j3(@arguments) if scalar(@arguments) == 3;
+    die "No method glMaterialfv takes " . scalar(@arguments) . " arguments";
 }
 
 
@@ -471,14 +543,20 @@ sub glMaterialx {
 }
 
 
-sub glMaterialxv {
+sub glMaterialxv_j4 {
     my ($self, $face, $pname, $params, $offset) = @_;
 }
 
 
-# Java overloaded method: Perl keeps the last definition
-sub glMaterialxv {
+sub glMaterialxv_j3 {
     my ($self, $face, $pname, $params) = @_;
+}
+
+sub glMaterialxv {
+    my ($invocant, @arguments) = @_;
+    return $invocant->glMaterialxv_j4(@arguments) if scalar(@arguments) == 4;
+    return $invocant->glMaterialxv_j3(@arguments) if scalar(@arguments) == 3;
+    die "No method glMaterialxv takes " . scalar(@arguments) . " arguments";
 }
 
 
@@ -488,27 +566,39 @@ sub glMatrixMode {
 }
 
 
-sub glMultMatrixf {
+sub glMultMatrixf_j2 {
     my ($self, $m, $offset) = @_;
         return;
 }
 
 
-# Java overloaded method: Perl keeps the last definition
-sub glMultMatrixf {
+sub glMultMatrixf_j1 {
     my ($self, $m) = @_;
         return;
 }
 
+sub glMultMatrixf {
+    my ($invocant, @arguments) = @_;
+    return $invocant->glMultMatrixf_j2(@arguments) if scalar(@arguments) == 2;
+    return $invocant->glMultMatrixf_j1(@arguments) if scalar(@arguments) == 1;
+    die "No method glMultMatrixf takes " . scalar(@arguments) . " arguments";
+}
 
-sub glMultMatrixx {
+
+sub glMultMatrixx_j2 {
     my ($self, $m, $offset) = @_;
 }
 
 
-# Java overloaded method: Perl keeps the last definition
-sub glMultMatrixx {
+sub glMultMatrixx_j1 {
     my ($self, $m) = @_;
+}
+
+sub glMultMatrixx {
+    my ($invocant, @arguments) = @_;
+    return $invocant->glMultMatrixx_j2(@arguments) if scalar(@arguments) == 2;
+    return $invocant->glMultMatrixx_j1(@arguments) if scalar(@arguments) == 1;
+    die "No method glMultMatrixx takes " . scalar(@arguments) . " arguments";
 }
 
 
@@ -674,16 +764,22 @@ sub glTexEnvf {
 }
 
 
-sub glTexEnvfv {
+sub glTexEnvfv_j4 {
     my ($self, $target, $pname, $params, $offset) = @_;
         return;
 }
 
 
-# Java overloaded method: Perl keeps the last definition
-sub glTexEnvfv {
+sub glTexEnvfv_j3 {
     my ($self, $target, $pname, $params) = @_;
         return;
+}
+
+sub glTexEnvfv {
+    my ($invocant, @arguments) = @_;
+    return $invocant->glTexEnvfv_j4(@arguments) if scalar(@arguments) == 4;
+    return $invocant->glTexEnvfv_j3(@arguments) if scalar(@arguments) == 3;
+    die "No method glTexEnvfv takes " . scalar(@arguments) . " arguments";
 }
 
 
@@ -692,14 +788,20 @@ sub glTexEnvx {
 }
 
 
-sub glTexEnvxv {
+sub glTexEnvxv_j4 {
     my ($self, $target, $pname, $params, $offset) = @_;
 }
 
 
-# Java overloaded method: Perl keeps the last definition
-sub glTexEnvxv {
+sub glTexEnvxv_j3 {
     my ($self, $target, $pname, $params) = @_;
+}
+
+sub glTexEnvxv {
+    my ($invocant, @arguments) = @_;
+    return $invocant->glTexEnvxv_j4(@arguments) if scalar(@arguments) == 4;
+    return $invocant->glTexEnvxv_j3(@arguments) if scalar(@arguments) == 3;
+    die "No method glTexEnvxv takes " . scalar(@arguments) . " arguments";
 }
 
 

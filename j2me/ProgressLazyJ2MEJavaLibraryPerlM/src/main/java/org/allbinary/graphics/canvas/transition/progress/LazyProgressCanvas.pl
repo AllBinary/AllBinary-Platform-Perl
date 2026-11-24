@@ -75,7 +75,6 @@ use org::allbinary::canvas::Processor ();
 use org::allbinary::graphics::color::BasicColor ();
 use org::allbinary::graphics::paint::NullPaintable ();
 use org::allbinary::image::ImageCacheFactory ();
-use org::allbinary::graphics::canvas::transition::progress::ProgressCanvas ();
 
 1;
 

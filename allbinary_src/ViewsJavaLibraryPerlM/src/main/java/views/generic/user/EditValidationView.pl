@@ -39,27 +39,27 @@ sub isValid {
     my ($self) = @_;
         try {
             if ('org::allbinary::business::user::username::UserName'->getInstance()->isValid($self->getWeblisketSession()->getUserName()) == 0) {
-                if ($views::generic::user::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($views::generic::user::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{VIEW})) {
+                if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{VIEW})) {
                     $self->{logUtil}->putF("Failed to validate username", $self, $self->{commonStrings}->{IS_VALID});
                 }
                 return 0;
             }
             $self->{user} = 'org::allbinary::data::tables::user::UserEntityFactory'->getInstance()->getUser($self->getWeblisketSession()->getUserName());
             if (!defined($self->{user})) {
-                if ($views::generic::user::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($views::generic::user::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{VIEW})) {
+                if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{VIEW})) {
                     $self->{logUtil}->putF("User does not exist", $self, $self->{commonStrings}->{IS_VALID});
                 }
                 return 0;
             }
             if ($self->{user}->isValid() == 0) {
-                if ($views::generic::user::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($views::generic::user::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{VIEW})) {
+                if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{VIEW})) {
                     $self->{logUtil}->putF("User exists but is invalid - Probably manually modified", $self, $self->{commonStrings}->{IS_VALID});
                 }
                 return 0;
             }
             return 1;
         } catch ($e) {
-            if ($views::generic::user::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($views::generic::user::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{VIEWERROR})) {
+            if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{VIEWERROR})) {
                 $self->{logUtil}->put("Failed to validate", $self, $self->{commonStrings}->{IS_VALID}, $e);
             }
             return 0;
@@ -72,26 +72,26 @@ sub validationInfo {
         try {
             my $stringBuffer = 'org::allbinary::logic::string::StringMaker'->new();
             if ('org::allbinary::business::user::username::UserName'->getInstance()->isValid($self->getWeblisketSession()->getUserName()) == 0) {
-                if ($views::generic::user::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($views::generic::user::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{VIEW})) {
+                if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{VIEW})) {
                     $self->{logUtil}->putF("Failed to validate username", $self, "validationInfo()");
                 }
                 $stringBuffer->append("Session User Name is not valid - Your session data has been logged!");
             }
             if (!defined($self->{user})) {
-                if ($views::generic::user::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($views::generic::user::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{VIEW})) {
+                if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{VIEW})) {
                     $self->{logUtil}->putF("User does not exist", $self, $self->{commonStrings}->{IS_VALID});
                 }
                 $stringBuffer->append("User profile does not exist - Your session data has been logged!");
             }
             if ($self->{user}->isValid() == 0) {
-                if ($views::generic::user::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($views::generic::user::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{VIEW})) {
+                if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{VIEW})) {
                     $self->{logUtil}->putF("User exists but is invalid - Probably manually modified", $self, $self->{commonStrings}->{IS_VALID});
                 }
                 $stringBuffer->append($self->{user}->validationInfo());
             }
             return $stringBuffer->toString();
         } catch ($e) {
-            if ($views::generic::user::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($views::generic::user::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{VIEWERROR})) {
+            if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{VIEWERROR})) {
                 $self->{logUtil}->put("Failed to generate validation error info", $self, "validationInfo()", $e);
             }
             return "Error Getting Validation Info";
@@ -126,6 +126,8 @@ use org::allbinary::logic::string::StringMaker ();
 use org::allbinary::logic::visual::transform::info::TransformInfoInterface ();
 use org::w3c::dom::Document ();
 use org::w3c::dom::Node ();
+use org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory ();
+use org::allbinary::logic::communication::log::config::type::LogConfigTypes ();
 use views::generic::user::UserView ();
 
 1;

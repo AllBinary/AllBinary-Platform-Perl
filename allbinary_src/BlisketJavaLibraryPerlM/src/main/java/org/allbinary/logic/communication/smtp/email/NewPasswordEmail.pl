@@ -53,7 +53,7 @@ sub process {
 sub notifyStoreAdmin {
     my ($self) = @_;
         try {
-            if ($org::allbinary::logic::communication::smtp::email::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($org::allbinary::logic::communication::smtp::email::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{EMAILLOGGING})) {
+            if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{EMAILLOGGING})) {
                 $self->{logUtil}->putF("notifyStoreAdmin", $self, "notifyStoreAdmin");
             }
             my $emailSubject = "New Password For User: " . $self->{userInterface}->getUserName();
@@ -63,7 +63,7 @@ sub notifyStoreAdmin {
             my $adminUserEmailEventHandler = 'org::allbinary::logic::communication::smtp::event::handler::factory::AdminUserEmailEventHandlerSingletons'->getInstance()->getInstance($self->{abeClientInformation}, $org::allbinary::logic::communication::smtp::event::UserEmailEventNameData::NEWPASSWORD);
             $adminUserEmailEventHandler->receiveEmailInfo($org::allbinary::logic::communication::smtp::event::UserEmailEventNameData::NEWPASSWORD, $emailInfo);
         } catch ($e) {
-            if ($org::allbinary::logic::communication::smtp::email::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($org::allbinary::logic::communication::smtp::email::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{EMAILLOGGINGERROR})) {
+            if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{EMAILLOGGINGERROR})) {
                 $self->{logUtil}->put($self->{commonStrings}->{EXCEPTION}, $self, "emailAdmin", $e);
             }
         }
@@ -74,7 +74,7 @@ sub notifyStoreAdmin {
 sub notifyUser {
     my ($self) = @_;
         try {
-            if ($org::allbinary::logic::communication::smtp::email::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($org::allbinary::logic::communication::smtp::email::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{EMAILLOGGING})) {
+            if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{EMAILLOGGING})) {
                 $self->{logUtil}->putF("Email User", $self, "notifyUser()");
             }
             my $subject = "New Password";
@@ -84,7 +84,7 @@ sub notifyUser {
             my $userEmailEventHandler = 'org::allbinary::logic::communication::smtp::event::handler::factory::UserEmailEventHandlerSingletons'->getInstance()->getInstance($self->{abeClientInformation}, $org::allbinary::logic::communication::smtp::event::UserEmailEventNameData::NEWPASSWORD, $self->{userInterface});
             $userEmailEventHandler->receiveEmailInfo($org::allbinary::logic::communication::smtp::event::UserEmailEventNameData::NEWPASSWORD, $emailInfo);
         } catch ($e) {
-            if ($org::allbinary::logic::communication::smtp::email::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($org::allbinary::logic::communication::smtp::email::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{EMAILLOGGINGERROR})) {
+            if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{EMAILLOGGINGERROR})) {
                 $self->{logUtil}->put($self->{commonStrings}->{EXCEPTION}, $self, "notifyUser", $e);
             }
             die $e;
@@ -103,6 +103,8 @@ use org::allbinary::logic::communication::smtp::info::BasicEmailInfo ();
 use org::allbinary::logic::communication::smtp::info::EmailInfo ();
 use org::allbinary::logic::system::security::licensing::AbeClientInformationInterface ();
 use org::allbinary::string::CommonStrings ();
+use org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory ();
+use org::allbinary::logic::communication::log::config::type::LogConfigTypes ();
 
 1;
 

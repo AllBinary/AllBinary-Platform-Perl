@@ -23,7 +23,7 @@ tie our $instance, 'java::lang::LazyStatic', sub { 'org::allbinary::logic::commu
 
 sub _init_fields {
     my ($self) = @_;
-    $self->{logFormatUtil} = 'org::allbinary::logic::communication::log::LogFormatUtil'->getInstance();
+    $self->{logFormatUtil} = java::lang::Object::jstatic('org::allbinary::logic::communication::log::GuiLog', 'LogFormatUtil')->getInstance();
     $self->{commonStrings} = 'org::allbinary::string::CommonStrings'->getInstance();
 }
 
@@ -44,13 +44,13 @@ sub new {
 
 sub showDialog {
     my ($self, $msg) = @_;
-        my $error = 'org::allbinary::logic::communication::log::JDialog'->new();
+        my $error = 'javax::swing::JDialog'->new();
         my $size = length($msg) * 9;
         my $x = $size;
         if ($x > 550) {
             $x = 550;
         }
-        $error->getContentPane()->setLayout('org::allbinary::logic::communication::log::GridLayout'->new(1, 1));
+        $error->getContentPane()->setLayout('java::awt::GridLayout'->new(1, 1));
         if ($size > 255) {
             my $y = 550;
             $error->setSize($x, $y);
@@ -64,14 +64,13 @@ sub showDialog {
 }
 
 
-sub put {
+sub put_j3_1 {
     my ($self, $specialMessage, $anyType, $functionName) = @_;
         return $self->put($specialMessage, $anyType, $functionName, undef);
 }
 
 
-# Java overloaded method: Perl keeps the last definition
-sub put {
+sub put_j4_1 {
     my ($self, $specialMessage, $anyType, $functionName, $exception) = @_;
         try {
             my $data = $self->{logFormatUtil}->get($specialMessage, ref($anyType), $functionName, $exception);
@@ -79,21 +78,19 @@ sub put {
             print($data, "\n");
             return $data;
         } catch ($e) {
-            'org::allbinary::logic::communication::log::PreLogUtil'->putOE($self->{commonStrings}->{EXCEPTION}, $self, "put", $e);
+            java::lang::Object::jstatic('org::allbinary::logic::communication::log::GuiLog', 'PreLogUtil')->putOE($self->{commonStrings}->{EXCEPTION}, $self, "put", $e);
             return "Logging Error";
         }
 }
 
 
-# Java overloaded method: Perl keeps the last definition
-sub put {
+sub put_j3_2 {
     my ($self, $specialMessage, $className, $functionName) = @_;
         return $self->put($specialMessage, $className, $functionName, undef);
 }
 
 
-# Java overloaded method: Perl keeps the last definition
-sub put {
+sub put_j4_2 {
     my ($self, $specialMessage, $className, $functionName, $exception) = @_;
         try {
             my $data = $self->{logFormatUtil}->get($specialMessage, $className, $functionName, $exception);
@@ -101,21 +98,39 @@ sub put {
             print($data, "\n");
             return $data;
         } catch ($e) {
-            'org::allbinary::logic::communication::log::PreLogUtil'->putOE($self->{commonStrings}->{EXCEPTION}, $self, "put", $e);
+            java::lang::Object::jstatic('org::allbinary::logic::communication::log::GuiLog', 'PreLogUtil')->putOE($self->{commonStrings}->{EXCEPTION}, $self, "put", $e);
             return "Logging Error";
         }
 }
 
+sub put {
+    my ($invocant, @arguments) = @_;
+    return $invocant->put_j3(@arguments) if scalar(@arguments) == 3;
+    return $invocant->put_j4(@arguments) if scalar(@arguments) == 4;
+    die "No method put takes " . scalar(@arguments) . " arguments";
+}
+
+sub put_j3 {
+    my ($invocant, @arguments) = @_;
+    return $invocant->put_j3_1(@arguments) if 1 && !ref($arguments[0]) && (!defined($arguments[1]) || (ref($arguments[1]) && ref($arguments[1]) ne 'ARRAY')) && !ref($arguments[2]);
+    return $invocant->put_j3_2(@arguments);
+}
+
+sub put_j4 {
+    my ($invocant, @arguments) = @_;
+    return $invocant->put_j4_1(@arguments) if 1 && !ref($arguments[0]) && (!defined($arguments[1]) || (ref($arguments[1]) && ref($arguments[1]) ne 'ARRAY')) && !ref($arguments[2]) && (!defined($arguments[3]) || (ref($arguments[3]) && ref($arguments[3]) ne 'ARRAY'));
+    return $invocant->put_j4_2(@arguments);
+}
+
 use java::lang::Object ();
 use java::lang::LazyStatic ();
-# use java::awt ();
-# use javax::swing ();
+# use java::awt::GridLayout ();
+# use javax::swing::JDialog ();
 use org::allbinary::string::CommonStrings ();
-use org::allbinary::logic::communication::log::LogFormatUtil ();
-use org::allbinary::logic::communication::log::JDialog ();
-use org::allbinary::logic::communication::log::GridLayout ();
+# use javax::swing::JLabel ();
+# use javax::swing::JScrollPane ();
+# use javax::swing::JTextArea ();
 use java::lang::System ();
-use org::allbinary::logic::communication::log::PreLogUtil ();
 
 1;
 

@@ -29,17 +29,23 @@ sub new {
 
 
 # throws Exception
-sub getInstance {
+sub getInstance_j0 {
     my ($self) = @_;
         return 'org::allbinary::business::user::modules::admin::store::web::workflow::editor::WorkflowEditorWebStoreAdminUser'->new();
 }
 
 
 # throws Exception
-# Java overloaded method: Perl keeps the last definition
-sub getInstance {
+sub getInstance_j1 {
     my ($self, $hashMap) = @_;
         return 'org::allbinary::business::user::modules::admin::store::web::workflow::editor::WorkflowEditorWebStoreAdminUser'->new($hashMap);
+}
+
+sub getInstance {
+    my ($invocant, @arguments) = @_;
+    return $invocant->getInstance_j0(@arguments) if scalar(@arguments) == 0;
+    return $invocant->getInstance_j1(@arguments) if scalar(@arguments) == 1;
+    die "No method getInstance takes " . scalar(@arguments) . " arguments";
 }
 
 use java::lang::Object ();

@@ -24,7 +24,7 @@ tie our $instance, 'java::lang::LazyStatic', sub { 'org::allbinary::logic::io::p
 
 sub _init_fields {
     my ($self) = @_;
-    $self->{abPathData} = 'org::allbinary::logic::io::path::AbPathData'->getInstance();
+    $self->{abPathData} = java::lang::Object::jstatic('org::allbinary::logic::io::path::PathUtil', 'AbPathData')->getInstance();
     $self->{filePathData} = 'org::allbinary::logic::io::file::FilePathData'->getInstance();
 }
 
@@ -170,7 +170,6 @@ use java::lang::LazyStatic ();
 use org::allbinary::logic::io::file::FilePathData ();
 use org::allbinary::logic::string::StringUtil ();
 use org::allbinary::logic::string::StringValidationUtil ();
-use org::allbinary::logic::io::path::AbPathData ();
 use org::allbinary::logic::io::path::AbPath ();
 
 1;

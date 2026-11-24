@@ -27,22 +27,26 @@ sub _init_fields {
     $self->{KEY_CIRCLE} = "circle";
     $self->{KEY_RECTANGLE} = "rectangle";
     $self->{KEY_RECT} = "rect";
-    $self->{LINE} = 'org::allbinary::animation::ShapeType'->new($self->{KEY_LINE});
-    $self->{CIRCLE} = 'org::allbinary::animation::ShapeType'->new($self->{KEY_CIRCLE});
-    $self->{RECTANGLE} = 'org::allbinary::animation::ShapeType'->new($self->{KEY_RECTANGLE});
-}
-
-sub new {
-    my ($class) = @_;
-    my $self = bless({}, $class);
-    _init_fields($self);
-    return $self;
+    $self->{LINE} = undef;
+    $self->{CIRCLE} = undef;
+    $self->{RECTANGLE} = undef;
 }
 
 
 sub getInstance {
     my ($class) = @_;
         return $org::allbinary::animation::ShapeTypeFactory::instance;
+}
+
+
+sub new {
+    my ($class) = @_;
+    my $self = bless({}, $class);
+    _init_fields($self);
+        $self->{LINE} = 'org::allbinary::animation::ShapeType'->new($self->{KEY_LINE});
+        $self->{CIRCLE} = 'org::allbinary::animation::ShapeType'->new($self->{KEY_CIRCLE});
+        $self->{RECTANGLE} = 'org::allbinary::animation::ShapeType'->new($self->{KEY_RECTANGLE});
+    return $self;
 }
 
 use java::lang::Object ();

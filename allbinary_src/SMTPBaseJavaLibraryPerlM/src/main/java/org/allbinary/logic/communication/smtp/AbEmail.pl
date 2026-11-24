@@ -30,7 +30,7 @@ sub new {
     my ($class, $server, $from, $to, $subject, $textBody, $htmlAttachment, $contentBase) = @_;
     my $self = bless({}, $class);
     _init_fields($self);
-        if ($org::allbinary::logic::communication::smtp::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($org::allbinary::logic::communication::smtp::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{EMAILLOGGINGERROR})) {
+        if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{EMAILLOGGINGERROR})) {
             $self->{email} = 'org::allbinary::logic::communication::smtp::Email'->new($from, $to, $subject, $server, $textBody, $htmlAttachment, $contentBase, 1);
         } else {
             $self->{email} = 'org::allbinary::logic::communication::smtp::Email'->new($from, $to, $subject, $server, $textBody, $htmlAttachment, $contentBase);
@@ -89,6 +89,8 @@ use java::util::HashMap ();
 # use javax::mail::internet::MimeMessage ();
 use org::w3c::dom::Document ();
 use org::w3c::dom::Node ();
+use org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory ();
+use org::allbinary::logic::communication::log::config::type::LogConfigTypes ();
 use org::allbinary::logic::communication::smtp::EmailInterface ();
 use org::allbinary::logic::communication::smtp::Email ();
 

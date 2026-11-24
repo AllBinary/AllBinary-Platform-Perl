@@ -45,7 +45,7 @@ sub getStoreName {
             return $result;
         } catch ($e) {
             my $error = "Reflection Exception";
-            if ($org::allbinary::logic::control::workflow::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($org::allbinary::logic::control::workflow::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{SQLTAGSERROR})) {
+            if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{SQLTAGSERROR})) {
                 my $commonStrings = 'org::allbinary::string::CommonStrings'->getInstance();
                 $self->{logUtil}->put($commonStrings->{EXCEPTION}, $self, "getStoreName()", $e);
             }
@@ -57,7 +57,8 @@ use java::lang::Object ();
 # use java::lang::reflect::Method ();
 use org::allbinary::logic::communication::log::LogUtil ();
 use org::allbinary::string::CommonStrings ();
-use org::allbinary::logic::control::workflow::WorkFlowWrapper ();
+use org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory ();
+use org::allbinary::logic::communication::log::config::type::LogConfigTypes ();
 
 1;
 

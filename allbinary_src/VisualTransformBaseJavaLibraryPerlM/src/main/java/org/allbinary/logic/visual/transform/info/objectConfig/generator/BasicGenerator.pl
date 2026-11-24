@@ -36,7 +36,7 @@ sub new {
 
 sub process {
     my ($self, $input) = @_;
-        if ($org::allbinary::logic::visual::transform::info::objectConfig::generator::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($org::allbinary::logic::visual::transform::info::objectConfig::generator::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{VIEW})) {
+        if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{VIEW})) {
             $self->{logUtil}->putF("Processing", $self, $self->{commonStrings}->{PROCESS});
         }
         return $input;
@@ -44,6 +44,8 @@ sub process {
 
 use java::lang::Object ();
 use org::allbinary::logic::communication::log::LogUtil ();
+use org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory ();
+use org::allbinary::logic::communication::log::config::type::LogConfigTypes ();
 use org::allbinary::logic::visual::transform::info::objectConfig::generator::TransformInfoObjectConfigGenerator ();
 
 1;

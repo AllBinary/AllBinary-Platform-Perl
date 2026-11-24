@@ -68,7 +68,7 @@ sub setPaymentGateway {
                 $orderInterface->setPaymentMethod($paymentGateway);
                 $paymentGatewayBoolean = 1;
             }
-            if ($admin::taghelpers::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($admin::taghelpers::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{SQLTAGS})) {
+            if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{SQLTAGS})) {
                 my $stringBuffer = 'org::allbinary::logic::string::StringMaker'->new();
                 $stringBuffer->append("Successfully set PaymentGateway Order: ");
                 $stringBuffer->append($orderInterface->getId());
@@ -78,7 +78,7 @@ sub setPaymentGateway {
             }
             return $paymentGatewayBoolean;
         } catch ($e) {
-            if ($admin::taghelpers::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($admin::taghelpers::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{SQLTAGSERROR})) {
+            if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{SQLTAGSERROR})) {
                 my $stringBuffer = 'org::allbinary::logic::string::StringMaker'->new();
                 $stringBuffer->append("Failed to set PaymentGateway for Order: ");
                 try {
@@ -104,7 +104,7 @@ sub process {
             my $order = $self->{weblisketSession}->getOrder();
             $order->setStoreName($self->{storeFrontInterface}->getName());
             my $result = 'org::allbinary::business::user::commerce::inventory::order::OrderProcessorUtil'->getInstance()->process($self->{weblisketSession}->getUserName(), $order);
-            if ($admin::taghelpers::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($admin::taghelpers::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{SQLTAGS})) {
+            if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{SQLTAGS})) {
                 $self->{logUtil}->putF("Successfully Processed Order: " . $result, $self, "processOrder()");
             }
             return $result;
@@ -117,7 +117,7 @@ sub process {
                 $stringBuffer->append(" Exception Getting Id");
             }
             my $error = $stringBuffer->toString();
-            if ($admin::taghelpers::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($admin::taghelpers::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{SQLTAGSERROR})) {
+            if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{SQLTAGSERROR})) {
                 $self->{logUtil}->put($self->{commonStrings}->{EXCEPTION}, $self, $self->{commonStrings}->{PROCESS}, $e);
             }
             return $error;
@@ -145,7 +145,8 @@ use org::allbinary::logic::communication::http::request::session::WeblisketSessi
 use org::allbinary::logic::communication::log::LogUtil ();
 use org::allbinary::logic::string::StringMaker ();
 use org::allbinary::logic::string::StringValidationUtil ();
-use admin::taghelpers::TagHelper ();
+use org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory ();
+use org::allbinary::logic::communication::log::config::type::LogConfigTypes ();
 
 1;
 

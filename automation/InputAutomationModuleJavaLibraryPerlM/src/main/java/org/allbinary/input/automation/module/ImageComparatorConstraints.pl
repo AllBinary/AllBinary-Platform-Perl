@@ -51,7 +51,7 @@ sub isColorAllowed {
 }
 
 
-sub isCollisionWithAvoidRectangles {
+sub isCollisionWithAvoidRectangles_j1_1 {
     my ($self, $rectangle) = @_;
         my $isCollsionWithAvoidRectangles = 0;
         my $avoidVector = $self->getAvoidVector();
@@ -66,8 +66,7 @@ sub isCollisionWithAvoidRectangles {
 }
 
 
-# Java overloaded method: Perl keeps the last definition
-sub isCollisionWithAvoidRectangles {
+sub isCollisionWithAvoidRectangles_j1_2 {
     my ($self, $point) = @_;
         my $isCollsionWithAvoidRectangles = 0;
         my $avoidVector = $self->getAvoidVector();
@@ -80,6 +79,18 @@ sub isCollisionWithAvoidRectangles {
             }
         }
         return $isCollsionWithAvoidRectangles;
+}
+
+sub isCollisionWithAvoidRectangles {
+    my ($invocant, @arguments) = @_;
+    return $invocant->isCollisionWithAvoidRectangles_j1(@arguments) if scalar(@arguments) == 1;
+    die "No method isCollisionWithAvoidRectangles takes " . scalar(@arguments) . " arguments";
+}
+
+sub isCollisionWithAvoidRectangles_j1 {
+    my ($invocant, @arguments) = @_;
+    return $invocant->isCollisionWithAvoidRectangles_j1_1(@arguments) if 1 && (!defined($arguments[0]) || (ref($arguments[0]) && ref($arguments[0]) ne 'ARRAY'));
+    return $invocant->isCollisionWithAvoidRectangles_j1_2(@arguments);
 }
 
 

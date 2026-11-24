@@ -47,7 +47,7 @@ sub rotateImage {
         my $originalImage2 = $originalImage;
         if ($self->{features}->isFeature('org::allbinary::graphics::opengles::OpenGLFeatureFactory'->getInstance()->{OPENGL})) {
             if ($image->getType() >= $org::allbinary::image::opengles::OpenGLESImage::TYPE) {
-                my $openGLESImage = ($image);
+                my $openGLESImage = java::lang::Object::jstatic('org::allbinary::media::image::ImageRotationUtil', 'SwtOpenGLESImageBridge')->getOpenGLESImage($image);
                 $openGLESImage->{openGLESImageProperties}->{angle} = $totalAngle;
                 return;
             } else {

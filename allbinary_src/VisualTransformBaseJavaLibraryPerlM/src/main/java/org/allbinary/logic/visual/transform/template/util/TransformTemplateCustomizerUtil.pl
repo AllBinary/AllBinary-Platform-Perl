@@ -76,7 +76,7 @@ sub getPageNameHack {
         $hashMap->put([$self->{GLOBALS_UPDATE}], $ONE_EMPTY_STRING_ARRAY);
         my $replace = undef;
         my $rootViewName = $replace->all($viewName);
-        if ($org::allbinary::logic::visual::transform::template::util::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($org::allbinary::logic::visual::transform::template::util::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{VIEW})) {
+        if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{VIEW})) {
             $self->{logUtil}->putF("RootViewName for ObjectConfig: " . $rootViewName, $self, "getPageNameHack");
         }
         return $rootViewName;
@@ -95,6 +95,8 @@ use org::allbinary::logic::visual::transform::template::customizer::bodies::Body
 use org::allbinary::logic::visual::transform::template::customizer::widgets::title::TitleData ();
 use org::allbinary::string::CommonSeps ();
 use org::allbinary::string::CommonStrings ();
+use org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory ();
+use org::allbinary::logic::communication::log::config::type::LogConfigTypes ();
 
 1;
 

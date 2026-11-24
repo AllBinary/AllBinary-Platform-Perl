@@ -161,7 +161,7 @@ sub drawTransformedImage {
     my ($self, $image, $parent, $dx, $dy, $width, $height) = @_;
         my $imageCanvas = 'org::eclipse::swt::widgets::Canvas'->new($parent, $org::eclipse::swt::SWT::NONE);
         $imageCanvas->addPaintListener(do {
-            package org::eclipse::swt::events::PaintListener::AnonymousN71455 { our @ISA = ('org::eclipse::swt::events::PaintListener', 'java::lang::Object');
+            package org::eclipse::swt::events::PaintListener::AnonymousN70717 { our @ISA = ('org::eclipse::swt::events::PaintListener', 'java::lang::Object');
             
 
             sub paintControl {
@@ -174,7 +174,7 @@ sub drawTransformedImage {
                 $gc->drawImage($image, 0, 0, $image->getBounds()->{width}, $image->getBounds()->{height}, 0, 0, $width, $height);
             }
             }
-            'org::eclipse::swt::events::PaintListener::AnonymousN71455'->can('new') ? 'org::eclipse::swt::events::PaintListener::AnonymousN71455'->new() : bless({}, 'org::eclipse::swt::events::PaintListener::AnonymousN71455')
+            'org::eclipse::swt::events::PaintListener::AnonymousN70717'->can('new') ? 'org::eclipse::swt::events::PaintListener::AnonymousN70717'->new() : bless({}, 'org::eclipse::swt::events::PaintListener::AnonymousN70717')
         });
         return $imageCanvas;
 }
@@ -210,8 +210,9 @@ use org::allbinary::string::CommonLabels ();
 # use org::eclipse::swt::events::PaintEvent ();
 # use org::eclipse::swt::events::PaintListener ();
 # use org::eclipse::swt::graphics::Transform ();
-# use org::eclipse::swt::widgets::Display ();
+use org::eclipse::swt::widgets::Display ();
 use org::microemu::app::BareMain ();
+# use org::eclipse::swt::graphics::Image ();
 
 1;
 

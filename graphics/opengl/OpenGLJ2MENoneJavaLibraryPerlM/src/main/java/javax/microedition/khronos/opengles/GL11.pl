@@ -9,6 +9,7 @@ no warnings 'experimental::try';
 use parent -norequire,'javax::microedition::khronos::opengles::GL10';
 
 
+use javax::microedition::khronos::opengles::GL10 ();
 
 1;
 

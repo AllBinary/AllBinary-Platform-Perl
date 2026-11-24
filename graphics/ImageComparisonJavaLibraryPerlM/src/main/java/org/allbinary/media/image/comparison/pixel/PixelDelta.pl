@@ -39,16 +39,22 @@ sub new {
 }
 
 
-sub getKey {
+sub getKey_j0 {
     my ($self) = @_;
         return $self->{key};
 }
 
 
-# Java overloaded method: Perl keeps the last definition
-sub getKey {
+sub getKey_j2 {
     my ($class, $point, $colorDelta) = @_;
         return 'org::allbinary::logic::string::StringMaker'->new()->appendint(int('org::allbinary::TsUtil'->getInstance()->hashCode($point)))->append('org::allbinary::string::CommonSeps'->getInstance()->{UNDERSCORE})->append($colorDelta->getKey()->toString())->toString();
+}
+
+sub getKey {
+    my ($invocant, @arguments) = @_;
+    return $invocant->getKey_j0(@arguments) if scalar(@arguments) == 0;
+    return $invocant->getKey_j2(@arguments) if scalar(@arguments) == 2;
+    die "No method getKey takes " . scalar(@arguments) . " arguments";
 }
 
 

@@ -30,11 +30,11 @@ sub new {
 
 sub getInstance {
     my ($class) = @_;
-        my $defaultComboBoxModel = 'org::allbinary::input::automation::actions::script::condition::processors::input::DefaultComboBoxModel'->new();
+        my $defaultComboBoxModel = 'javax::swing::DefaultComboBoxModel'->new();
         my $keyArray = 'org::allbinary::input::KeySingletonFactory'->getArray();
         for (my $index = 0; $index < scalar(@{$keyArray}); $index++) {
             my $nextKey = $keyArray->[$index];
-            my $keyStroke = 'org::allbinary::input::automation::actions::script::condition::processors::input::KeyStroke'->getKeyStroke(int($nextKey), 0);
+            my $keyStroke = 'javax::swing::KeyStroke'->getKeyStroke(int($nextKey), 0);
             my $keyChar = 'abbot::tester::KeyStrokeMap'->getChar($keyStroke);
             $defaultComboBoxModel->addElement(("" . ($keyChar)));
         }
@@ -42,11 +42,10 @@ sub getInstance {
 }
 
 use java::lang::Object ();
-# use javax::swing ();
+# use javax::swing::DefaultComboBoxModel ();
+# use javax::swing::KeyStroke ();
 use abbot::tester::KeyStrokeMap ();
 use org::allbinary::input::KeySingletonFactory ();
-use org::allbinary::input::automation::actions::script::condition::processors::input::DefaultComboBoxModel ();
-use org::allbinary::input::automation::actions::script::condition::processors::input::KeyStroke ();
 
 1;
 

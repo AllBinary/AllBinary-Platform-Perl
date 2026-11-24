@@ -131,7 +131,7 @@ sub toString {
 use java::lang::Object ();
 use java::util::HashMap ();
 use java::util::Iterator ();
-# use java::util::Set ();
+use java::util::Set ();
 use org::allbinary::data::tree::dom::DomNodeHelper ();
 use org::allbinary::data::tree::dom::DomSearchHelper ();
 use org::allbinary::data::tree::dom::ModDomHelper ();

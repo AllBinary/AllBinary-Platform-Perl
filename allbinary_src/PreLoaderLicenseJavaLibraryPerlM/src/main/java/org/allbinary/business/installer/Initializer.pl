@@ -71,8 +71,14 @@ sub new {
     die "No constructor of Initializer takes " . scalar(@arguments) . " arguments";
 }
 
-
 sub _new1 {
+    my ($class, @arguments) = @_;
+    return $class->_new1_1(@arguments) if 1 && (!defined($arguments[0]) || (ref($arguments[0]) && ref($arguments[0]) ne 'ARRAY'));
+    return $class->_new1_2(@arguments);
+}
+
+
+sub _new1_1 {
     my ($class, $map) = @_;
     my $self = bless({}, $class);
     _init_fields($self);
@@ -97,7 +103,7 @@ sub _new1 {
 }
 
 
-sub _new1 {
+sub _new1_2 {
     my ($class, $initHashMap) = @_;
     my $self = bless({}, $class);
     _init_fields($self);
@@ -154,10 +160,10 @@ sub getFormData {
 sub isJdbcDriverValid {
     my ($self, $jdbcDriverClassPathString) = @_;
         try {
-            'org::allbinary::business::installer::Class'->forName($jdbcDriverClassPathString)->newInstance();
+            do { my $jclass = ($jdbcDriverClassPathString) =~ s/\./::/gr; eval "require $jclass; 1" or die "ClassNotFoundException: $jclass\n"; $jclass }->newInstance();
             return 1;
         } catch ($e) {
-            if ($org::allbinary::business::installer::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($org::allbinary::business::installer::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{PRELOADERERROR})) {
+            if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{PRELOADERERROR})) {
                 my $commonStrings = 'org::allbinary::string::CommonStrings'->getInstance();
                 $self->{logUtil}->put($commonStrings->{EXCEPTION}, $self, $commonStrings->{IS_VALID}, $e);
             }
@@ -397,7 +403,7 @@ sub set {
 use java::lang::Object ();
 use java::util::HashMap ();
 # use java::util::Map ();
-# use java::util::Set ();
+use java::util::Set ();
 use org::allbinary::business::init::db::HistoryDbInitInfo ();
 use org::allbinary::business::init::db::InventoryDbInitInfo ();
 use org::allbinary::business::init::db::LogDbInitInfo ();
@@ -408,6 +414,8 @@ use org::allbinary::logic::communication::log::LogUtil ();
 use org::allbinary::logic::string::StringMaker ();
 use org::allbinary::logic::string::StringValidationUtil ();
 use org::allbinary::string::CommonStrings ();
+use org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory ();
+use org::allbinary::logic::communication::log::config::type::LogConfigTypes ();
 use org::allbinary::business::installer::InitializerData ();
 
 1;

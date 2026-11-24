@@ -43,8 +43,14 @@ sub new {
     die "No constructor of AbDatabaseManagement takes " . scalar(@arguments) . " arguments";
 }
 
-
 sub _new1 {
+    my ($class, @arguments) = @_;
+    return $class->_new1_1(@arguments) if 1 && (!defined($arguments[0]) || (ref($arguments[0]) && ref($arguments[0]) ne 'ARRAY'));
+    return $class->_new1_2(@arguments);
+}
+
+
+sub _new1_1 {
     my ($class, $databaseConnectionInfoInterface) = @_;
     my $self = $class->SUPER::new($databaseConnectionInfoInterface);
     _init_fields($self);
@@ -53,7 +59,7 @@ sub _new1 {
 }
 
 
-sub _new1 {
+sub _new1_2 {
     my ($class, $connectionInfo) = @_;
     my $self = $class->SUPER::new($connectionInfo);
     _init_fields($self);
@@ -75,7 +81,7 @@ sub getHostName {
 
 
 # throws Exception
-sub addDbUser {
+sub addDbUser_j4 {
     my ($self, $hostName, $db, $userName, $password) = @_;
         my $stringBuffer = 'org::allbinary::logic::string::StringMaker'->new();
         $stringBuffer->append($self->{GRANT_ALL});
@@ -95,8 +101,7 @@ sub addDbUser {
 }
 
 
-# Java overloaded method: Perl keeps the last definition
-sub addDbUser {
+sub addDbUser_j3 {
     my ($self, $db, $userName, $password) = @_;
         try {
             $self->addDbUser($self->{AT_LOCALHOST}, $db, $userName, $password);
@@ -109,6 +114,13 @@ sub addDbUser {
             $self->{logUtil}->put($self->{UNABLE_TO_CREATE_USER} . $userName, $self, $self->{METHOD_ADD_USER}, $e);
             return 0;
         }
+}
+
+sub addDbUser {
+    my ($invocant, @arguments) = @_;
+    return $invocant->addDbUser_j4(@arguments) if scalar(@arguments) == 4;
+    return $invocant->addDbUser_j3(@arguments) if scalar(@arguments) == 3;
+    die "No method addDbUser takes " . scalar(@arguments) . " arguments";
 }
 
 

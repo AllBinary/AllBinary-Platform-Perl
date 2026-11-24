@@ -24,7 +24,7 @@ tie our $instance, 'java::lang::LazyStatic', sub { 'org::allbinary::media::image
 sub _init_fields {
     my ($self) = @_;
     $self->{logUtil} = 'org::allbinary::logic::communication::log::LogUtil'->getInstance();
-    $self->{imageUtil} = 'org::allbinary::media::image::ImageUtil'->getInstance();
+    $self->{imageUtil} = java::lang::Object::jstatic('org::allbinary::media::image::ImageUnifierUtil', 'ImageUtil')->getInstance();
 }
 
 
@@ -44,7 +44,7 @@ sub new {
 
 sub getDefaultConfiguration {
     my ($self) = @_;
-        my $ge = 'org::allbinary::media::image::GraphicsEnvironment'->getLocalGraphicsEnvironment();
+        my $ge = 'java::awt::GraphicsEnvironment'->getLocalGraphicsEnvironment();
         my $gd = $ge->getDefaultScreenDevice();
         return $gd->getDefaultConfiguration();
 }
@@ -75,12 +75,13 @@ sub getImage {
 
 use java::lang::Object ();
 use java::lang::LazyStatic ();
-# use java::awt ();
+# use java::awt::GraphicsEnvironment ();
+# use java::awt::GraphicsDevice ();
+# use java::awt::GraphicsConfiguration ();
+# use java::awt::Graphics2D ();
 # use java::awt::image::BufferedImage ();
 use org::allbinary::logic::communication::log::LogUtil ();
 use org::allbinary::string::CommonLabels ();
-use org::allbinary::media::image::ImageUtil ();
-use org::allbinary::media::image::GraphicsEnvironment ();
 
 1;
 

@@ -13,10 +13,10 @@ sub _init_fields {
     $self->{logUtil} = 'org::allbinary::logic::communication::log::LogUtil'->getInstance();
     $self->{commonStrings} = 'org::allbinary::string::CommonStrings'->getInstance();
     $self->{androidMediaPlayerWrapper} = $org::allbinary::media::audio::AndroidMediaPlayerWrapper::NULL_ANDROID_MEDIA_PLAYER_WRAPPER;
-    $self->{mOnBufferingUpdateListener} = 'org::allbinary::media::audio::AndroidMediaPlayerOnBufferingUpdateListener'->new($self);
-    $self->{mOnPreparedListener} = 'org::allbinary::media::audio::AndroidMediaPlayerOnPreparedListener'->new($self);
-    $self->{mOnErrorListener} = 'org::allbinary::media::audio::AndroidMediaPlayerOnErrorListener'->new($self);
-    $self->{mOnCompletionListener} = 'org::allbinary::media::audio::AndroidMediaPlayerOnCompletionListener'->new($self);
+    $self->{mOnBufferingUpdateListener} = do { local $java::lang::Object::jouter = $self; 'org::allbinary::media::audio::AndroidMediaPlayerOnBufferingUpdateListener'->new($self) };
+    $self->{mOnPreparedListener} = do { local $java::lang::Object::jouter = $self; 'org::allbinary::media::audio::AndroidMediaPlayerOnPreparedListener'->new($self) };
+    $self->{mOnErrorListener} = do { local $java::lang::Object::jouter = $self; 'org::allbinary::media::audio::AndroidMediaPlayerOnErrorListener'->new($self) };
+    $self->{mOnCompletionListener} = do { local $java::lang::Object::jouter = $self; 'org::allbinary::media::audio::AndroidMediaPlayerOnCompletionListener'->new($self) };
 }
 
 
@@ -49,6 +49,7 @@ sub new {
     sub new {
         my ($class) = @_;
         my $self = bless({}, $class);
+        $self->{jouter} = $java::lang::Object::jouter;
         return $self;
     }
     
@@ -70,6 +71,7 @@ sub new {
     sub new {
         my ($class) = @_;
         my $self = bless({}, $class);
+        $self->{jouter} = $java::lang::Object::jouter;
         return $self;
     }
     
@@ -91,6 +93,7 @@ sub new {
     sub new {
         my ($class) = @_;
         my $self = bless({}, $class);
+        $self->{jouter} = $java::lang::Object::jouter;
         return $self;
     }
     
@@ -113,6 +116,7 @@ sub new {
     sub new {
         my ($class) = @_;
         my $self = bless({}, $class);
+        $self->{jouter} = $java::lang::Object::jouter;
         return $self;
     }
     
@@ -141,6 +145,7 @@ sub new {
     sub new {
         my ($class, $androidMediaPlayerWrapperListener) = @_;
         my $self = $class->SUPER::new();
+        $self->{jouter} = $java::lang::Object::jouter;
         _init_fields($self);
             $self->{androidMediaPlayerWrapperListener} = $androidMediaPlayerWrapperListener;
         return $self;
@@ -174,6 +179,7 @@ sub new {
     sub new {
         my ($class, $androidMediaPlayerWrapperListener) = @_;
         my $self = $class->SUPER::new();
+        $self->{jouter} = $java::lang::Object::jouter;
         _init_fields($self);
             $self->{androidMediaPlayerWrapperListener} = $androidMediaPlayerWrapperListener;
         return $self;
@@ -208,6 +214,7 @@ sub new {
     sub new {
         my ($class, $androidMediaPlayerWrapperListener) = @_;
         my $self = $class->SUPER::new();
+        $self->{jouter} = $java::lang::Object::jouter;
         _init_fields($self);
             $self->{androidMediaPlayerWrapperListener} = $androidMediaPlayerWrapperListener;
         return $self;
@@ -242,6 +249,7 @@ sub new {
     sub new {
         my ($class, $androidMediaPlayerWrapperListener) = @_;
         my $self = $class->SUPER::new();
+        $self->{jouter} = $java::lang::Object::jouter;
         _init_fields($self);
             $self->{androidMediaPlayerWrapperListener} = $androidMediaPlayerWrapperListener;
         return $self;

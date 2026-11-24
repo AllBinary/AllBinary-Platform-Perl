@@ -35,8 +35,14 @@ sub new {
     die "No constructor of InputAutomationModuleConfigurations takes " . scalar(@arguments) . " arguments";
 }
 
-
 sub _new2 {
+    my ($class, @arguments) = @_;
+    return $class->_new2_1(@arguments) if 1 && (!defined($arguments[0]) || (ref($arguments[0]) && ref($arguments[0]) ne 'ARRAY')) && (!defined($arguments[1]) || (ref($arguments[1]) && ref($arguments[1]) ne 'ARRAY'));
+    return $class->_new2_2(@arguments);
+}
+
+
+sub _new2_1 {
     my ($class, $abeClientInformation, $file) = @_;
     my $self = bless({}, $class);
     _init_fields($self);
@@ -60,7 +66,7 @@ sub _new2 {
 }
 
 
-sub _new2 {
+sub _new2_2 {
     my ($class, $abeClientInformation, $document) = @_;
     my $self = bless({}, $class);
     _init_fields($self);

@@ -37,7 +37,7 @@ sub new {
 # throws Exception
 sub onEmailSendRequest {
     my ($self, $userEmailInfoEvent) = @_;
-        if ($org::allbinary::logic::communication::smtp::event::modules::log::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($org::allbinary::logic::communication::smtp::event::modules::log::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{EMAILLOGGING})) {
+        if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{EMAILLOGGING})) {
             my $message = "Logging EmailEvent - Temporary Listener for debugging.\n\n" . $userEmailInfoEvent->toString();
             $self->{logUtil}->putF($message, $self, "onEmailSendRequest");
         }
@@ -47,6 +47,8 @@ use java::lang::Object ();
 use org::allbinary::logic::communication::log::LogUtil ();
 use org::allbinary::logic::communication::smtp::event::EmailEvent ();
 use org::allbinary::logic::communication::smtp::event::UserEmailEventListenerInterface ();
+use org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory ();
+use org::allbinary::logic::communication::log::config::type::LogConfigTypes ();
 
 1;
 

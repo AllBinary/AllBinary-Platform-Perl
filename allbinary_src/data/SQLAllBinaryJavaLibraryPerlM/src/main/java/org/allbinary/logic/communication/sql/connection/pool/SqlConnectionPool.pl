@@ -58,7 +58,7 @@ sub get {
     my ($self, $url) = @_;
         if (!defined($self->{connectionHashMap})) {
             $self->{connectionHashMap} = $self->{stdUtil}->createHashMap();
-            if ($org::allbinary::logic::communication::sql::connection::pool::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($org::allbinary::logic::communication::sql::connection::pool::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{SQLLOGGINGPOOL})) {
+            if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{SQLLOGGINGPOOL})) {
                 $self->{logUtil}->putF($self->{FIRST_NEW_CONNECTION_CREATED} . $url, $self, $self->{METHOD_GET});
             }
             return 'java::sql::DriverManager'->getConnection($url);
@@ -66,7 +66,7 @@ sub get {
             my $connectionVector = $self->{connectionHashMap}->get($url);
             if (!defined($connectionVector)) {
                 $connectionVector = 'org::allbinary::util::BasicArrayListD'->new();
-                if ($org::allbinary::logic::communication::sql::connection::pool::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($org::allbinary::logic::communication::sql::connection::pool::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{SQLLOGGINGPOOL})) {
+                if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{SQLLOGGINGPOOL})) {
                     my $stringBuffer = 'org::allbinary::logic::string::StringMaker'->new();
                     $stringBuffer->append($self->{FIRST});
                     $stringBuffer->append($self->{NEW_CONNECTION_FOR});
@@ -76,7 +76,7 @@ sub get {
                 }
                 return 'java::sql::DriverManager'->getConnection($url);
             } elsif ($connectionVector->size() == 0) {
-                if ($org::allbinary::logic::communication::sql::connection::pool::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($org::allbinary::logic::communication::sql::connection::pool::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{SQLLOGGINGPOOL})) {
+                if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{SQLLOGGINGPOOL})) {
                     $self->{logUtil}->putF('org::allbinary::logic::string::StringMaker'->new()->append($self->{NEW_CONNECTION_FOR})->append($url)->append($self->{CREATED})->toString(), $self, $self->{METHOD_GET});
                 }
                 return 'java::sql::DriverManager'->getConnection($url);
@@ -88,7 +88,7 @@ sub get {
                     if (!$sqlConnection->isClosed()) {
                         $connectionVector->remove($sqlConnection);
                         $self->{connectionHashMap}->put($url, $connectionVector);
-                        if ($org::allbinary::logic::communication::sql::connection::pool::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($org::allbinary::logic::communication::sql::connection::pool::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{SQLLOGGINGPOOL})) {
+                        if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{SQLLOGGINGPOOL})) {
                             $stringBuffer->delete(0, $stringBuffer->length());
                             $stringBuffer->append($self->{NUMBER_OF_SQL_CONNECTIONS_FOR});
                             $stringBuffer->append($url);
@@ -102,7 +102,7 @@ sub get {
                 }
             }
         }
-        if ($org::allbinary::logic::communication::sql::connection::pool::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($org::allbinary::logic::communication::sql::connection::pool::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{SQLLOGGINGPOOL})) {
+        if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{SQLLOGGINGPOOL})) {
             my $stringBuffer = 'org::allbinary::logic::string::StringMaker'->new();
             $stringBuffer->append($self->{NEW_CONNECTION_FOR});
             $stringBuffer->append($url);
@@ -130,7 +130,7 @@ sub add {
                 $connectionVector->add($sqlConnection);
                 $self->{connectionHashMap}->put($url, $connectionVector);
             }
-            if ($org::allbinary::logic::communication::sql::connection::pool::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($org::allbinary::logic::communication::sql::connection::pool::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{SQLLOGGINGPOOL})) {
+            if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{SQLLOGGINGPOOL})) {
                 my $stringBuffer = 'org::allbinary::logic::string::StringMaker'->new();
                 $stringBuffer->append($self->{NUMBER_OF_SQL_CONNECTIONS_FOR});
                 $stringBuffer->append($url);
@@ -140,7 +140,7 @@ sub add {
                 $self->{logUtil}->putF($stringBuffer->toString(), $self, $self->{METHOD_ADD});
             }
         }
-        if ($org::allbinary::logic::communication::sql::connection::pool::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($org::allbinary::logic::communication::sql::connection::pool::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{SQLLOGGINGPOOL})) {
+        if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{SQLLOGGINGPOOL})) {
             $self->{logUtil}->putF($self->{CONNECTION_ALLREADY_CLOSED}, $self, $self->{METHOD_ADD});
         }
 }
@@ -156,6 +156,8 @@ use org::allbinary::util::BasicArrayListD ();
 use org::allbinary::logic::StdUtil ();
 use org::allbinary::logic::communication::log::LogUtil ();
 use org::allbinary::logic::string::StringMaker ();
+use org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory ();
+use org::allbinary::logic::communication::log::config::type::LogConfigTypes ();
 
 1;
 

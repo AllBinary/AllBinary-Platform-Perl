@@ -47,7 +47,7 @@ sub getChoiceGroup {
         my $stringMaker = 'org::allbinary::logic::string::StringMaker'->new();
         my $choiceGroup = 'javax::microedition::lcdui::ChoiceGroup'->new($name, $option, 'org::allbinary::logic::string::StringUtil'->getInstance()->getArrayInstance(), $javax::microedition::lcdui::NullImage::NULL_IMAGE_ARRAY);
         my $list = $hashtable->get($name);
-        my $features = 'org::allbinary::game::configuration::feature::Features'->getInstance();
+        my $features = java::lang::Object::jstatic('org::allbinary::game::configuration::feature::GameFeatureFormUtil', 'Features')->getInstance();
         my $ADD_CHOICE = ": Adding Choice: ";
         my $GET_CHOICE_GROUP = "getChoiceGroup";
         my $size = $list->size();
@@ -90,7 +90,7 @@ sub setDefault {
             if ((Scalar::Util::blessed($item) && $item->isa('org::allbinary::game::configuration::GameConfigurationGauge'))) {
                 'org::allbinary::game::configuration::GameConfigurationUtil'->getInstance()->setDefault($item);
             } elsif ((Scalar::Util::blessed($item) && $item->isa('javax::microedition::lcdui::ChoiceGroup'))) {
-                'org::allbinary::game::configuration::feature::GameFeatureUtil'->getInstance()->setDefault($item);
+                java::lang::Object::jstatic('org::allbinary::game::configuration::feature::GameFeatureFormUtil', 'GameFeatureUtil')->getInstance()->setDefault($item);
             }
         }
 }
@@ -110,8 +110,6 @@ use org::allbinary::logic::string::StringUtil ();
 use org::allbinary::util::ABHashtable ();
 use org::allbinary::util::BasicArrayList ();
 use org::allbinary::util::HashtableUtil ();
-use org::allbinary::game::configuration::feature::Features ();
-use org::allbinary::game::configuration::feature::GameFeatureUtil ();
 
 1;
 

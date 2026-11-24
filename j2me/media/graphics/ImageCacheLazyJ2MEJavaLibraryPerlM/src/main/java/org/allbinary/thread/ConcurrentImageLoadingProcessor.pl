@@ -31,7 +31,7 @@ sub new {
     my ($class, $imageCache) = @_;
     my $self = $class->SUPER::new();
     _init_fields($self);
-        $self->{runnable} = 'org::allbinary::thread::ImageCacheRunnable'->new($imageCache);
+        $self->{runnable} = do { local $java::lang::Object::jouter = $self; 'org::allbinary::thread::ImageCacheRunnable'->new($imageCache) };
     return $self;
 }
 
@@ -60,6 +60,7 @@ sub runTask {
     sub new {
         my ($class, $imageCache) = @_;
         my $self = $class->SUPER::new();
+        $self->{jouter} = $java::lang::Object::jouter;
         _init_fields($self);
             $self->{imageCache} = $imageCache;
         return $self;
@@ -95,7 +96,6 @@ use org::allbinary::image::ImageCache ();
 use org::allbinary::logic::communication::log::LogUtil ();
 use org::allbinary::string::CommonStrings ();
 use org::allbinary::thread::BaseImageLoadingProcessor ();
-use org::allbinary::thread::ABRunnable ();
 use org::allbinary::thread::ImageThreadPool ();
 
 1;

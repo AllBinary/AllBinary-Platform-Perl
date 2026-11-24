@@ -79,38 +79,55 @@ sub get {
 
 
 # throws UnsupportedEncodingException
-sub getString {
+sub getString_j1 {
     my ($self, $encoding) = @_;
         return pack("C*", @{$self->{byteArray}});
 }
 
 
-# Java overloaded method: Perl keeps the last definition
-sub getString {
+sub getString_j0 {
     my ($self) = @_;
         try {
             return 'org::apache::commons::fileupload::FileItemUtil'->getInstance()->getString($self->{byteArray});
         } catch ($e) {
-            if ($org::allbinary::logic::communication::http::file::upload::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($org::allbinary::logic::communication::http::file::upload::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{HTTPERROR})) {
+            if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{HTTPERROR})) {
                 $self->{logUtil}->put($self->{commonStrings}->{EXCEPTION}, $self, "getString", $e);
             }
             return 'org::allbinary::logic::string::StringUtil'->getInstance()->{EMPTY_STRING};
         }
 }
 
+sub getString {
+    my ($invocant, @arguments) = @_;
+    return $invocant->getString_j1(@arguments) if scalar(@arguments) == 1;
+    return $invocant->getString_j0(@arguments) if scalar(@arguments) == 0;
+    die "No method getString takes " . scalar(@arguments) . " arguments";
+}
+
 
 # throws Exception
-sub write {
+sub write_j1_1 {
     my ($self, $file) = @_;
         die ($self->{commonStrings}->{NOT_IMPLEMENTED});
 }
 
 
 # throws Exception
-# Java overloaded method: Perl keeps the last definition
-sub write {
+sub write_j1_2 {
     my ($self, $file) = @_;
         die ($self->{commonStrings}->{NOT_IMPLEMENTED});
+}
+
+sub write {
+    my ($invocant, @arguments) = @_;
+    return $invocant->write_j1(@arguments) if scalar(@arguments) == 1;
+    die "No method write takes " . scalar(@arguments) . " arguments";
+}
+
+sub write_j1 {
+    my ($invocant, @arguments) = @_;
+    return $invocant->write_j1_1(@arguments) if 1 && (!defined($arguments[0]) || (ref($arguments[0]) && ref($arguments[0]) ne 'ARRAY'));
+    return $invocant->write_j1_2(@arguments);
 }
 
 
@@ -180,6 +197,8 @@ use org::allbinary::string::CommonStrings ();
 use org::apache::commons::fileupload::FileItem ();
 use org::apache::commons::fileupload::FileItemHeaders ();
 use org::apache::commons::fileupload::FileItemUtil ();
+use org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory ();
+use org::allbinary::logic::communication::log::config::type::LogConfigTypes ();
 
 1;
 

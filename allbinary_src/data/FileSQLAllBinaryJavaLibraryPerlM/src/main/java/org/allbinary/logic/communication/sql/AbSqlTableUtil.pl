@@ -48,7 +48,7 @@ sub _init_fields {
     $self->{stringUtil} = 'org::allbinary::logic::string::StringUtil'->getInstance();
     $self->{commonStrings} = 'org::allbinary::string::CommonStrings'->getInstance();
     $self->{commonSeps} = 'org::allbinary::string::CommonSeps'->getInstance();
-    $self->{sqlStrings} = 'org::allbinary::logic::communication::sql::SqlStrings'->getInstance();
+    $self->{sqlStrings} = java::lang::Object::jstatic('org::allbinary::logic::communication::sql::AbSqlTableUtil', 'SqlStrings')->getInstance();
 }
 
 sub new {
@@ -69,7 +69,7 @@ sub getOutputStream {
     my ($self, $backupPath, $tableName) = @_;
         try {
             my $fileName = $tableName . $self->{EXTENSION};
-            if ($org::allbinary::logic::communication::sql::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($org::allbinary::logic::communication::sql::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{SQLLOGGING})) {
+            if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{SQLLOGGING})) {
                 $self->{logUtil}->putF($self->{SAVING} . $tableName, $self, $self->{METHOD_GET_OUTPUT_STREAM});
             }
             my $backupFilePath = 'org::allbinary::logic::io::path::AbPath'->new($backupPath, $fileName);
@@ -82,7 +82,7 @@ sub getOutputStream {
             my $outputStream = 'org::allbinary::logic::io::AbFileOutputStream'->new($backupFile);
             return $outputStream;
         } catch ($e) {
-            if ($org::allbinary::logic::communication::sql::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($org::allbinary::logic::communication::sql::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{SQLLOGGINGERROR})) {
+            if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{SQLLOGGINGERROR})) {
                 $self->{logUtil}->put("Create File", $self, $self->{METHOD_GET_OUTPUT_STREAM}, $e);
             }
             return undef;
@@ -102,7 +102,7 @@ sub backupFile {
             $stringBuffer->append('org::allbinary::logic::io::path::AbPathData'->getInstance()->{SEPARATOR});
             $stringBuffer->append($time);
             my $backupAbPath = 'org::allbinary::logic::io::path::AbPath'->new($stringBuffer->toString());
-            if ($org::allbinary::logic::communication::sql::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($org::allbinary::logic::communication::sql::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{SQLLOGGING})) {
+            if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{SQLLOGGING})) {
                 $stringBuffer->delete(0, $stringBuffer->length());
                 $stringBuffer->append($self->{SAVING_BACKUP_PATH});
                 $stringBuffer->append($backupAbPath->toFileSystemString());
@@ -116,7 +116,7 @@ sub backupFile {
             'org::allbinary::logic::io::file::FileUtil'->getInstance()->copy($path, $backupAbPath);
             return 1;
         } catch ($e) {
-            if ($org::allbinary::logic::communication::sql::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($org::allbinary::logic::communication::sql::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{SQLLOGGINGERROR})) {
+            if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{SQLLOGGINGERROR})) {
                 $self->{logUtil}->put($self->{commonStrings}->{EXCEPTION}, $self, $self->{METHOD_BACKUP_FILE}, $e);
             }
             return 0;
@@ -153,9 +153,9 @@ sub backupTable {
         try {
             my $count = 0;
             my $sqlStatement = $self->{sqlStrings}->{SELECT_ALL_FROM} . $tableName;
-            my $path = $org::allbinary::logic::communication::sql::org::allbinary->{globals}->{URLGLOBALS}->getMainPath() + 'org::allbinary::globals::PATH_GLOBALS'->getInstance()->{BACKUP_PATH};
+            my $path = 'org::allbinary::globals::URLGLOBALS'->getMainPath() + 'org::allbinary::globals::PATH_GLOBALS'->getInstance()->{BACKUP_PATH};
             if (!'org::allbinary::logic::io::file::directory::Directory'->create('org::allbinary::logic::io::path::AbPath'->new($path))) {
-                if ($org::allbinary::logic::communication::sql::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($org::allbinary::logic::communication::sql::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{SQLLOGGING})) {
+                if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{SQLLOGGING})) {
                     $self->{logUtil}->putF($self->{ERROR_CREATING} . $path, $self, $self->{METHOD_BACKUP_TABLE});
                 }
             }
@@ -176,7 +176,7 @@ sub backupTable {
                 $stringBuffer->append($rset->getString($colNum));
                 $stringBuffer->append($self->{END});
                 my $sqlStatementLine = $stringBuffer->toString();
-                if ($org::allbinary::logic::communication::sql::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($org::allbinary::logic::communication::sql::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{SQLLOGGING})) {
+                if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{SQLLOGGING})) {
                     $self->{logUtil}->putF($self->{APPENDING} . $sqlStatementLine, $self, $self->{METHOD_BACKUP_TABLE});
                 }
                 $outputStream->write([unpack("C*", $sqlStatementLine)]);
@@ -184,7 +184,7 @@ sub backupTable {
             'org::allbinary::logic::io::StreamUtil'->getInstance()->close($outputStream);
             return $self->{TABLE_LABEL} . $tableName . $self->{BACKUP_SUCCESS};
         } catch ($e) {
-            if ($org::allbinary::logic::communication::sql::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($org::allbinary::logic::communication::sql::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{SQLLOGGINGERROR})) {
+            if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{SQLLOGGINGERROR})) {
                 $self->{logUtil}->put("Backup Table Failed\nSQL Statement", $self, $self->{METHOD_BACKUP_TABLE}, $e);
             }
             return $self->{TABLE_LABEL} . $tableName . " Backup Failed";
@@ -196,11 +196,11 @@ sub restoreTable {
     my ($self, $abSqlTable, $portion) = @_;
         my $tableName = $abSqlTable->getTableName();
         try {
-            my $path = $org::allbinary::logic::communication::sql::org::allbinary->{globals}->{URLGLOBALS}->getMainPath() + 'org::allbinary::globals::PATH_GLOBALS'->getInstance()->{BACKUP_PATH};
+            my $path = 'org::allbinary::globals::URLGLOBALS'->getMainPath() + 'org::allbinary::globals::PATH_GLOBALS'->getInstance()->{BACKUP_PATH};
             my $current = int($portion->getCurrent());
             if ($current == 0) {
                 if ('org::allbinary::logic::io::file::directory::Directory'->create('org::allbinary::logic::io::path::AbPath'->new($path))) {
-                    if ($org::allbinary::logic::communication::sql::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($org::allbinary::logic::communication::sql::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{SQLLOGGING})) {
+                    if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{SQLLOGGING})) {
                         $self->{logUtil}->putF($self->{ERROR_CREATING} . $path, $self, $self->{METHOD_RESTORE_TABLE});
                     }
                 }
@@ -221,7 +221,7 @@ sub restoreTable {
             $stringBuffer->append($start);
             $stringBuffer->append($self->{DASH});
             $stringBuffer->append($end);
-            if ($org::allbinary::logic::communication::sql::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($org::allbinary::logic::communication::sql::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{SQLLOGGING})) {
+            if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{SQLLOGGING})) {
                 $self->{logUtil}->putF($stringBuffer->toString(), $self, $self->{METHOD_RESTORE_TABLE});
             }
             $bufferedLineReader->readUpToLines($start);
@@ -238,7 +238,7 @@ sub restoreTable {
             $stringBuffer->append($self->{PORTION_RESTORED});
             return $stringBuffer->toString();
         } catch ($e) {
-            if ($org::allbinary::logic::communication::sql::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($org::allbinary::logic::communication::sql::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{SQLLOGGINGERROR})) {
+            if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{SQLLOGGINGERROR})) {
                 $self->{logUtil}->put("Restore Table Failed\nSQL Statement", $self, $self->{METHOD_RESTORE_TABLE}, $e);
             }
             my $stringBuffer = 'org::allbinary::logic::string::StringMaker'->new();
@@ -270,7 +270,9 @@ use org::allbinary::globals::PATH_GLOBALS ();
 use org::allbinary::string::CommonSeps ();
 use org::allbinary::string::CommonStrings ();
 use org::allbinary::logic::string::StringUtil ();
-use org::allbinary::logic::communication::sql::SqlStrings ();
+use org::allbinary::globals::URLGLOBALS ();
+use org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory ();
+use org::allbinary::logic::communication::log::config::type::LogConfigTypes ();
 
 1;
 

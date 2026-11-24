@@ -43,10 +43,10 @@ sub getInstance {
 # throws Exception
 sub getFile {
     my ($self, $file) = @_;
-        my $inputStream = 'org::allbinary::logic::io::AbFileInputStream'->createFromAbFile($file);
+        my $inputStream = java::lang::Object::jstatic('org::allbinary::logic::io::CloudStreamUtil', 'AbFileInputStream')->createFromAbFile($file);
         my $available = $inputStream->available();
         if ($available > 0) {
-            if ($org::allbinary::logic::io::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($org::allbinary::logic::io::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{VIEW})) {
+            if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{VIEW})) {
                 $self->{logUtil}->putF("Cloud File Bytes: " . $available, $self, "processRequest()");
             }
         }
@@ -60,14 +60,14 @@ sub getFileAnyWhere {
         my $inputStream = 'org::allbinary::logic::io::AbFileLocalInputStream'->new($file);
         my $available = $inputStream->available();
         if ($available > 0) {
-            if ($org::allbinary::logic::io::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($org::allbinary::logic::io::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{VIEW})) {
+            if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{VIEW})) {
                 $self->{logUtil}->putF("Local File Bytes: " . $available, $self, "processRequest()");
             }
         } else {
-            $inputStream = 'org::allbinary::logic::io::AbFileInputStream'->createFromAbFile($file);
+            $inputStream = java::lang::Object::jstatic('org::allbinary::logic::io::CloudStreamUtil', 'AbFileInputStream')->createFromAbFile($file);
             $available = $inputStream->available();
             if ($available > 0) {
-                if ($org::allbinary::logic::io::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($org::allbinary::logic::io::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{VIEWERROR})) {
+                if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{VIEWERROR})) {
                     $self->{logUtil}->putF("Cloud File Bytes: " . $available, $self, "processRequest()");
                 }
             }
@@ -82,7 +82,7 @@ sub getFileLocal {
         my $inputStream = 'org::allbinary::logic::io::AbFileLocalInputStream'->new($file);
         my $available = $inputStream->available();
         if ($available > 0) {
-            if ($org::allbinary::logic::io::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($org::allbinary::logic::io::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{VIEW})) {
+            if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{VIEW})) {
                 $self->{logUtil}->putF("Local File Bytes: " . $available, $self, "processRequest()");
             }
         }
@@ -94,8 +94,8 @@ use java::lang::LazyStatic ();
 # use java::io::InputStream ();
 use org::allbinary::logic::communication::log::LogUtil ();
 use org::allbinary::logic::io::file::AbFile ();
-use org::allbinary::logic::io::AbFileInputStream ();
-use org::allbinary::logic::io::AbFileLocalInputStream ();
+use org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory ();
+use org::allbinary::logic::communication::log::config::type::LogConfigTypes ();
 
 1;
 

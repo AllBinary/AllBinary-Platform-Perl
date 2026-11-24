@@ -20,8 +20,8 @@ no warnings 'experimental::try';
 use parent -norequire,'java::lang::Object','org::allbinary::graphics::j2me::workarea::tools::event::MyGraphicItemEventListener';
 
 our $frame = 0;
-tie our $gridColor, 'java::lang::LazyStatic', sub { 'org::allbinary::graphics::j2me::workarea::canvas::Color'->new(int('org::allbinary::graphics::color::BasicColorFactory'->getInstance()->{WHITE})) };
-tie our $backgroundColor, 'java::lang::LazyStatic', sub { 'org::allbinary::graphics::j2me::workarea::canvas::Color'->new(int('org::allbinary::graphics::color::BasicColorFactory'->getInstance()->{CLEAR_COLOR})) };
+tie our $gridColor, 'java::lang::LazyStatic', sub { 'java::awt::Color'->new(int('org::allbinary::graphics::color::BasicColorFactory'->getInstance()->{WHITE})) };
+tie our $backgroundColor, 'java::lang::LazyStatic', sub { 'java::awt::Color'->new(int('org::allbinary::graphics::color::BasicColorFactory'->getInstance()->{CLEAR_COLOR})) };
 
 sub _init_fields {
     my ($self) = @_;
@@ -151,14 +151,13 @@ sub setCanvasSize {
 }
 
 
-sub setGrid {
+sub setGrid_j1 {
     my ($self, $point) = @_;
         $self->setGrid($point->getX(), $point->getY());
 }
 
 
-# Java overloaded method: Perl keeps the last definition
-sub setGrid {
+sub setGrid_j2 {
     my ($self, $xSize, $ySize) = @_;
         try {
             if ($xSize >= $self->getCanvasDimension()->getWidth() / 2 || $xSize < 1) {
@@ -171,6 +170,13 @@ sub setGrid {
             $self->{grid}->{isChanged} = 1;
         } catch ($e) {
         }
+}
+
+sub setGrid {
+    my ($invocant, @arguments) = @_;
+    return $invocant->setGrid_j1(@arguments) if scalar(@arguments) == 1;
+    return $invocant->setGrid_j2(@arguments) if scalar(@arguments) == 2;
+    die "No method setGrid takes " . scalar(@arguments) . " arguments";
 }
 
 
@@ -578,7 +584,7 @@ sub deselect {
     my ($self, $evt) = @_;
         my $graphicItemInterface = $self->getGraphicItemHashMap()->get($evt->getTreeNode());
         if (defined($graphicItemInterface)) {
-            $graphicItemInterface->setColor($org::allbinary::graphics::j2me::workarea::canvas::Color::WHITE);
+            $graphicItemInterface->setColor($java::awt::Color::WHITE);
             $graphicItemInterface->deactivate();
             $self->{workAreaJTreeJPanel}->repaint();
         }
@@ -589,7 +595,7 @@ sub highlight {
     my ($self, $evt) = @_;
         my $graphicItemInterface = $self->getGraphicItemHashMap()->get($evt->getTreeNode());
         if (defined($graphicItemInterface)) {
-            $graphicItemInterface->setColor($org::allbinary::graphics::j2me::workarea::canvas::Color::YELLOW);
+            $graphicItemInterface->setColor($java::awt::Color::YELLOW);
             $graphicItemInterface->activate();
             $self->{workAreaJTreeJPanel}->repaint();
         }
@@ -597,7 +603,7 @@ sub highlight {
 
 
 # throws Exception
-sub duplicate {
+sub duplicate_j0 {
     my ($self) = @_;
         my $newCanvasJPanel = 'org::allbinary::graphics::j2me::workarea::canvas::CanvasJPanel'->new($self->{workAreaJTreeJPanel}, $self->getSize(), $self->getCanvasDimension()->getWidth(), $self->getCanvasDimension()->getHeight());
         $newCanvasJPanel->setGrid($self->getGrid()->getGrid());
@@ -611,8 +617,7 @@ sub duplicate {
 
 
 # throws Exception
-# Java overloaded method: Perl keeps the last definition
-sub duplicate {
+sub duplicate_j1 {
     my ($self, $event) = @_;
         my $treeNode = $event->getTreeNode();
         my $graphicItem = $self->getGraphicItemHashMap()->get($treeNode);
@@ -622,6 +627,13 @@ sub duplicate {
             $self->{workAreaJTreeJPanel}->expand();
             $self->{workAreaJTreeJPanel}->repaint();
         }
+}
+
+sub duplicate {
+    my ($invocant, @arguments) = @_;
+    return $invocant->duplicate_j0(@arguments) if scalar(@arguments) == 0;
+    return $invocant->duplicate_j1(@arguments) if scalar(@arguments) == 1;
+    die "No method duplicate takes " . scalar(@arguments) . " arguments";
 }
 
 
@@ -654,7 +666,9 @@ sub getGrid {
 
 use java::lang::Object ();
 use java::lang::LazyStatic ();
-# use java::awt ();
+# use java::awt::Color ();
+# use java::awt::Dimension ();
+# use java::awt::Graphics ();
 use java::util::HashMap ();
 # use javax::swing::tree::DefaultMutableTreeNode ();
 # use javax::swing::tree::MutableTreeNode ();
@@ -689,7 +703,13 @@ use org::allbinary::string::CommonStrings ();
 use org::allbinary::util::BasicArrayList ();
 use org::allbinary::util::BasicArrayListD ();
 use org::w3c::dom::Node ();
-use org::allbinary::graphics::j2me::workarea::canvas::Color ();
+# use java::awt::GridLayout ();
+# use java::awt::event::KeyEvent ();
+# use java::awt::event::KeyListener ();
+# use java::awt::event::MouseEvent ();
+# use java::awt::event::MouseListener ();
+# use java::awt::event::MouseMotionListener ();
+# use javax::swing::JPanel ();
 use org::allbinary::graphics::j2me::workarea::canvas::Grid ();
 use org::allbinary::graphics::j2me::workarea::canvas::CanvasTreeLabel ();
 use org::allbinary::graphics::j2me::workarea::canvas::IntegerDimension ();

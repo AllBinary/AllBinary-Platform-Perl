@@ -23,7 +23,7 @@ tie our $instance, 'java::lang::LazyStatic', sub { 'org::allbinary::business::us
 
 sub _init_fields {
     my ($self) = @_;
-    $self->{basicUserRoleFactory} = 'org::allbinary::business::user::role::BasicUserRoleFactory'->getInstance();
+    $self->{basicUserRoleFactory} = java::lang::Object::jstatic('org::allbinary::business::user::role::UserRoleFactory', 'BasicUserRoleFactory')->getInstance();
     $self->{INSTALLER} = 'org::allbinary::business::user::role::UserRoleB'->new($self->{basicUserRoleFactory}->{INSTALLER}, undef);
     $self->{ADMINISTRATOR} = 'org::allbinary::business::user::role::UserRoleB'->new($self->{basicUserRoleFactory}->{ADMINISTRATOR}, 'org::allbinary::business::user::modules::admin::AdminUserFactory'->new());
     $self->{CUSTOMER} = 'org::allbinary::business::user::role::UserRoleB'->new($self->{basicUserRoleFactory}->{CUSTOMER}, 'org::allbinary::business::user::modules::UserFactory'->new());
@@ -74,7 +74,6 @@ use org::allbinary::business::user::modules::admin::store::web::wizard::WizardWe
 use org::allbinary::business::user::modules::admin::store::web::workflow::editor::WorkflowEditorWebStoreAdminUserFactory ();
 use org::allbinary::business::user::modules::customer::subscriber::SubscriberUserFactory ();
 use org::allbinary::business::user::modules::customer::wholesale::WholesaleUserFactory ();
-use org::allbinary::business::user::role::BasicUserRoleFactory ();
 use org::allbinary::business::user::role::UserRoleB ();
 
 1;

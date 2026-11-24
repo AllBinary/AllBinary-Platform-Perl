@@ -48,7 +48,7 @@ sub _new1 {
 sub actionPerformed {
     my ($self, $actionEvent) = @_;
         $self->SUPER::actionPerformed($actionEvent);
-        if ($actionEvent->getActionCommand()->compareTo($self->{DELETE}) == 0) {
+        if ($actionEvent->getActionCommand()->compareTo(java::lang::Object::jstatic('org::allbinary::input::automation::actions::script::condition::processors::BasicProfileActionScriptProcessor', 'DELETE')) == 0) {
             if ((Scalar::Util::blessed($self->getParent()) && $self->getParent()->isa('org::allbinary::input::automation::actions::script::condition::ProfileActionScriptConditionInterface'))) {
                 my $profileActionScriptConditionInterface = $self->getParent();
                 $profileActionScriptConditionInterface->removeProcessor($self);

@@ -31,7 +31,7 @@ sub new {
 # throws Exception
 sub getInstance {
     my ($class) = @_;
-        my $defaultComboBoxModel = 'org::allbinary::input::automation::actions::script::condition::processors::input::DefaultComboBoxModel'->new();
+        my $defaultComboBoxModel = 'javax::swing::DefaultComboBoxModel'->new();
         my $set = 'org::allbinary::input::automation::robot::InputRobotFactory'->getInstance()->get()->keySet();
         my $nameArray = $set->toArray();
         my $size = scalar(@{$nameArray});
@@ -42,10 +42,9 @@ sub getInstance {
 }
 
 use java::lang::Object ();
-# use java::util::Set ();
-# use javax::swing ();
+use java::util::Set ();
+# use javax::swing::DefaultComboBoxModel ();
 use org::allbinary::input::automation::robot::InputRobotFactory ();
-use org::allbinary::input::automation::actions::script::condition::processors::input::DefaultComboBoxModel ();
 
 1;
 

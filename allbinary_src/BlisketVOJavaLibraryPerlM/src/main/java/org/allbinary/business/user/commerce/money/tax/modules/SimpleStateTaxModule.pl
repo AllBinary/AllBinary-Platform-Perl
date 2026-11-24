@@ -49,7 +49,7 @@ sub getTaxRate {
         my $fileAbPath = 'org::allbinary::logic::io::path::AbPath'->new('org::allbinary::globals::URLGLOBALS'->getMainPath() + 'org::allbinary::globals::FREEBLISKET_PATH_GLOBALS'->getInstance()->{XSLPATH} . $self->{storeFrontInterface}->getName() . $self->{STATETAXPATH}, $self->{STATETAXFILE});
         my $data = 'org::allbinary::logic::control::crypt::file::CryptFileReader'->new('org::allbinary::logic::visual::transform::info::objectConfig::TransformInfoObjectConfigData'->getInstance()->{UNCRYPTED_EXTENSION}, 'org::allbinary::logic::visual::transform::info::objectConfig::TransformInfoObjectConfigData'->getInstance()->{ENCRYPTED_EXTENSION})->get($fileAbPath);
         $self->{document} = 'org::allbinary::data::tree::dom::document::DomDocumentHelper'->create($data);
-        if ($org::allbinary::business::user::commerce::money::tax::modules::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($org::allbinary::business::user::commerce::money::tax::modules::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{TAX})) {
+        if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{TAX})) {
             $self->{logUtil}->putF("Tax Doc: " . 'org::allbinary::data::tree::dom::document::XmlDocumentHelper'->toString($self->{document}), $self, "getTaxRate");
         }
         my $state = $self->{streetAddress}->getState();
@@ -83,7 +83,7 @@ sub isValid {
             my $fileAbPath = 'org::allbinary::logic::io::path::AbPath'->new('org::allbinary::globals::URLGLOBALS'->getMainPath() + 'org::allbinary::globals::FREEBLISKET_PATH_GLOBALS'->getInstance()->{XSLPATH} . $self->{storeFrontInterface}->getName() . $self->{STATETAXPATH}, $self->{STATETAXFILE});
             my $data = 'org::allbinary::logic::control::crypt::file::CryptFileReader'->new('org::allbinary::logic::visual::transform::info::objectConfig::TransformInfoObjectConfigData'->getInstance()->{UNCRYPTED_EXTENSION}, 'org::allbinary::logic::visual::transform::info::objectConfig::TransformInfoObjectConfigData'->getInstance()->{ENCRYPTED_EXTENSION})->get($fileAbPath);
             $self->{document} = 'org::allbinary::data::tree::dom::document::DomDocumentHelper'->create($data);
-            if ($org::allbinary::business::user::commerce::money::tax::modules::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($org::allbinary::business::user::commerce::money::tax::modules::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{TAX})) {
+            if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{TAX})) {
                 $self->{logUtil}->putF("Tax Doc: " . 'org::allbinary::data::tree::dom::document::XmlDocumentHelper'->toString($self->{document}), $self, $self->{commonStrings}->{IS_VALID});
             }
             my $country = $self->{streetAddress}->getCountry();
@@ -93,7 +93,7 @@ sub isValid {
                 my $node = $nodeList->item($index);
                 my $taxNodeChildren = $node->getChildNodes();
                 my $streetAddressNode = 'org::allbinary::data::tree::dom::DomSearchHelper'->getNode($org::allbinary::business::user::address::StreetAddressData::NAME, $taxNodeChildren);
-                if ($org::allbinary::business::user::commerce::money::tax::modules::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($org::allbinary::business::user::commerce::money::tax::modules::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{TAX})) {
+                if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{TAX})) {
                     my $stringBuffer = 'org::allbinary::logic::string::StringMaker'->new();
                     $stringBuffer->append("StreetAddress Node: ");
                     $stringBuffer->append($streetAddressNode->getNodeName());
@@ -117,7 +117,7 @@ sub isValid {
             }
             return 0;
         } catch ($e) {
-            if ($org::allbinary::business::user::commerce::money::tax::modules::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($org::allbinary::business::user::commerce::money::tax::modules::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{VIEWERROR})) {
+            if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{VIEWERROR})) {
                 $self->{logUtil}->put("Failed to validate", $self, $self->{commonStrings}->{IS_VALID}, $e);
             }
             return 0;
@@ -146,6 +146,8 @@ use org::allbinary::string::CommonStrings ();
 use org::w3c::dom::Document ();
 use org::w3c::dom::Node ();
 use org::w3c::dom::NodeList ();
+use org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory ();
+use org::allbinary::logic::communication::log::config::type::LogConfigTypes ();
 use org::allbinary::business::user::commerce::money::tax::modules::TaxModuleInterface ();
 
 1;

@@ -24,7 +24,7 @@ tie our $instance, 'java::lang::LazyStatic', sub { 'org::allbinary::media::image
 sub _init_fields {
     my ($self) = @_;
     $self->{logUtil} = 'org::allbinary::logic::communication::log::LogUtil'->getInstance();
-    $self->{imageUtil} = 'org::allbinary::media::image::ImageUtil'->getInstance();
+    $self->{imageUtil} = java::lang::Object::jstatic('org::allbinary::media::image::ImagesRatioUtil', 'ImageUtil')->getInstance();
 }
 
 
@@ -73,10 +73,10 @@ sub getAverage {
 
 
 # throws Exception
-sub fudge {
+sub fudge_j2 {
     my ($self, $bufferedImage, $ratio) = @_;
         my $imageRatio = ($bufferedImage->getWidth() / $bufferedImage->getHeight());
-        my $point = 'org::allbinary::media::image::Point'->new();
+        my $point = 'java::awt::Point'->new();
         my $newHeight = $bufferedImage->getHeight();
         my $newWidth = $bufferedImage->getWidth();
         if ($ratio > $imageRatio) {
@@ -114,8 +114,7 @@ sub fudge {
 
 
 # throws Exception
-# Java overloaded method: Perl keeps the last definition
-sub fudge {
+sub fudge_j3 {
     my ($self, $bufferedImageArray, $totalImages, $ratio) = @_;
         my $end = $totalImages;
         if (scalar(@{$bufferedImageArray}) < $totalImages) {
@@ -128,14 +127,20 @@ sub fudge {
         return $fudgedBufferedImageArray;
 }
 
+sub fudge {
+    my ($invocant, @arguments) = @_;
+    return $invocant->fudge_j2(@arguments) if scalar(@arguments) == 2;
+    return $invocant->fudge_j3(@arguments) if scalar(@arguments) == 3;
+    die "No method fudge takes " . scalar(@arguments) . " arguments";
+}
+
 use java::lang::Object ();
 use java::lang::LazyStatic ();
-# use java::awt ();
+# use java::awt::Point ();
+# use java::awt::Graphics2D ();
 # use java::awt::image::BufferedImage ();
 use org::allbinary::logic::communication::log::LogUtil ();
 use org::allbinary::string::CommonLabels ();
-use org::allbinary::media::image::ImageUtil ();
-use org::allbinary::media::image::Point ();
 
 1;
 

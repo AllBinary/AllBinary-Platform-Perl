@@ -33,7 +33,7 @@ sub adjust {
     my ($class, $path) = @_;
         my $abPathData = 'org::allbinary::logic::io::path::AbPathData'->getInstance();
         my $stringValidationUtil = 'org::allbinary::logic::string::StringValidationUtil'->getInstance();
-        my $filePathData = 'org::allbinary::logic::io::file::FilePathData'->getInstance();
+        my $filePathData = java::lang::Object::jstatic('org::allbinary::logic::io::file::FilePathUtil', 'FilePathData')->getInstance();
         if ($stringValidationUtil->isEmpty($path)) {
             return $filePathData->{PATH_START};
         }
@@ -44,7 +44,6 @@ sub adjust {
 use java::lang::Object ();
 use org::allbinary::logic::io::path::AbPathData ();
 use org::allbinary::logic::string::StringValidationUtil ();
-use org::allbinary::logic::io::file::FilePathData ();
 
 1;
 

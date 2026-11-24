@@ -32,7 +32,7 @@ sub new {
     my ($class, $graphicsDevice) = @_;
     my $self = bless({}, $class);
     _init_fields($self);
-        $self->{robot} = 'org::allbinary::input::automation::robot::Robot'->new($graphicsDevice);
+        $self->{robot} = 'java::awt::Robot'->new($graphicsDevice);
     return $self;
 }
 
@@ -51,13 +51,13 @@ sub getHelpSet {
 
 sub getMousePoint {
     my ($self) = @_;
-        my $point = 'org::allbinary::input::automation::robot::MouseInfo'->getPointerInfo()->getLocation();
+        my $point = 'java::awt::MouseInfo'->getPointerInfo()->getLocation();
         return $point;
 }
 
 
 # throws Exception
-sub mouseMoveToTarget {
+sub mouseMoveToTarget_j3 {
     my ($self, $rectangle, $x, $y) = @_;
         my $point = 'org::allbinary::input::automation::PointHelper'->getCenterPoint($rectangle);
         $self->{robot}->mouseMove($point->{x} + $x, $point->{y} + $y);
@@ -66,14 +66,13 @@ sub mouseMoveToTarget {
 }
 
 
-sub mouseMove {
+sub mouseMove_j1 {
     my ($self, $point) = @_;
         $self->mouseMove($point->{x}, $point->{y});
 }
 
 
-# Java overloaded method: Perl keeps the last definition
-sub mouseMove {
+sub mouseMove_j2_1 {
     my ($self, $x, $y) = @_;
         $self->{robot}->mouseMove($x, $y);
         my $message = 'org::allbinary::logic::string::StringMaker'->new()->append("Moved Mouse To: x: ")->appendint($x)->append(" y: ")->appendint($y)->toString();
@@ -82,10 +81,16 @@ sub mouseMove {
 
 
 # throws Exception
-# Java overloaded method: Perl keeps the last definition
-sub mouseMoveToTarget {
+sub mouseMoveToTarget_j1 {
     my ($self, $rectangle) = @_;
         $self->mouseMoveToTarget($rectangle, 0, 0);
+}
+
+sub mouseMoveToTarget {
+    my ($invocant, @arguments) = @_;
+    return $invocant->mouseMoveToTarget_j3(@arguments) if scalar(@arguments) == 3;
+    return $invocant->mouseMoveToTarget_j1(@arguments) if scalar(@arguments) == 1;
+    die "No method mouseMoveToTarget takes " . scalar(@arguments) . " arguments";
 }
 
 
@@ -131,10 +136,22 @@ sub keyRelease {
 }
 
 
-# Java overloaded method: Perl keeps the last definition
-sub mouseMove {
+sub mouseMove_j2_2 {
     my ($self, $x, $y) = @_;
         $self->{robot}->mouseMove($x, $y);
+}
+
+sub mouseMove {
+    my ($invocant, @arguments) = @_;
+    return $invocant->mouseMove_j1(@arguments) if scalar(@arguments) == 1;
+    return $invocant->mouseMove_j2(@arguments) if scalar(@arguments) == 2;
+    die "No method mouseMove takes " . scalar(@arguments) . " arguments";
+}
+
+sub mouseMove_j2 {
+    my ($invocant, @arguments) = @_;
+    return $invocant->mouseMove_j2_1(@arguments) if 1 && !ref($arguments[0]) && !ref($arguments[1]);
+    return $invocant->mouseMove_j2_2(@arguments);
 }
 
 
@@ -190,7 +207,12 @@ sub off {
 }
 
 use java::lang::Object ();
-# use java::awt ();
+# use java::awt::Robot ();
+# use java::awt::GraphicsDevice ();
+# use java::awt::MouseInfo ();
+# use java::awt::Point ();
+# use java::awt::Rectangle ();
+# use java::awt::Color ();
 # use java::awt::image::BufferedImage ();
 # use javax::help::HelpSet ();
 use org::allbinary::input::automation::PointHelper ();
@@ -198,8 +220,6 @@ use org::allbinary::logic::communication::log::LogUtil ();
 use org::allbinary::logic::string::StringMaker ();
 use org::allbinary::logic::string::StringUtil ();
 use org::allbinary::input::automation::robot::InputRobotInterface ();
-use org::allbinary::input::automation::robot::Robot ();
-use org::allbinary::input::automation::robot::MouseInfo ();
 
 1;
 

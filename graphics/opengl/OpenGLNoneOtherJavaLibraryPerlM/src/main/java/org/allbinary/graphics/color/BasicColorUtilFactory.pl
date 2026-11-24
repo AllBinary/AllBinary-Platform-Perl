@@ -29,11 +29,10 @@ sub new {
 
 sub getInstance {
     my ($class) = @_;
-        return 'org::allbinary::graphics::color::BasicColorUtil'->getInstance();
+        return java::lang::Object::jstatic('org::allbinary::graphics::color::BasicColorUtilFactory', 'BasicColorUtil')->getInstance();
 }
 
 use java::lang::Object ();
-use org::allbinary::graphics::color::BasicColorUtil ();
 
 1;
 

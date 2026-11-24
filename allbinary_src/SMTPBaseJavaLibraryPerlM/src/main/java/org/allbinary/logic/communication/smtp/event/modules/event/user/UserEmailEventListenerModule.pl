@@ -48,7 +48,7 @@ sub onEmailSendFailure {
 # throws Exception
 sub onEmailSendRequest {
     my ($self, $emailEvent) = @_;
-        if ($org::allbinary::logic::communication::smtp::event::modules::event::user::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($org::allbinary::logic::communication::smtp::event::modules::event::user::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{EMAILLOGGING})) {
+        if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{EMAILLOGGING})) {
             $self->{logUtil}->putF("Add Email To Que For Sending: " . $emailEvent->toString(), $self, "onEmailSendRequest");
         }
         my $to = $self->{userInterface}->getMainEmail();
@@ -64,6 +64,8 @@ use org::allbinary::logic::communication::smtp::EmailInterface ();
 use org::allbinary::logic::communication::smtp::event::EmailEvent ();
 use org::allbinary::logic::communication::smtp::event::UserEmailEventListenerInterface ();
 use org::allbinary::logic::communication::smtp::queue::EmailQueueFactory ();
+use org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory ();
+use org::allbinary::logic::communication::log::config::type::LogConfigTypes ();
 
 1;
 

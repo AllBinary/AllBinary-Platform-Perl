@@ -53,7 +53,7 @@ sub _new2 {
         $self->setBudget($request->getParameter($quoteRequestData->{BUDGET}));
         $self->setTimeFrame($request->getParameter($quoteRequestData->{TIMEFRAME}));
         $self->setComments($request->getParameter($quoteRequestData->{COMMENTS}));
-        if ($org::allbinary::business::user::quoterequest::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($org::allbinary::business::user::quoterequest::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{TAGHELPER})) {
+        if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{TAGHELPER})) {
             $self->{logUtil}->putF("Created with: " . $self->toHashMap(), $self, $self->{commonStrings}->{CONSTRUCTOR});
         }
     return $self;
@@ -72,7 +72,7 @@ sub _new1 {
         $self->setBudget($hashMap->get($quoteRequestData->{BUDGET}));
         $self->setTimeFrame($hashMap->get($quoteRequestData->{TIMEFRAME}));
         $self->setComments($hashMap->get($quoteRequestData->{COMMENTS}));
-        if ($org::allbinary::business::user::quoterequest::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($org::allbinary::business::user::quoterequest::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{TAGHELPER})) {
+        if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{TAGHELPER})) {
             $self->{logUtil}->putF("Created with: " . $self->toHashMap(), $self, $self->{commonStrings}->{CONSTRUCTOR});
         }
     return $self;
@@ -103,7 +103,7 @@ sub isValid {
             }
             return $valid;
         } catch ($e) {
-            if ($org::allbinary::business::user::quoterequest::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($org::allbinary::business::user::quoterequest::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{SQLTAGSERROR})) {
+            if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{SQLTAGSERROR})) {
                 $self->{logUtil}->put("Failed to validate form", $self, $self->{commonStrings}->{IS_VALID}, $e);
             }
             return 0;
@@ -135,7 +135,7 @@ sub validationInfo {
             }
             return $stringBuffer->toString();
         } catch ($e) {
-            if ($org::allbinary::business::user::quoterequest::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($org::allbinary::business::user::quoterequest::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{SQLTAGSERROR})) {
+            if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{SQLTAGSERROR})) {
                 $self->{logUtil}->put("Failed to generate validation error info", $self, "validationInfo()", $e);
             }
             return "Error Validating Form";
@@ -269,6 +269,8 @@ use org::allbinary::logic::communication::sql::AbSqlData ();
 use org::allbinary::logic::string::StringMaker ();
 use org::allbinary::logic::string::StringUtil ();
 use org::allbinary::string::CommonStrings ();
+use org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory ();
+use org::allbinary::logic::communication::log::config::type::LogConfigTypes ();
 
 1;
 

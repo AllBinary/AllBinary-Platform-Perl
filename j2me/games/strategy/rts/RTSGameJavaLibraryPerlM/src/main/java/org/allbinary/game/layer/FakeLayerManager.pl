@@ -22,7 +22,7 @@ use parent -norequire,'org::allbinary::game::layer::AllBinaryGameLayerManager','
 sub _init_fields {
     my ($self) = @_;
     $self->{geographicMapInterfaceArray} = $org::allbinary::media::graphics::geography::map::BasicGeographicMap::NULL_BASIC_GEOGRAPHIC_MAP_ARRAY;
-    $self->{geographicMapCellTypeArray} = $org::allbinary::media::graphics::geography::map::GeographicMapCellType::NULL_GEOGRAPHIC_MAP_CELL_TYPE_ARRAY;
+    $self->{cachedGeographicMapCellTypes} = $org::allbinary::media::graphics::geography::map::GeographicMapCellType::NULL_GEOGRAPHIC_MAP_CELL_TYPE_ARRAY;
 }
 
 
@@ -44,13 +44,13 @@ sub getGeographicMapInterface {
 sub setGeographicMapInterface {
     my ($self, $geographicMapInterfaceArray) = @_;
         $self->{geographicMapInterfaceArray} = $geographicMapInterfaceArray;
-        $self->{geographicMapCellTypeArray} = [(undef) x (scalar(@{$self->{geographicMapInterfaceArray}}))];
+        $self->{cachedGeographicMapCellTypes} = [(undef) x (scalar(@{$self->{geographicMapInterfaceArray}}))];
 }
 
 
 sub geographicMapCellTypeArray {
     my ($self) = @_;
-        return $self->{geographicMapCellTypeArray};
+        return $self->{cachedGeographicMapCellTypes};
 }
 
 use java::lang::Object ();
@@ -59,7 +59,6 @@ use org::allbinary::graphics::color::BasicColorFactory ();
 use org::allbinary::media::graphics::geography::map::BasicGeographicMap ();
 use org::allbinary::media::graphics::geography::map::GeographicMapCellType ();
 use org::allbinary::media::graphics::geography::map::GeographicMapCompositeInterface ();
-use org::allbinary::game::layer::AllBinaryGameLayerManager ();
 
 1;
 

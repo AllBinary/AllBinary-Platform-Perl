@@ -29,7 +29,7 @@ sub new {
 }
 
 
-sub visit {
+sub visit_j1 {
     my ($self, $file) = @_;
         if ($self->getFilterStringBasicArrayList()->size() == 0) {
             return 1;
@@ -38,8 +38,7 @@ sub visit {
 }
 
 
-# Java overloaded method: Perl keeps the last definition
-sub visit {
+sub visit_j2 {
     my ($self, $file, $fileNameString) = @_;
         my $fileNameAndExtension = $file->getPath();
         if (length($fileNameAndExtension) > length($fileNameString)) {
@@ -50,6 +49,13 @@ sub visit {
             }
         }
         return 1;
+}
+
+sub visit {
+    my ($invocant, @arguments) = @_;
+    return $invocant->visit_j1(@arguments) if scalar(@arguments) == 1;
+    return $invocant->visit_j2(@arguments) if scalar(@arguments) == 2;
+    die "No method visit takes " . scalar(@arguments) . " arguments";
 }
 
 use java::lang::Object ();

@@ -39,10 +39,13 @@ sub initComponents {
     my ($self) = @_;
         $self->{jColorChooser1} = 'javax::swing::JColorChooser'->new();
         $self->setLayout('java::awt::BorderLayout'->new());
-        $self->add($self->{jColorChooser1}, $org::allbinary::graphics::j2me::workarea::color::java::awt->{BorderLayout}->{CENTER});
+        $self->add($self->{jColorChooser1}, $java::awt::BorderLayout::CENTER);
 }
 
 use java::lang::Object ();
+# use java::awt::BorderLayout ();
+# use javax::swing::JColorChooser ();
+# use javax::swing::JPanel ();
 
 1;
 

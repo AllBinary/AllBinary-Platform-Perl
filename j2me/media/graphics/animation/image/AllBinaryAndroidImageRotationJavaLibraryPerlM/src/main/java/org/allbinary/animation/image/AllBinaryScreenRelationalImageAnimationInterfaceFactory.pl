@@ -57,8 +57,6 @@ use org::allbinary::graphics::displayable::ScreenRelationalUtil ();
 use org::allbinary::logic::math::PrimitiveIntUtil ();
 use org::allbinary::media::image::ImageScaleUtil ();
 use org::microemu::android::device::AndroidImageInterface ();
-use org::allbinary::animation::image::BaseImageAnimationFactory ();
-use org::allbinary::animation::image::ImageAnimation ();
 
 1;
 

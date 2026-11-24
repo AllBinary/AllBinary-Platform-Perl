@@ -22,17 +22,23 @@ no warnings 'experimental::try';
 
 
 # throws Exception
-sub generateAll {
+sub generateAll_j0 {
     my ($self) = @_;
     die "abstract method generateAll";
 }
 
 
 # throws Exception
-# Java overloaded method: Perl keeps the last definition
-sub generateAll {
+sub generateAll_j1 {
     my ($self, $storeName) = @_;
     die "abstract method generateAll";
+}
+
+sub generateAll {
+    my ($invocant, @arguments) = @_;
+    return $invocant->generateAll_j0(@arguments) if scalar(@arguments) == 0;
+    return $invocant->generateAll_j1(@arguments) if scalar(@arguments) == 1;
+    die "No method generateAll takes " . scalar(@arguments) . " arguments";
 }
 
 

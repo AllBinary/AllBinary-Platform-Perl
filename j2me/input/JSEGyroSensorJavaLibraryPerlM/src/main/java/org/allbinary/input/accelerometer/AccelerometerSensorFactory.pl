@@ -54,7 +54,6 @@ use java::lang::Object ();
 use org::allbinary::game::configuration::feature::Features ();
 use org::allbinary::game::configuration::feature::SensorFeatureFactory ();
 use org::allbinary::input::gyro::AllBinaryOrientationSensor ();
-use org::allbinary::input::accelerometer::NoAccelerometerSensor ();
 
 1;
 

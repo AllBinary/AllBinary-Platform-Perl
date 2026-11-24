@@ -33,7 +33,7 @@ sub _init_fields {
 
 sub createPaintable {
     my ($class) = @_;
-        if ($org::allbinary::game::layer::SWTUtil::isSWT) {
+        if (java::lang::Object::jstatic('org::allbinary::game::layer::AllBinaryGameLayer', 'SWTUtil')->{isSWT}) {
             return 'org::allbinary::game::layer::SWTBlackPaintable'->new();
         }
         return 'org::allbinary::graphics::paint::NullPaintable'->getInstance();
@@ -155,7 +155,6 @@ use org::allbinary::util::BasicArrayListD ();
 use org::allbinary::view::ViewPositionBase ();
 use org::allbinary::view::event::ViewPositionEvent ();
 use org::allbinary::view::event::ViewPositionEventListenerInterface ();
-use org::allbinary::game::layer::SWTUtil ();
 use org::allbinary::game::layer::SWTBlackPaintable ();
 use org::allbinary::game::layer::GameLayerUtil ();
 

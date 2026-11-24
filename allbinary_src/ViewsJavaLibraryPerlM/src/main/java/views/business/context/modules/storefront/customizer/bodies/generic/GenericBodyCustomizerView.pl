@@ -65,7 +65,7 @@ sub view {
             my $result = 'org::allbinary::logic::visual::transform::StoreTransformer'->new($self->{abeClientInformation}, $self->getTransformInfoInterface())->translate($success);
             return 'org::apache::commons::lang3::StringEscapeUtils'->unescapeHtml3($result);
         } catch ($e) {
-            if ($views::business::context::modules::storefront::customizer::bodies::generic::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($views::business::context::modules::storefront::customizer::bodies::generic::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{TAGHELPERERROR})) {
+            if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{TAGHELPERERROR})) {
                 $self->{logUtil}->put($self->{commonStrings}->{EXCEPTION}, $self, "view()", $e);
             }
             die $e;
@@ -87,6 +87,8 @@ use org::apache::commons::lang3::StringEscapeUtils ();
 use org::w3c::dom::Document ();
 use org::w3c::dom::Node ();
 use views::business::context::modules::storefront::HttpStoreComponentView ();
+use org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory ();
+use org::allbinary::logic::communication::log::config::type::LogConfigTypes ();
 
 1;
 

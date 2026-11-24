@@ -66,9 +66,9 @@ sub addFinishedListener {
 sub initComponents {
     my ($self) = @_;
         $self->{jFileChooser1} = 'javax::swing::JFileChooser'->new();
-        $self->setDefaultCloseOperation($org::allbinary::gui::dialog::javax::swing->{WindowConstants}->{DISPOSE_ON_CLOSE});
+        $self->setDefaultCloseOperation($javax::swing::WindowConstants::DISPOSE_ON_CLOSE);
         $self->{jFileChooser1}->addActionListener(do {
-            package java::awt::event::ActionListener::AnonymousN66188 { our @ISA = ('java::awt::event::ActionListener', 'java::lang::Object');
+            package java::awt::event::ActionListener::AnonymousN66294 { our @ISA = ('java::awt::event::ActionListener', 'java::lang::Object');
             
 
             sub actionPerformed {
@@ -76,7 +76,7 @@ sub initComponents {
                 $self->jFileChooser1ActionPerformed($evt);
             }
             }
-            'java::awt::event::ActionListener::AnonymousN66188'->can('new') ? 'java::awt::event::ActionListener::AnonymousN66188'->new() : bless({}, 'java::awt::event::ActionListener::AnonymousN66188')
+            'java::awt::event::ActionListener::AnonymousN66294'->can('new') ? 'java::awt::event::ActionListener::AnonymousN66294'->new() : bless({}, 'java::awt::event::ActionListener::AnonymousN66294')
         });
         my $layout = 'org::jdesktop::layout::GroupLayout'->new($self->getContentPane());
         $self->getContentPane()->setLayout($layout);
@@ -103,8 +103,8 @@ sub jFileChooser1ActionPerformed {
 
 sub main {
     my ($class, $args) = @_;
-        $org::allbinary::gui::dialog::java::awt->{EventQueue}->invokeLater(do {
-            package org::allbinary::thread::ARunnable::AnonymousN67597 { our @ISA = ('org::allbinary::thread::ARunnable', 'java::lang::Object');
+        'java::awt::EventQueue'->invokeLater(do {
+            package org::allbinary::thread::ARunnable::AnonymousN67615 { our @ISA = ('org::allbinary::thread::ARunnable', 'java::lang::Object');
             
 
             sub run {
@@ -112,7 +112,7 @@ sub main {
                 'org::allbinary::gui::dialog::FileJDialog'->new('javax::swing::JFrame'->new(), 1)->setVisible(1);
             }
             }
-            'org::allbinary::thread::ARunnable::AnonymousN67597'->can('new') ? 'org::allbinary::thread::ARunnable::AnonymousN67597'->new() : bless({}, 'org::allbinary::thread::ARunnable::AnonymousN67597')
+            'org::allbinary::thread::ARunnable::AnonymousN67615'->can('new') ? 'org::allbinary::thread::ARunnable::AnonymousN67615'->new() : bless({}, 'org::allbinary::thread::ARunnable::AnonymousN67615')
         });
 }
 
@@ -132,6 +132,14 @@ use java::lang::Object ();
 use org::allbinary::thread::ARunnable ();
 use java::io::File ();
 use org::allbinary::logic::communication::log::LogUtil ();
+# use java::awt::EventQueue ();
+# use java::awt::Frame ();
+# use java::awt::event::ActionEvent ();
+# use java::awt::event::ActionListener ();
+# use javax::swing::JDialog ();
+# use javax::swing::JFileChooser ();
+# use javax::swing::JFrame ();
+# use javax::swing::WindowConstants ();
 
 1;
 

@@ -36,7 +36,7 @@ sub getInstance {
             return $storeFronts->getStoreFrontInterface($storeName);
         } catch ($e) {
             my $commonStrings = 'org::allbinary::string::CommonStrings'->getInstance();
-            if ($org::allbinary::business::context::modules::storefront::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($org::allbinary::business::context::modules::storefront::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{FACTORYERROR})) {
+            if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{FACTORYERROR})) {
                 $logUtil->put($commonStrings->{EXCEPTION}, "StoreFrontFactory", $commonStrings->{GET_INSTANCE}, $e);
             }
             return undef;
@@ -48,6 +48,8 @@ use org::allbinary::data::tables::context::module::storefronts::StoreFrontsEntit
 use org::allbinary::data::tables::context::module::storefronts::StoreFrontsEntityFactory ();
 use org::allbinary::logic::communication::log::LogUtil ();
 use org::allbinary::string::CommonStrings ();
+use org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory ();
+use org::allbinary::logic::communication::log::config::type::LogConfigTypes ();
 
 1;
 

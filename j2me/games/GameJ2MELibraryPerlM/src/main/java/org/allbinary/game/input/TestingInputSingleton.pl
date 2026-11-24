@@ -23,7 +23,7 @@ tie our $instance, 'java::lang::LazyStatic', sub { 'org::allbinary::game::input:
 
 sub _init_fields {
     my ($self) = @_;
-    $self->{inputProcessorArray} = [(undef) x ('org::allbinary::game::input::InputFactory'->getInstance()->{MAX})];
+    $self->{inputProcessorArray} = [(undef) x (java::lang::Object::jstatic('org::allbinary::game::input::TestingInputSingleton', 'InputFactory')->getInstance()->{MAX})];
     $self->{testInputPaintable} = 'org::allbinary::graphics::paint::NullPaintable'->getInstance();
 }
 
@@ -39,7 +39,7 @@ sub new {
     my $self = $class->SUPER::new('org::allbinary::logic::string::StringUtil'->getInstance()->{EMPTY_STRING}, $org::allbinary::graphics::RectangleFactory::SINGLETON, 'org::allbinary::view::ViewPosition'->getInstanceD());
     _init_fields($self);
         # super(...) made $self above
-        'org::allbinary::game::input::GameInputProcessorUtil'->init($self->{inputProcessorArray});
+        java::lang::Object::jstatic('org::allbinary::game::input::TestingInputSingleton', 'GameInputProcessorUtil')->init($self->{inputProcessorArray});
     return $self;
 }
 
@@ -125,7 +125,7 @@ sub initInputProcessorsForTestInput {
             }
             'org::allbinary::game::input::GameInputProcessor::AnonymousN67150'->can('new') ? 'org::allbinary::game::input::GameInputProcessor::AnonymousN67150'->new() : bless({}, 'org::allbinary::game::input::GameInputProcessor::AnonymousN67150')
         };
-        'org::allbinary::game::input::GameInputProcessorUtil'->init($self->{inputProcessorArray});
+        java::lang::Object::jstatic('org::allbinary::game::input::TestingInputSingleton', 'GameInputProcessorUtil')->init($self->{inputProcessorArray});
 }
 
 
@@ -175,10 +175,6 @@ use org::allbinary::layer::AllBinaryLayerManager ();
 use org::allbinary::logic::string::StringUtil ();
 use org::allbinary::util::BasicArrayList ();
 use org::allbinary::view::ViewPosition ();
-use org::allbinary::game::input::GameInputInterface ();
-use org::allbinary::game::input::InputFactory ();
-use org::allbinary::game::input::GameInputProcessorUtil ();
-use org::allbinary::game::input::GameInputProcessor ();
 
 1;
 

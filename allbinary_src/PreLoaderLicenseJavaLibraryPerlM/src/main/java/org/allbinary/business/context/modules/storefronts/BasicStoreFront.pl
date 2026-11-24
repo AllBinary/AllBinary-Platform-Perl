@@ -107,14 +107,14 @@ sub _new1 {
 
 sub getTestHtmlPath {
     my ($self) = @_;
-        return $org::allbinary::business::context::modules::storefronts::org::allbinary->{globals}->{URLGLOBALS}->getTestHtmlPath() + $self->getCurrentHostNamePath();
+        return 'org::allbinary::globals::URLGLOBALS'->getTestHtmlPath() + $self->getCurrentHostNamePath();
 }
 
 
 sub getCurrentHostName {
     my ($self) = @_;
         my $location = undef;
-        if ($org::allbinary::business::context::modules::storefronts::org::allbinary->{globals}->{URLGLOBALS}->isTestingMode()) {
+        if ('org::allbinary::globals::URLGLOBALS'->isTestingMode()) {
             $location = $self->getTestHostName();
         } else {
             $location = $self->getHostName();
@@ -126,7 +126,7 @@ sub getCurrentHostName {
 sub getCurrentHostNamePath {
     my ($self) = @_;
         my $location = undef;
-        if ($org::allbinary::business::context::modules::storefronts::org::allbinary->{globals}->{URLGLOBALS}->isTestingMode()) {
+        if ('org::allbinary::globals::URLGLOBALS'->isTestingMode()) {
             $location = $self->getTestHostNamePath();
         } else {
             $location = $self->getHostNamePath();
@@ -138,7 +138,7 @@ sub getCurrentHostNamePath {
 sub getCurrentHomeHostName {
     my ($self) = @_;
         my $location = undef;
-        if ($org::allbinary::business::context::modules::storefronts::org::allbinary->{globals}->{URLGLOBALS}->isTestingMode()) {
+        if ('org::allbinary::globals::URLGLOBALS'->isTestingMode()) {
             $location = $self->getTestHomeHostName();
         } else {
             $location = $self->getHomeHostName();
@@ -150,7 +150,7 @@ sub getCurrentHomeHostName {
 sub getCurrentHomeHostNamePath {
     my ($self) = @_;
         my $location = undef;
-        if ($org::allbinary::business::context::modules::storefronts::org::allbinary->{globals}->{URLGLOBALS}->isTestingMode()) {
+        if ('org::allbinary::globals::URLGLOBALS'->isTestingMode()) {
             $location = $self->getTestHomeHostNamePath();
         } else {
             $location = $self->getHomeHostNamePath();
@@ -336,6 +336,7 @@ use org::allbinary::logic::string::tokens::Tokenizer ();
 use org::allbinary::string::CommonSeps ();
 use org::allbinary::util::BasicArrayList ();
 use org::allbinary::util::BasicArrayListD ();
+use org::allbinary::globals::URLGLOBALS ();
 use org::allbinary::business::context::modules::storefronts::BasicStoreFrontInterface ();
 
 1;

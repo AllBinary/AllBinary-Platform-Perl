@@ -42,12 +42,12 @@ sub insert {
     my ($self, $values) = @_;
         try {
             $self->SUPER::insert($values);
-            if ($org::allbinary::data::tables::staticpages::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($org::allbinary::data::tables::staticpages::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{SQLLOGGING})) {
-                $self->{logUtil}->putF($self->{commonStrings}->{SUCCESS}, $self, $self->{INSERT});
+            if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{SQLLOGGING})) {
+                $self->{logUtil}->putF($self->{commonStrings}->{SUCCESS}, $self, java::lang::Object::jstatic('org::allbinary::data::tables::staticpages::StaticPagesEntity', 'INSERT'));
             }
         } catch ($e) {
-            if ($org::allbinary::data::tables::staticpages::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($org::allbinary::data::tables::staticpages::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{SQLLOGGING})) {
-                $self->{logUtil}->put($self->{commonStrings}->{FAILURE}, $self, $self->{INSERT}, $e);
+            if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{SQLLOGGING})) {
+                $self->{logUtil}->put($self->{commonStrings}->{FAILURE}, $self, java::lang::Object::jstatic('org::allbinary::data::tables::staticpages::StaticPagesEntity', 'INSERT'), $e);
             }
         }
 }
@@ -108,7 +108,8 @@ use org::allbinary::logic::communication::sql::AbSqlBean ();
 use org::allbinary::logic::control::search::SearchData ();
 use org::allbinary::logic::string::StringMaker ();
 use org::allbinary::string::CommonSeps ();
-use org::allbinary::data::tables::staticpages::StaticPagesEntityInterface ();
+use org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory ();
+use org::allbinary::logic::communication::log::config::type::LogConfigTypes ();
 
 1;
 

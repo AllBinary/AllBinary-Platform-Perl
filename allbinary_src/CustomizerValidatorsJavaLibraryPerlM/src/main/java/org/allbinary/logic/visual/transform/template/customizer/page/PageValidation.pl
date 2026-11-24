@@ -34,6 +34,12 @@ sub new {
     die "No constructor of PageValidation takes " . scalar(@arguments) . " arguments";
 }
 
+sub _new1 {
+    my ($class, @arguments) = @_;
+    return $class->_new1_1(@arguments) if 1 && (!defined($arguments[0]) || (ref($arguments[0]) && ref($arguments[0]) ne 'ARRAY'));
+    return $class->_new1_2(@arguments);
+}
+
 
 sub _new0 {
     my ($class) = @_;
@@ -44,7 +50,7 @@ sub _new0 {
 }
 
 
-sub _new1 {
+sub _new1_1 {
     my ($class, $document) = @_;
     my $self = $class->SUPER::new();
     _init_fields($self);
@@ -54,7 +60,7 @@ sub _new1 {
 }
 
 
-sub _new1 {
+sub _new1_2 {
     my ($class, $hashMap) = @_;
     my $self = $class->SUPER::new();
     _init_fields($self);
@@ -73,18 +79,18 @@ sub isValid {
     my ($self) = @_;
         try {
             my $valid = 1;
-            if ($org::allbinary::logic::visual::transform::template::customizer::page::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($org::allbinary::logic::visual::transform::template::customizer::page::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{VIEW})) {
+            if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{VIEW})) {
                 $self->{logUtil}->putF("PageValidation", $self, $self->{commonStrings}->{IS_VALID});
             }
             if (!$self->{title}->isValid()) {
                 $valid = 0;
             }
-            if ($org::allbinary::logic::visual::transform::template::customizer::page::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($org::allbinary::logic::visual::transform::template::customizer::page::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{VIEW})) {
+            if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{VIEW})) {
                 $self->{logUtil}->putF("PageValidation: " . $valid, $self, $self->{commonStrings}->{IS_VALID});
             }
             return $valid;
         } catch ($e) {
-            if ($org::allbinary::logic::visual::transform::template::customizer::page::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($org::allbinary::logic::visual::transform::template::customizer::page::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{SQLTAGSERROR})) {
+            if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{SQLTAGSERROR})) {
                 $self->{logUtil}->put("Failed to validate form", $self, $self->{commonStrings}->{IS_VALID}, $e);
             }
             return 0;
@@ -101,7 +107,7 @@ sub validationInfo {
             }
             return $stringBuffer->toString();
         } catch ($e) {
-            if ($org::allbinary::logic::visual::transform::template::customizer::page::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($org::allbinary::logic::visual::transform::template::customizer::page::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{SQLTAGSERROR})) {
+            if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{SQLTAGSERROR})) {
                 $self->{logUtil}->put("Failed to generate validation error info", $self, "validationInfo()", $e);
             }
             return "Error Validating Form";
@@ -141,6 +147,8 @@ use org::allbinary::logic::visual::transform::template::customizer::widgets::tit
 use org::allbinary::logic::visual::transform::template::customizer::widgets::title::TitleValidation ();
 use org::w3c::dom::Document ();
 use org::w3c::dom::Node ();
+use org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory ();
+use org::allbinary::logic::communication::log::config::type::LogConfigTypes ();
 
 1;
 

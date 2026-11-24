@@ -42,7 +42,7 @@ sub isValid {
         try {
             return 1;
         } catch ($e) {
-            if ($views::admin::workflow::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($views::admin::workflow::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{VIEWERROR})) {
+            if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{VIEWERROR})) {
                 $self->{logUtil}->put("Failed to validate", $self, $self->{commonStrings}->{IS_VALID}, $e);
             }
             return 0;
@@ -55,14 +55,14 @@ sub validationInfo {
         try {
             my $stringBuffer = 'org::allbinary::logic::string::StringMaker'->new();
             if (defined('org::allbinary::data::tables::workflow::WorkFlowEntityFactory'->getInstance()->create2()->get($self->{workFlowInterface}->getName(), $self->getTransformInfoInterface()->getStoreName()))) {
-                if ($views::admin::workflow::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($views::admin::workflow::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{VIEW})) {
+                if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{VIEW})) {
                     $self->{logUtil}->putF("Workflow already exist", $self, "validationInfo()");
                 }
                 $stringBuffer->append("The WorkFlow name you selected is already in use.<br/>  Please select another Name.<br />");
             }
             return $stringBuffer->toString();
         } catch ($e) {
-            if ($views::admin::workflow::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($views::admin::workflow::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{VIEWERROR})) {
+            if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{VIEWERROR})) {
                 $self->{logUtil}->put("Failed to generate validation error info", $self, "validationInfo()", $e);
             }
             return "Error Getting Validation Info";
@@ -99,6 +99,8 @@ use org::allbinary::logic::system::security::licensing::ServiceClientInformation
 use org::allbinary::logic::visual::transform::info::TransformInfoInterface ();
 use org::w3c::dom::Document ();
 use org::w3c::dom::Node ();
+use org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory ();
+use org::allbinary::logic::communication::log::config::type::LogConfigTypes ();
 use views::admin::workflow::WorkFlowView ();
 
 1;

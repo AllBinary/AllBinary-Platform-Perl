@@ -48,14 +48,14 @@ sub init {
 # throws Exception
 sub registerAsService {
     my ($self, $bundleContext) = @_;
-        'org::allbinary::osgi::OSGIActivatorUtil'->registerAsService($bundleContext, $self->getServiceFactory(), 'bundle::input::automation::robot::InputAutomationRobotServiceInterface'->getName());
+        'org::allbinary::osgi::OSGIActivatorUtil'->registerAsService($bundleContext, $self->getServiceFactory(), (('bundle::input::automation::robot::InputAutomationRobotServiceInterface') =~ s/::/./gr));
 }
 
 
 # throws Exception
 sub getInputAutomationRobotChangeListener {
     my ($self, $context) = @_;
-        my $serviceReference = $context->getServiceReference('bundle::input::automation::robot::InputAutomationRobotChangeListener'->getName());
+        my $serviceReference = $context->getServiceReference((('bundle::input::automation::robot::InputAutomationRobotChangeListener') =~ s/::/./gr));
         if (defined($serviceReference)) {
             my $inputAutomationRobotChangeListener = $context->getService($serviceReference);
             if (!defined($inputAutomationRobotChangeListener)) {
@@ -63,7 +63,7 @@ sub getInputAutomationRobotChangeListener {
             }
             return $inputAutomationRobotChangeListener;
         } else {
-            $self->{logUtil}->putF("No ServiceReference: " . 'bundle::input::automation::robot::InputAutomationRobotChangeListener'->getName(), $self, "getInputAutomationRobotChangeListener");
+            $self->{logUtil}->putF("No ServiceReference: " . (('bundle::input::automation::robot::InputAutomationRobotChangeListener') =~ s/::/./gr), $self, "getInputAutomationRobotChangeListener");
             return undef;
         }
 }

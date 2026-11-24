@@ -53,10 +53,10 @@ sub get {
             return $result;
         } catch ($e) {
             print("IOException Trying Other Servers", "\n");
-            if (!("" . $e)->startsWith($self->{HOST_NOT_RESOLVED})) {
+            if (!("" . $e)->startsWith(java::lang::Object::jstatic('org::allbinary::logic::communication::log::XmlRpcRemoteLogClient', 'HOST_NOT_RESOLVED'))) {
                 return $self->tryAnother($anyType);
             } else {
-                die ($self->{HOST_NOT_RESOLVED_MSG});
+                die (java::lang::Object::jstatic('org::allbinary::logic::communication::log::XmlRpcRemoteLogClient', 'HOST_NOT_RESOLVED_MSG'));
             }
         }
 }

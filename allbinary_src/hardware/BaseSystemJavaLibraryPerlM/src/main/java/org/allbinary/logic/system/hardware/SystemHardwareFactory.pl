@@ -25,11 +25,11 @@ sub _init_fields {
     my ($self) = @_;
     $self->{logUtil} = 'org::allbinary::logic::communication::log::LogUtil'->getInstance();
     $self->{commonStrings} = 'org::allbinary::string::CommonStrings'->getInstance();
-    $self->{hardwareInterface} = 'org::allbinary::logic::system::hardware::NoHardware'->getInstance();
+    $self->{hardwareInterface} = java::lang::Object::jstatic('org::allbinary::logic::system::hardware::SystemHardwareFactory', 'NoHardware')->getInstance();
 }
 
 
-sub getInstance {
+sub getInstance_j0 {
     my ($class) = @_;
         return $org::allbinary::logic::system::hardware::SystemHardwareFactory::instance;
 }
@@ -43,18 +43,24 @@ sub new {
 }
 
 
-# Java overloaded method: Perl keeps the last definition
-sub getInstance {
+sub getInstance_j1 {
     my ($self, $operatingSystemInterface) = @_;
         try {
-            if ($self->{hardwareInterface} == 'org::allbinary::logic::system::hardware::NoHardware'->getInstance()) {
-                $self->{hardwareInterface} = 'org::allbinary::logic::system::hardware::HardwareFactory'->getInstance()->getInstance($operatingSystemInterface);
+            if ($self->{hardwareInterface} == java::lang::Object::jstatic('org::allbinary::logic::system::hardware::SystemHardwareFactory', 'NoHardware')->getInstance()) {
+                $self->{hardwareInterface} = java::lang::Object::jstatic('org::allbinary::logic::system::hardware::SystemHardwareFactory', 'HardwareFactory')->getInstance()->getInstance($operatingSystemInterface);
             }
             $self->{logUtil}->putF("Found Hardware", $self, $self->{commonStrings}->{CONSTRUCTOR});
         } catch ($e) {
             $self->{logUtil}->put($self->{commonStrings}->{EXCEPTION}, $self, $self->{commonStrings}->{CONSTRUCTOR}, $e);
         }
         return $self->{hardwareInterface};
+}
+
+sub getInstance {
+    my ($invocant, @arguments) = @_;
+    return $invocant->getInstance_j0(@arguments) if scalar(@arguments) == 0;
+    return $invocant->getInstance_j1(@arguments) if scalar(@arguments) == 1;
+    die "No method getInstance takes " . scalar(@arguments) . " arguments";
 }
 
 
@@ -78,8 +84,6 @@ use org::allbinary::logic::string::StringMaker ();
 use org::allbinary::logic::string::StringUtil ();
 use org::allbinary::logic::system::os::GenericOperatingSystem ();
 use org::allbinary::string::CommonStrings ();
-use org::allbinary::logic::system::hardware::NoHardware ();
-use org::allbinary::logic::system::hardware::HardwareFactory ();
 
 1;
 

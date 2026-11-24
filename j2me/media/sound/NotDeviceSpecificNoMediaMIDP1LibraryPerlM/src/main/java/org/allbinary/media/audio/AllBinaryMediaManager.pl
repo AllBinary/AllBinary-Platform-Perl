@@ -72,7 +72,7 @@ sub createPlayerFromInputStream {
         my $logUtil = 'org::allbinary::logic::communication::log::LogUtil'->getInstance();
         my $commonString = 'org::allbinary::string::CommonStrings'->getInstance();
         $logUtil->putF($commonString->{START}, $org::allbinary::media::audio::AllBinaryMediaManager::THIS, "creatPlayer(InputStream)");
-        return $org::allbinary::media::audio::NoPlayer::NO_PLAYER;
+        return java::lang::Object::jstatic('org::allbinary::media::audio::AllBinaryMediaManager', 'NoPlayer')->{NO_PLAYER};
 }
 
 
@@ -81,7 +81,7 @@ sub createPlayer {
         my $logUtil = 'org::allbinary::logic::communication::log::LogUtil'->getInstance();
         my $commonString = 'org::allbinary::string::CommonStrings'->getInstance();
         $logUtil->putF($commonString->{START}, $org::allbinary::media::audio::AllBinaryMediaManager::THIS, "creatPlayer(locator)");
-        return $org::allbinary::media::audio::NoPlayer::NO_PLAYER;
+        return java::lang::Object::jstatic('org::allbinary::media::audio::AllBinaryMediaManager', 'NoPlayer')->{NO_PLAYER};
 }
 
 
@@ -109,8 +109,6 @@ use org::allbinary::graphics::canvas::transition::progress::ProgressCanvasFactor
 use org::allbinary::logic::communication::log::LogUtil ();
 use org::allbinary::logic::string::StringUtil ();
 use org::allbinary::string::CommonStrings ();
-use org::allbinary::media::audio::Sounds ();
-use org::allbinary::media::audio::NoPlayer ();
 
 1;
 

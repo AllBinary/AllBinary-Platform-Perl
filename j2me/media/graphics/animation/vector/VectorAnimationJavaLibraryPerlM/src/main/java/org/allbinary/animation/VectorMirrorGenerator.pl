@@ -28,7 +28,7 @@ sub _init_fields {
 }
 
 
-sub getInstance {
+sub getInstance_j0 {
     my ($class) = @_;
         return $org::allbinary::animation::VectorMirrorGenerator::instance;
 }
@@ -42,8 +42,7 @@ sub new {
 }
 
 
-# Java overloaded method: Perl keeps the last definition
-sub getInstance {
+sub getInstance_j2_1 {
     my ($self, $points, $width) = @_;
         try {
             my $pointFactory = 'org::allbinary::graphics::PointFactory'->getInstance();
@@ -75,13 +74,25 @@ sub getInstance {
 
 
 # throws Exception
-# Java overloaded method: Perl keeps the last definition
-sub getInstance {
+sub getInstance_j2_2 {
     my ($self, $pointBasicArrayList, $width) = @_;
         my $graphicsPipe = 'org::allbinary::graphics::pipeline::BasicGraphicsPipeline'->new($pointBasicArrayList);
         $graphicsPipe->createMatrix();
         $graphicsPipe->mirror($width);
         return $graphicsPipe->getMatrix();
+}
+
+sub getInstance {
+    my ($invocant, @arguments) = @_;
+    return $invocant->getInstance_j0(@arguments) if scalar(@arguments) == 0;
+    return $invocant->getInstance_j2(@arguments) if scalar(@arguments) == 2;
+    die "No method getInstance takes " . scalar(@arguments) . " arguments";
+}
+
+sub getInstance_j2 {
+    my ($invocant, @arguments) = @_;
+    return $invocant->getInstance_j2_1(@arguments) if 1 && (!defined($arguments[0]) || ref($arguments[0]) eq 'ARRAY') && !ref($arguments[1]);
+    return $invocant->getInstance_j2_2(@arguments);
 }
 
 use java::lang::Object ();

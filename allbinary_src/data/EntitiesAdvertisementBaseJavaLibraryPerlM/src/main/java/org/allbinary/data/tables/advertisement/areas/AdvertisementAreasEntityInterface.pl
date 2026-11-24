@@ -23,17 +23,23 @@ use parent -norequire,'org::allbinary::data::tables::BasicDataTableInterface';
 
 
 # throws Exception
-sub get {
+sub get_j1 {
     my ($self, $storeName) = @_;
     die "abstract method get";
 }
 
 
 # throws Exception
-# Java overloaded method: Perl keeps the last definition
-sub get {
+sub get_j2 {
     my ($self, $storeName, $advertisementAreaName) = @_;
     die "abstract method get";
+}
+
+sub get {
+    my ($invocant, @arguments) = @_;
+    return $invocant->get_j1(@arguments) if scalar(@arguments) == 1;
+    return $invocant->get_j2(@arguments) if scalar(@arguments) == 2;
+    die "No method get takes " . scalar(@arguments) . " arguments";
 }
 
 

@@ -22,7 +22,7 @@ use parent -norequire,'java::lang::Object';
 tie our $instance, 'java::lang::LazyStatic', sub { 'org::allbinary::business::context::configuration::ContextConfigurationInterfaceFactory'->new() };
 
 
-sub getInstance {
+sub getInstance_j0 {
     my ($class) = @_;
         return $org::allbinary::business::context::configuration::ContextConfigurationInterfaceFactory::instance;
 }
@@ -36,24 +36,35 @@ sub new {
 
 
 # throws Exception
-# Java overloaded method: Perl keeps the last definition
-sub getInstance {
+sub getInstance_j1_1 {
     my ($self, $document) = @_;
-        my $contextConfigurationData = 'org::allbinary::business::context::configuration::ContextConfigurationData'->getInstance();
+        my $contextConfigurationData = java::lang::Object::jstatic('org::allbinary::business::context::configuration::ContextConfigurationInterfaceFactory', 'ContextConfigurationData')->getInstance();
         my $contextConfigurationNode = 'org::allbinary::data::tree::dom::DomSearchHelper'->getNode($contextConfigurationData->{NAME}, $document->getChildNodes());
         return 'org::allbinary::business::context::configuration::ContextConfigurationView'->new($contextConfigurationNode)->getContextConfigurationInterface();
 }
 
 
 # throws Exception
-# Java overloaded method: Perl keeps the last definition
-sub getInstance {
+sub getInstance_j1_2 {
     my ($self, $contextName) = @_;
-        my $abPath = 'org::allbinary::business::context::configuration::ContextConfigurationPathUtil'->getAbPath($contextName);
-        my $contextConfigurationData = 'org::allbinary::business::context::configuration::ContextConfigurationData'->getInstance();
+        my $abPath = java::lang::Object::jstatic('org::allbinary::business::context::configuration::ContextConfigurationInterfaceFactory', 'ContextConfigurationPathUtil')->getAbPath($contextName);
+        my $contextConfigurationData = java::lang::Object::jstatic('org::allbinary::business::context::configuration::ContextConfigurationInterfaceFactory', 'ContextConfigurationData')->getInstance();
         my $documentString = 'org::allbinary::logic::control::crypt::file::CryptFileReader'->new($contextConfigurationData->{UNCRYPTED_EXTENSION}, $contextConfigurationData->{ENCRYPTED_EXTENSION})->get($abPath);
         my $document = 'org::allbinary::data::tree::dom::document::DomDocumentHelper'->create($documentString);
         return $self->getInstance($document);
+}
+
+sub getInstance {
+    my ($invocant, @arguments) = @_;
+    return $invocant->getInstance_j0(@arguments) if scalar(@arguments) == 0;
+    return $invocant->getInstance_j1(@arguments) if scalar(@arguments) == 1;
+    die "No method getInstance takes " . scalar(@arguments) . " arguments";
+}
+
+sub getInstance_j1 {
+    my ($invocant, @arguments) = @_;
+    return $invocant->getInstance_j1_1(@arguments) if 1 && (!defined($arguments[0]) || (ref($arguments[0]) && ref($arguments[0]) ne 'ARRAY'));
+    return $invocant->getInstance_j1_2(@arguments);
 }
 
 use java::lang::Object ();
@@ -64,9 +75,7 @@ use org::allbinary::logic::control::crypt::file::CryptFileReader ();
 use org::allbinary::logic::io::path::AbPath ();
 use org::w3c::dom::Document ();
 use org::w3c::dom::Node ();
-use org::allbinary::business::context::configuration::ContextConfigurationData ();
 use org::allbinary::business::context::configuration::ContextConfigurationView ();
-use org::allbinary::business::context::configuration::ContextConfigurationPathUtil ();
 
 1;
 

@@ -77,25 +77,36 @@ sub getChannel {
 
 
 # throws IOException
-sub write {
+sub write_j1_1 {
     my ($self, $buffer) = @_;
         $self->{fileOutputStream}->write($buffer);
 }
 
 
 # throws IOException
-# Java overloaded method: Perl keeps the last definition
-sub write {
+sub write_j3 {
     my ($self, $buffer, $offset, $count) = @_;
         $self->{fileOutputStream}->write($buffer, $offset, $count);
 }
 
 
 # throws IOException
-# Java overloaded method: Perl keeps the last definition
-sub write {
+sub write_j1_2 {
     my ($self, $b) = @_;
         $self->{fileOutputStream}->write($b);
+}
+
+sub write {
+    my ($invocant, @arguments) = @_;
+    return $invocant->write_j1(@arguments) if scalar(@arguments) == 1;
+    return $invocant->write_j3(@arguments) if scalar(@arguments) == 3;
+    die "No method write takes " . scalar(@arguments) . " arguments";
+}
+
+sub write_j1 {
+    my ($invocant, @arguments) = @_;
+    return $invocant->write_j1_1(@arguments) if 1 && (!defined($arguments[0]) || ref($arguments[0]) eq 'ARRAY');
+    return $invocant->write_j1_2(@arguments);
 }
 
 use java::lang::Object ();

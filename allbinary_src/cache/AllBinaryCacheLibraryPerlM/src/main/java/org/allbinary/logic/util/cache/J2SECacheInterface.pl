@@ -27,8 +27,7 @@ sub keySet {
     die "abstract method keySet";
 }
 
-# use java::util::Set ();
-use org::allbinary::logic::util::cache::AutomaticCacheInterface ();
+use java::util::Set ();
 
 1;
 

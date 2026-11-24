@@ -62,7 +62,7 @@ sub searchSingleStaticPage {
                 return $filePath;
             }
         } catch ($e) {
-            if ($views::generic::inventory::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($views::generic::inventory::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{PRODUCTSEARCHLOGGING})) {
+            if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{PRODUCTSEARCHLOGGING})) {
                 $self->{logUtil}->put($self->{commonStrings}->{FAILURE}, $self, "searchSingleStaticPage", $e);
             }
             die ("Failed retrieve Single Product Page Static");
@@ -77,7 +77,7 @@ sub searchSingleDynamicPage {
             my $str = $self->search();
             return $str->[int($self->{searchRequest}->getParams()->getStartPageInt())];
         } catch ($e) {
-            if ($views::generic::inventory::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($views::generic::inventory::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{PRODUCTSEARCHLOGGINGERROR})) {
+            if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{PRODUCTSEARCHLOGGINGERROR})) {
                 $self->{logUtil}->put($self->{commonStrings}->{FAILURE}, $self, "searchSingleDynamicPage", $e);
             }
             die ("Failed retrieve Single Product Page Dynamically");
@@ -122,6 +122,8 @@ use org::allbinary::logic::system::security::licensing::ServiceClientInformation
 use org::allbinary::string::CommonSeps ();
 use org::allbinary::string::CommonStrings ();
 use views::admin::inventory::listings::InventoryViewSearchInterface ();
+use org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory ();
+use org::allbinary::logic::communication::log::config::type::LogConfigTypes ();
 use views::generic::inventory::InventorySearchUtil ();
 use views::generic::inventory::InventorySearchProductUtil ();
 

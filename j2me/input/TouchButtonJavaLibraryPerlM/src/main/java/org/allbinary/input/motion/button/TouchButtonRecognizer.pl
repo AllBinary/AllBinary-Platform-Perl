@@ -36,7 +36,7 @@ sub new {
     my ($class) = @_;
     my $self = bless({}, $class);
     _init_fields($self);
-        if ('org::allbinary::input::motion::button::TouchScreenFactory'->getInstance()->isMultiTouch()) {
+        if (java::lang::Object::jstatic('org::allbinary::input::motion::button::TouchButtonRecognizer', 'TouchScreenFactory')->getInstance()->isMultiTouch()) {
             $self->{releaseHelper} = 'org::allbinary::input::motion::button::MultitouchReleaseHelper'->new($self);
         } else {
             $self->{releaseHelper} = 'org::allbinary::input::motion::button::ReleaseHelper'->new($self);
@@ -65,7 +65,7 @@ sub releaseTouchButtonInput {
             $self->processRelease($touchButtonInput, $deviceId);
             return 1;
         } else {
-            my $list = 'org::allbinary::input::motion::button::TouchButtonFactory'->getInstance()->getList();
+            my $list = java::lang::Object::jstatic('org::allbinary::input::motion::button::TouchButtonRecognizer', 'TouchButtonFactory')->getInstance()->getList();
             my $rectangle = undef;
             my $point = undef;
             my $touchButton = undef;
@@ -87,7 +87,7 @@ sub releaseTouchButtonInput {
 # throws Exception
 sub pressTouchButtonInput {
     my ($self, $x, $y, $deviceId) = @_;
-        my $list = 'org::allbinary::input::motion::button::TouchButtonFactory'->getInstance()->getList();
+        my $list = java::lang::Object::jstatic('org::allbinary::input::motion::button::TouchButtonRecognizer', 'TouchButtonFactory')->getInstance()->getList();
         my $rectangle = undef;
         my $point = undef;
         my $touchButton = undef;
@@ -124,10 +124,8 @@ use org::allbinary::math::RectangleCollisionUtil ();
 use org::allbinary::util::BasicArrayList ();
 use org::allbinary::input::motion::button::BasicTouchInputFactory ();
 use org::allbinary::input::motion::button::CurrentlyPressedTouchButtonSingleton ();
-use org::allbinary::input::motion::button::TouchScreenFactory ();
 use org::allbinary::input::motion::button::ReleaseHelper ();
 use org::allbinary::input::motion::button::MultitouchReleaseHelper ();
-use org::allbinary::input::motion::button::TouchButtonFactory ();
 
 1;
 

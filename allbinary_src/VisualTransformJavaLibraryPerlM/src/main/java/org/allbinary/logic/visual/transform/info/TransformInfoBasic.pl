@@ -236,7 +236,6 @@ use org::allbinary::logic::io::path::AbPath ();
 use org::allbinary::logic::visual::transform::info::objectConfig::TransformInfoObjectConfigInterface ();
 use org::w3c::dom::Document ();
 use org::allbinary::logic::communication::http::request::session::WeblisketSessionInterface ();
-use org::allbinary::logic::visual::transform::info::TransformInfoHttpInterface ();
 
 1;
 

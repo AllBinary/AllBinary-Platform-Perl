@@ -60,7 +60,7 @@ sub send {
             return "Email Sent";
         } catch ($e) {
             my $error = "Failed to Send Email.";
-            if ($admin::tags::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($admin::tags::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{SQLTAGSERROR})) {
+            if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{SQLTAGSERROR})) {
                 $self->{logUtil}->put($self->{commonStrings}->{EXCEPTION}, $self, "send()", $e);
             }
             return $error;
@@ -73,10 +73,10 @@ sub doStartTag {
     my ($self) = @_;
         try {
             $self->{pageContext}->getOut()->print($self->send());
-            return $self->{SKIP_BODY};
+            return java::lang::Object::jstatic('admin::tags::BasicTextEmailTag', 'SKIP_BODY');
         } catch ($e) {
             'org::allbinary::logic::communication::http::request::AbResponseHandler'->sendJspTagRedirect($self->{pageContext}, $e);
-            return $self->{SKIP_BODY};
+            return java::lang::Object::jstatic('admin::tags::BasicTextEmailTag', 'SKIP_BODY');
         }
 }
 
@@ -89,6 +89,8 @@ use org::allbinary::logic::StdUtil ();
 use org::allbinary::logic::communication::http::request::AbResponseHandler ();
 use org::allbinary::logic::communication::log::LogUtil ();
 use tags::CustomTagSupport ();
+use org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory ();
+use org::allbinary::logic::communication::log::config::type::LogConfigTypes ();
 
 1;
 

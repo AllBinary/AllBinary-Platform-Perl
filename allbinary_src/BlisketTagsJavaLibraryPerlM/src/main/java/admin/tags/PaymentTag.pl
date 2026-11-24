@@ -69,7 +69,7 @@ sub doStartTag {
                 if (defined($self->getCommand())) {
                     if ($self->getCommand()->compareTo($org::allbinary::business::user::commerce::money::payment::PaymentData::SELECT) == 0) {
                         my $output = $self->select();
-                        if ($admin::tags::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($admin::tags::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{JSPTAGEXTRAOUTPUT})) {
+                        if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{JSPTAGEXTRAOUTPUT})) {
                             $self->{pageContext}->getOut()->print($output . "<br />");
                         }
                         return $self->{EVAL_BODY_INCLUDE};
@@ -78,10 +78,10 @@ sub doStartTag {
                     }
                 }
             }
-            return $self->{SKIP_BODY};
+            return java::lang::Object::jstatic('admin::tags::PaymentTag', 'SKIP_BODY');
         } catch ($e) {
             'org::allbinary::logic::communication::http::request::AbResponseHandler'->sendJspTagLicensingRedirect($self->{pageContext}, $e);
-            return $self->{SKIP_BODY};
+            return java::lang::Object::jstatic('admin::tags::PaymentTag', 'SKIP_BODY');
         }
 }
 
@@ -96,7 +96,8 @@ use org::allbinary::logic::StdUtil ();
 use org::allbinary::logic::communication::http::request::AbResponseHandler ();
 use org::allbinary::logic::communication::log::LogUtil ();
 use org::allbinary::logic::system::security::licensing::LicensingException ();
-use admin::tags::TableTag ();
+use org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory ();
+use org::allbinary::logic::communication::log::config::type::LogConfigTypes ();
 
 1;
 

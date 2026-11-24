@@ -62,8 +62,8 @@ sub getTotal {
 sub toHashMap {
     my ($self) = @_;
         my $hashMap = 'org::allbinary::logic::StdUtil'->getInstance()->createHashMap();
-        $hashMap->put('org::allbinary::business::context::modules::storefront::statistics::inventory::StoreFrontInventoryStatisticsData'->getInstance()->{NUMBEROFITEMS}, $self->getNumber()->toString());
-        $hashMap->put('org::allbinary::business::context::modules::storefront::statistics::inventory::StoreFrontInventoryStatisticsData'->getInstance()->{TOTALVALUE}, $self->getTotal()->toString());
+        $hashMap->put(java::lang::Object::jstatic('org::allbinary::business::context::modules::storefront::statistics::inventory::StoreFrontInventoryStatistics', 'StoreFrontInventoryStatisticsData')->getInstance()->{NUMBEROFITEMS}, $self->getNumber()->toString());
+        $hashMap->put(java::lang::Object::jstatic('org::allbinary::business::context::modules::storefront::statistics::inventory::StoreFrontInventoryStatistics', 'StoreFrontInventoryStatisticsData')->getInstance()->{TOTALVALUE}, $self->getTotal()->toString());
         return $hashMap;
 }
 
@@ -89,8 +89,6 @@ use org::allbinary::business::user::commerce::money::Money ();
 use org::allbinary::data::tables::user::commerce::inventory::item::InventoryEntityFactory ();
 use org::allbinary::data::tables::user::commerce::inventory::item::InventoryEntityInterface ();
 use org::allbinary::logic::StdUtil ();
-use org::allbinary::business::context::modules::storefront::statistics::inventory::StoreFrontInventoryStatisticsInterface ();
-use org::allbinary::business::context::modules::storefront::statistics::inventory::StoreFrontInventoryStatisticsData ();
 
 1;
 

@@ -98,7 +98,7 @@ sub initComponents {
         $self->{titleJLabel}->setText("Time Interval Condition Options");
         $self->{okJButton}->setText("OK");
         $self->{okJButton}->addActionListener(do {
-            package java::awt::event::ActionListener::AnonymousN67024 { our @ISA = ('java::awt::event::ActionListener', 'java::lang::Object');
+            package java::awt::event::ActionListener::AnonymousN67026 { our @ISA = ('java::awt::event::ActionListener', 'java::lang::Object');
             
 
             sub actionPerformed {
@@ -106,17 +106,17 @@ sub initComponents {
                 $self->okJButtonActionPerformed($evt);
             }
             }
-            'java::awt::event::ActionListener::AnonymousN67024'->can('new') ? 'java::awt::event::ActionListener::AnonymousN67024'->new() : bless({}, 'java::awt::event::ActionListener::AnonymousN67024')
+            'java::awt::event::ActionListener::AnonymousN67026'->can('new') ? 'java::awt::event::ActionListener::AnonymousN67026'->new() : bless({}, 'java::awt::event::ActionListener::AnonymousN67026')
         });
         $self->{jLabel2}->setText("Time (ms):");
         my $timeIntervalActionJDialogLayout = 'javax::swing::GroupLayout'->new($self->{timeIntervalActionJDialog}->getContentPane());
         $self->{timeIntervalActionJDialog}->getContentPane()->setLayout($timeIntervalActionJDialogLayout);
-        $timeIntervalActionJDialogLayout->setHorizontalGroup($timeIntervalActionJDialogLayout->createParallelGroup($org::allbinary::input::automation::actions::script::condition::javax::swing->{GroupLayout}->{Alignment}->{LEADING})->addGroup($timeIntervalActionJDialogLayout->createSequentialGroup()->addGroup($timeIntervalActionJDialogLayout->createParallelGroup($org::allbinary::input::automation::actions::script::condition::javax::swing->{GroupLayout}->{Alignment}->{TRAILING})->addGroup($org::allbinary::input::automation::actions::script::condition::javax::swing->{GroupLayout}->{Alignment}->{LEADING}, $timeIntervalActionJDialogLayout->createSequentialGroup()->addGap(82, 82, 82)->addComponent($self->{okJButton}))->addGroup($org::allbinary::input::automation::actions::script::condition::javax::swing->{GroupLayout}->{Alignment}->{LEADING}, $timeIntervalActionJDialogLayout->createSequentialGroup()->addGap(32, 32, 32)->addGroup($timeIntervalActionJDialogLayout->createParallelGroup($org::allbinary::input::automation::actions::script::condition::javax::swing->{GroupLayout}->{Alignment}->{LEADING})->addGroup($timeIntervalActionJDialogLayout->createSequentialGroup()->addComponent($self->{jLabel2})->addGap(16, 16, 16)->addComponent($self->{timeIntervalJTextField}, $org::allbinary::input::automation::actions::script::condition::javax::swing->{GroupLayout}->{DEFAULT_SIZE}, 85, 32767))->addComponent($self->{titleJLabel}))))->addContainerGap(36, 32767)));
-        $timeIntervalActionJDialogLayout->setVerticalGroup($timeIntervalActionJDialogLayout->createParallelGroup($org::allbinary::input::automation::actions::script::condition::javax::swing->{GroupLayout}->{Alignment}->{LEADING})->addGroup($timeIntervalActionJDialogLayout->createSequentialGroup()->addContainerGap()->addComponent($self->{titleJLabel})->addGap(20, 20, 20)->addGroup($timeIntervalActionJDialogLayout->createParallelGroup($org::allbinary::input::automation::actions::script::condition::javax::swing->{GroupLayout}->{Alignment}->{BASELINE})->addComponent($self->{jLabel2})->addComponent($self->{timeIntervalJTextField}, $org::allbinary::input::automation::actions::script::condition::javax::swing->{GroupLayout}->{PREFERRED_SIZE}, $org::allbinary::input::automation::actions::script::condition::javax::swing->{GroupLayout}->{DEFAULT_SIZE}, $org::allbinary::input::automation::actions::script::condition::javax::swing->{GroupLayout}->{PREFERRED_SIZE}))->addGap(15, 15, 15)->addComponent($self->{okJButton})->addContainerGap()));
+        $timeIntervalActionJDialogLayout->setHorizontalGroup($timeIntervalActionJDialogLayout->createParallelGroup($javax::swing::GroupLayout::Alignment->{LEADING})->addGroup($timeIntervalActionJDialogLayout->createSequentialGroup()->addGroup($timeIntervalActionJDialogLayout->createParallelGroup($javax::swing::GroupLayout::Alignment->{TRAILING})->addGroup($javax::swing::GroupLayout::Alignment->{LEADING}, $timeIntervalActionJDialogLayout->createSequentialGroup()->addGap(82, 82, 82)->addComponent($self->{okJButton}))->addGroup($javax::swing::GroupLayout::Alignment->{LEADING}, $timeIntervalActionJDialogLayout->createSequentialGroup()->addGap(32, 32, 32)->addGroup($timeIntervalActionJDialogLayout->createParallelGroup($javax::swing::GroupLayout::Alignment->{LEADING})->addGroup($timeIntervalActionJDialogLayout->createSequentialGroup()->addComponent($self->{jLabel2})->addGap(16, 16, 16)->addComponent($self->{timeIntervalJTextField}, $javax::swing::GroupLayout::DEFAULT_SIZE, 85, 32767))->addComponent($self->{titleJLabel}))))->addContainerGap(36, 32767)));
+        $timeIntervalActionJDialogLayout->setVerticalGroup($timeIntervalActionJDialogLayout->createParallelGroup($javax::swing::GroupLayout::Alignment->{LEADING})->addGroup($timeIntervalActionJDialogLayout->createSequentialGroup()->addContainerGap()->addComponent($self->{titleJLabel})->addGap(20, 20, 20)->addGroup($timeIntervalActionJDialogLayout->createParallelGroup($javax::swing::GroupLayout::Alignment->{BASELINE})->addComponent($self->{jLabel2})->addComponent($self->{timeIntervalJTextField}, $javax::swing::GroupLayout::PREFERRED_SIZE, $javax::swing::GroupLayout::DEFAULT_SIZE, $javax::swing::GroupLayout::PREFERRED_SIZE))->addGap(15, 15, 15)->addComponent($self->{okJButton})->addContainerGap()));
         $self->setMinimumSize('java::awt::Dimension'->new(100, 0));
         $self->{timeIntervalActionJButton}->setText("Edit");
         $self->{timeIntervalActionJButton}->addActionListener(do {
-            package java::awt::event::ActionListener::AnonymousN68481 { our @ISA = ('java::awt::event::ActionListener', 'java::lang::Object');
+            package java::awt::event::ActionListener::AnonymousN68211 { our @ISA = ('java::awt::event::ActionListener', 'java::lang::Object');
             
 
             sub actionPerformed {
@@ -124,13 +124,13 @@ sub initComponents {
                 $self->timeIntervalActionJButtonActionPerformed($evt);
             }
             }
-            'java::awt::event::ActionListener::AnonymousN68481'->can('new') ? 'java::awt::event::ActionListener::AnonymousN68481'->new() : bless({}, 'java::awt::event::ActionListener::AnonymousN68481')
+            'java::awt::event::ActionListener::AnonymousN68211'->can('new') ? 'java::awt::event::ActionListener::AnonymousN68211'->new() : bless({}, 'java::awt::event::ActionListener::AnonymousN68211')
         });
         $self->{jLabel1}->setText("Time Interval:");
         my $layout = 'javax::swing::GroupLayout'->new($self);
         $self->setLayout($layout);
-        $layout->setHorizontalGroup($layout->createParallelGroup($org::allbinary::input::automation::actions::script::condition::javax::swing->{GroupLayout}->{Alignment}->{LEADING})->addGroup($layout->createSequentialGroup()->addComponent($self->{jLabel1})->addPreferredGap($org::allbinary::input::automation::actions::script::condition::javax::swing->{LayoutStyle}->{ComponentPlacement}->{RELATED}, $org::allbinary::input::automation::actions::script::condition::javax::swing->{GroupLayout}->{DEFAULT_SIZE}, 32767)->addComponent($self->{timeIntervalActionJButton})));
-        $layout->setVerticalGroup($layout->createParallelGroup($org::allbinary::input::automation::actions::script::condition::javax::swing->{GroupLayout}->{Alignment}->{LEADING})->addGroup($layout->createParallelGroup($org::allbinary::input::automation::actions::script::condition::javax::swing->{GroupLayout}->{Alignment}->{BASELINE})->addComponent($self->{jLabel1})->addComponent($self->{timeIntervalActionJButton})));
+        $layout->setHorizontalGroup($layout->createParallelGroup($javax::swing::GroupLayout::Alignment->{LEADING})->addGroup($layout->createSequentialGroup()->addComponent($self->{jLabel1})->addPreferredGap($javax::swing::LayoutStyle::ComponentPlacement->{RELATED}, $javax::swing::GroupLayout::DEFAULT_SIZE, 32767)->addComponent($self->{timeIntervalActionJButton})));
+        $layout->setVerticalGroup($layout->createParallelGroup($javax::swing::GroupLayout::Alignment->{LEADING})->addGroup($layout->createParallelGroup($javax::swing::GroupLayout::Alignment->{BASELINE})->addComponent($self->{jLabel1})->addComponent($self->{timeIntervalActionJButton})));
 }
 
 
@@ -149,6 +149,16 @@ sub timeIntervalActionJButtonActionPerformed {
 use java::lang::Object ();
 use org::allbinary::logic::communication::log::LogUtil ();
 use org::allbinary::string::CommonStrings ();
+# use java::awt::Dimension ();
+# use java::awt::event::ActionEvent ();
+# use java::awt::event::ActionListener ();
+# use javax::swing::GroupLayout ();
+# use javax::swing::JButton ();
+# use javax::swing::JDialog ();
+# use javax::swing::JLabel ();
+# use javax::swing::JPanel ();
+# use javax::swing::JTextField ();
+# use javax::swing::LayoutStyle ();
 
 1;
 

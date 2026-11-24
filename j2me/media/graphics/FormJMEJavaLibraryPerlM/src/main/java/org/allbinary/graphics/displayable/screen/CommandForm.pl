@@ -25,7 +25,7 @@ sub _init_fields {
     my ($self) = @_;
     $self->{logUtil} = 'org::allbinary::logic::communication::log::LogUtil'->getInstance();
     $self->{commonStrings} = 'org::allbinary::string::CommonStrings'->getInstance();
-    $self->{repaintProcessor} = 'org::allbinary::graphics::displayable::screen::ScreenRepaintProcessorFactory'->getInstance()->create($self);
+    $self->{repaintProcessor} = java::lang::Object::jstatic('org::allbinary::graphics::displayable::screen::CommandForm', 'ScreenRepaintProcessorFactory')->getInstance()->create($self);
     $self->{commandStack} = undef;
 }
 
@@ -117,7 +117,6 @@ use org::allbinary::logic::string::StringUtil ();
 use org::allbinary::string::CommonStrings ();
 use org::allbinary::logic::StdUtil ();
 use org::allbinary::util::ABStack ();
-use org::allbinary::graphics::displayable::screen::ScreenRepaintProcessorFactory ();
 
 1;
 

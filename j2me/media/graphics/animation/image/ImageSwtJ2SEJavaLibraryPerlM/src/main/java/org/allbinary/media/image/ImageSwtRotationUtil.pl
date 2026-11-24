@@ -135,6 +135,7 @@ use org::allbinary::string::CommonStrings ();
 # use org::eclipse::swt::SWT ();
 # use org::eclipse::swt::graphics::GC ();
 # use org::eclipse::swt::graphics::ImageData ();
+# use org::eclipse::swt::graphics::Image ();
 use org::allbinary::media::image::ImageUtil ();
 
 1;

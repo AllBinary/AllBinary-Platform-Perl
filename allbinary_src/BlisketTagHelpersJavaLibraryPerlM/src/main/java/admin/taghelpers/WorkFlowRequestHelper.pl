@@ -44,20 +44,20 @@ sub delete {
             my $stringUtil = 'org::allbinary::logic::string::StringUtil'->getInstance();
             'org::allbinary::data::tables::workflow::WorkFlowEntityFactory'->getInstance()->create2()->delete($self->{workFlowInterface}->getName(), $stringUtil->{EMPTY_STRING});
             my $success = "Successfully Removed the workflow with " . 'org::allbinary::logic::control::workflow::WorkFlowData'->getInstance()->{NAME} . "= " . $self->{workFlowInterface}->getName() . " from ";
-            if ($admin::taghelpers::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($admin::taghelpers::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{SQLTAGS})) {
+            if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{SQLTAGS})) {
                 $self->{logUtil}->putF($success, $self, "delete()");
             }
             return $success;
         } catch ($e) {
             try {
                 my $error = "Failed to remove workflow with " . 'org::allbinary::logic::control::workflow::WorkFlowData'->getInstance()->{NAME} . "= " . $self->{workFlowInterface}->getName() . " from ";
-                if ($admin::taghelpers::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($admin::taghelpers::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{SQLTAGSERROR})) {
+                if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{SQLTAGSERROR})) {
                     $self->{logUtil}->put($self->{commonStrings}->{EXCEPTION}, $self, "delete()", $e);
                 }
                 die ($e);
             } catch ($e2) {
                 my $error = "Failed to get data from workflowinterface to set error string";
-                if ($admin::taghelpers::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($admin::taghelpers::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{SQLTAGSERROR})) {
+                if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{SQLTAGSERROR})) {
                     $self->{logUtil}->put($self->{commonStrings}->{EXCEPTION}, $self, "delete()", $e2);
                 }
                 return $error;
@@ -70,13 +70,13 @@ sub insert {
     my ($self) = @_;
         try {
             my $success = "New User Successfully added to the Users Table";
-            if ($admin::taghelpers::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($admin::taghelpers::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{SQLTAGS})) {
+            if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{SQLTAGS})) {
                 $self->{logUtil}->putF($success, $self, "add()");
             }
             return $success;
         } catch ($e) {
             my $error = "Failed to add User";
-            if ($admin::taghelpers::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($admin::taghelpers::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{SQLTAGSERROR})) {
+            if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{SQLTAGSERROR})) {
                 $self->{logUtil}->put($self->{commonStrings}->{EXCEPTION}, $self, "add()", $e);
             }
             return $error;
@@ -88,13 +88,13 @@ sub update {
     my ($self) = @_;
         try {
             my $success = "Updated WorkFlow Successfully";
-            if ($admin::taghelpers::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($admin::taghelpers::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{SQLTAGS})) {
+            if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{SQLTAGS})) {
                 $self->{logUtil}->putF($success, $self, "update()");
             }
             return $success;
         } catch ($e) {
             my $error = "Failed to update WorkFlow";
-            if ($admin::taghelpers::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($admin::taghelpers::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{SQLTAGSERROR})) {
+            if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{SQLTAGSERROR})) {
                 $self->{logUtil}->put($self->{commonStrings}->{EXCEPTION}, $self, "update()", $e);
             }
             return $error;
@@ -112,7 +112,8 @@ use org::allbinary::logic::control::workflow::WorkFlowInterface ();
 use org::allbinary::logic::string::StringUtil ();
 use org::allbinary::logic::system::security::licensing::AbeClientInformationInterface ();
 use org::allbinary::logic::system::security::licensing::ServiceClientInformationInterfaceFactory ();
-use admin::taghelpers::ModifyTable ();
+use org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory ();
+use org::allbinary::logic::communication::log::config::type::LogConfigTypes ();
 
 1;
 

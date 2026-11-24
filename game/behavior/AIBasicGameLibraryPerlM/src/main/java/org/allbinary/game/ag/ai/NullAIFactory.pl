@@ -28,16 +28,22 @@ sub new {
 }
 
 
-sub getInstance {
+sub getInstance_j3 {
     my ($self, $hashtable, $ownerLayerInterface, $gameInput) = @_;
         return $org::allbinary::game::ag::ai::NullAIFactory::NULL_AI;
 }
 
 
-# Java overloaded method: Perl keeps the last definition
-sub getInstance {
+sub getInstance_j0 {
     my ($class) = @_;
         return $org::allbinary::game::ag::ai::NullAIFactory::NULL_AI;
+}
+
+sub getInstance {
+    my ($invocant, @arguments) = @_;
+    return $invocant->getInstance_j3(@arguments) if scalar(@arguments) == 3;
+    return $invocant->getInstance_j0(@arguments) if scalar(@arguments) == 0;
+    die "No method getInstance takes " . scalar(@arguments) . " arguments";
 }
 
 use java::lang::Object ();

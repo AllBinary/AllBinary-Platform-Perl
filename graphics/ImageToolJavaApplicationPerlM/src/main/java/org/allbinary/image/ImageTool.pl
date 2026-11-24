@@ -36,8 +36,8 @@ sub new {
 
 sub main {
     my ($class, $args) = @_;
-        $org::allbinary::image::java::awt->{EventQueue}->invokeLater(do {
-            package org::allbinary::thread::ARunnable::AnonymousN65805 { our @ISA = ('org::allbinary::thread::ARunnable', 'java::lang::Object');
+        'java::awt::EventQueue'->invokeLater(do {
+            package org::allbinary::thread::ARunnable::AnonymousN65809 { our @ISA = ('org::allbinary::thread::ARunnable', 'java::lang::Object');
             
 
             sub run {
@@ -52,7 +52,7 @@ sub main {
                 }
             }
             }
-            'org::allbinary::thread::ARunnable::AnonymousN65805'->can('new') ? 'org::allbinary::thread::ARunnable::AnonymousN65805'->new() : bless({}, 'org::allbinary::thread::ARunnable::AnonymousN65805')
+            'org::allbinary::thread::ARunnable::AnonymousN65809'->can('new') ? 'org::allbinary::thread::ARunnable::AnonymousN65809'->new() : bless({}, 'org::allbinary::thread::ARunnable::AnonymousN65809')
         });
 }
 
@@ -61,6 +61,7 @@ use org::allbinary::thread::ARunnable ();
 use org::allbinary::image::gui::ImageToolJFrame ();
 use org::allbinary::logic::communication::log::LogUtil ();
 use org::allbinary::string::CommonStrings ();
+# use java::awt::EventQueue ();
 
 1;
 

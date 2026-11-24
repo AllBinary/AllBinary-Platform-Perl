@@ -36,17 +36,17 @@ sub new {
         $self->{nameSpaceVector} = 'org::allbinary::util::BasicArrayListD'->new();
         $self->{nameSpacePropertiesHashMap} = 'org::allbinary::logic::StdUtil'->getInstance()->createHashMap();
         $self->{value} = $value;
-        my $beginIndex = index($nameSpace, $org::allbinary::logic::communication::http::request::NameSpaceRequestParamData::NAME);
+        my $beginIndex = index($nameSpace, java::lang::Object::jstatic('org::allbinary::logic::communication::http::request::NameSpaceRequestParam', 'NameSpaceRequestParamData')->{NAME});
         if ($beginIndex < 0) {
             die ("Not a NameSpaceRequest");
         }
-        my $packages = substr($nameSpace, $beginIndex + $org::allbinary::logic::communication::http::request::NameSpaceRequestParamData::NAME->length() + $org::allbinary::logic::communication::http::request::NameSpaceRequestParamData::SEP->length());
-        my $sepTokenizer = 'org::allbinary::logic::string::tokens::Tokenizer'->new($org::allbinary::logic::communication::http::request::NameSpaceRequestParamData::SEP);
+        my $packages = substr($nameSpace, $beginIndex + java::lang::Object::jstatic('org::allbinary::logic::communication::http::request::NameSpaceRequestParam', 'NameSpaceRequestParamData')->{NAME}->length() + java::lang::Object::jstatic('org::allbinary::logic::communication::http::request::NameSpaceRequestParam', 'NameSpaceRequestParamData')->{SEP}->length());
+        my $sepTokenizer = 'org::allbinary::logic::string::tokens::Tokenizer'->new(java::lang::Object::jstatic('org::allbinary::logic::communication::http::request::NameSpaceRequestParam', 'NameSpaceRequestParamData')->{SEP});
         my $nameSpaceWithPropertiesVector = $sepTokenizer->getTokensFromString($packages, 'org::allbinary::util::BasicArrayListD'->new());
-        if ($org::allbinary::logic::communication::http::request::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($org::allbinary::logic::communication::http::request::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{HTTPREQUEST})) {
+        if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{HTTPREQUEST})) {
             $self->{logUtil}->putF("\nSep Tokens: " . $nameSpaceWithPropertiesVector->toString(), $self, "NameSpaceRequestParam()");
         }
-        my $nameSpaceAndPropertiesTokenizer = 'org::allbinary::logic::string::tokens::Tokenizer'->new($org::allbinary::logic::communication::http::request::NameSpaceRequestParamData::PROPERTIES);
+        my $nameSpaceAndPropertiesTokenizer = 'org::allbinary::logic::string::tokens::Tokenizer'->new(java::lang::Object::jstatic('org::allbinary::logic::communication::http::request::NameSpaceRequestParam', 'NameSpaceRequestParamData')->{PROPERTIES});
         my $packageIndex = 0;
         my $list = 'org::allbinary::util::BasicArrayListD'->new();
         my $index = 0;
@@ -55,7 +55,7 @@ sub new {
             my $nameSpaceWithProperties = $nameSpaceWithPropertiesVector->get($index++);
             $list->clear();
             my $nameSpaceAndPropertiesVector = $nameSpaceAndPropertiesTokenizer->getTokensFromString($nameSpaceWithProperties, $list);
-            if ($org::allbinary::logic::communication::http::request::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($org::allbinary::logic::communication::http::request::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{HTTPREQUEST})) {
+            if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{HTTPREQUEST})) {
                 $self->{logUtil}->putF("\nPackageName and PackageName Properties Tokens: " . $nameSpaceAndPropertiesVector->toString(), $self, "NameSpaceRequestParam()");
             }
             if ($nameSpaceAndPropertiesVector->size() > 0) {
@@ -72,7 +72,7 @@ sub new {
                 $packageIndex++;
             }
         }
-        if ($org::allbinary::logic::communication::http::request::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($org::allbinary::logic::communication::http::request::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{HTTPREQUEST})) {
+        if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{HTTPREQUEST})) {
             $self->{logUtil}->putF("NameSpace: " . $self->{nameSpaceVector}->toString(), $self, "NameSpaceRequestParam()");
         }
     return $self;
@@ -81,7 +81,7 @@ sub new {
 
 sub getPackages {
     my ($self) = @_;
-        if ($org::allbinary::logic::communication::http::request::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($org::allbinary::logic::communication::http::request::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{HTTPREQUEST})) {
+        if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{HTTPREQUEST})) {
             $self->{logUtil}->putF("NameSpace: " . $self->{nameSpaceVector}->toString(), $self, "getPackages()");
         }
         return $self->{nameSpaceVector};
@@ -94,7 +94,7 @@ sub getPackageProperties {
         if (!defined($packagePropertiesHashMap)) {
             $packagePropertiesHashMap = 'org::allbinary::logic::StdUtil'->getInstance()->createHashMap();
         }
-        if ($org::allbinary::logic::communication::http::request::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($org::allbinary::logic::communication::http::request::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{HTTPREQUEST})) {
+        if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{HTTPREQUEST})) {
             $self->{logUtil}->putF("Package Properties: " . $packagePropertiesHashMap->toString(), $self, "getPackagesProperties()");
         }
         return $packagePropertiesHashMap;
@@ -103,7 +103,7 @@ sub getPackageProperties {
 
 sub getValue {
     my ($self) = @_;
-        if ($org::allbinary::logic::communication::http::request::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($org::allbinary::logic::communication::http::request::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{HTTPREQUEST})) {
+        if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{HTTPREQUEST})) {
             $self->{logUtil}->putF("\nValue: " . $self->{value}, $self, "getValue()");
         }
         return $self->{value};
@@ -113,7 +113,7 @@ sub getValue {
 # throws Exception
 sub generatePackagePropertiesHashMap {
     my ($self, $properties) = @_;
-        my $propertiesTokenizer = 'org::allbinary::logic::string::tokens::Tokenizer'->new($org::allbinary::logic::communication::http::request::NameSpaceRequestParamData::PROPERTIESSEPARATOR);
+        my $propertiesTokenizer = 'org::allbinary::logic::string::tokens::Tokenizer'->new(java::lang::Object::jstatic('org::allbinary::logic::communication::http::request::NameSpaceRequestParam', 'NameSpaceRequestParamData')->{PROPERTIESSEPARATOR});
         my $packagePropertiesHashMap = 'org::allbinary::logic::StdUtil'->getInstance()->createHashMap();
         my $propertyVector = $propertiesTokenizer->getTokensFromString($properties, 'org::allbinary::util::BasicArrayListD'->new());
         my $list = 'org::allbinary::util::BasicArrayListD'->new();
@@ -129,7 +129,7 @@ sub generatePackagePropertiesHashMap {
                 my $propertyName = $propertyNameValueVector->get($index2++);
                 if ($propertyNameValueVector->size() > 1) {
                     my $propertyValue = $propertyNameValueVector->get($index2++);
-                    if ($org::allbinary::logic::communication::http::request::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($org::allbinary::logic::communication::http::request::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{HTTPREQUEST})) {
+                    if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{HTTPREQUEST})) {
                         $self->{logUtil}->putF("\nProperty Name: " . $propertyName . "\nProperty Value: " . $propertyValue, $self, "generatePackagePropertiesHashMap()");
                     }
                     $packagePropertiesHashMap->put($propertyName, $propertyValue);
@@ -150,7 +150,8 @@ use org::allbinary::logic::string::tokens::Tokenizer ();
 use org::allbinary::logic::visual::dhtml::html::name::HtmlNameMathData ();
 use org::allbinary::util::BasicArrayList ();
 use org::allbinary::util::BasicArrayListD ();
-use org::allbinary::logic::communication::http::request::NameSpaceRequestParamData ();
+use org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory ();
+use org::allbinary::logic::communication::log::config::type::LogConfigTypes ();
 
 1;
 

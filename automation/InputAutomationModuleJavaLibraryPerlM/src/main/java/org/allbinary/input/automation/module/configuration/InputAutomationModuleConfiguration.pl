@@ -78,7 +78,7 @@ sub _new1 {
 
 
 # throws Exception
-sub init {
+sub init_j2 {
     my ($self, $abeClientInformation, $node) = @_;
         my $nodeList = $node->getChildNodes();
         if (defined($nodeList)) {
@@ -95,8 +95,7 @@ sub init {
 }
 
 
-# Java overloaded method: Perl keeps the last definition
-sub init {
+sub init_j1 {
     my ($self, $abeClientInformation) = @_;
         try {
             $self->{logUtil}->putF("Name: " . $self->getName(), $self, $self->{commonStrings}->{INIT});
@@ -106,6 +105,13 @@ sub init {
             $self->{logUtil}->put($self->{commonStrings}->{EXCEPTION}, $self, $self->{commonStrings}->{INIT}, $e);
             die ("RuntimeException");
         }
+}
+
+sub init {
+    my ($invocant, @arguments) = @_;
+    return $invocant->init_j2(@arguments) if scalar(@arguments) == 2;
+    return $invocant->init_j1(@arguments) if scalar(@arguments) == 1;
+    die "No method init takes " . scalar(@arguments) . " arguments";
 }
 
 

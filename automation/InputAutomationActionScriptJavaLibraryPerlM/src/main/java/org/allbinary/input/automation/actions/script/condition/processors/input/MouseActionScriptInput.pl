@@ -43,7 +43,7 @@ sub _new1 {
     _init_fields($self);
         # super(...) made $self above
         $self->{logUtil}->putF($self->{commonStrings}->{START}, $self, $self->{commonStrings}->{CONSTRUCTOR});
-        $self->{point} = 'org::allbinary::input::automation::actions::script::condition::processors::input::Point'->new();
+        $self->{point} = 'java::awt::Point'->new();
         my $actionNode = 'org::allbinary::data::tree::dom::DomSearchHelper'->getNode($org::allbinary::input::automation::actions::script::condition::processors::input::MouseActionScriptInputData::NAME, $node->getChildNodes());
         if (defined($actionNode)) {
             my $nodeList = $actionNode->getChildNodes();
@@ -59,7 +59,7 @@ sub _new1 {
                     my $mouseYNode = 'org::allbinary::data::tree::dom::DomSearchHelper'->getNode($org::allbinary::input::automation::actions::script::condition::processors::input::MouseActionScriptInputData::MOVE_Y, $childNode->getChildNodes());
                     my $mouseYString = 'org::allbinary::data::tree::dom::DomNodeHelper'->getTextNodeValue($mouseYNode);
                     my $mouseYInteger = ("" . ($mouseYString));
-                    my $newPoint = 'org::allbinary::input::automation::actions::script::condition::processors::input::Point'->new(int($mouseXInteger), int($mouseYInteger));
+                    my $newPoint = 'java::awt::Point'->new(int($mouseXInteger), int($mouseYInteger));
                     $self->setPoint($newPoint);
                 } else {
                     die ("Action Script Input Unknown Node");
@@ -79,7 +79,7 @@ sub _new0 {
     my $self = $class->SUPER::new($NAME);
     _init_fields($self);
         # super(...) made $self above
-        $self->{point} = 'org::allbinary::input::automation::actions::script::condition::processors::input::Point'->new();
+        $self->{point} = 'java::awt::Point'->new();
         $self->setAllowsChildren(0);
         $self->{mouseActionScriptInputJPanel} = 'org::allbinary::input::automation::actions::script::condition::processors::input::MouseActionScriptInputJPanel'->new($self);
     return $self;
@@ -172,7 +172,7 @@ sub log {
 }
 
 use java::lang::Object ();
-# use java::awt ();
+# use java::awt::Point ();
 # use java::awt::event::InputEvent ();
 use java::util::HashMap ();
 use org::allbinary::data::tree::dom::DomNodeHelper ();
@@ -187,7 +187,6 @@ use org::w3c::dom::Node ();
 use org::w3c::dom::NodeList ();
 use org::allbinary::input::automation::actions::script::condition::processors::input::BasicProfileActionScriptInput ();
 use org::allbinary::input::automation::actions::script::condition::processors::input::MouseActionScriptInputInterface ();
-use org::allbinary::input::automation::actions::script::condition::processors::input::Point ();
 use org::allbinary::input::automation::actions::script::condition::processors::input::MouseActionScriptInputData ();
 use org::allbinary::input::automation::actions::script::condition::processors::input::MouseActionScriptInputJPanel ();
 use org::allbinary::input::automation::actions::script::condition::processors::input::MouseInputAutomationProcessor ();

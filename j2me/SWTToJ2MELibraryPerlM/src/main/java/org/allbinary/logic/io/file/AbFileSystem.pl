@@ -66,15 +66,14 @@ sub getFilesAsStringArrayForPath {
 }
 
 
-sub readAsString {
+sub readAsString_j1 {
     my ($self, $fileName) = @_;
         my $bytes = [(0) x (1000000)];
         return $self->readAsString($fileName, $bytes);
 }
 
 
-# Java overloaded method: Perl keeps the last definition
-sub readAsString {
+sub readAsString_j2 {
     my ($self, $fileName, $bytes) = @_;
         my $closeable = 'org::allbinary::logic::NullUtil'->getInstance()->{NULL_OBJECT};
         try {
@@ -90,6 +89,13 @@ sub readAsString {
             $self->close($closeable);
         }
         return 'org::allbinary::logic::string::StringUtil'->getInstance()->{EMPTY_STRING};
+}
+
+sub readAsString {
+    my ($invocant, @arguments) = @_;
+    return $invocant->readAsString_j1(@arguments) if scalar(@arguments) == 1;
+    return $invocant->readAsString_j2(@arguments) if scalar(@arguments) == 2;
+    die "No method readAsString takes " . scalar(@arguments) . " arguments";
 }
 
 

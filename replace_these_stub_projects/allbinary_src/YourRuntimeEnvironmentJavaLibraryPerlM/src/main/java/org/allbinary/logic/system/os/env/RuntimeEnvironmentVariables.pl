@@ -67,7 +67,7 @@ sub get {
             }
             return $environmentVariables;
         } catch ($e) {
-            if ($org::allbinary::logic::system::os::env::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($org::allbinary::logic::system::os::env::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{OSERROR})) {
+            if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{OSERROR})) {
                 $self->{logUtil}->put($self->{commonStrings}->{EXCEPTION}, $self, "get()", $e);
             }
             return undef;
@@ -80,7 +80,7 @@ sub getTempDir {
         try {
             return 'java::lang::System'->getProperty("java.io.tmpdir");
         } catch ($e) {
-            if ($org::allbinary::logic::system::os::env::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($org::allbinary::logic::system::os::env::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{OSERROR})) {
+            if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{OSERROR})) {
                 $self->{logUtil}->put($self->{commonStrings}->{EXCEPTION}, $self, "getTempDir()", $e);
             }
             return undef;
@@ -93,7 +93,7 @@ sub getLibraryPath {
         try {
             return 'java::lang::System'->getProperty("java.library.path");
         } catch ($e) {
-            if ($org::allbinary::logic::system::os::env::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($org::allbinary::logic::system::os::env::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{OSERROR})) {
+            if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{OSERROR})) {
                 $self->{logUtil}->put($self->{commonStrings}->{EXCEPTION}, $self, "getLibraryPath()", $e);
             }
             return undef;
@@ -106,7 +106,7 @@ sub getClassPath {
         try {
             return 'java::lang::System'->getProperty("java.class.path");
         } catch ($e) {
-            if ($org::allbinary::logic::system::os::env::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($org::allbinary::logic::system::os::env::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{OSERROR})) {
+            if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{OSERROR})) {
                 $self->{logUtil}->put($self->{commonStrings}->{EXCEPTION}, $self, "getClassPath()", $e);
             }
             return undef;
@@ -120,7 +120,7 @@ sub updateLibraryPath {
             my $existingPath = $self->getLibraryPath();
             'java::lang::System'->setProperty("java.library.path", $libPath . ":" . $existingPath);
         } catch ($e) {
-            if ($org::allbinary::logic::system::os::env::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($org::allbinary::logic::system::os::env::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{OSERROR})) {
+            if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{OSERROR})) {
                 $self->{logUtil}->put($self->{commonStrings}->{EXCEPTION}, $self, "updateLibraryPath()", $e);
             }
         }
@@ -132,7 +132,7 @@ sub getUserHome {
         try {
             return 'java::lang::System'->getProperty("user.home");
         } catch ($e) {
-            if ($org::allbinary::logic::system::os::env::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($org::allbinary::logic::system::os::env::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{OSERROR})) {
+            if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{OSERROR})) {
                 $self->{logUtil}->put($self->{commonStrings}->{EXCEPTION}, $self, "getUserHome()", $e);
             }
             return undef;
@@ -145,7 +145,7 @@ sub getUserDir {
         try {
             return 'java::lang::System'->getProperty("user.dir");
         } catch ($e) {
-            if ($org::allbinary::logic::system::os::env::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($org::allbinary::logic::system::os::env::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{OSERROR})) {
+            if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{OSERROR})) {
                 $self->{logUtil}->put($self->{commonStrings}->{EXCEPTION}, $self, "getUserDir()", $e);
             }
             return undef;
@@ -157,7 +157,7 @@ sub set {
     my ($self) = @_;
         try {
         } catch ($e) {
-            if ($org::allbinary::logic::system::os::env::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($org::allbinary::logic::system::os::env::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{OSERROR})) {
+            if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{OSERROR})) {
                 $self->{logUtil}->put($self->{commonStrings}->{EXCEPTION}, $self, "get()", $e);
             }
         }
@@ -182,7 +182,7 @@ sub setVariable {
                 die ("Exception");
             }
         } catch ($e) {
-            if ($org::allbinary::logic::system::os::env::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($org::allbinary::logic::system::os::env::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{OSERROR})) {
+            if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{OSERROR})) {
                 $self->{logUtil}->put($self->{commonStrings}->{EXCEPTION}, $self, "setVariable()", $e);
             }
         }
@@ -191,12 +191,14 @@ sub setVariable {
 use java::lang::Object ();
 # use java::io::BufferedReader ();
 # use java::io::InputStreamReader ();
-# use java::util::Properties ();
+use java::util::Properties ();
 use org::allbinary::logic::communication::log::LogUtil ();
 use org::allbinary::logic::system::os::GenericOperatingSystem ();
 use org::allbinary::logic::system::os::OperatingSystemFactory ();
 use org::allbinary::logic::system::os::OperatingSystems ();
 use org::allbinary::string::CommonStrings ();
+use org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory ();
+use org::allbinary::logic::communication::log::config::type::LogConfigTypes ();
 use java::lang::System ();
 use java::lang::Runtime ();
 

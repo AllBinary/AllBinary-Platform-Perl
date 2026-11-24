@@ -33,14 +33,14 @@ sub new {
     my ($class, $fullPath) = @_;
     my $self = bless({}, $class);
     _init_fields($self);
-        $self->{file} = 'org::allbinary::logic::io::file::AbFile'->createAbFileFromAbPath('org::allbinary::logic::io::path::AbPath'->new($fullPath->toFileSystemString(), 'org::allbinary::logic::communication::http::file::upload::FileUploadData'->getInstance()->{FILE}));
-        if ($org::allbinary::logic::communication::http::file::upload::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($org::allbinary::logic::communication::http::file::upload::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{VIEWERROR})) {
+        $self->{file} = 'org::allbinary::logic::io::file::AbFile'->createAbFileFromAbPath('org::allbinary::logic::io::path::AbPath'->new($fullPath->toFileSystemString(), java::lang::Object::jstatic('org::allbinary::logic::communication::http::file::upload::HttpFilePermissions', 'FileUploadData')->getInstance()->{FILE}));
+        if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{VIEWERROR})) {
             $self->{logUtil}->putF("Loading Privileges: " . $fullPath->toFileSystemString(), $self, $self->{commonStrings}->{CONSTRUCTOR});
         }
         if ($self->isFile()) {
             $self->{userRoles}->add('org::allbinary::business::user::role::BasicUserRoleFactory'->getInstance()->{ADMINISTRATOR});
         }
-        if ($org::allbinary::logic::communication::http::file::upload::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($org::allbinary::logic::communication::http::file::upload::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{VIEWERROR})) {
+        if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{VIEWERROR})) {
             $self->{logUtil}->putF("User Roles: " . $self->{userRoles}, $self, $self->{commonStrings}->{CONSTRUCTOR});
         }
     return $self;
@@ -67,7 +67,8 @@ use org::allbinary::logic::communication::log::LogUtil ();
 use org::allbinary::logic::io::file::AbFile ();
 use org::allbinary::logic::io::path::AbPath ();
 use org::allbinary::string::CommonStrings ();
-use org::allbinary::logic::communication::http::file::upload::FileUploadData ();
+use org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory ();
+use org::allbinary::logic::communication::log::config::type::LogConfigTypes ();
 
 1;
 

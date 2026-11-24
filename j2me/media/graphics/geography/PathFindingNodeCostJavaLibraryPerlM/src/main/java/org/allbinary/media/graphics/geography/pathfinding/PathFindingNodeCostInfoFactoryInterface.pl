@@ -23,16 +23,22 @@ use parent -norequire,'org::allbinary::media::graphics::geography::pathfinding::
 
 
 # throws Exception
-sub getInstance {
+sub getInstance_j4 {
     my ($self, $comingFromGeographicMapCellPosition, $geographicMapCellPosition, $costFromStart, $costToEnd) = @_;
     die "abstract method getInstance";
 }
 
 
-# Java overloaded method: Perl keeps the last definition
-sub getInstance {
+sub getInstance_j2 {
     my ($self, $comingFromGeographicMapCellPosition, $geographicMapCellPosition) = @_;
     die "abstract method getInstance";
+}
+
+sub getInstance {
+    my ($invocant, @arguments) = @_;
+    return $invocant->getInstance_j4(@arguments) if scalar(@arguments) == 4;
+    return $invocant->getInstance_j2(@arguments) if scalar(@arguments) == 2;
+    die "No method getInstance takes " . scalar(@arguments) . " arguments";
 }
 
 
@@ -42,7 +48,6 @@ sub getTotalCost {
 }
 
 use org::allbinary::media::graphics::geography::map::GeographicMapCellPosition ();
-use org::allbinary::media::graphics::geography::pathfinding::PathFindingNodeCostInfoFactoryBaseInterface ();
 
 1;
 

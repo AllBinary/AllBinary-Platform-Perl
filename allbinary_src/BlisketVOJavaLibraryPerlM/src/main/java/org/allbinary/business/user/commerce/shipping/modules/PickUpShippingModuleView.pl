@@ -66,7 +66,7 @@ sub toXmlNode {
             $shippingMethodNode->appendChild('org::allbinary::data::tree::dom::ModDomHelper'->createNameValueNodes($document, $org::allbinary::business::user::commerce::shipping::ShippingMethodData::DESCRIPTION, $self->getDescription()));
             return $shippingMethodNode;
         } catch ($e) {
-            if ($org::allbinary::business::user::commerce::shipping::modules::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($org::allbinary::business::user::commerce::shipping::modules::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{SQLLOGGING})) {
+            if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{SQLLOGGING})) {
                 $self->{logUtil}->put($self->{commonStrings}->{EXCEPTION}, $self, "toXmlNode", $e);
             }
             return undef;
@@ -91,6 +91,9 @@ use org::allbinary::data::tree::dom::DomNodeInterface ();
 use org::allbinary::data::tree::dom::ModDomHelper ();
 use org::allbinary::logic::communication::log::LogUtil ();
 use org::w3c::dom::Node ();
+use org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory ();
+use org::allbinary::logic::communication::log::config::type::LogConfigTypes ();
+use org::w3c::dom::Document ();
 use org::allbinary::business::user::commerce::shipping::modules::PickUpShippingModule ();
 
 1;

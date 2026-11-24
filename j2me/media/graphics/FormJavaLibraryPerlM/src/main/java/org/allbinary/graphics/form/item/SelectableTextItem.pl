@@ -48,7 +48,6 @@ sub paintXY {
 use java::lang::Object ();
 use javax::microedition::lcdui::Graphics ();
 use org::allbinary::graphics::color::BasicColor ();
-use org::allbinary::graphics::form::item::ABTextItem ();
 
 1;
 

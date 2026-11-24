@@ -51,7 +51,7 @@ sub view {
             my $paymentGatewayInterface = 'org::allbinary::data::tables::user::commerce::money::payment::gateway::PaymentGatewayEntityFactory'->getInstance()->getPaymentGatewayInterface($self->getPaymentGatewayPrimaryKey()->getStoreName(), 'org::allbinary::business::user::commerce::money::payment::types::BasicPaymentTypeUtil'->getInstance()->get($self->getPaymentGatewayPrimaryKey()->getName()));
             return 'views::admin::payment::gateway::PaymentGatewayComponent'->new($self->getTransformInfoInterface(), $paymentGatewayInterface)->view();
         } catch ($e) {
-            if ($views::admin::payment::gateway::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($views::admin::payment::gateway::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{VIEWERROR})) {
+            if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{VIEWERROR})) {
                 $self->{logUtil}->put($self->{commonStrings}->{EXCEPTION}, $self, "edit()", $e);
             }
             die $e;
@@ -66,6 +66,8 @@ use org::allbinary::data::tables::user::commerce::money::payment::gateway::Payme
 use org::allbinary::logic::communication::log::LogUtil ();
 use org::allbinary::logic::string::StringValidationUtil ();
 use org::allbinary::logic::visual::transform::info::TransformInfoInterface ();
+use org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory ();
+use org::allbinary::logic::communication::log::config::type::LogConfigTypes ();
 use views::admin::payment::gateway::PaymentGatewayViewAbstract ();
 use views::admin::payment::gateway::PaymentGatewayComponent ();
 

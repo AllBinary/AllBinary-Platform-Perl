@@ -66,7 +66,7 @@ sub processRequest {
                 $response->sendError($javax::servlet::http::HttpServletResponse::SC_UNAUTHORIZED, "Please Login");
             }
         } catch ($e) {
-            if ($org::allbinary::servlet::file::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($org::allbinary::servlet::file::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{VIEWERROR})) {
+            if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{VIEWERROR})) {
                 $self->{logUtil}->put($self->{commonStrings}->{EXCEPTION}, $self, "processRequest()", $e);
             }
             $isError = 1;
@@ -93,7 +93,7 @@ sub saveFile {
                     $filePath = $filePath . $self->{fileName};
                 }
                 my $file = 'org::allbinary::logic::io::file::AbFile'->createAbFile('org::allbinary::globals::URLGLOBALS'->getWebappPath() . $filePath);
-                if ($org::allbinary::servlet::file::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($org::allbinary::servlet::file::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{HTTPREQUEST})) {
+                if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{HTTPREQUEST})) {
                     my $stringBuffer = 'org::allbinary::logic::string::StringMaker'->new();
                     $stringBuffer->append("Uploaded File: ");
                     $stringBuffer->append($self->{fileName});
@@ -162,6 +162,8 @@ use org::allbinary::logic::string::StringMaker ();
 use org::allbinary::servlet::BlisketServletUtil ();
 use org::allbinary::string::CommonStrings ();
 use org::apache::commons::fileupload::FileItem ();
+use org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory ();
+use org::allbinary::logic::communication::log::config::type::LogConfigTypes ();
 
 1;
 

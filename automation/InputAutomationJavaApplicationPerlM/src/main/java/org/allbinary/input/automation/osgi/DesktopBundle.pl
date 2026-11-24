@@ -56,7 +56,7 @@ sub start {
 }
 
 use java::lang::Object ();
-# use javax::swing ();
+# use javax::swing::JDialog ();
 use org::osgi::framework::Bundle ();
 use org::osgi::framework::BundleContext ();
 use bundle::input::automation::InputAutomationBundleActivator ();

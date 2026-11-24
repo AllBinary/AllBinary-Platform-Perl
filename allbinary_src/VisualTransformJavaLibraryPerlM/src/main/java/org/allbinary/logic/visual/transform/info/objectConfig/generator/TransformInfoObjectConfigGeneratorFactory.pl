@@ -27,7 +27,7 @@ sub _init_fields {
 }
 
 
-sub getInstance {
+sub getInstance_j0 {
     my ($class) = @_;
         return $org::allbinary::logic::visual::transform::info::objectConfig::generator::TransformInfoObjectConfigGeneratorFactory::instance;
 }
@@ -42,11 +42,10 @@ sub new {
 
 
 # throws Exception
-# Java overloaded method: Perl keeps the last definition
-sub getInstance {
+sub getInstance_j1 {
     my ($self, $transformInfoInterface) = @_;
         my $type = $transformInfoInterface->getObjectConfigInterface()->getOutputTypeName();
-        if ($org::allbinary::logic::visual::transform::info::objectConfig::generator::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($org::allbinary::logic::visual::transform::info::objectConfig::generator::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{VIEW})) {
+        if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{VIEW})) {
             my $commonStrings = 'org::allbinary::string::CommonStrings'->getInstance();
             $self->{logUtil}->putF("Generating Instance for type: " . $type, $self, $commonStrings->{GET_INSTANCE});
         }
@@ -59,15 +58,22 @@ sub getInstance {
         }
 }
 
+sub getInstance {
+    my ($invocant, @arguments) = @_;
+    return $invocant->getInstance_j0(@arguments) if scalar(@arguments) == 0;
+    return $invocant->getInstance_j1(@arguments) if scalar(@arguments) == 1;
+    die "No method getInstance takes " . scalar(@arguments) . " arguments";
+}
+
 use java::lang::Object ();
 use java::lang::LazyStatic ();
 use org::allbinary::logic::communication::log::LogUtil ();
 use org::allbinary::logic::io::InputOutputTypeData ();
 use org::allbinary::logic::visual::transform::info::TransformInfoInterface ();
 use org::allbinary::string::CommonStrings ();
-use org::allbinary::logic::visual::transform::info::objectConfig::generator::TransformInfoObjectConfigGeneratorFactoryInterface ();
+use org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory ();
+use org::allbinary::logic::communication::log::config::type::LogConfigTypes ();
 use org::allbinary::logic::visual::transform::info::objectConfig::generator::StoreFileGenerator ();
-use org::allbinary::logic::visual::transform::info::objectConfig::generator::BasicGenerator ();
 
 1;
 

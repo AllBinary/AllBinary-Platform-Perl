@@ -57,7 +57,6 @@ use org::allbinary::animation::AnimationInterface ();
 use org::allbinary::game::health::HealthInterface ();
 use org::allbinary::graphics::Anchor ();
 use org::allbinary::image::ImageCacheFactory ();
-use org::allbinary::game::layer::hud::basic::HealthGraphic ();
 
 1;
 

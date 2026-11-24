@@ -22,7 +22,7 @@ use parent -norequire,'org::allbinary::game::input::PlayerGameInput';
 
 sub _init_fields {
     my ($self) = @_;
-    $self->{inputProcessorArray} = [(undef) x ('org::allbinary::game::input::InputFactory'->getInstance()->{MAX})];
+    $self->{inputProcessorArray} = [(undef) x (java::lang::Object::jstatic('org::allbinary::game::input::SelectedRTSLayersPlayerGameInput', 'InputFactory')->getInstance()->{MAX})];
     $self->{list} = undef;
     $self->{isSingleKeyProcessing} = 'org::allbinary::game::configuration::feature::Features'->getInstance()->isFeature('org::allbinary::game::configuration::feature::InputFeatureFactory'->getInstance()->{SINGLE_KEY_REPEAT_PRESS}) || 'org::allbinary::game::configuration::feature::Features'->getInstance()->isFeature('org::allbinary::game::configuration::feature::InputFeatureFactory'->getInstance()->{SINGLE_KEY_PRESS});
     $self->{selectedRTSLayersList} = 'org::allbinary::util::BasicArrayListD'->new();
@@ -136,7 +136,7 @@ sub initInputProcessors {
     my ($self) = @_;
         $self->{inputProcessorArray}->[$javax::microedition::lcdui::Canvas::KEY_NUM1] = 'org::allbinary::game::input::SelectedRTSLayersPlayerUpgradeGameInputProcessor'->new($self);
         $self->{inputProcessorArray}->[$javax::microedition::lcdui::Canvas::KEY_NUM3] = 'org::allbinary::game::input::SelectedRTSLayersPlayerDowngradeGameInputProcessor'->new($self);
-        'org::allbinary::game::input::GameInputProcessorUtil'->init($self->{inputProcessorArray});
+        java::lang::Object::jstatic('org::allbinary::game::input::SelectedRTSLayersPlayerGameInput', 'GameInputProcessorUtil')->init($self->{inputProcessorArray});
 }
 
 
@@ -311,11 +311,8 @@ use org::allbinary::logic::math::SmallIntegerSingletonFactory ();
 use org::allbinary::media::audio::ErrorSound ();
 use org::allbinary::media::graphics::geography::map::BasicGeographicMap ();
 use org::allbinary::media::graphics::geography::map::GeographicMapCompositeInterface ();
-use org::allbinary::game::input::PlayerGameInput ();
-use org::allbinary::game::input::InputFactory ();
 use org::allbinary::game::input::SelectedRTSLayersPlayerUpgradeGameInputProcessor ();
 use org::allbinary::game::input::SelectedRTSLayersPlayerDowngradeGameInputProcessor ();
-use org::allbinary::game::input::GameInputProcessorUtil ();
 
 1;
 

@@ -49,9 +49,9 @@ sub loadAll {
             my $gameActionInput = undef;
             my $input = undef;
             my $hashtable = undef;
-            my $gameKeyFactory = 'org::allbinary::game::input::GameKeyMappingFactory'->getInstance();
+            my $gameKeyFactory = java::lang::Object::jstatic('org::allbinary::game::input::InputPersistance', 'GameKeyMappingFactory')->getInstance();
             my $stringBuffer = 'org::allbinary::logic::string::StringMaker'->new();
-            my $inputFactory = 'org::allbinary::game::input::InputFactory'->getInstance();
+            my $inputFactory = java::lang::Object::jstatic('org::allbinary::game::input::InputPersistance', 'InputFactory')->getInstance();
             my $smallIntegerSingletonFactory = 'org::allbinary::logic::math::SmallIntegerSingletonFactory'->getInstance();
             my $stdUtil = 'org::allbinary::logic::StdUtil'->getInstance();
             my $recordAsBytes = undef;
@@ -177,8 +177,6 @@ use org::allbinary::util::BasicArrayList ();
 use org::allbinary::util::HashtableUtil ();
 use org::allbinary::logic::StdUtil ();
 use org::allbinary::util::ABHashtable ();
-use org::allbinary::game::input::GameKeyMappingFactory ();
-use org::allbinary::game::input::InputFactory ();
 
 1;
 

@@ -38,6 +38,12 @@ sub new {
     die "No constructor of RequestParams takes " . scalar(@arguments) . " arguments";
 }
 
+sub _new1 {
+    my ($class, @arguments) = @_;
+    return $class->_new1_1(@arguments) if 1 && (!defined($arguments[0]) || (ref($arguments[0]) && ref($arguments[0]) ne 'ARRAY'));
+    return $class->_new1_2(@arguments);
+}
+
 
 sub _new0 {
     my ($class) = @_;
@@ -48,7 +54,7 @@ sub _new0 {
 }
 
 
-sub _new1 {
+sub _new1_1 {
     my ($class, $request) = @_;
     my $self = bless({}, $class);
     _init_fields($self);
@@ -58,7 +64,7 @@ sub _new1 {
 }
 
 
-sub _new1 {
+sub _new1_2 {
     my ($class, $pageContext) = @_;
     my $self = bless({}, $class);
     _init_fields($self);
@@ -83,7 +89,7 @@ sub getMap {
 sub toXmlNode {
     my ($self, $document) = @_;
         try {
-            my $node = $document->createElement($org::allbinary::logic::communication::http::request::RequestData::REQUEST);
+            my $node = $document->createElement(java::lang::Object::jstatic('org::allbinary::logic::communication::http::request::RequestParams', 'RequestData')->{REQUEST});
             my $stringBuffer = 'org::allbinary::logic::string::StringMaker'->new();
             my $keys = $self->{map}->keySet();
             my $keyArray = $keys->toArray();
@@ -97,7 +103,7 @@ sub toXmlNode {
                 $stringBuffer->append($self->{VALUE});
                 $stringBuffer->append($values->[0]);
                 $self->{logUtil}->putF($stringBuffer->toString(), $self, "toXmlNode(document)");
-                $node->appendChild('org::allbinary::data::tree::dom::ModDomHelper'->createNameValueNodes($document, $org::allbinary::logic::communication::http::request::RequestData::PARAMETER, ("" . $key), ("" . $values->[0])));
+                $node->appendChild('org::allbinary::data::tree::dom::ModDomHelper'->createNameValueNodes($document, java::lang::Object::jstatic('org::allbinary::logic::communication::http::request::RequestParams', 'RequestData')->{PARAMETER}, ("" . $key), ("" . $values->[0])));
             }
             return $node;
         } catch ($e) {
@@ -132,7 +138,7 @@ sub toHashMap {
 use java::lang::Object ();
 use java::util::HashMap ();
 # use java::util::Map ();
-# use java::util::Set ();
+use java::util::Set ();
 # use javax::servlet::http::HttpServletRequest ();
 # use javax::servlet::jsp::PageContext ();
 use org::allbinary::data::tree::dom::ModDomHelper ();
@@ -142,7 +148,6 @@ use org::allbinary::logic::string::StringMaker ();
 use org::allbinary::string::CommonStrings ();
 use org::w3c::dom::Document ();
 use org::w3c::dom::Node ();
-use org::allbinary::logic::communication::http::request::RequestData ();
 
 1;
 

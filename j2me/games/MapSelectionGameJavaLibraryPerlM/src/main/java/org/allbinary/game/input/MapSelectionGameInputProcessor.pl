@@ -29,7 +29,7 @@ sub _init_fields {
     $self->{inputTimeHelper} = 'org::allbinary::time::TimeDelayHelper'->new(650);
     $self->{playerGameInput} = undef;
     $self->{lockedIndex} = undef;
-    $self->{abRunnable} = 'org::allbinary::game::input::MapSelectionRunnable'->new($self);
+    $self->{abRunnable} = do { local $java::lang::Object::jouter = $self; 'org::allbinary::game::input::MapSelectionRunnable'->new($self) };
 }
 
 
@@ -122,6 +122,7 @@ sub getPlayerGameInput {
     sub new {
         my ($class, $inputProcessor) = @_;
         my $self = $class->SUPER::new();
+        $self->{jouter} = $java::lang::Object::jouter;
         _init_fields($self);
             $self->{inputProcessor} = $inputProcessor;
         return $self;
@@ -168,9 +169,6 @@ use org::allbinary::media::graphics::geography::map::racetrack::MultiLevelRaceTr
 use org::allbinary::thread::ABRunnable ();
 use org::allbinary::thread::ThreadObjectUtil ();
 use org::allbinary::time::TimeDelayHelper ();
-use org::allbinary::game::input::GameInputProcessorInterface ();
-use org::allbinary::game::input::PlayerGameInputCompositeInterface ();
-use org::allbinary::game::input::GameInputProcessorComposite ();
 
 1;
 

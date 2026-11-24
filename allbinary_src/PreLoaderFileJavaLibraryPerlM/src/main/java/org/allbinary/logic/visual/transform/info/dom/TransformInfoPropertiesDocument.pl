@@ -44,7 +44,7 @@ sub toTransformInfoPropertiesHashMap {
             my $transformInfosNode = $self->{document}->getElementsByTagName('org::allbinary::logic::visual::transform::info::TransformInfosData'->getInstance()->{NAME})->item(0);
             my $transformInfosChildNodeList = $transformInfosNode->getChildNodes();
             my $transformInfoNodeVector = 'org::allbinary::data::tree::dom::DomSearchHelper'->getAllNodes('org::allbinary::logic::visual::transform::info::TransformInfoData'->getInstance()->{NAME}, $transformInfosChildNodeList);
-            if ($org::allbinary::logic::visual::transform::info::dom::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($org::allbinary::logic::visual::transform::info::dom::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{VIEW})) {
+            if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{VIEW})) {
                 $self->{logUtil}->putF("Size: " . $transformInfoNodeVector->size(), $self, "toTransformInfoPropertiesHashMap()");
             }
             my $size = $transformInfoNodeVector->size();
@@ -57,7 +57,7 @@ sub toTransformInfoPropertiesHashMap {
             }
             return $transformInfoPropertiesHashMap;
         } catch ($e) {
-            if ($org::allbinary::logic::visual::transform::info::dom::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($org::allbinary::logic::visual::transform::info::dom::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{VIEWERROR})) {
+            if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{VIEWERROR})) {
                 my $commonStrings = 'org::allbinary::string::CommonStrings'->getInstance();
                 $self->{logUtil}->put($commonStrings->{EXCEPTION}, $self, "toTransformInfoPropertiesHashMap()", $e);
             }
@@ -82,6 +82,8 @@ use org::allbinary::string::CommonStrings ();
 use org::w3c::dom::Document ();
 use org::w3c::dom::Node ();
 use org::w3c::dom::NodeList ();
+use org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory ();
+use org::allbinary::logic::communication::log::config::type::LogConfigTypes ();
 
 1;
 

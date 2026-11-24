@@ -71,7 +71,7 @@ sub new {
         $abPath = 'org::allbinary::logic::io::path::AbPath'->new($abPath->toString(), $stringBuffer->toString());
         $self->{fileAbPath} = $abPath;
         $self->{file} = 'org::allbinary::logic::io::file::AbFile'->createAbFileFromAbPath($self->{fileAbPath});
-        if ($org::allbinary::logic::visual::transform::info::objectConfig::generator::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($org::allbinary::logic::visual::transform::info::objectConfig::generator::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{VIEW})) {
+        if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{VIEW})) {
             $self->{logUtil}->putF("File: " . $self->{fileAbPath}->toString(), $self, $self->{commonStrings}->{CONSTRUCTOR});
         }
     return $self;
@@ -81,7 +81,7 @@ sub new {
 # throws Exception
 sub process {
     my ($self, $input) = @_;
-        if ($org::allbinary::logic::visual::transform::info::objectConfig::generator::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($org::allbinary::logic::visual::transform::info::objectConfig::generator::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{VIEW})) {
+        if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{VIEW})) {
             $self->{logUtil}->putF("Processing", $self, $self->{commonStrings}->{PROCESS});
         }
         if (!$self->{file}->exists()) {
@@ -93,7 +93,7 @@ sub process {
         } else {
             die ("Could Not Create: " . $self->{fileAbPath}->toString());
         }
-        if ($org::allbinary::logic::visual::transform::info::objectConfig::generator::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($org::allbinary::logic::visual::transform::info::objectConfig::generator::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{VIEW})) {
+        if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{VIEW})) {
             $self->{logUtil}->putF("Processed", $self, $self->{commonStrings}->{PROCESS});
         }
         return 'org::allbinary::logic::string::StringUtil'->getInstance()->{EMPTY_STRING};
@@ -122,7 +122,8 @@ use org::allbinary::logic::visual::transform::info::TransformInfoInterface ();
 use org::allbinary::logic::visual::transform::info::TransformInfosData ();
 use org::allbinary::string::CommonSeps ();
 use org::allbinary::string::CommonStrings ();
-use org::allbinary::logic::visual::transform::info::objectConfig::generator::TransformInfoObjectConfigGenerator ();
+use org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory ();
+use org::allbinary::logic::communication::log::config::type::LogConfigTypes ();
 
 1;
 

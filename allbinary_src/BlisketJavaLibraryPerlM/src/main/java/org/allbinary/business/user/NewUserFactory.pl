@@ -29,37 +29,43 @@ sub new {
 
 
 # throws Exception
-sub getInstance {
+sub getInstance_j0 {
     my ($class) = @_;
         return 'org::allbinary::business::user::modules::User'->new();
 }
 
 
 # throws Exception
-# Java overloaded method: Perl keeps the last definition
-sub getInstance {
+sub getInstance_j1 {
     my ($class, $transformInfoInterface) = @_;
         my $httpTransformInfoInterface = $transformInfoInterface;
         my $httpServletRequest = $httpTransformInfoInterface->getPageContext()->getRequest();
         my $hashMap = 'org::allbinary::logic::communication::http::request::RequestParams'->new($httpServletRequest)->toHashMap();
         my $role = $httpTransformInfoInterface->getPropertiesHashMap()->get($org::allbinary::business::user::role::UserRoleData::NAME->toString());
         $hashMap->put($org::allbinary::business::user::role::UserRoleData::NAME->toString(), $role);
-        return 'org::allbinary::business::user::CreateUserFactory'->getInstance($hashMap);
+        return java::lang::Object::jstatic('org::allbinary::business::user::NewUserFactory', 'CreateUserFactory')->getInstance($hashMap);
 }
 
 
 # throws Exception
-# Java overloaded method: Perl keeps the last definition
-sub getInstance {
+sub getInstance_j2 {
     my ($class, $httpServletRequest, $propertiesHashMap) = @_;
         if (defined($propertiesHashMap)) {
             my $requestHashMap = 'org::allbinary::logic::communication::http::request::RequestParams'->new($httpServletRequest)->toHashMap();
             my $roleString = $propertiesHashMap->get($org::allbinary::business::user::role::UserRoleData::NAME->toString());
             $requestHashMap->put($org::allbinary::business::user::role::UserRoleData::NAME->toString(), $roleString);
-            return 'org::allbinary::business::user::CreateUserFactory'->getInstance($requestHashMap);
+            return java::lang::Object::jstatic('org::allbinary::business::user::NewUserFactory', 'CreateUserFactory')->getInstance($requestHashMap);
         } else {
             die ("Null HashMap");
         }
+}
+
+sub getInstance {
+    my ($invocant, @arguments) = @_;
+    return $invocant->getInstance_j0(@arguments) if scalar(@arguments) == 0;
+    return $invocant->getInstance_j1(@arguments) if scalar(@arguments) == 1;
+    return $invocant->getInstance_j2(@arguments) if scalar(@arguments) == 2;
+    die "No method getInstance takes " . scalar(@arguments) . " arguments";
 }
 
 use java::lang::Object ();
@@ -70,7 +76,6 @@ use org::allbinary::business::user::role::UserRoleData ();
 use org::allbinary::logic::communication::http::request::RequestParams ();
 use org::allbinary::logic::visual::transform::info::TransformInfoHttpInterface ();
 use org::allbinary::logic::visual::transform::info::TransformInfoInterface ();
-use org::allbinary::business::user::CreateUserFactory ();
 
 1;
 

@@ -74,18 +74,18 @@ sub _new1 {
             } else {
                 $self->{description} = 'org::allbinary::logic::string::StringUtil'->getInstance()->{EMPTY_STRING};
             }
-            if ($org::allbinary::logic::visual::dhtml::style::css::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($org::allbinary::logic::visual::dhtml::style::css::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{VIEW})) {
+            if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{VIEW})) {
                 $self->{logUtil}->putF('org::allbinary::logic::string::StringMaker'->new()->append("Value: ")->append($self->{value})->append("\nTitle: ")->append($self->{title})->append("\nDescription: ")->append($self->{description})->toString(), $self, $self->{commonStrings}->{CONSTRUCTOR});
             }
-            my $cssElementStyleNodeVector = 'org::allbinary::data::tree::dom::DomSearchHelper'->getAllNodes('org::allbinary::logic::visual::dhtml::style::css::CssElementData'->getInstance()->{NAME}, $node->getChildNodes());
-            if ($org::allbinary::logic::visual::dhtml::style::css::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($org::allbinary::logic::visual::dhtml::style::css::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{VIEW})) {
+            my $cssElementStyleNodeVector = 'org::allbinary::data::tree::dom::DomSearchHelper'->getAllNodes(java::lang::Object::jstatic('org::allbinary::logic::visual::dhtml::style::css::CssElementView', 'CssElementData')->getInstance()->{NAME}, $node->getChildNodes());
+            if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{VIEW})) {
                 $self->{logUtil}->putF("Child Css Elements: " . $cssElementStyleNodeVector->size(), $self, "CssElementView()");
             }
             $self->{cssElementVector} = 'org::allbinary::logic::visual::dhtml::style::css::CssElementsValidationFactory'->getInstance($cssElementStyleNodeVector);
             my $nodeList = $node->getChildNodes();
             $self->{cssPropertyVector} = 'org::allbinary::logic::visual::dhtml::style::css::property::CssPropertiesValidationFactory'->getInstance($nodeList);
         } catch ($e) {
-            if ($org::allbinary::logic::visual::dhtml::style::css::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($org::allbinary::logic::visual::dhtml::style::css::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{VIEWERROR})) {
+            if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{VIEWERROR})) {
                 $self->{logUtil}->put('org::allbinary::logic::string::StringMaker'->new()->append("Value: ")->append($self->{value})->append("\nTitle: ")->append($self->{title})->append("\nDescription: ")->append($self->{description})->toString(), $self, $self->{commonStrings}->{CONSTRUCTOR}, $e);
             }
             die ("CssElementView");
@@ -114,10 +114,10 @@ sub toHashMap {
 sub toXmlNode {
     my ($self, $document) = @_;
         my $hashMap = $self->toHashMap();
-        if ($org::allbinary::logic::visual::dhtml::style::css::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($org::allbinary::logic::visual::dhtml::style::css::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{VIEW})) {
+        if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{VIEW})) {
             $self->{logUtil}->putF("CssView HashMap: " . $hashMap->toString(), $self, "toXmlNode");
         }
-        my $node = 'org::allbinary::data::tree::dom::ModDomHelper'->createNodeWithValueNodes($document, 'org::allbinary::logic::visual::dhtml::style::css::CssElementData'->getInstance()->{NAME}, $hashMap);
+        my $node = 'org::allbinary::data::tree::dom::ModDomHelper'->createNodeWithValueNodes($document, java::lang::Object::jstatic('org::allbinary::logic::visual::dhtml::style::css::CssElementView', 'CssElementData')->getInstance()->{NAME}, $hashMap);
         my $size = $self->{cssPropertyVector}->size();
         for (my $index = 0; $index < $size; $index++) {
             my $cssPropertyDomNodeInterface = $self->{cssPropertyVector}->get($index);
@@ -149,7 +149,8 @@ use org::allbinary::string::CommonStrings ();
 use org::w3c::dom::Document ();
 use org::w3c::dom::Node ();
 use org::w3c::dom::NodeList ();
-use org::allbinary::logic::visual::dhtml::style::css::CssElementData ();
+use org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory ();
+use org::allbinary::logic::communication::log::config::type::LogConfigTypes ();
 use org::allbinary::logic::visual::dhtml::style::css::CssElementsValidationFactory ();
 
 1;

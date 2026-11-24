@@ -210,7 +210,7 @@ use java::io::File ();
 # use java::io::FileInputStream ();
 # use java::net::URL ();
 use java::util::HashMap ();
-# use java::util::Set ();
+use java::util::Set ();
 # use java::util::jar::JarInputStream ();
 # use java::util::jar::Manifest ();
 use org::osgi::framework::Bundle ();

@@ -27,16 +27,22 @@ sub new {
 }
 
 
-sub paint {
+sub paint_j3 {
     my ($self, $alphaBitmap, $originalBitmap, $index) = @_;
         die ("RuntimeException");
 }
 
 
-# Java overloaded method: Perl keeps the last definition
-sub paint {
+sub paint_j4 {
     my ($self, $colorBitmap, $originalBitmap, $alpha, $basicColor) = @_;
         die ("RuntimeException");
+}
+
+sub paint {
+    my ($invocant, @arguments) = @_;
+    return $invocant->paint_j3(@arguments) if scalar(@arguments) == 3;
+    return $invocant->paint_j4(@arguments) if scalar(@arguments) == 4;
+    die "No method paint takes " . scalar(@arguments) . " arguments";
 }
 
 

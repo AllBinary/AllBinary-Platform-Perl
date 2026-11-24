@@ -48,7 +48,7 @@ sub resolve {
             $stringBuffer->append('org::allbinary::logic::io::path::AbPathData'->getInstance()->{SEPARATOR});
             $stringBuffer->append($href);
             my $fileAbPath = 'org::allbinary::logic::io::path::AbFilePath'->new($stringBuffer->toString());
-            if ($org::allbinary::data::tree::dom::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($org::allbinary::data::tree::dom::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{XMLLOGGING})) {
+            if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{XMLLOGGING})) {
                 $stringBuffer->delete(0, $stringBuffer->length());
                 $stringBuffer->append($self->{uriResolverStrings}->{ATTEMPT});
                 $stringBuffer->append($href);
@@ -93,6 +93,8 @@ use org::allbinary::logic::io::path::AbPath ();
 use org::allbinary::logic::io::path::AbPathData ();
 use org::allbinary::logic::string::StringMaker ();
 use org::allbinary::logic::visual::transform::info::template::TransformInfoTemplateData ();
+use org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory ();
+use org::allbinary::logic::communication::log::config::type::LogConfigTypes ();
 use org::allbinary::data::tree::dom::URIResolverStrings ();
 
 1;

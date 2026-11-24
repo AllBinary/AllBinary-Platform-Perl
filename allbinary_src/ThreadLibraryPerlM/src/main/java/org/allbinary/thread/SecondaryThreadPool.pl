@@ -21,7 +21,7 @@ no warnings 'experimental::try';
 use Time::HiRes ();
 use parent -norequire,'org::allbinary::thread::ThreadPool';
 
-tie our $instance, 'java::lang::LazyStatic', sub { 'org::allbinary::thread::SecondaryThreadPool'->new("Secondary", 1, $org::allbinary::thread::ThreadPool::NORMAL_PRIORITY) };
+tie our $instance, 'java::lang::LazyStatic', sub { 'org::allbinary::thread::SecondaryThreadPool'->new("Secondary", 1, java::lang::Object::jstatic('org::allbinary::thread::SecondaryThreadPool', 'ThreadPool')->{NORMAL_PRIORITY}) };
 
 
 sub getInstance {
@@ -61,7 +61,6 @@ use java::lang::LazyStatic ();
 use org::allbinary::logic::communication::log::LogUtil ();
 use org::allbinary::logic::string::StringMaker ();
 use org::allbinary::logic::string::StringUtil ();
-use org::allbinary::thread::ThreadPool ();
 use java::lang::System ();
 
 1;

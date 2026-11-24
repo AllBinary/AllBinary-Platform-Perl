@@ -106,6 +106,7 @@ use org::allbinary::graphics::j2me::workarea::canvas::CanvasDom ();
 use org::allbinary::math::PositionStrings ();
 use org::allbinary::util::BasicArrayList ();
 use org::w3c::dom::Node ();
+use org::w3c::dom::Document ();
 use org::allbinary::graphics::j2me::workarea::tools::PointsUtil ();
 
 1;

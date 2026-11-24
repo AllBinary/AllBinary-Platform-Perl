@@ -136,7 +136,6 @@ use org::allbinary::math::Angle ();
 use org::allbinary::math::AngleInfo ();
 use org::allbinary::math::FrameUtil ();
 use org::allbinary::util::CircularIndexUtil ();
-use org::allbinary::animation::IndexedAnimation ();
 use org::allbinary::animation::RotationAnimationInterface ();
 
 1;

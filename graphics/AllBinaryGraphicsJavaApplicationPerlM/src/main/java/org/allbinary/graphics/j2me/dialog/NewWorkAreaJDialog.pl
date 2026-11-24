@@ -38,13 +38,13 @@ sub new {
         try {
             $self->initComponents();
             $self->{parent} = $parent;
-            $self->{xSizeJTextField} = 'org::allbinary::graphics::j2me::dialog::JTextField'->new("12");
-            $self->{ySizeJTextField} = 'org::allbinary::graphics::j2me::dialog::JTextField'->new("12");
-            $self->{nameJTextField} = 'org::allbinary::graphics::j2me::dialog::JTextField'->new($newName);
+            $self->{xSizeJTextField} = 'javax::swing::JTextField'->new("12");
+            $self->{ySizeJTextField} = 'javax::swing::JTextField'->new("12");
+            $self->{nameJTextField} = 'javax::swing::JTextField'->new($newName);
             $self->{dimension} = $dimension;
-            my $submitButton = 'org::allbinary::graphics::j2me::dialog::JButton'->new("Ok");
+            my $submitButton = 'javax::swing::JButton'->new("Ok");
             $submitButton->addActionListener(do {
-                package java::awt::event::ActionListener::AnonymousN66301 { our @ISA = ('java::awt::event::ActionListener', 'java::lang::Object');
+                package java::awt::event::ActionListener::AnonymousN66406 { our @ISA = ('java::awt::event::ActionListener', 'java::lang::Object');
                 
 
                 sub actionPerformed {
@@ -55,17 +55,17 @@ sub new {
                     }
                 }
                 }
-                'java::awt::event::ActionListener::AnonymousN66301'->can('new') ? 'java::awt::event::ActionListener::AnonymousN66301'->new() : bless({}, 'java::awt::event::ActionListener::AnonymousN66301')
+                'java::awt::event::ActionListener::AnonymousN66406'->can('new') ? 'java::awt::event::ActionListener::AnonymousN66406'->new() : bless({}, 'java::awt::event::ActionListener::AnonymousN66406')
             });
             $self->setSize(150, 100);
-            $self->getContentPane()->setLayout('org::allbinary::graphics::j2me::dialog::GridLayout'->new(5, 2));
-            $self->getContentPane()->add('org::allbinary::graphics::j2me::dialog::JLabel'->new("Please enter"));
-            $self->getContentPane()->add('org::allbinary::graphics::j2me::dialog::JLabel'->new(" the size."));
-            $self->getContentPane()->add('org::allbinary::graphics::j2me::dialog::JLabel'->new("Name:"));
+            $self->getContentPane()->setLayout('java::awt::GridLayout'->new(5, 2));
+            $self->getContentPane()->add('javax::swing::JLabel'->new("Please enter"));
+            $self->getContentPane()->add('javax::swing::JLabel'->new(" the size."));
+            $self->getContentPane()->add('javax::swing::JLabel'->new("Name:"));
             $self->getContentPane()->add($self->{nameJTextField});
-            $self->getContentPane()->add('org::allbinary::graphics::j2me::dialog::JLabel'->new("X: "));
+            $self->getContentPane()->add('javax::swing::JLabel'->new("X: "));
             $self->getContentPane()->add($self->{xSizeJTextField});
-            $self->getContentPane()->add('org::allbinary::graphics::j2me::dialog::JLabel'->new("Y: "));
+            $self->getContentPane()->add('javax::swing::JLabel'->new("Y: "));
             $self->getContentPane()->add($self->{ySizeJTextField});
             $self->getContentPane()->add($submitButton);
             $self->show();
@@ -87,7 +87,7 @@ sub disposeNewDialog {
                 die ("No Name", $self, "disposeNewDialog");
             }
             my $workAreaJPanel = 'org::allbinary::graphics::j2me::workarea::WorkAreaJPanel'->new($newName, $self->{dimension}, int($canvasWidth), int($canvasHeight));
-            $workAreaJPanel->setLayout('org::allbinary::graphics::j2me::dialog::GridLayout'->new(1, 1));
+            $workAreaJPanel->setLayout('java::awt::GridLayout'->new(1, 1));
             $self->{parent}->add($workAreaJPanel);
             $self->dispose();
         } catch ($e) {
@@ -99,7 +99,7 @@ sub disposeNewDialog {
 sub initComponents {
     my ($self) = @_;
         $self->addWindowListener(do {
-            package java::awt::event::WindowAdapter::AnonymousN67540 { our @ISA = ('java::awt::event::WindowAdapter', 'java::lang::Object');
+            package java::awt::event::WindowAdapter::AnonymousN67645 { our @ISA = ('java::awt::event::WindowAdapter', 'java::lang::Object');
             
 
             sub windowClosing {
@@ -107,7 +107,7 @@ sub initComponents {
                 $self->closeDialog($evt);
             }
             }
-            'java::awt::event::WindowAdapter::AnonymousN67540'->can('new') ? 'java::awt::event::WindowAdapter::AnonymousN67540'->new() : bless({}, 'java::awt::event::WindowAdapter::AnonymousN67540')
+            'java::awt::event::WindowAdapter::AnonymousN67645'->can('new') ? 'java::awt::event::WindowAdapter::AnonymousN67645'->new() : bless({}, 'java::awt::event::WindowAdapter::AnonymousN67645')
         });
         $self->pack();
 }
@@ -123,25 +123,27 @@ sub closeDialog {
 sub main {
     my ($class, $args) = @_;
         try {
-            'org::allbinary::graphics::j2me::dialog::NewWorkAreaJDialog'->new('org::allbinary::graphics::j2me::MyFrame'->new(), 1, 'org::allbinary::graphics::j2me::dialog::Dimension'->new(100, 100), "testing")->show();
+            'org::allbinary::graphics::j2me::dialog::NewWorkAreaJDialog'->new('org::allbinary::graphics::j2me::MyFrame'->new(), 1, 'java::awt::Dimension'->new(100, 100), "testing")->show();
         } catch ($e) {
         }
 }
 
 use java::lang::Object ();
-# use java::awt ();
+# use java::awt::Dimension ();
+# use java::awt::GridLayout ();
 # use java::awt::event::ActionEvent ();
 # use java::awt::event::ActionListener ();
-# use javax::swing ();
+# use javax::swing::JTextField ();
+# use javax::swing::JButton ();
+# use javax::swing::JLabel ();
 use org::allbinary::graphics::j2me::GraphicsException ();
 use org::allbinary::graphics::j2me::MyFrame ();
 use org::allbinary::graphics::j2me::workarea::WorkAreaJPanel ();
 use org::allbinary::graphics::j2me::workarea::WorkAreaJPanelInterface ();
-use org::allbinary::graphics::j2me::dialog::JTextField ();
-use org::allbinary::graphics::j2me::dialog::JButton ();
-use org::allbinary::graphics::j2me::dialog::GridLayout ();
-use org::allbinary::graphics::j2me::dialog::JLabel ();
-use org::allbinary::graphics::j2me::dialog::Dimension ();
+# use java::awt::Frame ();
+# use java::awt::event::WindowAdapter ();
+# use java::awt::event::WindowEvent ();
+# use javax::swing::JDialog ();
 
 1;
 

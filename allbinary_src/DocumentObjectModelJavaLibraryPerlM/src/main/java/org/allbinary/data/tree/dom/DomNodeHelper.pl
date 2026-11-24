@@ -44,7 +44,7 @@ sub getFirstChildElement {
 }
 
 
-sub getTextNodeValue {
+sub getTextNodeValue_j1 {
     my ($class, $node) = @_;
         my $nodeTextNode = $node->getFirstChild();
         if (defined($nodeTextNode)) {
@@ -56,11 +56,17 @@ sub getTextNodeValue {
 
 
 # throws Exception
-# Java overloaded method: Perl keeps the last definition
-sub getTextNodeValue {
+sub getTextNodeValue_j2 {
     my ($class, $nodeName, $nodeList) = @_;
         my $node = 'org::allbinary::data::tree::dom::DomSearchHelper'->getNode($nodeName, $nodeList);
         return 'org::allbinary::data::tree::dom::DomNodeHelper'->getTextNodeValue($node);
+}
+
+sub getTextNodeValue {
+    my ($invocant, @arguments) = @_;
+    return $invocant->getTextNodeValue_j1(@arguments) if scalar(@arguments) == 1;
+    return $invocant->getTextNodeValue_j2(@arguments) if scalar(@arguments) == 2;
+    die "No method getTextNodeValue takes " . scalar(@arguments) . " arguments";
 }
 
 

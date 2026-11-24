@@ -39,13 +39,13 @@ sub init {
     my ($class) = @_;
         try {
             'org::allbinary::logic::communication::log::PreLogUtil'->put("Initialize LogconfigTypes", "LogConfigTypes", "init()");
-            'org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance();
+            java::lang::Object::jstatic('org::allbinary::logic::communication::log::config::type::LogConfigTypes', 'LogConfigTypeFactory')->getInstance();
             my $loggingInitInfo = 'org::allbinary::logic::communication::log::config::LoggingInitInfo'->new();
             my $logConfigTypeVector = $loggingInitInfo->getTypeList();
             'org::allbinary::logic::communication::log::PreLogUtil'->put("Number Of Log Configs: " . $loggingInitInfo->getNumberOfLogConfigs(), "LogConfigTypes", "init()");
             'org::allbinary::logic::communication::log::PreLogUtil'->put("Number Of Log Config Type Names: " . $logConfigTypeVector->size(), "LogConfigTypes", "init()");
             $org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->addAllList($logConfigTypeVector);
-            $org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->add('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{NETBEANS_MODULE});
+            $org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->add(java::lang::Object::jstatic('org::allbinary::logic::communication::log::config::type::LogConfigTypes', 'LogConfigTypeFactory')->getInstance()->{NETBEANS_MODULE});
         } catch ($e) {
             'org::allbinary::logic::communication::log::PreLogUtil'->putSE("Unable to initialize LogConfigTypes", "LogConfigTypes", "init()", $e);
         }
@@ -55,13 +55,13 @@ sub init {
 # throws Exception
 sub getInstance {
     my ($class, $node) = @_;
-        my $nameValueNode = 'org::allbinary::data::tree::dom::DomSearchHelper'->getNode('org::allbinary::logic::communication::log::config::type::LogConfigTypeData'->getInstance()->{NAME}, $node->getChildNodes());
+        my $nameValueNode = 'org::allbinary::data::tree::dom::DomSearchHelper'->getNode(java::lang::Object::jstatic('org::allbinary::logic::communication::log::config::type::LogConfigTypes', 'LogConfigTypeData')->getInstance()->{NAME}, $node->getChildNodes());
         my $name = 'org::allbinary::data::tree::dom::DomNodeHelper'->getTextNodeValue($nameValueNode);
-        my $descriptionValueNode = 'org::allbinary::data::tree::dom::DomSearchHelper'->getNodeNoThrow('org::allbinary::logic::communication::log::config::type::LogConfigTypeData'->getInstance()->{DESCRIPTION}, $node->getChildNodes());
+        my $descriptionValueNode = 'org::allbinary::data::tree::dom::DomSearchHelper'->getNodeNoThrow(java::lang::Object::jstatic('org::allbinary::logic::communication::log::config::type::LogConfigTypes', 'LogConfigTypeData')->getInstance()->{DESCRIPTION}, $node->getChildNodes());
         if (defined($descriptionValueNode)) {
             my $description = 'org::allbinary::data::tree::dom::DomNodeHelper'->getTextNodeValue($descriptionValueNode);
         }
-        my $availableLogConfigTypes = $org::allbinary::logic::communication::log::config::type::LogConfigType::availableLogConfigTypes;
+        my $availableLogConfigTypes = java::lang::Object::jstatic('org::allbinary::logic::communication::log::config::type::LogConfigTypes', 'LogConfigType')->{availableLogConfigTypes};
         my $size = $availableLogConfigTypes->size();
         my $logConfigType = undef;
         for (my $index = 0; $index < $size; $index++) {
@@ -82,9 +82,6 @@ use org::allbinary::logic::communication::log::config::LoggingInitInfo ();
 use org::allbinary::util::BasicArrayList ();
 use org::allbinary::util::BasicArrayListD ();
 use org::w3c::dom::Node ();
-use org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory ();
-use org::allbinary::logic::communication::log::config::type::LogConfigTypeData ();
-use org::allbinary::logic::communication::log::config::type::LogConfigType ();
 
 1;
 

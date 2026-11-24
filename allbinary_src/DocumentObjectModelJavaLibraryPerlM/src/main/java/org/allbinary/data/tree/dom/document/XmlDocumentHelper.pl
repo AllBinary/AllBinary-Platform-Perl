@@ -53,7 +53,7 @@ sub init {
 
 
 # throws TransformerConfigurationException
-sub createTransformer {
+sub createTransformer_j2 {
     my ($self, $indent, $ignoreDeclaration) = @_;
         my $booleanFactory = 'org::allbinary::logic::java::bool::BooleanFactory'->getInstance();
         my $transformerFactory = 'javax::xml::transform::TransformerFactory'->newInstance();
@@ -67,8 +67,7 @@ sub createTransformer {
 
 
 # throws TransformerConfigurationException
-# Java overloaded method: Perl keeps the last definition
-sub createTransformer {
+sub createTransformer_j0 {
     my ($self) = @_;
         my $currentIndent = 0;
         my $currentIgnoreDeclaration = 0;
@@ -77,6 +76,13 @@ sub createTransformer {
             $currentIgnoreDeclaration = $self->{ignoreDeclaration};
         }
         return $self->createTransformer($currentIndent, $currentIgnoreDeclaration);
+}
+
+sub createTransformer {
+    my ($invocant, @arguments) = @_;
+    return $invocant->createTransformer_j2(@arguments) if scalar(@arguments) == 2;
+    return $invocant->createTransformer_j0(@arguments) if scalar(@arguments) == 0;
+    die "No method createTransformer takes " . scalar(@arguments) . " arguments";
 }
 
 

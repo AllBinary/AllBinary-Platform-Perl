@@ -58,11 +58,11 @@ sub setDefault {
             $updateKeyAndValue->put('org::allbinary::business::entry::EntryData'->getInstance()->{DEFAULT}, 'org::allbinary::business::entry::EntryData'->getInstance()->{DEFAULT});
             $whereKeyAndValue->put($org::allbinary::business::user::commerce::money::payment::PaymentData::ID, ("" . ($index)));
             $self->SUPER::updateWhere($whereKeyAndValue, $updateKeyAndValue);
-            if ($org::allbinary::data::tables::user::commerce::money::payment::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($org::allbinary::data::tables::user::commerce::money::payment::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{SQLLOGGING})) {
+            if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{SQLLOGGING})) {
                 $self->{logUtil}->putF($self->{commonStrings}->{SUCCESS}, $self, "setDefault");
             }
         } catch ($e) {
-            if ($org::allbinary::data::tables::user::commerce::money::payment::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($org::allbinary::data::tables::user::commerce::money::payment::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{SQLLOGGING})) {
+            if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{SQLLOGGING})) {
                 $self->{logUtil}->put($self->{commonStrings}->{FAILURE}, $self, "setDefault", $e);
             }
         }
@@ -86,7 +86,7 @@ sub get {
             }
             return $paymentVector;
         } catch ($e) {
-            if ($org::allbinary::data::tables::user::commerce::money::payment::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($org::allbinary::data::tables::user::commerce::money::payment::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{SQLLOGGING})) {
+            if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{SQLLOGGING})) {
                 $self->{logUtil}->put($self->{commonStrings}->{FAILURE}, $self, $self->{commonStrings}->{GET}, $e);
             }
             return undef;
@@ -104,7 +104,7 @@ sub getDefault {
             $paymentHashMap = $self->SUPER::getRow($updateKeyAndValue);
             if (defined($paymentHashMap)) {
                 my $payment = 'org::allbinary::business::user::commerce::money::payment::Payment'->new($paymentHashMap);
-                if ($org::allbinary::data::tables::user::commerce::money::payment::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($org::allbinary::data::tables::user::commerce::money::payment::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{SQLLOGGING})) {
+                if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{SQLLOGGING})) {
                     $self->{logUtil}->putF($self->{commonStrings}->{SUCCESS}, $self, "getDefault");
                 }
                 return $payment;
@@ -112,7 +112,7 @@ sub getDefault {
                 return undef;
             }
         } catch ($e) {
-            if ($org::allbinary::data::tables::user::commerce::money::payment::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($org::allbinary::data::tables::user::commerce::money::payment::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{SQLLOGGING})) {
+            if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{SQLLOGGING})) {
                 $self->{logUtil}->put($self->{commonStrings}->{FAILURE}, $self, "getDefault", $e);
             }
             return undef;
@@ -127,11 +127,11 @@ sub remove {
             $whereHashMap->put($org::allbinary::business::user::UserData::USERNAME, $userName);
             $whereHashMap->put($org::allbinary::business::user::commerce::money::payment::PaymentData::ID, ("" . ($index)));
             $self->SUPER::deleteWhere($whereHashMap);
-            if ($org::allbinary::data::tables::user::commerce::money::payment::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($org::allbinary::data::tables::user::commerce::money::payment::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{SQLLOGGING})) {
+            if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{SQLLOGGING})) {
                 $self->{logUtil}->putF($self->{commonStrings}->{SUCCESS}, $self, "remove");
             }
         } catch ($e) {
-            if ($org::allbinary::data::tables::user::commerce::money::payment::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($org::allbinary::data::tables::user::commerce::money::payment::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{SQLLOGGING})) {
+            if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{SQLLOGGING})) {
                 $self->{logUtil}->put($self->{commonStrings}->{FAILURE}, $self, "remove", $e);
             }
         }
@@ -155,11 +155,11 @@ sub add {
             my $time = ("" . $calendar->getTimeInMillis()->toString());
             $vector->add($time);
             $self->SUPER::insert($vector);
-            if ($org::allbinary::data::tables::user::commerce::money::payment::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($org::allbinary::data::tables::user::commerce::money::payment::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{SQLLOGGING})) {
+            if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{SQLLOGGING})) {
                 $self->{logUtil}->putF($self->{commonStrings}->{SUCCESS}, $self, "add");
             }
         } catch ($e) {
-            if ($org::allbinary::data::tables::user::commerce::money::payment::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($org::allbinary::data::tables::user::commerce::money::payment::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{SQLLOGGING})) {
+            if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{SQLLOGGING})) {
                 $self->{logUtil}->put($self->{commonStrings}->{FAILURE}, $self, "add", $e);
             }
         }
@@ -217,7 +217,8 @@ use org::allbinary::logic::communication::sql::AbSqlBean ();
 use org::allbinary::logic::control::crypt::SuperCrypt ();
 use org::allbinary::logic::string::StringMaker ();
 use org::allbinary::logic::string::StringUtil ();
-use org::allbinary::data::tables::user::commerce::money::payment::PaymentEntityInterface ();
+use org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory ();
+use org::allbinary::logic::communication::log::config::type::LogConfigTypes ();
 
 1;
 

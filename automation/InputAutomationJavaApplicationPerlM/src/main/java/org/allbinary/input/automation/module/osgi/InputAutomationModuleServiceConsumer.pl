@@ -23,7 +23,7 @@ use parent -norequire,'org::allbinary::osgi::service::InputAutomationServiceCons
 
 sub new {
     my ($class, $bundleContext) = @_;
-    my $self = $class->SUPER::new('bundle::input::automation::module::InputAutomationModuleServiceInterface'->getName(), $bundleContext, 'org::allbinary::input::automation::module::osgi::InputAutomationModuleOSGIServiceVisitor'->new());
+    my $self = $class->SUPER::new((('bundle::input::automation::module::InputAutomationModuleServiceInterface') =~ s/::/./gr), $bundleContext, 'org::allbinary::input::automation::module::osgi::InputAutomationModuleOSGIServiceVisitor'->new());
         # super(...) made $self above
     return $self;
 }

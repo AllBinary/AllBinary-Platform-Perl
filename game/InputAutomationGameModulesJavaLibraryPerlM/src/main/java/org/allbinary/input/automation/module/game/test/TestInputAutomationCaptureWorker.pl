@@ -88,7 +88,7 @@ sub setGenericProfileActions {
 
 use java::lang::Object ();
 use java::util::HashMap ();
-# use java::util::Set ();
+use java::util::Set ();
 use org::allbinary::util::BasicArrayList ();
 use org::allbinary::util::BasicArrayListD ();
 use org::allbinary::input::automation::module::AbstractInputAutomationWorker ();

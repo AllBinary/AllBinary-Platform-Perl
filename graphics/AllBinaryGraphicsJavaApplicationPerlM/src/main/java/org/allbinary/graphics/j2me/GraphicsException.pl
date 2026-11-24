@@ -33,8 +33,14 @@ sub new {
     die "No constructor of GraphicsException takes " . scalar(@arguments) . " arguments";
 }
 
-
 sub _new3 {
+    my ($class, @arguments) = @_;
+    return $class->_new3_1(@arguments) if 1 && !ref($arguments[0]) && (!defined($arguments[1]) || (ref($arguments[1]) && ref($arguments[1]) ne 'ARRAY')) && !ref($arguments[2]);
+    return $class->_new3_2(@arguments);
+}
+
+
+sub _new3_1 {
     my ($class, $msg, $obj, $method) = @_;
     my $self = $class->SUPER::new($msg);
     _init_fields($self);
@@ -48,7 +54,7 @@ sub _new3 {
 }
 
 
-sub _new3 {
+sub _new3_2 {
     my ($class, $msg, $className, $method) = @_;
     my $self = $class->SUPER::new($msg);
     _init_fields($self);

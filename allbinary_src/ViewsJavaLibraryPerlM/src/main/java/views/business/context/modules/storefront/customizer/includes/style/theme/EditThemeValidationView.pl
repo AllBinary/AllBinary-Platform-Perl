@@ -49,13 +49,13 @@ sub isValid {
             my $document = 'org::allbinary::data::tree::dom::document::DomDocumentHelper'->create();
             $document->appendChild($domNodeInterface->toXmlNode($document));
             my $documentString = 'org::allbinary::data::tree::dom::document::XmlDocumentHelper'->toString($document);
-            if ($views::business::context::modules::storefront::customizer::includes::style::theme::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($views::business::context::modules::storefront::customizer::includes::style::theme::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{VIEWERROR})) {
+            if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{VIEWERROR})) {
                 $self->{logUtil}->putF("Setting Data: " . $documentString, $self, $self->{commonStrings}->{CONSTRUCTOR});
             }
             $self->getTransformInfoInterface()->setData($documentString);
             return $isValid;
         } catch ($e) {
-            if ($views::business::context::modules::storefront::customizer::includes::style::theme::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($views::business::context::modules::storefront::customizer::includes::style::theme::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{VIEWERROR})) {
+            if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{VIEWERROR})) {
                 $self->{logUtil}->put("Failed to validate", $self, $self->{commonStrings}->{IS_VALID}, $e);
             }
             return 0;
@@ -70,7 +70,7 @@ sub validationInfo {
             $stringBuffer->append($self->{validationInterface}->validationInfo());
             return $stringBuffer->toString();
         } catch ($e) {
-            if ($views::business::context::modules::storefront::customizer::includes::style::theme::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($views::business::context::modules::storefront::customizer::includes::style::theme::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{VIEWERROR})) {
+            if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{VIEWERROR})) {
                 $self->{logUtil}->put("Failed to generate validation error info", $self, "validationInfo()", $e);
             }
             return "Error Getting Validation Info";
@@ -113,6 +113,8 @@ use org::allbinary::logic::string::StringMaker ();
 use org::allbinary::logic::visual::transform::info::TransformInfoInterface ();
 use org::w3c::dom::Document ();
 use org::w3c::dom::Node ();
+use org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory ();
+use org::allbinary::logic::communication::log::config::type::LogConfigTypes ();
 use views::business::context::modules::storefront::customizer::includes::style::theme::ThemeCustomizerView ();
 
 1;

@@ -38,7 +38,7 @@ sub getInstance {
 # throws Exception
 sub getInstanceTranslate {
     my ($self, $width, $height, $animationInterface) = @_;
-        my $image = 'org::allbinary::image::GameFeatureImageCacheFactory'->getInstance()->get(ref($org::allbinary::image::AnimationFrameToImageUtil::instance), (POSIX::floor((($width * 3)) / (2 ** (1)))), (POSIX::floor((($height * 3)) / (2 ** (1)))));
+        my $image = java::lang::Object::jstatic('org::allbinary::image::AnimationFrameToImageUtil', 'GameFeatureImageCacheFactory')->getInstance()->get(ref($org::allbinary::image::AnimationFrameToImageUtil::instance), (POSIX::floor((($width * 3)) / (2 ** (1)))), (POSIX::floor((($height * 3)) / (2 ** (1)))));
         my $graphics = $image->getGraphics();
         my $tranlateX = (POSIX::floor(($width) / (2 ** (2))));
         my $tranlateY = (POSIX::floor(($height) / (2 ** (2))));
@@ -52,7 +52,7 @@ sub getInstanceTranslate {
 # throws Exception
 sub getInstanceWH {
     my ($self, $width, $height, $animationInterface) = @_;
-        my $image = 'org::allbinary::image::GameFeatureImageCacheFactory'->getInstance()->get(ref($org::allbinary::image::AnimationFrameToImageUtil::instance), $width, $height);
+        my $image = java::lang::Object::jstatic('org::allbinary::image::AnimationFrameToImageUtil', 'GameFeatureImageCacheFactory')->getInstance()->get(ref($org::allbinary::image::AnimationFrameToImageUtil::instance), $width, $height);
         my $graphics = $image->getGraphics();
         $animationInterface->paintXY($graphics, 0, 0);
         return $image;
@@ -63,7 +63,6 @@ use java::lang::LazyStatic ();
 use javax::microedition::lcdui::Graphics ();
 use javax::microedition::lcdui::Image ();
 use org::allbinary::animation::Animation ();
-use org::allbinary::image::GameFeatureImageCacheFactory ();
 
 1;
 

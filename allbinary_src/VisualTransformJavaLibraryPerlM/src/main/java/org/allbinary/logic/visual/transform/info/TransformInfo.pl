@@ -80,13 +80,13 @@ sub _new5 {
 # throws Exception
 sub override {
     my ($self, $hashMap) = @_;
-        my $transformInfoData = 'org::allbinary::logic::visual::transform::info::TransformInfoData'->getInstance();
+        my $transformInfoData = java::lang::Object::jstatic('org::allbinary::logic::visual::transform::info::TransformInfo', 'TransformInfoData')->getInstance();
         my $stringValidationUtil = 'org::allbinary::logic::string::StringValidationUtil'->getInstance();
         my $aName = $hashMap->get($transformInfoData->{NAME});
         if (!$stringValidationUtil->isEmpty($aName)) {
             $self->{name} = $aName;
         }
-        if ($org::allbinary::logic::visual::transform::info::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($org::allbinary::logic::visual::transform::info::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{VIEW})) {
+        if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{VIEW})) {
             my $stringBuffer = 'org::allbinary::logic::string::StringMaker'->new();
             $stringBuffer->append("TransformInfo properties overridden for: ");
             $stringBuffer->append($self->getName());
@@ -110,7 +110,7 @@ sub override {
         my $fileAbPath = 'org::allbinary::logic::io::path::AbPath'->new($stringBuffer->toString(), 'org::allbinary::logic::string::StringUtil'->getInstance()->{EMPTY_STRING});
         my $aObject = $hashMap->get($transformInfoData->{OBJECT});
         if (!$stringValidationUtil->isEmpty($aObject)) {
-            if ($org::allbinary::logic::visual::transform::info::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($org::allbinary::logic::visual::transform::info::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{VIEW})) {
+            if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{VIEW})) {
                 $self->{logUtil}->putF("TransformInfo override view Object for: " . $self->getName(), $self, "override(HashMap hashMap)");
             }
             my $fileDataString = 'org::allbinary::logic::control::crypt::file::CryptFileReader'->new('org::allbinary::logic::visual::transform::info::viewObject::TransformInfoObjectData'->getInstance()->{UNCRYPTED_EXTENSION}, 'org::allbinary::logic::visual::transform::info::viewObject::TransformInfoObjectData'->getInstance()->{ENCRYPTED_EXTENSION})->get('org::allbinary::logic::io::path::AbPath'->new($fileAbPath->toString(), $aObject));
@@ -119,14 +119,14 @@ sub override {
             }
         }
         if (!$stringValidationUtil->isEmpty($hashMap->get($transformInfoData->{OBJECTCONFIG}))) {
-            if ($org::allbinary::logic::visual::transform::info::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($org::allbinary::logic::visual::transform::info::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{VIEW})) {
+            if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{VIEW})) {
                 $self->{logUtil}->putF("TransformInfo override ObjectConfig for: " . $self->getName(), $self, "override(HashMap hashMap)");
             }
             $self->setObjectConfig($hashMap->get($transformInfoData->{OBJECTCONFIG}));
         }
         my $objectConfigFileName = $hashMap->get($transformInfoData->{OBJECTCONFIGFILENAME});
         if (!$stringValidationUtil->isEmpty($objectConfigFileName)) {
-            if ($org::allbinary::logic::visual::transform::info::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($org::allbinary::logic::visual::transform::info::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{VIEW})) {
+            if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{VIEW})) {
                 $self->{logUtil}->putF("TransformInfo override ObjectConfig File for: " . $self->getName(), $self, "override(HashMap hashMap)");
             }
             $self->setObjectConfigFile($objectConfigFileName);
@@ -144,7 +144,7 @@ sub override {
         }
         my $aTemplate = $hashMap->get($transformInfoData->{TEMPLATE});
         if (!$stringValidationUtil->isEmpty($aTemplate)) {
-            if ($org::allbinary::logic::visual::transform::info::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($org::allbinary::logic::visual::transform::info::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{VIEW})) {
+            if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{VIEW})) {
                 $self->{logUtil}->putF("TransformInfo override Template for: " . $self->getName(), $self, "override(HashMap hashMap)");
             }
             my $fileDataString = 'org::allbinary::logic::control::crypt::file::CryptFileReader'->new('org::allbinary::logic::visual::transform::info::template::TransformInfoTemplateData'->getInstance()->{UNCRYPTED_EXTENSION}, 'org::allbinary::logic::visual::transform::info::template::TransformInfoTemplateData'->getInstance()->{ENCRYPTED_EXTENSION})->get('org::allbinary::logic::io::path::AbPath'->new($fileAbPath->toString(), $aTemplate));
@@ -158,7 +158,7 @@ sub override {
         }
         my $aData = $hashMap->get($transformInfoData->{DATA});
         if (!$stringValidationUtil->isEmpty($aData)) {
-            if ($org::allbinary::logic::visual::transform::info::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($org::allbinary::logic::visual::transform::info::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{VIEW})) {
+            if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{VIEW})) {
                 $self->{logUtil}->putF("TransformInfo override Data for: " . $self->getName(), $self, "override(HashMap hashMap)");
             }
             my $fileDataString = 'org::allbinary::logic::control::crypt::file::CryptFileReader'->new('org::allbinary::logic::visual::transform::info::data::TransformInfoDataData'->getInstance()->{UNCRYPTED_EXTENSION}, 'org::allbinary::logic::visual::transform::info::data::TransformInfoDataData'->getInstance()->{ENCRYPTED_EXTENSION})->get('org::allbinary::logic::io::path::AbPath'->new($fileAbPath->toString(), $aData));
@@ -166,7 +166,7 @@ sub override {
                 $self->{data} = $fileDataString;
             }
         }
-        if ($org::allbinary::logic::visual::transform::info::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($org::allbinary::logic::visual::transform::info::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{VIEW})) {
+        if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{VIEW})) {
             $stringBuffer = 'org::allbinary::logic::string::StringMaker'->new();
             $stringBuffer->append("Name: ");
             $stringBuffer->append($aName);
@@ -185,7 +185,7 @@ sub override {
             $stringBuffer->append("->TransformInfo");
             $self->{logUtil}->putF($stringBuffer->toString(), $self, "TransformInfoInterface(HashMap)");
         }
-        if ($org::allbinary::logic::visual::transform::info::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($org::allbinary::logic::visual::transform::info::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{TAGHELPERFACTORY})) {
+        if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{TAGHELPERFACTORY})) {
             $self->{logUtil}->putF($self->log(), $self, "override");
         }
 }
@@ -356,24 +356,24 @@ sub getData {
             try {
                 my $fileData = 'org::allbinary::logic::control::crypt::file::CryptFileReader'->new('org::allbinary::logic::visual::transform::info::data::TransformInfoDataData'->getInstance()->{UNCRYPTED_EXTENSION}, 'org::allbinary::logic::visual::transform::info::data::TransformInfoDataData'->getInstance()->{ENCRYPTED_EXTENSION})->get($self->getDataFilePath());
                 if (!$stringValidationUtil->isEmpty($self->{data})) {
-                    if ($org::allbinary::logic::visual::transform::info::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($org::allbinary::logic::visual::transform::info::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{VIEW})) {
+                    if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{VIEW})) {
                         $self->{logUtil}->putF("Data File overriding existing data: " . $self->getDataFilePath(), $self, "getData()");
                     }
                 }
                 $self->{data} = $fileData;
             } catch ($e) {
-                if ($org::allbinary::logic::visual::transform::info::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($org::allbinary::logic::visual::transform::info::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{VIEWERROR})) {
+                if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{VIEWERROR})) {
                     $self->{logUtil}->put("Could Not Load Data from: " . $self->getDataFile(), $self, "getData()", $e);
                 }
             }
         }
         try {
             if (!$stringValidationUtil->isEmpty($self->{data})) {
-                if ($org::allbinary::logic::visual::transform::info::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($org::allbinary::logic::visual::transform::info::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{VIEWERROR})) {
+                if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{VIEWERROR})) {
                     $self->{logUtil}->putF("Data: " . 'org::allbinary::data::tree::dom::document::XmlDocumentHelper'->toString('org::allbinary::data::tree::dom::document::DomDocumentHelper'->create($self->{data})), $self, "getData()");
                 }
             } else {
-                if ($org::allbinary::logic::visual::transform::info::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($org::allbinary::logic::visual::transform::info::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{VIEWERROR})) {
+                if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{VIEWERROR})) {
                     my $stringBuffer = 'org::allbinary::logic::string::StringMaker'->new();
                     $stringBuffer->append("Name: ");
                     $stringBuffer->append($self->{name});
@@ -381,13 +381,13 @@ sub getData {
                     $stringBuffer->append($dataFileString);
                     $stringBuffer->append("\nPath: ");
                     $stringBuffer->append($self->getDataFilePath()->toFileSystemString());
-                    if ($org::allbinary::logic::visual::transform::info::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($org::allbinary::logic::visual::transform::info::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{VIEWERROR})) {
+                    if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{VIEWERROR})) {
                         $self->{logUtil}->putF($stringBuffer->toString(), $self, "getData()");
                     }
                 }
             }
         } catch ($e) {
-            if ($org::allbinary::logic::visual::transform::info::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($org::allbinary::logic::visual::transform::info::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{VIEWERROR})) {
+            if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{VIEWERROR})) {
                 $self->{logUtil}->put("Could Not Preview Data: " . $self->{data}, $self, "getData()", $e);
             }
         }
@@ -401,7 +401,7 @@ sub getDataDocument {
         my $localData = $self->getData();
         my $stringValidationUtil = 'org::allbinary::logic::string::StringValidationUtil'->getInstance();
         if ($stringValidationUtil->isEmpty($localData)) {
-            if ($org::allbinary::logic::visual::transform::info::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($org::allbinary::logic::visual::transform::info::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{VIEWERROR})) {
+            if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{VIEWERROR})) {
                 $self->{logUtil}->putF("No Data So Creating New Document", $self, "getDataDocument()");
             }
             return 'org::allbinary::data::tree::dom::document::DomDocumentHelper'->create();
@@ -420,7 +420,7 @@ sub getDataFile {
 
 sub toHashMap {
     my ($self) = @_;
-        my $transformInfoData = 'org::allbinary::logic::visual::transform::info::TransformInfoData'->getInstance();
+        my $transformInfoData = java::lang::Object::jstatic('org::allbinary::logic::visual::transform::info::TransformInfo', 'TransformInfoData')->getInstance();
         my $hashMap = 'org::allbinary::logic::StdUtil'->getInstance()->createHashMap();
         $hashMap->put($transformInfoData->{NAME}, $self->{name});
         $hashMap->put('org::allbinary::business::context::modules::storefront::StoreFrontData'->getInstance()->{NAME}, $self->{storeName});
@@ -522,8 +522,8 @@ use org::allbinary::logic::visual::transform::info::viewObject::TransformInfoObj
 use org::allbinary::string::CommonSeps ();
 use org::allbinary::string::CommonStrings ();
 use org::w3c::dom::Document ();
-use org::allbinary::logic::visual::transform::info::TransformInfoInterface ();
-use org::allbinary::logic::visual::transform::info::TransformInfoData ();
+use org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory ();
+use org::allbinary::logic::communication::log::config::type::LogConfigTypes ();
 
 1;
 

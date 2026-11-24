@@ -42,7 +42,6 @@ sub getInstanceItemPaintable {
 }
 
 use java::lang::Object ();
-use org::allbinary::graphics::form::ItemPaintableFactory ();
 use org::allbinary::graphics::form::LockablePaintable ();
 
 1;

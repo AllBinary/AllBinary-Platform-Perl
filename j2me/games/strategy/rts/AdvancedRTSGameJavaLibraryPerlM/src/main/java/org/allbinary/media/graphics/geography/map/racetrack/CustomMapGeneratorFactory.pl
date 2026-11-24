@@ -34,7 +34,6 @@ sub create {
 }
 
 use java::lang::Object ();
-use org::allbinary::media::graphics::geography::map::racetrack::CustomMapGeneratorBaseFactory ();
 use org::allbinary::media::graphics::geography::map::racetrack::CustomMapGenerator ();
 
 1;

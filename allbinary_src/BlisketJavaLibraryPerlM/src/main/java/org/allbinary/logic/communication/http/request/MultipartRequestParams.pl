@@ -33,8 +33,14 @@ sub new {
     die "No constructor of MultipartRequestParams takes " . scalar(@arguments) . " arguments";
 }
 
-
 sub _new1 {
+    my ($class, @arguments) = @_;
+    return $class->_new1_1(@arguments) if 1 && (!defined($arguments[0]) || (ref($arguments[0]) && ref($arguments[0]) ne 'ARRAY'));
+    return $class->_new1_2(@arguments);
+}
+
+
+sub _new1_1 {
     my ($class, $request) = @_;
     my $self = $class->SUPER::new();
     _init_fields($self);
@@ -44,7 +50,7 @@ sub _new1 {
 }
 
 
-sub _new1 {
+sub _new1_2 {
     my ($class, $pageContext) = @_;
     my $self = $class->SUPER::new();
     _init_fields($self);
@@ -66,7 +72,7 @@ sub processMultipartRequest {
             my $specialRequest = 'org::allbinary::logic::StdUtil'->getInstance()->createHashMap();
             my $multipartRequestList = 'org::allbinary::logic::communication::http::file::upload::AbFileUploadFactory'->getInstance()->getFileItemStreamList($request);
             if (defined($multipartRequestList)) {
-                if ($org::allbinary::logic::communication::http::request::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($org::allbinary::logic::communication::http::request::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{HTTPREQUEST})) {
+                if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{HTTPREQUEST})) {
                     $self->{logUtil}->putF("FileItem List Size: " . $multipartRequestList->size(), $self, "processMultipartRequest()");
                 }
                 my $fileItemArray = $multipartRequestList->toArray();
@@ -80,14 +86,14 @@ sub processMultipartRequest {
                         $specialRequest->put($fileItem->getFieldName(), $fileItem);
                     }
                 }
-                if ($org::allbinary::logic::communication::http::request::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($org::allbinary::logic::communication::http::request::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{HTTPREQUEST})) {
+                if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{HTTPREQUEST})) {
                     $self->{logUtil}->putF("Special Request Data: " . $specialRequest->toString(), $self, "processMultipartRequest()");
                 }
                 $self->setSpecial();
                 $self->setMap($specialRequest);
             }
         } catch ($e) {
-            if ($org::allbinary::logic::communication::http::request::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($org::allbinary::logic::communication::http::request::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{HTTPREQUEST})) {
+            if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{HTTPREQUEST})) {
                 $self->{logUtil}->putF("Using Normal RequestParams", $self, "processMultipartRequest()");
             }
             $self->SUPER::setMap($request->getParameterMap());
@@ -115,8 +121,9 @@ use org::allbinary::logic::communication::http::file::upload::AbFileUploadFactor
 use org::allbinary::logic::communication::log::LogUtil ();
 use org::allbinary::logic::string::StringValidationUtil ();
 use org::apache::commons::fileupload::FileItem ();
-use org::apache::commons::fileupload::FileUploadBase::InvalidContentTypeException ();
-use org::allbinary::logic::communication::http::request::RequestParams ();
+use org::apache::commons::fileupload::FileUploadBase ();
+use org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory ();
+use org::allbinary::logic::communication::log::config::type::LogConfigTypes ();
 
 1;
 

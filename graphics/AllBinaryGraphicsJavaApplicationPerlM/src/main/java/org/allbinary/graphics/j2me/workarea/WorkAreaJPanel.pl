@@ -18,7 +18,7 @@ use warnings;
 use feature 'try';
 no warnings 'experimental::try';
 use Time::HiRes ();
-use parent -norequire,'org::allbinary::graphics::j2me::workarea::JPanel','org::allbinary::graphics::j2me::workarea::WorkAreaJPanelInterface','org::allbinary::graphics::j2me::workarea::canvas::event::MyCanvasEventListener';
+use parent -norequire,'java::lang::Object','org::allbinary::graphics::j2me::workarea::WorkAreaJPanelInterface','org::allbinary::graphics::j2me::workarea::canvas::event::MyCanvasEventListener';
 
 our $document = undef;
 
@@ -95,37 +95,37 @@ sub _new2 {
 sub initMyComponents {
     my ($self, $dimension) = @_;
         $self->{workAreaJTreeJPanel} = 'org::allbinary::graphics::j2me::workarea::WorkAreaJTreeJPanel'->new($self->{name});
-        $self->{canvasHolderJPanel} = 'org::allbinary::graphics::j2me::workarea::JPanel'->new();
+        $self->{canvasHolderJPanel} = 'javax::swing::JPanel'->new();
         $self->{canvasHolderJPanel}->setSize($dimension);
-        $self->{canvasHolderJPanel}->setLayout('org::allbinary::graphics::j2me::workarea::GridLayout'->new(1, 1));
+        $self->{canvasHolderJPanel}->setLayout('java::awt::GridLayout'->new(1, 1));
         $self->setSize($dimension);
         $self->{canvasJPanelList} = 'java::util::LinkedList'->new();
-        my $gridBagLayout = 'org::allbinary::graphics::j2me::workarea::GridBagLayout'->new();
-        my $gridBagConstraints = 'org::allbinary::graphics::j2me::workarea::GridBagConstraints'->new();
+        my $gridBagLayout = 'java::awt::GridBagLayout'->new();
+        my $gridBagConstraints = 'java::awt::GridBagConstraints'->new();
         $self->{innerJPanel}->setLayout($gridBagLayout);
         $gridBagConstraints->{gridx} = 0;
         $gridBagConstraints->{gridy} = 0;
         $gridBagConstraints->{gridwidth} = 1;
-        $gridBagConstraints->{fill} = $org::allbinary::graphics::j2me::workarea::java::awt->{GridBagConstraints}->{BOTH};
+        $gridBagConstraints->{fill} = $java::awt::GridBagConstraints::BOTH;
         $gridBagConstraints->{weightx} = .05;
         $gridBagConstraints->{weighty} = .05;
         my $toolJPanel = 'org::allbinary::graphics::j2me::workarea::tools::ToolJPanel'->new();
         $gridBagLayout->setConstraints($toolJPanel, $gridBagConstraints);
         $self->{innerJPanel}->add($toolJPanel);
-        $gridBagConstraints = 'org::allbinary::graphics::j2me::workarea::GridBagConstraints'->new();
+        $gridBagConstraints = 'java::awt::GridBagConstraints'->new();
         $gridBagConstraints->{gridx} = 1;
         $gridBagConstraints->{gridy} = 0;
         $gridBagConstraints->{gridwidth} = 6;
-        $gridBagConstraints->{fill} = $org::allbinary::graphics::j2me::workarea::java::awt->{GridBagConstraints}->{BOTH};
+        $gridBagConstraints->{fill} = $java::awt::GridBagConstraints::BOTH;
         $gridBagConstraints->{weightx} = 1;
         $gridBagConstraints->{weighty} = 1;
         $gridBagLayout->setConstraints($self->{canvasHolderJPanel}, $gridBagConstraints);
         $self->{innerJPanel}->add($self->{canvasHolderJPanel});
-        $gridBagConstraints = 'org::allbinary::graphics::j2me::workarea::GridBagConstraints'->new();
+        $gridBagConstraints = 'java::awt::GridBagConstraints'->new();
         $gridBagConstraints->{gridx} = 8;
         $gridBagConstraints->{gridy} = 0;
-        $gridBagConstraints->{gridwidth} = $org::allbinary::graphics::j2me::workarea::java::awt->{GridBagConstraints}->{REMAINDER};
-        $gridBagConstraints->{fill} = $org::allbinary::graphics::j2me::workarea::java::awt->{GridBagConstraints}->{BOTH};
+        $gridBagConstraints->{gridwidth} = $java::awt::GridBagConstraints::REMAINDER;
+        $gridBagConstraints->{fill} = $java::awt::GridBagConstraints::BOTH;
         $gridBagConstraints->{weightx} = .1;
         $gridBagConstraints->{weighty} = .1;
         $self->{propertiesJPanel} = 'org::allbinary::graphics::j2me::workarea::properties::PropertiesJPanel'->new();
@@ -195,7 +195,7 @@ sub deselect {
 }
 
 
-sub select {
+sub select_j0 {
     my ($self) = @_;
         $self->SUPER::setVisible(1);
         if ($self->{canvasHolderJPanel}->getComponentCount() == 1) {
@@ -233,7 +233,7 @@ sub initDuplicate {
 
 
 # throws Exception
-sub duplicate {
+sub duplicate_j1_1 {
     my ($self, $treeNode) = @_;
         my $canvasJPanelHashMap = $self->getCanvasHashMap();
         if ($canvasJPanelHashMap->containsKey($treeNode)) {
@@ -265,7 +265,7 @@ sub explodeAll {
 
 
 # throws Exception
-sub autoExplode {
+sub autoExplode_j2 {
     my ($self, $numberOfFrames, $explodeType) = @_;
         for (my $index = 1; $index < $numberOfFrames; $index++) {
             my $canvasJPanel = $self->getCurrentFrame();
@@ -286,8 +286,7 @@ sub autoMirror {
 }
 
 
-# Java overloaded method: Perl keeps the last definition
-sub select {
+sub select_j1_1 {
     my ($self, $index) = @_;
         if ($index < $self->{canvasJPanelList}->size()) {
             my $canvasJPanel = $self->{canvasJPanelList}->get($index);
@@ -303,8 +302,7 @@ sub select {
 }
 
 
-# Java overloaded method: Perl keeps the last definition
-sub select {
+sub select_j1_2 {
     my ($self, $treeNode) = @_;
         my $canvasJPanelHashMap = $self->getCanvasHashMap();
         my $frameInteger = $canvasJPanelHashMap->get($treeNode);
@@ -346,7 +344,7 @@ sub initComponents {
         $self->{innerJPanel} = 'javax::swing::JPanel'->new();
         $self->setLayout('java::awt::GridLayout'->new(1, 1));
         $self->{innerJPanel}->addKeyListener(do {
-            package java::awt::event::KeyAdapter::AnonymousN73492 { our @ISA = ('java::awt::event::KeyAdapter', 'java::lang::Object');
+            package java::awt::event::KeyAdapter::AnonymousN73513 { our @ISA = ('java::awt::event::KeyAdapter', 'java::lang::Object');
             
 
             sub keyTyped {
@@ -366,7 +364,7 @@ sub initComponents {
                 $self->innerJPanelKeyReleased($evt);
             }
             }
-            'java::awt::event::KeyAdapter::AnonymousN73492'->can('new') ? 'java::awt::event::KeyAdapter::AnonymousN73492'->new() : bless({}, 'java::awt::event::KeyAdapter::AnonymousN73492')
+            'java::awt::event::KeyAdapter::AnonymousN73513'->can('new') ? 'java::awt::event::KeyAdapter::AnonymousN73513'->new() : bless({}, 'java::awt::event::KeyAdapter::AnonymousN73513')
         });
         $self->add($self->{innerJPanel});
 }
@@ -419,18 +417,42 @@ sub delete {
 
 
 # throws Exception
-# Java overloaded method: Perl keeps the last definition
-sub duplicate {
+sub duplicate_j1_2 {
     my ($self, $evt) = @_;
         $self->duplicate($evt->getTreeNode());
 }
 
+sub duplicate {
+    my ($invocant, @arguments) = @_;
+    return $invocant->duplicate_j1(@arguments) if scalar(@arguments) == 1;
+    die "No method duplicate takes " . scalar(@arguments) . " arguments";
+}
 
-# Java overloaded method: Perl keeps the last definition
-sub select {
+sub duplicate_j1 {
+    my ($invocant, @arguments) = @_;
+    return $invocant->duplicate_j1_1(@arguments) if 1 && (!defined($arguments[0]) || (ref($arguments[0]) && ref($arguments[0]) ne 'ARRAY'));
+    return $invocant->duplicate_j1_2(@arguments);
+}
+
+
+sub select_j1_3 {
     my ($self, $evt) = @_;
         $self->select($evt->getTreeNode());
         'org::allbinary::graphics::j2me::StatusFactory'->getInstance()->setStatus("Frame Selected");
+}
+
+sub select {
+    my ($invocant, @arguments) = @_;
+    return $invocant->select_j0(@arguments) if scalar(@arguments) == 0;
+    return $invocant->select_j1(@arguments) if scalar(@arguments) == 1;
+    die "No method select takes " . scalar(@arguments) . " arguments";
+}
+
+sub select_j1 {
+    my ($invocant, @arguments) = @_;
+    return $invocant->select_j1_1(@arguments) if 1 && !ref($arguments[0]);
+    return $invocant->select_j1_2(@arguments) if 1 && (!defined($arguments[0]) || (ref($arguments[0]) && ref($arguments[0]) ne 'ARRAY'));
+    return $invocant->select_j1_3(@arguments);
 }
 
 
@@ -455,15 +477,21 @@ sub explode {
 
 
 # throws Exception
-# Java overloaded method: Perl keeps the last definition
-sub autoExplode {
+sub autoExplode_j1 {
     my ($self, $evt) = @_;
         $self->autoExplode(10, 0);
 }
 
+sub autoExplode {
+    my ($invocant, @arguments) = @_;
+    return $invocant->autoExplode_j2(@arguments) if scalar(@arguments) == 2;
+    return $invocant->autoExplode_j1(@arguments) if scalar(@arguments) == 1;
+    die "No method autoExplode takes " . scalar(@arguments) . " arguments";
+}
+
 
 # throws Exception
-sub center {
+sub center_j0 {
     my ($self) = @_;
         my $canvasJPanel = $self->getCurrentFrame();
         $canvasJPanel->center();
@@ -471,10 +499,16 @@ sub center {
 
 
 # throws Exception
-# Java overloaded method: Perl keeps the last definition
-sub center {
+sub center_j1 {
     my ($self, $evt) = @_;
         $self->center();
+}
+
+sub center {
+    my ($invocant, @arguments) = @_;
+    return $invocant->center_j0(@arguments) if scalar(@arguments) == 0;
+    return $invocant->center_j1(@arguments) if scalar(@arguments) == 1;
+    die "No method center takes " . scalar(@arguments) . " arguments";
 }
 
 
@@ -501,7 +535,9 @@ sub run {
 }
 
 use java::lang::Object ();
-# use java::awt ();
+# use java::awt::Component ();
+# use java::awt::Dimension ();
+# use java::awt::GridBagLayout ();
 # use java::util::EventListener ();
 use java::util::HashMap ();
 # use java::util::LinkedList ();
@@ -522,12 +558,13 @@ use org::allbinary::logic::communication::log::LogUtil ();
 use org::allbinary::util::BasicArrayList ();
 use org::w3c::dom::Document ();
 use org::w3c::dom::Node ();
-use org::allbinary::graphics::j2me::workarea::JPanel ();
+# use java::awt::GridBagConstraints ();
+# use java::awt::GridLayout ();
+# use java::awt::event::KeyAdapter ();
+# use java::awt::event::KeyEvent ();
+# use javax::swing::JPanel ();
 use org::allbinary::graphics::j2me::workarea::WorkAreaJPanelInterface ();
 use org::allbinary::graphics::j2me::workarea::WorkAreaJTreeJPanel ();
-use org::allbinary::graphics::j2me::workarea::GridLayout ();
-use org::allbinary::graphics::j2me::workarea::GridBagLayout ();
-use org::allbinary::graphics::j2me::workarea::GridBagConstraints ();
 use org::allbinary::graphics::j2me::workarea::WorkAreaDom ();
 use java::lang::Thread ();
 

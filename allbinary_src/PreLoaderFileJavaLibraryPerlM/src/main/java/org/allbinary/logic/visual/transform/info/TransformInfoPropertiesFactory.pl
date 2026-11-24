@@ -27,7 +27,7 @@ sub _init_fields {
 }
 
 
-sub getInstance {
+sub getInstance_j0 {
     my ($class) = @_;
         return $org::allbinary::logic::visual::transform::info::TransformInfoPropertiesFactory::instance;
 }
@@ -42,15 +42,14 @@ sub new {
 
 
 # throws Exception
-# Java overloaded method: Perl keeps the last definition
-sub getInstance {
+sub getInstance_j1 {
     my ($self, $node) = @_;
         my $transformInfoChildNodeList = $node->getChildNodes();
-        my $transformInfoData = 'org::allbinary::logic::visual::transform::info::TransformInfoData'->getInstance();
+        my $transformInfoData = java::lang::Object::jstatic('org::allbinary::logic::visual::transform::info::TransformInfoPropertiesFactory', 'TransformInfoData')->getInstance();
         my $attributes = $node->getAttributes();
         my $attrNode = $attributes->getNamedItem($transformInfoData->{NAME});
         my $name = $attrNode->getValue();
-        if ($org::allbinary::logic::visual::transform::info::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($org::allbinary::logic::visual::transform::info::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{VIEW})) {
+        if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{VIEW})) {
             $self->{logUtil}->putF('org::allbinary::string::CommonLabels'->getInstance()->{NEXT} . " View Name: " . $name, $self, "toTransformInfoPropertiesHashMap()");
         }
         my $labelNode = 'org::allbinary::data::tree::dom::DomSearchHelper'->getNodeNoThrow($transformInfoData->{LABEL}, $transformInfoChildNodeList);
@@ -70,6 +69,13 @@ sub getInstance {
         return $transformInfoProperties;
 }
 
+sub getInstance {
+    my ($invocant, @arguments) = @_;
+    return $invocant->getInstance_j0(@arguments) if scalar(@arguments) == 0;
+    return $invocant->getInstance_j1(@arguments) if scalar(@arguments) == 1;
+    die "No method getInstance takes " . scalar(@arguments) . " arguments";
+}
+
 use java::lang::Object ();
 use java::lang::LazyStatic ();
 use org::allbinary::data::tree::dom::DomNodeHelper ();
@@ -80,7 +86,8 @@ use org::w3c::dom::Attr ();
 use org::w3c::dom::NamedNodeMap ();
 use org::w3c::dom::Node ();
 use org::w3c::dom::NodeList ();
-use org::allbinary::logic::visual::transform::info::TransformInfoData ();
+use org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory ();
+use org::allbinary::logic::communication::log::config::type::LogConfigTypes ();
 use org::allbinary::logic::visual::transform::info::TransformInfoProperties ();
 
 1;

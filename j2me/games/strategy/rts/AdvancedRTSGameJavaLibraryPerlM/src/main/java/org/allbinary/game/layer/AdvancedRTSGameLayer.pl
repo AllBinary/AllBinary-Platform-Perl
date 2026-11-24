@@ -25,7 +25,7 @@ sub _init_fields {
     $self->{shakeListener} = undef;
     $self->{vibration} = undef;
     $self->{duration} = undef;
-    $self->{parentLayer} = $org::allbinary::game::layer::NullPathFindingLayer::NULL_PATH_FINDING_LAYER;
+    $self->{parentLayer} = java::lang::Object::jstatic('org::allbinary::game::layer::AdvancedRTSGameLayer', 'NullPathFindingLayer')->{NULL_PATH_FINDING_LAYER};
     $self->{waypointBehaviorBase} = 'org::allbinary::game::tick::NullTickable'->getInstance();
 }
 
@@ -35,7 +35,7 @@ sub createSimulated {
     my ($class) = @_;
         my $nullAnimationInterfaceFactoryInterface = 'org::allbinary::animation::NullAnimationFactory'->getFactoryInstance();
         my $nullIndexedAnimationInterfaceFactoryInterface = 'org::allbinary::animation::NullIndexedAnimationFactory'->getFactoryInstance();
-        return 'org::allbinary::game::layer::AdvancedRTSGameLayer'->new($org::allbinary::game::multiplayer::layer::RemoteInfo::REMOTE_INFO, $org::allbinary::game::layer::NullPathFindingLayer::NULL_PATH_FINDING_LAYER, 'org::allbinary::game::layer::AdvancedRTSProperties'->createPropertiesSimulated(), 'org::allbinary::game::identification::GroupFactory'->getInstance()->{NULL_GROUP_ARRAY}, 'org::allbinary::logic::string::StringUtil'->getInstance()->{EMPTY_STRING}, 'org::allbinary::logic::string::StringUtil'->getInstance()->{EMPTY_STRING}, $org::allbinary::game::health::Health::NULL_HEALTH, 'org::allbinary::game::input::form::NullRTSFormInputFactory'->getInstance(), $nullAnimationInterfaceFactoryInterface, $nullIndexedAnimationInterfaceFactoryInterface, $nullAnimationInterfaceFactoryInterface, $nullAnimationInterfaceFactoryInterface, $nullIndexedAnimationInterfaceFactoryInterface, 'org::allbinary::animation::NullIndexedAnimationFactory'->getFactoryInstance(), $org::allbinary::graphics::RectangleFactory::SINGLETON, 0, 0, 'org::allbinary::game::view::TileLayerPositionIntoViewPosition'->new());
+        return 'org::allbinary::game::layer::AdvancedRTSGameLayer'->new($org::allbinary::game::multiplayer::layer::RemoteInfo::REMOTE_INFO, java::lang::Object::jstatic('org::allbinary::game::layer::AdvancedRTSGameLayer', 'NullPathFindingLayer')->{NULL_PATH_FINDING_LAYER}, 'org::allbinary::game::layer::AdvancedRTSProperties'->createPropertiesSimulated(), 'org::allbinary::game::identification::GroupFactory'->getInstance()->{NULL_GROUP_ARRAY}, 'org::allbinary::logic::string::StringUtil'->getInstance()->{EMPTY_STRING}, 'org::allbinary::logic::string::StringUtil'->getInstance()->{EMPTY_STRING}, $org::allbinary::game::health::Health::NULL_HEALTH, 'org::allbinary::game::input::form::NullRTSFormInputFactory'->getInstance(), $nullAnimationInterfaceFactoryInterface, $nullIndexedAnimationInterfaceFactoryInterface, $nullAnimationInterfaceFactoryInterface, $nullAnimationInterfaceFactoryInterface, $nullIndexedAnimationInterfaceFactoryInterface, 'org::allbinary::animation::NullIndexedAnimationFactory'->getFactoryInstance(), $org::allbinary::graphics::RectangleFactory::SINGLETON, 0, 0, 'org::allbinary::game::view::TileLayerPositionIntoViewPosition'->new());
 }
 
 
@@ -90,7 +90,7 @@ sub setDestroyed {
             'org::allbinary::game::layer::building::event::BuildingEventHandler'->getInstance()->removeListener($self->getWaypointBehavior()->getWaypoint());
             'org::allbinary::game::layer::building::event::BuildingEventHandler'->getInstance()->removeListener($self);
             'org::allbinary::game::combat::destroy::event::DestroyedEventHandler'->getInstance()->addListener($self);
-            'org::allbinary::game::layer::RTSLayerUtil'->getInstance()->destroyAndClear($self->getWaypointBehavior()->getOwnedWaypointList());
+            java::lang::Object::jstatic('org::allbinary::game::layer::AdvancedRTSGameLayer', 'RTSLayerUtil')->getInstance()->destroyAndClear($self->getWaypointBehavior()->getOwnedWaypointList());
         }
 }
 
@@ -139,7 +139,7 @@ sub getWaypointRunnableLogHelper {
 
 sub shouldAddWaypointFromBuilding {
     my ($self) = @_;
-        if ($self->{parentLayer} != $org::allbinary::game::layer::NullPathFindingLayer::NULL_PATH_FINDING_LAYER) {
+        if ($self->{parentLayer} != java::lang::Object::jstatic('org::allbinary::game::layer::AdvancedRTSGameLayer', 'NullPathFindingLayer')->{NULL_PATH_FINDING_LAYER}) {
             my $parentAdvancedRTSGameLayer = $self->{parentLayer};
             if ($parentAdvancedRTSGameLayer->getType() != 1) {
                 return 1;
@@ -318,11 +318,7 @@ use org::allbinary::media::graphics::geography::map::GeographicMapCompositeInter
 use org::allbinary::media::graphics::geography::map::GeographicMapDirectionUtil ();
 use org::allbinary::util::BasicArrayList ();
 use org::allbinary::view::ViewPositionBase ();
-use org::allbinary::game::layer::RTSLayer ();
-use org::allbinary::game::layer::NullPathFindingLayer ();
 use org::allbinary::game::layer::AdvancedRTSProperties ();
-use org::allbinary::game::layer::WaypointBehaviorBase ();
-use org::allbinary::game::layer::RTSLayerUtil ();
 
 1;
 

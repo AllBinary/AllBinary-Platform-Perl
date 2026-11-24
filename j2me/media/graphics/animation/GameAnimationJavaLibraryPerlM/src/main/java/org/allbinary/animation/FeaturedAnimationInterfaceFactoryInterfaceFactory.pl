@@ -90,7 +90,7 @@ sub getBasicAnimationInterfaceFactoryInstance {
             if ($featureInterface->isFeature()) {
                 $resourceTypeAvailableList->add($featureInterface);
                 $animationInterfaceFactoryInterface = $featureInterface->getBasicAnimationInterfaceFactoryInstance($resource);
-                if ($animationInterfaceFactoryInterface != $org::allbinary::animation::NullAnimationFactory::NULL_NOT_FOR_USE_ANIMATION_FACTORY) {
+                if ($animationInterfaceFactoryInterface != java::lang::Object::jstatic('org::allbinary::animation::FeaturedAnimationInterfaceFactoryInterfaceFactory', 'NullAnimationFactory')->{NULL_NOT_FOR_USE_ANIMATION_FACTORY}) {
                     return $animationInterfaceFactoryInterface;
                 }
             }
@@ -151,7 +151,6 @@ use org::allbinary::logic::string::StringUtil ();
 use org::allbinary::string::CommonSeps ();
 use org::allbinary::util::BasicArrayList ();
 use org::allbinary::util::BasicArrayListD ();
-use org::allbinary::animation::NullAnimationFactory ();
 
 1;
 

@@ -31,7 +31,7 @@ sub _init_fields {
     $self->{currentThread} = $org::allbinary::thread::NullThread::NULL_THREAD;
     $self->{running} = 0;
     $self->{loopTimeHelper} = 'org::allbinary::time::TimeDelayHelper'->new('org::allbinary::game::displayable::canvas::NullWaitGameRunnable'->getInstance()->{WAIT});
-    $self->{runnableCanvasRefreshHelper} = 'org::allbinary::canvas::Processor'->getInstance();
+    $self->{runnableCanvasRefreshHelper} = java::lang::Object::jstatic('org::allbinary::canvas::RunnableCanvas', 'Processor')->getInstance();
     $self->{commonLabels} = 'org::allbinary::string::CommonLabels'->getInstance();
     $self->{threadObjectUtil} = 'org::allbinary::thread::ThreadObjectUtil'->getInstance();
     $self->{SET_RUNNING} = "setRunning";
@@ -274,7 +274,6 @@ use org::allbinary::thread::RunnableInterface ();
 use org::allbinary::thread::ThreadObjectUtil ();
 use org::allbinary::time::TimeDelayHelper ();
 use org::allbinary::util::BasicArrayList ();
-use org::allbinary::canvas::Processor ();
 use org::allbinary::canvas::RunnableCanvasRefreshHelper ();
 use java::lang::Thread ();
 

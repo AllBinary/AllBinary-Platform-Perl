@@ -38,7 +38,7 @@ sub _new3 {
     my $self = $class->SUPER::new($databaseHashMap, $propertiesHashMap, $pageContext);
     _init_fields($self);
         # super(...) made $self above
-        if ($org::allbinary::logic::visual::transform::info::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($org::allbinary::logic::visual::transform::info::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{VIEW})) {
+        if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{VIEW})) {
             my $stringBuffer = 'org::allbinary::logic::string::StringMaker'->new();
             $stringBuffer->append("Database HashMap: ");
             $stringBuffer->append($databaseHashMap->toString());
@@ -56,7 +56,7 @@ sub _new2 {
     my $self = $class->SUPER::new($propertiesHashMap, $pageContext);
     _init_fields($self);
         # super(...) made $self above
-        if ($org::allbinary::logic::visual::transform::info::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($org::allbinary::logic::visual::transform::info::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{VIEW})) {
+        if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{VIEW})) {
             $self->{logUtil}->putF("Properties HashMap: " . $propertiesHashMap->toString(), $self, $self->{commonStrings}->{CONSTRUCTOR});
         }
         $self->setStoreName('org::allbinary::logic::string::StringUtil'->getInstance()->{EMPTY_STRING});
@@ -107,6 +107,8 @@ use org::allbinary::logic::io::path::AbPath ();
 use org::allbinary::logic::io::path::AbPathData ();
 use org::allbinary::logic::string::StringMaker ();
 use org::allbinary::logic::string::StringUtil ();
+use org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory ();
+use org::allbinary::logic::communication::log::config::type::LogConfigTypes ();
 use org::allbinary::logic::visual::transform::info::TransformInfoHttp ();
 
 1;

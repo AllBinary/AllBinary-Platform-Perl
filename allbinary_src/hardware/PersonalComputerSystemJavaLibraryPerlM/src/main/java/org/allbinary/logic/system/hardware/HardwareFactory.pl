@@ -22,7 +22,7 @@ use parent -norequire,'java::lang::Object';
 tie our $instance, 'java::lang::LazyStatic', sub { 'org::allbinary::logic::system::hardware::HardwareFactory'->new() };
 
 
-sub getInstance {
+sub getInstance_j0 {
     my ($class) = @_;
         return $org::allbinary::logic::system::hardware::HardwareFactory::instance;
 }
@@ -36,8 +36,7 @@ sub new {
 
 
 # throws Exception
-# Java overloaded method: Perl keeps the last definition
-sub getInstance {
+sub getInstance_j1 {
     my ($class, $os) = @_;
         try {
             my $operatingSystems = 'org::allbinary::logic::system::os::OperatingSystems'->getInstance();
@@ -50,6 +49,13 @@ sub getInstance {
         } catch ($e) {
             die $e;
         }
+}
+
+sub getInstance {
+    my ($invocant, @arguments) = @_;
+    return $invocant->getInstance_j0(@arguments) if scalar(@arguments) == 0;
+    return $invocant->getInstance_j1(@arguments) if scalar(@arguments) == 1;
+    die "No method getInstance takes " . scalar(@arguments) . " arguments";
 }
 
 use java::lang::Object ();

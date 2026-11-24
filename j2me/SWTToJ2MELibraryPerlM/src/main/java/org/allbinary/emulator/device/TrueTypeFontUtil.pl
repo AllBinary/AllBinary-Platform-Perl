@@ -61,17 +61,17 @@ sub getFontBitmapGL {
                 my $openGLCapabilities = 'org::allbinary::graphics::opengles::OpenGLCapabilities'->getInstance();
                 if ($openGLCapabilities->isTextureSizeValid(1024) && $self->{scale} == 2) {
                     my $FONT_ATLAS_1024 = "/font_1024.png";
-                    my $image = 'javax::microedition::lcdui::Image'->createImage('org::allbinary::data::resource::ResourceUtil'->getInstance()->getResourceAsStream($FONT_ATLAS_1024));
+                    my $image = 'javax::microedition::lcdui::Image'->createImageFromInputStream('org::allbinary::data::resource::ResourceUtil'->getInstance()->getResourceAsStream($FONT_ATLAS_1024));
                     $image->setName($canvasStrings->{FONT_ATLAS});
                     $self->{fontImage} = $self->{preResourceImageUtil}->encapsulate($image);
                 } elsif ($openGLCapabilities->isTextureSizeValid(512)) {
                     my $FONT_ATLAS_512 = "/font_512.png";
-                    my $image = 'javax::microedition::lcdui::Image'->createImage('org::allbinary::data::resource::ResourceUtil'->getInstance()->getResourceAsStream($FONT_ATLAS_512));
+                    my $image = 'javax::microedition::lcdui::Image'->createImageFromInputStream('org::allbinary::data::resource::ResourceUtil'->getInstance()->getResourceAsStream($FONT_ATLAS_512));
                     $image->setName($canvasStrings->{FONT_ATLAS});
                     $self->{fontImage} = $self->{preResourceImageUtil}->encapsulate($image);
                 } else {
                     my $FONT_ATLAS_512 = "/font_512.png";
-                    my $image = 'javax::microedition::lcdui::Image'->createImage('org::allbinary::data::resource::ResourceUtil'->getInstance()->getResourceAsStream($FONT_ATLAS_512));
+                    my $image = 'javax::microedition::lcdui::Image'->createImageFromInputStream('org::allbinary::data::resource::ResourceUtil'->getInstance()->getResourceAsStream($FONT_ATLAS_512));
                     $image->setName($canvasStrings->{FONT_ATLAS});
                     $self->{fontImage} = $self->{preResourceImageUtil}->encapsulate($image);
                 }
@@ -91,7 +91,17 @@ sub saveFontAtlasAsFile {
     my ($self) = @_;
         my $image = $self->getFontBitmap(undef, $self->{cellSize}, 'org::allbinary::graphics::color::BasicColorFactory'->getInstance()->{WHITE});
         my $imageLoader = 'org::eclipse::swt::graphics::ImageLoader'->new();
-        my $imageData = ($image)->{image}->getImageData();
+        my $width = $image->getWidth();
+        my $height = $image->getHeight();
+        my $pixels = [(0) x ($width * $height)];
+        $image->getRGB($pixels, 0, $width, 0, 0, $width, $height);
+        my $imageData = 'org::eclipse::swt::graphics::ImageData'->new($width, $height, 32, 'org::eclipse::swt::graphics::PaletteData'->new(0xFF0000, 0xFF00, 0xFF));
+        for (my $index = 0; $index < scalar(@{$pixels}); $index++) {
+            $pixels->[$index] &= 0xFFFFFF;
+        }
+        for (my $row = 0; $row < $height; $row++) {
+            $imageData->setPixels(0, $row, $width, $pixels, $row * $width);
+        }
         $imageData->{transparentPixel} = $imageData->getPixel(0, 0);
         $imageLoader->{data} = [$imageData];
         $imageLoader->save('org::allbinary::string::CommonSeps'->getInstance()->{PERIOD} + 'org::allbinary::graphics::displayable::CanvasStrings'->getInstance()->{FONT_ATLAS}, $org::eclipse::swt::SWT::IMAGE_PNG);
@@ -182,7 +192,7 @@ sub getFontWidths {
                     $self->{_characterWidth}->[$index] -= 2;
                 }
             }
-            $self->{_characterWidth}->[$index] *= $self->{widthScale};
+            $self->{_characterWidth}->[$index] = int(($self->{_characterWidth}->[$index] * $self->{widthScale}));
         }
         return $self->{_characterWidth};
 }
@@ -195,7 +205,7 @@ use javax::microedition::lcdui::Image ();
 # use org::eclipse::swt::SWT ();
 # use org::eclipse::swt::graphics::ImageData ();
 # use org::eclipse::swt::graphics::ImageLoader ();
-use org::microemu::device::swt::SwtMutableImage ();
+# use org::eclipse::swt::graphics::PaletteData ();
 use org::allbinary::AvianUtil ();
 use org::allbinary::data::resource::ResourceUtil ();
 use org::allbinary::graphics::PointFactory ();
@@ -209,7 +219,6 @@ use org::allbinary::image::opengles::OpenGLESImage ();
 use org::allbinary::logic::communication::log::PreLogUtil ();
 use org::allbinary::string::CommonSeps ();
 use org::allbinary::string::CommonStrings ();
-use org::allbinary::emulator::device::TrueTypeFontUtilBase ();
 
 1;
 

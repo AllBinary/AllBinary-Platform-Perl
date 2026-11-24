@@ -41,10 +41,10 @@ sub new {
 sub toXmlNode {
     my ($self, $document) = @_;
         try {
-            if ($org::allbinary::logic::communication::smtp::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($org::allbinary::logic::communication::smtp::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{PAYMENT})) {
+            if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{PAYMENT})) {
                 $self->{logUtil}->putF($self->{commonStrings}->{START}, $self, "toXmlNode");
             }
-            my $node = $document->createElement($org::allbinary::logic::communication::smtp::EmailData::NAME);
+            my $node = $document->createElement(java::lang::Object::jstatic('org::allbinary::logic::communication::smtp::EmailsNotUsed', 'EmailData')->{NAME});
             my $size = $self->{emailInfoVector}->size();
             for (my $index = 0; $index < $size; $index++) {
                 my $email = $self->{emailInfoVector}->get($index);
@@ -53,12 +53,12 @@ sub toXmlNode {
                     $node->appendChild($emailNode);
                 }
             }
-            if ($org::allbinary::logic::communication::smtp::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($org::allbinary::logic::communication::smtp::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{PAYMENT})) {
+            if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{PAYMENT})) {
                 $self->{logUtil}->putF($self->{commonStrings}->{END}, $self, "toXmlNode()");
             }
             return $node;
         } catch ($e) {
-            if ($org::allbinary::logic::communication::smtp::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($org::allbinary::logic::communication::smtp::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{EMAILLOGGINGERROR})) {
+            if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{EMAILLOGGINGERROR})) {
                 $self->{logUtil}->put($self->{commonStrings}->{EXCEPTION}, $self, "toXmlNode()", $e);
             }
             my $error = "Error Processing Order.  Please contact us if error persists.<p/>";
@@ -76,7 +76,8 @@ use org::allbinary::logic::communication::log::LogUtil ();
 use org::allbinary::string::CommonStrings ();
 use org::w3c::dom::Document ();
 use org::w3c::dom::Node ();
-use org::allbinary::logic::communication::smtp::EmailData ();
+use org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory ();
+use org::allbinary::logic::communication::log::config::type::LogConfigTypes ();
 
 1;
 

@@ -35,16 +35,16 @@ sub new {
 
 
 # throws Exception
-sub getInstance {
+sub getInstance_j1_1 {
     my ($self, $httpServletRequest) = @_;
         my $commonStrings = 'org::allbinary::string::CommonStrings'->getInstance();
         try {
-            if ($org::allbinary::business::user::commerce::money::payment::gateway::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($org::allbinary::business::user::commerce::money::payment::gateway::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{PAYMENT})) {
+            if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{PAYMENT})) {
                 $self->{logUtil}->putF("Getting", $self, $commonStrings->{GET_INSTANCE});
             }
             return $self->getInstance('org::allbinary::logic::communication::http::request::RequestParams'->new($httpServletRequest)->toHashMap());
         } catch ($e) {
-            if ($org::allbinary::business::user::commerce::money::payment::gateway::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($org::allbinary::business::user::commerce::money::payment::gateway::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{PAYMENTERROR})) {
+            if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{PAYMENTERROR})) {
                 $self->{logUtil}->put($commonStrings->{EXCEPTION}, $self, "getInstance(HttpServletRequest)", $e);
             }
             die $e;
@@ -53,34 +53,45 @@ sub getInstance {
 
 
 # throws Exception
-# Java overloaded method: Perl keeps the last definition
-sub getInstance {
+sub getInstance_j1_2 {
     my ($self, $paymentType) = @_;
         my $hashMap = 'org::allbinary::logic::StdUtil'->getInstance()->createHashMap();
-        $hashMap->put($org::allbinary::business::user::commerce::money::payment::gateway::PaymentGatewayData::NAME->toString(), $paymentType->getName());
+        $hashMap->put(java::lang::Object::jstatic('org::allbinary::business::user::commerce::money::payment::gateway::PaymentGatewayInterfaceFactory', 'PaymentGatewayData')->{NAME}->toString(), $paymentType->getName());
         return $self->getInstance($hashMap);
 }
 
 
 # throws Exception
-# Java overloaded method: Perl keeps the last definition
-sub getInstance {
+sub getInstance_j1_3 {
     my ($self, $hashMap) = @_;
         my $commonStrings = 'org::allbinary::string::CommonStrings'->getInstance();
         try {
-            my $gatewayName = $hashMap->get($org::allbinary::business::user::commerce::money::payment::gateway::PaymentGatewayData::NAME->toString());
+            my $gatewayName = $hashMap->get(java::lang::Object::jstatic('org::allbinary::business::user::commerce::money::payment::gateway::PaymentGatewayInterfaceFactory', 'PaymentGatewayData')->{NAME}->toString());
             my $paymentType = 'org::allbinary::business::user::commerce::money::payment::types::BasicPaymentTypeUtil'->getInstance()->get($gatewayName);
-            if ($org::allbinary::business::user::commerce::money::payment::gateway::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($org::allbinary::business::user::commerce::money::payment::gateway::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{PAYMENT})) {
+            if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{PAYMENT})) {
                 $self->{logUtil}->putF("Getting PaymentGatewayInterface for PaymentType: " . $paymentType->getName() . " with: " . $hashMap, $self, $commonStrings->{GET_INSTANCE});
             }
             my $paymentGatewayInterfaceFactoryInterface = $paymentType->getPaymentGatewayInterfaceFactoryInterface();
             return $paymentGatewayInterfaceFactoryInterface->getInstance($hashMap);
         } catch ($e) {
-            if ($org::allbinary::business::user::commerce::money::payment::gateway::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($org::allbinary::business::user::commerce::money::payment::gateway::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{PAYMENTERROR})) {
+            if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{PAYMENTERROR})) {
                 $self->{logUtil}->put($commonStrings->{EXCEPTION}, $self, $commonStrings->{GET_INSTANCE}, $e);
             }
             die $e;
         }
+}
+
+sub getInstance {
+    my ($invocant, @arguments) = @_;
+    return $invocant->getInstance_j1(@arguments) if scalar(@arguments) == 1;
+    die "No method getInstance takes " . scalar(@arguments) . " arguments";
+}
+
+sub getInstance_j1 {
+    my ($invocant, @arguments) = @_;
+    return $invocant->getInstance_j1_1(@arguments) if 1 && (!defined($arguments[0]) || (ref($arguments[0]) && ref($arguments[0]) ne 'ARRAY'));
+    return $invocant->getInstance_j1_2(@arguments) if 1 && (!defined($arguments[0]) || (ref($arguments[0]) && ref($arguments[0]) ne 'ARRAY'));
+    return $invocant->getInstance_j1_3(@arguments);
 }
 
 use java::lang::Object ();
@@ -92,8 +103,9 @@ use org::allbinary::logic::StdUtil ();
 use org::allbinary::logic::communication::http::request::RequestParams ();
 use org::allbinary::logic::communication::log::LogUtil ();
 use org::allbinary::string::CommonStrings ();
+use org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory ();
+use org::allbinary::logic::communication::log::config::type::LogConfigTypes ();
 use org::allbinary::business::user::commerce::money::payment::gateway::PaymentGatewayInterfaceFactoryInterface ();
-use org::allbinary::business::user::commerce::money::payment::gateway::PaymentGatewayData ();
 
 1;
 

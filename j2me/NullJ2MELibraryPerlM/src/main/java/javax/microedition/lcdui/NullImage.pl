@@ -30,7 +30,6 @@ sub new {
 
 use java::lang::Object ();
 use java::lang::LazyStatic ();
-use javax::microedition::lcdui::Image ();
 
 1;
 

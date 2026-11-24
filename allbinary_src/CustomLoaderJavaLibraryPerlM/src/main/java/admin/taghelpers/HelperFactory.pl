@@ -35,7 +35,7 @@ sub new {
 
 
 # throws LicensingException
-sub getInstance {
+sub getInstance_j5_1 {
     my ($class, $abeClientInformation, $factoryName, $className, $hashMap, $httpServletRequest) = @_;
         my $logUtil = 'org::allbinary::logic::communication::log::LogUtil'->getInstance();
         try {
@@ -50,7 +50,7 @@ sub getInstance {
             return $anyType;
         } catch ($e) {
             my $error = "Failed To Get Instance Args: HashMap=" . $hashMap->toString() . " HttpServletRequest=" . $httpServletRequest;
-            if ($admin::taghelpers::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($admin::taghelpers::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{TAGHELPERFACTORYERROR})) {
+            if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{TAGHELPERFACTORYERROR})) {
                 $logUtil->put($error, $factoryName . "->HelperFactory", "getInstance(String, String, HashMap, PageContext)", $e);
             }
             die $e;
@@ -59,8 +59,7 @@ sub getInstance {
 
 
 # throws LicensingException
-# Java overloaded method: Perl keeps the last definition
-sub getInstance {
+sub getInstance_j5_2 {
     my ($class, $abeClientInformation, $factoryName, $className, $hashMap, $pageContext) = @_;
         my $logUtil = 'org::allbinary::logic::communication::log::LogUtil'->getInstance();
         try {
@@ -74,7 +73,7 @@ sub getInstance {
             my $anyType = $abeFactory->getInstance($abeClientInformation, $className, $classes, $params);
             return $anyType;
         } catch ($e) {
-            if ($admin::taghelpers::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($admin::taghelpers::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{TAGHELPERFACTORYERROR})) {
+            if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{TAGHELPERFACTORYERROR})) {
                 my $error = "Failed To Get Instance Args: HashMap=" . $hashMap->toString() . " PageContext=" . $pageContext;
                 $logUtil->put($error, $factoryName . "->HelperFactory", "getInstance(String, String, HashMap, PageContext)", $e);
             }
@@ -84,8 +83,7 @@ sub getInstance {
 
 
 # throws LicensingException
-# Java overloaded method: Perl keeps the last definition
-sub getInstance {
+sub getInstance_j6 {
     my ($class, $abeClientInformation, $factoryName, $className, $hashMap, $specialhashMap, $pageContext) = @_;
         my $logUtil = 'org::allbinary::logic::communication::log::LogUtil'->getInstance();
         try {
@@ -101,7 +99,7 @@ sub getInstance {
             my $anyType = $abeFactory->getInstance($abeClientInformation, $className, $classes, $params);
             return $anyType;
         } catch ($e) {
-            if ($admin::taghelpers::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($admin::taghelpers::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{TAGHELPERFACTORYERROR})) {
+            if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{TAGHELPERFACTORYERROR})) {
                 my $error = "Failed To Get Instance Args: HashMap=" . $hashMap->toString() . " PageContext=" . $pageContext;
                 $logUtil->put($error, $factoryName . "->HelperFactory", "getInstance(String, String, HashMap, PageContext)", $e);
             }
@@ -111,20 +109,33 @@ sub getInstance {
 
 
 # throws LicensingException
-# Java overloaded method: Perl keeps the last definition
-sub getInstance {
+sub getInstance_j3 {
     my ($class, $abeClientInformation, $factoryName, $className) = @_;
         my $logUtil = 'org::allbinary::logic::communication::log::LogUtil'->getInstance();
         try {
             my $anyType = 'org::allbinary::logic::system::loader::AbeFactory'->getInstance()->getInstance($abeClientInformation, $className);
             return $anyType;
         } catch ($e) {
-            if ($admin::taghelpers::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($admin::taghelpers::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{TAGHELPERFACTORYERROR})) {
+            if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{TAGHELPERFACTORYERROR})) {
                 my $commonStrings = 'org::allbinary::string::CommonStrings'->getInstance();
                 $logUtil->put($commonStrings->{EXCEPTION}, $factoryName . "->HelperFactory", "getInstance(String, String, HashMap, PageContext)", $e);
             }
             die $e;
         }
+}
+
+sub getInstance {
+    my ($invocant, @arguments) = @_;
+    return $invocant->getInstance_j5(@arguments) if scalar(@arguments) == 5;
+    return $invocant->getInstance_j6(@arguments) if scalar(@arguments) == 6;
+    return $invocant->getInstance_j3(@arguments) if scalar(@arguments) == 3;
+    die "No method getInstance takes " . scalar(@arguments) . " arguments";
+}
+
+sub getInstance_j5 {
+    my ($invocant, @arguments) = @_;
+    return $invocant->getInstance_j5_1(@arguments) if 1 && (!defined($arguments[0]) || (ref($arguments[0]) && ref($arguments[0]) ne 'ARRAY')) && !ref($arguments[1]) && !ref($arguments[2]) && (!defined($arguments[3]) || (ref($arguments[3]) && ref($arguments[3]) ne 'ARRAY')) && (!defined($arguments[4]) || (ref($arguments[4]) && ref($arguments[4]) ne 'ARRAY'));
+    return $invocant->getInstance_j5_2(@arguments);
 }
 
 use java::lang::Object ();
@@ -136,6 +147,8 @@ use org::allbinary::logic::system::loader::AbeFactory ();
 use org::allbinary::logic::system::security::licensing::AbeClientInformationInterface ();
 use org::allbinary::logic::system::security::licensing::LicensingException ();
 use org::allbinary::string::CommonStrings ();
+use org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory ();
+use org::allbinary::logic::communication::log::config::type::LogConfigTypes ();
 
 1;
 

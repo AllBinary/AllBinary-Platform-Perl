@@ -104,7 +104,6 @@ use org::allbinary::android::view::BaseViewWrapper ();
 use org::allbinary::android::view::ViewWrapper ();
 use org::allbinary::logic::string::StringMaker ();
 use org::allbinary::logic::string::StringUtil ();
-use org::allbinary::canvas::BaseGameStatistics ();
 
 1;
 

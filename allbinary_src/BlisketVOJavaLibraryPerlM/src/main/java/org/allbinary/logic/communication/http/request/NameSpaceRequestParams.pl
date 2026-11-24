@@ -35,37 +35,43 @@ sub new {
     die "No constructor of NameSpaceRequestParams takes " . scalar(@arguments) . " arguments";
 }
 
+sub _new1 {
+    my ($class, @arguments) = @_;
+    return $class->_new1_1(@arguments) if 1 && (!defined($arguments[0]) || (ref($arguments[0]) && ref($arguments[0]) ne 'ARRAY'));
+    return $class->_new1_2(@arguments);
+}
+
 
 sub _new0 {
     my ($class) = @_;
     my $self = $class->SUPER::new();
     _init_fields($self);
         # super(...) made $self above
-        if ($org::allbinary::logic::communication::http::request::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($org::allbinary::logic::communication::http::request::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{HTTPREQUEST})) {
+        if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{HTTPREQUEST})) {
             $self->{logUtil}->putF("Constructing empty", $self, $self->{commonStrings}->{CONSTRUCTOR});
         }
     return $self;
 }
 
 
-sub _new1 {
+sub _new1_1 {
     my ($class, $httpServletRequest) = @_;
     my $self = $class->SUPER::new($httpServletRequest);
     _init_fields($self);
         # super(...) made $self above
-        if ($org::allbinary::logic::communication::http::request::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($org::allbinary::logic::communication::http::request::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{HTTPREQUEST})) {
+        if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{HTTPREQUEST})) {
             $self->{logUtil}->putF("Constructing from HttpServletRequest", $self, $self->{commonStrings}->{CONSTRUCTOR});
         }
     return $self;
 }
 
 
-sub _new1 {
+sub _new1_2 {
     my ($class, $pageContext) = @_;
     my $self = $class->SUPER::new($pageContext);
     _init_fields($self);
         # super(...) made $self above
-        if ($org::allbinary::logic::communication::http::request::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($org::allbinary::logic::communication::http::request::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{HTTPREQUEST})) {
+        if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{HTTPREQUEST})) {
             $self->{logUtil}->putF("Constructing from PageContext", $self, $self->{commonStrings}->{CONSTRUCTOR});
         }
     return $self;
@@ -97,10 +103,10 @@ sub createPackageMultiNode {
         my $multiElementPackage = substr($packageName, 0, ($beginIndex) - (0));
         my $selectedValue = $nameSpaceRequestParam->getValue();
         my $propertyValue = $packagePropertiesHashMap->get($org::allbinary::data::tree::dom::DomData::VALUE);
-        if (($propertyValue cmp $org::allbinary::logic::communication::http::request::NameSpaceRequestParamData::VALUE) != 0) {
+        if (($propertyValue cmp java::lang::Object::jstatic('org::allbinary::logic::communication::http::request::NameSpaceRequestParams', 'NameSpaceRequestParamData')->{VALUE}) != 0) {
             $selectedValue = $propertyValue;
         }
-        if ($org::allbinary::logic::communication::http::request::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($org::allbinary::logic::communication::http::request::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{HTTPREQUEST})) {
+        if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{HTTPREQUEST})) {
             $self->{logUtil}->putF("\nAppending Multinode Element: " . $multiElementPackage . "[" . $indexValue . "] " . $selectedValue, $self, "createPackageMultiNode");
         }
         my $nextNode = 'org::allbinary::data::tree::dom::ModDomHelper'->createNameValueNodes($document, $multiElementPackage, $selectedValue);
@@ -115,17 +121,17 @@ sub getRootNode {
     my ($self, $rootElementPackage, $packagePropertiesHashMap, $document) = @_;
         my $rootNode = 'org::allbinary::data::tree::dom::DomSearchHelper'->getNodeNoThrow($rootElementPackage, $document->getChildNodes());
         if (!defined($rootNode)) {
-            if ($org::allbinary::logic::communication::http::request::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($org::allbinary::logic::communication::http::request::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{HTTPREQUEST})) {
+            if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{HTTPREQUEST})) {
                 $self->{logUtil}->putF("\nAppending Document Root: " . "\nElementName: " . $rootElementPackage . "\nProperties: " . $packagePropertiesHashMap->toString(), $self, "getRootNode");
             }
             my $node = $self->createPackageNode($document, $rootElementPackage, $packagePropertiesHashMap);
             $document->appendChild($node);
-            if ($org::allbinary::logic::communication::http::request::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($org::allbinary::logic::communication::http::request::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{HTTPREQUEST})) {
+            if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{HTTPREQUEST})) {
                 $self->{logUtil}->putF("\nAppended Document Created: " . 'org::allbinary::data::tree::dom::document::XmlDocumentHelper'->toString($document), $self, "getRootNode");
             }
             return $node;
         } else {
-            if ($org::allbinary::logic::communication::http::request::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($org::allbinary::logic::communication::http::request::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{HTTPREQUEST})) {
+            if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{HTTPREQUEST})) {
                 $self->{logUtil}->putF("\nUsing Existing Root Node", $self, "getRootNode");
             }
             return $rootNode;
@@ -136,7 +142,7 @@ sub getRootNode {
 # throws Exception
 sub addNewProperties {
     my ($self, $document, $node, $nextPackagePropertiesHashMap) = @_;
-        if ($org::allbinary::logic::communication::http::request::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($org::allbinary::logic::communication::http::request::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{HTTPREQUEST})) {
+        if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{HTTPREQUEST})) {
             $self->{logUtil}->putF('org::allbinary::logic::string::StringMaker'->new()->append("\nAdding Any New Properties: ")->append($nextPackagePropertiesHashMap->toString())->append("\nto node: ")->append($node->getNodeName())->toString(), $self, "addNewProperties");
         }
         my $propertyNameSet = $nextPackagePropertiesHashMap->keySet();
@@ -148,17 +154,17 @@ sub addNewProperties {
             my $valueNode = 'org::allbinary::data::tree::dom::DomSearchHelper'->getNodeNoThrow($nextPropertyName, $node->getChildNodes());
             if (defined($valueNode)) {
                 my $existingElementNodeTextNodeValue = 'org::allbinary::data::tree::dom::DomNodeHelper'->getTextNodeValue($valueNode);
-                if ($org::allbinary::logic::communication::http::request::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($org::allbinary::logic::communication::http::request::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{HTTPREQUEST})) {
+                if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{HTTPREQUEST})) {
                     $self->{logUtil}->putF("\nIf property: \"" . $nextPropertyName . " is the same as:\n" . "Node: " . $node->getNodeName() . " then: " . $propertyValue . "==" . $existingElementNodeTextNodeValue, $self, "addNewProperties");
                 }
                 if (($propertyValue cmp $existingElementNodeTextNodeValue) != 0) {
-                    if ($org::allbinary::logic::communication::http::request::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($org::allbinary::logic::communication::http::request::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{HTTPREQUEST})) {
+                    if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{HTTPREQUEST})) {
                         $self->{logUtil}->putF("At least one Property from NameSpaceRequest Package was different from Node", $self, "addNewProperties");
                     }
                     die ("Property Modifications Should Not Occur");
                 }
             } else {
-                if ($org::allbinary::logic::communication::http::request::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($org::allbinary::logic::communication::http::request::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{HTTPREQUEST})) {
+                if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{HTTPREQUEST})) {
                     $self->{logUtil}->putF("Adding a new Property: " . $nextPropertyName . "=" . $propertyValue, $self, "addNewProperties");
                 }
                 my $newPropertyNode = 'org::allbinary::data::tree::dom::ModDomHelper'->createTextNode($document, $nextPropertyName, $propertyValue);
@@ -172,7 +178,7 @@ sub addNewProperties {
 # throws Exception
 sub isElementValueTextNodeEqual {
     my ($self, $nextPackagePropertiesHashMap, $node) = @_;
-        if ($org::allbinary::logic::communication::http::request::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($org::allbinary::logic::communication::http::request::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{HTTPREQUEST})) {
+        if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{HTTPREQUEST})) {
             $self->{logUtil}->putF("\nComparing the value property in: " . $nextPackagePropertiesHashMap->toString() . "\nto node child leaves of node: " . $node->getNodeName(), $self, "isElementValueTextNodeEqual");
         }
         my $propertyValue = $nextPackagePropertiesHashMap->get($org::allbinary::data::tree::dom::DomData::VALUE);
@@ -180,7 +186,7 @@ sub isElementValueTextNodeEqual {
         if (defined($valueNode)) {
             my $existingElementNodeTextNodeValue = 'org::allbinary::data::tree::dom::DomNodeHelper'->getTextNodeValue($valueNode);
             if (($propertyValue cmp $existingElementNodeTextNodeValue) == 0) {
-                if ($org::allbinary::logic::communication::http::request::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($org::allbinary::logic::communication::http::request::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{HTTPREQUEST})) {
+                if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{HTTPREQUEST})) {
                     $self->{logUtil}->putF("Value Node is the same", $self, "isElementValueTextNodeEqual");
                 }
                 return 1;
@@ -195,7 +201,7 @@ sub isElementValueTextNodeEqual {
 # throws Exception
 sub isElementValueTextNodeUnique {
     my ($self, $nextPackagePropertiesHashMap, $elementNodeVector) = @_;
-        if ($org::allbinary::logic::communication::http::request::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($org::allbinary::logic::communication::http::request::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{HTTPREQUEST})) {
+        if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{HTTPREQUEST})) {
             $self->{logUtil}->putF("\nComparing Properties of: " . $elementNodeVector->size() . " Nodes", $self, "isElementValueTextNodeUnique");
         }
         my $size = $elementNodeVector->size();
@@ -217,12 +223,12 @@ sub addChildren {
         my $size = $packageVector->size();
         for (my $index = 1; $index < $size; $index++) {
             my $nextPackageName = $packageVector->get($index);
-            if ($org::allbinary::logic::communication::http::request::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($org::allbinary::logic::communication::http::request::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{HTTPREQUEST})) {
+            if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{HTTPREQUEST})) {
                 $self->{logUtil}->putF('org::allbinary::logic::string::StringMaker'->new()->append("\nTrying to Add Child to Node: ")->append($node->getNodeName())->append("\nwith new PackageName: ")->append($nextPackageName)->toString(), $self, "addChildren");
             }
             my $nextPackagePropertiesHashMap = $nameSpaceRequestParam->getPackageProperties($index);
             my $elementNodeVector = 'org::allbinary::data::tree::dom::DomSearchHelper'->getAllNodesNoThrow($nextPackageName, $node->getChildNodes());
-            if ($org::allbinary::logic::communication::http::request::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($org::allbinary::logic::communication::http::request::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{HTTPREQUEST})) {
+            if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{HTTPREQUEST})) {
                 $self->{logUtil}->putF("\nDocument Contains " . $elementNodeVector->size() . " Node(s) With Same Name", $self, "addChildren");
             }
             my $isElementValueTextNodeUniqueIndex = $self->isElementValueTextNodeUnique($nextPackagePropertiesHashMap, $elementNodeVector);
@@ -230,27 +236,27 @@ sub addChildren {
                 my $nextNode = $self->createPackageNode($document, $nextPackageName, $nextPackagePropertiesHashMap);
                 $node->appendChild($nextNode);
                 $node = $nextNode;
-                if ($org::allbinary::logic::communication::http::request::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($org::allbinary::logic::communication::http::request::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{HTTPREQUEST})) {
+                if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{HTTPREQUEST})) {
                     $self->{logUtil}->putF("\nAppended Package: " . $node->getNodeName(), $self, "addChildren");
                     $self->{logUtil}->putF("\nAppended Document Created: " . 'org::allbinary::data::tree::dom::document::XmlDocumentHelper'->toString($document), $self, "addChildren");
                 }
             } elsif ((substr($nextPackageName, -length('org::allbinary::string::CommonSeps'->getInstance()->{BRACKET_CLOSE})) eq 'org::allbinary::string::CommonSeps'->getInstance()->{BRACKET_CLOSE})) {
-                if ($org::allbinary::logic::communication::http::request::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($org::allbinary::logic::communication::http::request::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{HTTPREQUEST})) {
+                if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{HTTPREQUEST})) {
                     $self->{logUtil}->putF("Package is MultiNode: just append", $self, "addChildren");
                 }
                 my $nextNode = $self->createPackageMultiNode($document, $nameSpaceRequestParam, $nextPackageName, $nextPackagePropertiesHashMap);
                 $node->appendChild($nextNode);
                 $node = $nextNode;
-                if ($org::allbinary::logic::communication::http::request::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($org::allbinary::logic::communication::http::request::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{HTTPREQUEST})) {
+                if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{HTTPREQUEST})) {
                     $self->{logUtil}->putF("\nAppended Multinode Element: " . 'org::allbinary::data::tree::dom::document::XmlDocumentHelper'->toString($document), $self, "addChildren");
                 }
             } else {
-                if ($org::allbinary::logic::communication::http::request::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($org::allbinary::logic::communication::http::request::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{HTTPREQUEST})) {
+                if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{HTTPREQUEST})) {
                     $self->{logUtil}->putF("Value Node already exists: Now compare (properties to leaf nodes)", $self, "addChildren");
                 }
                 my $nodeNameDuplicateNode = $elementNodeVector->get($isElementValueTextNodeUniqueIndex);
                 $node = $self->addNewProperties($document, $nodeNameDuplicateNode, $nextPackagePropertiesHashMap);
-                if ($org::allbinary::logic::communication::http::request::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($org::allbinary::logic::communication::http::request::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{HTTPREQUEST})) {
+                if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{HTTPREQUEST})) {
                     $self->{logUtil}->putF("\nDuplicate Node Found: Moving to next child ^", $self, "addChildre");
                 }
             }
@@ -262,7 +268,7 @@ sub addChildren {
 # throws Exception
 sub addNameSpace {
     my ($self, $key, $value, $document) = @_;
-        if ($org::allbinary::logic::communication::http::request::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($org::allbinary::logic::communication::http::request::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{HTTPREQUEST})) {
+        if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{HTTPREQUEST})) {
             $self->{logUtil}->putF('org::allbinary::logic::string::StringMaker'->new()->append("NameSpace key: ")->append($key)->append(" Value: ")->append($value)->toString(), $self, "addNameSpace");
         }
         my $nameSpaceRequestParam = 'org::allbinary::logic::communication::http::request::NameSpaceRequestParam'->new($key, $value);
@@ -288,20 +294,20 @@ sub toHashMap {
         my $keys = $self->getMap()->keySet();
         my $keyArray = $keys->toArray();
         my $keySize = scalar(@{$keyArray});
-        if ($org::allbinary::logic::communication::http::request::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($org::allbinary::logic::communication::http::request::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{HTTPREQUEST})) {
+        if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{HTTPREQUEST})) {
             $self->{logUtil}->putF("NameSpace Request Size: " . $keys->size(), $self, "toHashMap");
         }
         for (my $i = 0; $i < $keySize; $i++) {
             my $key = $keyArray->[$i];
             my $anyType = $self->getMap()->get($key);
             my $className = ref($anyType);
-            if ($org::allbinary::logic::communication::http::request::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($org::allbinary::logic::communication::http::request::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{HTTPREQUEST})) {
+            if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{HTTPREQUEST})) {
                 $self->{logUtil}->putF("Request Param Class: " . $className, $self, "toHashMap");
             }
             if ((Scalar::Util::blessed($self->getMap()->get($key)) && $self->getMap()->get($key)->isa('String'))) {
                 my $value = $self->getMap()->get($key);
-                if (index($key, $org::allbinary::logic::communication::http::request::NameSpaceRequestParamData::NAME) < 0) {
-                    if ($org::allbinary::logic::communication::http::request::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($org::allbinary::logic::communication::http::request::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{HTTPREQUEST})) {
+                if (index($key, java::lang::Object::jstatic('org::allbinary::logic::communication::http::request::NameSpaceRequestParams', 'NameSpaceRequestParamData')->{NAME}) < 0) {
+                    if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{HTTPREQUEST})) {
                         $self->{logUtil}->putF("Not NameSpace key: " . $key . " Value: " . $value, $self, "toHashMap()");
                     }
                     $hashMap->put(("" . $key), ("" . $value));
@@ -310,8 +316,8 @@ sub toHashMap {
                 }
             } elsif ((Scalar::Util::blessed($self->getMap()->get($key)) && $self->getMap()->get($key)->isa('ARRAY'))) {
                 my $values = $self->getMap()->get($key);
-                if (index($key, $org::allbinary::logic::communication::http::request::NameSpaceRequestParamData::NAME) < 0) {
-                    if ($org::allbinary::logic::communication::http::request::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($org::allbinary::logic::communication::http::request::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{HTTPREQUEST})) {
+                if (index($key, java::lang::Object::jstatic('org::allbinary::logic::communication::http::request::NameSpaceRequestParams', 'NameSpaceRequestParamData')->{NAME}) < 0) {
+                    if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{HTTPREQUEST})) {
                         $self->{logUtil}->putF("Not NameSpace key: " . $key . " Value: " . $values->[0], $self, "toHashMap()");
                     }
                     $hashMap->put(("" . $key), ("" . $values->[0]));
@@ -320,16 +326,16 @@ sub toHashMap {
                 }
             }
         }
-        if ($org::allbinary::logic::communication::http::request::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($org::allbinary::logic::communication::http::request::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{HTTPREQUEST})) {
+        if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{HTTPREQUEST})) {
             $self->{logUtil}->putF("NameSpaceRequestParams: " . $self->getMap()->toString() . "\ntoHashMap(): " . $hashMap->toString() . "\nDocument Created: " . 'org::allbinary::data::tree::dom::document::XmlDocumentHelper'->toString($document), $self, "toHashMap()");
         }
-        $hashMap->put($org::allbinary::logic::communication::http::request::NameSpaceRequestParamData::DOCUMENT, $document);
+        $hashMap->put(java::lang::Object::jstatic('org::allbinary::logic::communication::http::request::NameSpaceRequestParams', 'NameSpaceRequestParamData')->{DOCUMENT}, $document);
         return $hashMap;
 }
 
 use java::lang::Object ();
 use java::util::HashMap ();
-# use java::util::Set ();
+use java::util::Set ();
 use org::allbinary::util::BasicArrayList ();
 use org::allbinary::util::BasicArrayListD ();
 # use javax::servlet::http::HttpServletRequest ();
@@ -347,8 +353,8 @@ use org::allbinary::logic::string::StringUtil ();
 use org::allbinary::string::CommonSeps ();
 use org::w3c::dom::Document ();
 use org::w3c::dom::Node ();
-use org::allbinary::logic::communication::http::request::RequestParams ();
-use org::allbinary::logic::communication::http::request::NameSpaceRequestParamData ();
+use org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory ();
+use org::allbinary::logic::communication::log::config::type::LogConfigTypes ();
 use org::allbinary::logic::communication::http::request::NameSpaceRequestParam ();
 
 1;

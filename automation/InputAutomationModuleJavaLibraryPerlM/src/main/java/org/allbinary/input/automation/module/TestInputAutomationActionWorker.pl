@@ -64,7 +64,7 @@ sub process {
 }
 
 use java::lang::Object ();
-# use java::util::Set ();
+use java::util::Set ();
 use org::allbinary::input::automation::robot::InputRobotFactory ();
 use org::allbinary::input::automation::robot::InputRobotInterface ();
 use org::allbinary::logic::communication::log::LogUtil ();

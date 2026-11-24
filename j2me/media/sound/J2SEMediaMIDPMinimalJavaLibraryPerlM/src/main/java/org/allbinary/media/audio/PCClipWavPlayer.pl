@@ -227,10 +227,8 @@ use org::allbinary::logic::communication::log::LogUtil ();
 use org::allbinary::logic::communication::log::PreLogUtil ();
 use org::allbinary::logic::string::StringUtil ();
 use org::allbinary::thread::MusicThreadPool ();
-use org::allbinary::media::audio::BasicPlayer ();
 use org::allbinary::media::audio::NullAudioFormat ();
 use org::allbinary::media::audio::NullClip ();
-use org::allbinary::media::audio::NullControl ();
 
 1;
 

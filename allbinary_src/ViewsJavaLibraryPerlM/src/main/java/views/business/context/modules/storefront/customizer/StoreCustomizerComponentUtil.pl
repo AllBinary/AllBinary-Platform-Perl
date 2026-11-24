@@ -42,9 +42,9 @@ sub new {
 
 
 # throws Exception
-sub generate {
+sub generate_j2 {
     my ($self, $abeClientInformation, $transformInfoInterface) = @_;
-        if ($views::business::context::modules::storefront::customizer::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($views::business::context::modules::storefront::customizer::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{VIEW})) {
+        if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{VIEW})) {
             $self->{logUtil}->putF("Generating Modified Views For: " . $transformInfoInterface->getName(), $self, "generateModifiedViews()");
         }
         my $customizerUtil = 'views::business::context::modules::storefront::customizer::CustomizerUtil'->getInstance();
@@ -53,7 +53,7 @@ sub generate {
         for (my $index = 0; $index < $size; $index++) {
             my $nextTransformInfoInterface = $allCustomizedViews->get($index);
             my $allViewsToBeModified = $customizerUtil->getTransformInfoObjectConfigComponentNodesToCustomize($transformInfoInterface, $nextTransformInfoInterface);
-            if ($views::business::context::modules::storefront::customizer::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($views::business::context::modules::storefront::customizer::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{VIEW})) {
+            if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{VIEW})) {
                 $self->{logUtil}->putF("View or component that was modified by a Customizer: " . $nextTransformInfoInterface->getName(), $self, "generateModifiedViews()");
             }
             $self->generate($abeClientInformation, $transformInfoInterface, $allViewsToBeModified);
@@ -63,19 +63,25 @@ sub generate {
 
 
 # throws Exception
-# Java overloaded method: Perl keeps the last definition
-sub generate {
+sub generate_j3 {
     my ($self, $abeClientInformation, $transformInfoInterface, $allViewsToBeModifiedVector) = @_;
         my $customizerUtil = 'views::business::context::modules::storefront::customizer::CustomizerUtil'->getInstance();
         my $size = $allViewsToBeModifiedVector->size();
         for (my $index = 0; $index < $size; $index++) {
             my $nextTransformInfoInterface = $allViewsToBeModifiedVector->get($index);
             my $specifiedTransformInfoInterface = $customizerUtil->getTransformInfoInterfaceToCustomize($transformInfoInterface, $nextTransformInfoInterface);
-            if ($views::business::context::modules::storefront::customizer::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($views::business::context::modules::storefront::customizer::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{VIEW})) {
+            if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{VIEW})) {
                 $self->{logUtil}->putF("Retrieved: " . $specifiedTransformInfoInterface->getName(), $self, "generateModifiedViews()");
             }
             'org::allbinary::logic::visual::transform::generator::TransformGeneratorUtil'->getInstance()->generate($abeClientInformation, $nextTransformInfoInterface, $specifiedTransformInfoInterface);
         }
+}
+
+sub generate {
+    my ($invocant, @arguments) = @_;
+    return $invocant->generate_j2(@arguments) if scalar(@arguments) == 2;
+    return $invocant->generate_j3(@arguments) if scalar(@arguments) == 3;
+    die "No method generate takes " . scalar(@arguments) . " arguments";
 }
 
 use java::lang::Object ();
@@ -88,6 +94,8 @@ use org::allbinary::logic::system::security::licensing::AbeClientInformationInte
 use org::allbinary::logic::visual::transform::generator::TransformGeneratorUtil ();
 use org::allbinary::logic::visual::transform::info::TransformInfo ();
 use org::allbinary::logic::visual::transform::info::TransformInfoInterface ();
+use org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory ();
+use org::allbinary::logic::communication::log::config::type::LogConfigTypes ();
 use views::business::context::modules::storefront::customizer::CustomizerUtil ();
 
 1;

@@ -137,7 +137,7 @@ sub addCircle {
         my $cy = $self->readInt($circle, $self->{KEY_CY});
         my $radius = $self->readInt($circle, $self->{KEY_R});
         for (my $index = 0; $index <= $self->{CIRCLE_SEGMENTS}; $index++) {
-            my $angle = ($Math::PI * 2.0 * $index) / $self->{CIRCLE_SEGMENTS};
+            my $angle = (3.141592653589793 * 2.0 * $index) / $self->{CIRCLE_SEGMENTS};
             my $x = int(POSIX::floor($cx + (cos($angle) * $radius) + 0.5));
             my $y = int(POSIX::floor($cy + (sin($angle) * $radius) + 0.5));
             $self->addPoint($pointVector, $x, $y);
@@ -175,7 +175,7 @@ sub addSeparator {
 
 
 # throws Exception
-sub readInt {
+sub readInt_j2 {
     my ($self, $anyType, $key) = @_;
         my $value = $anyType->get($key);
         if (!defined($value)) {
@@ -185,8 +185,7 @@ sub readInt {
 }
 
 
-# Java overloaded method: Perl keeps the last definition
-sub readInt {
+sub readInt_j3 {
     my ($self, $anyType, $key, $defaultValue) = @_;
         try {
             if ($anyType->has($key)) {
@@ -197,6 +196,13 @@ sub readInt {
             print(STDERR $e, "\n");
         }
         return $defaultValue;
+}
+
+sub readInt {
+    my ($invocant, @arguments) = @_;
+    return $invocant->readInt_j2(@arguments) if scalar(@arguments) == 2;
+    return $invocant->readInt_j3(@arguments) if scalar(@arguments) == 3;
+    die "No method readInt takes " . scalar(@arguments) . " arguments";
 }
 
 

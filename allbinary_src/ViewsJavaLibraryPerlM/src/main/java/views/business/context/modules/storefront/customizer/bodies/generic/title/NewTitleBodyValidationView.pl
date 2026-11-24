@@ -31,7 +31,7 @@ sub new {
     my $self = $class->SUPER::new($transformInfoInterface);
     _init_fields($self);
         # super(...) made $self above
-        if ($views::business::context::modules::storefront::customizer::bodies::generic::title::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($views::business::context::modules::storefront::customizer::bodies::generic::title::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{VIEW})) {
+        if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{VIEW})) {
             $self->{logUtil}->putF("View Name: " . $transformInfoInterface->getName(), $self, "NewTitleBodyValidationView()");
         }
         $self->{titleBody} = 'org::allbinary::logic::visual::transform::template::customizer::bodies::title::TitleBodyValidation'->new();
@@ -49,7 +49,7 @@ sub toXmlDoc {
 sub isValid {
     my ($self) = @_;
         try {
-            if ($views::business::context::modules::storefront::customizer::bodies::generic::title::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($views::business::context::modules::storefront::customizer::bodies::generic::title::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{VIEW})) {
+            if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{VIEW})) {
                 $self->{logUtil}->putF("View Name: " . $self->getTransformInfoInterface()->getName(), $self, $self->{commonStrings}->{IS_VALID});
             }
             {;
@@ -57,7 +57,7 @@ sub isValid {
             }
             return 1;
         } catch ($e) {
-            if ($views::business::context::modules::storefront::customizer::bodies::generic::title::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($views::business::context::modules::storefront::customizer::bodies::generic::title::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{VIEWERROR})) {
+            if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{VIEWERROR})) {
                 $self->{logUtil}->put("Failed to validate", $self, $self->{commonStrings}->{IS_VALID}, $e);
             }
             return 0;
@@ -72,7 +72,7 @@ sub validationInfo {
             $stringBuffer->append($self->{titleBody}->validationInfo());
             return $stringBuffer->toString();
         } catch ($e) {
-            if ($views::business::context::modules::storefront::customizer::bodies::generic::title::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($views::business::context::modules::storefront::customizer::bodies::generic::title::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{VIEWERROR})) {
+            if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{VIEWERROR})) {
                 $self->{logUtil}->put("Failed to generate validation error info", $self, "validationInfo()", $e);
             }
             return "Error Getting Validation Info";
@@ -95,7 +95,7 @@ sub toValidationInfoNode {
 # throws Exception
 sub view {
     my ($self) = @_;
-        return $self->{views}->{ValidationOnlyTempUtil}->getInstance()->view($self);
+        return 'views::ValidationOnlyTempUtil'->getInstance()->view($self);
 }
 
 
@@ -115,6 +115,9 @@ use org::allbinary::logic::visual::transform::template::customizer::bodies::titl
 use org::w3c::dom::Document ();
 use org::w3c::dom::Node ();
 use views::business::context::modules::storefront::customizer::CustomizerUtil ();
+use org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory ();
+use org::allbinary::logic::communication::log::config::type::LogConfigTypes ();
+use views::ValidationOnlyTempUtil ();
 use views::business::context::modules::storefront::customizer::bodies::generic::title::TitleBodyCustomizerView ();
 
 1;

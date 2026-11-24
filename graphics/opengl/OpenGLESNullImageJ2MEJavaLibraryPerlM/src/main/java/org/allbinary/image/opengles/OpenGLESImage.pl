@@ -83,8 +83,6 @@ use org::allbinary::platform::opengles::PlatformTextureBaseFactory ();
 use org::allbinary::string::CommonStrings ();
 use org::allbinary::util::BasicArrayList ();
 use org::allbinary::util::BasicArrayListD ();
-use org::allbinary::image::opengles::OpenGLSurfaceChangedInterface ();
-use org::allbinary::image::opengles::OpenGLESImageProperties ();
 
 1;
 

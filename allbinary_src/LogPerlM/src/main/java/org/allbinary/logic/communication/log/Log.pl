@@ -70,8 +70,8 @@ sub toString {
     my ($self) = @_;
         my $className = 'org::allbinary::string::CommonStrings'->getInstance()->{EMPTY};
         my $clazz = ref($self->{anyType});
-        if (defined($clazz->getName())) {
-            $className = $clazz->getName();
+        if (defined((($clazz) =~ s/::/./gr))) {
+            $className = (($clazz) =~ s/::/./gr);
         }
         return $self->{logFormatUtil}->get($className, $self->{functionName}, $self->{specialMessage}, $self->{exception});
 }

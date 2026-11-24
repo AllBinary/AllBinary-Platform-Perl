@@ -28,7 +28,7 @@ sub new {
 }
 
 
-sub getInstance {
+sub getInstance_j0 {
     my ($class) = @_;
         return $org::allbinary::logic::io::DataOutputStreamFactory::instance;
 }
@@ -44,8 +44,7 @@ sub getInstanceForAbFile {
 
 
 # throws Exception
-# Java overloaded method: Perl keeps the last definition
-sub getInstance {
+sub getInstance_j2 {
     my ($self, $filePath, $fileName) = @_;
         my $fileStreamFactory = 'org::allbinary::logic::io::FileStreamFactory'->getInstance();
         my $fileOutputStream = $fileStreamFactory->getFileOutputStreamInstance($filePath, $fileName);
@@ -53,11 +52,17 @@ sub getInstance {
         return $idOutData;
 }
 
+sub getInstance {
+    my ($invocant, @arguments) = @_;
+    return $invocant->getInstance_j0(@arguments) if scalar(@arguments) == 0;
+    return $invocant->getInstance_j2(@arguments) if scalar(@arguments) == 2;
+    die "No method getInstance takes " . scalar(@arguments) . " arguments";
+}
+
 use java::lang::Object ();
 use java::lang::LazyStatic ();
 use org::allbinary::logic::io::file::AbFile ();
 use org::allbinary::logic::io::AbFileOutputStream ();
-use org::allbinary::logic::io::AbDataOutputStream ();
 use org::allbinary::logic::io::FileStreamFactory ();
 
 1;

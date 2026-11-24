@@ -34,7 +34,7 @@ sub new {
     my $self = $class->SUPER::new('taghelpers::StoreTagWorkFlowHelperFactory'->new());
     _init_fields($self);
         # super(...) made $self above
-        if ($tags::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($tags::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{JSPTAG})) {
+        if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{JSPTAG})) {
             $self->{logUtil}->putF($self->{commonStrings}->{START}, $self, $self->{commonStrings}->{CONSTRUCTOR});
         }
     return $self;
@@ -52,7 +52,7 @@ sub setName {
 sub process {
     my ($self) = @_;
         try {
-            if ($tags::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($tags::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{JSPTAG})) {
+            if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{JSPTAG})) {
                 $self->{logUtil}->putF($self->{commonStrings}->{START}, $self, $self->{commonStrings}->{PROCESS});
             }
             my $helperClass = ref($self->getHelper());
@@ -60,7 +60,7 @@ sub process {
             my $result = $method->invoke($self->getHelper(), undef);
             return int($result);
         } catch ($e) {
-            if ($tags::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($tags::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{SQLTAGSERROR})) {
+            if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{SQLTAGSERROR})) {
                 $self->{logUtil}->put($self->{commonStrings}->{EXCEPTION}, $self, $self->{commonStrings}->{PROCESS}, $e);
             }
             die $e;
@@ -72,14 +72,14 @@ sub process {
 sub doStartTag {
     my ($self) = @_;
         try {
-            if ($tags::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($tags::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{JSPTAG})) {
+            if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{JSPTAG})) {
                 $self->{logUtil}->putF($self->{commonStrings}->{START}, $self, $self->{tagStrings}->{DO_START_TAG});
             }
             $self->setHelper();
             return $self->process();
         } catch ($e) {
             'org::allbinary::logic::communication::http::request::AbResponseHandler'->sendJspTagLicensingRedirect($self->{pageContext}, $e);
-            return $self->{SKIP_BODY};
+            return java::lang::Object::jstatic('tags::StoreWorkFlowTag', 'SKIP_BODY');
         }
 }
 
@@ -91,7 +91,8 @@ use org::allbinary::logic::communication::log::LogUtil ();
 use org::allbinary::logic::system::security::licensing::LicensingException ();
 use org::allbinary::logic::visual::transform::info::TransformInfoData ();
 use taghelpers::StoreTagWorkFlowHelperFactory ();
-use tags::HelperTag ();
+use org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory ();
+use org::allbinary::logic::communication::log::config::type::LogConfigTypes ();
 
 1;
 

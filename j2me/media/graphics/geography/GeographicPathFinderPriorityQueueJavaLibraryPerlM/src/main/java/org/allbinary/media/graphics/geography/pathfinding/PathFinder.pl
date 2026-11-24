@@ -28,7 +28,7 @@ sub _init_fields {
     $self->{openPriorityQueue} = 'org::allbinary::util::ABPriorityQueue'->new();
     $self->{closedSet} = 'org::allbinary::util::ABHashSet'->new();
     $self->{geographicMapInterface} = 'org::allbinary::logic::NullUtil'->getInstance()->{NULL_OBJECT};
-    $self->{costArray} = $org::allbinary::media::graphics::geography::pathfinding::PathFindingNodeCost::NULL_PATH_FINDING_NODE_COST_ARRAY_ARRAY;
+    $self->{costArray} = java::lang::Object::jstatic('org::allbinary::media::graphics::geography::pathfinding::PathFinder', 'PathFindingNodeCost')->{NULL_PATH_FINDING_NODE_COST_ARRAY_ARRAY};
 }
 
 sub new {
@@ -282,9 +282,6 @@ use org::allbinary::util::ABPriorityQueue ();
 use org::allbinary::util::BasicArrayList ();
 use org::allbinary::util::BasicArrayListD ();
 use org::allbinary::util::BasicArrayListUtil ();
-use org::allbinary::media::graphics::geography::pathfinding::GeographicPathFinderBase ();
-use org::allbinary::media::graphics::geography::pathfinding::PathFindingNodeCost ();
-use org::allbinary::media::graphics::geography::pathfinding::PathFindingNodeCostInfo ();
 
 1;
 

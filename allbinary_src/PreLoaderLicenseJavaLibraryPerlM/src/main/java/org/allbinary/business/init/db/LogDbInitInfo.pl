@@ -45,7 +45,6 @@ sub _new1 {
 }
 
 use java::lang::Object ();
-use org::allbinary::business::init::db::DbInitInfo ();
 
 1;
 

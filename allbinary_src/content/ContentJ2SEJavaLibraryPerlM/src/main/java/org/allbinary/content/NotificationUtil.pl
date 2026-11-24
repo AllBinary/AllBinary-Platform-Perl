@@ -24,7 +24,7 @@ tie our $SINGLETON, 'java::lang::LazyStatic', sub { 'org::allbinary::content::No
 
 sub _init_fields {
     my ($self) = @_;
-    $self->{notificationManager} = 'org::allbinary::data::resource::ResourceUtil'->getInstance()->getContext()->getSystemService($org::allbinary::content::Context::NOTIFICATION_SERVICE);
+    $self->{notificationManager} = 'org::allbinary::data::resource::ResourceUtil'->getInstance()->getContext()->getSystemService(java::lang::Object::jstatic('org::allbinary::content::NotificationUtil', 'Context')->{NOTIFICATION_SERVICE});
 }
 
 sub new {
@@ -47,7 +47,7 @@ sub notify {
         my $intent = 'org::allbinary::content::CommandUriAction'->getInstance()->getIntent($command);
         my $integer = 'org::allbinary::data::resource::ResourceUtil'->getInstance()->getResourceId($resource);
         my $notification = 'org::allbinary::content::Notification'->new(int($integer), $message, int(Time::HiRes::time() * 1000));
-        my $pendingIntent = 'org::allbinary::content::PendingIntent'->getActivity($context, 0, $intent, 0);
+        my $pendingIntent = java::lang::Object::jstatic('org::allbinary::content::NotificationUtil', 'PendingIntent')->getActivity($context, 0, $intent, 0);
         $notification->setLatestEventInfo($context, $command->getLabel(), $message, $pendingIntent);
         $self->{notificationManager}->notify('org::allbinary::TsUtil'->getInstance()->hashCode($command), $notification);
 }
@@ -57,11 +57,8 @@ use java::lang::LazyStatic ();
 use javax::microedition::lcdui::Command ();
 use org::allbinary::data::resource::ResourceUtil ();
 use org::allbinary::TsUtil ();
-use org::allbinary::content::Context ();
 use org::allbinary::content::CommandUriAction ();
-use org::allbinary::content::Notification ();
 use java::lang::System ();
-use org::allbinary::content::PendingIntent ();
 
 1;
 

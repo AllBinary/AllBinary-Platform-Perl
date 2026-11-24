@@ -54,7 +54,7 @@ sub write {
             $dataOutputStream->writeUTF('org::allbinary::logic::system::security::crypt::DatabaseEncoder'->encode($cryptedPassword));
             $org::allbinary::business::init::InstallerInfo::hasRead = 0;
         } catch ($e) {
-            if ($org::allbinary::business::init::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($org::allbinary::business::init::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{PRELOADERERROR})) {
+            if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{PRELOADERERROR})) {
                 $self->{logUtil}->putF("Failed", $self, "write");
             }
             die $e;
@@ -76,12 +76,12 @@ sub read {
                 $self->setUserName('org::allbinary::logic::system::security::crypt::WeakCrypt'->new(1)->decrypt($decryptedUserName));
                 $self->setPassword('org::allbinary::logic::system::security::crypt::WeakCrypt'->new(2)->decrypt($decryptedPassword));
             } else {
-                if ($org::allbinary::business::init::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($org::allbinary::business::init::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{PRELOADER})) {
+                if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{PRELOADER})) {
                     $self->{logUtil}->putF("Not a File - Failed Loading: " . $FILEABPATH->toString(), $self, "read");
                 }
             }
         } catch ($e) {
-            if ($org::allbinary::business::init::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($org::allbinary::business::init::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{PRELOADERERROR})) {
+            if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{PRELOADERERROR})) {
                 $self->{logUtil}->putF("Failed", $self, "read");
             }
         }
@@ -113,7 +113,7 @@ sub updateIfNeeded {
             $org::allbinary::business::init::InstallerInfo::hasRead = 1;
             $self->read();
             if (!defined($org::allbinary::business::init::InstallerInfo::userName) || !defined($org::allbinary::business::init::InstallerInfo::password)) {
-                if ($org::allbinary::business::init::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($org::allbinary::business::init::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{PRELOADER})) {
+                if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{PRELOADER})) {
                     $self->{logUtil}->putF("Failed", $self, "updateIfNeeded");
                 }
             }
@@ -161,6 +161,8 @@ use org::allbinary::logic::io::path::AbPath ();
 use org::allbinary::logic::string::StringUtil ();
 use org::allbinary::logic::system::security::crypt::DatabaseEncoder ();
 use org::allbinary::logic::system::security::crypt::WeakCrypt ();
+use org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory ();
+use org::allbinary::logic::communication::log::config::type::LogConfigTypes ();
 
 1;
 

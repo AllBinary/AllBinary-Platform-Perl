@@ -29,17 +29,23 @@ sub new {
 
 
 # throws IOException
-sub read {
+sub read_j0 {
     my ($self) = @_;
         return -1;
 }
 
 
 # throws IOException
-# Java overloaded method: Perl keeps the last definition
-sub read {
+sub read_j3 {
     my ($self, $cbuf, $off, $len) = @_;
         return -1;
+}
+
+sub read {
+    my ($invocant, @arguments) = @_;
+    return $invocant->read_j0(@arguments) if scalar(@arguments) == 0;
+    return $invocant->read_j3(@arguments) if scalar(@arguments) == 3;
+    die "No method read takes " . scalar(@arguments) . " arguments";
 }
 
 

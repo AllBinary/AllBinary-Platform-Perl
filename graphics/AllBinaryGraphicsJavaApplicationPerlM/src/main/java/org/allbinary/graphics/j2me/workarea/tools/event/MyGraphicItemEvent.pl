@@ -63,6 +63,7 @@ sub getAngle {
 
 use java::lang::Object ();
 # use javax::swing::tree::MutableTreeNode ();
+# use java::util::EventObject ();
 
 1;
 

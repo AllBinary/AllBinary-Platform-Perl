@@ -28,7 +28,7 @@ sub _init_fields {
 }
 
 
-sub getInstance {
+sub getInstance_j0 {
     my ($class) = @_;
         return $org::allbinary::logic::system::hardware::HardwareFactory::instance;
 }
@@ -43,8 +43,7 @@ sub new {
 
 
 # throws Exception
-# Java overloaded method: Perl keeps the last definition
-sub getInstance {
+sub getInstance_j1 {
     my ($self, $os) = @_;
         try {
             my $operatingSystems = 'org::allbinary::logic::system::os::OperatingSystems'->getInstance();
@@ -61,6 +60,13 @@ sub getInstance {
         }
 }
 
+sub getInstance {
+    my ($invocant, @arguments) = @_;
+    return $invocant->getInstance_j0(@arguments) if scalar(@arguments) == 0;
+    return $invocant->getInstance_j1(@arguments) if scalar(@arguments) == 1;
+    die "No method getInstance takes " . scalar(@arguments) . " arguments";
+}
+
 use java::lang::Object ();
 use java::lang::LazyStatic ();
 use org::allbinary::TsUtil ();
@@ -69,7 +75,6 @@ use org::allbinary::logic::system::hardware::android::AndroidHardware ();
 use org::allbinary::logic::system::os::GenericOperatingSystem ();
 use org::allbinary::logic::system::os::OperatingSystems ();
 use org::allbinary::string::CommonStrings ();
-use org::allbinary::logic::system::hardware::NoHardware ();
 
 1;
 

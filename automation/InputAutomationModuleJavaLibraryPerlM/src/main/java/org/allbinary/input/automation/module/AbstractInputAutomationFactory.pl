@@ -78,7 +78,7 @@ sub getHelpSet {
 use java::lang::Object ();
 # use java::net::URL ();
 # use javax::help::HelpSet ();
-# use javax::swing ();
+# use javax::swing::JPanel ();
 use org::allbinary::logic::java::help::JavaHelpUtil ();
 use org::allbinary::input::automation::module::InputAutomationModuleFactoryInterface ();
 

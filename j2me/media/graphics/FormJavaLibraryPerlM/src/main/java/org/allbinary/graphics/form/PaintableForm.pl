@@ -65,7 +65,6 @@ use org::allbinary::graphics::displayable::CanvasStrings ();
 use org::allbinary::graphics::form::item::ABCustomItem ();
 use org::allbinary::logic::NullUtil ();
 use org::allbinary::logic::string::StringUtil ();
-use org::allbinary::graphics::form::ABCustomForm ();
 use org::allbinary::graphics::form::FormTypeFactory ();
 
 1;

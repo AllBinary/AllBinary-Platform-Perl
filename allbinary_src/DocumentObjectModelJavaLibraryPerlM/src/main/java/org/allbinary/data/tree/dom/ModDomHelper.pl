@@ -42,26 +42,26 @@ sub createTextNode {
 # throws Exception
 sub createValueNode {
     my ($class, $document, $text) = @_;
-        return 'org::allbinary::data::tree::dom::ModDomHelper'->createTextNode($document, $org::allbinary::data::tree::dom::DomData::VALUE, $text);
+        return 'org::allbinary::data::tree::dom::ModDomHelper'->createTextNode($document, java::lang::Object::jstatic('org::allbinary::data::tree::dom::ModDomHelper', 'DomData')->{VALUE}, $text);
 }
 
 
 # throws Exception
 sub createNameNode {
     my ($class, $document, $text) = @_;
-        return 'org::allbinary::data::tree::dom::ModDomHelper'->createTextNode($document, $org::allbinary::data::tree::dom::DomData::NAME, $text);
+        return 'org::allbinary::data::tree::dom::ModDomHelper'->createTextNode($document, java::lang::Object::jstatic('org::allbinary::data::tree::dom::ModDomHelper', 'DomData')->{NAME}, $text);
 }
 
 
 # throws Exception
 sub createIndexNode {
     my ($class, $document, $index) = @_;
-        return 'org::allbinary::data::tree::dom::ModDomHelper'->createTextNode($document, $org::allbinary::data::tree::dom::DomData::INDEX, $index->toString());
+        return 'org::allbinary::data::tree::dom::ModDomHelper'->createTextNode($document, java::lang::Object::jstatic('org::allbinary::data::tree::dom::ModDomHelper', 'DomData')->{INDEX}, $index->toString());
 }
 
 
 # throws Exception
-sub createNameValueNodes {
+sub createNameValueNodes_j4_1 {
     my ($class, $document, $elementName, $nameText, $valueText) = @_;
         my $newNode = $document->createElement($elementName);
         $newNode->appendChild('org::allbinary::data::tree::dom::ModDomHelper'->createNameNode($document, $nameText));
@@ -71,8 +71,7 @@ sub createNameValueNodes {
 
 
 # throws Exception
-# Java overloaded method: Perl keeps the last definition
-sub createNameValueNodes {
+sub createNameValueNodes_j3_1 {
     my ($class, $document, $elementNameAndNameText, $valueText) = @_;
         my $newNode = 'org::allbinary::data::tree::dom::ModDomHelper'->createNameValueNodes($document, $elementNameAndNameText, $elementNameAndNameText, $valueText);
         return $newNode;
@@ -80,7 +79,7 @@ sub createNameValueNodes {
 
 
 # throws Exception
-sub createNameValueIndexNodes {
+sub createNameValueIndexNodes_j4_1 {
     my ($class, $document, $elementNameAndNameText, $index, $valueText) = @_;
         my $newNode = 'org::allbinary::data::tree::dom::ModDomHelper'->createNameValueNodes($document, $elementNameAndNameText, $valueText);
         $newNode->appendChild('org::allbinary::data::tree::dom::ModDomHelper'->createIndexNode($document, $index));
@@ -89,8 +88,7 @@ sub createNameValueIndexNodes {
 
 
 # throws Exception
-# Java overloaded method: Perl keeps the last definition
-sub createNameValueNodes {
+sub createNameValueNodes_j3_2 {
     my ($class, $document, $rootNode, $hashMap) = @_;
         my $node = $document->createElement($rootNode);
         return 'org::allbinary::data::tree::dom::ModDomHelper'->createNameValueNodes($document, $node, $hashMap);
@@ -98,8 +96,7 @@ sub createNameValueNodes {
 
 
 # throws Exception
-# Java overloaded method: Perl keeps the last definition
-sub createNameValueNodes {
+sub createNameValueNodes_j3_3 {
     my ($class, $document, $node, $hashMap) = @_;
         my $stringUtil = 'org::allbinary::logic::string::StringUtil'->getInstance();
         my $keySet = $hashMap->keySet();
@@ -126,8 +123,7 @@ sub createNameValueNodes {
 
 
 # throws Exception
-# Java overloaded method: Perl keeps the last definition
-sub createNameValueNodes {
+sub createNameValueNodes_j4_2 {
     my ($class, $document, $rootNodeName, $duplicateNodeName, $valueVector) = @_;
         my $stringUtil = 'org::allbinary::logic::string::StringUtil'->getInstance();
         my $node = $document->createElement($rootNodeName);
@@ -139,10 +135,29 @@ sub createNameValueNodes {
         return $node;
 }
 
+sub createNameValueNodes {
+    my ($invocant, @arguments) = @_;
+    return $invocant->createNameValueNodes_j4(@arguments) if scalar(@arguments) == 4;
+    return $invocant->createNameValueNodes_j3(@arguments) if scalar(@arguments) == 3;
+    die "No method createNameValueNodes takes " . scalar(@arguments) . " arguments";
+}
+
+sub createNameValueNodes_j4 {
+    my ($invocant, @arguments) = @_;
+    return $invocant->createNameValueNodes_j4_1(@arguments) if 1 && (!defined($arguments[0]) || (ref($arguments[0]) && ref($arguments[0]) ne 'ARRAY')) && !ref($arguments[1]) && !ref($arguments[2]) && !ref($arguments[3]);
+    return $invocant->createNameValueNodes_j4_2(@arguments);
+}
+
+sub createNameValueNodes_j3 {
+    my ($invocant, @arguments) = @_;
+    return $invocant->createNameValueNodes_j3_1(@arguments) if 1 && (!defined($arguments[0]) || (ref($arguments[0]) && ref($arguments[0]) ne 'ARRAY')) && !ref($arguments[1]) && !ref($arguments[2]);
+    return $invocant->createNameValueNodes_j3_2(@arguments) if 1 && (!defined($arguments[0]) || (ref($arguments[0]) && ref($arguments[0]) ne 'ARRAY')) && !ref($arguments[1]) && (!defined($arguments[2]) || (ref($arguments[2]) && ref($arguments[2]) ne 'ARRAY'));
+    return $invocant->createNameValueNodes_j3_3(@arguments);
+}
+
 
 # throws Exception
-# Java overloaded method: Perl keeps the last definition
-sub createNameValueIndexNodes {
+sub createNameValueIndexNodes_j4_2 {
     my ($class, $document, $rootNodeName, $duplicateNodeName, $valueVector) = @_;
         my $stringUtil = 'org::allbinary::logic::string::StringUtil'->getInstance();
         my $node = $document->createElement($rootNodeName);
@@ -154,9 +169,21 @@ sub createNameValueIndexNodes {
         return $node;
 }
 
+sub createNameValueIndexNodes {
+    my ($invocant, @arguments) = @_;
+    return $invocant->createNameValueIndexNodes_j4(@arguments) if scalar(@arguments) == 4;
+    die "No method createNameValueIndexNodes takes " . scalar(@arguments) . " arguments";
+}
+
+sub createNameValueIndexNodes_j4 {
+    my ($invocant, @arguments) = @_;
+    return $invocant->createNameValueIndexNodes_j4_1(@arguments) if 1 && (!defined($arguments[0]) || (ref($arguments[0]) && ref($arguments[0]) ne 'ARRAY')) && !ref($arguments[1]) && !ref($arguments[2]) && !ref($arguments[3]);
+    return $invocant->createNameValueIndexNodes_j4_2(@arguments);
+}
+
 
 # throws Exception
-sub createNodeWithValueNodes {
+sub createNodeWithValueNodes_j3_1 {
     my ($class, $document, $rootNode, $hashMap) = @_;
         my $node = $document->createElement($rootNode);
         return 'org::allbinary::data::tree::dom::ModDomHelper'->createNodeWithValueNodes($document, $node, $hashMap);
@@ -164,8 +191,7 @@ sub createNodeWithValueNodes {
 
 
 # throws Exception
-# Java overloaded method: Perl keeps the last definition
-sub createNodeWithValueNodes {
+sub createNodeWithValueNodes_j3_2 {
     my ($class, $document, $node, $hashMap) = @_;
         my $stringUtil = 'org::allbinary::logic::string::StringUtil'->getInstance();
         my $keySet = $hashMap->keySet();
@@ -180,9 +206,21 @@ sub createNodeWithValueNodes {
         return $node;
 }
 
+sub createNodeWithValueNodes {
+    my ($invocant, @arguments) = @_;
+    return $invocant->createNodeWithValueNodes_j3(@arguments) if scalar(@arguments) == 3;
+    die "No method createNodeWithValueNodes takes " . scalar(@arguments) . " arguments";
+}
+
+sub createNodeWithValueNodes_j3 {
+    my ($invocant, @arguments) = @_;
+    return $invocant->createNodeWithValueNodes_j3_1(@arguments) if 1 && (!defined($arguments[0]) || (ref($arguments[0]) && ref($arguments[0]) ne 'ARRAY')) && !ref($arguments[1]) && (!defined($arguments[2]) || (ref($arguments[2]) && ref($arguments[2]) ne 'ARRAY'));
+    return $invocant->createNodeWithValueNodes_j3_2(@arguments);
+}
+
 use java::lang::Object ();
 use java::util::HashMap ();
-# use java::util::Set ();
+use java::util::Set ();
 use org::allbinary::util::BasicArrayList ();
 use org::allbinary::util::BasicArrayListD ();
 use org::allbinary::logic::java::anyType::clazz::ClassUtil ();
@@ -190,7 +228,6 @@ use org::allbinary::logic::string::StringUtil ();
 use org::allbinary::string::CommonSeps ();
 use org::w3c::dom::Document ();
 use org::w3c::dom::Node ();
-use org::allbinary::data::tree::dom::DomData ();
 
 1;
 

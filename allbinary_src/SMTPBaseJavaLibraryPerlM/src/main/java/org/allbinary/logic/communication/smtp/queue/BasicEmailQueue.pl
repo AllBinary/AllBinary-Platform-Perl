@@ -54,16 +54,22 @@ sub offer {
 }
 
 
-sub remove {
+sub remove_j1 {
     my ($self, $emailInterface) = @_;
         $self->remove($emailInterface);
 }
 
 
-# Java overloaded method: Perl keeps the last definition
-sub remove {
+sub remove_j0 {
     my ($self) = @_;
         return undef;
+}
+
+sub remove {
+    my ($invocant, @arguments) = @_;
+    return $invocant->remove_j1(@arguments) if scalar(@arguments) == 1;
+    return $invocant->remove_j0(@arguments) if scalar(@arguments) == 0;
+    die "No method remove takes " . scalar(@arguments) . " arguments";
 }
 
 
@@ -94,16 +100,16 @@ sub processAllUnsent {
 sub send {
     my ($self, $emailInterface) = @_;
         try {
-            if ($org::allbinary::logic::communication::smtp::queue::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($org::allbinary::logic::communication::smtp::queue::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{EMAILLOGGING})) {
+            if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{EMAILLOGGING})) {
                 $self->{logUtil}->putF("Sending: " . $emailInterface->log(), $self, "send");
             }
             'javax::mail::Transport'->send($emailInterface->getMimeMessage());
-            if ($org::allbinary::logic::communication::smtp::queue::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($org::allbinary::logic::communication::smtp::queue::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{EMAILLOGGING})) {
+            if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{EMAILLOGGING})) {
                 $self->{logUtil}->putF("Email Send Debug: " . $emailInterface->getDebugInfo(), $self, "send");
             }
             return 1;
         } catch ($e) {
-            if ($org::allbinary::logic::communication::smtp::queue::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($org::allbinary::logic::communication::smtp::queue::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{EMAILLOGGING})) {
+            if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{EMAILLOGGING})) {
                 $self->{logUtil}->put("Failed Email Send Debug: " . $emailInterface->getDebugInfo(), $self, "send", $e);
             }
             return 0;
@@ -116,6 +122,8 @@ use java::lang::LazyStatic ();
 use org::allbinary::logic::communication::log::LogUtil ();
 use org::allbinary::logic::communication::smtp::EmailInterface ();
 use org::allbinary::logic::util::queue::BasicQueue ();
+use org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory ();
+use org::allbinary::logic::communication::log::config::type::LogConfigTypes ();
 use org::allbinary::logic::communication::smtp::queue::EmailQueueInterface ();
 
 1;

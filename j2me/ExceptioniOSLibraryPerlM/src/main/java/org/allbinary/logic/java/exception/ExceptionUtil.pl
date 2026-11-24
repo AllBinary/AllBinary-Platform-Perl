@@ -20,7 +20,7 @@ use feature 'try';
 no warnings 'experimental::try';
 use parent -norequire,'java::lang::Object';
 
-tie our $instance, 'java::lang::LazyStatic', sub { ("ExceptionUtil") };
+tie our $instance, 'java::lang::LazyStatic', sub { 'org::allbinary::logic::java::exception::ExceptionUtil'->new() };
 
 sub _init_fields {
     my ($self) = @_;

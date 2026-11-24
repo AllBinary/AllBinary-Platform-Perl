@@ -35,6 +35,12 @@ sub new {
     die "No constructor of HeadingValidation takes " . scalar(@arguments) . " arguments";
 }
 
+sub _new1 {
+    my ($class, @arguments) = @_;
+    return $class->_new1_1(@arguments) if 1 && (!defined($arguments[0]) || (ref($arguments[0]) && ref($arguments[0]) ne 'ARRAY'));
+    return $class->_new1_2(@arguments);
+}
+
 
 sub _new0 {
     my ($class) = @_;
@@ -46,11 +52,11 @@ sub _new0 {
 }
 
 
-sub _new1 {
+sub _new1_1 {
     my ($class, $document) = @_;
     my $self = $class->SUPER::new();
     _init_fields($self);
-        my $headingNodeList = $document->getElementsByTagName($org::allbinary::logic::visual::transform::template::customizer::hedges::heading::HeadingData::NAME);
+        my $headingNodeList = $document->getElementsByTagName(java::lang::Object::jstatic('org::allbinary::logic::visual::transform::template::customizer::hedges::heading::HeadingValidation', 'HeadingData')->{NAME});
         my $titleNode = 'org::allbinary::data::tree::dom::DomSearchHelper'->getNode('org::allbinary::logic::visual::transform::template::customizer::widgets::title::TitleData'->getInstance()->{NAME}, $headingNodeList->item(0)->getChildNodes());
         my $logoNode = 'org::allbinary::data::tree::dom::DomSearchHelper'->getNode('org::allbinary::logic::visual::transform::template::customizer::widgets::logo::LogoData'->getInstance()->{NAME}, $headingNodeList->item(0)->getChildNodes());
         $self->{title} = 'org::allbinary::logic::visual::transform::template::customizer::widgets::title::TitleValidation'->new($titleNode);
@@ -59,7 +65,7 @@ sub _new1 {
 }
 
 
-sub _new1 {
+sub _new1_2 {
     my ($class, $hashMap) = @_;
     my $self = $class->SUPER::new();
     _init_fields($self);
@@ -82,7 +88,7 @@ sub isValid {
             my $valid = 1;
             my $titleValid = 1;
             my $logoValid = 1;
-            if ($org::allbinary::logic::visual::transform::template::customizer::hedges::heading::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($org::allbinary::logic::visual::transform::template::customizer::hedges::heading::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{VIEW})) {
+            if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{VIEW})) {
                 $self->{logUtil}->putF($self->{commonStrings}->{START}, $self, $self->{commonStrings}->{IS_VALID});
             }
             if (!$self->{title}->isValid()) {
@@ -96,12 +102,12 @@ sub isValid {
             if (!$titleValid && !$logoValid) {
                 $valid = 0;
             }
-            if ($org::allbinary::logic::visual::transform::template::customizer::hedges::heading::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($org::allbinary::logic::visual::transform::template::customizer::hedges::heading::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{VIEW})) {
+            if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{VIEW})) {
                 $self->{logUtil}->putF("HeadingValidation: " . $valid, $self, $self->{commonStrings}->{IS_VALID});
             }
             return $valid;
         } catch ($e) {
-            if ($org::allbinary::logic::visual::transform::template::customizer::hedges::heading::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($org::allbinary::logic::visual::transform::template::customizer::hedges::heading::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{SQLTAGSERROR})) {
+            if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{SQLTAGSERROR})) {
                 $self->{logUtil}->put("Failed to validate form", $self, $self->{commonStrings}->{IS_VALID}, $e);
             }
             return 0;
@@ -130,7 +136,7 @@ sub validationInfo {
             }
             return $stringBuffer->toString();
         } catch ($e) {
-            if ($org::allbinary::logic::visual::transform::template::customizer::hedges::heading::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($org::allbinary::logic::visual::transform::template::customizer::hedges::heading::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{SQLTAGSERROR})) {
+            if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{SQLTAGSERROR})) {
                 $self->{logUtil}->put("Failed to generate validation error info", $self, "validationInfo()", $e);
             }
             return "Error Validating Form";
@@ -153,7 +159,7 @@ sub toValidationInfoNode {
 # throws Exception
 sub toXmlNode {
     my ($self, $document) = @_;
-        my $node = $document->createElement($org::allbinary::logic::visual::transform::template::customizer::hedges::heading::HeadingData::NAME);
+        my $node = $document->createElement(java::lang::Object::jstatic('org::allbinary::logic::visual::transform::template::customizer::hedges::heading::HeadingValidation', 'HeadingData')->{NAME});
         $node->appendChild($self->{logo}->toXmlNode($document));
         $node->appendChild($self->{title}->toXmlNode($document));
         return $node;
@@ -173,7 +179,8 @@ use org::allbinary::logic::visual::transform::template::customizer::widgets::tit
 use org::w3c::dom::Document ();
 use org::w3c::dom::Node ();
 use org::w3c::dom::NodeList ();
-use org::allbinary::logic::visual::transform::template::customizer::hedges::heading::HeadingData ();
+use org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory ();
+use org::allbinary::logic::communication::log::config::type::LogConfigTypes ();
 
 1;
 

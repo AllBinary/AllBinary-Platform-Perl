@@ -51,14 +51,14 @@ sub initComponents {
         $self->{jLabel2} = 'javax::swing::JLabel'->new();
         $self->{jPanel1} = 'javax::swing::JPanel'->new();
         $self->{jButton1} = 'javax::swing::JButton'->new();
-        $self->setDefaultCloseOperation($org::allbinary::graphics::j2me::dialog::javax::swing->{WindowConstants}->{DISPOSE_ON_CLOSE});
+        $self->setDefaultCloseOperation($javax::swing::WindowConstants::DISPOSE_ON_CLOSE);
         $self->{angleIncrementJTextField}->setText("36");
         $self->{jLabel1}->setText("Angle Increment:");
         $self->{totalRotationJTextField}->setText("360");
         $self->{jLabel2}->setText("Total Angular Rotation:");
         $self->{jButton1}->setText("OK");
         $self->{jButton1}->addActionListener(do {
-            package java::awt::event::ActionListener::AnonymousN66510 { our @ISA = ('java::awt::event::ActionListener', 'java::lang::Object');
+            package java::awt::event::ActionListener::AnonymousN66686 { our @ISA = ('java::awt::event::ActionListener', 'java::lang::Object');
             
 
             sub actionPerformed {
@@ -66,16 +66,16 @@ sub initComponents {
                 $self->jButton1ActionPerformed($evt);
             }
             }
-            'java::awt::event::ActionListener::AnonymousN66510'->can('new') ? 'java::awt::event::ActionListener::AnonymousN66510'->new() : bless({}, 'java::awt::event::ActionListener::AnonymousN66510')
+            'java::awt::event::ActionListener::AnonymousN66686'->can('new') ? 'java::awt::event::ActionListener::AnonymousN66686'->new() : bless({}, 'java::awt::event::ActionListener::AnonymousN66686')
         });
         my $jPanel1Layout = 'javax::swing::GroupLayout'->new($self->{jPanel1});
         $self->{jPanel1}->setLayout($jPanel1Layout);
-        $jPanel1Layout->setHorizontalGroup($jPanel1Layout->createParallelGroup($org::allbinary::graphics::j2me::dialog::javax::swing->{GroupLayout}->{Alignment}->{LEADING})->addGroup($jPanel1Layout->createSequentialGroup()->addGap(62, 62, 62)->addComponent($self->{jButton1})->addContainerGap(62, 32767)));
-        $jPanel1Layout->setVerticalGroup($jPanel1Layout->createParallelGroup($org::allbinary::graphics::j2me::dialog::javax::swing->{GroupLayout}->{Alignment}->{LEADING})->addComponent($self->{jButton1}));
+        $jPanel1Layout->setHorizontalGroup($jPanel1Layout->createParallelGroup($javax::swing::GroupLayout::Alignment->{LEADING})->addGroup($jPanel1Layout->createSequentialGroup()->addGap(62, 62, 62)->addComponent($self->{jButton1})->addContainerGap(62, 32767)));
+        $jPanel1Layout->setVerticalGroup($jPanel1Layout->createParallelGroup($javax::swing::GroupLayout::Alignment->{LEADING})->addComponent($self->{jButton1}));
         my $layout = 'javax::swing::GroupLayout'->new($self->getContentPane());
         $self->getContentPane()->setLayout($layout);
-        $layout->setHorizontalGroup($layout->createParallelGroup($org::allbinary::graphics::j2me::dialog::javax::swing->{GroupLayout}->{Alignment}->{LEADING})->addGroup($layout->createSequentialGroup()->addContainerGap()->addGroup($layout->createParallelGroup($org::allbinary::graphics::j2me::dialog::javax::swing->{GroupLayout}->{Alignment}->{TRAILING})->addComponent($self->{jLabel1})->addComponent($self->{jLabel2}))->addPreferredGap($org::allbinary::graphics::j2me::dialog::javax::swing->{LayoutStyle}->{ComponentPlacement}->{UNRELATED})->addGroup($layout->createParallelGroup($org::allbinary::graphics::j2me::dialog::javax::swing->{GroupLayout}->{Alignment}->{LEADING})->addComponent($self->{totalRotationJTextField}, $org::allbinary::graphics::j2me::dialog::javax::swing->{GroupLayout}->{Alignment}->{TRAILING}, $org::allbinary::graphics::j2me::dialog::javax::swing->{GroupLayout}->{DEFAULT_SIZE}, 31, 32767)->addComponent($self->{angleIncrementJTextField}, $org::allbinary::graphics::j2me::dialog::javax::swing->{GroupLayout}->{Alignment}->{TRAILING}, $org::allbinary::graphics::j2me::dialog::javax::swing->{GroupLayout}->{PREFERRED_SIZE}, 31, $org::allbinary::graphics::j2me::dialog::javax::swing->{GroupLayout}->{PREFERRED_SIZE}))->addContainerGap())->addComponent($self->{jPanel1}, $org::allbinary::graphics::j2me::dialog::javax::swing->{GroupLayout}->{Alignment}->{TRAILING}, $org::allbinary::graphics::j2me::dialog::javax::swing->{GroupLayout}->{DEFAULT_SIZE}, $org::allbinary::graphics::j2me::dialog::javax::swing->{GroupLayout}->{DEFAULT_SIZE}, 32767));
-        $layout->setVerticalGroup($layout->createParallelGroup($org::allbinary::graphics::j2me::dialog::javax::swing->{GroupLayout}->{Alignment}->{LEADING})->addGroup($layout->createSequentialGroup()->addContainerGap()->addGroup($layout->createParallelGroup($org::allbinary::graphics::j2me::dialog::javax::swing->{GroupLayout}->{Alignment}->{BASELINE})->addComponent($self->{angleIncrementJTextField}, $org::allbinary::graphics::j2me::dialog::javax::swing->{GroupLayout}->{PREFERRED_SIZE}, $org::allbinary::graphics::j2me::dialog::javax::swing->{GroupLayout}->{DEFAULT_SIZE}, $org::allbinary::graphics::j2me::dialog::javax::swing->{GroupLayout}->{PREFERRED_SIZE})->addComponent($self->{jLabel1}))->addPreferredGap($org::allbinary::graphics::j2me::dialog::javax::swing->{LayoutStyle}->{ComponentPlacement}->{RELATED})->addGroup($layout->createParallelGroup($org::allbinary::graphics::j2me::dialog::javax::swing->{GroupLayout}->{Alignment}->{BASELINE})->addComponent($self->{totalRotationJTextField}, $org::allbinary::graphics::j2me::dialog::javax::swing->{GroupLayout}->{PREFERRED_SIZE}, $org::allbinary::graphics::j2me::dialog::javax::swing->{GroupLayout}->{DEFAULT_SIZE}, $org::allbinary::graphics::j2me::dialog::javax::swing->{GroupLayout}->{PREFERRED_SIZE})->addComponent($self->{jLabel2}))->addPreferredGap($org::allbinary::graphics::j2me::dialog::javax::swing->{LayoutStyle}->{ComponentPlacement}->{RELATED}, 16, 32767)->addComponent($self->{jPanel1}, $org::allbinary::graphics::j2me::dialog::javax::swing->{GroupLayout}->{PREFERRED_SIZE}, $org::allbinary::graphics::j2me::dialog::javax::swing->{GroupLayout}->{DEFAULT_SIZE}, $org::allbinary::graphics::j2me::dialog::javax::swing->{GroupLayout}->{PREFERRED_SIZE})->addContainerGap()));
+        $layout->setHorizontalGroup($layout->createParallelGroup($javax::swing::GroupLayout::Alignment->{LEADING})->addGroup($layout->createSequentialGroup()->addContainerGap()->addGroup($layout->createParallelGroup($javax::swing::GroupLayout::Alignment->{TRAILING})->addComponent($self->{jLabel1})->addComponent($self->{jLabel2}))->addPreferredGap($javax::swing::LayoutStyle::ComponentPlacement->{UNRELATED})->addGroup($layout->createParallelGroup($javax::swing::GroupLayout::Alignment->{LEADING})->addComponent($self->{totalRotationJTextField}, $javax::swing::GroupLayout::Alignment->{TRAILING}, $javax::swing::GroupLayout::DEFAULT_SIZE, 31, 32767)->addComponent($self->{angleIncrementJTextField}, $javax::swing::GroupLayout::Alignment->{TRAILING}, $javax::swing::GroupLayout::PREFERRED_SIZE, 31, $javax::swing::GroupLayout::PREFERRED_SIZE))->addContainerGap())->addComponent($self->{jPanel1}, $javax::swing::GroupLayout::Alignment->{TRAILING}, $javax::swing::GroupLayout::DEFAULT_SIZE, $javax::swing::GroupLayout::DEFAULT_SIZE, 32767));
+        $layout->setVerticalGroup($layout->createParallelGroup($javax::swing::GroupLayout::Alignment->{LEADING})->addGroup($layout->createSequentialGroup()->addContainerGap()->addGroup($layout->createParallelGroup($javax::swing::GroupLayout::Alignment->{BASELINE})->addComponent($self->{angleIncrementJTextField}, $javax::swing::GroupLayout::PREFERRED_SIZE, $javax::swing::GroupLayout::DEFAULT_SIZE, $javax::swing::GroupLayout::PREFERRED_SIZE)->addComponent($self->{jLabel1}))->addPreferredGap($javax::swing::LayoutStyle::ComponentPlacement->{RELATED})->addGroup($layout->createParallelGroup($javax::swing::GroupLayout::Alignment->{BASELINE})->addComponent($self->{totalRotationJTextField}, $javax::swing::GroupLayout::PREFERRED_SIZE, $javax::swing::GroupLayout::DEFAULT_SIZE, $javax::swing::GroupLayout::PREFERRED_SIZE)->addComponent($self->{jLabel2}))->addPreferredGap($javax::swing::LayoutStyle::ComponentPlacement->{RELATED}, 16, 32767)->addComponent($self->{jPanel1}, $javax::swing::GroupLayout::PREFERRED_SIZE, $javax::swing::GroupLayout::DEFAULT_SIZE, $javax::swing::GroupLayout::PREFERRED_SIZE)->addContainerGap()));
         $self->pack();
 }
 
@@ -96,15 +96,15 @@ sub jButton1ActionPerformed {
 
 sub main {
     my ($class, $args) = @_;
-        $org::allbinary::graphics::j2me::dialog::java::awt->{EventQueue}->invokeLater(do {
-            package org::allbinary::thread::ARunnable::AnonymousN69204 { our @ISA = ('org::allbinary::thread::ARunnable', 'java::lang::Object');
+        'java::awt::EventQueue'->invokeLater(do {
+            package org::allbinary::thread::ARunnable::AnonymousN68780 { our @ISA = ('org::allbinary::thread::ARunnable', 'java::lang::Object');
             
 
             sub run {
                 my ($self) = @_;
                 my $dialog = 'org::allbinary::graphics::j2me::dialog::RotateJDialog'->new('javax::swing::JFrame'->new(), 1);
                 $dialog->addWindowListener(do {
-                    package java::awt::event::WindowAdapter::AnonymousN69319 { our @ISA = ('java::awt::event::WindowAdapter', 'java::lang::Object');
+                    package java::awt::event::WindowAdapter::AnonymousN68879 { our @ISA = ('java::awt::event::WindowAdapter', 'java::lang::Object');
                     
 
                     sub windowClosing {
@@ -112,12 +112,12 @@ sub main {
                         exit(0);
                     }
                     }
-                    'java::awt::event::WindowAdapter::AnonymousN69319'->can('new') ? 'java::awt::event::WindowAdapter::AnonymousN69319'->new() : bless({}, 'java::awt::event::WindowAdapter::AnonymousN69319')
+                    'java::awt::event::WindowAdapter::AnonymousN68879'->can('new') ? 'java::awt::event::WindowAdapter::AnonymousN68879'->new() : bless({}, 'java::awt::event::WindowAdapter::AnonymousN68879')
                 });
                 $dialog->setVisible(1);
             }
             }
-            'org::allbinary::thread::ARunnable::AnonymousN69204'->can('new') ? 'org::allbinary::thread::ARunnable::AnonymousN69204'->new() : bless({}, 'org::allbinary::thread::ARunnable::AnonymousN69204')
+            'org::allbinary::thread::ARunnable::AnonymousN68780'->can('new') ? 'org::allbinary::thread::ARunnable::AnonymousN68780'->new() : bless({}, 'org::allbinary::thread::ARunnable::AnonymousN68780')
         });
 }
 
@@ -128,6 +128,21 @@ use org::allbinary::gui::dialog::HashMapJDialogListenerInterface ();
 use org::allbinary::logic::StdUtil ();
 use org::allbinary::logic::communication::log::LogUtil ();
 use org::allbinary::string::CommonStrings ();
+# use java::awt::EventQueue ();
+# use java::awt::Frame ();
+# use java::awt::event::ActionEvent ();
+# use java::awt::event::ActionListener ();
+# use java::awt::event::WindowAdapter ();
+# use java::awt::event::WindowEvent ();
+# use javax::swing::GroupLayout ();
+# use javax::swing::JButton ();
+# use javax::swing::JDialog ();
+# use javax::swing::JFrame ();
+# use javax::swing::JLabel ();
+# use javax::swing::JPanel ();
+# use javax::swing::JTextField ();
+# use javax::swing::LayoutStyle ();
+# use javax::swing::WindowConstants ();
 use java::lang::System ();
 
 1;

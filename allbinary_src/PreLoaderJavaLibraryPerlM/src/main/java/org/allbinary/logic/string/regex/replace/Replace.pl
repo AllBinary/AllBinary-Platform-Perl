@@ -38,8 +38,14 @@ sub new {
     die "No constructor of Replace takes " . scalar(@arguments) . " arguments";
 }
 
-
 sub _new2 {
+    my ($class, @arguments) = @_;
+    return $class->_new2_1(@arguments) if 1 && !ref($arguments[0]) && !ref($arguments[1]);
+    return $class->_new2_2(@arguments);
+}
+
+
+sub _new2_1 {
     my ($class, $key, $value) = @_;
     my $self = bless({}, $class);
     _init_fields($self);
@@ -49,7 +55,7 @@ sub _new2 {
 }
 
 
-sub _new2 {
+sub _new2_2 {
     my ($class, $keys, $values) = @_;
     my $self = bless({}, $class);
     _init_fields($self);
@@ -129,7 +135,7 @@ sub upTo {
             }
         }
         if ($totalNumberOfReplaces > 0) {
-            if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains($org::allbinary::logic::string::regex::replace::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{REPLACE})) {
+            if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{REPLACE})) {
                 $self->{logUtil}->putF("Total Number Of Replaces: " . $totalNumberOfReplaces, $self, $self->{ALL});
             }
         }
@@ -167,7 +173,7 @@ sub line {
                 }
             }
         }
-        if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains($org::allbinary::logic::string::regex::replace::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{REPLACE})) {
+        if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{REPLACE})) {
             $self->{logUtil}->putF("Total Number Of Replaces: " . $totalNumberOfReplaces, $self, $self->{ALL});
         }
         return $replace;
@@ -203,6 +209,7 @@ use org::allbinary::logic::communication::log::LogUtil ();
 use org::allbinary::logic::string::StringMaker ();
 use org::allbinary::logic::string::StringUtil ();
 use org::allbinary::logic::communication::log::config::type::LogConfigTypes ();
+use org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory ();
 use java::lang::System ();
 
 1;

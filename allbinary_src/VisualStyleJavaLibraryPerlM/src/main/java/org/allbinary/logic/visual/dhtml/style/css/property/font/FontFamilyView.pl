@@ -30,7 +30,7 @@ sub new {
 
 sub _new0 {
     my ($class) = @_;
-    my $self = $class->SUPER::new('org::allbinary::logic::visual::dhtml::style::css::property::font::FontFamilyData'->getInstance()->{VALUE});
+    my $self = $class->SUPER::new('org::allbinary::logic::visual::dhtml::style::css::property::CssProperty'->new(java::lang::Object::jstatic($class, 'FontFamilyData')->getInstance()->{VALUE}));
         # super(...) made $self above
     return $self;
 }
@@ -38,15 +38,15 @@ sub _new0 {
 
 sub _new1 {
     my ($class, $node) = @_;
-    my $self = $class->SUPER::new($node);
+    my $self = $class->SUPER::new('org::allbinary::logic::visual::dhtml::style::css::property::CssProperty'->new($node));
         # super(...) made $self above
     return $self;
 }
 
 use java::lang::Object ();
+use org::allbinary::logic::visual::dhtml::style::css::property::CssProperty ();
 use org::allbinary::logic::visual::dhtml::style::css::property::CssPropertyView ();
 use org::w3c::dom::Node ();
-use org::allbinary::logic::visual::dhtml::style::css::property::font::FontFamilyData ();
 
 1;
 

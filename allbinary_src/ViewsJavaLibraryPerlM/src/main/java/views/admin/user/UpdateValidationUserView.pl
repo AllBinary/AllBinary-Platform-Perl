@@ -41,7 +41,7 @@ sub isValid {
     my ($self) = @_;
         try {
             if (!defined('org::allbinary::data::tables::user::UserEntityFactory'->getInstance()->getUser($self->{user}->getUserName()))) {
-                if ($views::admin::user::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($views::admin::user::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{VIEW})) {
+                if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{VIEW})) {
                     $self->{logUtil}->putF("User does not exist", $self, $self->{commonStrings}->{IS_VALID});
                 }
                 return 0;
@@ -51,7 +51,7 @@ sub isValid {
             }
             return 1;
         } catch ($e) {
-            if ($views::admin::user::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($views::admin::user::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{VIEWERROR})) {
+            if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{VIEWERROR})) {
                 $self->{logUtil}->put("Failed to validate", $self, $self->{commonStrings}->{IS_VALID}, $e);
             }
             return 0;
@@ -64,7 +64,7 @@ sub validationInfo {
         try {
             my $stringBuffer = 'org::allbinary::logic::string::StringMaker'->new();
             if (!defined('org::allbinary::data::tables::user::UserEntityFactory'->getInstance()->getUser($self->{user}->getUserName()))) {
-                if ($views::admin::user::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($views::admin::user::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{VIEW})) {
+                if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{VIEW})) {
                     $self->{logUtil}->putF("User does not exist", $self, "validationInfo()");
                 }
                 $stringBuffer->append("Unable to update user that does not exist.<br />");
@@ -74,7 +74,7 @@ sub validationInfo {
             }
             return $stringBuffer->toString();
         } catch ($e) {
-            if ($views::admin::user::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($views::admin::user::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{VIEWERROR})) {
+            if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{VIEWERROR})) {
                 $self->{logUtil}->put("Failed to generate validation error info", $self, "validationInfo()", $e);
             }
             return "Error Getting Validation Info";
@@ -97,7 +97,7 @@ sub toValidationInfoNode {
 # throws Exception
 sub view {
     my ($self) = @_;
-        return $self->{views}->{ValidationOnlyTempUtil}->getInstance()->view($self);
+        return 'views::ValidationOnlyTempUtil'->getInstance()->view($self);
 }
 
 
@@ -118,6 +118,9 @@ use org::allbinary::logic::visual::transform::info::TransformInfoInterface ();
 use org::w3c::dom::Document ();
 use org::w3c::dom::Node ();
 use views::business::context::HttpContextView ();
+use org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory ();
+use org::allbinary::logic::communication::log::config::type::LogConfigTypes ();
+use views::ValidationOnlyTempUtil ();
 
 1;
 

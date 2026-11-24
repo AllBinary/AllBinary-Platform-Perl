@@ -19,7 +19,7 @@ use feature 'try';
 no warnings 'experimental::try';
 use parent -norequire,'java::lang::Object';
 
-tie our $NULL_RELATIVE_RELATIONSHIP, 'java::lang::LazyStatic', sub { 'org::allbinary::graphics::RelativeRelationship'->new('org::allbinary::graphics::PointFactory'->getInstance()->{ZERO_ZERO}, 'org::allbinary::util::BasicArrayListUtil'->getInstance()->getImmutableInstance()) };
+tie our $NULL_RELATIVE_RELATIONSHIP, 'java::lang::LazyStatic', sub { 'org::allbinary::graphics::RelativeRelationship'->new(java::lang::Object::jstatic('org::allbinary::graphics::RelativeRelationship', 'PointFactory')->getInstance()->{ZERO_ZERO}, 'org::allbinary::util::BasicArrayListUtil'->getInstance()->getImmutableInstance()) };
 
 sub _init_fields {
     my ($self) = @_;
@@ -75,7 +75,6 @@ use java::lang::Object ();
 use java::lang::LazyStatic ();
 use org::allbinary::util::BasicArrayList ();
 use org::allbinary::util::BasicArrayListUtil ();
-use org::allbinary::graphics::PointFactory ();
 
 1;
 

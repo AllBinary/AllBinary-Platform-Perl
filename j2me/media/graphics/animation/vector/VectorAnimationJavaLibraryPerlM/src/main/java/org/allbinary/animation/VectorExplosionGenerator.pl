@@ -30,7 +30,7 @@ sub _init_fields {
 }
 
 
-sub getInstance {
+sub getInstance_j0 {
     my ($class) = @_;
         return $org::allbinary::animation::VectorExplosionGenerator::instance;
 }
@@ -60,13 +60,19 @@ sub createList {
 
 
 # throws Exception
-# Java overloaded method: Perl keeps the last definition
-sub getInstance {
+sub getInstance_j3 {
     my ($self, $points, $howMuch, $type) = @_;
         my $pointsBasicArrayList = $self->getInstanceStartFrame($points, $howMuch, $type, 1);
         my $tempBasicArrayList = $pointsBasicArrayList->{objectArray}->[0];
         my $newPoints = $self->{vectorAnimationUtil}->toAnimationArrayFromListOfPointListWithPointsPerFrame($pointsBasicArrayList, $tempBasicArrayList->size());
         return $newPoints;
+}
+
+sub getInstance {
+    my ($invocant, @arguments) = @_;
+    return $invocant->getInstance_j0(@arguments) if scalar(@arguments) == 0;
+    return $invocant->getInstance_j3(@arguments) if scalar(@arguments) == 3;
+    die "No method getInstance takes " . scalar(@arguments) . " arguments";
 }
 
 

@@ -43,7 +43,7 @@ sub isValid {
             my $result = $method->invoke($self->getHelper(), undef);
             return $result;
         } catch ($e) {
-            if ($tags::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($tags::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{SQLTAGSERROR})) {
+            if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{SQLTAGSERROR})) {
                 $self->{logUtil}->put($self->{commonStrings}->{EXCEPTION}, $self, $self->{commonStrings}->{IS_VALID}, $e);
             }
             die $e;
@@ -65,7 +65,7 @@ sub doStartTag {
             }
         } catch ($e) {
             'org::allbinary::logic::communication::http::request::AbResponseHandler'->sendJspTagLicensingRedirect($self->{pageContext}, $e);
-            return $self->{SKIP_BODY};
+            return java::lang::Object::jstatic('tags::XmlValidationTransformTag', 'SKIP_BODY');
         }
 }
 
@@ -75,6 +75,8 @@ use java::lang::Object ();
 use org::allbinary::logic::communication::http::request::AbResponseHandler ();
 use org::allbinary::logic::communication::log::LogUtil ();
 use org::allbinary::logic::system::security::licensing::LicensingException ();
+use org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory ();
+use org::allbinary::logic::communication::log::config::type::LogConfigTypes ();
 use tags::TransformTag ();
 
 1;

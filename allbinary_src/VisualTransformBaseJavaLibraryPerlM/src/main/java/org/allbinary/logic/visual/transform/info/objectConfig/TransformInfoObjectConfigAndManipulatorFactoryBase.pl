@@ -34,25 +34,36 @@ sub new {
 
 
 # throws Exception
-sub getInstance {
+sub getInstance_j3_1 {
     my ($self, $abeClientInformation, $transformInfoInterface, $objectConfigFileAbPath) = @_;
         die ("RuntimeException");
 }
 
 
 # throws Exception
-# Java overloaded method: Perl keeps the last definition
-sub getInstance {
+sub getInstance_j2 {
     my ($self, $abeClientInformation, $transformInfoInterface) = @_;
         die ("RuntimeException");
 }
 
 
 # throws Exception
-# Java overloaded method: Perl keeps the last definition
-sub getInstance {
+sub getInstance_j3_2 {
     my ($self, $abeClientInformation, $transformInfoInterface, $document) = @_;
         die ("RuntimeException");
+}
+
+sub getInstance {
+    my ($invocant, @arguments) = @_;
+    return $invocant->getInstance_j3(@arguments) if scalar(@arguments) == 3;
+    return $invocant->getInstance_j2(@arguments) if scalar(@arguments) == 2;
+    die "No method getInstance takes " . scalar(@arguments) . " arguments";
+}
+
+sub getInstance_j3 {
+    my ($invocant, @arguments) = @_;
+    return $invocant->getInstance_j3_1(@arguments) if 1 && (!defined($arguments[0]) || (ref($arguments[0]) && ref($arguments[0]) ne 'ARRAY')) && (!defined($arguments[1]) || (ref($arguments[1]) && ref($arguments[1]) ne 'ARRAY')) && (!defined($arguments[2]) || (ref($arguments[2]) && ref($arguments[2]) ne 'ARRAY'));
+    return $invocant->getInstance_j3_2(@arguments);
 }
 
 use java::lang::Object ();

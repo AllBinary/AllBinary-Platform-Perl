@@ -53,7 +53,7 @@ sub update {
         {; # synchronized ($self->{lock})
             for (my $index = $self->{list}->size() - 1; $index >= 0; $index--) {
                 my $openGLESImage = ($self->{list}->{objectArray}->[$index]);
-                if ($openGLESImage != $org::allbinary::image::opengles::OpenGLESImage::NULL_OPENGL_IMAGE) {
+                if ($openGLESImage != java::lang::Object::jstatic('org::allbinary::image::opengles::OpenGLImageCache', 'OpenGLESImage')->{NULL_OPENGL_IMAGE}) {
                     $openGLESImage->set($gl);
                 }
             }
@@ -132,7 +132,6 @@ use org::allbinary::image::ImageCache ();
 use org::allbinary::image::ImageCacheFactory ();
 use org::allbinary::image::PreResourceImageUtil ();
 use org::allbinary::thread::SynchObject ();
-use org::allbinary::image::opengles::OpenGLESImage ();
 
 1;
 

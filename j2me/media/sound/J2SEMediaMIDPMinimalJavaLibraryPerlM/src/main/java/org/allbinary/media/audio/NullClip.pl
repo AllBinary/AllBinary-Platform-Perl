@@ -29,14 +29,13 @@ sub new {
 
 
 # throws LineUnavailableException
-sub open {
+sub open_j4 {
     my ($self, $format, $data, $offset, $bufferSize) = @_;
 }
 
 
 # throws LineUnavailableException, IOException
-# Java overloaded method: Perl keeps the last definition
-sub open {
+sub open_j1 {
     my ($self, $stream) = @_;
 }
 
@@ -149,14 +148,21 @@ sub getLevel {
 
 sub getLineInfo {
     my ($self) = @_;
-        return 'javax::sound::sampled::Line::Info'->new(ref($self), $org::allbinary::media::audio::NullAudioFormat::NULL_AUDIO_FORMAT);
+        return 'javax::sound::sampled::DataLine::Info'->new(ref($self), $org::allbinary::media::audio::NullAudioFormat::NULL_AUDIO_FORMAT);
 }
 
 
 # throws LineUnavailableException
-# Java overloaded method: Perl keeps the last definition
-sub open {
+sub open_j0 {
     my ($self) = @_;
+}
+
+sub open {
+    my ($invocant, @arguments) = @_;
+    return $invocant->open_j4(@arguments) if scalar(@arguments) == 4;
+    return $invocant->open_j1(@arguments) if scalar(@arguments) == 1;
+    return $invocant->open_j0(@arguments) if scalar(@arguments) == 0;
+    die "No method open takes " . scalar(@arguments) . " arguments";
 }
 
 
@@ -206,8 +212,8 @@ use java::lang::LazyStatic ();
 # use javax::sound::sampled::BooleanControl ();
 # use javax::sound::sampled::Clip ();
 # use javax::sound::sampled::Control ();
-# use javax::sound::sampled::Control::Type ();
-# use javax::sound::sampled::Line::Info ();
+# use javax::sound::sampled::Control ();
+# use javax::sound::sampled::DataLine ();
 # use javax::sound::sampled::LineListener ();
 # use javax::sound::sampled::LineUnavailableException ();
 use org::allbinary::media::audio::NullJ2SEControl ();

@@ -32,14 +32,14 @@ sub new {
     my $self = bless({}, $class);
     _init_fields($self);
         $self->{vector} = 'org::allbinary::util::BasicArrayListD'->new();
-        $self->{defaultListModel} = 'org::allbinary::input::automation::module::DefaultListModel'->new();
+        $self->{defaultListModel} = 'javax::swing::DefaultListModel'->new();
     return $self;
 }
 
 
 sub initDefaultModelList {
     my ($self) = @_;
-        $self->{defaultListModel} = 'org::allbinary::input::automation::module::DefaultListModel'->new();
+        $self->{defaultListModel} = 'javax::swing::DefaultListModel'->new();
         my $size = $self->{vector}->size();
         for (my $index = 0; $index < $size; $index++) {
             my $moduleName = $self->{vector}->get($index);
@@ -68,9 +68,9 @@ sub remove {
 use java::lang::Object ();
 use org::allbinary::util::BasicArrayList ();
 use org::allbinary::util::BasicArrayListD ();
-# use javax::swing ();
+# use javax::swing::DefaultListModel ();
+# use javax::swing::ListModel ();
 use org::allbinary::logic::StdUtil ();
-use org::allbinary::input::automation::module::DefaultListModel ();
 
 1;
 

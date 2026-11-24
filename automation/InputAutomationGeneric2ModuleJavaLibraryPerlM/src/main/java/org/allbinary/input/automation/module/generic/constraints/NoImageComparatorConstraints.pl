@@ -42,7 +42,7 @@ sub isImageValid {
 }
 
 use java::lang::Object ();
-# use java::awt ();
+# use java::awt::Color ();
 # use java::awt::image::BufferedImage ();
 use org::allbinary::graphics::GPoint ();
 use org::allbinary::input::automation::module::ImageComparatorConstraints ();

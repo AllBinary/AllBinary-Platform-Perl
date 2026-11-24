@@ -206,7 +206,6 @@ use org::allbinary::logic::communication::log::PreLogUtil ();
 use org::allbinary::string::CommonStrings ();
 use org::microemu::android::device::AndroidImageInterface ();
 use org::microemu::android::device::AndroidImmutableImage ();
-use org::allbinary::emulator::device::TrueTypeFontUtilBase ();
 
 1;
 

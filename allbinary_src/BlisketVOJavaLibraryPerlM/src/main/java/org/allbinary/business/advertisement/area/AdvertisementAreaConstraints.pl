@@ -31,7 +31,7 @@ sub new {
     my ($class, $document) = @_;
     my $self = bless({}, $class);
     _init_fields($self);
-        my $node = 'org::allbinary::data::tree::dom::DomSearchHelper'->getNode('org::allbinary::business::advertisement::area::AdvertisementAreaData'->getInstance()->{NAME}, $document->getChildNodes());
+        my $node = 'org::allbinary::data::tree::dom::DomSearchHelper'->getNode(java::lang::Object::jstatic('org::allbinary::business::advertisement::area::AdvertisementAreaConstraints', 'AdvertisementAreaData')->getInstance()->{NAME}, $document->getChildNodes());
         $self->{displayInBrowserContraintsInterface} = 'org::allbinary::logic::control::contraints::display::browser::DisplayInBrowserContraints'->new($node);
         $self->{twoDimensionConstraintsInterface} = 'org::allbinary::logic::control::contraints::size::TwoDimensionalConstraint'->new($node);
     return $self;
@@ -44,7 +44,7 @@ sub setDisplayInBrowserContraints {
 }
 
 
-sub getTwoDimensionContraints {
+sub getTwoDimensionContraints_j1 {
     my ($self, $twoDimensionConstraintsInterface) = @_;
         $self->{twoDimensionConstraintsInterface} = $twoDimensionConstraintsInterface;
 }
@@ -56,10 +56,16 @@ sub getDisplayInBrowserContraints {
 }
 
 
-# Java overloaded method: Perl keeps the last definition
-sub getTwoDimensionContraints {
+sub getTwoDimensionContraints_j0 {
     my ($self) = @_;
         return $self->{twoDimensionConstraintsInterface};
+}
+
+sub getTwoDimensionContraints {
+    my ($invocant, @arguments) = @_;
+    return $invocant->getTwoDimensionContraints_j1(@arguments) if scalar(@arguments) == 1;
+    return $invocant->getTwoDimensionContraints_j0(@arguments) if scalar(@arguments) == 0;
+    die "No method getTwoDimensionContraints takes " . scalar(@arguments) . " arguments";
 }
 
 use java::lang::Object ();
@@ -71,7 +77,6 @@ use org::allbinary::logic::control::contraints::size::TwoDimensionalConstraintIn
 use org::w3c::dom::Document ();
 use org::w3c::dom::Node ();
 use org::allbinary::business::advertisement::area::AdvertisementAreaConstraintsInterface ();
-use org::allbinary::business::advertisement::area::AdvertisementAreaData ();
 
 1;
 

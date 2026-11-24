@@ -91,9 +91,9 @@ sub new {
     my $self = $class->SUPER::new();
     _init_fields($self);
         $self->initComponents();
-        $self->setSize('org::allbinary::graphics::j2me::Dimension'->new(550, 400));
-        $self->{mainJPanel}->setSize('org::allbinary::graphics::j2me::Dimension'->new(550, 400));
-        $self->{jTabbedPane}->setSize('org::allbinary::graphics::j2me::Dimension'->new(550, 400));
+        $self->setSize('java::awt::Dimension'->new(550, 400));
+        $self->{mainJPanel}->setSize('java::awt::Dimension'->new(550, 400));
+        $self->{jTabbedPane}->setSize('java::awt::Dimension'->new(550, 400));
         $self->{fileJDialog} = 'org::allbinary::gui::dialog::FileJDialog'->new();
         $self->{fileJDialog}->addFinishedListener($self);
         $self->{rotateJDialog} = 'org::allbinary::graphics::j2me::dialog::RotateJDialog'->new($self, 0);
@@ -151,7 +151,7 @@ sub initComponents {
         $self->{autoShrinkJMenuItem} = 'javax::swing::JMenuItem'->new();
         $self->{jMenu1} = 'javax::swing::JMenu'->new();
         $self->addWindowListener(do {
-            package java::awt::event::WindowAdapter::AnonymousN69591 { our @ISA = ('java::awt::event::WindowAdapter', 'java::lang::Object');
+            package java::awt::event::WindowAdapter::AnonymousN69289 { our @ISA = ('java::awt::event::WindowAdapter', 'java::lang::Object');
             
 
             sub windowClosing {
@@ -159,11 +159,11 @@ sub initComponents {
                 $self->exitForm($evt);
             }
             }
-            'java::awt::event::WindowAdapter::AnonymousN69591'->can('new') ? 'java::awt::event::WindowAdapter::AnonymousN69591'->new() : bless({}, 'java::awt::event::WindowAdapter::AnonymousN69591')
+            'java::awt::event::WindowAdapter::AnonymousN69289'->can('new') ? 'java::awt::event::WindowAdapter::AnonymousN69289'->new() : bless({}, 'java::awt::event::WindowAdapter::AnonymousN69289')
         });
         $self->{jButton2}->setText("New");
         $self->{jButton2}->addActionListener(do {
-            package java::awt::event::ActionListener::AnonymousN69778 { our @ISA = ('java::awt::event::ActionListener', 'java::lang::Object');
+            package java::awt::event::ActionListener::AnonymousN69428 { our @ISA = ('java::awt::event::ActionListener', 'java::lang::Object');
             
 
             sub actionPerformed {
@@ -171,12 +171,12 @@ sub initComponents {
                 $self->jButton2ActionPerformed($evt);
             }
             }
-            'java::awt::event::ActionListener::AnonymousN69778'->can('new') ? 'java::awt::event::ActionListener::AnonymousN69778'->new() : bless({}, 'java::awt::event::ActionListener::AnonymousN69778')
+            'java::awt::event::ActionListener::AnonymousN69428'->can('new') ? 'java::awt::event::ActionListener::AnonymousN69428'->new() : bless({}, 'java::awt::event::ActionListener::AnonymousN69428')
         });
         $self->{jToolBar1}->add($self->{jButton2});
         $self->{saveJButton}->setText("Save");
         $self->{saveJButton}->addActionListener(do {
-            package java::awt::event::ActionListener::AnonymousN70002 { our @ISA = ('java::awt::event::ActionListener', 'java::lang::Object');
+            package java::awt::event::ActionListener::AnonymousN69604 { our @ISA = ('java::awt::event::ActionListener', 'java::lang::Object');
             
 
             sub actionPerformed {
@@ -184,12 +184,12 @@ sub initComponents {
                 $self->saveJButtonActionPerformed($evt);
             }
             }
-            'java::awt::event::ActionListener::AnonymousN70002'->can('new') ? 'java::awt::event::ActionListener::AnonymousN70002'->new() : bless({}, 'java::awt::event::ActionListener::AnonymousN70002')
+            'java::awt::event::ActionListener::AnonymousN69604'->can('new') ? 'java::awt::event::ActionListener::AnonymousN69604'->new() : bless({}, 'java::awt::event::ActionListener::AnonymousN69604')
         });
         $self->{jToolBar1}->add($self->{saveJButton});
         $self->{jButton1}->setText("Export");
         $self->{jButton1}->addActionListener(do {
-            package java::awt::event::ActionListener::AnonymousN70226 { our @ISA = ('java::awt::event::ActionListener', 'java::lang::Object');
+            package java::awt::event::ActionListener::AnonymousN69780 { our @ISA = ('java::awt::event::ActionListener', 'java::lang::Object');
             
 
             sub actionPerformed {
@@ -197,12 +197,12 @@ sub initComponents {
                 $self->jButton1ActionPerformed($evt);
             }
             }
-            'java::awt::event::ActionListener::AnonymousN70226'->can('new') ? 'java::awt::event::ActionListener::AnonymousN70226'->new() : bless({}, 'java::awt::event::ActionListener::AnonymousN70226')
+            'java::awt::event::ActionListener::AnonymousN69780'->can('new') ? 'java::awt::event::ActionListener::AnonymousN69780'->new() : bless({}, 'java::awt::event::ActionListener::AnonymousN69780')
         });
         $self->{jToolBar1}->add($self->{jButton1});
         $self->{openJButton}->setText("Open");
         $self->{openJButton}->addActionListener(do {
-            package java::awt::event::ActionListener::AnonymousN70450 { our @ISA = ('java::awt::event::ActionListener', 'java::lang::Object');
+            package java::awt::event::ActionListener::AnonymousN69956 { our @ISA = ('java::awt::event::ActionListener', 'java::lang::Object');
             
 
             sub actionPerformed {
@@ -210,7 +210,7 @@ sub initComponents {
                 $self->openJButtonActionPerformed($evt);
             }
             }
-            'java::awt::event::ActionListener::AnonymousN70450'->can('new') ? 'java::awt::event::ActionListener::AnonymousN70450'->new() : bless({}, 'java::awt::event::ActionListener::AnonymousN70450')
+            'java::awt::event::ActionListener::AnonymousN69956'->can('new') ? 'java::awt::event::ActionListener::AnonymousN69956'->new() : bless({}, 'java::awt::event::ActionListener::AnonymousN69956')
         });
         $self->{jToolBar1}->add($self->{openJButton});
         $self->{jButton3}->setText("Copy");
@@ -225,7 +225,7 @@ sub initComponents {
         $self->{jToolBar1}->add($self->{animateJButton});
         $self->{playJButton}->setText("Play");
         $self->{playJButton}->addMouseListener(do {
-            package java::awt::event::MouseAdapter::AnonymousN71009 { our @ISA = ('java::awt::event::MouseAdapter', 'java::lang::Object');
+            package java::awt::event::MouseAdapter::AnonymousN70467 { our @ISA = ('java::awt::event::MouseAdapter', 'java::lang::Object');
             
 
             sub mousePressed {
@@ -233,12 +233,12 @@ sub initComponents {
                 $self->playJButtonMousePressed($evt);
             }
             }
-            'java::awt::event::MouseAdapter::AnonymousN71009'->can('new') ? 'java::awt::event::MouseAdapter::AnonymousN71009'->new() : bless({}, 'java::awt::event::MouseAdapter::AnonymousN71009')
+            'java::awt::event::MouseAdapter::AnonymousN70467'->can('new') ? 'java::awt::event::MouseAdapter::AnonymousN70467'->new() : bless({}, 'java::awt::event::MouseAdapter::AnonymousN70467')
         });
         $self->{jToolBar1}->add($self->{playJButton});
         $self->{stopJjButton}->setText("Stop");
         $self->{stopJjButton}->addMouseListener(do {
-            package java::awt::event::MouseAdapter::AnonymousN71233 { our @ISA = ('java::awt::event::MouseAdapter', 'java::lang::Object');
+            package java::awt::event::MouseAdapter::AnonymousN70643 { our @ISA = ('java::awt::event::MouseAdapter', 'java::lang::Object');
             
 
             sub mousePressed {
@@ -246,15 +246,15 @@ sub initComponents {
                 $self->stopJjButtonMousePressed($evt);
             }
             }
-            'java::awt::event::MouseAdapter::AnonymousN71233'->can('new') ? 'java::awt::event::MouseAdapter::AnonymousN71233'->new() : bless({}, 'java::awt::event::MouseAdapter::AnonymousN71233')
+            'java::awt::event::MouseAdapter::AnonymousN70643'->can('new') ? 'java::awt::event::MouseAdapter::AnonymousN70643'->new() : bless({}, 'java::awt::event::MouseAdapter::AnonymousN70643')
         });
         $self->{jToolBar1}->add($self->{stopJjButton});
-        $self->getContentPane()->add($self->{jToolBar1}, $org::allbinary::graphics::j2me::java::awt->{BorderLayout}->{NORTH});
+        $self->getContentPane()->add($self->{jToolBar1}, $java::awt::BorderLayout::NORTH);
         $self->{jPanel1}->setLayout('java::awt::GridLayout'->new(1, 0));
         $self->{mainJPanel}->setLayout('java::awt::GridLayout'->new(1, 0));
         $self->{jTabbedPane}->setMinimumSize('java::awt::Dimension'->new(550, 400));
         $self->{jTabbedPane}->addChangeListener(do {
-            package javax::swing::event::ChangeListener::AnonymousN71688 { our @ISA = ('javax::swing::event::ChangeListener', 'java::lang::Object');
+            package javax::swing::event::ChangeListener::AnonymousN70986 { our @ISA = ('javax::swing::event::ChangeListener', 'java::lang::Object');
             
 
             sub stateChanged {
@@ -262,18 +262,18 @@ sub initComponents {
                 $self->jTabbedPaneStateChanged($evt);
             }
             }
-            'javax::swing::event::ChangeListener::AnonymousN71688'->can('new') ? 'javax::swing::event::ChangeListener::AnonymousN71688'->new() : bless({}, 'javax::swing::event::ChangeListener::AnonymousN71688')
+            'javax::swing::event::ChangeListener::AnonymousN70986'->can('new') ? 'javax::swing::event::ChangeListener::AnonymousN70986'->new() : bless({}, 'javax::swing::event::ChangeListener::AnonymousN70986')
         });
         $self->{mainJPanel}->add($self->{jTabbedPane});
         $self->{jPanel1}->add($self->{mainJPanel});
-        $self->getContentPane()->add($self->{jPanel1}, $org::allbinary::graphics::j2me::java::awt->{BorderLayout}->{CENTER});
+        $self->getContentPane()->add($self->{jPanel1}, $java::awt::BorderLayout::CENTER);
         $self->{statusJPanel}->setLayout('java::awt::GridLayout'->new(1, 0));
         $org::allbinary::graphics::j2me::MyFrame::statusJLabel->setText("Status Bar");
         $self->{statusJPanel}->add($org::allbinary::graphics::j2me::MyFrame::statusJLabel);
-        $self->getContentPane()->add($self->{statusJPanel}, $org::allbinary::graphics::j2me::java::awt->{BorderLayout}->{SOUTH});
+        $self->getContentPane()->add($self->{statusJPanel}, $java::awt::BorderLayout::SOUTH);
         $self->{fileJMenu}->setText("File");
         $self->{fileJMenu}->addActionListener(do {
-            package java::awt::event::ActionListener::AnonymousN72223 { our @ISA = ('java::awt::event::ActionListener', 'java::lang::Object');
+            package java::awt::event::ActionListener::AnonymousN71425 { our @ISA = ('java::awt::event::ActionListener', 'java::lang::Object');
             
 
             sub actionPerformed {
@@ -281,11 +281,11 @@ sub initComponents {
                 $self->fileJMenuActionPerformed($evt);
             }
             }
-            'java::awt::event::ActionListener::AnonymousN72223'->can('new') ? 'java::awt::event::ActionListener::AnonymousN72223'->new() : bless({}, 'java::awt::event::ActionListener::AnonymousN72223')
+            'java::awt::event::ActionListener::AnonymousN71425'->can('new') ? 'java::awt::event::ActionListener::AnonymousN71425'->new() : bless({}, 'java::awt::event::ActionListener::AnonymousN71425')
         });
         $self->{newJMenuItem}->setText("New");
         $self->{newJMenuItem}->addActionListener(do {
-            package java::awt::event::ActionListener::AnonymousN72410 { our @ISA = ('java::awt::event::ActionListener', 'java::lang::Object');
+            package java::awt::event::ActionListener::AnonymousN71564 { our @ISA = ('java::awt::event::ActionListener', 'java::lang::Object');
             
 
             sub actionPerformed {
@@ -293,12 +293,12 @@ sub initComponents {
                 $self->newJMenuItemActionPerformed($evt);
             }
             }
-            'java::awt::event::ActionListener::AnonymousN72410'->can('new') ? 'java::awt::event::ActionListener::AnonymousN72410'->new() : bless({}, 'java::awt::event::ActionListener::AnonymousN72410')
+            'java::awt::event::ActionListener::AnonymousN71564'->can('new') ? 'java::awt::event::ActionListener::AnonymousN71564'->new() : bless({}, 'java::awt::event::ActionListener::AnonymousN71564')
         });
         $self->{fileJMenu}->add($self->{newJMenuItem});
         $self->{openJMenuItem}->setText("Open");
         $self->{openJMenuItem}->addActionListener(do {
-            package java::awt::event::ActionListener::AnonymousN72634 { our @ISA = ('java::awt::event::ActionListener', 'java::lang::Object');
+            package java::awt::event::ActionListener::AnonymousN71740 { our @ISA = ('java::awt::event::ActionListener', 'java::lang::Object');
             
 
             sub actionPerformed {
@@ -306,12 +306,12 @@ sub initComponents {
                 $self->openJMenuItemActionPerformed($evt);
             }
             }
-            'java::awt::event::ActionListener::AnonymousN72634'->can('new') ? 'java::awt::event::ActionListener::AnonymousN72634'->new() : bless({}, 'java::awt::event::ActionListener::AnonymousN72634')
+            'java::awt::event::ActionListener::AnonymousN71740'->can('new') ? 'java::awt::event::ActionListener::AnonymousN71740'->new() : bless({}, 'java::awt::event::ActionListener::AnonymousN71740')
         });
         $self->{fileJMenu}->add($self->{openJMenuItem});
         $self->{saveJMenuItem}->setText("Save");
         $self->{saveJMenuItem}->addMouseListener(do {
-            package java::awt::event::MouseAdapter::AnonymousN72858 { our @ISA = ('java::awt::event::MouseAdapter', 'java::lang::Object');
+            package java::awt::event::MouseAdapter::AnonymousN71916 { our @ISA = ('java::awt::event::MouseAdapter', 'java::lang::Object');
             
 
             sub mousePressed {
@@ -319,14 +319,14 @@ sub initComponents {
                 $self->saveJMenuItemMousePressed($evt);
             }
             }
-            'java::awt::event::MouseAdapter::AnonymousN72858'->can('new') ? 'java::awt::event::MouseAdapter::AnonymousN72858'->new() : bless({}, 'java::awt::event::MouseAdapter::AnonymousN72858')
+            'java::awt::event::MouseAdapter::AnonymousN71916'->can('new') ? 'java::awt::event::MouseAdapter::AnonymousN71916'->new() : bless({}, 'java::awt::event::MouseAdapter::AnonymousN71916')
         });
         $self->{fileJMenu}->add($self->{saveJMenuItem});
         $self->{saveAsJMenuItem}->setText("SaveAs");
         $self->{fileJMenu}->add($self->{saveAsJMenuItem});
         $self->{exportJMenuItem1}->setText("Export");
         $self->{exportJMenuItem1}->addActionListener(do {
-            package java::awt::event::ActionListener::AnonymousN73149 { our @ISA = ('java::awt::event::ActionListener', 'java::lang::Object');
+            package java::awt::event::ActionListener::AnonymousN72159 { our @ISA = ('java::awt::event::ActionListener', 'java::lang::Object');
             
 
             sub actionPerformed {
@@ -334,12 +334,12 @@ sub initComponents {
                 $self->exportJMenuItem1ActionPerformed($evt);
             }
             }
-            'java::awt::event::ActionListener::AnonymousN73149'->can('new') ? 'java::awt::event::ActionListener::AnonymousN73149'->new() : bless({}, 'java::awt::event::ActionListener::AnonymousN73149')
+            'java::awt::event::ActionListener::AnonymousN72159'->can('new') ? 'java::awt::event::ActionListener::AnonymousN72159'->new() : bless({}, 'java::awt::event::ActionListener::AnonymousN72159')
         });
         $self->{fileJMenu}->add($self->{exportJMenuItem1});
         $self->{exitJMenuItem}->setText("Exit");
         $self->{exitJMenuItem}->addActionListener(do {
-            package java::awt::event::ActionListener::AnonymousN73373 { our @ISA = ('java::awt::event::ActionListener', 'java::lang::Object');
+            package java::awt::event::ActionListener::AnonymousN72335 { our @ISA = ('java::awt::event::ActionListener', 'java::lang::Object');
             
 
             sub actionPerformed {
@@ -347,14 +347,14 @@ sub initComponents {
                 $self->exitJMenuItemActionPerformed($evt);
             }
             }
-            'java::awt::event::ActionListener::AnonymousN73373'->can('new') ? 'java::awt::event::ActionListener::AnonymousN73373'->new() : bless({}, 'java::awt::event::ActionListener::AnonymousN73373')
+            'java::awt::event::ActionListener::AnonymousN72335'->can('new') ? 'java::awt::event::ActionListener::AnonymousN72335'->new() : bless({}, 'java::awt::event::ActionListener::AnonymousN72335')
         });
         $self->{fileJMenu}->add($self->{exitJMenuItem});
         $self->{menuJMenuBar}->add($self->{fileJMenu});
         $self->{viewJMenu}->setText("View");
         $self->{zoomInJMenuItem}->setText("Zoom In");
         $self->{zoomInJMenuItem}->addMouseListener(do {
-            package java::awt::event::MouseAdapter::AnonymousN73664 { our @ISA = ('java::awt::event::MouseAdapter', 'java::lang::Object');
+            package java::awt::event::MouseAdapter::AnonymousN72578 { our @ISA = ('java::awt::event::MouseAdapter', 'java::lang::Object');
             
 
             sub mousePressed {
@@ -362,12 +362,12 @@ sub initComponents {
                 $self->zoomInJMenuItemMousePressed($evt);
             }
             }
-            'java::awt::event::MouseAdapter::AnonymousN73664'->can('new') ? 'java::awt::event::MouseAdapter::AnonymousN73664'->new() : bless({}, 'java::awt::event::MouseAdapter::AnonymousN73664')
+            'java::awt::event::MouseAdapter::AnonymousN72578'->can('new') ? 'java::awt::event::MouseAdapter::AnonymousN72578'->new() : bless({}, 'java::awt::event::MouseAdapter::AnonymousN72578')
         });
         $self->{viewJMenu}->add($self->{zoomInJMenuItem});
         $self->{zoomOutJMenuItem}->setText("Zoom Out");
         $self->{zoomOutJMenuItem}->addMouseListener(do {
-            package java::awt::event::MouseAdapter::AnonymousN73888 { our @ISA = ('java::awt::event::MouseAdapter', 'java::lang::Object');
+            package java::awt::event::MouseAdapter::AnonymousN72754 { our @ISA = ('java::awt::event::MouseAdapter', 'java::lang::Object');
             
 
             sub mousePressed {
@@ -375,14 +375,14 @@ sub initComponents {
                 $self->zoomOutJMenuItemMousePressed($evt);
             }
             }
-            'java::awt::event::MouseAdapter::AnonymousN73888'->can('new') ? 'java::awt::event::MouseAdapter::AnonymousN73888'->new() : bless({}, 'java::awt::event::MouseAdapter::AnonymousN73888')
+            'java::awt::event::MouseAdapter::AnonymousN72754'->can('new') ? 'java::awt::event::MouseAdapter::AnonymousN72754'->new() : bless({}, 'java::awt::event::MouseAdapter::AnonymousN72754')
         });
         $self->{viewJMenu}->add($self->{zoomOutJMenuItem});
         $self->{menuJMenuBar}->add($self->{viewJMenu});
         $self->{objectJMenu}->setText("Objects");
         $self->{explodeAllJMenuItem}->setText("Explode All");
         $self->{explodeAllJMenuItem}->addMouseListener(do {
-            package java::awt::event::MouseAdapter::AnonymousN74179 { our @ISA = ('java::awt::event::MouseAdapter', 'java::lang::Object');
+            package java::awt::event::MouseAdapter::AnonymousN72997 { our @ISA = ('java::awt::event::MouseAdapter', 'java::lang::Object');
             
 
             sub mousePressed {
@@ -390,13 +390,13 @@ sub initComponents {
                 $self->explodeAllJMenuItemMousePressed($evt);
             }
             }
-            'java::awt::event::MouseAdapter::AnonymousN74179'->can('new') ? 'java::awt::event::MouseAdapter::AnonymousN74179'->new() : bless({}, 'java::awt::event::MouseAdapter::AnonymousN74179')
+            'java::awt::event::MouseAdapter::AnonymousN72997'->can('new') ? 'java::awt::event::MouseAdapter::AnonymousN72997'->new() : bless({}, 'java::awt::event::MouseAdapter::AnonymousN72997')
         });
         $self->{objectJMenu}->add($self->{explodeAllJMenuItem});
         $self->{menuJMenuBar}->add($self->{objectJMenu});
         $self->{frameJMenu}->setText("Frame");
         $self->{frameJMenu}->addActionListener(do {
-            package java::awt::event::ActionListener::AnonymousN74440 { our @ISA = ('java::awt::event::ActionListener', 'java::lang::Object');
+            package java::awt::event::ActionListener::AnonymousN73210 { our @ISA = ('java::awt::event::ActionListener', 'java::lang::Object');
             
 
             sub actionPerformed {
@@ -404,7 +404,7 @@ sub initComponents {
                 $self->frameJMenuActionPerformed($evt);
             }
             }
-            'java::awt::event::ActionListener::AnonymousN74440'->can('new') ? 'java::awt::event::ActionListener::AnonymousN74440'->new() : bless({}, 'java::awt::event::ActionListener::AnonymousN74440')
+            'java::awt::event::ActionListener::AnonymousN73210'->can('new') ? 'java::awt::event::ActionListener::AnonymousN73210'->new() : bless({}, 'java::awt::event::ActionListener::AnonymousN73210')
         });
         $self->{previousFrameJMenuItem}->setText("Previous");
         $self->{frameJMenu}->add($self->{previousFrameJMenuItem});
@@ -422,7 +422,7 @@ sub initComponents {
         $self->{generateJMenu}->setText("Generate");
         $self->{centerJMenuItem}->setText("Center");
         $self->{centerJMenuItem}->addActionListener(do {
-            package java::awt::event::ActionListener::AnonymousN75116 { our @ISA = ('java::awt::event::ActionListener', 'java::lang::Object');
+            package java::awt::event::ActionListener::AnonymousN73838 { our @ISA = ('java::awt::event::ActionListener', 'java::lang::Object');
             
 
             sub actionPerformed {
@@ -430,14 +430,14 @@ sub initComponents {
                 $self->centerJMenuItemActionPerformed($evt);
             }
             }
-            'java::awt::event::ActionListener::AnonymousN75116'->can('new') ? 'java::awt::event::ActionListener::AnonymousN75116'->new() : bless({}, 'java::awt::event::ActionListener::AnonymousN75116')
+            'java::awt::event::ActionListener::AnonymousN73838'->can('new') ? 'java::awt::event::ActionListener::AnonymousN73838'->new() : bless({}, 'java::awt::event::ActionListener::AnonymousN73838')
         });
         $self->{generateJMenu}->add($self->{centerJMenuItem});
         $self->{autoDamageJMenuItem}->setText("Damage");
         $self->{generateJMenu}->add($self->{autoDamageJMenuItem});
         $self->{autoExplodeJMenuItem}->setText("Explode");
         $self->{autoExplodeJMenuItem}->addMouseListener(do {
-            package java::awt::event::MouseAdapter::AnonymousN75407 { our @ISA = ('java::awt::event::MouseAdapter', 'java::lang::Object');
+            package java::awt::event::MouseAdapter::AnonymousN74081 { our @ISA = ('java::awt::event::MouseAdapter', 'java::lang::Object');
             
 
             sub mousePressed {
@@ -445,14 +445,14 @@ sub initComponents {
                 $self->autoExplodeJMenuItemMousePressed($evt);
             }
             }
-            'java::awt::event::MouseAdapter::AnonymousN75407'->can('new') ? 'java::awt::event::MouseAdapter::AnonymousN75407'->new() : bless({}, 'java::awt::event::MouseAdapter::AnonymousN75407')
+            'java::awt::event::MouseAdapter::AnonymousN74081'->can('new') ? 'java::awt::event::MouseAdapter::AnonymousN74081'->new() : bless({}, 'java::awt::event::MouseAdapter::AnonymousN74081')
         });
         $self->{generateJMenu}->add($self->{autoExplodeJMenuItem});
         $self->{autoGrowJMenuItem}->setText("Grow");
         $self->{generateJMenu}->add($self->{autoGrowJMenuItem});
         $self->{jMenuItem1}->setText("Mirror");
         $self->{jMenuItem1}->addActionListener(do {
-            package java::awt::event::ActionListener::AnonymousN75698 { our @ISA = ('java::awt::event::ActionListener', 'java::lang::Object');
+            package java::awt::event::ActionListener::AnonymousN74324 { our @ISA = ('java::awt::event::ActionListener', 'java::lang::Object');
             
 
             sub actionPerformed {
@@ -460,12 +460,12 @@ sub initComponents {
                 $self->jMenuItem1ActionPerformed($evt);
             }
             }
-            'java::awt::event::ActionListener::AnonymousN75698'->can('new') ? 'java::awt::event::ActionListener::AnonymousN75698'->new() : bless({}, 'java::awt::event::ActionListener::AnonymousN75698')
+            'java::awt::event::ActionListener::AnonymousN74324'->can('new') ? 'java::awt::event::ActionListener::AnonymousN74324'->new() : bless({}, 'java::awt::event::ActionListener::AnonymousN74324')
         });
         $self->{generateJMenu}->add($self->{jMenuItem1});
         $self->{autoRotateGenerationJMenuItem}->setText("Rotate");
         $self->{autoRotateGenerationJMenuItem}->addMouseListener(do {
-            package java::awt::event::MouseAdapter::AnonymousN75922 { our @ISA = ('java::awt::event::MouseAdapter', 'java::lang::Object');
+            package java::awt::event::MouseAdapter::AnonymousN74500 { our @ISA = ('java::awt::event::MouseAdapter', 'java::lang::Object');
             
 
             sub mousePressed {
@@ -473,7 +473,7 @@ sub initComponents {
                 $self->autoRotateGenerationJMenuItemMousePressed($evt);
             }
             }
-            'java::awt::event::MouseAdapter::AnonymousN75922'->can('new') ? 'java::awt::event::MouseAdapter::AnonymousN75922'->new() : bless({}, 'java::awt::event::MouseAdapter::AnonymousN75922')
+            'java::awt::event::MouseAdapter::AnonymousN74500'->can('new') ? 'java::awt::event::MouseAdapter::AnonymousN74500'->new() : bless({}, 'java::awt::event::MouseAdapter::AnonymousN74500')
         });
         $self->{generateJMenu}->add($self->{autoRotateGenerationJMenuItem});
         $self->{autoSheildMenuItem}->setText("Shield");
@@ -641,7 +641,7 @@ sub onFiles {
             for (my $index = 0; $index < scalar(@{$files}); $index++) {
                 my $document = 'org::allbinary::dom::DomHelper'->getInstance()->createDocument($files->[$index]);
                 my $workAreaJPanel = 'org::allbinary::graphics::j2me::workarea::WorkAreaJPanel'->new('org::allbinary::graphics::j2me::workarea::WorkAreaDom'->new($document), $self->getSize());
-                $workAreaJPanel->setLayout('org::allbinary::graphics::j2me::GridLayout'->new(1, 1));
+                $workAreaJPanel->setLayout('java::awt::GridLayout'->new(1, 1));
                 $self->add($workAreaJPanel);
             }
             $self->{fileJDialog}->setVisible(0);
@@ -812,9 +812,29 @@ use org::allbinary::math::AngleFactory ();
 use org::allbinary::string::CommonLabels ();
 use org::allbinary::string::CommonStrings ();
 use org::w3c::dom::Document ();
-use org::allbinary::graphics::j2me::Dimension ();
+# use java::awt::BorderLayout ();
+# use java::awt::Dimension ();
+# use java::awt::GridLayout ();
+# use java::awt::event::ActionEvent ();
+# use java::awt::event::ActionListener ();
+# use java::awt::event::KeyEvent ();
+# use java::awt::event::KeyListener ();
+# use java::awt::event::MouseAdapter ();
+# use java::awt::event::MouseEvent ();
+# use java::awt::event::WindowAdapter ();
+# use java::awt::event::WindowEvent ();
+# use javax::swing::JButton ();
+# use javax::swing::JFrame ();
+# use javax::swing::JLabel ();
+# use javax::swing::JMenu ();
+# use javax::swing::JMenuBar ();
+# use javax::swing::JMenuItem ();
+# use javax::swing::JPanel ();
+# use javax::swing::JTabbedPane ();
+# use javax::swing::JToolBar ();
+# use javax::swing::event::ChangeEvent ();
+# use javax::swing::event::ChangeListener ();
 use java::lang::System ();
-use org::allbinary::graphics::j2me::GridLayout ();
 use java::lang::Thread ();
 
 1;

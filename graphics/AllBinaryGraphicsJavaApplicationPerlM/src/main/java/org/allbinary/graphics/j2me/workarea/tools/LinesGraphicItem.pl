@@ -40,7 +40,7 @@ sub _init_fields {
     $self->{fulcrumPoint} = undef;
     $self->{active} = 0;
     $self->{theta} = 0.0;
-    $self->{color} = 'org::allbinary::graphics::j2me::workarea::tools::Color'->new(int('org::allbinary::graphics::color::BasicColorFactory'->getInstance()->{WHITE}));
+    $self->{color} = 'java::awt::Color'->new(int('org::allbinary::graphics::color::BasicColorFactory'->getInstance()->{WHITE}));
     $self->{points} = undef;
 }
 
@@ -117,11 +117,11 @@ sub translate {
 
 sub setRotate {
     my ($self, $theta) = @_;
-        while ($theta > 2 * $Math::PI) {
-            $theta -= 2 * $Math::PI;
+        while ($theta > 2 * 3.141592653589793) {
+            $theta -= 2 * 3.141592653589793;
         }
         while ($theta < 0.0) {
-            $theta += 2 * $Math::PI;
+            $theta += 2 * 3.141592653589793;
         }
         $self->{theta} = $theta;
 }
@@ -164,7 +164,7 @@ sub getStaticName {
 
 
 # throws Exception
-sub addPoint {
+sub addPoint_j1_1 {
     my ($self, $pointNodes) = @_;
         my $list = 'org::allbinary::dom::DomHelper'->getInstance()->getWithoutTextNodes($pointNodes);
         my $xNode = 'org::allbinary::dom::DomHelper'->getInstance()->searchNodeList('org::allbinary::math::PositionStrings'->getInstance()->{X}, $list);
@@ -178,13 +178,24 @@ sub addPoint {
 }
 
 
-# Java overloaded method: Perl keeps the last definition
-sub addPoint {
+sub addPoint_j1_2 {
     my ($self, $point) = @_;
         $self->{points}->getPoints()->add($point);
         $self->{logUtil}->putF($point->toString(), $self, "addPoint");
         $self->{pointTreeNodeVector}->add('javax::swing::tree::DefaultMutableTreeNode'->new($point->toString()));
         $self->{treeNode}->add($self->{pointTreeNodeVector}->get($self->{pointTreeNodeVector}->size() - 1));
+}
+
+sub addPoint {
+    my ($invocant, @arguments) = @_;
+    return $invocant->addPoint_j1(@arguments) if scalar(@arguments) == 1;
+    die "No method addPoint takes " . scalar(@arguments) . " arguments";
+}
+
+sub addPoint_j1 {
+    my ($invocant, @arguments) = @_;
+    return $invocant->addPoint_j1_1(@arguments) if 1 && (!defined($arguments[0]) || (ref($arguments[0]) && ref($arguments[0]) ne 'ARRAY'));
+    return $invocant->addPoint_j1_2(@arguments);
 }
 
 
@@ -264,7 +275,7 @@ sub paint {
         try {
             my $graphics = $g;
             $graphics->setColor($self->getColor());
-            $graphics->setStroke('org::allbinary::graphics::j2me::workarea::tools::BasicStroke'->new($x));
+            $graphics->setStroke('java::awt::BasicStroke'->new($x));
             if ($self->isActive() && defined($self->{currentMousePoint})) {
                 $self->{points}->getPoints()->add($self->{currentMousePoint});
             }
@@ -413,7 +424,10 @@ sub keyTyped {
 }
 
 use java::lang::Object ();
-# use java::awt ();
+# use java::awt::Color ();
+# use java::awt::Graphics2D ();
+# use java::awt::BasicStroke ();
+# use java::awt::Graphics ();
 use org::allbinary::util::BasicArrayList ();
 use org::allbinary::util::BasicArrayListD ();
 # use javax::swing::tree::DefaultMutableTreeNode ();
@@ -434,11 +448,11 @@ use org::allbinary::string::CommonStrings ();
 use org::allbinary::util::BasicArrayList ();
 use org::w3c::dom::Node ();
 use org::w3c::dom::NodeList ();
+# use java::awt::event::KeyEvent ();
+# use java::awt::event::MouseEvent ();
 use org::allbinary::graphics::j2me::workarea::tools::GraphicItemInterface ();
-use org::allbinary::graphics::j2me::workarea::tools::Color ();
 use org::allbinary::graphics::j2me::workarea::tools::Points ();
 use org::allbinary::graphics::j2me::workarea::tools::PointsDomUtil ();
-use org::allbinary::graphics::j2me::workarea::tools::BasicStroke ();
 use org::allbinary::graphics::j2me::workarea::tools::PointsUtil ();
 
 1;

@@ -72,10 +72,10 @@ sub putFS {
 sub put {
     my ($self, $specialMessage, $anyType, $functionName, $exception) = @_;
         if (defined($exception)) {
-            if (ref($exception)->compareTo('org::apache::xmlrpc::XmlRpcException'->getName()) == 0) {
+            if (ref($exception)->compareTo((('org::apache::xmlrpc::XmlRpcException') =~ s/::/./gr)) == 0) {
                 return;
             }
-            if (ref($exception)->compareTo('java::io::IOException'->getName()) == 0) {
+            if (ref($exception)->compareTo((('java::io::IOException') =~ s/::/./gr)) == 0) {
                 return;
             }
             if ($self->{isFirstException} || $self->{timeDelayHelper}->isTimeTNT()) {
@@ -84,7 +84,7 @@ sub put {
                 if (defined($anyType) && defined(ref($anyType))) {
                     $className = ("" . ref($anyType));
                 }
-                my $message = 'org::allbinary::logic::communication::log::LogFormatUtil'->getInstance()->get($className, $functionName, $specialMessage, $exception);
+                my $message = java::lang::Object::jstatic('org::allbinary::logic::communication::log::LogUtil', 'LogFormatUtil')->getInstance()->get($className, $functionName, $specialMessage, $exception);
                 try {
                     print("Eeeek", "\n");
                     if (!defined($self->{abeClientInformation})) {
@@ -116,7 +116,6 @@ use org::allbinary::canvas::SpecialMessageUtil ();
 use org::allbinary::string::CommonStrings ();
 use org::allbinary::time::TimeDelayHelper ();
 use org::allbinary::util::ABHashtable ();
-use org::allbinary::logic::communication::log::LogFormatUtil ();
 use java::lang::System ();
 use org::allbinary::logic::communication::log::XmlRpcRemoteLogClient ();
 

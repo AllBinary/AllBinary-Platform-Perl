@@ -33,7 +33,6 @@ sub getInstance {
 }
 
 use java::lang::Object ();
-use org::allbinary::animation::transition::shake::NoShakeAnimationListener ();
 
 1;
 

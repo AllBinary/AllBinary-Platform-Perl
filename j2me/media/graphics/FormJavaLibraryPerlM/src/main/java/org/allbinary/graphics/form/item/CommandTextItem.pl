@@ -50,7 +50,6 @@ sub getCommand {
 use java::lang::Object ();
 use javax::microedition::lcdui::Command ();
 use org::allbinary::graphics::color::BasicColor ();
-use org::allbinary::graphics::form::item::ABTextItem ();
 
 1;
 

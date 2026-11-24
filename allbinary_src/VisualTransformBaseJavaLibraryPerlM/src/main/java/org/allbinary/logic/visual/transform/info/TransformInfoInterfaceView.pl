@@ -38,7 +38,7 @@ sub new {
 # throws Exception
 sub toXmlNode {
     my ($self, $document) = @_;
-        return 'org::allbinary::data::tree::dom::ModDomHelper'->createNameValueNodes($document, 'org::allbinary::logic::visual::transform::info::TransformInfoData'->getInstance()->{NAME}, $self->{transformInfoInterface}->toHashMap());
+        return 'org::allbinary::data::tree::dom::ModDomHelper'->createNameValueNodes($document, java::lang::Object::jstatic('org::allbinary::logic::visual::transform::info::TransformInfoInterfaceView', 'TransformInfoData')->getInstance()->{NAME}, $self->{transformInfoInterface}->toHashMap());
 }
 
 use java::lang::Object ();
@@ -46,7 +46,6 @@ use org::allbinary::data::tree::dom::DomNodeInterface ();
 use org::allbinary::data::tree::dom::ModDomHelper ();
 use org::w3c::dom::Document ();
 use org::w3c::dom::Node ();
-use org::allbinary::logic::visual::transform::info::TransformInfoData ();
 
 1;
 

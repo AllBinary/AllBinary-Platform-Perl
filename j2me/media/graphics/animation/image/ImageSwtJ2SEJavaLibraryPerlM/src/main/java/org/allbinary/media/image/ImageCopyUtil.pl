@@ -56,7 +56,7 @@ sub createImageForRotation {
     my ($self, $originalImage) = @_;
         if ($self->{features}->isFeature($self->{openGLFeatureFactory}->{OPENGL})) {
             my $image = $originalImage;
-            $image = $self->{openGLUtil}->addImage($image);
+            $image = java::lang::Object::jstatic('org::allbinary::media::image::ImageCopyUtil', 'SwtOpenGLESImageBridge')->addImage($self->{openGLUtil}, $image);
             return $image;
         } else {
             return $self->createImage($originalImage);
@@ -74,8 +74,8 @@ sub createImage {
         my $originalImage2 = $originalImage;
         if ($self->{features}->isFeature($self->{openGLFeatureFactory}->{OPENGL})) {
             if ($originalImage->getType() >= $org::allbinary::image::opengles::OpenGLESImage::TYPE) {
-                my $openGLESImage = ($originalImage);
-                $originalImage2 = $openGLESImage->{openGLBitmap}->getImage();
+                my $openGLESImage = java::lang::Object::jstatic('org::allbinary::media::image::ImageCopyUtil', 'SwtOpenGLESImageBridge')->getOpenGLESImage($originalImage);
+                $originalImage2 = java::lang::Object::jstatic('org::allbinary::media::image::ImageCopyUtil', 'SwtOpenGLESImageBridge')->getBitmapImage($openGLESImage);
             }
         }
         my $image = undef;
@@ -86,7 +86,7 @@ sub createImage {
             my $originalImmutableImage = $originalImage2;
             $image = 'org::microemu::device::swt::SwtMutableImage'->new('org::microemu::app::ui::swt::SwtDeviceComponent'->createImage($originalImmutableImage->{image}->getImageData()));
         }
-        $image = $self->{openGLUtil}->addImage($image);
+        $image = java::lang::Object::jstatic('org::allbinary::media::image::ImageCopyUtil', 'SwtOpenGLESImageBridge')->addImage($self->{openGLUtil}, $image);
         return $image;
 }
 
@@ -100,12 +100,12 @@ sub createImageWH {
             return $originalImage;
         }
         if ($self->{features}->isFeature($self->{openGLFeatureFactory}->{OPENGL})) {
-            if ($self->{openGLESImageExclusionUtil}->isCustomScaling($originalImage)) {
+            if (java::lang::Object::jstatic('org::allbinary::media::image::ImageCopyUtil', 'SwtOpenGLESImageBridge')->isCustomScaling($self->{openGLESImageExclusionUtil}, $originalImage)) {
                 return $self->createImage2($originalImage, $width, $height, $mutable);
             }
             if ($originalImage->getType() >= $org::allbinary::image::opengles::OpenGLESImage::TYPE) {
-                my $openGLESImage = ($originalImage);
-                $originalImage2 = $openGLESImage->{openGLBitmap}->getImage();
+                my $openGLESImage = java::lang::Object::jstatic('org::allbinary::media::image::ImageCopyUtil', 'SwtOpenGLESImageBridge')->getOpenGLESImage($originalImage);
+                $originalImage2 = java::lang::Object::jstatic('org::allbinary::media::image::ImageCopyUtil', 'SwtOpenGLESImageBridge')->getBitmapImage($openGLESImage);
             }
         }
         my $image = undef;
@@ -133,7 +133,7 @@ sub createImageWH {
                 $image = 'org::microemu::device::swt::SwtImmutableImage'->new($originalImmutableImage->getName(), 'org::microemu::device::swt::PostLoadSwtImmutableImageProcessor'->new($originalImmutableImage));
             }
         }
-        $image = $self->{openGLUtil}->addImage($image);
+        $image = java::lang::Object::jstatic('org::allbinary::media::image::ImageCopyUtil', 'SwtOpenGLESImageBridge')->addImage($self->{openGLUtil}, $image);
         return $image;
 }
 
@@ -150,7 +150,7 @@ sub createImage2 {
         if ($self->{features}->isFeature($self->{openGLFeatureFactory}->{OPENGL})) {
             my $displayInfoSingleton = 'org::allbinary::graphics::displayable::DisplayInfoSingleton'->getInstance();
             if ($originalImage->getType() >= $org::allbinary::image::opengles::OpenGLESImage::TYPE) {
-                my $openGLESImage = ($originalImage);
+                my $openGLESImage = java::lang::Object::jstatic('org::allbinary::media::image::ImageCopyUtil', 'SwtOpenGLESImageBridge')->getOpenGLESImage($originalImage);
                 my $openGLESImageProperties = $openGLESImage->{openGLESImageProperties};
                 my $openGLWidth = $openGLESImage->{openGLBitmap}->getWidth();
                 my $openGLHeight = $openGLESImage->{openGLBitmap}->getHeight();
@@ -164,10 +164,10 @@ sub createImage2 {
                     $openGLESImageProperties->{scaleX2} += 1.0 / $openGLWidth;
                     $openGLESImageProperties->{scaleY2} += 1.0 / $openGLHeight;
                 }
-                $image = $openGLESImage;
+                $image = java::lang::Object::jstatic('org::allbinary::media::image::ImageCopyUtil', 'SwtOpenGLESImageBridge')->asImage($openGLESImage);
             } else {
                 $image = $originalImage;
-                my $openGLESImage = $self->{openGLUtil}->addImage($image);
+                my $openGLESImage = java::lang::Object::jstatic('org::allbinary::media::image::ImageCopyUtil', 'SwtOpenGLESImageBridge')->getOpenGLESImage(java::lang::Object::jstatic('org::allbinary::media::image::ImageCopyUtil', 'SwtOpenGLESImageBridge')->addImage($self->{openGLUtil}, $image));
                 my $openGLESImageProperties = $openGLESImage->{openGLESImageProperties};
                 $openGLESImageProperties->{scaleX2} = (($width) / $openGLESImage->getWidth());
                 $openGLESImageProperties->{scaleX} = $openGLESImageProperties->{scaleX2};
@@ -194,7 +194,7 @@ sub createImage2 {
                         $openGLESImageProperties->{scaleY} = 1.0;
                     }
                 }
-                $image = $openGLESImage;
+                $image = java::lang::Object::jstatic('org::allbinary::media::image::ImageCopyUtil', 'SwtOpenGLESImageBridge')->asImage($openGLESImage);
             }
         } else {
             if ($originalImage2->isMutable() && $mutable) {
@@ -216,7 +216,7 @@ sub createImage2 {
                     $image = 'org::microemu::device::swt::SwtImmutableImage'->new($originalImmutableImage->getName(), 'org::microemu::device::swt::PostLoadSwtImmutableImageProcessor'->new($originalImmutableImage));
                 }
             }
-            $image = $self->{openGLUtil}->addImage($image);
+            $image = java::lang::Object::jstatic('org::allbinary::media::image::ImageCopyUtil', 'SwtOpenGLESImageBridge')->addImage($self->{openGLUtil}, $image);
         }
         return $image;
 }

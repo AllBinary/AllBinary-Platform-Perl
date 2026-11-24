@@ -21,14 +21,20 @@ sub new {
 }
 
 
-sub process {
+sub process_j2 {
     my ($self, $gl, $object3d) = @_;
 }
 
 
-# Java overloaded method: Perl keeps the last definition
-sub process {
+sub process_j3 {
     my ($self, $gl, $object3d, $index) = @_;
+}
+
+sub process {
+    my ($invocant, @arguments) = @_;
+    return $invocant->process_j2(@arguments) if scalar(@arguments) == 2;
+    return $invocant->process_j3(@arguments) if scalar(@arguments) == 3;
+    die "No method process takes " . scalar(@arguments) . " arguments";
 }
 
 use java::lang::Object ();

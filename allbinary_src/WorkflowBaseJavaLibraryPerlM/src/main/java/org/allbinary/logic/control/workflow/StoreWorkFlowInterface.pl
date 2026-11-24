@@ -29,7 +29,6 @@ sub getStoreName {
     die "abstract method getStoreName";
 }
 
-use org::allbinary::logic::control::workflow::WorkFlowInterface ();
 
 1;
 

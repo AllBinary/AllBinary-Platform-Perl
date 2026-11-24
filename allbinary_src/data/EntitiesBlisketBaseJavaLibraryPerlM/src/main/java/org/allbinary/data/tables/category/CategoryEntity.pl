@@ -54,7 +54,7 @@ sub _new0 {
 }
 
 
-sub insert {
+sub insert_j1_1 {
     my ($self, $category) = @_;
         try {
             my $categoryVector = $category->toVector();
@@ -62,12 +62,12 @@ sub insert {
             $values->add($categoryVector->get(0));
             $values->add($categoryVector->get(1));
             $self->SUPER::insert($values);
-            if ($org::allbinary::data::tables::category::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($org::allbinary::data::tables::category::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{SQLLOGGING})) {
-                $self->{logUtil}->putF($self->{commonStrings}->{SUCCESS}, $self, $self->{INSERT});
+            if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{SQLLOGGING})) {
+                $self->{logUtil}->putF($self->{commonStrings}->{SUCCESS}, $self, java::lang::Object::jstatic('org::allbinary::data::tables::category::CategoryEntity', 'INSERT'));
             }
         } catch ($e) {
-            if ($org::allbinary::data::tables::category::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($org::allbinary::data::tables::category::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{SQLLOGGING})) {
-                $self->{logUtil}->put($self->{commonStrings}->{FAILURE}, $self, $self->{INSERT}, $e);
+            if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{SQLLOGGING})) {
+                $self->{logUtil}->put($self->{commonStrings}->{FAILURE}, $self, java::lang::Object::jstatic('org::allbinary::data::tables::category::CategoryEntity', 'INSERT'), $e);
             }
         }
 }
@@ -77,11 +77,11 @@ sub delete {
     my ($self, $value) = @_;
         try {
             $self->SUPER::deleteWhere('org::allbinary::business::category::CategoryData'->getInstance()->{NAME}, $value);
-            if ($org::allbinary::data::tables::category::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($org::allbinary::data::tables::category::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{SQLLOGGING})) {
+            if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{SQLLOGGING})) {
                 $self->{logUtil}->putF($self->{commonStrings}->{SUCCESS}, $self, $self->{commonStrings}->{delete});
             }
         } catch ($e) {
-            if ($org::allbinary::data::tables::category::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($org::allbinary::data::tables::category::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{SQLLOGGING})) {
+            if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{SQLLOGGING})) {
                 $self->{logUtil}->put($self->{commonStrings}->{FAILURE}, $self, $self->{commonStrings}->{delete}, $e);
             }
         }
@@ -123,10 +123,21 @@ sub dropTable {
 }
 
 
-# Java overloaded method: Perl keeps the last definition
-sub insert {
+sub insert_j1_2 {
     my ($self, $values) = @_;
         $self->SUPER::insert($values);
+}
+
+sub insert {
+    my ($invocant, @arguments) = @_;
+    return $invocant->insert_j1(@arguments) if scalar(@arguments) == 1;
+    die "No method insert takes " . scalar(@arguments) . " arguments";
+}
+
+sub insert_j1 {
+    my ($invocant, @arguments) = @_;
+    return $invocant->insert_j1_1(@arguments) if 1 && (!defined($arguments[0]) || (ref($arguments[0]) && ref($arguments[0]) ne 'ARRAY'));
+    return $invocant->insert_j1_2(@arguments);
 }
 
 use java::lang::Object ();
@@ -141,7 +152,8 @@ use org::allbinary::logic::StdUtil ();
 use org::allbinary::logic::communication::log::LogUtil ();
 use org::allbinary::logic::communication::sql::AbSqlBean ();
 use org::allbinary::logic::string::StringMaker ();
-use org::allbinary::data::tables::category::CategoryEntityInterface ();
+use org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory ();
+use org::allbinary::logic::communication::log::config::type::LogConfigTypes ();
 
 1;
 

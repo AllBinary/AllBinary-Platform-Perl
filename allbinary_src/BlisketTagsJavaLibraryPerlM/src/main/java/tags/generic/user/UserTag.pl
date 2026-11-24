@@ -46,20 +46,20 @@ sub doStartTag {
     my ($self) = @_;
         try {
             if (defined($self->getCommand())) {
-                if ($self->getCommand()->compareTo($tags::generic::user::org::allbinary->{globals}->{GLOBALS2}->{EDIT} + $tags::generic::user::org::allbinary->{globals}->{GLOBALS2}->{EDIT}) == 0) {
+                if ($self->getCommand()->compareTo($org::allbinary::globals::GLOBALS2::EDIT + $org::allbinary::globals::GLOBALS2::EDIT) == 0) {
                     $self->setName("Edit Session Validation User View - i.e. User Profile Edit");
                     $self->setObjectFile("views.generic.user.EditValidationView");
                 }
-                if ($self->getCommand()->compareTo($tags::generic::user::org::allbinary->{globals}->{GLOBALS2}->{NEW}) == 0) {
+                if ($self->getCommand()->compareTo($org::allbinary::globals::GLOBALS2::NEW) == 0) {
                     $self->setName("New User View");
                     $self->setObjectFile("views.generic.user.NewUserView");
                 } elsif ($self->getCommand()->compareTo($self->{commonStrings}->{INSERT}) == 0) {
                     $self->setName("Add Validation User View");
                     $self->setObjectFile("views.generic.user.AddValidationUserView");
-                } elsif ($self->getCommand()->compareTo($tags::generic::user::org::allbinary->{globals}->{GLOBALS2}->{VIEW}) == 0) {
+                } elsif ($self->getCommand()->compareTo($org::allbinary::globals::GLOBALS2::VIEW) == 0) {
                     $self->setName("Validation User View");
                     $self->setObjectFile("views.generic.user.ViewValidationUserView");
-                } elsif ($self->getCommand()->compareTo($tags::generic::user::org::allbinary->{globals}->{GLOBALS2}->{EDIT}) == 0) {
+                } elsif ($self->getCommand()->compareTo($org::allbinary::globals::GLOBALS2::EDIT) == 0) {
                     $self->setName("Validation User View");
                     $self->setObjectFile("views.generic.user.EditValidationUserView");
                 } elsif ($self->getCommand()->compareTo($self->{commonStrings}->{UPDATE}) == 0) {
@@ -68,9 +68,9 @@ sub doStartTag {
                 } elsif ($self->getCommand()->compareTo($self->{commonStrings}->{DELETE}) == 0) {
                     $self->setName("Delete Validation User View");
                     $self->setObjectFile("views.generic.user.DeleteValidationUserView");
-                } elsif ($self->getCommand()->compareTo($tags::generic::user::org::allbinary->{globals}->{GLOBALS2}->{BACKUP}) == 0) {
+                } elsif ($self->getCommand()->compareTo($org::allbinary::globals::GLOBALS2::BACKUP) == 0) {
                     die ("View not implemented");
-                } elsif ($self->getCommand()->compareTo($tags::generic::user::org::allbinary->{globals}->{GLOBALS2}->{RESTORE}) == 0) {
+                } elsif ($self->getCommand()->compareTo($org::allbinary::globals::GLOBALS2::RESTORE) == 0) {
                     die ("View not implemented");
                 } elsif ($self->getCommand()->compareTo($self->{commonStrings}->{DROP}) == 0) {
                     die ("View not implemented");
@@ -84,7 +84,7 @@ sub doStartTag {
             die ("Command Null");
         } catch ($e) {
             'org::allbinary::logic::communication::http::request::AbResponseHandler'->sendJspTagRedirect($self->{pageContext}, $e);
-            return $self->{SKIP_BODY};
+            return java::lang::Object::jstatic('tags::generic::user::UserTag', 'SKIP_BODY');
         }
 }
 
@@ -93,6 +93,7 @@ use java::lang::Object ();
 use org::allbinary::business::user::role::UserRoleData ();
 use org::allbinary::logic::communication::http::request::AbResponseHandler ();
 use tags::StoreValidationTransformTag ();
+use org::allbinary::globals::GLOBALS2 ();
 
 1;
 

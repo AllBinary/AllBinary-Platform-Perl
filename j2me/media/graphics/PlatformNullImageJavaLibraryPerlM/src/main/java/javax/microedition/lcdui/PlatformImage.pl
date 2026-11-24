@@ -30,7 +30,7 @@ sub new {
 
 sub getImage {
     my ($self, $graphicsSurface2) = @_;
-        return $javax::microedition::lcdui::NullImage::NULL_IMAGE;
+        return java::lang::Object::jstatic('javax::microedition::lcdui::PlatformImage', 'NullImage')->{NULL_IMAGE};
 }
 
 
@@ -91,7 +91,6 @@ sub getData {
 
 use java::lang::Object ();
 use org::allbinary::logic::NullUtil ();
-use javax::microedition::lcdui::NullImage ();
 
 1;
 

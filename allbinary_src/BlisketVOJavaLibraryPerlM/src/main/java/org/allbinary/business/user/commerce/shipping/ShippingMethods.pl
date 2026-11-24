@@ -57,7 +57,7 @@ sub getShippingInterface {
             }
         }
         my $error = "Error Finding Shipping: " . $name;
-        if ($org::allbinary::business::user::commerce::shipping::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($org::allbinary::business::user::commerce::shipping::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{SHIPPINGERROR})) {
+        if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{SHIPPINGERROR})) {
             $self->{logUtil}->putF($self->{commonStrings}->{EXCEPTION}, $self, "getShippingInterface(String name)");
         }
         die ($error);
@@ -78,6 +78,8 @@ use org::allbinary::business::user::commerce::shipping::modules::ShippingInterfa
 use org::allbinary::logic::communication::log::LogUtil ();
 use org::allbinary::logic::system::security::licensing::AbeClientInformationInterface ();
 use org::allbinary::string::CommonStrings ();
+use org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory ();
+use org::allbinary::logic::communication::log::config::type::LogConfigTypes ();
 use org::allbinary::business::user::commerce::shipping::ShippingMethodsInterface ();
 use org::allbinary::business::user::commerce::shipping::ShippingMethodsFactory ();
 

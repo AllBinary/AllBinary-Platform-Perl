@@ -38,8 +38,14 @@ sub new {
     die "No constructor of AuthenticationHelper takes " . scalar(@arguments) . " arguments";
 }
 
-
 sub _new2 {
+    my ($class, @arguments) = @_;
+    return $class->_new2_1(@arguments) if 1 && (!defined($arguments[0]) || (ref($arguments[0]) && ref($arguments[0]) ne 'ARRAY')) && (!defined($arguments[1]) || (ref($arguments[1]) && ref($arguments[1]) ne 'ARRAY'));
+    return $class->_new2_2(@arguments);
+}
+
+
+sub _new2_1 {
     my ($class, $hashMap, $pageContext) = @_;
     my $self = $class->_new2($hashMap, $pageContext->getRequest());
         # this(...) made $self above
@@ -47,13 +53,13 @@ sub _new2 {
 }
 
 
-sub _new2 {
+sub _new2_2 {
     my ($class, $hashMap, $httpServletRequest) = @_;
     my $self = $class->SUPER::new();
     _init_fields($self);
         $self->{weblisketSession} = 'org::allbinary::logic::communication::http::request::session::WeblisketSession'->new($hashMap, $httpServletRequest);
         $self->getFormData();
-        if ($admin::taghelpers::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($admin::taghelpers::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{AUTHENTICATION})) {
+        if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{AUTHENTICATION})) {
             $self->{logUtil}->putF($self->outputSessionInfo(), $self, $self->{commonStrings}->{CONSTRUCTOR});
         }
     return $self;
@@ -78,7 +84,7 @@ sub invalidateSession {
             $self->{weblisketSession}->clear();
             return $javax::servlet::jsp::tagext::TagSupport::EVAL_BODY_INCLUDE;
         } catch ($e) {
-            if ($admin::taghelpers::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($admin::taghelpers::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{AUTHENTICATIONERROR})) {
+            if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{AUTHENTICATIONERROR})) {
                 $self->{logUtil}->put($self->{commonStrings}->{EXCEPTION}, $self, "invalidateSession()", $e);
             }
             return undef;
@@ -94,7 +100,7 @@ sub isSessionOld {
             my $calendar = 'java::util::Calendar'->getInstance();
             my $timeFirst = $calendar->getTimeInMillis() - $sessionTimout;
             if ($timeFirst > $timeCreated) {
-                if ($admin::taghelpers::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($admin::taghelpers::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{AUTHENTICATION})) {
+                if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{AUTHENTICATION})) {
                     my $stringBuffer = 'org::allbinary::logic::string::StringMaker'->new();
                     $stringBuffer->append("Session Is Old - Timeout: ");
                     $stringBuffer->appendlong($sessionTimout);
@@ -107,7 +113,7 @@ sub isSessionOld {
                 return 1;
             }
         } else {
-            if ($admin::taghelpers::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($admin::taghelpers::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{AUTHENTICATION})) {
+            if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{AUTHENTICATION})) {
                 $self->{logUtil}->putF("Role Is Not In Session", $self, "isSessionOld()");
             }
         }
@@ -123,7 +129,7 @@ sub isRarelyUsedSession {
             my $inactivityAllowed = $self->{role}->getSessionInactivityTimeout();
             my $calendar = 'java::util::Calendar'->getInstance();
             my $timeFirst = $calendar->getTimeInMillis() - $lastAccess;
-            if ($admin::taghelpers::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($admin::taghelpers::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{AUTHENTICATION})) {
+            if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{AUTHENTICATION})) {
                 my $stringBuffer = 'org::allbinary::logic::string::StringMaker'->new();
                 $stringBuffer->append("Session Is Rarely Used - Timeout: ");
                 $stringBuffer->appendlong($lastAccess);
@@ -134,7 +140,7 @@ sub isRarelyUsedSession {
                 $self->{logUtil}->putF($stringBuffer->toString(), $self, "isRarelyUsedSession()");
             }
         } else {
-            if ($admin::taghelpers::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($admin::taghelpers::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{AUTHENTICATION})) {
+            if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{AUTHENTICATION})) {
                 $self->{logUtil}->putF("Role Is Not In Session", $self, "isRarelyUsedSession()");
             }
         }
@@ -150,7 +156,7 @@ sub validRole {
             return $stringBuffer->toString();
         } catch ($e) {
             my $error = "Failed to set valid role";
-            if ($admin::taghelpers::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($admin::taghelpers::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{AUTHENTICATIONERROR})) {
+            if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{AUTHENTICATIONERROR})) {
                 $self->{logUtil}->put($self->{commonStrings}->{EXCEPTION}, $self, "validRole()", $e);
             }
             return $error;
@@ -168,7 +174,7 @@ sub invalidRole {
             return $stringBuffer->toString();
         } catch ($e) {
             my $error = "Failed to set role invalid";
-            if ($admin::taghelpers::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($admin::taghelpers::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{AUTHENTICATIONERROR})) {
+            if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{AUTHENTICATIONERROR})) {
                 $self->{logUtil}->put($self->{commonStrings}->{EXCEPTION}, $self, "invalidRole()", $e);
             }
             return $error;
@@ -213,13 +219,13 @@ sub isAuthenticationSessionValid {
                     return 0;
                 }
             } else {
-                if ($admin::taghelpers::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($admin::taghelpers::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{AUTHENTICATION})) {
+                if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{AUTHENTICATION})) {
                     $self->{logUtil}->putF("Role Is Not In Session", $self, "isAuthenticationSessionValid()");
                 }
             }
             return 0;
         } catch ($e) {
-            if ($admin::taghelpers::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($admin::taghelpers::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{AUTHENTICATIONERROR})) {
+            if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{AUTHENTICATIONERROR})) {
                 $self->{logUtil}->put($self->{commonStrings}->{EXCEPTION}, $self, "isAuthenticatedSessionValid()", $e);
             }
             return 0;
@@ -240,7 +246,7 @@ sub nextAttempt {
 sub processIfNewLogin {
     my ($self, $userName, $password) = @_;
         try {
-            if ($admin::taghelpers::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($admin::taghelpers::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{AUTHENTICATIONERROR})) {
+            if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{AUTHENTICATIONERROR})) {
                 $self->{logUtil}->putF("Starting: " . $userName, $self, "processIfNewLogin()");
             }
             if (defined($userName) && ($userName cmp 'org::allbinary::logic::string::StringUtil'->getInstance()->{EMPTY_STRING}) != 0 && defined($password) && ($password cmp 'org::allbinary::logic::string::StringUtil'->getInstance()->{EMPTY_STRING}) != 0) {
@@ -260,7 +266,7 @@ sub processIfNewLogin {
             $self->nextAttempt();
             return 0;
         } catch ($e) {
-            if ($admin::taghelpers::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($admin::taghelpers::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{AUTHENTICATIONERROR})) {
+            if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{AUTHENTICATIONERROR})) {
                 $self->{logUtil}->put($self->{commonStrings}->{EXCEPTION}, $self, "processIfNewLogin()", $e);
             }
             return 0;
@@ -280,7 +286,7 @@ sub processInvalidation {
                 return 0;
             }
         } catch ($e) {
-            if ($admin::taghelpers::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($admin::taghelpers::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{AUTHENTICATIONERROR})) {
+            if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{AUTHENTICATIONERROR})) {
                 $self->{logUtil}->put($self->{commonStrings}->{EXCEPTION}, $self, "processInvalidation()", $e);
             }
             return 0;
@@ -349,7 +355,8 @@ use org::allbinary::logic::java::bool::BooleanFactory ();
 use org::allbinary::logic::java::bool::BooleanUtil ();
 use org::allbinary::logic::string::StringMaker ();
 use org::allbinary::logic::string::StringUtil ();
-use admin::taghelpers::TagHelper ();
+use org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory ();
+use org::allbinary::logic::communication::log::config::type::LogConfigTypes ();
 
 1;
 

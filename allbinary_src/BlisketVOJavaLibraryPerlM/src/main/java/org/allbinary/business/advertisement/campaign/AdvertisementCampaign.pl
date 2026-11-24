@@ -43,7 +43,7 @@ sub getComponent {
 
 sub getName {
     my ($self) = @_;
-        return $self->{hashMap}->get('org::allbinary::business::advertisement::campaign::AdvertisementCampaignData'->getInstance()->{NAME});
+        return $self->{hashMap}->get(java::lang::Object::jstatic('org::allbinary::business::advertisement::campaign::AdvertisementCampaign', 'AdvertisementCampaignData')->getInstance()->{NAME});
 }
 
 
@@ -55,7 +55,7 @@ sub setComponentName {
 
 sub setName {
     my ($self, $name) = @_;
-        $self->{hashMap}->put('org::allbinary::business::advertisement::campaign::AdvertisementCampaignData'->getInstance()->{NAME}, $name);
+        $self->{hashMap}->put(java::lang::Object::jstatic('org::allbinary::business::advertisement::campaign::AdvertisementCampaign', 'AdvertisementCampaignData')->getInstance()->{NAME}, $name);
 }
 
 
@@ -70,7 +70,6 @@ use org::allbinary::business::DynamicObjectData ();
 use org::allbinary::business::advertisement::AdvertisementsInterface ();
 use org::allbinary::business::advertisement::search::AdvertisementSearchInterface ();
 use org::allbinary::business::advertisement::campaign::AdvertisementCampaignInterface ();
-use org::allbinary::business::advertisement::campaign::AdvertisementCampaignData ();
 
 1;
 

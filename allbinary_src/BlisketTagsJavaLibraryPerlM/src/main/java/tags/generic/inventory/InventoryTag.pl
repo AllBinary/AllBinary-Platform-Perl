@@ -70,17 +70,17 @@ sub doStartTag {
     my ($self) = @_;
         try {
             if (defined($self->getCommand())) {
-                if ($self->getCommand()->compareTo($tags::generic::inventory::org::allbinary->{globals}->{GLOBALS2}->{SEARCH}) == 0) {
+                if ($self->getCommand()->compareTo($org::allbinary::globals::GLOBALS2::SEARCH) == 0) {
                     $self->setName("Basic Search Inventory View");
                     $self->setObjectFile("views.generic.inventory.AutoSearchValidationInventoryView");
                     $self->search();
-                    return $self->{EVAL_BODY_INCLUDE};
-                } elsif ($self->getCommand()->compareTo($tags::generic::inventory::org::allbinary->{globals}->{GLOBALS2}->{VIEWSUMMARY}) == 0) {
+                    return java::lang::Object::jstatic('tags::generic::inventory::InventoryTag', 'EVAL_BODY_INCLUDE');
+                } elsif ($self->getCommand()->compareTo($org::allbinary::globals::GLOBALS2::VIEWSUMMARY) == 0) {
                     $self->setName("Basic Inventory View");
                     $self->setObjectFile("views.generic.inventory.AutoValidationInventoryView");
                     $self->viewSummary();
-                    return $self->{EVAL_BODY_INCLUDE};
-                } elsif ($self->getCommand()->compareTo($tags::generic::inventory::org::allbinary->{globals}->{GLOBALS2}->{VIEW}) == 0) {
+                    return java::lang::Object::jstatic('tags::generic::inventory::InventoryTag', 'EVAL_BODY_INCLUDE');
+                } elsif ($self->getCommand()->compareTo($org::allbinary::globals::GLOBALS2::VIEW) == 0) {
                     $self->setName("Basic Inventory View");
                     $self->setObjectFile("views.generic.inventory.AutoValidationInventoryView");
                     return $self->SUPER::doStartTag();
@@ -91,7 +91,7 @@ sub doStartTag {
             die ("Command Null");
         } catch ($e) {
             'org::allbinary::logic::communication::http::request::AbResponseHandler'->sendJspTagLicensingRedirect($self->{pageContext}, $e);
-            return $self->{SKIP_BODY};
+            return java::lang::Object::jstatic('tags::generic::inventory::InventoryTag', 'SKIP_BODY');
         }
 }
 
@@ -103,6 +103,9 @@ use org::allbinary::logic::communication::log::LogUtil ();
 use org::allbinary::logic::system::security::licensing::LicensingException ();
 use taghelpers::InventoryHelperFactory ();
 use tags::StoreValidationTransformTag ();
+use org::allbinary::globals::GLOBALS2 ();
+use org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory ();
+use org::allbinary::logic::communication::log::config::type::LogConfigTypes ();
 
 1;
 

@@ -27,7 +27,7 @@ sub _init_fields {
     my ($self) = @_;
     $self->{imageUtil} = 'org::allbinary::media::image::ImageUtil'->getInstance();
     $self->{imageJ2SEUtil} = 'org::allbinary::media::image::ImageJ2SEUtil'->getInstance();
-    $self->{TWO_PIE} = 2 * $Math::PI;
+    $self->{TWO_PIE} = 2 * 3.141592653589793;
 }
 
 

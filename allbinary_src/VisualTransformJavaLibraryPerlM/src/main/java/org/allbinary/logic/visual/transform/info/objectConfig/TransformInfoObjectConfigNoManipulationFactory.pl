@@ -27,7 +27,7 @@ sub _init_fields {
 }
 
 
-sub getInstance {
+sub getInstance_j0 {
     my ($class) = @_;
         return $org::allbinary::logic::visual::transform::info::objectConfig::TransformInfoObjectConfigNoManipulationFactory::instance;
 }
@@ -42,20 +42,26 @@ sub new {
 
 
 # throws Exception
-# Java overloaded method: Perl keeps the last definition
-sub getInstance {
+sub getInstance_j2 {
     my ($self, $transformInfoInterface, $objectConfigFileAbPath) = @_;
         try {
-            my $transformInfoObjectConfigData = 'org::allbinary::logic::visual::transform::info::objectConfig::TransformInfoObjectConfigData'->getInstance();
+            my $transformInfoObjectConfigData = java::lang::Object::jstatic('org::allbinary::logic::visual::transform::info::objectConfig::TransformInfoObjectConfigNoManipulationFactory', 'TransformInfoObjectConfigData')->getInstance();
             my $data = 'org::allbinary::logic::control::crypt::file::CryptFileReader'->new($transformInfoObjectConfigData->{UNCRYPTED_EXTENSION}, $transformInfoObjectConfigData->getInstance()->{ENCRYPTED_EXTENSION})->get($objectConfigFileAbPath);
             return 'org::allbinary::logic::visual::transform::info::objectConfig::TransformInfoObjectConfig'->new($transformInfoInterface, 'org::allbinary::data::tree::dom::document::DomDocumentHelper'->create($data));
         } catch ($e) {
             my $commonStrings = 'org::allbinary::string::CommonStrings'->getInstance();
-            if ($org::allbinary::logic::visual::transform::info::objectConfig::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($org::allbinary::logic::visual::transform::info::objectConfig::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{VIEWERROR})) {
+            if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{VIEWERROR})) {
                 $self->{logUtil}->put("Could Not Load Object Config", $self, $commonStrings->{GET_INSTANCE}, $e);
             }
             die $e;
         }
+}
+
+sub getInstance {
+    my ($invocant, @arguments) = @_;
+    return $invocant->getInstance_j0(@arguments) if scalar(@arguments) == 0;
+    return $invocant->getInstance_j2(@arguments) if scalar(@arguments) == 2;
+    die "No method getInstance takes " . scalar(@arguments) . " arguments";
 }
 
 use java::lang::Object ();
@@ -66,7 +72,8 @@ use org::allbinary::logic::control::crypt::file::CryptFileReader ();
 use org::allbinary::logic::io::path::AbPath ();
 use org::allbinary::logic::visual::transform::info::TransformInfoInterface ();
 use org::allbinary::string::CommonStrings ();
-use org::allbinary::logic::visual::transform::info::objectConfig::TransformInfoObjectConfigData ();
+use org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory ();
+use org::allbinary::logic::communication::log::config::type::LogConfigTypes ();
 use org::allbinary::logic::visual::transform::info::objectConfig::TransformInfoObjectConfig ();
 
 1;

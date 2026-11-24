@@ -47,8 +47,14 @@ sub new {
     die "No constructor of CanvasDom takes " . scalar(@arguments) . " arguments";
 }
 
-
 sub _new1 {
+    my ($class, @arguments) = @_;
+    return $class->_new1_1(@arguments) if 1 && (!defined($arguments[0]) || (ref($arguments[0]) && ref($arguments[0]) ne 'ARRAY'));
+    return $class->_new1_2(@arguments);
+}
+
+
+sub _new1_1 {
     my ($class, $canvasNode) = @_;
     my $self = bless({}, $class);
     _init_fields($self);
@@ -99,7 +105,7 @@ sub _new1 {
 }
 
 
-sub _new1 {
+sub _new1_2 {
     my ($class, $canvasJPanel) = @_;
     my $self = bless({}, $class);
     _init_fields($self);
@@ -246,6 +252,7 @@ use org::allbinary::graphics::j2me::workarea::tools::LinesGraphicItem ();
 use org::allbinary::logic::StdUtil ();
 use org::allbinary::util::BasicArrayList ();
 use org::w3c::dom::Node ();
+use org::w3c::dom::Document ();
 use org::allbinary::graphics::j2me::workarea::canvas::Grid ();
 use org::allbinary::graphics::j2me::workarea::canvas::IntegerDimension ();
 

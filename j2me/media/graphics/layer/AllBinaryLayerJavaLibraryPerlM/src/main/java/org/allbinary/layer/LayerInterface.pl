@@ -132,7 +132,6 @@ sub getType {
 use org::allbinary::game::identification::GroupInterfaceCompositeInterface ();
 use org::allbinary::graphics::paint::PaintableInterface ();
 use org::allbinary::layer::NamedInterface ();
-use org::allbinary::layer::PositionInterface ();
 
 1;
 

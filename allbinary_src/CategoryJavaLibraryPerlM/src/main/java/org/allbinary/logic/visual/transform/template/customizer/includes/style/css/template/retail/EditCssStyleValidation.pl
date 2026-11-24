@@ -28,6 +28,12 @@ sub new {
     die "No constructor of EditCssStyleValidation takes " . scalar(@arguments) . " arguments";
 }
 
+sub _new1 {
+    my ($class, @arguments) = @_;
+    return $class->_new1_1(@arguments) if 1 && (!defined($arguments[0]) || (ref($arguments[0]) && ref($arguments[0]) ne 'ARRAY'));
+    return $class->_new1_2(@arguments);
+}
+
 
 sub _new0 {
     my ($class) = @_;
@@ -36,7 +42,7 @@ sub _new0 {
 }
 
 
-sub _new1 {
+sub _new1_1 {
     my ($class, $document) = @_;
     my $self = $class->SUPER::new($document);
         # super(...) made $self above
@@ -44,7 +50,7 @@ sub _new1 {
 }
 
 
-sub _new1 {
+sub _new1_2 {
     my ($class, $hashMap) = @_;
     my $self = $class->SUPER::new($hashMap);
         # super(...) made $self above

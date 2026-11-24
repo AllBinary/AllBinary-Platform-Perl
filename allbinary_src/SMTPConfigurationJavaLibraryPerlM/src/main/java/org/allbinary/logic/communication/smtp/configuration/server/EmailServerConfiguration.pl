@@ -41,7 +41,7 @@ sub _new0 {
     my ($class) = @_;
     my $self = bless({}, $class);
     _init_fields($self);
-        if ($org::allbinary::logic::communication::smtp::configuration::server::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($org::allbinary::logic::communication::smtp::configuration::server::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{EMAILLOGGING})) {
+        if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{EMAILLOGGING})) {
             my $commonStrings = 'org::allbinary::string::CommonStrings'->getInstance();
             $self->{logUtil}->putF($commonStrings->{START}, $self, $commonStrings->{CONSTRUCTOR});
         }
@@ -54,13 +54,13 @@ sub _new1 {
     my ($class, $hashMap) = @_;
     my $self = bless({}, $class);
     _init_fields($self);
-        if ($org::allbinary::logic::communication::smtp::configuration::server::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($org::allbinary::logic::communication::smtp::configuration::server::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{EMAILLOGGING})) {
+        if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{EMAILLOGGING})) {
             my $commonStrings = 'org::allbinary::string::CommonStrings'->getInstance();
             $self->{logUtil}->putF($commonStrings->{START}, $self, "EmailServerConfiguration(HashMap)");
         }
-        $self->setAccountName($hashMap->get($org::allbinary::logic::communication::smtp::configuration::server::EmailServerConfigurationData::ACCOUNT));
-        $self->setPassword($hashMap->get($org::allbinary::logic::communication::smtp::configuration::server::EmailServerConfigurationData::PASSWORD));
-        $self->setSmtpServer($hashMap->get($org::allbinary::logic::communication::smtp::configuration::server::EmailServerConfigurationData::SERVER));
+        $self->setAccountName($hashMap->get(java::lang::Object::jstatic('org::allbinary::logic::communication::smtp::configuration::server::EmailServerConfiguration', 'EmailServerConfigurationData')->{ACCOUNT}));
+        $self->setPassword($hashMap->get(java::lang::Object::jstatic('org::allbinary::logic::communication::smtp::configuration::server::EmailServerConfiguration', 'EmailServerConfigurationData')->{PASSWORD}));
+        $self->setSmtpServer($hashMap->get(java::lang::Object::jstatic('org::allbinary::logic::communication::smtp::configuration::server::EmailServerConfiguration', 'EmailServerConfigurationData')->{SERVER}));
         $self->log();
     return $self;
 }
@@ -70,7 +70,7 @@ sub _new3 {
     my ($class, $account, $password, $server) = @_;
     my $self = bless({}, $class);
     _init_fields($self);
-        if ($org::allbinary::logic::communication::smtp::configuration::server::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($org::allbinary::logic::communication::smtp::configuration::server::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{EMAILLOGGING})) {
+        if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{EMAILLOGGING})) {
             my $commonStrings = 'org::allbinary::string::CommonStrings'->getInstance();
             $self->{logUtil}->putF($commonStrings->{START}, $self, "EmailServerConfiguration(HashMap)");
         }
@@ -120,7 +120,7 @@ sub setPassword {
 
 sub log {
     my ($self) = @_;
-        if ($org::allbinary::logic::communication::smtp::configuration::server::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($org::allbinary::logic::communication::smtp::configuration::server::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{EMAILLOGGING})) {
+        if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{EMAILLOGGING})) {
             $self->{logUtil}->putF($self->toString(), $self, "EmailServerConfiguration");
         }
 }
@@ -136,8 +136,9 @@ use java::util::HashMap ();
 use org::allbinary::logic::communication::log::LogUtil ();
 use org::allbinary::logic::string::StringUtil ();
 use org::allbinary::string::CommonStrings ();
+use org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory ();
+use org::allbinary::logic::communication::log::config::type::LogConfigTypes ();
 use org::allbinary::logic::communication::smtp::configuration::server::EmailServerConfigurationInterface ();
-use org::allbinary::logic::communication::smtp::configuration::server::EmailServerConfigurationData ();
 
 1;
 

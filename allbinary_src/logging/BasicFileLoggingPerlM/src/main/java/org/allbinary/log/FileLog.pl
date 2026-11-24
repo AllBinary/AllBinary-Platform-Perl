@@ -91,14 +91,13 @@ sub createLogFileBackup {
 }
 
 
-sub put {
+sub put_j3_1 {
     my ($class, $specialMessage, $anyType, $functionName) = @_;
         return 'org::allbinary::log::FileLog'->put($specialMessage, $anyType, $functionName, undef);
 }
 
 
-# Java overloaded method: Perl keeps the last definition
-sub put {
+sub put_j4_1 {
     my ($class, $specialMessage, $anyType, $functionName, $exception) = @_;
         try {
             if ($org::allbinary::log::FileLog::firstTime == 1) {
@@ -134,15 +133,13 @@ sub put {
 }
 
 
-# Java overloaded method: Perl keeps the last definition
-sub put {
+sub put_j3_2 {
     my ($class, $specialMessage, $className, $functionName) = @_;
         return 'org::allbinary::log::FileLog'->put($specialMessage, $className, $functionName, undef);
 }
 
 
-# Java overloaded method: Perl keeps the last definition
-sub put {
+sub put_j4_2 {
     my ($class, $specialMessage, $className, $functionName, $exception) = @_;
         try {
             if ($org::allbinary::log::FileLog::firstTime == 1) {
@@ -171,6 +168,25 @@ sub put {
         } catch ($e) {
             return ("" . "Error: " . $e);
         }
+}
+
+sub put {
+    my ($invocant, @arguments) = @_;
+    return $invocant->put_j3(@arguments) if scalar(@arguments) == 3;
+    return $invocant->put_j4(@arguments) if scalar(@arguments) == 4;
+    die "No method put takes " . scalar(@arguments) . " arguments";
+}
+
+sub put_j3 {
+    my ($invocant, @arguments) = @_;
+    return $invocant->put_j3_1(@arguments) if 1 && !ref($arguments[0]) && (!defined($arguments[1]) || (ref($arguments[1]) && ref($arguments[1]) ne 'ARRAY')) && !ref($arguments[2]);
+    return $invocant->put_j3_2(@arguments);
+}
+
+sub put_j4 {
+    my ($invocant, @arguments) = @_;
+    return $invocant->put_j4_1(@arguments) if 1 && !ref($arguments[0]) && (!defined($arguments[1]) || (ref($arguments[1]) && ref($arguments[1]) ne 'ARRAY')) && !ref($arguments[2]) && (!defined($arguments[3]) || (ref($arguments[3]) && ref($arguments[3]) ne 'ARRAY'));
+    return $invocant->put_j4_2(@arguments);
 }
 
 

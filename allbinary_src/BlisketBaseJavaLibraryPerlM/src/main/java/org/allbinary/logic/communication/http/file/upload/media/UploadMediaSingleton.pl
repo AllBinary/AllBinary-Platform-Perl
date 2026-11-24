@@ -55,7 +55,7 @@ sub new {
         for (my $index = 0; $index < scalar(@{$writerFileTypes}); $index++) {
             $self->{writerFileTypesHashMap}->put($writerFileTypes->[$index], $RESIZABLE_MEDIA);
         }
-        if ($org::allbinary::logic::communication::http::file::upload::media::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($org::allbinary::logic::communication::http::file::upload::media::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{HTTPREQUEST})) {
+        if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{HTTPREQUEST})) {
             my $stringBuffer = 'org::allbinary::logic::string::StringMaker'->new();
             $stringBuffer->append("Supported Media Readers: ");
             $stringBuffer->append($self->{readerFileTypesHashMap}->toString());
@@ -94,7 +94,7 @@ sub isSupported {
 }
 
 
-sub isMedia {
+sub isMedia_j2 {
     my ($self, $mediaFileType, $aMediaType) = @_;
         return $self->isReaderMedia($mediaFileType, $aMediaType) && $self->isWriterMedia($mediaFileType, $aMediaType);
 }
@@ -112,8 +112,7 @@ sub isWriterMedia {
 }
 
 
-# Java overloaded method: Perl keeps the last definition
-sub isMedia {
+sub isMedia_j3 {
     my ($self, $mediaFileType, $aMediaType, $hashMap) = @_;
         if ($hashMap->containsKey($mediaFileType)) {
             my $mediaType = $hashMap->get($mediaFileType);
@@ -127,9 +126,16 @@ sub isMedia {
         }
 }
 
+sub isMedia {
+    my ($invocant, @arguments) = @_;
+    return $invocant->isMedia_j2(@arguments) if scalar(@arguments) == 2;
+    return $invocant->isMedia_j3(@arguments) if scalar(@arguments) == 3;
+    die "No method isMedia takes " . scalar(@arguments) . " arguments";
+}
+
 use java::lang::Object ();
 use java::util::HashMap ();
-# use java::util::Set ();
+use java::util::Set ();
 use org::allbinary::logic::StdUtil ();
 use org::allbinary::logic::communication::log::LogUtil ();
 use org::allbinary::logic::string::StringMaker ();
@@ -137,6 +143,8 @@ use org::allbinary::logic::visual::media::MediaData ();
 use org::allbinary::logic::visual::media::MediaIOUtil ();
 use org::allbinary::logic::visual::media::MediaTypeData ();
 use org::allbinary::string::CommonStrings ();
+use org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory ();
+use org::allbinary::logic::communication::log::config::type::LogConfigTypes ();
 
 1;
 

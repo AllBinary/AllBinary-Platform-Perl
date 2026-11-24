@@ -47,13 +47,13 @@ sub setStoreName {
 sub doStartTag {
     my ($self) = @_;
         try {
-            if ($tags::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($tags::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{JSPTAG})) {
+            if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{JSPTAG})) {
                 $self->{logUtil}->putF("Tag Start", $self, $self->{tagStrings}->{DO_START_TAG});
             }
             return $self->SUPER::doStartTag();
         } catch ($e) {
             'org::allbinary::logic::communication::http::request::AbResponseHandler'->sendJspTagRedirect($self->{pageContext}, $e);
-            return $self->{SKIP_BODY};
+            return java::lang::Object::jstatic('tags::StoreValidationTransformTag', 'SKIP_BODY');
         }
 }
 
@@ -62,6 +62,8 @@ use java::lang::Object ();
 use org::allbinary::business::context::modules::storefront::StoreFrontData ();
 use org::allbinary::logic::communication::http::request::AbResponseHandler ();
 use org::allbinary::logic::communication::log::LogUtil ();
+use org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory ();
+use org::allbinary::logic::communication::log::config::type::LogConfigTypes ();
 use tags::ValidationTransformTag ();
 
 1;

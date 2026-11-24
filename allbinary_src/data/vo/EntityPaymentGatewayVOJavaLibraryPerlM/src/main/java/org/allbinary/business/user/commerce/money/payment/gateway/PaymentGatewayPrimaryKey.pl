@@ -64,12 +64,12 @@ sub setName {
 sub toString {
     my ($self) = @_;
         my $stringBuffer = 'org::allbinary::logic::string::StringMaker'->new();
-        $stringBuffer->append('org::allbinary::business::user::commerce::money::payment::gateway::PaymentGatewayPrimaryKey'->getName());
-        $stringBuffer->append('org::allbinary::business::context::modules::storefront::StoreFront'->getName());
+        $stringBuffer->append((('org::allbinary::business::user::commerce::money::payment::gateway::PaymentGatewayPrimaryKey') =~ s/::/./gr));
+        $stringBuffer->append((('org::allbinary::business::context::modules::storefront::StoreFront') =~ s/::/./gr));
         $stringBuffer->append(" =");
         $stringBuffer->append($self->getStoreName());
         $stringBuffer->append('org::allbinary::string::CommonSeps'->getInstance()->{SPACE});
-        $stringBuffer->append('org::allbinary::business::user::commerce::money::payment::gateway::PaymentGateway'->getName());
+        $stringBuffer->append((('org::allbinary::business::user::commerce::money::payment::gateway::PaymentGateway') =~ s/::/./gr));
         $stringBuffer->append("=");
         $stringBuffer->append($self->getName());
         return $stringBuffer->toString();
@@ -79,6 +79,7 @@ use java::lang::Object ();
 use org::allbinary::business::context::modules::storefront::StoreFront ();
 use org::allbinary::logic::string::StringMaker ();
 use org::allbinary::string::CommonSeps ();
+# use java::io::Serializable ();
 
 1;
 

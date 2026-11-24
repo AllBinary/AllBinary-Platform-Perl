@@ -23,7 +23,7 @@ use parent -norequire,'org::allbinary::game::layer::CollidableRTSBehavior';
 sub _init_fields {
     my ($self) = @_;
     $self->{layerPartialCellPositionsUtil} = 'org::allbinary::game::layer::geographic::map::LayerPartialCellPositionsUtil'->getInstance();
-    $self->{simpleSteeringVisitor} = 'org::allbinary::game::layer::unit::SimpleSteeringVisitor'->new();
+    $self->{simpleSteeringVisitor} = do { local $java::lang::Object::jouter = $self; 'org::allbinary::game::layer::unit::SimpleSteeringVisitor'->new() };
 }
 
 
@@ -144,6 +144,7 @@ sub collideUnit {
     sub new {
         my ($class) = @_;
         my $self = $class->SUPER::new();
+        $self->{jouter} = $java::lang::Object::jouter;
         return $self;
     }
     
@@ -155,7 +156,7 @@ sub collideUnit {
                 my $ownerLayer = $anyType;
                 if ($self->getList()->size() > 0) {
                     my $allbinaryLayer = $self->getList()->get(0);
-                    my $clear = $self->steer($ownerLayer, $allbinaryLayer);
+                    my $clear = $self->{jouter}->steer($ownerLayer, $allbinaryLayer);
                     if ($clear) {
                         $self->getList()->clear();
                         return 'org::allbinary::logic::NullUtil'->getInstance()->{NULL_OBJECT};

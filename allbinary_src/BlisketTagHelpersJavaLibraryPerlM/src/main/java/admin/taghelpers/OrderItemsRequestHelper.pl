@@ -48,7 +48,7 @@ sub getFormData {
 }
 
 
-sub setOrderStatus {
+sub setOrderStatus_j1 {
     my ($self, $newStatus) = @_;
         try {
             if (!defined($newStatus)) {
@@ -56,13 +56,13 @@ sub setOrderStatus {
             }
             my $success = "Status successfully set to: " . $newStatus;
             'org::allbinary::data::tables::user::commerce::inventory::order::OrderItemsEntityFactory'->getInstance()->setStatus($self->{id}, $self->{groupId}, $newStatus);
-            if ($admin::taghelpers::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($admin::taghelpers::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{SQLTAGS})) {
+            if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{SQLTAGS})) {
                 $self->{logUtil}->putF($success, $self, "setOrderStatus(newStatus)");
             }
             return $success;
         } catch ($e) {
             my $error = "Failed to view order table";
-            if ($admin::taghelpers::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($admin::taghelpers::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{SQLTAGSERROR})) {
+            if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{SQLTAGSERROR})) {
                 $self->{logUtil}->put($self->{commonStrings}->{EXCEPTION}, $self, "setOrderStatus(newStatus)", $e);
             }
             return $error;
@@ -70,23 +70,29 @@ sub setOrderStatus {
 }
 
 
-# Java overloaded method: Perl keeps the last definition
-sub setOrderStatus {
+sub setOrderStatus_j0 {
     my ($self) = @_;
         try {
             my $success = "Status successfully set to: " . $self->{status};
             'org::allbinary::data::tables::user::commerce::inventory::order::OrderItemsEntityFactory'->getInstance()->setStatus($self->{id}, $self->{groupId}, $self->{status});
-            if ($admin::taghelpers::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($admin::taghelpers::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{SQLTAGS})) {
+            if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{SQLTAGS})) {
                 $self->{logUtil}->putF($success, $self, "setOrderStatus(newStatus)");
             }
             return $success;
         } catch ($e) {
             my $error = "Failed to view order table";
-            if ($admin::taghelpers::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($admin::taghelpers::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{SQLTAGSERROR})) {
+            if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{SQLTAGSERROR})) {
                 $self->{logUtil}->put($self->{commonStrings}->{EXCEPTION}, $self, "setOrderStatus(newStatus)", $e);
             }
             return $error;
         }
+}
+
+sub setOrderStatus {
+    my ($invocant, @arguments) = @_;
+    return $invocant->setOrderStatus_j1(@arguments) if scalar(@arguments) == 1;
+    return $invocant->setOrderStatus_j0(@arguments) if scalar(@arguments) == 0;
+    die "No method setOrderStatus takes " . scalar(@arguments) . " arguments";
 }
 
 use java::lang::Object ();
@@ -98,7 +104,8 @@ use org::allbinary::business::user::commerce::inventory::order::OrderHistoryData
 use org::allbinary::business::user::commerce::shipping::ShippingMethodData ();
 use org::allbinary::data::tables::user::commerce::inventory::order::OrderItemsEntityFactory ();
 use org::allbinary::logic::communication::log::LogUtil ();
-use admin::taghelpers::TagHelper ();
+use org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory ();
+use org::allbinary::logic::communication::log::config::type::LogConfigTypes ();
 
 1;
 

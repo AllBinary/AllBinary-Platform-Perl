@@ -50,7 +50,7 @@ sub validationInfo {
             $stringBuffer->append($self->{categoryPropertiesInterface}->validationInfo());
             return $stringBuffer->toString();
         } catch ($e) {
-            if ($org::allbinary::business::category::properties::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($org::allbinary::business::category::properties::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{VIEWERROR})) {
+            if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{VIEWERROR})) {
                 $self->{logUtil}->put("Failed to generate validation info error", $self, "validationInfo()", $e);
             }
             return "Error Validating Data";
@@ -77,7 +77,8 @@ use org::allbinary::logic::control::validate::ValidationInterface ();
 use org::allbinary::logic::string::StringMaker ();
 use org::w3c::dom::Document ();
 use org::w3c::dom::Node ();
-use org::allbinary::business::category::properties::CategoryPropertiesView ();
+use org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory ();
+use org::allbinary::logic::communication::log::config::type::LogConfigTypes ();
 
 1;
 

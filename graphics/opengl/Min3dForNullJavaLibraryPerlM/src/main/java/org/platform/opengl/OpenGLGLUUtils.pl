@@ -28,16 +28,27 @@ sub makeByteBuffer {
 }
 
 
-sub texImage2D {
+sub texImage2D_j8_1 {
     my ($self, $gl, $glVersion, $target, $level, $generateMipMap, $openGLESImage, $border, $flip) = @_;
         die ("RuntimeException");
 }
 
 
-# Java overloaded method: Perl keeps the last definition
-sub texImage2D {
+sub texImage2D_j8_2 {
     my ($self, $gl, $glVersion, $target, $level, $generateMipMap, $bitmap, $border, $flip) = @_;
         die ("RuntimeException");
+}
+
+sub texImage2D {
+    my ($invocant, @arguments) = @_;
+    return $invocant->texImage2D_j8(@arguments) if scalar(@arguments) == 8;
+    die "No method texImage2D takes " . scalar(@arguments) . " arguments";
+}
+
+sub texImage2D_j8 {
+    my ($invocant, @arguments) = @_;
+    return $invocant->texImage2D_j8_1(@arguments) if 1 && (!defined($arguments[0]) || (ref($arguments[0]) && ref($arguments[0]) ne 'ARRAY')) && !ref($arguments[1]) && !ref($arguments[2]) && !ref($arguments[3]) && !ref($arguments[4]) && (!defined($arguments[5]) || (ref($arguments[5]) && ref($arguments[5]) ne 'ARRAY')) && !ref($arguments[6]) && !ref($arguments[7]);
+    return $invocant->texImage2D_j8_2(@arguments);
 }
 
 use java::lang::Object ();

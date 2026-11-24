@@ -48,7 +48,6 @@ use java::util::HashMap ();
 use org::allbinary::logic::visual::transform::info::TransformInfoHttpFactory ();
 use org::allbinary::logic::visual::transform::info::TransformInfoHttpInterface ();
 use views::admin::payment::PaymentProcessorComponent ();
-use admin::taghelpers::TagHelper ();
 
 1;
 

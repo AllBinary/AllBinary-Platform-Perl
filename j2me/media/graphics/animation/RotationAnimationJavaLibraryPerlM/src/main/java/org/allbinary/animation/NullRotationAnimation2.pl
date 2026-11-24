@@ -39,7 +39,6 @@ use org::allbinary::math::AngleFactory ();
 use org::allbinary::math::AngleInfo ();
 use org::allbinary::util::CircularIndexUtil ();
 use org::allbinary::animation::NullRotationAnimation ();
-use org::allbinary::animation::IndexedAnimationBehavior ();
 
 1;
 

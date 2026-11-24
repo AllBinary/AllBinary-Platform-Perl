@@ -36,7 +36,7 @@ sub new {
 
 
 # throws Exception
-sub save {
+sub save_j1 {
     my ($self, $frame) = @_;
         my $commonStrings = 'org::allbinary::string::CommonStrings'->getInstance();
         my $motionRectanglesResultsFrameCacheable = ('org::allbinary::media::image::comparison::motion::AllMotionRectanglesResultsCacheSingleton'->getInstance())->get($frame);
@@ -56,8 +56,7 @@ sub save {
 
 
 # throws Exception
-# Java overloaded method: Perl keeps the last definition
-sub save {
+sub save_j2 {
     my ($self, $motionRectangles, $frame) = @_;
         my $commonStrings = 'org::allbinary::string::CommonStrings'->getInstance();
         my $filePathStringBuffer = 'org::allbinary::logic::string::StringMaker'->new();
@@ -102,7 +101,7 @@ sub save {
             my $motionRectangle = $rectangelList->get($index2);
             my $rectangle = $motionRectangle->getRectangle();
             for (my $index = 0; $index < $self->{NUMBER_OF_IMAGES}; $index++) {
-                $bufferedImageGraphicsArray->[$index]->setColor($org::allbinary::media::image::comparison::motion::Color::ORANGE);
+                $bufferedImageGraphicsArray->[$index]->setColor($java::awt::Color::ORANGE);
                 $bufferedImageGraphicsArray->[$index]->drawRect($rectangle->{x}, $rectangle->{y}, $rectangle->{width}, $rectangle->{height});
             }
         }
@@ -116,8 +115,17 @@ sub save {
         }
 }
 
+sub save {
+    my ($invocant, @arguments) = @_;
+    return $invocant->save_j1(@arguments) if scalar(@arguments) == 1;
+    return $invocant->save_j2(@arguments) if scalar(@arguments) == 2;
+    die "No method save takes " . scalar(@arguments) . " arguments";
+}
+
 use java::lang::Object ();
-# use java::awt ();
+# use java::awt::Graphics ();
+# use java::awt::Rectangle ();
+# use java::awt::Color ();
 # use java::awt::image::BufferedImage ();
 use org::allbinary::util::BasicArrayList ();
 use org::allbinary::util::BasicArrayListD ();
@@ -139,7 +147,6 @@ use org::allbinary::string::CommonStrings ();
 use org::allbinary::media::image::comparison::motion::AllMotionRectanglesResultsCacheSingleton ();
 use org::allbinary::media::image::comparison::motion::ConsolidatedMotionRectanglesResultsCacheSingleton ();
 use org::allbinary::media::image::comparison::motion::ConstrainedMotionRectanglesResultsCacheSingleton ();
-use org::allbinary::media::image::comparison::motion::Color ();
 
 1;
 

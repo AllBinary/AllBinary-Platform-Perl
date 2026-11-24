@@ -28,7 +28,7 @@ sub _init_fields {
 }
 
 
-sub getInstance {
+sub getInstance_j0 {
     my ($class) = @_;
         return $org::allbinary::logic::system::hardware::linux::PCComponentFactory::instance;
 }
@@ -42,8 +42,7 @@ sub new {
 }
 
 
-# Java overloaded method: Perl keeps the last definition
-sub getInstance {
+sub getInstance_j2 {
     my ($self, $component, $componentData) = @_;
         try {
             if (defined($component)) {
@@ -73,6 +72,13 @@ sub getInstance {
             }
             return 'org::allbinary::logic::system::hardware::components::linux::Unknown'->new($commonStrings->{EXCEPTION});
         }
+}
+
+sub getInstance {
+    my ($invocant, @arguments) = @_;
+    return $invocant->getInstance_j0(@arguments) if scalar(@arguments) == 0;
+    return $invocant->getInstance_j2(@arguments) if scalar(@arguments) == 2;
+    die "No method getInstance takes " . scalar(@arguments) . " arguments";
 }
 
 

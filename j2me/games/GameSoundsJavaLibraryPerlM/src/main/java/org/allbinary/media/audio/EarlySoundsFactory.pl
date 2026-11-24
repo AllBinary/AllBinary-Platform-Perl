@@ -46,7 +46,6 @@ sub getInstance {
 
 use java::lang::Object ();
 use java::lang::LazyStatic ();
-use org::allbinary::media::audio::BaseSoundsFactory ();
 use org::allbinary::media::audio::SelectSound ();
 use org::allbinary::media::audio::ErrorSound ();
 

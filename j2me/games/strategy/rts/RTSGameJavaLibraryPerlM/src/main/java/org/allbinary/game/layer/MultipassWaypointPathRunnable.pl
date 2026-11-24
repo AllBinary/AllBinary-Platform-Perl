@@ -28,9 +28,9 @@ sub _init_fields {
     $self->{done} = 0;
     $self->{list} = $self->{basicArrayListUtil}->getImmutableInstance();
     $self->{pathFindingInfo} = 'org::allbinary::logic::NullUtil'->getInstance()->{NULL_OBJECT};
-    $self->{FIRST_RUNNABLE} = 'org::allbinary::game::layer::FirstRunnable'->new($self);
-    $self->{SECOND_RUNNABLE} = 'org::allbinary::game::layer::SecondRunnable'->new($self);
-    $self->{END_RUNNABLE} = 'org::allbinary::game::layer::EndRunnable'->new($self);
+    $self->{FIRST_RUNNABLE} = do { local $java::lang::Object::jouter = $self; 'org::allbinary::game::layer::FirstRunnable'->new($self) };
+    $self->{SECOND_RUNNABLE} = do { local $java::lang::Object::jouter = $self; 'org::allbinary::game::layer::SecondRunnable'->new($self) };
+    $self->{END_RUNNABLE} = do { local $java::lang::Object::jouter = $self; 'org::allbinary::game::layer::EndRunnable'->new($self) };
     $self->{ALREADY_ENDED_RUNNABLE} = do {
         package org::allbinary::thread::ARunnable::AnonymousN66915 { our @ISA = ('org::allbinary::thread::ARunnable', 'java::lang::Object');
         
@@ -183,6 +183,7 @@ sub processEndRunnable {
     sub new {
         my ($class, $multipassWaypointPathRunnable) = @_;
         my $self = $class->SUPER::new();
+        $self->{jouter} = $java::lang::Object::jouter;
         _init_fields($self);
             $self->{multipassWaypointPathRunnable} = $multipassWaypointPathRunnable;
         return $self;
@@ -214,6 +215,7 @@ sub processEndRunnable {
     sub new {
         my ($class, $multipassWaypointPathRunnable) = @_;
         my $self = $class->SUPER::new();
+        $self->{jouter} = $java::lang::Object::jouter;
         _init_fields($self);
             $self->{multipassWaypointPathRunnable} = $multipassWaypointPathRunnable;
         return $self;
@@ -244,6 +246,7 @@ sub processEndRunnable {
     sub new {
         my ($class, $multipassWaypointPathRunnable) = @_;
         my $self = $class->SUPER::new();
+        $self->{jouter} = $java::lang::Object::jouter;
         _init_fields($self);
             $self->{multipassWaypointPathRunnable} = $multipassWaypointPathRunnable;
         return $self;

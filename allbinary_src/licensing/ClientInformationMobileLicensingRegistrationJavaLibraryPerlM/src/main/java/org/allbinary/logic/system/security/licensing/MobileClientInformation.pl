@@ -25,7 +25,7 @@ tie our $ANDROID_DESC, 'java::lang::LazyStatic', sub { "Android" . $org::allbina
 
 sub new {
     my ($class, $name, $version, $specialName, $shortName) = @_;
-    my $self = $class->SUPER::new($name, $version, 'org::allbinary::logic::string::StringMaker'->new()->append($specialName)->append('org::allbinary::string::CommonSeps'->getInstance()->{SPACE})->append('org::allbinary::logic::system::security::licensing::PartnerIdentifierFileUtil'->getInstance()->get())->toString(), $shortName);
+    my $self = $class->SUPER::new($name, $version, 'org::allbinary::logic::string::StringMaker'->new()->append($specialName)->append('org::allbinary::string::CommonSeps'->getInstance()->{SPACE})->append(java::lang::Object::jstatic($class, 'PartnerIdentifierFileUtil')->getInstance()->get())->toString(), $shortName);
         # super(...) made $self above
         my $string = $self->getSpecialName();
         my $number = substr($string, length($string) - 1);
@@ -57,8 +57,6 @@ use org::allbinary::logic::system::security::licensing::registration::Registrati
 use org::allbinary::string::CommonSeps ();
 use org::allbinary::string::CommonStrings ();
 use org::allbinary::util::ABHashtable ();
-use org::allbinary::logic::system::security::licensing::AbeClientInformation ();
-use org::allbinary::logic::system::security::licensing::PartnerIdentifierFileUtil ();
 
 1;
 

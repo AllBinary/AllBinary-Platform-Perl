@@ -35,7 +35,7 @@ sub getInstance {
         try {
             return 'views::generic::inventory::InventorySearch'->new($searchRequest);
         } catch ($e) {
-            if ($views::admin::inventory::listings::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($views::admin::inventory::listings::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{TAGHELPERFACTORYERROR})) {
+            if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{TAGHELPERFACTORYERROR})) {
                 my $commonStrings = 'org::allbinary::string::CommonStrings'->getInstance();
                 $logUtil->put($commonStrings->{EXCEPTION}, "InventoryViewFactory", "getInstance(SearchRequest)", $e);
             }
@@ -49,6 +49,8 @@ use org::allbinary::logic::control::search::SearchRequest ();
 use org::allbinary::logic::system::security::licensing::LicensingException ();
 use org::allbinary::string::CommonStrings ();
 use views::generic::inventory::InventorySearch ();
+use org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory ();
+use org::allbinary::logic::communication::log::config::type::LogConfigTypes ();
 
 1;
 

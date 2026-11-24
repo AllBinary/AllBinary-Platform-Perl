@@ -36,14 +36,13 @@ sub new {
 }
 
 
-sub getInstance {
+sub getInstance_j0 {
     my ($class) = @_;
         return $org::allbinary::logic::system::security::licensing::LicenseTypeFactory::instance;
 }
 
 
-# Java overloaded method: Perl keeps the last definition
-sub getInstance {
+sub getInstance_j1 {
     my ($self, $name) = @_;
         if ($self->{DEMO}->getName()->compareTo($name) == 0) {
             return $self->{DEMO};
@@ -51,6 +50,13 @@ sub getInstance {
             return $self->{NORMAL};
         }
         return $self->{UNKNOWN};
+}
+
+sub getInstance {
+    my ($invocant, @arguments) = @_;
+    return $invocant->getInstance_j0(@arguments) if scalar(@arguments) == 0;
+    return $invocant->getInstance_j1(@arguments) if scalar(@arguments) == 1;
+    die "No method getInstance takes " . scalar(@arguments) . " arguments";
 }
 
 use java::lang::Object ();

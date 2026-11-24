@@ -34,8 +34,14 @@ sub new {
     die "No constructor of MetasValidation takes " . scalar(@arguments) . " arguments";
 }
 
-
 sub _new1 {
+    my ($class, @arguments) = @_;
+    return $class->_new1_1(@arguments) if 1 && !ref($arguments[0]);
+    return $class->_new1_2(@arguments);
+}
+
+
+sub _new1_1 {
     my ($class, $storeName) = @_;
     my $self = $class->SUPER::new();
     _init_fields($self);
@@ -52,7 +58,7 @@ sub _new1 {
 }
 
 
-sub _new1 {
+sub _new1_2 {
     my ($class, $document) = @_;
     my $self = $class->SUPER::new();
     _init_fields($self);
@@ -67,7 +73,7 @@ sub isValid {
             my $valid = 1;
             return $valid;
         } catch ($e) {
-            if ($org::allbinary::logic::visual::transform::template::customizer::includes::meta::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($org::allbinary::logic::visual::transform::template::customizer::includes::meta::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{SQLTAGSERROR})) {
+            if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{SQLTAGSERROR})) {
                 $self->{logUtil}->put("Failed to validate form", $self, $self->{commonStrings}->{IS_VALID}, $e);
             }
             return 0;
@@ -81,7 +87,7 @@ sub validationInfo {
             my $stringBuffer = 'org::allbinary::logic::string::StringMaker'->new();
             return $stringBuffer->toString();
         } catch ($e) {
-            if ($org::allbinary::logic::visual::transform::template::customizer::includes::meta::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($org::allbinary::logic::visual::transform::template::customizer::includes::meta::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{SQLTAGSERROR})) {
+            if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{SQLTAGSERROR})) {
                 $self->{logUtil}->put("Failed to generate validation error info", $self, "validationInfo()", $e);
             }
             return "Error Validating Form";
@@ -130,6 +136,8 @@ use org::allbinary::logic::visual::dhtml::html::head::meta::HtmlMetasData ();
 use org::allbinary::string::CommonStrings ();
 use org::w3c::dom::Document ();
 use org::w3c::dom::Node ();
+use org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory ();
+use org::allbinary::logic::communication::log::config::type::LogConfigTypes ();
 use org::allbinary::logic::visual::transform::template::customizer::includes::meta::MetaValidation ();
 
 1;

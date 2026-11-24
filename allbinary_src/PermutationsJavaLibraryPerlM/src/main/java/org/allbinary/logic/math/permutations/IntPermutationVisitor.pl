@@ -32,15 +32,14 @@ sub visit {
 }
 
 
-sub print {
+sub print_j1 {
     my ($self, $data) = @_;
         my $stringBuilder = 'org::allbinary::logic::string::StringMaker'->new();
         $self->print($data, $stringBuilder);
 }
 
 
-# Java overloaded method: Perl keeps the last definition
-sub print {
+sub print_j2 {
     my ($self, $data, $stringBuilder) = @_;
         my $commonSeps = 'org::allbinary::string::CommonSeps'->getInstance();
         my $size = scalar(@{$data});
@@ -49,6 +48,13 @@ sub print {
             $stringBuilder->append($commonSeps->{SPACE});
         }
         print($stringBuilder->toString(), "\n");
+}
+
+sub print {
+    my ($invocant, @arguments) = @_;
+    return $invocant->print_j1(@arguments) if scalar(@arguments) == 1;
+    return $invocant->print_j2(@arguments) if scalar(@arguments) == 2;
+    die "No method print takes " . scalar(@arguments) . " arguments";
 }
 
 use java::lang::Object ();

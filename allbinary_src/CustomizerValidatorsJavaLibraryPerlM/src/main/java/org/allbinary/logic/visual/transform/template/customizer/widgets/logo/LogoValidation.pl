@@ -37,6 +37,12 @@ sub new {
     die "No constructor of LogoValidation takes " . scalar(@arguments) . " arguments";
 }
 
+sub _new1 {
+    my ($class, @arguments) = @_;
+    return $class->_new1_1(@arguments) if 1 && (!defined($arguments[0]) || (ref($arguments[0]) && ref($arguments[0]) ne 'ARRAY'));
+    return $class->_new1_2(@arguments);
+}
+
 
 sub _new0 {
     my ($class) = @_;
@@ -49,18 +55,18 @@ sub _new0 {
 }
 
 
-sub _new1 {
+sub _new1_1 {
     my ($class, $node) = @_;
     my $self = $class->SUPER::new();
     _init_fields($self);
         $self->{isFile} = 0;
-        $self->{logoAbPath} = 'org::allbinary::logic::io::path::AbPath'->new('org::allbinary::data::tree::dom::DomSearchHelper'->getNode('org::allbinary::logic::visual::transform::template::customizer::widgets::logo::LogoData'->getInstance()->{IMAGEPATH}, $node->getChildNodes())->getNodeValue(), 'org::allbinary::logic::string::StringUtil'->getInstance()->{EMPTY_STRING});
-        $self->{logoFile} = 'org::allbinary::data::tree::dom::DomSearchHelper'->getNode('org::allbinary::logic::visual::transform::template::customizer::widgets::logo::LogoData'->getInstance()->{IMAGEFILENAME}, $node->getChildNodes())->getNodeValue();
+        $self->{logoAbPath} = 'org::allbinary::logic::io::path::AbPath'->new('org::allbinary::data::tree::dom::DomSearchHelper'->getNode(java::lang::Object::jstatic('org::allbinary::logic::visual::transform::template::customizer::widgets::logo::LogoValidation', 'LogoData')->getInstance()->{IMAGEPATH}, $node->getChildNodes())->getNodeValue(), 'org::allbinary::logic::string::StringUtil'->getInstance()->{EMPTY_STRING});
+        $self->{logoFile} = 'org::allbinary::data::tree::dom::DomSearchHelper'->getNode(java::lang::Object::jstatic('org::allbinary::logic::visual::transform::template::customizer::widgets::logo::LogoValidation', 'LogoData')->getInstance()->{IMAGEFILENAME}, $node->getChildNodes())->getNodeValue();
     return $self;
 }
 
 
-sub _new1 {
+sub _new1_2 {
     my ($class, $hashMap) = @_;
     my $self = $class->SUPER::new();
     _init_fields($self);
@@ -73,12 +79,12 @@ sub _new1 {
 # throws Exception
 sub getFormData {
     my ($self, $hashMap) = @_;
-        $self->{logoFileItem} = $hashMap->get('org::allbinary::logic::visual::transform::template::customizer::widgets::logo::LogoData'->getInstance()->{IMAGE});
-        $self->{logoAbPath} = 'org::allbinary::logic::io::path::AbPath'->new($hashMap->get('org::allbinary::logic::visual::transform::template::customizer::widgets::logo::LogoData'->getInstance()->{IMAGEPATH}), 'org::allbinary::logic::string::StringUtil'->getInstance()->{EMPTY_STRING});
+        $self->{logoFileItem} = $hashMap->get(java::lang::Object::jstatic('org::allbinary::logic::visual::transform::template::customizer::widgets::logo::LogoValidation', 'LogoData')->getInstance()->{IMAGE});
+        $self->{logoAbPath} = 'org::allbinary::logic::io::path::AbPath'->new($hashMap->get(java::lang::Object::jstatic('org::allbinary::logic::visual::transform::template::customizer::widgets::logo::LogoValidation', 'LogoData')->getInstance()->{IMAGEPATH}), 'org::allbinary::logic::string::StringUtil'->getInstance()->{EMPTY_STRING});
         if (defined($self->{logoFileItem})) {
             $self->{logoFile} = 'org::allbinary::logic::communication::http::request::HttpRequestUtil'->getInstance()->generateFileName($self->{logoFileItem}->getName());
         }
-        if ($org::allbinary::logic::visual::transform::template::customizer::widgets::logo::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($org::allbinary::logic::visual::transform::template::customizer::widgets::logo::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{VIEW})) {
+        if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{VIEW})) {
             my $stringBuffer = 'org::allbinary::logic::string::StringMaker'->new();
             $stringBuffer->append("HashMap: ");
             $stringBuffer->append($hashMap->toString());
@@ -94,17 +100,17 @@ sub isValid {
         try {
             my $valid = 1;
             my $fileData = 'org::allbinary::logic::io::file::FileData'->getInstance();
-            if ($org::allbinary::logic::visual::transform::template::customizer::widgets::logo::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($org::allbinary::logic::visual::transform::template::customizer::widgets::logo::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{VIEW})) {
+            if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{VIEW})) {
                 $self->{logUtil}->putF("LogoValidation", $self, $self->{commonStrings}->{IS_VALID});
             }
             if (!'org::allbinary::logic::string::StringValidationUtil'->getInstance()->isValidRequired($self->{logoAbPath}->toString(), 0, 512)) {
-                if ($org::allbinary::logic::visual::transform::template::customizer::widgets::logo::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($org::allbinary::logic::visual::transform::template::customizer::widgets::logo::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{VIEW})) {
+                if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{VIEW})) {
                     $self->{logUtil}->putF("logoPath is invalid: " . $self->{logoAbPath}->toString(), $self, $self->{commonStrings}->{IS_VALID});
                 }
                 return 0;
             }
             if (!'org::allbinary::logic::string::StringValidationUtil'->getInstance()->isValidRequired($self->{logoFile}, $fileData->{MINLEN}, $fileData->{MAXLEN})) {
-                if ($org::allbinary::logic::visual::transform::template::customizer::widgets::logo::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($org::allbinary::logic::visual::transform::template::customizer::widgets::logo::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{VIEW})) {
+                if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{VIEW})) {
                     $self->{logUtil}->putF("logoFile is invalid: " . $self->{logoFile}, $self, $self->{commonStrings}->{IS_VALID});
                 }
                 return 0;
@@ -114,18 +120,18 @@ sub isValid {
                     return 0;
                 }
                 if ($self->{logoFileItem}->getSize() > $fileData->{MAXIMAGEFILESIZE} || $self->{logoFileItem}->getSize() < $fileData->{MINIMAGEFILESIZE}) {
-                    if ($org::allbinary::logic::visual::transform::template::customizer::widgets::logo::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($org::allbinary::logic::visual::transform::template::customizer::widgets::logo::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{VIEW})) {
+                    if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{VIEW})) {
                         $self->{logUtil}->putF("Image File Is Not The Right Size. " . $fileData->{MINIMAGEFILESIZE} . "< > " . $fileData->{MAXIMAGEFILESIZE}, $self, $self->{commonStrings}->{IS_VALID});
                     }
                     return 0;
                 }
             }
-            if ($org::allbinary::logic::visual::transform::template::customizer::widgets::logo::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($org::allbinary::logic::visual::transform::template::customizer::widgets::logo::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{VIEW})) {
+            if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{VIEW})) {
                 $self->{logUtil}->putF("Logo Validation: " . $valid, $self, $self->{commonStrings}->{IS_VALID});
             }
             return $valid;
         } catch ($e) {
-            if ($org::allbinary::logic::visual::transform::template::customizer::widgets::logo::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($org::allbinary::logic::visual::transform::template::customizer::widgets::logo::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{SQLTAGSERROR})) {
+            if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{SQLTAGSERROR})) {
                 $self->{logUtil}->put("Failed to validate form", $self, $self->{commonStrings}->{IS_VALID}, $e);
             }
             return 0;
@@ -140,7 +146,7 @@ sub validationInfo {
             $stringBuffer->append("Logo is not valid.");
             return $stringBuffer->toString();
         } catch ($e) {
-            if ($org::allbinary::logic::visual::transform::template::customizer::widgets::logo::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($org::allbinary::logic::visual::transform::template::customizer::widgets::logo::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{SQLTAGSERROR})) {
+            if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{SQLTAGSERROR})) {
                 $self->{logUtil}->put("Failed to generate validation error info", $self, "validationInfo()", $e);
             }
             return "Error Validating Form";
@@ -164,13 +170,13 @@ sub toHashMap {
     my ($self) = @_;
         my $stringUtil = 'org::allbinary::logic::string::StringUtil'->getInstance();
         my $hashMap = 'org::allbinary::logic::StdUtil'->getInstance()->createHashMap();
-        $hashMap->put('org::allbinary::logic::visual::transform::template::customizer::widgets::logo::LogoData'->getInstance()->{IMAGE}, $stringUtil->{EMPTY_STRING});
+        $hashMap->put(java::lang::Object::jstatic('org::allbinary::logic::visual::transform::template::customizer::widgets::logo::LogoValidation', 'LogoData')->getInstance()->{IMAGE}, $stringUtil->{EMPTY_STRING});
         if (defined($self->{logoFile})) {
-            $hashMap->put('org::allbinary::logic::visual::transform::template::customizer::widgets::logo::LogoData'->getInstance()->{IMAGEPATH}, $self->{logoAbPath}->toString());
-            $hashMap->put('org::allbinary::logic::visual::transform::template::customizer::widgets::logo::LogoData'->getInstance()->{IMAGEFILENAME}, $self->{logoFile});
+            $hashMap->put(java::lang::Object::jstatic('org::allbinary::logic::visual::transform::template::customizer::widgets::logo::LogoValidation', 'LogoData')->getInstance()->{IMAGEPATH}, $self->{logoAbPath}->toString());
+            $hashMap->put(java::lang::Object::jstatic('org::allbinary::logic::visual::transform::template::customizer::widgets::logo::LogoValidation', 'LogoData')->getInstance()->{IMAGEFILENAME}, $self->{logoFile});
         } else {
-            $hashMap->put('org::allbinary::logic::visual::transform::template::customizer::widgets::logo::LogoData'->getInstance()->{IMAGEPATH}, undef);
-            $hashMap->put('org::allbinary::logic::visual::transform::template::customizer::widgets::logo::LogoData'->getInstance()->{IMAGEFILENAME}, $self->{logoFile});
+            $hashMap->put(java::lang::Object::jstatic('org::allbinary::logic::visual::transform::template::customizer::widgets::logo::LogoValidation', 'LogoData')->getInstance()->{IMAGEPATH}, undef);
+            $hashMap->put(java::lang::Object::jstatic('org::allbinary::logic::visual::transform::template::customizer::widgets::logo::LogoValidation', 'LogoData')->getInstance()->{IMAGEFILENAME}, $self->{logoFile});
         }
         return $hashMap;
 }
@@ -180,14 +186,14 @@ sub toHashMap {
 sub toXmlNode {
     my ($self, $document) = @_;
         my $hashMap = $self->toHashMap();
-        return 'org::allbinary::data::tree::dom::ModDomHelper'->createNameValueNodes($document, 'org::allbinary::logic::visual::transform::template::customizer::widgets::logo::LogoData'->getInstance()->{NAME}, $hashMap);
+        return 'org::allbinary::data::tree::dom::ModDomHelper'->createNameValueNodes($document, java::lang::Object::jstatic('org::allbinary::logic::visual::transform::template::customizer::widgets::logo::LogoValidation', 'LogoData')->getInstance()->{NAME}, $hashMap);
 }
 
 
 # throws Exception
 sub processLogoFile {
     my ($self) = @_;
-        if ($org::allbinary::logic::visual::transform::template::customizer::widgets::logo::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($org::allbinary::logic::visual::transform::template::customizer::widgets::logo::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{VIEW})) {
+        if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{VIEW})) {
             my $stringBuffer = 'org::allbinary::logic::string::StringMaker'->new();
             $stringBuffer->append("Processing logoFile: ");
             $stringBuffer->append($self->{logoAbPath}->toString());
@@ -214,7 +220,8 @@ use org::allbinary::logic::string::StringValidationUtil ();
 use org::apache::commons::fileupload::FileItem ();
 use org::w3c::dom::Document ();
 use org::w3c::dom::Node ();
-use org::allbinary::logic::visual::transform::template::customizer::widgets::logo::LogoData ();
+use org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory ();
+use org::allbinary::logic::communication::log::config::type::LogConfigTypes ();
 use org::allbinary::logic::visual::transform::template::customizer::widgets::logo::LogoImageFileUtil ();
 
 1;

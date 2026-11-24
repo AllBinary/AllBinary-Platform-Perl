@@ -122,49 +122,7 @@ sub onStartCommandIntent {
             if ($self->{player} != $org::allbinary::android::NullAndroidCanvas::NULL_MEDIA_PLAYER && $self->{player}->isPlaying()) {
                 my $player = $self->{player};
                 $self->{logUtil}->putF($self->{ALREADY_PLAYING}, $self, $self->{commonStateStrings}->{ON_START_COMMAND});
-                {
-                package org::allbinary::media::audio::music::MusicRunnable;
-                use strict;
-                use warnings;
-                use feature 'try';
-                no warnings 'experimental::try';
-                use Time::HiRes ();
-                use parent -norequire,'org::allbinary::thread::ARunnable';
-                
-
-                sub _init_fields {
-                    my ($self) = @_;
-                    $self->{baseMusicService} = undef;
-                }
-                
-
-                sub new {
-                    my ($class, $baseMusicService) = @_;
-                    my $self = $class->SUPER::new();
-                    _init_fields($self);
-                        $self->{baseMusicService} = $baseMusicService;
-                    return $self;
-                }
-                
-
-                sub run {
-                    my ($self) = @_;
-                        my $logUtil = 'org::allbinary::logic::communication::log::LogUtil'->getInstance();
-                        my $commonStrings = 'org::allbinary::string::CommonStrings'->getInstance();
-                        my $commonStateStrings = 'org::allbinary::string::CommonStateStrings'->getInstance();
-                        try {
-                            while ($self->{player}->isPlaying()) {
-                                $logUtil->putF($self->{baseMusicService}->{WAITING_FOR_MUSIC_TO_END}, $self, $commonStateStrings->{ON_START_COMMAND});
-                                Time::HiRes::sleep((1200) / 1000);
-                            }
-                            $self->{baseMusicService}->onStartCommandIntent($self->{intent});
-                        } catch ($e) {
-                            $logUtil->put($commonStrings->{EXCEPTION}, $self, $commonStateStrings->{ON_START_COMMAND}, $e);
-                        }
-                }
-                }
-
-                my $runnable = 'org::allbinary::media::audio::music::MusicRunnable'->new($self);
+                my $runnable = 'org::allbinary::media::audio::music::MusicRunnable'->new($self, $player, $intent);
                 my $thread = 'java::lang::Thread'->new($runnable);
                 $thread->start();
                 return;
@@ -172,6 +130,53 @@ sub onStartCommandIntent {
             $self->start();
         }
 }
+{
+    #A member class instead of a local class using the method's player and intent since most of the converted languages do not have local classes.
+    package org::allbinary::media::audio::music::MusicRunnable;
+    use strict;
+    use warnings;
+    use feature 'try';
+    no warnings 'experimental::try';
+    use Time::HiRes ();
+    use parent -norequire,'org::allbinary::thread::ARunnable';
+    
+
+    sub _init_fields {
+        my ($self) = @_;
+        $self->{baseMusicService} = undef;
+        $self->{player} = undef;
+        $self->{intent} = undef;
+    }
+    
+
+    sub new {
+        my ($class, $baseMusicService, $player, $intent) = @_;
+        my $self = $class->SUPER::new();
+        _init_fields($self);
+            $self->{baseMusicService} = $baseMusicService;
+            $self->{player} = $player;
+            $self->{intent} = $intent;
+        return $self;
+    }
+    
+
+    sub run {
+        my ($self) = @_;
+            my $logUtil = 'org::allbinary::logic::communication::log::LogUtil'->getInstance();
+            my $commonStrings = 'org::allbinary::string::CommonStrings'->getInstance();
+            my $commonStateStrings = 'org::allbinary::string::CommonStateStrings'->getInstance();
+            try {
+                while ($self->{player}->isPlaying()) {
+                    $logUtil->putF($self->{baseMusicService}->{WAITING_FOR_MUSIC_TO_END}, $self, $commonStateStrings->{ON_START_COMMAND});
+                    Time::HiRes::sleep((1200) / 1000);
+                }
+                $self->{baseMusicService}->onStartCommandIntent($self->{intent});
+            } catch ($e) {
+                $logUtil->put($commonStrings->{EXCEPTION}, $self, $commonStateStrings->{ON_START_COMMAND}, $e);
+            }
+    }
+    }
+
 
 use java::lang::Object ();
 # use android::app::Service ();

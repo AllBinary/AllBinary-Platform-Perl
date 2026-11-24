@@ -17,7 +17,7 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
-use parent -norequire,'org::allbinary::logic::system::loader::ClassLoader';
+use parent -norequire,'java::lang::ClassLoader';
 
 
 sub _init_fields {
@@ -35,7 +35,7 @@ sub new {
 }
 
 use java::lang::Object ();
-use org::allbinary::logic::system::loader::ClassLoader ();
+use java::lang::ClassLoader ();
 
 1;
 

@@ -23,7 +23,7 @@ tie our $instance, 'java::lang::LazyStatic', sub { 'org::allbinary::game::input:
 
 sub _init_fields {
     my ($self) = @_;
-    $self->{gameKeyFactory} = 'org::allbinary::game::input::GameKeyFactory'->getInstance();
+    $self->{gameKeyFactory} = java::lang::Object::jstatic('org::allbinary::game::input::J2MEKeyFactory', 'GameKeyFactory')->getInstance();
 }
 
 
@@ -44,7 +44,7 @@ sub new {
 sub init {
     my ($self) = @_;
         my $gameKeyArray = [$self->{gameKeyFactory}->{DOWN}, $self->{gameKeyFactory}->{FIRE}, $self->{gameKeyFactory}->{GAME_A}, $self->{gameKeyFactory}->{GAME_B}, $self->{gameKeyFactory}->{GAME_C}, $self->{gameKeyFactory}->{GAME_D}, $self->{gameKeyFactory}->{KEY_NUM0}, $self->{gameKeyFactory}->{KEY_NUM1}, $self->{gameKeyFactory}->{KEY_NUM2}, $self->{gameKeyFactory}->{KEY_NUM3}, $self->{gameKeyFactory}->{KEY_NUM4}, $self->{gameKeyFactory}->{KEY_NUM5}, $self->{gameKeyFactory}->{KEY_NUM6}, $self->{gameKeyFactory}->{KEY_NUM7}, $self->{gameKeyFactory}->{KEY_NUM8}, $self->{gameKeyFactory}->{KEY_NUM9}, $self->{gameKeyFactory}->{KEY_POUND}, $self->{gameKeyFactory}->{KEY_STAR}, $self->{gameKeyFactory}->{LEFT}, $self->{gameKeyFactory}->{LEVEL_DOWN}, $self->{gameKeyFactory}->{LEVEL_UP}, $self->{gameKeyFactory}->{NONE}, $self->{gameKeyFactory}->{RIGHT}, $self->{gameKeyFactory}->{UP}];
-        my $inputFactory = 'org::allbinary::game::input::InputFactory'->getInstance();
+        my $inputFactory = java::lang::Object::jstatic('org::allbinary::game::input::J2MEKeyFactory', 'InputFactory')->getInstance();
         for (my $index = scalar(@{$gameKeyArray}); --$index >= 0; ) {
             $inputFactory->add($gameKeyArray->[$index]->getId(), $gameKeyArray->[$index]);
         }
@@ -121,8 +121,6 @@ sub isEnter {
 
 use java::lang::Object ();
 use java::lang::LazyStatic ();
-use org::allbinary::game::input::GameKeyFactory ();
-use org::allbinary::game::input::InputFactory ();
 
 1;
 

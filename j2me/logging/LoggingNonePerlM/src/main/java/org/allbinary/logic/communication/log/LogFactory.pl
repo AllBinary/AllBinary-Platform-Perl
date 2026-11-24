@@ -52,7 +52,6 @@ use java::lang::Object ();
 use java::lang::LazyStatic ();
 use org::allbinary::logic::NullUtil ();
 use org::allbinary::logic::string::StringUtil ();
-use org::allbinary::logic::communication::log::Log ();
 
 1;
 

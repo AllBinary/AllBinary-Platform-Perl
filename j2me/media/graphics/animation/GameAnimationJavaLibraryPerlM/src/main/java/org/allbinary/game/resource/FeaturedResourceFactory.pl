@@ -53,7 +53,7 @@ sub init {
             my $featureInterface = $self->{list}->{objectArray}->[$index];
             my $isLoadingLevel = $featureInterface->isLoadingLevel($level);
             my $isFeature = $featureInterface->isFeature();
-            $self->{logUtil}->putF('org::allbinary::logic::string::StringMaker'->new()->append($self->{GAME_FEATURE_CONTROLLED})->append($featureInterface->toString())->append($self->{IS_LOADING_LEVEL_LABEL})->append('org::allbinary::game::resource::ResourceLoadingLevelFactory'->getInstance()->getLevelString($level))->append('org::allbinary::string::CommonSeps'->getInstance()->{COLON_SEP})->appendboolean($isLoadingLevel)->append($self->{IS_FEATURE})->appendboolean($isFeature)->toString(), $self, $self->{commonStrings}->{INIT});
+            $self->{logUtil}->putF('org::allbinary::logic::string::StringMaker'->new()->append($self->{GAME_FEATURE_CONTROLLED})->append($featureInterface->toString())->append($self->{IS_LOADING_LEVEL_LABEL})->append(java::lang::Object::jstatic('org::allbinary::game::resource::FeaturedResourceFactory', 'ResourceLoadingLevelFactory')->getInstance()->getLevelString($level))->append('org::allbinary::string::CommonSeps'->getInstance()->{COLON_SEP})->appendboolean($isLoadingLevel)->append($self->{IS_FEATURE})->appendboolean($isFeature)->toString(), $self, $self->{commonStrings}->{INIT});
             if ($isLoadingLevel && $isFeature) {
                 $featureInterface->init($level);
             }
@@ -111,7 +111,6 @@ use org::allbinary::string::CommonSeps ();
 use org::allbinary::string::CommonStrings ();
 use org::allbinary::util::BasicArrayList ();
 use org::allbinary::util::BasicArrayListD ();
-use org::allbinary::game::resource::ResourceLoadingLevelFactory ();
 
 1;
 

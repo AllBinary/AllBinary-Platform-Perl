@@ -86,7 +86,7 @@ sub add {
 
 
 # throws Exception
-sub loadLibraries {
+sub loadLibraries_j0 {
     my ($self) = @_;
         my $set = $self->get()->keySet();
         $self->{logUtil}->putF("Loading Libraries", $self, "loadLibraries");
@@ -100,8 +100,7 @@ sub loadLibraries {
 
 
 # throws Exception
-# Java overloaded method: Perl keeps the last definition
-sub loadLibraries {
+sub loadLibraries_j1 {
     my ($class, $collection) = @_;
         my $logUtil = 'org::allbinary::logic::communication::log::LogUtil'->getInstance();
         $logUtil->putF("Loading Libraries", "InputRobotFactory", "loadLibraries");
@@ -109,6 +108,13 @@ sub loadLibraries {
         while ($iterator->hasNext()) {
             'org::allbinary::input::automation::robot::InputRobotFactory'->loadLibrary($iterator->next());
         }
+}
+
+sub loadLibraries {
+    my ($invocant, @arguments) = @_;
+    return $invocant->loadLibraries_j0(@arguments) if scalar(@arguments) == 0;
+    return $invocant->loadLibraries_j1(@arguments) if scalar(@arguments) == 1;
+    die "No method loadLibraries takes " . scalar(@arguments) . " arguments";
 }
 
 
@@ -144,17 +150,23 @@ sub unloadLibraries {
 
 
 # throws Exception
-sub get {
+sub get_j0 {
     my ($self) = @_;
         return $self->{hashtable};
 }
 
 
-# Java overloaded method: Perl keeps the last definition
-sub get {
+sub get_j1 {
     my ($self, $name) = @_;
         $self->{logUtil}->putF("Getting Robot: " . $name, $self, "getRobots");
         return $self->{hashtable}->get($name);
+}
+
+sub get {
+    my ($invocant, @arguments) = @_;
+    return $invocant->get_j0(@arguments) if scalar(@arguments) == 0;
+    return $invocant->get_j1(@arguments) if scalar(@arguments) == 1;
+    die "No method get takes " . scalar(@arguments) . " arguments";
 }
 
 use java::lang::Object ();
@@ -163,7 +175,7 @@ use java::lang::LazyStatic ();
 # use java::awt::GraphicsEnvironment ();
 # use java::util::Collection ();
 use java::util::Iterator ();
-# use java::util::Set ();
+use java::util::Set ();
 # use javax::help::HelpSet ();
 # use javax::help::event::HelpSetEvent ();
 # use javax::help::event::HelpSetListener ();

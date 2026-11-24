@@ -49,7 +49,7 @@ sub getFormData {
 }
 
 
-sub setOrderStatus {
+sub setOrderStatus_j0 {
     my ($self) = @_;
         try {
             if (($self->{groupId} cmp 'org::allbinary::string::CommonPhoneStrings'->getInstance()->{ZERO}) != 0) {
@@ -61,13 +61,13 @@ sub setOrderStatus {
             }
             my $success = "Status successfully set to: " . $self->{status};
             'org::allbinary::data::tables::user::commerce::inventory::order::OrderHistoryEntityFactory'->getInstance()->setStatus($self->{id}, $self->{status});
-            if ($admin::taghelpers::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($admin::taghelpers::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{SQLTAGS})) {
+            if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{SQLTAGS})) {
                 $self->{logUtil}->putF("Success", $self, "setOrderStatus()");
             }
             return $success;
         } catch ($e) {
             my $error = "Failed to set order status";
-            if ($admin::taghelpers::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($admin::taghelpers::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{SQLTAGSERROR})) {
+            if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{SQLTAGSERROR})) {
                 $self->{logUtil}->put($self->{commonStrings}->{EXCEPTION}, $self, "setOrderStatus()", $e);
             }
             return $error;
@@ -75,8 +75,7 @@ sub setOrderStatus {
 }
 
 
-# Java overloaded method: Perl keeps the last definition
-sub setOrderStatus {
+sub setOrderStatus_j1 {
     my ($self, $newStatus) = @_;
         try {
             if (!defined($newStatus)) {
@@ -86,17 +85,24 @@ sub setOrderStatus {
             'org::allbinary::data::tables::user::commerce::inventory::order::OrderHistoryEntityFactory'->getInstance()->setStatus($self->{id}, $newStatus);
             my $orderHistory = 'org::allbinary::data::tables::user::commerce::inventory::order::OrderHistoryEntityFactory'->getInstance()->getOrder($self->{id});
             'org::allbinary::business::user::commerce::inventory::order::status::OrderStatusEmail'->new($self->{abeClientInformation}, $orderHistory)->process();
-            if ($admin::taghelpers::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($admin::taghelpers::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{SQLTAGS})) {
+            if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{SQLTAGS})) {
                 $self->{logUtil}->putF("Success", $self, "setOrderStatus()");
             }
             return $success;
         } catch ($e) {
             my $error = "Failed to view order table";
-            if ($admin::taghelpers::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($admin::taghelpers::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{SQLTAGSERROR})) {
+            if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{SQLTAGSERROR})) {
                 $self->{logUtil}->put($self->{commonStrings}->{EXCEPTION}, $self, "setOrderStatus(newStatus)", $e);
             }
             return $error;
         }
+}
+
+sub setOrderStatus {
+    my ($invocant, @arguments) = @_;
+    return $invocant->setOrderStatus_j0(@arguments) if scalar(@arguments) == 0;
+    return $invocant->setOrderStatus_j1(@arguments) if scalar(@arguments) == 1;
+    die "No method setOrderStatus takes " . scalar(@arguments) . " arguments";
 }
 
 use java::lang::Object ();
@@ -114,7 +120,8 @@ use org::allbinary::logic::communication::log::LogUtil ();
 use org::allbinary::logic::system::security::licensing::AbeClientInformationInterface ();
 use org::allbinary::logic::system::security::licensing::ServiceClientInformationInterfaceFactory ();
 use org::allbinary::string::CommonPhoneStrings ();
-use admin::taghelpers::TagHelper ();
+use org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory ();
+use org::allbinary::logic::communication::log::config::type::LogConfigTypes ();
 
 1;
 

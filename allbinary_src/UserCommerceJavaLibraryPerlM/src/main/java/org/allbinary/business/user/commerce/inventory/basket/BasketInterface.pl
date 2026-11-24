@@ -76,7 +76,7 @@ sub getSubTotal {
 }
 
 use java::util::HashMap ();
-# use java::util::Set ();
+use java::util::Set ();
 use org::allbinary::business::user::commerce::money::Money ();
 use org::allbinary::business::user::commerce::money::MoneyException ();
 

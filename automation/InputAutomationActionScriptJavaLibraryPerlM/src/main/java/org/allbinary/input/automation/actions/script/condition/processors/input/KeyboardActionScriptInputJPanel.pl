@@ -57,7 +57,7 @@ sub new {
         $self->{logUtil}->putF($self->{commonStrings}->{START}, $self, $self->{commonStrings}->{CONSTRUCTOR});
         $self->initComponents();
         $self->{keyActionScriptInputInterface} = $keyActionScriptInputInterface;
-        my $defaultComboBoxModel = 'org::allbinary::input::automation::actions::script::condition::processors::input::DefaultComboBoxModel'->new();
+        my $defaultComboBoxModel = 'javax::swing::DefaultComboBoxModel'->new();
         $defaultComboBoxModel->addElement($org::allbinary::input::automation::robot::TempInputRobotNames::DX_NAME);
         $defaultComboBoxModel->addElement($org::allbinary::input::automation::robot::InputRobot::NAME);
         $self->{inputAutomationTypeJComboBox}->setModel($defaultComboBoxModel);
@@ -168,11 +168,11 @@ sub initComponents {
         $self->{keyActionJButton} = 'javax::swing::JButton'->new();
         $self->{jLabel1} = 'javax::swing::JLabel'->new();
         $self->{keyActionJDialog}->setMinimumSize('java::awt::Dimension'->new(255, 280));
-        $self->{titleJLabel}->setHorizontalAlignment($org::allbinary::input::automation::actions::script::condition::processors::input::javax::swing->{SwingConstants}->{CENTER});
+        $self->{titleJLabel}->setHorizontalAlignment($javax::swing::SwingConstants::CENTER);
         $self->{titleJLabel}->setText("Keyboard Input Options");
         $self->{addKeyJLabel}->setText("Add Key:");
         $self->{keyNameJComboBox}->addActionListener(do {
-            package java::awt::event::ActionListener::AnonymousN69302 { our @ISA = ('java::awt::event::ActionListener', 'java::lang::Object');
+            package java::awt::event::ActionListener::AnonymousN69196 { our @ISA = ('java::awt::event::ActionListener', 'java::lang::Object');
             
 
             sub actionPerformed {
@@ -180,7 +180,7 @@ sub initComponents {
                 $self->keyNameJComboBoxActionPerformed($evt);
             }
             }
-            'java::awt::event::ActionListener::AnonymousN69302'->can('new') ? 'java::awt::event::ActionListener::AnonymousN69302'->new() : bless({}, 'java::awt::event::ActionListener::AnonymousN69302')
+            'java::awt::event::ActionListener::AnonymousN69196'->can('new') ? 'java::awt::event::ActionListener::AnonymousN69196'->new() : bless({}, 'java::awt::event::ActionListener::AnonymousN69196')
         });
         $self->{timeJTextField}->setText('org::allbinary::string::CommonPhoneStrings'->getInstance()->{ZERO});
         $self->{holdTimeJLabel}->setText("Hold Time (ms):");
@@ -190,10 +190,10 @@ sub initComponents {
         $self->{testJLabel}->setText("Text:");
         $self->{textJTextField}->setText('org::allbinary::string::CommonPhoneStrings'->getInstance()->{ZERO});
         $self->{pressJRadioButton}->setText("Press");
-        $self->{pressJRadioButton}->setBorder($org::allbinary::input::automation::actions::script::condition::processors::input::javax::swing->{BorderFactory}->createEmptyBorder(0, 0, 0, 0));
+        $self->{pressJRadioButton}->setBorder('javax::swing::BorderFactory'->createEmptyBorder(0, 0, 0, 0));
         $self->{pressJRadioButton}->setMargin('java::awt::Insets'->new(0, 0, 0, 0));
         $self->{pressJRadioButton}->addActionListener(do {
-            package java::awt::event::ActionListener::AnonymousN69909 { our @ISA = ('java::awt::event::ActionListener', 'java::lang::Object');
+            package java::awt::event::ActionListener::AnonymousN69723 { our @ISA = ('java::awt::event::ActionListener', 'java::lang::Object');
             
 
             sub actionPerformed {
@@ -201,13 +201,13 @@ sub initComponents {
                 $self->pressJRadioButtonActionPerformed($evt);
             }
             }
-            'java::awt::event::ActionListener::AnonymousN69909'->can('new') ? 'java::awt::event::ActionListener::AnonymousN69909'->new() : bless({}, 'java::awt::event::ActionListener::AnonymousN69909')
+            'java::awt::event::ActionListener::AnonymousN69723'->can('new') ? 'java::awt::event::ActionListener::AnonymousN69723'->new() : bless({}, 'java::awt::event::ActionListener::AnonymousN69723')
         });
         $self->{releaseJRadioButton}->setText("Release");
-        $self->{releaseJRadioButton}->setBorder($org::allbinary::input::automation::actions::script::condition::processors::input::javax::swing->{BorderFactory}->createEmptyBorder(0, 0, 0, 0));
+        $self->{releaseJRadioButton}->setBorder('javax::swing::BorderFactory'->createEmptyBorder(0, 0, 0, 0));
         $self->{releaseJRadioButton}->setMargin('java::awt::Insets'->new(0, 0, 0, 0));
         $self->{releaseJRadioButton}->addActionListener(do {
-            package java::awt::event::ActionListener::AnonymousN70246 { our @ISA = ('java::awt::event::ActionListener', 'java::lang::Object');
+            package java::awt::event::ActionListener::AnonymousN69980 { our @ISA = ('java::awt::event::ActionListener', 'java::lang::Object');
             
 
             sub actionPerformed {
@@ -215,14 +215,14 @@ sub initComponents {
                 $self->releaseJRadioButtonActionPerformed($evt);
             }
             }
-            'java::awt::event::ActionListener::AnonymousN70246'->can('new') ? 'java::awt::event::ActionListener::AnonymousN70246'->new() : bless({}, 'java::awt::event::ActionListener::AnonymousN70246')
+            'java::awt::event::ActionListener::AnonymousN69980'->can('new') ? 'java::awt::event::ActionListener::AnonymousN69980'->new() : bless({}, 'java::awt::event::ActionListener::AnonymousN69980')
         });
         $self->{normalJRadioButton}->setSelected(1);
         $self->{normalJRadioButton}->setText("Normal");
-        $self->{normalJRadioButton}->setBorder($org::allbinary::input::automation::actions::script::condition::processors::input::javax::swing->{BorderFactory}->createEmptyBorder(0, 0, 0, 0));
+        $self->{normalJRadioButton}->setBorder('javax::swing::BorderFactory'->createEmptyBorder(0, 0, 0, 0));
         $self->{normalJRadioButton}->setMargin('java::awt::Insets'->new(0, 0, 0, 0));
         $self->{normalJRadioButton}->addActionListener(do {
-            package java::awt::event::ActionListener::AnonymousN70613 { our @ISA = ('java::awt::event::ActionListener', 'java::lang::Object');
+            package java::awt::event::ActionListener::AnonymousN70267 { our @ISA = ('java::awt::event::ActionListener', 'java::lang::Object');
             
 
             sub actionPerformed {
@@ -230,14 +230,14 @@ sub initComponents {
                 $self->normalJRadioButtonActionPerformed($evt);
             }
             }
-            'java::awt::event::ActionListener::AnonymousN70613'->can('new') ? 'java::awt::event::ActionListener::AnonymousN70613'->new() : bless({}, 'java::awt::event::ActionListener::AnonymousN70613')
+            'java::awt::event::ActionListener::AnonymousN70267'->can('new') ? 'java::awt::event::ActionListener::AnonymousN70267'->new() : bless({}, 'java::awt::event::ActionListener::AnonymousN70267')
         });
         $self->{simultaneousJRadioButton}->setSelected(1);
         $self->{simultaneousJRadioButton}->setText("Simultaneous");
-        $self->{simultaneousJRadioButton}->setBorder($org::allbinary::input::automation::actions::script::condition::processors::input::javax::swing->{BorderFactory}->createEmptyBorder(0, 0, 0, 0));
+        $self->{simultaneousJRadioButton}->setBorder('javax::swing::BorderFactory'->createEmptyBorder(0, 0, 0, 0));
         $self->{simultaneousJRadioButton}->setMargin('java::awt::Insets'->new(0, 0, 0, 0));
         $self->{simultaneousJRadioButton}->addActionListener(do {
-            package java::awt::event::ActionListener::AnonymousN70980 { our @ISA = ('java::awt::event::ActionListener', 'java::lang::Object');
+            package java::awt::event::ActionListener::AnonymousN70554 { our @ISA = ('java::awt::event::ActionListener', 'java::lang::Object');
             
 
             sub actionPerformed {
@@ -245,13 +245,13 @@ sub initComponents {
                 $self->simultaneousJRadioButtonActionPerformed($evt);
             }
             }
-            'java::awt::event::ActionListener::AnonymousN70980'->can('new') ? 'java::awt::event::ActionListener::AnonymousN70980'->new() : bless({}, 'java::awt::event::ActionListener::AnonymousN70980')
+            'java::awt::event::ActionListener::AnonymousN70554'->can('new') ? 'java::awt::event::ActionListener::AnonymousN70554'->new() : bless({}, 'java::awt::event::ActionListener::AnonymousN70554')
         });
         $self->{sequenceJRadioButton}->setText("Sequence");
-        $self->{sequenceJRadioButton}->setBorder($org::allbinary::input::automation::actions::script::condition::processors::input::javax::swing->{BorderFactory}->createEmptyBorder(0, 0, 0, 0));
+        $self->{sequenceJRadioButton}->setBorder('javax::swing::BorderFactory'->createEmptyBorder(0, 0, 0, 0));
         $self->{sequenceJRadioButton}->setMargin('java::awt::Insets'->new(0, 0, 0, 0));
         $self->{sequenceJRadioButton}->addActionListener(do {
-            package java::awt::event::ActionListener::AnonymousN71317 { our @ISA = ('java::awt::event::ActionListener', 'java::lang::Object');
+            package java::awt::event::ActionListener::AnonymousN70811 { our @ISA = ('java::awt::event::ActionListener', 'java::lang::Object');
             
 
             sub actionPerformed {
@@ -259,12 +259,12 @@ sub initComponents {
                 $self->sequenceJRadioButtonActionPerformed($evt);
             }
             }
-            'java::awt::event::ActionListener::AnonymousN71317'->can('new') ? 'java::awt::event::ActionListener::AnonymousN71317'->new() : bless({}, 'java::awt::event::ActionListener::AnonymousN71317')
+            'java::awt::event::ActionListener::AnonymousN70811'->can('new') ? 'java::awt::event::ActionListener::AnonymousN70811'->new() : bless({}, 'java::awt::event::ActionListener::AnonymousN70811')
         });
         $self->{okJButton}->setText("OK");
-        $self->{okJButton}->setHorizontalTextPosition($org::allbinary::input::automation::actions::script::condition::processors::input::javax::swing->{SwingConstants}->{CENTER});
+        $self->{okJButton}->setHorizontalTextPosition($javax::swing::SwingConstants::CENTER);
         $self->{okJButton}->addActionListener(do {
-            package java::awt::event::ActionListener::AnonymousN71562 { our @ISA = ('java::awt::event::ActionListener', 'java::lang::Object');
+            package java::awt::event::ActionListener::AnonymousN70992 { our @ISA = ('java::awt::event::ActionListener', 'java::lang::Object');
             
 
             sub actionPerformed {
@@ -272,11 +272,11 @@ sub initComponents {
                 $self->okJButtonActionPerformed($evt);
             }
             }
-            'java::awt::event::ActionListener::AnonymousN71562'->can('new') ? 'java::awt::event::ActionListener::AnonymousN71562'->new() : bless({}, 'java::awt::event::ActionListener::AnonymousN71562')
+            'java::awt::event::ActionListener::AnonymousN70992'->can('new') ? 'java::awt::event::ActionListener::AnonymousN70992'->new() : bless({}, 'java::awt::event::ActionListener::AnonymousN70992')
         });
         $self->{jPanel1}->add($self->{okJButton});
         $self->{keyIntegerJComboBox}->addActionListener(do {
-            package java::awt::event::ActionListener::AnonymousN71756 { our @ISA = ('java::awt::event::ActionListener', 'java::lang::Object');
+            package java::awt::event::ActionListener::AnonymousN71138 { our @ISA = ('java::awt::event::ActionListener', 'java::lang::Object');
             
 
             sub actionPerformed {
@@ -284,16 +284,16 @@ sub initComponents {
                 $self->keyIntegerJComboBoxActionPerformed($evt);
             }
             }
-            'java::awt::event::ActionListener::AnonymousN71756'->can('new') ? 'java::awt::event::ActionListener::AnonymousN71756'->new() : bless({}, 'java::awt::event::ActionListener::AnonymousN71756')
+            'java::awt::event::ActionListener::AnonymousN71138'->can('new') ? 'java::awt::event::ActionListener::AnonymousN71138'->new() : bless({}, 'java::awt::event::ActionListener::AnonymousN71138')
         });
         my $keyActionJDialogLayout = 'javax::swing::GroupLayout'->new($self->{keyActionJDialog}->getContentPane());
         $self->{keyActionJDialog}->getContentPane()->setLayout($keyActionJDialogLayout);
-        $keyActionJDialogLayout->setHorizontalGroup($keyActionJDialogLayout->createParallelGroup($org::allbinary::input::automation::actions::script::condition::processors::input::javax::swing->{GroupLayout}->{Alignment}->{LEADING})->addGroup($keyActionJDialogLayout->createSequentialGroup()->addContainerGap()->addGroup($keyActionJDialogLayout->createParallelGroup($org::allbinary::input::automation::actions::script::condition::processors::input::javax::swing->{GroupLayout}->{Alignment}->{LEADING})->addGroup($keyActionJDialogLayout->createSequentialGroup()->addGroup($keyActionJDialogLayout->createParallelGroup($org::allbinary::input::automation::actions::script::condition::processors::input::javax::swing->{GroupLayout}->{Alignment}->{LEADING}, 0)->addComponent($self->{addKeyJLabel}, $org::allbinary::input::automation::actions::script::condition::processors::input::javax::swing->{GroupLayout}->{DEFAULT_SIZE}, $org::allbinary::input::automation::actions::script::condition::processors::input::javax::swing->{GroupLayout}->{DEFAULT_SIZE}, 32767)->addComponent($self->{inputTypeJLabel}, $org::allbinary::input::automation::actions::script::condition::processors::input::javax::swing->{GroupLayout}->{DEFAULT_SIZE}, $org::allbinary::input::automation::actions::script::condition::processors::input::javax::swing->{GroupLayout}->{DEFAULT_SIZE}, 32767))->addPreferredGap($org::allbinary::input::automation::actions::script::condition::processors::input::javax::swing->{LayoutStyle}->{ComponentPlacement}->{RELATED})->addGroup($keyActionJDialogLayout->createParallelGroup($org::allbinary::input::automation::actions::script::condition::processors::input::javax::swing->{GroupLayout}->{Alignment}->{TRAILING})->addComponent($self->{inputAutomationTypeJComboBox}, 0, 148, 32767)->addComponent($self->{textJTextField}, $org::allbinary::input::automation::actions::script::condition::processors::input::javax::swing->{GroupLayout}->{Alignment}->{LEADING}, $org::allbinary::input::automation::actions::script::condition::processors::input::javax::swing->{GroupLayout}->{DEFAULT_SIZE}, 148, 32767)->addGroup($keyActionJDialogLayout->createSequentialGroup()->addComponent($self->{keyNameJComboBox}, 0, 101, 32767)->addPreferredGap($org::allbinary::input::automation::actions::script::condition::processors::input::javax::swing->{LayoutStyle}->{ComponentPlacement}->{RELATED})->addComponent($self->{keyIntegerJComboBox}, $org::allbinary::input::automation::actions::script::condition::processors::input::javax::swing->{GroupLayout}->{PREFERRED_SIZE}, 41, $org::allbinary::input::automation::actions::script::condition::processors::input::javax::swing->{GroupLayout}->{PREFERRED_SIZE}))))->addComponent($self->{testJLabel}, $org::allbinary::input::automation::actions::script::condition::processors::input::javax::swing->{GroupLayout}->{PREFERRED_SIZE}, 60, $org::allbinary::input::automation::actions::script::condition::processors::input::javax::swing->{GroupLayout}->{PREFERRED_SIZE})->addGroup($keyActionJDialogLayout->createSequentialGroup()->addComponent($self->{normalJRadioButton})->addPreferredGap($org::allbinary::input::automation::actions::script::condition::processors::input::javax::swing->{LayoutStyle}->{ComponentPlacement}->{RELATED})->addComponent($self->{pressJRadioButton})->addPreferredGap($org::allbinary::input::automation::actions::script::condition::processors::input::javax::swing->{LayoutStyle}->{ComponentPlacement}->{RELATED})->addComponent($self->{releaseJRadioButton})->addPreferredGap($org::allbinary::input::automation::actions::script::condition::processors::input::javax::swing->{LayoutStyle}->{ComponentPlacement}->{RELATED}, 48, $org::allbinary::input::automation::actions::script::condition::processors::input::javax::swing->{GroupLayout}->{PREFERRED_SIZE}))->addGroup($org::allbinary::input::automation::actions::script::condition::processors::input::javax::swing->{GroupLayout}->{Alignment}->{TRAILING}, $keyActionJDialogLayout->createSequentialGroup()->addComponent($self->{holdTimeJLabel})->addGap(22, 22, 22)->addComponent($self->{timeJTextField}, $org::allbinary::input::automation::actions::script::condition::processors::input::javax::swing->{GroupLayout}->{DEFAULT_SIZE}, 113, 32767))->addGroup($keyActionJDialogLayout->createSequentialGroup()->addComponent($self->{delayBetweenJLabel})->addPreferredGap($org::allbinary::input::automation::actions::script::condition::processors::input::javax::swing->{LayoutStyle}->{ComponentPlacement}->{RELATED}, 15, 32767)->addComponent($self->{delayJTextField}, $org::allbinary::input::automation::actions::script::condition::processors::input::javax::swing->{GroupLayout}->{PREFERRED_SIZE}, 68, $org::allbinary::input::automation::actions::script::condition::processors::input::javax::swing->{GroupLayout}->{PREFERRED_SIZE}))->addGroup($keyActionJDialogLayout->createSequentialGroup()->addComponent($self->{simultaneousJRadioButton})->addPreferredGap($org::allbinary::input::automation::actions::script::condition::processors::input::javax::swing->{LayoutStyle}->{ComponentPlacement}->{RELATED})->addComponent($self->{sequenceJRadioButton})))->addContainerGap())->addComponent($self->{titleJLabel}, $org::allbinary::input::automation::actions::script::condition::processors::input::javax::swing->{GroupLayout}->{Alignment}->{TRAILING}, $org::allbinary::input::automation::actions::script::condition::processors::input::javax::swing->{GroupLayout}->{DEFAULT_SIZE}, 229, 32767)->addComponent($self->{jPanel1}, $org::allbinary::input::automation::actions::script::condition::processors::input::javax::swing->{GroupLayout}->{DEFAULT_SIZE}, 229, 32767));
-        $keyActionJDialogLayout->setVerticalGroup($keyActionJDialogLayout->createParallelGroup($org::allbinary::input::automation::actions::script::condition::processors::input::javax::swing->{GroupLayout}->{Alignment}->{LEADING})->addGroup($keyActionJDialogLayout->createSequentialGroup()->addComponent($self->{titleJLabel})->addPreferredGap($org::allbinary::input::automation::actions::script::condition::processors::input::javax::swing->{LayoutStyle}->{ComponentPlacement}->{RELATED})->addGroup($keyActionJDialogLayout->createParallelGroup($org::allbinary::input::automation::actions::script::condition::processors::input::javax::swing->{GroupLayout}->{Alignment}->{BASELINE})->addComponent($self->{inputTypeJLabel})->addComponent($self->{inputAutomationTypeJComboBox}, $org::allbinary::input::automation::actions::script::condition::processors::input::javax::swing->{GroupLayout}->{PREFERRED_SIZE}, $org::allbinary::input::automation::actions::script::condition::processors::input::javax::swing->{GroupLayout}->{DEFAULT_SIZE}, $org::allbinary::input::automation::actions::script::condition::processors::input::javax::swing->{GroupLayout}->{PREFERRED_SIZE}))->addPreferredGap($org::allbinary::input::automation::actions::script::condition::processors::input::javax::swing->{LayoutStyle}->{ComponentPlacement}->{RELATED})->addGroup($keyActionJDialogLayout->createParallelGroup($org::allbinary::input::automation::actions::script::condition::processors::input::javax::swing->{GroupLayout}->{Alignment}->{BASELINE})->addComponent($self->{addKeyJLabel})->addComponent($self->{keyIntegerJComboBox}, $org::allbinary::input::automation::actions::script::condition::processors::input::javax::swing->{GroupLayout}->{PREFERRED_SIZE}, $org::allbinary::input::automation::actions::script::condition::processors::input::javax::swing->{GroupLayout}->{DEFAULT_SIZE}, $org::allbinary::input::automation::actions::script::condition::processors::input::javax::swing->{GroupLayout}->{PREFERRED_SIZE})->addComponent($self->{keyNameJComboBox}, $org::allbinary::input::automation::actions::script::condition::processors::input::javax::swing->{GroupLayout}->{PREFERRED_SIZE}, $org::allbinary::input::automation::actions::script::condition::processors::input::javax::swing->{GroupLayout}->{DEFAULT_SIZE}, $org::allbinary::input::automation::actions::script::condition::processors::input::javax::swing->{GroupLayout}->{PREFERRED_SIZE}))->addPreferredGap($org::allbinary::input::automation::actions::script::condition::processors::input::javax::swing->{LayoutStyle}->{ComponentPlacement}->{RELATED})->addGroup($keyActionJDialogLayout->createParallelGroup($org::allbinary::input::automation::actions::script::condition::processors::input::javax::swing->{GroupLayout}->{Alignment}->{BASELINE})->addComponent($self->{testJLabel})->addComponent($self->{textJTextField}, $org::allbinary::input::automation::actions::script::condition::processors::input::javax::swing->{GroupLayout}->{PREFERRED_SIZE}, $org::allbinary::input::automation::actions::script::condition::processors::input::javax::swing->{GroupLayout}->{DEFAULT_SIZE}, $org::allbinary::input::automation::actions::script::condition::processors::input::javax::swing->{GroupLayout}->{PREFERRED_SIZE}))->addPreferredGap($org::allbinary::input::automation::actions::script::condition::processors::input::javax::swing->{LayoutStyle}->{ComponentPlacement}->{RELATED})->addGroup($keyActionJDialogLayout->createParallelGroup($org::allbinary::input::automation::actions::script::condition::processors::input::javax::swing->{GroupLayout}->{Alignment}->{BASELINE})->addComponent($self->{pressJRadioButton})->addComponent($self->{normalJRadioButton})->addComponent($self->{releaseJRadioButton}))->addPreferredGap($org::allbinary::input::automation::actions::script::condition::processors::input::javax::swing->{LayoutStyle}->{ComponentPlacement}->{RELATED})->addGroup($keyActionJDialogLayout->createParallelGroup($org::allbinary::input::automation::actions::script::condition::processors::input::javax::swing->{GroupLayout}->{Alignment}->{BASELINE})->addComponent($self->{holdTimeJLabel})->addComponent($self->{timeJTextField}, $org::allbinary::input::automation::actions::script::condition::processors::input::javax::swing->{GroupLayout}->{PREFERRED_SIZE}, $org::allbinary::input::automation::actions::script::condition::processors::input::javax::swing->{GroupLayout}->{DEFAULT_SIZE}, $org::allbinary::input::automation::actions::script::condition::processors::input::javax::swing->{GroupLayout}->{PREFERRED_SIZE}))->addPreferredGap($org::allbinary::input::automation::actions::script::condition::processors::input::javax::swing->{LayoutStyle}->{ComponentPlacement}->{RELATED})->addGroup($keyActionJDialogLayout->createParallelGroup($org::allbinary::input::automation::actions::script::condition::processors::input::javax::swing->{GroupLayout}->{Alignment}->{BASELINE})->addComponent($self->{delayBetweenJLabel})->addComponent($self->{delayJTextField}, $org::allbinary::input::automation::actions::script::condition::processors::input::javax::swing->{GroupLayout}->{PREFERRED_SIZE}, $org::allbinary::input::automation::actions::script::condition::processors::input::javax::swing->{GroupLayout}->{DEFAULT_SIZE}, $org::allbinary::input::automation::actions::script::condition::processors::input::javax::swing->{GroupLayout}->{PREFERRED_SIZE}))->addPreferredGap($org::allbinary::input::automation::actions::script::condition::processors::input::javax::swing->{LayoutStyle}->{ComponentPlacement}->{RELATED})->addGroup($keyActionJDialogLayout->createParallelGroup($org::allbinary::input::automation::actions::script::condition::processors::input::javax::swing->{GroupLayout}->{Alignment}->{BASELINE})->addComponent($self->{simultaneousJRadioButton})->addComponent($self->{sequenceJRadioButton}))->addPreferredGap($org::allbinary::input::automation::actions::script::condition::processors::input::javax::swing->{LayoutStyle}->{ComponentPlacement}->{RELATED})->addComponent($self->{jPanel1}, $org::allbinary::input::automation::actions::script::condition::processors::input::javax::swing->{GroupLayout}->{PREFERRED_SIZE}, $org::allbinary::input::automation::actions::script::condition::processors::input::javax::swing->{GroupLayout}->{DEFAULT_SIZE}, $org::allbinary::input::automation::actions::script::condition::processors::input::javax::swing->{GroupLayout}->{PREFERRED_SIZE})->addContainerGap()));
+        $keyActionJDialogLayout->setHorizontalGroup($keyActionJDialogLayout->createParallelGroup($javax::swing::GroupLayout::Alignment->{LEADING})->addGroup($keyActionJDialogLayout->createSequentialGroup()->addContainerGap()->addGroup($keyActionJDialogLayout->createParallelGroup($javax::swing::GroupLayout::Alignment->{LEADING})->addGroup($keyActionJDialogLayout->createSequentialGroup()->addGroup($keyActionJDialogLayout->createParallelGroup($javax::swing::GroupLayout::Alignment->{LEADING}, 0)->addComponent($self->{addKeyJLabel}, $javax::swing::GroupLayout::DEFAULT_SIZE, $javax::swing::GroupLayout::DEFAULT_SIZE, 32767)->addComponent($self->{inputTypeJLabel}, $javax::swing::GroupLayout::DEFAULT_SIZE, $javax::swing::GroupLayout::DEFAULT_SIZE, 32767))->addPreferredGap($javax::swing::LayoutStyle::ComponentPlacement->{RELATED})->addGroup($keyActionJDialogLayout->createParallelGroup($javax::swing::GroupLayout::Alignment->{TRAILING})->addComponent($self->{inputAutomationTypeJComboBox}, 0, 148, 32767)->addComponent($self->{textJTextField}, $javax::swing::GroupLayout::Alignment->{LEADING}, $javax::swing::GroupLayout::DEFAULT_SIZE, 148, 32767)->addGroup($keyActionJDialogLayout->createSequentialGroup()->addComponent($self->{keyNameJComboBox}, 0, 101, 32767)->addPreferredGap($javax::swing::LayoutStyle::ComponentPlacement->{RELATED})->addComponent($self->{keyIntegerJComboBox}, $javax::swing::GroupLayout::PREFERRED_SIZE, 41, $javax::swing::GroupLayout::PREFERRED_SIZE))))->addComponent($self->{testJLabel}, $javax::swing::GroupLayout::PREFERRED_SIZE, 60, $javax::swing::GroupLayout::PREFERRED_SIZE)->addGroup($keyActionJDialogLayout->createSequentialGroup()->addComponent($self->{normalJRadioButton})->addPreferredGap($javax::swing::LayoutStyle::ComponentPlacement->{RELATED})->addComponent($self->{pressJRadioButton})->addPreferredGap($javax::swing::LayoutStyle::ComponentPlacement->{RELATED})->addComponent($self->{releaseJRadioButton})->addPreferredGap($javax::swing::LayoutStyle::ComponentPlacement->{RELATED}, 48, $javax::swing::GroupLayout::PREFERRED_SIZE))->addGroup($javax::swing::GroupLayout::Alignment->{TRAILING}, $keyActionJDialogLayout->createSequentialGroup()->addComponent($self->{holdTimeJLabel})->addGap(22, 22, 22)->addComponent($self->{timeJTextField}, $javax::swing::GroupLayout::DEFAULT_SIZE, 113, 32767))->addGroup($keyActionJDialogLayout->createSequentialGroup()->addComponent($self->{delayBetweenJLabel})->addPreferredGap($javax::swing::LayoutStyle::ComponentPlacement->{RELATED}, 15, 32767)->addComponent($self->{delayJTextField}, $javax::swing::GroupLayout::PREFERRED_SIZE, 68, $javax::swing::GroupLayout::PREFERRED_SIZE))->addGroup($keyActionJDialogLayout->createSequentialGroup()->addComponent($self->{simultaneousJRadioButton})->addPreferredGap($javax::swing::LayoutStyle::ComponentPlacement->{RELATED})->addComponent($self->{sequenceJRadioButton})))->addContainerGap())->addComponent($self->{titleJLabel}, $javax::swing::GroupLayout::Alignment->{TRAILING}, $javax::swing::GroupLayout::DEFAULT_SIZE, 229, 32767)->addComponent($self->{jPanel1}, $javax::swing::GroupLayout::DEFAULT_SIZE, 229, 32767));
+        $keyActionJDialogLayout->setVerticalGroup($keyActionJDialogLayout->createParallelGroup($javax::swing::GroupLayout::Alignment->{LEADING})->addGroup($keyActionJDialogLayout->createSequentialGroup()->addComponent($self->{titleJLabel})->addPreferredGap($javax::swing::LayoutStyle::ComponentPlacement->{RELATED})->addGroup($keyActionJDialogLayout->createParallelGroup($javax::swing::GroupLayout::Alignment->{BASELINE})->addComponent($self->{inputTypeJLabel})->addComponent($self->{inputAutomationTypeJComboBox}, $javax::swing::GroupLayout::PREFERRED_SIZE, $javax::swing::GroupLayout::DEFAULT_SIZE, $javax::swing::GroupLayout::PREFERRED_SIZE))->addPreferredGap($javax::swing::LayoutStyle::ComponentPlacement->{RELATED})->addGroup($keyActionJDialogLayout->createParallelGroup($javax::swing::GroupLayout::Alignment->{BASELINE})->addComponent($self->{addKeyJLabel})->addComponent($self->{keyIntegerJComboBox}, $javax::swing::GroupLayout::PREFERRED_SIZE, $javax::swing::GroupLayout::DEFAULT_SIZE, $javax::swing::GroupLayout::PREFERRED_SIZE)->addComponent($self->{keyNameJComboBox}, $javax::swing::GroupLayout::PREFERRED_SIZE, $javax::swing::GroupLayout::DEFAULT_SIZE, $javax::swing::GroupLayout::PREFERRED_SIZE))->addPreferredGap($javax::swing::LayoutStyle::ComponentPlacement->{RELATED})->addGroup($keyActionJDialogLayout->createParallelGroup($javax::swing::GroupLayout::Alignment->{BASELINE})->addComponent($self->{testJLabel})->addComponent($self->{textJTextField}, $javax::swing::GroupLayout::PREFERRED_SIZE, $javax::swing::GroupLayout::DEFAULT_SIZE, $javax::swing::GroupLayout::PREFERRED_SIZE))->addPreferredGap($javax::swing::LayoutStyle::ComponentPlacement->{RELATED})->addGroup($keyActionJDialogLayout->createParallelGroup($javax::swing::GroupLayout::Alignment->{BASELINE})->addComponent($self->{pressJRadioButton})->addComponent($self->{normalJRadioButton})->addComponent($self->{releaseJRadioButton}))->addPreferredGap($javax::swing::LayoutStyle::ComponentPlacement->{RELATED})->addGroup($keyActionJDialogLayout->createParallelGroup($javax::swing::GroupLayout::Alignment->{BASELINE})->addComponent($self->{holdTimeJLabel})->addComponent($self->{timeJTextField}, $javax::swing::GroupLayout::PREFERRED_SIZE, $javax::swing::GroupLayout::DEFAULT_SIZE, $javax::swing::GroupLayout::PREFERRED_SIZE))->addPreferredGap($javax::swing::LayoutStyle::ComponentPlacement->{RELATED})->addGroup($keyActionJDialogLayout->createParallelGroup($javax::swing::GroupLayout::Alignment->{BASELINE})->addComponent($self->{delayBetweenJLabel})->addComponent($self->{delayJTextField}, $javax::swing::GroupLayout::PREFERRED_SIZE, $javax::swing::GroupLayout::DEFAULT_SIZE, $javax::swing::GroupLayout::PREFERRED_SIZE))->addPreferredGap($javax::swing::LayoutStyle::ComponentPlacement->{RELATED})->addGroup($keyActionJDialogLayout->createParallelGroup($javax::swing::GroupLayout::Alignment->{BASELINE})->addComponent($self->{simultaneousJRadioButton})->addComponent($self->{sequenceJRadioButton}))->addPreferredGap($javax::swing::LayoutStyle::ComponentPlacement->{RELATED})->addComponent($self->{jPanel1}, $javax::swing::GroupLayout::PREFERRED_SIZE, $javax::swing::GroupLayout::DEFAULT_SIZE, $javax::swing::GroupLayout::PREFERRED_SIZE)->addContainerGap()));
         $self->setMinimumSize('java::awt::Dimension'->new(100, 0));
         $self->{keyActionJButton}->setText("Edit");
         $self->{keyActionJButton}->addActionListener(do {
-            package java::awt::event::ActionListener::AnonymousN76180 { our @ISA = ('java::awt::event::ActionListener', 'java::lang::Object');
+            package java::awt::event::ActionListener::AnonymousN74410 { our @ISA = ('java::awt::event::ActionListener', 'java::lang::Object');
             
 
             sub actionPerformed {
@@ -301,13 +301,13 @@ sub initComponents {
                 $self->keyActionJButtonActionPerformed($evt);
             }
             }
-            'java::awt::event::ActionListener::AnonymousN76180'->can('new') ? 'java::awt::event::ActionListener::AnonymousN76180'->new() : bless({}, 'java::awt::event::ActionListener::AnonymousN76180')
+            'java::awt::event::ActionListener::AnonymousN74410'->can('new') ? 'java::awt::event::ActionListener::AnonymousN74410'->new() : bless({}, 'java::awt::event::ActionListener::AnonymousN74410')
         });
         $self->{jLabel1}->setText("Key:");
         my $layout = 'javax::swing::GroupLayout'->new($self);
         $self->setLayout($layout);
-        $layout->setHorizontalGroup($layout->createParallelGroup($org::allbinary::input::automation::actions::script::condition::processors::input::javax::swing->{GroupLayout}->{Alignment}->{LEADING})->addGroup($layout->createSequentialGroup()->addComponent($self->{jLabel1})->addPreferredGap($org::allbinary::input::automation::actions::script::condition::processors::input::javax::swing->{LayoutStyle}->{ComponentPlacement}->{RELATED}, 49, 32767)->addComponent($self->{keyActionJButton})));
-        $layout->setVerticalGroup($layout->createParallelGroup($org::allbinary::input::automation::actions::script::condition::processors::input::javax::swing->{GroupLayout}->{Alignment}->{LEADING})->addGroup($layout->createParallelGroup($org::allbinary::input::automation::actions::script::condition::processors::input::javax::swing->{GroupLayout}->{Alignment}->{BASELINE})->addComponent($self->{jLabel1})->addComponent($self->{keyActionJButton})));
+        $layout->setHorizontalGroup($layout->createParallelGroup($javax::swing::GroupLayout::Alignment->{LEADING})->addGroup($layout->createSequentialGroup()->addComponent($self->{jLabel1})->addPreferredGap($javax::swing::LayoutStyle::ComponentPlacement->{RELATED}, 49, 32767)->addComponent($self->{keyActionJButton})));
+        $layout->setVerticalGroup($layout->createParallelGroup($javax::swing::GroupLayout::Alignment->{LEADING})->addGroup($layout->createParallelGroup($javax::swing::GroupLayout::Alignment->{BASELINE})->addComponent($self->{jLabel1})->addComponent($self->{keyActionJButton})));
 }
 
 
@@ -402,7 +402,8 @@ sub pressJRadioButtonActionPerformed {
 }
 
 use java::lang::Object ();
-# use javax::swing ();
+# use javax::swing::DefaultComboBoxModel ();
+# use javax::swing::ComboBoxModel ();
 use org::allbinary::input::KeySingletonFactory ();
 use org::allbinary::input::automation::robot::InputRobot ();
 use org::allbinary::input::automation::robot::InputRobotFactory ();
@@ -411,7 +412,21 @@ use org::allbinary::logic::communication::log::LogUtil ();
 use org::allbinary::logic::string::StringValidationUtil ();
 use org::allbinary::string::CommonPhoneStrings ();
 use org::allbinary::string::CommonStrings ();
-use org::allbinary::input::automation::actions::script::condition::processors::input::DefaultComboBoxModel ();
+# use java::awt::Dimension ();
+# use java::awt::Insets ();
+# use java::awt::event::ActionEvent ();
+# use java::awt::event::ActionListener ();
+# use javax::swing::BorderFactory ();
+# use javax::swing::GroupLayout ();
+# use javax::swing::JButton ();
+# use javax::swing::JComboBox ();
+# use javax::swing::JDialog ();
+# use javax::swing::JLabel ();
+# use javax::swing::JPanel ();
+# use javax::swing::JRadioButton ();
+# use javax::swing::JTextField ();
+# use javax::swing::LayoutStyle ();
+# use javax::swing::SwingConstants ();
 use org::allbinary::input::automation::actions::script::condition::processors::input::KeyNameDefaultComboBoxModelFactory ();
 use org::allbinary::input::automation::actions::script::condition::processors::input::KeyCharDefaultComboBoxModelFactory ();
 

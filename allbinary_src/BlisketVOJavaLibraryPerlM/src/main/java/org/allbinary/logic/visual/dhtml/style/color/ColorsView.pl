@@ -53,7 +53,7 @@ sub getColorNode {
             $hexColorStringBuffer->append($self->{commonPhoneStrings}->{ZERO});
         }
         $hexColorStringBuffer->append('Integer'->toString($blueIndex, $self->{HEXRADIX}));
-        my $colorNode = 'org::allbinary::data::tree::dom::ModDomHelper'->createNameValueNodes($document, 'org::allbinary::logic::visual::dhtml::style::color::ColorData'->getInstance()->{NAME}, $hexColorStringBuffer->toString());
+        my $colorNode = 'org::allbinary::data::tree::dom::ModDomHelper'->createNameValueNodes($document, java::lang::Object::jstatic('org::allbinary::logic::visual::dhtml::style::color::ColorsView', 'ColorData')->getInstance()->{NAME}, $hexColorStringBuffer->toString());
         return $colorNode;
 }
 
@@ -61,8 +61,8 @@ sub getColorNode {
 # throws Exception
 sub toXmlNode {
     my ($self, $document) = @_;
-        my $node = 'org::allbinary::data::tree::dom::ModDomHelper'->createNameValueNodes($document, 'org::allbinary::logic::visual::dhtml::style::color::ColorsData'->getInstance()->{NAME}, "RGB Colors In Hex");
-        my $blackNode = 'org::allbinary::data::tree::dom::ModDomHelper'->createNameValueNodes($document, 'org::allbinary::logic::visual::dhtml::style::color::ColorData'->getInstance()->{NAME}, "000000");
+        my $node = 'org::allbinary::data::tree::dom::ModDomHelper'->createNameValueNodes($document, java::lang::Object::jstatic('org::allbinary::logic::visual::dhtml::style::color::ColorsView', 'ColorsData')->getInstance()->{NAME}, "RGB Colors In Hex");
+        my $blackNode = 'org::allbinary::data::tree::dom::ModDomHelper'->createNameValueNodes($document, java::lang::Object::jstatic('org::allbinary::logic::visual::dhtml::style::color::ColorsView', 'ColorData')->getInstance()->{NAME}, "000000");
         $node->appendChild($blackNode);
         for (my $index = 0; $index < $self->{MAX}; $index += $self->{delta}) {
             my $hexColorStringBuffer = 'org::allbinary::logic::string::StringMaker'->new();
@@ -78,10 +78,10 @@ sub toXmlNode {
                 $hexColorStringBuffer->append($self->{commonPhoneStrings}->{ZERO});
             }
             $hexColorStringBuffer->append('Integer'->toString($index, $self->{HEXRADIX}));
-            my $colorNode = 'org::allbinary::data::tree::dom::ModDomHelper'->createNameValueNodes($document, 'org::allbinary::logic::visual::dhtml::style::color::ColorData'->getInstance()->{NAME}, $hexColorStringBuffer->toString());
+            my $colorNode = 'org::allbinary::data::tree::dom::ModDomHelper'->createNameValueNodes($document, java::lang::Object::jstatic('org::allbinary::logic::visual::dhtml::style::color::ColorsView', 'ColorData')->getInstance()->{NAME}, $hexColorStringBuffer->toString());
             $node->appendChild($colorNode);
         }
-        my $whiteNode = 'org::allbinary::data::tree::dom::ModDomHelper'->createNameValueNodes($document, 'org::allbinary::logic::visual::dhtml::style::color::ColorData'->getInstance()->{NAME}, "FFFFFF");
+        my $whiteNode = 'org::allbinary::data::tree::dom::ModDomHelper'->createNameValueNodes($document, java::lang::Object::jstatic('org::allbinary::logic::visual::dhtml::style::color::ColorsView', 'ColorData')->getInstance()->{NAME}, "FFFFFF");
         $node->appendChild($whiteNode);
         for (my $blueIndex = int($self->{MAX} / 2); $blueIndex < $self->{MAX}; $blueIndex += $self->{delta}) {
             for (my $greenIndex = 0; $greenIndex < int($self->{MAX} / 2); $greenIndex += $self->{delta}) {
@@ -121,8 +121,6 @@ use org::allbinary::logic::string::StringMaker ();
 use org::allbinary::string::CommonPhoneStrings ();
 use org::w3c::dom::Document ();
 use org::w3c::dom::Node ();
-use org::allbinary::logic::visual::dhtml::style::color::ColorData ();
-use org::allbinary::logic::visual::dhtml::style::color::ColorsData ();
 
 1;
 

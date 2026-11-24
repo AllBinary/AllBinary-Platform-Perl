@@ -29,7 +29,7 @@ sub new {
 
 
 # throws Exception
-sub getInstance {
+sub getInstance_j1_1 {
     my ($class, $cssElementStyleNodeList) = @_;
         my $styles = 'org::allbinary::util::BasicArrayListD'->new();
         my $size = $cssElementStyleNodeList->size();
@@ -44,11 +44,22 @@ sub getInstance {
 }
 
 
-# Java overloaded method: Perl keeps the last definition
-sub getInstance {
+sub getInstance_j1_2 {
     my ($class, $hashMap) = @_;
         my $styles = 'org::allbinary::util::BasicArrayListD'->new();
         return $styles;
+}
+
+sub getInstance {
+    my ($invocant, @arguments) = @_;
+    return $invocant->getInstance_j1(@arguments) if scalar(@arguments) == 1;
+    die "No method getInstance takes " . scalar(@arguments) . " arguments";
+}
+
+sub getInstance_j1 {
+    my ($invocant, @arguments) = @_;
+    return $invocant->getInstance_j1_1(@arguments) if 1 && (!defined($arguments[0]) || (ref($arguments[0]) && ref($arguments[0]) ne 'ARRAY'));
+    return $invocant->getInstance_j1_2(@arguments);
 }
 
 use java::lang::Object ();

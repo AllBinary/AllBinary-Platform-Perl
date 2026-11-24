@@ -22,8 +22,8 @@ use parent -norequire,'org::allbinary::game::input::PlayerGameInput';
 
 sub _init_fields {
     my ($self) = @_;
-    $self->{inputProcessorArray} = [(undef) x ('org::allbinary::game::input::InputFactory'->getInstance()->{MAX})];
-    $self->{removeInputProcessorArray} = [(undef) x ('org::allbinary::game::input::InputFactory'->getInstance()->{MAX})];
+    $self->{inputProcessorArray} = [(undef) x (java::lang::Object::jstatic('org::allbinary::game::input::RTSPlayerGameInput', 'InputFactory')->getInstance()->{MAX})];
+    $self->{removeInputProcessorArray} = [(undef) x (java::lang::Object::jstatic('org::allbinary::game::input::RTSPlayerGameInput', 'InputFactory')->getInstance()->{MAX})];
     $self->{inputList} = undef;
     $self->{isSingleKeyProcessing} = 'org::allbinary::game::configuration::feature::Features'->getInstance()->isFeature('org::allbinary::game::configuration::feature::InputFeatureFactory'->getInstance()->{SINGLE_KEY_REPEAT_PRESS}) || 'org::allbinary::game::configuration::feature::Features'->getInstance()->isFeature('org::allbinary::game::configuration::feature::InputFeatureFactory'->getInstance()->{SINGLE_KEY_PRESS});
     $self->{gameCanvas} = undef;
@@ -107,8 +107,8 @@ sub initInputProcessors {
         $self->{removeInputProcessorArray}->[$javax::microedition::lcdui::Canvas::RIGHT] = $self->{removeInputProcessorArray}->[$javax::microedition::lcdui::Canvas::KEY_NUM1];
         $self->{removeInputProcessorArray}->[$javax::microedition::lcdui::Canvas::KEY_NUM0] = $self->{removeInputProcessorArray}->[$javax::microedition::lcdui::Canvas::KEY_NUM1];
         $self->{removeInputProcessorArray}->[$javax::microedition::lcdui::Canvas::KEY_POUND] = $self->{removeInputProcessorArray}->[$javax::microedition::lcdui::Canvas::KEY_NUM1];
-        'org::allbinary::game::input::GameInputProcessorUtil'->init($self->{inputProcessorArray});
-        'org::allbinary::game::input::GameInputProcessorUtil'->init($self->{removeInputProcessorArray});
+        java::lang::Object::jstatic('org::allbinary::game::input::RTSPlayerGameInput', 'GameInputProcessorUtil')->init($self->{inputProcessorArray});
+        java::lang::Object::jstatic('org::allbinary::game::input::RTSPlayerGameInput', 'GameInputProcessorUtil')->init($self->{removeInputProcessorArray});
 }
 
 
@@ -296,14 +296,10 @@ use org::allbinary::media::graphics::geography::map::GeographicMapCellPosition (
 use org::allbinary::media::graphics::geography::map::GeographicMapCompositeInterface ();
 use org::allbinary::media::graphics::geography::map::SimpleGeographicMapCellPositionFactory ();
 use org::allbinary::string::CommonLabels ();
-use org::allbinary::game::input::PlayerGameInput ();
-use org::allbinary::game::input::InputFactory ();
 use org::allbinary::game::input::SelectedRTSLayersPlayerGameInput ();
-use org::allbinary::game::input::ScrollMapPlayerGameInput ();
 use org::allbinary::game::input::RTSPlayerLeftGameInputProcessor ();
 use org::allbinary::game::input::RTSPlayerRightGameInputProcessor ();
 use org::allbinary::game::input::RTSPlayerFireGameInputProcessor ();
-use org::allbinary::game::input::GameInputProcessorUtil ();
 
 1;
 

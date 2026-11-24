@@ -34,7 +34,7 @@ sub new {
     my ($class) = @_;
     my $self = bless({}, $class);
     _init_fields($self);
-        my $systemProperties = 'org::allbinary::logic::system::os::SystemProperties'->getInstance();
+        my $systemProperties = java::lang::Object::jstatic('org::allbinary::logic::system::os::GenericOperatingSystem', 'SystemProperties')->getInstance();
         my $stringValidationUtil = 'org::allbinary::logic::string::StringValidationUtil'->getInstance();
         my $EMPTY_STRING = 'org::allbinary::logic::string::StringUtil'->getInstance()->{EMPTY_STRING};
         if ($stringValidationUtil->isEmpty($systemProperties->getName())) {
@@ -133,7 +133,6 @@ use org::allbinary::logic::string::StringUtil ();
 use org::allbinary::logic::string::StringValidationUtil ();
 use org::allbinary::string::CommonSeps ();
 use org::allbinary::logic::system::os::OperatingSystemInterface ();
-use org::allbinary::logic::system::os::SystemProperties ();
 
 1;
 

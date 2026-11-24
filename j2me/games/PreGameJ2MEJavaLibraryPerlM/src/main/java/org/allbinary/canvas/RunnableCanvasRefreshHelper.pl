@@ -42,7 +42,6 @@ sub process {
 
 use java::lang::Object ();
 use org::allbinary::graphics::displayable::MyCanvas ();
-use org::allbinary::canvas::Processor ();
 
 1;
 

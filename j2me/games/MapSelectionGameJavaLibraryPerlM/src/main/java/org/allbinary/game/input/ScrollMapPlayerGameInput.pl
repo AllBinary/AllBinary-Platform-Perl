@@ -23,7 +23,7 @@ use parent -norequire,'org::allbinary::game::input::PlayerGameInput';
 
 sub _init_fields {
     my ($self) = @_;
-    $self->{inputProcessorArray} = [(undef) x ('org::allbinary::game::input::InputFactory'->getInstance()->{MAX})];
+    $self->{inputProcessorArray} = [(undef) x (java::lang::Object::jstatic('org::allbinary::game::input::ScrollMapPlayerGameInput', 'InputFactory')->getInstance()->{MAX})];
     $self->{border} = 150;
     $self->{inputList} = undef;
     $self->{isSingleKeyProcessing} = 'org::allbinary::game::configuration::feature::Features'->getInstance()->isFeature('org::allbinary::game::configuration::feature::InputFeatureFactory'->getInstance()->{SINGLE_KEY_REPEAT_PRESS}) || 'org::allbinary::game::configuration::feature::Features'->getInstance()->isFeature('org::allbinary::game::configuration::feature::InputFeatureFactory'->getInstance()->{SINGLE_KEY_PRESS});
@@ -147,7 +147,7 @@ sub initInputProcessors {
         $self->{inputProcessorArray}->[$javax::microedition::lcdui::Canvas::DOWN] = 'org::allbinary::game::input::ScrollMapDownGameInputProcessor'->new($self);
         $self->{inputProcessorArray}->[$javax::microedition::lcdui::Canvas::KEY_NUM9] = 'org::allbinary::game::input::ScrollMapRightGameInputProcessor'->new($self);
         $self->{inputProcessorArray}->[$javax::microedition::lcdui::Canvas::KEY_NUM7] = 'org::allbinary::game::input::ScrollMapLeftGameInputProcessor'->new($self);
-        'org::allbinary::game::input::GameInputProcessorUtil'->init($self->{inputProcessorArray});
+        java::lang::Object::jstatic('org::allbinary::game::input::ScrollMapPlayerGameInput', 'GameInputProcessorUtil')->init($self->{inputProcessorArray});
 }
 
 
@@ -262,13 +262,10 @@ use org::allbinary::layer::event::ScrollMapEvent ();
 use org::allbinary::layer::event::ScrollMapEventHandler ();
 use org::allbinary::media::graphics::geography::map::BasicGeographicMap ();
 use org::allbinary::util::BasicArrayListD ();
-use org::allbinary::game::input::PlayerGameInput ();
-use org::allbinary::game::input::InputFactory ();
 use org::allbinary::game::input::ScrollMapUpGameInputProcessor ();
 use org::allbinary::game::input::ScrollMapDownGameInputProcessor ();
 use org::allbinary::game::input::ScrollMapRightGameInputProcessor ();
 use org::allbinary::game::input::ScrollMapLeftGameInputProcessor ();
-use org::allbinary::game::input::GameInputProcessorUtil ();
 
 1;
 

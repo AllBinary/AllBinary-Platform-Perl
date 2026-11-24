@@ -64,7 +64,7 @@ sub test {
                     my $licenseInitInfo = 'org::allbinary::business::init::LicenseInitInfo'->new();
                     $licenseInitInfo->addServer($serverName);
                     'org::allbinary::business::init::LicenseInitInfoUtil'->getInstance()->write($licenseInitInfo);
-                    my $abeClientInformation = 'org::allbinary::logic::system::security::licensing::AbeClientInformationInterfaceFactory'->getInstance();
+                    my $abeClientInformation = java::lang::Object::jstatic('org::allbinary::logic::system::security::licensing::LicenseClientAndServerTest', 'AbeClientInformationInterfaceFactory')->getInstance();
                     my $xmlRpcAbeLicenseClient = 'org::allbinary::logic::system::security::licensing::client::XmlRpcAbeLicenseRetrievalClient'->new($abeClientInformation);
                     my $abeLicenseInterface = $xmlRpcAbeLicenseClient->get(undef);
                     if (defined($abeLicenseInterface)) {
@@ -109,9 +109,7 @@ use org::allbinary::logic::system::security::licensing::client::XmlRpcAbeLicense
 use org::allbinary::globals::PATH_GLOBALS ();
 use org::allbinary::util::BasicArrayList ();
 use org::allbinary::string::CommonStrings ();
-use org::allbinary::logic::system::security::licensing::BasicArrayListD ();
 use org::allbinary::logic::system::security::licensing::PrintLicenseInitInfo ();
-use org::allbinary::logic::system::security::licensing::AbeClientInformationInterfaceFactory ();
 
 1;
 

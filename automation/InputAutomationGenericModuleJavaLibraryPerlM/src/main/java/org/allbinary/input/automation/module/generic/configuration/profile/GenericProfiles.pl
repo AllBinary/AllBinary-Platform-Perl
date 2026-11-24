@@ -156,7 +156,7 @@ use java::io::File ();
 # use java::io::FileInputStream ();
 # use java::io::FileOutputStream ();
 use java::util::HashMap ();
-# use java::util::Set ();
+use java::util::Set ();
 use org::allbinary::data::tree::dom::DomNodeInterface ();
 use org::allbinary::data::tree::dom::document::DomDocumentHelper ();
 use org::allbinary::data::tree::dom::document::XmlDocumentHelper ();

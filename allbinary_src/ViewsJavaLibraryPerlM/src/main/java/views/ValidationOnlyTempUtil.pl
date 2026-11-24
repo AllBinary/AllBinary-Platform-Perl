@@ -47,12 +47,12 @@ sub view {
     my ($self, $validationComponentInterface) = @_;
         my $commonStrings = 'org::allbinary::string::CommonStrings'->getInstance();
         try {
-            if ($views::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($views::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{VIEW})) {
+            if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{VIEW})) {
                 $self->{logUtil}->putF("View Name: " . $validationComponentInterface->getTransformInfoInterface()->getName(), $self, "view()");
             }
             return 'org::allbinary::logic::string::StringUtil'->getInstance()->{EMPTY_STRING};
         } catch ($e) {
-            if ($views::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($views::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{VIEWERROR})) {
+            if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{VIEWERROR})) {
                 $self->{logUtil}->put($commonStrings->{EXCEPTION}, $self, "view()", $e);
             }
             die $e;
@@ -65,6 +65,8 @@ use org::allbinary::logic::communication::log::LogUtil ();
 use org::allbinary::logic::control::validate::ValidationComponentInterface ();
 use org::allbinary::logic::string::StringUtil ();
 use org::allbinary::string::CommonStrings ();
+use org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory ();
+use org::allbinary::logic::communication::log::config::type::LogConfigTypes ();
 
 1;
 

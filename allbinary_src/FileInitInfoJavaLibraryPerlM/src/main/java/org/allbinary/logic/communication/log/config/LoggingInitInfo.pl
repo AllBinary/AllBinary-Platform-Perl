@@ -59,9 +59,9 @@ sub read {
     my ($class) = @_;
         try {
             my $document = 'org::allbinary::logic::communication::log::config::LoggingInitInfo'->getDoc();
-            my $logConfigsNodeList = $document->getElementsByTagName('org::allbinary::logic::communication::log::config::LogConfigsData'->getInstance()->{NAME});
+            my $logConfigsNodeList = $document->getElementsByTagName(java::lang::Object::jstatic('org::allbinary::logic::communication::log::config::LoggingInitInfo', 'LogConfigsData')->getInstance()->{NAME});
             my $logConfigsNode = $logConfigsNodeList->item(0);
-            my $logConfigNodeVector = 'org::allbinary::data::tree::dom::DomSearchHelper'->getAllNodes('org::allbinary::logic::communication::log::config::LogConfigData'->getInstance()->{NAME}, $logConfigsNode->getChildNodes());
+            my $logConfigNodeVector = 'org::allbinary::data::tree::dom::DomSearchHelper'->getAllNodes(java::lang::Object::jstatic('org::allbinary::logic::communication::log::config::LoggingInitInfo', 'LogConfigData')->getInstance()->{NAME}, $logConfigsNode->getChildNodes());
             $org::allbinary::logic::communication::log::config::LoggingInitInfo::logConfigInfoList = 'org::allbinary::util::BasicArrayListD'->new();
             my $size = $logConfigNodeVector->size();
             for (my $i = 0; $i < $size; $i++) {
@@ -184,8 +184,6 @@ use org::allbinary::util::BasicArrayListD ();
 use org::w3c::dom::Document ();
 use org::w3c::dom::Node ();
 use org::w3c::dom::NodeList ();
-use org::allbinary::logic::communication::log::config::LogConfigsData ();
-use org::allbinary::logic::communication::log::config::LogConfigData ();
 use org::allbinary::logic::communication::log::config::LogConfig ();
 
 1;

@@ -151,7 +151,7 @@ sub toString {
 }
 
 use java::lang::Object ();
-# use java::awt ();
+# use java::awt::Color ();
 use org::allbinary::logic::string::StringMaker ();
 use org::allbinary::string::CommonSeps ();
 use org::allbinary::media::image::analysis::ColorRangeInterface ();

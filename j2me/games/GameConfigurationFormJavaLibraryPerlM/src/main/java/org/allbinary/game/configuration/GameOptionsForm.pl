@@ -70,7 +70,7 @@ sub addTextFieldsIfSimulated {
 
 sub addTextFields {
     my ($self) = @_;
-        my $hashtable = 'org::allbinary::game::configuration::GameConfigurationTextInput'->getHashtable();
+        my $hashtable = java::lang::Object::jstatic('org::allbinary::game::configuration::GameOptionsForm', 'GameConfigurationTextInput')->getHashtable();
         my $size = $hashtable->size();
         my $objectArray = 'org::allbinary::util::HashtableUtil'->getInstance()->getKeysAsArray($hashtable);
         my $gameConfigurationTextInput = undef;
@@ -87,7 +87,7 @@ sub addConfiguration {
     my ($self) = @_;
         my $METHOD_NAME = "addConfiguration";
         my $NAME = "Name: ";
-        my $list = 'org::allbinary::game::configuration::GameConfigurationSingleton'->getInstance()->getOptionsBasicArrayList();
+        my $list = java::lang::Object::jstatic('org::allbinary::game::configuration::GameOptionsForm', 'GameConfigurationSingleton')->getInstance()->getOptionsBasicArrayList();
         my $GAUGE_CHANGE = 'org::allbinary::graphics::displayable::command::MyCommandsFactory'->getInstance()->{GAUGE_CHANGE};
         my $stringMaker = 'org::allbinary::logic::string::StringMaker'->new();
         my $size = $list->size();
@@ -125,12 +125,12 @@ sub save {
             if ((Scalar::Util::blessed($item) && $item->isa('org::allbinary::game::configuration::GameConfigurationGauge'))) {
                 'org::allbinary::game::configuration::GameConfigurationUtil'->getInstance()->update($item);
             } elsif ((Scalar::Util::blessed($item) && $item->isa('javax::microedition::lcdui::TextField'))) {
-                'org::allbinary::game::configuration::GameConfigurationTextInput'->update($item);
+                java::lang::Object::jstatic('org::allbinary::game::configuration::GameOptionsForm', 'GameConfigurationTextInput')->update($item);
             }
         }
         'org::allbinary::game::configuration::GameConfigurationUtil'->getInstance()->updateCompetitionValue();
         my $hashtable = 'org::allbinary::logic::StdUtil'->getInstance()->createHashtable();
-        my $SCALE = 'org::allbinary::game::configuration::GameConfigurationCentral'->getInstance()->{SCALE};
+        my $SCALE = java::lang::Object::jstatic('org::allbinary::game::configuration::GameOptionsForm', 'GameConfigurationCentral')->getInstance()->{SCALE};
         $hashtable->put($SCALE->getName(), ("" . (int($SCALE->getValue()))));
         my $keyValuePersistance = 'org::allbinary::game::configuration::persistance::GameConfigurationPersistanceSingleton'->getInstance();
         $keyValuePersistance->clear();
@@ -170,11 +170,7 @@ use org::allbinary::util::BasicArrayList ();
 use org::allbinary::util::HashtableUtil ();
 use org::allbinary::logic::StdUtil ();
 use org::allbinary::util::ABHashtable ();
-use org::allbinary::game::configuration::GameConfigurationTextInput ();
-use org::allbinary::game::configuration::GameConfigurationSingleton ();
-use org::allbinary::game::configuration::GameConfigurationGauge ();
 use org::allbinary::game::configuration::GameConfigurationUtil ();
-use org::allbinary::game::configuration::GameConfigurationCentral ();
 
 1;
 

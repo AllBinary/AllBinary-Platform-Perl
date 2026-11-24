@@ -35,8 +35,15 @@ sub new {
     die "No constructor of Money takes " . scalar(@arguments) . " arguments";
 }
 
-
 sub _new1 {
+    my ($class, @arguments) = @_;
+    return $class->_new1_1(@arguments) if 1 && (!defined($arguments[0]) || (ref($arguments[0]) && ref($arguments[0]) ne 'ARRAY'));
+    return $class->_new1_2(@arguments) if 1 && !ref($arguments[0]);
+    return $class->_new1_3(@arguments);
+}
+
+
+sub _new1_1 {
     my ($class, $money) = @_;
     my $self = bless({}, $class);
     _init_fields($self);
@@ -54,7 +61,7 @@ sub _new0 {
 }
 
 
-sub _new1 {
+sub _new1_2 {
     my ($class, $usDollarStr) = @_;
     my $self = bless({}, $class);
     _init_fields($self);
@@ -65,7 +72,7 @@ sub _new1 {
 }
 
 
-sub _new1 {
+sub _new1_3 {
     my ($class, $units) = @_;
     my $self = bless({}, $class);
     _init_fields($self);
@@ -84,16 +91,27 @@ sub isValid {
 }
 
 
-sub add {
+sub add_j1_1 {
     my ($self, $moreMoney) = @_;
         $self->add($moreMoney->toString());
 }
 
 
-# Java overloaded method: Perl keeps the last definition
-sub add {
+sub add_j1_2 {
     my ($self, $usDollarStr) = @_;
         $self->{units} = int($self->{units}) + $self->convertUsdToUnits($usDollarStr);
+}
+
+sub add {
+    my ($invocant, @arguments) = @_;
+    return $invocant->add_j1(@arguments) if scalar(@arguments) == 1;
+    die "No method add takes " . scalar(@arguments) . " arguments";
+}
+
+sub add_j1 {
+    my ($invocant, @arguments) = @_;
+    return $invocant->add_j1_1(@arguments) if 1 && (!defined($arguments[0]) || (ref($arguments[0]) && ref($arguments[0]) ne 'ARRAY'));
+    return $invocant->add_j1_2(@arguments);
 }
 
 
@@ -103,16 +121,27 @@ sub subtract {
 }
 
 
-sub multiply {
+sub multiply_j1_1 {
     my ($self, $multiplier) = @_;
         $self->{units} = int(int($self->{units}) * $multiplier);
 }
 
 
-# Java overloaded method: Perl keeps the last definition
-sub multiply {
+sub multiply_j1_2 {
     my ($self, $multiplier) = @_;
         $self->{units} = int($self->{units}) * $multiplier;
+}
+
+sub multiply {
+    my ($invocant, @arguments) = @_;
+    return $invocant->multiply_j1(@arguments) if scalar(@arguments) == 1;
+    die "No method multiply takes " . scalar(@arguments) . " arguments";
+}
+
+sub multiply_j1 {
+    my ($invocant, @arguments) = @_;
+    return $invocant->multiply_j1_1(@arguments) if 1 && (!defined($arguments[0]) || (ref($arguments[0]) && ref($arguments[0]) ne 'ARRAY'));
+    return $invocant->multiply_j1_2(@arguments);
 }
 
 

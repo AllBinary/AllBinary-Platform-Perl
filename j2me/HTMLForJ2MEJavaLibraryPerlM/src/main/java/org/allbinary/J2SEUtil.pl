@@ -59,7 +59,7 @@ use java::lang::Object ();
 use java::lang::LazyStatic ();
 use java::util::HashMap ();
 # use java::util::Map ();
-# use java::util::Set ();
+use java::util::Set ();
 
 1;
 

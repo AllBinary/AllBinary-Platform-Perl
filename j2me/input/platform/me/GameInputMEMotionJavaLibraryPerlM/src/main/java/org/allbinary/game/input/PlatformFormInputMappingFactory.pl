@@ -49,7 +49,7 @@ sub getOrCreate {
         try {
             if ($self->{inputToGameKeyMapping} == 'org::allbinary::game::input::mapping::InputToGameKeyMapping'->getNullInstance()) {
                 my $inputToGameKeyMapping = 'org::allbinary::game::input::mapping::InputToGameKeyMapping'->new();
-                my $gameKeyFactory = 'org::allbinary::game::input::GameKeyFactory'->getInstance();
+                my $gameKeyFactory = java::lang::Object::jstatic('org::allbinary::game::input::PlatformFormInputMappingFactory', 'GameKeyFactory')->getInstance();
                 $inputToGameKeyMapping->add($gameKeyFactory->{UP}, $gameKeyFactory->{UP});
                 $inputToGameKeyMapping->add($gameKeyFactory->{DOWN}, $gameKeyFactory->{DOWN});
                 $inputToGameKeyMapping->add($gameKeyFactory->{LEFT}, $gameKeyFactory->{LEFT});
@@ -70,7 +70,6 @@ use org::allbinary::game::input::mapping::InputToGameKeyMapping ();
 use org::allbinary::logic::NullUtil ();
 use org::allbinary::logic::communication::log::LogUtil ();
 use org::allbinary::string::CommonStrings ();
-use org::allbinary::game::input::GameKeyFactory ();
 
 1;
 

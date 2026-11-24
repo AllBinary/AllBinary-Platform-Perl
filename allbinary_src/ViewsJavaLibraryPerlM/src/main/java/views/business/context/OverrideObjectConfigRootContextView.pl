@@ -31,7 +31,7 @@ sub new {
     my $self = $class->SUPER::new($transformInfoInterface);
     _init_fields($self);
         # super(...) made $self above
-        if ($views::business::context::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($views::business::context::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{VIEW})) {
+        if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{VIEW})) {
             $self->{logUtil}->putF("View Name: " . $transformInfoInterface->getName(), $self, "OverrideObjectRootContextView()");
         }
     return $self;
@@ -42,7 +42,7 @@ sub new {
 sub view {
     my ($self) = @_;
         try {
-            if ($views::business::context::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($views::business::context::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{VIEW})) {
+            if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{VIEW})) {
                 $self->{logUtil}->putF("View Name: " . $self->getTransformInfoInterface()->getName(), $self, "view()");
             }
             my $rootTransformInfoInterface = 'org::allbinary::logic::visual::transform::info::TransformInfoHttp'->new($self->getTransformInfoInterface());
@@ -58,7 +58,7 @@ sub view {
                 die ("Override Currently Not Supported");
             }
             my $overrideObjectConfigDocument = $self->getTransformInfoInterface()->getObjectConfigInterface()->toXmlDoc();
-            if ($views::business::context::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($views::business::context::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{VIEW})) {
+            if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{VIEW})) {
                 $self->{logUtil}->putF("Retrieved OverrideObjectConfig: " . 'org::allbinary::data::tree::dom::document::XmlDocumentHelper'->toString($overrideObjectConfigDocument), $self, "view()");
             }
             my $transformFactory = 'org::allbinary::logic::visual::transform::TransformFactory'->getInstance();
@@ -67,12 +67,12 @@ sub view {
             my $componentInterface = $transformFactory->getInstance($self->{abeClientInformation}, $transformTemplateInterface->getName(), $rootComponentInterface->getTransformInfoInterface());
             my $transformInfoObjectConfigInterface = 'org::allbinary::logic::visual::transform::info::objectConfig::TransformInfoObjectConfigAndManipulatorFactory'->getInstance()->getInstance($self->{abeClientInformation}, $componentInterface->getTransformInfoInterface(), $overrideObjectConfigDocument);
             $componentInterface->getTransformInfoInterface()->setObjectConfigInterface($transformInfoObjectConfigInterface);
-            if ($views::business::context::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($views::business::context::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{VIEW})) {
+            if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{VIEW})) {
                 $self->{logUtil}->putF("Set OverrideObjectConfig: " . $componentInterface->getTransformInfoInterface()->getObjectConfigInterface()->toString(), $self, "view()");
             }
             return $componentInterface->view();
         } catch ($e) {
-            if ($views::business::context::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($views::business::context::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{TAGHELPERERROR})) {
+            if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{TAGHELPERERROR})) {
                 $self->{logUtil}->put($self->{commonStrings}->{EXCEPTION}, $self, "view()", $e);
             }
             die $e;
@@ -95,6 +95,8 @@ use org::allbinary::logic::visual::transform::template::TransformTemplateInterfa
 use org::allbinary::string::CommonSeps ();
 use org::w3c::dom::Document ();
 use views::business::context::modules::storefront::HttpStoreComponentView ();
+use org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory ();
+use org::allbinary::logic::communication::log::config::type::LogConfigTypes ();
 
 1;
 

@@ -45,9 +45,9 @@ sub getCategoryInterface {
 # throws Exception
 sub toXmlNode {
     my ($self, $document) = @_;
-        my $node = $document->createElement('org::allbinary::business::category::CategoryData'->getInstance()->{NAME});
+        my $node = $document->createElement(java::lang::Object::jstatic('org::allbinary::business::category::CategoryView', 'CategoryData')->getInstance()->{NAME});
         my $childCategoryVector = $self->{categoryInterface}->getChildNodes();
-        if ($org::allbinary::business::category::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($org::allbinary::business::category::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{CATEGORY})) {
+        if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{CATEGORY})) {
             $self->{logUtil}->putF("Number Of Children: " . $childCategoryVector->size(), $self, "toXmlNode");
         }
         my $size = $childCategoryVector->size();
@@ -80,7 +80,8 @@ use org::allbinary::logic::java::anyType::InterfaceUtil ();
 use org::allbinary::string::CommonSeps ();
 use org::w3c::dom::Document ();
 use org::w3c::dom::Node ();
-use org::allbinary::business::category::CategoryData ();
+use org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory ();
+use org::allbinary::logic::communication::log::config::type::LogConfigTypes ();
 
 1;
 

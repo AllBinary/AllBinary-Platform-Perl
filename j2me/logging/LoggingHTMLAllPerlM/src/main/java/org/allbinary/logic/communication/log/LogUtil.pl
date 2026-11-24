@@ -25,7 +25,7 @@ tie our $instance, 'java::lang::LazyStatic', sub { 'org::allbinary::logic::commu
 sub _init_fields {
     my ($self) = @_;
     $self->{LOG_SUCCESS} = "org.allbinary: ";
-    $self->{logFormatUtil} = 'org::allbinary::logic::communication::log::LogFormatUtil'->getInstance();
+    $self->{logFormatUtil} = java::lang::Object::jstatic('org::allbinary::logic::communication::log::LogUtil', 'LogFormatUtil')->getInstance();
 }
 
 
@@ -55,7 +55,7 @@ sub putL {
 
 sub putF {
     my ($self, $specialMessage, $anyType, $functionName) = @_;
-        my $className = 'org::allbinary::logic::communication::log::PreLogUtil'->getClassName($anyType);
+        my $className = java::lang::Object::jstatic('org::allbinary::logic::communication::log::LogUtil', 'PreLogUtil')->getClassName($anyType);
         if (!defined($className)) {
             $className = 'org::allbinary::string::CommonStrings'->getInstance()->{EMPTY};
         }
@@ -73,7 +73,7 @@ sub putFS {
 
 sub put {
     my ($self, $specialMessage, $anyType, $functionName, $exception) = @_;
-        my $className = 'org::allbinary::logic::communication::log::PreLogUtil'->getClassName($anyType);
+        my $className = java::lang::Object::jstatic('org::allbinary::logic::communication::log::LogUtil', 'PreLogUtil')->getClassName($anyType);
         if (!defined($className)) {
             $className = 'org::allbinary::string::CommonStrings'->getInstance()->{EMPTY};
         }
@@ -89,8 +89,6 @@ use java::lang::Object ();
 use java::lang::LazyStatic ();
 use org::allbinary::string::CommonStrings ();
 use playn::core::PlayN ();
-use org::allbinary::logic::communication::log::LogFormatUtil ();
-use org::allbinary::logic::communication::log::PreLogUtil ();
 
 1;
 

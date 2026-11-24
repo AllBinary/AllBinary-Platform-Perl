@@ -65,7 +65,6 @@ use java::lang::Object ();
 use org::allbinary::graphics::color::BasicColor ();
 use org::allbinary::logic::NullUtil ();
 use org::allbinary::vector::VectorInfo ();
-use org::allbinary::animation::ProceduralAnimationInterfaceFactoryInterface ();
 use org::allbinary::animation::VectorRotationGenerator ();
 use org::allbinary::animation::VectorExplosionGenerator ();
 

@@ -67,7 +67,7 @@ sub doPickupLayer {
         try {
             my $pickedUpLayerInterfaceFactoryInterface = $pickupLayerInterface->getPickedUpLayerInterfaceFactoryInterface();
             my $pickedUpLayerType = $pickedUpLayerInterfaceFactoryInterface->getPickedUpLayerType();
-            my $pickedUpLayerTypeFactory = 'org::allbinary::game::layer::pickup::PickedUpLayerTypeFactory'->getInstance();
+            my $pickedUpLayerTypeFactory = java::lang::Object::jstatic('org::allbinary::game::layer::pickup::PickupBehavior', 'PickedUpLayerTypeFactory')->getInstance();
             if ($pickedUpLayerType == $pickedUpLayerTypeFactory->{BEAM} || $pickedUpLayerType == $pickedUpLayerTypeFactory->{MINE} || $pickedUpLayerType == $pickedUpLayerTypeFactory->{PROJECTILE} || $pickedUpLayerType == $pickedUpLayerTypeFactory->{ENHANCEMENT}) {
                 $self->add($pickedUpLayerInterfaceFactoryInterface);
             } elsif ($pickedUpLayerInterfaceFactoryInterface->getPickedUpLayerType() == $pickedUpLayerTypeFactory->{PART}) {
@@ -162,7 +162,6 @@ use org::allbinary::logic::communication::log::LogUtil ();
 use org::allbinary::logic::communication::log::PreLogUtil ();
 use org::allbinary::string::CommonStrings ();
 use org::allbinary::game::layer::pickup::PickupBehaviorInterface ();
-use org::allbinary::game::layer::pickup::PickedUpLayerTypeFactory ();
 
 1;
 

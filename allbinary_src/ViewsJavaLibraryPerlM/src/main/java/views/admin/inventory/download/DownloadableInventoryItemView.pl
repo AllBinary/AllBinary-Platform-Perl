@@ -92,7 +92,7 @@ sub view {
             $self->addDomNodeInterfaces();
             return $self->SUPER::view();
         } catch ($e) {
-            if ($views::admin::inventory::download::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($views::admin::inventory::download::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{VIEWERROR})) {
+            if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{VIEWERROR})) {
                 $self->{logUtil}->put($self->{commonStrings}->{EXCEPTION}, $self, "view()", $e);
             }
             die $e;
@@ -194,6 +194,8 @@ use org::allbinary::logic::string::StringMaker ();
 use org::allbinary::logic::visual::transform::info::TransformInfoInterface ();
 use org::apache::commons::fileupload::FileItem ();
 use views::business::context::modules::storefront::HttpStoreComponentView ();
+use org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory ();
+use org::allbinary::logic::communication::log::config::type::LogConfigTypes ();
 
 1;
 

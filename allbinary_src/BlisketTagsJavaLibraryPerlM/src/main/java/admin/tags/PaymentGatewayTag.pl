@@ -57,12 +57,12 @@ sub doStartTag {
     my ($self) = @_;
         try {
             if ($self->isEnabled()) {
-                if ($self->getCommand()->compareTo($admin::tags::org::allbinary->{globals}->{GLOBALS2}->{AUTHORIZEORDEREVALBODYONERROR}) == 0 || $self->getCommand()->compareTo($admin::tags::org::allbinary->{globals}->{GLOBALS2}->{AUTHORIZEORDERANDEVALBODY}) == 0 || $self->getCommand()->compareTo($admin::tags::org::allbinary->{globals}->{GLOBALS2}->{AUTHORIZEFORMEVALBODYONERROR}) == 0) {
+                if ($self->getCommand()->compareTo($org::allbinary::globals::GLOBALS2::AUTHORIZEORDEREVALBODYONERROR) == 0 || $self->getCommand()->compareTo($org::allbinary::globals::GLOBALS2::AUTHORIZEORDERANDEVALBODY) == 0 || $self->getCommand()->compareTo($org::allbinary::globals::GLOBALS2::AUTHORIZEFORMEVALBODYONERROR) == 0) {
                     my $output = $self->process();
                     {;
                         $self->{pageContext}->getOut()->print($output . "<br />");
                     }
-                    if ($self->getCommand()->compareTo($admin::tags::org::allbinary->{globals}->{GLOBALS2}->{AUTHORIZEORDEREVALBODYONERROR}) == 0) {
+                    if ($self->getCommand()->compareTo($org::allbinary::globals::GLOBALS2::AUTHORIZEORDEREVALBODYONERROR) == 0) {
                         return $self->{SKIP_BODY};
                     } else {
                         return $self->{EVAL_BODY_INCLUDE};
@@ -71,10 +71,10 @@ sub doStartTag {
                     return $self->SUPER::doStartTag();
                 }
             }
-            return $self->{SKIP_BODY};
+            return java::lang::Object::jstatic('admin::tags::PaymentGatewayTag', 'SKIP_BODY');
         } catch ($e) {
             'org::allbinary::logic::communication::http::request::AbResponseHandler'->sendJspTagRedirect($self->{pageContext}, $e);
-            return $self->{SKIP_BODY};
+            return java::lang::Object::jstatic('admin::tags::PaymentGatewayTag', 'SKIP_BODY');
         }
 }
 
@@ -85,7 +85,9 @@ use admin::taghelpers::PaymentGatewayHelperFactory ();
 use org::allbinary::logic::communication::http::request::AbResponseHandler ();
 use org::allbinary::logic::communication::log::LogUtil ();
 use org::allbinary::logic::system::security::licensing::LicensingException ();
-use admin::tags::TableTag ();
+use org::allbinary::globals::GLOBALS2 ();
+use org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory ();
+use org::allbinary::logic::communication::log::config::type::LogConfigTypes ();
 
 1;
 

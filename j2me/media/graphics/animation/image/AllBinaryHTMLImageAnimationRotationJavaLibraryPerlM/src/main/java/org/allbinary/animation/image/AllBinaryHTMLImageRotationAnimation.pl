@@ -146,7 +146,6 @@ use org::allbinary::media::image::ImageRotationUtil ();
 use org::microemu::device::playn::PlaynMutableImage ();
 use playn::core::CanvasImage ();
 use playn::core::CanvasSurface ();
-use org::allbinary::animation::image::ImageBaseRotationAnimation ();
 use org::allbinary::animation::image::AlphaBaseProcessor ();
 use org::allbinary::animation::image::AlphaProcessor ();
 

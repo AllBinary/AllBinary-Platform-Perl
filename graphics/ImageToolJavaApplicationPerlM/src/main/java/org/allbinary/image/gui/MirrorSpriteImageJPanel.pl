@@ -55,7 +55,7 @@ sub new {
 sub process {
     my ($self) = @_;
         do {
-            package java::lang::Thread::AnonymousN66316 { our @ISA = ('java::lang::Thread', 'java::lang::Object');
+            package java::lang::Thread::AnonymousN66451 { our @ISA = ('java::lang::Thread', 'java::lang::Object');
             
 
             sub run {
@@ -85,7 +85,7 @@ sub process {
                 }
             }
             }
-            'java::lang::Thread::AnonymousN66316'->can('new') ? 'java::lang::Thread::AnonymousN66316'->new() : bless({}, 'java::lang::Thread::AnonymousN66316')
+            'java::lang::Thread::AnonymousN66451'->can('new') ? 'java::lang::Thread::AnonymousN66451'->new() : bless({}, 'java::lang::Thread::AnonymousN66451')
         }->start();
 }
 
@@ -94,7 +94,7 @@ sub initComponents {
     my ($self) = @_;
         $self->{jLayeredPane1} = 'javax::swing::JLayeredPane'->new();
         $self->{jPanel1} = do {
-            package javax::swing::JPanel::AnonymousN67571 { our @ISA = ('javax::swing::JPanel', 'java::lang::Object');
+            package javax::swing::JPanel::AnonymousN67690 { our @ISA = ('javax::swing::JPanel', 'java::lang::Object');
             
 
             sub paint {
@@ -104,7 +104,7 @@ sub initComponents {
                 }
             }
             }
-            'javax::swing::JPanel::AnonymousN67571'->can('new') ? 'javax::swing::JPanel::AnonymousN67571'->new() : bless({}, 'javax::swing::JPanel::AnonymousN67571')
+            'javax::swing::JPanel::AnonymousN67690'->can('new') ? 'javax::swing::JPanel::AnonymousN67690'->new() : bless({}, 'javax::swing::JPanel::AnonymousN67690')
         };
         $self->{jPanel2} = 'javax::swing::JPanel'->new();
         $self->{imageHeightIsFrameSizeJCheckBox} = 'javax::swing::JCheckBox'->new();
@@ -122,7 +122,7 @@ sub initComponents {
         $self->{imageHeightIsFrameSizeJCheckBox}->setText("Image Height Is Frame Size");
         $self->{imageHeightIsFrameSizeJCheckBox}->setEnabled(0);
         $self->{imageHeightIsFrameSizeJCheckBox}->addActionListener(do {
-            package java::awt::event::ActionListener::AnonymousN68660 { our @ISA = ('java::awt::event::ActionListener', 'java::lang::Object');
+            package java::awt::event::ActionListener::AnonymousN68635 { our @ISA = ('java::awt::event::ActionListener', 'java::lang::Object');
             
 
             sub actionPerformed {
@@ -130,7 +130,7 @@ sub initComponents {
                 $self->imageHeightIsFrameSizeJCheckBoxActionPerformed($evt);
             }
             }
-            'java::awt::event::ActionListener::AnonymousN68660'->can('new') ? 'java::awt::event::ActionListener::AnonymousN68660'->new() : bless({}, 'java::awt::event::ActionListener::AnonymousN68660')
+            'java::awt::event::ActionListener::AnonymousN68635'->can('new') ? 'java::awt::event::ActionListener::AnonymousN68635'->new() : bless({}, 'java::awt::event::ActionListener::AnonymousN68635')
         });
         $self->{horizontalJCheckBox}->setSelected(1);
         $self->{horizontalJCheckBox}->setText("Horizontal");
@@ -140,7 +140,7 @@ sub initComponents {
         $self->{writeOverOriginalJCheckBox}->setText("Write Over Original");
         $self->{generateJButton}->setText("Generate");
         $self->{generateJButton}->addActionListener(do {
-            package java::awt::event::ActionListener::AnonymousN69031 { our @ISA = ('java::awt::event::ActionListener', 'java::lang::Object');
+            package java::awt::event::ActionListener::AnonymousN68958 { our @ISA = ('java::awt::event::ActionListener', 'java::lang::Object');
             
 
             sub actionPerformed {
@@ -148,7 +148,7 @@ sub initComponents {
                 $self->generateJButtonActionPerformed($evt);
             }
             }
-            'java::awt::event::ActionListener::AnonymousN69031'->can('new') ? 'java::awt::event::ActionListener::AnonymousN69031'->new() : bless({}, 'java::awt::event::ActionListener::AnonymousN69031')
+            'java::awt::event::ActionListener::AnonymousN68958'->can('new') ? 'java::awt::event::ActionListener::AnonymousN68958'->new() : bless({}, 'java::awt::event::ActionListener::AnonymousN68958')
         });
         my $jPanel2Layout = 'org::jdesktop::layout::GroupLayout'->new($self->{jPanel2});
         $self->{jPanel2}->setLayout($jPanel2Layout);
@@ -189,7 +189,7 @@ sub setImageProcessorInput {
 }
 
 use java::lang::Object ();
-# use java::awt ();
+# use java::awt::Graphics ();
 # use java::awt::image::BufferedImage ();
 # use java::awt::image::RenderedImage ();
 use java::io::File ();
@@ -201,6 +201,13 @@ use org::allbinary::media::image::ImageProcessorInputCompositeInterface ();
 use org::allbinary::media::image::ImageStrings ();
 use org::allbinary::media::image::MirrorImageUtil ();
 use org::allbinary::string::CommonStrings ();
+# use java::awt::event::ActionEvent ();
+# use java::awt::event::ActionListener ();
+# use javax::swing::JButton ();
+# use javax::swing::JCheckBox ();
+# use javax::swing::JLabel ();
+# use javax::swing::JLayeredPane ();
+# use javax::swing::JPanel ();
 use java::lang::Thread ();
 
 1;

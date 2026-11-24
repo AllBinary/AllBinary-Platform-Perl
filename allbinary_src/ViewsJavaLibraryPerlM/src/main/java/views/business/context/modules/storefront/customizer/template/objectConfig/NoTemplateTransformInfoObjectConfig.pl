@@ -67,7 +67,7 @@ sub _new3 {
 sub generate {
     my ($self, $objectConfigDocument) = @_;
         my $docString = 'org::allbinary::data::tree::dom::document::XmlDocumentHelper'->toString($objectConfigDocument);
-        if ($views::business::context::modules::storefront::customizer::template::objectConfig::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($views::business::context::modules::storefront::customizer::template::objectConfig::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{VIEW})) {
+        if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{VIEW})) {
             $self->{logUtil}->putF("Initial ObjectConfig: " . $docString, $self, "generate()");
         }
         my $storeName = $self->getTransformInfoInterface()->getStoreName();
@@ -80,7 +80,7 @@ sub generate {
         $hashMap->put($VARKEY . 'org::allbinary::logic::visual::transform::info::TransformInfoData'->getInstance()->{PARTIAL}, $pageName);
         my $replace = 'org::allbinary::logic::string::regex::replace::Replace'->new($hashMap);
         my $newObjectConfigDocument = 'org::allbinary::data::tree::dom::document::DomDocumentHelper'->create($replace->all($docString));
-        if ($views::business::context::modules::storefront::customizer::template::objectConfig::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($views::business::context::modules::storefront::customizer::template::objectConfig::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{VIEW})) {
+        if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{VIEW})) {
             $self->{logUtil}->putF("Final ObjectConfig: " . 'org::allbinary::data::tree::dom::document::XmlDocumentHelper'->toString($newObjectConfigDocument), $self, "generate()");
         }
         return $newObjectConfigDocument;
@@ -100,6 +100,8 @@ use org::allbinary::logic::visual::transform::info::objectConfig::TransformInfoO
 use org::allbinary::logic::visual::transform::info::objectConfig::TransformInfoObjectConfigData ();
 use org::allbinary::logic::visual::transform::template::util::TransformTemplateCustomizerUtil ();
 use org::w3c::dom::Document ();
+use org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory ();
+use org::allbinary::logic::communication::log::config::type::LogConfigTypes ();
 
 1;
 

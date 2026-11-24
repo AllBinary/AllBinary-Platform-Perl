@@ -29,17 +29,23 @@ sub new {
 
 
 # throws Exception
-sub getInstance {
+sub getInstance_j2 {
     my ($class, $pageContext, $weblisketSession) = @_;
         return 'org::allbinary::logic::visual::transform::data::TransformStoreDocument'->new($pageContext, $weblisketSession);
 }
 
 
 # throws Exception
-# Java overloaded method: Perl keeps the last definition
-sub getInstance {
+sub getInstance_j1 {
     my ($class, $searchRequest) = @_;
         return 'org::allbinary::logic::visual::transform::data::TransformStoreDocument'->new($searchRequest);
+}
+
+sub getInstance {
+    my ($invocant, @arguments) = @_;
+    return $invocant->getInstance_j2(@arguments) if scalar(@arguments) == 2;
+    return $invocant->getInstance_j1(@arguments) if scalar(@arguments) == 1;
+    die "No method getInstance takes " . scalar(@arguments) . " arguments";
 }
 
 use java::lang::Object ();

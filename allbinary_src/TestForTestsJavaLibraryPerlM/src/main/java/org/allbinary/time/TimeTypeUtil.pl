@@ -29,47 +29,65 @@ sub getInstance {
 }
 
 
-sub isNight {
+sub isNight_j0 {
     my ($self) = @_;
         my $hoursOfDay = $self->getHourOfDay();
         return $hoursOfDay < 6 || $hoursOfDay > 18;
 }
 
 
-sub getHourOfDay {
+sub getHourOfDay_j0 {
     my ($self) = @_;
         my $calendar = 'java::util::Calendar'->getInstance();
         return $calendar->get($java::util::Calendar::HOUR_OF_DAY);
 }
 
 
-sub getNightOrDay {
+sub getNightOrDay_j0 {
     my ($self) = @_;
         return ($self->isNight() ? $self->{NIGHT} : $self->{DAY});
 }
 
 
-# Java overloaded method: Perl keeps the last definition
-sub getHourOfDay {
+sub getHourOfDay_j1 {
     my ($self, $timeInMillis) = @_;
         my $calendar = 'java::util::Calendar'->getInstance();
         $calendar->setTimeInMillis($timeInMillis);
         return $calendar->get($java::util::Calendar::HOUR_OF_DAY);
 }
 
+sub getHourOfDay {
+    my ($invocant, @arguments) = @_;
+    return $invocant->getHourOfDay_j0(@arguments) if scalar(@arguments) == 0;
+    return $invocant->getHourOfDay_j1(@arguments) if scalar(@arguments) == 1;
+    die "No method getHourOfDay takes " . scalar(@arguments) . " arguments";
+}
 
-# Java overloaded method: Perl keeps the last definition
-sub isNight {
+
+sub isNight_j1 {
     my ($self, $timeInMillis) = @_;
         my $hoursOfDay = $self->getHourOfDay($timeInMillis);
         return $hoursOfDay < 6 || $hoursOfDay > 18;
 }
 
+sub isNight {
+    my ($invocant, @arguments) = @_;
+    return $invocant->isNight_j0(@arguments) if scalar(@arguments) == 0;
+    return $invocant->isNight_j1(@arguments) if scalar(@arguments) == 1;
+    die "No method isNight takes " . scalar(@arguments) . " arguments";
+}
 
-# Java overloaded method: Perl keeps the last definition
-sub getNightOrDay {
+
+sub getNightOrDay_j1 {
     my ($self, $timeInMillis) = @_;
         return ($self->isNight($timeInMillis) ? $self->{NIGHT} : $self->{DAY});
+}
+
+sub getNightOrDay {
+    my ($invocant, @arguments) = @_;
+    return $invocant->getNightOrDay_j0(@arguments) if scalar(@arguments) == 0;
+    return $invocant->getNightOrDay_j1(@arguments) if scalar(@arguments) == 1;
+    die "No method getNightOrDay takes " . scalar(@arguments) . " arguments";
 }
 
 use java::lang::Object ();

@@ -38,7 +38,7 @@ sub new {
 # throws Exception
 sub generate {
     my ($self, $image, $angleIncrement, $totalAngle) = @_;
-        my $imageRotationUtil = 'org::allbinary::media::image::ImageRotationUtil'->getInstance();
+        my $imageRotationUtil = java::lang::Object::jstatic('org::allbinary::media::image::ImageToRotationImageArrayUtil', 'ImageRotationUtil')->getInstance();
         my $totalFrames = int($totalAngle / $angleIncrement);
         my $imageArray = [(undef) x ($totalFrames)];
         $imageArray->[0] = $image;
@@ -51,7 +51,6 @@ sub generate {
 use java::lang::Object ();
 use java::lang::LazyStatic ();
 use javax::microedition::lcdui::Image ();
-use org::allbinary::media::image::ImageRotationUtil ();
 
 1;
 

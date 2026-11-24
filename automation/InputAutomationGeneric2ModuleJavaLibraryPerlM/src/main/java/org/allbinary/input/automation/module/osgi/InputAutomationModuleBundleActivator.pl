@@ -48,7 +48,7 @@ sub init {
 # throws Exception
 sub getInputAutomationConfigurationModuleChangeListener {
     my ($self, $context) = @_;
-        my $serviceReference = $context->getServiceReference('bundle::input::automation::module::configuration::InputAutomationConfigurationModuleChangeListener'->getName());
+        my $serviceReference = $context->getServiceReference((('bundle::input::automation::module::configuration::InputAutomationConfigurationModuleChangeListener') =~ s/::/./gr));
         if (defined($serviceReference)) {
             my $inputAutomationConfigurationModuleChangeListener = $context->getService($serviceReference);
             if (!defined($inputAutomationConfigurationModuleChangeListener)) {
@@ -56,7 +56,7 @@ sub getInputAutomationConfigurationModuleChangeListener {
             }
             return $inputAutomationConfigurationModuleChangeListener;
         } else {
-            $self->{logUtil}->putF("No ServiceReference: " . 'bundle::input::automation::module::configuration::InputAutomationConfigurationModuleChangeListener'->getName(), $self, "addModules");
+            $self->{logUtil}->putF("No ServiceReference: " . (('bundle::input::automation::module::configuration::InputAutomationConfigurationModuleChangeListener') =~ s/::/./gr), $self, "addModules");
             return undef;
         }
 }
@@ -82,7 +82,7 @@ sub addModules {
 # throws Exception
 sub registerAsService {
     my ($self, $bundleContext) = @_;
-        'org::allbinary::osgi::OSGIActivatorUtil'->registerAsService($bundleContext, $self->getServiceFactory(), 'bundle::input::automation::module::InputAutomationModuleServiceInterface'->getName());
+        'org::allbinary::osgi::OSGIActivatorUtil'->registerAsService($bundleContext, $self->getServiceFactory(), (('bundle::input::automation::module::InputAutomationModuleServiceInterface') =~ s/::/./gr));
 }
 
 

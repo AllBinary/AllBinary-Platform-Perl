@@ -35,7 +35,7 @@ sub getInstance {
             return 'org::allbinary::data::tables::user::commerce::inventory::order::OrderItemsEntity'->new();
         } catch ($e) {
             my $commonStrings = 'org::allbinary::string::CommonStrings'->getInstance();
-            if ($org::allbinary::data::tables::user::commerce::inventory::order::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($org::allbinary::data::tables::user::commerce::inventory::order::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{ENTITYFACTORYERROR})) {
+            if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{ENTITYFACTORYERROR})) {
                 $logUtil->put($commonStrings->{EXCEPTION}, "OrderItemsEntityFactory", $commonStrings->{GET_INSTANCE}, $e);
             }
             return undef;
@@ -45,6 +45,9 @@ sub getInstance {
 use java::lang::Object ();
 use org::allbinary::logic::communication::log::LogUtil ();
 use org::allbinary::string::CommonStrings ();
+use org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory ();
+use org::allbinary::logic::communication::log::config::type::LogConfigTypes ();
+use org::allbinary::data::tables::user::commerce::inventory::order::OrderItemsEntity ();
 
 1;
 

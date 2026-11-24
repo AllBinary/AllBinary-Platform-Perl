@@ -265,42 +265,60 @@ sub setReadOnly {
 }
 
 
-sub setWritable {
+sub setWritable_j2 {
     my ($self, $writable, $ownerOnly) = @_;
         return $self->{file}->setExecutable($writable, $ownerOnly);
 }
 
 
-# Java overloaded method: Perl keeps the last definition
-sub setWritable {
+sub setWritable_j1 {
     my ($self, $writable) = @_;
         return $self->{file}->setWritable($writable);
 }
 
+sub setWritable {
+    my ($invocant, @arguments) = @_;
+    return $invocant->setWritable_j2(@arguments) if scalar(@arguments) == 2;
+    return $invocant->setWritable_j1(@arguments) if scalar(@arguments) == 1;
+    die "No method setWritable takes " . scalar(@arguments) . " arguments";
+}
 
-sub setReadable {
+
+sub setReadable_j2 {
     my ($self, $readable, $ownerOnly) = @_;
         return $self->{file}->setReadable($readable, $ownerOnly);
 }
 
 
-# Java overloaded method: Perl keeps the last definition
-sub setReadable {
+sub setReadable_j1 {
     my ($self, $readable) = @_;
         return $self->{file}->setReadable($readable);
 }
 
+sub setReadable {
+    my ($invocant, @arguments) = @_;
+    return $invocant->setReadable_j2(@arguments) if scalar(@arguments) == 2;
+    return $invocant->setReadable_j1(@arguments) if scalar(@arguments) == 1;
+    die "No method setReadable takes " . scalar(@arguments) . " arguments";
+}
 
-sub setExecutable {
+
+sub setExecutable_j2 {
     my ($self, $executable, $ownerOnly) = @_;
         return $self->{file}->setExecutable($executable, $ownerOnly);
 }
 
 
-# Java overloaded method: Perl keeps the last definition
-sub setExecutable {
+sub setExecutable_j1 {
     my ($self, $executable) = @_;
         return $self->{file}->setExecutable($executable);
+}
+
+sub setExecutable {
+    my ($invocant, @arguments) = @_;
+    return $invocant->setExecutable_j2(@arguments) if scalar(@arguments) == 2;
+    return $invocant->setExecutable_j1(@arguments) if scalar(@arguments) == 1;
+    die "No method setExecutable takes " . scalar(@arguments) . " arguments";
 }
 
 
@@ -361,7 +379,6 @@ use java::io::File ();
 use org::allbinary::TsUtil ();
 use org::allbinary::logic::io::path::AbPath ();
 use org::allbinary::logic::string::StringUtil ();
-use org::allbinary::logic::io::file::AbFileInterface ();
 
 1;
 

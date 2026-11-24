@@ -81,7 +81,7 @@ sub getFormData {
                 my $pathUtil = 'org::allbinary::logic::io::path::PathUtil'->getInstance();
                 $self->{mediaData} = 'org::allbinary::logic::visual::media::MediaData'->get($pathData->getExtension($self->{imageFileName}));
                 $self->{imageFileName} = $pathUtil->getWithoutExtension($self->{imageFileName});
-                if ($views::admin::inventory::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($views::admin::inventory::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{VIEWERROR})) {
+                if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{VIEWERROR})) {
                     my $stringBuffer = 'org::allbinary::logic::string::StringMaker'->new();
                     $stringBuffer->append("Uploaded File Data: ");
                     $stringBuffer->append($self->{imageFileName});
@@ -121,7 +121,7 @@ sub view {
             $self->addDomNodeInterfaces();
             return $self->SUPER::view();
         } catch ($e) {
-            if ($views::admin::inventory::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($views::admin::inventory::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{VIEWERROR})) {
+            if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{VIEWERROR})) {
                 $self->{logUtil}->put($self->{commonStrings}->{EXCEPTION}, $self, "view()", $e);
             }
             die $e;
@@ -160,7 +160,7 @@ sub getRequestHashMap {
 
 use java::lang::Object ();
 use java::util::HashMap ();
-# use java::util::Set ();
+use java::util::Set ();
 use org::allbinary::util::BasicArrayList ();
 use org::allbinary::util::BasicArrayListD ();
 # use javax::servlet::http::HttpServletRequest ();
@@ -185,6 +185,8 @@ use org::allbinary::logic::visual::media::MediaData ();
 use org::allbinary::logic::visual::transform::info::TransformInfoInterface ();
 use org::apache::commons::fileupload::FileItem ();
 use views::business::context::modules::storefront::HttpStoreComponentView ();
+use org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory ();
+use org::allbinary::logic::communication::log::config::type::LogConfigTypes ();
 use views::admin::inventory::InventoryUploadMediaUtil ();
 
 1;

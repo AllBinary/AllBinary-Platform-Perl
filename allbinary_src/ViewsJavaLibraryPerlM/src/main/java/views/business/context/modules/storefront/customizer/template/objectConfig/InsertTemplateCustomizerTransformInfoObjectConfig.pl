@@ -66,13 +66,13 @@ sub _new3 {
 # throws Exception
 sub set {
     my ($self, $aParentViewName) = @_;
-        if ($views::business::context::modules::storefront::customizer::template::objectConfig::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($views::business::context::modules::storefront::customizer::template::objectConfig::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{VIEW})) {
+        if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{VIEW})) {
             $self->{logUtil}->putF("Setting: " . $aParentViewName, $self, "set()");
         }
         my $document = $self->toXmlDoc();
         my $parentComponentsNodeList = $document->getElementsByTagName('org::allbinary::logic::visual::transform::info::TransformInfosData'->getInstance()->{NAME});
         if (defined($parentComponentsNodeList) && $parentComponentsNodeList->getLength() > 0) {
-            if ($views::business::context::modules::storefront::customizer::template::objectConfig::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($views::business::context::modules::storefront::customizer::template::objectConfig::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{VIEW})) {
+            if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{VIEW})) {
                 $self->{logUtil}->putF("Replacing", $self, "set()");
             }
             my $componentNode = $parentComponentsNodeList->item(0)->getChildNodes()->item(0);
@@ -81,7 +81,7 @@ sub set {
             }
             $parentComponentsNodeList->item(0)->appendChild('org::allbinary::logic::visual::transform::info::TransformInfoDomNodeView'->new($aParentViewName)->toXmlNode($document));
         } else {
-            if ($views::business::context::modules::storefront::customizer::template::objectConfig::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($views::business::context::modules::storefront::customizer::template::objectConfig::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{VIEW})) {
+            if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{VIEW})) {
                 $self->{logUtil}->putF("Setting", $self, "set()");
             }
             my $objectConfigNode = $document->getElementsByTagName('org::allbinary::logic::visual::transform::info::objectConfig::TransformInfoObjectConfigData'->getInstance()->{NAME})->item(0);
@@ -101,6 +101,8 @@ use org::allbinary::logic::visual::transform::info::objectConfig::TransformInfoO
 use org::w3c::dom::Document ();
 use org::w3c::dom::Node ();
 use org::w3c::dom::NodeList ();
+use org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory ();
+use org::allbinary::logic::communication::log::config::type::LogConfigTypes ();
 use views::business::context::modules::storefront::customizer::template::objectConfig::NoTemplateTransformInfoObjectConfig ();
 
 1;

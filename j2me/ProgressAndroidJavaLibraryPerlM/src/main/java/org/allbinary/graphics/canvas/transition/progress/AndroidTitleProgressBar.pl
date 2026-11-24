@@ -22,10 +22,10 @@ use parent -norequire,'org::allbinary::graphics::canvas::transition::progress::P
 
 sub _init_fields {
     my ($self) = @_;
-    $self->{showTitleProgressBarRunnable} = 'org::allbinary::graphics::canvas::transition::progress::ShowTitleProgressBarRunnable'->new($self);
-    $self->{dismissTitleProgressBarRunnable} = 'org::allbinary::graphics::canvas::transition::progress::DismissTitleProgressBarRunnable'->new($self);
-    $self->{progressDialogPortionSetProgressRunnable} = 'org::allbinary::graphics::canvas::transition::progress::TitleProgressBarPortionSetProgressRunnable'->new($self);
-    $self->{progressDialogSetProgressRunnable} = 'org::allbinary::graphics::canvas::transition::progress::TitleProgressBarSetProgressRunnable'->new($self);
+    $self->{showTitleProgressBarRunnable} = do { local $java::lang::Object::jouter = $self; 'org::allbinary::graphics::canvas::transition::progress::ShowTitleProgressBarRunnable'->new($self) };
+    $self->{dismissTitleProgressBarRunnable} = do { local $java::lang::Object::jouter = $self; 'org::allbinary::graphics::canvas::transition::progress::DismissTitleProgressBarRunnable'->new($self) };
+    $self->{progressDialogPortionSetProgressRunnable} = do { local $java::lang::Object::jouter = $self; 'org::allbinary::graphics::canvas::transition::progress::TitleProgressBarPortionSetProgressRunnable'->new($self) };
+    $self->{progressDialogSetProgressRunnable} = do { local $java::lang::Object::jouter = $self; 'org::allbinary::graphics::canvas::transition::progress::TitleProgressBarSetProgressRunnable'->new($self) };
     $self->{progressActivity} = $org::allbinary::android::activity::NullProgressActivity::NULL_PROGRESS_ACTIVITY;
     $self->{portion} = 0;
 }
@@ -141,6 +141,7 @@ sub paint {
     sub new {
         my ($class, $androidTitleProgressBar) = @_;
         my $self = bless({}, $class);
+        $self->{jouter} = $java::lang::Object::jouter;
         _init_fields($self);
             $self->{androidTitleProgressBar} = $androidTitleProgressBar;
         return $self;
@@ -178,6 +179,7 @@ sub paint {
     sub new {
         my ($class, $androidTitleProgressBar) = @_;
         my $self = bless({}, $class);
+        $self->{jouter} = $java::lang::Object::jouter;
         _init_fields($self);
             $self->{androidTitleProgressBar} = $androidTitleProgressBar;
         return $self;
@@ -215,6 +217,7 @@ sub paint {
     sub new {
         my ($class, $androidTitleProgressBar) = @_;
         my $self = bless({}, $class);
+        $self->{jouter} = $java::lang::Object::jouter;
         _init_fields($self);
             $self->{androidTitleProgressBar} = $androidTitleProgressBar;
         return $self;
@@ -252,6 +255,7 @@ sub paint {
     sub new {
         my ($class, $androidTitleProgressBar) = @_;
         my $self = bless({}, $class);
+        $self->{jouter} = $java::lang::Object::jouter;
         _init_fields($self);
             $self->{androidTitleProgressBar} = $androidTitleProgressBar;
         return $self;
@@ -278,7 +282,6 @@ use org::allbinary::android::activity::ProgressActivityInterface ();
 use org::allbinary::graphics::color::BasicColor ();
 use org::allbinary::logic::communication::log::LogUtil ();
 use org::allbinary::string::CommonStrings ();
-use org::allbinary::graphics::canvas::transition::progress::ProgressCanvas ();
 
 1;
 

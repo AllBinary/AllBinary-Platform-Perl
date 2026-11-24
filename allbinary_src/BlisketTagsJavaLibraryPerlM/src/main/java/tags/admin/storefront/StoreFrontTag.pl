@@ -36,9 +36,9 @@ sub doStartTag {
                 if ($self->getCommand()->compareTo($self->{commonStrings}->{INSERT}) == 0) {
                     $self->setName("Add Validation StoreFront View");
                     $self->setObjectFile("views.admin.storefront.AddValidationStoreFrontView");
-                } elsif ($self->getCommand()->compareTo($tags::admin::storefront::org::allbinary->{globals}->{GLOBALS2}->{VIEW}) == 0) {
+                } elsif ($self->getCommand()->compareTo($org::allbinary::globals::GLOBALS2::VIEW) == 0) {
                     die ("View not implemented");
-                } elsif ($self->getCommand()->compareTo($tags::admin::storefront::org::allbinary->{globals}->{GLOBALS2}->{EDIT}) == 0) {
+                } elsif ($self->getCommand()->compareTo($org::allbinary::globals::GLOBALS2::EDIT) == 0) {
                     $self->setName("Edit Validation StoreFront View");
                     $self->setObjectFile("views.admin.storefront.EditValidationStoreFrontView");
                 } elsif ($self->getCommand()->compareTo($self->{commonStrings}->{UPDATE}) == 0) {
@@ -47,9 +47,9 @@ sub doStartTag {
                 } elsif ($self->getCommand()->compareTo($self->{commonStrings}->{DELETE}) == 0) {
                     $self->setName("Delete Validation StoreFront View");
                     $self->setObjectFile("views.admin.storefront.DeleteValidationStoreFrontView");
-                } elsif ($self->getCommand()->compareTo($tags::admin::storefront::org::allbinary->{globals}->{GLOBALS2}->{BACKUP}) == 0) {
+                } elsif ($self->getCommand()->compareTo($org::allbinary::globals::GLOBALS2::BACKUP) == 0) {
                     die ("View not implemented");
-                } elsif ($self->getCommand()->compareTo($tags::admin::storefront::org::allbinary->{globals}->{GLOBALS2}->{RESTORE}) == 0) {
+                } elsif ($self->getCommand()->compareTo($org::allbinary::globals::GLOBALS2::RESTORE) == 0) {
                     die ("View not implemented");
                 } elsif ($self->getCommand()->compareTo($self->{commonStrings}->{DROP}) == 0) {
                     die ("View not implemented");
@@ -63,7 +63,7 @@ sub doStartTag {
             die ("Command Null");
         } catch ($e) {
             'org::allbinary::logic::communication::http::request::AbResponseHandler'->sendJspTagLicensingRedirect($self->{pageContext}, $e);
-            return $self->{SKIP_BODY};
+            return java::lang::Object::jstatic('tags::admin::storefront::StoreFrontTag', 'SKIP_BODY');
         }
 }
 
@@ -72,6 +72,7 @@ use java::lang::Object ();
 use org::allbinary::logic::communication::http::request::AbResponseHandler ();
 use org::allbinary::logic::system::security::licensing::LicensingException ();
 use tags::StoreValidationTransformTag ();
+use org::allbinary::globals::GLOBALS2 ();
 
 1;
 

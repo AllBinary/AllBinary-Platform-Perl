@@ -42,12 +42,12 @@ sub insert {
     my ($self, $values) = @_;
         try {
             $self->SUPER::insert($values);
-            if ($org::allbinary::data::tables::user::commerce::inventory::item::customs::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($org::allbinary::data::tables::user::commerce::inventory::item::customs::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{SQLLOGGING})) {
-                $self->{logUtil}->putF($self->{commonStrings}->{SUCCESS}, $self, $self->{INSERT});
+            if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{SQLLOGGING})) {
+                $self->{logUtil}->putF($self->{commonStrings}->{SUCCESS}, $self, java::lang::Object::jstatic('org::allbinary::data::tables::user::commerce::inventory::item::customs::CustomItemsEntity', 'INSERT'));
             }
         } catch ($e) {
-            if ($org::allbinary::data::tables::user::commerce::inventory::item::customs::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($org::allbinary::data::tables::user::commerce::inventory::item::customs::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{SQLLOGGING})) {
-                $self->{logUtil}->put($self->{commonStrings}->{FAILURE}, $self, $self->{INSERT}, $e);
+            if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{SQLLOGGING})) {
+                $self->{logUtil}->put($self->{commonStrings}->{FAILURE}, $self, java::lang::Object::jstatic('org::allbinary::data::tables::user::commerce::inventory::item::customs::CustomItemsEntity', 'INSERT'), $e);
             }
         }
 }
@@ -57,11 +57,11 @@ sub delete {
     my ($self, $value) = @_;
         try {
             $self->SUPER::deleteWhere($self->{basicItemData}->{ID}, $value);
-            if ($org::allbinary::data::tables::user::commerce::inventory::item::customs::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($org::allbinary::data::tables::user::commerce::inventory::item::customs::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{SQLLOGGING})) {
+            if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{SQLLOGGING})) {
                 $self->{logUtil}->putF($self->{commonStrings}->{SUCCESS}, $self, $self->{commonStrings}->{delete});
             }
         } catch ($e) {
-            if ($org::allbinary::data::tables::user::commerce::inventory::item::customs::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($org::allbinary::data::tables::user::commerce::inventory::item::customs::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{SQLLOGGING})) {
+            if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{SQLLOGGING})) {
                 $self->{logUtil}->put($self->{commonStrings}->{FAILURE}, $self, $self->{commonStrings}->{delete}, $e);
             }
         }
@@ -105,7 +105,8 @@ use org::allbinary::business::user::commerce::inventory::item::custom::CustomIte
 use org::allbinary::logic::communication::log::LogUtil ();
 use org::allbinary::logic::communication::sql::AbSqlBean ();
 use org::allbinary::logic::string::StringMaker ();
-use org::allbinary::data::tables::user::commerce::inventory::item::customs::CustomItemsEntityInterface ();
+use org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory ();
+use org::allbinary::logic::communication::log::config::type::LogConfigTypes ();
 
 1;
 

@@ -119,16 +119,22 @@ sub setAttempts {
 }
 
 
-sub setAuthenticated {
+sub setAuthenticated_j0 {
     my ($self) = @_;
     die "abstract method setAuthenticated";
 }
 
 
-# Java overloaded method: Perl keeps the last definition
-sub setAuthenticated {
+sub setAuthenticated_j1 {
     my ($self, $value) = @_;
     die "abstract method setAuthenticated";
+}
+
+sub setAuthenticated {
+    my ($invocant, @arguments) = @_;
+    return $invocant->setAuthenticated_j0(@arguments) if scalar(@arguments) == 0;
+    return $invocant->setAuthenticated_j1(@arguments) if scalar(@arguments) == 1;
+    die "No method setAuthenticated takes " . scalar(@arguments) . " arguments";
 }
 
 

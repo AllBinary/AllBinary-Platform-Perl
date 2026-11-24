@@ -22,7 +22,7 @@ use parent -norequire,'java::lang::Object';
 
 sub _init_fields {
     my ($self) = @_;
-    $self->{logUtil} = 'org::allbinary::logic::communication::log::LogUtil'->getInstance();
+    $self->{logUtil} = java::lang::Object::jstatic('org::allbinary::logic::communication::log::LogBuffer', 'LogUtil')->getInstance();
     $self->{logEntryVector} = undef;
 }
 
@@ -55,7 +55,6 @@ use java::lang::Object ();
 use org::allbinary::util::BasicArrayList ();
 use org::allbinary::util::BasicArrayListD ();
 use org::allbinary::logic::StdUtil ();
-use org::allbinary::logic::communication::log::LogUtil ();
 
 1;
 

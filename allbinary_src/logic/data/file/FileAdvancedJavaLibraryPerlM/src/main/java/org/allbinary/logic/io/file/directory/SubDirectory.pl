@@ -41,30 +41,41 @@ sub new {
 }
 
 
-sub search {
+sub search_j2_1 {
     my ($self, $fileFilter, $file) = @_;
         return $self->{directory}->search($fileFilter, $file, 1);
 }
 
 
-# Java overloaded method: Perl keeps the last definition
-sub search {
+sub search_j1 {
     my ($self, $file) = @_;
         return $self->{directory}->search($file, 1);
 }
 
 
-# Java overloaded method: Perl keeps the last definition
-sub search {
+sub search_j2_2 {
     my ($self, $searchValue, $file) = @_;
         return $self->{directory}->search($searchValue, $file, 1);
 }
 
 
-# Java overloaded method: Perl keeps the last definition
-sub search {
+sub search_j2_3 {
     my ($self, $level, $file) = @_;
         return $self->{directory}->search($level, $file, 1);
+}
+
+sub search {
+    my ($invocant, @arguments) = @_;
+    return $invocant->search_j2(@arguments) if scalar(@arguments) == 2;
+    return $invocant->search_j1(@arguments) if scalar(@arguments) == 1;
+    die "No method search takes " . scalar(@arguments) . " arguments";
+}
+
+sub search_j2 {
+    my ($invocant, @arguments) = @_;
+    return $invocant->search_j2_1(@arguments) if 1 && (!defined($arguments[0]) || (ref($arguments[0]) && ref($arguments[0]) ne 'ARRAY')) && (!defined($arguments[1]) || (ref($arguments[1]) && ref($arguments[1]) ne 'ARRAY'));
+    return $invocant->search_j2_2(@arguments) if 1 && !ref($arguments[0]) && (!defined($arguments[1]) || (ref($arguments[1]) && ref($arguments[1]) ne 'ARRAY'));
+    return $invocant->search_j2_3(@arguments);
 }
 
 

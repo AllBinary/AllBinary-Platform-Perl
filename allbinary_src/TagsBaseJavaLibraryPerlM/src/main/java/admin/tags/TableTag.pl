@@ -36,7 +36,7 @@ sub new {
     my ($class) = @_;
     my $self = $class->SUPER::new();
     _init_fields($self);
-        if ($admin::tags::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($admin::tags::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{JSPTAG})) {
+        if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{JSPTAG})) {
             $self->{logUtil}->putF($self->{commonStrings}->{START}, $self, $self->{commonStrings}->{CONSTRUCTOR});
         }
     return $self;
@@ -120,7 +120,7 @@ sub drop {
             return $result;
         } catch ($e) {
             my $error = "Failed to drop table";
-            if ($admin::tags::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($admin::tags::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{SQLTAGSERROR})) {
+            if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{SQLTAGSERROR})) {
                 $self->{logUtil}->put($self->{commonStrings}->{EXCEPTION}, $self, $self->{commonStrings}->{DROP}, $e);
             }
             return $error;
@@ -139,7 +139,7 @@ sub create {
             return $result;
         } catch ($e) {
             my $error = "Failed to create table";
-            if ($admin::tags::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($admin::tags::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{SQLTAGSERROR})) {
+            if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{SQLTAGSERROR})) {
                 $self->{logUtil}->put($self->{commonStrings}->{EXCEPTION}, $self, "create()", $e);
             }
             return $error;
@@ -158,7 +158,7 @@ sub restore {
             return $result;
         } catch ($e) {
             my $error = "Failed to restore backup";
-            if ($admin::tags::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($admin::tags::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{SQLTAGSERROR})) {
+            if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{SQLTAGSERROR})) {
                 $self->{logUtil}->put($self->{commonStrings}->{EXCEPTION}, $self, "restore()", $e);
             }
             return $error;
@@ -177,7 +177,7 @@ sub backup {
             return $result;
         } catch ($e) {
             my $error = "Failed to make backup";
-            if ($admin::tags::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($admin::tags::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{SQLTAGSERROR})) {
+            if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{SQLTAGSERROR})) {
                 $self->{logUtil}->put($self->{commonStrings}->{EXCEPTION}, $self, "backup()", $e);
             }
             return $error;
@@ -195,7 +195,7 @@ sub insert {
             return $result;
         } catch ($e) {
             my $error = "Failed to insert";
-            if ($admin::tags::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($admin::tags::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{SQLTAGSERROR})) {
+            if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{SQLTAGSERROR})) {
                 $self->{logUtil}->put($self->{commonStrings}->{EXCEPTION}, $self, "insert()", $e);
             }
             return $error;
@@ -213,7 +213,7 @@ sub delete {
             return $result;
         } catch ($e) {
             my $error = "Failed to delete";
-            if ($admin::tags::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($admin::tags::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{SQLTAGSERROR})) {
+            if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{SQLTAGSERROR})) {
                 $self->{logUtil}->put($self->{commonStrings}->{EXCEPTION}, $self, "delete()", $e);
             }
             return $error;
@@ -231,7 +231,7 @@ sub update {
             return $result;
         } catch ($e) {
             my $error = "Failed to update";
-            if ($admin::tags::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($admin::tags::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{SQLTAGSERROR})) {
+            if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{SQLTAGSERROR})) {
                 $self->{logUtil}->put($self->{commonStrings}->{EXCEPTION}, $self, "update()", $e);
             }
             return $error;
@@ -243,7 +243,7 @@ sub update {
 sub doStartTag {
     my ($self) = @_;
         try {
-            if ($admin::tags::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($admin::tags::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{JSPTAG})) {
+            if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{JSPTAG})) {
                 my $request = $self->{pageContext}->getRequest();
                 my $stringBuffer = 'org::allbinary::logic::string::StringMaker'->new();
                 $stringBuffer->append("TableTag Helper: ");
@@ -253,15 +253,15 @@ sub doStartTag {
                 $self->{logUtil}->putF($stringBuffer->toString(), $self, $self->{tagStrings}->{DO_START_TAG});
             }
             if (defined($self->getTagRequestHelperFactoryInterface())) {
-                if ($admin::tags::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($admin::tags::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{JSPTAG})) {
+                if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{JSPTAG})) {
                     $self->{logUtil}->putF("TableTag RequestHelper: " . ref($self->getTagRequestHelperFactoryInterface()), $self, $self->{tagStrings}->{DO_START_TAG});
                 }
             } else {
-                if ($admin::tags::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($admin::tags::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{JSPTAG})) {
+                if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{JSPTAG})) {
                     $self->{logUtil}->putF("TableTag RequestHelper: null", $self, $self->{tagStrings}->{DO_START_TAG});
                 }
             }
-            if ($admin::tags::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($admin::tags::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{JSPTAG})) {
+            if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{JSPTAG})) {
                 $self->{logUtil}->putF("TableTag this.getCommand(): " . $self->getCommand(), $self, $self->{tagStrings}->{DO_START_TAG});
             }
             if ($self->isEnabled()) {
@@ -276,54 +276,54 @@ sub doStartTag {
                     } elsif ($self->getCommand()->compareTo($self->{commonStrings}->{UPDATE}) == 0 || $self->getCommand()->compareTo('org::allbinary::logic::communication::sql::SqlStrings'->getInstance()->{UPDATE}) == 0) {
                         $self->update();
                     }
-                    if ($self->getCommand()->compareTo($admin::tags::org::allbinary->{globals}->{GLOBALS2}->{BACKUP}) == 0) {
+                    if ($self->getCommand()->compareTo($org::allbinary::globals::GLOBALS2::BACKUP) == 0) {
                         my $output = $self->backup();
-                        if ($admin::tags::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($admin::tags::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{JSPTAGEXTRAOUTPUT})) {
+                        if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{JSPTAGEXTRAOUTPUT})) {
                             $self->{pageContext}->getOut()->print($output . "<br />");
                         }
-                        return $self->{SKIP_BODY};
-                    } elsif ($self->getCommand()->compareTo($admin::tags::org::allbinary->{globals}->{GLOBALS2}->{RESTORE}) == 0) {
+                        return java::lang::Object::jstatic('admin::tags::TableTag', 'SKIP_BODY');
+                    } elsif ($self->getCommand()->compareTo($org::allbinary::globals::GLOBALS2::RESTORE) == 0) {
                         $self->getPropertiesHashMap()->put("current", $self->getCurrent());
                         $self->getPropertiesHashMap()->put("total", $self->getTotal());
                         my $output = $self->restore();
-                        if ($admin::tags::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($admin::tags::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{JSPTAGEXTRAOUTPUT})) {
+                        if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{JSPTAGEXTRAOUTPUT})) {
                             $self->{pageContext}->getOut()->print($output . "<br />");
                         }
-                        return $self->{SKIP_BODY};
+                        return java::lang::Object::jstatic('admin::tags::TableTag', 'SKIP_BODY');
                     } elsif ($self->getCommand()->compareTo($self->{commonStrings}->{DROP}) == 0) {
                         my $output = $self->drop();
-                        if ($admin::tags::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($admin::tags::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{JSPTAGEXTRAOUTPUT})) {
+                        if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{JSPTAGEXTRAOUTPUT})) {
                             $self->{pageContext}->getOut()->print($output . "<br />");
                         }
-                        return $self->{SKIP_BODY};
+                        return java::lang::Object::jstatic('admin::tags::TableTag', 'SKIP_BODY');
                     } elsif ($self->getCommand()->compareTo($self->{commonStrings}->{CREATE}) == 0) {
                         my $output = $self->create();
-                        if ($admin::tags::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($admin::tags::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{JSPTAGEXTRAOUTPUT})) {
+                        if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{JSPTAGEXTRAOUTPUT})) {
                             $self->{pageContext}->getOut()->print($output . "<br />");
                         }
-                        return $self->{SKIP_BODY};
+                        return java::lang::Object::jstatic('admin::tags::TableTag', 'SKIP_BODY');
                     } elsif ($self->getCommand()->compareTo($self->{commonStrings}->{INSERT}) == 0) {
                         my $output = $self->insert();
-                        if ($admin::tags::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($admin::tags::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{JSPTAGEXTRAOUTPUT})) {
+                        if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{JSPTAGEXTRAOUTPUT})) {
                             $self->{pageContext}->getOut()->print($output . "<br />");
                         }
                     } elsif ($self->getCommand()->compareTo($self->{commonStrings}->{DELETE}) == 0) {
                         my $output = $self->delete();
-                        if ($admin::tags::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($admin::tags::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{JSPTAGEXTRAOUTPUT})) {
+                        if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{JSPTAGEXTRAOUTPUT})) {
                             $self->{pageContext}->getOut()->print($output . "<br />");
                         }
                     } elsif ($self->getCommand()->compareTo($self->{commonStrings}->{UPDATE}) == 0) {
                         my $output = $self->update();
-                        if ($admin::tags::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($admin::tags::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{JSPTAGEXTRAOUTPUT})) {
+                        if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{JSPTAGEXTRAOUTPUT})) {
                             $self->{pageContext}->getOut()->print($output . "<br />");
                         }
                     }
                 }
             }
-            return $self->{EVAL_BODY_INCLUDE};
+            return java::lang::Object::jstatic('admin::tags::TableTag', 'EVAL_BODY_INCLUDE');
         } catch ($e) {
             'org::allbinary::logic::communication::http::request::AbResponseHandler'->sendJspTagLicensingRedirect($self->{pageContext}, $e);
-            return $self->{SKIP_BODY};
+            return java::lang::Object::jstatic('admin::tags::TableTag', 'SKIP_BODY');
         }
 }
 
@@ -340,6 +340,9 @@ use org::allbinary::logic::string::StringMaker ();
 use org::allbinary::logic::string::StringValidationUtil ();
 use org::allbinary::logic::system::security::licensing::LicensingException ();
 use tags::PropertiesTag ();
+use org::allbinary::globals::GLOBALS2 ();
+use org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory ();
+use org::allbinary::logic::communication::log::config::type::LogConfigTypes ();
 
 1;
 

@@ -29,6 +29,13 @@ sub new {
     die "No constructor of RootStoreThemeCategoryProperties takes " . scalar(@arguments) . " arguments";
 }
 
+sub _new2 {
+    my ($class, @arguments) = @_;
+    return $class->_new2_1(@arguments) if 1 && (!defined($arguments[0]) || (ref($arguments[0]) && ref($arguments[0]) ne 'ARRAY')) && (!defined($arguments[1]) || (ref($arguments[1]) && ref($arguments[1]) ne 'ARRAY'));
+    return $class->_new2_2(@arguments) if 1 && (!defined($arguments[0]) || (ref($arguments[0]) && ref($arguments[0]) ne 'ARRAY')) && (!defined($arguments[1]) || (ref($arguments[1]) && ref($arguments[1]) ne 'ARRAY'));
+    return $class->_new2_3(@arguments);
+}
+
 
 sub _new1 {
     my ($class, $transformInfoInterface) = @_;
@@ -38,7 +45,7 @@ sub _new1 {
 }
 
 
-sub _new2 {
+sub _new2_1 {
     my ($class, $transformInfoInterface, $abPath) = @_;
     my $self = $class->SUPER::new($transformInfoInterface, $abPath);
         # super(...) made $self above
@@ -46,7 +53,7 @@ sub _new2 {
 }
 
 
-sub _new2 {
+sub _new2_2 {
     my ($class, $transformInfoInterface, $node) = @_;
     my $self = $class->SUPER::new($transformInfoInterface, $node);
         # super(...) made $self above
@@ -54,7 +61,7 @@ sub _new2 {
 }
 
 
-sub _new2 {
+sub _new2_3 {
     my ($class, $transformInfoInterface, $categoryPropertiesHashMap) = @_;
     my $self = $class->SUPER::new($transformInfoInterface, $categoryPropertiesHashMap);
         # super(...) made $self above

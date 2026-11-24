@@ -87,7 +87,7 @@ sub initComponents {
         $self->{newProfileJDialog}->setResizable(0);
         $self->{okNewProfileJButton}->setText("Ok");
         $self->{okNewProfileJButton}->addActionListener(do {
-            package java::awt::event::ActionListener::AnonymousN67478 { our @ISA = ('java::awt::event::ActionListener', 'java::lang::Object');
+            package java::awt::event::ActionListener::AnonymousN67566 { our @ISA = ('java::awt::event::ActionListener', 'java::lang::Object');
             
 
             sub actionPerformed {
@@ -95,13 +95,13 @@ sub initComponents {
                 $self->okNewProfileJButtonActionPerformed($evt);
             }
             }
-            'java::awt::event::ActionListener::AnonymousN67478'->can('new') ? 'java::awt::event::ActionListener::AnonymousN67478'->new() : bless({}, 'java::awt::event::ActionListener::AnonymousN67478')
+            'java::awt::event::ActionListener::AnonymousN67566'->can('new') ? 'java::awt::event::ActionListener::AnonymousN67566'->new() : bless({}, 'java::awt::event::ActionListener::AnonymousN67566')
         });
         $self->{newProfileNameJLabel}->setText("New Profile Name");
         my $newProfileJDialogLayout = 'javax::swing::GroupLayout'->new($self->{newProfileJDialog}->getContentPane());
         $self->{newProfileJDialog}->getContentPane()->setLayout($newProfileJDialogLayout);
-        $newProfileJDialogLayout->setHorizontalGroup($newProfileJDialogLayout->createParallelGroup($org::allbinary::input::automation::module::generic::configuration::javax::swing->{GroupLayout}->{Alignment}->{LEADING})->addGroup($newProfileJDialogLayout->createSequentialGroup()->addGroup($newProfileJDialogLayout->createParallelGroup($org::allbinary::input::automation::module::generic::configuration::javax::swing->{GroupLayout}->{Alignment}->{LEADING})->addGroup($newProfileJDialogLayout->createSequentialGroup()->addGap(80, 80, 80)->addComponent($self->{newProfileNameJLabel}))->addGroup($newProfileJDialogLayout->createSequentialGroup()->addGap(30, 30, 30)->addComponent($self->{newProfileNameJTextField}, $org::allbinary::input::automation::module::generic::configuration::javax::swing->{GroupLayout}->{PREFERRED_SIZE}, 180, $org::allbinary::input::automation::module::generic::configuration::javax::swing->{GroupLayout}->{PREFERRED_SIZE}))->addGroup($newProfileJDialogLayout->createSequentialGroup()->addGap(100, 100, 100)->addComponent($self->{okNewProfileJButton})))->addContainerGap(35, 32767)));
-        $newProfileJDialogLayout->setVerticalGroup($newProfileJDialogLayout->createParallelGroup($org::allbinary::input::automation::module::generic::configuration::javax::swing->{GroupLayout}->{Alignment}->{LEADING})->addGroup($newProfileJDialogLayout->createSequentialGroup()->addGap(10, 10, 10)->addComponent($self->{newProfileNameJLabel})->addGap(16, 16, 16)->addComponent($self->{newProfileNameJTextField}, $org::allbinary::input::automation::module::generic::configuration::javax::swing->{GroupLayout}->{PREFERRED_SIZE}, $org::allbinary::input::automation::module::generic::configuration::javax::swing->{GroupLayout}->{DEFAULT_SIZE}, $org::allbinary::input::automation::module::generic::configuration::javax::swing->{GroupLayout}->{PREFERRED_SIZE})->addGap(20, 20, 20)->addComponent($self->{okNewProfileJButton})));
+        $newProfileJDialogLayout->setHorizontalGroup($newProfileJDialogLayout->createParallelGroup($javax::swing::GroupLayout::Alignment->{LEADING})->addGroup($newProfileJDialogLayout->createSequentialGroup()->addGroup($newProfileJDialogLayout->createParallelGroup($javax::swing::GroupLayout::Alignment->{LEADING})->addGroup($newProfileJDialogLayout->createSequentialGroup()->addGap(80, 80, 80)->addComponent($self->{newProfileNameJLabel}))->addGroup($newProfileJDialogLayout->createSequentialGroup()->addGap(30, 30, 30)->addComponent($self->{newProfileNameJTextField}, $javax::swing::GroupLayout::PREFERRED_SIZE, 180, $javax::swing::GroupLayout::PREFERRED_SIZE))->addGroup($newProfileJDialogLayout->createSequentialGroup()->addGap(100, 100, 100)->addComponent($self->{okNewProfileJButton})))->addContainerGap(35, 32767)));
+        $newProfileJDialogLayout->setVerticalGroup($newProfileJDialogLayout->createParallelGroup($javax::swing::GroupLayout::Alignment->{LEADING})->addGroup($newProfileJDialogLayout->createSequentialGroup()->addGap(10, 10, 10)->addComponent($self->{newProfileNameJLabel})->addGap(16, 16, 16)->addComponent($self->{newProfileNameJTextField}, $javax::swing::GroupLayout::PREFERRED_SIZE, $javax::swing::GroupLayout::DEFAULT_SIZE, $javax::swing::GroupLayout::PREFERRED_SIZE)->addGap(20, 20, 20)->addComponent($self->{okNewProfileJButton})));
         $self->setLayout('java::awt::GridLayout'->new(1, 0));
         $self->setMinimumSize('java::awt::Dimension'->new(400, 300));
         $self->setPreferredSize('java::awt::Dimension'->new(700, 700));
@@ -110,7 +110,7 @@ sub initComponents {
         $self->{genericProfilesJPanel}->setMinimumSize('java::awt::Dimension'->new(400, 300));
         $self->{genericProfilesJPanel}->setPreferredSize('java::awt::Dimension'->new(0, 0));
         $self->{genericProfilesJList}->addListSelectionListener(do {
-            package javax::swing::event::ListSelectionListener::AnonymousN69018 { our @ISA = ('javax::swing::event::ListSelectionListener', 'java::lang::Object');
+            package javax::swing::event::ListSelectionListener::AnonymousN68802 { our @ISA = ('javax::swing::event::ListSelectionListener', 'java::lang::Object');
             
 
             sub valueChanged {
@@ -118,13 +118,13 @@ sub initComponents {
                 $self->genericProfilesJListValueChanged($evt);
             }
             }
-            'javax::swing::event::ListSelectionListener::AnonymousN69018'->can('new') ? 'javax::swing::event::ListSelectionListener::AnonymousN69018'->new() : bless({}, 'javax::swing::event::ListSelectionListener::AnonymousN69018')
+            'javax::swing::event::ListSelectionListener::AnonymousN68802'->can('new') ? 'javax::swing::event::ListSelectionListener::AnonymousN68802'->new() : bless({}, 'javax::swing::event::ListSelectionListener::AnonymousN68802')
         });
         $self->{genericProfilesJScrollPane}->setViewportView($self->{genericProfilesJList});
         $self->{newProfileJButton}->setText("New");
         $self->{newProfileJButton}->setToolTipText("Creates a new profile");
         $self->{newProfileJButton}->addActionListener(do {
-            package java::awt::event::ActionListener::AnonymousN69272 { our @ISA = ('java::awt::event::ActionListener', 'java::lang::Object');
+            package java::awt::event::ActionListener::AnonymousN69008 { our @ISA = ('java::awt::event::ActionListener', 'java::lang::Object');
             
 
             sub actionPerformed {
@@ -132,12 +132,12 @@ sub initComponents {
                 $self->newProfileJButtonActionPerformed($evt);
             }
             }
-            'java::awt::event::ActionListener::AnonymousN69272'->can('new') ? 'java::awt::event::ActionListener::AnonymousN69272'->new() : bless({}, 'java::awt::event::ActionListener::AnonymousN69272')
+            'java::awt::event::ActionListener::AnonymousN69008'->can('new') ? 'java::awt::event::ActionListener::AnonymousN69008'->new() : bless({}, 'java::awt::event::ActionListener::AnonymousN69008')
         });
         $self->{deleteProfileJButton}->setText("Delete");
         $self->{deleteProfileJButton}->setToolTipText("Deletes the selected profile");
         $self->{deleteProfileJButton}->addActionListener(do {
-            package java::awt::event::ActionListener::AnonymousN69489 { our @ISA = ('java::awt::event::ActionListener', 'java::lang::Object');
+            package java::awt::event::ActionListener::AnonymousN69177 { our @ISA = ('java::awt::event::ActionListener', 'java::lang::Object');
             
 
             sub actionPerformed {
@@ -145,15 +145,15 @@ sub initComponents {
                 $self->deleteProfileJButtonActionPerformed($evt);
             }
             }
-            'java::awt::event::ActionListener::AnonymousN69489'->can('new') ? 'java::awt::event::ActionListener::AnonymousN69489'->new() : bless({}, 'java::awt::event::ActionListener::AnonymousN69489')
+            'java::awt::event::ActionListener::AnonymousN69177'->can('new') ? 'java::awt::event::ActionListener::AnonymousN69177'->new() : bless({}, 'java::awt::event::ActionListener::AnonymousN69177')
         });
         $self->{jPanel1}->setPreferredSize('java::awt::Dimension'->new(1000, 100));
         $self->{screenCaptureJRadioButton}->setText("Screen Captures");
         $self->{screenCaptureJRadioButton}->setToolTipText("Records the screen into memory for logical processing");
-        $self->{screenCaptureJRadioButton}->setBorder($org::allbinary::input::automation::module::generic::configuration::javax::swing->{BorderFactory}->createEmptyBorder(0, 0, 0, 0));
+        $self->{screenCaptureJRadioButton}->setBorder('javax::swing::BorderFactory'->createEmptyBorder(0, 0, 0, 0));
         $self->{screenCaptureJRadioButton}->setMargin('java::awt::Insets'->new(0, 0, 0, 0));
         $self->{screenCaptureJRadioButton}->addActionListener(do {
-            package java::awt::event::ActionListener::AnonymousN69921 { our @ISA = ('java::awt::event::ActionListener', 'java::lang::Object');
+            package java::awt::event::ActionListener::AnonymousN69513 { our @ISA = ('java::awt::event::ActionListener', 'java::lang::Object');
             
 
             sub actionPerformed {
@@ -161,16 +161,16 @@ sub initComponents {
                 $self->screenCaptureJRadioButtonActionPerformed($evt);
             }
             }
-            'java::awt::event::ActionListener::AnonymousN69921'->can('new') ? 'java::awt::event::ActionListener::AnonymousN69921'->new() : bless({}, 'java::awt::event::ActionListener::AnonymousN69921')
+            'java::awt::event::ActionListener::AnonymousN69513'->can('new') ? 'java::awt::event::ActionListener::AnonymousN69513'->new() : bless({}, 'java::awt::event::ActionListener::AnonymousN69513')
         });
         $self->{jLabel1}->setText("Profile Options");
         $self->{jLabel2}->setText("Process From:");
         $self->{savedCaptureJRadioButton}->setText("Saved Images");
         $self->{savedCaptureJRadioButton}->setToolTipText("Loads images from files for logical processing.  Usually for debugging your profile actions");
-        $self->{savedCaptureJRadioButton}->setBorder($org::allbinary::input::automation::module::generic::configuration::javax::swing->{BorderFactory}->createEmptyBorder(0, 0, 0, 0));
+        $self->{savedCaptureJRadioButton}->setBorder('javax::swing::BorderFactory'->createEmptyBorder(0, 0, 0, 0));
         $self->{savedCaptureJRadioButton}->setMargin('java::awt::Insets'->new(0, 0, 0, 0));
         $self->{savedCaptureJRadioButton}->addActionListener(do {
-            package java::awt::event::ActionListener::AnonymousN70348 { our @ISA = ('java::awt::event::ActionListener', 'java::lang::Object');
+            package java::awt::event::ActionListener::AnonymousN69860 { our @ISA = ('java::awt::event::ActionListener', 'java::lang::Object');
             
 
             sub actionPerformed {
@@ -178,14 +178,14 @@ sub initComponents {
                 $self->savedCaptureJRadioButtonActionPerformed($evt);
             }
             }
-            'java::awt::event::ActionListener::AnonymousN70348'->can('new') ? 'java::awt::event::ActionListener::AnonymousN70348'->new() : bless({}, 'java::awt::event::ActionListener::AnonymousN70348')
+            'java::awt::event::ActionListener::AnonymousN69860'->can('new') ? 'java::awt::event::ActionListener::AnonymousN69860'->new() : bless({}, 'java::awt::event::ActionListener::AnonymousN69860')
         });
         $self->{captureMotionAnalysisJCheckBox}->setText("Motion Analysis");
         $self->{captureMotionAnalysisJCheckBox}->setToolTipText("Uses image comparison and contraints to locate moving objects");
-        $self->{captureMotionAnalysisJCheckBox}->setBorder($org::allbinary::input::automation::module::generic::configuration::javax::swing->{BorderFactory}->createEmptyBorder(0, 0, 0, 0));
+        $self->{captureMotionAnalysisJCheckBox}->setBorder('javax::swing::BorderFactory'->createEmptyBorder(0, 0, 0, 0));
         $self->{captureMotionAnalysisJCheckBox}->setMargin('java::awt::Insets'->new(0, 0, 0, 0));
         $self->{captureMotionAnalysisJCheckBox}->addActionListener(do {
-            package java::awt::event::ActionListener::AnonymousN70715 { our @ISA = ('java::awt::event::ActionListener', 'java::lang::Object');
+            package java::awt::event::ActionListener::AnonymousN70147 { our @ISA = ('java::awt::event::ActionListener', 'java::lang::Object');
             
 
             sub actionPerformed {
@@ -193,14 +193,14 @@ sub initComponents {
                 $self->captureMotionAnalysisJCheckBoxActionPerformed($evt);
             }
             }
-            'java::awt::event::ActionListener::AnonymousN70715'->can('new') ? 'java::awt::event::ActionListener::AnonymousN70715'->new() : bless({}, 'java::awt::event::ActionListener::AnonymousN70715')
+            'java::awt::event::ActionListener::AnonymousN70147'->can('new') ? 'java::awt::event::ActionListener::AnonymousN70147'->new() : bless({}, 'java::awt::event::ActionListener::AnonymousN70147')
         });
         $self->{captureComparisonJCheckBox}->setText("Comparison");
         $self->{captureComparisonJCheckBox}->setToolTipText("Compares the last two input images for multi image logic");
-        $self->{captureComparisonJCheckBox}->setBorder($org::allbinary::input::automation::module::generic::configuration::javax::swing->{BorderFactory}->createEmptyBorder(0, 0, 0, 0));
+        $self->{captureComparisonJCheckBox}->setBorder('javax::swing::BorderFactory'->createEmptyBorder(0, 0, 0, 0));
         $self->{captureComparisonJCheckBox}->setMargin('java::awt::Insets'->new(0, 0, 0, 0));
         $self->{captureComparisonJCheckBox}->addActionListener(do {
-            package java::awt::event::ActionListener::AnonymousN71082 { our @ISA = ('java::awt::event::ActionListener', 'java::lang::Object');
+            package java::awt::event::ActionListener::AnonymousN70434 { our @ISA = ('java::awt::event::ActionListener', 'java::lang::Object');
             
 
             sub actionPerformed {
@@ -208,23 +208,23 @@ sub initComponents {
                 $self->captureComparisonJCheckBoxActionPerformed($evt);
             }
             }
-            'java::awt::event::ActionListener::AnonymousN71082'->can('new') ? 'java::awt::event::ActionListener::AnonymousN71082'->new() : bless({}, 'java::awt::event::ActionListener::AnonymousN71082')
+            'java::awt::event::ActionListener::AnonymousN70434'->can('new') ? 'java::awt::event::ActionListener::AnonymousN70434'->new() : bless({}, 'java::awt::event::ActionListener::AnonymousN70434')
         });
         $self->{jLabel3}->setText("Image Processing:");
         $self->{jLabel3}->setToolTipText("Turns on/off various extended image processing");
         my $jPanel1Layout = 'javax::swing::GroupLayout'->new($self->{jPanel1});
         $self->{jPanel1}->setLayout($jPanel1Layout);
-        $jPanel1Layout->setHorizontalGroup($jPanel1Layout->createParallelGroup($org::allbinary::input::automation::module::generic::configuration::javax::swing->{GroupLayout}->{Alignment}->{LEADING})->addGroup($jPanel1Layout->createSequentialGroup()->addGroup($jPanel1Layout->createParallelGroup($org::allbinary::input::automation::module::generic::configuration::javax::swing->{GroupLayout}->{Alignment}->{LEADING})->addComponent($self->{screenCaptureJRadioButton})->addComponent($self->{jLabel1})->addComponent($self->{jLabel2})->addComponent($self->{savedCaptureJRadioButton})->addComponent($self->{captureMotionAnalysisJCheckBox})->addComponent($self->{captureComparisonJCheckBox})->addComponent($self->{jLabel3}))->addContainerGap(22, 32767)));
-        $jPanel1Layout->setVerticalGroup($jPanel1Layout->createParallelGroup($org::allbinary::input::automation::module::generic::configuration::javax::swing->{GroupLayout}->{Alignment}->{LEADING})->addGroup($jPanel1Layout->createSequentialGroup()->addComponent($self->{jLabel1})->addPreferredGap($org::allbinary::input::automation::module::generic::configuration::javax::swing->{LayoutStyle}->{ComponentPlacement}->{RELATED})->addComponent($self->{jLabel2})->addGap(7, 7, 7)->addComponent($self->{screenCaptureJRadioButton})->addPreferredGap($org::allbinary::input::automation::module::generic::configuration::javax::swing->{LayoutStyle}->{ComponentPlacement}->{RELATED})->addComponent($self->{savedCaptureJRadioButton})->addPreferredGap($org::allbinary::input::automation::module::generic::configuration::javax::swing->{LayoutStyle}->{ComponentPlacement}->{RELATED})->addComponent($self->{jLabel3})->addGap(7, 7, 7)->addComponent($self->{captureComparisonJCheckBox})->addPreferredGap($org::allbinary::input::automation::module::generic::configuration::javax::swing->{LayoutStyle}->{ComponentPlacement}->{RELATED})->addComponent($self->{captureMotionAnalysisJCheckBox})->addContainerGap(106, 32767)));
+        $jPanel1Layout->setHorizontalGroup($jPanel1Layout->createParallelGroup($javax::swing::GroupLayout::Alignment->{LEADING})->addGroup($jPanel1Layout->createSequentialGroup()->addGroup($jPanel1Layout->createParallelGroup($javax::swing::GroupLayout::Alignment->{LEADING})->addComponent($self->{screenCaptureJRadioButton})->addComponent($self->{jLabel1})->addComponent($self->{jLabel2})->addComponent($self->{savedCaptureJRadioButton})->addComponent($self->{captureMotionAnalysisJCheckBox})->addComponent($self->{captureComparisonJCheckBox})->addComponent($self->{jLabel3}))->addContainerGap(22, 32767)));
+        $jPanel1Layout->setVerticalGroup($jPanel1Layout->createParallelGroup($javax::swing::GroupLayout::Alignment->{LEADING})->addGroup($jPanel1Layout->createSequentialGroup()->addComponent($self->{jLabel1})->addPreferredGap($javax::swing::LayoutStyle::ComponentPlacement->{RELATED})->addComponent($self->{jLabel2})->addGap(7, 7, 7)->addComponent($self->{screenCaptureJRadioButton})->addPreferredGap($javax::swing::LayoutStyle::ComponentPlacement->{RELATED})->addComponent($self->{savedCaptureJRadioButton})->addPreferredGap($javax::swing::LayoutStyle::ComponentPlacement->{RELATED})->addComponent($self->{jLabel3})->addGap(7, 7, 7)->addComponent($self->{captureComparisonJCheckBox})->addPreferredGap($javax::swing::LayoutStyle::ComponentPlacement->{RELATED})->addComponent($self->{captureMotionAnalysisJCheckBox})->addContainerGap(106, 32767)));
         my $genericProfilesJPanelLayout = 'javax::swing::GroupLayout'->new($self->{genericProfilesJPanel});
         $self->{genericProfilesJPanel}->setLayout($genericProfilesJPanelLayout);
-        $genericProfilesJPanelLayout->setHorizontalGroup($genericProfilesJPanelLayout->createParallelGroup($org::allbinary::input::automation::module::generic::configuration::javax::swing->{GroupLayout}->{Alignment}->{LEADING})->addGroup($genericProfilesJPanelLayout->createSequentialGroup()->addGroup($genericProfilesJPanelLayout->createParallelGroup($org::allbinary::input::automation::module::generic::configuration::javax::swing->{GroupLayout}->{Alignment}->{LEADING})->addGroup($genericProfilesJPanelLayout->createSequentialGroup()->addComponent($self->{newProfileJButton})->addPreferredGap($org::allbinary::input::automation::module::generic::configuration::javax::swing->{LayoutStyle}->{ComponentPlacement}->{RELATED})->addComponent($self->{deleteProfileJButton}))->addGroup($genericProfilesJPanelLayout->createSequentialGroup()->addComponent($self->{genericProfilesJScrollPane}, $org::allbinary::input::automation::module::generic::configuration::javax::swing->{GroupLayout}->{PREFERRED_SIZE}, $org::allbinary::input::automation::module::generic::configuration::javax::swing->{GroupLayout}->{DEFAULT_SIZE}, $org::allbinary::input::automation::module::generic::configuration::javax::swing->{GroupLayout}->{PREFERRED_SIZE})->addPreferredGap($org::allbinary::input::automation::module::generic::configuration::javax::swing->{LayoutStyle}->{ComponentPlacement}->{RELATED})->addComponent($self->{jPanel1}, $org::allbinary::input::automation::module::generic::configuration::javax::swing->{GroupLayout}->{DEFAULT_SIZE}, 119, 32767)))->addContainerGap()));
-        $genericProfilesJPanelLayout->setVerticalGroup($genericProfilesJPanelLayout->createParallelGroup($org::allbinary::input::automation::module::generic::configuration::javax::swing->{GroupLayout}->{Alignment}->{LEADING})->addGroup($genericProfilesJPanelLayout->createSequentialGroup()->addGroup($genericProfilesJPanelLayout->createParallelGroup($org::allbinary::input::automation::module::generic::configuration::javax::swing->{GroupLayout}->{Alignment}->{BASELINE})->addComponent($self->{newProfileJButton})->addComponent($self->{deleteProfileJButton}))->addPreferredGap($org::allbinary::input::automation::module::generic::configuration::javax::swing->{LayoutStyle}->{ComponentPlacement}->{RELATED})->addGroup($genericProfilesJPanelLayout->createParallelGroup($org::allbinary::input::automation::module::generic::configuration::javax::swing->{GroupLayout}->{Alignment}->{LEADING})->addComponent($self->{jPanel1}, $org::allbinary::input::automation::module::generic::configuration::javax::swing->{GroupLayout}->{DEFAULT_SIZE}, 246, 32767)->addComponent($self->{genericProfilesJScrollPane}, $org::allbinary::input::automation::module::generic::configuration::javax::swing->{GroupLayout}->{DEFAULT_SIZE}, 246, 32767))));
+        $genericProfilesJPanelLayout->setHorizontalGroup($genericProfilesJPanelLayout->createParallelGroup($javax::swing::GroupLayout::Alignment->{LEADING})->addGroup($genericProfilesJPanelLayout->createSequentialGroup()->addGroup($genericProfilesJPanelLayout->createParallelGroup($javax::swing::GroupLayout::Alignment->{LEADING})->addGroup($genericProfilesJPanelLayout->createSequentialGroup()->addComponent($self->{newProfileJButton})->addPreferredGap($javax::swing::LayoutStyle::ComponentPlacement->{RELATED})->addComponent($self->{deleteProfileJButton}))->addGroup($genericProfilesJPanelLayout->createSequentialGroup()->addComponent($self->{genericProfilesJScrollPane}, $javax::swing::GroupLayout::PREFERRED_SIZE, $javax::swing::GroupLayout::DEFAULT_SIZE, $javax::swing::GroupLayout::PREFERRED_SIZE)->addPreferredGap($javax::swing::LayoutStyle::ComponentPlacement->{RELATED})->addComponent($self->{jPanel1}, $javax::swing::GroupLayout::DEFAULT_SIZE, 119, 32767)))->addContainerGap()));
+        $genericProfilesJPanelLayout->setVerticalGroup($genericProfilesJPanelLayout->createParallelGroup($javax::swing::GroupLayout::Alignment->{LEADING})->addGroup($genericProfilesJPanelLayout->createSequentialGroup()->addGroup($genericProfilesJPanelLayout->createParallelGroup($javax::swing::GroupLayout::Alignment->{BASELINE})->addComponent($self->{newProfileJButton})->addComponent($self->{deleteProfileJButton}))->addPreferredGap($javax::swing::LayoutStyle::ComponentPlacement->{RELATED})->addGroup($genericProfilesJPanelLayout->createParallelGroup($javax::swing::GroupLayout::Alignment->{LEADING})->addComponent($self->{jPanel1}, $javax::swing::GroupLayout::DEFAULT_SIZE, 246, 32767)->addComponent($self->{genericProfilesJScrollPane}, $javax::swing::GroupLayout::DEFAULT_SIZE, 246, 32767))));
         $self->{genericJTabbedPane}->addTab("Profiles", $self->{genericProfilesJPanel});
         my $blankGenericProfileActionsJPanelLayout = 'javax::swing::GroupLayout'->new($self->{blankGenericProfileActionsJPanel});
         $self->{blankGenericProfileActionsJPanel}->setLayout($blankGenericProfileActionsJPanelLayout);
-        $blankGenericProfileActionsJPanelLayout->setHorizontalGroup($blankGenericProfileActionsJPanelLayout->createParallelGroup($org::allbinary::input::automation::module::generic::configuration::javax::swing->{GroupLayout}->{Alignment}->{LEADING})->addGap(0, 395, 32767));
-        $blankGenericProfileActionsJPanelLayout->setVerticalGroup($blankGenericProfileActionsJPanelLayout->createParallelGroup($org::allbinary::input::automation::module::generic::configuration::javax::swing->{GroupLayout}->{Alignment}->{LEADING})->addGap(0, 275, 32767));
+        $blankGenericProfileActionsJPanelLayout->setHorizontalGroup($blankGenericProfileActionsJPanelLayout->createParallelGroup($javax::swing::GroupLayout::Alignment->{LEADING})->addGap(0, 395, 32767));
+        $blankGenericProfileActionsJPanelLayout->setVerticalGroup($blankGenericProfileActionsJPanelLayout->createParallelGroup($javax::swing::GroupLayout::Alignment->{LEADING})->addGap(0, 275, 32767));
         $self->{genericJTabbedPane}->addTab("Actions", $self->{blankGenericProfileActionsJPanel});
         $self->add($self->{genericJTabbedPane});
 }
@@ -303,8 +303,8 @@ sub updateProfileUI {
             $genericProfileActionsJPanel->setGenericProfileActions($self->getSelectedGenericProfile()->getGenericProfileActions());
             $genericProfileActionsJPanel->selectFirstElement();
             my $layout = $self->getBlankGenericProfileActionsJPanel()->getLayout();
-            $layout->setHorizontalGroup($layout->createParallelGroup($org::allbinary::input::automation::module::generic::configuration::javax::swing->{GroupLayout}->{Alignment}->{LEADING})->addGap(0, 395, 32767)->addComponent($genericProfileActionsJPanel, $org::allbinary::input::automation::module::generic::configuration::javax::swing->{GroupLayout}->{PREFERRED_SIZE}, $org::allbinary::input::automation::module::generic::configuration::javax::swing->{GroupLayout}->{DEFAULT_SIZE}, $org::allbinary::input::automation::module::generic::configuration::javax::swing->{GroupLayout}->{PREFERRED_SIZE}));
-            $layout->setVerticalGroup($layout->createParallelGroup($org::allbinary::input::automation::module::generic::configuration::javax::swing->{GroupLayout}->{Alignment}->{LEADING})->addGap(0, 256, 32767)->addComponent($genericProfileActionsJPanel, $org::allbinary::input::automation::module::generic::configuration::javax::swing->{GroupLayout}->{PREFERRED_SIZE}, $org::allbinary::input::automation::module::generic::configuration::javax::swing->{GroupLayout}->{DEFAULT_SIZE}, $org::allbinary::input::automation::module::generic::configuration::javax::swing->{GroupLayout}->{PREFERRED_SIZE}));
+            $layout->setHorizontalGroup($layout->createParallelGroup($javax::swing::GroupLayout::Alignment->{LEADING})->addGap(0, 395, 32767)->addComponent($genericProfileActionsJPanel, $javax::swing::GroupLayout::PREFERRED_SIZE, $javax::swing::GroupLayout::DEFAULT_SIZE, $javax::swing::GroupLayout::PREFERRED_SIZE));
+            $layout->setVerticalGroup($layout->createParallelGroup($javax::swing::GroupLayout::Alignment->{LEADING})->addGap(0, 256, 32767)->addComponent($genericProfileActionsJPanel, $javax::swing::GroupLayout::PREFERRED_SIZE, $javax::swing::GroupLayout::DEFAULT_SIZE, $javax::swing::GroupLayout::PREFERRED_SIZE));
             $self->updateProfileOptions();
             $self->{logUtil}->putF("Setting Configuration Profile JPanel", $self, "updateProfileUI");
         } else {
@@ -453,6 +453,27 @@ use org::allbinary::input::automation::module::generic::configuration::profile::
 use org::allbinary::logic::communication::log::LogUtil ();
 use org::allbinary::logic::string::StringUtil ();
 use org::allbinary::string::CommonStrings ();
+# use java::awt::Dimension ();
+# use java::awt::GridLayout ();
+# use java::awt::Insets ();
+# use java::awt::event::ActionEvent ();
+# use java::awt::event::ActionListener ();
+# use javax::swing::BorderFactory ();
+# use javax::swing::ButtonGroup ();
+# use javax::swing::GroupLayout ();
+# use javax::swing::JButton ();
+# use javax::swing::JCheckBox ();
+# use javax::swing::JDialog ();
+# use javax::swing::JLabel ();
+# use javax::swing::JList ();
+# use javax::swing::JPanel ();
+# use javax::swing::JRadioButton ();
+# use javax::swing::JScrollPane ();
+# use javax::swing::JTabbedPane ();
+# use javax::swing::JTextField ();
+# use javax::swing::LayoutStyle ();
+# use javax::swing::event::ListSelectionEvent ();
+# use javax::swing::event::ListSelectionListener ();
 use org::allbinary::input::automation::module::generic::configuration::GenericModuleConfigurationInterface ();
 
 1;

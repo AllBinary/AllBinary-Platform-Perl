@@ -141,29 +141,46 @@ sub set {
 }
 
 
-sub add {
+sub add_j1 {
     my ($self, $element) = @_;
         return $self->SUPER::add($element);
 }
 
 
-sub remove {
+sub remove_j1_1 {
     my ($self, $obj) = @_;
         return $self->SUPER::remove($obj);
 }
 
 
-# Java overloaded method: Perl keeps the last definition
-sub add {
+sub add_j2 {
     my ($self, $index, $element) = @_;
         $self->SUPER::add($index, $element);
 }
 
+sub add {
+    my ($invocant, @arguments) = @_;
+    return $invocant->add_j1(@arguments) if scalar(@arguments) == 1;
+    return $invocant->add_j2(@arguments) if scalar(@arguments) == 2;
+    die "No method add takes " . scalar(@arguments) . " arguments";
+}
 
-# Java overloaded method: Perl keeps the last definition
-sub remove {
+
+sub remove_j1_2 {
     my ($self, $index) = @_;
         return $self->SUPER::remove($index);
+}
+
+sub remove {
+    my ($invocant, @arguments) = @_;
+    return $invocant->remove_j1(@arguments) if scalar(@arguments) == 1;
+    die "No method remove takes " . scalar(@arguments) . " arguments";
+}
+
+sub remove_j1 {
+    my ($invocant, @arguments) = @_;
+    return $invocant->remove_j1_1(@arguments) if 1 && (!defined($arguments[0]) || (ref($arguments[0]) && ref($arguments[0]) ne 'ARRAY'));
+    return $invocant->remove_j1_2(@arguments);
 }
 
 

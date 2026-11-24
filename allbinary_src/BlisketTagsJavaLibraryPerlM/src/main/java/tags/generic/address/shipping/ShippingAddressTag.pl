@@ -39,13 +39,13 @@ sub doStartTag {
     my ($self) = @_;
         try {
             if (defined($self->getCommand())) {
-                if ($self->getCommand()->compareTo($tags::generic::address::shipping::org::allbinary->{globals}->{GLOBALS2}->{VIEW}) == 0) {
+                if ($self->getCommand()->compareTo($org::allbinary::globals::GLOBALS2::VIEW) == 0) {
                     $self->setName("Basic Shipping Address View");
                     $self->setObjectFile("views.generic.address.shipping.ViewShippingAddressesView");
-                } elsif ($self->getCommand()->compareTo($tags::generic::address::shipping::org::allbinary->{globals}->{GLOBALS2}->{EDIT}) == 0) {
+                } elsif ($self->getCommand()->compareTo($org::allbinary::globals::GLOBALS2::EDIT) == 0) {
                     $self->setName("Basic Shipping Address View");
                     $self->setObjectFile("views.generic.address.shipping.EditShippingAddressesView");
-                } elsif ($self->getCommand()->compareTo($tags::generic::address::shipping::org::allbinary->{globals}->{GLOBALS2}->{NEW}) == 0) {
+                } elsif ($self->getCommand()->compareTo($org::allbinary::globals::GLOBALS2::NEW) == 0) {
                     $self->setName("Basic Shipping Address View");
                     $self->setObjectFile("views.generic.address.shipping.NewShippingAddressesView");
                 } elsif ($self->getCommand()->compareTo($self->{commonStrings}->{INSERT}) == 0) {
@@ -68,7 +68,7 @@ sub doStartTag {
             die ("Command Null");
         } catch ($e) {
             'org::allbinary::logic::communication::http::request::AbResponseHandler'->sendJspTagLicensingRedirect($self->{pageContext}, $e);
-            return $self->{SKIP_BODY};
+            return java::lang::Object::jstatic('tags::generic::address::shipping::ShippingAddressTag', 'SKIP_BODY');
         }
 }
 
@@ -78,6 +78,7 @@ use org::allbinary::business::user::address::ShippingAddressData ();
 use org::allbinary::logic::communication::http::request::AbResponseHandler ();
 use org::allbinary::logic::system::security::licensing::LicensingException ();
 use tags::StoreValidationTransformTag ();
+use org::allbinary::globals::GLOBALS2 ();
 
 1;
 

@@ -59,9 +59,9 @@ sub insert {
     my ($self, $values) = @_;
         try {
             $self->SUPER::insert($values);
-            $self->{logUtil}->putF($self->{commonStrings}->{SUCCESS}, $self, $self->{INSERT});
+            $self->{logUtil}->putF($self->{commonStrings}->{SUCCESS}, $self, java::lang::Object::jstatic('org::allbinary::data::tables::generator::IdGeneratorEntity', 'INSERT'));
         } catch ($e) {
-            $self->{logUtil}->put($self->{commonStrings}->{FAILURE}, $self, $self->{INSERT}, $e);
+            $self->{logUtil}->put($self->{commonStrings}->{FAILURE}, $self, java::lang::Object::jstatic('org::allbinary::data::tables::generator::IdGeneratorEntity', 'INSERT'), $e);
         }
 }
 
@@ -77,7 +77,7 @@ sub delete {
 }
 
 
-sub update {
+sub update_j2 {
     my ($self, $name, $value) = @_;
         my $map = 'org::allbinary::logic::StdUtil'->getInstance()->createHashMap();
         $map->put($self->{NAME}, $name);
@@ -86,10 +86,16 @@ sub update {
 }
 
 
-# Java overloaded method: Perl keeps the last definition
-sub update {
+sub update_j1 {
     my ($self, $hashMap) = @_;
         $self->SUPER::updateWhere($self->{NAME}, $hashMap->get($self->{NAME}), $hashMap);
+}
+
+sub update {
+    my ($invocant, @arguments) = @_;
+    return $invocant->update_j2(@arguments) if scalar(@arguments) == 2;
+    return $invocant->update_j1(@arguments) if scalar(@arguments) == 1;
+    die "No method update takes " . scalar(@arguments) . " arguments";
 }
 
 

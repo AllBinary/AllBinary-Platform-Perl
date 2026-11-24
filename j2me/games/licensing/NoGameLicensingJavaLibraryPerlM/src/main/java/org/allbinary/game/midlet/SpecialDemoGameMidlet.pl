@@ -42,7 +42,6 @@ sub preInit {
 use java::lang::Object ();
 use org::allbinary::logic::system::security::licensing::ClientInformationFactory ();
 use org::allbinary::logic::system::security::licensing::LicenseServerInitFileUtil ();
-use org::allbinary::game::midlet::DemoGameMidlet ();
 
 1;
 

@@ -32,8 +32,14 @@ sub new {
     die "No constructor of ContextConfigurationView takes " . scalar(@arguments) . " arguments";
 }
 
-
 sub _new1 {
+    my ($class, @arguments) = @_;
+    return $class->_new1_1(@arguments) if 1 && (!defined($arguments[0]) || (ref($arguments[0]) && ref($arguments[0]) ne 'ARRAY'));
+    return $class->_new1_2(@arguments);
+}
+
+
+sub _new1_1 {
     my ($class, $node) = @_;
     my $self = bless({}, $class);
     _init_fields($self);
@@ -46,7 +52,7 @@ sub _new1 {
 }
 
 
-sub _new1 {
+sub _new1_2 {
     my ($class, $contextConfigurationInterface) = @_;
     my $self = bless({}, $class);
     _init_fields($self);
@@ -64,7 +70,7 @@ sub getContextConfigurationInterface {
 # throws Exception
 sub toXmlNode {
     my ($self, $document) = @_;
-        my $node = $document->createElement('org::allbinary::business::context::configuration::ContextConfigurationData'->getInstance()->{NAME});
+        my $node = $document->createElement(java::lang::Object::jstatic('org::allbinary::business::context::configuration::ContextConfigurationView', 'ContextConfigurationData')->getInstance()->{NAME});
         my $emailServerConfigurationView = 'org::allbinary::logic::communication::smtp::configuration::server::EmailServerConfigurationView'->new($self->getContextConfigurationInterface()->getEmailServerConfigurationInterface());
         $node->appendChild($emailServerConfigurationView->toXmlNode($document));
         return $node;
@@ -80,7 +86,6 @@ use org::w3c::dom::Document ();
 use org::w3c::dom::Node ();
 use org::w3c::dom::NodeList ();
 use org::allbinary::business::context::configuration::ContextConfiguration ();
-use org::allbinary::business::context::configuration::ContextConfigurationData ();
 
 1;
 

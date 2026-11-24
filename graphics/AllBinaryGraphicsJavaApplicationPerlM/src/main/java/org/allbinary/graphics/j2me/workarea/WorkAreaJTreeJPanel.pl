@@ -58,9 +58,9 @@ sub add {
 
 sub updateTree {
     my ($self) = @_;
-        $self->{workAreaJTree} = 'org::allbinary::graphics::j2me::workarea::JTree'->new($self->{rootTreeNode});
+        $self->{workAreaJTree} = 'javax::swing::JTree'->new($self->{rootTreeNode});
         $self->{workAreaJTree}->addMouseListener(do {
-            package java::awt::event::MouseAdapter::AnonymousN66641 { our @ISA = ('java::awt::event::MouseAdapter', 'java::lang::Object');
+            package java::awt::event::MouseAdapter::AnonymousN66826 { our @ISA = ('java::awt::event::MouseAdapter', 'java::lang::Object');
             
 
             sub mousePressed {
@@ -68,14 +68,14 @@ sub updateTree {
                 $self->workAreaJTreeMousePressed($evt);
             }
             }
-            'java::awt::event::MouseAdapter::AnonymousN66641'->can('new') ? 'java::awt::event::MouseAdapter::AnonymousN66641'->new() : bless({}, 'java::awt::event::MouseAdapter::AnonymousN66641')
+            'java::awt::event::MouseAdapter::AnonymousN66826'->can('new') ? 'java::awt::event::MouseAdapter::AnonymousN66826'->new() : bless({}, 'java::awt::event::MouseAdapter::AnonymousN66826')
         });
         $self->{workAreaPropertiesJPanel}->removeAll();
         $self->{workAreaPropertiesJPanel}->add($self->{workAreaJTree});
 }
 
 
-sub getNode {
+sub getNode_j1_1 {
     my ($self, $treePathArray) = @_;
         my $basicArrayList = 'org::allbinary::util::BasicArrayListD'->new();
         if (defined($treePathArray)) {
@@ -87,8 +87,7 @@ sub getNode {
 }
 
 
-# Java overloaded method: Perl keeps the last definition
-sub getNode {
+sub getNode_j1_2 {
     my ($self, $treePath) = @_;
         if (defined($treePath)) {
             my $obj = $treePath->getPath();
@@ -98,6 +97,18 @@ sub getNode {
             }
         }
         return undef;
+}
+
+sub getNode {
+    my ($invocant, @arguments) = @_;
+    return $invocant->getNode_j1(@arguments) if scalar(@arguments) == 1;
+    die "No method getNode takes " . scalar(@arguments) . " arguments";
+}
+
+sub getNode_j1 {
+    my ($invocant, @arguments) = @_;
+    return $invocant->getNode_j1_1(@arguments) if 1 && (!defined($arguments[0]) || ref($arguments[0]) eq 'ARRAY');
+    return $invocant->getNode_j1_2(@arguments);
 }
 
 
@@ -153,7 +164,7 @@ sub remove {
 
 
 # throws Exception
-sub copy {
+sub copy_j0 {
     my ($self) = @_;
         my $treePath = $self->{workAreaJTree}->getSelectionPath();
         $self->copy($treePath);
@@ -164,8 +175,7 @@ sub copy {
 
 
 # throws Exception
-# Java overloaded method: Perl keeps the last definition
-sub copy {
+sub copy_j1 {
     my ($self, $treePath) = @_;
         my $node = $self->getNode($treePath);
         if (defined($node)) {
@@ -175,6 +185,13 @@ sub copy {
                 'org::allbinary::graphics::j2me::workarea::tools::event::MyGraphicItemEventService'->fire('org::allbinary::graphics::j2me::workarea::tools::event::MyGraphicItemEvent'->new('org::allbinary::graphics::j2me::workarea::tools::event::MyGraphicItemEventSource'->new($org::allbinary::graphics::j2me::workarea::tools::event::MyGraphicItemEventService::DUPLICATE, $node)));
             }
         }
+}
+
+sub copy {
+    my ($invocant, @arguments) = @_;
+    return $invocant->copy_j0(@arguments) if scalar(@arguments) == 0;
+    return $invocant->copy_j1(@arguments) if scalar(@arguments) == 1;
+    die "No method copy takes " . scalar(@arguments) . " arguments";
 }
 
 
@@ -198,17 +215,23 @@ sub getRootTreeNode {
 }
 
 
-sub expand {
+sub expand_j0 {
     my ($self) = @_;
         $self->{workAreaJTree}->expandRow(0);
         $self->{workAreaJTree}->expandRow(1);
 }
 
 
-# Java overloaded method: Perl keeps the last definition
-sub expand {
+sub expand_j1 {
     my ($self, $treePath) = @_;
         $self->{workAreaJTree}->expandPath($treePath);
+}
+
+sub expand {
+    my ($invocant, @arguments) = @_;
+    return $invocant->expand_j0(@arguments) if scalar(@arguments) == 0;
+    return $invocant->expand_j1(@arguments) if scalar(@arguments) == 1;
+    die "No method expand takes " . scalar(@arguments) . " arguments";
 }
 
 
@@ -221,7 +244,7 @@ sub initComponents {
         $self->{itemJScrollPane1} = 'javax::swing::JScrollPane'->new();
         $self->{workAreaPropertiesJPanel} = 'javax::swing::JPanel'->new();
         $self->{itemJPopupMenu}->addPopupMenuListener(do {
-            package javax::swing::event::PopupMenuListener::AnonymousN69955 { our @ISA = ('javax::swing::event::PopupMenuListener', 'java::lang::Object');
+            package javax::swing::event::PopupMenuListener::AnonymousN69996 { our @ISA = ('javax::swing::event::PopupMenuListener', 'java::lang::Object');
             
 
             sub popupMenuCanceled {
@@ -240,11 +263,11 @@ sub initComponents {
                 $self->itemJPopupMenuPopupMenuWillBecomeVisible($evt);
             }
             }
-            'javax::swing::event::PopupMenuListener::AnonymousN69955'->can('new') ? 'javax::swing::event::PopupMenuListener::AnonymousN69955'->new() : bless({}, 'javax::swing::event::PopupMenuListener::AnonymousN69955')
+            'javax::swing::event::PopupMenuListener::AnonymousN69996'->can('new') ? 'javax::swing::event::PopupMenuListener::AnonymousN69996'->new() : bless({}, 'javax::swing::event::PopupMenuListener::AnonymousN69996')
         });
         $self->{deleteJMenuItem}->setText("Delete");
         $self->{deleteJMenuItem}->addMouseListener(do {
-            package java::awt::event::MouseAdapter::AnonymousN70299 { our @ISA = ('java::awt::event::MouseAdapter', 'java::lang::Object');
+            package java::awt::event::MouseAdapter::AnonymousN70244 { our @ISA = ('java::awt::event::MouseAdapter', 'java::lang::Object');
             
 
             sub mousePressed {
@@ -252,12 +275,12 @@ sub initComponents {
                 $self->deleteJMenuItemMousePressed($evt);
             }
             }
-            'java::awt::event::MouseAdapter::AnonymousN70299'->can('new') ? 'java::awt::event::MouseAdapter::AnonymousN70299'->new() : bless({}, 'java::awt::event::MouseAdapter::AnonymousN70299')
+            'java::awt::event::MouseAdapter::AnonymousN70244'->can('new') ? 'java::awt::event::MouseAdapter::AnonymousN70244'->new() : bless({}, 'java::awt::event::MouseAdapter::AnonymousN70244')
         });
         $self->{itemJPopupMenu}->add($self->{deleteJMenuItem});
         $self->{copyJMenuItem}->setText("Copy");
         $self->{copyJMenuItem}->addMouseListener(do {
-            package java::awt::event::MouseAdapter::AnonymousN70523 { our @ISA = ('java::awt::event::MouseAdapter', 'java::lang::Object');
+            package java::awt::event::MouseAdapter::AnonymousN70420 { our @ISA = ('java::awt::event::MouseAdapter', 'java::lang::Object');
             
 
             sub mousePressed {
@@ -265,12 +288,12 @@ sub initComponents {
                 $self->copyJMenuItemMousePressed($evt);
             }
             }
-            'java::awt::event::MouseAdapter::AnonymousN70523'->can('new') ? 'java::awt::event::MouseAdapter::AnonymousN70523'->new() : bless({}, 'java::awt::event::MouseAdapter::AnonymousN70523')
+            'java::awt::event::MouseAdapter::AnonymousN70420'->can('new') ? 'java::awt::event::MouseAdapter::AnonymousN70420'->new() : bless({}, 'java::awt::event::MouseAdapter::AnonymousN70420')
         });
         $self->{itemJPopupMenu}->add($self->{copyJMenuItem});
         $self->{rotateJMenuItem}->setText("Rotate 45*");
         $self->{rotateJMenuItem}->addMouseListener(do {
-            package java::awt::event::MouseAdapter::AnonymousN70747 { our @ISA = ('java::awt::event::MouseAdapter', 'java::lang::Object');
+            package java::awt::event::MouseAdapter::AnonymousN70596 { our @ISA = ('java::awt::event::MouseAdapter', 'java::lang::Object');
             
 
             sub mousePressed {
@@ -278,12 +301,12 @@ sub initComponents {
                 $self->rotateJMenuItemMousePressed($evt);
             }
             }
-            'java::awt::event::MouseAdapter::AnonymousN70747'->can('new') ? 'java::awt::event::MouseAdapter::AnonymousN70747'->new() : bless({}, 'java::awt::event::MouseAdapter::AnonymousN70747')
+            'java::awt::event::MouseAdapter::AnonymousN70596'->can('new') ? 'java::awt::event::MouseAdapter::AnonymousN70596'->new() : bless({}, 'java::awt::event::MouseAdapter::AnonymousN70596')
         });
         $self->{itemJPopupMenu}->add($self->{rotateJMenuItem});
         $self->setLayout('java::awt::GridLayout'->new(1, 1));
         $self->{workAreaPropertiesJPanel}->addMouseListener(do {
-            package java::awt::event::MouseAdapter::AnonymousN70995 { our @ISA = ('java::awt::event::MouseAdapter', 'java::lang::Object');
+            package java::awt::event::MouseAdapter::AnonymousN70780 { our @ISA = ('java::awt::event::MouseAdapter', 'java::lang::Object');
             
 
             sub mousePressed {
@@ -291,7 +314,7 @@ sub initComponents {
                 $self->workAreaPropertiesJPanelMousePressed($evt);
             }
             }
-            'java::awt::event::MouseAdapter::AnonymousN70995'->can('new') ? 'java::awt::event::MouseAdapter::AnonymousN70995'->new() : bless({}, 'java::awt::event::MouseAdapter::AnonymousN70995')
+            'java::awt::event::MouseAdapter::AnonymousN70780'->can('new') ? 'java::awt::event::MouseAdapter::AnonymousN70780'->new() : bless({}, 'java::awt::event::MouseAdapter::AnonymousN70780')
         });
         $self->{workAreaPropertiesJPanel}->setLayout('java::awt::GridLayout'->new(1, 0));
         $self->{itemJScrollPane1}->setViewportView($self->{workAreaPropertiesJPanel});
@@ -389,7 +412,7 @@ sub workAreaPropertiesJPanelMousePressed {
 }
 
 use java::lang::Object ();
-# use javax::swing ();
+# use javax::swing::JTree ();
 # use javax::swing::tree::DefaultMutableTreeNode ();
 # use javax::swing::tree::MutableTreeNode ();
 # use javax::swing::tree::TreePath ();
@@ -404,7 +427,15 @@ use org::allbinary::logic::communication::log::LogUtil ();
 use org::allbinary::string::CommonStrings ();
 use org::allbinary::util::BasicArrayList ();
 use org::allbinary::util::BasicArrayListD ();
-use org::allbinary::graphics::j2me::workarea::JTree ();
+# use java::awt::GridLayout ();
+# use java::awt::event::MouseAdapter ();
+# use java::awt::event::MouseEvent ();
+# use javax::swing::JMenuItem ();
+# use javax::swing::JPanel ();
+# use javax::swing::JPopupMenu ();
+# use javax::swing::JScrollPane ();
+# use javax::swing::event::PopupMenuEvent ();
+# use javax::swing::event::PopupMenuListener ();
 
 1;
 

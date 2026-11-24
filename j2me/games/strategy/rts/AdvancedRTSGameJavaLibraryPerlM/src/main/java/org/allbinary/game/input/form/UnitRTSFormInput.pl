@@ -64,12 +64,12 @@ sub processGameSpecific {
         if ($self->{newUnconstructedRTSLayerInterfaceArray}->[$itemIndex] == 'org::allbinary::game::layer::special::CollidableDestroyableDamageableLayer'->getNullInstance()) {
             $self->{newUnconstructedRTSLayerInterfaceArray}->[$itemIndex] = $self->getInstance($layerManager, $item, $geographicMapCellPosition);
         } else {
-            my $cellPoint = $geographicMapCellPosition->getPoint();
-            my $rtsLayer = $self->{newUnconstructedRTSLayerInterfaceArray}->[$itemIndex];
-            $rtsLayer->setPosition($cellPoint->getX(), $cellPoint->getY(), $rtsLayer->getZP());
-            my $geographicMapCompositeInterface = $rtsLayer->{allBinaryGameLayerManagerP};
+            my $selectedCellPoint = $geographicMapCellPosition->getPoint();
+            my $positionedLayer = $self->{newUnconstructedRTSLayerInterfaceArray}->[$itemIndex];
+            $positionedLayer->setPosition($selectedCellPoint->getX(), $selectedCellPoint->getY(), $positionedLayer->getZP());
+            my $geographicMapCompositeInterface = $positionedLayer->{allBinaryGameLayerManagerP};
             my $geographicMapInterface = $geographicMapCompositeInterface->getGeographicMapInterface()->[0];
-            $rtsLayer->{geographicMapCellPositionAreaBase}->update($geographicMapInterface);
+            $positionedLayer->{geographicMapCellPositionAreaBase}->update($geographicMapInterface);
         }
         my $cellPoint = $geographicMapCellPosition->getMidPoint();
         my $rtsLayer = $self->{newUnconstructedRTSLayerInterfaceArray}->[$itemIndex];
@@ -142,7 +142,6 @@ use org::allbinary::media::audio::ErrorSound ();
 use org::allbinary::media::graphics::geography::map::BasicGeographicMap ();
 use org::allbinary::media::graphics::geography::map::GeographicMapCellPosition ();
 use org::allbinary::media::graphics::geography::map::GeographicMapCompositeInterface ();
-use org::allbinary::game::input::form::RTSFormInput ();
 use org::allbinary::game::input::form::AssignWaypointsUtil ();
 use org::allbinary::game::input::form::PlayersSingletonFactory ();
 

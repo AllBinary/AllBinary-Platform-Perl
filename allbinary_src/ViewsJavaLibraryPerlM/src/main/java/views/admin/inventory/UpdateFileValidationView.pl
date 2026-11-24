@@ -36,18 +36,18 @@ sub new {
 }
 
 
-sub isValid {
+sub isValid_j0 {
     my ($self) = @_;
         try {
             my $command = $self->getRequestHashMap()->get($org::allbinary::globals::GLOBALS2::ADMINCOMMAND);
             if (!defined($command) || ($command cmp $views::admin::inventory::UpdateFileValidationView::UPDATEPRODUCT) != 0) {
-                if ($views::admin::inventory::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($views::admin::inventory::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{VIEW})) {
+                if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{VIEW})) {
                     $self->{logUtil}->putF("Invalid AdminCommand=" . $command, $self, $self->{commonStrings}->{IS_VALID});
                 }
                 return 0;
             }
             if ('org::allbinary::business::user::commerce::inventory::item::BasicItemValidation'->new($self->{itemInterface})->isValid() == 0) {
-                if ($views::admin::inventory::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($views::admin::inventory::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{VIEW})) {
+                if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{VIEW})) {
                     $self->{logUtil}->putF("BasicItem is not valid", $self, $self->{commonStrings}->{IS_VALID});
                 }
                 return 0;
@@ -60,7 +60,7 @@ sub isValid {
             my $fullCategory = $stringBuffer->toString();
             my $categoryFile = 'org::allbinary::logic::io::file::AbFile'->createAbFile($fullCategory);
             if (!$categoryFile->isDirectory()) {
-                if ($views::admin::inventory::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($views::admin::inventory::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{VIEW})) {
+                if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{VIEW})) {
                     $self->{logUtil}->putF("Category Does Not Exist: " . $fullCategory, $self, $self->{commonStrings}->{IS_VALID});
                 }
                 return 0;
@@ -81,7 +81,7 @@ sub isValid {
             }
             return 1;
         } catch ($e) {
-            if ($views::admin::inventory::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($views::admin::inventory::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{VIEW})) {
+            if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{VIEW})) {
                 $self->{logUtil}->put("Exception in validation", $self, $self->{commonStrings}->{IS_VALID}, $e);
             }
             return 0;
@@ -102,7 +102,7 @@ sub toValidationInfoNode {
 
 
 # throws Exception
-sub validationInfo {
+sub validationInfo_j0 {
     my ($self) = @_;
         my $stringBuffer = 'org::allbinary::logic::string::StringMaker'->new();
         my $command = $self->getRequestHashMap()->get($org::allbinary::globals::GLOBALS2::ADMINCOMMAND);
@@ -112,7 +112,7 @@ sub validationInfo {
         $stringBuffer->append('org::allbinary::business::user::commerce::inventory::item::BasicItemValidation'->new($self->{itemInterface})->validationInfo());
         my $storeFrontInterface = 'org::allbinary::business::context::modules::storefront::StoreFrontFactory'->getInstance($self->getWeblisketSession()->getStoreName());
         my $fullCategory = 'org::allbinary::globals::URLGLOBALS'->getWebappPath() + $storeFrontInterface->getCurrentHostNamePath() + $self->{itemInterface}->getCategory();
-        if ($views::admin::inventory::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($views::admin::inventory::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{VIEW})) {
+        if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{VIEW})) {
             $self->{logUtil}->putF("Category: " . $fullCategory, $self, "validationInfo()");
         }
         try {
@@ -120,7 +120,7 @@ sub validationInfo {
                 $stringBuffer->append("Item does not exist.<br>");
             }
         } catch ($e) {
-            if ($views::admin::inventory::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($views::admin::inventory::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{VIEW})) {
+            if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{VIEW})) {
                 $self->{logUtil}->putF("Existing Item With MoneyException", $self, "validationInfo()");
             }
         }
@@ -137,8 +137,7 @@ sub validationInfo {
 
 
 # throws Exception
-# Java overloaded method: Perl keeps the last definition
-sub isValid {
+sub isValid_j2 {
     my ($self, $fileName, $size) = @_;
         my $fileData = 'org::allbinary::logic::io::file::FileData'->getInstance();
         if ($size > $fileData->{MINIMAGEFILESIZE}) {
@@ -147,7 +146,7 @@ sub isValid {
                     return 0;
                 }
             } else {
-                if ($views::admin::inventory::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($views::admin::inventory::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{VIEW})) {
+                if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{VIEW})) {
                     my $stringBuffer = 'org::allbinary::logic::string::StringMaker'->new();
                     $stringBuffer->append("File Size To Large: ");
                     $stringBuffer->appendlong($size);
@@ -162,9 +161,15 @@ sub isValid {
         return 1;
 }
 
+sub isValid {
+    my ($invocant, @arguments) = @_;
+    return $invocant->isValid_j0(@arguments) if scalar(@arguments) == 0;
+    return $invocant->isValid_j2(@arguments) if scalar(@arguments) == 2;
+    die "No method isValid takes " . scalar(@arguments) . " arguments";
+}
 
-# Java overloaded method: Perl keeps the last definition
-sub validationInfo {
+
+sub validationInfo_j4 {
     my ($self, $stringBuffer, $fileName, $fileItemFieldName, $size) = @_;
         my $fileData = 'org::allbinary::logic::io::file::FileData'->getInstance();
         if ($size > $fileData->{MINIMAGEFILESIZE}) {
@@ -186,6 +191,13 @@ sub validationInfo {
                 }
             }
         }
+}
+
+sub validationInfo {
+    my ($invocant, @arguments) = @_;
+    return $invocant->validationInfo_j0(@arguments) if scalar(@arguments) == 0;
+    return $invocant->validationInfo_j4(@arguments) if scalar(@arguments) == 4;
+    die "No method validationInfo takes " . scalar(@arguments) . " arguments";
 }
 
 
@@ -219,6 +231,8 @@ use org::allbinary::string::CommonStrings ();
 use org::apache::commons::fileupload::FileItem ();
 use org::w3c::dom::Document ();
 use org::w3c::dom::Node ();
+use org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory ();
+use org::allbinary::logic::communication::log::config::type::LogConfigTypes ();
 use views::admin::inventory::InventoryItemView ();
 
 1;

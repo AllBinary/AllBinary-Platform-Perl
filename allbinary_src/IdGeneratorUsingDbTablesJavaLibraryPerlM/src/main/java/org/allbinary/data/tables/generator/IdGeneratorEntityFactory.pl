@@ -43,6 +43,7 @@ sub getInstance {
 use java::lang::Object ();
 use org::allbinary::logic::communication::log::LogUtil ();
 use org::allbinary::string::CommonStrings ();
+use org::allbinary::data::tables::generator::IdGeneratorEntity ();
 
 1;
 

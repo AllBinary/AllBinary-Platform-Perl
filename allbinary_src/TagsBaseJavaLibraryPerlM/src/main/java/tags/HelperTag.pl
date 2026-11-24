@@ -32,7 +32,7 @@ sub new {
     my ($class, $tagHelperFactoryInterface) = @_;
     my $self = $class->SUPER::new();
     _init_fields($self);
-        if ($tags::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($tags::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{JSPTAG})) {
+        if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{JSPTAG})) {
             $self->{logUtil}->putF($self->{commonStrings}->{START}, $self, $self->{commonStrings}->{CONSTRUCTOR});
         }
         $self->{tagHelperFactoryInterface} = $tagHelperFactoryInterface;
@@ -44,7 +44,7 @@ sub new {
 sub setHelper {
     my ($self) = @_;
         if (!defined($self->{anyType})) {
-            if ($tags::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($tags::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{JSPTAG})) {
+            if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{JSPTAG})) {
                 $self->{logUtil}->putF("Creating TagHelper with: \n" . $self->getPropertiesHashMap()->toString(), $self, "doStartTag");
             }
             $self->{anyType} = $self->{tagHelperFactoryInterface}->getInstance($self->getPropertiesHashMap(), $self->{pageContext});
@@ -60,7 +60,7 @@ sub getHelper {
 
 sub doEndTag {
     my ($self) = @_;
-        if ($tags::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($tags::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{JSPTAG})) {
+        if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{JSPTAG})) {
             $self->{logUtil}->putF("Tag Ended", $self, "doEndTag");
         }
         $self->{anyType} = undef;
@@ -70,6 +70,8 @@ sub doEndTag {
 use java::lang::Object ();
 use admin::taghelpers::TagHelperFactoryInterface ();
 use org::allbinary::logic::communication::log::LogUtil ();
+use org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory ();
+use org::allbinary::logic::communication::log::config::type::LogConfigTypes ();
 use tags::PropertiesTag ();
 
 1;

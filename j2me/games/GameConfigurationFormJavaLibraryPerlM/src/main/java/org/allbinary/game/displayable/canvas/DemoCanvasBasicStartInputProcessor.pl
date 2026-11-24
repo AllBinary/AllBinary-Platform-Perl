@@ -52,7 +52,6 @@ use org::allbinary::game::input::event::GameKeyEvent ();
 use org::allbinary::logic::string::StringMaker ();
 use org::allbinary::logic::string::StringUtil ();
 use org::allbinary::util::BasicArrayList ();
-use org::allbinary::game::displayable::canvas::BasicMenuInputProcessor ();
 
 1;
 

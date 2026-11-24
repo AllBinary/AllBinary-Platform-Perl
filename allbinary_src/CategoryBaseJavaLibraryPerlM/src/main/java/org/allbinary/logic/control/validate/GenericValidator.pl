@@ -42,7 +42,6 @@ sub toValidationInfoNode {
 use java::lang::Object ();
 use org::w3c::dom::Document ();
 use org::w3c::dom::Node ();
-use org::allbinary::logic::control::validate::ValidatorBase ();
 
 1;
 

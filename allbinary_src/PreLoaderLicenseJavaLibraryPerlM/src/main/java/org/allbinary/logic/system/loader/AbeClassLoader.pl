@@ -17,7 +17,7 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
-use parent -norequire,'org::allbinary::logic::system::loader::ClassLoader';
+use parent -norequire,'java::lang::ClassLoader';
 
 tie our $classes, 'java::lang::LazyStatic', sub { 'org::allbinary::logic::StdUtil'->getInstance()->createHashMap() };
 our $PATH;
@@ -38,7 +38,7 @@ sub new {
     _init_fields($self);
         # super(...) made $self above
         $self->{key} = $key;
-        $org::allbinary::logic::system::loader::AbeClassLoader::PATH = $org::allbinary::logic::system::loader::org::allbinary->{globals}->{URLGLOBALS}->getWebappPath() . "WEB-INF/classes/";
+        $org::allbinary::logic::system::loader::AbeClassLoader::PATH = 'org::allbinary::globals::URLGLOBALS'->getWebappPath() . "WEB-INF/classes/";
     return $self;
 }
 
@@ -50,15 +50,14 @@ sub findLoadedClass1 {
 
 
 # throws ClassNotFoundException
-sub loadClass {
+sub loadClass_j1 {
     my ($self, $name) = @_;
         return $self->loadClass($name, 0);
 }
 
 
 # throws ClassNotFoundException
-# Java overloaded method: Perl keeps the last definition
-sub loadClass {
+sub loadClass_j2 {
     my ($self, $name, $resolve) = @_;
         my $loadedWith = "findLoadedClass1";
         my $logBuffer = 'org::allbinary::logic::communication::log::LogBuffer'->new();
@@ -89,12 +88,19 @@ sub loadClass {
             $self->resolveClass($myClass);
             return $myClass;
         } catch ($e) {
-            if ($org::allbinary::logic::system::loader::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($org::allbinary::logic::system::loader::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{LOADERERROR})) {
+            if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{LOADERERROR})) {
                 $logBuffer->logAll();
                 $self->{logUtil}->put("Failure loading: " . $name . "\nwith: " . $loadedWith, $self, $self->{LOAD_CLASS}, $e);
             }
             return undef;
         }
+}
+
+sub loadClass {
+    my ($invocant, @arguments) = @_;
+    return $invocant->loadClass_j1(@arguments) if scalar(@arguments) == 1;
+    return $invocant->loadClass_j2(@arguments) if scalar(@arguments) == 2;
+    die "No method loadClass takes " . scalar(@arguments) . " arguments";
 }
 
 
@@ -108,7 +114,7 @@ sub loadClassBytesFromFile {
             my $decrypted = $self->{abCryptUtil}->decrypt($in, $self->{key});
             return $decrypted;
         } catch ($e) {
-            if ($org::allbinary::logic::system::loader::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($org::allbinary::logic::system::loader::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{LOADERERROR})) {
+            if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{LOADERERROR})) {
                 $self->{logUtil}->put("(Before LogBuffer Output) Failure loading Encrypted: " . $name . " File: " . $cname, "AbeClassLoader", "loadClassBytes", $e);
             }
             'org::allbinary::logic::io::StreamUtil'->getInstance()->close($in);
@@ -131,7 +137,7 @@ sub oldLoadClass {
                         return $normalClass;
                     }
                 } catch ($e) {
-                    if ($org::allbinary::logic::system::loader::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($org::allbinary::logic::system::loader::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{LOADER})) {
+                    if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{LOADER})) {
                         $self->{logUtil}->putF("Failed Loaded Class: " . $name . " with: " . $loadedWith, $self, $self->{LOAD_CLASS});
                     }
                 }
@@ -146,14 +152,14 @@ sub oldLoadClass {
                 }
                 $org::allbinary::logic::system::loader::AbeClassLoader::classes->put($name, $myClass);
             } else {
-                if ($org::allbinary::logic::system::loader::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($org::allbinary::logic::system::loader::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{LOADER})) {
+                if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{LOADER})) {
                     $self->{logUtil}->putF("Already Loaded: " . $name . " with: " . $loadedWith, $self, $self->{LOAD_CLASS});
                 }
             }
             $self->resolveClass($myClass);
             return $myClass;
         } catch ($e) {
-            if ($org::allbinary::logic::system::loader::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($org::allbinary::logic::system::loader::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{LOADERERROR})) {
+            if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{LOADERERROR})) {
                 $self->{logUtil}->put("Failure loading: " . $name, "AbeClassLoader", $self->{LOAD_CLASS}, $e);
             }
             return undef;
@@ -173,7 +179,10 @@ use org::allbinary::logic::io::StreamUtil ();
 use org::allbinary::logic::io::path::AbPathData ();
 use org::allbinary::logic::string::StringUtil ();
 use org::allbinary::logic::system::security::AbCryptUtil ();
-use org::allbinary::logic::system::loader::ClassLoader ();
+use org::allbinary::globals::URLGLOBALS ();
+use org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory ();
+use org::allbinary::logic::communication::log::config::type::LogConfigTypes ();
+use java::lang::ClassLoader ();
 
 1;
 

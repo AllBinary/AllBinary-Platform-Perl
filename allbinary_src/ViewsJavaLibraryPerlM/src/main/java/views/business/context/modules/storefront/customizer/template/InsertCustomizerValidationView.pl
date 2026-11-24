@@ -33,7 +33,7 @@ sub new {
     my $self = $class->SUPER::new($transformInfoInterface);
     _init_fields($self);
         # super(...) made $self above
-        if ($views::business::context::modules::storefront::customizer::template::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($views::business::context::modules::storefront::customizer::template::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{VIEW})) {
+        if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{VIEW})) {
             $self->{logUtil}->putF("View Name: " . $transformInfoInterface->getName(), $self, $self->{commonStrings}->{CONSTRUCTOR});
         }
         my $requestHashMap = 'org::allbinary::logic::communication::http::request::RequestParams'->new($self->getPageContext())->toHashMap();
@@ -45,7 +45,7 @@ sub new {
 sub isValid {
     my ($self) = @_;
         try {
-            if ($views::business::context::modules::storefront::customizer::template::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($views::business::context::modules::storefront::customizer::template::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{VIEW})) {
+            if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{VIEW})) {
                 $self->{logUtil}->putF("Started Validation", $self, $self->{commonStrings}->{IS_VALID});
             }
             my $isValid = 1;
@@ -55,7 +55,7 @@ sub isValid {
                 my $objectConfig = 'views::business::context::modules::storefront::customizer::template::objectConfig::NoTemplateTransformInfoObjectConfig'->new($self->getTransformInfoInterface(), $self->getTransformInfoInterface()->getObjectConfigInterface()->toXmlDoc());
                 my $componentVector = $objectConfig->getGroupTransforms();
                 my $size = $componentVector->size();
-                if ($views::business::context::modules::storefront::customizer::template::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($views::business::context::modules::storefront::customizer::template::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{VIEW})) {
+                if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{VIEW})) {
                     my $stringBuffer = 'org::allbinary::logic::string::StringMaker'->new();
                     $stringBuffer->append("Pointing ");
                     $stringBuffer->appendint($componentVector->size());
@@ -65,7 +65,7 @@ sub isValid {
                 for (my $index = 0; $index < $size; $index++) {
                     my $transformInfo = $componentVector->get($index);
                     my $transformInfoName = $transformInfo->getName();
-                    if ($views::business::context::modules::storefront::customizer::template::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($views::business::context::modules::storefront::customizer::template::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{VIEW})) {
+                    if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{VIEW})) {
                         $self->{logUtil}->putF("Setting Template Component with ViewName: " . $transformInfoName, $self, $self->{commonStrings}->{IS_VALID});
                     }
                     my $componentInterface = 'org::allbinary::logic::visual::transform::TransformFactory'->getInstance()->getInstance($self->{abeClientInformation}, $transformInfoName, $self->getTransformInfoInterface());
@@ -92,7 +92,7 @@ sub isValid {
                         $newViewNameStringBuffer->append($org::allbinary::logic::visual::transform::info::GeneratorTransformInfoData::NAME);
                     }
                     my $newViewName = $newViewNameStringBuffer->toString();
-                    if ($views::business::context::modules::storefront::customizer::template::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($views::business::context::modules::storefront::customizer::template::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{VIEW})) {
+                    if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{VIEW})) {
                         my $stringBuffer = 'org::allbinary::logic::string::StringMaker'->new();
                         $stringBuffer->append("Template Component: ");
                         $stringBuffer->append($transformInfoName);
@@ -101,7 +101,7 @@ sub isValid {
                         $self->{logUtil}->putF($stringBuffer->toString(), $self, $self->{commonStrings}->{IS_VALID});
                     }
                     $templateViewObjectConfig->set($newViewName);
-                    if ($views::business::context::modules::storefront::customizer::template::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($views::business::context::modules::storefront::customizer::template::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{VIEW})) {
+                    if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{VIEW})) {
                         my $stringBuffer = 'org::allbinary::logic::string::StringMaker'->new();
                         $stringBuffer->append("Template Component: ");
                         $stringBuffer->append($transformInfoName);
@@ -116,7 +116,7 @@ sub isValid {
             }
             return $isValid;
         } catch ($e) {
-            if ($views::business::context::modules::storefront::customizer::template::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($views::business::context::modules::storefront::customizer::template::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{VIEWERROR})) {
+            if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{VIEWERROR})) {
                 $self->{logUtil}->put("Failed to validate", $self, $self->{commonStrings}->{IS_VALID}, $e);
             }
             return 0;
@@ -131,7 +131,7 @@ sub validationInfo {
             $stringBuffer->append("Error: Template Name Is Empty.");
             return $stringBuffer->toString();
         } catch ($e) {
-            if ($views::business::context::modules::storefront::customizer::template::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($views::business::context::modules::storefront::customizer::template::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{VIEWERROR})) {
+            if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{VIEWERROR})) {
                 $self->{logUtil}->put("Failed to generate validation error info", $self, "validationInfo()", $e);
             }
             return "Error Getting Validation Info";
@@ -154,7 +154,7 @@ sub toValidationInfoNode {
 # throws Exception
 sub view {
     my ($self) = @_;
-        return $self->{views}->{ValidationOnlyTempUtil}->getInstance()->view($self);
+        return 'views::ValidationOnlyTempUtil'->getInstance()->view($self);
 }
 
 
@@ -187,6 +187,9 @@ use org::w3c::dom::Node ();
 use views::business::context::modules::storefront::HttpStoreComponentView ();
 use views::business::context::modules::storefront::customizer::template::objectConfig::InsertTemplateCustomizerTransformInfoObjectConfig ();
 use views::business::context::modules::storefront::customizer::template::objectConfig::NoTemplateTransformInfoObjectConfig ();
+use org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory ();
+use org::allbinary::logic::communication::log::config::type::LogConfigTypes ();
+use views::ValidationOnlyTempUtil ();
 
 1;
 

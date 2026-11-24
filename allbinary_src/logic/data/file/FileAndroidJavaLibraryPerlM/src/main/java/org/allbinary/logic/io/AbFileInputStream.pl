@@ -75,25 +75,31 @@ sub getChannel {
 
 
 # throws IOException
-sub read {
+sub read_j0 {
     my ($self) = @_;
         return $self->{fileInputStream}->read();
 }
 
 
 # throws IOException
-# Java overloaded method: Perl keeps the last definition
-sub read {
+sub read_j1 {
     my ($self, $b) = @_;
         return $self->{fileInputStream}->read($b);
 }
 
 
 # throws IOException
-# Java overloaded method: Perl keeps the last definition
-sub read {
+sub read_j3 {
     my ($self, $buffer, $offset, $count) = @_;
         return $self->{fileInputStream}->read($buffer, $offset, $count);
+}
+
+sub read {
+    my ($invocant, @arguments) = @_;
+    return $invocant->read_j0(@arguments) if scalar(@arguments) == 0;
+    return $invocant->read_j1(@arguments) if scalar(@arguments) == 1;
+    return $invocant->read_j3(@arguments) if scalar(@arguments) == 3;
+    die "No method read takes " . scalar(@arguments) . " arguments";
 }
 
 

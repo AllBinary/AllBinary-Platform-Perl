@@ -37,7 +37,8 @@ sub getCenterPoint {
 }
 
 use java::lang::Object ();
-# use java::awt ();
+# use java::awt::Point ();
+# use java::awt::Rectangle ();
 use org::allbinary::input::automation::PointFactory ();
 
 1;

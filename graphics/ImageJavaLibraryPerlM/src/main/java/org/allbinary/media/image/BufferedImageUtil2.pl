@@ -11,7 +11,7 @@ tie our $instance, 'java::lang::LazyStatic', sub { 'org::allbinary::media::image
 
 sub _init_fields {
     my ($self) = @_;
-    $self->{imageUtil} = 'org::allbinary::media::image::ImageUtil'->getInstance();
+    $self->{imageUtil} = java::lang::Object::jstatic('org::allbinary::media::image::BufferedImageUtil2', 'ImageUtil')->getInstance();
 }
 
 sub new {
@@ -58,9 +58,8 @@ sub createSpriteImage {
 
 use java::lang::Object ();
 use java::lang::LazyStatic ();
-# use java::awt ();
+# use java::awt::Graphics2D ();
 # use java::awt::image::BufferedImage ();
-use org::allbinary::media::image::ImageUtil ();
 
 1;
 

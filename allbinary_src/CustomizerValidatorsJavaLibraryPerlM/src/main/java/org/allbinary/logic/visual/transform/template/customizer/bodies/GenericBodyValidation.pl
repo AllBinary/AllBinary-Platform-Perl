@@ -34,6 +34,12 @@ sub new {
     die "No constructor of GenericBodyValidation takes " . scalar(@arguments) . " arguments";
 }
 
+sub _new1 {
+    my ($class, @arguments) = @_;
+    return $class->_new1_1(@arguments) if 1 && (!defined($arguments[0]) || (ref($arguments[0]) && ref($arguments[0]) ne 'ARRAY'));
+    return $class->_new1_2(@arguments);
+}
+
 
 sub _new0 {
     my ($class) = @_;
@@ -44,11 +50,11 @@ sub _new0 {
 }
 
 
-sub _new1 {
+sub _new1_1 {
     my ($class, $document) = @_;
     my $self = $class->SUPER::new();
     _init_fields($self);
-        my $nodeList = $document->getElementsByTagName('org::allbinary::logic::visual::transform::template::customizer::bodies::BodyData'->getInstance()->{NAME});
+        my $nodeList = $document->getElementsByTagName(java::lang::Object::jstatic('org::allbinary::logic::visual::transform::template::customizer::bodies::GenericBodyValidation', 'BodyData')->getInstance()->{NAME});
         for (my $index = 0; $index < $nodeList->getLength(); $index++) {
             my $aBodyNode = $nodeList->item($index);
             my $aBodyValueNode = 'org::allbinary::data::tree::dom::DomSearchHelper'->getNode($org::allbinary::data::tree::dom::DomData::VALUE, $aBodyNode->getChildNodes());
@@ -58,7 +64,7 @@ sub _new1 {
 }
 
 
-sub _new1 {
+sub _new1_2 {
     my ($class, $hashMap) = @_;
     my $self = $class->SUPER::new();
     _init_fields($self);
@@ -70,7 +76,7 @@ sub _new1 {
 # throws Exception
 sub getFormData {
     my ($self, $hashMap) = @_;
-        $self->{body} = $hashMap->get('org::allbinary::logic::visual::transform::template::customizer::bodies::BodyData'->getInstance()->{NAME});
+        $self->{body} = $hashMap->get(java::lang::Object::jstatic('org::allbinary::logic::visual::transform::template::customizer::bodies::GenericBodyValidation', 'BodyData')->getInstance()->{NAME});
 }
 
 
@@ -78,18 +84,18 @@ sub isValid {
     my ($self) = @_;
         try {
             my $isValid = 1;
-            if ($org::allbinary::logic::visual::transform::template::customizer::bodies::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($org::allbinary::logic::visual::transform::template::customizer::bodies::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{VIEW})) {
+            if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{VIEW})) {
                 $self->{logUtil}->putF($self->{commonStrings}->{START}, $self, $self->{commonStrings}->{IS_VALID});
             }
-            if (!'org::allbinary::logic::string::StringValidationUtil'->getInstance()->isValidNotRequired($self->{body}, 'org::allbinary::logic::visual::transform::template::customizer::bodies::BodyData'->getInstance()->{MIN}, $org::allbinary::logic::communication::sql::AbSqlData::MAXBLOB)) {
+            if (!'org::allbinary::logic::string::StringValidationUtil'->getInstance()->isValidNotRequired($self->{body}, java::lang::Object::jstatic('org::allbinary::logic::visual::transform::template::customizer::bodies::GenericBodyValidation', 'BodyData')->getInstance()->{MIN}, $org::allbinary::logic::communication::sql::AbSqlData::MAXBLOB)) {
                 $isValid = 0;
             }
-            if ($org::allbinary::logic::visual::transform::template::customizer::bodies::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($org::allbinary::logic::visual::transform::template::customizer::bodies::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{VIEW})) {
+            if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{VIEW})) {
                 $self->{logUtil}->putF("BodyValidation: " . $isValid, $self, $self->{commonStrings}->{IS_VALID});
             }
             return $isValid;
         } catch ($e) {
-            if ($org::allbinary::logic::visual::transform::template::customizer::bodies::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($org::allbinary::logic::visual::transform::template::customizer::bodies::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{SQLTAGSERROR})) {
+            if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{SQLTAGSERROR})) {
                 $self->{logUtil}->put("Failed to validate form", $self, $self->{commonStrings}->{IS_VALID}, $e);
             }
             return 0;
@@ -103,13 +109,13 @@ sub validationInfo {
             my $stringBuffer = 'org::allbinary::logic::string::StringMaker'->new();
             {;
                 $stringBuffer->append("Error: Data submitted is < ");
-                $stringBuffer->appendint(int('org::allbinary::logic::visual::transform::template::customizer::bodies::BodyData'->getInstance()->{MIN}));
+                $stringBuffer->appendint(int(java::lang::Object::jstatic('org::allbinary::logic::visual::transform::template::customizer::bodies::GenericBodyValidation', 'BodyData')->getInstance()->{MIN}));
                 $stringBuffer->append(" or > ");
                 $stringBuffer->appendint(int($org::allbinary::logic::communication::sql::AbSqlData::MAXBLOB));
             }
             return $stringBuffer->toString();
         } catch ($e) {
-            if ($org::allbinary::logic::visual::transform::template::customizer::bodies::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($org::allbinary::logic::visual::transform::template::customizer::bodies::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{SQLTAGSERROR})) {
+            if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{SQLTAGSERROR})) {
                 $self->{logUtil}->put("Failed to generate validation error info", $self, "validationInfo()", $e);
             }
             return "Error Validating Form";
@@ -132,7 +138,7 @@ sub toValidationInfoNode {
 # throws Exception
 sub toXmlNode {
     my ($self, $document) = @_;
-        my $node = 'org::allbinary::data::tree::dom::ModDomHelper'->createNameValueNodes($document, 'org::allbinary::logic::visual::transform::template::customizer::bodies::BodyData'->getInstance()->{NAME}, $self->{body});
+        my $node = 'org::allbinary::data::tree::dom::ModDomHelper'->createNameValueNodes($document, java::lang::Object::jstatic('org::allbinary::logic::visual::transform::template::customizer::bodies::GenericBodyValidation', 'BodyData')->getInstance()->{NAME}, $self->{body});
         return $node;
 }
 
@@ -152,7 +158,8 @@ use org::allbinary::logic::string::StringValidationUtil ();
 use org::w3c::dom::Document ();
 use org::w3c::dom::Node ();
 use org::w3c::dom::NodeList ();
-use org::allbinary::logic::visual::transform::template::customizer::bodies::BodyData ();
+use org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory ();
+use org::allbinary::logic::communication::log::config::type::LogConfigTypes ();
 
 1;
 

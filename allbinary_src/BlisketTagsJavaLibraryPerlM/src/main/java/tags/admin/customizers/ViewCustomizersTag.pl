@@ -37,7 +37,7 @@ sub doStartTag {
             return $self->SUPER::doStartTag();
         } catch ($e) {
             'org::allbinary::logic::communication::http::request::AbResponseHandler'->sendJspTagRedirect($self->{pageContext}, $e);
-            return $self->{SKIP_BODY};
+            return java::lang::Object::jstatic('tags::admin::customizers::ViewCustomizersTag', 'SKIP_BODY');
         }
 }
 

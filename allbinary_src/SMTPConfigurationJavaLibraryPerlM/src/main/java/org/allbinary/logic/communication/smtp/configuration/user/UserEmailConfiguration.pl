@@ -39,7 +39,7 @@ sub _new0 {
     my ($class) = @_;
     my $self = bless({}, $class);
     _init_fields($self);
-        if ($org::allbinary::logic::communication::smtp::configuration::user::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($org::allbinary::logic::communication::smtp::configuration::user::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{EMAILLOGGING})) {
+        if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{EMAILLOGGING})) {
             $self->{logUtil}->putF($self->{commonStrings}->{CONSTRUCTOR}, $self, $self->{commonStrings}->{CONSTRUCTOR});
         }
         $self->setUserEmailEventsConfigurationInterface('org::allbinary::logic::communication::smtp::configuration::user::event::UserEmailEventsConfiguration'->new());
@@ -51,7 +51,7 @@ sub _new1 {
     my ($class, $hashMap) = @_;
     my $self = bless({}, $class);
     _init_fields($self);
-        if ($org::allbinary::logic::communication::smtp::configuration::user::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($org::allbinary::logic::communication::smtp::configuration::user::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{EMAILLOGGING})) {
+        if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{EMAILLOGGING})) {
             $self->{logUtil}->putF($self->{commonStrings}->{CONSTRUCTOR}, $self, $self->{commonStrings}->{CONSTRUCTOR});
         }
         $self->setUserEmailEventsConfigurationInterface('org::allbinary::logic::communication::smtp::configuration::user::event::UserEmailEventsConfiguration'->new($hashMap));
@@ -76,6 +76,8 @@ use org::allbinary::logic::communication::log::LogUtil ();
 use org::allbinary::logic::communication::smtp::configuration::user::event::UserEmailEventsConfiguration ();
 use org::allbinary::logic::communication::smtp::configuration::user::event::UserEmailEventsConfigurationInterface ();
 use org::allbinary::string::CommonStrings ();
+use org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory ();
+use org::allbinary::logic::communication::log::config::type::LogConfigTypes ();
 use org::allbinary::logic::communication::smtp::configuration::user::UserEmailConfigurationInterface ();
 
 1;

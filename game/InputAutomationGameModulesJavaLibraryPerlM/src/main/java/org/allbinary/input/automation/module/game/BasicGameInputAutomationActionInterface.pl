@@ -35,7 +35,7 @@ sub target {
     die "abstract method target";
 }
 
-# use java::awt ();
+# use java::awt::Rectangle ();
 use org::allbinary::input::automation::module::InputAutomationActionInterface ();
 
 1;

@@ -17,7 +17,7 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
-use parent -norequire,'org::allbinary::gui::swing::workers::SwingWorker';
+use parent -norequire,'java::lang::Object';
 
 
 sub _init_fields {
@@ -73,8 +73,9 @@ sub setListModel {
 }
 
 use java::lang::Object ();
-# use javax::swing ();
-use org::allbinary::gui::swing::workers::SwingWorker ();
+# use javax::swing::SwingWorker ();
+# use javax::swing::JList ();
+# use javax::swing::ListModel ();
 
 1;
 

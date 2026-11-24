@@ -49,55 +49,61 @@ sub new {
     die "No constructor of Payment takes " . scalar(@arguments) . " arguments";
 }
 
-
 sub _new1 {
+    my ($class, @arguments) = @_;
+    return $class->_new1_1(@arguments) if 1 && (!defined($arguments[0]) || (ref($arguments[0]) && ref($arguments[0]) ne 'ARRAY'));
+    return $class->_new1_2(@arguments);
+}
+
+
+sub _new1_1 {
     my ($class, $payment) = @_;
     my $self = bless({}, $class);
     _init_fields($self);
-        $self->{name} = $payment->get($org::allbinary::business::user::commerce::money::payment::PaymentData::NAME);
-        $self->{type} = $payment->get($org::allbinary::business::user::commerce::money::payment::PaymentData::TYPE);
-        $self->{expiration} = $payment->get($org::allbinary::business::user::commerce::money::payment::PaymentData::EXPIRATION);
+        $self->{name} = $payment->get(java::lang::Object::jstatic('org::allbinary::business::user::commerce::money::payment::Payment', 'PaymentData')->{NAME});
+        $self->{type} = $payment->get(java::lang::Object::jstatic('org::allbinary::business::user::commerce::money::payment::Payment', 'PaymentData')->{TYPE});
+        $self->{expiration} = $payment->get(java::lang::Object::jstatic('org::allbinary::business::user::commerce::money::payment::Payment', 'PaymentData')->{EXPIRATION});
         $self->{encryption} = $payment->get('org::allbinary::business::entry::EntryData'->getInstance()->{ENCRYPTION});
-        $self->{number} = 'org::allbinary::logic::control::crypt::SuperCrypt'->new(int($self->{encryption}))->decrypt($payment->get($org::allbinary::business::user::commerce::money::payment::PaymentData::NUMBER));
-        $self->{id} = $payment->get($org::allbinary::business::user::commerce::money::payment::PaymentData::ID);
+        $self->{number} = 'org::allbinary::logic::control::crypt::SuperCrypt'->new(int($self->{encryption}))->decrypt($payment->get(java::lang::Object::jstatic('org::allbinary::business::user::commerce::money::payment::Payment', 'PaymentData')->{NUMBER}));
+        $self->{id} = $payment->get(java::lang::Object::jstatic('org::allbinary::business::user::commerce::money::payment::Payment', 'PaymentData')->{ID});
         my $def = $payment->get('org::allbinary::business::entry::EntryData'->getInstance()->{DEFAULT});
         if (defined($def) && ($def cmp 'org::allbinary::business::entry::EntryData'->getInstance()->{DEFAULT}) == 0) {
             $self->{isDefault} = 1;
         } else {
             $self->{isDefault} = 0;
         }
-        $self->{tenderType} = $payment->get($org::allbinary::business::user::commerce::money::payment::PaymentData::TENDERTYPE);
-        $self->{transactionType} = $payment->get($org::allbinary::business::user::commerce::money::payment::PaymentData::TRANSACTIONTYPE);
-        $self->{aba} = $payment->get($org::allbinary::business::user::commerce::money::payment::PaymentData::ABA);
-        $self->{account} = $payment->get($org::allbinary::business::user::commerce::money::payment::PaymentData::ACCOUNT);
-        $self->{accountType} = $payment->get($org::allbinary::business::user::commerce::money::payment::PaymentData::ACCOUNTTYPE);
-        $self->{authorizationCode} = $payment->get($org::allbinary::business::user::commerce::money::payment::PaymentData::AUTHORIZATIONCODE);
-        $self->{checkNumber} = $payment->get($org::allbinary::business::user::commerce::money::payment::PaymentData::CHECKNUMBER);
-        $self->{checkType} = $payment->get($org::allbinary::business::user::commerce::money::payment::PaymentData::CHECKTYPE);
-        $self->{driversLicense} = $payment->get($org::allbinary::business::user::commerce::money::payment::PaymentData::DRIVERSLICENSE);
-        $self->{magneticInkCheckReader} = $payment->get($org::allbinary::business::user::commerce::money::payment::PaymentData::MAGNETICINKCHECKREADER);
+        $self->{tenderType} = $payment->get(java::lang::Object::jstatic('org::allbinary::business::user::commerce::money::payment::Payment', 'PaymentData')->{TENDERTYPE});
+        $self->{transactionType} = $payment->get(java::lang::Object::jstatic('org::allbinary::business::user::commerce::money::payment::Payment', 'PaymentData')->{TRANSACTIONTYPE});
+        $self->{aba} = $payment->get(java::lang::Object::jstatic('org::allbinary::business::user::commerce::money::payment::Payment', 'PaymentData')->{ABA});
+        $self->{account} = $payment->get(java::lang::Object::jstatic('org::allbinary::business::user::commerce::money::payment::Payment', 'PaymentData')->{ACCOUNT});
+        $self->{accountType} = $payment->get(java::lang::Object::jstatic('org::allbinary::business::user::commerce::money::payment::Payment', 'PaymentData')->{ACCOUNTTYPE});
+        $self->{authorizationCode} = $payment->get(java::lang::Object::jstatic('org::allbinary::business::user::commerce::money::payment::Payment', 'PaymentData')->{AUTHORIZATIONCODE});
+        $self->{checkNumber} = $payment->get(java::lang::Object::jstatic('org::allbinary::business::user::commerce::money::payment::Payment', 'PaymentData')->{CHECKNUMBER});
+        $self->{checkType} = $payment->get(java::lang::Object::jstatic('org::allbinary::business::user::commerce::money::payment::Payment', 'PaymentData')->{CHECKTYPE});
+        $self->{driversLicense} = $payment->get(java::lang::Object::jstatic('org::allbinary::business::user::commerce::money::payment::Payment', 'PaymentData')->{DRIVERSLICENSE});
+        $self->{magneticInkCheckReader} = $payment->get(java::lang::Object::jstatic('org::allbinary::business::user::commerce::money::payment::Payment', 'PaymentData')->{MAGNETICINKCHECKREADER});
     return $self;
 }
 
 
-sub _new1 {
+sub _new1_2 {
     my ($class, $request) = @_;
     my $self = bless({}, $class);
     _init_fields($self);
-        $self->{name} = $request->getParameter($org::allbinary::business::user::commerce::money::payment::PaymentData::NAME);
-        $self->{type} = $request->getParameter($org::allbinary::business::user::commerce::money::payment::PaymentData::TYPE);
-        $self->{expiration} = $request->getParameter($org::allbinary::business::user::commerce::money::payment::PaymentData::EXPIRATION);
-        $self->{number} = $request->getParameter($org::allbinary::business::user::commerce::money::payment::PaymentData::NUMBER);
-        $self->{tenderType} = $request->getParameter($org::allbinary::business::user::commerce::money::payment::PaymentData::TENDERTYPE);
-        $self->{transactionType} = $request->getParameter($org::allbinary::business::user::commerce::money::payment::PaymentData::TRANSACTIONTYPE);
-        $self->{aba} = $request->getParameter($org::allbinary::business::user::commerce::money::payment::PaymentData::ABA);
-        $self->{account} = $request->getParameter($org::allbinary::business::user::commerce::money::payment::PaymentData::ACCOUNT);
-        $self->{accountType} = $request->getParameter($org::allbinary::business::user::commerce::money::payment::PaymentData::ACCOUNTTYPE);
-        $self->{authorizationCode} = $request->getParameter($org::allbinary::business::user::commerce::money::payment::PaymentData::AUTHORIZATIONCODE);
-        $self->{checkNumber} = $request->getParameter($org::allbinary::business::user::commerce::money::payment::PaymentData::CHECKNUMBER);
-        $self->{checkType} = $request->getParameter($org::allbinary::business::user::commerce::money::payment::PaymentData::CHECKTYPE);
-        $self->{driversLicense} = $request->getParameter($org::allbinary::business::user::commerce::money::payment::PaymentData::DRIVERSLICENSE);
-        $self->{magneticInkCheckReader} = $request->getParameter($org::allbinary::business::user::commerce::money::payment::PaymentData::MAGNETICINKCHECKREADER);
+        $self->{name} = $request->getParameter(java::lang::Object::jstatic('org::allbinary::business::user::commerce::money::payment::Payment', 'PaymentData')->{NAME});
+        $self->{type} = $request->getParameter(java::lang::Object::jstatic('org::allbinary::business::user::commerce::money::payment::Payment', 'PaymentData')->{TYPE});
+        $self->{expiration} = $request->getParameter(java::lang::Object::jstatic('org::allbinary::business::user::commerce::money::payment::Payment', 'PaymentData')->{EXPIRATION});
+        $self->{number} = $request->getParameter(java::lang::Object::jstatic('org::allbinary::business::user::commerce::money::payment::Payment', 'PaymentData')->{NUMBER});
+        $self->{tenderType} = $request->getParameter(java::lang::Object::jstatic('org::allbinary::business::user::commerce::money::payment::Payment', 'PaymentData')->{TENDERTYPE});
+        $self->{transactionType} = $request->getParameter(java::lang::Object::jstatic('org::allbinary::business::user::commerce::money::payment::Payment', 'PaymentData')->{TRANSACTIONTYPE});
+        $self->{aba} = $request->getParameter(java::lang::Object::jstatic('org::allbinary::business::user::commerce::money::payment::Payment', 'PaymentData')->{ABA});
+        $self->{account} = $request->getParameter(java::lang::Object::jstatic('org::allbinary::business::user::commerce::money::payment::Payment', 'PaymentData')->{ACCOUNT});
+        $self->{accountType} = $request->getParameter(java::lang::Object::jstatic('org::allbinary::business::user::commerce::money::payment::Payment', 'PaymentData')->{ACCOUNTTYPE});
+        $self->{authorizationCode} = $request->getParameter(java::lang::Object::jstatic('org::allbinary::business::user::commerce::money::payment::Payment', 'PaymentData')->{AUTHORIZATIONCODE});
+        $self->{checkNumber} = $request->getParameter(java::lang::Object::jstatic('org::allbinary::business::user::commerce::money::payment::Payment', 'PaymentData')->{CHECKNUMBER});
+        $self->{checkType} = $request->getParameter(java::lang::Object::jstatic('org::allbinary::business::user::commerce::money::payment::Payment', 'PaymentData')->{CHECKTYPE});
+        $self->{driversLicense} = $request->getParameter(java::lang::Object::jstatic('org::allbinary::business::user::commerce::money::payment::Payment', 'PaymentData')->{DRIVERSLICENSE});
+        $self->{magneticInkCheckReader} = $request->getParameter(java::lang::Object::jstatic('org::allbinary::business::user::commerce::money::payment::Payment', 'PaymentData')->{MAGNETICINKCHECKREADER});
     return $self;
 }
 
@@ -126,7 +132,7 @@ sub isValid {
         if (!defined($self->{number}) || ($self->{number} cmp $stringUtil->{EMPTY_STRING}) == 0) {
             return $aFalse;
         }
-        if (length($self->{number}) > $org::allbinary::business::user::commerce::money::payment::org::allbinary->{business}->{user}->{commerce}->{money}->{payment}->{types}->{CreditCardType}->{MAXLEN}) {
+        if (length($self->{number}) > $org::allbinary::business::user::commerce::money::payment::types::CreditCardType::MAXLEN) {
             return $aFalse;
         }
         return 1;
@@ -309,7 +315,7 @@ sub getMagneticInkCheckReader {
 
 sub getLastFour {
     my ($self) = @_;
-        if (length($self->{number}) > $org::allbinary::business::user::commerce::money::payment::PaymentData::MIN && length($self->{number}) <= $org::allbinary::business::user::commerce::money::payment::PaymentData::MAX) {
+        if (length($self->{number}) > java::lang::Object::jstatic('org::allbinary::business::user::commerce::money::payment::Payment', 'PaymentData')->{MIN} && length($self->{number}) <= java::lang::Object::jstatic('org::allbinary::business::user::commerce::money::payment::Payment', 'PaymentData')->{MAX}) {
             return substr($self->{number}, length($self->{number}) - 4);
         } else {
             return "Invalid #";
@@ -326,19 +332,19 @@ sub isDefault {
 sub toHashMap {
     my ($self) = @_;
         my $hashMap = 'org::allbinary::logic::StdUtil'->getInstance()->createHashMap();
-        $hashMap->put($org::allbinary::business::user::commerce::money::payment::PaymentData::NAME, $self->{name});
-        $hashMap->put($org::allbinary::business::user::commerce::money::payment::PaymentData::TYPE, $self->{type});
-        $hashMap->put($org::allbinary::business::user::commerce::money::payment::PaymentData::EXPIRATION, $self->{expiration});
-        $hashMap->put($org::allbinary::business::user::commerce::money::payment::PaymentData::NUMBER, $self->getLastFour());
-        $hashMap->put($org::allbinary::business::user::commerce::money::payment::PaymentData::TENDERTYPE, $self->{tenderType});
-        $hashMap->put($org::allbinary::business::user::commerce::money::payment::PaymentData::TRANSACTIONTYPE, $self->{transactionType});
-        $hashMap->put($org::allbinary::business::user::commerce::money::payment::PaymentData::ABA, $self->{aba});
-        $hashMap->put($org::allbinary::business::user::commerce::money::payment::PaymentData::ACCOUNT, $self->{account});
-        $hashMap->put($org::allbinary::business::user::commerce::money::payment::PaymentData::ACCOUNTTYPE, $self->{accountType});
-        $hashMap->put($org::allbinary::business::user::commerce::money::payment::PaymentData::AUTHORIZATIONCODE, $self->{authorizationCode});
-        $hashMap->put($org::allbinary::business::user::commerce::money::payment::PaymentData::CHECKNUMBER, $self->{checkNumber});
-        $hashMap->put($org::allbinary::business::user::commerce::money::payment::PaymentData::DRIVERSLICENSE, $self->{driversLicense});
-        $hashMap->put($org::allbinary::business::user::commerce::money::payment::PaymentData::MAGNETICINKCHECKREADER, $self->{magneticInkCheckReader});
+        $hashMap->put(java::lang::Object::jstatic('org::allbinary::business::user::commerce::money::payment::Payment', 'PaymentData')->{NAME}, $self->{name});
+        $hashMap->put(java::lang::Object::jstatic('org::allbinary::business::user::commerce::money::payment::Payment', 'PaymentData')->{TYPE}, $self->{type});
+        $hashMap->put(java::lang::Object::jstatic('org::allbinary::business::user::commerce::money::payment::Payment', 'PaymentData')->{EXPIRATION}, $self->{expiration});
+        $hashMap->put(java::lang::Object::jstatic('org::allbinary::business::user::commerce::money::payment::Payment', 'PaymentData')->{NUMBER}, $self->getLastFour());
+        $hashMap->put(java::lang::Object::jstatic('org::allbinary::business::user::commerce::money::payment::Payment', 'PaymentData')->{TENDERTYPE}, $self->{tenderType});
+        $hashMap->put(java::lang::Object::jstatic('org::allbinary::business::user::commerce::money::payment::Payment', 'PaymentData')->{TRANSACTIONTYPE}, $self->{transactionType});
+        $hashMap->put(java::lang::Object::jstatic('org::allbinary::business::user::commerce::money::payment::Payment', 'PaymentData')->{ABA}, $self->{aba});
+        $hashMap->put(java::lang::Object::jstatic('org::allbinary::business::user::commerce::money::payment::Payment', 'PaymentData')->{ACCOUNT}, $self->{account});
+        $hashMap->put(java::lang::Object::jstatic('org::allbinary::business::user::commerce::money::payment::Payment', 'PaymentData')->{ACCOUNTTYPE}, $self->{accountType});
+        $hashMap->put(java::lang::Object::jstatic('org::allbinary::business::user::commerce::money::payment::Payment', 'PaymentData')->{AUTHORIZATIONCODE}, $self->{authorizationCode});
+        $hashMap->put(java::lang::Object::jstatic('org::allbinary::business::user::commerce::money::payment::Payment', 'PaymentData')->{CHECKNUMBER}, $self->{checkNumber});
+        $hashMap->put(java::lang::Object::jstatic('org::allbinary::business::user::commerce::money::payment::Payment', 'PaymentData')->{DRIVERSLICENSE}, $self->{driversLicense});
+        $hashMap->put(java::lang::Object::jstatic('org::allbinary::business::user::commerce::money::payment::Payment', 'PaymentData')->{MAGNETICINKCHECKREADER}, $self->{magneticInkCheckReader});
         if ($self->{isDefault}) {
             $hashMap->put('org::allbinary::business::entry::EntryData'->getInstance()->{DEFAULT}, 'org::allbinary::business::entry::EntryData'->getInstance()->{DEFAULT});
         } else {
@@ -352,7 +358,7 @@ sub toHashMap {
 sub toXmlNode {
     my ($self, $document) = @_;
         my $hashMap = $self->toHashMap();
-        my $node = 'org::allbinary::data::tree::dom::ModDomHelper'->createNameValueNodes($document, $org::allbinary::business::user::commerce::money::payment::PaymentData::PAYMENT, $hashMap);
+        my $node = 'org::allbinary::data::tree::dom::ModDomHelper'->createNameValueNodes($document, java::lang::Object::jstatic('org::allbinary::business::user::commerce::money::payment::Payment', 'PaymentData')->{PAYMENT}, $hashMap);
         return $node;
 }
 
@@ -397,8 +403,7 @@ use org::allbinary::logic::control::crypt::SuperCrypt ();
 use org::allbinary::logic::string::StringUtil ();
 use org::w3c::dom::Document ();
 use org::w3c::dom::Node ();
-use org::allbinary::business::user::commerce::money::payment::PaymentInterface ();
-use org::allbinary::business::user::commerce::money::payment::PaymentData ();
+use org::allbinary::business::user::commerce::money::payment::types::CreditCardType ();
 
 1;
 

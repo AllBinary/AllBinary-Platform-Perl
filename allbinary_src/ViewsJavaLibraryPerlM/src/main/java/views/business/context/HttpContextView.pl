@@ -32,7 +32,7 @@ sub new {
     my $self = $class->SUPER::new($transformInfoInterface);
     _init_fields($self);
         # super(...) made $self above
-        if ($views::business::context::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($views::business::context::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{VIEW})) {
+        if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{VIEW})) {
             $self->{logUtil}->putF("View Name: " . $transformInfoInterface->getName(), $self, $self->{commonStrings}->{CONSTRUCTOR});
         }
         $self->setTransformDocumentInterface('org::allbinary::logic::visual::transform::data::TransformHttpRequestDocumentFactory'->getInstance($self->getPageContext(), $self->getWeblisketSession()));
@@ -49,7 +49,7 @@ sub view {
             my $result = 'org::allbinary::logic::visual::transform::ContextTransformer'->new($self->{abeClientInformation}, $self->getTransformInfoInterface())->translate($success);
             return $result;
         } catch ($e) {
-            if ($views::business::context::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($views::business::context::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{VIEWERROR})) {
+            if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{VIEWERROR})) {
                 $self->{logUtil}->put($self->{commonStrings}->{EXCEPTION}, $self, "view", $e);
             }
             die $e;
@@ -64,6 +64,8 @@ use org::allbinary::logic::visual::transform::data::TransformHttpRequestDocument
 use org::allbinary::logic::visual::transform::info::TransformInfoInterface ();
 use org::allbinary::string::CommonStrings ();
 use views::HttpComponentView ();
+use org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory ();
+use org::allbinary::logic::communication::log::config::type::LogConfigTypes ();
 
 1;
 

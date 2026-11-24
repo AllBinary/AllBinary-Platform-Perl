@@ -59,7 +59,6 @@ sub toString {
 use java::lang::Object ();
 use java::lang::LazyStatic ();
 use org::allbinary::logic::string::StringMaker ();
-use org::allbinary::canvas::BaseGameStatistics ();
 
 1;
 

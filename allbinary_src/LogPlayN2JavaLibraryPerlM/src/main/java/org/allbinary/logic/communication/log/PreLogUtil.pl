@@ -70,7 +70,7 @@ sub putSE {
 
 sub getClassName {
     my ($class, $anyType) = @_;
-    die "abstract method getClassName";
+    die "UnsupportedOperationException: native method PreLogUtil.getClassName has a parameter or result type the Perl JNI runtime does not pass";
 }
 
 use java::lang::Object ();

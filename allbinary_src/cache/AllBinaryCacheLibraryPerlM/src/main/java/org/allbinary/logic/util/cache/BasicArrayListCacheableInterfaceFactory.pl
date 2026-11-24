@@ -34,7 +34,6 @@ sub getInstance {
 }
 
 use java::lang::Object ();
-use org::allbinary::logic::util::cache::CacheableInterfaceFactoryInterface ();
 use org::allbinary::logic::util::cache::BasicArrayListCacheable ();
 
 1;

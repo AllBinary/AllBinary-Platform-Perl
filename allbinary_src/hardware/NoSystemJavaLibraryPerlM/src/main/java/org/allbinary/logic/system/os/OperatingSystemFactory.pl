@@ -24,7 +24,7 @@ tie our $instance, 'java::lang::LazyStatic', sub { 'org::allbinary::logic::syste
 sub _init_fields {
     my ($self) = @_;
     $self->{logUtil} = 'org::allbinary::logic::communication::log::LogUtil'->getInstance();
-    $self->{genericOperatingSystem} = $org::allbinary::logic::system::os::NoOperatingSystem::NO_OPERATING_SYSTEM;
+    $self->{genericOperatingSystem} = java::lang::Object::jstatic('org::allbinary::logic::system::os::OperatingSystemFactory', 'NoOperatingSystem')->{NO_OPERATING_SYSTEM};
 }
 
 
@@ -60,7 +60,6 @@ use java::lang::LazyStatic ();
 use org::allbinary::logic::communication::log::LogUtil ();
 use org::allbinary::logic::string::StringMaker ();
 use org::allbinary::string::CommonStrings ();
-use org::allbinary::logic::system::os::NoOperatingSystem ();
 use java::lang::System ();
 
 1;

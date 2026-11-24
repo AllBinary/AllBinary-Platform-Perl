@@ -48,7 +48,7 @@ sub new {
 
 
 # throws InitException
-sub set {
+sub set_j0 {
     my ($self) = @_;
         try {
             my $initInfoEntity = 'org::allbinary::business::init::InitInfoEntity'->new();
@@ -75,8 +75,7 @@ sub set {
 }
 
 
-# Java overloaded method: Perl keeps the last definition
-sub set {
+sub set_j1 {
     my ($self, $hashMap) = @_;
         try {
             $self->{testing} = $hashMap->get($self->{TESTING});
@@ -87,6 +86,13 @@ sub set {
                 'org::allbinary::logic::communication::log::PreLogUtil'->putOE("error", "InitInfo", "set()", $e);
             }
         }
+}
+
+sub set {
+    my ($invocant, @arguments) = @_;
+    return $invocant->set_j0(@arguments) if scalar(@arguments) == 0;
+    return $invocant->set_j1(@arguments) if scalar(@arguments) == 1;
+    die "No method set takes " . scalar(@arguments) . " arguments";
 }
 
 

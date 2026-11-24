@@ -42,12 +42,12 @@ sub insert {
     my ($self, $values) = @_;
         try {
             $self->SUPER::insert($values);
-            if ($org::allbinary::data::tables::user::commerce::inventory::item::downloads::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($org::allbinary::data::tables::user::commerce::inventory::item::downloads::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{SQLLOGGING})) {
-                $self->{logUtil}->putF($self->{commonStrings}->{SUCCESS}, $self, $self->{INSERT});
+            if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{SQLLOGGING})) {
+                $self->{logUtil}->putF($self->{commonStrings}->{SUCCESS}, $self, java::lang::Object::jstatic('org::allbinary::data::tables::user::commerce::inventory::item::downloads::DownloadItemsEntity', 'INSERT'));
             }
         } catch ($e) {
-            if ($org::allbinary::data::tables::user::commerce::inventory::item::downloads::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($org::allbinary::data::tables::user::commerce::inventory::item::downloads::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{SQLLOGGING})) {
-                $self->{logUtil}->put($self->{commonStrings}->{FAILURE}, $self, $self->{INSERT}, $e);
+            if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{SQLLOGGING})) {
+                $self->{logUtil}->put($self->{commonStrings}->{FAILURE}, $self, java::lang::Object::jstatic('org::allbinary::data::tables::user::commerce::inventory::item::downloads::DownloadItemsEntity', 'INSERT'), $e);
             }
         }
 }
@@ -57,11 +57,11 @@ sub delete {
     my ($self, $value) = @_;
         try {
             $self->SUPER::deleteWhere($org::allbinary::business::user::commerce::inventory::item::download::DownloadItemData::ID, $value);
-            if ($org::allbinary::data::tables::user::commerce::inventory::item::downloads::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($org::allbinary::data::tables::user::commerce::inventory::item::downloads::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{SQLLOGGING})) {
+            if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{SQLLOGGING})) {
                 $self->{logUtil}->putF($self->{commonStrings}->{SUCCESS}, $self, $self->{commonStrings}->{delete});
             }
         } catch ($e) {
-            if ($org::allbinary::data::tables::user::commerce::inventory::item::downloads::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($org::allbinary::data::tables::user::commerce::inventory::item::downloads::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{SQLLOGGING})) {
+            if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{SQLLOGGING})) {
                 $self->{logUtil}->put($self->{commonStrings}->{FAILURE}, $self, $self->{commonStrings}->{delete}, $e);
             }
         }
@@ -74,7 +74,7 @@ sub update {
 }
 
 
-sub getForItem {
+sub getForItem_j1 {
     my ($self, $id) = @_;
         my $returnVector = 'org::allbinary::util::BasicArrayListD'->new();
         my $keysAndValues = 'org::allbinary::logic::StdUtil'->getInstance()->createHashMap();
@@ -85,15 +85,14 @@ sub getForItem {
             my $hashMap = $vector->get($index);
             $returnVector->add('org::allbinary::business::user::commerce::inventory::item::download::DownloadableItem'->new($hashMap));
         }
-        if ($org::allbinary::data::tables::user::commerce::inventory::item::downloads::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($org::allbinary::data::tables::user::commerce::inventory::item::downloads::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{SQLLOGGING})) {
+        if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{SQLLOGGING})) {
             $self->{logUtil}->putF("Found: " . $size, $self, "getForItem");
         }
         return $returnVector;
 }
 
 
-# Java overloaded method: Perl keeps the last definition
-sub getForItem {
+sub getForItem_j2 {
     my ($self, $id, $downloadItemId) = @_;
         my $returnVector = 'org::allbinary::util::BasicArrayListD'->new();
         my $keysAndValues = 'org::allbinary::logic::StdUtil'->getInstance()->createHashMap();
@@ -105,10 +104,17 @@ sub getForItem {
             my $hashMap = $vector->get($index);
             $returnVector->add('org::allbinary::business::user::commerce::inventory::item::download::DownloadableItem'->new($hashMap));
         }
-        if ($org::allbinary::data::tables::user::commerce::inventory::item::downloads::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($org::allbinary::data::tables::user::commerce::inventory::item::downloads::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{SQLLOGGING})) {
+        if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{SQLLOGGING})) {
             $self->{logUtil}->putF("Found: " . $size, $self, "getForItem");
         }
         return $returnVector;
+}
+
+sub getForItem {
+    my ($invocant, @arguments) = @_;
+    return $invocant->getForItem_j1(@arguments) if scalar(@arguments) == 1;
+    return $invocant->getForItem_j2(@arguments) if scalar(@arguments) == 2;
+    die "No method getForItem takes " . scalar(@arguments) . " arguments";
 }
 
 
@@ -145,7 +151,8 @@ use org::allbinary::logic::StdUtil ();
 use org::allbinary::logic::communication::log::LogUtil ();
 use org::allbinary::logic::communication::sql::AbSqlBean ();
 use org::allbinary::logic::string::StringMaker ();
-use org::allbinary::data::tables::user::commerce::inventory::item::downloads::DownloadItemsEntityInterface ();
+use org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory ();
+use org::allbinary::logic::communication::log::config::type::LogConfigTypes ();
 
 1;
 

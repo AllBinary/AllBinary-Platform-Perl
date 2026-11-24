@@ -55,6 +55,7 @@ sub invoke {
 use java::lang::Object ();
 # use java::lang::reflect::Method ();
 # use java::lang::reflect::Proxy ();
+# use java::lang::reflect::InvocationHandler ();
 
 1;
 

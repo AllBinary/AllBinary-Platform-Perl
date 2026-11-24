@@ -136,7 +136,7 @@ sub setType {
     my ($self, $value) = @_;
         $self->{type} = $value;
         $self->getPropertiesHashMap()->put('org::allbinary::logic::io::OutputTypeData'->getInstance()->{NAME}, $self->{type});
-        if ($tags::transform::info::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($tags::transform::info::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{JSPTAG})) {
+        if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{JSPTAG})) {
             $self->{logUtil}->putF("TransformInfoTag type set: " . $self->{type}, $self, "setType");
         }
 }
@@ -161,7 +161,7 @@ sub doStartTag {
             return $self->SUPER::doStartTag();
         } catch ($e) {
             'org::allbinary::logic::communication::http::request::AbResponseHandler'->sendJspTagRedirect($self->{pageContext}, $e);
-            return $self->{SKIP_BODY};
+            return java::lang::Object::jstatic('tags::transform::info::TransformInfoTag', 'SKIP_BODY');
         }
 }
 
@@ -175,6 +175,8 @@ use org::allbinary::logic::io::OutputTypeData ();
 use org::allbinary::logic::visual::transform::info::TransformInfoData ();
 use taghelpers::transform::info::TransformInfoRequestHelperFactory ();
 use tags::ModifyTag ();
+use org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory ();
+use org::allbinary::logic::communication::log::config::type::LogConfigTypes ();
 
 1;
 

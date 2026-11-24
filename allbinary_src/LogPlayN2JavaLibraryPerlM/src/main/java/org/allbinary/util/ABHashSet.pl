@@ -17,7 +17,7 @@ use strict;
 use warnings;
 use feature 'try';
 no warnings 'experimental::try';
-use parent -norequire,'java::lang::Object';
+use parent -norequire,'java::util::HashSet';
 
 
 sub new {
@@ -27,7 +27,7 @@ sub new {
 }
 
 use java::lang::Object ();
-# use java::util::HashSet ();
+use java::util::HashSet ();
 # use jsinterop::annotations::JsType ();
 
 1;

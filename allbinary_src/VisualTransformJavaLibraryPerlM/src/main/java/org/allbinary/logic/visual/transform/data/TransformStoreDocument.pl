@@ -40,13 +40,13 @@ sub _new2 {
         # super(...) made $self above
         try {
             my $storeName = $weblisketSession->getStoreName();
-            if ($org::allbinary::logic::visual::transform::data::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($org::allbinary::logic::visual::transform::data::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{VIEW})) {
+            if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{VIEW})) {
                 $self->{logUtil}->putF("Using Session StoreName: " . $storeName, $self, $self->{commonStrings}->{CONSTRUCTOR});
             }
             $self->getBaseNode()->appendChild('org::allbinary::business::context::modules::storefront::StoreFrontViewFactory'->getInstance($storeName)->toXmlNode($self->getDoc()));
             $self->getBaseNode()->appendChild('org::allbinary::logic::communication::http::request::RequestParams'->new($pageContext->getRequest())->toXmlNode($self->getDoc()));
         } catch ($e) {
-            if ($org::allbinary::logic::visual::transform::data::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($org::allbinary::logic::visual::transform::data::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{VIEWERROR})) {
+            if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{VIEWERROR})) {
                 $self->{logUtil}->put($self->{commonStrings}->{EXCEPTION}, $self, $self->{commonStrings}->{CONSTRUCTOR}, $e);
             }
             die $e;
@@ -64,7 +64,7 @@ sub _new1 {
             $self->getBaseNode()->appendChild('org::allbinary::business::context::modules::storefront::StoreFrontViewFactory'->getInstance($searchRequest->getStoreFront()->getName())->toXmlNode($self->getDoc()));
             $self->getBaseNode()->appendChild($searchRequest->getParams()->getParamsNode($self->getDoc()));
         } catch ($e) {
-            if ($org::allbinary::logic::visual::transform::data::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($org::allbinary::logic::visual::transform::data::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{VIEWERROR})) {
+            if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{VIEWERROR})) {
                 $self->{logUtil}->put($self->{commonStrings}->{EXCEPTION}, $self, $self->{commonStrings}->{CONSTRUCTOR}, $e);
             }
             die $e;
@@ -80,6 +80,8 @@ use org::allbinary::logic::communication::http::request::RequestParams ();
 use org::allbinary::logic::communication::http::request::session::WeblisketSession ();
 use org::allbinary::logic::communication::log::LogUtil ();
 use org::allbinary::logic::control::search::SearchRequest ();
+use org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory ();
+use org::allbinary::logic::communication::log::config::type::LogConfigTypes ();
 use org::allbinary::logic::visual::transform::data::TransformHttpRequestDocument ();
 
 1;

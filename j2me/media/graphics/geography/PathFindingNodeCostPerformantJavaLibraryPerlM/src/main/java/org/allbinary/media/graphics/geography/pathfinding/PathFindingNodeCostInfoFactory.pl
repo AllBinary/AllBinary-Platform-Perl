@@ -49,7 +49,6 @@ use org::allbinary::media::graphics::geography::map::BasicGeographicMap ();
 use org::allbinary::media::graphics::geography::map::GeographicMapCellPosition ();
 use org::allbinary::media::graphics::geography::map::GeographicMapCellType ();
 use org::allbinary::media::graphics::geography::map::racetrack::RaceTrackGeographicMapCellType ();
-use org::allbinary::media::graphics::geography::pathfinding::PathFindingNodeCostInfoFactoryBase ();
 
 1;
 

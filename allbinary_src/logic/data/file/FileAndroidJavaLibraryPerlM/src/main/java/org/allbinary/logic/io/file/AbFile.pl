@@ -298,7 +298,6 @@ use java::io::File ();
 use org::allbinary::TsUtil ();
 use org::allbinary::logic::io::path::AbPath ();
 use org::allbinary::logic::string::StringUtil ();
-use org::allbinary::logic::io::file::AbFileInterface ();
 
 1;
 

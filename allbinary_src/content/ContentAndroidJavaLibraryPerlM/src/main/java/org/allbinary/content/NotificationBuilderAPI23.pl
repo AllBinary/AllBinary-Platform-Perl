@@ -37,7 +37,7 @@ sub build {
 use java::lang::Object ();
 use javax::microedition::lcdui::Command ();
 # use android::app::Notification ();
-# use android::app::Notification::Builder ();
+# use android::app::Notification ();
 # use android::app::PendingIntent ();
 # use android::content::Context ();
 # use android::os::Parcelable ();

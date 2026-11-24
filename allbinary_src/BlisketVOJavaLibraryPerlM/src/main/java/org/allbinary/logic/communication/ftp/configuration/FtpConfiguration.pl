@@ -48,10 +48,10 @@ sub _new1 {
     my ($class, $hashMap) = @_;
     my $self = bless({}, $class);
     _init_fields($self);
-        $self->{ftpServer} = $hashMap->get($org::allbinary::logic::communication::ftp::configuration::FtpConfigurationData::SERVER);
-        $self->{ftpPath} = $hashMap->get($org::allbinary::logic::communication::ftp::configuration::FtpConfigurationData::PATH);
-        $self->{ftpUserName} = $hashMap->get($org::allbinary::logic::communication::ftp::configuration::FtpConfigurationData::USERNAME);
-        $self->{ftpPassword} = $hashMap->get($org::allbinary::logic::communication::ftp::configuration::FtpConfigurationData::PASSWORD);
+        $self->{ftpServer} = $hashMap->get(java::lang::Object::jstatic('org::allbinary::logic::communication::ftp::configuration::FtpConfiguration', 'FtpConfigurationData')->{SERVER});
+        $self->{ftpPath} = $hashMap->get(java::lang::Object::jstatic('org::allbinary::logic::communication::ftp::configuration::FtpConfiguration', 'FtpConfigurationData')->{PATH});
+        $self->{ftpUserName} = $hashMap->get(java::lang::Object::jstatic('org::allbinary::logic::communication::ftp::configuration::FtpConfiguration', 'FtpConfigurationData')->{USERNAME});
+        $self->{ftpPassword} = $hashMap->get(java::lang::Object::jstatic('org::allbinary::logic::communication::ftp::configuration::FtpConfiguration', 'FtpConfigurationData')->{PASSWORD});
     return $self;
 }
 
@@ -106,7 +106,6 @@ sub setPassword {
 use java::lang::Object ();
 use java::util::HashMap ();
 use org::allbinary::logic::communication::ftp::configuration::FtpConfigurationInterface ();
-use org::allbinary::logic::communication::ftp::configuration::FtpConfigurationData ();
 
 1;
 

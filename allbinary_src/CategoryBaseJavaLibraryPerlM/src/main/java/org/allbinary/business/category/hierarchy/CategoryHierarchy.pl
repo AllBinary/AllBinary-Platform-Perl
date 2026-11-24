@@ -35,6 +35,12 @@ sub new {
     die "No constructor of CategoryHierarchy takes " . scalar(@arguments) . " arguments";
 }
 
+sub _new3 {
+    my ($class, @arguments) = @_;
+    return $class->_new3_1(@arguments) if 1 && (!defined($arguments[0]) || (ref($arguments[0]) && ref($arguments[0]) ne 'ARRAY')) && (!defined($arguments[1]) || (ref($arguments[1]) && ref($arguments[1]) ne 'ARRAY')) && !ref($arguments[2]);
+    return $class->_new3_2(@arguments);
+}
+
 
 sub _new2 {
     my ($class, $rootCategoryInterface, $parentCategoryInterface) = @_;
@@ -47,7 +53,7 @@ sub _new2 {
 }
 
 
-sub _new3 {
+sub _new3_1 {
     my ($class, $rootCategoryInterface, $parentCategoryInterface, $level) = @_;
     my $self = bless({}, $class);
     _init_fields($self);
@@ -58,7 +64,7 @@ sub _new3 {
 }
 
 
-sub _new3 {
+sub _new3_2 {
     my ($class, $rootCategoryInterface, $parentCategoryInterface, $categoryPropertiesHashMap) = @_;
     my $self = bless({}, $class);
     _init_fields($self);

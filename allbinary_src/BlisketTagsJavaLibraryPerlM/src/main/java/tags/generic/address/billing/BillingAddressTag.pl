@@ -33,13 +33,13 @@ sub doStartTag {
     my ($self) = @_;
         try {
             if (defined($self->getCommand())) {
-                if ($self->getCommand()->compareTo($tags::generic::address::billing::org::allbinary->{globals}->{GLOBALS2}->{VIEW}) == 0) {
+                if ($self->getCommand()->compareTo($org::allbinary::globals::GLOBALS2::VIEW) == 0) {
                     $self->setName("Basic Billing Address View");
                     $self->setObjectFile("views.generic.address.billing.ValidationView");
-                } elsif ($self->getCommand()->compareTo($tags::generic::address::billing::org::allbinary->{globals}->{GLOBALS2}->{EDIT}) == 0) {
+                } elsif ($self->getCommand()->compareTo($org::allbinary::globals::GLOBALS2::EDIT) == 0) {
                     $self->setName("Basic Billing Address View");
                     $self->setObjectFile("views.generic.address.billing.EditValidationView");
-                } elsif ($self->getCommand()->compareTo($tags::generic::address::billing::org::allbinary->{globals}->{GLOBALS2}->{NEW}) == 0) {
+                } elsif ($self->getCommand()->compareTo($org::allbinary::globals::GLOBALS2::NEW) == 0) {
                     $self->setName("Basic Billing Address View");
                     $self->setObjectFile("views.generic.address.billing.NewValidationView");
                 } elsif ($self->getCommand()->compareTo($self->{commonStrings}->{INSERT}) == 0) {
@@ -62,7 +62,7 @@ sub doStartTag {
             die ("Command Null");
         } catch ($e) {
             'org::allbinary::logic::communication::http::request::AbResponseHandler'->sendJspTagLicensingRedirect($self->{pageContext}, $e);
-            return $self->{SKIP_BODY};
+            return java::lang::Object::jstatic('tags::generic::address::billing::BillingAddressTag', 'SKIP_BODY');
         }
 }
 
@@ -72,6 +72,7 @@ use org::allbinary::business::user::address::BillingAddressData ();
 use org::allbinary::logic::communication::http::request::AbResponseHandler ();
 use org::allbinary::logic::system::security::licensing::LicensingException ();
 use tags::StoreValidationTransformTag ();
+use org::allbinary::globals::GLOBALS2 ();
 
 1;
 

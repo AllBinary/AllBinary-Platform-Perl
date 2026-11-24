@@ -89,7 +89,7 @@ sub get {
 # throws Exception
 sub initDefault {
     my ($self, $storeName) = @_;
-        if ($org::allbinary::business::user::commerce::money::payment::types::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($org::allbinary::business::user::commerce::money::payment::types::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{PAYMENT})) {
+        if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{PAYMENT})) {
             $self->{logUtil}->putF("initDefault Payment: " . $self->{defaultName}, $self, "initDefault");
         }
         if ('org::allbinary::logic::string::StringValidationUtil'->getInstance()->isEmpty($self->{defaultName})) {
@@ -107,7 +107,7 @@ sub initDefault {
                 my $node = $nodeList->item($index);
                 my $defaultPaymentGatewayNode = 'org::allbinary::data::tree::dom::DomSearchHelper'->getNode('org::allbinary::business::entry::EntryData'->getInstance()->{DEFAULT}, $node->getChildNodes());
                 my $defaultPaymentGatewayNodeValue = 'org::allbinary::data::tree::dom::DomNodeHelper'->getTextNodeValue($defaultPaymentGatewayNode);
-                if ($org::allbinary::business::user::commerce::money::payment::types::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($org::allbinary::business::user::commerce::money::payment::types::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{PAYMENT})) {
+                if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{PAYMENT})) {
                     $self->{logUtil}->putF("DefaultPaymentGatewayNodeValue: " . $defaultPaymentGatewayNodeValue, $self, "initDefault");
                 }
                 if (!'org::allbinary::logic::string::StringValidationUtil'->getInstance()->isEmpty($defaultPaymentGatewayNodeValue)) {
@@ -121,7 +121,7 @@ sub initDefault {
 # throws Exception
 sub getDefault {
     my ($self, $storeName) = @_;
-        if ($org::allbinary::business::user::commerce::money::payment::types::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($org::allbinary::business::user::commerce::money::payment::types::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{PAYMENT})) {
+        if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{PAYMENT})) {
             $self->{logUtil}->putF($self->{commonStrings}->{START}, $self, "getDefault");
         }
         $self->initDefault($storeName);
@@ -174,6 +174,8 @@ use org::allbinary::string::CommonStrings ();
 use org::w3c::dom::Document ();
 use org::w3c::dom::Node ();
 use org::w3c::dom::NodeList ();
+use org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory ();
+use org::allbinary::logic::communication::log::config::type::LogConfigTypes ();
 
 1;
 

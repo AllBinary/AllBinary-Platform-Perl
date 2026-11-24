@@ -34,14 +34,20 @@ sub new {
     die "No constructor of UserEmailEventsConfigurationView takes " . scalar(@arguments) . " arguments";
 }
 
-
 sub _new1 {
+    my ($class, @arguments) = @_;
+    return $class->_new1_1(@arguments) if 1 && (!defined($arguments[0]) || (ref($arguments[0]) && ref($arguments[0]) ne 'ARRAY'));
+    return $class->_new1_2(@arguments);
+}
+
+
+sub _new1_1 {
     my ($class, $node) = @_;
     my $self = bless({}, $class);
     _init_fields($self);
         $self->{userEmailEventsConfigurationInterface} = 'org::allbinary::logic::communication::smtp::configuration::user::event::UserEmailEventsConfiguration'->new();
         my $childNodeList = $node->getChildNodes();
-        my $emailEventConfigurationNodeVector = 'org::allbinary::data::tree::dom::DomSearchHelper'->getAllNodesNoThrow($org::allbinary::logic::communication::smtp::configuration::user::event::UserEmailEventConfigurationData::NAME, $childNodeList);
+        my $emailEventConfigurationNodeVector = 'org::allbinary::data::tree::dom::DomSearchHelper'->getAllNodesNoThrow(java::lang::Object::jstatic('org::allbinary::logic::communication::smtp::configuration::user::event::UserEmailEventsConfigurationView', 'UserEmailEventConfigurationData')->{NAME}, $childNodeList);
         my $size = $emailEventConfigurationNodeVector->size();
         for (my $index = 0; $index < $size; $index++) {
             my $userEmailConfigurationNode = $emailEventConfigurationNodeVector->get($index);
@@ -52,7 +58,7 @@ sub _new1 {
 }
 
 
-sub _new1 {
+sub _new1_2 {
     my ($class, $userEmailEventsConfigurationInterface) = @_;
     my $self = bless({}, $class);
     _init_fields($self);
@@ -71,10 +77,10 @@ sub getUserEmailEventsConfigurationInterface {
 sub toXmlNode {
     my ($self, $document) = @_;
         my $userEmailConfigurationMapping = 'org::allbinary::logic::communication::smtp::configuration::user::event::UserEmailEventsConfigurationMapping'->new($self->{userEmailEventsConfigurationInterface});
-        my $node = $document->createElement($org::allbinary::logic::communication::smtp::configuration::user::event::UserEmailEventsConfigurationData::NAME);
+        my $node = $document->createElement(java::lang::Object::jstatic('org::allbinary::logic::communication::smtp::configuration::user::event::UserEmailEventsConfigurationView', 'UserEmailEventsConfigurationData')->{NAME});
         my $emailEventHashMap = $self->getUserEmailEventsConfigurationInterface()->getEventConfigurationHashMap();
         my $set = $emailEventHashMap->keySet();
-        if ($org::allbinary::logic::communication::smtp::configuration::user::event::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($org::allbinary::logic::communication::smtp::configuration::user::event::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{EMAILLOGGING})) {
+        if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{EMAILLOGGING})) {
             $self->{logUtil}->putF("Number Of Email Events Specified in file: " . $set->size(), $self, $self->{commonStrings}->{CONSTRUCTOR});
         }
         my $eventNameArray = $set->toArray();
@@ -90,7 +96,7 @@ sub toXmlNode {
 
 use java::lang::Object ();
 use java::util::HashMap ();
-# use java::util::Set ();
+use java::util::Set ();
 use org::allbinary::util::BasicArrayList ();
 use org::allbinary::util::BasicArrayListD ();
 use org::allbinary::data::tree::dom::DomNodeInterface ();
@@ -100,11 +106,11 @@ use org::allbinary::string::CommonStrings ();
 use org::w3c::dom::Document ();
 use org::w3c::dom::Node ();
 use org::w3c::dom::NodeList ();
+use org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory ();
+use org::allbinary::logic::communication::log::config::type::LogConfigTypes ();
 use org::allbinary::logic::communication::smtp::configuration::user::event::UserEmailEventsConfiguration ();
-use org::allbinary::logic::communication::smtp::configuration::user::event::UserEmailEventConfigurationData ();
 use org::allbinary::logic::communication::smtp::configuration::user::event::UserEmailEventConfigurationView ();
 use org::allbinary::logic::communication::smtp::configuration::user::event::UserEmailEventsConfigurationMapping ();
-use org::allbinary::logic::communication::smtp::configuration::user::event::UserEmailEventsConfigurationData ();
 
 1;
 

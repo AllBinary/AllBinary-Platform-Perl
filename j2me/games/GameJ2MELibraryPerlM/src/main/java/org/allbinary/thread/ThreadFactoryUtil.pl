@@ -59,11 +59,11 @@ sub getInstanceType {
             if ($type == $org::allbinary::game::displayable::canvas::DemoCanvas::TYPE || $type == $org::allbinary::game::displayable::canvas::AllBinaryGameCanvas::TYPE) {
                 my $demoGameSingleThreadStartRunnable = 'org::allbinary::game::displayable::canvas::RunnableCanvasSingleThreadStartRunnable'->new($runnable);
                 'org::allbinary::logic::communication::log::PreLogUtil'->put('org::allbinary::logic::string::StringMaker'->new()->append("Using Pseudo Thread for DemoCanvas/AllBinaryGameCanvas under PlayN/HTML5: ")->append('org::allbinary::logic::string::StringUtil'->getInstance()->toString($runnable))->toString(), $self, $commonStrings->{CONSTRUCTOR});
-                my $primaryThreadPool = 'org::allbinary::thread::PrimaryThreadPool'->getInstance();
+                my $primaryThreadPool = java::lang::Object::jstatic('org::allbinary::thread::ThreadFactoryUtil', 'PrimaryThreadPool')->getInstance();
                 $primaryThreadPool->runTask($demoGameSingleThreadStartRunnable);
             } else {
                 'org::allbinary::logic::communication::log::PreLogUtil'->put('org::allbinary::logic::string::StringMaker'->new()->append("Using Pseudo Thread for Runnable under PlayN/HTML5: ")->append('org::allbinary::logic::string::StringUtil'->getInstance()->toString($runnable))->toString(), $self, $commonStrings->{CONSTRUCTOR});
-                my $primaryThreadPool = 'org::allbinary::thread::PrimaryThreadPool'->getInstance();
+                my $primaryThreadPool = java::lang::Object::jstatic('org::allbinary::thread::ThreadFactoryUtil', 'PrimaryThreadPool')->getInstance();
                 $primaryThreadPool->runTask($runnable);
             }
         }
@@ -91,7 +91,6 @@ use org::allbinary::logic::communication::log::PreLogUtil ();
 use org::allbinary::logic::string::StringMaker ();
 use org::allbinary::logic::string::StringUtil ();
 use org::allbinary::string::CommonStrings ();
-use org::allbinary::thread::PrimaryThreadPool ();
 use java::lang::Thread ();
 
 1;

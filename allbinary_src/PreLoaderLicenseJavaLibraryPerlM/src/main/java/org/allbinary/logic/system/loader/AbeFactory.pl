@@ -28,7 +28,7 @@ sub _init_fields {
 }
 
 
-sub getInstance {
+sub getInstance_j0 {
     my ($class) = @_;
         return $org::allbinary::logic::system::loader::AbeFactory::instance;
 }
@@ -43,13 +43,12 @@ sub new {
 
 
 # throws LicensingException
-# Java overloaded method: Perl keeps the last definition
-sub getInstance {
+sub getInstance_j2 {
     my ($self, $abeClientInformation, $className) = @_;
         try {
             return $self->getClass($abeClientInformation, $className)->newInstance();
         } catch ($e) {
-            if ($org::allbinary::logic::system::loader::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($org::allbinary::logic::system::loader::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{LOADERERROR})) {
+            if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{LOADERERROR})) {
                 $self->{logUtil}->put("Failure for: " . $className, $self, "getInstance(classname)", $e);
             }
             die $e;
@@ -58,12 +57,11 @@ sub getInstance {
 
 
 # throws LicensingException
-# Java overloaded method: Perl keeps the last definition
-sub getInstance {
+sub getInstance_j4 {
     my ($self, $abeClientInformation, $className, $classes, $params) = @_;
         my $constructor = undef;
         try {
-            my $parent = 'org::allbinary::logic::system::loader::WebappClassLoaderInfo'->getLoader();
+            my $parent = java::lang::Object::jstatic('org::allbinary::logic::system::loader::AbeFactory', 'WebappClassLoaderInfo')->getLoader();
             if ($self->{useCustomLoader}) {
                 my $loader = 'org::allbinary::logic::system::loader::AbeClassLoader'->new($parent, 'org::allbinary::logic::system::security::AbKeys'->getInstance()->getKey($abeClientInformation, $className));
                 my $myClass = $loader->loadClass($className);
@@ -75,7 +73,7 @@ sub getInstance {
                 return $constructor->newInstance($params);
             }
         } catch ($e) {
-            if ($org::allbinary::logic::system::loader::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($org::allbinary::logic::system::loader::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{LOADERERROR})) {
+            if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{LOADERERROR})) {
                 my $stringBuffer = 'org::allbinary::logic::string::StringMaker'->new();
                 $stringBuffer->append("Failure for: ");
                 $stringBuffer->append($className);
@@ -87,12 +85,20 @@ sub getInstance {
         }
 }
 
+sub getInstance {
+    my ($invocant, @arguments) = @_;
+    return $invocant->getInstance_j0(@arguments) if scalar(@arguments) == 0;
+    return $invocant->getInstance_j2(@arguments) if scalar(@arguments) == 2;
+    return $invocant->getInstance_j4(@arguments) if scalar(@arguments) == 4;
+    die "No method getInstance takes " . scalar(@arguments) . " arguments";
+}
+
 
 # throws LicensingException
 sub getClass {
     my ($self, $abeClientInformation, $className) = @_;
         try {
-            my $parent = 'org::allbinary::logic::system::loader::WebappClassLoaderInfo'->getLoader();
+            my $parent = java::lang::Object::jstatic('org::allbinary::logic::system::loader::AbeFactory', 'WebappClassLoaderInfo')->getLoader();
             if ($self->{useCustomLoader}) {
                 my $loader = 'org::allbinary::logic::system::loader::AbeClassLoader'->new($parent, 'org::allbinary::logic::system::security::AbKeys'->getInstance()->getKey($abeClientInformation, $className));
                 my $c = $loader->loadClass($className);
@@ -102,7 +108,7 @@ sub getClass {
                 return $c;
             }
         } catch ($e) {
-            if ($org::allbinary::logic::system::loader::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($org::allbinary::logic::system::loader::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{LOADERERROR})) {
+            if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{LOADERERROR})) {
                 $self->{logUtil}->put("Failure for: " . $className, $self, "getClass(className)", $e);
             }
             die $e;
@@ -119,7 +125,8 @@ use org::allbinary::logic::system::security::AbKeys ();
 use org::allbinary::logic::system::security::licensing::AbeClientInformationInterface ();
 use org::allbinary::logic::system::security::licensing::LicensingException ();
 use org::allbinary::string::CommonSeps ();
-use org::allbinary::logic::system::loader::WebappClassLoaderInfo ();
+use org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory ();
+use org::allbinary::logic::communication::log::config::type::LogConfigTypes ();
 use org::allbinary::logic::system::loader::AbeClassLoader ();
 
 1;

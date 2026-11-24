@@ -40,8 +40,8 @@ sub new {
 
 sub setMaxLength {
     my ($self, $length) = @_;
-        scalar(@{$self}) = ("" . $length);
-        $self->addAttribute($self->{MAXLENGTH}, scalar(@{$self}));
+        $self->{length} = ("" . $length);
+        $self->addAttribute($self->{MAXLENGTH}, $self->{length});
 }
 
 

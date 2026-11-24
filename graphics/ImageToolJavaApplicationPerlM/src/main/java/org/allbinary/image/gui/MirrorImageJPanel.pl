@@ -56,7 +56,7 @@ sub new {
 sub process {
     my ($self) = @_;
         do {
-            package java::lang::Thread::AnonymousN66286 { our @ISA = ('java::lang::Thread', 'java::lang::Object');
+            package java::lang::Thread::AnonymousN66461 { our @ISA = ('java::lang::Thread', 'java::lang::Object');
             
 
             sub run {
@@ -85,7 +85,7 @@ sub process {
                 }
             }
             }
-            'java::lang::Thread::AnonymousN66286'->can('new') ? 'java::lang::Thread::AnonymousN66286'->new() : bless({}, 'java::lang::Thread::AnonymousN66286')
+            'java::lang::Thread::AnonymousN66461'->can('new') ? 'java::lang::Thread::AnonymousN66461'->new() : bless({}, 'java::lang::Thread::AnonymousN66461')
         }->start();
 }
 
@@ -95,7 +95,7 @@ sub initComponents {
         $self->{jLayeredPane1} = 'javax::swing::JLayeredPane'->new();
         $self->{buttonGroup} = 'javax::swing::ButtonGroup'->new();
         $self->{jPanel1} = do {
-            package javax::swing::JPanel::AnonymousN67539 { our @ISA = ('javax::swing::JPanel', 'java::lang::Object');
+            package javax::swing::JPanel::AnonymousN67682 { our @ISA = ('javax::swing::JPanel', 'java::lang::Object');
             
 
             sub paint {
@@ -105,7 +105,7 @@ sub initComponents {
                 }
             }
             }
-            'javax::swing::JPanel::AnonymousN67539'->can('new') ? 'javax::swing::JPanel::AnonymousN67539'->new() : bless({}, 'javax::swing::JPanel::AnonymousN67539')
+            'javax::swing::JPanel::AnonymousN67682'->can('new') ? 'javax::swing::JPanel::AnonymousN67682'->new() : bless({}, 'javax::swing::JPanel::AnonymousN67682')
         };
         $self->{jPanel2} = 'javax::swing::JPanel'->new();
         $self->{horizontalJCheckBox} = 'javax::swing::JCheckBox'->new();
@@ -126,7 +126,7 @@ sub initComponents {
         $self->{verticleJCheckBox}->setEnabled(0);
         $self->{generateJButton}->setText("Generate");
         $self->{generateJButton}->addActionListener(do {
-            package java::awt::event::ActionListener::AnonymousN68718 { our @ISA = ('java::awt::event::ActionListener', 'java::lang::Object');
+            package java::awt::event::ActionListener::AnonymousN68717 { our @ISA = ('java::awt::event::ActionListener', 'java::lang::Object');
             
 
             sub actionPerformed {
@@ -134,11 +134,11 @@ sub initComponents {
                 $self->generateJButtonActionPerformed($evt);
             }
             }
-            'java::awt::event::ActionListener::AnonymousN68718'->can('new') ? 'java::awt::event::ActionListener::AnonymousN68718'->new() : bless({}, 'java::awt::event::ActionListener::AnonymousN68718')
+            'java::awt::event::ActionListener::AnonymousN68717'->can('new') ? 'java::awt::event::ActionListener::AnonymousN68717'->new() : bless({}, 'java::awt::event::ActionListener::AnonymousN68717')
         });
         $self->{renameJRadioButton}->setText("Save As filename_mirror");
         $self->{renameJRadioButton}->addActionListener(do {
-            package java::awt::event::ActionListener::AnonymousN68905 { our @ISA = ('java::awt::event::ActionListener', 'java::lang::Object');
+            package java::awt::event::ActionListener::AnonymousN68856 { our @ISA = ('java::awt::event::ActionListener', 'java::lang::Object');
             
 
             sub actionPerformed {
@@ -146,7 +146,7 @@ sub initComponents {
                 $self->renameJRadioButtonActionPerformed($evt);
             }
             }
-            'java::awt::event::ActionListener::AnonymousN68905'->can('new') ? 'java::awt::event::ActionListener::AnonymousN68905'->new() : bless({}, 'java::awt::event::ActionListener::AnonymousN68905')
+            'java::awt::event::ActionListener::AnonymousN68856'->can('new') ? 'java::awt::event::ActionListener::AnonymousN68856'->new() : bless({}, 'java::awt::event::ActionListener::AnonymousN68856')
         });
         $self->{writeOverOriginalJRadioButton}->setText("Write Over Original");
         my $jPanel2Layout = 'org::jdesktop::layout::GroupLayout'->new($self->{jPanel2});
@@ -188,7 +188,7 @@ sub setImageProcessorInput {
 }
 
 use java::lang::Object ();
-# use java::awt ();
+# use java::awt::Graphics ();
 # use java::awt::image::BufferedImage ();
 # use java::awt::image::RenderedImage ();
 use java::io::File ();
@@ -199,6 +199,15 @@ use org::allbinary::media::image::ImageProcessorInputCompositeInterface ();
 use org::allbinary::media::image::ImageStrings ();
 use org::allbinary::media::image::MirrorImageUtil ();
 use org::allbinary::string::CommonStrings ();
+# use java::awt::event::ActionEvent ();
+# use java::awt::event::ActionListener ();
+# use javax::swing::ButtonGroup ();
+# use javax::swing::JButton ();
+# use javax::swing::JCheckBox ();
+# use javax::swing::JLabel ();
+# use javax::swing::JLayeredPane ();
+# use javax::swing::JPanel ();
+# use javax::swing::JRadioButton ();
 use java::lang::Thread ();
 
 1;

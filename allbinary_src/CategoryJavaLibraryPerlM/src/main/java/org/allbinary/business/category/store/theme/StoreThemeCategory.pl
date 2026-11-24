@@ -35,6 +35,12 @@ sub new {
     die "No constructor of StoreThemeCategory takes " . scalar(@arguments) . " arguments";
 }
 
+sub _new4 {
+    my ($class, @arguments) = @_;
+    return $class->_new4_1(@arguments) if 1 && (!defined($arguments[0]) || (ref($arguments[0]) && ref($arguments[0]) ne 'ARRAY')) && (!defined($arguments[1]) || (ref($arguments[1]) && ref($arguments[1]) ne 'ARRAY')) && (!defined($arguments[2]) || (ref($arguments[2]) && ref($arguments[2]) ne 'ARRAY')) && (!defined($arguments[3]) || (ref($arguments[3]) && ref($arguments[3]) ne 'ARRAY'));
+    return $class->_new4_2(@arguments);
+}
+
 
 sub _new3 {
     my ($class, $transformInfoInterface, $categoryPropertiesFactoryInterface, $level) = @_;
@@ -47,7 +53,7 @@ sub _new3 {
 }
 
 
-sub _new4 {
+sub _new4_1 {
     my ($class, $transformInfoInterface, $rootCategoryInterface, $parentCategoryInterface, $categoryPropertiesFactoryInterface) = @_;
     my $self = $class->SUPER::new($rootCategoryInterface, $parentCategoryInterface, $categoryPropertiesFactoryInterface);
     _init_fields($self);
@@ -58,7 +64,7 @@ sub _new4 {
 }
 
 
-sub _new4 {
+sub _new4_2 {
     my ($class, $transformInfoInterface, $node, $categoryPropertiesFactoryInterface, $level) = @_;
     my $self = $class->SUPER::new($categoryPropertiesFactoryInterface, $level);
     _init_fields($self);

@@ -95,7 +95,6 @@ use java::io::File ();
 # use java::io::LineNumberReader ();
 use org::allbinary::util::BasicArrayList ();
 use java::lang::System ();
-use org::allbinary::logic::system::security::licensing::BasicArrayListD ();
 use org::allbinary::logic::system::security::licensing::PrintLicenseInitInfo ();
 
 1;

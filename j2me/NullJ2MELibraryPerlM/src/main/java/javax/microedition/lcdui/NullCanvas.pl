@@ -125,7 +125,6 @@ sub pointerReleased {
 use java::lang::Object ();
 use java::lang::LazyStatic ();
 use java::util::Stack ();
-use javax::microedition::lcdui::Canvas ();
 
 1;
 

@@ -35,8 +35,14 @@ sub new {
     die "No constructor of GenericProfile takes " . scalar(@arguments) . " arguments";
 }
 
-
 sub _new1 {
+    my ($class, @arguments) = @_;
+    return $class->_new1_1(@arguments) if 1 && (!defined($arguments[0]) || (ref($arguments[0]) && ref($arguments[0]) ne 'ARRAY'));
+    return $class->_new1_2(@arguments);
+}
+
+
+sub _new1_1 {
     my ($class, $node) = @_;
     my $self = bless({}, $class);
     _init_fields($self);
@@ -56,7 +62,7 @@ sub _new1 {
 }
 
 
-sub _new1 {
+sub _new1_2 {
     my ($class, $name) = @_;
     my $self = bless({}, $class);
     _init_fields($self);

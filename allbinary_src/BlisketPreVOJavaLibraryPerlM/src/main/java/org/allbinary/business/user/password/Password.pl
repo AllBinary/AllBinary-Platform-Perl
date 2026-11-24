@@ -53,18 +53,18 @@ sub isValid {
         my $commonStrings = 'org::allbinary::string::CommonStrings'->getInstance();
         try {
             my $valid = 1;
-            if ($org::allbinary::business::user::password::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($org::allbinary::business::user::password::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{VALIDATION})) {
+            if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{VALIDATION})) {
                 $self->{logUtil}->putF("Password: " . $self->{password}, $self, $commonStrings->{IS_VALID});
             }
             if (!'org::allbinary::logic::string::StringValidationUtil'->getInstance()->isValidRequired($self->{password}, 6, $org::allbinary::business::user::UserData::MAXLEN)) {
-                if ($org::allbinary::business::user::password::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($org::allbinary::business::user::password::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{VALIDATION})) {
+                if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{VALIDATION})) {
                     $self->{logUtil}->putF("Password is invalid", $self, $commonStrings->{IS_VALID});
                 }
                 $valid = 0;
             }
             return $valid;
         } catch ($e) {
-            if ($org::allbinary::business::user::password::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($org::allbinary::business::user::password::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{VALIDATIONERROR})) {
+            if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{VALIDATIONERROR})) {
                 $self->{logUtil}->put("Failed to validate form", "Password", $commonStrings->{IS_VALID}, $e);
             }
             return 0;
@@ -118,6 +118,8 @@ use org::allbinary::logic::control::crypt::SuperCrypt ();
 use org::allbinary::logic::string::StringUtil ();
 use org::allbinary::logic::string::StringValidationUtil ();
 use org::allbinary::string::CommonStrings ();
+use org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory ();
+use org::allbinary::logic::communication::log::config::type::LogConfigTypes ();
 
 1;
 

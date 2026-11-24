@@ -211,8 +211,6 @@ use org::allbinary::graphics::color::BasicColor ();
 use org::allbinary::logic::NullUtil ();
 use org::allbinary::logic::math::PrimitiveIntUtil ();
 use org::allbinary::util::CircularIndexUtil ();
-use org::allbinary::animation::IndexedAnimation ();
-use org::allbinary::animation::VectorAnimationInterface ();
 
 1;
 

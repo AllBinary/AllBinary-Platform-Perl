@@ -371,7 +371,6 @@ use org::allbinary::logic::string::StringUtil ();
 use org::allbinary::math::PositionStrings ();
 use org::allbinary::string::CommonSeps ();
 use org::allbinary::view::ViewPositionBase ();
-use org::allbinary::game::layer::special::SpecialGameInputInterface ();
 
 1;
 

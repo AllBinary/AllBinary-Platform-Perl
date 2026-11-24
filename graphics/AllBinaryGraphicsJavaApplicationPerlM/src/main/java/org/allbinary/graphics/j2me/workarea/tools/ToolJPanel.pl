@@ -76,7 +76,7 @@ sub initComponents {
         $self->{lineJButton}->setFont('java::awt::Font'->new("Dialog", 0, 10));
         $self->{lineJButton}->setText('org::allbinary::graphics::j2me::workarea::tools::LinesGraphicItem'->getStaticName());
         $self->{lineJButton}->addMouseListener(do {
-            package java::awt::event::MouseAdapter::AnonymousN66709 { our @ISA = ('java::awt::event::MouseAdapter', 'java::lang::Object');
+            package java::awt::event::MouseAdapter::AnonymousN66526 { our @ISA = ('java::awt::event::MouseAdapter', 'java::lang::Object');
             
 
             sub mouseClicked {
@@ -84,13 +84,13 @@ sub initComponents {
                 $self->lineJButtonMouseClicked($evt);
             }
             }
-            'java::awt::event::MouseAdapter::AnonymousN66709'->can('new') ? 'java::awt::event::MouseAdapter::AnonymousN66709'->new() : bless({}, 'java::awt::event::MouseAdapter::AnonymousN66709')
+            'java::awt::event::MouseAdapter::AnonymousN66526'->can('new') ? 'java::awt::event::MouseAdapter::AnonymousN66526'->new() : bless({}, 'java::awt::event::MouseAdapter::AnonymousN66526')
         });
         $self->add($self->{lineJButton});
         $self->{rectJButton}->setFont('java::awt::Font'->new("Dialog", 0, 10));
         $self->{rectJButton}->setText("Rect");
         $self->{rectJButton}->addMouseListener(do {
-            package java::awt::event::MouseAdapter::AnonymousN66991 { our @ISA = ('java::awt::event::MouseAdapter', 'java::lang::Object');
+            package java::awt::event::MouseAdapter::AnonymousN66744 { our @ISA = ('java::awt::event::MouseAdapter', 'java::lang::Object');
             
 
             sub mouseClicked {
@@ -98,13 +98,13 @@ sub initComponents {
                 $self->rectJButtonMouseClicked($evt);
             }
             }
-            'java::awt::event::MouseAdapter::AnonymousN66991'->can('new') ? 'java::awt::event::MouseAdapter::AnonymousN66991'->new() : bless({}, 'java::awt::event::MouseAdapter::AnonymousN66991')
+            'java::awt::event::MouseAdapter::AnonymousN66744'->can('new') ? 'java::awt::event::MouseAdapter::AnonymousN66744'->new() : bless({}, 'java::awt::event::MouseAdapter::AnonymousN66744')
         });
         $self->add($self->{rectJButton});
         $self->{arcJButton}->setFont('java::awt::Font'->new("Dialog", 0, 10));
         $self->{arcJButton}->setText("Arc");
         $self->{arcJButton}->addMouseListener(do {
-            package java::awt::event::MouseAdapter::AnonymousN67273 { our @ISA = ('java::awt::event::MouseAdapter', 'java::lang::Object');
+            package java::awt::event::MouseAdapter::AnonymousN66962 { our @ISA = ('java::awt::event::MouseAdapter', 'java::lang::Object');
             
 
             sub mousePressed {
@@ -112,13 +112,13 @@ sub initComponents {
                 $self->arcJButtonMousePressed($evt);
             }
             }
-            'java::awt::event::MouseAdapter::AnonymousN67273'->can('new') ? 'java::awt::event::MouseAdapter::AnonymousN67273'->new() : bless({}, 'java::awt::event::MouseAdapter::AnonymousN67273')
+            'java::awt::event::MouseAdapter::AnonymousN66962'->can('new') ? 'java::awt::event::MouseAdapter::AnonymousN66962'->new() : bless({}, 'java::awt::event::MouseAdapter::AnonymousN66962')
         });
         $self->add($self->{arcJButton});
         $self->{stringJButton}->setFont('java::awt::Font'->new("Dialog", 0, 10));
         $self->{stringJButton}->setText("String");
         $self->{stringJButton}->addMouseListener(do {
-            package java::awt::event::MouseAdapter::AnonymousN67555 { our @ISA = ('java::awt::event::MouseAdapter', 'java::lang::Object');
+            package java::awt::event::MouseAdapter::AnonymousN67180 { our @ISA = ('java::awt::event::MouseAdapter', 'java::lang::Object');
             
 
             sub mousePressed {
@@ -126,13 +126,13 @@ sub initComponents {
                 $self->stringJButtonMousePressed($evt);
             }
             }
-            'java::awt::event::MouseAdapter::AnonymousN67555'->can('new') ? 'java::awt::event::MouseAdapter::AnonymousN67555'->new() : bless({}, 'java::awt::event::MouseAdapter::AnonymousN67555')
+            'java::awt::event::MouseAdapter::AnonymousN67180'->can('new') ? 'java::awt::event::MouseAdapter::AnonymousN67180'->new() : bless({}, 'java::awt::event::MouseAdapter::AnonymousN67180')
         });
         $self->add($self->{stringJButton});
         $self->{charJButton}->setFont('java::awt::Font'->new("Dialog", 0, 10));
         $self->{charJButton}->setText("Char");
         $self->{charJButton}->addMouseListener(do {
-            package java::awt::event::MouseAdapter::AnonymousN67837 { our @ISA = ('java::awt::event::MouseAdapter', 'java::lang::Object');
+            package java::awt::event::MouseAdapter::AnonymousN67398 { our @ISA = ('java::awt::event::MouseAdapter', 'java::lang::Object');
             
 
             sub mousePressed {
@@ -140,13 +140,13 @@ sub initComponents {
                 $self->charJButtonMousePressed($evt);
             }
             }
-            'java::awt::event::MouseAdapter::AnonymousN67837'->can('new') ? 'java::awt::event::MouseAdapter::AnonymousN67837'->new() : bless({}, 'java::awt::event::MouseAdapter::AnonymousN67837')
+            'java::awt::event::MouseAdapter::AnonymousN67398'->can('new') ? 'java::awt::event::MouseAdapter::AnonymousN67398'->new() : bless({}, 'java::awt::event::MouseAdapter::AnonymousN67398')
         });
         $self->add($self->{charJButton});
         $self->{roundRectJButton}->setFont('java::awt::Font'->new("Dialog", 0, 10));
         $self->{roundRectJButton}->setText("Round Rect");
         $self->{roundRectJButton}->addMouseListener(do {
-            package java::awt::event::MouseAdapter::AnonymousN68119 { our @ISA = ('java::awt::event::MouseAdapter', 'java::lang::Object');
+            package java::awt::event::MouseAdapter::AnonymousN67616 { our @ISA = ('java::awt::event::MouseAdapter', 'java::lang::Object');
             
 
             sub mousePressed {
@@ -154,13 +154,13 @@ sub initComponents {
                 $self->roundRectJButtonMousePressed($evt);
             }
             }
-            'java::awt::event::MouseAdapter::AnonymousN68119'->can('new') ? 'java::awt::event::MouseAdapter::AnonymousN68119'->new() : bless({}, 'java::awt::event::MouseAdapter::AnonymousN68119')
+            'java::awt::event::MouseAdapter::AnonymousN67616'->can('new') ? 'java::awt::event::MouseAdapter::AnonymousN67616'->new() : bless({}, 'java::awt::event::MouseAdapter::AnonymousN67616')
         });
         $self->add($self->{roundRectJButton});
         $self->{imageJButton}->setFont('java::awt::Font'->new("Dialog", 0, 10));
         $self->{imageJButton}->setText("Image");
         $self->{imageJButton}->addMouseListener(do {
-            package java::awt::event::MouseAdapter::AnonymousN68401 { our @ISA = ('java::awt::event::MouseAdapter', 'java::lang::Object');
+            package java::awt::event::MouseAdapter::AnonymousN67834 { our @ISA = ('java::awt::event::MouseAdapter', 'java::lang::Object');
             
 
             sub mousePressed {
@@ -168,13 +168,13 @@ sub initComponents {
                 $self->imageJButtonMousePressed($evt);
             }
             }
-            'java::awt::event::MouseAdapter::AnonymousN68401'->can('new') ? 'java::awt::event::MouseAdapter::AnonymousN68401'->new() : bless({}, 'java::awt::event::MouseAdapter::AnonymousN68401')
+            'java::awt::event::MouseAdapter::AnonymousN67834'->can('new') ? 'java::awt::event::MouseAdapter::AnonymousN67834'->new() : bless({}, 'java::awt::event::MouseAdapter::AnonymousN67834')
         });
         $self->add($self->{imageJButton});
         $self->{fillArcJButton}->setFont('java::awt::Font'->new("Dialog", 0, 10));
         $self->{fillArcJButton}->setText("Fill Arc");
         $self->{fillArcJButton}->addMouseListener(do {
-            package java::awt::event::MouseAdapter::AnonymousN68683 { our @ISA = ('java::awt::event::MouseAdapter', 'java::lang::Object');
+            package java::awt::event::MouseAdapter::AnonymousN68052 { our @ISA = ('java::awt::event::MouseAdapter', 'java::lang::Object');
             
 
             sub mousePressed {
@@ -182,13 +182,13 @@ sub initComponents {
                 $self->fillArcJButtonMousePressed($evt);
             }
             }
-            'java::awt::event::MouseAdapter::AnonymousN68683'->can('new') ? 'java::awt::event::MouseAdapter::AnonymousN68683'->new() : bless({}, 'java::awt::event::MouseAdapter::AnonymousN68683')
+            'java::awt::event::MouseAdapter::AnonymousN68052'->can('new') ? 'java::awt::event::MouseAdapter::AnonymousN68052'->new() : bless({}, 'java::awt::event::MouseAdapter::AnonymousN68052')
         });
         $self->add($self->{fillArcJButton});
         $self->{fillRectJButton}->setFont('java::awt::Font'->new("Dialog", 0, 10));
         $self->{fillRectJButton}->setText("Fill Rect");
         $self->{fillRectJButton}->addMouseListener(do {
-            package java::awt::event::MouseAdapter::AnonymousN68965 { our @ISA = ('java::awt::event::MouseAdapter', 'java::lang::Object');
+            package java::awt::event::MouseAdapter::AnonymousN68270 { our @ISA = ('java::awt::event::MouseAdapter', 'java::lang::Object');
             
 
             sub mousePressed {
@@ -196,13 +196,13 @@ sub initComponents {
                 $self->fillRectJButtonMousePressed($evt);
             }
             }
-            'java::awt::event::MouseAdapter::AnonymousN68965'->can('new') ? 'java::awt::event::MouseAdapter::AnonymousN68965'->new() : bless({}, 'java::awt::event::MouseAdapter::AnonymousN68965')
+            'java::awt::event::MouseAdapter::AnonymousN68270'->can('new') ? 'java::awt::event::MouseAdapter::AnonymousN68270'->new() : bless({}, 'java::awt::event::MouseAdapter::AnonymousN68270')
         });
         $self->add($self->{fillRectJButton});
         $self->{fillRoundRectJButton}->setFont('java::awt::Font'->new("Dialog", 0, 10));
         $self->{fillRoundRectJButton}->setText("Fill Rnd Rect");
         $self->{fillRoundRectJButton}->addMouseListener(do {
-            package java::awt::event::MouseAdapter::AnonymousN69247 { our @ISA = ('java::awt::event::MouseAdapter', 'java::lang::Object');
+            package java::awt::event::MouseAdapter::AnonymousN68488 { our @ISA = ('java::awt::event::MouseAdapter', 'java::lang::Object');
             
 
             sub mousePressed {
@@ -210,13 +210,13 @@ sub initComponents {
                 $self->fillRoundRectJButtonMousePressed($evt);
             }
             }
-            'java::awt::event::MouseAdapter::AnonymousN69247'->can('new') ? 'java::awt::event::MouseAdapter::AnonymousN69247'->new() : bless({}, 'java::awt::event::MouseAdapter::AnonymousN69247')
+            'java::awt::event::MouseAdapter::AnonymousN68488'->can('new') ? 'java::awt::event::MouseAdapter::AnonymousN68488'->new() : bless({}, 'java::awt::event::MouseAdapter::AnonymousN68488')
         });
         $self->add($self->{fillRoundRectJButton});
         $self->{dottedLineJButton}->setFont('java::awt::Font'->new("Dialog", 0, 10));
         $self->{dottedLineJButton}->setText("Dot Line");
         $self->{dottedLineJButton}->addMouseListener(do {
-            package java::awt::event::MouseAdapter::AnonymousN69529 { our @ISA = ('java::awt::event::MouseAdapter', 'java::lang::Object');
+            package java::awt::event::MouseAdapter::AnonymousN68706 { our @ISA = ('java::awt::event::MouseAdapter', 'java::lang::Object');
             
 
             sub mousePressed {
@@ -224,13 +224,13 @@ sub initComponents {
                 $self->dottedLineJButtonMousePressed($evt);
             }
             }
-            'java::awt::event::MouseAdapter::AnonymousN69529'->can('new') ? 'java::awt::event::MouseAdapter::AnonymousN69529'->new() : bless({}, 'java::awt::event::MouseAdapter::AnonymousN69529')
+            'java::awt::event::MouseAdapter::AnonymousN68706'->can('new') ? 'java::awt::event::MouseAdapter::AnonymousN68706'->new() : bless({}, 'java::awt::event::MouseAdapter::AnonymousN68706')
         });
         $self->add($self->{dottedLineJButton});
         $self->{dottedRectButton}->setFont('java::awt::Font'->new("Dialog", 0, 10));
         $self->{dottedRectButton}->setText("Dot Rect");
         $self->{dottedRectButton}->addMouseListener(do {
-            package java::awt::event::MouseAdapter::AnonymousN69811 { our @ISA = ('java::awt::event::MouseAdapter', 'java::lang::Object');
+            package java::awt::event::MouseAdapter::AnonymousN68924 { our @ISA = ('java::awt::event::MouseAdapter', 'java::lang::Object');
             
 
             sub mousePressed {
@@ -238,13 +238,13 @@ sub initComponents {
                 $self->dottedRectButtonMousePressed($evt);
             }
             }
-            'java::awt::event::MouseAdapter::AnonymousN69811'->can('new') ? 'java::awt::event::MouseAdapter::AnonymousN69811'->new() : bless({}, 'java::awt::event::MouseAdapter::AnonymousN69811')
+            'java::awt::event::MouseAdapter::AnonymousN68924'->can('new') ? 'java::awt::event::MouseAdapter::AnonymousN68924'->new() : bless({}, 'java::awt::event::MouseAdapter::AnonymousN68924')
         });
         $self->add($self->{dottedRectButton});
         $self->{dottedArcJButton}->setFont('java::awt::Font'->new("Dialog", 0, 10));
         $self->{dottedArcJButton}->setText("Dot Arc");
         $self->{dottedArcJButton}->addMouseListener(do {
-            package java::awt::event::MouseAdapter::AnonymousN70093 { our @ISA = ('java::awt::event::MouseAdapter', 'java::lang::Object');
+            package java::awt::event::MouseAdapter::AnonymousN69142 { our @ISA = ('java::awt::event::MouseAdapter', 'java::lang::Object');
             
 
             sub mousePressed {
@@ -252,13 +252,13 @@ sub initComponents {
                 $self->dottedArcJButtonMousePressed($evt);
             }
             }
-            'java::awt::event::MouseAdapter::AnonymousN70093'->can('new') ? 'java::awt::event::MouseAdapter::AnonymousN70093'->new() : bless({}, 'java::awt::event::MouseAdapter::AnonymousN70093')
+            'java::awt::event::MouseAdapter::AnonymousN69142'->can('new') ? 'java::awt::event::MouseAdapter::AnonymousN69142'->new() : bless({}, 'java::awt::event::MouseAdapter::AnonymousN69142')
         });
         $self->add($self->{dottedArcJButton});
         $self->{dottedFillRectJButton}->setFont('java::awt::Font'->new("Dialog", 0, 10));
         $self->{dottedFillRectJButton}->setText("Dot Fill Rect");
         $self->{dottedFillRectJButton}->addMouseListener(do {
-            package java::awt::event::MouseAdapter::AnonymousN70375 { our @ISA = ('java::awt::event::MouseAdapter', 'java::lang::Object');
+            package java::awt::event::MouseAdapter::AnonymousN69360 { our @ISA = ('java::awt::event::MouseAdapter', 'java::lang::Object');
             
 
             sub mousePressed {
@@ -266,13 +266,13 @@ sub initComponents {
                 $self->dottedFillRectJButtonMousePressed($evt);
             }
             }
-            'java::awt::event::MouseAdapter::AnonymousN70375'->can('new') ? 'java::awt::event::MouseAdapter::AnonymousN70375'->new() : bless({}, 'java::awt::event::MouseAdapter::AnonymousN70375')
+            'java::awt::event::MouseAdapter::AnonymousN69360'->can('new') ? 'java::awt::event::MouseAdapter::AnonymousN69360'->new() : bless({}, 'java::awt::event::MouseAdapter::AnonymousN69360')
         });
         $self->add($self->{dottedFillRectJButton});
         $self->{dottedFillArcJButton}->setFont('java::awt::Font'->new("Dialog", 0, 10));
         $self->{dottedFillArcJButton}->setText("Dot Fill Arc");
         $self->{dottedFillArcJButton}->addMouseListener(do {
-            package java::awt::event::MouseAdapter::AnonymousN70657 { our @ISA = ('java::awt::event::MouseAdapter', 'java::lang::Object');
+            package java::awt::event::MouseAdapter::AnonymousN69578 { our @ISA = ('java::awt::event::MouseAdapter', 'java::lang::Object');
             
 
             sub mousePressed {
@@ -280,13 +280,13 @@ sub initComponents {
                 $self->dottedFillArcJButtonMousePressed($evt);
             }
             }
-            'java::awt::event::MouseAdapter::AnonymousN70657'->can('new') ? 'java::awt::event::MouseAdapter::AnonymousN70657'->new() : bless({}, 'java::awt::event::MouseAdapter::AnonymousN70657')
+            'java::awt::event::MouseAdapter::AnonymousN69578'->can('new') ? 'java::awt::event::MouseAdapter::AnonymousN69578'->new() : bless({}, 'java::awt::event::MouseAdapter::AnonymousN69578')
         });
         $self->add($self->{dottedFillArcJButton});
         $self->{dottedFillRountRectJButton}->setFont('java::awt::Font'->new("Dialog", 0, 10));
         $self->{dottedFillRountRectJButton}->setText("Dot Fill Rnd Rect");
         $self->{dottedFillRountRectJButton}->addMouseListener(do {
-            package java::awt::event::MouseAdapter::AnonymousN70939 { our @ISA = ('java::awt::event::MouseAdapter', 'java::lang::Object');
+            package java::awt::event::MouseAdapter::AnonymousN69796 { our @ISA = ('java::awt::event::MouseAdapter', 'java::lang::Object');
             
 
             sub mousePressed {
@@ -294,7 +294,7 @@ sub initComponents {
                 $self->dottedFillRountRectJButtonMousePressed($evt);
             }
             }
-            'java::awt::event::MouseAdapter::AnonymousN70939'->can('new') ? 'java::awt::event::MouseAdapter::AnonymousN70939'->new() : bless({}, 'java::awt::event::MouseAdapter::AnonymousN70939')
+            'java::awt::event::MouseAdapter::AnonymousN69796'->can('new') ? 'java::awt::event::MouseAdapter::AnonymousN69796'->new() : bless({}, 'java::awt::event::MouseAdapter::AnonymousN69796')
         });
         $self->add($self->{dottedFillRountRectJButton});
         $self->{colorJPanel}->setLayout('java::awt::GridLayout'->new(1, 1));
@@ -399,6 +399,13 @@ sub lineJButtonMouseClicked {
 }
 
 use java::lang::Object ();
+# use java::awt::Font ();
+# use java::awt::GridLayout ();
+# use java::awt::event::MouseAdapter ();
+# use java::awt::event::MouseEvent ();
+# use javax::swing::JButton ();
+# use javax::swing::JList ();
+# use javax::swing::JPanel ();
 use org::allbinary::graphics::j2me::workarea::tools::LinesGraphicItem ();
 use org::allbinary::graphics::j2me::workarea::tools::ToolFactory ();
 

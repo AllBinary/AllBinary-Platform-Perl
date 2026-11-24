@@ -56,7 +56,7 @@ sub getInstance {
 
 use java::lang::Object ();
 use java::lang::LazyStatic ();
-# use javax::swing ();
+# use javax::swing::JPanel ();
 use org::allbinary::input::automation::module::AbstractInputAutomationFactory ();
 use org::allbinary::input::automation::module::InputAutomationModuleData ();
 use org::allbinary::input::automation::module::configuration::BlankModuleConfigurationJPanel ();

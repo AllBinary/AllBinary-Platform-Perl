@@ -46,7 +46,7 @@ sub init {
         my $commonStrings = 'org::allbinary::string::CommonStrings'->getInstance();
         my $appUrlGlobals = 'org::allbinary::globals::AppUrlGlobals'->new();
         $appUrlGlobals->setWebappPath($pathString);
-        $self->{URLGLOBALS}->init($appUrlGlobals);
+        'org::allbinary::globals::URLGLOBALS'->init($appUrlGlobals);
         'org::allbinary::logic::system::loader::WebappClassLoaderInfo'->setLoader($classLoader);
         my $stringBuffer = 'org::allbinary::logic::string::StringMaker'->new();
         $stringBuffer->append("Setting Up AllBinary System Configuration Args: ");
@@ -62,12 +62,12 @@ sub init {
             $stringBuffer->append('org::allbinary::string::CommonSeps'->getInstance()->{SPACE});
             $stringBuffer->append('org::allbinary::string::CommonSeps'->getInstance()->{EQUALS});
             $stringBuffer->append('org::allbinary::string::CommonSeps'->getInstance()->{SPACE});
-            $stringBuffer->append($self->{URLGLOBALS}->getWebappPath());
+            $stringBuffer->append('org::allbinary::globals::URLGLOBALS'->getWebappPath());
             $self->{logUtil}->putF($stringBuffer->toString(), $self, $commonStrings->{INIT});
         }
         $stringBuffer->delete(0, $stringBuffer->length());
         $stringBuffer->append("Webapp Path Set To: ");
-        $stringBuffer->append($self->{URLGLOBALS}->getWebappPath());
+        $stringBuffer->append('org::allbinary::globals::URLGLOBALS'->getWebappPath());
         $self->{logUtil}->putF($stringBuffer->toString(), $self, $commonStrings->{INIT});
 }
 
@@ -80,6 +80,7 @@ use org::allbinary::logic::system::loader::WebappClassLoaderInfo ();
 use org::allbinary::string::CommonSeps ();
 use org::allbinary::string::CommonStrings ();
 use org::allbinary::globals::AppUrlGlobals ();
+use org::allbinary::globals::URLGLOBALS ();
 
 1;
 

@@ -124,9 +124,9 @@ sub initComponents {
         $self->{noModuleSelectedJLabel}->setText("Please Select A Module");
         my $noModuleSelectedJDialogLayout = 'javax::swing::GroupLayout'->new($self->{noModuleSelectedJDialog}->getContentPane());
         $self->{noModuleSelectedJDialog}->getContentPane()->setLayout($noModuleSelectedJDialogLayout);
-        $noModuleSelectedJDialogLayout->setHorizontalGroup($noModuleSelectedJDialogLayout->createParallelGroup($org::allbinary::input::automation::javax::swing->{GroupLayout}->{Alignment}->{LEADING})->addGroup($noModuleSelectedJDialogLayout->createSequentialGroup()->addContainerGap()->addComponent($self->{noModuleSelectedJLabel})->addContainerGap($org::allbinary::input::automation::javax::swing->{GroupLayout}->{DEFAULT_SIZE}, 32767)));
-        $noModuleSelectedJDialogLayout->setVerticalGroup($noModuleSelectedJDialogLayout->createParallelGroup($org::allbinary::input::automation::javax::swing->{GroupLayout}->{Alignment}->{LEADING})->addComponent($self->{noModuleSelectedJLabel}, $org::allbinary::input::automation::javax::swing->{GroupLayout}->{Alignment}->{TRAILING}, $org::allbinary::input::automation::javax::swing->{GroupLayout}->{DEFAULT_SIZE}, 48, 32767));
-        $self->setDefaultCloseOperation($org::allbinary::input::automation::javax::swing->{WindowConstants}->{EXIT_ON_CLOSE});
+        $noModuleSelectedJDialogLayout->setHorizontalGroup($noModuleSelectedJDialogLayout->createParallelGroup($javax::swing::GroupLayout::Alignment->{LEADING})->addGroup($noModuleSelectedJDialogLayout->createSequentialGroup()->addContainerGap()->addComponent($self->{noModuleSelectedJLabel})->addContainerGap($javax::swing::GroupLayout::DEFAULT_SIZE, 32767)));
+        $noModuleSelectedJDialogLayout->setVerticalGroup($noModuleSelectedJDialogLayout->createParallelGroup($javax::swing::GroupLayout::Alignment->{LEADING})->addComponent($self->{noModuleSelectedJLabel}, $javax::swing::GroupLayout::Alignment->{TRAILING}, $javax::swing::GroupLayout::DEFAULT_SIZE, 48, 32767));
+        $self->setDefaultCloseOperation($javax::swing::WindowConstants::EXIT_ON_CLOSE);
         $self->setMinimumSize('java::awt::Dimension'->new(325, 215));
         $self->setResizable(0);
         $self->addWindowFocusListener(do {
@@ -147,7 +147,7 @@ sub initComponents {
             'java::awt::event::WindowFocusListener::AnonymousN69680'->can('new') ? 'java::awt::event::WindowFocusListener::AnonymousN69680'->new() : bless({}, 'java::awt::event::WindowFocusListener::AnonymousN69680')
         });
         $self->addFocusListener(do {
-            package java::awt::event::FocusAdapter::AnonymousN69918 { our @ISA = ('java::awt::event::FocusAdapter', 'java::lang::Object');
+            package java::awt::event::FocusAdapter::AnonymousN69846 { our @ISA = ('java::awt::event::FocusAdapter', 'java::lang::Object');
             
 
             sub focusGained {
@@ -161,12 +161,12 @@ sub initComponents {
                 $self->formFocusLost($evt);
             }
             }
-            'java::awt::event::FocusAdapter::AnonymousN69918'->can('new') ? 'java::awt::event::FocusAdapter::AnonymousN69918'->new() : bless({}, 'java::awt::event::FocusAdapter::AnonymousN69918')
+            'java::awt::event::FocusAdapter::AnonymousN69846'->can('new') ? 'java::awt::event::FocusAdapter::AnonymousN69846'->new() : bless({}, 'java::awt::event::FocusAdapter::AnonymousN69846')
         });
         $self->{gameRobotJTabbedPane}->setMinimumSize('java::awt::Dimension'->new(320, 200));
         $self->{inputAutomationModuleJList}->setMinimumSize('java::awt::Dimension'->new(200, 0));
         $self->{inputAutomationModuleJList}->addListSelectionListener(do {
-            package javax::swing::event::ListSelectionListener::AnonymousN70297 { our @ISA = ('javax::swing::event::ListSelectionListener', 'java::lang::Object');
+            package javax::swing::event::ListSelectionListener::AnonymousN70121 { our @ISA = ('javax::swing::event::ListSelectionListener', 'java::lang::Object');
             
 
             sub valueChanged {
@@ -174,24 +174,24 @@ sub initComponents {
                 $self->inputAutomationModuleJListValueChanged($evt);
             }
             }
-            'javax::swing::event::ListSelectionListener::AnonymousN70297'->can('new') ? 'javax::swing::event::ListSelectionListener::AnonymousN70297'->new() : bless({}, 'javax::swing::event::ListSelectionListener::AnonymousN70297')
+            'javax::swing::event::ListSelectionListener::AnonymousN70121'->can('new') ? 'javax::swing::event::ListSelectionListener::AnonymousN70121'->new() : bless({}, 'javax::swing::event::ListSelectionListener::AnonymousN70121')
         });
         $self->{jScrollPane1}->setViewportView($self->{inputAutomationModuleJList});
         my $inputAutomationModuleJPanelLayout = 'javax::swing::GroupLayout'->new($self->{inputAutomationModuleJPanel});
         $self->{inputAutomationModuleJPanel}->setLayout($inputAutomationModuleJPanelLayout);
-        $inputAutomationModuleJPanelLayout->setHorizontalGroup($inputAutomationModuleJPanelLayout->createParallelGroup($org::allbinary::input::automation::javax::swing->{GroupLayout}->{Alignment}->{LEADING})->addGroup($inputAutomationModuleJPanelLayout->createSequentialGroup()->addComponent($self->{jScrollPane1}, $org::allbinary::input::automation::javax::swing->{GroupLayout}->{PREFERRED_SIZE}, 199, $org::allbinary::input::automation::javax::swing->{GroupLayout}->{PREFERRED_SIZE})->addContainerGap(367, 32767)));
-        $inputAutomationModuleJPanelLayout->setVerticalGroup($inputAutomationModuleJPanelLayout->createParallelGroup($org::allbinary::input::automation::javax::swing->{GroupLayout}->{Alignment}->{LEADING})->addGroup($inputAutomationModuleJPanelLayout->createSequentialGroup()->addComponent($self->{jScrollPane1}, $org::allbinary::input::automation::javax::swing->{GroupLayout}->{PREFERRED_SIZE}, 330, $org::allbinary::input::automation::javax::swing->{GroupLayout}->{PREFERRED_SIZE})->addContainerGap($org::allbinary::input::automation::javax::swing->{GroupLayout}->{DEFAULT_SIZE}, 32767)));
+        $inputAutomationModuleJPanelLayout->setHorizontalGroup($inputAutomationModuleJPanelLayout->createParallelGroup($javax::swing::GroupLayout::Alignment->{LEADING})->addGroup($inputAutomationModuleJPanelLayout->createSequentialGroup()->addComponent($self->{jScrollPane1}, $javax::swing::GroupLayout::PREFERRED_SIZE, 199, $javax::swing::GroupLayout::PREFERRED_SIZE)->addContainerGap(367, 32767)));
+        $inputAutomationModuleJPanelLayout->setVerticalGroup($inputAutomationModuleJPanelLayout->createParallelGroup($javax::swing::GroupLayout::Alignment->{LEADING})->addGroup($inputAutomationModuleJPanelLayout->createSequentialGroup()->addComponent($self->{jScrollPane1}, $javax::swing::GroupLayout::PREFERRED_SIZE, 330, $javax::swing::GroupLayout::PREFERRED_SIZE)->addContainerGap($javax::swing::GroupLayout::DEFAULT_SIZE, 32767)));
         $self->{gameRobotJTabbedPane}->addTab("Modules", $self->{inputAutomationModuleJPanel});
         my $automationModuleConfigurationJPanelLayout = 'javax::swing::GroupLayout'->new($self->{automationModuleConfigurationJPanel});
         $self->{automationModuleConfigurationJPanel}->setLayout($automationModuleConfigurationJPanelLayout);
-        $automationModuleConfigurationJPanelLayout->setHorizontalGroup($automationModuleConfigurationJPanelLayout->createParallelGroup($org::allbinary::input::automation::javax::swing->{GroupLayout}->{Alignment}->{LEADING})->addGap(0, 566, 32767));
-        $automationModuleConfigurationJPanelLayout->setVerticalGroup($automationModuleConfigurationJPanelLayout->createParallelGroup($org::allbinary::input::automation::javax::swing->{GroupLayout}->{Alignment}->{LEADING})->addGap(0, 334, 32767));
+        $automationModuleConfigurationJPanelLayout->setHorizontalGroup($automationModuleConfigurationJPanelLayout->createParallelGroup($javax::swing::GroupLayout::Alignment->{LEADING})->addGap(0, 566, 32767));
+        $automationModuleConfigurationJPanelLayout->setVerticalGroup($automationModuleConfigurationJPanelLayout->createParallelGroup($javax::swing::GroupLayout::Alignment->{LEADING})->addGap(0, 334, 32767));
         $self->{gameRobotJTabbedPane}->addTab("Configuration", $self->{automationModuleConfigurationJPanel});
         $self->{processingJMenu}->setText("Processing");
         $self->{processingJMenu}->setToolTipText("Set module processing state");
         $self->{startJMenuItem}->setText($self->{commonStrings}->{START});
         $self->{startJMenuItem}->addActionListener(do {
-            package java::awt::event::ActionListener::AnonymousN71626 { our @ISA = ('java::awt::event::ActionListener', 'java::lang::Object');
+            package java::awt::event::ActionListener::AnonymousN71194 { our @ISA = ('java::awt::event::ActionListener', 'java::lang::Object');
             
 
             sub actionPerformed {
@@ -199,12 +199,12 @@ sub initComponents {
                 $self->startJMenuItemActionPerformed($evt);
             }
             }
-            'java::awt::event::ActionListener::AnonymousN71626'->can('new') ? 'java::awt::event::ActionListener::AnonymousN71626'->new() : bless({}, 'java::awt::event::ActionListener::AnonymousN71626')
+            'java::awt::event::ActionListener::AnonymousN71194'->can('new') ? 'java::awt::event::ActionListener::AnonymousN71194'->new() : bless({}, 'java::awt::event::ActionListener::AnonymousN71194')
         });
         $self->{processingJMenu}->add($self->{startJMenuItem});
         $self->{stopJMenuItem}->setText("Stop");
         $self->{stopJMenuItem}->addActionListener(do {
-            package java::awt::event::ActionListener::AnonymousN71850 { our @ISA = ('java::awt::event::ActionListener', 'java::lang::Object');
+            package java::awt::event::ActionListener::AnonymousN71370 { our @ISA = ('java::awt::event::ActionListener', 'java::lang::Object');
             
 
             sub actionPerformed {
@@ -212,13 +212,13 @@ sub initComponents {
                 $self->stopJMenuItemActionPerformed($evt);
             }
             }
-            'java::awt::event::ActionListener::AnonymousN71850'->can('new') ? 'java::awt::event::ActionListener::AnonymousN71850'->new() : bless({}, 'java::awt::event::ActionListener::AnonymousN71850')
+            'java::awt::event::ActionListener::AnonymousN71370'->can('new') ? 'java::awt::event::ActionListener::AnonymousN71370'->new() : bless({}, 'java::awt::event::ActionListener::AnonymousN71370')
         });
         $self->{processingJMenu}->add($self->{stopJMenuItem});
         $self->{mainJMenuBar}->add($self->{processingJMenu});
         $self->{optionsJMenu}->setText("Options");
         $self->{optionsJMenu}->addActionListener(do {
-            package java::awt::event::ActionListener::AnonymousN72111 { our @ISA = ('java::awt::event::ActionListener', 'java::lang::Object');
+            package java::awt::event::ActionListener::AnonymousN71583 { our @ISA = ('java::awt::event::ActionListener', 'java::lang::Object');
             
 
             sub actionPerformed {
@@ -226,13 +226,13 @@ sub initComponents {
                 $self->optionsJMenuActionPerformed($evt);
             }
             }
-            'java::awt::event::ActionListener::AnonymousN72111'->can('new') ? 'java::awt::event::ActionListener::AnonymousN72111'->new() : bless({}, 'java::awt::event::ActionListener::AnonymousN72111')
+            'java::awt::event::ActionListener::AnonymousN71583'->can('new') ? 'java::awt::event::ActionListener::AnonymousN71583'->new() : bless({}, 'java::awt::event::ActionListener::AnonymousN71583')
         });
         $self->{stopOnFocusJCheckBoxMenuItem}->setSelected(1);
         $self->{stopOnFocusJCheckBoxMenuItem}->setEnabled(0);
         $self->{stopOnFocusJCheckBoxMenuItem}->setLabel("Stop Module On Focus");
         $self->{stopOnFocusJCheckBoxMenuItem}->addActionListener(do {
-            package java::awt::event::ActionListener::AnonymousN72358 { our @ISA = ('java::awt::event::ActionListener', 'java::lang::Object');
+            package java::awt::event::ActionListener::AnonymousN71782 { our @ISA = ('java::awt::event::ActionListener', 'java::lang::Object');
             
 
             sub actionPerformed {
@@ -240,14 +240,14 @@ sub initComponents {
                 $self->stopOnFocusJCheckBoxMenuItemActionPerformed($evt);
             }
             }
-            'java::awt::event::ActionListener::AnonymousN72358'->can('new') ? 'java::awt::event::ActionListener::AnonymousN72358'->new() : bless({}, 'java::awt::event::ActionListener::AnonymousN72358')
+            'java::awt::event::ActionListener::AnonymousN71782'->can('new') ? 'java::awt::event::ActionListener::AnonymousN71782'->new() : bless({}, 'java::awt::event::ActionListener::AnonymousN71782')
         });
         $self->{optionsJMenu}->add($self->{stopOnFocusJCheckBoxMenuItem});
         $self->{mainJMenuBar}->add($self->{optionsJMenu});
         $self->{toolsJMenu}->setText("Help");
         $self->{helpJMenuItem}->setText("Help");
         $self->{helpJMenuItem}->addActionListener(do {
-            package java::awt::event::ActionListener::AnonymousN72649 { our @ISA = ('java::awt::event::ActionListener', 'java::lang::Object');
+            package java::awt::event::ActionListener::AnonymousN72025 { our @ISA = ('java::awt::event::ActionListener', 'java::lang::Object');
             
 
             sub actionPerformed {
@@ -255,12 +255,12 @@ sub initComponents {
                 $self->helpJMenuItemActionPerformed($evt);
             }
             }
-            'java::awt::event::ActionListener::AnonymousN72649'->can('new') ? 'java::awt::event::ActionListener::AnonymousN72649'->new() : bless({}, 'java::awt::event::ActionListener::AnonymousN72649')
+            'java::awt::event::ActionListener::AnonymousN72025'->can('new') ? 'java::awt::event::ActionListener::AnonymousN72025'->new() : bless({}, 'java::awt::event::ActionListener::AnonymousN72025')
         });
         $self->{toolsJMenu}->add($self->{helpJMenuItem});
         $self->{updatesJMenuItem}->setText("Updates");
         $self->{updatesJMenuItem}->addActionListener(do {
-            package java::awt::event::ActionListener::AnonymousN72873 { our @ISA = ('java::awt::event::ActionListener', 'java::lang::Object');
+            package java::awt::event::ActionListener::AnonymousN72201 { our @ISA = ('java::awt::event::ActionListener', 'java::lang::Object');
             
 
             sub actionPerformed {
@@ -268,12 +268,12 @@ sub initComponents {
                 $self->updatesJMenuItemActionPerformed($evt);
             }
             }
-            'java::awt::event::ActionListener::AnonymousN72873'->can('new') ? 'java::awt::event::ActionListener::AnonymousN72873'->new() : bless({}, 'java::awt::event::ActionListener::AnonymousN72873')
+            'java::awt::event::ActionListener::AnonymousN72201'->can('new') ? 'java::awt::event::ActionListener::AnonymousN72201'->new() : bless({}, 'java::awt::event::ActionListener::AnonymousN72201')
         });
         $self->{toolsJMenu}->add($self->{updatesJMenuItem});
         $self->{subscriptionJMenuItem}->setText("Subscription");
         $self->{subscriptionJMenuItem}->addActionListener(do {
-            package java::awt::event::ActionListener::AnonymousN73097 { our @ISA = ('java::awt::event::ActionListener', 'java::lang::Object');
+            package java::awt::event::ActionListener::AnonymousN72377 { our @ISA = ('java::awt::event::ActionListener', 'java::lang::Object');
             
 
             sub actionPerformed {
@@ -281,12 +281,12 @@ sub initComponents {
                 $self->subscriptionJMenuItemActionPerformed($evt);
             }
             }
-            'java::awt::event::ActionListener::AnonymousN73097'->can('new') ? 'java::awt::event::ActionListener::AnonymousN73097'->new() : bless({}, 'java::awt::event::ActionListener::AnonymousN73097')
+            'java::awt::event::ActionListener::AnonymousN72377'->can('new') ? 'java::awt::event::ActionListener::AnonymousN72377'->new() : bless({}, 'java::awt::event::ActionListener::AnonymousN72377')
         });
         $self->{toolsJMenu}->add($self->{subscriptionJMenuItem});
         $self->{modulesJMenuItem}->setText("Module Manager");
         $self->{modulesJMenuItem}->addActionListener(do {
-            package java::awt::event::ActionListener::AnonymousN73321 { our @ISA = ('java::awt::event::ActionListener', 'java::lang::Object');
+            package java::awt::event::ActionListener::AnonymousN72553 { our @ISA = ('java::awt::event::ActionListener', 'java::lang::Object');
             
 
             sub actionPerformed {
@@ -294,12 +294,12 @@ sub initComponents {
                 $self->modulesJMenuItemActionPerformed($evt);
             }
             }
-            'java::awt::event::ActionListener::AnonymousN73321'->can('new') ? 'java::awt::event::ActionListener::AnonymousN73321'->new() : bless({}, 'java::awt::event::ActionListener::AnonymousN73321')
+            'java::awt::event::ActionListener::AnonymousN72553'->can('new') ? 'java::awt::event::ActionListener::AnonymousN72553'->new() : bless({}, 'java::awt::event::ActionListener::AnonymousN72553')
         });
         $self->{toolsJMenu}->add($self->{modulesJMenuItem});
         $self->{aboutJMenuItem}->setText("About");
         $self->{aboutJMenuItem}->addActionListener(do {
-            package java::awt::event::ActionListener::AnonymousN73545 { our @ISA = ('java::awt::event::ActionListener', 'java::lang::Object');
+            package java::awt::event::ActionListener::AnonymousN72729 { our @ISA = ('java::awt::event::ActionListener', 'java::lang::Object');
             
 
             sub actionPerformed {
@@ -307,15 +307,15 @@ sub initComponents {
                 $self->aboutJMenuItemActionPerformed($evt);
             }
             }
-            'java::awt::event::ActionListener::AnonymousN73545'->can('new') ? 'java::awt::event::ActionListener::AnonymousN73545'->new() : bless({}, 'java::awt::event::ActionListener::AnonymousN73545')
+            'java::awt::event::ActionListener::AnonymousN72729'->can('new') ? 'java::awt::event::ActionListener::AnonymousN72729'->new() : bless({}, 'java::awt::event::ActionListener::AnonymousN72729')
         });
         $self->{toolsJMenu}->add($self->{aboutJMenuItem});
         $self->{mainJMenuBar}->add($self->{toolsJMenu});
         $self->setJMenuBar($self->{mainJMenuBar});
         my $layout = 'javax::swing::GroupLayout'->new($self->getContentPane());
         $self->getContentPane()->setLayout($layout);
-        $layout->setHorizontalGroup($layout->createParallelGroup($org::allbinary::input::automation::javax::swing->{GroupLayout}->{Alignment}->{LEADING})->addComponent($self->{gameRobotJTabbedPane}, $org::allbinary::input::automation::javax::swing->{GroupLayout}->{Alignment}->{TRAILING}, $org::allbinary::input::automation::javax::swing->{GroupLayout}->{DEFAULT_SIZE}, 571, 32767));
-        $layout->setVerticalGroup($layout->createParallelGroup($org::allbinary::input::automation::javax::swing->{GroupLayout}->{Alignment}->{LEADING})->addComponent($self->{gameRobotJTabbedPane}, $org::allbinary::input::automation::javax::swing->{GroupLayout}->{Alignment}->{TRAILING}, $org::allbinary::input::automation::javax::swing->{GroupLayout}->{DEFAULT_SIZE}, 359, 32767));
+        $layout->setHorizontalGroup($layout->createParallelGroup($javax::swing::GroupLayout::Alignment->{LEADING})->addComponent($self->{gameRobotJTabbedPane}, $javax::swing::GroupLayout::Alignment->{TRAILING}, $javax::swing::GroupLayout::DEFAULT_SIZE, 571, 32767));
+        $layout->setVerticalGroup($layout->createParallelGroup($javax::swing::GroupLayout::Alignment->{LEADING})->addComponent($self->{gameRobotJTabbedPane}, $javax::swing::GroupLayout::Alignment->{TRAILING}, $javax::swing::GroupLayout::DEFAULT_SIZE, 359, 32767));
         $self->pack();
 }
 
@@ -409,8 +409,8 @@ sub inputAutomationModuleJListValueChanged {
                 $self->{inputAutomationModuleInterface} = $self->{inputAutomationModuleFactory}->getInstance($gameAutomationRobotModuleNameString);
                 $self->getAutomationModuleConfigurationJPanel()->removeAll();
                 my $layout = $self->getAutomationModuleConfigurationJPanel()->getLayout();
-                $layout->setHorizontalGroup($layout->createParallelGroup($org::allbinary::input::automation::javax::swing->{GroupLayout}->{Alignment}->{LEADING})->addGap(0, 395, 32767)->addComponent($self->{inputAutomationModuleInterface}->getConfigurationJPanel(), $org::allbinary::input::automation::javax::swing->{GroupLayout}->{PREFERRED_SIZE}, $org::allbinary::input::automation::javax::swing->{GroupLayout}->{DEFAULT_SIZE}, $org::allbinary::input::automation::javax::swing->{GroupLayout}->{PREFERRED_SIZE}));
-                $layout->setVerticalGroup($layout->createParallelGroup($org::allbinary::input::automation::javax::swing->{GroupLayout}->{Alignment}->{LEADING})->addGap(0, 256, 32767)->addComponent($self->{inputAutomationModuleInterface}->getConfigurationJPanel(), $org::allbinary::input::automation::javax::swing->{GroupLayout}->{PREFERRED_SIZE}, $org::allbinary::input::automation::javax::swing->{GroupLayout}->{DEFAULT_SIZE}, $org::allbinary::input::automation::javax::swing->{GroupLayout}->{PREFERRED_SIZE}));
+                $layout->setHorizontalGroup($layout->createParallelGroup($javax::swing::GroupLayout::Alignment->{LEADING})->addGap(0, 395, 32767)->addComponent($self->{inputAutomationModuleInterface}->getConfigurationJPanel(), $javax::swing::GroupLayout::PREFERRED_SIZE, $javax::swing::GroupLayout::DEFAULT_SIZE, $javax::swing::GroupLayout::PREFERRED_SIZE));
+                $layout->setVerticalGroup($layout->createParallelGroup($javax::swing::GroupLayout::Alignment->{LEADING})->addGap(0, 256, 32767)->addComponent($self->{inputAutomationModuleInterface}->getConfigurationJPanel(), $javax::swing::GroupLayout::PREFERRED_SIZE, $javax::swing::GroupLayout::DEFAULT_SIZE, $javax::swing::GroupLayout::PREFERRED_SIZE));
                 $self->{gameRobotJTabbedPane}->setEnabledAt(1, 1);
                 $self->{logUtil}->putF("Setting Module: " . $gameAutomationRobotModuleNameString . " and Configuration JPanel", $self, "gameAutomationRobotModuleJListValueChanged");
             } else {
@@ -479,8 +479,8 @@ sub create {
         $appUrlGlobals->setWebappPath("G:/mnt/bc/mydev/work_automation/automation/run/");
         'org::allbinary::globals::URLGLOBALS'->init($appUrlGlobals);
         'org::allbinary::logic::system::loader::WebappClassLoaderInfo'->setLoader(ref($appUrlGlobals)->getClassLoader());
-        $org::allbinary::input::automation::java::awt->{EventQueue}->invokeLater(do {
-            package org::allbinary::thread::ARunnable::AnonymousN78340 { our @ISA = ('org::allbinary::thread::ARunnable', 'java::lang::Object');
+        'java::awt::EventQueue'->invokeLater(do {
+            package org::allbinary::thread::ARunnable::AnonymousN76836 { our @ISA = ('org::allbinary::thread::ARunnable', 'java::lang::Object');
             
 
             sub run {
@@ -501,7 +501,7 @@ sub create {
                 }
             }
             }
-            'org::allbinary::thread::ARunnable::AnonymousN78340'->can('new') ? 'org::allbinary::thread::ARunnable::AnonymousN78340'->new() : bless({}, 'org::allbinary::thread::ARunnable::AnonymousN78340')
+            'org::allbinary::thread::ARunnable::AnonymousN76836'->can('new') ? 'org::allbinary::thread::ARunnable::AnonymousN76836'->new() : bless({}, 'org::allbinary::thread::ARunnable::AnonymousN76836')
         });
 }
 
@@ -525,7 +525,7 @@ sub setAutomationModuleConfigurationJPanel {
 }
 
 
-sub onAdd {
+sub onAdd_j1_1 {
     my ($self, $inputAutomationRobotChangeEvent) = @_;
         try {
             $self->{logUtil}->putF($self->{commonStrings}->{START}, $self, "onAdd");
@@ -536,7 +536,7 @@ sub onAdd {
 }
 
 
-sub onRemove {
+sub onRemove_j1_1 {
     my ($self, $inputAutomationRobotChangeEvent) = @_;
         try {
             $self->{logUtil}->putF($self->{commonStrings}->{START}, $self, "onRemove");
@@ -547,8 +547,7 @@ sub onRemove {
 }
 
 
-# Java overloaded method: Perl keeps the last definition
-sub onAdd {
+sub onAdd_j1_2 {
     my ($self, $inputAutomationConfigurationChangeEvent) = @_;
         try {
             $self->{logUtil}->putF($self->{commonStrings}->{START}, $self, "onAdd");
@@ -559,9 +558,20 @@ sub onAdd {
         }
 }
 
+sub onAdd {
+    my ($invocant, @arguments) = @_;
+    return $invocant->onAdd_j1(@arguments) if scalar(@arguments) == 1;
+    die "No method onAdd takes " . scalar(@arguments) . " arguments";
+}
 
-# Java overloaded method: Perl keeps the last definition
-sub onRemove {
+sub onAdd_j1 {
+    my ($invocant, @arguments) = @_;
+    return $invocant->onAdd_j1_1(@arguments) if 1 && (!defined($arguments[0]) || (ref($arguments[0]) && ref($arguments[0]) ne 'ARRAY'));
+    return $invocant->onAdd_j1_2(@arguments);
+}
+
+
+sub onRemove_j1_2 {
     my ($self, $inputAutomationConfigurationChangeEvent) = @_;
         try {
             $self->{logUtil}->putF($self->{commonStrings}->{START}, $self, "onRemove");
@@ -579,6 +589,18 @@ sub onRemove {
         } catch ($e) {
             $self->{logUtil}->put($self->{commonStrings}->{EXCEPTION}, $self, "onRemove", $e);
         }
+}
+
+sub onRemove {
+    my ($invocant, @arguments) = @_;
+    return $invocant->onRemove_j1(@arguments) if scalar(@arguments) == 1;
+    die "No method onRemove takes " . scalar(@arguments) . " arguments";
+}
+
+sub onRemove_j1 {
+    my ($invocant, @arguments) = @_;
+    return $invocant->onRemove_j1_1(@arguments) if 1 && (!defined($arguments[0]) || (ref($arguments[0]) && ref($arguments[0]) ne 'ARRAY'));
+    return $invocant->onRemove_j1_2(@arguments);
 }
 
 use java::lang::Object ();
@@ -616,6 +638,28 @@ use org::allbinary::logic::system::loader::WebappClassLoaderInfo ();
 use org::allbinary::logic::system::security::licensing::InputAutomationClientInformationFactory ();
 use org::allbinary::string::CommonStrings ();
 use org::allbinary::thread::RunnableInterface ();
+# use java::awt::Dimension ();
+# use java::awt::EventQueue ();
+# use java::awt::event::ActionEvent ();
+# use java::awt::event::ActionListener ();
+# use java::awt::event::FocusAdapter ();
+# use java::awt::event::FocusEvent ();
+# use java::awt::event::WindowEvent ();
+# use java::awt::event::WindowFocusListener ();
+# use javax::swing::GroupLayout ();
+# use javax::swing::JCheckBoxMenuItem ();
+# use javax::swing::JFrame ();
+# use javax::swing::JLabel ();
+# use javax::swing::JList ();
+# use javax::swing::JMenu ();
+# use javax::swing::JMenuBar ();
+# use javax::swing::JMenuItem ();
+# use javax::swing::JPanel ();
+# use javax::swing::JScrollPane ();
+# use javax::swing::JTabbedPane ();
+# use javax::swing::WindowConstants ();
+# use javax::swing::event::ListSelectionEvent ();
+# use javax::swing::event::ListSelectionListener ();
 use java::lang::Thread ();
 
 1;

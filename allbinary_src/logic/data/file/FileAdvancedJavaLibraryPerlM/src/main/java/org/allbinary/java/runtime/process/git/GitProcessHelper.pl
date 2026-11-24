@@ -47,17 +47,16 @@ sub new {
 
 
 # throws IOException, InterruptedException
-sub trackedFiles {
+sub trackedFiles_j2 {
     my ($self, $rootAsString, $pathspec) = @_;
         return $self->trackedFiles($rootAsString, $pathspec, ".java");
 }
 
 
 # throws IOException, InterruptedException
-# Java overloaded method: Perl keeps the last definition
-sub trackedFiles {
+sub trackedFiles_j3 {
     my ($self, $rootAsString, $pathspec, $suffix) = @_;
-        my $process = 'org::allbinary::java::runtime::process::git::ProcessBuilder'->new($self->{trackedStrings}->{GIT_COMMAND}, $self->{trackedStrings}->{CHANGE_DIRECTORY_OPTION}, $rootAsString, $self->{trackedStrings}->{LIST_FILES_COMMAND}, $self->{trackedStrings}->{SEP_BY_NULL_CHAR_INSTEAD_OF_NEW_LINE}, $self->{trackedStrings}->{PATHSPEC_SEPARATOR}, $pathspec)->redirectError($org::allbinary::java::runtime::process::git::ProcessBuilder::Redirect->{INHERIT})->start();
+        my $process = 'org::allbinary::java::runtime::process::git::ProcessBuilder'->new($self->{trackedStrings}->{GIT_COMMAND}, $self->{trackedStrings}->{CHANGE_DIRECTORY_OPTION}, $rootAsString, $self->{trackedStrings}->{LIST_FILES_COMMAND}, $self->{trackedStrings}->{SEP_BY_NULL_CHAR_INSTEAD_OF_NEW_LINE}, $self->{trackedStrings}->{PATHSPEC_SEPARATOR}, $pathspec)->redirectError(java::lang::Object::jstatic('org::allbinary::java::runtime::process::git::GitProcessHelper', 'ProcessBuilder')->{Redirect}->{INHERIT})->start();
         my $output = $process->getInputStream()->readAllBytes();
         my $exitCode = $process->waitFor();
         if ($exitCode != 0) {
@@ -76,6 +75,13 @@ sub trackedFiles {
             }
         }
         return $files;
+}
+
+sub trackedFiles {
+    my ($invocant, @arguments) = @_;
+    return $invocant->trackedFiles_j2(@arguments) if scalar(@arguments) == 2;
+    return $invocant->trackedFiles_j3(@arguments) if scalar(@arguments) == 3;
+    die "No method trackedFiles takes " . scalar(@arguments) . " arguments";
 }
 
 
@@ -105,7 +111,6 @@ use org::allbinary::logic::io::file::AbFileNativeUtil ();
 use org::allbinary::logic::io::file::directory::TrackedStrings ();
 use org::allbinary::logic::string::StringMaker ();
 use org::allbinary::string::CommonStrings ();
-use org::allbinary::java::runtime::process::git::ProcessBuilder ();
 
 1;
 

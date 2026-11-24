@@ -79,7 +79,7 @@ sub _new0 {
 
 
 # throws Exception
-sub init {
+sub init_j1 {
     my ($self, $filePath) = @_;
         my $lineNumberReader = undef;
         try {
@@ -94,8 +94,7 @@ sub init {
 
 
 # throws Exception
-# Java overloaded method: Perl keeps the last definition
-sub init {
+sub init_j2 {
     my ($self, $lineNumberReader, $filePath) = @_;
         try {
             $self->{componentInterfaceVector} = 'org::allbinary::util::BasicArrayListD'->new();
@@ -166,6 +165,13 @@ sub init {
                 $lineNumberReader->close();
             }
         }
+}
+
+sub init {
+    my ($invocant, @arguments) = @_;
+    return $invocant->init_j1(@arguments) if scalar(@arguments) == 1;
+    return $invocant->init_j2(@arguments) if scalar(@arguments) == 2;
+    die "No method init takes " . scalar(@arguments) . " arguments";
 }
 
 

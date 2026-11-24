@@ -27,7 +27,7 @@ sub _init_fields {
 }
 
 
-sub getInstance {
+sub getInstance_j0 {
     my ($class) = @_;
         return $org::allbinary::logic::visual::transform::info::objectConfig::TransformInfoObjectConfigAndManipulatorFactory::instance;
 }
@@ -42,14 +42,13 @@ sub new {
 
 
 # throws Exception
-# Java overloaded method: Perl keeps the last definition
-sub getInstance {
+sub getInstance_j3_1 {
     my ($self, $abeClientInformation, $transformInfoInterface, $objectConfigFileAbPath) = @_;
         try {
-            my $data = 'org::allbinary::logic::control::crypt::file::CryptFileReader'->new('org::allbinary::logic::visual::transform::info::objectConfig::TransformInfoObjectConfigData'->getInstance()->{UNCRYPTED_EXTENSION}, 'org::allbinary::logic::visual::transform::info::objectConfig::TransformInfoObjectConfigData'->getInstance()->{ENCRYPTED_EXTENSION})->get($objectConfigFileAbPath);
+            my $data = 'org::allbinary::logic::control::crypt::file::CryptFileReader'->new(java::lang::Object::jstatic('org::allbinary::logic::visual::transform::info::objectConfig::TransformInfoObjectConfigAndManipulatorFactory', 'TransformInfoObjectConfigData')->getInstance()->{UNCRYPTED_EXTENSION}, java::lang::Object::jstatic('org::allbinary::logic::visual::transform::info::objectConfig::TransformInfoObjectConfigAndManipulatorFactory', 'TransformInfoObjectConfigData')->getInstance()->{ENCRYPTED_EXTENSION})->get($objectConfigFileAbPath);
             return $self->getInstance($abeClientInformation, $transformInfoInterface, 'org::allbinary::data::tree::dom::document::DomDocumentHelper'->create($data));
         } catch ($e) {
-            if ($org::allbinary::logic::visual::transform::info::objectConfig::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($org::allbinary::logic::visual::transform::info::objectConfig::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{VIEWERROR})) {
+            if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{VIEWERROR})) {
                 $self->{logUtil}->put("Could Not Load Object Config", __PACKAGE__->getInstance(), $self->{commonStrings}->{GET_INSTANCE}, $e);
             }
             die $e;
@@ -58,8 +57,7 @@ sub getInstance {
 
 
 # throws Exception
-# Java overloaded method: Perl keeps the last definition
-sub getInstance {
+sub getInstance_j2 {
     my ($self, $abeClientInformation, $transformInfoInterface) = @_;
         try {
             my $stringValidationUtil = 'org::allbinary::logic::string::StringValidationUtil'->getInstance();
@@ -73,7 +71,7 @@ sub getInstance {
             if (defined($transformInfoInterface)) {
                 $error = $error . $transformInfoInterface->getName();
             }
-            if ($org::allbinary::logic::visual::transform::info::objectConfig::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($org::allbinary::logic::visual::transform::info::objectConfig::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{TAGHELPERFACTORYERROR})) {
+            if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{TAGHELPERFACTORYERROR})) {
                 $self->{logUtil}->put($self->{commonStrings}->{EXCEPTION}, __PACKAGE__->getInstance(), $self->{commonStrings}->{GET_INSTANCE}, $e);
             }
             die $e;
@@ -82,8 +80,7 @@ sub getInstance {
 
 
 # throws Exception
-# Java overloaded method: Perl keeps the last definition
-sub getInstance {
+sub getInstance_j3_2 {
     my ($self, $abeClientInformation, $transformInfoInterface, $document) = @_;
         try {
             my $stringValidationUtil = 'org::allbinary::logic::string::StringValidationUtil'->getInstance();
@@ -97,11 +94,25 @@ sub getInstance {
             if (defined($transformInfoInterface)) {
                 $error = $error . $transformInfoInterface->getName();
             }
-            if ($org::allbinary::logic::visual::transform::info::objectConfig::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($org::allbinary::logic::visual::transform::info::objectConfig::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{TAGHELPERFACTORYERROR})) {
+            if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{TAGHELPERFACTORYERROR})) {
                 $self->{logUtil}->put($self->{commonStrings}->{EXCEPTION}, __PACKAGE__->getInstance(), "getInstance(document)", $e);
             }
             die $e;
         }
+}
+
+sub getInstance {
+    my ($invocant, @arguments) = @_;
+    return $invocant->getInstance_j0(@arguments) if scalar(@arguments) == 0;
+    return $invocant->getInstance_j3(@arguments) if scalar(@arguments) == 3;
+    return $invocant->getInstance_j2(@arguments) if scalar(@arguments) == 2;
+    die "No method getInstance takes " . scalar(@arguments) . " arguments";
+}
+
+sub getInstance_j3 {
+    my ($invocant, @arguments) = @_;
+    return $invocant->getInstance_j3_1(@arguments) if 1 && (!defined($arguments[0]) || (ref($arguments[0]) && ref($arguments[0]) ne 'ARRAY')) && (!defined($arguments[1]) || (ref($arguments[1]) && ref($arguments[1]) ne 'ARRAY')) && (!defined($arguments[2]) || (ref($arguments[2]) && ref($arguments[2]) ne 'ARRAY'));
+    return $invocant->getInstance_j3_2(@arguments);
 }
 
 use java::lang::Object ();
@@ -114,8 +125,8 @@ use org::allbinary::logic::string::StringValidationUtil ();
 use org::allbinary::logic::system::security::licensing::AbeClientInformationInterface ();
 use org::allbinary::logic::visual::transform::info::TransformInfoInterface ();
 use org::w3c::dom::Document ();
-use org::allbinary::logic::visual::transform::info::objectConfig::TransformInfoObjectConfigAndManipulatorFactoryBase ();
-use org::allbinary::logic::visual::transform::info::objectConfig::TransformInfoObjectConfigData ();
+use org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory ();
+use org::allbinary::logic::communication::log::config::type::LogConfigTypes ();
 use org::allbinary::logic::visual::transform::info::objectConfig::TransformInfoObjectConfig ();
 use org::allbinary::logic::visual::transform::info::objectConfig::GenericStoreTransformInfoObjectConfig ();
 

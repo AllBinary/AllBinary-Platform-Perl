@@ -63,7 +63,6 @@ use org::allbinary::logic::communication::log::LogUtil ();
 use org::allbinary::string::CommonStrings ();
 use org::allbinary::time::GameTickTimeDelayHelper ();
 use org::allbinary::time::GameTickTimeDelayHelperFactory ();
-use org::allbinary::game::displayable::canvas::GameRunnable ();
 
 1;
 

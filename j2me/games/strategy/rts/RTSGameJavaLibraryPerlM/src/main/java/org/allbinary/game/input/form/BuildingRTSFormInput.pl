@@ -125,10 +125,10 @@ sub buildFromMotionInput {
                     if ($self->{newUnconstructedRTSLayerInterfaceArray}->[$itemIndex] == 'org::allbinary::game::layer::special::CollidableDestroyableDamageableLayer'->getNullInstance()) {
                         $self->{newUnconstructedRTSLayerInterfaceArray}->[$itemIndex] = $self->getInstance($layerManager, $item, $geographicMapCellPosition);
                     } else {
-                        my $rtsLayer = $self->{newUnconstructedRTSLayerInterfaceArray}->[$itemIndex];
+                        my $positionedLayer = $self->{newUnconstructedRTSLayerInterfaceArray}->[$itemIndex];
                         my $cellPoint = $geographicMapCellPosition->getPoint();
-                        $rtsLayer->setPosition($cellPoint->getX(), $cellPoint->getY(), $cellPoint->getZ());
-                        $rtsLayer->{geographicMapCellPositionAreaBase}->update($geographicMapInterface);
+                        $positionedLayer->setPosition($cellPoint->getX(), $cellPoint->getY(), $cellPoint->getZ());
+                        $positionedLayer->{geographicMapCellPositionAreaBase}->update($geographicMapInterface);
                     }
                     my $rtsLayer = $self->{newUnconstructedRTSLayerInterfaceArray}->[$itemIndex];
                     $self->attemptBuild($rtsPlayerLayerInterface, $layerManager, $rtsLayer, $itemIndex);

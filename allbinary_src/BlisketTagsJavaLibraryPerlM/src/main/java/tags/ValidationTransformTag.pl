@@ -60,7 +60,7 @@ sub isValid {
             my $result = $method->invoke($self->getHelper(), undef);
             return $result;
         } catch ($e) {
-            if ($tags::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($tags::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{SQLTAGSERROR})) {
+            if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{SQLTAGSERROR})) {
                 $self->{logUtil}->put($self->{commonStrings}->{EXCEPTION}, $self, $self->{commonStrings}->{IS_VALID}, $e);
             }
             die $e;
@@ -77,7 +77,7 @@ sub validationInfo {
             my $result = $method->invoke($self->getHelper(), undef);
             return $result;
         } catch ($e) {
-            if ($tags::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($tags::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{SQLTAGSERROR})) {
+            if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{SQLTAGSERROR})) {
                 $self->{logUtil}->put($self->{commonStrings}->{EXCEPTION}, $self, "validationInfo()", $e);
             }
             die $e;
@@ -89,7 +89,7 @@ sub validationInfo {
 sub doStartTag {
     my ($self) = @_;
         try {
-            if ($tags::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($tags::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{JSPTAG})) {
+            if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{JSPTAG})) {
                 my $stringBuffer = 'org::allbinary::logic::string::StringMaker'->new();
                 my $request = $self->{pageContext}->getRequest();
                 $stringBuffer->append("ValidationViewTag Start For: ");
@@ -103,7 +103,7 @@ sub doStartTag {
             $self->setHelper();
             if ($self->isValid()) {
                 $self->SUPER::doStartTag();
-                if ($tags::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($tags::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{JSPTAG})) {
+                if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{JSPTAG})) {
                     my $stringBuffer = 'org::allbinary::logic::string::StringMaker'->new();
                     $stringBuffer->append("View File: ");
                     $stringBuffer->append($self->getObjectFile());
@@ -112,13 +112,13 @@ sub doStartTag {
                     $self->{logUtil}->putF($stringBuffer->toString(), $self, $self->{tagStrings}->{DO_START_TAG});
                 }
                 if ($self->{logic}) {
-                    return $self->{EVAL_BODY_INCLUDE};
+                    return java::lang::Object::jstatic('tags::ValidationTransformTag', 'EVAL_BODY_INCLUDE');
                 } else {
-                    return $self->{SKIP_BODY};
+                    return java::lang::Object::jstatic('tags::ValidationTransformTag', 'SKIP_BODY');
                 }
             } else {
                 $self->{pageContext}->getOut()->print($self->validationInfo());
-                if ($tags::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($tags::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{JSPTAG})) {
+                if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{JSPTAG})) {
                     my $stringBuffer = 'org::allbinary::logic::string::StringMaker'->new();
                     $stringBuffer->append("View File: ");
                     $stringBuffer->append($self->getObjectFile());
@@ -128,21 +128,21 @@ sub doStartTag {
                     $self->{logUtil}->putF($stringBuffer->toString(), $self, $self->{tagStrings}->{DO_START_TAG});
                 }
                 if ($self->{logic}) {
-                    return $self->{SKIP_BODY};
+                    return java::lang::Object::jstatic('tags::ValidationTransformTag', 'SKIP_BODY');
                 } else {
-                    return $self->{EVAL_BODY_INCLUDE};
+                    return java::lang::Object::jstatic('tags::ValidationTransformTag', 'EVAL_BODY_INCLUDE');
                 }
             }
         } catch ($e) {
             'org::allbinary::logic::communication::http::request::AbResponseHandler'->sendJspTagLicensingRedirect($self->{pageContext}, $e);
-            return $self->{SKIP_BODY};
+            return java::lang::Object::jstatic('tags::ValidationTransformTag', 'SKIP_BODY');
         }
 }
 
 
 sub doEndTag {
     my ($self) = @_;
-        if ($tags::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($tags::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{JSPTAG})) {
+        if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{JSPTAG})) {
             $self->{logUtil}->putF("Tag Ended", $self, "doEndTag");
         }
         $self->{logic} = 1;
@@ -158,6 +158,8 @@ use org::allbinary::logic::communication::log::LogUtil ();
 use org::allbinary::logic::string::StringMaker ();
 use org::allbinary::logic::system::security::licensing::LicensingException ();
 use taghelpers::ValidatedViewHelperFactory ();
+use org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory ();
+use org::allbinary::logic::communication::log::config::type::LogConfigTypes ();
 use tags::TransformTag ();
 
 1;

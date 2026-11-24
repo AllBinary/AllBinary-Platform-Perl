@@ -24,8 +24,8 @@ tie our $instance, 'java::lang::LazyStatic', sub { 'org::allbinary::logic::commu
 
 sub _init_fields {
     my ($self) = @_;
-    $self->{logger} = 'java::util::logging::Logger'->getLogger('org::allbinary::logic::communication::log::LogUtil'->getName());
-    $self->{logFormatUtil} = 'org::allbinary::logic::communication::log::LogFormatUtil'->getInstance();
+    $self->{logger} = 'java::util::logging::Logger'->getLogger((('org::allbinary::logic::communication::log::LogUtil') =~ s/::/./gr));
+    $self->{logFormatUtil} = java::lang::Object::jstatic('org::allbinary::logic::communication::log::LogUtil', 'LogFormatUtil')->getInstance();
 }
 
 
@@ -70,8 +70,8 @@ sub put {
         try {
             my $className = 'org::allbinary::string::CommonStrings'->getInstance()->{EMPTY};
             my $clazz = ref($anyType);
-            if (defined($clazz->getName())) {
-                $className = $clazz->getName();
+            if (defined((($clazz) =~ s/::/./gr))) {
+                $className = (($clazz) =~ s/::/./gr);
             }
             my $message = $self->{logFormatUtil}->getS($className, $functionName, $specialMessage);
             if (defined($exception)) {
@@ -103,7 +103,6 @@ use java::lang::LazyStatic ();
 # use java::util::logging::Logger ();
 use org::allbinary::logic::NullUtil ();
 use org::allbinary::string::CommonStrings ();
-use org::allbinary::logic::communication::log::LogFormatUtil ();
 
 1;
 

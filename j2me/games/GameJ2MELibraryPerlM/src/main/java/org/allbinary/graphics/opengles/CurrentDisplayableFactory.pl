@@ -118,14 +118,14 @@ sub update {
             my $features = 'org::allbinary::game::configuration::feature::Features'->getInstance();
             my $stringMaker = 'org::allbinary::logic::string::StringMaker'->new();
             $stringMaker->append($self->{stringUtil}->toString($self->{openGlReadydisplayable}));
-            if ($org::allbinary::game::layer::SWTUtil::isSWT && !$features->isDefault('org::allbinary::graphics::opengles::OpenGLFeatureFactory'->getInstance()->{OPENGL})) {
+            if ($org::allbinary::game::layer::SWTUtil::isSWT && !$features->isDefault(java::lang::Object::jstatic('org::allbinary::graphics::opengles::CurrentDisplayableFactory', 'OpenGLFeatureFactory')->getInstance()->{OPENGL})) {
                 'org::allbinary::logic::communication::log::PreLogUtil'->put($stringMaker->append($commonSeps->{SPACE})->append($org::allbinary::game::layer::SWTUtil::SWT)->append($commonSeps->{SPACE})->append($self->{RUNNABLE})->append($self->{stringUtil}->toString('org::allbinary::thread::NullRunnable'->getInstance()))->toString(), $self, $self->{commonStrings}->{UPDATE});
                 $self->setUsedRunnable('org::allbinary::game::displayable::canvas::NullWaitGameRunnable'->getInstance());
             } elsif ('org::allbinary::J2MEUtil'->isHTML()) {
                 'org::allbinary::logic::communication::log::PreLogUtil'->put($stringMaker->append($commonSeps->{SPACE})->append('org::allbinary::graphics::GraphicsStrings'->getInstance()->{HTML})->append($commonSeps->{SPACE})->append($self->{RUNNABLE})->append($self->{stringUtil}->toString($self->{runnable}))->toString(), $self, $self->{commonStrings}->{UPDATE});
                 $self->setUsedRunnable($self->{runnable});
-            } elsif ((Scalar::Util::blessed($self->{openGlReadydisplayable}) && $self->{openGlReadydisplayable}->isa('org::allbinary::game::displayable::canvas::DemoCanvas')) || (Scalar::Util::blessed($self->{openGlReadydisplayable}) && $self->{openGlReadydisplayable}->isa('org::allbinary::game::displayable::canvas::AllBinaryGameCanvas')) || $features->isDefault('org::allbinary::graphics::opengles::OpenGLFeatureFactory'->getInstance()->{OPENGL})) {
-                'org::allbinary::logic::communication::log::PreLogUtil'->put($stringMaker->append($commonSeps->{SPACE})->append('org::allbinary::graphics::opengles::OpenGLFeatureFactory'->getInstance()->{OPENGL}->toString())->append($commonSeps->{SPACE})->append($self->{RUNNABLE})->append($self->{stringUtil}->toString($self->{runnable}))->toString(), $self, $self->{commonStrings}->{UPDATE});
+            } elsif ((Scalar::Util::blessed($self->{openGlReadydisplayable}) && $self->{openGlReadydisplayable}->isa('org::allbinary::game::displayable::canvas::DemoCanvas')) || (Scalar::Util::blessed($self->{openGlReadydisplayable}) && $self->{openGlReadydisplayable}->isa('org::allbinary::game::displayable::canvas::AllBinaryGameCanvas')) || $features->isDefault(java::lang::Object::jstatic('org::allbinary::graphics::opengles::CurrentDisplayableFactory', 'OpenGLFeatureFactory')->getInstance()->{OPENGL})) {
+                'org::allbinary::logic::communication::log::PreLogUtil'->put($stringMaker->append($commonSeps->{SPACE})->append(java::lang::Object::jstatic('org::allbinary::graphics::opengles::CurrentDisplayableFactory', 'OpenGLFeatureFactory')->getInstance()->{OPENGL}->toString())->append($commonSeps->{SPACE})->append($self->{RUNNABLE})->append($self->{stringUtil}->toString($self->{runnable}))->toString(), $self, $self->{commonStrings}->{UPDATE});
                 $self->setUsedRunnable($self->{runnable});
             } else {
                 'org::allbinary::logic::communication::log::PreLogUtil'->put($stringMaker->append($self->{RUNNABLE})->append($self->{stringUtil}->toString('org::allbinary::thread::NullRunnable'->getInstance()))->toString(), $self, $self->{commonStrings}->{UPDATE});
@@ -178,7 +178,6 @@ use org::allbinary::string::CommonStrings ();
 use org::allbinary::thread::NullRunnable ();
 use org::allbinary::util::BasicArrayList ();
 use org::allbinary::util::BasicArrayListD ();
-use org::allbinary::graphics::opengles::OpenGLFeatureFactory ();
 
 1;
 

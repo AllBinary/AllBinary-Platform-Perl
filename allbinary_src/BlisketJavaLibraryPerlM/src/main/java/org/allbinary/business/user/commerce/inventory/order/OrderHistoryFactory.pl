@@ -43,7 +43,7 @@ sub getInstance {
             return $orderHistoryEntityInterface->getOrder($id);
         } catch ($e) {
             my $commonStrings = 'org::allbinary::string::CommonStrings'->getInstance();
-            if ($org::allbinary::business::user::commerce::inventory::order::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($org::allbinary::business::user::commerce::inventory::order::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{FACTORYERROR})) {
+            if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{FACTORYERROR})) {
                 $logUtil->put($commonStrings->{EXCEPTION}, "OrderHistoryFactory", $commonStrings->{GET_INSTANCE}, $e);
             }
             return undef;
@@ -54,6 +54,8 @@ use java::lang::Object ();
 use org::allbinary::data::tables::user::commerce::inventory::order::OrderHistoryEntity ();
 use org::allbinary::logic::communication::log::LogUtil ();
 use org::allbinary::string::CommonStrings ();
+use org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory ();
+use org::allbinary::logic::communication::log::config::type::LogConfigTypes ();
 
 1;
 

@@ -58,10 +58,10 @@ sub doStartTag {
             if ($self->isEnabled()) {
                 return $self->SUPER::doStartTag();
             }
-            return $self->{SKIP_BODY};
+            return java::lang::Object::jstatic('admin::tags::UserTag', 'SKIP_BODY');
         } catch ($e) {
             'org::allbinary::logic::communication::http::request::AbResponseHandler'->sendJspTagRedirect($self->{pageContext}, $e);
-            return $self->{SKIP_BODY};
+            return java::lang::Object::jstatic('admin::tags::UserTag', 'SKIP_BODY');
         }
 }
 
@@ -71,7 +71,6 @@ use admin::taghelpers::UserHelperFactory ();
 use org::allbinary::business::entry::EntryData ();
 use org::allbinary::business::user::role::UserRoleData ();
 use org::allbinary::logic::communication::http::request::AbResponseHandler ();
-use admin::tags::TableTag ();
 
 1;
 

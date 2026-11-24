@@ -35,7 +35,6 @@ sub getKey {
 use java::lang::Object ();
 use org::allbinary::logic::string::StringUtil ();
 use org::allbinary::util::BasicArrayListD ();
-use org::allbinary::logic::util::cache::CacheableInterface ();
 
 1;
 

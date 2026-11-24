@@ -55,7 +55,7 @@ sub deleteAtStart {
             }
             return 0;
         } catch ($e) {
-            if ($org::allbinary::logic::io::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($org::allbinary::logic::io::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{IDLOGGING})) {
+            if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{IDLOGGING})) {
                 $self->{logUtil}->put($self->{commonStrings}->{EXCEPTION}, $self, "deleteAtStart", $e);
             }
             return 0;
@@ -80,7 +80,7 @@ sub deleteBetween {
             }
             return 0;
         } catch ($e) {
-            if ($org::allbinary::logic::io::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($org::allbinary::logic::io::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{IDLOGGING})) {
+            if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{IDLOGGING})) {
                 $self->{logUtil}->put($self->{commonStrings}->{EXCEPTION}, $self, "deleteAtStart", $e);
             }
             return 0;
@@ -93,6 +93,8 @@ use java::lang::Object ();
 use org::allbinary::logic::communication::log::LogUtil ();
 use org::allbinary::logic::io::file::AbFileSystem ();
 use org::allbinary::string::CommonStrings ();
+use org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory ();
+use org::allbinary::logic::communication::log::config::type::LogConfigTypes ();
 
 1;
 

@@ -42,18 +42,18 @@ sub delete {
     my ($self, $value) = @_;
         try {
             $self->SUPER::deleteWhere('org::allbinary::business::entry::EntryData'->getInstance()->{ID}, $value);
-            if ($org::allbinary::data::tables::advertisement::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($org::allbinary::data::tables::advertisement::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{SQLLOGGING})) {
+            if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{SQLLOGGING})) {
                 $self->{logUtil}->putF($self->{commonStrings}->{SUCCESS}, $self, $self->{commonStrings}->{delete});
             }
         } catch ($e) {
-            if ($org::allbinary::data::tables::advertisement::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($org::allbinary::data::tables::advertisement::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{SQLLOGGING})) {
+            if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{SQLLOGGING})) {
                 $self->{logUtil}->put($self->{commonStrings}->{FAILURE}, $self, $self->{commonStrings}->{delete}, $e);
             }
         }
 }
 
 
-sub get {
+sub get_j1 {
     my ($self, $storeName) = @_;
         my $keysAndValues = 'org::allbinary::logic::StdUtil'->getInstance()->createHashMap();
         $keysAndValues->put('org::allbinary::business::context::modules::storefront::StoreFrontData'->getInstance()->{NAME}, $storeName);
@@ -67,14 +67,20 @@ sub get {
 }
 
 
-# Java overloaded method: Perl keeps the last definition
-sub get {
+sub get_j2 {
     my ($self, $storeName, $advertismentName) = @_;
         my $keysAndValues = 'org::allbinary::logic::StdUtil'->getInstance()->createHashMap();
         $keysAndValues->put('org::allbinary::business::context::modules::storefront::StoreFrontData'->getInstance()->{NAME}, $storeName);
         $keysAndValues->put('org::allbinary::business::advertisement::AdvertisementData'->getInstance()->{NAME}, $advertismentName);
         my $hashMap = $self->SUPER::getRow($keysAndValues);
         return undef;
+}
+
+sub get {
+    my ($invocant, @arguments) = @_;
+    return $invocant->get_j1(@arguments) if scalar(@arguments) == 1;
+    return $invocant->get_j2(@arguments) if scalar(@arguments) == 2;
+    die "No method get takes " . scalar(@arguments) . " arguments";
 }
 
 
@@ -127,6 +133,8 @@ use org::allbinary::logic::StdUtil ();
 use org::allbinary::logic::communication::log::LogUtil ();
 use org::allbinary::logic::communication::sql::AbSqlBean ();
 use org::allbinary::logic::string::StringMaker ();
+use org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory ();
+use org::allbinary::logic::communication::log::config::type::LogConfigTypes ();
 use org::allbinary::data::tables::advertisement::AdvertisementsEntityInterface ();
 
 1;

@@ -43,7 +43,7 @@ sub view {
             $httpTransformInfoInterface->getPropertiesHashMap()->put('org::allbinary::logic::visual::transform::info::TransformInfoData'->getInstance()->{PARTIAL}, 'org::allbinary::string::CommonSeps'->getInstance()->{SPACE} + 'org::allbinary::logic::visual::transform::info::TransformInfosData'->getInstance()->{PREVIEW});
             return $self->view('org::allbinary::logic::visual::transform::info::TransformInfosData'->getInstance()->{PREVIEW});
         } catch ($e) {
-            if ($views::business::context::modules::storefront::generator::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($views::business::context::modules::storefront::generator::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{TAGHELPERERROR})) {
+            if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{TAGHELPERERROR})) {
                 $self->{logUtil}->put($self->{commonStrings}->{EXCEPTION}, $self, "view()", $e);
             }
             die $e;
@@ -57,6 +57,8 @@ use org::allbinary::logic::visual::transform::info::TransformInfoHttpInterface (
 use org::allbinary::logic::visual::transform::info::TransformInfoInterface ();
 use org::allbinary::logic::visual::transform::info::TransformInfosData ();
 use org::allbinary::string::CommonSeps ();
+use org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory ();
+use org::allbinary::logic::communication::log::config::type::LogConfigTypes ();
 use views::business::context::modules::storefront::generator::GeneratorStoreFrontContextView ();
 
 1;

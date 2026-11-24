@@ -33,6 +33,12 @@ sub new {
     die "No constructor of TitleValidation takes " . scalar(@arguments) . " arguments";
 }
 
+sub _new1 {
+    my ($class, @arguments) = @_;
+    return $class->_new1_1(@arguments) if 1 && (!defined($arguments[0]) || (ref($arguments[0]) && ref($arguments[0]) ne 'ARRAY'));
+    return $class->_new1_2(@arguments);
+}
+
 
 sub _new0 {
     my ($class) = @_;
@@ -43,7 +49,7 @@ sub _new0 {
 }
 
 
-sub _new1 {
+sub _new1_1 {
     my ($class, $node) = @_;
     my $self = $class->SUPER::new($node);
     _init_fields($self);
@@ -52,7 +58,7 @@ sub _new1 {
 }
 
 
-sub _new1 {
+sub _new1_2 {
     my ($class, $hashMap) = @_;
     my $self = $class->SUPER::new($hashMap);
     _init_fields($self);
@@ -64,19 +70,19 @@ sub _new1 {
 sub isValid {
     my ($self) = @_;
         try {
-            if ($org::allbinary::logic::visual::transform::template::customizer::widgets::title::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($org::allbinary::logic::visual::transform::template::customizer::widgets::title::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{VIEW})) {
+            if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{VIEW})) {
                 $self->{logUtil}->putF("TitleValidation", $self, $self->{commonStrings}->{IS_VALID});
             }
             my $valid = 1;
-            if (!'org::allbinary::logic::string::StringValidationUtil'->getInstance()->isValidRequired($self->getTitle(), 1, 'org::allbinary::logic::visual::transform::template::customizer::widgets::title::TitleData'->getInstance()->{MAXLEN})) {
+            if (!'org::allbinary::logic::string::StringValidationUtil'->getInstance()->isValidRequired($self->getTitle(), 1, java::lang::Object::jstatic('org::allbinary::logic::visual::transform::template::customizer::widgets::title::TitleValidation', 'TitleData')->getInstance()->{MAXLEN})) {
                 $valid = 0;
             }
-            if ($org::allbinary::logic::visual::transform::template::customizer::widgets::title::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($org::allbinary::logic::visual::transform::template::customizer::widgets::title::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{VIEW})) {
+            if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{VIEW})) {
                 $self->{logUtil}->putF("TitleValidation: " . $valid, $self, $self->{commonStrings}->{IS_VALID});
             }
             return $valid;
         } catch ($e) {
-            if ($org::allbinary::logic::visual::transform::template::customizer::widgets::title::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($org::allbinary::logic::visual::transform::template::customizer::widgets::title::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{VIEWERROR})) {
+            if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{VIEWERROR})) {
                 $self->{logUtil}->put("Failed to validate form", $self, $self->{commonStrings}->{IS_VALID}, $e);
             }
             return 0;
@@ -91,7 +97,7 @@ sub validationInfo {
             $stringBuffer->append("Title is not valid.");
             return $stringBuffer->toString();
         } catch ($e) {
-            if ($org::allbinary::logic::visual::transform::template::customizer::widgets::title::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($org::allbinary::logic::visual::transform::template::customizer::widgets::title::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{VIEWERROR})) {
+            if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{VIEWERROR})) {
                 $self->{logUtil}->put("Failed to generate validation error info", $self, "validationInfo()", $e);
             }
             return "Error Validating Form";
@@ -118,8 +124,9 @@ use org::allbinary::logic::string::StringMaker ();
 use org::allbinary::logic::string::StringValidationUtil ();
 use org::w3c::dom::Document ();
 use org::w3c::dom::Node ();
+use org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory ();
+use org::allbinary::logic::communication::log::config::type::LogConfigTypes ();
 use org::allbinary::logic::visual::transform::template::customizer::widgets::title::TitleView ();
-use org::allbinary::logic::visual::transform::template::customizer::widgets::title::TitleData ();
 
 1;
 

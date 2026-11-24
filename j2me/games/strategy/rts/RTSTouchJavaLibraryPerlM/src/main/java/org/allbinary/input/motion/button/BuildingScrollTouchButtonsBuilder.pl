@@ -39,10 +39,10 @@ sub getList {
             $self->{logUtil}->putF($self->{commonStrings}->{START}, $self, $self->{commonStrings}->{CONSTRUCTOR});
             my $list = 'org::allbinary::util::BasicArrayListD'->new();
             my $touchButtonLocationHelper = 'org::allbinary::input::motion::button::TouchButtonLocationHelper'->new();
-            my $commonButtons = 'org::allbinary::input::motion::button::CommonButtons'->getInstance();
+            my $commonButtons = java::lang::Object::jstatic('org::allbinary::input::motion::button::BuildingScrollTouchButtonsBuilder', 'CommonButtons')->getInstance();
             my $basicTouchButtonCellPositionFactory = 'org::allbinary::input::motion::button::BasicTouchButtonCellPositionFactory'->new();
-            my $LEFT = 'org::allbinary::input::motion::button::TouchButton'->createButton('org::allbinary::input::motion::button::BasicTouchInputFactory'->getInstance()->{LEFT}, 'org::allbinary::input::motion::button::TouchButtonStrafeLeftResource'->getInstance(), $commonButtons->{NORMAL_BUTTON}, $basicTouchButtonCellPositionFactory->{TOP_LEFT}, $touchButtonLocationHelper->getColumnsRemainderHalf(), $touchButtonLocationHelper->getRowsRemainderHalf());
-            my $RIGHT = 'org::allbinary::input::motion::button::TouchButton'->createButton('org::allbinary::input::motion::button::BasicTouchInputFactory'->getInstance()->{RIGHT}, 'org::allbinary::input::motion::button::TouchButtonStrafeRightResource'->getInstance(), $commonButtons->{NORMAL_BUTTON}, $basicTouchButtonCellPositionFactory->{TOP_RIGHT}, $touchButtonLocationHelper->getColumnsRemainderHalf(), $touchButtonLocationHelper->getRowsRemainderHalf());
+            my $LEFT = java::lang::Object::jstatic('org::allbinary::input::motion::button::BuildingScrollTouchButtonsBuilder', 'TouchButton')->createButton(java::lang::Object::jstatic('org::allbinary::input::motion::button::BuildingScrollTouchButtonsBuilder', 'BasicTouchInputFactory')->getInstance()->{LEFT}, java::lang::Object::jstatic('org::allbinary::input::motion::button::BuildingScrollTouchButtonsBuilder', 'TouchButtonStrafeLeftResource')->getInstance(), $commonButtons->{NORMAL_BUTTON}, $basicTouchButtonCellPositionFactory->{TOP_LEFT}, $touchButtonLocationHelper->getColumnsRemainderHalf(), $touchButtonLocationHelper->getRowsRemainderHalf());
+            my $RIGHT = java::lang::Object::jstatic('org::allbinary::input::motion::button::BuildingScrollTouchButtonsBuilder', 'TouchButton')->createButton(java::lang::Object::jstatic('org::allbinary::input::motion::button::BuildingScrollTouchButtonsBuilder', 'BasicTouchInputFactory')->getInstance()->{RIGHT}, java::lang::Object::jstatic('org::allbinary::input::motion::button::BuildingScrollTouchButtonsBuilder', 'TouchButtonStrafeRightResource')->getInstance(), $commonButtons->{NORMAL_BUTTON}, $basicTouchButtonCellPositionFactory->{TOP_RIGHT}, $touchButtonLocationHelper->getColumnsRemainderHalf(), $touchButtonLocationHelper->getRowsRemainderHalf());
             $list->add($LEFT);
             $list->add($RIGHT);
             return $list;
@@ -57,14 +57,6 @@ use org::allbinary::util::BasicArrayList ();
 use org::allbinary::util::BasicArrayListD ();
 use org::allbinary::util::BasicArrayListUtil ();
 use org::allbinary::logic::communication::log::LogUtil ();
-use org::allbinary::input::motion::button::BaseTouchInput ();
-use org::allbinary::input::motion::button::TouchButtonLocationHelper ();
-use org::allbinary::input::motion::button::CommonButtons ();
-use org::allbinary::input::motion::button::BasicTouchButtonCellPositionFactory ();
-use org::allbinary::input::motion::button::TouchButton ();
-use org::allbinary::input::motion::button::BasicTouchInputFactory ();
-use org::allbinary::input::motion::button::TouchButtonStrafeLeftResource ();
-use org::allbinary::input::motion::button::TouchButtonStrafeRightResource ();
 
 1;
 

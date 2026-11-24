@@ -76,7 +76,7 @@ sub get {
         $stringBuffer->append($org::allbinary::logic::visual::transform::info::RootTransformInfoData::NAME);
         my $rootComponentInterface = 'org::allbinary::logic::visual::transform::TransformFactory'->getInstance()->getInstance($self->{abeClientInformation}, $stringBuffer->toString(), $self->getTransformInfoInterface());
         my $viewVector = $self->getTransformDomNodes();
-        if ($views::compound::objectConfig::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($views::compound::objectConfig::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{VIEW})) {
+        if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{VIEW})) {
             $self->{logUtil}->putF("Root View Called with: " . $viewVector->size(), $self, "get(transformInfoInterface)");
         }
         my $rootView = $rootComponentInterface->view();
@@ -94,7 +94,7 @@ sub get {
             $stringBuffer->append($replacementViewString);
             $stringBuffer->append($endXMLHeader);
             my $templateValue = $stringBuffer->toString();
-            if ($views::compound::objectConfig::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($views::compound::objectConfig::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{VIEW})) {
+            if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{VIEW})) {
                 $stringBuffer->delete(0, $stringBuffer->length());
                 $stringBuffer->append("Replacing: ");
                 $stringBuffer->append($templateKey);
@@ -105,7 +105,7 @@ sub get {
             my $replace = 'org::allbinary::logic::string::regex::replace::Replace'->new($templateKey, $templateValue);
             $rootView = $replace->all($rootView);
         }
-        if ($views::compound::objectConfig::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($views::compound::objectConfig::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{VIEW})) {
+        if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{VIEW})) {
             $self->{logUtil}->putF("End: Result of a compound view: " . $rootView, $self, "get()");
         }
         return $rootView;
@@ -117,7 +117,7 @@ sub createInputStream {
     my ($self) = @_;
         my $completeTemplateViewBytes = $self->get()->getBytes();
         my $bais = 'java::io::ByteArrayInputStream'->new($completeTemplateViewBytes);
-        if ($views::compound::objectConfig::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($views::compound::objectConfig::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{VIEW})) {
+        if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{VIEW})) {
             $self->{logUtil}->putF("Template: " . pack("C*", @{$completeTemplateViewBytes})->toString(), $self, "createInputStream()");
         }
         return $bais;
@@ -144,6 +144,8 @@ use org::allbinary::logic::visual::transform::info::TransformInfoInterface ();
 use org::allbinary::logic::visual::transform::info::objectConfig::GenericStoreTransformInfoObjectConfig ();
 use org::allbinary::string::CommonSeps ();
 use org::w3c::dom::Document ();
+use org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory ();
+use org::allbinary::logic::communication::log::config::type::LogConfigTypes ();
 
 1;
 

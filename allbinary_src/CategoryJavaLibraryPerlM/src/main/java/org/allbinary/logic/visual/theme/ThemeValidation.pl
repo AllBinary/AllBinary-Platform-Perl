@@ -41,6 +41,12 @@ sub new {
     die "No constructor of ThemeValidation takes " . scalar(@arguments) . " arguments";
 }
 
+sub _new2 {
+    my ($class, @arguments) = @_;
+    return $class->_new2_1(@arguments) if 1 && (!defined($arguments[0]) || (ref($arguments[0]) && ref($arguments[0]) ne 'ARRAY')) && (!defined($arguments[1]) || (ref($arguments[1]) && ref($arguments[1]) ne 'ARRAY'));
+    return $class->_new2_2(@arguments);
+}
+
 
 sub _new3 {
     my ($class, $transformInfoInterface, $cssStyleValidation, $categoryThemePath) = @_;
@@ -57,17 +63,17 @@ sub _new3 {
 }
 
 
-sub _new2 {
+sub _new2_1 {
     my ($class, $transformInfoInterface, $hashMap) = @_;
     my $self = bless({}, $class);
     _init_fields($self);
         $self->{transformInfoInterface} = $transformInfoInterface;
-        my $categoryThemeAbPath = 'org::allbinary::logic::io::path::AbPath'->new($hashMap->get('org::allbinary::logic::visual::theme::ThemeData'->getInstance()->{PATH}), 'org::allbinary::logic::string::StringUtil'->getInstance()->{EMPTY_STRING});
+        my $categoryThemeAbPath = 'org::allbinary::logic::io::path::AbPath'->new($hashMap->get(java::lang::Object::jstatic('org::allbinary::logic::visual::theme::ThemeValidation', 'ThemeData')->getInstance()->{PATH}), 'org::allbinary::logic::string::StringUtil'->getInstance()->{EMPTY_STRING});
         my $pathData = 'org::allbinary::logic::io::path::AbPathData'->getInstance();
         my $pathUtil = 'org::allbinary::logic::io::path::PathUtil'->getInstance();
         $self->{categoryAbPath} = $pathUtil->removeNameFromPath($categoryThemeAbPath->toString());
         $self->{themeName} = $pathData->getNameFromPath($categoryThemeAbPath->toString());
-        if ($org::allbinary::logic::visual::theme::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($org::allbinary::logic::visual::theme::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{VIEW})) {
+        if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{VIEW})) {
             my $stringBuffer = 'org::allbinary::logic::string::StringMaker'->new();
             $stringBuffer->append("CategoryThemePath: ");
             $stringBuffer->append($categoryThemeAbPath->toString());
@@ -82,16 +88,16 @@ sub _new2 {
 }
 
 
-sub _new2 {
+sub _new2_2 {
     my ($class, $storeThemeCategoryInterface, $node) = @_;
     my $self = bless({}, $class);
     _init_fields($self);
         $self->{transformInfoInterface} = $storeThemeCategoryInterface->getTransformInfoInterface();
         $self->{categoryAbPath} = $storeThemeCategoryInterface->getPath();
-        my $themeNameNode = 'org::allbinary::data::tree::dom::DomSearchHelper'->getNode('org::allbinary::logic::visual::theme::ThemeData'->getInstance()->{NAME}, $node->getChildNodes());
+        my $themeNameNode = 'org::allbinary::data::tree::dom::DomSearchHelper'->getNode(java::lang::Object::jstatic('org::allbinary::logic::visual::theme::ThemeValidation', 'ThemeData')->getInstance()->{NAME}, $node->getChildNodes());
         my $valueNode = 'org::allbinary::data::tree::dom::DomSearchHelper'->getNode($org::allbinary::data::tree::dom::DomData::VALUE, $themeNameNode->getChildNodes());
         $self->{themeName} = 'org::allbinary::data::tree::dom::DomNodeHelper'->getTextNodeValue($valueNode);
-        my $previewImageNameNode = 'org::allbinary::data::tree::dom::DomSearchHelper'->getNode('org::allbinary::logic::visual::theme::ThemeData'->getInstance()->{PREVIEW_IMAGE_NAME}, $node->getChildNodes());
+        my $previewImageNameNode = 'org::allbinary::data::tree::dom::DomSearchHelper'->getNode(java::lang::Object::jstatic('org::allbinary::logic::visual::theme::ThemeValidation', 'ThemeData')->getInstance()->{PREVIEW_IMAGE_NAME}, $node->getChildNodes());
         my $previewImageNameValueNode = 'org::allbinary::data::tree::dom::DomSearchHelper'->getNode($org::allbinary::data::tree::dom::DomData::VALUE, $previewImageNameNode->getChildNodes());
         $self->{themePreviewImageName} = 'org::allbinary::data::tree::dom::DomNodeHelper'->getTextNodeValue($previewImageNameValueNode);
         $self->{webAppAbPath} = $storeThemeCategoryInterface->getWebAppPath();
@@ -101,7 +107,7 @@ sub _new2 {
 
 
 # throws Exception
-sub init {
+sub init_j0 {
     my ($self) = @_;
         my $categoryFactoryInterface = 'org::allbinary::business::category::store::theme::StoreThemeCategoryFactory'->new($self->getTransformInfoInterface());
         my $categoryLoaderInterface = 'org::allbinary::data::tree::category::CategoryLoaderFactory'->getInstance($categoryFactoryInterface);
@@ -111,11 +117,17 @@ sub init {
 
 
 # throws Exception
-# Java overloaded method: Perl keeps the last definition
-sub init {
+sub init_j1 {
     my ($self, $storeThemeCategoryInterface) = @_;
         $self->{fileAbPath} = 'org::allbinary::logic::io::path::AbPath'->new($storeThemeCategoryInterface->getRootFilePath()->toString() . $self->{categoryAbPath}->toString(), 'org::allbinary::logic::string::StringUtil'->getInstance()->{EMPTY_STRING});
         $self->{webAppAbPath} = $storeThemeCategoryInterface->getWebAppPath();
+}
+
+sub init {
+    my ($invocant, @arguments) = @_;
+    return $invocant->init_j0(@arguments) if scalar(@arguments) == 0;
+    return $invocant->init_j1(@arguments) if scalar(@arguments) == 1;
+    die "No method init takes " . scalar(@arguments) . " arguments";
 }
 
 
@@ -167,7 +179,7 @@ sub isValid {
     my ($self) = @_;
         try {
             my $isValid = 1;
-            if ($org::allbinary::logic::visual::theme::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($org::allbinary::logic::visual::theme::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{VIEW})) {
+            if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{VIEW})) {
                 $self->{logUtil}->putF($self->{commonStrings}->{START}, $self, $self->{commonStrings}->{IS_VALID});
             }
             if (!'org::allbinary::logic::string::StringValidationUtil'->getInstance()->isValidRequired($self->{categoryAbPath}->toString(), $org::allbinary::logic::communication::sql::AbSqlData::MINSTRING, $org::allbinary::logic::communication::sql::AbSqlData::MAXSTRING)) {
@@ -179,12 +191,12 @@ sub isValid {
             if (!$self->getCssStyleValidation()->isValid()) {
                 $isValid = 0;
             }
-            if ($org::allbinary::logic::visual::theme::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($org::allbinary::logic::visual::theme::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{VIEW})) {
+            if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{VIEW})) {
                 $self->{logUtil}->putF("End: " . $isValid, $self, $self->{commonStrings}->{IS_VALID});
             }
             return $isValid;
         } catch ($e) {
-            if ($org::allbinary::logic::visual::theme::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($org::allbinary::logic::visual::theme::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{SQLTAGSERROR})) {
+            if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{SQLTAGSERROR})) {
                 $self->{logUtil}->put("Failed to validate form", $self, $self->{commonStrings}->{IS_VALID}, $e);
             }
             return 0;
@@ -199,7 +211,7 @@ sub validationInfo {
             $stringBuffer->append("Theme Validation Error");
             return $stringBuffer->toString();
         } catch ($e) {
-            if ($org::allbinary::logic::visual::theme::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($org::allbinary::logic::visual::theme::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{VIEWERROR})) {
+            if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{VIEWERROR})) {
                 $self->{logUtil}->put("Failed to generate validation error info", $self, "validationInfo()", $e);
             }
             return "Error Validating Form";
@@ -238,7 +250,7 @@ sub toVector {
 
 sub toHashMap {
     my ($self) = @_;
-        my $themeData = 'org::allbinary::logic::visual::theme::ThemeData'->getInstance();
+        my $themeData = java::lang::Object::jstatic('org::allbinary::logic::visual::theme::ThemeValidation', 'ThemeData')->getInstance();
         my $hashMap = 'org::allbinary::logic::StdUtil'->getInstance()->createHashMap();
         $hashMap->put($themeData->{NAME}, $self->getName());
         $hashMap->put($themeData->{PATH}, $self->getPath());
@@ -251,7 +263,7 @@ sub toHashMap {
 # throws Exception
 sub toXmlNode {
     my ($self, $document) = @_;
-        my $node = 'org::allbinary::data::tree::dom::ModDomHelper'->createNameValueNodes($document, 'org::allbinary::logic::visual::theme::ThemeData'->getInstance()->{NAME}, $self->toHashMap());
+        my $node = 'org::allbinary::data::tree::dom::ModDomHelper'->createNameValueNodes($document, java::lang::Object::jstatic('org::allbinary::logic::visual::theme::ThemeValidation', 'ThemeData')->getInstance()->{NAME}, $self->toHashMap());
         my $domNodeInterface = $self->getCssStyleValidation();
         $node->appendChild($domNodeInterface->toXmlNode($document));
         return $node;
@@ -290,8 +302,9 @@ use org::allbinary::logic::visual::transform::template::customizer::includes::st
 use org::allbinary::string::CommonStrings ();
 use org::w3c::dom::Document ();
 use org::w3c::dom::Node ();
+use org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory ();
+use org::allbinary::logic::communication::log::config::type::LogConfigTypes ();
 use org::allbinary::logic::visual::theme::ThemeInterface ();
-use org::allbinary::logic::visual::theme::ThemeData ();
 
 1;
 

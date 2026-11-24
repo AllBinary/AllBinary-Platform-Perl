@@ -60,13 +60,13 @@ sub setShippingType {
             my $success = "Successfully Set Shipping Type";
             my $order = $self->{weblisketSession}->getOrder();
             $order->setShippingMethod($self->{shippingType});
-            if ($admin::taghelpers::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($admin::taghelpers::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{SQLTAGS})) {
+            if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{SQLTAGS})) {
                 $self->{logUtil}->putF($success, $self, "setShippingType()");
             }
             return $success;
         } catch ($e) {
             my $error = "Failed to view Shipping Type";
-            if ($admin::taghelpers::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($admin::taghelpers::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{SQLTAGSERROR})) {
+            if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{SQLTAGSERROR})) {
                 $self->{logUtil}->put($self->{commonStrings}->{EXCEPTION}, $self, "setShippingType()", $e);
             }
             return $error;
@@ -84,7 +84,8 @@ use org::allbinary::business::user::commerce::inventory::order::OrderInterface (
 use org::allbinary::business::user::commerce::shipping::ShippingMethodData ();
 use org::allbinary::logic::communication::http::request::session::WeblisketSession ();
 use org::allbinary::logic::communication::log::LogUtil ();
-use admin::taghelpers::TagHelper ();
+use org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory ();
+use org::allbinary::logic::communication::log::config::type::LogConfigTypes ();
 
 1;
 

@@ -48,17 +48,23 @@ sub getStoreOrders {
 
 
 # throws Exception
-sub getOrders {
+sub getOrders_j1 {
     my ($self, $userName) = @_;
     die "abstract method getOrders";
 }
 
 
 # throws Exception
-# Java overloaded method: Perl keeps the last definition
-sub getOrders {
+sub getOrders_j3 {
     my ($self, $status, $fromDate, $toDate) = @_;
     die "abstract method getOrders";
+}
+
+sub getOrders {
+    my ($invocant, @arguments) = @_;
+    return $invocant->getOrders_j1(@arguments) if scalar(@arguments) == 1;
+    return $invocant->getOrders_j3(@arguments) if scalar(@arguments) == 3;
+    die "No method getOrders takes " . scalar(@arguments) . " arguments";
 }
 
 

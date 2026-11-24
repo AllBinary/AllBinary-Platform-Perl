@@ -63,6 +63,8 @@ use java::lang::Object ();
 use org::allbinary::globals::MESSAGES ();
 use org::allbinary::logic::control::validate::ValidationComponentInterface ();
 use org::allbinary::logic::visual::transform::info::TransformInfoInterface ();
+use org::w3c::dom::Document ();
+use org::w3c::dom::Node ();
 use views::generic::basket::mini::MiniBasketView ();
 
 1;

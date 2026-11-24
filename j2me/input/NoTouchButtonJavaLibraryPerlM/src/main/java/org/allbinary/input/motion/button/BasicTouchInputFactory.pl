@@ -106,7 +106,6 @@ use org::allbinary::logic::string::StringMaker ();
 use org::allbinary::string::CommonLabels ();
 use org::allbinary::util::BasicArrayList ();
 use org::allbinary::util::BasicArrayListD ();
-use org::allbinary::input::motion::button::TouchButtonInput ();
 
 1;
 

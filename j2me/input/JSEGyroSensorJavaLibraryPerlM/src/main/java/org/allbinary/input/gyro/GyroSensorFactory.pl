@@ -41,7 +41,6 @@ sub getInstance {
 }
 
 use java::lang::Object ();
-use org::allbinary::input::gyro::NoGyroSensor ();
 
 1;
 

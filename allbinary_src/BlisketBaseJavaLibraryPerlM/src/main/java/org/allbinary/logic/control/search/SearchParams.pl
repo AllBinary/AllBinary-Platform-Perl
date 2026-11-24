@@ -36,20 +36,20 @@ sub new {
     my $self = bless({}, $class);
     _init_fields($self);
         $self->{columnsAndSearchValues} = 'org::allbinary::logic::StdUtil'->getInstance()->createHashMap();
-        $self->setLength($request->getParameter($org::allbinary::logic::control::search::SearchData::LENGTH));
-        $self->setOrder($request->getParameter($org::allbinary::logic::control::search::SearchData::ORDER));
-        my $page = $request->getParameter($org::allbinary::logic::control::search::SearchData::PAGE);
+        $self->setLength($request->getParameter(java::lang::Object::jstatic('org::allbinary::logic::control::search::SearchParams', 'SearchData')->{LENGTH}));
+        $self->setOrder($request->getParameter(java::lang::Object::jstatic('org::allbinary::logic::control::search::SearchParams', 'SearchData')->{ORDER}));
+        my $page = $request->getParameter(java::lang::Object::jstatic('org::allbinary::logic::control::search::SearchParams', 'SearchData')->{PAGE});
         $self->setStartPage($page);
         $self->setEndPage($page);
-        $self->setSortBy($request->getParameter($org::allbinary::logic::control::search::SearchData::SORTBY));
+        $self->setSortBy($request->getParameter(java::lang::Object::jstatic('org::allbinary::logic::control::search::SearchParams', 'SearchData')->{SORTBY}));
         my $index = 0;
-        my $columnName = $request->getParameter($org::allbinary::logic::control::search::SearchData::COLUMNNAME . "[0]");
-        my $columnValue = $request->getParameter($org::allbinary::logic::control::search::SearchData::COLUMNVALUE . "[0]");
+        my $columnName = $request->getParameter(java::lang::Object::jstatic('org::allbinary::logic::control::search::SearchParams', 'SearchData')->{COLUMNNAME} . "[0]");
+        my $columnValue = $request->getParameter(java::lang::Object::jstatic('org::allbinary::logic::control::search::SearchParams', 'SearchData')->{COLUMNVALUE} . "[0]");
         while (defined($columnName)) {
             $self->add($columnName, $columnValue);
             $index++;
-            $columnName = $request->getParameter($org::allbinary::logic::control::search::SearchData::COLUMNNAME . "[" . $index . "]");
-            $columnValue = $request->getParameter($org::allbinary::logic::control::search::SearchData::COLUMNVALUE . "[" . $index . "]");
+            $columnName = $request->getParameter(java::lang::Object::jstatic('org::allbinary::logic::control::search::SearchParams', 'SearchData')->{COLUMNNAME} . "[" . $index . "]");
+            $columnValue = $request->getParameter(java::lang::Object::jstatic('org::allbinary::logic::control::search::SearchParams', 'SearchData')->{COLUMNVALUE} . "[" . $index . "]");
         }
     return $self;
 }
@@ -160,7 +160,7 @@ sub getEndPageInt {
 # throws Exception
 sub getParamsNode {
     my ($self, $document) = @_;
-        my $paramsNode = 'org::allbinary::data::tree::dom::ModDomHelper'->createNameValueNodes($document, $org::allbinary::logic::control::search::SearchData::PARAMS, $org::allbinary::logic::control::search::SearchData::PARAMS);
+        my $paramsNode = 'org::allbinary::data::tree::dom::ModDomHelper'->createNameValueNodes($document, java::lang::Object::jstatic('org::allbinary::logic::control::search::SearchParams', 'SearchData')->{PARAMS}, java::lang::Object::jstatic('org::allbinary::logic::control::search::SearchParams', 'SearchData')->{PARAMS});
         $paramsNode->appendChild($self->getFieldsNode($document));
         $paramsNode->appendChild($self->getOrderNode($document));
         $paramsNode->appendChild($self->getSortByNode($document));
@@ -172,14 +172,14 @@ sub getParamsNode {
 # throws Exception
 sub getFieldsNode {
     my ($self, $document) = @_;
-        my $fieldsNode = 'org::allbinary::data::tree::dom::ModDomHelper'->createNameValueNodes($document, $org::allbinary::logic::control::search::SearchData::FIELDS, $self->{columnsAndSearchValues}->size()->toString());
+        my $fieldsNode = 'org::allbinary::data::tree::dom::ModDomHelper'->createNameValueNodes($document, java::lang::Object::jstatic('org::allbinary::logic::control::search::SearchParams', 'SearchData')->{FIELDS}, $self->{columnsAndSearchValues}->size()->toString());
         my $set = $self->{columnsAndSearchValues}->keySet();
         my $searchValueArray = $set->toArray();
         my $size = scalar(@{$searchValueArray});
         for (my $index = 0; $index < $size; $index++) {
             my $key = $searchValueArray->[$index];
             my $searchValue = $self->{columnsAndSearchValues}->get($key);
-            $fieldsNode->appendChild('org::allbinary::data::tree::dom::ModDomHelper'->createNameValueNodes($document, $org::allbinary::logic::control::search::SearchData::FIELD, $key, 'org::allbinary::data::tree::dom::ToDomHelper'->convertNull($searchValue)));
+            $fieldsNode->appendChild('org::allbinary::data::tree::dom::ModDomHelper'->createNameValueNodes($document, java::lang::Object::jstatic('org::allbinary::logic::control::search::SearchParams', 'SearchData')->{FIELD}, $key, 'org::allbinary::data::tree::dom::ToDomHelper'->convertNull($searchValue)));
         }
         return $fieldsNode;
 }
@@ -188,33 +188,32 @@ sub getFieldsNode {
 # throws Exception
 sub getOrderNode {
     my ($self, $document) = @_;
-        return 'org::allbinary::data::tree::dom::ModDomHelper'->createNameValueNodes($document, $org::allbinary::logic::control::search::SearchData::ORDER, 'org::allbinary::data::tree::dom::ToDomHelper'->convertNull($self->getOrder()));
+        return 'org::allbinary::data::tree::dom::ModDomHelper'->createNameValueNodes($document, java::lang::Object::jstatic('org::allbinary::logic::control::search::SearchParams', 'SearchData')->{ORDER}, 'org::allbinary::data::tree::dom::ToDomHelper'->convertNull($self->getOrder()));
 }
 
 
 # throws Exception
 sub getSortByNode {
     my ($self, $document) = @_;
-        return 'org::allbinary::data::tree::dom::ModDomHelper'->createNameValueNodes($document, $org::allbinary::logic::control::search::SearchData::SORTBY, 'org::allbinary::data::tree::dom::ToDomHelper'->convertNull($self->getSortBy()));
+        return 'org::allbinary::data::tree::dom::ModDomHelper'->createNameValueNodes($document, java::lang::Object::jstatic('org::allbinary::logic::control::search::SearchParams', 'SearchData')->{SORTBY}, 'org::allbinary::data::tree::dom::ToDomHelper'->convertNull($self->getSortBy()));
 }
 
 
 # throws Exception
 sub getLengthNode {
     my ($self, $document) = @_;
-        return 'org::allbinary::data::tree::dom::ModDomHelper'->createNameValueNodes($document, $org::allbinary::logic::control::search::SearchData::LENGTH, 'org::allbinary::data::tree::dom::ToDomHelper'->convertNull($self->getLength()));
+        return 'org::allbinary::data::tree::dom::ModDomHelper'->createNameValueNodes($document, java::lang::Object::jstatic('org::allbinary::logic::control::search::SearchParams', 'SearchData')->{LENGTH}, 'org::allbinary::data::tree::dom::ToDomHelper'->convertNull($self->getLength()));
 }
 
 use java::lang::Object ();
 use java::util::HashMap ();
-# use java::util::Set ();
+use java::util::Set ();
 # use javax::servlet::http::HttpServletRequest ();
 use org::allbinary::data::tree::dom::ModDomHelper ();
 use org::allbinary::data::tree::dom::ToDomHelper ();
 use org::allbinary::logic::StdUtil ();
 use org::w3c::dom::Document ();
 use org::w3c::dom::Node ();
-use org::allbinary::logic::control::search::SearchData ();
 
 1;
 

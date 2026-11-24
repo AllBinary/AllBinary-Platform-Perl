@@ -51,7 +51,7 @@ sub new {
 # throws Exception
 sub saveFiles {
     my ($self, $byteArray, $fileName, $mediaData) = @_;
-        if ($views::admin::inventory::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($views::admin::inventory::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{CATEGORY})) {
+        if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{CATEGORY})) {
             $self->{logUtil}->putF("Start FileName: " . $fileName, $self, "saveFiles()");
         }
         if ('org::allbinary::logic::string::StringValidationUtil'->getInstance()->isEmpty($fileName)) {
@@ -73,14 +73,14 @@ sub saveFiles {
         $stringBuffer->append('org::allbinary::logic::io::path::AbPathData'->getInstance()->{EXTENSION_SEP});
         $stringBuffer->append($mediaData->getName());
         my $originalImageFile = 'org::allbinary::logic::io::file::AbFile'->createAbFile($stringBuffer->toString());
-        if ($views::admin::inventory::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($views::admin::inventory::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{CATEGORY})) {
+        if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{CATEGORY})) {
             $self->{logUtil}->putF("Saving Original Image: " . $originalImageFile, $self, "saveFiles()");
         }
         $originalImageFile->createNewFile();
         $fileUtil->write('java::io::ByteArrayInputStream'->new($byteArray), $originalImageFile);
         my $uploadMedia = 'org::allbinary::logic::communication::http::file::upload::media::UploadMediaSingleton'->getInstance();
         my $isMediaSupported = $uploadMedia->isWriterSupported($mediaData->getName()) || $uploadMedia->isReaderSupported($mediaData->getName());
-        if ($views::admin::inventory::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($views::admin::inventory::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{CATEGORY})) {
+        if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{CATEGORY})) {
             $stringBuffer->delete(0, $stringBuffer->length());
             $stringBuffer->append("Is Image Type: ");
             $stringBuffer->append($mediaData->getName());
@@ -92,7 +92,7 @@ sub saveFiles {
         $self->setFileNames($fileName);
         if ($isMediaSupported) {
             my $isMediaResizable = $uploadMedia->isWriterMedia($mediaData->getName(), 'org::allbinary::logic::visual::media::MediaTypeData'->getInstance()->{RESIZABLE_MEDIA});
-            if ($views::admin::inventory::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($views::admin::inventory::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{CATEGORY})) {
+            if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{CATEGORY})) {
                 $stringBuffer->delete(0, $stringBuffer->length());
                 $stringBuffer->append("Is ");
                 $stringBuffer->append($mediaData->toString());
@@ -103,7 +103,7 @@ sub saveFiles {
                 $self->{logUtil}->putF($stringBuffer->toString(), $self, "saveFiles()");
             }
             if ($isMediaResizable) {
-                if ($views::admin::inventory::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($views::admin::inventory::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{CATEGORY})) {
+                if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{CATEGORY})) {
                     $self->{logUtil}->putF("Saving Small Image: " . $self->{itemInterface}->getSmallImage(), $self, "saveFiles()");
                 }
                 $self->{mediaUtil}->saveImageFile($originalImageFile, $self->{itemInterface}->getSmallImage(), $fullPath, $mediaData, $self->{SMALLWIDTH}, $self->{SMALLHEIGHT});
@@ -111,7 +111,7 @@ sub saveFiles {
                 $self->{mediaUtil}->saveImageFile($originalImageFile, $self->{itemInterface}->getLargeImage(), $fullPath, $mediaData, $self->{LARGEWIDTH}, $self->{LARGEHEIGHT});
             } else {
                 my $isConvertable = $mediaData->isConvertableTo($defaultMediaData);
-                if ($views::admin::inventory::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($views::admin::inventory::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{CATEGORY})) {
+                if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{CATEGORY})) {
                     $stringBuffer->delete(0, $stringBuffer->length());
                     $stringBuffer->append("Converting: ");
                     $stringBuffer->append($defaultMediaData->getName());
@@ -122,7 +122,7 @@ sub saveFiles {
                     $self->{logUtil}->putF($stringBuffer->toString(), $self, "saveFiles()");
                 }
                 if ($isConvertable) {
-                    if ($views::admin::inventory::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($views::admin::inventory::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{CATEGORY})) {
+                    if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{CATEGORY})) {
                         $self->{logUtil}->putF("Saving Small Image: " . $self->{itemInterface}->getSmallImage(), $self, "saveFiles()");
                     }
                     $self->{mediaUtil}->saveImageFile($originalImageFile, $self->{itemInterface}->getSmallImage(), $fullPath, $defaultMediaData, $self->{SMALLWIDTH}, $self->{SMALLHEIGHT});
@@ -141,7 +141,7 @@ sub saveFiles {
                 }
             }
         }
-        if ($views::admin::inventory::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($views::admin::inventory::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{CATEGORY})) {
+        if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{CATEGORY})) {
             my $commonStrings = 'org::allbinary::string::CommonStrings'->getInstance();
             $self->{logUtil}->putF($commonStrings->{END}, $self, "saveFiles()");
         }
@@ -192,6 +192,8 @@ use org::allbinary::logic::visual::media::MediaData ();
 use org::allbinary::logic::visual::media::MediaTypeData ();
 use org::allbinary::logic::visual::media::MediaUtil ();
 use org::allbinary::string::CommonStrings ();
+use org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory ();
+use org::allbinary::logic::communication::log::config::type::LogConfigTypes ();
 
 1;
 

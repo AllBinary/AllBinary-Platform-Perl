@@ -23,7 +23,7 @@ tie our $SINGLETON, 'java::lang::LazyStatic', sub { 'org::allbinary::game::input
 
 sub _init_fields {
     my ($self) = @_;
-    $self->{keyEventWrapper} = 'org::allbinary::game::input::ABKeyEventWrapper'->getInstance();
+    $self->{keyEventWrapper} = java::lang::Object::jstatic('org::allbinary::game::input::PCKeyFactory', 'ABKeyEventWrapper')->getInstance();
     $self->{UNKNOWN} = 'org::allbinary::game::input::PCGameKey'->new($self->{keyEventWrapper}->{VK_UNDEFINED}, "UNKNOWN");
     $self->{ENTER} = 'org::allbinary::game::input::PCGameKey'->new(5, "Enter");
     $self->{_A} = 'org::allbinary::game::input::PCGameKey'->new($self->{keyEventWrapper}->{VK_A}, "A");
@@ -196,7 +196,6 @@ use java::lang::LazyStatic ();
 use org::allbinary::math::PositionStrings ();
 use org::allbinary::string::CommonPhoneStrings ();
 use org::allbinary::string::CommonSeps ();
-use org::allbinary::game::input::ABKeyEventWrapper ();
 use org::allbinary::game::input::PCGameKey ();
 
 1;

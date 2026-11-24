@@ -46,13 +46,13 @@ sub setStatus {
 sub doStartTag {
     my ($self) = @_;
         try {
-            if ($tags::admin::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($tags::admin::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{JSPTAG})) {
+            if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{JSPTAG})) {
                 $self->{logUtil}->putF("Tag Start", $self, $self->{tagStrings}->{DO_START_TAG});
             }
             $self->setName("Range Order History View");
             $self->setObjectFile("views.admin.orderhistory.DateRangeOrderHistoryView");
             if (defined($self->getCommand())) {
-                if ($self->getCommand()->compareTo($tags::admin::org::allbinary->{globals}->{GLOBALS2}->{VIEW}) == 0) {
+                if ($self->getCommand()->compareTo($org::allbinary::globals::GLOBALS2::VIEW) == 0) {
                 } else {
                     die ("No Such View Command: " . $self->getCommand());
                 }
@@ -61,7 +61,7 @@ sub doStartTag {
             die ("Command Null");
         } catch ($e) {
             'org::allbinary::logic::communication::http::request::AbResponseHandler'->sendJspTagRedirect($self->{pageContext}, $e);
-            return $self->{SKIP_BODY};
+            return java::lang::Object::jstatic('tags::admin::DateRangeOrderHistoryTag', 'SKIP_BODY');
         }
 }
 
@@ -70,6 +70,9 @@ use java::lang::Object ();
 use org::allbinary::logic::communication::http::request::AbResponseHandler ();
 use org::allbinary::logic::communication::log::LogUtil ();
 use tags::StoreValidationTransformTag ();
+use org::allbinary::globals::GLOBALS2 ();
+use org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory ();
+use org::allbinary::logic::communication::log::config::type::LogConfigTypes ();
 
 1;
 

@@ -24,7 +24,7 @@ sub _init_fields {
     my ($self) = @_;
     $self->{logUtil} = 'org::allbinary::logic::communication::log::LogUtil'->getInstance();
     $self->{commonStrings} = 'org::allbinary::string::CommonStrings'->getInstance();
-    $self->{basicItemData} = 'org::allbinary::business::user::commerce::inventory::item::BasicItemData'->getInstance();
+    $self->{basicItemData} = java::lang::Object::jstatic('org::allbinary::business::user::commerce::inventory::item::BasicItem', 'BasicItemData')->getInstance();
     $self->{itemId} = undef;
     $self->{number} = undef;
     $self->{inBaskets} = undef;
@@ -69,7 +69,7 @@ sub _new1 {
     my ($class, $itemHashMap) = @_;
     my $self = bless({}, $class);
     _init_fields($self);
-        if ($org::allbinary::business::user::commerce::inventory::item::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($org::allbinary::business::user::commerce::inventory::item::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{PRODUCTSEARCHLOGGING})) {
+        if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{PRODUCTSEARCHLOGGING})) {
             $self->{logUtil}->putF($self->{commonStrings}->{START}, $self, "Constructor(HashMap)");
         }
         $self->{itemId} = $itemHashMap->get($self->{basicItemData}->{ID});
@@ -109,7 +109,7 @@ sub _new0 {
     my ($class) = @_;
     my $self = bless({}, $class);
     _init_fields($self);
-        if ($org::allbinary::business::user::commerce::inventory::item::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($org::allbinary::business::user::commerce::inventory::item::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{PRODUCTSEARCHLOGGING})) {
+        if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{PRODUCTSEARCHLOGGING})) {
             $self->{logUtil}->putF($self->{commonStrings}->{START}, $self, $self->{commonStrings}->{CONSTRUCTOR});
         }
         my $EMPTY = 'org::allbinary::logic::string::StringUtil'->getInstance()->{EMPTY_STRING};
@@ -522,7 +522,7 @@ sub getTotal {
 
 sub toHashMap {
     my ($self) = @_;
-        if ($org::allbinary::business::user::commerce::inventory::item::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($org::allbinary::business::user::commerce::inventory::item::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{PRODUCTSEARCHLOGGING})) {
+        if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{PRODUCTSEARCHLOGGING})) {
             $self->{logUtil}->putF($self->{commonStrings}->{START}, $self, "toHashMap");
         }
         my $hashMap = 'org::allbinary::logic::StdUtil'->getInstance()->createHashMap();
@@ -562,7 +562,7 @@ sub toHashMap {
 
 sub toVector {
     my ($self) = @_;
-        if ($org::allbinary::business::user::commerce::inventory::item::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($org::allbinary::business::user::commerce::inventory::item::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{PRODUCTSEARCHLOGGING})) {
+        if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{PRODUCTSEARCHLOGGING})) {
             $self->{logUtil}->putF($self->{commonStrings}->{START}, $self, "toVector");
         }
         my $values = 'org::allbinary::util::BasicArrayListD'->new();
@@ -622,8 +622,8 @@ use org::allbinary::logic::string::StringUtil ();
 use org::allbinary::logic::string::StringValidationUtil ();
 use org::allbinary::string::CommonPhoneStrings ();
 use org::allbinary::string::CommonStrings ();
-use org::allbinary::business::user::commerce::inventory::item::ItemInterface ();
-use org::allbinary::business::user::commerce::inventory::item::BasicItemData ();
+use org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory ();
+use org::allbinary::logic::communication::log::config::type::LogConfigTypes ();
 
 1;
 

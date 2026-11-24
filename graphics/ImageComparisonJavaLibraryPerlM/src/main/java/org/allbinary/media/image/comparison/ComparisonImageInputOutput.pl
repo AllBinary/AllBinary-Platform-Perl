@@ -36,7 +36,7 @@ sub new {
 
 
 # throws Exception
-sub save {
+sub save_j1 {
     my ($self, $frame) = @_;
         my $commonStrings = 'org::allbinary::string::CommonStrings'->getInstance();
         if ($frame > 0) {
@@ -54,8 +54,7 @@ sub save {
 
 
 # throws Exception
-# Java overloaded method: Perl keeps the last definition
-sub save {
+sub save_j2 {
     my ($self, $imageComparisonResult, $frame) = @_;
         my $commonStrings = 'org::allbinary::string::CommonStrings'->getInstance();
         my $filePathStringBuffer = 'org::allbinary::logic::string::StringMaker'->new();
@@ -81,6 +80,13 @@ sub save {
         my $imagePersistanceUtil = 'org::allbinary::media::image::ImagePersistanceUtil'->getInstance();
         $imagePersistanceUtil->saveWithImageIO($filePath1, $bufferedImageArray->[0]);
         $imagePersistanceUtil->saveWithImageIO($filePath2, $bufferedImageArray->[1]);
+}
+
+sub save {
+    my ($invocant, @arguments) = @_;
+    return $invocant->save_j1(@arguments) if scalar(@arguments) == 1;
+    return $invocant->save_j2(@arguments) if scalar(@arguments) == 2;
+    die "No method save takes " . scalar(@arguments) . " arguments";
 }
 
 use java::lang::Object ();

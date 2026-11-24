@@ -35,14 +35,13 @@ sub new {
 }
 
 
-sub visit {
+sub visit_j1_1 {
     my ($self, $anyType) = @_;
         return $self->visit($anyType);
 }
 
 
-# Java overloaded method: Perl keeps the last definition
-sub visit {
+sub visit_j1_2 {
     my ($self, $osgiServiceInterface) = @_;
         try {
             my $inputAutomationModuleService = $osgiServiceInterface;
@@ -55,6 +54,18 @@ sub visit {
             $self->{logUtil}->put($self->{commonStrings}->{EXCEPTION}, $self, "visit", $e);
             return 0;
         }
+}
+
+sub visit {
+    my ($invocant, @arguments) = @_;
+    return $invocant->visit_j1(@arguments) if scalar(@arguments) == 1;
+    die "No method visit takes " . scalar(@arguments) . " arguments";
+}
+
+sub visit_j1 {
+    my ($invocant, @arguments) = @_;
+    return $invocant->visit_j1_1(@arguments) if 1 && (!defined($arguments[0]) || (ref($arguments[0]) && ref($arguments[0]) ne 'ARRAY'));
+    return $invocant->visit_j1_2(@arguments);
 }
 
 use java::lang::Object ();

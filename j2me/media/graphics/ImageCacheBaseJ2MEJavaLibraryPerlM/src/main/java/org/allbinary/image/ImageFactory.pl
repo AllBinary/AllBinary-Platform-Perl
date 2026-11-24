@@ -50,7 +50,7 @@ sub createImage {
 
 
 # throws Exception
-sub createImageFromInputStream {
+sub createImageFromInputStream_j2 {
     my ($self, $key, $inputStream) = @_;
         my $image = 'org::allbinary::MIDPUtil'->getInstance()->createImageFromInputStream($inputStream);
         return $image;
@@ -58,10 +58,16 @@ sub createImageFromInputStream {
 
 
 # throws Exception
-# Java overloaded method: Perl keeps the last definition
-sub createImageFromInputStream {
+sub createImageFromInputStream_j1 {
     my ($self, $inputStream) = @_;
         return 'org::allbinary::MIDPUtil'->getInstance()->createImageFromInputStream($inputStream);
+}
+
+sub createImageFromInputStream {
+    my ($invocant, @arguments) = @_;
+    return $invocant->createImageFromInputStream_j2(@arguments) if scalar(@arguments) == 2;
+    return $invocant->createImageFromInputStream_j1(@arguments) if scalar(@arguments) == 1;
+    die "No method createImageFromInputStream takes " . scalar(@arguments) . " arguments";
 }
 
 use java::lang::Object ();

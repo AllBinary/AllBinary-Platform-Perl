@@ -62,7 +62,6 @@ use javax::microedition::lcdui::Canvas ();
 use org::allbinary::logic::math::SmallIntegerSingletonFactory ();
 use org::allbinary::time::NoTimeDelayHelper ();
 use org::allbinary::util::ABHashtable ();
-use org::allbinary::game::ag::ai::InputProbability ();
 
 1;
 

@@ -58,7 +58,7 @@ sub processRequest {
             $out->flush();
             $out->close();
         } catch ($e) {
-            if ($servlet::request::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($servlet::request::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{SERVLETERROR})) {
+            if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{SERVLETERROR})) {
                 $self->{logUtil}->put("Servlet LicensingException", $self, "processRequest()", $e);
             }
             $response->sendRedirect($self->{abcs}->{globals}->{URLGLOBALS}->{LICENSEERRORPAGE});
@@ -86,7 +86,8 @@ sub getServletInfo {
 }
 
 use java::lang::Object ();
-# use java::io ();
+# use java::io::PrintWriter ();
+# use java::io::IOException ();
 # use java::net ();
 # use javax::servlet ();
 # use javax::servlet::http ();
@@ -94,7 +95,8 @@ use org::allbinary::logic::system::security::licensing::LicensingException ();
 use org::allbinary::logic::communication::log::LogUtil ();
 use org::allbinary::logic::control::workflow::WorkFlowInterface ();
 use org::allbinary::logic::control::workflow::RequestWorkFlowFactory ();
-use servlet::request::HttpServlet ();
+use org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory ();
+use org::allbinary::logic::communication::log::config::type::LogConfigTypes ();
 
 1;
 

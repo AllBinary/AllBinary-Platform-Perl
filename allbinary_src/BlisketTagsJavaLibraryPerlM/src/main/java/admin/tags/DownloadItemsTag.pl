@@ -36,18 +36,18 @@ sub doStartTag {
         try {
             if ($self->isEnabled()) {
                 if (defined($self->getCommand())) {
-                    if ($self->getCommand()->compareTo($admin::tags::org::allbinary->{globals}->{GLOBALS2}->{BACKUP}) != 0 && $self->getCommand()->compareTo($admin::tags::org::allbinary->{globals}->{GLOBALS2}->{RESTORE}) != 0 && $self->getCommand()->compareTo($self->{commonStrings}->{CREATE}) != 0 && $self->getCommand()->compareTo($self->{commonStrings}->{DROP}) != 0) {
+                    if ($self->getCommand()->compareTo($org::allbinary::globals::GLOBALS2::BACKUP) != 0 && $self->getCommand()->compareTo($org::allbinary::globals::GLOBALS2::RESTORE) != 0 && $self->getCommand()->compareTo($self->{commonStrings}->{CREATE}) != 0 && $self->getCommand()->compareTo($self->{commonStrings}->{DROP}) != 0) {
                         my $parentTag = $self->getParent();
                         'admin::tags::ParentInventoryTagHelper'->getInstance()->isValid($self, $parentTag);
-                        $self->getPropertiesHashMap()->put($admin::tags::AbTagData::PARENT, $parentTag);
+                        $self->getPropertiesHashMap()->put(java::lang::Object::jstatic('admin::tags::DownloadItemsTag', 'AbTagData')->{PARENT}, $parentTag);
                     }
                     return $self->SUPER::doStartTag();
                 }
             }
-            return $self->{SKIP_BODY};
+            return java::lang::Object::jstatic('admin::tags::DownloadItemsTag', 'SKIP_BODY');
         } catch ($e) {
             'org::allbinary::logic::communication::http::request::AbResponseHandler'->sendJspTagRedirect($self->{pageContext}, $e);
-            return $self->{SKIP_BODY};
+            return java::lang::Object::jstatic('admin::tags::DownloadItemsTag', 'SKIP_BODY');
         }
 }
 
@@ -57,9 +57,8 @@ use java::lang::Object ();
 use admin::taghelpers::DownloadItemsHelperFactory ();
 use admin::taghelpers::DownloadItemsRequestHelperFactory ();
 use org::allbinary::logic::communication::http::request::AbResponseHandler ();
-use admin::tags::TableTag ();
+use org::allbinary::globals::GLOBALS2 ();
 use admin::tags::ParentInventoryTagHelper ();
-use admin::tags::AbTagData ();
 
 1;
 

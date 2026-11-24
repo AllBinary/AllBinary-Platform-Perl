@@ -59,7 +59,7 @@ sub getValue {
 }
 
 
-sub updateWhere {
+sub updateWhere_j3 {
     my ($self, $key, $value, $updatedKeyValuePairs) = @_;
         my $stringBuffer = 'org::allbinary::logic::string::StringMaker'->new();
         $stringBuffer->append($self->{sqlStrings}->{UPDATE});
@@ -92,11 +92,11 @@ sub updateWhere {
             $stringBuffer->append($self->{sqlStrings}->{CLOSE_QUOTE});
             my $sqlStatement = $stringBuffer->toString();
             $self->executeSQLStatement($sqlStatement);
-            if ($org::allbinary::logic::communication::sql::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($org::allbinary::logic::communication::sql::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{SQLLOGGING})) {
+            if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{SQLLOGGING})) {
                 $self->{logUtil}->putF($self->{SUCCESS_SQL_STATEMENT} . $sqlStatement, $self, $self->{METHOD_UPDATE_WHERE});
             }
         } catch ($e) {
-            if ($org::allbinary::logic::communication::sql::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($org::allbinary::logic::communication::sql::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{SQLLOGGINGERROR})) {
+            if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{SQLLOGGINGERROR})) {
                 $self->{logUtil}->put($self->{FAILED_SQL_STATEMENT} + $stringBuffer, $self, $self->{METHOD_UPDATE_WHERE}, $e);
             }
         }
@@ -104,8 +104,7 @@ sub updateWhere {
 
 
 # throws Exception
-# Java overloaded method: Perl keeps the last definition
-sub updateWhere {
+sub updateWhere_j2 {
     my ($self, $whereKeyValuePairs, $updatedKeyValuePairs) = @_;
         my $stringBuffer = 'org::allbinary::logic::string::StringMaker'->new();
         $stringBuffer->append($self->{sqlStrings}->{UPDATE});
@@ -119,7 +118,7 @@ sub updateWhere {
                 $stringBuffer->append($self->{commonSeps}->{SPACE});
                 $stringBuffer->append($columnName);
                 $stringBuffer->append($self->{EQUAL_QUOTE});
-                if ($org::allbinary::logic::communication::sql::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($org::allbinary::logic::communication::sql::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{SQLLOGGING})) {
+                if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{SQLLOGGING})) {
                     $self->{logUtil}->putF($self->{COLUMN_NAME_LABEL} . $columnName, $self, $self->{METHOD_UPDATE_WHERE});
                 }
                 my $columnValue = $updatedKeyValuePairs->get($columnName);
@@ -153,19 +152,26 @@ sub updateWhere {
             }
             my $sqlStatement = $stringBuffer->toString();
             $self->executeSQLStatement($sqlStatement);
-            if ($org::allbinary::logic::communication::sql::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($org::allbinary::logic::communication::sql::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{SQLLOGGING})) {
+            if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{SQLLOGGING})) {
                 $self->{logUtil}->putF($self->{SUCCESS_SQL_STATEMENT} . $sqlStatement, $self, $self->{METHOD_UPDATE_WHERE});
             }
         } catch ($e) {
-            if ($org::allbinary::logic::communication::sql::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($org::allbinary::logic::communication::sql::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{SQLLOGGINGERROR})) {
+            if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{SQLLOGGINGERROR})) {
                 $self->{logUtil}->put($self->{FAILED_SQL_STATEMENT} + $stringBuffer, $self, $self->{METHOD_UPDATE_WHERE}, $e);
             }
             die $e;
         }
 }
 
+sub updateWhere {
+    my ($invocant, @arguments) = @_;
+    return $invocant->updateWhere_j3(@arguments) if scalar(@arguments) == 3;
+    return $invocant->updateWhere_j2(@arguments) if scalar(@arguments) == 2;
+    die "No method updateWhere takes " . scalar(@arguments) . " arguments";
+}
 
-sub deleteWhere {
+
+sub deleteWhere_j2 {
     my ($self, $key, $value) = @_;
         my $stringBuffer = 'org::allbinary::logic::string::StringMaker'->new();
         $stringBuffer->append($self->{sqlStrings}->{DELETE});
@@ -179,19 +185,18 @@ sub deleteWhere {
         try {
             my $sqlStatement = $stringBuffer->toString();
             $self->executeSQLStatement($sqlStatement);
-            if ($org::allbinary::logic::communication::sql::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($org::allbinary::logic::communication::sql::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{SQLLOGGING})) {
+            if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{SQLLOGGING})) {
                 $self->{logUtil}->putF($self->{SUCCESS_SQL_STATEMENT} . $sqlStatement, $self, $self->{METHOD_DELETE_WHERE});
             }
         } catch ($e) {
-            if ($org::allbinary::logic::communication::sql::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($org::allbinary::logic::communication::sql::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{SQLLOGGINGERROR})) {
+            if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{SQLLOGGINGERROR})) {
                 $self->{logUtil}->put($self->{FAILED_SQL_STATEMENT} . $stringBuffer->toString(), $self, $self->{METHOD_DELETE_WHERE}, $e);
             }
         }
 }
 
 
-# Java overloaded method: Perl keeps the last definition
-sub deleteWhere {
+sub deleteWhere_j1 {
     my ($self, $keysAndValues) = @_;
         my $stringBuffer = 'org::allbinary::logic::string::StringMaker'->new();
         $stringBuffer->append($self->{sqlStrings}->{DELETE});
@@ -215,14 +220,21 @@ sub deleteWhere {
             }
             my $sqlStatement = $stringBuffer->toString();
             $self->executeSQLStatement($sqlStatement);
-            if ($org::allbinary::logic::communication::sql::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($org::allbinary::logic::communication::sql::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{SQLLOGGING})) {
+            if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{SQLLOGGING})) {
                 $self->{logUtil}->putF($self->{SUCCESS_SQL_STATEMENT} . $sqlStatement, $self, $self->{METHOD_DELETE_WHERE});
             }
         } catch ($e) {
-            if ($org::allbinary::logic::communication::sql::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($org::allbinary::logic::communication::sql::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{SQLLOGGINGERROR})) {
+            if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{SQLLOGGINGERROR})) {
                 $self->{logUtil}->put($self->{FAILED_SQL_STATEMENT} . $stringBuffer->toString(), $self, $self->{METHOD_DELETE_WHERE}, $e);
             }
         }
+}
+
+sub deleteWhere {
+    my ($invocant, @arguments) = @_;
+    return $invocant->deleteWhere_j2(@arguments) if scalar(@arguments) == 2;
+    return $invocant->deleteWhere_j1(@arguments) if scalar(@arguments) == 1;
+    die "No method deleteWhere takes " . scalar(@arguments) . " arguments";
 }
 
 
@@ -245,12 +257,12 @@ sub insert {
             $stringBuffer->append($self->{INSERT_END});
             my $sqlStatement = $stringBuffer->toString();
             $self->executeSQLStatement($sqlStatement);
-            if ($org::allbinary::logic::communication::sql::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($org::allbinary::logic::communication::sql::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{SQLLOGGING})) {
+            if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{SQLLOGGING})) {
                 $self->{logUtil}->putF($self->{SUCCESS_SQL_STATEMENT} . $sqlStatement, $self, $self->{INSERT});
             }
         } catch ($e) {
-            if ($org::allbinary::logic::communication::sql::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($org::allbinary::logic::communication::sql::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{SQLLOGGINGERROR})) {
-                $self->{logUtil}->put($self->{FAILED_SQL_STATEMENT} . $stringBuffer->toString(), $self, $self->{INSERT}, $e);
+            if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{SQLLOGGINGERROR})) {
+                $self->{logUtil}->put($self->{FAILED_SQL_STATEMENT} . $stringBuffer->toString(), $self, java::lang::Object::jstatic('org::allbinary::logic::communication::sql::AbSqlRow', 'INSERT'), $e);
             }
         }
 }
@@ -279,7 +291,7 @@ sub getRow {
                 }
             }
             my $sqlStatement = $stringBuffer->toString();
-            if ($org::allbinary::logic::communication::sql::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($org::allbinary::logic::communication::sql::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{SQLLOGGING})) {
+            if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{SQLLOGGING})) {
                 $self->{logUtil}->putF($self->{sqlStrings}->{SQL_STATEMENT_LABEL} . $sqlStatement, $self, $self->{METHOD_GET_ROW});
             }
             my $rset = $self->executeSQLStatement($sqlStatement);
@@ -292,17 +304,17 @@ sub getRow {
                     my $field = $rset->getString($columnName);
                     $result->put($columnName, $field);
                 }
-                if ($org::allbinary::logic::communication::sql::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($org::allbinary::logic::communication::sql::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{SQLLOGGING})) {
+                if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{SQLLOGGING})) {
                     $self->{logUtil}->putF($self->{ROW_VALUE_LABEL} . $result->toString(), $self, $self->{METHOD_GET_ROW});
                 }
                 return $result;
             }
-            if ($org::allbinary::logic::communication::sql::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($org::allbinary::logic::communication::sql::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{SQLLOGGINGERROR})) {
+            if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{SQLLOGGINGERROR})) {
                 $self->{logUtil}->putF($self->{NO_RESULTS_IN_RESULT_SET}, $self, $self->{METHOD_GET_ROW});
             }
             return undef;
         } catch ($e) {
-            if ($org::allbinary::logic::communication::sql::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($org::allbinary::logic::communication::sql::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{SQLLOGGINGERROR})) {
+            if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{SQLLOGGINGERROR})) {
                 $self->{logUtil}->put($self->{FAILED_SQL_STATEMENT} + $stringBuffer, $self, $self->{METHOD_GET_ROW}, $e);
             }
             return undef;
@@ -310,14 +322,13 @@ sub getRow {
 }
 
 
-sub getRows {
+sub getRows_j1 {
     my ($self, $keysAndValues) = @_;
         return $self->getRows($keysAndValues, 'org::allbinary::logic::string::StringUtil'->getInstance()->{EMPTY_STRING});
 }
 
 
-# Java overloaded method: Perl keeps the last definition
-sub getRows {
+sub getRows_j2 {
     my ($self, $keysAndValues, $more) = @_;
         my $stringBuffer = 'org::allbinary::logic::string::StringMaker'->new();
         $stringBuffer->append($self->{sqlStrings}->{SELECT_ALL_FROM});
@@ -339,7 +350,7 @@ sub getRows {
                     $stringBuffer->append($self->{sqlStrings}->{AND});
                 }
             }
-            if ($org::allbinary::logic::communication::sql::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($org::allbinary::logic::communication::sql::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{SQLLOGGING})) {
+            if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{SQLLOGGING})) {
                 $self->{logUtil}->putF($self->{sqlStrings}->{SQL_STATEMENT_LABEL} + $stringBuffer, $self, $self->{METHOD_GET_ROWS});
             }
             $stringBuffer->append($more);
@@ -355,18 +366,25 @@ sub getRows {
                     $result->put($columnName, $field);
                 }
                 my $resultAsString = $result->toString();
-                if ($org::allbinary::logic::communication::sql::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($org::allbinary::logic::communication::sql::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{SQLLOGGING})) {
+                if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{SQLLOGGING})) {
                     $self->{logUtil}->putF($self->{GET_ROW} . $resultAsString, $self, $self->{METHOD_GET_ROWS});
                 }
                 $rows->add($result);
             }
             return $rows;
         } catch ($e) {
-            if ($org::allbinary::logic::communication::sql::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($org::allbinary::logic::communication::sql::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{SQLLOGGINGERROR})) {
+            if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{SQLLOGGINGERROR})) {
                 $self->{logUtil}->put($self->{FAILED_SQL_STATEMENT} + $stringBuffer, $self, $self->{METHOD_GET_ROWS}, $e);
             }
             return undef;
         }
+}
+
+sub getRows {
+    my ($invocant, @arguments) = @_;
+    return $invocant->getRows_j1(@arguments) if scalar(@arguments) == 1;
+    return $invocant->getRows_j2(@arguments) if scalar(@arguments) == 2;
+    die "No method getRows takes " . scalar(@arguments) . " arguments";
 }
 
 
@@ -376,7 +394,7 @@ sub getAllRows {
         $stringBuffer->append($self->{sqlStrings}->{SELECT_ALL_FROM});
         $stringBuffer->append($self->getTableName());
         try {
-            if ($org::allbinary::logic::communication::sql::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($org::allbinary::logic::communication::sql::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{SQLLOGGING})) {
+            if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{SQLLOGGING})) {
                 $self->{logUtil}->putF($self->{sqlStrings}->{SQL_STATEMENT_LABEL} + $stringBuffer, $self, $self->{METHOD_GET_ALL_ROWS});
             }
             my $rows = 'org::allbinary::util::BasicArrayListD'->new();
@@ -391,14 +409,14 @@ sub getAllRows {
                     my $field = $rset->getString($columnName);
                     $result->put($columnName, $field);
                 }
-                if ($org::allbinary::logic::communication::sql::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($org::allbinary::logic::communication::sql::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{SQLLOGGING})) {
+                if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{SQLLOGGING})) {
                     $self->{logUtil}->putF($self->{ROW_VALUES_LABEL} . $result->toString(), $self, $self->{METHOD_GET_ALL_ROWS});
                 }
                 $rows->add($result);
             }
             return $rows;
         } catch ($e) {
-            if ($org::allbinary::logic::communication::sql::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($org::allbinary::logic::communication::sql::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{SQLLOGGINGERROR})) {
+            if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{SQLLOGGINGERROR})) {
                 $self->{logUtil}->put($self->{FAILED_SQL_STATEMENT} + $stringBuffer, $self, $self->{METHOD_GET_ALL_ROWS}, $e);
             }
             return undef;
@@ -406,7 +424,7 @@ sub getAllRows {
 }
 
 
-sub getRowsWhereBetween {
+sub getRowsWhereBetween_j4 {
     my ($self, $whereKeyValuePairs, $betweenColumn, $smallest, $largest) = @_;
         my $stringBuffer = 'org::allbinary::logic::string::StringMaker'->new();
         $stringBuffer->append($self->{sqlStrings}->{SELECT_ALL_FROM});
@@ -438,7 +456,7 @@ sub getRowsWhereBetween {
             $stringBuffer->append($largest);
             $stringBuffer->append($self->{sqlStrings}->{CLOSE_QUOTE});
             my $sqlStatement = $stringBuffer->toString();
-            if ($org::allbinary::logic::communication::sql::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($org::allbinary::logic::communication::sql::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{SQLLOGGING})) {
+            if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{SQLLOGGING})) {
                 $self->{logUtil}->putF($self->{sqlStrings}->{SQL_STATEMENT_LABEL} . $sqlStatement, $self, $self->{METHOD_GET_ROWS_WHERE_BETWEEN});
             }
             my $rset = $self->executeSQLStatement($sqlStatement);
@@ -457,14 +475,14 @@ sub getRowsWhereBetween {
                     $field = $rset->getString($columnName);
                     $result->put($columnName, $field);
                 }
-                if ($org::allbinary::logic::communication::sql::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($org::allbinary::logic::communication::sql::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{SQLLOGGING})) {
+                if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{SQLLOGGING})) {
                     $self->{logUtil}->putF($self->{ROW_VALUE_LABEL} . $result->toString(), $self, $self->{METHOD_GET_ROWS_WHERE_BETWEEN});
                 }
                 $rows->add($result);
             }
             return $rows;
         } catch ($e) {
-            if ($org::allbinary::logic::communication::sql::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($org::allbinary::logic::communication::sql::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{SQLLOGGINGERROR})) {
+            if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{SQLLOGGINGERROR})) {
                 $self->{logUtil}->put($self->{FAILED_SQL_STATEMENT} + $stringBuffer, $self, $self->{METHOD_GET_ROWS_WHERE_BETWEEN}, $e);
             }
             return undef;
@@ -472,8 +490,7 @@ sub getRowsWhereBetween {
 }
 
 
-# Java overloaded method: Perl keeps the last definition
-sub getRowsWhereBetween {
+sub getRowsWhereBetween_j3 {
     my ($self, $betweenColumn, $smallest, $largest) = @_;
         my $stringBuffer = 'org::allbinary::logic::string::StringMaker'->new();
         $stringBuffer->append($self->{sqlStrings}->{SELECT_ALL_FROM});
@@ -491,7 +508,7 @@ sub getRowsWhereBetween {
             $stringBuffer->append($largest);
             $stringBuffer->append($self->{sqlStrings}->{CLOSE_QUOTE});
             my $sqlStatement = $stringBuffer->toString();
-            if ($org::allbinary::logic::communication::sql::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($org::allbinary::logic::communication::sql::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{SQLLOGGING})) {
+            if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{SQLLOGGING})) {
                 $self->{logUtil}->putF($self->{sqlStrings}->{SQL_STATEMENT_LABEL} . $sqlStatement, $self, $self->{METHOD_GET_ROWS_WHERE_BETWEEN});
             }
             my $rset = $self->executeSQLStatement($sqlStatement);
@@ -510,25 +527,32 @@ sub getRowsWhereBetween {
                     $field = $rset->getString($columnName);
                     $result->put($columnName, $field);
                 }
-                if ($org::allbinary::logic::communication::sql::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($org::allbinary::logic::communication::sql::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{SQLLOGGING})) {
+                if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{SQLLOGGING})) {
                     $self->{logUtil}->putF($self->{ROW_VALUE_LABEL} . $result->toString(), $self, $self->{METHOD_GET_ROWS_WHERE_BETWEEN});
                 }
                 $rows->add($result);
             }
             return $rows;
         } catch ($e) {
-            if ($org::allbinary::logic::communication::sql::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($org::allbinary::logic::communication::sql::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{SQLLOGGINGERROR})) {
+            if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{SQLLOGGINGERROR})) {
                 $self->{logUtil}->put($self->{FAILED_SQL_STATEMENT} + $stringBuffer, $self, $self->{METHOD_GET_ROWS_WHERE_BETWEEN}, $e);
             }
             return undef;
         }
 }
 
+sub getRowsWhereBetween {
+    my ($invocant, @arguments) = @_;
+    return $invocant->getRowsWhereBetween_j4(@arguments) if scalar(@arguments) == 4;
+    return $invocant->getRowsWhereBetween_j3(@arguments) if scalar(@arguments) == 3;
+    die "No method getRowsWhereBetween takes " . scalar(@arguments) . " arguments";
+}
+
 use java::lang::Object ();
 # use java::sql::ResultSet ();
 # use java::sql::ResultSetMetaData ();
 use java::util::HashMap ();
-# use java::util::Set ();
+use java::util::Set ();
 use org::allbinary::util::BasicArrayList ();
 use org::allbinary::util::BasicArrayListD ();
 use org::allbinary::business::init::db::DbConnectionInfo ();
@@ -537,6 +561,8 @@ use org::allbinary::logic::string::StringMaker ();
 use org::allbinary::logic::string::StringUtil ();
 use org::allbinary::logic::string::StringValidationUtil ();
 use org::allbinary::logic::string::regex::replace::Replace ();
+use org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory ();
+use org::allbinary::logic::communication::log::config::type::LogConfigTypes ();
 use org::allbinary::logic::communication::sql::AbSqlColumn ();
 
 1;

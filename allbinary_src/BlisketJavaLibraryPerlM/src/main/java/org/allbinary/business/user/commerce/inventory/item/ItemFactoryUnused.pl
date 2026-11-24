@@ -29,17 +29,28 @@ sub new {
 
 
 # throws MoneyException
-sub getInstance {
+sub getInstance_j1_1 {
     my ($class, $hashMap) = @_;
         return 'org::allbinary::business::user::commerce::inventory::item::Item'->new($hashMap);
 }
 
 
 # throws Exception, MoneyException
-# Java overloaded method: Perl keeps the last definition
-sub getInstance {
+sub getInstance_j1_2 {
     my ($class, $request) = @_;
         return 'org::allbinary::business::user::commerce::inventory::item::Item'->new('org::allbinary::logic::communication::http::request::RequestParams'->new($request)->toHashMap());
+}
+
+sub getInstance {
+    my ($invocant, @arguments) = @_;
+    return $invocant->getInstance_j1(@arguments) if scalar(@arguments) == 1;
+    die "No method getInstance takes " . scalar(@arguments) . " arguments";
+}
+
+sub getInstance_j1 {
+    my ($invocant, @arguments) = @_;
+    return $invocant->getInstance_j1_1(@arguments) if 1 && (!defined($arguments[0]) || (ref($arguments[0]) && ref($arguments[0]) ne 'ARRAY'));
+    return $invocant->getInstance_j1_2(@arguments);
 }
 
 use java::lang::Object ();
@@ -48,7 +59,6 @@ use java::util::HashMap ();
 use org::allbinary::business::user::commerce::money::MoneyException ();
 use org::allbinary::data::tables::TableMappingInterface ();
 use org::allbinary::logic::communication::http::request::RequestParams ();
-use org::allbinary::business::user::commerce::inventory::item::Item ();
 
 1;
 

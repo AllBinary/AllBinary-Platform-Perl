@@ -39,15 +39,13 @@ sub new {
     my ($class) = @_;
     my $self = bless({}, $class);
     _init_fields($self);
-        $org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->add($self->{OS});
-        $org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->add($self->{FACTORYERROR});
+        java::lang::Object::jstatic('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory', 'LogConfigTypes')->{LOGGING}->add($self->{OS});
+        java::lang::Object::jstatic('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory', 'LogConfigTypes')->{LOGGING}->add($self->{FACTORYERROR});
     return $self;
 }
 
 use java::lang::Object ();
 use java::lang::LazyStatic ();
-use org::allbinary::logic::communication::log::config::type::LogConfigType ();
-use org::allbinary::logic::communication::log::config::type::LogConfigTypes ();
 
 1;
 

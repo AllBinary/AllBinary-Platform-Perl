@@ -55,15 +55,15 @@ sub toHashMap {
 sub toXmlNode {
     my ($self, $document) = @_;
         try {
-            if ($org::allbinary::business::user::commerce::money::payment::gateway::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($org::allbinary::business::user::commerce::money::payment::gateway::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{VIEW})) {
+            if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{VIEW})) {
                 $self->{logUtil}->putF($self->{commonStrings}->{START}, $self, "toXmlNode");
             }
             my $hashMap = 'org::allbinary::business::user::commerce::money::payment::gateway::PaymentGatewayMapping'->new($self->{paymentGatewayInterface})->toHashMap();
             $hashMap->putAll($self->toHashMap());
-            my $paymentGatewayNode = 'org::allbinary::data::tree::dom::ModDomHelper'->createNodeWithValueNodes($document, $org::allbinary::business::user::commerce::money::payment::gateway::PaymentGatewayData::NAME->toString(), $hashMap);
+            my $paymentGatewayNode = 'org::allbinary::data::tree::dom::ModDomHelper'->createNodeWithValueNodes($document, java::lang::Object::jstatic('org::allbinary::business::user::commerce::money::payment::gateway::PaymentGatewayView', 'PaymentGatewayData')->{NAME}->toString(), $hashMap);
             return $paymentGatewayNode;
         } catch ($e) {
-            if ($org::allbinary::business::user::commerce::money::payment::gateway::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($org::allbinary::business::user::commerce::money::payment::gateway::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{XSLLOGGINGERROR})) {
+            if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{XSLLOGGINGERROR})) {
                 $self->{logUtil}->put($self->{commonStrings}->{EXCEPTION}, $self, "toXmlNode", $e);
             }
             die $e;
@@ -79,8 +79,9 @@ use org::allbinary::logic::communication::log::LogUtil ();
 use org::allbinary::string::CommonStrings ();
 use org::w3c::dom::Document ();
 use org::w3c::dom::Node ();
+use org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory ();
+use org::allbinary::logic::communication::log::config::type::LogConfigTypes ();
 use org::allbinary::business::user::commerce::money::payment::gateway::PaymentGatewayMapping ();
-use org::allbinary::business::user::commerce::money::payment::gateway::PaymentGatewayData ();
 
 1;
 

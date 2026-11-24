@@ -46,7 +46,7 @@ sub getStoreFrontInterface {
         if (!defined($storeHashMap)) {
             die ("No Such Store: " . $name);
         }
-        if ($org::allbinary::business::context::modules::storefronts::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($org::allbinary::business::context::modules::storefronts::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{FACTORYERROR})) {
+        if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{FACTORYERROR})) {
             $self->{logUtil}->putF("StoreFront: " . $storeHashMap->toString(), $self, "getStore()");
         }
         return 'org::allbinary::business::context::modules::storefronts::BasicStoreFront'->new($storeHashMap);
@@ -59,6 +59,8 @@ use org::allbinary::business::init::InitSql ();
 use org::allbinary::business::init::db::UserDbInitInfo ();
 use org::allbinary::logic::StdUtil ();
 use org::allbinary::logic::communication::log::LogUtil ();
+use org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory ();
+use org::allbinary::logic::communication::log::config::type::LogConfigTypes ();
 use org::allbinary::business::context::modules::storefronts::BasicStoreFront ();
 
 1;

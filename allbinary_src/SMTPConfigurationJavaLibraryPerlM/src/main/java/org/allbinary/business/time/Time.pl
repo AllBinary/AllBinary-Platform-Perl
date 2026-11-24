@@ -32,8 +32,14 @@ sub new {
     die "No constructor of Time takes " . scalar(@arguments) . " arguments";
 }
 
-
 sub _new1 {
+    my ($class, @arguments) = @_;
+    return $class->_new1_1(@arguments) if 1 && !ref($arguments[0]);
+    return $class->_new1_2(@arguments);
+}
+
+
+sub _new1_1 {
     my ($class, $time) = @_;
     my $self = bless({}, $class);
     _init_fields($self);
@@ -42,7 +48,7 @@ sub _new1 {
 }
 
 
-sub _new1 {
+sub _new1_2 {
     my ($class, $time) = @_;
     my $self = bless({}, $class);
     _init_fields($self);

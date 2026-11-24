@@ -82,13 +82,13 @@ sub setOrderStatus {
                 $orderHistoryEntityInterface->setStatus($self->{id}, $self->{newStatus});
                 return "Order " . $self->{id} . " has been cancelled.<br/>";
             }
-            if ($taghelpers::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($taghelpers::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{SQLTAGS})) {
+            if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{SQLTAGS})) {
                 $self->{logUtil}->putF($success, $self, "setOrderStatus()");
             }
             return "Error Setting Order Status";
         } catch ($e) {
             my $error = "Failed to set order status";
-            if ($taghelpers::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($taghelpers::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{SQLTAGSERROR})) {
+            if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{SQLTAGSERROR})) {
                 $self->{logUtil}->put($self->{commonStrings}->{EXCEPTION}, $self, "setOrderStatus()", $e);
             }
             return $error . "<br/>" . "Exception: " . $e . "<br/>";
@@ -113,6 +113,8 @@ use org::allbinary::data::tables::user::commerce::inventory::order::OrderHistory
 use org::allbinary::data::tables::user::commerce::inventory::order::OrderHistoryEntityInterface ();
 use org::allbinary::logic::communication::http::request::session::WeblisketSession ();
 use org::allbinary::logic::communication::log::LogUtil ();
+use org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory ();
+use org::allbinary::logic::communication::log::config::type::LogConfigTypes ();
 
 1;
 

@@ -58,12 +58,12 @@ sub _new1 {
 }
 
 
-sub isValid {
+sub isValid_j0 {
     my ($self) = @_;
         try {
             return $self->isValid($self->{userName});
         } catch ($e) {
-            if ($org::allbinary::business::user::username::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($org::allbinary::business::user::username::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{SQLTAGSERROR})) {
+            if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{SQLTAGSERROR})) {
                 $self->{logUtil}->put("Failed to validate form", $self, "isUserNameValid()", $e);
             }
             return 0;
@@ -77,29 +77,35 @@ sub get {
 }
 
 
-# Java overloaded method: Perl keeps the last definition
-sub isValid {
+sub isValid_j1 {
     my ($self, $aUserName) = @_;
         my $commonStrings = 'org::allbinary::string::CommonStrings'->getInstance();
         try {
             my $booleanFactory = 'org::allbinary::logic::java::bool::BooleanFactory'->getInstance();
             my $valid = $booleanFactory->{TRUE};
-            if ($org::allbinary::business::user::username::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($org::allbinary::business::user::username::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{VALIDATION})) {
+            if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{VALIDATION})) {
                 $self->{logUtil}->putF("UserName: " . $aUserName, $self, $commonStrings->{IS_VALID});
             }
             if (!'org::allbinary::logic::string::StringValidationUtil'->getInstance()->isValidRequired($aUserName, 5, $org::allbinary::business::user::UserData::MAXLEN)) {
-                if ($org::allbinary::business::user::username::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($org::allbinary::business::user::username::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{VALIDATION})) {
+                if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{VALIDATION})) {
                     $self->{logUtil}->putF("UserName is invalid", $self, $commonStrings->{IS_VALID});
                 }
                 $valid = $booleanFactory->{FALSE};
             }
             return $valid;
         } catch ($e) {
-            if ($org::allbinary::business::user::username::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($org::allbinary::business::user::username::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{SQLTAGSERROR})) {
+            if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{SQLTAGSERROR})) {
                 $self->{logUtil}->put("Failed to validate form", $self, $commonStrings->{IS_VALID}, $e);
             }
             return 0;
         }
+}
+
+sub isValid {
+    my ($invocant, @arguments) = @_;
+    return $invocant->isValid_j0(@arguments) if scalar(@arguments) == 0;
+    return $invocant->isValid_j1(@arguments) if scalar(@arguments) == 1;
+    die "No method isValid takes " . scalar(@arguments) . " arguments";
 }
 
 
@@ -120,6 +126,8 @@ use org::allbinary::logic::java::bool::BooleanFactory ();
 use org::allbinary::logic::string::StringUtil ();
 use org::allbinary::logic::string::StringValidationUtil ();
 use org::allbinary::string::CommonStrings ();
+use org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory ();
+use org::allbinary::logic::communication::log::config::type::LogConfigTypes ();
 
 1;
 

@@ -54,7 +54,7 @@ sub new {
 sub process {
     my ($self) = @_;
         do {
-            package java::lang::Thread::AnonymousN66679 { our @ISA = ('java::lang::Thread', 'java::lang::Object');
+            package java::lang::Thread::AnonymousN66773 { our @ISA = ('java::lang::Thread', 'java::lang::Object');
             
 
             sub run {
@@ -99,7 +99,7 @@ sub process {
                 }
             }
             }
-            'java::lang::Thread::AnonymousN66679'->can('new') ? 'java::lang::Thread::AnonymousN66679'->new() : bless({}, 'java::lang::Thread::AnonymousN66679')
+            'java::lang::Thread::AnonymousN66773'->can('new') ? 'java::lang::Thread::AnonymousN66773'->new() : bless({}, 'java::lang::Thread::AnonymousN66773')
         }->start();
 }
 
@@ -121,7 +121,7 @@ sub initComponents {
         $self->{aboveJButton} = 'javax::swing::JButton'->new();
         $self->{aboveJButton}->setText("Process");
         $self->{aboveJButton}->addActionListener(do {
-            package java::awt::event::ActionListener::AnonymousN68821 { our @ISA = ('java::awt::event::ActionListener', 'java::lang::Object');
+            package java::awt::event::ActionListener::AnonymousN68899 { our @ISA = ('java::awt::event::ActionListener', 'java::lang::Object');
             
 
             sub actionPerformed {
@@ -129,12 +129,12 @@ sub initComponents {
                 $self->aboveJButtonActionPerformed($evt);
             }
             }
-            'java::awt::event::ActionListener::AnonymousN68821'->can('new') ? 'java::awt::event::ActionListener::AnonymousN68821'->new() : bless({}, 'java::awt::event::ActionListener::AnonymousN68821')
+            'java::awt::event::ActionListener::AnonymousN68899'->can('new') ? 'java::awt::event::ActionListener::AnonymousN68899'->new() : bless({}, 'java::awt::event::ActionListener::AnonymousN68899')
         });
         my $layout = 'javax::swing::GroupLayout'->new($self);
         $self->setLayout($layout);
-        $layout->setHorizontalGroup($layout->createParallelGroup($org::allbinary::image::gui::javax::swing->{GroupLayout}->{Alignment}->{LEADING})->addGroup($layout->createSequentialGroup()->addComponent($self->{aboveJButton})->addGap(0, 335, 32767)));
-        $layout->setVerticalGroup($layout->createParallelGroup($org::allbinary::image::gui::javax::swing->{GroupLayout}->{Alignment}->{LEADING})->addGroup($layout->createSequentialGroup()->addContainerGap()->addComponent($self->{aboveJButton})->addContainerGap(286, 32767)));
+        $layout->setHorizontalGroup($layout->createParallelGroup($javax::swing::GroupLayout::Alignment->{LEADING})->addGroup($layout->createSequentialGroup()->addComponent($self->{aboveJButton})->addGap(0, 335, 32767)));
+        $layout->setVerticalGroup($layout->createParallelGroup($javax::swing::GroupLayout::Alignment->{LEADING})->addGroup($layout->createSequentialGroup()->addContainerGap()->addComponent($self->{aboveJButton})->addContainerGap(286, 32767)));
 }
 
 
@@ -158,6 +158,11 @@ use org::allbinary::media::image::ImageUtil ();
 use org::allbinary::string::CommonStrings ();
 use org::allbinary::util::BasicArrayList ();
 use org::allbinary::util::BasicArrayListD ();
+# use java::awt::event::ActionEvent ();
+# use java::awt::event::ActionListener ();
+# use javax::swing::GroupLayout ();
+# use javax::swing::JButton ();
+# use javax::swing::JPanel ();
 use java::lang::System ();
 use java::lang::Thread ();
 

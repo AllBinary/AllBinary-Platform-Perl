@@ -52,7 +52,7 @@ sub getFileBasicArrayList {
 }
 
 
-sub backup {
+sub backup_j0 {
     my ($self) = @_;
         try {
             $self->{logUtil}->putF($self->{commonStrings}->{START}, $self, "backup()");
@@ -174,8 +174,7 @@ sub backupJsps {
 }
 
 
-# Java overloaded method: Perl keeps the last definition
-sub backup {
+sub backup_j2 {
     my ($self, $fileBasicArrayList, $zipFile) = @_;
         try {
             my $stringBuffer = 'org::allbinary::logic::string::StringMaker'->new();
@@ -190,6 +189,13 @@ sub backup {
         } catch ($e) {
             $self->{logUtil}->put($self->{commonStrings}->{EXCEPTION}, $self, "backup()", $e);
         }
+}
+
+sub backup {
+    my ($invocant, @arguments) = @_;
+    return $invocant->backup_j0(@arguments) if scalar(@arguments) == 0;
+    return $invocant->backup_j2(@arguments) if scalar(@arguments) == 2;
+    die "No method backup takes " . scalar(@arguments) . " arguments";
 }
 
 use java::lang::Object ();

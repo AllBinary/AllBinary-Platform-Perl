@@ -44,7 +44,7 @@ sub getInstance {
 
 
 # throws Exception
-sub overwrite {
+sub overwrite_j2_1 {
     my ($self, $path, $data) = @_;
         my $abFile = 'org::allbinary::logic::io::file::AbFile'->createAbFile($path);
         if ($abFile->exists()) {
@@ -67,8 +67,7 @@ sub overwrite {
 
 
 # throws Exception
-# Java overloaded method: Perl keeps the last definition
-sub overwrite {
+sub overwrite_j2_2 {
     my ($self, $abFile, $data) = @_;
         if ($abFile->exists()) {
             $self->{logUtil}->putF($self->{REMOVING_OLD} . $abFile->getPath(), $self, $self->{commonStrings}->{CREATE});
@@ -86,6 +85,18 @@ sub overwrite {
             }
         }
         $self->write($abFile, $data);
+}
+
+sub overwrite {
+    my ($invocant, @arguments) = @_;
+    return $invocant->overwrite_j2(@arguments) if scalar(@arguments) == 2;
+    die "No method overwrite takes " . scalar(@arguments) . " arguments";
+}
+
+sub overwrite_j2 {
+    my ($invocant, @arguments) = @_;
+    return $invocant->overwrite_j2_1(@arguments) if 1 && !ref($arguments[0]) && !ref($arguments[1]);
+    return $invocant->overwrite_j2_2(@arguments);
 }
 
 

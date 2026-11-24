@@ -35,7 +35,7 @@ sub getInstance {
         try {
             return 'org::allbinary::data::tables::advertisement::AdvertisementsEntity'->new();
         } catch ($e) {
-            if ($org::allbinary::data::tables::advertisement::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($org::allbinary::data::tables::advertisement::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{ENTITYFACTORYERROR})) {
+            if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{ENTITYFACTORYERROR})) {
                 my $commonStrings = 'org::allbinary::string::CommonStrings'->getInstance();
                 $logUtil->put($commonStrings->{EXCEPTION}, "AdvertisementEntityFactory", $commonStrings->{GET_INSTANCE}, $e);
             }
@@ -46,6 +46,8 @@ sub getInstance {
 use java::lang::Object ();
 use org::allbinary::logic::communication::log::LogUtil ();
 use org::allbinary::string::CommonStrings ();
+use org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory ();
+use org::allbinary::logic::communication::log::config::type::LogConfigTypes ();
 use org::allbinary::data::tables::advertisement::AdvertisementsEntity ();
 
 1;

@@ -102,8 +102,8 @@ sub constants_accessible_and_stable {
 
 sub getInstance_returns_same_singleton {
     my ($self) = @_;
-        my $a = 'org::allbinary::time::TimeTypeUtil'->getInstance();
-        my $b = 'org::allbinary::time::TimeTypeUtil'->getInstance();
+        my $a = java::lang::Object::jstatic('org::allbinary::time::TimeTypeTest', 'TimeTypeUtil')->getInstance();
+        my $b = java::lang::Object::jstatic('org::allbinary::time::TimeTypeTest', 'TimeTypeUtil')->getInstance();
         'org::junit::jupiter::api::Assertions'->assertSame($a, $b);
 }
 {
@@ -142,7 +142,6 @@ use java::util::Calendar ();
 use org::junit::jupiter::api::Assertions ();
 use org::junit::jupiter::api::DisplayName ();
 use org::junit::jupiter::api::Test ();
-use org::allbinary::time::TimeTypeUtil ();
 
 1;
 

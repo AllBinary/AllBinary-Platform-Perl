@@ -47,8 +47,8 @@ sub set {
             my $list = $ownerAdvancedRTSGameLayer->getWaypointBehavior()->getOwnedWaypointList();
             my $unitWaypointBehavior = $unitLayer->getWaypointBehavior();
             for (my $index = $list->size() - 1; $index >= 0; $index--) {
-                my $waypointLayer = $list->get($index);
-                $self->{WAYPOINT_EVENT}->setRtsLayer($waypointLayer);
+                my $ownedWaypointLayer = $list->get($index);
+                $self->{WAYPOINT_EVENT}->setRtsLayer($ownedWaypointLayer);
                 $unitWaypointBehavior->onWaypointEvent($self->{WAYPOINT_EVENT});
             }
             my $waypointLayer = 'org::allbinary::game::input::form::PrimaryWaypointHelper'->getInstance()->getWaypointLayer();

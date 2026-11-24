@@ -151,7 +151,6 @@ use playn::core::ImageImpl ();
 use playn::core::PlayN ();
 use playn::html::HtmlGraphics ();
 use playn::html::HtmlImage ();
-use org::allbinary::animation::image::ImageBaseRotationAnimation ();
 use org::allbinary::animation::image::AlphaBaseProcessor ();
 use org::allbinary::animation::image::AlphaProcessor ();
 

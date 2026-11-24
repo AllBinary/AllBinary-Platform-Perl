@@ -21,16 +21,22 @@ no warnings 'experimental::try';
 
 
 
-sub getRootInstance {
+sub getRootInstance_j0 {
     my ($self) = @_;
     die "abstract method getRootInstance";
 }
 
 
-# Java overloaded method: Perl keeps the last definition
-sub getRootInstance {
+sub getRootInstance_j1 {
     my ($self, $categoryPath) = @_;
     die "abstract method getRootInstance";
+}
+
+sub getRootInstance {
+    my ($invocant, @arguments) = @_;
+    return $invocant->getRootInstance_j0(@arguments) if scalar(@arguments) == 0;
+    return $invocant->getRootInstance_j1(@arguments) if scalar(@arguments) == 1;
+    die "No method getRootInstance takes " . scalar(@arguments) . " arguments";
 }
 
 
@@ -40,23 +46,34 @@ sub getRootInstanceFromNode {
 }
 
 
-sub getInstance {
+sub getInstance_j3_1 {
     my ($self, $rootCategoryInterface, $parentCategoryInterface, $name) = @_;
     die "abstract method getInstance";
 }
 
 
-# Java overloaded method: Perl keeps the last definition
-sub getInstance {
+sub getInstance_j3_2 {
     my ($self, $rootCategoryInterface, $parentCategoryInterface, $node) = @_;
     die "abstract method getInstance";
 }
 
 
-# Java overloaded method: Perl keeps the last definition
-sub getInstance {
+sub getInstance_j3_3 {
     my ($self, $rootCategoryInterface, $parentCategoryInterface, $categoryPropertiesHashMap) = @_;
     die "abstract method getInstance";
+}
+
+sub getInstance {
+    my ($invocant, @arguments) = @_;
+    return $invocant->getInstance_j3(@arguments) if scalar(@arguments) == 3;
+    die "No method getInstance takes " . scalar(@arguments) . " arguments";
+}
+
+sub getInstance_j3 {
+    my ($invocant, @arguments) = @_;
+    return $invocant->getInstance_j3_1(@arguments) if 1 && (!defined($arguments[0]) || (ref($arguments[0]) && ref($arguments[0]) ne 'ARRAY')) && (!defined($arguments[1]) || (ref($arguments[1]) && ref($arguments[1]) ne 'ARRAY')) && !ref($arguments[2]);
+    return $invocant->getInstance_j3_2(@arguments) if 1 && (!defined($arguments[0]) || (ref($arguments[0]) && ref($arguments[0]) ne 'ARRAY')) && (!defined($arguments[1]) || (ref($arguments[1]) && ref($arguments[1]) ne 'ARRAY')) && (!defined($arguments[2]) || (ref($arguments[2]) && ref($arguments[2]) ne 'ARRAY'));
+    return $invocant->getInstance_j3_3(@arguments);
 }
 
 use java::util::HashMap ();

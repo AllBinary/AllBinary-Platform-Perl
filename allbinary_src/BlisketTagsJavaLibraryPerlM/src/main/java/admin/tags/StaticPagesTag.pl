@@ -82,12 +82,12 @@ sub doStartTag {
                     if ($self->getCommand()->compareTo($org::allbinary::logic::control::search::SearchData::GENERATESTATICPAGES) == 0) {
                         $self->getPropertiesHashMap()->put('org::allbinary::logic::visual::transform::info::TransformInfoData'->getInstance()->{TEMPLATEFILENAME}, $self->{xslFile});
                         my $output = $self->generateStaticPages();
-                        if ($admin::tags::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($admin::tags::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{JSPTAGEXTRAOUTPUT})) {
+                        if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{JSPTAGEXTRAOUTPUT})) {
                             $self->{pageContext}->getOut()->print($output);
                         }
                     } elsif ($self->getCommand()->compareTo($org::allbinary::logic::control::search::SearchData::MAKEPUBLIC) == 0) {
                         my $output = $self->makePublic();
-                        if ($admin::tags::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($admin::tags::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{JSPTAGEXTRAOUTPUT})) {
+                        if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{JSPTAGEXTRAOUTPUT})) {
                             $self->{pageContext}->getOut()->print($output);
                         }
                     } else {
@@ -95,10 +95,10 @@ sub doStartTag {
                     }
                 }
             }
-            return $self->{SKIP_BODY};
+            return java::lang::Object::jstatic('admin::tags::StaticPagesTag', 'SKIP_BODY');
         } catch ($e) {
             'org::allbinary::logic::communication::http::request::AbResponseHandler'->sendJspTagLicensingRedirect($self->{pageContext}, $e);
-            return $self->{SKIP_BODY};
+            return java::lang::Object::jstatic('admin::tags::StaticPagesTag', 'SKIP_BODY');
         }
 }
 
@@ -112,7 +112,8 @@ use org::allbinary::logic::communication::log::LogUtil ();
 use org::allbinary::logic::control::search::SearchData ();
 use org::allbinary::logic::system::security::licensing::LicensingException ();
 use org::allbinary::logic::visual::transform::info::TransformInfoData ();
-use admin::tags::TableTag ();
+use org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory ();
+use org::allbinary::logic::communication::log::config::type::LogConfigTypes ();
 
 1;
 

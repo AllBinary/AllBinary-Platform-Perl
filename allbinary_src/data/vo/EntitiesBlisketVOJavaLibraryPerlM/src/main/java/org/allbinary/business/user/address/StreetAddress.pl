@@ -44,6 +44,14 @@ sub new {
     die "No constructor of StreetAddress takes " . scalar(@arguments) . " arguments";
 }
 
+sub _new1 {
+    my ($class, @arguments) = @_;
+    return $class->_new1_1(@arguments) if 1 && (!defined($arguments[0]) || (ref($arguments[0]) && ref($arguments[0]) ne 'ARRAY'));
+    return $class->_new1_2(@arguments) if 1 && (!defined($arguments[0]) || (ref($arguments[0]) && ref($arguments[0]) ne 'ARRAY'));
+    return $class->_new1_3(@arguments) if 1 && (!defined($arguments[0]) || (ref($arguments[0]) && ref($arguments[0]) ne 'ARRAY'));
+    return $class->_new1_4(@arguments);
+}
+
 
 sub _new0 {
     my ($class) = @_;
@@ -53,28 +61,28 @@ sub _new0 {
 }
 
 
-sub _new1 {
+sub _new1_1 {
     my ($class, $node) = @_;
     my $self = bless({}, $class);
     _init_fields($self);
-        my $nameNode = 'org::allbinary::data::tree::dom::DomSearchHelper'->getNode($org::allbinary::business::user::address::StreetAddressData::NAME, $node->getChildNodes());
+        my $nameNode = 'org::allbinary::data::tree::dom::DomSearchHelper'->getNode(java::lang::Object::jstatic('org::allbinary::business::user::address::StreetAddress', 'StreetAddressData')->{NAME}, $node->getChildNodes());
         $self->{name} = 'org::allbinary::data::tree::dom::DomNodeHelper'->getTextNodeValue($nameNode);
-        my $streetNode = 'org::allbinary::data::tree::dom::DomSearchHelper'->getNode($org::allbinary::business::user::address::StreetAddressData::STREET, $node->getChildNodes());
+        my $streetNode = 'org::allbinary::data::tree::dom::DomSearchHelper'->getNode(java::lang::Object::jstatic('org::allbinary::business::user::address::StreetAddress', 'StreetAddressData')->{STREET}, $node->getChildNodes());
         $self->{street} = 'org::allbinary::data::tree::dom::DomNodeHelper'->getTextNodeValue($streetNode);
-        my $cityNode = 'org::allbinary::data::tree::dom::DomSearchHelper'->getNode($org::allbinary::business::user::address::StreetAddressData::CITY, $node->getChildNodes());
+        my $cityNode = 'org::allbinary::data::tree::dom::DomSearchHelper'->getNode(java::lang::Object::jstatic('org::allbinary::business::user::address::StreetAddress', 'StreetAddressData')->{CITY}, $node->getChildNodes());
         $self->{city} = 'org::allbinary::data::tree::dom::DomNodeHelper'->getTextNodeValue($cityNode);
-        my $stateNode = 'org::allbinary::data::tree::dom::DomSearchHelper'->getNode($org::allbinary::business::user::address::StreetAddressData::STATE, $node->getChildNodes());
+        my $stateNode = 'org::allbinary::data::tree::dom::DomSearchHelper'->getNode(java::lang::Object::jstatic('org::allbinary::business::user::address::StreetAddress', 'StreetAddressData')->{STATE}, $node->getChildNodes());
         $self->{state} = 'org::allbinary::data::tree::dom::DomNodeHelper'->getTextNodeValue($stateNode);
-        my $codeNode = 'org::allbinary::data::tree::dom::DomSearchHelper'->getNode($org::allbinary::business::user::address::StreetAddressData::CODE, $node->getChildNodes());
+        my $codeNode = 'org::allbinary::data::tree::dom::DomSearchHelper'->getNode(java::lang::Object::jstatic('org::allbinary::business::user::address::StreetAddress', 'StreetAddressData')->{CODE}, $node->getChildNodes());
         $self->{code} = 'org::allbinary::data::tree::dom::DomNodeHelper'->getTextNodeValue($codeNode);
-        my $countryNode = 'org::allbinary::data::tree::dom::DomSearchHelper'->getNode($org::allbinary::business::user::address::StreetAddressData::COUNTRY, $node->getChildNodes());
+        my $countryNode = 'org::allbinary::data::tree::dom::DomSearchHelper'->getNode(java::lang::Object::jstatic('org::allbinary::business::user::address::StreetAddress', 'StreetAddressData')->{COUNTRY}, $node->getChildNodes());
         $self->{country} = 'org::allbinary::data::tree::dom::DomNodeHelper'->getTextNodeValue($countryNode);
         $self->log();
     return $self;
 }
 
 
-sub _new1 {
+sub _new1_2 {
     my ($class, $streetAddress) = @_;
     my $self = bless({}, $class);
     _init_fields($self);
@@ -91,17 +99,17 @@ sub _new1 {
 }
 
 
-sub _new1 {
+sub _new1_3 {
     my ($class, $request) = @_;
     my $self = bless({}, $class);
     _init_fields($self);
-        $self->setId($request->getParameter($org::allbinary::business::user::address::StreetAddressData::ID));
-        $self->setName($request->getParameter($org::allbinary::business::user::address::StreetAddressData::NAME));
-        $self->setStreet($request->getParameter($org::allbinary::business::user::address::StreetAddressData::STREET));
-        $self->setCity($request->getParameter($org::allbinary::business::user::address::StreetAddressData::CITY));
-        $self->setState($request->getParameter($org::allbinary::business::user::address::StreetAddressData::STATE));
-        $self->setCode($request->getParameter($org::allbinary::business::user::address::StreetAddressData::CODE));
-        $self->setCountry($request->getParameter($org::allbinary::business::user::address::StreetAddressData::COUNTRY));
+        $self->setId($request->getParameter(java::lang::Object::jstatic('org::allbinary::business::user::address::StreetAddress', 'StreetAddressData')->{ID}));
+        $self->setName($request->getParameter(java::lang::Object::jstatic('org::allbinary::business::user::address::StreetAddress', 'StreetAddressData')->{NAME}));
+        $self->setStreet($request->getParameter(java::lang::Object::jstatic('org::allbinary::business::user::address::StreetAddress', 'StreetAddressData')->{STREET}));
+        $self->setCity($request->getParameter(java::lang::Object::jstatic('org::allbinary::business::user::address::StreetAddress', 'StreetAddressData')->{CITY}));
+        $self->setState($request->getParameter(java::lang::Object::jstatic('org::allbinary::business::user::address::StreetAddress', 'StreetAddressData')->{STATE}));
+        $self->setCode($request->getParameter(java::lang::Object::jstatic('org::allbinary::business::user::address::StreetAddress', 'StreetAddressData')->{CODE}));
+        $self->setCountry($request->getParameter(java::lang::Object::jstatic('org::allbinary::business::user::address::StreetAddress', 'StreetAddressData')->{COUNTRY}));
         $self->log();
     return $self;
 }
@@ -122,19 +130,19 @@ sub _new6 {
 }
 
 
-sub _new1 {
+sub _new1_4 {
     my ($class, $address) = @_;
     my $self = bless({}, $class);
     _init_fields($self);
-        $self->{id} = $address->get($org::allbinary::business::user::address::StreetAddressData::ID);
-        $self->{name} = $address->get($org::allbinary::business::user::address::StreetAddressData::NAME);
-        $self->{street} = $address->get($org::allbinary::business::user::address::StreetAddressData::STREET);
-        $self->{city} = $address->get($org::allbinary::business::user::address::StreetAddressData::CITY);
-        $self->{state} = $address->get($org::allbinary::business::user::address::StreetAddressData::STATE);
-        $self->{code} = $address->get($org::allbinary::business::user::address::StreetAddressData::CODE);
-        $self->{country} = $address->get($org::allbinary::business::user::address::StreetAddressData::COUNTRY);
-        my $def = $address->get($org::allbinary::business::user::address::StreetAddressData::DEFAULT);
-        if (defined($def) && ($def cmp $org::allbinary::business::user::address::StreetAddressData::DEFAULT) == 0) {
+        $self->{id} = $address->get(java::lang::Object::jstatic('org::allbinary::business::user::address::StreetAddress', 'StreetAddressData')->{ID});
+        $self->{name} = $address->get(java::lang::Object::jstatic('org::allbinary::business::user::address::StreetAddress', 'StreetAddressData')->{NAME});
+        $self->{street} = $address->get(java::lang::Object::jstatic('org::allbinary::business::user::address::StreetAddress', 'StreetAddressData')->{STREET});
+        $self->{city} = $address->get(java::lang::Object::jstatic('org::allbinary::business::user::address::StreetAddress', 'StreetAddressData')->{CITY});
+        $self->{state} = $address->get(java::lang::Object::jstatic('org::allbinary::business::user::address::StreetAddress', 'StreetAddressData')->{STATE});
+        $self->{code} = $address->get(java::lang::Object::jstatic('org::allbinary::business::user::address::StreetAddress', 'StreetAddressData')->{CODE});
+        $self->{country} = $address->get(java::lang::Object::jstatic('org::allbinary::business::user::address::StreetAddress', 'StreetAddressData')->{COUNTRY});
+        my $def = $address->get(java::lang::Object::jstatic('org::allbinary::business::user::address::StreetAddress', 'StreetAddressData')->{DEFAULT});
+        if (defined($def) && ($def cmp java::lang::Object::jstatic('org::allbinary::business::user::address::StreetAddress', 'StreetAddressData')->{DEFAULT}) == 0) {
             $self->{isDefault} = 1;
         } else {
             $self->{isDefault} = 0;
@@ -146,7 +154,7 @@ sub _new1 {
 
 sub log {
     my ($self) = @_;
-        if ($org::allbinary::business::user::address::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($org::allbinary::business::user::address::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{SQLLOGGING})) {
+        if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{SQLLOGGING})) {
             $self->{logUtil}->putF("Created Address: \n" . $self->toHashMap(), $self, "log");
         }
 }
@@ -267,27 +275,27 @@ sub validationInfo {
         my $stringBuffer = 'org::allbinary::logic::string::StringMaker'->new();
         $stringBuffer->append("Address Failed To Validate - All fields must contain data.<br></br>");
         my $stringValidationUtil = 'org::allbinary::logic::string::StringValidationUtil'->getInstance();
-        if (!$stringValidationUtil->isValidRequired($self->getName(), $org::allbinary::business::user::address::StreetAddressData::MIN, $org::allbinary::business::user::address::StreetAddressData::MAX)) {
+        if (!$stringValidationUtil->isValidRequired($self->getName(), java::lang::Object::jstatic('org::allbinary::business::user::address::StreetAddress', 'StreetAddressData')->{MIN}, java::lang::Object::jstatic('org::allbinary::business::user::address::StreetAddress', 'StreetAddressData')->{MAX})) {
             $stringBuffer->append("Please enter a valid name");
             $stringBuffer->append("<br></br>");
         }
-        if (!$stringValidationUtil->isValidRequired($self->getStreet(), $org::allbinary::business::user::address::StreetAddressData::MIN, $org::allbinary::business::user::address::StreetAddressData::MAX)) {
+        if (!$stringValidationUtil->isValidRequired($self->getStreet(), java::lang::Object::jstatic('org::allbinary::business::user::address::StreetAddress', 'StreetAddressData')->{MIN}, java::lang::Object::jstatic('org::allbinary::business::user::address::StreetAddress', 'StreetAddressData')->{MAX})) {
             $stringBuffer->append("Please enter a valid street");
             $stringBuffer->append("<br></br>");
         }
-        if (!$stringValidationUtil->isValidRequired($self->getCity(), $org::allbinary::business::user::address::StreetAddressData::MIN, $org::allbinary::business::user::address::StreetAddressData::MAX)) {
+        if (!$stringValidationUtil->isValidRequired($self->getCity(), java::lang::Object::jstatic('org::allbinary::business::user::address::StreetAddress', 'StreetAddressData')->{MIN}, java::lang::Object::jstatic('org::allbinary::business::user::address::StreetAddress', 'StreetAddressData')->{MAX})) {
             $stringBuffer->append("Please enter a valid city");
             $stringBuffer->append("<br></br>");
         }
-        if (!$stringValidationUtil->isValidRequired($self->getState(), $org::allbinary::business::user::address::StreetAddressData::MIN, $org::allbinary::business::user::address::StreetAddressData::MAX)) {
+        if (!$stringValidationUtil->isValidRequired($self->getState(), java::lang::Object::jstatic('org::allbinary::business::user::address::StreetAddress', 'StreetAddressData')->{MIN}, java::lang::Object::jstatic('org::allbinary::business::user::address::StreetAddress', 'StreetAddressData')->{MAX})) {
             $stringBuffer->append("Please enter a valid state");
             $stringBuffer->append("<br></br>");
         }
-        if (!$stringValidationUtil->isValidRequired($self->getCode(), $org::allbinary::business::user::address::StreetAddressData::MIN, $org::allbinary::business::user::address::StreetAddressData::MAX)) {
+        if (!$stringValidationUtil->isValidRequired($self->getCode(), java::lang::Object::jstatic('org::allbinary::business::user::address::StreetAddress', 'StreetAddressData')->{MIN}, java::lang::Object::jstatic('org::allbinary::business::user::address::StreetAddress', 'StreetAddressData')->{MAX})) {
             $stringBuffer->append("Please enter a valid zipcode");
             $stringBuffer->append("<br></br>");
         }
-        if (!$stringValidationUtil->isValidRequired($self->getCountry(), $org::allbinary::business::user::address::StreetAddressData::MIN, $org::allbinary::business::user::address::StreetAddressData::MAX)) {
+        if (!$stringValidationUtil->isValidRequired($self->getCountry(), java::lang::Object::jstatic('org::allbinary::business::user::address::StreetAddress', 'StreetAddressData')->{MIN}, java::lang::Object::jstatic('org::allbinary::business::user::address::StreetAddress', 'StreetAddressData')->{MAX})) {
             $stringBuffer->append("Please enter a valid country");
             $stringBuffer->append("<br></br>");
         }
@@ -304,11 +312,11 @@ sub toValidationInfoDoc {
 sub toValidationInfoNode {
     my ($self, $document) = @_;
         try {
-            my $node = $document->createElement($org::allbinary::business::user::address::StreetAddressData::FORM);
+            my $node = $document->createElement(java::lang::Object::jstatic('org::allbinary::business::user::address::StreetAddress', 'StreetAddressData')->{FORM});
             $node->appendChild($self->toXmlNode($document));
             return $node;
         } catch ($e) {
-            if ($org::allbinary::business::user::address::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($org::allbinary::business::user::address::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{SQLLOGGINGERROR})) {
+            if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{SQLLOGGINGERROR})) {
                 my $commonStrings = 'org::allbinary::string::CommonStrings'->getInstance();
                 $self->{logUtil}->put($commonStrings->{EXCEPTION}, $self, "toValidationInfoNode", $e);
             }
@@ -320,13 +328,13 @@ sub toValidationInfoNode {
 sub toHashMap {
     my ($self) = @_;
         my $hashMap = 'org::allbinary::logic::StdUtil'->getInstance()->createHashMap();
-        $hashMap->put($org::allbinary::business::user::address::StreetAddressData::ID, $self->{id});
-        $hashMap->put($org::allbinary::business::user::address::StreetAddressData::NAME, $self->{name});
-        $hashMap->put($org::allbinary::business::user::address::StreetAddressData::STREET, $self->{street});
-        $hashMap->put($org::allbinary::business::user::address::StreetAddressData::CITY, $self->{city});
-        $hashMap->put($org::allbinary::business::user::address::StreetAddressData::STATE, $self->{state});
-        $hashMap->put($org::allbinary::business::user::address::StreetAddressData::CODE, $self->{code});
-        $hashMap->put($org::allbinary::business::user::address::StreetAddressData::COUNTRY, $self->{country});
+        $hashMap->put(java::lang::Object::jstatic('org::allbinary::business::user::address::StreetAddress', 'StreetAddressData')->{ID}, $self->{id});
+        $hashMap->put(java::lang::Object::jstatic('org::allbinary::business::user::address::StreetAddress', 'StreetAddressData')->{NAME}, $self->{name});
+        $hashMap->put(java::lang::Object::jstatic('org::allbinary::business::user::address::StreetAddress', 'StreetAddressData')->{STREET}, $self->{street});
+        $hashMap->put(java::lang::Object::jstatic('org::allbinary::business::user::address::StreetAddress', 'StreetAddressData')->{CITY}, $self->{city});
+        $hashMap->put(java::lang::Object::jstatic('org::allbinary::business::user::address::StreetAddress', 'StreetAddressData')->{STATE}, $self->{state});
+        $hashMap->put(java::lang::Object::jstatic('org::allbinary::business::user::address::StreetAddress', 'StreetAddressData')->{CODE}, $self->{code});
+        $hashMap->put(java::lang::Object::jstatic('org::allbinary::business::user::address::StreetAddress', 'StreetAddressData')->{COUNTRY}, $self->{country});
         return $hashMap;
 }
 
@@ -339,7 +347,7 @@ sub toXmlNode {
         my $keySet = $hashMap->keySet();
         my $keyArray = $keySet->toArray();
         my $size = scalar(@{$keyArray});
-        my $node = $document->createElement($org::allbinary::business::user::address::StreetAddressData::ADDRESS);
+        my $node = $document->createElement(java::lang::Object::jstatic('org::allbinary::business::user::address::StreetAddress', 'StreetAddressData')->{ADDRESS});
         for (my $i = 0; $i < $size; $i++) {
             my $name = $keyArray->[$i];
             my $value = $stringUtil->getNonNull($hashMap->get($name));
@@ -350,7 +358,7 @@ sub toXmlNode {
 
 use java::lang::Object ();
 use java::util::HashMap ();
-# use java::util::Set ();
+use java::util::Set ();
 # use javax::servlet::http::HttpServletRequest ();
 use org::allbinary::data::tree::dom::DomNodeHelper ();
 use org::allbinary::data::tree::dom::DomSearchHelper ();
@@ -363,7 +371,8 @@ use org::allbinary::logic::string::StringValidationUtil ();
 use org::allbinary::string::CommonStrings ();
 use org::w3c::dom::Document ();
 use org::w3c::dom::Node ();
-use org::allbinary::business::user::address::StreetAddressData ();
+use org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory ();
+use org::allbinary::logic::communication::log::config::type::LogConfigTypes ();
 
 1;
 

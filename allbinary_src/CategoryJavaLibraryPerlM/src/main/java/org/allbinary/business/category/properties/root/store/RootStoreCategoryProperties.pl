@@ -41,6 +41,13 @@ sub new {
     die "No constructor of RootStoreCategoryProperties takes " . scalar(@arguments) . " arguments";
 }
 
+sub _new2 {
+    my ($class, @arguments) = @_;
+    return $class->_new2_1(@arguments) if 1 && (!defined($arguments[0]) || (ref($arguments[0]) && ref($arguments[0]) ne 'ARRAY')) && (!defined($arguments[1]) || (ref($arguments[1]) && ref($arguments[1]) ne 'ARRAY'));
+    return $class->_new2_2(@arguments) if 1 && (!defined($arguments[0]) || (ref($arguments[0]) && ref($arguments[0]) ne 'ARRAY')) && (!defined($arguments[1]) || (ref($arguments[1]) && ref($arguments[1]) ne 'ARRAY'));
+    return $class->_new2_3(@arguments);
+}
+
 
 sub _new1 {
     my ($class, $transformInfoInterface) = @_;
@@ -56,7 +63,7 @@ sub _new1 {
 }
 
 
-sub _new2 {
+sub _new2_1 {
     my ($class, $transformInfoInterface, $categoryAbPath) = @_;
     my $self = bless({}, $class);
     _init_fields($self);
@@ -73,7 +80,7 @@ sub _new2 {
 }
 
 
-sub _new2 {
+sub _new2_2 {
     my ($class, $transformInfoInterface, $node) = @_;
     my $self = bless({}, $class);
     _init_fields($self);
@@ -91,7 +98,7 @@ sub _new2 {
 }
 
 
-sub _new2 {
+sub _new2_3 {
     my ($class, $transformInfoInterface, $categoryPropertiesHashMap) = @_;
     my $self = bless({}, $class);
     _init_fields($self);
@@ -233,7 +240,7 @@ sub validationInfo {
 
 sub log {
     my ($self) = @_;
-        if ($org::allbinary::business::category::properties::root::store::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($org::allbinary::business::category::properties::root::store::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{CATEGORY})) {
+        if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{CATEGORY})) {
             $self->{logUtil}->putF('org::allbinary::logic::string::StringMaker'->new()->append("filePath = ")->append($self->{fileAbPath}->toString())->append("\npath = ")->append($self->{abPath}->toString())->append("\ncategory = ")->append($self->{category})->toString(), $self, "log()");
         }
 }
@@ -262,6 +269,8 @@ use org::allbinary::logic::visual::transform::info::TransformInfoHttpInterface (
 use org::allbinary::logic::visual::transform::info::TransformInfoInterface ();
 use org::w3c::dom::Document ();
 use org::w3c::dom::Node ();
+use org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory ();
+use org::allbinary::logic::communication::log::config::type::LogConfigTypes ();
 
 1;
 

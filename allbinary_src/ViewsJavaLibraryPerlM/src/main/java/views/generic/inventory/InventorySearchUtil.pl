@@ -50,7 +50,7 @@ sub getBasicItemIdColumn {
         my $storeFrontInterface = $searchRequest->getStoreFront();
         my $inventorySearchUtil = 'views::generic::inventory::InventoryColumnUtil'->getInstance();
         my $column = $inventorySearchUtil->getColumnWhereLike($inventoryEntityInterface, $storeFrontInterface->getCategoryPath(), $self->{basicItemData}->{ID});
-        if ($views::generic::inventory::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($views::generic::inventory::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{PRODUCTSEARCHLOGGING})) {
+        if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{PRODUCTSEARCHLOGGING})) {
             $self->{logUtil}->putF("Number Of Items Found: " . $column->size(), $self, "search");
         }
         my $subStoreVector = $storeFrontInterface->getSubStores();
@@ -60,7 +60,7 @@ sub getBasicItemIdColumn {
             my $substoreIdColumn = $inventorySearchUtil->getColumnWhereLike($inventoryEntityInterface, $subStore, $self->{basicItemData}->{ID});
             $column->addAllList($substoreIdColumn);
         }
-        if ($views::generic::inventory::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($views::generic::inventory::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{PRODUCTSEARCHLOGGING})) {
+        if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{PRODUCTSEARCHLOGGING})) {
             $self->{logUtil}->putF("Number Of Items Found Including SubStores: " . $column->size(), $self, "search");
         }
         return $column;
@@ -73,7 +73,7 @@ sub getNoResults {
         $inventoryNode->appendChild('org::allbinary::data::tree::dom::ModDomHelper'->createNameValueNodes($viewDocumentInterface->getDoc(), $org::allbinary::logic::control::search::SearchData::TOTAL_NUMBER_PAGES, $self->{commonPhoneStrings}->{ZERO}));
         $inventoryNode->appendChild('org::allbinary::data::tree::dom::ModDomHelper'->createNameValueNodes($viewDocumentInterface->getDoc(), $org::allbinary::logic::control::search::SearchData::TOTAL_NUMBER_ITEMS, $self->{commonPhoneStrings}->{ZERO}));
         my $success = 'org::allbinary::data::tree::dom::document::XmlDocumentHelper'->toString($viewDocumentInterface->getDoc());
-        if ($views::generic::inventory::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($views::generic::inventory::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{PRODUCTSEARCHLOGGING})) {
+        if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{PRODUCTSEARCHLOGGING})) {
             $self->{logUtil}->putF("No Results Xml: " . $success, $self, "search");
         }
         return $success;
@@ -194,7 +194,7 @@ sub search {
                 return undef;
             }
         } catch ($e) {
-            if ($views::generic::inventory::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($views::generic::inventory::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{PRODUCTSEARCHLOGGINGERROR})) {
+            if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{PRODUCTSEARCHLOGGINGERROR})) {
                 $self->{logUtil}->put($self->{commonStrings}->{FAILURE}, $self, "search", $e);
             }
             return undef;
@@ -234,6 +234,8 @@ use org::allbinary::string::CommonStrings ();
 use org::allbinary::util::BasicArrayList ();
 use org::w3c::dom::Document ();
 use org::w3c::dom::Node ();
+use org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory ();
+use org::allbinary::logic::communication::log::config::type::LogConfigTypes ();
 use views::generic::inventory::InventoryColumnUtil ();
 
 1;

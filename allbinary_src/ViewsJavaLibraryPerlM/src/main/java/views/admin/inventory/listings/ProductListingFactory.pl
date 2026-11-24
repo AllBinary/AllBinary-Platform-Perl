@@ -34,7 +34,7 @@ sub getInstance {
         try {
             return 'views::admin::inventory::listings::ProductListing'->new($searchRequest);
         } catch ($e) {
-            if ($views::admin::inventory::listings::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($views::admin::inventory::listings::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{FACTORYERROR})) {
+            if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{FACTORYERROR})) {
                 my $commonStrings = 'org::allbinary::string::CommonStrings'->getInstance();
                 $logUtil->put($commonStrings->{EXCEPTION}, "ProductListingFactory", $commonStrings->{GET_INSTANCE}, $e);
             }
@@ -46,6 +46,9 @@ use java::lang::Object ();
 use org::allbinary::logic::communication::log::LogUtil ();
 use org::allbinary::logic::control::search::SearchRequest ();
 use org::allbinary::string::CommonStrings ();
+use org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory ();
+use org::allbinary::logic::communication::log::config::type::LogConfigTypes ();
+use views::admin::inventory::listings::ProductListing ();
 
 1;
 

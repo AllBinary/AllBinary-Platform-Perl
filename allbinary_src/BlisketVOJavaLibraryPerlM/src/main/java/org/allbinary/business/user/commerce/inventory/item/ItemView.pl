@@ -42,7 +42,7 @@ sub toXmlNode {
     my ($self, $document) = @_;
         my $hashMap = $self->{itemInterface}->toHashMap();
         my $keySet = $hashMap->keySet();
-        my $node = $document->createElement($org::allbinary::business::user::commerce::inventory::item::ItemData::ITEM);
+        my $node = $document->createElement(java::lang::Object::jstatic('org::allbinary::business::user::commerce::inventory::item::ItemView', 'ItemData')->{ITEM});
         my $basicItemView = 'org::allbinary::business::user::commerce::inventory::item::BasicItemView'->new($self->{itemInterface}, $self->{vector});
         $node->appendChild($basicItemView->toXmlNode($document));
         my $stringUtil = 'org::allbinary::logic::string::StringUtil'->getInstance();
@@ -61,7 +61,7 @@ sub toXmlNode {
 
 use java::lang::Object ();
 use java::util::HashMap ();
-# use java::util::Set ();
+use java::util::Set ();
 use org::allbinary::util::BasicArrayList ();
 use org::allbinary::util::BasicArrayListD ();
 use org::allbinary::business::user::address::StreetAddressData ();
@@ -69,7 +69,6 @@ use org::allbinary::data::tree::dom::ModDomHelper ();
 use org::allbinary::logic::string::StringUtil ();
 use org::w3c::dom::Document ();
 use org::w3c::dom::Node ();
-use org::allbinary::business::user::commerce::inventory::item::ItemData ();
 use org::allbinary::business::user::commerce::inventory::item::BasicItemView ();
 
 1;

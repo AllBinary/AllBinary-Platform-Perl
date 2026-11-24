@@ -30,7 +30,7 @@ sub getInstance {
 }
 
 
-sub logError {
+sub logError_j1 {
     my ($self, $gl) = @_;
         my $error = $gl->glGetError();
         if ($error != $javax::microedition::khronos::opengles::GL10::GL_NO_ERROR) {
@@ -52,8 +52,7 @@ sub logError {
 }
 
 
-# Java overloaded method: Perl keeps the last definition
-sub logError {
+sub logError_j2 {
     my ($self, $gl, $image) = @_;
         my $error = $gl->glGetError();
         if ($error != $javax::microedition::khronos::opengles::GL10::GL_NO_ERROR) {
@@ -70,6 +69,13 @@ sub logError {
             $stringBuffer->append($image->toString());
             'org::allbinary::logic::communication::log::PreLogUtil'->put($stringBuffer->toString(), $self, $self->{LOG_ERROR});
         }
+}
+
+sub logError {
+    my ($invocant, @arguments) = @_;
+    return $invocant->logError_j1(@arguments) if scalar(@arguments) == 1;
+    return $invocant->logError_j2(@arguments) if scalar(@arguments) == 2;
+    die "No method logError takes " . scalar(@arguments) . " arguments";
 }
 
 use java::lang::Object ();

@@ -30,7 +30,7 @@ sub new {
 
 sub getInstance {
     my ($class) = @_;
-        my $defaultComboBoxModel = 'org::allbinary::input::automation::actions::script::condition::processors::input::DefaultComboBoxModel'->new();
+        my $defaultComboBoxModel = 'javax::swing::DefaultComboBoxModel'->new();
         my $keyArray = 'org::allbinary::input::KeySingletonFactory'->getArray();
         for (my $index = 0; $index < scalar(@{$keyArray}); $index++) {
             my $keyAsString = 'java::awt::event::KeyEvent'->getKeyText($keyArray->[$index]);
@@ -41,9 +41,8 @@ sub getInstance {
 
 use java::lang::Object ();
 # use java::awt::event::KeyEvent ();
-# use javax::swing ();
+# use javax::swing::DefaultComboBoxModel ();
 use org::allbinary::input::KeySingletonFactory ();
-use org::allbinary::input::automation::actions::script::condition::processors::input::DefaultComboBoxModel ();
 
 1;
 

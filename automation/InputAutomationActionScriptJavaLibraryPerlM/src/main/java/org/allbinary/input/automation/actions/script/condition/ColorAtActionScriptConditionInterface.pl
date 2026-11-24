@@ -50,7 +50,7 @@ sub log {
     die "abstract method log";
 }
 
-# use java::awt ();
+# use java::awt::Point ();
 use org::allbinary::media::image::analysis::ColorRangeInterface ();
 
 1;

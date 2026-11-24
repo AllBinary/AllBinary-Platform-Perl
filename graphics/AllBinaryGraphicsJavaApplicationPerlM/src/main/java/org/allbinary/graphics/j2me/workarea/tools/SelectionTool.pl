@@ -30,7 +30,7 @@ sub _init_fields {
     $self->{canvasJPanel} = undef;
     $self->{active} = 1;
     $self->{controlIdDown} = 0;
-    $self->{rectColor} = 'org::allbinary::graphics::j2me::workarea::tools::Color'->new(int('org::allbinary::graphics::color::BasicColorFactory'->getInstance()->{RED}));
+    $self->{rectColor} = 'java::awt::Color'->new(int('org::allbinary::graphics::color::BasicColorFactory'->getInstance()->{RED}));
     $self->{startPoint} = 'org::allbinary::graphics::PointFactory'->getInstance()->{ZERO_ZERO};
     $self->{endPoint} = $self->{startPoint};
 }
@@ -139,10 +139,10 @@ sub makeSelection {
             my $item = $hashMap->get($graphicItemArray->[$index]);
             if ($item->getName() eq 'org::allbinary::graphics::j2me::workarea::tools::LinesGraphicItem'->getStaticName()) {
                 if ('org::allbinary::math::RectangleCollisionPointUtil'->allPointsInsideCell($xRect, $yRect, $xRect2, $yRect2, $item->getPointsInterface()->getPoints(), $self->{canvasJPanel}->getXPixelsPerWorkAreaPixel(), $self->{canvasJPanel}->getYPixelsPerWorkAreaPixel())) {
-                    $item->setColor($org::allbinary::graphics::j2me::workarea::tools::Color::YELLOW);
+                    $item->setColor($java::awt::Color::YELLOW);
                     $item->activate();
                 } elsif (!$self->{controlIdDown}) {
-                    $item->setColor($org::allbinary::graphics::j2me::workarea::tools::Color::WHITE);
+                    $item->setColor($java::awt::Color::WHITE);
                     $item->deactivate();
                 }
             }
@@ -284,7 +284,8 @@ sub duplicate {
 }
 
 use java::lang::Object ();
-# use java::awt ();
+# use java::awt::Color ();
+# use java::awt::Graphics ();
 use java::util::HashMap ();
 # use javax::swing::tree::MutableTreeNode ();
 use org::allbinary::graphics::GPoint ();
@@ -297,9 +298,10 @@ use org::allbinary::logic::communication::log::LogUtil ();
 use org::allbinary::math::RectangleCollisionPointUtil ();
 use org::allbinary::string::CommonStrings ();
 use org::w3c::dom::Node ();
+# use java::awt::event::KeyEvent ();
+# use java::awt::event::MouseEvent ();
 use org::allbinary::graphics::j2me::workarea::tools::GraphicItemInterface ();
 use org::allbinary::graphics::j2me::workarea::tools::LinesGraphicItem ();
-use org::allbinary::graphics::j2me::workarea::tools::Color ();
 use org::allbinary::graphics::j2me::workarea::tools::MouseStrings ();
 
 1;

@@ -28,7 +28,7 @@ sub _init_fields {
 }
 
 
-sub getInstance {
+sub getInstance_j0 {
     my ($class) = @_;
         return $org::allbinary::business::user::commerce::money::payment::gateway::transaction::PaymentTransactionInterfaceRequestFactory::instance;
 }
@@ -43,15 +43,14 @@ sub new {
 
 
 # throws Exception
-# Java overloaded method: Perl keeps the last definition
-sub getInstance {
+sub getInstance_j1 {
     my ($self, $transformInfoInterface) = @_;
         try {
             my $httpTransformInfoInterface = $transformInfoInterface;
             my $pageContext = $httpTransformInfoInterface->getPageContext();
             my $httpServletRequest = $pageContext->getRequest();
-            my $command = $httpServletRequest->getParameter($org::allbinary::business::user::commerce::money::payment::gateway::transaction::org::allbinary->{globals}->{GLOBALS2}->{ADMINCOMMAND});
-            if (defined($command) && ($command cmp $org::allbinary::business::user::commerce::money::payment::gateway::transaction::org::allbinary->{globals}->{GLOBALS2}->{AUTHORIZEFORMEVALBODYONERROR}) == 0) {
+            my $command = $httpServletRequest->getParameter($org::allbinary::globals::GLOBALS2::ADMINCOMMAND);
+            if (defined($command) && ($command cmp $org::allbinary::globals::GLOBALS2::AUTHORIZEFORMEVALBODYONERROR) == 0) {
                 return $self->generateFromTestData($transformInfoInterface);
             } else {
                 my $propertiesHashMap = $httpTransformInfoInterface->getPropertiesHashMap();
@@ -65,18 +64,25 @@ sub getInstance {
                 $orderPaymentInfo->setTransactionType('org::allbinary::business::user::commerce::money::payment::types::TransactionTypeFactory'->getInstance()->{SALE}->toString());
                 $orderPaymentInfo->setTenderType('org::allbinary::business::user::commerce::money::payment::types::TenderTypeFactory'->getInstance()->{CREDITCARD}->toString());
                 $orderReview->setPaymentInfo($orderPaymentInfo);
-                if ($org::allbinary::business::user::commerce::money::payment::gateway::transaction::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($org::allbinary::business::user::commerce::money::payment::gateway::transaction::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{PAYMENT})) {
+                if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{PAYMENT})) {
                     $self->{logUtil}->putF($orderReview->getId(), $self, "getPaymentTransactionInterface()");
                 }
                 my $paymentTransactionInterface = 'org::allbinary::business::user::commerce::money::payment::gateway::transaction::PaymentTransactionInterfaceFactory'->getInstance()->getInstance($orderReview);
                 return $paymentTransactionInterface;
             }
         } catch ($e) {
-            if ($org::allbinary::business::user::commerce::money::payment::gateway::transaction::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($org::allbinary::business::user::commerce::money::payment::gateway::transaction::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{PAYMENTERROR})) {
+            if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{PAYMENTERROR})) {
                 $self->{logUtil}->put($self->{commonStrings}->{EXCEPTION}, $self, "getPaymentTransactionInterface()", $e);
             }
             die $e;
         }
+}
+
+sub getInstance {
+    my ($invocant, @arguments) = @_;
+    return $invocant->getInstance_j0(@arguments) if scalar(@arguments) == 0;
+    return $invocant->getInstance_j1(@arguments) if scalar(@arguments) == 1;
+    die "No method getInstance takes " . scalar(@arguments) . " arguments";
 }
 
 
@@ -144,7 +150,7 @@ sub generateFromTestData {
             my $paymentTransactionInterface = 'org::allbinary::business::user::commerce::money::payment::gateway::transaction::PaymentTransactionInterfaceFactory'->getInstance()->getInstance($orderReview);
             return $paymentTransactionInterface;
         } catch ($e) {
-            if ($org::allbinary::business::user::commerce::money::payment::gateway::transaction::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($org::allbinary::business::user::commerce::money::payment::gateway::transaction::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{PAYMENTERROR})) {
+            if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{PAYMENTERROR})) {
                 $self->{logUtil}->put($self->{commonStrings}->{EXCEPTION}, $self, "generatePaymentTransactionInterfaceFromTestData()", $e);
             }
             die $e;
@@ -178,6 +184,9 @@ use org::allbinary::logic::string::StringValidationUtil ();
 use org::allbinary::logic::visual::transform::info::TransformInfoHttpInterface ();
 use org::allbinary::logic::visual::transform::info::TransformInfoInterface ();
 use org::allbinary::string::CommonStrings ();
+use org::allbinary::globals::GLOBALS2 ();
+use org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory ();
+use org::allbinary::logic::communication::log::config::type::LogConfigTypes ();
 use org::allbinary::business::user::commerce::money::payment::gateway::transaction::PaymentTransactionInterfaceFactory ();
 
 1;

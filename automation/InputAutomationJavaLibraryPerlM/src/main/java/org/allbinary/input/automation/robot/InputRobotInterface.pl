@@ -81,7 +81,7 @@ sub getMousePoint {
 }
 
 
-sub mouseMove {
+sub mouseMove_j2 {
     my ($self, $x, $y) = @_;
     die "abstract method mouseMove";
 }
@@ -129,28 +129,42 @@ sub waitForIdle {
 }
 
 
-# Java overloaded method: Perl keeps the last definition
-sub mouseMove {
+sub mouseMove_j1 {
     my ($self, $point) = @_;
     die "abstract method mouseMove";
 }
 
+sub mouseMove {
+    my ($invocant, @arguments) = @_;
+    return $invocant->mouseMove_j2(@arguments) if scalar(@arguments) == 2;
+    return $invocant->mouseMove_j1(@arguments) if scalar(@arguments) == 1;
+    die "No method mouseMove takes " . scalar(@arguments) . " arguments";
+}
+
 
 # throws Exception
-sub mouseMoveToTarget {
+sub mouseMoveToTarget_j1 {
     my ($self, $rectangle) = @_;
     die "abstract method mouseMoveToTarget";
 }
 
 
 # throws Exception
-# Java overloaded method: Perl keeps the last definition
-sub mouseMoveToTarget {
+sub mouseMoveToTarget_j3 {
     my ($self, $rectangle, $x, $y) = @_;
     die "abstract method mouseMoveToTarget";
 }
 
-# use java::awt ();
+sub mouseMoveToTarget {
+    my ($invocant, @arguments) = @_;
+    return $invocant->mouseMoveToTarget_j1(@arguments) if scalar(@arguments) == 1;
+    return $invocant->mouseMoveToTarget_j3(@arguments) if scalar(@arguments) == 3;
+    die "No method mouseMoveToTarget takes " . scalar(@arguments) . " arguments";
+}
+
+# use java::awt::Rectangle ();
+# use java::awt::Color ();
+# use java::awt::Point ();
 # use java::awt::image::BufferedImage ();
 # use javax::help::HelpSet ();
 

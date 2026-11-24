@@ -82,7 +82,7 @@ sub initComponents {
         $self->setLayout('java::awt::GridLayout'->new(1, 0));
         $self->{actionScriptJTree}->setPreferredSize('java::awt::Dimension'->new(500, 500));
         $self->{actionScriptJTree}->addMouseListener(do {
-            package java::awt::event::MouseAdapter::AnonymousN66880 { our @ISA = ('java::awt::event::MouseAdapter', 'java::lang::Object');
+            package java::awt::event::MouseAdapter::AnonymousN66909 { our @ISA = ('java::awt::event::MouseAdapter', 'java::lang::Object');
             
 
             sub mouseClicked {
@@ -96,7 +96,7 @@ sub initComponents {
                 $self->actionScriptJTreeMouseReleased($evt);
             }
             }
-            'java::awt::event::MouseAdapter::AnonymousN66880'->can('new') ? 'java::awt::event::MouseAdapter::AnonymousN66880'->new() : bless({}, 'java::awt::event::MouseAdapter::AnonymousN66880')
+            'java::awt::event::MouseAdapter::AnonymousN66909'->can('new') ? 'java::awt::event::MouseAdapter::AnonymousN66909'->new() : bless({}, 'java::awt::event::MouseAdapter::AnonymousN66909')
         });
         $self->{jScrollPane1}->setViewportView($self->{actionScriptJTree});
         $self->add($self->{jScrollPane1});
@@ -126,7 +126,8 @@ sub actionScriptJTreeMouseClicked {
 
 use java::lang::Object ();
 # use java::awt::event::MouseEvent ();
-# use javax::swing ();
+# use javax::swing::JPopupMenu ();
+# use javax::swing::JComponent ();
 # use javax::swing::tree::DefaultMutableTreeNode ();
 # use javax::swing::tree::DefaultTreeModel ();
 # use javax::swing::tree::TreePath ();
@@ -134,6 +135,12 @@ use org::allbinary::input::automation::actions::script::JTreeInterface ();
 use org::allbinary::input::automation::actions::script::condition::CustomTreeNodeInterface ();
 use org::allbinary::logic::communication::log::LogUtil ();
 use org::allbinary::string::CommonStrings ();
+# use java::awt::Dimension ();
+# use java::awt::GridLayout ();
+# use java::awt::event::MouseAdapter ();
+# use javax::swing::JPanel ();
+# use javax::swing::JScrollPane ();
+# use javax::swing::JTree ();
 
 1;
 

@@ -38,7 +38,7 @@ sub new {
 }
 
 
-sub insert {
+sub insert_j2 {
     my ($self, $userName, $order) = @_;
         my $vector = 'org::allbinary::util::BasicArrayListD'->new();
         try {
@@ -98,12 +98,12 @@ sub insert {
                 $vector->add($ZERO_STRING);
                 $self->insert($vector);
             }
-            if ($org::allbinary::data::tables::user::commerce::inventory::order::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($org::allbinary::data::tables::user::commerce::inventory::order::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{SQLLOGGING})) {
-                $self->{logUtil}->putF("Command Success Added: " . $items->size(), $self, $self->{INSERT});
+            if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{SQLLOGGING})) {
+                $self->{logUtil}->putF("Command Success Added: " . $items->size(), $self, java::lang::Object::jstatic('org::allbinary::data::tables::user::commerce::inventory::order::OrderItemsEntity', 'INSERT'));
             }
         } catch ($e) {
-            if ($org::allbinary::data::tables::user::commerce::inventory::order::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($org::allbinary::data::tables::user::commerce::inventory::order::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{SQLLOGGING})) {
-                $self->{logUtil}->put("Command Failed: " . $vector->toString(), $self, $self->{INSERT}, $e);
+            if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{SQLLOGGING})) {
+                $self->{logUtil}->put("Command Failed: " . $vector->toString(), $self, java::lang::Object::jstatic('org::allbinary::data::tables::user::commerce::inventory::order::OrderItemsEntity', 'INSERT'), $e);
             }
         }
 }
@@ -119,7 +119,7 @@ sub setStatus {
             $updateHashMap->put($org::allbinary::business::user::commerce::inventory::order::OrderHistoryData::STATUS, $status);
             $self->SUPER::updateWhere($whereHashMap, $updateHashMap);
         } catch ($e) {
-            if ($org::allbinary::data::tables::user::commerce::inventory::order::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($org::allbinary::data::tables::user::commerce::inventory::order::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{SQLLOGGING})) {
+            if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{SQLLOGGING})) {
                 $self->{logUtil}->put($self->{commonStrings}->{FAILURE}, $self, "setStatus", $e);
             }
         }
@@ -139,7 +139,7 @@ sub isEverythingShipped {
             }
             return 1;
         } catch ($e) {
-            if ($org::allbinary::data::tables::user::commerce::inventory::order::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($org::allbinary::data::tables::user::commerce::inventory::order::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{SQLLOGGING})) {
+            if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{SQLLOGGING})) {
                 $self->{logUtil}->put($self->{commonStrings}->{FAILURE}, $self, "isEverythingShipped", $e);
             }
             return 0;
@@ -177,7 +177,7 @@ sub getBasketReview {
                 return undef;
             }
         } catch ($e) {
-            if ($org::allbinary::data::tables::user::commerce::inventory::order::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($org::allbinary::data::tables::user::commerce::inventory::order::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{SQLLOGGING})) {
+            if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{SQLLOGGING})) {
                 $self->{logUtil}->put($self->{commonStrings}->{FAILURE}, $self, "getBasketReview", $e);
             }
             return undef;
@@ -297,16 +297,22 @@ sub dropTable {
 }
 
 
-# Java overloaded method: Perl keeps the last definition
-sub insert {
+sub insert_j1 {
     my ($self, $values) = @_;
         $self->SUPER::insert($values);
+}
+
+sub insert {
+    my ($invocant, @arguments) = @_;
+    return $invocant->insert_j2(@arguments) if scalar(@arguments) == 2;
+    return $invocant->insert_j1(@arguments) if scalar(@arguments) == 1;
+    die "No method insert takes " . scalar(@arguments) . " arguments";
 }
 
 use java::lang::Object ();
 use java::util::HashMap ();
 # use java::util::ListIterator ();
-# use java::util::Set ();
+use java::util::Set ();
 use org::allbinary::util::BasicArrayList ();
 use org::allbinary::util::BasicArrayListD ();
 use org::allbinary::business::context::modules::storefront::StoreFrontData ();
@@ -332,6 +338,8 @@ use org::allbinary::logic::communication::log::LogUtil ();
 use org::allbinary::logic::communication::sql::AbSqlBean ();
 use org::allbinary::logic::string::StringMaker ();
 use org::allbinary::logic::string::StringUtil ();
+use org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory ();
+use org::allbinary::logic::communication::log::config::type::LogConfigTypes ();
 use org::allbinary::data::tables::user::commerce::inventory::order::OrderItemsEntityInterface ();
 
 1;

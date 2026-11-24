@@ -35,7 +35,7 @@ sub getInstance {
             $visitorCanBeNull = 'org::allbinary::game::ag::ai::ThrustAIVisitorFactory'->getInstance();
         }
         my $hashtable2 = 'org::allbinary::game::ag::ai::BasicProbabilityAIDataFactory'->new()->getInstance();
-        $hashtable2->put($org::allbinary::game::ai::BasicAI::AI_VISITOR, 'org::allbinary::game::ag::ai::LastKeyAIVisitorFactory'->getInstance());
+        $hashtable2->put($org::allbinary::game::ai::BasicAI::AI_VISITOR, java::lang::Object::jstatic('org::allbinary::game::ag::ai::DiveAndDirectionalTrackingAIFactory', 'LastKeyAIVisitorFactory')->getInstance());
         my $artificialIntelligenceInterface = 'org::allbinary::game::ag::ai::tactical::BasicRandomAIFactory'->new()->getInstance($hashtable2, $ownerLayerInterface, $gameInput);
         return 'org::allbinary::game::ag::ai::DiveAndDirectionalTrackingAI'->new($ownerLayerInterface, $artificialIntelligenceInterface, $gameInput, $visitorCanBeNull);
 }
@@ -51,7 +51,6 @@ use org::allbinary::logic::util::visitor::Visitor ();
 use org::allbinary::util::ABHashtable ();
 use org::allbinary::game::ag::ai::ThrustAIVisitorFactory ();
 use org::allbinary::game::ag::ai::BasicProbabilityAIDataFactory ();
-use org::allbinary::game::ag::ai::LastKeyAIVisitorFactory ();
 use org::allbinary::game::ag::ai::DiveAndDirectionalTrackingAI ();
 
 1;

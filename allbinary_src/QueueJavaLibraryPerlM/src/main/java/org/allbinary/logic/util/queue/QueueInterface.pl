@@ -29,17 +29,23 @@ sub offer {
 
 
 # throws Exception
-sub remove {
+sub remove_j1 {
     my ($self, $anyType) = @_;
     die "abstract method remove";
 }
 
 
 # throws Exception
-# Java overloaded method: Perl keeps the last definition
-sub remove {
+sub remove_j0 {
     my ($self) = @_;
     die "abstract method remove";
+}
+
+sub remove {
+    my ($invocant, @arguments) = @_;
+    return $invocant->remove_j1(@arguments) if scalar(@arguments) == 1;
+    return $invocant->remove_j0(@arguments) if scalar(@arguments) == 0;
+    die "No method remove takes " . scalar(@arguments) . " arguments";
 }
 
 

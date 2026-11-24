@@ -115,7 +115,7 @@ sub toString {
 use java::lang::Object ();
 # use java::util::Collection ();
 # use java::util::Map ();
-# use java::util::Set ();
+use java::util::Set ();
 use org::osgi::framework::ServiceReference ();
 use org::allbinary::logic::string::StringMaker ();
 

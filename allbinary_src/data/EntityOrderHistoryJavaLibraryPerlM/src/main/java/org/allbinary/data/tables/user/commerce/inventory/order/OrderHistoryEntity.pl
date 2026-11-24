@@ -37,7 +37,7 @@ sub new {
 }
 
 
-sub insert {
+sub insert_j2 {
     my ($self, $userName, $order) = @_;
         my $vector = 'org::allbinary::util::BasicArrayListD'->new();
         try {
@@ -127,30 +127,36 @@ sub insert {
             $vector->add($order->getStoreComments());
             $vector->add($order->getStoreCancelComments());
             $self->insert($vector);
-            if ($org::allbinary::data::tables::user::commerce::inventory::order::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($org::allbinary::data::tables::user::commerce::inventory::order::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{SQLLOGGING})) {
-                $self->{logUtil}->putF($self->{commonStrings}->{SUCCESS}, $self, $self->{INSERT});
+            if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{SQLLOGGING})) {
+                $self->{logUtil}->putF($self->{commonStrings}->{SUCCESS}, $self, java::lang::Object::jstatic('org::allbinary::data::tables::user::commerce::inventory::order::OrderHistoryEntity', 'INSERT'));
             }
         } catch ($e) {
-            if ($org::allbinary::data::tables::user::commerce::inventory::order::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($org::allbinary::data::tables::user::commerce::inventory::order::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{SQLLOGGING})) {
-                $self->{logUtil}->put("Command Failed: " . $vector, $self, $self->{INSERT}, $e);
+            if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{SQLLOGGING})) {
+                $self->{logUtil}->put("Command Failed: " . $vector, $self, java::lang::Object::jstatic('org::allbinary::data::tables::user::commerce::inventory::order::OrderHistoryEntity', 'INSERT'), $e);
             }
         }
 }
 
 
-# Java overloaded method: Perl keeps the last definition
-sub insert {
+sub insert_j1 {
     my ($self, $values) = @_;
         try {
             $self->SUPER::insert($values);
-            if ($org::allbinary::data::tables::user::commerce::inventory::order::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($org::allbinary::data::tables::user::commerce::inventory::order::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{SQLLOGGING})) {
-                $self->{logUtil}->putF($self->{commonStrings}->{SUCCESS}, $self, $self->{INSERT});
+            if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{SQLLOGGING})) {
+                $self->{logUtil}->putF($self->{commonStrings}->{SUCCESS}, $self, java::lang::Object::jstatic('org::allbinary::data::tables::user::commerce::inventory::order::OrderHistoryEntity', 'INSERT'));
             }
         } catch ($e) {
-            if ($org::allbinary::data::tables::user::commerce::inventory::order::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($org::allbinary::data::tables::user::commerce::inventory::order::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{SQLLOGGING})) {
-                $self->{logUtil}->put($self->{commonStrings}->{FAILURE}, $self, $self->{INSERT}, $e);
+            if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{SQLLOGGING})) {
+                $self->{logUtil}->put($self->{commonStrings}->{FAILURE}, $self, java::lang::Object::jstatic('org::allbinary::data::tables::user::commerce::inventory::order::OrderHistoryEntity', 'INSERT'), $e);
             }
         }
+}
+
+sub insert {
+    my ($invocant, @arguments) = @_;
+    return $invocant->insert_j2(@arguments) if scalar(@arguments) == 2;
+    return $invocant->insert_j1(@arguments) if scalar(@arguments) == 1;
+    die "No method insert takes " . scalar(@arguments) . " arguments";
 }
 
 
@@ -168,7 +174,7 @@ sub setStatus {
             }
             $self->SUPER::updateWhere($org::allbinary::business::user::commerce::inventory::order::OrderData::ID, $orderId, $updateHashMap);
         } catch ($e) {
-            if ($org::allbinary::data::tables::user::commerce::inventory::order::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($org::allbinary::data::tables::user::commerce::inventory::order::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{SQLLOGGING})) {
+            if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{SQLLOGGING})) {
                 $self->{logUtil}->put($self->{commonStrings}->{FAILURE}, $self, "setStatus", $e);
             }
         }
@@ -185,7 +191,7 @@ sub setPaymentMethod {
             $updateHashMap->put($org::allbinary::business::user::commerce::inventory::order::OrderHistoryData::TRANSDATE, $time);
             $self->SUPER::updateWhere($org::allbinary::business::user::commerce::inventory::order::OrderData::ID, $orderId, $updateHashMap);
         } catch ($e) {
-            if ($org::allbinary::data::tables::user::commerce::inventory::order::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($org::allbinary::data::tables::user::commerce::inventory::order::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{SQLLOGGING})) {
+            if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{SQLLOGGING})) {
                 $self->{logUtil}->put($self->{commonStrings}->{FAILURE}, $self, "setPaymentMethod", $e);
             }
         }
@@ -210,7 +216,7 @@ sub getStoreOrders {
 
 
 # throws Exception
-sub getOrders {
+sub getOrders_j1 {
     my ($self, $userName) = @_;
         my $orderReviewVector = 'org::allbinary::util::BasicArrayListD'->new();
         my $whereHashMap = 'org::allbinary::logic::StdUtil'->getInstance()->createHashMap();
@@ -227,8 +233,7 @@ sub getOrders {
 
 
 # throws Exception
-# Java overloaded method: Perl keeps the last definition
-sub getOrders {
+sub getOrders_j3 {
     my ($self, $status, $fromDate, $toDate) = @_;
         my $orderReviewVector = 'org::allbinary::util::BasicArrayListD'->new();
         my $whereHashMap = 'org::allbinary::logic::StdUtil'->getInstance()->createHashMap();
@@ -245,8 +250,7 @@ sub getOrders {
 
 
 # throws Exception
-# Java overloaded method: Perl keeps the last definition
-sub getOrders {
+sub getOrders_j2 {
     my ($self, $fromDate, $toDate) = @_;
         my $orderReviewVector = 'org::allbinary::util::BasicArrayListD'->new();
         my $orderHashMapVector = $self->SUPER::getRowsWhereBetween($org::allbinary::business::user::commerce::inventory::order::OrderHistoryData::ORDERDATE, $fromDate, $toDate);
@@ -257,6 +261,14 @@ sub getOrders {
             $orderReviewVector->add($orderReview);
         }
         return $orderReviewVector;
+}
+
+sub getOrders {
+    my ($invocant, @arguments) = @_;
+    return $invocant->getOrders_j1(@arguments) if scalar(@arguments) == 1;
+    return $invocant->getOrders_j3(@arguments) if scalar(@arguments) == 3;
+    return $invocant->getOrders_j2(@arguments) if scalar(@arguments) == 2;
+    die "No method getOrders takes " . scalar(@arguments) . " arguments";
 }
 
 
@@ -426,6 +438,8 @@ use org::allbinary::logic::string::StringMaker ();
 use org::allbinary::logic::string::StringUtil ();
 use org::allbinary::logic::system::security::licensing::AbeClientInformationInterface ();
 use org::allbinary::logic::system::security::licensing::ServiceClientInformationInterfaceFactory ();
+use org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory ();
+use org::allbinary::logic::communication::log::config::type::LogConfigTypes ();
 use org::allbinary::data::tables::user::commerce::inventory::order::OrderHistoryEntityInterface ();
 
 1;

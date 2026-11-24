@@ -40,16 +40,22 @@ sub getBasketReview {
 }
 
 
-sub insert {
+sub insert_j2 {
     my ($self, $userName, $order) = @_;
     die "abstract method insert";
 }
 
 
-# Java overloaded method: Perl keeps the last definition
-sub insert {
+sub insert_j1 {
     my ($self, $values) = @_;
     die "abstract method insert";
+}
+
+sub insert {
+    my ($invocant, @arguments) = @_;
+    return $invocant->insert_j2(@arguments) if scalar(@arguments) == 2;
+    return $invocant->insert_j1(@arguments) if scalar(@arguments) == 1;
+    die "No method insert takes " . scalar(@arguments) . " arguments";
 }
 
 use org::allbinary::util::BasicArrayList ();

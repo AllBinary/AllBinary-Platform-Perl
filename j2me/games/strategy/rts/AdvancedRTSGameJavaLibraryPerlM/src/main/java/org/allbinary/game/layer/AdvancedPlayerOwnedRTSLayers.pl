@@ -204,7 +204,6 @@ use java::lang::Object ();
 use org::allbinary::logic::string::StringMaker ();
 use org::allbinary::util::BasicArrayList ();
 use org::allbinary::util::BasicArrayListD ();
-use org::allbinary::game::layer::PlayerOwnedRTSLayers ();
 
 1;
 

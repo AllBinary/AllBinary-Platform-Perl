@@ -48,7 +48,7 @@ sub new {
     my ($class, $powerOfTen, $unused) = @_;
     my $self = bless({}, $class);
     _init_fields($self);
-        $self->{maxDigits} = 'org::allbinary::logic::math::MathUtil'->getInstance()->getTotalDigits($powerOfTen);
+        $self->{maxDigits} = java::lang::Object::jstatic('org::allbinary::logic::math::PrimitiveLongUtil', 'MathUtil')->getInstance()->getTotalDigits($powerOfTen);
         $self->{powerOfTen} = $powerOfTen;
         $self->{maxValue} = ($powerOfTen * 10) - 1;
         $self->{charArray} = [("\0") x ($self->{maxDigits})];
@@ -107,7 +107,6 @@ use org::allbinary::logic::NullUtil ();
 use org::allbinary::logic::communication::log::LogUtil ();
 use org::allbinary::string::CommonStrings ();
 use org::allbinary::logic::math::PrimitiveLongSingleton ();
-use org::allbinary::logic::math::MathUtil ();
 
 1;
 

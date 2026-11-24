@@ -46,7 +46,7 @@ sub getNominator {
 }
 
 use java::lang::Object ();
-# use java::awt ();
+# use java::awt::Color ();
 # use java::awt::image::BufferedImage ();
 use org::allbinary::graphics::color::ColorCacheFactory ();
 use org::allbinary::graphics::color::ColorCacheable ();

@@ -44,7 +44,7 @@ sub process {
             my $result = $method->invoke($anyType, undef);
             return $result;
         } catch ($e) {
-            if ($admin::tags::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($admin::tags::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{LICENSINGERROR})) {
+            if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{LICENSINGERROR})) {
                 $self->{logUtil}->put("LicensingException", $self, $self->{commonStrings}->{PROCESS}, $e);
             }
             die $e;
@@ -56,9 +56,9 @@ sub process {
 sub doStartTag {
     my ($self) = @_;
         try {
-            if ($self->getCommand()->compareTo($admin::tags::org::allbinary->{globals}->{GLOBALS2}->{AUTHORIZEORDEREVALBODYONERROR}) == 0 || $self->getCommand()->compareTo($admin::tags::org::allbinary->{globals}->{GLOBALS2}->{AUTHORIZEORDERANDEVALBODY}) == 0 || $self->getCommand()->compareTo($admin::tags::org::allbinary->{globals}->{GLOBALS2}->{AUTHORIZEFORMEVALBODYONERROR}) == 0) {
+            if ($self->getCommand()->compareTo($org::allbinary::globals::GLOBALS2::AUTHORIZEORDEREVALBODYONERROR) == 0 || $self->getCommand()->compareTo($org::allbinary::globals::GLOBALS2::AUTHORIZEORDERANDEVALBODY) == 0 || $self->getCommand()->compareTo($org::allbinary::globals::GLOBALS2::AUTHORIZEFORMEVALBODYONERROR) == 0) {
                 $self->{pageContext}->getOut()->print($self->process() . "<br />");
-                if ($self->getCommand()->compareTo($admin::tags::org::allbinary->{globals}->{GLOBALS2}->{AUTHORIZEORDEREVALBODYONERROR}) == 0) {
+                if ($self->getCommand()->compareTo($org::allbinary::globals::GLOBALS2::AUTHORIZEORDEREVALBODYONERROR) == 0) {
                     return $self->{SKIP_BODY};
                 } else {
                     return $self->{EVAL_BODY_INCLUDE};
@@ -68,7 +68,7 @@ sub doStartTag {
             }
         } catch ($e) {
             'org::allbinary::logic::communication::http::request::AbResponseHandler'->sendJspTagRedirect($self->{pageContext}, $e);
-            return $self->{SKIP_BODY};
+            return java::lang::Object::jstatic('admin::tags::PaymentProcessTag', 'SKIP_BODY');
         }
 }
 
@@ -80,6 +80,9 @@ use org::allbinary::logic::communication::http::request::AbResponseHandler ();
 use org::allbinary::logic::communication::log::LogUtil ();
 use org::allbinary::logic::system::security::licensing::LicensingException ();
 use tags::StoreValidationTransformTag ();
+use org::allbinary::globals::GLOBALS2 ();
+use org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory ();
+use org::allbinary::logic::communication::log::config::type::LogConfigTypes ();
 
 1;
 

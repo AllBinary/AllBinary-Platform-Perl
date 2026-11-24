@@ -45,6 +45,12 @@ sub new {
     die "No constructor of OrderHistory takes " . scalar(@arguments) . " arguments";
 }
 
+sub _new2 {
+    my ($class, @arguments) = @_;
+    return $class->_new2_1(@arguments) if 1 && (!defined($arguments[0]) || (ref($arguments[0]) && ref($arguments[0]) ne 'ARRAY')) && (!defined($arguments[1]) || (ref($arguments[1]) && ref($arguments[1]) ne 'ARRAY'));
+    return $class->_new2_2(@arguments);
+}
+
 
 sub _new1 {
     my ($class, $basketInterface) = @_;
@@ -55,7 +61,7 @@ sub _new1 {
 }
 
 
-sub _new2 {
+sub _new2_1 {
     my ($class, $basketInterface, $orderHistory) = @_;
     my $self = $class->SUPER::new($orderHistory->getStoreName(), $basketInterface, $orderHistory->getId(), $orderHistory->getShippingMethod(), $orderHistory->getSpecial(), $orderHistory->getPaymentMethod());
     _init_fields($self);
@@ -81,28 +87,28 @@ sub _new2 {
 }
 
 
-sub _new2 {
+sub _new2_2 {
     my ($class, $basketInterface, $orderHistoryHashMap) = @_;
-    my $self = $class->SUPER::new($orderHistoryHashMap->get('org::allbinary::business::context::modules::storefront::StoreFrontData'->getInstance()->{NAME}), $basketInterface, $orderHistoryHashMap->get($org::allbinary::business::user::commerce::inventory::order::OrderData::ID), $orderHistoryHashMap->get($org::allbinary::business::user::commerce::shipping::ShippingMethodData::NAME), $orderHistoryHashMap->get('org::allbinary::business::entry::EntryData'->getInstance()->{SPECIAL}), $orderHistoryHashMap->get($org::allbinary::business::user::commerce::money::payment::PaymentData::METHOD));
+    my $self = $class->SUPER::new($orderHistoryHashMap->get('org::allbinary::business::context::modules::storefront::StoreFrontData'->getInstance()->{NAME}), $basketInterface, $orderHistoryHashMap->get(java::lang::Object::jstatic($class, 'OrderData')->{ID}), $orderHistoryHashMap->get($org::allbinary::business::user::commerce::shipping::ShippingMethodData::NAME), $orderHistoryHashMap->get('org::allbinary::business::entry::EntryData'->getInstance()->{SPECIAL}), $orderHistoryHashMap->get($org::allbinary::business::user::commerce::money::payment::PaymentData::METHOD));
     _init_fields($self);
         # super(...) made $self above
         $self->{shippingAddress} = 'org::allbinary::business::user::address::StreetAddress'->new($orderHistoryHashMap->get($org::allbinary::business::user::address::ShippingAddressData::NAME), $orderHistoryHashMap->get($org::allbinary::business::user::address::ShippingAddressData::STREET), $orderHistoryHashMap->get($org::allbinary::business::user::address::ShippingAddressData::CITY), $orderHistoryHashMap->get($org::allbinary::business::user::address::ShippingAddressData::STATE), $orderHistoryHashMap->get($org::allbinary::business::user::address::ShippingAddressData::CODE), $orderHistoryHashMap->get($org::allbinary::business::user::address::ShippingAddressData::COUNTRY));
         $self->{billingAddress} = 'org::allbinary::business::user::address::StreetAddress'->new($orderHistoryHashMap->get($org::allbinary::business::user::address::BillingAddressData::NAME), $orderHistoryHashMap->get($org::allbinary::business::user::address::BillingAddressData::STREET), $orderHistoryHashMap->get($org::allbinary::business::user::address::BillingAddressData::CITY), $orderHistoryHashMap->get($org::allbinary::business::user::address::BillingAddressData::STATE), $orderHistoryHashMap->get($org::allbinary::business::user::address::BillingAddressData::CODE), $orderHistoryHashMap->get($org::allbinary::business::user::address::BillingAddressData::COUNTRY));
         $self->{payment} = 'org::allbinary::business::user::commerce::money::payment::Payment'->new($orderHistoryHashMap);
         $self->{userName} = $orderHistoryHashMap->get($org::allbinary::business::user::UserData::USERNAME);
-        $self->{orderDate} = $orderHistoryHashMap->get($org::allbinary::business::user::commerce::inventory::order::OrderHistoryData::ORDERDATE);
-        $self->{shipDate} = $orderHistoryHashMap->get($org::allbinary::business::user::commerce::inventory::order::OrderHistoryData::SHIPPEDDATE);
-        $self->{transDate} = $orderHistoryHashMap->get($org::allbinary::business::user::commerce::inventory::order::OrderHistoryData::TRANSDATE);
-        $self->{cancelDate} = $orderHistoryHashMap->get($org::allbinary::business::user::commerce::inventory::order::OrderHistoryData::CANCELDATE);
-        $self->{status} = $orderHistoryHashMap->get($org::allbinary::business::user::commerce::inventory::order::OrderHistoryData::STATUS);
-        $self->{subTotal} = 'org::allbinary::business::user::commerce::money::Money'->new($orderHistoryHashMap->get($org::allbinary::business::user::commerce::inventory::order::OrderHistoryData::SUBTOTAL));
-        $self->{total} = 'org::allbinary::business::user::commerce::money::Money'->new($orderHistoryHashMap->get($org::allbinary::business::user::commerce::inventory::order::OrderHistoryData::TOTAL));
-        $self->{shippingCost} = 'org::allbinary::business::user::commerce::money::Money'->new($orderHistoryHashMap->get($org::allbinary::business::user::commerce::inventory::order::OrderHistoryData::SHIPPINGCOST));
-        $self->{taxes} = 'org::allbinary::business::user::commerce::money::Money'->new($orderHistoryHashMap->get($org::allbinary::business::user::commerce::inventory::order::OrderHistoryData::TAX));
-        $self->SUPER::setUserComments($orderHistoryHashMap->get($org::allbinary::business::user::commerce::inventory::order::OrderData::CUSTOMERCOMMENT));
-        $self->SUPER::setUserCancelComments($orderHistoryHashMap->get($org::allbinary::business::user::commerce::inventory::order::OrderData::CUSTOMERCANCELCOMMENT));
-        $self->SUPER::setStoreComments($orderHistoryHashMap->get($org::allbinary::business::user::commerce::inventory::order::OrderData::STORECOMMENT));
-        $self->SUPER::setStoreCancelComments($orderHistoryHashMap->get($org::allbinary::business::user::commerce::inventory::order::OrderData::STORECANCELCOMMENT));
+        $self->{orderDate} = $orderHistoryHashMap->get(java::lang::Object::jstatic('org::allbinary::business::user::commerce::inventory::order::OrderHistory', 'OrderHistoryData')->{ORDERDATE});
+        $self->{shipDate} = $orderHistoryHashMap->get(java::lang::Object::jstatic('org::allbinary::business::user::commerce::inventory::order::OrderHistory', 'OrderHistoryData')->{SHIPPEDDATE});
+        $self->{transDate} = $orderHistoryHashMap->get(java::lang::Object::jstatic('org::allbinary::business::user::commerce::inventory::order::OrderHistory', 'OrderHistoryData')->{TRANSDATE});
+        $self->{cancelDate} = $orderHistoryHashMap->get(java::lang::Object::jstatic('org::allbinary::business::user::commerce::inventory::order::OrderHistory', 'OrderHistoryData')->{CANCELDATE});
+        $self->{status} = $orderHistoryHashMap->get(java::lang::Object::jstatic('org::allbinary::business::user::commerce::inventory::order::OrderHistory', 'OrderHistoryData')->{STATUS});
+        $self->{subTotal} = 'org::allbinary::business::user::commerce::money::Money'->new($orderHistoryHashMap->get(java::lang::Object::jstatic('org::allbinary::business::user::commerce::inventory::order::OrderHistory', 'OrderHistoryData')->{SUBTOTAL}));
+        $self->{total} = 'org::allbinary::business::user::commerce::money::Money'->new($orderHistoryHashMap->get(java::lang::Object::jstatic('org::allbinary::business::user::commerce::inventory::order::OrderHistory', 'OrderHistoryData')->{TOTAL}));
+        $self->{shippingCost} = 'org::allbinary::business::user::commerce::money::Money'->new($orderHistoryHashMap->get(java::lang::Object::jstatic('org::allbinary::business::user::commerce::inventory::order::OrderHistory', 'OrderHistoryData')->{SHIPPINGCOST}));
+        $self->{taxes} = 'org::allbinary::business::user::commerce::money::Money'->new($orderHistoryHashMap->get(java::lang::Object::jstatic('org::allbinary::business::user::commerce::inventory::order::OrderHistory', 'OrderHistoryData')->{TAX}));
+        $self->SUPER::setUserComments($orderHistoryHashMap->get(java::lang::Object::jstatic('org::allbinary::business::user::commerce::inventory::order::OrderHistory', 'OrderData')->{CUSTOMERCOMMENT}));
+        $self->SUPER::setUserCancelComments($orderHistoryHashMap->get(java::lang::Object::jstatic('org::allbinary::business::user::commerce::inventory::order::OrderHistory', 'OrderData')->{CUSTOMERCANCELCOMMENT}));
+        $self->SUPER::setStoreComments($orderHistoryHashMap->get(java::lang::Object::jstatic('org::allbinary::business::user::commerce::inventory::order::OrderHistory', 'OrderData')->{STORECOMMENT}));
+        $self->SUPER::setStoreCancelComments($orderHistoryHashMap->get(java::lang::Object::jstatic('org::allbinary::business::user::commerce::inventory::order::OrderHistory', 'OrderData')->{STORECANCELCOMMENT}));
     return $self;
 }
 
@@ -267,19 +273,19 @@ sub toHashMap {
     my ($self) = @_;
         my $hashMap = 'org::allbinary::logic::StdUtil'->getInstance()->createHashMap();
         $hashMap->put($org::allbinary::business::user::UserData::USERNAME, $self->{userName});
-        $hashMap->put($org::allbinary::business::user::commerce::inventory::order::OrderHistoryData::ORDERDATE, $self->{orderDate});
-        $hashMap->put($org::allbinary::business::user::commerce::inventory::order::OrderHistoryData::SHIPPEDDATE, $self->{shipDate});
-        $hashMap->put($org::allbinary::business::user::commerce::inventory::order::OrderHistoryData::TRANSDATE, $self->{transDate});
-        $hashMap->put($org::allbinary::business::user::commerce::inventory::order::OrderHistoryData::CANCELDATE, $self->{cancelDate});
-        $hashMap->put($org::allbinary::business::user::commerce::inventory::order::OrderHistoryData::ORDERDATEFORMATTED, 'java::util::Date'->new(int($self->{orderDate}))->toString());
-        $hashMap->put($org::allbinary::business::user::commerce::inventory::order::OrderHistoryData::SHIPPEDDATEFORMATTED, 'java::util::Date'->new(int($self->{shipDate}))->toString());
-        $hashMap->put($org::allbinary::business::user::commerce::inventory::order::OrderHistoryData::TRANSDATEFORMATTED, 'java::util::Date'->new(int($self->{transDate}))->toString());
-        $hashMap->put($org::allbinary::business::user::commerce::inventory::order::OrderHistoryData::CANCELDATEFORMATTED, 'java::util::Date'->new(int($self->{cancelDate}))->toString());
-        $hashMap->put($org::allbinary::business::user::commerce::inventory::order::OrderHistoryData::STATUS, $self->{status});
-        $hashMap->put($org::allbinary::business::user::commerce::inventory::order::OrderHistoryData::SUBTOTAL, $self->{subTotal}->toString());
-        $hashMap->put($org::allbinary::business::user::commerce::inventory::order::OrderHistoryData::TOTAL, $self->{total}->toString());
-        $hashMap->put($org::allbinary::business::user::commerce::inventory::order::OrderHistoryData::SHIPPINGCOST, $self->{shippingCost}->toString());
-        $hashMap->put($org::allbinary::business::user::commerce::inventory::order::OrderHistoryData::TAX, $self->{taxes}->toString());
+        $hashMap->put(java::lang::Object::jstatic('org::allbinary::business::user::commerce::inventory::order::OrderHistory', 'OrderHistoryData')->{ORDERDATE}, $self->{orderDate});
+        $hashMap->put(java::lang::Object::jstatic('org::allbinary::business::user::commerce::inventory::order::OrderHistory', 'OrderHistoryData')->{SHIPPEDDATE}, $self->{shipDate});
+        $hashMap->put(java::lang::Object::jstatic('org::allbinary::business::user::commerce::inventory::order::OrderHistory', 'OrderHistoryData')->{TRANSDATE}, $self->{transDate});
+        $hashMap->put(java::lang::Object::jstatic('org::allbinary::business::user::commerce::inventory::order::OrderHistory', 'OrderHistoryData')->{CANCELDATE}, $self->{cancelDate});
+        $hashMap->put(java::lang::Object::jstatic('org::allbinary::business::user::commerce::inventory::order::OrderHistory', 'OrderHistoryData')->{ORDERDATEFORMATTED}, 'java::util::Date'->new(int($self->{orderDate}))->toString());
+        $hashMap->put(java::lang::Object::jstatic('org::allbinary::business::user::commerce::inventory::order::OrderHistory', 'OrderHistoryData')->{SHIPPEDDATEFORMATTED}, 'java::util::Date'->new(int($self->{shipDate}))->toString());
+        $hashMap->put(java::lang::Object::jstatic('org::allbinary::business::user::commerce::inventory::order::OrderHistory', 'OrderHistoryData')->{TRANSDATEFORMATTED}, 'java::util::Date'->new(int($self->{transDate}))->toString());
+        $hashMap->put(java::lang::Object::jstatic('org::allbinary::business::user::commerce::inventory::order::OrderHistory', 'OrderHistoryData')->{CANCELDATEFORMATTED}, 'java::util::Date'->new(int($self->{cancelDate}))->toString());
+        $hashMap->put(java::lang::Object::jstatic('org::allbinary::business::user::commerce::inventory::order::OrderHistory', 'OrderHistoryData')->{STATUS}, $self->{status});
+        $hashMap->put(java::lang::Object::jstatic('org::allbinary::business::user::commerce::inventory::order::OrderHistory', 'OrderHistoryData')->{SUBTOTAL}, $self->{subTotal}->toString());
+        $hashMap->put(java::lang::Object::jstatic('org::allbinary::business::user::commerce::inventory::order::OrderHistory', 'OrderHistoryData')->{TOTAL}, $self->{total}->toString());
+        $hashMap->put(java::lang::Object::jstatic('org::allbinary::business::user::commerce::inventory::order::OrderHistory', 'OrderHistoryData')->{SHIPPINGCOST}, $self->{shippingCost}->toString());
+        $hashMap->put(java::lang::Object::jstatic('org::allbinary::business::user::commerce::inventory::order::OrderHistory', 'OrderHistoryData')->{TAX}, $self->{taxes}->toString());
         return $hashMap;
 }
 
@@ -291,7 +297,7 @@ sub toXmlNode {
         my $keySet = $hashMap->keySet();
         my $keyArray = $keySet->toArray();
         my $size = scalar(@{$keyArray});
-        my $node = $document->createElement($org::allbinary::business::user::commerce::inventory::order::OrderHistoryData::ORDERHISTORY);
+        my $node = $document->createElement(java::lang::Object::jstatic('org::allbinary::business::user::commerce::inventory::order::OrderHistory', 'OrderHistoryData')->{ORDERHISTORY});
         $node->appendChild($self->SUPER::toXmlNode($document));
         my $billingAddressNode = $document->createElement($org::allbinary::business::user::address::BillingAddressData::BILLINGADDRESS);
         $billingAddressNode->appendChild($self->{billingAddress}->toXmlNode($document));
@@ -318,7 +324,7 @@ sub getPaymentMethod {
 use java::lang::Object ();
 use java::util::Date ();
 use java::util::HashMap ();
-# use java::util::Set ();
+use java::util::Set ();
 use org::allbinary::business::context::modules::storefront::StoreFrontData ();
 use org::allbinary::business::entry::EntryData ();
 use org::allbinary::business::user::UserData ();
@@ -338,8 +344,6 @@ use org::w3c::dom::Document ();
 use org::w3c::dom::Node ();
 use org::allbinary::business::user::commerce::inventory::order::Order ();
 use org::allbinary::business::user::commerce::inventory::order::OrderHistoryInterface ();
-use org::allbinary::business::user::commerce::inventory::order::OrderData ();
-use org::allbinary::business::user::commerce::inventory::order::OrderHistoryData ();
 
 1;
 

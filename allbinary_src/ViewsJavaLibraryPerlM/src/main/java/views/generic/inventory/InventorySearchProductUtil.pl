@@ -58,7 +58,7 @@ sub getProduct {
                 return $self->{ITEM_NOT_FOUND};
             }
         } catch ($e) {
-            if ($views::generic::inventory::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($views::generic::inventory::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{PRODUCTSEARCHLOGGINGERROR})) {
+            if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{PRODUCTSEARCHLOGGINGERROR})) {
                 $self->{logUtil}->put($self->{commonStrings}->{FAILURE}, $self, "getProduct", $e);
             }
             die ("Failed to getProduct");
@@ -82,6 +82,8 @@ use org::allbinary::logic::visual::transform::data::TransformStoreDocumentFactor
 use org::allbinary::logic::visual::transform::info::TransformInfoHttpSearch ();
 use org::allbinary::logic::visual::transform::info::TransformInfoInterface ();
 use org::allbinary::string::CommonStrings ();
+use org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory ();
+use org::allbinary::logic::communication::log::config::type::LogConfigTypes ();
 
 1;
 

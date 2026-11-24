@@ -54,7 +54,7 @@ sub new {
 sub process {
     my ($self) = @_;
         do {
-            package java::lang::Thread::AnonymousN66314 { our @ISA = ('java::lang::Thread', 'java::lang::Object');
+            package java::lang::Thread::AnonymousN66469 { our @ISA = ('java::lang::Thread', 'java::lang::Object');
             
 
             sub run {
@@ -86,7 +86,7 @@ sub process {
                 }
             }
             }
-            'java::lang::Thread::AnonymousN66314'->can('new') ? 'java::lang::Thread::AnonymousN66314'->new() : bless({}, 'java::lang::Thread::AnonymousN66314')
+            'java::lang::Thread::AnonymousN66469'->can('new') ? 'java::lang::Thread::AnonymousN66469'->new() : bless({}, 'java::lang::Thread::AnonymousN66469')
         }->start();
 }
 
@@ -94,7 +94,7 @@ sub process {
 sub initComponents {
     my ($self) = @_;
         $self->{jPanel1} = do {
-            package javax::swing::JPanel::AnonymousN67727 { our @ISA = ('javax::swing::JPanel', 'java::lang::Object');
+            package javax::swing::JPanel::AnonymousN67882 { our @ISA = ('javax::swing::JPanel', 'java::lang::Object');
             
 
             sub paint {
@@ -104,7 +104,7 @@ sub initComponents {
                 }
             }
             }
-            'javax::swing::JPanel::AnonymousN67727'->can('new') ? 'javax::swing::JPanel::AnonymousN67727'->new() : bless({}, 'javax::swing::JPanel::AnonymousN67727')
+            'javax::swing::JPanel::AnonymousN67882'->can('new') ? 'javax::swing::JPanel::AnonymousN67882'->new() : bless({}, 'javax::swing::JPanel::AnonymousN67882')
         };
         $self->{jPanel2} = 'javax::swing::JPanel'->new();
         $self->{totalFramesJComboBox} = 'javax::swing::JComboBox'->new();
@@ -123,7 +123,7 @@ sub initComponents {
         $self->{jLabel1}->setText("Total Frames:");
         $self->{generateJButton}->setText("Generate");
         $self->{generateJButton}->addActionListener(do {
-            package java::awt::event::ActionListener::AnonymousN68976 { our @ISA = ('java::awt::event::ActionListener', 'java::lang::Object');
+            package java::awt::event::ActionListener::AnonymousN68955 { our @ISA = ('java::awt::event::ActionListener', 'java::lang::Object');
             
 
             sub actionPerformed {
@@ -131,11 +131,11 @@ sub initComponents {
                 $self->generateJButtonActionPerformed($evt);
             }
             }
-            'java::awt::event::ActionListener::AnonymousN68976'->can('new') ? 'java::awt::event::ActionListener::AnonymousN68976'->new() : bless({}, 'java::awt::event::ActionListener::AnonymousN68976')
+            'java::awt::event::ActionListener::AnonymousN68955'->can('new') ? 'java::awt::event::ActionListener::AnonymousN68955'->new() : bless({}, 'java::awt::event::ActionListener::AnonymousN68955')
         });
         $self->{totalAngleJComboBox}->setModel('javax::swing::DefaultComboBoxModel'->new(["360", "90"]));
         $self->{totalAngleJComboBox}->addActionListener(do {
-            package java::awt::event::ActionListener::AnonymousN69223 { our @ISA = ('java::awt::event::ActionListener', 'java::lang::Object');
+            package java::awt::event::ActionListener::AnonymousN69138 { our @ISA = ('java::awt::event::ActionListener', 'java::lang::Object');
             
 
             sub actionPerformed {
@@ -143,7 +143,7 @@ sub initComponents {
                 $self->totalAngleJComboBoxActionPerformed($evt);
             }
             }
-            'java::awt::event::ActionListener::AnonymousN69223'->can('new') ? 'java::awt::event::ActionListener::AnonymousN69223'->new() : bless({}, 'java::awt::event::ActionListener::AnonymousN69223')
+            'java::awt::event::ActionListener::AnonymousN69138'->can('new') ? 'java::awt::event::ActionListener::AnonymousN69138'->new() : bless({}, 'java::awt::event::ActionListener::AnonymousN69138')
         });
         $self->{jLabel3}->setText("Total Angle:");
         $self->{writeOverOriginalJCheckBox}->setText("Write Over Original");
@@ -186,7 +186,7 @@ sub setImageProcessorInput {
 }
 
 use java::lang::Object ();
-# use java::awt ();
+# use java::awt::Graphics ();
 # use java::awt::image::BufferedImage ();
 # use java::awt::image::RenderedImage ();
 use java::io::File ();
@@ -200,6 +200,14 @@ use org::allbinary::media::image::ImageStrings ();
 use org::allbinary::string::CommonPhoneStrings ();
 use org::allbinary::string::CommonSeps ();
 use org::allbinary::string::CommonStrings ();
+# use java::awt::event::ActionEvent ();
+# use java::awt::event::ActionListener ();
+# use javax::swing::DefaultComboBoxModel ();
+# use javax::swing::JButton ();
+# use javax::swing::JCheckBox ();
+# use javax::swing::JComboBox ();
+# use javax::swing::JLabel ();
+# use javax::swing::JPanel ();
 use java::lang::Thread ();
 
 1;

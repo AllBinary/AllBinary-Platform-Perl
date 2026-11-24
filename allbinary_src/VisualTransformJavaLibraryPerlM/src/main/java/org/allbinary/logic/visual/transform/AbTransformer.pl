@@ -79,20 +79,20 @@ sub getStreamSource {
 sub translate {
     my ($self, $xmlDocumentStr) = @_;
         try {
-            if ($org::allbinary::logic::visual::transform::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($org::allbinary::logic::visual::transform::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{XMLLOGGING})) {
+            if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{XMLLOGGING})) {
                 $self->{logUtil}->putF("xml: \n" . $xmlDocumentStr, $self, "translate(String xmlDocumentStr)");
             }
             if (!defined($self->getURIResolver())) {
                 die ("No URIResolver");
             }
             my $result = 'org::allbinary::data::tree::dom::XslHelper'->getInstance()->translate($self->getURIResolver(), 'javax::xml::transform::stream::StreamSource'->new($self->getInputStream()), 'javax::xml::transform::stream::StreamSource'->new('java::io::StringBufferInputStream'->new($xmlDocumentStr)));
-            if ($org::allbinary::logic::visual::transform::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($org::allbinary::logic::visual::transform::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{XSLLOGGING})) {
+            if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{XSLLOGGING})) {
                 $self->{logUtil}->putF("translated xml: " . $result, $self, "translate(String xmlDocumentStr)");
             }
             my $transformInfoObjectConfigGeneratorInterface = 'org::allbinary::logic::visual::transform::info::objectConfig::generator::TransformInfoObjectConfigGeneratorFactory'->getInstance()->getInstance($self->getTransformInfoInterface());
             return $transformInfoObjectConfigGeneratorInterface->process($result);
         } catch ($e) {
-            if ($org::allbinary::logic::visual::transform::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($org::allbinary::logic::visual::transform::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{VIEWERROR})) {
+            if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{VIEWERROR})) {
                 $self->{logUtil}->put($self->{transformInfoInterface}->log(), $self, "translate(document)", $e);
             }
             die $e;
@@ -110,7 +110,8 @@ use org::allbinary::logic::visual::transform::info::TransformInfoInterface ();
 use org::allbinary::logic::visual::transform::info::objectConfig::generator::TransformInfoObjectConfigGenerator ();
 use org::allbinary::logic::visual::transform::info::objectConfig::generator::TransformInfoObjectConfigGeneratorFactory ();
 use org::allbinary::string::CommonStrings ();
-use org::allbinary::logic::visual::transform::BasicTransformerInterface ();
+use org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory ();
+use org::allbinary::logic::communication::log::config::type::LogConfigTypes ();
 
 1;
 

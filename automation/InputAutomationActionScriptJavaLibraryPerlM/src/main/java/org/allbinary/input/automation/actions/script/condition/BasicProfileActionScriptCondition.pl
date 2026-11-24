@@ -96,10 +96,10 @@ sub init {
 
 sub getConditionJPopupMenu {
     my ($self) = @_;
-        my $jMenu = 'org::allbinary::input::automation::actions::script::condition::JMenu'->new($self->{NEW_CONDITION});
-        my $jMenuItemColorAt = 'org::allbinary::input::automation::actions::script::condition::JMenuItem'->new($self->{NEW_COLOR_AT});
-        my $jMenuItemAlways = 'org::allbinary::input::automation::actions::script::condition::JMenuItem'->new($self->{NEW_ALWAYS});
-        my $jMenuItemTimeInterval = 'org::allbinary::input::automation::actions::script::condition::JMenuItem'->new($self->{NEW_TIME_INTERVAL});
+        my $jMenu = 'javax::swing::JMenu'->new(java::lang::Object::jstatic('org::allbinary::input::automation::actions::script::condition::BasicProfileActionScriptCondition', 'NEW_CONDITION'));
+        my $jMenuItemColorAt = 'javax::swing::JMenuItem'->new(java::lang::Object::jstatic('org::allbinary::input::automation::actions::script::condition::BasicProfileActionScriptCondition', 'NEW_COLOR_AT'));
+        my $jMenuItemAlways = 'javax::swing::JMenuItem'->new(java::lang::Object::jstatic('org::allbinary::input::automation::actions::script::condition::BasicProfileActionScriptCondition', 'NEW_ALWAYS'));
+        my $jMenuItemTimeInterval = 'javax::swing::JMenuItem'->new(java::lang::Object::jstatic('org::allbinary::input::automation::actions::script::condition::BasicProfileActionScriptCondition', 'NEW_TIME_INTERVAL'));
         $jMenuItemColorAt->addActionListener($self);
         $jMenuItemAlways->addActionListener($self);
         $jMenuItemTimeInterval->addActionListener($self);
@@ -112,10 +112,10 @@ sub getConditionJPopupMenu {
 
 sub getInputJPopupMenu {
     my ($self) = @_;
-        my $jMenu = 'org::allbinary::input::automation::actions::script::condition::JMenu'->new($self->{NEW_INPUT});
-        my $jMenuItemKey = 'org::allbinary::input::automation::actions::script::condition::JMenuItem'->new($self->{NEW_KEY_INPUT});
-        my $jMenuItemMouse = 'org::allbinary::input::automation::actions::script::condition::JMenuItem'->new($self->{NEW_MOUSE_INPUT});
-        my $jMenuItemJoystick = 'org::allbinary::input::automation::actions::script::condition::JMenuItem'->new($self->{NEW_JOYSTICK_INPUT});
+        my $jMenu = 'javax::swing::JMenu'->new(java::lang::Object::jstatic('org::allbinary::input::automation::actions::script::condition::BasicProfileActionScriptCondition', 'NEW_INPUT'));
+        my $jMenuItemKey = 'javax::swing::JMenuItem'->new(java::lang::Object::jstatic('org::allbinary::input::automation::actions::script::condition::BasicProfileActionScriptCondition', 'NEW_KEY_INPUT'));
+        my $jMenuItemMouse = 'javax::swing::JMenuItem'->new(java::lang::Object::jstatic('org::allbinary::input::automation::actions::script::condition::BasicProfileActionScriptCondition', 'NEW_MOUSE_INPUT'));
+        my $jMenuItemJoystick = 'javax::swing::JMenuItem'->new(java::lang::Object::jstatic('org::allbinary::input::automation::actions::script::condition::BasicProfileActionScriptCondition', 'NEW_JOYSTICK_INPUT'));
         $jMenuItemKey->addActionListener($self);
         $jMenuItemMouse->addActionListener($self);
         $jMenuItemJoystick->addActionListener($self);
@@ -128,8 +128,8 @@ sub getInputJPopupMenu {
 
 sub getOutputJPopupMenu {
     my ($self) = @_;
-        my $jMenu = 'org::allbinary::input::automation::actions::script::condition::JMenu'->new($self->{NEW_OUTPUT});
-        my $jMenuItemImage = 'org::allbinary::input::automation::actions::script::condition::JMenuItem'->new($self->{NEW_IMAGE_OUTPUT});
+        my $jMenu = 'javax::swing::JMenu'->new(java::lang::Object::jstatic('org::allbinary::input::automation::actions::script::condition::BasicProfileActionScriptCondition', 'NEW_OUTPUT'));
+        my $jMenuItemImage = 'javax::swing::JMenuItem'->new(java::lang::Object::jstatic('org::allbinary::input::automation::actions::script::condition::BasicProfileActionScriptCondition', 'NEW_IMAGE_OUTPUT'));
         $jMenuItemImage->addActionListener($self);
         $jMenu->add($jMenuItemImage);
         return $jMenu;
@@ -204,28 +204,28 @@ sub actionPerformed {
     my ($self, $actionEvent) = @_;
         try {
             $self->SUPER::actionPerformed($actionEvent);
-            if ($actionEvent->getActionCommand()->compareTo($self->{DELETE}) == 0) {
+            if ($actionEvent->getActionCommand()->compareTo(java::lang::Object::jstatic('org::allbinary::input::automation::actions::script::condition::BasicProfileActionScriptCondition', 'DELETE')) == 0) {
                 if ((Scalar::Util::blessed($self->getParent()) && $self->getParent()->isa('org::allbinary::input::automation::actions::script::ProfileActionScriptNodeInterface'))) {
                     my $profileActionScriptNodeInterface = $self->getParent();
                     $profileActionScriptNodeInterface->removeCondition($self);
                     'org::allbinary::input::automation::actions::script::JTreeInterfaceFactory'->getInstance()->getJTreeInterface()->updateJTree();
                 }
-            } elsif ($actionEvent->getActionCommand()->compareTo($self->{NEW_COLOR_AT}) == 0) {
+            } elsif ($actionEvent->getActionCommand()->compareTo(java::lang::Object::jstatic('org::allbinary::input::automation::actions::script::condition::BasicProfileActionScriptCondition', 'NEW_COLOR_AT')) == 0) {
                 $self->addCondition('org::allbinary::input::automation::actions::script::condition::ColorAtActionScriptCondition'->new());
                 $self->updateTree();
-            } elsif ($actionEvent->getActionCommand()->compareTo($self->{NEW_ALWAYS}) == 0) {
+            } elsif ($actionEvent->getActionCommand()->compareTo(java::lang::Object::jstatic('org::allbinary::input::automation::actions::script::condition::BasicProfileActionScriptCondition', 'NEW_ALWAYS')) == 0) {
                 $self->addCondition('org::allbinary::input::automation::actions::script::condition::AlwaysActionScriptCondition'->new());
                 $self->updateTree();
-            } elsif ($actionEvent->getActionCommand()->compareTo($self->{NEW_TIME_INTERVAL}) == 0) {
+            } elsif ($actionEvent->getActionCommand()->compareTo(java::lang::Object::jstatic('org::allbinary::input::automation::actions::script::condition::BasicProfileActionScriptCondition', 'NEW_TIME_INTERVAL')) == 0) {
                 $self->addCondition('org::allbinary::input::automation::actions::script::condition::TimeIntervalActionScriptCondition'->new());
                 $self->updateTree();
-            } elsif ($actionEvent->getActionCommand()->compareTo($self->{NEW_KEY_INPUT}) == 0) {
+            } elsif ($actionEvent->getActionCommand()->compareTo(java::lang::Object::jstatic('org::allbinary::input::automation::actions::script::condition::BasicProfileActionScriptCondition', 'NEW_KEY_INPUT')) == 0) {
                 $self->addProcessor('org::allbinary::input::automation::actions::script::condition::processors::input::KeyboardActionScriptInput'->new());
                 $self->updateTree();
-            } elsif ($actionEvent->getActionCommand()->compareTo($self->{NEW_MOUSE_INPUT}) == 0) {
+            } elsif ($actionEvent->getActionCommand()->compareTo(java::lang::Object::jstatic('org::allbinary::input::automation::actions::script::condition::BasicProfileActionScriptCondition', 'NEW_MOUSE_INPUT')) == 0) {
                 $self->addProcessor('org::allbinary::input::automation::actions::script::condition::processors::input::MouseActionScriptInput'->new());
                 $self->updateTree();
-            } elsif ($actionEvent->getActionCommand()->compareTo($self->{NEW_IMAGE_OUTPUT}) == 0) {
+            } elsif ($actionEvent->getActionCommand()->compareTo(java::lang::Object::jstatic('org::allbinary::input::automation::actions::script::condition::BasicProfileActionScriptCondition', 'NEW_IMAGE_OUTPUT')) == 0) {
                 $self->addProcessor('org::allbinary::input::automation::module::actions::script::condition::processors::output::ImageActionScriptOutput'->new());
                 $self->updateTree();
             }
@@ -286,7 +286,8 @@ use java::lang::Object ();
 # use java::awt::event::ActionEvent ();
 use org::allbinary::util::BasicArrayList ();
 use org::allbinary::util::BasicArrayListD ();
-# use javax::swing ();
+# use javax::swing::JMenu ();
+# use javax::swing::JMenuItem ();
 # use javax::swing::tree::TreePath ();
 use org::allbinary::input::automation::actions::script::JTreeInterfaceFactory ();
 use org::allbinary::input::automation::actions::script::ProfileActionScriptItem ();
@@ -307,8 +308,6 @@ use org::w3c::dom::NodeList ();
 use org::allbinary::input::automation::actions::script::condition::ProfileActionScriptConditionInterface ();
 use org::allbinary::input::automation::actions::script::condition::GenericProfileActionScriptConditionData ();
 use org::allbinary::input::automation::actions::script::condition::ProfileActionScriptConditionFactory ();
-use org::allbinary::input::automation::actions::script::condition::JMenu ();
-use org::allbinary::input::automation::actions::script::condition::JMenuItem ();
 use org::allbinary::input::automation::actions::script::condition::TimeIntervalActionScriptCondition ();
 use org::allbinary::input::automation::actions::script::condition::AlwaysActionScriptCondition ();
 use org::allbinary::input::automation::actions::script::condition::ColorAtActionScriptCondition ();

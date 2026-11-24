@@ -37,9 +37,9 @@ sub new {
     my ($class) = @_;
     my $self = bless({}, $class);
     _init_fields($self);
-        my $openGLConfiguration = 'org::allbinary::graphics::opengles::OpenGLConfiguration'->getInstance();
+        my $openGLConfiguration = java::lang::Object::jstatic('org::allbinary::graphics::opengles::OpenGLFeatureUtil', 'OpenGLConfiguration')->getInstance();
         my $features = 'org::allbinary::game::configuration::feature::Features'->getInstance();
-        my $openGLFeatureFactory = 'org::allbinary::graphics::opengles::OpenGLFeatureFactory'->getInstance();
+        my $openGLFeatureFactory = java::lang::Object::jstatic('org::allbinary::graphics::opengles::OpenGLFeatureUtil', 'OpenGLFeatureFactory')->getInstance();
         $self->{anyThreed} = $openGLConfiguration->isOpenGL() && ($features->isFeature($openGLFeatureFactory->{OPENGL_2D_AND_3D}) || $features->isFeature($openGLFeatureFactory->{OPENGL_3D}));
     return $self;
 }
@@ -53,8 +53,6 @@ sub isAnyThreed {
 use java::lang::Object ();
 use java::lang::LazyStatic ();
 use org::allbinary::game::configuration::feature::Features ();
-use org::allbinary::graphics::opengles::OpenGLConfiguration ();
-use org::allbinary::graphics::opengles::OpenGLFeatureFactory ();
 
 1;
 

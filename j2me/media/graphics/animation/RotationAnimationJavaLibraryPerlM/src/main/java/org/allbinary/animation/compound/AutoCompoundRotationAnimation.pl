@@ -204,7 +204,6 @@ use org::allbinary::math::Angle ();
 use org::allbinary::math::AngleFactory ();
 use org::allbinary::math::AngleInfo ();
 use org::allbinary::util::CircularIndexUtil ();
-use org::allbinary::animation::compound::CompoundAnimationInterface ();
 
 1;
 

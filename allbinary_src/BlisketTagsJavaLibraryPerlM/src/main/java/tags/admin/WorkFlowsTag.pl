@@ -33,16 +33,16 @@ sub doStartTag {
     my ($self) = @_;
         try {
             if (defined($self->getCommand())) {
-                if ($self->getCommand()->compareTo($tags::admin::org::allbinary->{globals}->{GLOBALS2}->{NEW}) == 0) {
+                if ($self->getCommand()->compareTo($org::allbinary::globals::GLOBALS2::NEW) == 0) {
                     $self->setName("New WorkFlow View");
                     $self->setObjectFile("views.admin.workflow.NewView");
                 } elsif ($self->getCommand()->compareTo($self->{commonStrings}->{INSERT}) == 0) {
                     $self->setName("Add Validation WorkFlow View");
                     $self->setObjectFile("views.admin.workflow.AddValidationView");
-                } elsif ($self->getCommand()->compareTo($tags::admin::org::allbinary->{globals}->{GLOBALS2}->{VIEW}) == 0) {
+                } elsif ($self->getCommand()->compareTo($org::allbinary::globals::GLOBALS2::VIEW) == 0) {
                     $self->setName("Validation WorkFlow View");
                     $self->setObjectFile("views.admin.workflow.WorkflowsValidationView");
-                } elsif ($self->getCommand()->compareTo($tags::admin::org::allbinary->{globals}->{GLOBALS2}->{EDIT}) == 0) {
+                } elsif ($self->getCommand()->compareTo($org::allbinary::globals::GLOBALS2::EDIT) == 0) {
                     $self->setName("Validation WorkFlow View");
                     $self->setObjectFile("views.admin.workflow.EditValidationView");
                 } elsif ($self->getCommand()->compareTo($self->{commonStrings}->{UPDATE}) == 0) {
@@ -51,9 +51,9 @@ sub doStartTag {
                 } elsif ($self->getCommand()->compareTo($self->{commonStrings}->{DELETE}) == 0) {
                     $self->setName("Delete Validation WorkFlow View");
                     $self->setObjectFile("views.admin.workflow.DeleteValidationView");
-                } elsif ($self->getCommand()->compareTo($tags::admin::org::allbinary->{globals}->{GLOBALS2}->{BACKUP}) == 0) {
+                } elsif ($self->getCommand()->compareTo($org::allbinary::globals::GLOBALS2::BACKUP) == 0) {
                     die ("View not implemented");
-                } elsif ($self->getCommand()->compareTo($tags::admin::org::allbinary->{globals}->{GLOBALS2}->{RESTORE}) == 0) {
+                } elsif ($self->getCommand()->compareTo($org::allbinary::globals::GLOBALS2::RESTORE) == 0) {
                     die ("View not implemented");
                 } elsif ($self->getCommand()->compareTo($self->{commonStrings}->{DROP}) == 0) {
                     die ("View not implemented");
@@ -67,7 +67,7 @@ sub doStartTag {
             die ("Command Null");
         } catch ($e) {
             'org::allbinary::logic::communication::http::request::AbResponseHandler'->sendJspTagRedirect($self->{pageContext}, $e);
-            return $self->{SKIP_BODY};
+            return java::lang::Object::jstatic('tags::admin::WorkFlowsTag', 'SKIP_BODY');
         }
 }
 
@@ -75,6 +75,7 @@ use java::lang::Object ();
 # use javax::servlet::jsp::JspTagException ();
 use org::allbinary::logic::communication::http::request::AbResponseHandler ();
 use tags::StoreValidationTransformTag ();
+use org::allbinary::globals::GLOBALS2 ();
 
 1;
 

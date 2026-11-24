@@ -36,13 +36,13 @@ sub new {
 
 sub addListener {
     my ($class, $listener) = @_;
-        $org::allbinary::graphics::j2me::workarea::tools::event::MyGraphicItemEventService::listenerList->add(ref($listener), $listener);
+        $org::allbinary::graphics::j2me::workarea::tools::event::MyGraphicItemEventService::listenerList->add((ref($listener)), $listener);
 }
 
 
 sub removeListener {
     my ($class, $listener) = @_;
-        $org::allbinary::graphics::j2me::workarea::tools::event::MyGraphicItemEventService::listenerList->remove(ref($listener), $listener);
+        $org::allbinary::graphics::j2me::workarea::tools::event::MyGraphicItemEventService::listenerList->remove((ref($listener)), $listener);
 }
 
 
@@ -69,6 +69,8 @@ sub fire {
 
 use java::lang::Object ();
 use java::lang::LazyStatic ();
+# use java::util::EventListener ();
+# use javax::swing::event::EventListenerList ();
 
 1;
 

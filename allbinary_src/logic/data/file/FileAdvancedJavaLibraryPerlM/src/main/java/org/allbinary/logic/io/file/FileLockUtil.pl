@@ -82,7 +82,7 @@ sub getAllOrNone {
 
 
 # throws Exception
-sub getLock {
+sub getLock_j1_1 {
     my ($self, $file) = @_;
         try {
             return $self->getLock('org::allbinary::logic::io::AbFileOutputStream'->createFromAbFileAppend($file, 1));
@@ -95,8 +95,7 @@ sub getLock {
 
 
 # throws Exception
-# Java overloaded method: Perl keeps the last definition
-sub getLock {
+sub getLock_j1_2 {
     my ($self, $fileOutputStream) = @_;
         try {
             my $fileLock = $self->getLock($fileOutputStream->getChannel());
@@ -112,8 +111,7 @@ sub getLock {
 
 
 # throws Exception
-# Java overloaded method: Perl keeps the last definition
-sub getLock {
+sub getLock_j1_3 {
     my ($self, $fileChannel) = @_;
         try {
             my $fileLock = $fileChannel->tryLock();
@@ -125,6 +123,19 @@ sub getLock {
             $self->{logUtil}->putF("Finally - Closing FileChannel", $self, "getLock");
             $fileChannel->close();
         }
+}
+
+sub getLock {
+    my ($invocant, @arguments) = @_;
+    return $invocant->getLock_j1(@arguments) if scalar(@arguments) == 1;
+    die "No method getLock takes " . scalar(@arguments) . " arguments";
+}
+
+sub getLock_j1 {
+    my ($invocant, @arguments) = @_;
+    return $invocant->getLock_j1_1(@arguments) if 1 && (!defined($arguments[0]) || (ref($arguments[0]) && ref($arguments[0]) ne 'ARRAY'));
+    return $invocant->getLock_j1_2(@arguments) if 1 && (!defined($arguments[0]) || (ref($arguments[0]) && ref($arguments[0]) ne 'ARRAY'));
+    return $invocant->getLock_j1_3(@arguments);
 }
 
 use java::lang::Object ();

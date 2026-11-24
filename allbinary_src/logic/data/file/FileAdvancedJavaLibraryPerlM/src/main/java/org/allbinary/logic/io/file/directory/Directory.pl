@@ -35,21 +35,20 @@ sub new {
 }
 
 
-sub create {
+sub create_j1_1 {
     my ($self, $directoryAbPath) = @_;
         return $self->create($directoryAbPath->toFileSystemString());
 }
 
 
 # throws Exception
-sub remove {
+sub remove_j1_1 {
     my ($self, $existingDirectoryAbPath) = @_;
         $self->remove($existingDirectoryAbPath->toFileSystemString());
 }
 
 
-# Java overloaded method: Perl keeps the last definition
-sub create {
+sub create_j1_2 {
     my ($self, $directory) = @_;
         try {
             my $directoryFile = 'org::allbinary::logic::io::file::FileFactory'->getInstance()->getInstance($directory);
@@ -66,10 +65,21 @@ sub create {
         }
 }
 
+sub create {
+    my ($invocant, @arguments) = @_;
+    return $invocant->create_j1(@arguments) if scalar(@arguments) == 1;
+    die "No method create takes " . scalar(@arguments) . " arguments";
+}
+
+sub create_j1 {
+    my ($invocant, @arguments) = @_;
+    return $invocant->create_j1_1(@arguments) if 1 && (!defined($arguments[0]) || (ref($arguments[0]) && ref($arguments[0]) ne 'ARRAY'));
+    return $invocant->create_j1_2(@arguments);
+}
+
 
 # throws Exception
-# Java overloaded method: Perl keeps the last definition
-sub remove {
+sub remove_j1_2 {
     my ($self, $existingDirectory) = @_;
         my $existingDirectoryFile = 'org::allbinary::logic::io::file::FileFactory'->getInstance()->getInstance($existingDirectory);
         if ($existingDirectoryFile->isDirectory()) {
@@ -83,15 +93,26 @@ sub remove {
         }
 }
 
+sub remove {
+    my ($invocant, @arguments) = @_;
+    return $invocant->remove_j1(@arguments) if scalar(@arguments) == 1;
+    die "No method remove takes " . scalar(@arguments) . " arguments";
+}
 
-sub search {
+sub remove_j1 {
+    my ($invocant, @arguments) = @_;
+    return $invocant->remove_j1_1(@arguments) if 1 && (!defined($arguments[0]) || (ref($arguments[0]) && ref($arguments[0]) ne 'ARRAY'));
+    return $invocant->remove_j1_2(@arguments);
+}
+
+
+sub search_j2_1 {
     my ($self, $fileFilter, $file) = @_;
         return $self->search($fileFilter, $file, 0);
 }
 
 
-# Java overloaded method: Perl keeps the last definition
-sub search {
+sub search_j3_1 {
     my ($self, $fileFilter, $file, $isRecursiveSearch) = @_;
         my $fileList = 'org::allbinary::util::BasicArrayListD'->new();
         my $recursiveFileList = undef;
@@ -117,15 +138,13 @@ sub search {
 }
 
 
-# Java overloaded method: Perl keeps the last definition
-sub search {
+sub search_j1 {
     my ($self, $file) = @_;
         return $self->search($file, 0);
 }
 
 
-# Java overloaded method: Perl keeps the last definition
-sub search {
+sub search_j2_2 {
     my ($self, $file, $isRecursiveSearch) = @_;
         my $fileList = 'org::allbinary::util::BasicArrayListD'->new();
         my $recursiveFileList = undef;
@@ -150,15 +169,13 @@ sub search {
 }
 
 
-# Java overloaded method: Perl keeps the last definition
-sub search {
+sub search_j2_3 {
     my ($self, $searchValue, $file) = @_;
         return $self->search($searchValue, $file, 0);
 }
 
 
-# Java overloaded method: Perl keeps the last definition
-sub search {
+sub search_j3_2 {
     my ($self, $searchValue, $file, $isRecursiveSearch) = @_;
         my $fileList = 'org::allbinary::util::BasicArrayListD'->new();
         my $recursiveFileList = undef;
@@ -185,15 +202,13 @@ sub search {
 }
 
 
-# Java overloaded method: Perl keeps the last definition
-sub search {
+sub search_j2_4 {
     my ($self, $level, $file) = @_;
         return $self->search($level, $file, 0);
 }
 
 
-# Java overloaded method: Perl keeps the last definition
-sub search {
+sub search_j3_3 {
     my ($self, $level, $file, $isRecursiveSearch) = @_;
         my $fileList = 'org::allbinary::util::BasicArrayListD'->new();
         my $recursiveFileList = undef;
@@ -216,6 +231,29 @@ sub search {
             }
         }
         return $fileList;
+}
+
+sub search {
+    my ($invocant, @arguments) = @_;
+    return $invocant->search_j2(@arguments) if scalar(@arguments) == 2;
+    return $invocant->search_j3(@arguments) if scalar(@arguments) == 3;
+    return $invocant->search_j1(@arguments) if scalar(@arguments) == 1;
+    die "No method search takes " . scalar(@arguments) . " arguments";
+}
+
+sub search_j2 {
+    my ($invocant, @arguments) = @_;
+    return $invocant->search_j2_1(@arguments) if 1 && (!defined($arguments[0]) || (ref($arguments[0]) && ref($arguments[0]) ne 'ARRAY')) && (!defined($arguments[1]) || (ref($arguments[1]) && ref($arguments[1]) ne 'ARRAY'));
+    return $invocant->search_j2_2(@arguments) if 1 && (!defined($arguments[0]) || (ref($arguments[0]) && ref($arguments[0]) ne 'ARRAY')) && !ref($arguments[1]);
+    return $invocant->search_j2_3(@arguments) if 1 && !ref($arguments[0]) && (!defined($arguments[1]) || (ref($arguments[1]) && ref($arguments[1]) ne 'ARRAY'));
+    return $invocant->search_j2_4(@arguments);
+}
+
+sub search_j3 {
+    my ($invocant, @arguments) = @_;
+    return $invocant->search_j3_1(@arguments) if 1 && (!defined($arguments[0]) || (ref($arguments[0]) && ref($arguments[0]) ne 'ARRAY')) && (!defined($arguments[1]) || (ref($arguments[1]) && ref($arguments[1]) ne 'ARRAY')) && !ref($arguments[2]);
+    return $invocant->search_j3_2(@arguments) if 1 && !ref($arguments[0]) && (!defined($arguments[1]) || (ref($arguments[1]) && ref($arguments[1]) ne 'ARRAY')) && !ref($arguments[2]);
+    return $invocant->search_j3_3(@arguments);
 }
 
 use java::lang::Object ();

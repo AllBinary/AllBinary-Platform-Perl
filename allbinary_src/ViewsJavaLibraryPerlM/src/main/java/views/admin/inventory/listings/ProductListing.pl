@@ -66,7 +66,7 @@ sub getHashSet {
 # throws Exception
 sub savePage {
     my ($self, $file, $data) = @_;
-        if ($views::admin::inventory::listings::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($views::admin::inventory::listings::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{STATICPAGEGENERATIONLOGGING})) {
+        if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{STATICPAGEGENERATIONLOGGING})) {
             $self->{logUtil}->putF("Creating File: " . $file, $self, "generateAll()");
         }
         my $newFile = 'org::allbinary::logic::io::file::AbFile'->createAbFile($file);
@@ -79,7 +79,7 @@ sub savePage {
             $idOutData->writeBytes($data);
             $idOutData->flush();
             'org::allbinary::logic::io::StreamUtil'->getInstance()->close($idOutData);
-            if ($views::admin::inventory::listings::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($views::admin::inventory::listings::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{STATICPAGEGENERATIONLOGGING})) {
+            if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{STATICPAGEGENERATIONLOGGING})) {
                 $self->{logUtil}->putF("Wrote Total Bytes: " . $newFile->length(), $self, "generateAll()");
             }
         } else {
@@ -107,7 +107,7 @@ sub create {
             if (!defined($productListingPages->[$index])) {
                 last;
             }
-            if ($views::admin::inventory::listings::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($views::admin::inventory::listings::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{STATICPAGEGENERATIONLOGGING})) {
+            if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{STATICPAGEGENERATIONLOGGING})) {
                 $self->{logUtil}->putF("Saving Listing: " . $index, $self, "generateAll()");
             }
             my $indexStr = 'org::allbinary::logic::string::StringUtil'->getInstance()->{EMPTY_STRING};
@@ -148,7 +148,7 @@ sub addStaticPageInfoToDatabase {
 
 
 # throws Exception
-sub generateAll {
+sub generateAll_j0 {
     my ($self) = @_;
         try {
             my $storeFront = $self->{searchRequest}->getStoreFront();
@@ -158,7 +158,7 @@ sub generateAll {
             $stringBuffer->append('org::allbinary::logic::io::path::AbPathData'->getInstance()->{SEPARATOR});
             $stringBuffer->append($storeFront->getStaticPath());
             my $staticPath = 'org::allbinary::logic::io::path::AbPath'->new($stringBuffer->toString(), 'org::allbinary::logic::string::StringUtil'->getInstance()->{EMPTY_STRING});
-            if ($views::admin::inventory::listings::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($views::admin::inventory::listings::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{STATICPAGEGENERATIONLOGGING})) {
+            if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{STATICPAGEGENERATIONLOGGING})) {
                 $self->{logUtil}->putF("Store Static Pages Path: " . $staticPath, $self, "generateAll()");
             }
             my $keywordHashSet = $self->getHashSet($storeFront);
@@ -195,8 +195,7 @@ sub generateAll {
 
 
 # throws Exception
-# Java overloaded method: Perl keeps the last definition
-sub generateAll {
+sub generateAll_j1 {
     my ($self, $storeName) = @_;
         try {
             my $stringBuffer = 'org::allbinary::logic::string::StringMaker'->new();
@@ -225,10 +224,17 @@ sub generateAll {
         }
 }
 
+sub generateAll {
+    my ($invocant, @arguments) = @_;
+    return $invocant->generateAll_j0(@arguments) if scalar(@arguments) == 0;
+    return $invocant->generateAll_j1(@arguments) if scalar(@arguments) == 1;
+    die "No method generateAll takes " . scalar(@arguments) . " arguments";
+}
+
 use java::lang::Object ();
 use java::util::HashMap ();
-# use java::util::HashSet ();
-# use java::util::Set ();
+use java::util::HashSet ();
+use java::util::Set ();
 use org::allbinary::util::BasicArrayList ();
 use org::allbinary::util::BasicArrayListD ();
 use org::allbinary::business::context::modules::storefront::StoreFrontInterface ();
@@ -262,6 +268,8 @@ use org::allbinary::string::CommonSeps ();
 use org::allbinary::util::BasicArrayList ();
 use views::generic::inventory::InventoryColumnUtil ();
 use views::generic::inventory::InventorySearchUtil ();
+use org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory ();
+use org::allbinary::logic::communication::log::config::type::LogConfigTypes ();
 use views::admin::inventory::listings::ProductListingInterface ();
 
 1;

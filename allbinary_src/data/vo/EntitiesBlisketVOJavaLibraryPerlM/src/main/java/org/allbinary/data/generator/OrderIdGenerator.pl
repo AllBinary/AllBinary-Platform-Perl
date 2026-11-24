@@ -34,7 +34,7 @@ sub new {
         $stringBuffer->append('org::allbinary::globals::URLGLOBALS'->getMainPath());
         $stringBuffer->append('org::allbinary::globals::PATH_GLOBALS'->getInstance()->{INIT_PATH});
         $stringBuffer->append($self->{IDFILE});
-        $stringBuffer->append($org::allbinary::data::generator::UniqueIdGenerator::EXT);
+        $stringBuffer->append(java::lang::Object::jstatic('org::allbinary::data::generator::OrderIdGenerator', 'UniqueIdGenerator')->{EXT});
         $self->SUPER::setFile($stringBuffer->toString(), $self->{IDFILE});
     return $self;
 }
@@ -43,7 +43,6 @@ use java::lang::Object ();
 use org::allbinary::globals::PATH_GLOBALS ();
 use org::allbinary::globals::URLGLOBALS ();
 use org::allbinary::logic::string::StringMaker ();
-use org::allbinary::data::generator::UniqueIdGenerator ();
 
 1;
 

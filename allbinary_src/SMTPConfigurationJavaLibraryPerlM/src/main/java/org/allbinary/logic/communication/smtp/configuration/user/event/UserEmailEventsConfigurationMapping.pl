@@ -45,7 +45,7 @@ sub toHashMap {
 # throws Exception
 sub getKey {
     my ($self) = @_;
-        return $org::allbinary::logic::communication::smtp::configuration::user::event::UserEmailEventsConfigurationData::NAME;
+        return java::lang::Object::jstatic('org::allbinary::logic::communication::smtp::configuration::user::event::UserEmailEventsConfigurationMapping', 'UserEmailEventsConfigurationData')->{NAME};
 }
 
 
@@ -62,7 +62,6 @@ use org::allbinary::util::BasicArrayList ();
 use org::allbinary::util::BasicArrayListD ();
 use org::allbinary::data::tables::TableMappingInterface ();
 use org::allbinary::logic::StdUtil ();
-use org::allbinary::logic::communication::smtp::configuration::user::event::UserEmailEventsConfigurationData ();
 
 1;
 

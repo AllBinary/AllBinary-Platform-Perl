@@ -24,7 +24,7 @@ sub _init_fields {
     my ($self) = @_;
     $self->{logUtil} = 'org::allbinary::logic::communication::log::LogUtil'->getInstance();
     $self->{commonStrings} = 'org::allbinary::string::CommonStrings'->getInstance();
-    $self->{basicItemData} = 'org::allbinary::business::user::commerce::inventory::item::BasicItemData'->getInstance();
+    $self->{basicItemData} = java::lang::Object::jstatic('org::allbinary::business::user::commerce::inventory::item::BasicItemView', 'BasicItemData')->getInstance();
     $self->{itemInterface} = undef;
     $self->{vector} = undef;
 }
@@ -43,7 +43,7 @@ sub new {
 # throws Exception
 sub toXmlNode {
     my ($self, $document) = @_;
-        if ($org::allbinary::business::user::commerce::inventory::item::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($org::allbinary::business::user::commerce::inventory::item::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{PRODUCTSEARCHLOGGING})) {
+        if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{PRODUCTSEARCHLOGGING})) {
             $self->{logUtil}->putF($self->{commonStrings}->{START}, $self, "toXmlNode");
         }
         my $hashMap = $self->{itemInterface}->toHashMap();
@@ -85,7 +85,7 @@ sub view {
 
 use java::lang::Object ();
 use java::util::HashMap ();
-# use java::util::Set ();
+use java::util::Set ();
 use org::allbinary::util::BasicArrayList ();
 use org::allbinary::util::BasicArrayListD ();
 use org::allbinary::data::tree::dom::DomNodeInterface ();
@@ -95,7 +95,8 @@ use org::allbinary::logic::string::StringUtil ();
 use org::allbinary::string::CommonStrings ();
 use org::w3c::dom::Document ();
 use org::w3c::dom::Node ();
-use org::allbinary::business::user::commerce::inventory::item::BasicItemData ();
+use org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory ();
+use org::allbinary::logic::communication::log::config::type::LogConfigTypes ();
 
 1;
 

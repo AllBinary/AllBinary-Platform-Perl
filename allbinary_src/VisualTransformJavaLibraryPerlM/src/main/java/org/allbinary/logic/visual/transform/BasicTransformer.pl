@@ -50,13 +50,13 @@ sub setEncryptedTemplateFileAsInputStream {
             $outputStream = $self->{streamUtil}->get($inputStream, $outputStream, [(0) x (16384)]);
             my $abCrypt = 'org::allbinary::logic::control::crypt::jcehelper::AbCrypt'->new($org::allbinary::logic::control::crypt::jcehelper::KeySpecFactory::DESEDE, 'org::allbinary::logic::system::security::AbKeys'->getInstance()->getKey($self->{abeClientInformation}, $file->getAbsolutePath()));
             my $decrypted = $abCrypt->decrypt($outputStream->toByteArray());
-            if ($org::allbinary::logic::visual::transform::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($org::allbinary::logic::visual::transform::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{TAGHELPERFACTORY})) {
+            if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{TAGHELPERFACTORY})) {
                 $self->{logUtil}->putF("Decrypted Template: \n" . pack("C*", @{$decrypted}), $self, "setEncryptedTemplateFileAsInputStream(file)");
             }
             $self->setInputStream('java::io::ByteArrayInputStream'->new($decrypted));
             $self->setURIResolver('org::allbinary::data::tree::dom::BasicUriResolver'->new('org::allbinary::logic::visual::transform::info::template::TransformInfoTemplateData'->getInstance()->{ENCRYPTED_EXTENSION}));
         } catch ($e) {
-            if ($org::allbinary::logic::visual::transform::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($org::allbinary::logic::visual::transform::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{TAGHELPERFACTORYERROR})) {
+            if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{TAGHELPERFACTORYERROR})) {
                 my $stringBuffer = 'org::allbinary::logic::string::StringMaker'->new();
                 $stringBuffer->append("Failed to get Encrypted File: ");
                 $stringBuffer->append($file->getPath());
@@ -83,13 +83,13 @@ sub setEncryptedTemplateAsInputStream {
             $outputStream = $self->{streamUtil}->get($inputStream, $outputStream, [(0) x (16384)]);
             my $abCrypt = 'org::allbinary::logic::control::crypt::jcehelper::AbCrypt'->new($org::allbinary::logic::control::crypt::jcehelper::KeySpecFactory::DESEDE, 'org::allbinary::logic::system::security::AbKeys'->getInstance()->getKey($self->{abeClientInformation}, $self->getTransformInfoInterface()->getName()));
             my $decrypted = $abCrypt->decrypt($outputStream->toByteArray());
-            if ($org::allbinary::logic::visual::transform::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($org::allbinary::logic::visual::transform::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{TAGHELPERFACTORY})) {
+            if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{TAGHELPERFACTORY})) {
                 $self->{logUtil}->putF("Decrypted Template: \n" . $decrypted->toString(), $self, "setEncryptedTemplateAsInputStream()");
             }
             $self->setInputStream('java::io::ByteArrayInputStream'->new($decrypted));
             $self->setURIResolver('org::allbinary::data::tree::dom::BasicUriResolver'->new('org::allbinary::logic::visual::transform::info::template::TransformInfoTemplateData'->getInstance()->{ENCRYPTED_EXTENSION}));
         } catch ($e) {
-            if ($org::allbinary::logic::visual::transform::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($org::allbinary::logic::visual::transform::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{TAGHELPERFACTORYERROR})) {
+            if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{TAGHELPERFACTORYERROR})) {
                 $self->{logUtil}->put("Failed to set with template: " . $self->getTransformInfoInterface()->getTemplateFilePath(), $self, "setEncryptedTemplateFileAsInputStream()", $e);
             }
             die $e;
@@ -106,7 +106,7 @@ sub setTemplateAsInputStream {
         my $inputStream = undef;
         my $outputStream = undef;
         try {
-            if ($org::allbinary::logic::visual::transform::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($org::allbinary::logic::visual::transform::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{TAGHELPERFACTORY})) {
+            if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{TAGHELPERFACTORY})) {
                 $self->{logUtil}->putF($self->getTransformInfoInterface()->log(), $self, "setTemplateAsInputStream()");
             }
             my $transformInfoTemplateData = 'org::allbinary::logic::visual::transform::info::template::TransformInfoTemplateData'->getInstance();
@@ -114,7 +114,7 @@ sub setTemplateAsInputStream {
             if (defined($self->getTransformInfoInterface()->getTemplateFilePath())) {
                 my $extension = $pathUtil->getExtensionWithAbPath($self->getTransformInfoInterface()->getTemplateFilePath());
                 my $filePath = $pathUtil->getWithoutExtensionWithAbPath($self->getTransformInfoInterface()->getTemplateFilePath());
-                if ($org::allbinary::logic::visual::transform::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($org::allbinary::logic::visual::transform::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{TAGHELPERFACTORY})) {
+                if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{TAGHELPERFACTORY})) {
                     $self->{logUtil}->putF($self->getTransformInfoInterface()->log(), $self, "setTemplateAsInputStream()");
                 }
                 if (($extension cmp $transformInfoTemplateData->{UNCRYPTED_EXTENSION}) == 0) {
@@ -123,10 +123,10 @@ sub setTemplateAsInputStream {
                     $stringBuffer->append('org::allbinary::logic::io::path::AbPathData'->getInstance()->{EXTENSION_SEP});
                     $stringBuffer->append($transformInfoTemplateData->{ENCRYPTED_EXTENSION});
                     my $encFile = 'org::allbinary::logic::io::file::AbFile'->createAbFile($stringBuffer->toString());
-                    if ($org::allbinary::logic::visual::transform::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($org::allbinary::logic::visual::transform::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{TAGHELPERFACTORY})) {
+                    if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{TAGHELPERFACTORY})) {
                         $self->{logUtil}->putF($self->getTransformInfoInterface()->log(), $self, "setTemplateAsInputStream()");
                     }
-                    if ($org::allbinary::logic::visual::transform::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($org::allbinary::logic::visual::transform::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{TAGHELPERFACTORY})) {
+                    if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{TAGHELPERFACTORY})) {
                         $stringBuffer = 'org::allbinary::logic::string::StringMaker'->new();
                         $stringBuffer->append("Encrypted Template File isFile=");
                         $stringBuffer->appendboolean($encFile->isFile());
@@ -139,17 +139,17 @@ sub setTemplateAsInputStream {
                         return;
                     } else {
                         my $file = 'org::allbinary::logic::io::file::AbFile'->createAbFileFromAbPath($self->getTransformInfoInterface()->getTemplateFilePath());
-                        if ($org::allbinary::logic::visual::transform::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($org::allbinary::logic::visual::transform::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{TAGHELPERFACTORY})) {
+                        if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{TAGHELPERFACTORY})) {
                             $self->{logUtil}->putF($self->getTransformInfoInterface()->log(), $self, "setTemplateAsInputStream()");
                         }
-                        if ($org::allbinary::logic::visual::transform::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($org::allbinary::logic::visual::transform::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{TAGHELPERFACTORY})) {
+                        if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{TAGHELPERFACTORY})) {
                             $self->{logUtil}->putF("Template File isFile=" . $file->isFile(), $self, "setTemplateAsInputStream()");
                         }
                         if ($file->isFile()) {
                             $inputStream = 'org::allbinary::logic::io::AbFileInputStream'->createFromAbFile($file);
                             $outputStream = 'java::io::ByteArrayOutputStream'->new();
                             $outputStream = $self->{streamUtil}->get($inputStream, $outputStream, [(0) x (16384)]);
-                            if ($org::allbinary::logic::visual::transform::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($org::allbinary::logic::visual::transform::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{TAGHELPERFACTORY})) {
+                            if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{TAGHELPERFACTORY})) {
                                 $self->{logUtil}->putF("Template: " . $outputStream->toString(), $self, "getTemplateAsInputStream()");
                             }
                             $self->setInputStream('java::io::ByteArrayInputStream'->new($outputStream->toByteArray()));
@@ -173,7 +173,7 @@ sub setTemplateAsInputStream {
                 $self->setEncryptedTemplateAsInputStream();
             }
         } catch ($e) {
-            if ($org::allbinary::logic::visual::transform::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($org::allbinary::logic::visual::transform::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{TAGHELPERFACTORYERROR})) {
+            if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{TAGHELPERFACTORYERROR})) {
                 $self->{logUtil}->put("Failed to get Template Data", $self, "setTemplateAsInputStream()", $e);
             }
             die $e;
@@ -203,6 +203,8 @@ use org::allbinary::logic::system::security::AbKeys ();
 use org::allbinary::logic::system::security::licensing::AbeClientInformationInterface ();
 use org::allbinary::logic::visual::transform::info::TransformInfoInterface ();
 use org::allbinary::logic::visual::transform::info::template::TransformInfoTemplateData ();
+use org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory ();
+use org::allbinary::logic::communication::log::config::type::LogConfigTypes ();
 use org::allbinary::logic::visual::transform::AbTransformer ();
 
 1;

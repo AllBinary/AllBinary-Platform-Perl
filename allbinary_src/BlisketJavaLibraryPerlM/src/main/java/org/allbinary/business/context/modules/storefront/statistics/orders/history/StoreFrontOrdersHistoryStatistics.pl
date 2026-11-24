@@ -89,7 +89,7 @@ sub getTotal {
 sub toHashMap {
     my ($self) = @_;
         my $hashMap = 'org::allbinary::logic::StdUtil'->getInstance()->createHashMap();
-        my $storeFrontOrdersHistoryStatisticsData = 'org::allbinary::business::context::modules::storefront::statistics::orders::history::StoreFrontOrdersHistoryStatisticsData'->getInstance();
+        my $storeFrontOrdersHistoryStatisticsData = java::lang::Object::jstatic('org::allbinary::business::context::modules::storefront::statistics::orders::history::StoreFrontOrdersHistoryStatistics', 'StoreFrontOrdersHistoryStatisticsData')->getInstance();
         $hashMap->put($storeFrontOrdersHistoryStatisticsData->{NUMBEROFORDERS}, $self->getNumberOfOrders()->toString());
         $hashMap->put($storeFrontOrdersHistoryStatisticsData->{SUBTOTAL}, $self->getSubTotal()->toString());
         $hashMap->put($storeFrontOrdersHistoryStatisticsData->{SHIPPINGCOST}, $self->getShippingCost()->toString());
@@ -120,8 +120,6 @@ use org::allbinary::business::user::commerce::money::Money ();
 use org::allbinary::data::tables::user::commerce::inventory::order::OrderHistoryEntityFactory ();
 use org::allbinary::data::tables::user::commerce::inventory::order::OrderHistoryEntityInterface ();
 use org::allbinary::logic::StdUtil ();
-use org::allbinary::business::context::modules::storefront::statistics::orders::history::StoreFrontOrdersHistoryStatisticsInterface ();
-use org::allbinary::business::context::modules::storefront::statistics::orders::history::StoreFrontOrdersHistoryStatisticsData ();
 
 1;
 

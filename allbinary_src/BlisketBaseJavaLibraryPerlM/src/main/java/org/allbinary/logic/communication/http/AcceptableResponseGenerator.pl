@@ -49,7 +49,7 @@ sub get {
             my $acceptableResponseUtil = 'org::allbinary::logic::communication::http::AcceptableResponseUtil'->getInstance();
             my $acceptable = $httpServletRequest->getHeader("accept");
             my $result = $acceptableResponseUtil->getTagName(0);
-            if ($org::allbinary::logic::communication::http::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($org::allbinary::logic::communication::http::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{HTTP})) {
+            if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{HTTP})) {
                 $self->{logUtil}->putF("Request Type: " . $acceptable, $self, $commonStrings->{GET});
             }
             if (defined($acceptable)) {
@@ -60,12 +60,12 @@ sub get {
                     }
                 }
             }
-            if ($org::allbinary::logic::communication::http::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($org::allbinary::logic::communication::http::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{HTTP})) {
+            if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{HTTP})) {
                 $self->{logUtil}->putF("Response Type: " . $result, $self, $commonStrings->{GET});
             }
             return $result;
         } catch ($e) {
-            if ($org::allbinary::logic::communication::http::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($org::allbinary::logic::communication::http::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{HTTPERROR})) {
+            if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{HTTPERROR})) {
                 $self->{logUtil}->put($commonStrings->{EXCEPTION}, $self, $commonStrings->{GET}, $e);
             }
             die $e;
@@ -77,6 +77,8 @@ use java::lang::LazyStatic ();
 # use javax::servlet::http::HttpServletRequest ();
 use org::allbinary::logic::communication::log::LogUtil ();
 use org::allbinary::string::CommonStrings ();
+use org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory ();
+use org::allbinary::logic::communication::log::config::type::LogConfigTypes ();
 use org::allbinary::logic::communication::http::AcceptableResponseUtil ();
 
 1;

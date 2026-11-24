@@ -38,14 +38,12 @@ sub getResult {
 
 sub calculate {
     my ($self) = @_;
-        my $result = 'org::allbinary::logic::math::vector::YAxisMathVectorUtil'->calculate($self->getMagnitude()->getUnscaled(), $self->getDirection());
+        my $result = java::lang::Object::jstatic('org::allbinary::logic::math::vector::YAxisMathVector', 'YAxisMathVectorUtil')->calculate($self->getMagnitude()->getUnscaled(), $self->getDirection());
         $self->{resultBasicDecimal} = 'org::allbinary::logic::math::BasicDecimal'->new($result);
 }
 
 use java::lang::Object ();
 use org::allbinary::logic::math::BasicDecimal ();
-use org::allbinary::logic::math::vector::MathVector ();
-use org::allbinary::logic::math::vector::YAxisMathVectorUtil ();
 
 1;
 

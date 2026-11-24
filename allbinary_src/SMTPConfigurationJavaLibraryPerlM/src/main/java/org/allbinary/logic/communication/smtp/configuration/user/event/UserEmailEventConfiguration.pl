@@ -41,7 +41,7 @@ sub _new0 {
     _init_fields($self);
         $self->setName('org::allbinary::logic::string::StringUtil'->getInstance()->{EMPTY_STRING});
         $self->setEventListenerClassPath('org::allbinary::logic::string::StringUtil'->getInstance()->{EMPTY_STRING});
-        if ($org::allbinary::logic::communication::smtp::configuration::user::event::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($org::allbinary::logic::communication::smtp::configuration::user::event::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{EMAILLOGGING})) {
+        if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{EMAILLOGGING})) {
             $self->{logUtil}->putF("New", $self, " Constructor");
         }
     return $self;
@@ -52,9 +52,9 @@ sub _new1 {
     my ($class, $hashMap) = @_;
     my $self = bless({}, $class);
     _init_fields($self);
-        $self->setName($hashMap->get($org::allbinary::logic::communication::smtp::configuration::user::event::UserEmailEventConfigurationData::NAME));
-        $self->setEventListenerClassPath($hashMap->get($org::allbinary::logic::communication::smtp::configuration::user::event::UserEmailEventConfigurationData::LISTENER_CLASSPATH));
-        if ($org::allbinary::logic::communication::smtp::configuration::user::event::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($org::allbinary::logic::communication::smtp::configuration::user::event::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{EMAILLOGGING})) {
+        $self->setName($hashMap->get(java::lang::Object::jstatic('org::allbinary::logic::communication::smtp::configuration::user::event::UserEmailEventConfiguration', 'UserEmailEventConfigurationData')->{NAME}));
+        $self->setEventListenerClassPath($hashMap->get(java::lang::Object::jstatic('org::allbinary::logic::communication::smtp::configuration::user::event::UserEmailEventConfiguration', 'UserEmailEventConfigurationData')->{LISTENER_CLASSPATH}));
+        if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{EMAILLOGGING})) {
             $self->{logUtil}->putF("Log: " . $self->log(), $self, " Constructor");
         }
     return $self;
@@ -94,8 +94,9 @@ use java::lang::Object ();
 use java::util::HashMap ();
 use org::allbinary::logic::communication::log::LogUtil ();
 use org::allbinary::logic::string::StringUtil ();
+use org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory ();
+use org::allbinary::logic::communication::log::config::type::LogConfigTypes ();
 use org::allbinary::logic::communication::smtp::configuration::user::event::UserEmailEventConfigurationInterface ();
-use org::allbinary::logic::communication::smtp::configuration::user::event::UserEmailEventConfigurationData ();
 
 1;
 

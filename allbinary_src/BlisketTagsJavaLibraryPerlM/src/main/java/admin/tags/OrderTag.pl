@@ -86,7 +86,7 @@ sub doStartTag {
             if (defined($self->{command})) {
                 $self->{propertiesHashMap} = 'org::allbinary::logic::StdUtil'->getInstance()->createHashMap();
                 $self->{propertiesHashMap}->put('org::allbinary::business::context::modules::storefront::StoreFrontData'->getInstance()->{NAME}, $self->{storeName});
-                if (($self->{command} cmp $admin::tags::org::allbinary->{globals}->{GLOBALS2}->{PROCESS}) == 0) {
+                if (($self->{command} cmp $org::allbinary::globals::GLOBALS2::PROCESS) == 0) {
                     $self->process();
                 } elsif (($self->{command} cmp $org::allbinary::business::user::commerce::money::payment::gateway::PaymentGatewayData::NAME->toString()) == 0) {
                     if ($self->setPaymentGateway() == 1) {
@@ -97,7 +97,7 @@ sub doStartTag {
             return $javax::servlet::jsp::tagext::TagSupport::SKIP_BODY;
         } catch ($e) {
             'org::allbinary::logic::communication::http::request::AbResponseHandler'->sendJspTagLicensingRedirect($self->{pageContext}, $e);
-            return $self->{SKIP_BODY};
+            return java::lang::Object::jstatic('admin::tags::OrderTag', 'SKIP_BODY');
         }
 }
 
@@ -114,6 +114,9 @@ use org::allbinary::logic::communication::http::request::AbResponseHandler ();
 use org::allbinary::logic::communication::log::LogUtil ();
 use org::allbinary::logic::system::security::licensing::LicensingException ();
 use tags::CustomTagSupport ();
+use org::allbinary::globals::GLOBALS2 ();
+use org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory ();
+use org::allbinary::logic::communication::log::config::type::LogConfigTypes ();
 
 1;
 

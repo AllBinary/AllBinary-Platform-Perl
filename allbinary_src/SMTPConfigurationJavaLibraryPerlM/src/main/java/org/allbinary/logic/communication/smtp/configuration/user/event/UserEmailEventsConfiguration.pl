@@ -56,7 +56,7 @@ sub _new1 {
 sub init {
     my ($self) = @_;
         $self->{emailEventHashMap} = 'org::allbinary::logic::StdUtil'->getInstance()->createHashMap();
-        if ($org::allbinary::logic::communication::smtp::configuration::user::event::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($org::allbinary::logic::communication::smtp::configuration::user::event::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{EMAILLOGGING})) {
+        if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{EMAILLOGGING})) {
             $self->{logUtil}->putF($self->{commonStrings}->{CONSTRUCTOR}, $self, " Constructor");
         }
 }
@@ -70,7 +70,7 @@ sub getEventConfigurationHashMap {
 
 sub addUserEmailEventConfiguration {
     my ($self, $userEmailEventConfigurationInterface) = @_;
-        if ($org::allbinary::logic::communication::smtp::configuration::user::event::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($org::allbinary::logic::communication::smtp::configuration::user::event::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{EMAILLOGGING})) {
+        if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{EMAILLOGGING})) {
             $self->{logUtil}->putF("Adding: " . $userEmailEventConfigurationInterface->log(), $self, "addUserEmailEventConfiguration");
         }
         $self->{emailEventHashMap}->put($userEmailEventConfigurationInterface->getName(), $userEmailEventConfigurationInterface);
@@ -93,6 +93,8 @@ use org::allbinary::logic::communication::smtp::event::UserEmailEventListenerInt
 use org::allbinary::logic::communication::smtp::event::UserEmailEventNameData ();
 use org::allbinary::logic::system::security::licensing::AbeClientInformationInterface ();
 use org::allbinary::string::CommonStrings ();
+use org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory ();
+use org::allbinary::logic::communication::log::config::type::LogConfigTypes ();
 use org::allbinary::logic::communication::smtp::configuration::user::event::UserEmailEventsConfigurationInterface ();
 use org::allbinary::logic::communication::smtp::configuration::user::event::UserEmailEventListenerFactory ();
 

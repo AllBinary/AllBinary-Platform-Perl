@@ -40,8 +40,6 @@ use java::lang::Object ();
 use org::allbinary::game::configuration::feature::Features ();
 use org::allbinary::game::configuration::feature::GameFeatureFactory ();
 use org::allbinary::layer::AllBinaryLayer ();
-use org::allbinary::game::collision::SourceCollisionHelper ();
-use org::allbinary::game::collision::CollisionHelper ();
 
 1;
 

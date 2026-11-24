@@ -35,8 +35,14 @@ sub new {
     die "No constructor of AuthenticationRequestHelper takes " . scalar(@arguments) . " arguments";
 }
 
-
 sub _new2 {
+    my ($class, @arguments) = @_;
+    return $class->_new2_1(@arguments) if 1 && (!defined($arguments[0]) || (ref($arguments[0]) && ref($arguments[0]) ne 'ARRAY')) && (!defined($arguments[1]) || (ref($arguments[1]) && ref($arguments[1]) ne 'ARRAY'));
+    return $class->_new2_2(@arguments);
+}
+
+
+sub _new2_1 {
     my ($class, $hashMap, $pageContext) = @_;
     my $self = $class->SUPER::new();
     _init_fields($self);
@@ -46,7 +52,7 @@ sub _new2 {
 }
 
 
-sub _new2 {
+sub _new2_2 {
     my ($class, $hashMap, $httpServletRequest) = @_;
     my $self = $class->SUPER::new();
     _init_fields($self);
@@ -77,14 +83,14 @@ sub newPassword {
         try {
             my $userName = $self->{request}->getParameter($org::allbinary::logic::communication::http::request::session::WeblisketSessionData::REMOVABLEUSERNAME);
             my $email = $self->{request}->getParameter($org::allbinary::business::user::UserData::MAINEMAIL);
-            if ($admin::taghelpers::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($admin::taghelpers::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{TAGHELPER})) {
+            if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{TAGHELPER})) {
                 $self->{logUtil}->putF("Generating New Password For: " . $userName, $self, "newPassword()");
             }
             my $userEntityInterface = 'org::allbinary::data::tables::user::UserEntityFactory'->getInstance();
             my $userInterface = $userEntityInterface->getUser($userName);
             if ($userInterface->getMainEmail()->compareTo($email) != 0) {
                 if (defined($userInterface->getSecondaryEmail()) && $userInterface->getSecondaryEmail()->compareTo($email) != 0) {
-                    if ($admin::taghelpers::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($admin::taghelpers::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{TAGHELPER})) {
+                    if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{TAGHELPER})) {
                         $self->{logUtil}->putF("Requested Email Is Not In User Profile", $self, "newPassword()");
                     }
                     return 0;
@@ -95,12 +101,12 @@ sub newPassword {
             my $newPasswordHashMap = $userInterface->toPasswordHashMap();
             'org::allbinary::data::tables::user::UserEntityFactory'->getInstance()->update($userName, $newPasswordHashMap);
             'org::allbinary::logic::communication::smtp::email::NewPasswordEmail'->new($self->{abeClientInformation}, $userInterface, $newPassword)->process();
-            if ($admin::taghelpers::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($admin::taghelpers::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{TAGHELPER})) {
+            if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{TAGHELPER})) {
                 $self->{logUtil}->putF("Generated New Password For: " . $userName, $self, "newPassword()");
             }
             return 1;
         } catch ($e) {
-            if ($admin::taghelpers::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($admin::taghelpers::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{TAGHELPERERROR})) {
+            if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{TAGHELPERERROR})) {
                 $self->{logUtil}->put($self->{commonStrings}->{EXCEPTION}, $self, "newPassword()", $e);
             }
             return 0;
@@ -115,18 +121,18 @@ sub changePassword {
             my $passwordString = $self->{request}->getParameter($org::allbinary::logic::communication::http::request::session::WeblisketSessionData::REMOVABLEPASSWORD);
             my $newPassword = $self->{request}->getParameter($org::allbinary::logic::communication::http::request::session::WeblisketSessionData::REMOVABLENEWPASSWORD);
             my $newReenteredPassword = $self->{request}->getParameter($org::allbinary::logic::communication::http::request::session::WeblisketSessionData::REMOVABLEREENTERNEWPASSWORD);
-            if ($admin::taghelpers::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($admin::taghelpers::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{TAGHELPER})) {
+            if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{TAGHELPER})) {
                 $self->{logUtil}->putF("Changing Password For User: " . $userName, $self, "changePassword()");
             }
             my $password = 'org::allbinary::business::user::password::Password'->new($newPassword);
             if (!$password->isValid()) {
-                if ($admin::taghelpers::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($admin::taghelpers::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{TAGHELPER})) {
+                if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{TAGHELPER})) {
                     $self->{logUtil}->putF("New Password Is Not Valid", $self, "changePassword()");
                 }
                 return 0;
             }
             if (($newPassword cmp $newReenteredPassword) != 0) {
-                if ($admin::taghelpers::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($admin::taghelpers::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{TAGHELPER})) {
+                if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{TAGHELPER})) {
                     $self->{logUtil}->putF("New Password Fields Do Not Match", $self, "changePassword()");
                 }
                 return 0;
@@ -136,7 +142,7 @@ sub changePassword {
             my $userInterface = $userEntityInterface->getUser($userName);
             my $login = $userEntityInterface->login($userName, $passwordString);
             if (($login cmp $org::allbinary::globals::GLOBALS2::LOGINSUCCESS) == 0) {
-                if ($admin::taghelpers::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($admin::taghelpers::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{TAGHELPER})) {
+                if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{TAGHELPER})) {
                     $self->{logUtil}->putF("Authentication Successful", $self, "changePassword()");
                 }
                 my $newPasswordHashMap = $password->toHashMap(undef);
@@ -144,12 +150,12 @@ sub changePassword {
                 'org::allbinary::logic::communication::smtp::email::NewPasswordEmail'->new($self->{abeClientInformation}, $userInterface, $newPassword)->process();
                 return 1;
             }
-            if ($admin::taghelpers::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($admin::taghelpers::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{TAGHELPER})) {
+            if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{TAGHELPER})) {
                 $self->{logUtil}->putF("Authentication Failed", $self, "changePassword()");
             }
             return 0;
         } catch ($e) {
-            if ($admin::taghelpers::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($admin::taghelpers::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{TAGHELPERERROR})) {
+            if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{TAGHELPERERROR})) {
                 $self->{logUtil}->put("Authentication Failed", $self, "changePassword()", $e);
             }
             return 0;
@@ -163,7 +169,7 @@ sub isRoleValid {
             my $userEntityInterface = 'org::allbinary::data::tables::user::UserEntityFactory'->getInstance();
             my $userInterface = $userEntityInterface->getUser($userName);
             if (!defined($userInterface->getRole())) {
-                if ($admin::taghelpers::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($admin::taghelpers::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{TAGHELPER})) {
+                if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{TAGHELPER})) {
                     $self->{logUtil}->putF("Role is null: " . $userInterface->getRole() . " Valid Roles: " . $roles->toString(), $self, "isRoleValid()");
                 }
                 return 0;
@@ -179,7 +185,7 @@ sub isRoleValid {
                     return 1;
                 }
             }
-            if ($admin::taghelpers::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($admin::taghelpers::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{TAGHELPER})) {
+            if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{TAGHELPER})) {
                 my $stringBuffer = 'org::allbinary::logic::string::StringMaker'->new();
                 $stringBuffer->append("Role is not valid: ");
                 $stringBuffer->append($userInterface->getRole()->toString());
@@ -189,7 +195,7 @@ sub isRoleValid {
             }
             return 0;
         } catch ($e) {
-            if ($admin::taghelpers::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($admin::taghelpers::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{TAGHELPERERROR})) {
+            if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{TAGHELPERERROR})) {
                 $self->{logUtil}->put($self->{commonStrings}->{EXCEPTION}, $self, "isRoleValid()", $e);
             }
             return 0;
@@ -217,7 +223,8 @@ use org::allbinary::logic::communication::smtp::email::NewPasswordEmail ();
 use org::allbinary::logic::string::StringMaker ();
 use org::allbinary::logic::system::security::licensing::AbeClientInformationInterface ();
 use org::allbinary::logic::system::security::licensing::ServiceClientInformationInterfaceFactory ();
-use admin::taghelpers::TagHelper ();
+use org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory ();
+use org::allbinary::logic::communication::log::config::type::LogConfigTypes ();
 
 1;
 

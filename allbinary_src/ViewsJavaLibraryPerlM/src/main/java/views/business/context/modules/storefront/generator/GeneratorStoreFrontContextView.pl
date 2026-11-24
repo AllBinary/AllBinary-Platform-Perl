@@ -31,7 +31,7 @@ sub new {
     my $self = $class->SUPER::new($transformInfoInterface);
     _init_fields($self);
         # super(...) made $self above
-        if ($views::business::context::modules::storefront::generator::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($views::business::context::modules::storefront::generator::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{VIEW})) {
+        if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{VIEW})) {
             $self->{logUtil}->putF("View Name: " . $transformInfoInterface->getName(), $self, $self->{commonStrings}->{CONSTRUCTOR});
         }
     return $self;
@@ -39,10 +39,10 @@ sub new {
 
 
 # throws Exception
-sub view {
+sub view_j1 {
     my ($self, $group) = @_;
         my $result = 'org::allbinary::logic::visual::transform::generator::TransformsGeneratorUtil'->getInstance()->generateComponentsFromObjectConfig($self->{abeClientInformation}, $self->getTransformInfoInterface(), $group);
-        if ($views::business::context::modules::storefront::generator::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($views::business::context::modules::storefront::generator::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{JSPEXTRAOUTPUT})) {
+        if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{JSPEXTRAOUTPUT})) {
             return $result;
         } else {
             return 'org::allbinary::logic::string::StringUtil'->getInstance()->{EMPTY_STRING};
@@ -51,17 +51,23 @@ sub view {
 
 
 # throws Exception
-# Java overloaded method: Perl keeps the last definition
-sub view {
+sub view_j0 {
     my ($self) = @_;
         try {
             return $self->view('org::allbinary::logic::visual::transform::info::TransformInfosData'->getInstance()->{ALL});
         } catch ($e) {
-            if ($views::business::context::modules::storefront::generator::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($views::business::context::modules::storefront::generator::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{TAGHELPERERROR})) {
+            if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{TAGHELPERERROR})) {
                 $self->{logUtil}->put($self->{commonStrings}->{EXCEPTION}, $self, "view()", $e);
             }
             die $e;
         }
+}
+
+sub view {
+    my ($invocant, @arguments) = @_;
+    return $invocant->view_j1(@arguments) if scalar(@arguments) == 1;
+    return $invocant->view_j0(@arguments) if scalar(@arguments) == 0;
+    die "No method view takes " . scalar(@arguments) . " arguments";
 }
 
 use java::lang::Object ();
@@ -71,6 +77,8 @@ use org::allbinary::logic::visual::transform::generator::TransformsGeneratorUtil
 use org::allbinary::logic::visual::transform::info::TransformInfoInterface ();
 use org::allbinary::logic::visual::transform::info::TransformInfosData ();
 use views::business::context::modules::storefront::HttpStoreComponentView ();
+use org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory ();
+use org::allbinary::logic::communication::log::config::type::LogConfigTypes ();
 
 1;
 

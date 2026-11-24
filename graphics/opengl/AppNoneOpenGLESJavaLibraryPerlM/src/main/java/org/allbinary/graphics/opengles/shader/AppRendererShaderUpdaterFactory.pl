@@ -54,7 +54,6 @@ sub setShaderComposite {
 
 use java::lang::Object ();
 use java::lang::LazyStatic ();
-use org::allbinary::graphics::opengles::shader::ShaderUpdater ();
 
 1;
 

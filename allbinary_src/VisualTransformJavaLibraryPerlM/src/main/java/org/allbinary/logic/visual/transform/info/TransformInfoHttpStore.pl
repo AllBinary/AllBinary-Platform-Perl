@@ -33,25 +33,31 @@ sub new {
     die "No constructor of TransformInfoHttpStore takes " . scalar(@arguments) . " arguments";
 }
 
+sub _new3 {
+    my ($class, @arguments) = @_;
+    return $class->_new3_1(@arguments) if 1 && (!defined($arguments[0]) || (ref($arguments[0]) && ref($arguments[0]) ne 'ARRAY')) && (!defined($arguments[1]) || (ref($arguments[1]) && ref($arguments[1]) ne 'ARRAY')) && (!defined($arguments[2]) || (ref($arguments[2]) && ref($arguments[2]) ne 'ARRAY'));
+    return $class->_new3_2(@arguments);
+}
+
 
 sub _new2 {
     my ($class, $propertiesHashMap, $pageContext) = @_;
     my $self = $class->SUPER::new($propertiesHashMap, $pageContext, 1);
     _init_fields($self);
         # super(...) made $self above
-        if ($org::allbinary::logic::visual::transform::info::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($org::allbinary::logic::visual::transform::info::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{VIEW})) {
+        if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{VIEW})) {
             $self->{logUtil}->putF("Properties HashMap: " . $propertiesHashMap->toString(), $self, $self->{commonStrings}->{CONSTRUCTOR});
         }
     return $self;
 }
 
 
-sub _new3 {
+sub _new3_1 {
     my ($class, $databaseHashMap, $propertiesHashMap, $pageContext) = @_;
     my $self = $class->SUPER::new($databaseHashMap, $propertiesHashMap, $pageContext);
     _init_fields($self);
         # super(...) made $self above
-        if ($org::allbinary::logic::visual::transform::info::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($org::allbinary::logic::visual::transform::info::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{VIEW})) {
+        if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{VIEW})) {
             my $stringBuffer = 'org::allbinary::logic::string::StringMaker'->new();
             $stringBuffer->append("Database HashMap: ");
             $stringBuffer->append($databaseHashMap->toString());
@@ -64,12 +70,12 @@ sub _new3 {
 }
 
 
-sub _new3 {
+sub _new3_2 {
     my ($class, $storeFrontInterface, $propertiesHashMap, $pageContext) = @_;
     my $self = $class->SUPER::new($propertiesHashMap, $pageContext);
     _init_fields($self);
         # super(...) made $self above
-        if ($org::allbinary::logic::visual::transform::info::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($org::allbinary::logic::visual::transform::info::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{VIEW})) {
+        if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{VIEW})) {
             $self->{logUtil}->putF("Properties HashMap: " . $propertiesHashMap->toString(), $self, $self->{commonStrings}->{CONSTRUCTOR});
         }
         $self->setStoreName($storeFrontInterface->getName());
@@ -132,8 +138,9 @@ use org::allbinary::logic::communication::log::LogUtil ();
 use org::allbinary::logic::io::path::AbPath ();
 use org::allbinary::logic::io::path::AbPathData ();
 use org::allbinary::logic::string::StringMaker ();
+use org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory ();
+use org::allbinary::logic::communication::log::config::type::LogConfigTypes ();
 use org::allbinary::logic::visual::transform::info::TransformInfoHttp ();
-use org::allbinary::logic::visual::transform::info::TransformInfoHttpStoreInterface ();
 
 1;
 

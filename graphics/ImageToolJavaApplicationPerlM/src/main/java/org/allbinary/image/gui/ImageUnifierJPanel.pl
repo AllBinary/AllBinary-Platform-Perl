@@ -72,7 +72,7 @@ sub init {
             my $imageProcessorInput = $self->getImageProcessorInput();
             my $bufferedImageArray = $imageProcessorInput->getBufferedImageArray();
             $self->{icon} = [(undef) x (scalar(@{$bufferedImageArray}))];
-            my $defaultListModel = 'org::allbinary::image::gui::DefaultListModel'->new();
+            my $defaultListModel = 'javax::swing::DefaultListModel'->new();
             for (my $index = 0; $index < scalar(@{$bufferedImageArray}); $index++) {
                 my $width = $bufferedImageArray->[$index]->getWidth();
                 my $height = $bufferedImageArray->[$index]->getHeight();
@@ -91,7 +91,7 @@ sub init {
 }
 
 
-sub updateImage {
+sub updateImage_j0 {
     my ($self) = @_;
         try {
             my $bufferedImageArray = $self->getImageProcessorInput()->getBufferedImageArray();
@@ -141,14 +141,20 @@ sub updateImageWithFudgedImages {
 }
 
 
-# Java overloaded method: Perl keeps the last definition
-sub updateImage {
+sub updateImage_j1 {
     my ($self, $tempBufferedImageArray) = @_;
         $self->{result} = 'org::allbinary::media::image::ImageUnifierUtil'->getInstance()->getImage($tempBufferedImageArray, $self->{imageUnifierProperties});
-        my $image = 'org::allbinary::image::gui::ImageIcon'->new($self->{result});
-        my $label = 'org::allbinary::image::gui::JLabel'->new($image);
+        my $image = 'javax::swing::ImageIcon'->new($self->{result});
+        my $label = 'javax::swing::JLabel'->new($image);
         $self->{jScrollPane2}->getViewport()->add($label);
         $self->updateUI();
+}
+
+sub updateImage {
+    my ($invocant, @arguments) = @_;
+    return $invocant->updateImage_j0(@arguments) if scalar(@arguments) == 0;
+    return $invocant->updateImage_j1(@arguments) if scalar(@arguments) == 1;
+    die "No method updateImage takes " . scalar(@arguments) . " arguments";
 }
 
 
@@ -202,7 +208,7 @@ sub initComponents {
         $self->{jScrollPane1}->setViewportView($self->{imageJList});
         $self->{jButton1}->setText("Save");
         $self->{jButton1}->addActionListener(do {
-            package java::awt::event::ActionListener::AnonymousN71934 { our @ISA = ('java::awt::event::ActionListener', 'java::lang::Object');
+            package java::awt::event::ActionListener::AnonymousN71869 { our @ISA = ('java::awt::event::ActionListener', 'java::lang::Object');
             
 
             sub actionPerformed {
@@ -210,11 +216,11 @@ sub initComponents {
                 $self->jButton1ActionPerformed($evt);
             }
             }
-            'java::awt::event::ActionListener::AnonymousN71934'->can('new') ? 'java::awt::event::ActionListener::AnonymousN71934'->new() : bless({}, 'java::awt::event::ActionListener::AnonymousN71934')
+            'java::awt::event::ActionListener::AnonymousN71869'->can('new') ? 'java::awt::event::ActionListener::AnonymousN71869'->new() : bless({}, 'java::awt::event::ActionListener::AnonymousN71869')
         });
         $self->{upJButton}->setText("Up");
         $self->{upJButton}->addActionListener(do {
-            package java::awt::event::ActionListener::AnonymousN72121 { our @ISA = ('java::awt::event::ActionListener', 'java::lang::Object');
+            package java::awt::event::ActionListener::AnonymousN72008 { our @ISA = ('java::awt::event::ActionListener', 'java::lang::Object');
             
 
             sub actionPerformed {
@@ -222,11 +228,11 @@ sub initComponents {
                 $self->upJButtonActionPerformed($evt);
             }
             }
-            'java::awt::event::ActionListener::AnonymousN72121'->can('new') ? 'java::awt::event::ActionListener::AnonymousN72121'->new() : bless({}, 'java::awt::event::ActionListener::AnonymousN72121')
+            'java::awt::event::ActionListener::AnonymousN72008'->can('new') ? 'java::awt::event::ActionListener::AnonymousN72008'->new() : bless({}, 'java::awt::event::ActionListener::AnonymousN72008')
         });
         $self->{downJButton}->setText("Down");
         $self->{downJButton}->addActionListener(do {
-            package java::awt::event::ActionListener::AnonymousN72308 { our @ISA = ('java::awt::event::ActionListener', 'java::lang::Object');
+            package java::awt::event::ActionListener::AnonymousN72147 { our @ISA = ('java::awt::event::ActionListener', 'java::lang::Object');
             
 
             sub actionPerformed {
@@ -234,11 +240,11 @@ sub initComponents {
                 $self->downJButtonActionPerformed($evt);
             }
             }
-            'java::awt::event::ActionListener::AnonymousN72308'->can('new') ? 'java::awt::event::ActionListener::AnonymousN72308'->new() : bless({}, 'java::awt::event::ActionListener::AnonymousN72308')
+            'java::awt::event::ActionListener::AnonymousN72147'->can('new') ? 'java::awt::event::ActionListener::AnonymousN72147'->new() : bless({}, 'java::awt::event::ActionListener::AnonymousN72147')
         });
         $self->{fudgeItJButton}->setText("Fudge It!");
         $self->{fudgeItJButton}->addActionListener(do {
-            package java::awt::event::ActionListener::AnonymousN72495 { our @ISA = ('java::awt::event::ActionListener', 'java::lang::Object');
+            package java::awt::event::ActionListener::AnonymousN72286 { our @ISA = ('java::awt::event::ActionListener', 'java::lang::Object');
             
 
             sub actionPerformed {
@@ -246,12 +252,12 @@ sub initComponents {
                 $self->fudgeItJButtonActionPerformed($evt);
             }
             }
-            'java::awt::event::ActionListener::AnonymousN72495'->can('new') ? 'java::awt::event::ActionListener::AnonymousN72495'->new() : bless({}, 'java::awt::event::ActionListener::AnonymousN72495')
+            'java::awt::event::ActionListener::AnonymousN72286'->can('new') ? 'java::awt::event::ActionListener::AnonymousN72286'->new() : bless({}, 'java::awt::event::ActionListener::AnonymousN72286')
         });
         $self->{jLabel2}->setText("Columns:");
         $self->{columnsJTextField}->setText($commonPhoneStrings->{TWO});
         $self->{columnsJTextField}->addActionListener(do {
-            package java::awt::event::ActionListener::AnonymousN72724 { our @ISA = ('java::awt::event::ActionListener', 'java::lang::Object');
+            package java::awt::event::ActionListener::AnonymousN72467 { our @ISA = ('java::awt::event::ActionListener', 'java::lang::Object');
             
 
             sub actionPerformed {
@@ -259,10 +265,10 @@ sub initComponents {
                 $self->columnsJTextFieldActionPerformed($evt);
             }
             }
-            'java::awt::event::ActionListener::AnonymousN72724'->can('new') ? 'java::awt::event::ActionListener::AnonymousN72724'->new() : bless({}, 'java::awt::event::ActionListener::AnonymousN72724')
+            'java::awt::event::ActionListener::AnonymousN72467'->can('new') ? 'java::awt::event::ActionListener::AnonymousN72467'->new() : bless({}, 'java::awt::event::ActionListener::AnonymousN72467')
         });
         $self->{columnsJTextField}->addPropertyChangeListener(do {
-            package java::beans::PropertyChangeListener::AnonymousN72881 { our @ISA = ('java::beans::PropertyChangeListener', 'java::lang::Object');
+            package java::beans::PropertyChangeListener::AnonymousN72576 { our @ISA = ('java::beans::PropertyChangeListener', 'java::lang::Object');
             
 
             sub propertyChange {
@@ -270,10 +276,10 @@ sub initComponents {
                 $self->columnsJTextFieldPropertyChange($evt);
             }
             }
-            'java::beans::PropertyChangeListener::AnonymousN72881'->can('new') ? 'java::beans::PropertyChangeListener::AnonymousN72881'->new() : bless({}, 'java::beans::PropertyChangeListener::AnonymousN72881')
+            'java::beans::PropertyChangeListener::AnonymousN72576'->can('new') ? 'java::beans::PropertyChangeListener::AnonymousN72576'->new() : bless({}, 'java::beans::PropertyChangeListener::AnonymousN72576')
         });
         $self->{columnsJTextField}->addKeyListener(do {
-            package java::awt::event::KeyAdapter::AnonymousN73022 { our @ISA = ('java::awt::event::KeyAdapter', 'java::lang::Object');
+            package java::awt::event::KeyAdapter::AnonymousN72685 { our @ISA = ('java::awt::event::KeyAdapter', 'java::lang::Object');
             
 
             sub keyPressed {
@@ -287,12 +293,12 @@ sub initComponents {
                 $self->columnsJTextFieldKeyTyped($evt);
             }
             }
-            'java::awt::event::KeyAdapter::AnonymousN73022'->can('new') ? 'java::awt::event::KeyAdapter::AnonymousN73022'->new() : bless({}, 'java::awt::event::KeyAdapter::AnonymousN73022')
+            'java::awt::event::KeyAdapter::AnonymousN72685'->can('new') ? 'java::awt::event::KeyAdapter::AnonymousN72685'->new() : bless({}, 'java::awt::event::KeyAdapter::AnonymousN72685')
         });
         $self->{jLabel1}->setText("Rows:");
         $self->{rowsJTextField}->setText($commonPhoneStrings->{TWO});
         $self->{rowsJTextField}->addActionListener(do {
-            package java::awt::event::ActionListener::AnonymousN73343 { our @ISA = ('java::awt::event::ActionListener', 'java::lang::Object');
+            package java::awt::event::ActionListener::AnonymousN72934 { our @ISA = ('java::awt::event::ActionListener', 'java::lang::Object');
             
 
             sub actionPerformed {
@@ -300,12 +306,12 @@ sub initComponents {
                 $self->rowsJTextFieldActionPerformed($evt);
             }
             }
-            'java::awt::event::ActionListener::AnonymousN73343'->can('new') ? 'java::awt::event::ActionListener::AnonymousN73343'->new() : bless({}, 'java::awt::event::ActionListener::AnonymousN73343')
+            'java::awt::event::ActionListener::AnonymousN72934'->can('new') ? 'java::awt::event::ActionListener::AnonymousN72934'->new() : bless({}, 'java::awt::event::ActionListener::AnonymousN72934')
         });
         $self->{jLabel3}->setText("Cell Width:");
         $self->{cellWidthJTextField}->setText("200");
         $self->{cellWidthJTextField}->addActionListener(do {
-            package java::awt::event::ActionListener::AnonymousN73560 { our @ISA = ('java::awt::event::ActionListener', 'java::lang::Object');
+            package java::awt::event::ActionListener::AnonymousN73103 { our @ISA = ('java::awt::event::ActionListener', 'java::lang::Object');
             
 
             sub actionPerformed {
@@ -313,12 +319,12 @@ sub initComponents {
                 $self->cellWidthJTextFieldActionPerformed($evt);
             }
             }
-            'java::awt::event::ActionListener::AnonymousN73560'->can('new') ? 'java::awt::event::ActionListener::AnonymousN73560'->new() : bless({}, 'java::awt::event::ActionListener::AnonymousN73560')
+            'java::awt::event::ActionListener::AnonymousN73103'->can('new') ? 'java::awt::event::ActionListener::AnonymousN73103'->new() : bless({}, 'java::awt::event::ActionListener::AnonymousN73103')
         });
         $self->{jLabel4}->setText("Cell Height:");
         $self->{cellHeightJTextField}->setText("150");
         $self->{cellHeightJTextField}->addActionListener(do {
-            package java::awt::event::ActionListener::AnonymousN73777 { our @ISA = ('java::awt::event::ActionListener', 'java::lang::Object');
+            package java::awt::event::ActionListener::AnonymousN73272 { our @ISA = ('java::awt::event::ActionListener', 'java::lang::Object');
             
 
             sub actionPerformed {
@@ -326,7 +332,7 @@ sub initComponents {
                 $self->cellHeightJTextFieldActionPerformed($evt);
             }
             }
-            'java::awt::event::ActionListener::AnonymousN73777'->can('new') ? 'java::awt::event::ActionListener::AnonymousN73777'->new() : bless({}, 'java::awt::event::ActionListener::AnonymousN73777')
+            'java::awt::event::ActionListener::AnonymousN73272'->can('new') ? 'java::awt::event::ActionListener::AnonymousN73272'->new() : bless({}, 'java::awt::event::ActionListener::AnonymousN73272')
         });
         $self->{jLabel5}->setText("Cell Ratio:");
         $self->{cellRatioJTextField}->setEditable(0);
@@ -334,7 +340,7 @@ sub initComponents {
         $self->{avgRatioJTextField}->setEditable(0);
         $self->{jButton2}->setText($self->{commonStrings}->{UPDATE});
         $self->{jButton2}->addActionListener(do {
-            package java::awt::event::ActionListener::AnonymousN74099 { our @ISA = ('java::awt::event::ActionListener', 'java::lang::Object');
+            package java::awt::event::ActionListener::AnonymousN73546 { our @ISA = ('java::awt::event::ActionListener', 'java::lang::Object');
             
 
             sub actionPerformed {
@@ -342,11 +348,11 @@ sub initComponents {
                 $self->jButton2ActionPerformed($evt);
             }
             }
-            'java::awt::event::ActionListener::AnonymousN74099'->can('new') ? 'java::awt::event::ActionListener::AnonymousN74099'->new() : bless({}, 'java::awt::event::ActionListener::AnonymousN74099')
+            'java::awt::event::ActionListener::AnonymousN73546'->can('new') ? 'java::awt::event::ActionListener::AnonymousN73546'->new() : bless({}, 'java::awt::event::ActionListener::AnonymousN73546')
         });
         $self->{jButtonOrder}->setText("Order");
         $self->{jButtonOrder}->addActionListener(do {
-            package java::awt::event::ActionListener::AnonymousN74286 { our @ISA = ('java::awt::event::ActionListener', 'java::lang::Object');
+            package java::awt::event::ActionListener::AnonymousN73685 { our @ISA = ('java::awt::event::ActionListener', 'java::lang::Object');
             
 
             sub actionPerformed {
@@ -354,16 +360,16 @@ sub initComponents {
                 $self->jButtonOrderActionPerformed($evt);
             }
             }
-            'java::awt::event::ActionListener::AnonymousN74286'->can('new') ? 'java::awt::event::ActionListener::AnonymousN74286'->new() : bless({}, 'java::awt::event::ActionListener::AnonymousN74286')
+            'java::awt::event::ActionListener::AnonymousN73685'->can('new') ? 'java::awt::event::ActionListener::AnonymousN73685'->new() : bless({}, 'java::awt::event::ActionListener::AnonymousN73685')
         });
         my $jPanel1Layout = 'javax::swing::GroupLayout'->new($self->{jPanel1});
         $self->{jPanel1}->setLayout($jPanel1Layout);
-        $jPanel1Layout->setHorizontalGroup($jPanel1Layout->createParallelGroup($org::allbinary::image::gui::javax::swing->{GroupLayout}->{Alignment}->{LEADING})->addGroup($org::allbinary::image::gui::javax::swing->{GroupLayout}->{Alignment}->{TRAILING}, $jPanel1Layout->createSequentialGroup()->addContainerGap()->addGroup($jPanel1Layout->createParallelGroup($org::allbinary::image::gui::javax::swing->{GroupLayout}->{Alignment}->{TRAILING})->addComponent($self->{jButton1}, $org::allbinary::image::gui::javax::swing->{GroupLayout}->{DEFAULT_SIZE}, 151, 32767)->addGroup($jPanel1Layout->createSequentialGroup()->addComponent($self->{upJButton}, $org::allbinary::image::gui::javax::swing->{GroupLayout}->{PREFERRED_SIZE}, 71, $org::allbinary::image::gui::javax::swing->{GroupLayout}->{PREFERRED_SIZE})->addPreferredGap($org::allbinary::image::gui::javax::swing->{LayoutStyle}->{ComponentPlacement}->{RELATED}, 10, 32767)->addComponent($self->{downJButton}, $org::allbinary::image::gui::javax::swing->{GroupLayout}->{PREFERRED_SIZE}, 70, $org::allbinary::image::gui::javax::swing->{GroupLayout}->{PREFERRED_SIZE}))->addComponent($self->{fudgeItJButton}, $org::allbinary::image::gui::javax::swing->{GroupLayout}->{Alignment}->{LEADING}, $org::allbinary::image::gui::javax::swing->{GroupLayout}->{DEFAULT_SIZE}, 151, 32767)->addGroup($org::allbinary::image::gui::javax::swing->{GroupLayout}->{Alignment}->{LEADING}, $jPanel1Layout->createSequentialGroup()->addComponent($self->{jLabel3})->addPreferredGap($org::allbinary::image::gui::javax::swing->{LayoutStyle}->{ComponentPlacement}->{RELATED}, 99, $org::allbinary::image::gui::javax::swing->{GroupLayout}->{PREFERRED_SIZE}))->addGroup($org::allbinary::image::gui::javax::swing->{GroupLayout}->{Alignment}->{LEADING}, $jPanel1Layout->createSequentialGroup()->addComponent($self->{jLabel4})->addPreferredGap($org::allbinary::image::gui::javax::swing->{LayoutStyle}->{ComponentPlacement}->{RELATED}, 96, $org::allbinary::image::gui::javax::swing->{GroupLayout}->{PREFERRED_SIZE}))->addComponent($self->{avgRatioJTextField}, $org::allbinary::image::gui::javax::swing->{GroupLayout}->{Alignment}->{LEADING}, $org::allbinary::image::gui::javax::swing->{GroupLayout}->{DEFAULT_SIZE}, 151, 32767)->addComponent($self->{jLabel6}, $org::allbinary::image::gui::javax::swing->{GroupLayout}->{Alignment}->{LEADING}, $org::allbinary::image::gui::javax::swing->{GroupLayout}->{DEFAULT_SIZE}, 151, 32767)->addComponent($self->{cellRatioJTextField}, $org::allbinary::image::gui::javax::swing->{GroupLayout}->{Alignment}->{LEADING}, $org::allbinary::image::gui::javax::swing->{GroupLayout}->{DEFAULT_SIZE}, 151, 32767)->addComponent($self->{jLabel5}, $org::allbinary::image::gui::javax::swing->{GroupLayout}->{Alignment}->{LEADING}, $org::allbinary::image::gui::javax::swing->{GroupLayout}->{DEFAULT_SIZE}, 151, 32767)->addComponent($self->{cellHeightJTextField}, $org::allbinary::image::gui::javax::swing->{GroupLayout}->{Alignment}->{LEADING}, $org::allbinary::image::gui::javax::swing->{GroupLayout}->{DEFAULT_SIZE}, 151, 32767)->addComponent($self->{cellWidthJTextField}, $org::allbinary::image::gui::javax::swing->{GroupLayout}->{Alignment}->{LEADING}, $org::allbinary::image::gui::javax::swing->{GroupLayout}->{DEFAULT_SIZE}, 151, 32767)->addComponent($self->{jButton2}, $org::allbinary::image::gui::javax::swing->{GroupLayout}->{Alignment}->{LEADING}, $org::allbinary::image::gui::javax::swing->{GroupLayout}->{DEFAULT_SIZE}, 151, 32767)->addGroup($org::allbinary::image::gui::javax::swing->{GroupLayout}->{Alignment}->{LEADING}, $jPanel1Layout->createSequentialGroup()->addGroup($jPanel1Layout->createParallelGroup($org::allbinary::image::gui::javax::swing->{GroupLayout}->{Alignment}->{LEADING})->addComponent($self->{jLabel2})->addComponent($self->{jLabel1}))->addPreferredGap($org::allbinary::image::gui::javax::swing->{LayoutStyle}->{ComponentPlacement}->{RELATED})->addGroup($jPanel1Layout->createParallelGroup($org::allbinary::image::gui::javax::swing->{GroupLayout}->{Alignment}->{LEADING})->addComponent($self->{rowsJTextField}, $org::allbinary::image::gui::javax::swing->{GroupLayout}->{DEFAULT_SIZE}, 103, 32767)->addGroup($jPanel1Layout->createSequentialGroup()->addComponent($self->{columnsJTextField}, $org::allbinary::image::gui::javax::swing->{GroupLayout}->{DEFAULT_SIZE}, 102, 32767)->addGap(1, 1, 1))))->addComponent($self->{jButtonOrder}, $org::allbinary::image::gui::javax::swing->{GroupLayout}->{DEFAULT_SIZE}, 151, 32767))->addContainerGap()));
-        $jPanel1Layout->setVerticalGroup($jPanel1Layout->createParallelGroup($org::allbinary::image::gui::javax::swing->{GroupLayout}->{Alignment}->{LEADING})->addGroup($jPanel1Layout->createSequentialGroup()->addContainerGap()->addComponent($self->{jButton1})->addPreferredGap($org::allbinary::image::gui::javax::swing->{LayoutStyle}->{ComponentPlacement}->{RELATED})->addGroup($jPanel1Layout->createParallelGroup($org::allbinary::image::gui::javax::swing->{GroupLayout}->{Alignment}->{BASELINE})->addComponent($self->{upJButton})->addComponent($self->{downJButton}))->addPreferredGap($org::allbinary::image::gui::javax::swing->{LayoutStyle}->{ComponentPlacement}->{RELATED})->addComponent($self->{jButtonOrder})->addPreferredGap($org::allbinary::image::gui::javax::swing->{LayoutStyle}->{ComponentPlacement}->{RELATED})->addComponent($self->{fudgeItJButton})->addPreferredGap($org::allbinary::image::gui::javax::swing->{LayoutStyle}->{ComponentPlacement}->{RELATED})->addGroup($jPanel1Layout->createParallelGroup($org::allbinary::image::gui::javax::swing->{GroupLayout}->{Alignment}->{BASELINE})->addComponent($self->{jLabel2})->addComponent($self->{columnsJTextField}, $org::allbinary::image::gui::javax::swing->{GroupLayout}->{PREFERRED_SIZE}, $org::allbinary::image::gui::javax::swing->{GroupLayout}->{DEFAULT_SIZE}, $org::allbinary::image::gui::javax::swing->{GroupLayout}->{PREFERRED_SIZE}))->addPreferredGap($org::allbinary::image::gui::javax::swing->{LayoutStyle}->{ComponentPlacement}->{RELATED})->addGroup($jPanel1Layout->createParallelGroup($org::allbinary::image::gui::javax::swing->{GroupLayout}->{Alignment}->{BASELINE})->addComponent($self->{jLabel1})->addComponent($self->{rowsJTextField}, $org::allbinary::image::gui::javax::swing->{GroupLayout}->{PREFERRED_SIZE}, $org::allbinary::image::gui::javax::swing->{GroupLayout}->{DEFAULT_SIZE}, $org::allbinary::image::gui::javax::swing->{GroupLayout}->{PREFERRED_SIZE}))->addPreferredGap($org::allbinary::image::gui::javax::swing->{LayoutStyle}->{ComponentPlacement}->{RELATED})->addComponent($self->{jLabel3})->addPreferredGap($org::allbinary::image::gui::javax::swing->{LayoutStyle}->{ComponentPlacement}->{RELATED})->addComponent($self->{cellWidthJTextField}, $org::allbinary::image::gui::javax::swing->{GroupLayout}->{PREFERRED_SIZE}, $org::allbinary::image::gui::javax::swing->{GroupLayout}->{DEFAULT_SIZE}, $org::allbinary::image::gui::javax::swing->{GroupLayout}->{PREFERRED_SIZE})->addPreferredGap($org::allbinary::image::gui::javax::swing->{LayoutStyle}->{ComponentPlacement}->{RELATED})->addComponent($self->{jLabel4})->addPreferredGap($org::allbinary::image::gui::javax::swing->{LayoutStyle}->{ComponentPlacement}->{RELATED})->addComponent($self->{cellHeightJTextField}, $org::allbinary::image::gui::javax::swing->{GroupLayout}->{PREFERRED_SIZE}, $org::allbinary::image::gui::javax::swing->{GroupLayout}->{DEFAULT_SIZE}, $org::allbinary::image::gui::javax::swing->{GroupLayout}->{PREFERRED_SIZE})->addPreferredGap($org::allbinary::image::gui::javax::swing->{LayoutStyle}->{ComponentPlacement}->{RELATED})->addComponent($self->{jButton2})->addPreferredGap($org::allbinary::image::gui::javax::swing->{LayoutStyle}->{ComponentPlacement}->{RELATED})->addComponent($self->{jLabel5})->addPreferredGap($org::allbinary::image::gui::javax::swing->{LayoutStyle}->{ComponentPlacement}->{RELATED}, $org::allbinary::image::gui::javax::swing->{GroupLayout}->{DEFAULT_SIZE}, 32767)->addComponent($self->{cellRatioJTextField}, $org::allbinary::image::gui::javax::swing->{GroupLayout}->{PREFERRED_SIZE}, $org::allbinary::image::gui::javax::swing->{GroupLayout}->{DEFAULT_SIZE}, $org::allbinary::image::gui::javax::swing->{GroupLayout}->{PREFERRED_SIZE})->addGap(7, 7, 7)->addComponent($self->{jLabel6})->addPreferredGap($org::allbinary::image::gui::javax::swing->{LayoutStyle}->{ComponentPlacement}->{RELATED})->addComponent($self->{avgRatioJTextField}, $org::allbinary::image::gui::javax::swing->{GroupLayout}->{PREFERRED_SIZE}, $org::allbinary::image::gui::javax::swing->{GroupLayout}->{DEFAULT_SIZE}, $org::allbinary::image::gui::javax::swing->{GroupLayout}->{PREFERRED_SIZE})->addGap(66, 66, 66)));
+        $jPanel1Layout->setHorizontalGroup($jPanel1Layout->createParallelGroup($javax::swing::GroupLayout::Alignment->{LEADING})->addGroup($javax::swing::GroupLayout::Alignment->{TRAILING}, $jPanel1Layout->createSequentialGroup()->addContainerGap()->addGroup($jPanel1Layout->createParallelGroup($javax::swing::GroupLayout::Alignment->{TRAILING})->addComponent($self->{jButton1}, $javax::swing::GroupLayout::DEFAULT_SIZE, 151, 32767)->addGroup($jPanel1Layout->createSequentialGroup()->addComponent($self->{upJButton}, $javax::swing::GroupLayout::PREFERRED_SIZE, 71, $javax::swing::GroupLayout::PREFERRED_SIZE)->addPreferredGap($javax::swing::LayoutStyle::ComponentPlacement->{RELATED}, 10, 32767)->addComponent($self->{downJButton}, $javax::swing::GroupLayout::PREFERRED_SIZE, 70, $javax::swing::GroupLayout::PREFERRED_SIZE))->addComponent($self->{fudgeItJButton}, $javax::swing::GroupLayout::Alignment->{LEADING}, $javax::swing::GroupLayout::DEFAULT_SIZE, 151, 32767)->addGroup($javax::swing::GroupLayout::Alignment->{LEADING}, $jPanel1Layout->createSequentialGroup()->addComponent($self->{jLabel3})->addPreferredGap($javax::swing::LayoutStyle::ComponentPlacement->{RELATED}, 99, $javax::swing::GroupLayout::PREFERRED_SIZE))->addGroup($javax::swing::GroupLayout::Alignment->{LEADING}, $jPanel1Layout->createSequentialGroup()->addComponent($self->{jLabel4})->addPreferredGap($javax::swing::LayoutStyle::ComponentPlacement->{RELATED}, 96, $javax::swing::GroupLayout::PREFERRED_SIZE))->addComponent($self->{avgRatioJTextField}, $javax::swing::GroupLayout::Alignment->{LEADING}, $javax::swing::GroupLayout::DEFAULT_SIZE, 151, 32767)->addComponent($self->{jLabel6}, $javax::swing::GroupLayout::Alignment->{LEADING}, $javax::swing::GroupLayout::DEFAULT_SIZE, 151, 32767)->addComponent($self->{cellRatioJTextField}, $javax::swing::GroupLayout::Alignment->{LEADING}, $javax::swing::GroupLayout::DEFAULT_SIZE, 151, 32767)->addComponent($self->{jLabel5}, $javax::swing::GroupLayout::Alignment->{LEADING}, $javax::swing::GroupLayout::DEFAULT_SIZE, 151, 32767)->addComponent($self->{cellHeightJTextField}, $javax::swing::GroupLayout::Alignment->{LEADING}, $javax::swing::GroupLayout::DEFAULT_SIZE, 151, 32767)->addComponent($self->{cellWidthJTextField}, $javax::swing::GroupLayout::Alignment->{LEADING}, $javax::swing::GroupLayout::DEFAULT_SIZE, 151, 32767)->addComponent($self->{jButton2}, $javax::swing::GroupLayout::Alignment->{LEADING}, $javax::swing::GroupLayout::DEFAULT_SIZE, 151, 32767)->addGroup($javax::swing::GroupLayout::Alignment->{LEADING}, $jPanel1Layout->createSequentialGroup()->addGroup($jPanel1Layout->createParallelGroup($javax::swing::GroupLayout::Alignment->{LEADING})->addComponent($self->{jLabel2})->addComponent($self->{jLabel1}))->addPreferredGap($javax::swing::LayoutStyle::ComponentPlacement->{RELATED})->addGroup($jPanel1Layout->createParallelGroup($javax::swing::GroupLayout::Alignment->{LEADING})->addComponent($self->{rowsJTextField}, $javax::swing::GroupLayout::DEFAULT_SIZE, 103, 32767)->addGroup($jPanel1Layout->createSequentialGroup()->addComponent($self->{columnsJTextField}, $javax::swing::GroupLayout::DEFAULT_SIZE, 102, 32767)->addGap(1, 1, 1))))->addComponent($self->{jButtonOrder}, $javax::swing::GroupLayout::DEFAULT_SIZE, 151, 32767))->addContainerGap()));
+        $jPanel1Layout->setVerticalGroup($jPanel1Layout->createParallelGroup($javax::swing::GroupLayout::Alignment->{LEADING})->addGroup($jPanel1Layout->createSequentialGroup()->addContainerGap()->addComponent($self->{jButton1})->addPreferredGap($javax::swing::LayoutStyle::ComponentPlacement->{RELATED})->addGroup($jPanel1Layout->createParallelGroup($javax::swing::GroupLayout::Alignment->{BASELINE})->addComponent($self->{upJButton})->addComponent($self->{downJButton}))->addPreferredGap($javax::swing::LayoutStyle::ComponentPlacement->{RELATED})->addComponent($self->{jButtonOrder})->addPreferredGap($javax::swing::LayoutStyle::ComponentPlacement->{RELATED})->addComponent($self->{fudgeItJButton})->addPreferredGap($javax::swing::LayoutStyle::ComponentPlacement->{RELATED})->addGroup($jPanel1Layout->createParallelGroup($javax::swing::GroupLayout::Alignment->{BASELINE})->addComponent($self->{jLabel2})->addComponent($self->{columnsJTextField}, $javax::swing::GroupLayout::PREFERRED_SIZE, $javax::swing::GroupLayout::DEFAULT_SIZE, $javax::swing::GroupLayout::PREFERRED_SIZE))->addPreferredGap($javax::swing::LayoutStyle::ComponentPlacement->{RELATED})->addGroup($jPanel1Layout->createParallelGroup($javax::swing::GroupLayout::Alignment->{BASELINE})->addComponent($self->{jLabel1})->addComponent($self->{rowsJTextField}, $javax::swing::GroupLayout::PREFERRED_SIZE, $javax::swing::GroupLayout::DEFAULT_SIZE, $javax::swing::GroupLayout::PREFERRED_SIZE))->addPreferredGap($javax::swing::LayoutStyle::ComponentPlacement->{RELATED})->addComponent($self->{jLabel3})->addPreferredGap($javax::swing::LayoutStyle::ComponentPlacement->{RELATED})->addComponent($self->{cellWidthJTextField}, $javax::swing::GroupLayout::PREFERRED_SIZE, $javax::swing::GroupLayout::DEFAULT_SIZE, $javax::swing::GroupLayout::PREFERRED_SIZE)->addPreferredGap($javax::swing::LayoutStyle::ComponentPlacement->{RELATED})->addComponent($self->{jLabel4})->addPreferredGap($javax::swing::LayoutStyle::ComponentPlacement->{RELATED})->addComponent($self->{cellHeightJTextField}, $javax::swing::GroupLayout::PREFERRED_SIZE, $javax::swing::GroupLayout::DEFAULT_SIZE, $javax::swing::GroupLayout::PREFERRED_SIZE)->addPreferredGap($javax::swing::LayoutStyle::ComponentPlacement->{RELATED})->addComponent($self->{jButton2})->addPreferredGap($javax::swing::LayoutStyle::ComponentPlacement->{RELATED})->addComponent($self->{jLabel5})->addPreferredGap($javax::swing::LayoutStyle::ComponentPlacement->{RELATED}, $javax::swing::GroupLayout::DEFAULT_SIZE, 32767)->addComponent($self->{cellRatioJTextField}, $javax::swing::GroupLayout::PREFERRED_SIZE, $javax::swing::GroupLayout::DEFAULT_SIZE, $javax::swing::GroupLayout::PREFERRED_SIZE)->addGap(7, 7, 7)->addComponent($self->{jLabel6})->addPreferredGap($javax::swing::LayoutStyle::ComponentPlacement->{RELATED})->addComponent($self->{avgRatioJTextField}, $javax::swing::GroupLayout::PREFERRED_SIZE, $javax::swing::GroupLayout::DEFAULT_SIZE, $javax::swing::GroupLayout::PREFERRED_SIZE)->addGap(66, 66, 66)));
         my $layout = 'javax::swing::GroupLayout'->new($self);
         $self->setLayout($layout);
-        $layout->setHorizontalGroup($layout->createParallelGroup($org::allbinary::image::gui::javax::swing->{GroupLayout}->{Alignment}->{LEADING})->addGroup($layout->createSequentialGroup()->addComponent($self->{jScrollPane1}, $org::allbinary::image::gui::javax::swing->{GroupLayout}->{PREFERRED_SIZE}, 84, $org::allbinary::image::gui::javax::swing->{GroupLayout}->{PREFERRED_SIZE})->addPreferredGap($org::allbinary::image::gui::javax::swing->{LayoutStyle}->{ComponentPlacement}->{RELATED})->addComponent($self->{jPanel1}, $org::allbinary::image::gui::javax::swing->{GroupLayout}->{PREFERRED_SIZE}, $org::allbinary::image::gui::javax::swing->{GroupLayout}->{DEFAULT_SIZE}, $org::allbinary::image::gui::javax::swing->{GroupLayout}->{PREFERRED_SIZE})->addPreferredGap($org::allbinary::image::gui::javax::swing->{LayoutStyle}->{ComponentPlacement}->{RELATED})->addComponent($self->{jScrollPane2}, $org::allbinary::image::gui::javax::swing->{GroupLayout}->{DEFAULT_SIZE}, 527, 32767)));
-        $layout->setVerticalGroup($layout->createParallelGroup($org::allbinary::image::gui::javax::swing->{GroupLayout}->{Alignment}->{LEADING})->addGroup($org::allbinary::image::gui::javax::swing->{GroupLayout}->{Alignment}->{TRAILING}, $layout->createSequentialGroup()->addGroup($layout->createParallelGroup($org::allbinary::image::gui::javax::swing->{GroupLayout}->{Alignment}->{TRAILING})->addComponent($self->{jPanel1}, $org::allbinary::image::gui::javax::swing->{GroupLayout}->{Alignment}->{LEADING}, 0, 445, 32767)->addComponent($self->{jScrollPane2}, $org::allbinary::image::gui::javax::swing->{GroupLayout}->{Alignment}->{LEADING}, $org::allbinary::image::gui::javax::swing->{GroupLayout}->{DEFAULT_SIZE}, 445, 32767)->addComponent($self->{jScrollPane1}, $org::allbinary::image::gui::javax::swing->{GroupLayout}->{Alignment}->{LEADING}, $org::allbinary::image::gui::javax::swing->{GroupLayout}->{DEFAULT_SIZE}, 445, 32767))->addContainerGap()));
+        $layout->setHorizontalGroup($layout->createParallelGroup($javax::swing::GroupLayout::Alignment->{LEADING})->addGroup($layout->createSequentialGroup()->addComponent($self->{jScrollPane1}, $javax::swing::GroupLayout::PREFERRED_SIZE, 84, $javax::swing::GroupLayout::PREFERRED_SIZE)->addPreferredGap($javax::swing::LayoutStyle::ComponentPlacement->{RELATED})->addComponent($self->{jPanel1}, $javax::swing::GroupLayout::PREFERRED_SIZE, $javax::swing::GroupLayout::DEFAULT_SIZE, $javax::swing::GroupLayout::PREFERRED_SIZE)->addPreferredGap($javax::swing::LayoutStyle::ComponentPlacement->{RELATED})->addComponent($self->{jScrollPane2}, $javax::swing::GroupLayout::DEFAULT_SIZE, 527, 32767)));
+        $layout->setVerticalGroup($layout->createParallelGroup($javax::swing::GroupLayout::Alignment->{LEADING})->addGroup($javax::swing::GroupLayout::Alignment->{TRAILING}, $layout->createSequentialGroup()->addGroup($layout->createParallelGroup($javax::swing::GroupLayout::Alignment->{TRAILING})->addComponent($self->{jPanel1}, $javax::swing::GroupLayout::Alignment->{LEADING}, 0, 445, 32767)->addComponent($self->{jScrollPane2}, $javax::swing::GroupLayout::Alignment->{LEADING}, $javax::swing::GroupLayout::DEFAULT_SIZE, 445, 32767)->addComponent($self->{jScrollPane1}, $javax::swing::GroupLayout::Alignment->{LEADING}, $javax::swing::GroupLayout::DEFAULT_SIZE, 445, 32767))->addContainerGap()));
 }
 
 
@@ -492,7 +498,9 @@ sub setImageProcessorInput {
 use java::lang::Object ();
 # use java::awt::image::BufferedImage ();
 use java::io::File ();
-# use javax::swing ();
+# use javax::swing::DefaultListModel ();
+# use javax::swing::ImageIcon ();
+# use javax::swing::Icon ();
 use org::allbinary::logic::communication::log::LogUtil ();
 use org::allbinary::logic::io::file::FileWrapperUtil ();
 use org::allbinary::logic::string::StringMaker ();
@@ -509,10 +517,22 @@ use org::allbinary::media::image::ImagesRatioUtil ();
 use org::allbinary::string::CommonPhoneStrings ();
 use org::allbinary::string::CommonSeps ();
 use org::allbinary::string::CommonStrings ();
-use org::allbinary::image::gui::DefaultListModel ();
+# use java::awt::Dimension ();
+# use java::awt::event::ActionEvent ();
+# use java::awt::event::ActionListener ();
+# use java::awt::event::KeyAdapter ();
+# use java::awt::event::KeyEvent ();
+# use java::beans::PropertyChangeEvent ();
+# use java::beans::PropertyChangeListener ();
+# use javax::swing::GroupLayout ();
+# use javax::swing::JButton ();
+# use javax::swing::JLabel ();
+# use javax::swing::JList ();
+# use javax::swing::JPanel ();
+# use javax::swing::JScrollPane ();
+# use javax::swing::JTextField ();
+# use javax::swing::LayoutStyle ();
 use org::allbinary::image::gui::ImageIconUnique ();
-use org::allbinary::image::gui::ImageIcon ();
-use org::allbinary::image::gui::JLabel ();
 
 1;
 

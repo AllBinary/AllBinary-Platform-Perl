@@ -35,16 +35,22 @@ sub new {
 }
 
 
-sub getRootInstance {
+sub getRootInstance_j0 {
     my ($self) = @_;
         die ("RuntimeException");
 }
 
 
-# Java overloaded method: Perl keeps the last definition
-sub getRootInstance {
+sub getRootInstance_j1 {
     my ($self, $categoryAbPath) = @_;
         die ("RuntimeException");
+}
+
+sub getRootInstance {
+    my ($invocant, @arguments) = @_;
+    return $invocant->getRootInstance_j0(@arguments) if scalar(@arguments) == 0;
+    return $invocant->getRootInstance_j1(@arguments) if scalar(@arguments) == 1;
+    die "No method getRootInstance takes " . scalar(@arguments) . " arguments";
 }
 
 
@@ -54,16 +60,16 @@ sub getRootInstanceFromNode {
 }
 
 
-sub getInstance {
+sub getInstance_j1_1 {
     my ($self, $categoryName) = @_;
         try {
-            if ($org::allbinary::business::category::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($org::allbinary::business::category::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{CATEGORY})) {
+            if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{CATEGORY})) {
                 $self->{logUtil}->putF($self->{commonStrings}->{START}, $self, "getInstance(String)");
             }
             my $categoryPropertiesFactoryInterface = 'org::allbinary::business::category::properties::CategoryPropertiesFactory'->new($categoryName);
             return 'org::allbinary::business::category::Category'->new($categoryPropertiesFactoryInterface);
         } catch ($e) {
-            if ($org::allbinary::business::category::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($org::allbinary::business::category::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{ENTITYFACTORYERROR})) {
+            if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{ENTITYFACTORYERROR})) {
                 $self->{logUtil}->put($self->{commonStrings}->{EXCEPTION}, $self, "getInstance(String, int)", $e);
             }
             return undef;
@@ -71,17 +77,16 @@ sub getInstance {
 }
 
 
-# Java overloaded method: Perl keeps the last definition
-sub getInstance {
+sub getInstance_j3_1 {
     my ($self, $rootCategoryInterface, $parentCategoryInterface, $categoryName) = @_;
         try {
-            if ($org::allbinary::business::category::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($org::allbinary::business::category::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{CATEGORY})) {
+            if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{CATEGORY})) {
                 $self->{logUtil}->putF($self->{commonStrings}->{START}, $self, "getInstance(CategoryInterface, CategoryInterface, String)");
             }
             my $categoryPropertiesFactoryInterface = 'org::allbinary::business::category::properties::CategoryPropertiesFactory'->new($categoryName);
             return 'org::allbinary::business::category::Category'->new($rootCategoryInterface, $parentCategoryInterface, $categoryPropertiesFactoryInterface);
         } catch ($e) {
-            if ($org::allbinary::business::category::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($org::allbinary::business::category::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{ENTITYFACTORYERROR})) {
+            if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{ENTITYFACTORYERROR})) {
                 $self->{logUtil}->put($self->{commonStrings}->{EXCEPTION}, $self, "getInstance(CategoryInterface, CategoryInterface , String, int)", $e);
             }
             return undef;
@@ -89,17 +94,16 @@ sub getInstance {
 }
 
 
-# Java overloaded method: Perl keeps the last definition
-sub getInstance {
+sub getInstance_j1_2 {
     my ($self, $node) = @_;
         try {
-            if ($org::allbinary::business::category::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($org::allbinary::business::category::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{CATEGORY})) {
+            if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{CATEGORY})) {
                 $self->{logUtil}->putF($self->{commonStrings}->{START}, $self, "getInstance(Node)");
             }
             my $categoryPropertiesFactoryInterface = 'org::allbinary::business::category::properties::CategoryPropertiesFactory'->new($node);
             return 'org::allbinary::business::category::Category'->new($categoryPropertiesFactoryInterface);
         } catch ($e) {
-            if ($org::allbinary::business::category::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($org::allbinary::business::category::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{ENTITYFACTORYERROR})) {
+            if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{ENTITYFACTORYERROR})) {
                 $self->{logUtil}->put($self->{commonStrings}->{EXCEPTION}, $self, "getInstance(Node, int)", $e);
             }
             return undef;
@@ -107,17 +111,16 @@ sub getInstance {
 }
 
 
-# Java overloaded method: Perl keeps the last definition
-sub getInstance {
+sub getInstance_j3_2 {
     my ($self, $rootCategoryInterface, $parentCategoryInterface, $node) = @_;
         try {
-            if ($org::allbinary::business::category::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($org::allbinary::business::category::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{CATEGORY})) {
+            if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{CATEGORY})) {
                 $self->{logUtil}->putF($self->{commonStrings}->{START}, $self, "getInstance(CategoryInterface, CategoryInterface, Node)");
             }
             my $categoryPropertiesFactoryInterface = 'org::allbinary::business::category::properties::CategoryPropertiesFactory'->new($node);
             return 'org::allbinary::business::category::Category'->new($rootCategoryInterface, $parentCategoryInterface, $categoryPropertiesFactoryInterface);
         } catch ($e) {
-            if ($org::allbinary::business::category::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($org::allbinary::business::category::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{ENTITYFACTORYERROR})) {
+            if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{ENTITYFACTORYERROR})) {
                 $self->{logUtil}->put($self->{commonStrings}->{EXCEPTION}, $self, "getInstance(CategoryInterface, CategoryInterface, Node, int)", $e);
             }
             return undef;
@@ -125,21 +128,40 @@ sub getInstance {
 }
 
 
-# Java overloaded method: Perl keeps the last definition
-sub getInstance {
+sub getInstance_j3_3 {
     my ($self, $rootCategoryInterface, $parentCategoryInterface, $categoryPropertiesHashMap) = @_;
         try {
-            if ($org::allbinary::business::category::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($org::allbinary::business::category::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{CATEGORY})) {
+            if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{CATEGORY})) {
                 $self->{logUtil}->putF($self->{commonStrings}->{START}, $self, "getInstance(CategoryInterface, CategoryInterface, HashMap)");
             }
             my $categoryPropertiesFactoryInterface = 'org::allbinary::business::category::properties::CategoryPropertiesFactory'->new($categoryPropertiesHashMap);
             return 'org::allbinary::business::category::Category'->new($rootCategoryInterface, $parentCategoryInterface, $categoryPropertiesFactoryInterface);
         } catch ($e) {
-            if ($org::allbinary::business::category::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($org::allbinary::business::category::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{CATEGORYERROR})) {
+            if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{CATEGORYERROR})) {
                 $self->{logUtil}->put($self->{commonStrings}->{EXCEPTION}, $self, "getInstance(CategoryInterface, CategoryInterface, HashMap)", $e);
             }
             return undef;
         }
+}
+
+sub getInstance {
+    my ($invocant, @arguments) = @_;
+    return $invocant->getInstance_j1(@arguments) if scalar(@arguments) == 1;
+    return $invocant->getInstance_j3(@arguments) if scalar(@arguments) == 3;
+    die "No method getInstance takes " . scalar(@arguments) . " arguments";
+}
+
+sub getInstance_j1 {
+    my ($invocant, @arguments) = @_;
+    return $invocant->getInstance_j1_1(@arguments) if 1 && !ref($arguments[0]);
+    return $invocant->getInstance_j1_2(@arguments);
+}
+
+sub getInstance_j3 {
+    my ($invocant, @arguments) = @_;
+    return $invocant->getInstance_j3_1(@arguments) if 1 && (!defined($arguments[0]) || (ref($arguments[0]) && ref($arguments[0]) ne 'ARRAY')) && (!defined($arguments[1]) || (ref($arguments[1]) && ref($arguments[1]) ne 'ARRAY')) && !ref($arguments[2]);
+    return $invocant->getInstance_j3_2(@arguments) if 1 && (!defined($arguments[0]) || (ref($arguments[0]) && ref($arguments[0]) ne 'ARRAY')) && (!defined($arguments[1]) || (ref($arguments[1]) && ref($arguments[1]) ne 'ARRAY')) && (!defined($arguments[2]) || (ref($arguments[2]) && ref($arguments[2]) ne 'ARRAY'));
+    return $invocant->getInstance_j3_3(@arguments);
 }
 
 use java::lang::Object ();
@@ -150,8 +172,8 @@ use org::allbinary::logic::communication::log::LogUtil ();
 use org::allbinary::logic::io::path::AbPath ();
 use org::allbinary::string::CommonStrings ();
 use org::w3c::dom::Node ();
-use org::allbinary::business::category::CategoryFactoryInterface ();
-use org::allbinary::business::category::Category ();
+use org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory ();
+use org::allbinary::logic::communication::log::config::type::LogConfigTypes ();
 
 1;
 

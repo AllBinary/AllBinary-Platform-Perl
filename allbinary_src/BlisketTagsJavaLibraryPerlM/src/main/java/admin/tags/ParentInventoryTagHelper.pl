@@ -55,6 +55,7 @@ use java::lang::Object ();
 use java::lang::LazyStatic ();
 # use javax::servlet::jsp::tagext::Tag ();
 use org::allbinary::logic::string::StringMaker ();
+use tags::HelperTag ();
 
 1;
 

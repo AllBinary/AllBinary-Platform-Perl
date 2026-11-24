@@ -165,7 +165,7 @@ sub showDialog {
 }
 
 
-sub getText {
+sub getText_j0 {
     my ($self) = @_;
         return $self->getText($self->getKeyArray());
 }
@@ -179,8 +179,7 @@ sub setText {
 }
 
 
-# Java overloaded method: Perl keeps the last definition
-sub getText {
+sub getText_j1 {
     my ($class, $integerArray) = @_;
         my $index = 0;
         my $stringBuffer = 'org::allbinary::logic::string::StringMaker'->new();
@@ -194,6 +193,13 @@ sub getText {
             $index++;
         }
         return $stringBuffer->toString();
+}
+
+sub getText {
+    my ($invocant, @arguments) = @_;
+    return $invocant->getText_j0(@arguments) if scalar(@arguments) == 0;
+    return $invocant->getText_j1(@arguments) if scalar(@arguments) == 1;
+    die "No method getText takes " . scalar(@arguments) . " arguments";
 }
 
 

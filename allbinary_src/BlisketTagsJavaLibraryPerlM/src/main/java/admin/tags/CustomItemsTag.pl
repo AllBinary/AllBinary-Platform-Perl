@@ -32,7 +32,6 @@ sub new {
 use java::lang::Object ();
 use admin::taghelpers::CustomItemsHelperFactory ();
 use admin::taghelpers::CustomItemsRequestHelperFactory ();
-use admin::tags::TableTag ();
 
 1;
 

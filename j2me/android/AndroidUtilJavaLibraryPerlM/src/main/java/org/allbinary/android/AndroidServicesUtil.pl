@@ -68,7 +68,7 @@ use java::lang::Object ();
 use java::lang::LazyStatic ();
 # use java::util::List ();
 # use android::app::ActivityManager ();
-# use android::app::ActivityManager::RunningServiceInfo ();
+# use android::app::ActivityManager ();
 # use android::content::ComponentName ();
 # use android::content::Context ();
 use org::allbinary::data::resource::ResourceUtil ();

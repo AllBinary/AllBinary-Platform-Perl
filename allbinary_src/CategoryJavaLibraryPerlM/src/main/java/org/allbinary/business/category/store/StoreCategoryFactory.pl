@@ -31,7 +31,7 @@ sub new {
     my ($class, $transformInfoInterface) = @_;
     my $self = $class->SUPER::new();
     _init_fields($self);
-        if ($org::allbinary::business::category::store::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($org::allbinary::business::category::store::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{CATEGORY})) {
+        if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{CATEGORY})) {
             $self->{logUtil}->putF($self->{commonStrings}->{START}, $self, "StoreCategoryFactory(TransformInfoInterface transformInfoInterface)");
         }
         $self->{transformInfoInterface} = $transformInfoInterface;
@@ -39,13 +39,13 @@ sub new {
 }
 
 
-sub getRootInstance {
+sub getRootInstance_j0 {
     my ($self) = @_;
         try {
             my $categoryPropertiesFactoryInterface = 'org::allbinary::business::category::properties::root::store::RootStoreCategoryPropertiesFactory'->new($self->{transformInfoInterface});
             return 'org::allbinary::business::category::Category'->new($categoryPropertiesFactoryInterface);
         } catch ($e) {
-            if ($org::allbinary::business::category::store::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($org::allbinary::business::category::store::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{ENTITYFACTORYERROR})) {
+            if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{ENTITYFACTORYERROR})) {
                 $self->{logUtil}->put($self->{commonStrings}->{EXCEPTION}, $self, "getInstance(String, int)", $e);
             }
             return undef;
@@ -53,19 +53,25 @@ sub getRootInstance {
 }
 
 
-# Java overloaded method: Perl keeps the last definition
-sub getRootInstance {
+sub getRootInstance_j1 {
     my ($self, $categoryPath) = @_;
         try {
             my $level = 'org::allbinary::business::category::CategoryUtil'->getPathLevel($categoryPath);
             my $categoryPropertiesFactoryInterface = 'org::allbinary::business::category::properties::root::store::RootStoreCategoryPropertiesFactory'->new($self->{transformInfoInterface}, $categoryPath);
             return 'org::allbinary::business::category::Category'->new($categoryPropertiesFactoryInterface, $level);
         } catch ($e) {
-            if ($org::allbinary::business::category::store::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($org::allbinary::business::category::store::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{ENTITYFACTORYERROR})) {
+            if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{ENTITYFACTORYERROR})) {
                 $self->{logUtil}->put($self->{commonStrings}->{EXCEPTION}, $self, "getInstance(String, int)", $e);
             }
             return undef;
         }
+}
+
+sub getRootInstance {
+    my ($invocant, @arguments) = @_;
+    return $invocant->getRootInstance_j0(@arguments) if scalar(@arguments) == 0;
+    return $invocant->getRootInstance_j1(@arguments) if scalar(@arguments) == 1;
+    die "No method getRootInstance takes " . scalar(@arguments) . " arguments";
 }
 
 
@@ -77,7 +83,7 @@ sub getRootInstanceFromNode {
             my $level = 'org::allbinary::business::category::CategoryUtil'->getPathLevel($categoryPath);
             return 'org::allbinary::business::category::Category'->new($categoryPropertiesFactoryInterface, $level);
         } catch ($e) {
-            if ($org::allbinary::business::category::store::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($org::allbinary::business::category::store::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{ENTITYFACTORYERROR})) {
+            if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{ENTITYFACTORYERROR})) {
                 $self->{logUtil}->put($self->{commonStrings}->{EXCEPTION}, $self, "getInstance(String, int)", $e);
             }
             return undef;
@@ -97,6 +103,8 @@ use org::allbinary::logic::io::path::AbPath ();
 use org::allbinary::logic::string::StringUtil ();
 use org::allbinary::logic::visual::transform::info::TransformInfoInterface ();
 use org::w3c::dom::Node ();
+use org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory ();
+use org::allbinary::logic::communication::log::config::type::LogConfigTypes ();
 
 1;
 

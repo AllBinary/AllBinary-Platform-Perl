@@ -56,7 +56,6 @@ sub setHasRead {
 
 use java::lang::Object ();
 use org::allbinary::logic::communication::log::PreLogUtil ();
-use org::allbinary::business::init::db::DbConnectionInfo ();
 
 1;
 

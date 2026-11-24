@@ -71,7 +71,7 @@ sub process {
             return;
         }
         if ($self->{timeDelayHelper2}->isTime($self->{gameTickTimeDelayHelper}->{startTime})) {
-            if ($self->{androidServicesUtil}->isServiceRunning($self->{musicServiceClass}->getName())) {
+            if ($self->{androidServicesUtil}->isServiceRunning((($self->{musicServiceClass}) =~ s/::/./gr))) {
             } else {
                 $self->startNewSong();
             }
@@ -134,7 +134,7 @@ sub pause {
 
 sub resume {
     my ($class, $activity, $musicServiceClass) = @_;
-        if ('org::allbinary::android::AndroidServicesUtil'->getInstance()->isServiceRunning($musicServiceClass->getName())) {
+        if ('org::allbinary::android::AndroidServicesUtil'->getInstance()->isServiceRunning((($musicServiceClass) =~ s/::/./gr))) {
             my $commonStateStrings = 'org::allbinary::string::CommonStateStrings'->getInstance();
             my $musicResumeIntent = 'android::content::Intent'->new($activity, $musicServiceClass);
             $musicResumeIntent->putExtra($commonStateStrings->{ON_START_COMMAND}, 2);

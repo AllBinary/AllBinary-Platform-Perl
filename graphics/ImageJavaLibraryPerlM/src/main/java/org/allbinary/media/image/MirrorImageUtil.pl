@@ -24,7 +24,7 @@ tie our $instance, 'java::lang::LazyStatic', sub { 'org::allbinary::media::image
 sub _init_fields {
     my ($self) = @_;
     $self->{logUtil} = 'org::allbinary::logic::communication::log::LogUtil'->getInstance();
-    $self->{imageUtil} = 'org::allbinary::media::image::ImageUtil'->getInstance();
+    $self->{imageUtil} = java::lang::Object::jstatic('org::allbinary::media::image::MirrorImageUtil', 'ImageUtil')->getInstance();
 }
 
 
@@ -94,12 +94,11 @@ sub getImages {
 
 use java::lang::Object ();
 use java::lang::LazyStatic ();
-# use java::awt ();
+# use java::awt::Graphics2D ();
 # use java::awt::geom::AffineTransform ();
 # use java::awt::image::AffineTransformOp ();
 # use java::awt::image::BufferedImage ();
 use org::allbinary::logic::communication::log::LogUtil ();
-use org::allbinary::media::image::ImageUtil ();
 
 1;
 

@@ -174,8 +174,6 @@ use org::allbinary::business::user::commerce::inventory::order::OrderHistoryData
 use org::allbinary::business::user::commerce::money::MoneyException ();
 use org::allbinary::business::user::commerce::shipping::ShippingMethodData ();
 use org::allbinary::logic::string::StringUtil ();
-use org::allbinary::business::user::commerce::inventory::item::BasicItem ();
-use org::allbinary::business::user::commerce::inventory::item::OrderItemInterface ();
 
 1;
 

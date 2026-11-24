@@ -46,7 +46,7 @@ sub initComponents {
         $self->setLayout('java::awt::GridLayout'->new());
         $self->{removeJButton}->setText("Remove");
         $self->{removeJButton}->addActionListener(do {
-            package java::awt::event::ActionListener::AnonymousN66230 { our @ISA = ('java::awt::event::ActionListener', 'java::lang::Object');
+            package java::awt::event::ActionListener::AnonymousN66292 { our @ISA = ('java::awt::event::ActionListener', 'java::lang::Object');
             
 
             sub actionPerformed {
@@ -54,7 +54,7 @@ sub initComponents {
                 $self->removeJButtonActionPerformed($evt);
             }
             }
-            'java::awt::event::ActionListener::AnonymousN66230'->can('new') ? 'java::awt::event::ActionListener::AnonymousN66230'->new() : bless({}, 'java::awt::event::ActionListener::AnonymousN66230')
+            'java::awt::event::ActionListener::AnonymousN66292'->can('new') ? 'java::awt::event::ActionListener::AnonymousN66292'->new() : bless({}, 'java::awt::event::ActionListener::AnonymousN66292')
         });
         $self->add($self->{removeJButton});
 }
@@ -76,6 +76,11 @@ use org::allbinary::input::automation::actions::script::condition::ProfileAction
 use org::allbinary::input::automation::module::generic::configuration::profile::actions::GenericProfileAction ();
 use org::allbinary::input::automation::module::generic::configuration::profile::actions::GenericProfileActionJPanel ();
 use org::allbinary::logic::communication::log::LogUtil ();
+# use java::awt::GridLayout ();
+# use java::awt::Panel ();
+# use java::awt::event::ActionEvent ();
+# use java::awt::event::ActionListener ();
+# use javax::swing::JButton ();
 
 1;
 

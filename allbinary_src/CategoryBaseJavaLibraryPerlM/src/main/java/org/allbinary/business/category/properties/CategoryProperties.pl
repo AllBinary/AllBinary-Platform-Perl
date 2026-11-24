@@ -35,8 +35,15 @@ sub new {
     die "No constructor of CategoryProperties takes " . scalar(@arguments) . " arguments";
 }
 
-
 sub _new1 {
+    my ($class, @arguments) = @_;
+    return $class->_new1_1(@arguments) if 1 && !ref($arguments[0]);
+    return $class->_new1_2(@arguments) if 1 && (!defined($arguments[0]) || (ref($arguments[0]) && ref($arguments[0]) ne 'ARRAY'));
+    return $class->_new1_3(@arguments);
+}
+
+
+sub _new1_1 {
     my ($class, $name) = @_;
     my $self = bless({}, $class);
     _init_fields($self);
@@ -45,7 +52,7 @@ sub _new1 {
 }
 
 
-sub _new1 {
+sub _new1_2 {
     my ($class, $node) = @_;
     my $self = bless({}, $class);
     _init_fields($self);
@@ -54,7 +61,7 @@ sub _new1 {
 }
 
 
-sub _new1 {
+sub _new1_3 {
     my ($class, $categoryPropertiesHashMap) = @_;
     my $self = bless({}, $class);
     _init_fields($self);
@@ -123,7 +130,7 @@ sub getPath {
             $pathStringBuffer->append($list->get($index));
         }
         $pathStringBuffer->append($abPathData->{SEPARATOR});
-        if ($org::allbinary::business::category::properties::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($org::allbinary::business::category::properties::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{CATEGORY})) {
+        if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{CATEGORY})) {
             $self->{logUtil}->putF("path = " . $pathStringBuffer->toString(), $self, "getPath");
         }
         return 'org::allbinary::logic::io::path::AbPath'->new($pathStringBuffer->toString(), 'org::allbinary::logic::string::StringUtil'->getInstance()->{EMPTY_STRING});
@@ -213,6 +220,8 @@ use org::allbinary::util::BasicArrayList ();
 use org::allbinary::util::BasicArrayListD ();
 use org::w3c::dom::Document ();
 use org::w3c::dom::Node ();
+use org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory ();
+use org::allbinary::logic::communication::log::config::type::LogConfigTypes ();
 use org::allbinary::business::category::properties::CategoryPropertiesInterface ();
 
 1;

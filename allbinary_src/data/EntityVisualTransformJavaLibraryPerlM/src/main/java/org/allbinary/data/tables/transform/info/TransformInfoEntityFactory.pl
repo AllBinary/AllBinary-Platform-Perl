@@ -35,7 +35,7 @@ sub getInstance {
             return 'org::allbinary::data::tables::transform::info::TransformInfoEntity'->new($transformInfoObjectConfigGeneratorFactoryInterface, $transformInfoObjectConfigAndManipulatorFactoryInterface, $transformInfoFactoryInterface);
         } catch ($e) {
             my $commonStrings = 'org::allbinary::string::CommonStrings'->getInstance();
-            if ($org::allbinary::data::tables::transform::info::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($org::allbinary::data::tables::transform::info::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{ENTITYFACTORYERROR})) {
+            if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{ENTITYFACTORYERROR})) {
                 $logUtil->put($commonStrings->{EXCEPTION}, "TransformInfoEntityFactory", $commonStrings->{GET_INSTANCE}, $e);
             }
             return undef;
@@ -48,6 +48,8 @@ use org::allbinary::logic::visual::transform::info::TransformInfoFactoryInterfac
 use org::allbinary::logic::visual::transform::info::objectConfig::TransformInfoObjectConfigAndManipulatorFactoryBase ();
 use org::allbinary::logic::visual::transform::info::objectConfig::generator::TransformInfoObjectConfigGeneratorFactoryInterface ();
 use org::allbinary::string::CommonStrings ();
+use org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory ();
+use org::allbinary::logic::communication::log::config::type::LogConfigTypes ();
 use org::allbinary::data::tables::transform::info::TransformInfoEntity ();
 
 1;

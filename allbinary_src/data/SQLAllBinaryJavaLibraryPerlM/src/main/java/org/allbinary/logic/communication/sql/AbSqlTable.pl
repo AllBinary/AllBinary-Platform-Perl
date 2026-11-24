@@ -56,12 +56,12 @@ sub createTable {
     my ($self, $data) = @_;
         try {
             $self->executeSQLStatement($data);
-            if ($org::allbinary::logic::communication::sql::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($org::allbinary::logic::communication::sql::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{SQLLOGGING})) {
+            if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{SQLLOGGING})) {
                 $self->{logUtil}->putF($self->{TABLE_CREATION_SUCCESS} . $self->{tableName} . " with statement: " . $data, $self, $self->{METHOD_CREATED_TABLE});
             }
             return $self->{tableName} . $self->{sqlStrings}->{CREATE_RETURN};
         } catch ($e) {
-            if ($org::allbinary::logic::communication::sql::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($org::allbinary::logic::communication::sql::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{SQLLOGGINGERROR})) {
+            if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{SQLLOGGINGERROR})) {
                 $self->{logUtil}->put("Table Creation Failed: " . $self->{tableName} . " with statement: " . $data, $self, $self->{METHOD_CREATED_TABLE}, $e);
             }
             return "Failed to Create " . $self->{tableName} . " table.";
@@ -74,12 +74,12 @@ sub dropTable {
         my $sqlStatement = $self->{sqlStrings}->{DROP_TABLE} . $self->{tableName};
         try {
             $self->executeSQLStatement($sqlStatement);
-            if ($org::allbinary::logic::communication::sql::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($org::allbinary::logic::communication::sql::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{SQLLOGGING})) {
+            if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{SQLLOGGING})) {
                 $self->{logUtil}->putF($self->{SUCCESS_SQL_STATEMENT} . $sqlStatement, $self, $self->{METHOD_DROP_TABLE});
             }
             return $self->{tableName} . $self->{DROPPED_SUCCESS};
         } catch ($e) {
-            if ($org::allbinary::logic::communication::sql::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($org::allbinary::logic::communication::sql::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{SQLLOGGINGERROR})) {
+            if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{SQLLOGGINGERROR})) {
                 $self->{logUtil}->put($self->{FAILED_SQL_STATEMENT} . $sqlStatement, $self, $self->{METHOD_DROP_TABLE}, $e);
             }
             return "Failed to Drop " . $self->{tableName} . " table.";
@@ -89,6 +89,8 @@ sub dropTable {
 use java::lang::Object ();
 use org::allbinary::business::init::db::DbConnectionInfo ();
 use org::allbinary::logic::communication::log::LogUtil ();
+use org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory ();
+use org::allbinary::logic::communication::log::config::type::LogConfigTypes ();
 use org::allbinary::logic::communication::sql::AbSqlBasic ();
 
 1;

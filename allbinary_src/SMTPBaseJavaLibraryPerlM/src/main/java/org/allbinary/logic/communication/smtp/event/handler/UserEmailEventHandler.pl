@@ -46,7 +46,7 @@ sub receiveEmailInfo {
 }
 
 
-sub addListener {
+sub addListener_j1_1 {
     my ($self, $vector) = @_;
         my $size = $vector->size();
         for (my $index = 0; $index < $size; $index++) {
@@ -56,10 +56,21 @@ sub addListener {
 }
 
 
-# Java overloaded method: Perl keeps the last definition
-sub addListener {
+sub addListener_j1_2 {
     my ($self, $emailEventListenerInterface) = @_;
         $self->{emailVector}->add($emailEventListenerInterface);
+}
+
+sub addListener {
+    my ($invocant, @arguments) = @_;
+    return $invocant->addListener_j1(@arguments) if scalar(@arguments) == 1;
+    die "No method addListener takes " . scalar(@arguments) . " arguments";
+}
+
+sub addListener_j1 {
+    my ($invocant, @arguments) = @_;
+    return $invocant->addListener_j1_1(@arguments) if 1 && (!defined($arguments[0]) || (ref($arguments[0]) && ref($arguments[0]) ne 'ARRAY'));
+    return $invocant->addListener_j1_2(@arguments);
 }
 
 

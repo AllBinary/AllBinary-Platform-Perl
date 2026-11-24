@@ -121,7 +121,7 @@ sub initComponents {
         $self->{blueJLabel}->setText("Blue:");
         $self->{okJButton}->setText("OK");
         $self->{okJButton}->addActionListener(do {
-            package java::awt::event::ActionListener::AnonymousN68443 { our @ISA = ('java::awt::event::ActionListener', 'java::lang::Object');
+            package java::awt::event::ActionListener::AnonymousN68221 { our @ISA = ('java::awt::event::ActionListener', 'java::lang::Object');
             
 
             sub actionPerformed {
@@ -129,19 +129,19 @@ sub initComponents {
                 $self->okJButtonActionPerformed($evt);
             }
             }
-            'java::awt::event::ActionListener::AnonymousN68443'->can('new') ? 'java::awt::event::ActionListener::AnonymousN68443'->new() : bless({}, 'java::awt::event::ActionListener::AnonymousN68443')
+            'java::awt::event::ActionListener::AnonymousN68221'->can('new') ? 'java::awt::event::ActionListener::AnonymousN68221'->new() : bless({}, 'java::awt::event::ActionListener::AnonymousN68221')
         });
         my $analysisActionJDialogLayout = 'org::jdesktop::layout::GroupLayout'->new($self->{analysisActionJDialog}->getContentPane());
         $self->{analysisActionJDialog}->getContentPane()->setLayout($analysisActionJDialogLayout);
         $analysisActionJDialogLayout->setHorizontalGroup($analysisActionJDialogLayout->createParallelGroup($org::allbinary::image::gui::org::jdesktop->{layout}->{GroupLayout}->{LEADING})->add($analysisActionJDialogLayout->createSequentialGroup()->addContainerGap()->add($analysisActionJDialogLayout->createParallelGroup($org::allbinary::image::gui::org::jdesktop->{layout}->{GroupLayout}->{LEADING})->add($analysisActionJDialogLayout->createSequentialGroup()->add($analysisActionJDialogLayout->createParallelGroup($org::allbinary::image::gui::org::jdesktop->{layout}->{GroupLayout}->{LEADING})->add($self->{blueJLabel})->add($self->{greenJLabel})->add($self->{redJLabel})->add($self->{colorRangeJLabel}))->add(29, 29, 29)->add($analysisActionJDialogLayout->createParallelGroup($org::allbinary::image::gui::org::jdesktop->{layout}->{GroupLayout}->{LEADING})->add($org::allbinary::image::gui::org::jdesktop->{layout}->{GroupLayout}->{TRAILING}, $self->{minJLabel}, $org::allbinary::image::gui::org::jdesktop->{layout}->{GroupLayout}->{DEFAULT_SIZE}, 58, 32767)->add($analysisActionJDialogLayout->createParallelGroup($org::allbinary::image::gui::org::jdesktop->{layout}->{GroupLayout}->{TRAILING}, 0)->add($org::allbinary::image::gui::org::jdesktop->{layout}->{GroupLayout}->{LEADING}, $self->{minBlueJTextField})->add($org::allbinary::image::gui::org::jdesktop->{layout}->{GroupLayout}->{LEADING}, $self->{minGreenJTextField})->add($org::allbinary::image::gui::org::jdesktop->{layout}->{GroupLayout}->{LEADING}, $self->{minRedJTextField}, $org::allbinary::image::gui::org::jdesktop->{layout}->{GroupLayout}->{DEFAULT_SIZE}, 42, 32767)->add($org::allbinary::image::gui::org::jdesktop->{layout}->{GroupLayout}->{LEADING}, $self->{okJButton})))->addPreferredGap($org::allbinary::image::gui::org::jdesktop->{layout}->{LayoutStyle}->{RELATED})->add($analysisActionJDialogLayout->createParallelGroup($org::allbinary::image::gui::org::jdesktop->{layout}->{GroupLayout}->{TRAILING})->add($org::allbinary::image::gui::org::jdesktop->{layout}->{GroupLayout}->{LEADING}, $analysisActionJDialogLayout->createSequentialGroup()->add($analysisActionJDialogLayout->createParallelGroup($org::allbinary::image::gui::org::jdesktop->{layout}->{GroupLayout}->{TRAILING}, 0)->add($org::allbinary::image::gui::org::jdesktop->{layout}->{GroupLayout}->{LEADING}, $self->{maxRedJTextField})->add($org::allbinary::image::gui::org::jdesktop->{layout}->{GroupLayout}->{LEADING}, $analysisActionJDialogLayout->createSequentialGroup()->add(1, 1, 1)->add($analysisActionJDialogLayout->createParallelGroup($org::allbinary::image::gui::org::jdesktop->{layout}->{GroupLayout}->{LEADING})->add($self->{maxBlueJTextField})->add($self->{maxGreenJTextField}, $org::allbinary::image::gui::org::jdesktop->{layout}->{GroupLayout}->{PREFERRED_SIZE}, 43, $org::allbinary::image::gui::org::jdesktop->{layout}->{GroupLayout}->{PREFERRED_SIZE}))))->addPreferredGap($org::allbinary::image::gui::org::jdesktop->{layout}->{LayoutStyle}->{RELATED}, 17, 32767))->add($org::allbinary::image::gui::org::jdesktop->{layout}->{GroupLayout}->{LEADING}, $self->{maxJLabel}, $org::allbinary::image::gui::org::jdesktop->{layout}->{GroupLayout}->{DEFAULT_SIZE}, 61, 32767))->addContainerGap())->add($org::allbinary::image::gui::org::jdesktop->{layout}->{GroupLayout}->{TRAILING}, $analysisActionJDialogLayout->createSequentialGroup()->add($self->{titleJLabel})->add(25, 25, 25)))));
         $analysisActionJDialogLayout->setVerticalGroup($analysisActionJDialogLayout->createParallelGroup($org::allbinary::image::gui::org::jdesktop->{layout}->{GroupLayout}->{LEADING})->add($analysisActionJDialogLayout->createSequentialGroup()->add($self->{titleJLabel})->addPreferredGap($org::allbinary::image::gui::org::jdesktop->{layout}->{LayoutStyle}->{RELATED})->add($analysisActionJDialogLayout->createParallelGroup($org::allbinary::image::gui::org::jdesktop->{layout}->{GroupLayout}->{BASELINE})->add($self->{minJLabel})->add($self->{colorRangeJLabel})->add($self->{maxJLabel}))->addPreferredGap($org::allbinary::image::gui::org::jdesktop->{layout}->{LayoutStyle}->{RELATED})->add($analysisActionJDialogLayout->createParallelGroup($org::allbinary::image::gui::org::jdesktop->{layout}->{GroupLayout}->{TRAILING})->add($self->{redJLabel})->add($analysisActionJDialogLayout->createParallelGroup($org::allbinary::image::gui::org::jdesktop->{layout}->{GroupLayout}->{BASELINE})->add($self->{minRedJTextField}, $org::allbinary::image::gui::org::jdesktop->{layout}->{GroupLayout}->{PREFERRED_SIZE}, $org::allbinary::image::gui::org::jdesktop->{layout}->{GroupLayout}->{DEFAULT_SIZE}, $org::allbinary::image::gui::org::jdesktop->{layout}->{GroupLayout}->{PREFERRED_SIZE})->add($self->{maxRedJTextField}, $org::allbinary::image::gui::org::jdesktop->{layout}->{GroupLayout}->{PREFERRED_SIZE}, $org::allbinary::image::gui::org::jdesktop->{layout}->{GroupLayout}->{DEFAULT_SIZE}, $org::allbinary::image::gui::org::jdesktop->{layout}->{GroupLayout}->{PREFERRED_SIZE})))->addPreferredGap($org::allbinary::image::gui::org::jdesktop->{layout}->{LayoutStyle}->{RELATED})->add($analysisActionJDialogLayout->createParallelGroup($org::allbinary::image::gui::org::jdesktop->{layout}->{GroupLayout}->{TRAILING})->add($self->{greenJLabel})->add($analysisActionJDialogLayout->createParallelGroup($org::allbinary::image::gui::org::jdesktop->{layout}->{GroupLayout}->{BASELINE})->add($self->{minGreenJTextField}, $org::allbinary::image::gui::org::jdesktop->{layout}->{GroupLayout}->{PREFERRED_SIZE}, $org::allbinary::image::gui::org::jdesktop->{layout}->{GroupLayout}->{DEFAULT_SIZE}, $org::allbinary::image::gui::org::jdesktop->{layout}->{GroupLayout}->{PREFERRED_SIZE})->add($self->{maxGreenJTextField}, $org::allbinary::image::gui::org::jdesktop->{layout}->{GroupLayout}->{PREFERRED_SIZE}, $org::allbinary::image::gui::org::jdesktop->{layout}->{GroupLayout}->{DEFAULT_SIZE}, $org::allbinary::image::gui::org::jdesktop->{layout}->{GroupLayout}->{PREFERRED_SIZE})))->addPreferredGap($org::allbinary::image::gui::org::jdesktop->{layout}->{LayoutStyle}->{RELATED})->add($analysisActionJDialogLayout->createParallelGroup($org::allbinary::image::gui::org::jdesktop->{layout}->{GroupLayout}->{TRAILING})->add($self->{blueJLabel})->add($analysisActionJDialogLayout->createParallelGroup($org::allbinary::image::gui::org::jdesktop->{layout}->{GroupLayout}->{BASELINE})->add($self->{minBlueJTextField}, $org::allbinary::image::gui::org::jdesktop->{layout}->{GroupLayout}->{PREFERRED_SIZE}, $org::allbinary::image::gui::org::jdesktop->{layout}->{GroupLayout}->{DEFAULT_SIZE}, $org::allbinary::image::gui::org::jdesktop->{layout}->{GroupLayout}->{PREFERRED_SIZE})->add($self->{maxBlueJTextField}, $org::allbinary::image::gui::org::jdesktop->{layout}->{GroupLayout}->{PREFERRED_SIZE}, $org::allbinary::image::gui::org::jdesktop->{layout}->{GroupLayout}->{DEFAULT_SIZE}, $org::allbinary::image::gui::org::jdesktop->{layout}->{GroupLayout}->{PREFERRED_SIZE})))->add(16, 16, 16)->add($self->{okJButton})->addContainerGap($org::allbinary::image::gui::org::jdesktop->{layout}->{GroupLayout}->{DEFAULT_SIZE}, 32767)));
-        $self->setDefaultCloseOperation($org::allbinary::image::gui::javax::swing->{WindowConstants}->{EXIT_ON_CLOSE});
+        $self->setDefaultCloseOperation($javax::swing::WindowConstants::EXIT_ON_CLOSE);
         $self->getContentPane()->setLayout('java::awt::GridLayout'->new(1, 0));
         $self->{jPanel1}->setLayout('java::awt::GridLayout'->new(1, 0));
         $self->getContentPane()->add($self->{jPanel1});
         $self->{fileJMenu}->setText("File");
         $self->{fileJMenu}->addActionListener(do {
-            package java::awt::event::ActionListener::AnonymousN72720 { our @ISA = ('java::awt::event::ActionListener', 'java::lang::Object');
+            package java::awt::event::ActionListener::AnonymousN72402 { our @ISA = ('java::awt::event::ActionListener', 'java::lang::Object');
             
 
             sub actionPerformed {
@@ -149,11 +149,11 @@ sub initComponents {
                 $self->fileJMenuActionPerformed($evt);
             }
             }
-            'java::awt::event::ActionListener::AnonymousN72720'->can('new') ? 'java::awt::event::ActionListener::AnonymousN72720'->new() : bless({}, 'java::awt::event::ActionListener::AnonymousN72720')
+            'java::awt::event::ActionListener::AnonymousN72402'->can('new') ? 'java::awt::event::ActionListener::AnonymousN72402'->new() : bless({}, 'java::awt::event::ActionListener::AnonymousN72402')
         });
         $self->{openImageJMenuItem}->setText("Open");
         $self->{openImageJMenuItem}->addActionListener(do {
-            package java::awt::event::ActionListener::AnonymousN72907 { our @ISA = ('java::awt::event::ActionListener', 'java::lang::Object');
+            package java::awt::event::ActionListener::AnonymousN72541 { our @ISA = ('java::awt::event::ActionListener', 'java::lang::Object');
             
 
             sub actionPerformed {
@@ -161,13 +161,13 @@ sub initComponents {
                 $self->openImageJMenuItemActionPerformed($evt);
             }
             }
-            'java::awt::event::ActionListener::AnonymousN72907'->can('new') ? 'java::awt::event::ActionListener::AnonymousN72907'->new() : bless({}, 'java::awt::event::ActionListener::AnonymousN72907')
+            'java::awt::event::ActionListener::AnonymousN72541'->can('new') ? 'java::awt::event::ActionListener::AnonymousN72541'->new() : bless({}, 'java::awt::event::ActionListener::AnonymousN72541')
         });
         $self->{fileJMenu}->add($self->{openImageJMenuItem});
         $self->{mainJMenuBar}->add($self->{fileJMenu});
         $self->{processingJMenu}->setText("Processing");
         $self->{processingJMenu}->addActionListener(do {
-            package java::awt::event::ActionListener::AnonymousN73168 { our @ISA = ('java::awt::event::ActionListener', 'java::lang::Object');
+            package java::awt::event::ActionListener::AnonymousN72754 { our @ISA = ('java::awt::event::ActionListener', 'java::lang::Object');
             
 
             sub actionPerformed {
@@ -175,11 +175,11 @@ sub initComponents {
                 $self->processingJMenuActionPerformed($evt);
             }
             }
-            'java::awt::event::ActionListener::AnonymousN73168'->can('new') ? 'java::awt::event::ActionListener::AnonymousN73168'->new() : bless({}, 'java::awt::event::ActionListener::AnonymousN73168')
+            'java::awt::event::ActionListener::AnonymousN72754'->can('new') ? 'java::awt::event::ActionListener::AnonymousN72754'->new() : bless({}, 'java::awt::event::ActionListener::AnonymousN72754')
         });
         $self->{analyzeJMenuItem}->setText("Image Analyze");
         $self->{analyzeJMenuItem}->addActionListener(do {
-            package java::awt::event::ActionListener::AnonymousN73355 { our @ISA = ('java::awt::event::ActionListener', 'java::lang::Object');
+            package java::awt::event::ActionListener::AnonymousN72893 { our @ISA = ('java::awt::event::ActionListener', 'java::lang::Object');
             
 
             sub actionPerformed {
@@ -187,12 +187,12 @@ sub initComponents {
                 $self->analyzeJMenuItemActionPerformed($evt);
             }
             }
-            'java::awt::event::ActionListener::AnonymousN73355'->can('new') ? 'java::awt::event::ActionListener::AnonymousN73355'->new() : bless({}, 'java::awt::event::ActionListener::AnonymousN73355')
+            'java::awt::event::ActionListener::AnonymousN72893'->can('new') ? 'java::awt::event::ActionListener::AnonymousN72893'->new() : bless({}, 'java::awt::event::ActionListener::AnonymousN72893')
         });
         $self->{processingJMenu}->add($self->{analyzeJMenuItem});
         $self->{generateMirrorSpriteMenuItem}->setText("Mirror Sprite Generator");
         $self->{generateMirrorSpriteMenuItem}->addActionListener(do {
-            package java::awt::event::ActionListener::AnonymousN73579 { our @ISA = ('java::awt::event::ActionListener', 'java::lang::Object');
+            package java::awt::event::ActionListener::AnonymousN73069 { our @ISA = ('java::awt::event::ActionListener', 'java::lang::Object');
             
 
             sub actionPerformed {
@@ -200,12 +200,12 @@ sub initComponents {
                 $self->generateMirrorSpriteMenuItemActionPerformed($evt);
             }
             }
-            'java::awt::event::ActionListener::AnonymousN73579'->can('new') ? 'java::awt::event::ActionListener::AnonymousN73579'->new() : bless({}, 'java::awt::event::ActionListener::AnonymousN73579')
+            'java::awt::event::ActionListener::AnonymousN73069'->can('new') ? 'java::awt::event::ActionListener::AnonymousN73069'->new() : bless({}, 'java::awt::event::ActionListener::AnonymousN73069')
         });
         $self->{processingJMenu}->add($self->{generateMirrorSpriteMenuItem});
         $self->{generateRotationSpriteJMenuItem}->setText("Rotation Sprite Generator");
         $self->{generateRotationSpriteJMenuItem}->addActionListener(do {
-            package java::awt::event::ActionListener::AnonymousN73803 { our @ISA = ('java::awt::event::ActionListener', 'java::lang::Object');
+            package java::awt::event::ActionListener::AnonymousN73245 { our @ISA = ('java::awt::event::ActionListener', 'java::lang::Object');
             
 
             sub actionPerformed {
@@ -213,12 +213,12 @@ sub initComponents {
                 $self->generateRotationSpriteJMenuItemActionPerformed($evt);
             }
             }
-            'java::awt::event::ActionListener::AnonymousN73803'->can('new') ? 'java::awt::event::ActionListener::AnonymousN73803'->new() : bless({}, 'java::awt::event::ActionListener::AnonymousN73803')
+            'java::awt::event::ActionListener::AnonymousN73245'->can('new') ? 'java::awt::event::ActionListener::AnonymousN73245'->new() : bless({}, 'java::awt::event::ActionListener::AnonymousN73245')
         });
         $self->{processingJMenu}->add($self->{generateRotationSpriteJMenuItem});
         $self->{generateSpriteSplitterMenuItem}->setText("Sprite Splitter Generator");
         $self->{generateSpriteSplitterMenuItem}->addActionListener(do {
-            package java::awt::event::ActionListener::AnonymousN74027 { our @ISA = ('java::awt::event::ActionListener', 'java::lang::Object');
+            package java::awt::event::ActionListener::AnonymousN73421 { our @ISA = ('java::awt::event::ActionListener', 'java::lang::Object');
             
 
             sub actionPerformed {
@@ -226,12 +226,12 @@ sub initComponents {
                 $self->generateSpriteSplitterMenuItemActionPerformed($evt);
             }
             }
-            'java::awt::event::ActionListener::AnonymousN74027'->can('new') ? 'java::awt::event::ActionListener::AnonymousN74027'->new() : bless({}, 'java::awt::event::ActionListener::AnonymousN74027')
+            'java::awt::event::ActionListener::AnonymousN73421'->can('new') ? 'java::awt::event::ActionListener::AnonymousN73421'->new() : bless({}, 'java::awt::event::ActionListener::AnonymousN73421')
         });
         $self->{processingJMenu}->add($self->{generateSpriteSplitterMenuItem});
         $self->{generateRotationMenuItem}->setText("Rotate Image Generator");
         $self->{generateRotationMenuItem}->addActionListener(do {
-            package java::awt::event::ActionListener::AnonymousN74251 { our @ISA = ('java::awt::event::ActionListener', 'java::lang::Object');
+            package java::awt::event::ActionListener::AnonymousN73597 { our @ISA = ('java::awt::event::ActionListener', 'java::lang::Object');
             
 
             sub actionPerformed {
@@ -239,12 +239,12 @@ sub initComponents {
                 $self->generateRotationMenuItemActionPerformed($evt);
             }
             }
-            'java::awt::event::ActionListener::AnonymousN74251'->can('new') ? 'java::awt::event::ActionListener::AnonymousN74251'->new() : bless({}, 'java::awt::event::ActionListener::AnonymousN74251')
+            'java::awt::event::ActionListener::AnonymousN73597'->can('new') ? 'java::awt::event::ActionListener::AnonymousN73597'->new() : bless({}, 'java::awt::event::ActionListener::AnonymousN73597')
         });
         $self->{processingJMenu}->add($self->{generateRotationMenuItem});
         $self->{createStripImageJMenuItem}->setText("Multi Image Unifier");
         $self->{createStripImageJMenuItem}->addActionListener(do {
-            package java::awt::event::ActionListener::AnonymousN74475 { our @ISA = ('java::awt::event::ActionListener', 'java::lang::Object');
+            package java::awt::event::ActionListener::AnonymousN73773 { our @ISA = ('java::awt::event::ActionListener', 'java::lang::Object');
             
 
             sub actionPerformed {
@@ -252,12 +252,12 @@ sub initComponents {
                 $self->createStripImageJMenuItemActionPerformed($evt);
             }
             }
-            'java::awt::event::ActionListener::AnonymousN74475'->can('new') ? 'java::awt::event::ActionListener::AnonymousN74475'->new() : bless({}, 'java::awt::event::ActionListener::AnonymousN74475')
+            'java::awt::event::ActionListener::AnonymousN73773'->can('new') ? 'java::awt::event::ActionListener::AnonymousN73773'->new() : bless({}, 'java::awt::event::ActionListener::AnonymousN73773')
         });
         $self->{processingJMenu}->add($self->{createStripImageJMenuItem});
         $self->{mirrorJMenuItem}->setText("Mirror Image(s)");
         $self->{mirrorJMenuItem}->addActionListener(do {
-            package java::awt::event::ActionListener::AnonymousN74699 { our @ISA = ('java::awt::event::ActionListener', 'java::lang::Object');
+            package java::awt::event::ActionListener::AnonymousN73949 { our @ISA = ('java::awt::event::ActionListener', 'java::lang::Object');
             
 
             sub actionPerformed {
@@ -265,12 +265,12 @@ sub initComponents {
                 $self->mirrorJMenuItemActionPerformed($evt);
             }
             }
-            'java::awt::event::ActionListener::AnonymousN74699'->can('new') ? 'java::awt::event::ActionListener::AnonymousN74699'->new() : bless({}, 'java::awt::event::ActionListener::AnonymousN74699')
+            'java::awt::event::ActionListener::AnonymousN73949'->can('new') ? 'java::awt::event::ActionListener::AnonymousN73949'->new() : bless({}, 'java::awt::event::ActionListener::AnonymousN73949')
         });
         $self->{processingJMenu}->add($self->{mirrorJMenuItem});
         $self->{scaleImagesJMenuItem}->setText("Scale Image(s)");
         $self->{scaleImagesJMenuItem}->addActionListener(do {
-            package java::awt::event::ActionListener::AnonymousN74923 { our @ISA = ('java::awt::event::ActionListener', 'java::lang::Object');
+            package java::awt::event::ActionListener::AnonymousN74125 { our @ISA = ('java::awt::event::ActionListener', 'java::lang::Object');
             
 
             sub actionPerformed {
@@ -278,12 +278,12 @@ sub initComponents {
                 $self->scaleImagesJMenuItemActionPerformed($evt);
             }
             }
-            'java::awt::event::ActionListener::AnonymousN74923'->can('new') ? 'java::awt::event::ActionListener::AnonymousN74923'->new() : bless({}, 'java::awt::event::ActionListener::AnonymousN74923')
+            'java::awt::event::ActionListener::AnonymousN74125'->can('new') ? 'java::awt::event::ActionListener::AnonymousN74125'->new() : bless({}, 'java::awt::event::ActionListener::AnonymousN74125')
         });
         $self->{processingJMenu}->add($self->{scaleImagesJMenuItem});
         $self->{canvasImagesJMenuItem}->setText("Canvas Image(s)");
         $self->{canvasImagesJMenuItem}->addActionListener(do {
-            package java::awt::event::ActionListener::AnonymousN75147 { our @ISA = ('java::awt::event::ActionListener', 'java::lang::Object');
+            package java::awt::event::ActionListener::AnonymousN74301 { our @ISA = ('java::awt::event::ActionListener', 'java::lang::Object');
             
 
             sub actionPerformed {
@@ -291,12 +291,12 @@ sub initComponents {
                 $self->canvasImagesJMenuItemActionPerformed($evt);
             }
             }
-            'java::awt::event::ActionListener::AnonymousN75147'->can('new') ? 'java::awt::event::ActionListener::AnonymousN75147'->new() : bless({}, 'java::awt::event::ActionListener::AnonymousN75147')
+            'java::awt::event::ActionListener::AnonymousN74301'->can('new') ? 'java::awt::event::ActionListener::AnonymousN74301'->new() : bless({}, 'java::awt::event::ActionListener::AnonymousN74301')
         });
         $self->{processingJMenu}->add($self->{canvasImagesJMenuItem});
         $self->{createIconImagesJMenuItem}->setText("Create Icon Image(s)");
         $self->{createIconImagesJMenuItem}->addActionListener(do {
-            package java::awt::event::ActionListener::AnonymousN75371 { our @ISA = ('java::awt::event::ActionListener', 'java::lang::Object');
+            package java::awt::event::ActionListener::AnonymousN74477 { our @ISA = ('java::awt::event::ActionListener', 'java::lang::Object');
             
 
             sub actionPerformed {
@@ -304,7 +304,7 @@ sub initComponents {
                 $self->createIconsJMenuItemActionPerformed($evt);
             }
             }
-            'java::awt::event::ActionListener::AnonymousN75371'->can('new') ? 'java::awt::event::ActionListener::AnonymousN75371'->new() : bless({}, 'java::awt::event::ActionListener::AnonymousN75371')
+            'java::awt::event::ActionListener::AnonymousN74477'->can('new') ? 'java::awt::event::ActionListener::AnonymousN74477'->new() : bless({}, 'java::awt::event::ActionListener::AnonymousN74477')
         });
         $self->{processingJMenu}->add($self->{createIconImagesJMenuItem});
         $self->{mainJMenuBar}->add($self->{processingJMenu});
@@ -364,7 +364,7 @@ sub onFiles {
         try {
             $self->{logUtil}->putF("Reading " . scalar(@{$files}) . " files.", $self, "onFiles");
             'java::util::Arrays'->sort($files, do {
-                package java::util::Comparator::AnonymousN76930 { our @ISA = ('java::util::Comparator', 'java::lang::Object');
+                package java::util::Comparator::AnonymousN75892 { our @ISA = ('java::util::Comparator', 'java::lang::Object');
                 
 
                 sub compare {
@@ -389,7 +389,7 @@ sub onFiles {
                     return $i;
                 }
                 }
-                'java::util::Comparator::AnonymousN76930'->can('new') ? 'java::util::Comparator::AnonymousN76930'->new() : bless({}, 'java::util::Comparator::AnonymousN76930')
+                'java::util::Comparator::AnonymousN75892'->can('new') ? 'java::util::Comparator::AnonymousN75892'->new() : bless({}, 'java::util::Comparator::AnonymousN75892')
             });
             my $bufferedImageArray = [(undef) x (scalar(@{$files}))];
             for (my $index = 0; $index < scalar(@{$files}); $index++) {
@@ -646,6 +646,20 @@ use org::allbinary::media::image::analysis::ImageAnalysis ();
 use org::allbinary::media::image::analysis::ImageAnalysisResults ();
 use org::allbinary::string::CommonPhoneStrings ();
 use org::allbinary::string::CommonStrings ();
+# use java::awt::Dimension ();
+# use java::awt::GridLayout ();
+# use java::awt::event::ActionEvent ();
+# use java::awt::event::ActionListener ();
+# use javax::swing::JButton ();
+# use javax::swing::JDialog ();
+# use javax::swing::JFrame ();
+# use javax::swing::JLabel ();
+# use javax::swing::JMenu ();
+# use javax::swing::JMenuBar ();
+# use javax::swing::JMenuItem ();
+# use javax::swing::JPanel ();
+# use javax::swing::JTextField ();
+# use javax::swing::WindowConstants ();
 use org::allbinary::image::gui::ImageUnifierJPanel ();
 use org::allbinary::image::gui::ImageAnalysisResultsJPanel ();
 use org::allbinary::image::gui::RotationSpriteImageJPanel ();

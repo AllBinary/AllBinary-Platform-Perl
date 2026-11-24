@@ -25,7 +25,7 @@ sub _init_fields {
     $self->{foregroundBasicColor} = undef;
     $self->{foregroundColor} = undef;
     $self->{basicSetColorUtil} = 'org::allbinary::graphics::color::BasicColorSetUtil'->getInstance();
-    $self->{touchButtonFactory} = 'org::allbinary::input::motion::button::TouchButtonFactory'->getInstance();
+    $self->{touchButtonFactory} = java::lang::Object::jstatic('org::allbinary::input::motion::button::TouchButtonsPaintable', 'TouchButtonFactory')->getInstance();
 }
 
 
@@ -60,7 +60,6 @@ use org::allbinary::graphics::color::BasicColor ();
 use org::allbinary::graphics::color::BasicColorSetUtil ();
 use org::allbinary::graphics::paint::Paintable ();
 use org::allbinary::util::BasicArrayList ();
-use org::allbinary::input::motion::button::TouchButtonFactory ();
 
 1;
 

@@ -63,13 +63,13 @@ sub viewSummary {
         try {
             my $inventoryViewSearchInterface = 'views::admin::inventory::listings::InventoryViewFactory'->getInstance($self->{searchRequest});
             my $result = $inventoryViewSearchInterface->getProduct($self->{id});
-            if ($taghelpers::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($taghelpers::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{SQLTAGS})) {
+            if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{SQLTAGS})) {
                 $self->{logUtil}->putF("Successfull Inventory View Summary", $self, "viewSummary()");
             }
             return $result;
         } catch ($e) {
             my $error = "Failed to View Summary";
-            if ($taghelpers::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($taghelpers::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{SQLTAGSERROR})) {
+            if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{SQLTAGSERROR})) {
                 $self->{logUtil}->put($self->{commonStrings}->{EXCEPTION}, $self, "viewSummary()", $e);
             }
             return $error . "<br>" . "Exception: " . $e . "<br>";
@@ -87,13 +87,13 @@ sub search {
             }
             my $inventoryViewSearchInterface = 'views::admin::inventory::listings::InventoryViewFactory'->getInstance($self->{searchRequest});
             my $result = $inventoryViewSearchInterface->searchSingleDynamicPage();
-            if ($taghelpers::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($taghelpers::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{SQLTAGS})) {
+            if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{SQLTAGS})) {
                 $self->{logUtil}->putF("Successful Inventory Dynamic Search", $self, "searchSingleDynamicPage()");
             }
             return $result;
         } catch ($e) {
             my $error = "Failed to search Inventory by keyword";
-            if ($taghelpers::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($taghelpers::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{SQLTAGSERROR})) {
+            if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{SQLTAGSERROR})) {
                 $self->{logUtil}->put($self->{commonStrings}->{EXCEPTION}, $self, "searchSingleDynamicPage()", $e);
             }
             return $error . "<br>" . "Exception: " . $e . "<br>";
@@ -120,6 +120,8 @@ use org::allbinary::logic::string::StringUtil ();
 use org::allbinary::logic::visual::transform::info::TransformInfoData ();
 use views::admin::inventory::listings::InventoryViewFactory ();
 use views::admin::inventory::listings::InventoryViewSearchInterface ();
+use org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory ();
+use org::allbinary::logic::communication::log::config::type::LogConfigTypes ();
 
 1;
 

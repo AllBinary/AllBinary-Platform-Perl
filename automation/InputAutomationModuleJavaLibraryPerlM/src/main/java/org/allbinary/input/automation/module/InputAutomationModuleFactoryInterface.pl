@@ -53,7 +53,7 @@ sub getInstance {
 
 use java::lang::Object ();
 # use javax::help::HelpSet ();
-# use javax::swing ();
+# use javax::swing::JPanel ();
 use org::allbinary::thread::RunnableInterface ();
 
 1;

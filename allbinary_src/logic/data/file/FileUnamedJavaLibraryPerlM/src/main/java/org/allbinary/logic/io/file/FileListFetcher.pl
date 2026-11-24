@@ -40,10 +40,10 @@ sub getInstance {
 }
 
 
-sub getFiles {
+sub getFiles_j1 {
     my ($self, $path) = @_;
         try {
-            my $files = $self->{subDirectory}->search('org::allbinary::logic::io::file::AbFile'->createAbFile($path));
+            my $files = $self->{subDirectory}->search(java::lang::Object::jstatic('org::allbinary::logic::io::file::FileListFetcher', 'AbFile')->createAbFile($path));
             return $files;
         } catch ($e) {
             print(STDERR $e, "\n");
@@ -53,8 +53,7 @@ sub getFiles {
 }
 
 
-# Java overloaded method: Perl keeps the last definition
-sub getFiles {
+sub getFiles_j2_1 {
     my ($self, $path, $includeExtensions) = @_;
         try {
             my $includeExtensionBasicArrayList = 'org::allbinary::util::BasicArrayListD'->new();
@@ -63,7 +62,7 @@ sub getFiles {
                 $includeExtensionBasicArrayList->add($includeExtensions->[$index]);
             }
             my $visitorFileFilter = 'org::allbinary::logic::io::file::filter::VisitorFileFilter'->new('org::allbinary::logic::io::file::directory::DirectoryOrIncludeFileExtensionBooleanFileVisitor'->new($includeExtensionBasicArrayList));
-            my $files = $self->{subDirectory}->search($visitorFileFilter, 'org::allbinary::logic::io::file::AbFile'->createAbFile($path));
+            my $files = $self->{subDirectory}->search($visitorFileFilter, java::lang::Object::jstatic('org::allbinary::logic::io::file::FileListFetcher', 'AbFile')->createAbFile($path));
             return $files;
         } catch ($e) {
             print(STDERR $e, "\n");
@@ -73,14 +72,13 @@ sub getFiles {
 }
 
 
-# Java overloaded method: Perl keeps the last definition
-sub getFiles {
+sub getFiles_j2_2 {
     my ($self, $path, $includeExtension) = @_;
         try {
             my $includeExtensionBasicArrayList = 'org::allbinary::util::BasicArrayListD'->new();
             $includeExtensionBasicArrayList->add($includeExtension);
             my $visitorFileFilter = 'org::allbinary::logic::io::file::filter::VisitorFileFilter'->new('org::allbinary::logic::io::file::directory::DirectoryOrIncludeFileExtensionBooleanFileVisitor'->new($includeExtensionBasicArrayList));
-            my $files = $self->{subDirectory}->search($visitorFileFilter, 'org::allbinary::logic::io::file::AbFile'->createAbFile($path));
+            my $files = $self->{subDirectory}->search($visitorFileFilter, java::lang::Object::jstatic('org::allbinary::logic::io::file::FileListFetcher', 'AbFile')->createAbFile($path));
             return $files;
         } catch ($e) {
             print(STDERR $e, "\n");
@@ -90,14 +88,13 @@ sub getFiles {
 }
 
 
-# Java overloaded method: Perl keeps the last definition
-sub getFiles {
+sub getFiles_j3 {
     my ($self, $path, $pathIncludes, $includeExtension) = @_;
         try {
             my $includeExtensionBasicArrayList = 'org::allbinary::util::BasicArrayListD'->new();
             $includeExtensionBasicArrayList->add($includeExtension);
             my $visitorFileFilter = 'org::allbinary::logic::io::file::filter::VisitorFileFilter'->new('org::allbinary::logic::io::file::directory::DirectoryOrIncludeFileExtensionBooleanFileVisitor'->new($includeExtensionBasicArrayList, $pathIncludes));
-            my $files = $self->{subDirectory}->search($visitorFileFilter, 'org::allbinary::logic::io::file::AbFile'->createAbFile($path));
+            my $files = $self->{subDirectory}->search($visitorFileFilter, java::lang::Object::jstatic('org::allbinary::logic::io::file::FileListFetcher', 'AbFile')->createAbFile($path));
             return $files;
         } catch ($e) {
             print(STDERR $e, "\n");
@@ -106,8 +103,22 @@ sub getFiles {
         return undef;
 }
 
+sub getFiles {
+    my ($invocant, @arguments) = @_;
+    return $invocant->getFiles_j1(@arguments) if scalar(@arguments) == 1;
+    return $invocant->getFiles_j2(@arguments) if scalar(@arguments) == 2;
+    return $invocant->getFiles_j3(@arguments) if scalar(@arguments) == 3;
+    die "No method getFiles takes " . scalar(@arguments) . " arguments";
+}
 
-sub getTrackedFiles {
+sub getFiles_j2 {
+    my ($invocant, @arguments) = @_;
+    return $invocant->getFiles_j2_1(@arguments) if 1 && !ref($arguments[0]) && (!defined($arguments[1]) || ref($arguments[1]) eq 'ARRAY');
+    return $invocant->getFiles_j2_2(@arguments);
+}
+
+
+sub getTrackedFiles_j2_1 {
     my ($self, $path, $includeExtensions) = @_;
         try {
             my $includeExtensionBasicArrayList = 'org::allbinary::util::BasicArrayListD'->new();
@@ -116,7 +127,7 @@ sub getTrackedFiles {
                 $includeExtensionBasicArrayList->add($includeExtensions->[$index]);
             }
             my $visitorFileFilter = 'org::allbinary::logic::io::file::filter::VisitorFileFilter'->new('org::allbinary::logic::io::file::directory::DirectoryOrIncludeFileExtensionAndTrackedBooleanFileVisitor'->new($includeExtensionBasicArrayList));
-            my $files = $self->{subDirectory}->search($visitorFileFilter, 'org::allbinary::logic::io::file::AbFile'->createAbFile($path));
+            my $files = $self->{subDirectory}->search($visitorFileFilter, java::lang::Object::jstatic('org::allbinary::logic::io::file::FileListFetcher', 'AbFile')->createAbFile($path));
             return $files;
         } catch ($e) {
             print(STDERR $e, "\n");
@@ -126,20 +137,31 @@ sub getTrackedFiles {
 }
 
 
-# Java overloaded method: Perl keeps the last definition
-sub getTrackedFiles {
+sub getTrackedFiles_j2_2 {
     my ($self, $path, $includeExtension) = @_;
         try {
             my $includeExtensionBasicArrayList = 'org::allbinary::util::BasicArrayListD'->new();
             $includeExtensionBasicArrayList->add($includeExtension);
             my $visitorFileFilter = 'org::allbinary::logic::io::file::filter::VisitorFileFilter'->new('org::allbinary::logic::io::file::directory::DirectoryOrIncludeFileExtensionAndTrackedBooleanFileVisitor'->new($includeExtensionBasicArrayList));
-            my $files = $self->{subDirectory}->search($visitorFileFilter, 'org::allbinary::logic::io::file::AbFile'->createAbFile($path));
+            my $files = $self->{subDirectory}->search($visitorFileFilter, java::lang::Object::jstatic('org::allbinary::logic::io::file::FileListFetcher', 'AbFile')->createAbFile($path));
             return $files;
         } catch ($e) {
             print(STDERR $e, "\n");
             print("Error: " . $e . "\nMsg: " . ("" . $e), "\n");
         }
         return undef;
+}
+
+sub getTrackedFiles {
+    my ($invocant, @arguments) = @_;
+    return $invocant->getTrackedFiles_j2(@arguments) if scalar(@arguments) == 2;
+    die "No method getTrackedFiles takes " . scalar(@arguments) . " arguments";
+}
+
+sub getTrackedFiles_j2 {
+    my ($invocant, @arguments) = @_;
+    return $invocant->getTrackedFiles_j2_1(@arguments) if 1 && !ref($arguments[0]) && (!defined($arguments[1]) || ref($arguments[1]) eq 'ARRAY');
+    return $invocant->getTrackedFiles_j2_2(@arguments);
 }
 
 
@@ -147,7 +169,7 @@ sub getDirectories {
     my ($self, $path) = @_;
         try {
             my $visitorFileFilter = 'org::allbinary::logic::io::file::filter::VisitorFileFilter'->new('org::allbinary::logic::io::file::directory::DirectoryBooleanFileVisitor'->new());
-            my $files = $self->{subDirectory}->search($visitorFileFilter, 'org::allbinary::logic::io::file::AbFile'->createAbFile($path));
+            my $files = $self->{subDirectory}->search($visitorFileFilter, java::lang::Object::jstatic('org::allbinary::logic::io::file::FileListFetcher', 'AbFile')->createAbFile($path));
             return $files;
         } catch ($e) {
             print(STDERR $e, "\n");
@@ -165,7 +187,6 @@ use org::allbinary::logic::io::file::directory::SubDirectory ();
 use org::allbinary::logic::io::file::filter::VisitorFileFilter ();
 use org::allbinary::util::BasicArrayList ();
 use org::allbinary::util::BasicArrayListD ();
-use org::allbinary::logic::io::file::AbFile ();
 use java::lang::System ();
 
 1;

@@ -21,7 +21,7 @@ use parent -norequire,'org::allbinary::logic::util::event::AllBinaryEventObject'
 
 sub _init_fields {
     my ($self) = @_;
-    $self->{rtsLayer} = $org::allbinary::game::layer::NullPathFindingLayer::NULL_PATH_FINDING_LAYER;
+    $self->{rtsLayer} = java::lang::Object::jstatic('org::allbinary::game::layer::RTSLayerEvent', 'NullPathFindingLayer')->{NULL_PATH_FINDING_LAYER};
 }
 
 
@@ -58,7 +58,6 @@ sub setRtsLayer {
 use java::lang::Object ();
 use org::allbinary::logic::string::StringMaker ();
 use org::allbinary::logic::util::event::AllBinaryEventObject ();
-use org::allbinary::game::layer::NullPathFindingLayer ();
 
 1;
 

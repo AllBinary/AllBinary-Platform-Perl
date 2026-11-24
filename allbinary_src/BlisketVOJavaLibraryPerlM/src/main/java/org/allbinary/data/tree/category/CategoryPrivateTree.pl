@@ -31,7 +31,7 @@ sub new {
     my ($class, $categoryFactoryInterface) = @_;
     my $self = bless({}, $class);
     _init_fields($self);
-        if ($org::allbinary::data::tree::category::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($org::allbinary::data::tree::category::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{CATEGORY})) {
+        if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{CATEGORY})) {
             my $commonStrings = 'org::allbinary::string::CommonStrings'->getInstance();
             $self->{logUtil}->putF($commonStrings->{START}, $self, "CategoryPrivateTree(CategoryFactoryInterface categoryFactoryInterface)");
         }
@@ -43,13 +43,13 @@ sub new {
 # throws Exception
 sub save {
     my ($self, $categoryInterface) = @_;
-        if ($org::allbinary::data::tree::category::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($org::allbinary::data::tree::category::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{SQLLOGGING})) {
+        if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{SQLLOGGING})) {
             $self->{logUtil}->putF("Saving Category File: " . $categoryInterface->getFilePath(), $self, "save()");
         }
         my $document = 'org::allbinary::business::category::CategoryComponent'->new($categoryInterface)->toXmlDoc();
         my $cryptFileWriter = 'org::allbinary::logic::control::crypt::file::CryptFileWriter'->new('org::allbinary::business::category::CategoryData'->getInstance()->{UNCRYPTED_EXTENSION}, 'org::allbinary::business::category::CategoryData'->getInstance()->{ENCRYPTED_EXTENSION});
         $cryptFileWriter->write($categoryInterface->getFilePath(), $document);
-        if ($org::allbinary::data::tree::category::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($org::allbinary::data::tree::category::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{SQLLOGGING})) {
+        if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{SQLLOGGING})) {
             $self->{logUtil}->putF("end", $self, "save()");
         }
 }
@@ -61,12 +61,12 @@ sub delete {
         if ($categoryInterface->isLeaf()) {
             my $categoryFile = 'org::allbinary::logic::io::file::AbFile'->createAbFileFromAbPath($categoryInterface->getFilePath());
             if ($categoryFile->delete()) {
-                if ($org::allbinary::data::tree::category::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($org::allbinary::data::tree::category::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{SQLLOGGING})) {
+                if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{SQLLOGGING})) {
                     $self->{logUtil}->putF("Removed: " . $categoryInterface->getFilePath(), $self, "delete(CategoryInterface)");
                 }
             }
         } else {
-            if ($org::allbinary::data::tree::category::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($org::allbinary::data::tree::category::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{SQLLOGGING})) {
+            if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{SQLLOGGING})) {
                 $self->{logUtil}->putF("Not a leaf unable to remove", $self, "delete(CategoryInterface)");
             }
         }
@@ -82,6 +82,8 @@ use org::allbinary::logic::control::crypt::file::CryptFileWriter ();
 use org::allbinary::logic::io::file::AbFile ();
 use org::allbinary::string::CommonStrings ();
 use org::w3c::dom::Document ();
+use org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory ();
+use org::allbinary::logic::communication::log::config::type::LogConfigTypes ();
 
 1;
 

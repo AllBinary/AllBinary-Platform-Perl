@@ -107,6 +107,11 @@ sub initComponents {
 
 use java::lang::Object ();
 # use javax::swing ();
+# use java::awt::Font ();
+# use java::awt::GridLayout ();
+# use javax::swing::JButton ();
+# use javax::swing::JPanel ();
+# use javax::swing::JTextField ();
 
 1;
 

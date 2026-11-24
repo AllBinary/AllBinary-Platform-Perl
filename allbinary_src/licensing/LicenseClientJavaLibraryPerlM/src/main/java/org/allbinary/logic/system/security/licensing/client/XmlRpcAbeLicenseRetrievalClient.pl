@@ -41,9 +41,9 @@ sub get {
         try {
             my $server = $self->getClientInfo()->getLicenseServer($self->getServer());
             my $stringBuffer = 'org::allbinary::logic::string::StringMaker'->new();
-            $stringBuffer->append($self->{TRYING});
+            $stringBuffer->append(java::lang::Object::jstatic('org::allbinary::logic::system::security::licensing::client::XmlRpcAbeLicenseRetrievalClient', 'TRYING'));
             $stringBuffer->appendint(int($self->getServer()));
-            $stringBuffer->append('org::allbinary::logic::system::security::licensing::client::SEP');
+            $stringBuffer->append(java::lang::Object::jstatic('org::allbinary::logic::system::security::licensing::client::XmlRpcAbeLicenseRetrievalClient', 'SEP'));
             $stringBuffer->append($server);
             $self->{logUtil}->putF('org::allbinary::string::CommonLabels'->getInstance()->{START_LABEL} . $stringBuffer->toString(), $self, $self->{commonStrings}->{GET});
             my $param = 'org::allbinary::util::BasicArrayListD'->new();
@@ -51,13 +51,13 @@ sub get {
             $self->setClient($xmlRpcClient);
             $xmlRpcClient->setBasicAuthentication('org::allbinary::logic::string::StringUtil'->getInstance()->{EMPTY_STRING}, 'org::allbinary::logic::string::StringUtil'->getInstance()->{EMPTY_STRING});
             my $hashtable = $self->getClientInfo()->toHashtable();
-            $self->{logUtil}->putF($self->{CLIENT_INFO} . $hashtable->toString(), $self, $self->{commonStrings}->{GET});
+            $self->{logUtil}->putF(java::lang::Object::jstatic('org::allbinary::logic::system::security::licensing::client::XmlRpcAbeLicenseRetrievalClient', 'CLIENT_INFO') . $hashtable->toString(), $self, $self->{commonStrings}->{GET});
             $param->add($hashtable);
             my $result = $xmlRpcClient->executeWithCrypt($self->getRemoteMethod(), $param, $cryptInterface);
-            $self->{logUtil}->putF($self->{RESULT} . $result->toString(), $self, $self->{commonStrings}->{GET});
+            $self->{logUtil}->putF(java::lang::Object::jstatic('org::allbinary::logic::system::security::licensing::client::XmlRpcAbeLicenseRetrievalClient', 'RESULT') . $result->toString(), $self, $self->{commonStrings}->{GET});
             my $resultHashtable = $result;
             if (!'org::allbinary::logic::system::security::licensing::AbeClientLicense'->hasRequiredKeys($resultHashtable)) {
-                $self->{logUtil}->putF($self->{INVALID}, $self, $self->{commonStrings}->{GET});
+                $self->{logUtil}->putF(java::lang::Object::jstatic('org::allbinary::logic::system::security::licensing::client::XmlRpcAbeLicenseRetrievalClient', 'INVALID'), $self, $self->{commonStrings}->{GET});
                 return $self->tryAnother($anyType);
             }
             my $abeLicenseInterface = 'org::allbinary::logic::system::security::licensing::AbeClientLicense'->new($resultHashtable);
@@ -65,13 +65,13 @@ sub get {
             $self->{isOnline} = 1;
             return $abeLicenseInterface;
         } catch ($e) {
-            $self->{logUtil}->put($self->{EXCEPTION_IN_CLIENT}, $self, $self->{commonStrings}->{GET}, $e);
-            $self->{logUtil}->putF($self->{TRYING_OTHER_SERVERS} + 'org::allbinary::logic::java::exception::ExceptionUtil'->getInstance()->getStackTrace($e), $self, $self->{commonStrings}->{GET});
-            if (!("" . $e)->startsWith($self->{HOST_NOT_RESOLVED})) {
+            $self->{logUtil}->put(java::lang::Object::jstatic('org::allbinary::logic::system::security::licensing::client::XmlRpcAbeLicenseRetrievalClient', 'EXCEPTION_IN_CLIENT'), $self, $self->{commonStrings}->{GET}, $e);
+            $self->{logUtil}->putF(java::lang::Object::jstatic('org::allbinary::logic::system::security::licensing::client::XmlRpcAbeLicenseRetrievalClient', 'TRYING_OTHER_SERVERS') + 'org::allbinary::logic::java::exception::ExceptionUtil'->getInstance()->getStackTrace($e), $self, $self->{commonStrings}->{GET});
+            if (!("" . $e)->startsWith(java::lang::Object::jstatic('org::allbinary::logic::system::security::licensing::client::XmlRpcAbeLicenseRetrievalClient', 'HOST_NOT_RESOLVED'))) {
                 return $self->tryAnother($anyType);
             } else {
                 $self->{isOnline} = 0;
-                die ($self->{HOST_NOT_RESOLVED_MSG});
+                die (java::lang::Object::jstatic('org::allbinary::logic::system::security::licensing::client::XmlRpcAbeLicenseRetrievalClient', 'HOST_NOT_RESOLVED_MSG'));
             }
         }
 }

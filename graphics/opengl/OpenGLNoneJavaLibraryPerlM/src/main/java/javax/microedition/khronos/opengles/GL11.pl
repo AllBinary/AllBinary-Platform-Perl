@@ -150,16 +150,22 @@ sub glBufferSubData {
 }
 
 
-sub glClipPlanef {
+sub glClipPlanef_j3 {
     my ($self, $plane, $equation, $offset) = @_;
     die "abstract method glClipPlanef";
 }
 
 
-# Java overloaded method: Perl keeps the last definition
-sub glClipPlanef {
+sub glClipPlanef_j2 {
     my ($self, $plane, $equation) = @_;
     die "abstract method glClipPlanef";
+}
+
+sub glClipPlanef {
+    my ($invocant, @arguments) = @_;
+    return $invocant->glClipPlanef_j3(@arguments) if scalar(@arguments) == 3;
+    return $invocant->glClipPlanef_j2(@arguments) if scalar(@arguments) == 2;
+    die "No method glClipPlanef takes " . scalar(@arguments) . " arguments";
 }
 
 
@@ -175,16 +181,22 @@ sub glColorPointer {
 }
 
 
-sub glDeleteBuffers {
+sub glDeleteBuffers_j3 {
     my ($self, $n, $buffers, $offset) = @_;
     die "abstract method glDeleteBuffers";
 }
 
 
-# Java overloaded method: Perl keeps the last definition
-sub glDeleteBuffers {
+sub glDeleteBuffers_j2 {
     my ($self, $n, $buffers) = @_;
     die "abstract method glDeleteBuffers";
+}
+
+sub glDeleteBuffers {
+    my ($invocant, @arguments) = @_;
+    return $invocant->glDeleteBuffers_j3(@arguments) if scalar(@arguments) == 3;
+    return $invocant->glDeleteBuffers_j2(@arguments) if scalar(@arguments) == 2;
+    die "No method glDeleteBuffers takes " . scalar(@arguments) . " arguments";
 }
 
 
@@ -194,120 +206,174 @@ sub glDrawElements {
 }
 
 
-sub glGenBuffers {
+sub glGenBuffers_j3 {
     my ($self, $n, $buffers, $offset) = @_;
     die "abstract method glGenBuffers";
 }
 
 
-# Java overloaded method: Perl keeps the last definition
-sub glGenBuffers {
+sub glGenBuffers_j2 {
     my ($self, $n, $buffers) = @_;
     die "abstract method glGenBuffers";
 }
 
+sub glGenBuffers {
+    my ($invocant, @arguments) = @_;
+    return $invocant->glGenBuffers_j3(@arguments) if scalar(@arguments) == 3;
+    return $invocant->glGenBuffers_j2(@arguments) if scalar(@arguments) == 2;
+    die "No method glGenBuffers takes " . scalar(@arguments) . " arguments";
+}
 
-sub glGetBufferParameteriv {
+
+sub glGetBufferParameteriv_j4 {
     my ($self, $target, $pname, $params, $offset) = @_;
     die "abstract method glGetBufferParameteriv";
 }
 
 
-# Java overloaded method: Perl keeps the last definition
-sub glGetBufferParameteriv {
+sub glGetBufferParameteriv_j3 {
     my ($self, $target, $pname, $params) = @_;
     die "abstract method glGetBufferParameteriv";
 }
 
+sub glGetBufferParameteriv {
+    my ($invocant, @arguments) = @_;
+    return $invocant->glGetBufferParameteriv_j4(@arguments) if scalar(@arguments) == 4;
+    return $invocant->glGetBufferParameteriv_j3(@arguments) if scalar(@arguments) == 3;
+    die "No method glGetBufferParameteriv takes " . scalar(@arguments) . " arguments";
+}
 
-sub glGetClipPlanef {
+
+sub glGetClipPlanef_j3 {
     my ($self, $pname, $eqn, $offset) = @_;
     die "abstract method glGetClipPlanef";
 }
 
 
-# Java overloaded method: Perl keeps the last definition
-sub glGetClipPlanef {
+sub glGetClipPlanef_j2 {
     my ($self, $pname, $eqn) = @_;
     die "abstract method glGetClipPlanef";
 }
 
+sub glGetClipPlanef {
+    my ($invocant, @arguments) = @_;
+    return $invocant->glGetClipPlanef_j3(@arguments) if scalar(@arguments) == 3;
+    return $invocant->glGetClipPlanef_j2(@arguments) if scalar(@arguments) == 2;
+    die "No method glGetClipPlanef takes " . scalar(@arguments) . " arguments";
+}
 
-sub glGetFloatv {
+
+sub glGetFloatv_j3 {
     my ($self, $pname, $params, $offset) = @_;
     die "abstract method glGetFloatv";
 }
 
 
-# Java overloaded method: Perl keeps the last definition
-sub glGetFloatv {
+sub glGetFloatv_j2 {
     my ($self, $pname, $params) = @_;
     die "abstract method glGetFloatv";
 }
 
+sub glGetFloatv {
+    my ($invocant, @arguments) = @_;
+    return $invocant->glGetFloatv_j3(@arguments) if scalar(@arguments) == 3;
+    return $invocant->glGetFloatv_j2(@arguments) if scalar(@arguments) == 2;
+    die "No method glGetFloatv takes " . scalar(@arguments) . " arguments";
+}
 
-sub glGetLightfv {
+
+sub glGetLightfv_j4 {
     my ($self, $light, $pname, $params, $offset) = @_;
     die "abstract method glGetLightfv";
 }
 
 
-# Java overloaded method: Perl keeps the last definition
-sub glGetLightfv {
+sub glGetLightfv_j3 {
     my ($self, $light, $pname, $params) = @_;
     die "abstract method glGetLightfv";
 }
 
+sub glGetLightfv {
+    my ($invocant, @arguments) = @_;
+    return $invocant->glGetLightfv_j4(@arguments) if scalar(@arguments) == 4;
+    return $invocant->glGetLightfv_j3(@arguments) if scalar(@arguments) == 3;
+    die "No method glGetLightfv takes " . scalar(@arguments) . " arguments";
+}
 
-sub glGetMaterialfv {
+
+sub glGetMaterialfv_j4 {
     my ($self, $face, $pname, $params, $offset) = @_;
     die "abstract method glGetMaterialfv";
 }
 
 
-# Java overloaded method: Perl keeps the last definition
-sub glGetMaterialfv {
+sub glGetMaterialfv_j3 {
     my ($self, $face, $pname, $params) = @_;
     die "abstract method glGetMaterialfv";
 }
 
+sub glGetMaterialfv {
+    my ($invocant, @arguments) = @_;
+    return $invocant->glGetMaterialfv_j4(@arguments) if scalar(@arguments) == 4;
+    return $invocant->glGetMaterialfv_j3(@arguments) if scalar(@arguments) == 3;
+    die "No method glGetMaterialfv takes " . scalar(@arguments) . " arguments";
+}
 
-sub glGetTexEnviv {
+
+sub glGetTexEnviv_j4 {
     my ($self, $env, $pname, $params, $offset) = @_;
     die "abstract method glGetTexEnviv";
 }
 
 
-# Java overloaded method: Perl keeps the last definition
-sub glGetTexEnviv {
+sub glGetTexEnviv_j3 {
     my ($self, $env, $pname, $params) = @_;
     die "abstract method glGetTexEnviv";
 }
 
+sub glGetTexEnviv {
+    my ($invocant, @arguments) = @_;
+    return $invocant->glGetTexEnviv_j4(@arguments) if scalar(@arguments) == 4;
+    return $invocant->glGetTexEnviv_j3(@arguments) if scalar(@arguments) == 3;
+    die "No method glGetTexEnviv takes " . scalar(@arguments) . " arguments";
+}
 
-sub glGetTexParameterfv {
+
+sub glGetTexParameterfv_j4 {
     my ($self, $target, $pname, $params, $offset) = @_;
     die "abstract method glGetTexParameterfv";
 }
 
 
-# Java overloaded method: Perl keeps the last definition
-sub glGetTexParameterfv {
+sub glGetTexParameterfv_j3 {
     my ($self, $target, $pname, $params) = @_;
     die "abstract method glGetTexParameterfv";
 }
 
+sub glGetTexParameterfv {
+    my ($invocant, @arguments) = @_;
+    return $invocant->glGetTexParameterfv_j4(@arguments) if scalar(@arguments) == 4;
+    return $invocant->glGetTexParameterfv_j3(@arguments) if scalar(@arguments) == 3;
+    die "No method glGetTexParameterfv takes " . scalar(@arguments) . " arguments";
+}
 
-sub glGetTexParameteriv {
+
+sub glGetTexParameteriv_j4 {
     my ($self, $target, $pname, $params, $offset) = @_;
     die "abstract method glGetTexParameteriv";
 }
 
 
-# Java overloaded method: Perl keeps the last definition
-sub glGetTexParameteriv {
+sub glGetTexParameteriv_j3 {
     my ($self, $target, $pname, $params) = @_;
     die "abstract method glGetTexParameteriv";
+}
+
+sub glGetTexParameteriv {
+    my ($invocant, @arguments) = @_;
+    return $invocant->glGetTexParameteriv_j4(@arguments) if scalar(@arguments) == 4;
+    return $invocant->glGetTexParameteriv_j3(@arguments) if scalar(@arguments) == 3;
+    die "No method glGetTexParameteriv takes " . scalar(@arguments) . " arguments";
 }
 
 
@@ -341,16 +407,22 @@ sub glPointParameterf {
 }
 
 
-sub glPointParameterfv {
+sub glPointParameterfv_j3 {
     my ($self, $pname, $params, $offset) = @_;
     die "abstract method glPointParameterfv";
 }
 
 
-# Java overloaded method: Perl keeps the last definition
-sub glPointParameterfv {
+sub glPointParameterfv_j2 {
     my ($self, $pname, $params) = @_;
     die "abstract method glPointParameterfv";
+}
+
+sub glPointParameterfv {
+    my ($invocant, @arguments) = @_;
+    return $invocant->glPointParameterfv_j3(@arguments) if scalar(@arguments) == 3;
+    return $invocant->glPointParameterfv_j2(@arguments) if scalar(@arguments) == 2;
+    die "No method glPointParameterfv takes " . scalar(@arguments) . " arguments";
 }
 
 
@@ -366,42 +438,60 @@ sub glTexEnvi {
 }
 
 
-sub glTexEnviv {
+sub glTexEnviv_j4 {
     my ($self, $target, $pname, $params, $offset) = @_;
     die "abstract method glTexEnviv";
 }
 
 
-# Java overloaded method: Perl keeps the last definition
-sub glTexEnviv {
+sub glTexEnviv_j3 {
     my ($self, $target, $pname, $params) = @_;
     die "abstract method glTexEnviv";
 }
 
+sub glTexEnviv {
+    my ($invocant, @arguments) = @_;
+    return $invocant->glTexEnviv_j4(@arguments) if scalar(@arguments) == 4;
+    return $invocant->glTexEnviv_j3(@arguments) if scalar(@arguments) == 3;
+    die "No method glTexEnviv takes " . scalar(@arguments) . " arguments";
+}
 
-sub glTexParameterfv {
+
+sub glTexParameterfv_j4 {
     my ($self, $target, $pname, $params, $offset) = @_;
     die "abstract method glTexParameterfv";
 }
 
 
-# Java overloaded method: Perl keeps the last definition
-sub glTexParameterfv {
+sub glTexParameterfv_j3 {
     my ($self, $target, $pname, $params) = @_;
     die "abstract method glTexParameterfv";
 }
 
+sub glTexParameterfv {
+    my ($invocant, @arguments) = @_;
+    return $invocant->glTexParameterfv_j4(@arguments) if scalar(@arguments) == 4;
+    return $invocant->glTexParameterfv_j3(@arguments) if scalar(@arguments) == 3;
+    die "No method glTexParameterfv takes " . scalar(@arguments) . " arguments";
+}
 
-sub glTexParameteriv {
+
+sub glTexParameteriv_j4 {
     my ($self, $target, $pname, $params, $offset) = @_;
     die "abstract method glTexParameteriv";
 }
 
 
-# Java overloaded method: Perl keeps the last definition
-sub glTexParameteriv {
+sub glTexParameteriv_j3 {
     my ($self, $target, $pname, $params) = @_;
     die "abstract method glTexParameteriv";
+}
+
+sub glTexParameteriv {
+    my ($invocant, @arguments) = @_;
+    return $invocant->glTexParameteriv_j4(@arguments) if scalar(@arguments) == 4;
+    return $invocant->glTexParameteriv_j3(@arguments) if scalar(@arguments) == 3;
+    die "No method glTexParameteriv takes " . scalar(@arguments) . " arguments";
 }
 
 
@@ -413,6 +503,7 @@ sub glVertexPointer {
 # use java::nio::Buffer ();
 # use java::nio::FloatBuffer ();
 # use java::nio::IntBuffer ();
+use javax::microedition::khronos::opengles::GL10 ();
 
 1;
 

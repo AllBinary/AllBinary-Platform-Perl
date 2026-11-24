@@ -33,7 +33,6 @@ sub setFrame {
     die "abstract method setFrame";
 }
 
-use org::allbinary::animation::IndexedAnimationInterfaceCompositeInterface ();
 
 1;
 

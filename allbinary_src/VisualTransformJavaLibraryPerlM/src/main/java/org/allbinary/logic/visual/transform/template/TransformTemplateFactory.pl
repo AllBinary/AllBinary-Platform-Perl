@@ -27,7 +27,7 @@ sub _init_fields {
 }
 
 
-sub getInstance {
+sub getInstance_j0 {
     my ($class) = @_;
         return $org::allbinary::logic::visual::transform::template::TransformTemplateFactory::instance;
 }
@@ -42,8 +42,7 @@ sub new {
 
 
 # throws Exception
-# Java overloaded method: Perl keeps the last definition
-sub getInstance {
+sub getInstance_j4 {
     my ($self, $abeClientInformation, $templateName, $propertiesHashMap, $pageContext) = @_;
         try {
             my $transformInfoEntity = 'org::allbinary::data::tables::transform::info::TransformInfoEntityBuilder'->getInstance();
@@ -51,11 +50,18 @@ sub getInstance {
             return 'org::allbinary::logic::visual::transform::info::TransformInfoObjectFactory'->getInstance()->getInstance($abeClientInformation, $transformInfoInterface);
         } catch ($e) {
             my $error = "Failed To Get Instance";
-            if ($org::allbinary::logic::visual::transform::template::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($org::allbinary::logic::visual::transform::template::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{TAGHELPERFACTORYERROR})) {
+            if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{TAGHELPERFACTORYERROR})) {
                 $self->{logUtil}->put($error . $templateName . "->TemplateFactory", $self, "getInstance(viewName, HashMap, PageContext)", $e);
             }
             die $e;
         }
+}
+
+sub getInstance {
+    my ($invocant, @arguments) = @_;
+    return $invocant->getInstance_j0(@arguments) if scalar(@arguments) == 0;
+    return $invocant->getInstance_j4(@arguments) if scalar(@arguments) == 4;
+    die "No method getInstance takes " . scalar(@arguments) . " arguments";
 }
 
 use java::lang::Object ();
@@ -68,6 +74,8 @@ use org::allbinary::logic::communication::log::LogUtil ();
 use org::allbinary::logic::system::security::licensing::AbeClientInformationInterface ();
 use org::allbinary::logic::visual::transform::info::TransformInfoInterface ();
 use org::allbinary::logic::visual::transform::info::TransformInfoObjectFactory ();
+use org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory ();
+use org::allbinary::logic::communication::log::config::type::LogConfigTypes ();
 
 1;
 

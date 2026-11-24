@@ -122,7 +122,8 @@ sub setMinArea {
 }
 
 use java::lang::Object ();
-# use java::awt ();
+# use java::awt::Dimension ();
+# use java::awt::Rectangle ();
 # use java::awt::image::BufferedImage ();
 use org::allbinary::media::image::comparison::motion::MotionRectangleConstraintsInterface ();
 

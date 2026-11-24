@@ -46,7 +46,7 @@ sub initialize {
             $vector->add(("" . ($value))->toString());
             $self->{idGeneratorEntity}->insert($vector);
         } catch ($e) {
-            if ($org::allbinary::data::generator::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($org::allbinary::data::generator::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{IDLOGGING})) {
+            if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{IDLOGGING})) {
                 my $commonStrings = 'org::allbinary::string::CommonStrings'->getInstance();
                 $self->{logUtil}->put($commonStrings->{EXCEPTION}, $self, "initialize", $e);
             }
@@ -70,7 +70,7 @@ sub getNext {
             $self->{idGeneratorEntity}->update($self->{name}, $newValue);
             return ("" . ($idLong));
         } catch ($e) {
-            if ($org::allbinary::data::generator::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($org::allbinary::data::generator::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{IDLOGGING})) {
+            if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{IDLOGGING})) {
                 my $commonStrings = 'org::allbinary::string::CommonStrings'->getInstance();
                 $self->{logUtil}->put($commonStrings->{EXCEPTION}, $self, "getNext", $e);
             }
@@ -87,6 +87,8 @@ use org::allbinary::data::tables::generator::IdGeneratorEntityFactory ();
 use org::allbinary::logic::StdUtil ();
 use org::allbinary::string::CommonStrings ();
 use org::allbinary::logic::communication::log::LogUtil ();
+use org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory ();
+use org::allbinary::logic::communication::log::config::type::LogConfigTypes ();
 use org::allbinary::data::generator::IdGeneratorInterface ();
 
 1;

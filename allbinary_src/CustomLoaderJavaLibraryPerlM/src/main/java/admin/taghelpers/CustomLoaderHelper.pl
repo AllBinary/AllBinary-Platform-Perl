@@ -54,7 +54,7 @@ sub _new0 {
 sub getWebappPath {
     my ($self) = @_;
         try {
-            return $admin::taghelpers::org::allbinary->{globals}->{URLGLOBALS}->getWebappPath();
+            return 'org::allbinary::globals::URLGLOBALS'->getWebappPath();
         } catch ($e) {
             return undef;
         }
@@ -69,7 +69,7 @@ sub setWebappPath {
             $urlGlobals->setWebappPath($path);
             'org::allbinary::globals::URLGLOBALS'->init($urlGlobals);
         } catch ($e) {
-            if ($admin::taghelpers::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($admin::taghelpers::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{TAGHELPERERROR})) {
+            if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{TAGHELPERERROR})) {
                 $self->{logUtil}->put($self->{commonStrings}->{EXCEPTION}, $self, "setWebappPath()", $e);
             }
         }
@@ -82,6 +82,8 @@ use org::allbinary::globals::AppUrlGlobals ();
 use org::allbinary::globals::URLGLOBALS ();
 use org::allbinary::logic::communication::log::LogUtil ();
 use org::allbinary::string::CommonStrings ();
+use org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory ();
+use org::allbinary::logic::communication::log::config::type::LogConfigTypes ();
 
 1;
 

@@ -78,7 +78,7 @@ sub remove {
 }
 
 use java::lang::Object ();
-# use java::awt ();
+# use java::awt::Rectangle ();
 use org::allbinary::util::BasicArrayList ();
 use org::allbinary::util::BasicArrayListD ();
 use org::allbinary::logic::StdUtil ();

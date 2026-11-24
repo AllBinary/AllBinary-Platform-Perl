@@ -39,13 +39,13 @@ sub new {
     my $self = $class->SUPER::new($imageArray, $angleInfo, $animationBehavior);
     _init_fields($self);
         # super(...) made $self above
-        $self->init($imageArray, $angleInfo, $totalAngle);
+        $self->initImageArray($imageArray, $angleInfo, $totalAngle);
     return $self;
 }
 
 
 # throws Exception
-sub init {
+sub initImageArray {
     my ($self, $imageArray, $angleInfo, $totalAngle) = @_;
         $self->{expectedTotalFrames} = $totalAngle / $self->{angleInfo}->getAngleIncrementInfo()->getAngleIncrement();
         $self->{angleInfo}->adjustAngle(0);
@@ -65,7 +65,6 @@ use java::lang::Object ();
 use javax::microedition::lcdui::Image ();
 use org::allbinary::animation::AnimationBehavior ();
 use org::allbinary::math::AngleInfo ();
-use org::allbinary::animation::image::ImageArrayBaseRotationAnimation ();
 
 1;
 

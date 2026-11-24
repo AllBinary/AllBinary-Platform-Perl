@@ -105,7 +105,6 @@ use org::allbinary::logic::string::StringUtil ();
 use org::allbinary::string::CommonSeps ();
 use org::allbinary::view::ViewPositionBase ();
 use org::allbinary::logic::NullUtil ();
-use org::allbinary::game::layer::AllBinaryGameLayer ();
 
 1;
 

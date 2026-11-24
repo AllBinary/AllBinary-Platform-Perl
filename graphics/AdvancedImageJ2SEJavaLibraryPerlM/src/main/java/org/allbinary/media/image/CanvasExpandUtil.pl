@@ -44,7 +44,7 @@ sub getInstance {
 # throws Exception
 sub process {
     my ($self, $imageProcessorInput, $increaseX, $increaseY, $visitor) = @_;
-        my $imageUtil = 'org::allbinary::media::image::ImageUtil'->getInstance();
+        my $imageUtil = java::lang::Object::jstatic('org::allbinary::media::image::CanvasExpandUtil', 'ImageUtil')->getInstance();
         my $bufferedImageArray = $imageProcessorInput->getBufferedImageArray();
         my $subBufferedImageArray = [(undef) x (scalar(@{$bufferedImageArray}))];
         my $size = scalar(@{$bufferedImageArray});
@@ -61,7 +61,6 @@ use java::lang::LazyStatic ();
 # use java::awt::image::BufferedImage ();
 use org::allbinary::logic::communication::log::LogUtil ();
 use org::allbinary::logic::string::StringUtil ();
-use org::allbinary::media::image::ImageUtil ();
 
 1;
 

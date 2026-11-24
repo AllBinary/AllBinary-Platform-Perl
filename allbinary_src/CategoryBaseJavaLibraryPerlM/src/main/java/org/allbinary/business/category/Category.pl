@@ -46,7 +46,7 @@ sub _new1 {
     my ($class, $categoryPropertiesFactoryInterface) = @_;
     my $self = bless({}, $class);
     _init_fields($self);
-        if ($org::allbinary::business::category::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($org::allbinary::business::category::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{CATEGORY})) {
+        if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{CATEGORY})) {
             $self->{logUtil}->putF($self->{commonStrings}->{CONSTRUCTOR}, $self, "Category(CategoryPropertiesFactoryInterface)");
         }
         $self->{categoryPropertiesInterface} = $categoryPropertiesFactoryInterface->getInstance();
@@ -130,7 +130,7 @@ sub addChildProperty {
 sub addChild {
     my ($self, $categoryInterface) = @_;
         $self->removeDuplicateChild($categoryInterface);
-        if ($org::allbinary::business::category::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($org::allbinary::business::category::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{CATEGORY})) {
+        if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{CATEGORY})) {
             $self->{logUtil}->putF("adding", $self, "addChild");
         }
         my $childCategoryHierarchyInterface = $categoryInterface->getHierarchy();
@@ -313,7 +313,7 @@ sub toVector {
 # throws Exception
 sub log {
     my ($self) = @_;
-        if ($org::allbinary::business::category::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($org::allbinary::business::category::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{CATEGORY})) {
+        if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{CATEGORY})) {
             my $stringBuffer = 'org::allbinary::logic::string::StringMaker'->new();
             $stringBuffer->append("Category Name: ");
             $stringBuffer->append($self->{categoryPropertiesInterface}->getValue());
@@ -342,6 +342,8 @@ use org::allbinary::logic::string::StringUtil ();
 use org::allbinary::string::CommonStrings ();
 use org::w3c::dom::Document ();
 use org::w3c::dom::Node ();
+use org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory ();
+use org::allbinary::logic::communication::log::config::type::LogConfigTypes ();
 use org::allbinary::business::category::CategoryInterface ();
 
 1;

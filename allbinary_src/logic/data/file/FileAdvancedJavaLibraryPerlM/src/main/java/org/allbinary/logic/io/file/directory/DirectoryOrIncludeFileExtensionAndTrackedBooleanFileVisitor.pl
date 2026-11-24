@@ -55,7 +55,7 @@ sub _new2 {
 }
 
 
-sub visit {
+sub visit_j1 {
     my ($self, $file) = @_;
         if ($file->isDirectory()) {
             return 1;
@@ -68,8 +68,7 @@ sub visit {
 }
 
 
-# Java overloaded method: Perl keeps the last definition
-sub visit {
+sub visit_j2 {
     my ($self, $file, $fileNameString) = @_;
         my $filePath = $file->getPath();
         if ($self->SUPER::visit($file, $fileNameString)) {
@@ -85,6 +84,13 @@ sub visit {
             }
         }
         return 0;
+}
+
+sub visit {
+    my ($invocant, @arguments) = @_;
+    return $invocant->visit_j1(@arguments) if scalar(@arguments) == 1;
+    return $invocant->visit_j2(@arguments) if scalar(@arguments) == 2;
+    die "No method visit takes " . scalar(@arguments) . " arguments";
 }
 
 

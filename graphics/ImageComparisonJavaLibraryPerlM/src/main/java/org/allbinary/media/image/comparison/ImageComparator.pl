@@ -65,15 +65,14 @@ sub process {
 
 
 # throws Exception
-sub compare {
+sub compare_j5 {
     my ($self, $bufferedImage1, $bufferedImage2, $frameOne, $frameTwo, $tolerance) = @_;
         return $self->compare($bufferedImage1, $bufferedImage2, $frameOne, $frameTwo, $tolerance, 'org::allbinary::logic::string::StringUtil'->getInstance()->{EMPTY_STRING});
 }
 
 
 # throws Exception
-# Java overloaded method: Perl keeps the last definition
-sub compare {
+sub compare_j6 {
     my ($self, $bufferedImage1, $bufferedImage2, $frameOne, $frameTwo, $tolerance, $name) = @_;
         if (!defined($bufferedImage1) || !defined($bufferedImage2)) {
             die ("Input images must not be null.");
@@ -90,8 +89,15 @@ sub compare {
         return $imageComparisonInfo;
 }
 
+sub compare {
+    my ($invocant, @arguments) = @_;
+    return $invocant->compare_j5(@arguments) if scalar(@arguments) == 5;
+    return $invocant->compare_j6(@arguments) if scalar(@arguments) == 6;
+    die "No method compare takes " . scalar(@arguments) . " arguments";
+}
+
 use java::lang::Object ();
-# use java::awt ();
+# use java::awt::Color ();
 # use java::awt::image::BufferedImage ();
 use org::allbinary::graphics::GPoint ();
 use org::allbinary::graphics::PointFactory ();

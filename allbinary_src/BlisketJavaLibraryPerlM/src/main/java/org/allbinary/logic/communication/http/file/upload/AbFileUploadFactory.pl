@@ -56,7 +56,7 @@ sub getFileItemStreamList {
             }
             return $items;
         } catch ($e) {
-            if ($org::allbinary::logic::communication::http::file::upload::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($org::allbinary::logic::communication::http::file::upload::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{HTTPERROR})) {
+            if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{HTTPERROR})) {
                 my $commonStrings = 'org::allbinary::string::CommonStrings'->getInstance();
                 $self->{logUtil}->put($commonStrings->{EXCEPTION}, $self, "get()", $e);
             }
@@ -73,7 +73,7 @@ sub getFileItemList {
             return $abFileUpload->parseRequest($httpServletRequest);
         } catch ($e) {
             my $commonStrings = 'org::allbinary::string::CommonStrings'->getInstance();
-            if ($org::allbinary::logic::communication::http::file::upload::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($org::allbinary::logic::communication::http::file::upload::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{HTTPERROR})) {
+            if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{HTTPERROR})) {
                 $self->{logUtil}->put($commonStrings->{EXCEPTION}, $self, "get()", $e);
             }
             die $e;
@@ -91,6 +91,8 @@ use org::allbinary::string::CommonStrings ();
 use org::apache::commons::fileupload::FileItemIterator ();
 use org::apache::commons::fileupload::FileItemStream ();
 use org::apache::commons::fileupload::FileItemUtil ();
+use org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory ();
+use org::allbinary::logic::communication::log::config::type::LogConfigTypes ();
 use org::allbinary::logic::communication::http::file::upload::AbFileUpload ();
 use org::allbinary::logic::communication::http::file::upload::HttpFileUploadUtil ();
 use org::allbinary::logic::communication::http::file::upload::AbFileItem ();

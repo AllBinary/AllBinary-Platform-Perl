@@ -44,12 +44,12 @@ sub insert {
     my ($self, $values) = @_;
         try {
             $self->SUPER::insert($values);
-            if ($org::allbinary::data::tables::workflow::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($org::allbinary::data::tables::workflow::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{SQLLOGGING})) {
-                $self->{logUtil}->putF($self->{commonStrings}->{SUCCESS}, $self, $self->{INSERT});
+            if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{SQLLOGGING})) {
+                $self->{logUtil}->putF($self->{commonStrings}->{SUCCESS}, $self, java::lang::Object::jstatic('org::allbinary::data::tables::workflow::WorkFlowEntity', 'INSERT'));
             }
         } catch ($e) {
-            if ($org::allbinary::data::tables::workflow::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($org::allbinary::data::tables::workflow::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{SQLLOGGING})) {
-                $self->{logUtil}->put($self->{commonStrings}->{FAILURE}, $self, $self->{INSERT}, $e);
+            if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{SQLLOGGING})) {
+                $self->{logUtil}->put($self->{commonStrings}->{FAILURE}, $self, java::lang::Object::jstatic('org::allbinary::data::tables::workflow::WorkFlowEntity', 'INSERT'), $e);
             }
         }
 }
@@ -62,11 +62,11 @@ sub delete {
             $keysAndValues->put('org::allbinary::logic::control::workflow::WorkFlowData'->getInstance()->{NAME}, $name);
             $keysAndValues->put('org::allbinary::business::context::modules::storefront::StoreFrontData'->getInstance()->{NAME}, $storeName);
             $self->SUPER::deleteWhere($keysAndValues);
-            if ($org::allbinary::data::tables::workflow::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($org::allbinary::data::tables::workflow::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{SQLLOGGING})) {
+            if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{SQLLOGGING})) {
                 $self->{logUtil}->putF($self->{commonStrings}->{SUCCESS}, $self, $self->{commonStrings}->{delete});
             }
         } catch ($e) {
-            if ($org::allbinary::data::tables::workflow::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($org::allbinary::data::tables::workflow::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{SQLLOGGING})) {
+            if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{SQLLOGGING})) {
                 $self->{logUtil}->put($self->{commonStrings}->{FAILURE}, $self, $self->{commonStrings}->{delete}, $e);
             }
         }
@@ -74,7 +74,7 @@ sub delete {
 
 
 # throws Exception, LicensingException
-sub get {
+sub get_j2 {
     my ($self, $name, $storeName) = @_;
         try {
             my $keysAndValues = 'org::allbinary::logic::StdUtil'->getInstance()->createHashMap();
@@ -83,7 +83,7 @@ sub get {
             my $hashMap = $self->SUPER::getRow($keysAndValues);
             return 'org::allbinary::logic::control::workflow::DbWorkFlowFactory'->getInstance()->getInstance($self->{abeClientInformation}, $hashMap);
         } catch ($e) {
-            if ($org::allbinary::data::tables::workflow::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($org::allbinary::data::tables::workflow::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{SQLLOGGING})) {
+            if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{SQLLOGGING})) {
                 $self->{logUtil}->put($self->{commonStrings}->{FAILURE}, $self, $self->{METHOD_GET}, $e);
             }
             die $e;
@@ -91,8 +91,7 @@ sub get {
 }
 
 
-# Java overloaded method: Perl keeps the last definition
-sub get {
+sub get_j1 {
     my ($self, $storeName) = @_;
         try {
             my $workFlowsVector = 'org::allbinary::util::BasicArrayListD'->new();
@@ -108,11 +107,18 @@ sub get {
             }
             return $workFlowsVector;
         } catch ($e) {
-            if ($org::allbinary::data::tables::workflow::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($org::allbinary::data::tables::workflow::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{SQLLOGGING})) {
+            if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{SQLLOGGING})) {
                 $self->{logUtil}->put($self->{commonStrings}->{FAILURE}, $self, $self->{METHOD_GET}, $e);
             }
             return undef;
         }
+}
+
+sub get {
+    my ($invocant, @arguments) = @_;
+    return $invocant->get_j2(@arguments) if scalar(@arguments) == 2;
+    return $invocant->get_j1(@arguments) if scalar(@arguments) == 1;
+    die "No method get takes " . scalar(@arguments) . " arguments";
 }
 
 
@@ -124,7 +130,7 @@ sub update {
             $wherekeysAndValues->put('org::allbinary::business::context::modules::storefront::StoreFrontData'->getInstance()->{NAME}, $updatedValues->get('org::allbinary::business::context::modules::storefront::StoreFrontData'->getInstance()->{NAME}));
             $self->SUPER::updateWhere($wherekeysAndValues, $updatedValues);
         } catch ($e) {
-            if ($org::allbinary::data::tables::workflow::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($org::allbinary::data::tables::workflow::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{SQLLOGGING})) {
+            if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{SQLLOGGING})) {
                 $self->{logUtil}->put($self->{commonStrings}->{FAILURE}, $self, $self->{METHOD_UPDATE}, $e);
             }
         }
@@ -169,6 +175,8 @@ use org::allbinary::logic::string::StringMaker ();
 use org::allbinary::logic::system::security::licensing::AbeClientInformationInterface ();
 use org::allbinary::logic::system::security::licensing::LicensingException ();
 use org::allbinary::logic::system::security::licensing::ServiceClientInformationInterfaceFactory ();
+use org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory ();
+use org::allbinary::logic::communication::log::config::type::LogConfigTypes ();
 use org::allbinary::data::tables::workflow::WorkFlowEntityInterface ();
 
 1;

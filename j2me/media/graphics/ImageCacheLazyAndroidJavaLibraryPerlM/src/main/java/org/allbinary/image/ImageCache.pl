@@ -40,7 +40,7 @@ sub new {
 
 
 # throws Exception
-sub get {
+sub get_j3 {
     my ($self, $caller, $width, $height) = @_;
         my $foundIndex = $self->getIndexWH($width, $height);
         my $image = $self->getFromAvailable($foundIndex, $width, $height);
@@ -64,8 +64,7 @@ sub get {
 
 
 # throws Exception
-# Java overloaded method: Perl keeps the last definition
-sub get {
+sub get_j1 {
     my ($self, $key) = @_;
         my $resourceUtil = 'org::allbinary::data::resource::ResourceUtil'->getInstance();
         my $resourceId = $resourceUtil->getResourceId($key);
@@ -87,6 +86,13 @@ sub get {
             $self->{hashtable}->put($resourceId, $image);
         }
         return $image;
+}
+
+sub get {
+    my ($invocant, @arguments) = @_;
+    return $invocant->get_j3(@arguments) if scalar(@arguments) == 3;
+    return $invocant->get_j1(@arguments) if scalar(@arguments) == 1;
+    die "No method get takes " . scalar(@arguments) . " arguments";
 }
 
 
@@ -131,7 +137,6 @@ use org::allbinary::game::gd::resource::GDResources ();
 use org::allbinary::logic::ABSystemWrapper ();
 use org::allbinary::logic::string::StringUtil ();
 use org::allbinary::system::Memory ();
-use org::allbinary::image::ImageCacheBase ();
 use java::lang::Thread ();
 
 1;

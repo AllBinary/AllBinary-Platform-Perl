@@ -85,7 +85,7 @@ sub processRequest {
                 $response->sendError($javax::servlet::http::HttpServletResponse::SC_UNAUTHORIZED, "Please Login");
             }
         } catch ($e) {
-            if ($org::allbinary::servlet::file::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($org::allbinary::servlet::file::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{VIEWERROR})) {
+            if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{VIEWERROR})) {
                 $self->{logUtil}->put($self->{commonStrings}->{EXCEPTION}, $self, "processRequest()", $e);
             }
             $response->sendError($javax::servlet::http::HttpServletResponse::SC_NOT_FOUND);
@@ -138,6 +138,8 @@ use org::allbinary::logic::string::StringUtil ();
 use org::allbinary::servlet::BlisketServletUtil ();
 use org::allbinary::string::CommonSeps ();
 use org::allbinary::string::CommonStrings ();
+use org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory ();
+use org::allbinary::logic::communication::log::config::type::LogConfigTypes ();
 
 1;
 

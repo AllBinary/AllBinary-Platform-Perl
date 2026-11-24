@@ -50,131 +50,14 @@ sub new {
         my $healthHud = $numberStringHudFactory->{NULL_NUMBER_STRING_HUD};
         my $maxHealthHud = $numberStringHudFactory->{NULL_NUMBER_STRING_HUD};
         try {
-            my $index = 0;
             my $basicHudFactory = 'org::allbinary::game::graphics::hud::BasicHudFactory'->getInstance();
             my $basicColor = $self->getBasicColorP();
             my $textX = $self->{textX};
             my $y = $self->{y};
-            my $firstIndex = $index;
-            {
-            package org::allbinary::game::layer::building::ProductivityNumberStringHud;
-            use strict;
-            use warnings;
-            use feature 'try';
-            no warnings 'experimental::try';
-            use parent -norequire,'org::allbinary::game::ag::layer::hud::basic::NumberStringHud';
-            
-            
-
-            sub new {
-                my ($class) = @_;
-                my $self = $class->SUPER::new("Productivity:", 999, $self->{basicHudFactory}->{ABSOLUTE}, $self->{basicHudFactory}->{HORIZONTAL}, 0, $self->{basicColor});
-                    # super(...) made $self above
-                return $self;
-            }
-            
-
-            sub updateMeasurement {
-                my ($self, $graphics) = @_;
-                    my $font = $graphics->getFont();
-                    $self->{updateMaxWidth} = $self->{textX};
-                    $self->{updateMaxHeight} = $self->{y} + (($self->{firstIndex} + 1) * $font->getHeight());
-                    $self->SUPER::updateMeasurement($graphics);
-            }
-            }
-
-            $productivityHud = 'org::allbinary::game::layer::building::ProductivityNumberStringHud'->new();
-            $index++;
-            my $secondIndex = $index;
-            {
-            package org::allbinary::game::layer::building::EfficiencyNumberStringHud;
-            use strict;
-            use warnings;
-            use feature 'try';
-            no warnings 'experimental::try';
-            use parent -norequire,'org::allbinary::game::ag::layer::hud::basic::NumberStringHud';
-            
-            
-
-            sub new {
-                my ($class) = @_;
-                my $self = $class->SUPER::new("Efficiency:", 999, $self->{basicHudFactory}->{ABSOLUTE}, $self->{basicHudFactory}->{HORIZONTAL}, 0, $self->{basicColor});
-                    # super(...) made $self above
-                return $self;
-            }
-            
-
-            sub updateMeasurement {
-                my ($self, $graphics) = @_;
-                    $self->SUPER::updateMeasurement($graphics);
-                    my $font = $graphics->getFont();
-                    $self->{updateMaxWidth} = $self->{textX};
-                    $self->{updateMaxHeight} = $self->{y} + (($self->{secondIndex} + 1) * $font->getHeight());
-            }
-            }
-
-            $efficiencyHud = 'org::allbinary::game::layer::building::EfficiencyNumberStringHud'->new();
-            $index++;
-            my $HEALTH = $self->{HEALTH};
-            my $thirdIndex = $index;
-            {
-            package org::allbinary::game::layer::building::HealthNumberStringHud;
-            use strict;
-            use warnings;
-            use feature 'try';
-            no warnings 'experimental::try';
-            use parent -norequire,'org::allbinary::game::ag::layer::hud::basic::NumberStringHud';
-            
-            
-
-            sub new {
-                my ($class) = @_;
-                my $self = $class->SUPER::new($self->{HEALTH}, 99999, $self->{basicHudFactory}->{ABSOLUTE}, $self->{basicHudFactory}->{HORIZONTAL}, 0, $self->{basicColor});
-                    # super(...) made $self above
-                return $self;
-            }
-            
-
-            sub updateMeasurement {
-                my ($self, $graphics) = @_;
-                    my $font = $graphics->getFont();
-                    $self->{updateMaxWidth} = $self->{textX};
-                    $self->{updateMaxHeight} = $self->{y} + (($self->{thirdIndex} + 1) * $font->getHeight());
-                    $self->SUPER::updateMeasurement($graphics);
-            }
-            }
-
-            my $totalLength = length($HEALTH) + 1;
-            $healthHud = 'org::allbinary::game::layer::building::HealthNumberStringHud'->new();
-            my $fourthIndex = $index;
-            {
-            package org::allbinary::game::layer::building::MaxHealthNumberStringHud;
-            use strict;
-            use warnings;
-            use feature 'try';
-            no warnings 'experimental::try';
-            use parent -norequire,'org::allbinary::game::ag::layer::hud::basic::NumberStringHud';
-            
-            
-
-            sub new {
-                my ($class) = @_;
-                my $self = $class->SUPER::new("/ ", 99999, $self->{basicHudFactory}->{ABSOLUTE}, $self->{basicHudFactory}->{HORIZONTAL}, 0, $self->{basicColor});
-                    # super(...) made $self above
-                return $self;
-            }
-            
-
-            sub updateMeasurement {
-                my ($self, $graphics) = @_;
-                    $self->SUPER::updateMeasurement($graphics);
-                    my $font = $graphics->getFont();
-                    $self->{updateMaxWidth} = $self->{textX} + ($self->{totalLength} * $font->getHeight());
-                    $self->{updateMaxHeight} = $self->{y} + (($self->{fourthIndex} + 1) * $font->getHeight());
-            }
-            }
-
-            $maxHealthHud = 'org::allbinary::game::layer::building::MaxHealthNumberStringHud'->new();
+            $productivityHud = 'org::allbinary::game::layer::building::BuildingNumberHud'->new("Productivity:", 999, $basicHudFactory, $basicColor, $textX, $y, 1, 0, 1);
+            $efficiencyHud = 'org::allbinary::game::layer::building::BuildingNumberHud'->new("Efficiency:", 999, $basicHudFactory, $basicColor, $textX, $y, 2, 0, 0);
+            $healthHud = 'org::allbinary::game::layer::building::BuildingNumberHud'->new($self->{HEALTH}, 99999, $basicHudFactory, $basicColor, $textX, $y, 3, 0, 1);
+            $maxHealthHud = 'org::allbinary::game::layer::building::BuildingNumberHud'->new("/ ", 99999, $basicHudFactory, $basicColor, $textX, $y, 3, length($self->{HEALTH}) + 1, 0);
         } catch ($e) {
             my $commonStrings = 'org::allbinary::string::CommonStrings'->getInstance();
             $self->{logUtil}->put($commonStrings->{EXCEPTION}, $self, $commonStrings->{CONSTRUCTOR}, $e);
@@ -236,6 +119,53 @@ sub setRtsLayer {
     my ($self, $rtsLayer) = @_;
         $self->{rtsLayer} = $rtsLayer;
 }
+{
+    package org::allbinary::game::layer::building::BuildingNumberHud;
+    use strict;
+    use warnings;
+    use feature 'try';
+    no warnings 'experimental::try';
+    use parent -norequire,'org::allbinary::game::ag::layer::hud::basic::NumberStringHud';
+    
+
+    sub _init_fields {
+        my ($self) = @_;
+        $self->{baseTextX} = undef;
+        $self->{baseY} = undef;
+        $self->{row} = undef;
+        $self->{prefixLength} = undef;
+        $self->{positionBeforeMeasurement} = undef;
+    }
+    
+
+    sub new {
+        my ($class, $label, $maximum, $basicHudFactory, $basicColor, $baseTextX, $baseY, $row, $prefixLength, $positionBeforeMeasurement) = @_;
+        my $self = $class->SUPER::new($label, $maximum, $basicHudFactory->{ABSOLUTE}, $basicHudFactory->{HORIZONTAL}, 0, $basicColor);
+        _init_fields($self);
+            # super(...) made $self above
+            $self->{baseTextX} = $baseTextX;
+            $self->{baseY} = $baseY;
+            $self->{row} = $row;
+            $self->{prefixLength} = $prefixLength;
+            $self->{positionBeforeMeasurement} = $positionBeforeMeasurement;
+        return $self;
+    }
+    
+
+    sub updateMeasurement {
+        my ($self, $graphics) = @_;
+            if (!$self->{positionBeforeMeasurement}) {
+                $self->SUPER::updateMeasurement($graphics);
+            }
+            my $font = $graphics->getFont();
+            $self->{updateMaxWidth} = $self->{baseTextX} + $self->{prefixLength} * $font->getHeight();
+            $self->{updateMaxHeight} = $self->{baseY} + $self->{row} * $font->getHeight();
+            if ($self->{positionBeforeMeasurement}) {
+                $self->SUPER::updateMeasurement($graphics);
+            }
+    }
+    }
+
 
 use java::lang::Object ();
 use java::lang::LazyStatic ();

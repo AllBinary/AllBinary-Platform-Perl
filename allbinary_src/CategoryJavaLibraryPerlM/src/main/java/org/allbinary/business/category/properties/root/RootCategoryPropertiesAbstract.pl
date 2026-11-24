@@ -55,17 +55,28 @@ sub setValue {
 
 
 # throws Exception
-sub setRootFilePath {
+sub setRootFilePath_j1_1 {
     my ($self, $value) = @_;
         die ("RuntimeException");
 }
 
 
 # throws Exception
-# Java overloaded method: Perl keeps the last definition
-sub setRootFilePath {
+sub setRootFilePath_j1_2 {
     my ($self, $value) = @_;
         die ("No Value Allowed");
+}
+
+sub setRootFilePath {
+    my ($invocant, @arguments) = @_;
+    return $invocant->setRootFilePath_j1(@arguments) if scalar(@arguments) == 1;
+    die "No method setRootFilePath takes " . scalar(@arguments) . " arguments";
+}
+
+sub setRootFilePath_j1 {
+    my ($invocant, @arguments) = @_;
+    return $invocant->setRootFilePath_j1_1(@arguments) if 1 && (!defined($arguments[0]) || (ref($arguments[0]) && ref($arguments[0]) ne 'ARRAY'));
+    return $invocant->setRootFilePath_j1_2(@arguments);
 }
 
 
@@ -162,7 +173,6 @@ use org::allbinary::logic::io::path::AbPath ();
 use org::allbinary::logic::io::path::AbPathData ();
 use org::w3c::dom::Document ();
 use org::w3c::dom::Node ();
-use org::allbinary::business::category::properties::root::RootCategoryPropertiesInterface ();
 
 1;
 

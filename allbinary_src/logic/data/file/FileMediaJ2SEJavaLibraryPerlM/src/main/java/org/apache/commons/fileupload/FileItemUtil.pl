@@ -30,17 +30,28 @@ sub getInstance {
 
 
 # throws Exception
-sub getString {
+sub getString_j1_1 {
     my ($self, $byteArray) = @_;
         return pack("C*", @{$byteArray});
 }
 
 
 # throws Exception
-# Java overloaded method: Perl keeps the last definition
-sub getString {
+sub getString_j1_2 {
     my ($self, $fileItem) = @_;
         return 'String'->new($self->getBytes($fileItem), $self->{DEFAULT_CHARSET});
+}
+
+sub getString {
+    my ($invocant, @arguments) = @_;
+    return $invocant->getString_j1(@arguments) if scalar(@arguments) == 1;
+    die "No method getString takes " . scalar(@arguments) . " arguments";
+}
+
+sub getString_j1 {
+    my ($invocant, @arguments) = @_;
+    return $invocant->getString_j1_1(@arguments) if 1 && (!defined($arguments[0]) || ref($arguments[0]) eq 'ARRAY');
+    return $invocant->getString_j1_2(@arguments);
 }
 
 

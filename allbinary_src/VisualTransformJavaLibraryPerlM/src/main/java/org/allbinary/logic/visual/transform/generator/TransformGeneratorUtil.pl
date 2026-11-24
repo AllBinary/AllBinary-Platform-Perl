@@ -42,10 +42,10 @@ sub new {
 
 
 # throws Exception
-sub generate {
+sub generate_j3_1 {
     my ($self, $abeClientInformation, $transformInfoInterface, $ownerTransformInfoInterface) = @_;
         try {
-            if ($org::allbinary::logic::visual::transform::generator::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($org::allbinary::logic::visual::transform::generator::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{VIEW})) {
+            if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{VIEW})) {
                 $self->{logUtil}->putF("Generating View: " . $transformInfoInterface->getName(), $self, "generate()");
             }
             my $componentInterface = 'org::allbinary::logic::visual::transform::TransformFactory'->getInstance()->getInstance($abeClientInformation, $transformInfoInterface->getName(), $ownerTransformInfoInterface);
@@ -59,7 +59,7 @@ sub generate {
             }
             'org::allbinary::logic::visual::transform::info::objectConfig::generator::StoreFileGenerator'->new($componentInterface->getTransformInfoInterface())->process($result);
         } catch ($e) {
-            if ($org::allbinary::logic::visual::transform::generator::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($org::allbinary::logic::visual::transform::generator::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{SQLTAGSERROR})) {
+            if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{SQLTAGSERROR})) {
                 $self->{logUtil}->put("Failed to generate a view", $self, "generate()", $e);
             }
             die $e;
@@ -68,10 +68,21 @@ sub generate {
 
 
 # throws Exception
-# Java overloaded method: Perl keeps the last definition
-sub generate {
+sub generate_j3_2 {
     my ($self, $abeClientInformation, $transformInfoDomNode, $ownerTransformInfoInterface) = @_;
         $self->generate($abeClientInformation, $transformInfoDomNode->getTransformInfoInterface(), $ownerTransformInfoInterface);
+}
+
+sub generate {
+    my ($invocant, @arguments) = @_;
+    return $invocant->generate_j3(@arguments) if scalar(@arguments) == 3;
+    die "No method generate takes " . scalar(@arguments) . " arguments";
+}
+
+sub generate_j3 {
+    my ($invocant, @arguments) = @_;
+    return $invocant->generate_j3_1(@arguments) if 1 && (!defined($arguments[0]) || (ref($arguments[0]) && ref($arguments[0]) ne 'ARRAY')) && (!defined($arguments[1]) || (ref($arguments[1]) && ref($arguments[1]) ne 'ARRAY')) && (!defined($arguments[2]) || (ref($arguments[2]) && ref($arguments[2]) ne 'ARRAY'));
+    return $invocant->generate_j3_2(@arguments);
 }
 
 use java::lang::Object ();
@@ -85,6 +96,8 @@ use org::allbinary::logic::visual::transform::info::TransformInfoDomNode ();
 use org::allbinary::logic::visual::transform::info::TransformInfoHttpInterface ();
 use org::allbinary::logic::visual::transform::info::TransformInfoInterface ();
 use org::allbinary::logic::visual::transform::info::objectConfig::generator::StoreFileGenerator ();
+use org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory ();
+use org::allbinary::logic::communication::log::config::type::LogConfigTypes ();
 
 1;
 

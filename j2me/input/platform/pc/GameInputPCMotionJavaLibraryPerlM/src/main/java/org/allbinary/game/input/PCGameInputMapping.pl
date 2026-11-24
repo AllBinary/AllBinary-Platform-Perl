@@ -33,7 +33,7 @@ sub new {
 sub init {
     my ($self, $abeClientInformation) = @_;
         $self->{logUtil}->putF($self->{commonStrings}->{START}, $self, $self->{commonStrings}->{INIT});
-        'org::allbinary::game::input::PCKeyFactory'->getInstance();
+        java::lang::Object::jstatic('org::allbinary::game::input::PCGameInputMapping', 'PCKeyFactory')->getInstance();
         'org::allbinary::input::motion::gesture::TouchMotionGestureFactory'->getInstance();
         'org::allbinary::input::motion::gesture::TrackballMotionGestureFactory'->getInstance();
         'org::allbinary::input::motion::button::BasicTouchInputFactory'->getInstance();
@@ -47,7 +47,7 @@ sub init {
 
 sub isDelete {
     my ($self, $input) = @_;
-        if ($input == 'org::allbinary::game::input::PCKeyFactory'->getInstance()->{DEL}) {
+        if ($input == java::lang::Object::jstatic('org::allbinary::game::input::PCGameInputMapping', 'PCKeyFactory')->getInstance()->{DEL}) {
             return 1;
         } else {
             return 0;
@@ -67,7 +67,6 @@ use org::allbinary::input::motion::button::BasicTouchInputFactory ();
 use org::allbinary::input::motion::gesture::TouchMotionGestureFactory ();
 use org::allbinary::input::motion::gesture::TrackballMotionGestureFactory ();
 use org::allbinary::logic::system::security::licensing::AbeClientInformationInterface ();
-use org::allbinary::game::input::PCKeyFactory ();
 
 1;
 

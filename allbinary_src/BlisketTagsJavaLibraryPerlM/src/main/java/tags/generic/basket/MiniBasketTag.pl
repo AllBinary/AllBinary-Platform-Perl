@@ -35,7 +35,7 @@ sub doStartTag {
             $self->setName("Mini Basket View");
             $self->setObjectFile("views.generic.basket.mini.ValidationView");
             if (defined($self->getCommand())) {
-                if ($self->getCommand()->compareTo($tags::generic::basket::org::allbinary->{globals}->{GLOBALS2}->{VIEW}) == 0) {
+                if ($self->getCommand()->compareTo($org::allbinary::globals::GLOBALS2::VIEW) == 0) {
                 } else {
                     die ("No Such View Command: " . $self->getCommand());
                 }
@@ -44,7 +44,7 @@ sub doStartTag {
             die ("Command Null");
         } catch ($e) {
             'org::allbinary::logic::communication::http::request::AbResponseHandler'->sendJspTagLicensingRedirect($self->{pageContext}, $e);
-            return $self->{SKIP_BODY};
+            return java::lang::Object::jstatic('tags::generic::basket::MiniBasketTag', 'SKIP_BODY');
         }
 }
 
@@ -53,6 +53,7 @@ use java::lang::Object ();
 use org::allbinary::logic::communication::http::request::AbResponseHandler ();
 use org::allbinary::logic::system::security::licensing::LicensingException ();
 use tags::StoreValidationTransformTag ();
+use org::allbinary::globals::GLOBALS2 ();
 
 1;
 

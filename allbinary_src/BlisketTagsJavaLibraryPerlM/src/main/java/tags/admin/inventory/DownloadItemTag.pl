@@ -33,7 +33,7 @@ sub doStartTag {
     my ($self) = @_;
         try {
             if (defined($self->getCommand())) {
-                if ($self->getCommand()->compareTo($tags::admin::inventory::org::allbinary->{globals}->{GLOBALS2}->{VIEW}) == 0) {
+                if ($self->getCommand()->compareTo($org::allbinary::globals::GLOBALS2::VIEW) == 0) {
                     die ("No Such View Command: " . $self->getCommand());
                 } elsif ($self->getCommand()->compareTo($self->{commonStrings}->{INSERT}) == 0) {
                     $self->setName("Add Inventory Item Validation View");
@@ -41,10 +41,10 @@ sub doStartTag {
                 } elsif ($self->getCommand()->compareTo($self->{commonStrings}->{DELETE}) == 0) {
                     $self->setName("Delete Inventory Item Validation View");
                     $self->setObjectFile("views.admin.inventory.download.DeleteFileValidationView");
-                } elsif ($self->getCommand()->compareTo($tags::admin::inventory::org::allbinary->{globals}->{GLOBALS2}->{EDIT}) == 0) {
+                } elsif ($self->getCommand()->compareTo($org::allbinary::globals::GLOBALS2::EDIT) == 0) {
                     $self->setName("Edit Inventory Item Validation View");
                     $self->setObjectFile("views.admin.inventory.download.EditValidationView");
-                } elsif ($self->getCommand()->compareTo($tags::admin::inventory::org::allbinary->{globals}->{GLOBALS2}->{NEW}) == 0) {
+                } elsif ($self->getCommand()->compareTo($org::allbinary::globals::GLOBALS2::NEW) == 0) {
                     $self->setName("New Inventory Item Validation View");
                     $self->setObjectFile("views.admin.inventory.download.NewValidationView");
                 } elsif ($self->getCommand()->compareTo($self->{commonStrings}->{UPDATE}) == 0) {
@@ -58,7 +58,7 @@ sub doStartTag {
             die ("Command Null");
         } catch ($e) {
             'org::allbinary::logic::communication::http::request::AbResponseHandler'->sendJspTagLicensingRedirect($self->{pageContext}, $e);
-            return $self->{SKIP_BODY};
+            return java::lang::Object::jstatic('tags::admin::inventory::DownloadItemTag', 'SKIP_BODY');
         }
 }
 
@@ -67,6 +67,7 @@ use java::lang::Object ();
 use org::allbinary::logic::communication::http::request::AbResponseHandler ();
 use org::allbinary::logic::system::security::licensing::LicensingException ();
 use tags::StoreValidationTransformTag ();
+use org::allbinary::globals::GLOBALS2 ();
 
 1;
 

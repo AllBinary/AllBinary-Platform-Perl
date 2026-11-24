@@ -69,7 +69,7 @@ sub _new6 {
 
 sub isIdValid {
     my ($self) = @_;
-        if (!defined($self->getId()) || $self->getId()->compareTo('org::allbinary::logic::string::StringUtil'->getInstance()->{EMPTY_STRING}) == 0 || $self->getId()->length() > $org::allbinary::business::user::commerce::inventory::order::OrderHistoryData::MAXIDLEN || !'org::allbinary::logic::string::StringValidationUtil'->getInstance()->isNumber($self->getId())) {
+        if (!defined($self->getId()) || $self->getId()->compareTo('org::allbinary::logic::string::StringUtil'->getInstance()->{EMPTY_STRING}) == 0 || $self->getId()->length() > java::lang::Object::jstatic('org::allbinary::business::user::commerce::inventory::order::Order', 'OrderHistoryData')->{MAXIDLEN} || !'org::allbinary::logic::string::StringValidationUtil'->getInstance()->isNumber($self->getId())) {
             return 0;
         }
         return 1;
@@ -85,8 +85,8 @@ sub isValid {
 sub getIdValidationInfo {
     my ($self) = @_;
         my $EMPTY_STRING = 'org::allbinary::logic::string::StringUtil'->getInstance()->{EMPTY_STRING};
-        if (!defined($self->getId()) || $self->getId()->compareTo($EMPTY_STRING) == 0 || $self->getId()->length() > $org::allbinary::business::user::commerce::inventory::order::OrderHistoryData::MAXIDLEN || !'org::allbinary::logic::string::StringValidationUtil'->getInstance()->isNumber($self->getId())) {
-            return "Please enter a valid order Id < " . $org::allbinary::business::user::commerce::inventory::order::OrderHistoryData::MAXIDLEN . " digits in length.<br>";
+        if (!defined($self->getId()) || $self->getId()->compareTo($EMPTY_STRING) == 0 || $self->getId()->length() > java::lang::Object::jstatic('org::allbinary::business::user::commerce::inventory::order::Order', 'OrderHistoryData')->{MAXIDLEN} || !'org::allbinary::logic::string::StringValidationUtil'->getInstance()->isNumber($self->getId())) {
+            return "Please enter a valid order Id < " . java::lang::Object::jstatic('org::allbinary::business::user::commerce::inventory::order::Order', 'OrderHistoryData')->{MAXIDLEN} . " digits in length.<br>";
         }
         return $EMPTY_STRING;
 }
@@ -231,11 +231,11 @@ sub toHashMapOrder {
         $hashMap->put($org::allbinary::business::user::commerce::shipping::ShippingMethodData::NAME, $self->{shippingType});
         $hashMap->put('org::allbinary::business::context::modules::storefront::StoreFrontData'->getInstance()->{NAME}, $self->{storeName});
         $hashMap->put('org::allbinary::business::entry::EntryData'->getInstance()->{SPECIAL}, $self->{special});
-        $hashMap->put($org::allbinary::business::user::commerce::inventory::order::OrderData::ID, $self->{id});
-        $hashMap->put($org::allbinary::business::user::commerce::inventory::order::OrderData::CUSTOMERCOMMENT, $self->{userComment});
-        $hashMap->put($org::allbinary::business::user::commerce::inventory::order::OrderData::CUSTOMERCANCELCOMMENT, $self->{userCancelComment});
-        $hashMap->put($org::allbinary::business::user::commerce::inventory::order::OrderData::STORECOMMENT, $self->{storeComment});
-        $hashMap->put($org::allbinary::business::user::commerce::inventory::order::OrderData::STORECANCELCOMMENT, $self->{storeCancelComment});
+        $hashMap->put(java::lang::Object::jstatic('org::allbinary::business::user::commerce::inventory::order::Order', 'OrderData')->{ID}, $self->{id});
+        $hashMap->put(java::lang::Object::jstatic('org::allbinary::business::user::commerce::inventory::order::Order', 'OrderData')->{CUSTOMERCOMMENT}, $self->{userComment});
+        $hashMap->put(java::lang::Object::jstatic('org::allbinary::business::user::commerce::inventory::order::Order', 'OrderData')->{CUSTOMERCANCELCOMMENT}, $self->{userCancelComment});
+        $hashMap->put(java::lang::Object::jstatic('org::allbinary::business::user::commerce::inventory::order::Order', 'OrderData')->{STORECOMMENT}, $self->{storeComment});
+        $hashMap->put(java::lang::Object::jstatic('org::allbinary::business::user::commerce::inventory::order::Order', 'OrderData')->{STORECANCELCOMMENT}, $self->{storeCancelComment});
         return $hashMap;
 }
 
@@ -247,7 +247,7 @@ sub toXmlNode {
         my $keySet = $hashMap->keySet();
         my $keyArray = $keySet->toArray();
         my $size = scalar(@{$keyArray});
-        my $node = $document->createElement($org::allbinary::business::user::commerce::inventory::order::OrderData::ORDER);
+        my $node = $document->createElement(java::lang::Object::jstatic('org::allbinary::business::user::commerce::inventory::order::Order', 'OrderData')->{ORDER});
         for (my $i = 0; $i < $size; $i++) {
             my $name = $keyArray->[$i];
             my $value = $hashMap->get($name);
@@ -260,7 +260,7 @@ sub toXmlNode {
 use java::lang::Object ();
 # use java::io::Serializable ();
 use java::util::HashMap ();
-# use java::util::Set ();
+use java::util::Set ();
 use org::allbinary::business::context::modules::storefront::StoreFrontData ();
 use org::allbinary::business::context::modules::storefront::StoreFrontInterface ();
 use org::allbinary::business::entry::EntryData ();
@@ -273,9 +273,6 @@ use org::allbinary::logic::string::StringUtil ();
 use org::allbinary::logic::string::StringValidationUtil ();
 use org::w3c::dom::Document ();
 use org::w3c::dom::Node ();
-use org::allbinary::business::user::commerce::inventory::order::OrderInterface ();
-use org::allbinary::business::user::commerce::inventory::order::OrderHistoryData ();
-use org::allbinary::business::user::commerce::inventory::order::OrderData ();
 
 1;
 

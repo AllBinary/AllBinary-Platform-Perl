@@ -35,7 +35,7 @@ sub getInstance {
 
 sub createFakeRTSLayerHashtable {
     my ($self, $baseRaceTrackGeographicMap) = @_;
-        my $hashtable = 'org::allbinary::game::layer::RTSLayerUtil'->getInstance()->createFakeRTSLayerHashtable($baseRaceTrackGeographicMap);
+        my $hashtable = java::lang::Object::jstatic('org::allbinary::game::layer::AdvancedRTSLayerUtil', 'RTSLayerUtil')->getInstance()->createFakeRTSLayerHashtable($baseRaceTrackGeographicMap);
         $hashtable->put($org::allbinary::game::layer::waypoint::WorkWaypoint::ID, 'org::allbinary::logic::math::SmallIntegerSingletonFactory'->getInstance()->getAt(50));
         return $hashtable;
 }
@@ -46,7 +46,6 @@ use org::allbinary::game::layer::waypoint::WorkWaypoint ();
 use org::allbinary::logic::math::SmallIntegerSingletonFactory ();
 use org::allbinary::media::graphics::geography::map::racetrack::BaseRaceTrackGeographicMap ();
 use org::allbinary::util::ABHashtable ();
-use org::allbinary::game::layer::RTSLayerUtil ();
 
 1;
 

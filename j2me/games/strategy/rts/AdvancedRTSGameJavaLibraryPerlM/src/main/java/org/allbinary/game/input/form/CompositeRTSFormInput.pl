@@ -141,7 +141,6 @@ use org::allbinary::layer::AllBinaryLayerManager ();
 use org::allbinary::media::graphics::geography::map::BasicGeographicMap ();
 use org::allbinary::media::graphics::geography::map::GeographicMapCompositeInterface ();
 use org::allbinary::string::CommonLabels ();
-use org::allbinary::game::input::form::RTSFormInput ();
 use org::allbinary::game::input::form::WaypointRTSFormInput ();
 use org::allbinary::game::input::form::UnitRTSFormInput ();
 

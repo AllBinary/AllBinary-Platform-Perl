@@ -35,30 +35,41 @@ sub getInstance {
 
 
 # throws Exception
-sub translate {
+sub translate_j2_1 {
     my ($self, $xslFile, $xmlFile) = @_;
         return $self->translate($xslFile->getAbsolutePath(), $xmlFile->getAbsolutePath());
 }
 
 
 # throws Exception
-# Java overloaded method: Perl keeps the last definition
-sub translate {
+sub translate_j2_2 {
     my ($self, $xslPath, $xmlPath) = @_;
         return $self->translate($xslPath->getPath(), $xmlPath->getPath());
 }
 
 
 # throws Exception
-# Java overloaded method: Perl keeps the last definition
-sub translate {
+sub translate_j2_3 {
     my ($self, $xsltFilePath, $xmlFilePath) = @_;
         try {
             my $outputStream = 'java::io::ByteArrayOutputStream'->new();
-            return 'org::allbinary::data::tree::dom::XslHelper'->getInstance()->translate('javax::xml::transform::stream::StreamSource'->new($xsltFilePath), 'javax::xml::transform::stream::StreamSource'->new($xmlFilePath), 'javax::xml::transform::stream::StreamResult'->new($outputStream))->toString();
+            return java::lang::Object::jstatic('org::allbinary::data::tree::dom::AbXslHelper', 'XslHelper')->getInstance()->translate('javax::xml::transform::stream::StreamSource'->new($xsltFilePath), 'javax::xml::transform::stream::StreamSource'->new($xmlFilePath), 'javax::xml::transform::stream::StreamResult'->new($outputStream))->toString();
         } catch ($e) {
             die $e;
         }
+}
+
+sub translate {
+    my ($invocant, @arguments) = @_;
+    return $invocant->translate_j2(@arguments) if scalar(@arguments) == 2;
+    die "No method translate takes " . scalar(@arguments) . " arguments";
+}
+
+sub translate_j2 {
+    my ($invocant, @arguments) = @_;
+    return $invocant->translate_j2_1(@arguments) if 1 && (!defined($arguments[0]) || (ref($arguments[0]) && ref($arguments[0]) ne 'ARRAY')) && (!defined($arguments[1]) || (ref($arguments[1]) && ref($arguments[1]) ne 'ARRAY'));
+    return $invocant->translate_j2_2(@arguments) if 1 && (!defined($arguments[0]) || (ref($arguments[0]) && ref($arguments[0]) ne 'ARRAY')) && (!defined($arguments[1]) || (ref($arguments[1]) && ref($arguments[1]) ne 'ARRAY'));
+    return $invocant->translate_j2_3(@arguments);
 }
 
 use java::lang::Object ();
@@ -68,7 +79,6 @@ use java::lang::LazyStatic ();
 # use javax::xml::transform::stream::StreamSource ();
 use org::allbinary::logic::io::file::AbFile ();
 use org::allbinary::logic::io::path::AbPath ();
-use org::allbinary::data::tree::dom::XslHelper ();
 
 1;
 

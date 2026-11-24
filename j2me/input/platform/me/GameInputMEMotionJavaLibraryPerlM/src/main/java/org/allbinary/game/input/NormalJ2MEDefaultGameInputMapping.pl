@@ -26,7 +26,7 @@ sub new {
     my $self = $class->SUPER::new('org::allbinary::game::configuration::persistance::GamePersistanceStrings'->getInstance()->{DEFAULT_INPUT_MAPPING_RECORD_ID});
         # super(...) made $self above
         my $inputToGameKeyMapping = $self->getInputMapping();
-        my $gameKeyFactory = 'org::allbinary::game::input::GameKeyFactory'->getInstance();
+        my $gameKeyFactory = java::lang::Object::jstatic('org::allbinary::game::input::NormalJ2MEDefaultGameInputMapping', 'GameKeyFactory')->getInstance();
         $inputToGameKeyMapping->add($gameKeyFactory->{UP}, $gameKeyFactory->{KEY_NUM2});
         $inputToGameKeyMapping->add($gameKeyFactory->{LEFT}, $gameKeyFactory->{KEY_NUM4});
         $inputToGameKeyMapping->add($gameKeyFactory->{RIGHT}, $gameKeyFactory->{KEY_NUM6});
@@ -57,7 +57,6 @@ use java::lang::Object ();
 use org::allbinary::game::configuration::persistance::GamePersistanceStrings ();
 use org::allbinary::game::input::mapping::InputToGameKeyMapping ();
 use org::allbinary::game::input::mapping::PersistentInputMapping ();
-use org::allbinary::game::input::GameKeyFactory ();
 
 1;
 

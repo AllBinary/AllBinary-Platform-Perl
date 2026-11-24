@@ -95,7 +95,7 @@ sub view {
             $self->addDomNodeInterfaces();
             return $self->SUPER::view();
         } catch ($e) {
-            if ($views::admin::orderhistory::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($views::admin::orderhistory::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{TAGHELPERERROR})) {
+            if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{TAGHELPERERROR})) {
                 $self->{logUtil}->put($self->{commonStrings}->{EXCEPTION}, $self, "view()", $e);
             }
             die $e;
@@ -106,7 +106,7 @@ sub view {
 sub toXmlNode {
     my ($self, $document) = @_;
         try {
-            if ($views::admin::orderhistory::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($views::admin::orderhistory::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{VIEW})) {
+            if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{VIEW})) {
                 my $stringBuffer = 'org::allbinary::logic::string::StringMaker'->new();
                 $stringBuffer->append("Attempt to View orders in (fromDate=");
                 $stringBuffer->append($self->{fromDate});
@@ -117,7 +117,7 @@ sub toXmlNode {
             }
             my $node = $document->createElement($org::allbinary::business::user::commerce::inventory::order::OrderData::ORDERS);
             if (defined($self->{preprocessing}) && ($self->{preprocessing} cmp $self->{ON}) == 0) {
-                if ($views::admin::orderhistory::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($views::admin::orderhistory::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{VIEW})) {
+                if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{VIEW})) {
                     $self->{logUtil}->putF("Adding Preprocessing Orders", $self, "toXmlNode");
                 }
                 my $orderHistoryVector = 'org::allbinary::data::tables::user::commerce::inventory::order::OrderHistoryEntityFactory'->getInstance()->getOrders($org::allbinary::business::user::commerce::inventory::order::OrderHistoryData::PREPROCESSING, $self->{fromDate}, $self->{toDate});
@@ -128,7 +128,7 @@ sub toXmlNode {
                 }
             }
             if (defined($self->{shipped}) && ($self->{shipped} cmp $self->{ON}) == 0) {
-                if ($views::admin::orderhistory::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($views::admin::orderhistory::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{VIEW})) {
+                if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{VIEW})) {
                     $self->{logUtil}->putF("Adding Shipped Orders", $self, "toXmlNode");
                 }
                 my $orderHistoryVector = 'org::allbinary::data::tables::user::commerce::inventory::order::OrderHistoryEntityFactory'->getInstance()->getOrders($org::allbinary::business::user::commerce::inventory::order::OrderHistoryData::SHIPPED, $self->{fromDate}, $self->{toDate});
@@ -139,7 +139,7 @@ sub toXmlNode {
                 }
             }
             if (defined($self->{partiallyShipped}) && ($self->{partiallyShipped} cmp $self->{ON}) == 0) {
-                if ($views::admin::orderhistory::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($views::admin::orderhistory::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{VIEW})) {
+                if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{VIEW})) {
                     $self->{logUtil}->putF("Adding Partially Shipped Orders", $self, "toDomNode");
                 }
                 my $orderHistoryVector = 'org::allbinary::data::tables::user::commerce::inventory::order::OrderHistoryEntityFactory'->getInstance()->getOrders($org::allbinary::business::user::commerce::inventory::order::OrderHistoryData::PARTIALLYSHIPPED, $self->{fromDate}, $self->{toDate});
@@ -150,7 +150,7 @@ sub toXmlNode {
                 }
             }
             if (defined($self->{processing}) && ($self->{processing} cmp $self->{ON}) == 0) {
-                if ($views::admin::orderhistory::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($views::admin::orderhistory::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{VIEW})) {
+                if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{VIEW})) {
                     $self->{logUtil}->putF("Adding Processing Orders", $self, "toXmlNode");
                 }
                 my $orderHistoryVector = 'org::allbinary::data::tables::user::commerce::inventory::order::OrderHistoryEntityFactory'->getInstance()->getOrders($org::allbinary::business::user::commerce::inventory::order::OrderHistoryData::PROCESSING, $self->{fromDate}, $self->{toDate});
@@ -161,7 +161,7 @@ sub toXmlNode {
                 }
             }
             if (defined($self->{cancelled}) && ($self->{cancelled} cmp $self->{ON}) == 0) {
-                if ($views::admin::orderhistory::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($views::admin::orderhistory::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{VIEW})) {
+                if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{VIEW})) {
                     $self->{logUtil}->putF("Adding Cancelled Orders", $self, "view");
                 }
                 my $orderHistoryVector = 'org::allbinary::data::tables::user::commerce::inventory::order::OrderHistoryEntityFactory'->getInstance()->getOrders($org::allbinary::business::user::commerce::inventory::order::OrderHistoryData::CANCELLED, $self->{fromDate}, $self->{toDate});
@@ -179,7 +179,7 @@ sub toXmlNode {
             $node->appendChild('org::allbinary::data::tree::dom::ModDomHelper'->createNameValueNodes($document, $org::allbinary::globals::GLOBALS2::VIEWNAME, $org::allbinary::globals::GLOBALS2::VIEW));
             return $node;
         } catch ($e) {
-            if ($views::admin::orderhistory::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($views::admin::orderhistory::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{XSLLOGGINGERROR})) {
+            if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{XSLLOGGINGERROR})) {
                 $self->{logUtil}->put($self->{commonStrings}->{FAILURE}, $self, "toXmlNode", $e);
             }
             return undef;
@@ -232,7 +232,7 @@ sub isValid {
                     $isValid = 0;
                 }
             }
-            if ($views::admin::orderhistory::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($views::admin::orderhistory::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{VIEW})) {
+            if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{VIEW})) {
                 my $stringBuffer = 'org::allbinary::logic::string::StringMaker'->new();
                 $stringBuffer->append("Attempt to View orders in (fromDate=");
                 $stringBuffer->append($self->{fromDate});
@@ -243,7 +243,7 @@ sub isValid {
             }
             return $isValid;
         } catch ($e) {
-            if ($views::admin::orderhistory::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($views::admin::orderhistory::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{VIEW})) {
+            if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{VIEW})) {
                 $self->{logUtil}->put("Exception in validation", $self, $self->{commonStrings}->{IS_VALID}, $e);
             }
             return 0;
@@ -279,7 +279,7 @@ sub validationInfo {
             }
             return $result->toString();
         } catch ($e) {
-            if ($views::admin::orderhistory::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($views::admin::orderhistory::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{VIEWERROR})) {
+            if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{VIEWERROR})) {
                 $self->{logUtil}->put("Failed to generate validation error info", $self, "validationInfo()", $e);
             }
             return "Error Getting Validation Info";
@@ -315,6 +315,8 @@ use org::allbinary::time::TimeUtil ();
 use org::w3c::dom::Document ();
 use org::w3c::dom::Node ();
 use views::business::context::modules::storefront::HttpStoreComponentView ();
+use org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory ();
+use org::allbinary::logic::communication::log::config::type::LogConfigTypes ();
 
 1;
 

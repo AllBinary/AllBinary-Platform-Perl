@@ -36,21 +36,33 @@ sub new {
     die "No constructor of TransformInfoDomNode takes " . scalar(@arguments) . " arguments";
 }
 
-
 sub _new1 {
+    my ($class, @arguments) = @_;
+    return $class->_new1_1(@arguments) if 1 && (!defined($arguments[0]) || (ref($arguments[0]) && ref($arguments[0]) ne 'ARRAY'));
+    return $class->_new1_2(@arguments);
+}
+
+sub _new2 {
+    my ($class, @arguments) = @_;
+    return $class->_new2_1(@arguments) if 1 && (!defined($arguments[0]) || (ref($arguments[0]) && ref($arguments[0]) ne 'ARRAY')) && !ref($arguments[1]);
+    return $class->_new2_2(@arguments);
+}
+
+
+sub _new1_1 {
     my ($class, $node) = @_;
     my $self = bless({}, $class);
     _init_fields($self);
-        if ($org::allbinary::logic::visual::transform::info::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($org::allbinary::logic::visual::transform::info::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{VIEW})) {
+        if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{VIEW})) {
             $self->{logUtil}->putF("Constructing TransformInfo From TransformInfoDomNode: " . $node->getNodeName(), $self, "TransformInfoDomNode(Node node)");
         }
-        my $transformInfoData = 'org::allbinary::logic::visual::transform::info::TransformInfoData'->getInstance();
+        my $transformInfoData = java::lang::Object::jstatic('org::allbinary::logic::visual::transform::info::TransformInfoDomNode', 'TransformInfoData')->getInstance();
         my $attributes = $node->getAttributes();
         my $attrNode = $attributes->getNamedItem($transformInfoData->{NAME});
         my $name = $attrNode->getValue();
         my $nodeList = $node->getChildNodes();
         if ($nodeList->getLength() > 1) {
-            if ($org::allbinary::logic::visual::transform::info::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($org::allbinary::logic::visual::transform::info::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{VIEW})) {
+            if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{VIEW})) {
                 my $stringBuffer = 'org::allbinary::logic::string::StringMaker'->new();
                 $stringBuffer->append("Constructing Complete TransformInfo Node For: ");
                 $stringBuffer->append($name);
@@ -69,7 +81,7 @@ sub _new1 {
             my $dataFileName = 'org::allbinary::data::tree::dom::DomNodeHelper'->getTextNodeValue($dataFileNameNode);
             $self->{transformInfoInterface} = 'org::allbinary::logic::visual::transform::info::TransformInfo'->new($name, $objectFileName, $objectConfigFileName, $templateFileName, $dataFileName);
         } else {
-            if ($org::allbinary::logic::visual::transform::info::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($org::allbinary::logic::visual::transform::info::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{VIEW})) {
+            if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{VIEW})) {
                 my $stringBuffer = 'org::allbinary::logic::string::StringMaker'->new();
                 $stringBuffer->append("Constructing Partial TransformInfo Node For: ");
                 $stringBuffer->append($name);
@@ -90,7 +102,7 @@ sub _new1 {
 }
 
 
-sub _new1 {
+sub _new1_2 {
     my ($class, $transformInfoInterface) = @_;
     my $self = bless({}, $class);
     _init_fields($self);
@@ -100,7 +112,7 @@ sub _new1 {
 }
 
 
-sub _new2 {
+sub _new2_1 {
     my ($class, $transformInfoInterface, $mappedName) = @_;
     my $self = bless({}, $class);
     _init_fields($self);
@@ -110,7 +122,7 @@ sub _new2 {
 }
 
 
-sub _new2 {
+sub _new2_2 {
     my ($class, $name, $mappedName) = @_;
     my $self = bless({}, $class);
     _init_fields($self);
@@ -139,7 +151,7 @@ sub getReplaceKey {
         $stringBuffer->append("body");
         $stringBuffer->append("\"/>");
         my $key = $stringBuffer->toString();
-        if ($org::allbinary::logic::visual::transform::info::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($org::allbinary::logic::visual::transform::info::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{VIEW})) {
+        if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{VIEW})) {
             $self->{logUtil}->putF("Component Key: " . $key, $self, "getReplaceKey()");
         }
         return $key;
@@ -154,7 +166,8 @@ use org::w3c::dom::Attr ();
 use org::w3c::dom::NamedNodeMap ();
 use org::w3c::dom::Node ();
 use org::w3c::dom::NodeList ();
-use org::allbinary::logic::visual::transform::info::TransformInfoData ();
+use org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory ();
+use org::allbinary::logic::communication::log::config::type::LogConfigTypes ();
 use org::allbinary::logic::visual::transform::info::TransformInfo ();
 
 1;

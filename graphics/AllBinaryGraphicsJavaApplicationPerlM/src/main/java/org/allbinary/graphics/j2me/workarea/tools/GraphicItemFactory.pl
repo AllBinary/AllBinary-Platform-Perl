@@ -28,7 +28,7 @@ sub _init_fields {
 }
 
 
-sub getInstance {
+sub getInstance_j0 {
     my ($class) = @_;
         return $org::allbinary::graphics::j2me::workarea::tools::GraphicItemFactory::instance;
 }
@@ -44,8 +44,7 @@ sub new {
 }
 
 
-# Java overloaded method: Perl keeps the last definition
-sub getInstance {
+sub getInstance_j1_1 {
     my ($self, $itemName) = @_;
         my $graphicsItemInterfaceFactoryInterface = $self->{graphicItems}->get($itemName);
         if (!defined($graphicsItemInterfaceFactoryInterface)) {
@@ -56,8 +55,7 @@ sub getInstance {
 
 
 # throws Exception
-# Java overloaded method: Perl keeps the last definition
-sub getInstance {
+sub getInstance_j1_2 {
     my ($self, $graphicItemNodeList) = @_;
         my $numberOfItems = $graphicItemNodeList->size();
         my $graphicItemHashMap = 'org::allbinary::logic::StdUtil'->getInstance()->createHashMap();
@@ -68,6 +66,19 @@ sub getInstance {
             $graphicItemHashMap->put($graphicItem->getTreeNode(), $graphicItem);
         }
         return $graphicItemHashMap;
+}
+
+sub getInstance {
+    my ($invocant, @arguments) = @_;
+    return $invocant->getInstance_j0(@arguments) if scalar(@arguments) == 0;
+    return $invocant->getInstance_j1(@arguments) if scalar(@arguments) == 1;
+    die "No method getInstance takes " . scalar(@arguments) . " arguments";
+}
+
+sub getInstance_j1 {
+    my ($invocant, @arguments) = @_;
+    return $invocant->getInstance_j1_1(@arguments) if 1 && !ref($arguments[0]);
+    return $invocant->getInstance_j1_2(@arguments);
 }
 
 use java::lang::Object ();

@@ -40,7 +40,7 @@ sub init {
 }
 
 
-sub create {
+sub create_j0 {
     my ($class) = @_;
         try {
             my $factory = 'javax::xml::parsers::DocumentBuilderFactory'->newInstance();
@@ -54,8 +54,7 @@ sub create {
 
 
 # throws Exception
-# Java overloaded method: Perl keeps the last definition
-sub create {
+sub create_j1_1 {
     my ($class, $inputStream) = @_;
         try {
             my $factory = 'javax::xml::parsers::DocumentBuilderFactory'->newInstance();
@@ -69,8 +68,7 @@ sub create {
 
 
 # throws Exception
-# Java overloaded method: Perl keeps the last definition
-sub create {
+sub create_j1_2 {
     my ($class, $xmlString) = @_;
         try {
             my $factory = 'javax::xml::parsers::DocumentBuilderFactory'->newInstance();
@@ -80,6 +78,19 @@ sub create {
         } catch ($e) {
             die $e;
         }
+}
+
+sub create {
+    my ($invocant, @arguments) = @_;
+    return $invocant->create_j0(@arguments) if scalar(@arguments) == 0;
+    return $invocant->create_j1(@arguments) if scalar(@arguments) == 1;
+    die "No method create takes " . scalar(@arguments) . " arguments";
+}
+
+sub create_j1 {
+    my ($invocant, @arguments) = @_;
+    return $invocant->create_j1_1(@arguments) if 1 && (!defined($arguments[0]) || (ref($arguments[0]) && ref($arguments[0]) ne 'ARRAY'));
+    return $invocant->create_j1_2(@arguments);
 }
 
 use java::lang::Object ();

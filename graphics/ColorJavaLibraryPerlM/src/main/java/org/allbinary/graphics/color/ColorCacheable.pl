@@ -32,7 +32,7 @@ sub new {
     my $self = bless({}, $class);
     _init_fields($self);
         $self->{key} = $key;
-        $self->{color} = 'org::allbinary::graphics::color::Color'->new(int(($key)));
+        $self->{color} = 'java::awt::Color'->new(int(($key)));
     return $self;
 }
 
@@ -55,9 +55,8 @@ sub setColor {
 }
 
 use java::lang::Object ();
-# use java::awt ();
+# use java::awt::Color ();
 use org::allbinary::logic::util::cache::CacheableInterface ();
-use org::allbinary::graphics::color::Color ();
 
 1;
 

@@ -89,7 +89,6 @@ use java::lang::LazyStatic ();
 use org::allbinary::media::graphics::geography::map::BasicGeographicMap ();
 use org::allbinary::media::graphics::geography::map::GeographicMapCellHistory ();
 use org::allbinary::util::BasicArrayList ();
-use org::allbinary::media::graphics::geography::pathfinding::PathGeneratorInterface ();
 
 1;
 

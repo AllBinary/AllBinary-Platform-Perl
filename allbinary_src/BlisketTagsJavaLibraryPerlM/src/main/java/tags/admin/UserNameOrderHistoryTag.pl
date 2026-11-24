@@ -48,7 +48,7 @@ sub doStartTag {
             $self->setName("Range Order History View");
             $self->setObjectFile("views.admin.orderhistory.UserNameOrderHistoryView");
             if (defined($self->getCommand())) {
-                if ($self->getCommand()->compareTo($tags::admin::org::allbinary->{globals}->{GLOBALS2}->{VIEW}) == 0) {
+                if ($self->getCommand()->compareTo($org::allbinary::globals::GLOBALS2::VIEW) == 0) {
                 } else {
                     die ("No Such View Command: " . $self->getCommand());
                 }
@@ -57,7 +57,7 @@ sub doStartTag {
             die ("Command Null");
         } catch ($e) {
             'org::allbinary::logic::communication::http::request::AbResponseHandler'->sendJspTagRedirect($self->{pageContext}, $e);
-            return $self->{SKIP_BODY};
+            return java::lang::Object::jstatic('tags::admin::UserNameOrderHistoryTag', 'SKIP_BODY');
         }
 }
 
@@ -65,6 +65,7 @@ use java::lang::Object ();
 # use javax::servlet::jsp::JspTagException ();
 use org::allbinary::logic::communication::http::request::AbResponseHandler ();
 use tags::StoreValidationTransformTag ();
+use org::allbinary::globals::GLOBALS2 ();
 
 1;
 

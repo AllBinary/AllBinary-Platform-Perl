@@ -71,7 +71,7 @@ sub addPixelDeltaToExistingMotionRectangle {
 sub addPixelDeltaToAMotionRectangle {
     my ($self, $pixelDelta) = @_;
         if (!$self->addPixelDeltaToExistingMotionRectangle($pixelDelta)) {
-            my $newRectangle = 'org::allbinary::media::image::comparison::motion::Rectangle'->new($pixelDelta->getPoint()->getX(), $pixelDelta->getPoint()->getY(), 1, 1);
+            my $newRectangle = 'java::awt::Rectangle'->new($pixelDelta->getPoint()->getX(), $pixelDelta->getPoint()->getY(), 1, 1);
             my $motionRectangle = 'org::allbinary::media::image::comparison::motion::MotionRectangle'->new($newRectangle);
             $motionRectangle->getPixelDeltaVector()->add($pixelDelta);
             $self->getVector()->add($motionRectangle);
@@ -110,13 +110,12 @@ sub isPixelDeltaLikelyPartOfMotionRectangle {
 }
 
 use java::lang::Object ();
-# use java::awt ();
+# use java::awt::Rectangle ();
 use org::allbinary::util::BasicArrayList ();
 use org::allbinary::util::BasicArrayListD ();
 use org::allbinary::media::image::comparison::ImageComparisonResult ();
 use org::allbinary::media::image::comparison::pixel::PixelDelta ();
 use org::allbinary::media::image::comparison::motion::MotionRectangles ();
-use org::allbinary::media::image::comparison::motion::Rectangle ();
 use org::allbinary::media::image::comparison::motion::MotionRectangle ();
 
 1;

@@ -19,7 +19,7 @@ use feature 'try';
 no warnings 'experimental::try';
 use parent -norequire,'org::allbinary::media::AllBinaryVibrationME';
 
-tie our $VIBRATION, 'java::lang::LazyStatic', sub { $org::allbinary::media::AllBinaryNoVibration::NO_VIBRATION };
+tie our $VIBRATION, 'java::lang::LazyStatic', sub { java::lang::Object::jstatic('org::allbinary::media::AllBinaryVibration', 'AllBinaryNoVibration')->{NO_VIBRATION} };
 
 
 sub new {
@@ -38,7 +38,7 @@ sub getInstance {
 sub init {
     my ($class) = @_;
         if (int('org::allbinary::game::configuration::GameConfigurationCentral'->getInstance()->{VIBRATION}->getValue()) == 0) {
-            $org::allbinary::media::AllBinaryVibration::VIBRATION = $org::allbinary::media::AllBinaryNoVibration::NO_VIBRATION;
+            $org::allbinary::media::AllBinaryVibration::VIBRATION = java::lang::Object::jstatic('org::allbinary::media::AllBinaryVibration', 'AllBinaryNoVibration')->{NO_VIBRATION};
         } else {
             $org::allbinary::media::AllBinaryVibration::VIBRATION = 'org::allbinary::media::AllBinaryVibration'->new();
         }
@@ -52,8 +52,6 @@ sub vibrate {
 use java::lang::Object ();
 use java::lang::LazyStatic ();
 use org::allbinary::game::configuration::GameConfigurationCentral ();
-use org::allbinary::media::AllBinaryVibrationME ();
-use org::allbinary::media::AllBinaryNoVibration ();
 
 1;
 

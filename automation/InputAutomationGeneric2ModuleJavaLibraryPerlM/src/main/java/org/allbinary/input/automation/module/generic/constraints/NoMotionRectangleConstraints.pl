@@ -24,9 +24,9 @@ use parent -norequire,'org::allbinary::input::automation::module::MotionRectangl
 sub new {
     my ($class) = @_;
     my $self = $class->SUPER::new();
-        $self->setMinDimension('org::allbinary::input::automation::module::generic::constraints::Dimension'->new(0, 0));
+        $self->setMinDimension('java::awt::Dimension'->new(0, 0));
         $self->setMinArea(0);
-        $self->setMaxDimension('org::allbinary::input::automation::module::generic::constraints::Dimension'->new(2147483647, 2147483647));
+        $self->setMaxDimension('java::awt::Dimension'->new(2147483647, 2147483647));
         $self->setMaxMotionRectangles(2147483647);
     return $self;
 }
@@ -38,10 +38,10 @@ sub isValid {
 }
 
 use java::lang::Object ();
-# use java::awt ();
+# use java::awt::Dimension ();
+# use java::awt::Rectangle ();
 # use java::awt::image::BufferedImage ();
 use org::allbinary::input::automation::module::MotionRectangleConstraints ();
-use org::allbinary::input::automation::module::generic::constraints::Dimension ();
 
 1;
 

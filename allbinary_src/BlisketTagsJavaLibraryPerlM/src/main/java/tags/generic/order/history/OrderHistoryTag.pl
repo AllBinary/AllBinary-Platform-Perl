@@ -66,7 +66,7 @@ sub doStartTag {
                 if ($self->getCommand()->compareTo($org::allbinary::business::user::commerce::inventory::order::OrderHistoryData::SETSTATUS) == 0) {
                     $self->getPropertiesHashMap()->put($org::allbinary::business::user::commerce::inventory::order::OrderHistoryData::STATUS, $self->{status});
                     $self->{pageContext}->getOut()->print($self->setOrderStatus());
-                } elsif ($self->getCommand()->compareTo($tags::generic::order::history::org::allbinary->{globals}->{GLOBALS2}->{VIEW}) == 0) {
+                } elsif ($self->getCommand()->compareTo($org::allbinary::globals::GLOBALS2::VIEW) == 0) {
                 } else {
                     die ("No Such View Command: " . $self->getCommand());
                 }
@@ -75,7 +75,7 @@ sub doStartTag {
             die ("Command Null");
         } catch ($e) {
             'org::allbinary::logic::communication::http::request::AbResponseHandler'->sendJspTagLicensingRedirect($self->{pageContext}, $e);
-            return $self->{SKIP_BODY};
+            return java::lang::Object::jstatic('tags::generic::order::history::OrderHistoryTag', 'SKIP_BODY');
         }
 }
 
@@ -88,6 +88,9 @@ use org::allbinary::logic::communication::log::LogUtil ();
 use org::allbinary::logic::system::security::licensing::LicensingException ();
 use taghelpers::OrderHistoryHelperFactory ();
 use tags::StoreValidationTransformTag ();
+use org::allbinary::globals::GLOBALS2 ();
+use org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory ();
+use org::allbinary::logic::communication::log::config::type::LogConfigTypes ();
 
 1;
 

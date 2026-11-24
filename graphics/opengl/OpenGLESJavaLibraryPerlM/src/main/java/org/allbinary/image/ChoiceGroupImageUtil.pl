@@ -40,7 +40,7 @@ sub init {
         my $choiceGroupFactory = 'javax::microedition::lcdui::ChoiceGroupImageFactory'->getInstance();
         my $imageArray = $choiceGroupFactory->getImageArray();
         if ($features->isDefault('org::allbinary::graphics::opengles::OpenGLFeatureFactory'->getInstance()->{OPENGL})) {
-            my $preResourceImageUtil = 'org::allbinary::image::PreResourceImageUtil'->getInstance();
+            my $preResourceImageUtil = java::lang::Object::jstatic('org::allbinary::image::ChoiceGroupImageUtil', 'PreResourceImageUtil')->getInstance();
             my $size = scalar(@{$imageArray});
             for (my $index = 0; $index < $size; $index++) {
                 $imageArray->[$index] = $preResourceImageUtil->encapsulate($imageArray->[$index]);
@@ -50,13 +50,13 @@ sub init {
 }
 
 
-sub update {
+sub update_j1_1 {
     my ($self, $gl) = @_;
         my $features = 'org::allbinary::game::configuration::feature::Features'->getInstance();
         my $choiceGroupFactory = 'javax::microedition::lcdui::ChoiceGroupImageFactory'->getInstance();
         my $imageArray = $choiceGroupFactory->getImageArray();
         if ($features->isDefault('org::allbinary::graphics::opengles::OpenGLFeatureFactory'->getInstance()->{OPENGL})) {
-            my $preResourceImageUtil = 'org::allbinary::image::PreResourceImageUtil'->getInstance();
+            my $preResourceImageUtil = java::lang::Object::jstatic('org::allbinary::image::ChoiceGroupImageUtil', 'PreResourceImageUtil')->getInstance();
             my $size = scalar(@{$imageArray});
             for (my $index = 0; $index < $size; $index++) {
                 $preResourceImageUtil->updateGL($gl, $imageArray->[$index]);
@@ -66,20 +66,31 @@ sub update {
 }
 
 
-# Java overloaded method: Perl keeps the last definition
-sub update {
+sub update_j1_2 {
     my ($self, $graphics) = @_;
         my $features = 'org::allbinary::game::configuration::feature::Features'->getInstance();
         my $choiceGroupFactory = 'javax::microedition::lcdui::ChoiceGroupImageFactory'->getInstance();
         my $imageArray = $choiceGroupFactory->getImageArray();
         if ($features->isDefault('org::allbinary::graphics::opengles::OpenGLFeatureFactory'->getInstance()->{OPENGL})) {
-            my $preResourceImageUtil = 'org::allbinary::image::PreResourceImageUtil'->getInstance();
+            my $preResourceImageUtil = java::lang::Object::jstatic('org::allbinary::image::ChoiceGroupImageUtil', 'PreResourceImageUtil')->getInstance();
             my $size = scalar(@{$imageArray});
             for (my $index = 0; $index < $size; $index++) {
                 $preResourceImageUtil->update($graphics, $imageArray->[$index]);
             }
         }
         $choiceGroupFactory->init($imageArray);
+}
+
+sub update {
+    my ($invocant, @arguments) = @_;
+    return $invocant->update_j1(@arguments) if scalar(@arguments) == 1;
+    die "No method update takes " . scalar(@arguments) . " arguments";
+}
+
+sub update_j1 {
+    my ($invocant, @arguments) = @_;
+    return $invocant->update_j1_1(@arguments) if 1 && (!defined($arguments[0]) || (ref($arguments[0]) && ref($arguments[0]) ne 'ARRAY'));
+    return $invocant->update_j1_2(@arguments);
 }
 
 use java::lang::Object ();
@@ -90,7 +101,6 @@ use javax::microedition::lcdui::Graphics ();
 use javax::microedition::lcdui::Image ();
 use org::allbinary::graphics::opengles::OpenGLFeatureFactory ();
 use org::allbinary::game::configuration::feature::Features ();
-use org::allbinary::image::PreResourceImageUtil ();
 
 1;
 

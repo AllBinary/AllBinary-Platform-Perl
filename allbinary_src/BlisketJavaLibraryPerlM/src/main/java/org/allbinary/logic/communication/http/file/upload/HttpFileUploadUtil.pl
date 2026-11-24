@@ -57,7 +57,7 @@ sub isValid {
 
 
 # throws Exception
-sub log {
+sub log_j1_1 {
     my ($class, $fileItem) = @_;
         my $logUtil = 'org::allbinary::logic::communication::log::LogUtil'->getInstance();
         my $stringBuffer = 'org::allbinary::logic::string::StringMaker'->new();
@@ -75,14 +75,13 @@ sub log {
         $stringBuffer->append($commonSeps->{NEW_LINE});
         $stringBuffer->append("Size:");
         $stringBuffer->append(" Not Calculated Yet");
-        if ($org::allbinary::logic::communication::http::file::upload::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($org::allbinary::logic::communication::http::file::upload::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{HTTP})) {
+        if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{HTTP})) {
             $logUtil->putF($stringBuffer->toString(), __PACKAGE__->getInstance(), "log()");
         }
 }
 
 
-# Java overloaded method: Perl keeps the last definition
-sub log {
+sub log_j1_2 {
     my ($class, $fileItem) = @_;
         my $logUtil = 'org::allbinary::logic::communication::log::LogUtil'->getInstance();
         my $stringBuffer = 'org::allbinary::logic::string::StringMaker'->new();
@@ -100,9 +99,21 @@ sub log {
         $stringBuffer->append($commonSeps->{NEW_LINE});
         $stringBuffer->append("Size:");
         $stringBuffer->appendlong(int($fileItem->getSize()));
-        if ($org::allbinary::logic::communication::http::file::upload::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($org::allbinary::logic::communication::http::file::upload::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{HTTPREQUEST})) {
+        if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{HTTPREQUEST})) {
             $logUtil->putF($stringBuffer->toString(), __PACKAGE__->getInstance(), "log()");
         }
+}
+
+sub log {
+    my ($invocant, @arguments) = @_;
+    return $invocant->log_j1(@arguments) if scalar(@arguments) == 1;
+    die "No method log takes " . scalar(@arguments) . " arguments";
+}
+
+sub log_j1 {
+    my ($invocant, @arguments) = @_;
+    return $invocant->log_j1_1(@arguments) if 1 && (!defined($arguments[0]) || (ref($arguments[0]) && ref($arguments[0]) ne 'ARRAY'));
+    return $invocant->log_j1_2(@arguments);
 }
 
 use java::lang::Object ();
@@ -113,6 +124,8 @@ use org::allbinary::logic::string::StringMaker ();
 use org::allbinary::string::CommonSeps ();
 use org::apache::commons::fileupload::FileItem ();
 use org::apache::commons::fileupload::FileItemStream ();
+use org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory ();
+use org::allbinary::logic::communication::log::config::type::LogConfigTypes ();
 
 1;
 

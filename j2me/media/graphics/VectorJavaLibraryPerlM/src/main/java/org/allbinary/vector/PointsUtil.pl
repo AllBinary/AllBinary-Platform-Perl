@@ -55,14 +55,13 @@ sub adjustXY {
 }
 
 
-sub adjust {
+sub adjust_j2 {
     my ($self, $points, $both) = @_;
         return $self->adjust($points, $both, $both);
 }
 
 
-# Java overloaded method: Perl keeps the last definition
-sub adjust {
+sub adjust_j3 {
     my ($self, $points, $x, $y) = @_;
         my $newPoints = [map { [(0) x (2)] } 1 .. (scalar(@{$points}))];
         for (my $index2 = 0; $index2 < scalar(@{$points}); $index2++) {
@@ -75,6 +74,13 @@ sub adjust {
             }
         }
         return $newPoints;
+}
+
+sub adjust {
+    my ($invocant, @arguments) = @_;
+    return $invocant->adjust_j2(@arguments) if scalar(@arguments) == 2;
+    return $invocant->adjust_j3(@arguments) if scalar(@arguments) == 3;
+    die "No method adjust takes " . scalar(@arguments) . " arguments";
 }
 
 use java::lang::Object ();

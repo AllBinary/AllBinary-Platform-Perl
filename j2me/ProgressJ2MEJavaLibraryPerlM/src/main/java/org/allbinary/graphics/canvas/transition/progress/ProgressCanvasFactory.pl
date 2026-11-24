@@ -49,7 +49,6 @@ use org::allbinary::graphics::paint::NullPaintable ();
 use org::allbinary::graphics::paint::PaintableInterface ();
 use org::allbinary::logic::NullUtil ();
 use org::allbinary::logic::string::StringUtil ();
-use org::allbinary::graphics::canvas::transition::progress::ProgressCanvas ();
 
 1;
 

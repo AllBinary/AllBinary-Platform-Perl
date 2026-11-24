@@ -37,7 +37,7 @@ sub new {
 }
 
 
-sub getField {
+sub getField_j3 {
     my ($self, $key, $value, $requestedField) = @_;
         my $stringBuffer = 'org::allbinary::logic::string::StringMaker'->new();
         $stringBuffer->append($self->{sqlStrings}->{SELECT});
@@ -55,7 +55,7 @@ sub getField {
             my $rset = $self->executeSQLStatement($sqlStatement);
             while ($rset->next()) {
                 $field = $rset->getString($requestedField);
-                if ($org::allbinary::logic::communication::sql::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($org::allbinary::logic::communication::sql::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{SQLLOGGING})) {
+                if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{SQLLOGGING})) {
                     $stringBuffer->delete(0, $stringBuffer->length());
                     $stringBuffer->append($self->{sqlStrings}->{SQL_STATEMENT_LABEL});
                     $stringBuffer->append($sqlStatement);
@@ -67,7 +67,7 @@ sub getField {
             }
             return undef;
         } catch ($e) {
-            if ($org::allbinary::logic::communication::sql::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($org::allbinary::logic::communication::sql::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{SQLLOGGINGERROR})) {
+            if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{SQLLOGGINGERROR})) {
                 $self->{logUtil}->put($self->{FAILED_SQL_STATEMENT} . $sqlStatement, $self, $self->{METHOD_GET_FIELD}, $e);
             }
             return $self->{FAILED_SQL_STATEMENT} . $sqlStatement;
@@ -75,8 +75,7 @@ sub getField {
 }
 
 
-# Java overloaded method: Perl keeps the last definition
-sub getField {
+sub getField_j2 {
     my ($self, $keysAndValues, $requestedField) = @_;
         my $stringBuffer = 'org::allbinary::logic::string::StringMaker'->new();
         $stringBuffer->append($self->{sqlStrings}->{SELECT});
@@ -106,7 +105,7 @@ sub getField {
             my $rset = $self->executeSQLStatement($sqlStatement);
             while ($rset->next()) {
                 $field = $rset->getString($requestedField);
-                if ($org::allbinary::logic::communication::sql::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($org::allbinary::logic::communication::sql::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{SQLLOGGING})) {
+                if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{SQLLOGGING})) {
                     $stringBuffer->delete(0, $stringBuffer->length());
                     $stringBuffer->append($self->{sqlStrings}->{SQL_STATEMENT_LABEL});
                     $stringBuffer->append($sqlStatement);
@@ -119,11 +118,18 @@ sub getField {
             return undef;
         } catch ($e) {
             my $sqlStatement = $stringBuffer->toString();
-            if ($org::allbinary::logic::communication::sql::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($org::allbinary::logic::communication::sql::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{SQLLOGGINGERROR})) {
+            if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{SQLLOGGINGERROR})) {
                 $self->{logUtil}->put($self->{FAILED_SQL_STATEMENT} . $sqlStatement, $self, $self->{METHOD_GET_FIELD}, $e);
             }
             return $self->{FAILED_SQL_STATEMENT} . $sqlStatement;
         }
+}
+
+sub getField {
+    my ($invocant, @arguments) = @_;
+    return $invocant->getField_j3(@arguments) if scalar(@arguments) == 3;
+    return $invocant->getField_j2(@arguments) if scalar(@arguments) == 2;
+    die "No method getField takes " . scalar(@arguments) . " arguments";
 }
 
 
@@ -158,18 +164,18 @@ sub isSubsetOfEntry {
                     $columnName = $keyArray2->[$i]->toString();
                     $field = $rset->getObject($columnName)->toString();
                     if (($field cmp $columnsAndValues->get($columnName)) != 0) {
-                        return $org::allbinary::logic::communication::sql::org::allbinary->{globals}->{GLOBALS2}->{NOTASUBSET};
+                        return $org::allbinary::globals::GLOBALS2::NOTASUBSET;
                     }
                 }
             }
             if ($rset->getRow() != 1) {
-                return $org::allbinary::logic::communication::sql::org::allbinary->{globals}->{GLOBALS2}->{NOTASUBSET};
+                return $org::allbinary::globals::GLOBALS2::NOTASUBSET;
             } else {
-                return $org::allbinary::logic::communication::sql::org::allbinary->{globals}->{GLOBALS2}->{ISASUBSET};
+                return $org::allbinary::globals::GLOBALS2::ISASUBSET;
             }
         } catch ($e) {
             my $sqlStatement = $stringBuffer->toString();
-            if ($org::allbinary::logic::communication::sql::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($org::allbinary::logic::communication::sql::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{SQLLOGGINGERROR})) {
+            if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{SQLLOGGINGERROR})) {
                 $self->{logUtil}->put($self->{FAILED_SQL_STATEMENT} . $sqlStatement, $self, $self->{METHOD_IS_SUBSET_OF_ENTRY}, $e);
             }
             return $self->{FAILED_SQL_STATEMENT} . $sqlStatement;
@@ -179,10 +185,13 @@ sub isSubsetOfEntry {
 use java::lang::Object ();
 # use java::sql::ResultSet ();
 use java::util::HashMap ();
-# use java::util::Set ();
+use java::util::Set ();
 use org::allbinary::business::init::db::DbConnectionInfo ();
 use org::allbinary::logic::communication::log::LogUtil ();
 use org::allbinary::logic::string::StringMaker ();
+use org::allbinary::globals::GLOBALS2 ();
+use org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory ();
+use org::allbinary::logic::communication::log::config::type::LogConfigTypes ();
 use org::allbinary::logic::communication::sql::AbSqlRow ();
 
 1;

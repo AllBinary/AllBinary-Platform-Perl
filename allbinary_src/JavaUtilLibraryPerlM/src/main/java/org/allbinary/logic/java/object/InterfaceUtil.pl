@@ -57,11 +57,11 @@ sub getClass {
 }
 
 
-sub isImplemented {
+sub isImplemented_j2_1 {
     my ($class, $clazz, $anyType) = @_;
         my $classes = ref($anyType)->getInterfaces();
         for (my $index = 0; $index < scalar(@{$classes}); $index++) {
-            if ($clazz->getName()->compareTo($classes->[$index]->getName()) == 0) {
+            if ((($clazz) =~ s/::/./gr)->compareTo($classes->[$index]->getName()) == 0) {
                 return 1;
             }
         }
@@ -69,8 +69,7 @@ sub isImplemented {
 }
 
 
-# Java overloaded method: Perl keeps the last definition
-sub isImplemented {
+sub isImplemented_j2_2 {
     my ($class, $className, $anyType) = @_;
         my $classes = ref($anyType)->getInterfaces();
         for (my $index = 0; $index < scalar(@{$classes}); $index++) {
@@ -81,6 +80,18 @@ sub isImplemented {
         return 0;
 }
 
+sub isImplemented {
+    my ($invocant, @arguments) = @_;
+    return $invocant->isImplemented_j2(@arguments) if scalar(@arguments) == 2;
+    die "No method isImplemented takes " . scalar(@arguments) . " arguments";
+}
+
+sub isImplemented_j2 {
+    my ($invocant, @arguments) = @_;
+    return $invocant->isImplemented_j2_1(@arguments) if 1 && (!defined($arguments[0]) || (ref($arguments[0]) && ref($arguments[0]) ne 'ARRAY')) && (!defined($arguments[1]) || (ref($arguments[1]) && ref($arguments[1]) ne 'ARRAY'));
+    return $invocant->isImplemented_j2_2(@arguments);
+}
+
 
 sub isImplementedView {
     my ($class, $clazz, $anyType) = @_;
@@ -88,7 +99,7 @@ sub isImplementedView {
         my $classes = ref($anyType)->getInterfaces();
         $stringBuffer->append("isImplementedView: \n");
         for (my $index = 0; $index < scalar(@{$classes}); $index++) {
-            $stringBuffer->append($clazz->getName());
+            $stringBuffer->append((($clazz) =~ s/::/./gr));
             $stringBuffer->append(" should be = ");
             $stringBuffer->append($classes->[$index]->getName());
             $stringBuffer->append($classes->[$index]->getName());

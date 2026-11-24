@@ -40,7 +40,7 @@ sub _init_fields {
     $self->{totalLoaded} = 0;
     $self->{progressEnded} = 0;
     $self->{hasAnyLazyAnimationFactories} = 0;
-    $self->{processor} = 'org::allbinary::image::FirstProcessor'->new();
+    $self->{processor} = do { local $java::lang::Object::jouter = $self; 'org::allbinary::image::FirstProcessor'->new() };
     $self->{endProcessor} = 'org::allbinary::canvas::Processor'->getInstance();
     $self->{LOAD_IMAGE_FOR_ANIMATION} = "Load Image Animation";
 }
@@ -60,10 +60,10 @@ sub firstProcess {
         my $isHTML = 'org::allbinary::J2MEUtil'->isHTML();
         if ($isHTML) {
             $self->{processor} = 'org::allbinary::canvas::Processor'->getInstance();
-            $self->{endProcessor} = 'org::allbinary::image::HTMLEndProcessor'->new();
+            $self->{endProcessor} = do { local $java::lang::Object::jouter = $self; 'org::allbinary::image::HTMLEndProcessor'->new() };
         } else {
-            $self->{processor} = 'org::allbinary::image::NotHTMLProcessor'->new();
-            $self->{endProcessor} = 'org::allbinary::image::NotHTMLEndProcessor'->new();
+            $self->{processor} = do { local $java::lang::Object::jouter = $self; 'org::allbinary::image::NotHTMLProcessor'->new() };
+            $self->{endProcessor} = do { local $java::lang::Object::jouter = $self; 'org::allbinary::image::NotHTMLEndProcessor'->new() };
             try {
                 $self->runTask();
             } catch ($e) {
@@ -253,7 +253,7 @@ sub init {
 sub creatImage {
     my ($self, $key) = @_;
         my $inputStream = $self->{resourceUtil}->getResourceAsStream($key);
-        my $image = 'org::allbinary::image::ImageFactory'->getInstance()->createImageFromInputStream($inputStream);
+        my $image = java::lang::Object::jstatic('org::allbinary::image::ImageCache', 'ImageFactory')->getInstance()->createImageFromInputStream($inputStream);
         $image->setName($key);
         return $image;
 }
@@ -434,13 +434,14 @@ sub isLazy {
     sub new {
         my ($class) = @_;
         my $self = $class->SUPER::new();
+        $self->{jouter} = $java::lang::Object::jouter;
         return $self;
     }
     
 
     sub process {
         my ($self) = @_;
-            $self->{concurrentImageLoadingProcessor}->runTask();
+            $self->{jouter}->{concurrentImageLoadingProcessor}->runTask();
     }
     }
 
@@ -457,6 +458,7 @@ sub isLazy {
     sub new {
         my ($class) = @_;
         my $self = $class->SUPER::new();
+        $self->{jouter} = $java::lang::Object::jouter;
         return $self;
     }
     
@@ -481,20 +483,21 @@ sub isLazy {
     sub new {
         my ($class) = @_;
         my $self = $class->SUPER::new();
+        $self->{jouter} = $java::lang::Object::jouter;
         return $self;
     }
     
 
     sub process {
         my ($self) = @_;
-            my $size = $self->{gdResources}->{currentLayoutRequiredTotal};
+            my $size = $self->{jouter}->{gdResources}->{currentLayoutRequiredTotal};
             if ($size == 0) {
                 my $progressCanvas = 'org::allbinary::graphics::canvas::transition::progress::ProgressCanvasFactory'->getInstance();
                 $progressCanvas->endIfPaintedSinceStart();
-            } elsif ($self->{totalLoaded} > int($size / 12)) {
+            } elsif ($self->{jouter}->{totalLoaded} > int($size / 12)) {
                 my $progressCanvas = 'org::allbinary::graphics::canvas::transition::progress::ProgressCanvasFactory'->getInstance();
                 $progressCanvas->endIfPaintedSinceStart();
-                $self->{endProcessor} = 'org::allbinary::image::NotHTMLEndProcessor'->new();
+                $self->{jouter}->{endProcessor} = do { local $java::lang::Object::jouter = $self; 'org::allbinary::image::NotHTMLEndProcessor'->new() };
             }
     }
     }
@@ -512,13 +515,14 @@ sub isLazy {
     sub new {
         my ($class) = @_;
         my $self = $class->SUPER::new();
+        $self->{jouter} = $java::lang::Object::jouter;
         return $self;
     }
     
 
     sub process {
         my ($self) = @_;
-            $self->firstProcess();
+            $self->{jouter}->firstProcess();
     }
     }
 
@@ -552,9 +556,7 @@ use org::allbinary::thread::SynchObject ();
 use org::allbinary::util::BasicArrayList ();
 use org::allbinary::util::BasicArrayListD ();
 use org::allbinary::logic::ABSystemWrapper ();
-use org::allbinary::image::ImageCacheBase ();
 use java::lang::Thread ();
-use org::allbinary::image::ImageFactory ();
 
 1;
 

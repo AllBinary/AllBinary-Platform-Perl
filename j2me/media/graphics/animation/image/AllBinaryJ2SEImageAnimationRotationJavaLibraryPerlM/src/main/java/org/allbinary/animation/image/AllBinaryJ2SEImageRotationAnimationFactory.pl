@@ -96,7 +96,6 @@ use org::allbinary::logic::math::PrimitiveIntUtil ();
 use org::allbinary::math::AngleFactory ();
 use org::allbinary::math::AngleInfo ();
 use org::allbinary::media::image::ImageCopyUtil ();
-use org::allbinary::animation::image::BaseImageAnimationFactory ();
 use org::allbinary::animation::image::AllBinaryJ2SEImageRotationAnimation ();
 use org::allbinary::animation::image::AllBinaryAdjustedJ2SEImageRotationAnimation ();
 

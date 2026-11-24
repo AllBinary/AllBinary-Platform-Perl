@@ -69,7 +69,8 @@ sub isValid {
     die "abstract method isValid";
 }
 
-# use java::awt ();
+# use java::awt::Dimension ();
+# use java::awt::Rectangle ();
 # use java::awt::image::BufferedImage ();
 
 1;

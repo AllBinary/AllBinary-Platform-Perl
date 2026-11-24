@@ -97,6 +97,7 @@ sub toDocument {
 }
 
 use org::w3c::dom::Document ();
+# use java::awt::event::KeyListener ();
 
 1;
 

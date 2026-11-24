@@ -36,6 +36,12 @@ sub new {
     die "No constructor of TitleView takes " . scalar(@arguments) . " arguments";
 }
 
+sub _new1 {
+    my ($class, @arguments) = @_;
+    return $class->_new1_1(@arguments) if 1 && (!defined($arguments[0]) || (ref($arguments[0]) && ref($arguments[0]) ne 'ARRAY'));
+    return $class->_new1_2(@arguments);
+}
+
 
 sub _new0 {
     my ($class) = @_;
@@ -46,28 +52,28 @@ sub _new0 {
 }
 
 
-sub _new1 {
+sub _new1_1 {
     my ($class, $node) = @_;
     my $self = bless({}, $class);
     _init_fields($self);
-        my $titleTextNode = 'org::allbinary::data::tree::dom::DomSearchHelper'->getNode('org::allbinary::logic::visual::transform::template::customizer::widgets::title::TitleData'->getInstance()->{TEXT}, $node->getChildNodes());
+        my $titleTextNode = 'org::allbinary::data::tree::dom::DomSearchHelper'->getNode(java::lang::Object::jstatic('org::allbinary::logic::visual::transform::template::customizer::widgets::title::TitleView', 'TitleData')->getInstance()->{TEXT}, $node->getChildNodes());
         my $valueNode = 'org::allbinary::data::tree::dom::DomSearchHelper'->getNode($org::allbinary::data::tree::dom::DomData::VALUE, $titleTextNode->getChildNodes());
         $self->{title} = 'org::allbinary::data::tree::dom::DomNodeHelper'->getTextNodeValue($valueNode);
         if ('org::allbinary::logic::string::StringValidationUtil'->getInstance()->isEmpty($self->{title})) {
             $self->{title} = $org::allbinary::logic::visual::transform::template::customizer::widgets::title::TitleView::NAME;
         }
-        if ($org::allbinary::logic::visual::transform::template::customizer::widgets::title::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($org::allbinary::logic::visual::transform::template::customizer::widgets::title::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{VIEW})) {
+        if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{VIEW})) {
             $self->{logUtil}->putF("Title: " . $self->getTitle(), $self, "Consructor()");
         }
     return $self;
 }
 
 
-sub _new1 {
+sub _new1_2 {
     my ($class, $hashMap) = @_;
     my $self = bless({}, $class);
     _init_fields($self);
-        if ($org::allbinary::logic::visual::transform::template::customizer::widgets::title::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($org::allbinary::logic::visual::transform::template::customizer::widgets::title::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{VIEW})) {
+        if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{VIEW})) {
             $self->{logUtil}->putF("HashMap: " . $hashMap->toString(), $self, $self->{commonStrings}->{CONSTRUCTOR});
         }
         $self->getFormData($hashMap);
@@ -83,7 +89,7 @@ sub getTitle {
 
 sub getFormData {
     my ($self, $hashMap) = @_;
-        $self->{title} = $hashMap->get('org::allbinary::logic::visual::transform::template::customizer::widgets::title::TitleData'->getInstance()->{TEXT});
+        $self->{title} = $hashMap->get(java::lang::Object::jstatic('org::allbinary::logic::visual::transform::template::customizer::widgets::title::TitleView', 'TitleData')->getInstance()->{TEXT});
         if ('org::allbinary::logic::string::StringValidationUtil'->getInstance()->isEmpty($self->{title})) {
             $self->{title} = $org::allbinary::logic::visual::transform::template::customizer::widgets::title::TitleView::NAME;
         }
@@ -93,7 +99,7 @@ sub getFormData {
 sub toHashMap {
     my ($self) = @_;
         my $hashMap = 'org::allbinary::logic::StdUtil'->getInstance()->createHashMap();
-        $hashMap->put('org::allbinary::logic::visual::transform::template::customizer::widgets::title::TitleData'->getInstance()->{TEXT}, $self->getTitle());
+        $hashMap->put(java::lang::Object::jstatic('org::allbinary::logic::visual::transform::template::customizer::widgets::title::TitleView', 'TitleData')->getInstance()->{TEXT}, $self->getTitle());
         return $hashMap;
 }
 
@@ -102,10 +108,10 @@ sub toHashMap {
 sub toXmlNode {
     my ($self, $document) = @_;
         my $hashMap = $self->toHashMap();
-        if ($org::allbinary::logic::visual::transform::template::customizer::widgets::title::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($org::allbinary::logic::visual::transform::template::customizer::widgets::title::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{VIEW})) {
+        if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{VIEW})) {
             $self->{logUtil}->putF("TitleView HashMap: " . $hashMap->toString(), $self, "toXmlNode()");
         }
-        return 'org::allbinary::data::tree::dom::ModDomHelper'->createNameValueNodes($document, 'org::allbinary::logic::visual::transform::template::customizer::widgets::title::TitleData'->getInstance()->{NAME}, $hashMap);
+        return 'org::allbinary::data::tree::dom::ModDomHelper'->createNameValueNodes($document, java::lang::Object::jstatic('org::allbinary::logic::visual::transform::template::customizer::widgets::title::TitleView', 'TitleData')->getInstance()->{NAME}, $hashMap);
 }
 
 use java::lang::Object ();
@@ -121,7 +127,8 @@ use org::allbinary::logic::string::StringValidationUtil ();
 use org::allbinary::string::CommonStrings ();
 use org::w3c::dom::Document ();
 use org::w3c::dom::Node ();
-use org::allbinary::logic::visual::transform::template::customizer::widgets::title::TitleData ();
+use org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory ();
+use org::allbinary::logic::communication::log::config::type::LogConfigTypes ();
 
 1;
 

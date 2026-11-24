@@ -52,7 +52,6 @@ sub add {
 use java::lang::Object ();
 use org::allbinary::util::BasicArrayList ();
 use org::allbinary::util::BasicArrayListD ();
-use org::allbinary::input::motion::button::BaseTouchInput ();
 
 1;
 

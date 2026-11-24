@@ -57,7 +57,7 @@ sub forward {
             }
         } catch ($e) {
             my $commonStrings = 'org::allbinary::string::CommonStrings'->getInstance();
-            if ($admin::taghelpers::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($admin::taghelpers::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{SQLTAGSERROR})) {
+            if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{SQLTAGSERROR})) {
                 $self->{logUtil}->put($commonStrings->{EXCEPTION}, $self, "forward()", $e);
             }
         }
@@ -112,6 +112,8 @@ use org::allbinary::logic::string::StringValidationUtil ();
 use org::allbinary::string::CommonSeps ();
 use org::allbinary::string::CommonStrings ();
 use tags::HelperTag ();
+use org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory ();
+use org::allbinary::logic::communication::log::config::type::LogConfigTypes ();
 use admin::taghelpers::InventoryItemViewParentTagHelper ();
 
 1;

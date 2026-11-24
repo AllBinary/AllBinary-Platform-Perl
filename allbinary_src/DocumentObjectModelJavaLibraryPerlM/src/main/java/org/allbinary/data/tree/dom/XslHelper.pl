@@ -37,7 +37,7 @@ sub new {
 
 
 # throws Exception
-sub translate {
+sub translate_j3_1 {
     my ($self, $xsltStreamSource, $xmlStreamSource, $streamResult) = @_;
         try {
             my $transformerFactory = 'javax::xml::transform::TransformerFactory'->newInstance();
@@ -51,8 +51,7 @@ sub translate {
 
 
 # throws Exception
-# Java overloaded method: Perl keeps the last definition
-sub translate {
+sub translate_j4 {
     my ($self, $resolver, $xsltStreamSource, $xmlStreamSource, $streamResult) = @_;
         try {
             my $tFactory = 'javax::xml::transform::TransformerFactory'->newInstance();
@@ -81,8 +80,7 @@ sub translateTemplate {
 
 
 # throws Exception
-# Java overloaded method: Perl keeps the last definition
-sub translate {
+sub translate_j2_1 {
     my ($self, $xsltStreamSource, $xmlDocument) = @_;
         try {
             my $outputStream = 'java::io::ByteArrayOutputStream'->new();
@@ -94,8 +92,7 @@ sub translate {
 
 
 # throws Exception
-# Java overloaded method: Perl keeps the last definition
-sub translate {
+sub translate_j2_2 {
     my ($self, $xsltStreamSource, $xmlStreamSource) = @_;
         try {
             my $outputStream = 'java::io::ByteArrayOutputStream'->new();
@@ -107,8 +104,7 @@ sub translate {
 
 
 # throws Exception
-# Java overloaded method: Perl keeps the last definition
-sub translate {
+sub translate_j3_2 {
     my ($self, $resolver, $xsltStreamSource, $xmlStreamSource) = @_;
         try {
             my $outputStream = 'java::io::ByteArrayOutputStream'->new();
@@ -116,6 +112,26 @@ sub translate {
         } catch ($e) {
             die $e;
         }
+}
+
+sub translate {
+    my ($invocant, @arguments) = @_;
+    return $invocant->translate_j3(@arguments) if scalar(@arguments) == 3;
+    return $invocant->translate_j4(@arguments) if scalar(@arguments) == 4;
+    return $invocant->translate_j2(@arguments) if scalar(@arguments) == 2;
+    die "No method translate takes " . scalar(@arguments) . " arguments";
+}
+
+sub translate_j3 {
+    my ($invocant, @arguments) = @_;
+    return $invocant->translate_j3_1(@arguments) if 1 && (!defined($arguments[0]) || (ref($arguments[0]) && ref($arguments[0]) ne 'ARRAY')) && (!defined($arguments[1]) || (ref($arguments[1]) && ref($arguments[1]) ne 'ARRAY')) && (!defined($arguments[2]) || (ref($arguments[2]) && ref($arguments[2]) ne 'ARRAY'));
+    return $invocant->translate_j3_2(@arguments);
+}
+
+sub translate_j2 {
+    my ($invocant, @arguments) = @_;
+    return $invocant->translate_j2_1(@arguments) if 1 && (!defined($arguments[0]) || (ref($arguments[0]) && ref($arguments[0]) ne 'ARRAY')) && (!defined($arguments[1]) || (ref($arguments[1]) && ref($arguments[1]) ne 'ARRAY'));
+    return $invocant->translate_j2_2(@arguments);
 }
 
 

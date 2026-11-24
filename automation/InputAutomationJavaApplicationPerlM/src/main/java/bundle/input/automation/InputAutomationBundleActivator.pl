@@ -61,8 +61,8 @@ sub start {
 # throws Exception
 sub registerAsService {
     my ($self) = @_;
-        'org::allbinary::osgi::OSGIActivatorUtil'->registerAsService($self->getBundleContext(), 'org::allbinary::input::automation::osgi::InputAutomationServiceFactory'->getInstance(), 'bundle::input::automation::module::configuration::InputAutomationConfigurationModuleChangeListener'->getName());
-        'org::allbinary::osgi::OSGIActivatorUtil'->registerAsService($self->getBundleContext(), 'org::allbinary::input::automation::osgi::InputAutomationServiceFactory'->getInstance(), 'bundle::input::automation::robot::InputAutomationRobotChangeListener'->getName());
+        'org::allbinary::osgi::OSGIActivatorUtil'->registerAsService($self->getBundleContext(), 'org::allbinary::input::automation::osgi::InputAutomationServiceFactory'->getInstance(), (('bundle::input::automation::module::configuration::InputAutomationConfigurationModuleChangeListener') =~ s/::/./gr));
+        'org::allbinary::osgi::OSGIActivatorUtil'->registerAsService($self->getBundleContext(), 'org::allbinary::input::automation::osgi::InputAutomationServiceFactory'->getInstance(), (('bundle::input::automation::robot::InputAutomationRobotChangeListener') =~ s/::/./gr));
 }
 
 

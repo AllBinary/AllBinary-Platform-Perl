@@ -42,7 +42,6 @@ sub getPropertiesHashMap {
 use java::util::HashMap ();
 # use javax::servlet::jsp::PageContext ();
 use org::allbinary::logic::communication::http::request::session::WeblisketSessionInterface ();
-use org::allbinary::logic::visual::transform::info::TransformInfoInterface ();
 
 1;
 

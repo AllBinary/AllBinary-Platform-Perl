@@ -122,7 +122,6 @@ use org::allbinary::graphics::color::BasicColor ();
 use org::allbinary::math::AngleInfo ();
 use org::allbinary::media::image::AndroidImageUtil ();
 use org::allbinary::media::image::ImageModifierUtil ();
-use org::allbinary::animation::image::ImageBaseRotationAnimation ();
 
 1;
 

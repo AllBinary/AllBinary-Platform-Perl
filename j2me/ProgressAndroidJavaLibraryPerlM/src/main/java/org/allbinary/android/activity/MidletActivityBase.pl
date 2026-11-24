@@ -92,8 +92,6 @@ use org::allbinary::game::configuration::event::GameFeatureListenerInterface ();
 use org::allbinary::game::configuration::event::GameInitializedEvent ();
 use org::allbinary::game::configuration::event::GameInitializedListenerInterface ();
 use org::allbinary::logic::util::event::AllBinaryEventObject ();
-use org::allbinary::android::activity::SimpleProgressActivityInterface ();
-use org::allbinary::android::activity::KeyInputViewCompositeInterface ();
 
 1;
 

@@ -25,9 +25,9 @@ sub _init_fields {
     my ($self) = @_;
     $self->{MAX} = 5;
     $self->{circularIndexUtil} = 'org::allbinary::util::CircularIndexUtil'->createInstance($self->{MAX});
-    $self->{WEAPONLAYER_ARRAY} = undef;
-    $self->{TWO_WEAPONLAYER_ARRAY} = undef;
-    $self->{THREE_WEAPONLAYER_ARRAY} = undef;
+    $self->{WEAPONLAYER_ARRAY} = [(undef) x ($self->{MAX} * 2)];
+    $self->{TWO_WEAPONLAYER_ARRAY} = [(undef) x ($self->{MAX})];
+    $self->{THREE_WEAPONLAYER_ARRAY} = [(undef) x ($self->{MAX})];
 }
 
 sub new {
@@ -46,17 +46,14 @@ sub getInstance {
 
 sub init {
     my ($self) = @_;
-        my $WEAPONLAYER_ARRAY = [(undef) x ($self->{MAX} * 2)];
-        my $TWO_WEAPONLAYER_ARRAY = [(undef) x ($self->{MAX})];
-        my $THREE_WEAPONLAYER_ARRAY = [(undef) x ($self->{MAX})];
         for (my $index = 0; $index < $self->{MAX}; $index++) {
-            $WEAPONLAYER_ARRAY->[$index] = [(undef) x (1)];
-            $TWO_WEAPONLAYER_ARRAY->[$index] = [(undef) x (2)];
-            $THREE_WEAPONLAYER_ARRAY->[$index] = [(undef) x (3)];
+            $self->{WEAPONLAYER_ARRAY}->[$index] = [(undef) x (1)];
+            $self->{TWO_WEAPONLAYER_ARRAY}->[$index] = [(undef) x (2)];
+            $self->{THREE_WEAPONLAYER_ARRAY}->[$index] = [(undef) x (3)];
         }
-        $self->{WEAPONLAYER_ARRAY} = $WEAPONLAYER_ARRAY;
-        $self->{TWO_WEAPONLAYER_ARRAY} = $TWO_WEAPONLAYER_ARRAY;
-        $self->{THREE_WEAPONLAYER_ARRAY} = $THREE_WEAPONLAYER_ARRAY;
+        $self->{WEAPONLAYER_ARRAY} = $self->{WEAPONLAYER_ARRAY};
+        $self->{TWO_WEAPONLAYER_ARRAY} = $self->{TWO_WEAPONLAYER_ARRAY};
+        $self->{THREE_WEAPONLAYER_ARRAY} = $self->{THREE_WEAPONLAYER_ARRAY};
 }
 
 

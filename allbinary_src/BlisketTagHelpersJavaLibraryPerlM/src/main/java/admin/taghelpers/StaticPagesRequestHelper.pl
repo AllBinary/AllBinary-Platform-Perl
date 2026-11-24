@@ -54,7 +54,7 @@ sub getFormData {
 sub email {
     my ($self) = @_;
         try {
-            if ($admin::taghelpers::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($admin::taghelpers::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{EMAILLOGGING})) {
+            if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{EMAILLOGGING})) {
                 $self->{logUtil}->putF("Generated Static Pages Notification Email", $self, "email");
             }
             my $storeFrontInterface = 'org::allbinary::business::context::modules::storefront::StoreFrontFactory'->getInstance($self->{storeName});
@@ -69,7 +69,7 @@ sub email {
             $storeAdminUserEmailEventHandler->receiveEmailInfo($org::allbinary::logic::communication::smtp::event::UserEmailEventNameData::STOREGENERATINGSTATICPAGES, $storeAdminEmailInfo);
             $adminUserEmailEventHandler->receiveEmailInfo($org::allbinary::logic::communication::smtp::event::UserEmailEventNameData::STOREGENERATINGSTATICPAGES, $adminEmailInfo);
         } catch ($e) {
-            if ($admin::taghelpers::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($admin::taghelpers::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{EMAILLOGGINGERROR})) {
+            if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{EMAILLOGGINGERROR})) {
                 $self->{logUtil}->put($self->{commonStrings}->{FAILURE}, $self, "email", $e);
             }
         }
@@ -83,13 +83,13 @@ sub generateStaticPages {
             my $searchRequest = 'org::allbinary::logic::control::search::SearchRequest'->new(undef, $self->{searchParams}, $self->{xslFile}, $contentType, $self->getPropertiesHashMap(), $self->getPageContext());
             my $success = 'views::admin::inventory::listings::ProductListingFactory'->getInstance($searchRequest)->generateAll($self->{storeName});
             $self->email();
-            if ($admin::taghelpers::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($admin::taghelpers::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{SQLTAGS})) {
+            if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{SQLTAGS})) {
                 $self->{logUtil}->putF($success, $self, "generateStaticPages()");
             }
             return $success;
         } catch ($e) {
             my $error = "Failed to generate staticpages table";
-            if ($admin::taghelpers::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($admin::taghelpers::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{SQLTAGSERROR})) {
+            if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{SQLTAGSERROR})) {
                 $self->{logUtil}->put($self->{commonStrings}->{EXCEPTION}, $self, "generateStaticPages()", $e);
             }
             return $error;
@@ -105,13 +105,13 @@ sub makePublic {
             my $toAbPath = 'org::allbinary::logic::io::path::AbPath'->new('org::allbinary::globals::URLGLOBALS'->getWebappPath() . $storeFrontInterface->getName() . 'org::allbinary::logic::io::path::AbPathData'->getInstance()->{SEPARATOR} . $storeFrontInterface->getStaticPath(), 'org::allbinary::logic::string::StringUtil'->getInstance()->{EMPTY_STRING});
             'org::allbinary::logic::io::file::FileUtil'->getInstance()->copy($fromAbPath, $toAbPath);
             my $success = "Made Public";
-            if ($admin::taghelpers::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($admin::taghelpers::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{SQLTAGS})) {
+            if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{SQLTAGS})) {
                 $self->{logUtil}->putF($success, $self, "makePublic()");
             }
             return $success;
         } catch ($e) {
             my $error = "Failed to makePublic";
-            if ($admin::taghelpers::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypes}->{LOGGING}->contains($admin::taghelpers::org::allbinary->{logic}->{communication}->{log}->{config}->{type}->{LogConfigTypeFactory}->getInstance()->{SQLTAGSERROR})) {
+            if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{SQLTAGSERROR})) {
                 $self->{logUtil}->put($self->{commonStrings}->{EXCEPTION}, $self, "makePublic()", $e);
             }
             return $error;
@@ -147,7 +147,8 @@ use org::allbinary::logic::system::security::licensing::AbeClientInformationInte
 use org::allbinary::logic::system::security::licensing::ServiceClientInformationInterfaceFactory ();
 use org::allbinary::logic::visual::transform::info::TransformInfoData ();
 use views::admin::inventory::listings::ProductListingFactory ();
-use admin::taghelpers::TagHelperInterface ();
+use org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory ();
+use org::allbinary::logic::communication::log::config::type::LogConfigTypes ();
 
 1;
 

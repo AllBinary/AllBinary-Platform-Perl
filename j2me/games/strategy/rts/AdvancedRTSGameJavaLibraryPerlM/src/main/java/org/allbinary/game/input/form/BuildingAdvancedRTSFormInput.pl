@@ -107,7 +107,6 @@ use org::allbinary::media::audio::ErrorSound ();
 use org::allbinary::media::graphics::geography::map::BasicGeographicMap ();
 use org::allbinary::media::graphics::geography::map::GeographicMapCompositeInterface ();
 use org::allbinary::media::graphics::geography::map::drop::DropCellPositionHistory ();
-use org::allbinary::game::input::form::BuildingRTSFormInput ();
 
 1;
 

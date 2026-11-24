@@ -71,9 +71,9 @@ sub _new1 {
 
 sub init {
     my ($self) = @_;
-        $self->setJPopupMenu('org::allbinary::input::automation::actions::script::JPopupMenu'->new());
-        my $jMenuItemEdit = 'org::allbinary::input::automation::actions::script::JMenuItem'->new($EDIT);
-        my $jMenuItemDelete = 'org::allbinary::input::automation::actions::script::JMenuItem'->new($DELETE);
+        $self->setJPopupMenu('javax::swing::JPopupMenu'->new());
+        my $jMenuItemEdit = 'javax::swing::JMenuItem'->new($EDIT);
+        my $jMenuItemDelete = 'javax::swing::JMenuItem'->new($DELETE);
         $jMenuItemEdit->addActionListener($self);
         $jMenuItemDelete->addActionListener($self);
         $self->getJPopupMenu()->add($jMenuItemEdit);
@@ -116,14 +116,13 @@ sub setJPopupMenu {
 use java::lang::Object ();
 # use java::awt::event::ActionEvent ();
 # use java::awt::event::ActionListener ();
-# use javax::swing ();
+# use javax::swing::JPopupMenu ();
+# use javax::swing::JMenuItem ();
 # use javax::swing::tree::DefaultMutableTreeNode ();
 use org::allbinary::logic::communication::log::LogUtil ();
 use org::allbinary::string::CommonStrings ();
 use org::w3c::dom::Node ();
 use org::allbinary::input::automation::actions::script::ProfileActionScriptItemInterface ();
-use org::allbinary::input::automation::actions::script::JPopupMenu ();
-use org::allbinary::input::automation::actions::script::JMenuItem ();
 
 1;
 

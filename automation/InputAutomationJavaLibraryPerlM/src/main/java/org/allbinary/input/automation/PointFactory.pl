@@ -33,15 +33,14 @@ sub getInstance {
     my ($class, $x, $y) = @_;
         my $point = $org::allbinary::input::automation::PointFactory::pointArray->[$x]->[$y];
         if (!defined($point)) {
-            $org::allbinary::input::automation::PointFactory::pointArray->[$x]->[$y] = 'org::allbinary::input::automation::Point'->new($x, $y);
+            $org::allbinary::input::automation::PointFactory::pointArray->[$x]->[$y] = 'java::awt::Point'->new($x, $y);
             $point = $org::allbinary::input::automation::PointFactory::pointArray->[$x]->[$y];
         }
         return $point;
 }
 
 use java::lang::Object ();
-# use java::awt ();
-use org::allbinary::input::automation::Point ();
+# use java::awt::Point ();
 
 1;
 

@@ -29,15 +29,14 @@ sub new {
 
 
 # throws Exception
-sub registerAsService {
+sub registerAsService_j3 {
     my ($class, $bundleContext, $anyType, $serviceName) = @_;
         'org::allbinary::osgi::OSGIActivatorUtil'->registerAsService($bundleContext, $anyType, $serviceName, 'org::allbinary::logic::StdUtil'->getInstance()->createHashtable());
 }
 
 
 # throws Exception
-# Java overloaded method: Perl keeps the last definition
-sub registerAsService {
+sub registerAsService_j4 {
     my ($class, $bundleContext, $anyType, $serviceName, $properties) = @_;
         my $serviceRegistration = $bundleContext->registerService($serviceName, $anyType, $properties);
         my $serviceReference = $serviceRegistration->getReference();
@@ -45,6 +44,13 @@ sub registerAsService {
         if ($serviceReference == 'org::osgi::framework::NullServiceReferenceFactory'->getInstance()->{NULL_SERVICE_REFERENCE}) {
             die ("No Such Service Reference");
         }
+}
+
+sub registerAsService {
+    my ($invocant, @arguments) = @_;
+    return $invocant->registerAsService_j3(@arguments) if scalar(@arguments) == 3;
+    return $invocant->registerAsService_j4(@arguments) if scalar(@arguments) == 4;
+    die "No method registerAsService takes " . scalar(@arguments) . " arguments";
 }
 
 use java::lang::Object ();

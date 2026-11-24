@@ -28,7 +28,6 @@ sub remove {
     die "abstract method remove";
 }
 
-use org::allbinary::logic::util::cache::CacheInterface ();
 
 1;
 

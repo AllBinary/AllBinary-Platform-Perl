@@ -71,14 +71,14 @@ sub doStartTag {
             if (defined($self->{command})) {
                 $self->{propertiesHashMap} = 'org::allbinary::logic::StdUtil'->getInstance()->createHashMap();
                 $self->{propertiesHashMap}->put('org::allbinary::business::context::modules::storefront::StoreFrontData'->getInstance()->{NAME}, $self->{storeName});
-                if (($self->{command} cmp $admin::tags::org::allbinary->{globals}->{GLOBALS2}->{SETSHIPPINGTYPE}) == 0) {
+                if (($self->{command} cmp $org::allbinary::globals::GLOBALS2::SETSHIPPINGTYPE) == 0) {
                     $self->setShippingType();
                 }
             }
-            return $self->{SKIP_BODY};
+            return java::lang::Object::jstatic('admin::tags::ShippingTag', 'SKIP_BODY');
         } catch ($e) {
             'org::allbinary::logic::communication::http::request::AbResponseHandler'->sendJspTagLicensingRedirect($self->{pageContext}, $e);
-            return $self->{SKIP_BODY};
+            return java::lang::Object::jstatic('admin::tags::ShippingTag', 'SKIP_BODY');
         }
 }
 
@@ -93,6 +93,9 @@ use org::allbinary::logic::communication::http::request::AbResponseHandler ();
 use org::allbinary::logic::communication::log::LogUtil ();
 use org::allbinary::logic::system::security::licensing::LicensingException ();
 use tags::CustomTagSupport ();
+use org::allbinary::globals::GLOBALS2 ();
+use org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory ();
+use org::allbinary::logic::communication::log::config::type::LogConfigTypes ();
 
 1;
 

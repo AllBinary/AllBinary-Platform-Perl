@@ -23,11 +23,11 @@ tie our $instance, 'java::lang::LazyStatic', sub { 'org::allbinary::logic::syste
 
 sub _init_fields {
     my ($self) = @_;
-    $self->{SINGLETON} = 'org::allbinary::logic::system::hardware::NoHardware'->getInstance();
+    $self->{SINGLETON} = java::lang::Object::jstatic('org::allbinary::logic::system::hardware::HardwareFactory', 'NoHardware')->getInstance();
 }
 
 
-sub getInstance {
+sub getInstance_j0 {
     my ($class) = @_;
         return $org::allbinary::logic::system::hardware::HardwareFactory::instance;
 }
@@ -42,8 +42,7 @@ sub new {
 
 
 # throws Exception
-# Java overloaded method: Perl keeps the last definition
-sub getInstance {
+sub getInstance_j1 {
     my ($self, $os) = @_;
         try {
             return $self->{SINGLETON};
@@ -52,10 +51,16 @@ sub getInstance {
         }
 }
 
+sub getInstance {
+    my ($invocant, @arguments) = @_;
+    return $invocant->getInstance_j0(@arguments) if scalar(@arguments) == 0;
+    return $invocant->getInstance_j1(@arguments) if scalar(@arguments) == 1;
+    die "No method getInstance takes " . scalar(@arguments) . " arguments";
+}
+
 use java::lang::Object ();
 use java::lang::LazyStatic ();
 use org::allbinary::logic::system::os::OperatingSystemInterface ();
-use org::allbinary::logic::system::hardware::NoHardware ();
 
 1;
 

@@ -162,7 +162,7 @@ sub addTables {
             $stringBuffer->append('org::allbinary::data::tables::log::LogTableEntityFactory'->getInstance()->getLogTableEntityInstance()->createTable());
             $stringBuffer->append('org::allbinary::data::tables::staticpages::StaticPagesEntityFactory'->getInstance()->getStaticPagesEntityInstance()->createTable());
             $stringBuffer->append('org::allbinary::data::tables::transform::info::TransformInfoEntityBuilder'->getInstance()->createTable());
-            $self->{logUtil}->putF($self->{ADD_TABLES_RESULTS_LABEL} . $stringBuffer->toString(), $self, $self->{METHOD_ADD_TABLES});
+            $self->{logUtil}->putF(java::lang::Object::jstatic('org::allbinary::business::installer::InitDbCrypted', 'ADD_TABLES_RESULTS_LABEL') . $stringBuffer->toString(), $self, $self->{METHOD_ADD_TABLES});
             return 1;
         } catch ($e) {
             $self->{logUtil}->put($self->{commonStrings}->{EXCEPTION}, $self, $self->{METHOD_ADD_TABLES}, $e);

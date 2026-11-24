@@ -30,7 +30,7 @@ sub new {
 
 sub allPointsInside {
     my ($class, $rectX1, $rectY1, $rectX2, $rectY2, $list) = @_;
-        my $rectangleCollisionUtil = 'org::allbinary::math::RectangleCollisionUtil'->getInstance();
+        my $rectangleCollisionUtil = java::lang::Object::jstatic('org::allbinary::math::RectangleCollisionPointUtil', 'RectangleCollisionUtil')->getInstance();
         my $point = undef;
         for (my $index = $list->size(); --$index >= 0; ) {
             $point = $list->{objectArray}->[$index];
@@ -44,7 +44,7 @@ sub allPointsInside {
 
 sub allPointsInsideCell {
     my ($class, $rectX1, $rectY1, $rectX2, $rectY2, $list, $xCellSize, $yCellSize) = @_;
-        my $rectangleCollisionUtil = 'org::allbinary::math::RectangleCollisionUtil'->getInstance();
+        my $rectangleCollisionUtil = java::lang::Object::jstatic('org::allbinary::math::RectangleCollisionPointUtil', 'RectangleCollisionUtil')->getInstance();
         my $point = undef;
         for (my $index = $list->size(); --$index >= 0; ) {
             $point = $list->{objectArray}->[$index];
@@ -58,7 +58,6 @@ sub allPointsInsideCell {
 use java::lang::Object ();
 use org::allbinary::graphics::GPoint ();
 use org::allbinary::util::BasicArrayList ();
-use org::allbinary::math::RectangleCollisionUtil ();
 
 1;
 
