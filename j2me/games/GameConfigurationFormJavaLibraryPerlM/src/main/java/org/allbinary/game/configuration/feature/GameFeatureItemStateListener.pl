@@ -34,7 +34,7 @@ sub new {
     my $self = bless({}, $class);
     _init_fields($self);
         $self->{gameOptionsForm} = $gameOptionsForm;
-        my $gameFeatureFactory = java::lang::Object::jstatic('org::allbinary::game::configuration::feature::GameFeatureItemStateListener', 'GameFeatureFactory')->getInstance();
+        my $gameFeatureFactory = 'org::allbinary::game::configuration::feature::GameFeatureFactory'->getInstance();
         'org::allbinary::game::configuration::feature::GameFeatureItemStateListener'->add($gameFeatureFactory->{ARTIFICIAL_INTELLEGENCE_PROCESSOR});
         'org::allbinary::game::configuration::feature::GameFeatureItemStateListener'->add($gameFeatureFactory->{COLLIDABLE_INTERFACE_LAYER_PROCESSOR});
         'org::allbinary::game::configuration::feature::GameFeatureItemStateListener'->add($gameFeatureFactory->{DAMAGE_FLOATERS});
@@ -63,7 +63,7 @@ sub itemStateChanged {
             if ((Scalar::Util::blessed($item) && $item->isa('org::allbinary::game::configuration::GameConfigurationGauge'))) {
                 'org::allbinary::game::configuration::GameConfigurationUtil'->getInstance()->change($self->{gameOptionsForm}, $item);
             } elsif ((Scalar::Util::blessed($item) && $item->isa('javax::microedition::lcdui::ChoiceGroup'))) {
-                my $gameFeatureUtil = java::lang::Object::jstatic('org::allbinary::game::configuration::feature::GameFeatureItemStateListener', 'GameFeatureUtil')->getInstance();
+                my $gameFeatureUtil = 'org::allbinary::game::configuration::feature::GameFeatureUtil'->getInstance();
                 if ($gameFeatureUtil->isExclusive($itemLabel)) {
                     $gameFeatureUtil->updateExclusiveForChoiceGroup($item);
                 } else {
@@ -90,6 +90,8 @@ use org::allbinary::string::CommonLabels ();
 use org::allbinary::string::CommonStrings ();
 use org::allbinary::util::BasicArrayList ();
 use org::allbinary::util::BasicArrayListD ();
+use org::allbinary::game::configuration::feature::GameFeatureFactory ();
+use org::allbinary::game::configuration::feature::GameFeatureUtil ();
 
 1;
 

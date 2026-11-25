@@ -29,7 +29,7 @@ sub paintUnselected {
 
 sub getLabelStringComponent {
     my ($self) = @_;
-        return java::lang::Object::jstatic('org::allbinary::graphics::form::item::ABTextItem', 'ABStringComponent')->{NULL_STRING_COMPONENT};
+        return $org::allbinary::graphics::form::item::ABStringComponent::NULL_STRING_COMPONENT;
 }
 
 
@@ -61,6 +61,7 @@ use javax::microedition::lcdui::Graphics ();
 use org::allbinary::graphics::color::BasicColor ();
 use org::allbinary::graphics::form::item::CustomCustomItem ();
 use org::allbinary::graphics::form::item::ABCustomItemInterface ();
+use org::allbinary::graphics::form::item::ABStringComponent ();
 
 1;
 

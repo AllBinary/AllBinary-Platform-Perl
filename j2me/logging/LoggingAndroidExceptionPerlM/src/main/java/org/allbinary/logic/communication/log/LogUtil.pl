@@ -24,7 +24,7 @@ tie our $instance, 'java::lang::LazyStatic', sub { 'org::allbinary::logic::commu
 
 sub _init_fields {
     my ($self) = @_;
-    $self->{logFormatUtil} = java::lang::Object::jstatic('org::allbinary::logic::communication::log::LogUtil', 'LogFormatUtil')->getInstance();
+    $self->{logFormatUtil} = 'org::allbinary::logic::communication::log::LogFormatUtil'->getInstance();
     $self->{LABEL} = "org.allbinary";
     $self->{LOG_SUCCESS} = "org.allbinary: ";
 }
@@ -76,6 +76,7 @@ sub put {
 
 use java::lang::Object ();
 use java::lang::LazyStatic ();
+use org::allbinary::logic::communication::log::LogFormatUtil ();
 
 1;
 

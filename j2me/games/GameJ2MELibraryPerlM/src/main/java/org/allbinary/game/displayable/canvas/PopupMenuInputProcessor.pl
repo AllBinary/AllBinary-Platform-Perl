@@ -138,6 +138,7 @@ use org::allbinary::math::RectangleCollisionUtil ();
 use org::allbinary::string::CommonSeps ();
 use org::allbinary::time::TimeDelayHelper ();
 use org::allbinary::util::BasicArrayList ();
+use org::allbinary::game::displayable::canvas::BasicMenuInputProcessor ();
 
 1;
 

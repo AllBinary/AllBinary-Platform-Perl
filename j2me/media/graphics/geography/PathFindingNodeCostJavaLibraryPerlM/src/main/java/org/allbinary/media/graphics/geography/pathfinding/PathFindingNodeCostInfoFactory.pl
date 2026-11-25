@@ -80,6 +80,7 @@ sub getTotalCost {
 use java::lang::Object ();
 use org::allbinary::media::graphics::geography::map::BasicGeographicMap ();
 use org::allbinary::media::graphics::geography::map::GeographicMapCellPosition ();
+use org::allbinary::media::graphics::geography::pathfinding::PathFindingNodeCostInfoFactoryBase ();
 use org::allbinary::media::graphics::geography::pathfinding::PathFindingNodeCostInfo ();
 
 1;

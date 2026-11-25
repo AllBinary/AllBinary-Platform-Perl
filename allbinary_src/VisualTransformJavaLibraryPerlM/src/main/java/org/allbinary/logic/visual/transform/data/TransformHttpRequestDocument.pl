@@ -131,6 +131,7 @@ use org::w3c::dom::Document ();
 use org::w3c::dom::Node ();
 use org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory ();
 use org::allbinary::logic::communication::log::config::type::LogConfigTypes ();
+use org::allbinary::logic::visual::transform::data::TransformDocumentInterface ();
 
 1;
 

@@ -106,6 +106,7 @@ use org::allbinary::data::tables::user::commerce::inventory::order::OrderItemsEn
 use org::allbinary::logic::communication::log::LogUtil ();
 use org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory ();
 use org::allbinary::logic::communication::log::config::type::LogConfigTypes ();
+use admin::taghelpers::TagHelper ();
 
 1;
 

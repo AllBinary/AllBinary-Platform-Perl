@@ -52,6 +52,7 @@ use java::lang::Object ();
 use java::lang::LazyStatic ();
 use org::allbinary::game::GameAdState ();
 use org::allbinary::logic::system::SoftwareInformation ();
+use org::allbinary::business::advertisement::GameAdStateFactoryInterface ();
 use org::allbinary::business::advertisement::AppNameLicensingAdConfiguration ();
 
 1;

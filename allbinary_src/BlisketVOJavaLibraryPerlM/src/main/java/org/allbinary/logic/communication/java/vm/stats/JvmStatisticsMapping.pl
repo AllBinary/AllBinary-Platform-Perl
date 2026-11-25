@@ -32,16 +32,16 @@ sub new {
 sub toHashMap {
     my ($self) = @_;
         my $hashMap = 'org::allbinary::logic::StdUtil'->getInstance()->createHashMap();
-        $hashMap->put(java::lang::Object::jstatic('org::allbinary::logic::communication::java::vm::stats::JvmStatisticsMapping', 'JvmStatisticsData')->{FREE_MEMORY_BYTES}, $self->getFreeMemoryBytesString());
-        $hashMap->put(java::lang::Object::jstatic('org::allbinary::logic::communication::java::vm::stats::JvmStatisticsMapping', 'JvmStatisticsData')->{FREE_MEMORY_KILOBYTES}, $self->getFreeMemoryKilobytesString());
-        $hashMap->put(java::lang::Object::jstatic('org::allbinary::logic::communication::java::vm::stats::JvmStatisticsMapping', 'JvmStatisticsData')->{FREE_MEMORY_MEGABYTES}, $self->getFreeMemoryMegabytesString());
-        $hashMap->put(java::lang::Object::jstatic('org::allbinary::logic::communication::java::vm::stats::JvmStatisticsMapping', 'JvmStatisticsData')->{MAX_MEMORY_BYTES}, $self->getMaxMemoryBytesString());
-        $hashMap->put(java::lang::Object::jstatic('org::allbinary::logic::communication::java::vm::stats::JvmStatisticsMapping', 'JvmStatisticsData')->{MAX_MEMORY_KILOBYTES}, $self->getMaxMemoryKilobytesString());
-        $hashMap->put(java::lang::Object::jstatic('org::allbinary::logic::communication::java::vm::stats::JvmStatisticsMapping', 'JvmStatisticsData')->{MAX_MEMORY_MEGABYTES}, $self->getMaxMemoryMegabytesString());
-        $hashMap->put(java::lang::Object::jstatic('org::allbinary::logic::communication::java::vm::stats::JvmStatisticsMapping', 'JvmStatisticsData')->{NUMBER_OF_THREADS}, $self->getNumberOfThreadsString());
-        $hashMap->put(java::lang::Object::jstatic('org::allbinary::logic::communication::java::vm::stats::JvmStatisticsMapping', 'JvmStatisticsData')->{TOTAL_MEMORY_BYTES}, $self->getTotalMemoryBytesString());
-        $hashMap->put(java::lang::Object::jstatic('org::allbinary::logic::communication::java::vm::stats::JvmStatisticsMapping', 'JvmStatisticsData')->{TOTAL_MEMORY_KILOBYTES}, $self->getTotalMemoryKilobytesString());
-        $hashMap->put(java::lang::Object::jstatic('org::allbinary::logic::communication::java::vm::stats::JvmStatisticsMapping', 'JvmStatisticsData')->{TOTAL_MEMORY_MEGABYTES}, $self->getTotalMemoryMegabytesString());
+        $hashMap->put($org::allbinary::logic::communication::java::vm::stats::JvmStatisticsData::FREE_MEMORY_BYTES, $self->getFreeMemoryBytesString());
+        $hashMap->put($org::allbinary::logic::communication::java::vm::stats::JvmStatisticsData::FREE_MEMORY_KILOBYTES, $self->getFreeMemoryKilobytesString());
+        $hashMap->put($org::allbinary::logic::communication::java::vm::stats::JvmStatisticsData::FREE_MEMORY_MEGABYTES, $self->getFreeMemoryMegabytesString());
+        $hashMap->put($org::allbinary::logic::communication::java::vm::stats::JvmStatisticsData::MAX_MEMORY_BYTES, $self->getMaxMemoryBytesString());
+        $hashMap->put($org::allbinary::logic::communication::java::vm::stats::JvmStatisticsData::MAX_MEMORY_KILOBYTES, $self->getMaxMemoryKilobytesString());
+        $hashMap->put($org::allbinary::logic::communication::java::vm::stats::JvmStatisticsData::MAX_MEMORY_MEGABYTES, $self->getMaxMemoryMegabytesString());
+        $hashMap->put($org::allbinary::logic::communication::java::vm::stats::JvmStatisticsData::NUMBER_OF_THREADS, $self->getNumberOfThreadsString());
+        $hashMap->put($org::allbinary::logic::communication::java::vm::stats::JvmStatisticsData::TOTAL_MEMORY_BYTES, $self->getTotalMemoryBytesString());
+        $hashMap->put($org::allbinary::logic::communication::java::vm::stats::JvmStatisticsData::TOTAL_MEMORY_KILOBYTES, $self->getTotalMemoryKilobytesString());
+        $hashMap->put($org::allbinary::logic::communication::java::vm::stats::JvmStatisticsData::TOTAL_MEMORY_MEGABYTES, $self->getTotalMemoryMegabytesString());
         return $hashMap;
 }
 
@@ -49,7 +49,7 @@ sub toHashMap {
 # throws Exception
 sub getKey {
     my ($self) = @_;
-        return java::lang::Object::jstatic('org::allbinary::logic::communication::java::vm::stats::JvmStatisticsMapping', 'JvmStatisticsData')->{NAME};
+        return $org::allbinary::logic::communication::java::vm::stats::JvmStatisticsData::NAME;
 }
 
 
@@ -77,6 +77,7 @@ use org::allbinary::util::BasicArrayListD ();
 use org::allbinary::data::tables::TableMappingInterface ();
 use org::allbinary::logic::StdUtil ();
 use org::allbinary::logic::communication::java::vm::stats::JvmStatistics ();
+use org::allbinary::logic::communication::java::vm::stats::JvmStatisticsData ();
 
 1;
 

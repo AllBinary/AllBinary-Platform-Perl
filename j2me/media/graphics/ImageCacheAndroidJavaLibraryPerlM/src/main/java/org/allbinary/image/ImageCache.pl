@@ -132,6 +132,7 @@ use org::allbinary::game::gd::resource::GDResources ();
 use org::allbinary::logic::ABSystemWrapper ();
 use org::allbinary::logic::string::StringUtil ();
 use org::allbinary::system::Memory ();
+use org::allbinary::image::ImageCacheBase ();
 use java::lang::Thread ();
 
 1;

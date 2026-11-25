@@ -82,10 +82,10 @@ sub createPlayer {
                 my $logUtil = 'org::allbinary::logic::communication::log::LogUtil'->getInstance();
                 my $commonString = 'org::allbinary::string::CommonStrings'->getInstance();
                 $logUtil->put($commonString->{EXCEPTION}, $org::allbinary::media::audio::AllBinaryMediaManager::THIS, $CREATE_PLAYER, $e);
-                return java::lang::Object::jstatic('org::allbinary::media::audio::AllBinaryMediaManager', 'NoPlayer')->{NO_PLAYER};
+                return $org::allbinary::media::audio::NoPlayer::NO_PLAYER;
             }
         } else {
-            return java::lang::Object::jstatic('org::allbinary::media::audio::AllBinaryMediaManager', 'NoPlayer')->{NO_PLAYER};
+            return $org::allbinary::media::audio::NoPlayer::NO_PLAYER;
         }
 }
 
@@ -126,6 +126,8 @@ use org::allbinary::graphics::canvas::transition::progress::ProgressCanvasFactor
 use org::allbinary::logic::NullUtil ();
 use org::allbinary::logic::communication::log::LogUtil ();
 use org::allbinary::string::CommonStrings ();
+use org::allbinary::media::audio::Sounds ();
+use org::allbinary::media::audio::NoPlayer ();
 use org::allbinary::media::audio::PCClipWavPlayer ();
 
 1;

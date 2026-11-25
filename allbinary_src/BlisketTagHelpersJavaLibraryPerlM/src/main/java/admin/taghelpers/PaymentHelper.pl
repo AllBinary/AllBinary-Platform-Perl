@@ -211,6 +211,7 @@ use org::allbinary::logic::communication::sql::AbSqlTableUtil ();
 use org::allbinary::logic::system::security::licensing::LicensingException ();
 use org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory ();
 use org::allbinary::logic::communication::log::config::type::LogConfigTypes ();
+use admin::taghelpers::Table ();
 
 1;
 

@@ -35,6 +35,7 @@ sub new {
 }
 
 use java::lang::Object ();
+use org::allbinary::game::input::GameInputProcessor ();
 
 1;
 

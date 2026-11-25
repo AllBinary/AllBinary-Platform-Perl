@@ -61,18 +61,18 @@ sub new {
         my $data = 'org::allbinary::logic::control::crypt::file::CryptFileReader'->new('org::allbinary::logic::visual::transform::info::objectConfig::TransformInfoObjectConfigData'->getInstance()->{UNCRYPTED_EXTENSION}, 'org::allbinary::logic::visual::transform::info::objectConfig::TransformInfoObjectConfigData'->getInstance()->{ENCRYPTED_EXTENSION})->get($abPath);
         $self->{document} = 'org::allbinary::data::tree::dom::document::DomDocumentHelper'->create($data);
         $self->{shippingVector} = 'org::allbinary::util::BasicArrayListD'->new();
-        my $nodeList = $self->{document}->getElementsByTagName(java::lang::Object::jstatic('org::allbinary::business::user::commerce::shipping::ShippingMethodsFactory', 'ShippingMethodsData')->{NAME});
+        my $nodeList = $self->{document}->getElementsByTagName($org::allbinary::business::user::commerce::shipping::ShippingMethodsData::NAME);
         for (my $index = 0; $index < $nodeList->getLength(); $index++) {
             my $node = $nodeList->item($index);
             my $shippingMethodNodeChildren = $node->getChildNodes();
-            my $shippingMethodNameNode = 'org::allbinary::data::tree::dom::DomSearchHelper'->getNode(java::lang::Object::jstatic('org::allbinary::business::user::commerce::shipping::ShippingMethodsFactory', 'ShippingMethodData')->{NAME}, $shippingMethodNodeChildren);
+            my $shippingMethodNameNode = 'org::allbinary::data::tree::dom::DomSearchHelper'->getNode($org::allbinary::business::user::commerce::shipping::ShippingMethodData::NAME, $shippingMethodNodeChildren);
             my $classNameNode = 'org::allbinary::data::tree::dom::DomSearchHelper'->getNode($org::allbinary::business::DynamicObjectData::NAME, $shippingMethodNameNode->getChildNodes());
             my $shippingMethodClassName = 'org::allbinary::data::tree::dom::DomNodeHelper'->getTextNodeValue($classNameNode);
             my $shippingMethodInterface = 'org::allbinary::logic::system::loader::AbeFactory'->getInstance()->getInstance($abeClientInformation, $shippingMethodClassName);
             $self->{shippingVector}->add($shippingMethodInterface);
-            my $defaultShippingMethodNameNode = 'org::allbinary::data::tree::dom::DomSearchHelper'->getNode(java::lang::Object::jstatic('org::allbinary::business::user::commerce::shipping::ShippingMethodsFactory', 'ShippingMethodData')->{DEFAULT}, $shippingMethodNameNode->getChildNodes());
+            my $defaultShippingMethodNameNode = 'org::allbinary::data::tree::dom::DomSearchHelper'->getNode($org::allbinary::business::user::commerce::shipping::ShippingMethodData::DEFAULT, $shippingMethodNameNode->getChildNodes());
             my $defaultShippingMethodNameNodeValue = 'org::allbinary::data::tree::dom::DomNodeHelper'->getTextNodeValue($defaultShippingMethodNameNode);
-            if (defined($defaultShippingMethodNameNodeValue) && ($defaultShippingMethodNameNodeValue cmp java::lang::Object::jstatic('org::allbinary::business::user::commerce::shipping::ShippingMethodsFactory', 'ShippingMethodData')->{DEFAULT}) == 0) {
+            if (defined($defaultShippingMethodNameNodeValue) && ($defaultShippingMethodNameNodeValue cmp $org::allbinary::business::user::commerce::shipping::ShippingMethodData::DEFAULT) == 0) {
                 $self->{defaultShippingMethodInterface} = $shippingMethodInterface;
             }
         }
@@ -122,6 +122,8 @@ use org::allbinary::logic::visual::transform::info::objectConfig::TransformInfoO
 use org::w3c::dom::Document ();
 use org::w3c::dom::Node ();
 use org::w3c::dom::NodeList ();
+use org::allbinary::business::user::commerce::shipping::ShippingMethodsData ();
+use org::allbinary::business::user::commerce::shipping::ShippingMethodData ();
 
 1;
 

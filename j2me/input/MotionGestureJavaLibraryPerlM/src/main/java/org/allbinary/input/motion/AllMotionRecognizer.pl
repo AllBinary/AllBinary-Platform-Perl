@@ -128,6 +128,7 @@ use org::allbinary::graphics::GPointCircularPool ();
 use org::allbinary::input::motion::button::TouchButtonRecognizer ();
 use org::allbinary::input::motion::gesture::MotionGestureRecognizer ();
 use org::allbinary::logic::communication::log::LogUtil ();
+use org::allbinary::input::motion::MotionRecognizer ();
 
 1;
 

@@ -39,6 +39,7 @@ use java::lang::Object ();
 use java::util::HashMap ();
 use admin::taghelpers::BasicOptionItemsHelperFactory ();
 use admin::taghelpers::BasicOptionItemsRequestHelperFactory ();
+use admin::tags::TableTag ();
 
 1;
 

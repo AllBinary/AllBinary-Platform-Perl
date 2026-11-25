@@ -25,7 +25,7 @@ sub _init_fields {
     my ($self) = @_;
     $self->{logUtil} = 'org::allbinary::logic::communication::log::LogUtil'->getInstance();
     $self->{commonStrings} = 'org::allbinary::string::CommonStrings'->getInstance();
-    $self->{hardwareInterface} = java::lang::Object::jstatic('org::allbinary::logic::system::hardware::SystemHardwareFactory', 'NoHardware')->getInstance();
+    $self->{hardwareInterface} = 'org::allbinary::logic::system::hardware::NoHardware'->getInstance();
 }
 
 
@@ -46,8 +46,8 @@ sub new {
 sub getInstance_j1 {
     my ($self, $operatingSystemInterface) = @_;
         try {
-            if ($self->{hardwareInterface} == java::lang::Object::jstatic('org::allbinary::logic::system::hardware::SystemHardwareFactory', 'NoHardware')->getInstance()) {
-                $self->{hardwareInterface} = java::lang::Object::jstatic('org::allbinary::logic::system::hardware::SystemHardwareFactory', 'HardwareFactory')->getInstance()->getInstance($operatingSystemInterface);
+            if ($self->{hardwareInterface} == 'org::allbinary::logic::system::hardware::NoHardware'->getInstance()) {
+                $self->{hardwareInterface} = 'org::allbinary::logic::system::hardware::HardwareFactory'->getInstance()->getInstance($operatingSystemInterface);
             }
             $self->{logUtil}->putF("Found Hardware", $self, $self->{commonStrings}->{CONSTRUCTOR});
         } catch ($e) {
@@ -84,6 +84,8 @@ use org::allbinary::logic::string::StringMaker ();
 use org::allbinary::logic::string::StringUtil ();
 use org::allbinary::logic::system::os::GenericOperatingSystem ();
 use org::allbinary::string::CommonStrings ();
+use org::allbinary::logic::system::hardware::NoHardware ();
+use org::allbinary::logic::system::hardware::HardwareFactory ();
 
 1;
 

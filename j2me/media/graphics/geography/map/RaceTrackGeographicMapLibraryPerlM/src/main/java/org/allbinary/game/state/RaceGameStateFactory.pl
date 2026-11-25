@@ -23,9 +23,9 @@ tie our $instance, 'java::lang::LazyStatic', sub { 'org::allbinary::logic::NullU
 
 sub _init_fields {
     my ($self) = @_;
-    $self->{START_GAME_STATE} = java::lang::Object::jstatic('org::allbinary::game::state::RaceGameStateFactory', 'GameStateFactory')->getInstance()->createGameState("START_GAME_STATE");
-    $self->{YELLOW_LIGHT_GAME_STATE} = java::lang::Object::jstatic('org::allbinary::game::state::RaceGameStateFactory', 'GameStateFactory')->getInstance()->createGameState("YELLOW_LIGHT_GAME_STATE");
-    $self->{RED_LIGHT_GAME_STATE} = java::lang::Object::jstatic('org::allbinary::game::state::RaceGameStateFactory', 'GameStateFactory')->getInstance()->createGameState("RED_LIGHT_GAME_STATE");
+    $self->{START_GAME_STATE} = 'org::allbinary::game::state::GameStateFactory'->getInstance()->createGameState("START_GAME_STATE");
+    $self->{YELLOW_LIGHT_GAME_STATE} = 'org::allbinary::game::state::GameStateFactory'->getInstance()->createGameState("YELLOW_LIGHT_GAME_STATE");
+    $self->{RED_LIGHT_GAME_STATE} = 'org::allbinary::game::state::GameStateFactory'->getInstance()->createGameState("RED_LIGHT_GAME_STATE");
 }
 
 sub new {
@@ -47,6 +47,7 @@ sub getInstance {
 use java::lang::Object ();
 use java::lang::LazyStatic ();
 use org::allbinary::logic::NullUtil ();
+use org::allbinary::game::state::GameStateFactory ();
 
 1;
 

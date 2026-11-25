@@ -87,6 +87,7 @@ sub getZ {
 
 use java::lang::Object ();
 use java::lang::LazyStatic ();
+use org::allbinary::graphics::GPoint ();
 
 1;
 

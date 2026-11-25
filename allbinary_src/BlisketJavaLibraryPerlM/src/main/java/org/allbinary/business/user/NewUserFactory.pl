@@ -43,7 +43,7 @@ sub getInstance_j1 {
         my $hashMap = 'org::allbinary::logic::communication::http::request::RequestParams'->new($httpServletRequest)->toHashMap();
         my $role = $httpTransformInfoInterface->getPropertiesHashMap()->get($org::allbinary::business::user::role::UserRoleData::NAME->toString());
         $hashMap->put($org::allbinary::business::user::role::UserRoleData::NAME->toString(), $role);
-        return java::lang::Object::jstatic('org::allbinary::business::user::NewUserFactory', 'CreateUserFactory')->getInstance($hashMap);
+        return 'org::allbinary::business::user::CreateUserFactory'->getInstance($hashMap);
 }
 
 
@@ -54,7 +54,7 @@ sub getInstance_j2 {
             my $requestHashMap = 'org::allbinary::logic::communication::http::request::RequestParams'->new($httpServletRequest)->toHashMap();
             my $roleString = $propertiesHashMap->get($org::allbinary::business::user::role::UserRoleData::NAME->toString());
             $requestHashMap->put($org::allbinary::business::user::role::UserRoleData::NAME->toString(), $roleString);
-            return java::lang::Object::jstatic('org::allbinary::business::user::NewUserFactory', 'CreateUserFactory')->getInstance($requestHashMap);
+            return 'org::allbinary::business::user::CreateUserFactory'->getInstance($requestHashMap);
         } else {
             die ("Null HashMap");
         }
@@ -76,6 +76,7 @@ use org::allbinary::business::user::role::UserRoleData ();
 use org::allbinary::logic::communication::http::request::RequestParams ();
 use org::allbinary::logic::visual::transform::info::TransformInfoHttpInterface ();
 use org::allbinary::logic::visual::transform::info::TransformInfoInterface ();
+use org::allbinary::business::user::CreateUserFactory ();
 
 1;
 

@@ -129,6 +129,7 @@ use tags::HelperTag ();
 use views::admin::inventory::InventoryItemView ();
 use org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory ();
 use org::allbinary::logic::communication::log::config::type::LogConfigTypes ();
+use admin::taghelpers::ModifyTable ();
 use admin::taghelpers::InventoryItemViewParentTagHelper ();
 
 1;

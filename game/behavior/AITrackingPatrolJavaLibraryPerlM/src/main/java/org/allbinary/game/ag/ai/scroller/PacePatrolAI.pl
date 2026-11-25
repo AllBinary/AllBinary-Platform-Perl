@@ -149,6 +149,7 @@ use org::allbinary::logic::util::event::EventStrings ();
 use org::allbinary::util::ABHashtable ();
 use org::allbinary::util::BasicArrayList ();
 use org::allbinary::util::BasicArrayListD ();
+use org::allbinary::game::ag::ai::scroller::BasePatrolAI ();
 
 1;
 

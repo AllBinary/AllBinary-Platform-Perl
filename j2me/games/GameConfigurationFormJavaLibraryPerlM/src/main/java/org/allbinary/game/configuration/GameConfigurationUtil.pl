@@ -51,7 +51,7 @@ sub getInstance {
 sub change {
     my ($self, $gameOptionsForm, $gauge) = @_;
         $self->update($gauge);
-        my $gameConfigurationSingleton = java::lang::Object::jstatic('org::allbinary::game::configuration::GameConfigurationUtil', 'GameConfigurationSingleton')->getInstance();
+        my $gameConfigurationSingleton = 'org::allbinary::game::configuration::GameConfigurationSingleton'->getInstance();
         my $gameConfiguration = $gameConfigurationSingleton->getInstanceByName($gauge->getLabel());
         $self->updateChallange($gameOptionsForm, $gameConfiguration);
 }
@@ -60,7 +60,7 @@ sub change {
 # throws Exception
 sub update {
     my ($self, $gauge) = @_;
-        my $gameConfigurationSingleton = java::lang::Object::jstatic('org::allbinary::game::configuration::GameConfigurationUtil', 'GameConfigurationSingleton')->getInstance();
+        my $gameConfigurationSingleton = 'org::allbinary::game::configuration::GameConfigurationSingleton'->getInstance();
         my $gameConfiguration = $gameConfigurationSingleton->getInstanceByName($gauge->getLabel());
         my $smallIntegerSingletonFactory = 'org::allbinary::logic::math::SmallIntegerSingletonFactory'->getInstance();
         my $value = $smallIntegerSingletonFactory->getAt($gauge->getValue() + int($gameConfiguration->getMinValue()));
@@ -79,7 +79,7 @@ sub update {
 # throws Exception
 sub setDefault {
     my ($self, $gauge) = @_;
-        my $gameConfigurationSingleton = java::lang::Object::jstatic('org::allbinary::game::configuration::GameConfigurationUtil', 'GameConfigurationSingleton')->getInstance();
+        my $gameConfigurationSingleton = 'org::allbinary::game::configuration::GameConfigurationSingleton'->getInstance();
         my $gameConfiguration = $gameConfigurationSingleton->getInstanceByName($gauge->getLabel());
         my $stringBuffer = 'org::allbinary::logic::string::StringMaker'->new();
         $stringBuffer->append("Gauge Default: ");
@@ -95,8 +95,8 @@ sub setDefault {
 # throws Exception
 sub updateChallange {
     my ($self, $gameOptionsForm, $gameConfiguration) = @_;
-        my $gameConfigurationSingleton = java::lang::Object::jstatic('org::allbinary::game::configuration::GameConfigurationUtil', 'GameConfigurationSingleton')->getInstance();
-        my $gameConfigurationCentral = java::lang::Object::jstatic('org::allbinary::game::configuration::GameConfigurationUtil', 'GameConfigurationCentral')->getInstance();
+        my $gameConfigurationSingleton = 'org::allbinary::game::configuration::GameConfigurationSingleton'->getInstance();
+        my $gameConfigurationCentral = 'org::allbinary::game::configuration::GameConfigurationCentral'->getInstance();
         if ($gameConfiguration == $gameConfigurationCentral->{CHALLENGE_LEVEL}) {
             $self->{logUtil}->putF($self->{commonStrings}->{START}, $self, "updateChallange");
             $gameConfigurationCentral->{COLLIDE_DAMAGE}->setValue($gameConfiguration->getValue());
@@ -128,7 +128,7 @@ sub updateChallange {
 sub updateCompetitionValue {
     my ($self) = @_;
         $self->{logUtil}->putF($self->{commonStrings}->{START}, $self, "updateCompetitionValue");
-        my $gameConfigurationCentral = java::lang::Object::jstatic('org::allbinary::game::configuration::GameConfigurationUtil', 'GameConfigurationCentral')->getInstance();
+        my $gameConfigurationCentral = 'org::allbinary::game::configuration::GameConfigurationCentral'->getInstance();
         $self->{COMPETITION_VALUE} = int($gameConfigurationCentral->{COLLIDE_DAMAGE}->getValue()) + int($gameConfigurationCentral->{ATTACK_CHALLENGE_LEVEL}->getValue()) + int($gameConfigurationCentral->{DURABILITY_CHALLENGE_LEVEL}->getValue()) + int($gameConfigurationCentral->{SPEED_CHALLENGE_LEVEL}->getValue());
         $self->{COMPETITION_VALUE} = (POSIX::floor(($self->{COMPETITION_VALUE}) / (2 ** (2))));
 }
@@ -146,6 +146,8 @@ use org::allbinary::logic::communication::log::LogUtil ();
 use org::allbinary::logic::math::SmallIntegerSingletonFactory ();
 use org::allbinary::logic::string::StringMaker ();
 use org::allbinary::string::CommonStrings ();
+use org::allbinary::game::configuration::GameConfigurationSingleton ();
+use org::allbinary::game::configuration::GameConfigurationCentral ();
 
 1;
 

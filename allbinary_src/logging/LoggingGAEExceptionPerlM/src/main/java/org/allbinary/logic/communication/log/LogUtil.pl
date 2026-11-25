@@ -25,7 +25,7 @@ tie our $instance, 'java::lang::LazyStatic', sub { 'org::allbinary::logic::commu
 sub _init_fields {
     my ($self) = @_;
     $self->{logger} = 'java::util::logging::Logger'->getLogger((('org::allbinary::logic::communication::log::LogUtil') =~ s/::/./gr));
-    $self->{logFormatUtil} = java::lang::Object::jstatic('org::allbinary::logic::communication::log::LogUtil', 'LogFormatUtil')->getInstance();
+    $self->{logFormatUtil} = 'org::allbinary::logic::communication::log::LogFormatUtil'->getInstance();
 }
 
 
@@ -45,7 +45,7 @@ sub new {
 
 sub init {
     my ($self) = @_;
-        java::lang::Object::jstatic('org::allbinary::logic::communication::log::LogUtil', 'PreLogUtil')->put("Loggin Initialized", $self, "init()");
+        'org::allbinary::logic::communication::log::PreLogUtil'->put("Loggin Initialized", $self, "init()");
 }
 
 
@@ -94,6 +94,8 @@ use java::lang::LazyStatic ();
 use org::allbinary::logic::string::StringMaker ();
 # use java::util::logging::Logger ();
 use org::allbinary::string::CommonStrings ();
+use org::allbinary::logic::communication::log::LogFormatUtil ();
+use org::allbinary::logic::communication::log::PreLogUtil ();
 
 1;
 

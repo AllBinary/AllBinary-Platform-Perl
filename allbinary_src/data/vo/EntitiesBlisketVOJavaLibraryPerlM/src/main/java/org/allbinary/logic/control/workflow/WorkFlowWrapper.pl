@@ -102,6 +102,7 @@ use org::allbinary::logic::communication::log::LogUtil ();
 use org::allbinary::string::CommonStrings ();
 use org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory ();
 use org::allbinary::logic::communication::log::config::type::LogConfigTypes ();
+use org::allbinary::logic::control::workflow::WorkFlowInterface ();
 
 1;
 

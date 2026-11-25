@@ -174,7 +174,7 @@ sub createFakeRTSLayerHashtable {
         my $hashtable = 'org::allbinary::logic::StdUtil'->getInstance()->createHashtable();
         my $layerManager = 'org::allbinary::game::layer::FakeLayerManager'->new($org::allbinary::game::GameInfo::NONE);
         $layerManager->setGeographicMapInterface([$baseRaceTrackGeographicMap]);
-        $hashtable->put(java::lang::Object::jstatic('org::allbinary::game::layer::RTSLayerUtil', 'AllBinaryGameLayerManager')->{ID}, $layerManager);
+        $hashtable->put($org::allbinary::game::layer::AllBinaryGameLayerManager::ID, $layerManager);
         $hashtable->put('org::allbinary::direction::DirectionFactory'->getInstance()->{NAME}, 'org::allbinary::direction::DirectionFactory'->getInstance()->{LEFT});
         $hashtable->put($self->{groupCommonFactory}->{ID}, 'org::allbinary::game::identification::BasicGroupFactory'->getInstance()->{NONE_ARRAY});
         return $hashtable;
@@ -197,6 +197,7 @@ use org::allbinary::media::graphics::geography::map::BasicGeographicMap ();
 use org::allbinary::media::graphics::geography::map::racetrack::BaseRaceTrackGeographicMap ();
 use org::allbinary::util::ABHashtable ();
 use org::allbinary::game::layer::FakeLayerManager ();
+use org::allbinary::game::layer::AllBinaryGameLayerManager ();
 
 1;
 

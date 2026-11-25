@@ -44,7 +44,7 @@ sub new {
 sub toXmlNode {
     my ($self, $document) = @_;
         my $hashMap = $self->{storeFrontInterface}->toHashMap();
-        my $storeFrontData = java::lang::Object::jstatic('org::allbinary::business::context::modules::storefront::StoreFrontView', 'StoreFrontData')->getInstance();
+        my $storeFrontData = 'org::allbinary::business::context::modules::storefront::StoreFrontData'->getInstance();
         $hashMap->put($storeFrontData->{CURRENTHOMEHOSTNAME}, $self->{storeFrontInterface}->getCurrentHomeHostName());
         $hashMap->put($storeFrontData->{CURRENTHOMEHOSTNAMEPATH}, $self->{storeFrontInterface}->getCurrentHomeHostNamePath());
         $hashMap->put($storeFrontData->{CURRENTHOSTNAME}, $self->{storeFrontInterface}->getCurrentHostName());
@@ -65,6 +65,7 @@ use org::w3c::dom::Document ();
 use org::w3c::dom::Node ();
 use org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory ();
 use org::allbinary::logic::communication::log::config::type::LogConfigTypes ();
+use org::allbinary::business::context::modules::storefront::StoreFrontData ();
 
 1;
 

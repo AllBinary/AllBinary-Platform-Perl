@@ -31,6 +31,7 @@ sub new {
 
 use java::lang::Object ();
 use admin::taghelpers::PaymentTransactionResultHelperFactory ();
+use admin::tags::TableTag ();
 
 1;
 

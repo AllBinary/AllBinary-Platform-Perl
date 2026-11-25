@@ -42,8 +42,8 @@ sub toXmlNode {
         my $hashMap = $self->{dataMappingInterface}->toHashMap();
         $hashMap->put('org::allbinary::business::entry::EntryData'->getInstance()->{LASTMODIFIED}, $EMPTY_STRING);
         $hashMap->put('org::allbinary::business::entry::EntryData'->getInstance()->{ENCRYPTION}, $EMPTY_STRING);
-        $hashMap->put(java::lang::Object::jstatic('org::allbinary::business::user::UserDomNode', 'UserData')->{PASSWORD}, $EMPTY_STRING);
-        return 'org::allbinary::data::tree::dom::ModDomHelper'->createNameValueNodes($document, java::lang::Object::jstatic('org::allbinary::business::user::UserDomNode', 'UserData')->{NAME}, $hashMap);
+        $hashMap->put($org::allbinary::business::user::UserData::PASSWORD, $EMPTY_STRING);
+        return 'org::allbinary::data::tree::dom::ModDomHelper'->createNameValueNodes($document, $org::allbinary::business::user::UserData::NAME, $hashMap);
 }
 
 
@@ -69,6 +69,7 @@ use org::allbinary::data::tree::dom::ModDomHelper ();
 use org::allbinary::logic::string::StringUtil ();
 use org::w3c::dom::Document ();
 use org::w3c::dom::Node ();
+use org::allbinary::business::user::UserData ();
 
 1;
 

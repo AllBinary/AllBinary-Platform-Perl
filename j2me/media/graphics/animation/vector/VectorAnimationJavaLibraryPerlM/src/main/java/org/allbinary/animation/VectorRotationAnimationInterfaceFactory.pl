@@ -67,6 +67,7 @@ use org::allbinary::graphics::color::BasicColor ();
 use org::allbinary::graphics::color::BasicColorFactory ();
 use org::allbinary::logic::NullUtil ();
 use org::allbinary::media::ScaleProperties ();
+use org::allbinary::animation::AnimationInterfaceFactoryInterface ();
 use org::allbinary::animation::VectorRotationAnimation ();
 
 1;

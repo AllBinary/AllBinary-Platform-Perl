@@ -36,17 +36,17 @@ sub new {
         $self->{nameSpaceVector} = 'org::allbinary::util::BasicArrayListD'->new();
         $self->{nameSpacePropertiesHashMap} = 'org::allbinary::logic::StdUtil'->getInstance()->createHashMap();
         $self->{value} = $value;
-        my $beginIndex = index($nameSpace, java::lang::Object::jstatic('org::allbinary::logic::communication::http::request::NameSpaceRequestParam', 'NameSpaceRequestParamData')->{NAME});
+        my $beginIndex = index($nameSpace, $org::allbinary::logic::communication::http::request::NameSpaceRequestParamData::NAME);
         if ($beginIndex < 0) {
             die ("Not a NameSpaceRequest");
         }
-        my $packages = substr($nameSpace, $beginIndex + java::lang::Object::jstatic('org::allbinary::logic::communication::http::request::NameSpaceRequestParam', 'NameSpaceRequestParamData')->{NAME}->length() + java::lang::Object::jstatic('org::allbinary::logic::communication::http::request::NameSpaceRequestParam', 'NameSpaceRequestParamData')->{SEP}->length());
-        my $sepTokenizer = 'org::allbinary::logic::string::tokens::Tokenizer'->new(java::lang::Object::jstatic('org::allbinary::logic::communication::http::request::NameSpaceRequestParam', 'NameSpaceRequestParamData')->{SEP});
+        my $packages = substr($nameSpace, $beginIndex + $org::allbinary::logic::communication::http::request::NameSpaceRequestParamData::NAME->length() + $org::allbinary::logic::communication::http::request::NameSpaceRequestParamData::SEP->length());
+        my $sepTokenizer = 'org::allbinary::logic::string::tokens::Tokenizer'->new($org::allbinary::logic::communication::http::request::NameSpaceRequestParamData::SEP);
         my $nameSpaceWithPropertiesVector = $sepTokenizer->getTokensFromString($packages, 'org::allbinary::util::BasicArrayListD'->new());
         if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{HTTPREQUEST})) {
             $self->{logUtil}->putF("\nSep Tokens: " . $nameSpaceWithPropertiesVector->toString(), $self, "NameSpaceRequestParam()");
         }
-        my $nameSpaceAndPropertiesTokenizer = 'org::allbinary::logic::string::tokens::Tokenizer'->new(java::lang::Object::jstatic('org::allbinary::logic::communication::http::request::NameSpaceRequestParam', 'NameSpaceRequestParamData')->{PROPERTIES});
+        my $nameSpaceAndPropertiesTokenizer = 'org::allbinary::logic::string::tokens::Tokenizer'->new($org::allbinary::logic::communication::http::request::NameSpaceRequestParamData::PROPERTIES);
         my $packageIndex = 0;
         my $list = 'org::allbinary::util::BasicArrayListD'->new();
         my $index = 0;
@@ -113,7 +113,7 @@ sub getValue {
 # throws Exception
 sub generatePackagePropertiesHashMap {
     my ($self, $properties) = @_;
-        my $propertiesTokenizer = 'org::allbinary::logic::string::tokens::Tokenizer'->new(java::lang::Object::jstatic('org::allbinary::logic::communication::http::request::NameSpaceRequestParam', 'NameSpaceRequestParamData')->{PROPERTIESSEPARATOR});
+        my $propertiesTokenizer = 'org::allbinary::logic::string::tokens::Tokenizer'->new($org::allbinary::logic::communication::http::request::NameSpaceRequestParamData::PROPERTIESSEPARATOR);
         my $packagePropertiesHashMap = 'org::allbinary::logic::StdUtil'->getInstance()->createHashMap();
         my $propertyVector = $propertiesTokenizer->getTokensFromString($properties, 'org::allbinary::util::BasicArrayListD'->new());
         my $list = 'org::allbinary::util::BasicArrayListD'->new();
@@ -152,6 +152,7 @@ use org::allbinary::util::BasicArrayList ();
 use org::allbinary::util::BasicArrayListD ();
 use org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory ();
 use org::allbinary::logic::communication::log::config::type::LogConfigTypes ();
+use org::allbinary::logic::communication::http::request::NameSpaceRequestParamData ();
 
 1;
 

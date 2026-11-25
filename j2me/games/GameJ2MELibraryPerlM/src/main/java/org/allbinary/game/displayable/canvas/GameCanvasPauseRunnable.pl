@@ -62,6 +62,7 @@ use org::allbinary::game::configuration::feature::Features ();
 use org::allbinary::graphics::opengles::OpenGLFeatureFactory ();
 use org::allbinary::logic::communication::log::LogUtil ();
 use org::allbinary::string::CommonStrings ();
+use org::allbinary::game::displayable::canvas::GameRunnable ();
 
 1;
 

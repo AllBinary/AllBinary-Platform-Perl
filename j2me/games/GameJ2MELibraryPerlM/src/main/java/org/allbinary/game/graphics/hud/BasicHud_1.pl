@@ -89,7 +89,7 @@ sub getHudGraphicsPositionWH {
         my $x = 0;
         my $y = 0;
         my $anchor = 0;
-        my $basicHudFactory = java::lang::Object::jstatic('org::allbinary::game::graphics::hud::BasicHud_1', 'BasicHudFactory')->getInstance();
+        my $basicHudFactory = 'org::allbinary::game::graphics::hud::BasicHudFactory'->getInstance();
         if ($basicHudFactory->{BOTTOMLEFT} == $self->getLocation()) {
             $x = $self->{bufferZone} + 2;
             $y = $height - $maxHeight - $self->{bufferZone};
@@ -289,6 +289,7 @@ use org::allbinary::logic::util::event::AllBinaryEventObject ();
 use org::allbinary::logic::util::event::EventStrings ();
 use org::allbinary::string::CommonStrings ();
 use org::allbinary::game::graphics::hud::HudGraphicsPosition ();
+use org::allbinary::game::graphics::hud::BasicHudFactory ();
 
 1;
 

@@ -24,7 +24,7 @@ tie our $instance, 'java::lang::LazyStatic', sub { 'org::allbinary::media::image
 sub _init_fields {
     my ($self) = @_;
     $self->{logUtil} = 'org::allbinary::logic::communication::log::LogUtil'->getInstance();
-    $self->{imageUtil} = java::lang::Object::jstatic('org::allbinary::media::image::ImagesRatioUtil', 'ImageUtil')->getInstance();
+    $self->{imageUtil} = 'org::allbinary::media::image::ImageUtil'->getInstance();
 }
 
 
@@ -141,6 +141,7 @@ use java::lang::LazyStatic ();
 # use java::awt::image::BufferedImage ();
 use org::allbinary::logic::communication::log::LogUtil ();
 use org::allbinary::string::CommonLabels ();
+use org::allbinary::media::image::ImageUtil ();
 
 1;
 

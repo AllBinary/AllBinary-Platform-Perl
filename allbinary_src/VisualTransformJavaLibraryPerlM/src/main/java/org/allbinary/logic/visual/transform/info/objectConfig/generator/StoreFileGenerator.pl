@@ -124,6 +124,7 @@ use org::allbinary::string::CommonSeps ();
 use org::allbinary::string::CommonStrings ();
 use org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory ();
 use org::allbinary::logic::communication::log::config::type::LogConfigTypes ();
+use org::allbinary::logic::visual::transform::info::objectConfig::generator::TransformInfoObjectConfigGenerator ();
 
 1;
 

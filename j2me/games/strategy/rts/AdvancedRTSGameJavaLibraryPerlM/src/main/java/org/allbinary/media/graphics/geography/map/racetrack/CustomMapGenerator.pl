@@ -91,6 +91,7 @@ use org::allbinary::layer::AllBinaryLayer ();
 use org::allbinary::media::graphics::geography::map::BasicGeographicMapCellPositionFactory ();
 use org::allbinary::media::graphics::geography::map::GeographicMapCellTypeFactory ();
 use org::allbinary::media::graphics::geography::map::drop::DropCellPositionHistory ();
+use org::allbinary::media::graphics::geography::map::racetrack::CustomMapGeneratorBase ();
 
 1;
 

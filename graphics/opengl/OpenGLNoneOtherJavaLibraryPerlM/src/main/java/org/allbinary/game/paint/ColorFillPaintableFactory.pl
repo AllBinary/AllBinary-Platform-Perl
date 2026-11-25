@@ -56,6 +56,8 @@ use java::lang::LazyStatic ();
 use org::allbinary::graphics::color::BasicColor ();
 use org::allbinary::logic::system::os::GenericOperatingSystem ();
 use org::allbinary::logic::system::os::OperatingSystemFactory ();
+use org::allbinary::game::paint::ColorFillPaintable ();
+use org::allbinary::game::paint::OverScanColorFillPaintable ();
 
 1;
 

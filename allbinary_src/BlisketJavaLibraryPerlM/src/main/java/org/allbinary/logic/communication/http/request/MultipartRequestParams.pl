@@ -124,6 +124,7 @@ use org::apache::commons::fileupload::FileItem ();
 use org::apache::commons::fileupload::FileUploadBase ();
 use org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory ();
 use org::allbinary::logic::communication::log::config::type::LogConfigTypes ();
+use org::allbinary::logic::communication::http::request::RequestParams ();
 
 1;
 

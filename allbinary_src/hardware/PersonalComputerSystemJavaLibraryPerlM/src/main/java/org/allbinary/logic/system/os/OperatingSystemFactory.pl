@@ -25,7 +25,7 @@ sub _init_fields {
     my ($self) = @_;
     $self->{logUtil} = 'org::allbinary::logic::communication::log::LogUtil'->getInstance();
     $self->{commonStrings} = 'org::allbinary::string::CommonStrings'->getInstance();
-    $self->{genericOperatingSystem} = java::lang::Object::jstatic('org::allbinary::logic::system::os::OperatingSystemFactory', 'NoOperatingSystem')->{NO_OPERATING_SYSTEM};
+    $self->{genericOperatingSystem} = $org::allbinary::logic::system::os::NoOperatingSystem::NO_OPERATING_SYSTEM;
     $self->{hasDetected} = 0;
 }
 
@@ -47,8 +47,8 @@ sub new {
 sub getOperatingSystemInstance {
     my ($self) = @_;
         try {
-            my $operatingSystems = java::lang::Object::jstatic('org::allbinary::logic::system::os::OperatingSystemFactory', 'OperatingSystems')->getInstance();
-            my $systemProperties = java::lang::Object::jstatic('org::allbinary::logic::system::os::OperatingSystemFactory', 'SystemProperties')->getInstance();
+            my $operatingSystems = 'org::allbinary::logic::system::os::OperatingSystems'->getInstance();
+            my $systemProperties = 'org::allbinary::logic::system::os::SystemProperties'->getInstance();
             my $osName = $systemProperties->getName();
             my $osArch = $systemProperties->getArch();
             my $osVersion = $systemProperties->getVersion();
@@ -82,7 +82,7 @@ sub getOperatingSystemInstance {
             if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{FACTORYERROR})) {
                 $self->{logUtil}->put($self->{commonStrings}->{EXCEPTION}, $self, $self->{commonStrings}->{GET_INSTANCE}, $e);
             }
-            return java::lang::Object::jstatic('org::allbinary::logic::system::os::OperatingSystemFactory', 'NoOperatingSystem')->{NO_OPERATING_SYSTEM};
+            return $org::allbinary::logic::system::os::NoOperatingSystem::NO_OPERATING_SYSTEM;
         }
 }
 
@@ -99,6 +99,9 @@ use org::allbinary::logic::system::os::linux::LinuxOperatingSystemFactory ();
 use org::allbinary::logic::system::os::solaris::SolarisOperatingSystemFactory ();
 use org::allbinary::logic::system::os::windows::WindowsOperatingSystemFactory ();
 use org::allbinary::string::CommonStrings ();
+use org::allbinary::logic::system::os::NoOperatingSystem ();
+use org::allbinary::logic::system::os::OperatingSystems ();
+use org::allbinary::logic::system::os::SystemProperties ();
 use java::lang::System ();
 
 1;

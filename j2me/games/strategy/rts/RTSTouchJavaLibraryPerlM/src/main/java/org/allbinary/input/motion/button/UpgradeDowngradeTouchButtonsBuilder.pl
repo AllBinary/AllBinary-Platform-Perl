@@ -42,9 +42,9 @@ sub getList {
             my $cellPositionFactory = 'org::allbinary::graphics::CellPositionFactory'->getInstance();
             my $basicTouchButtonCellPositionFactory = 'org::allbinary::input::motion::button::BasicTouchButtonCellPositionFactory'->new();
             if ($basicTouchButtonCellPositionFactory->{SECOND_FROM_TOP_LEFT} != $cellPositionFactory->{NONE} && $basicTouchButtonCellPositionFactory->{SECOND_FROM_TOP_RIGHT} != $cellPositionFactory->{NONE}) {
-                my $commonButtons = java::lang::Object::jstatic('org::allbinary::input::motion::button::UpgradeDowngradeTouchButtonsBuilder', 'CommonButtons')->getInstance();
-                my $UP = java::lang::Object::jstatic('org::allbinary::input::motion::button::UpgradeDowngradeTouchButtonsBuilder', 'TouchButton')->createButton(java::lang::Object::jstatic('org::allbinary::input::motion::button::UpgradeDowngradeTouchButtonsBuilder', 'BasicTouchInputFactory')->getInstance()->{SPECIAL_BUTTON_TWO}, 'org::allbinary::game::input::resource::TouchButtonUpgradeResource'->getInstance(), $commonButtons->{NORMAL_BUTTON}, $basicTouchButtonCellPositionFactory->{SECOND_FROM_TOP_LEFT}, $touchButtonLocationHelper->getColumnsRemainderHalf(), $touchButtonLocationHelper->getRowsRemainderHalf());
-                my $DOWN = java::lang::Object::jstatic('org::allbinary::input::motion::button::UpgradeDowngradeTouchButtonsBuilder', 'TouchButton')->createButton(java::lang::Object::jstatic('org::allbinary::input::motion::button::UpgradeDowngradeTouchButtonsBuilder', 'BasicTouchInputFactory')->getInstance()->{SPECIAL_BUTTON_ONE}, 'org::allbinary::game::input::resource::TouchButtonDowngradeResource'->getInstance(), $commonButtons->{NORMAL_BUTTON}, $basicTouchButtonCellPositionFactory->{SECOND_FROM_TOP_RIGHT}, $touchButtonLocationHelper->getColumnsRemainderHalf(), $touchButtonLocationHelper->getRowsRemainderHalf());
+                my $commonButtons = 'org::allbinary::input::motion::button::CommonButtons'->getInstance();
+                my $UP = 'org::allbinary::input::motion::button::TouchButton'->createButton('org::allbinary::input::motion::button::BasicTouchInputFactory'->getInstance()->{SPECIAL_BUTTON_TWO}, 'org::allbinary::game::input::resource::TouchButtonUpgradeResource'->getInstance(), $commonButtons->{NORMAL_BUTTON}, $basicTouchButtonCellPositionFactory->{SECOND_FROM_TOP_LEFT}, $touchButtonLocationHelper->getColumnsRemainderHalf(), $touchButtonLocationHelper->getRowsRemainderHalf());
+                my $DOWN = 'org::allbinary::input::motion::button::TouchButton'->createButton('org::allbinary::input::motion::button::BasicTouchInputFactory'->getInstance()->{SPECIAL_BUTTON_ONE}, 'org::allbinary::game::input::resource::TouchButtonDowngradeResource'->getInstance(), $commonButtons->{NORMAL_BUTTON}, $basicTouchButtonCellPositionFactory->{SECOND_FROM_TOP_RIGHT}, $touchButtonLocationHelper->getColumnsRemainderHalf(), $touchButtonLocationHelper->getRowsRemainderHalf());
                 $list->add($UP);
                 $list->add($DOWN);
             }
@@ -63,6 +63,12 @@ use org::allbinary::util::BasicArrayListD ();
 use org::allbinary::util::BasicArrayListUtil ();
 use org::allbinary::logic::communication::log::LogUtil ();
 use org::allbinary::graphics::CellPositionFactory ();
+use org::allbinary::input::motion::button::BaseTouchInput ();
+use org::allbinary::input::motion::button::TouchButtonLocationHelper ();
+use org::allbinary::input::motion::button::BasicTouchButtonCellPositionFactory ();
+use org::allbinary::input::motion::button::CommonButtons ();
+use org::allbinary::input::motion::button::TouchButton ();
+use org::allbinary::input::motion::button::BasicTouchInputFactory ();
 
 1;
 

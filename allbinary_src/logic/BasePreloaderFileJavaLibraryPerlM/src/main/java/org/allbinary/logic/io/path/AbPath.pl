@@ -24,7 +24,7 @@ our $NETWORK_SEP = ":/";
 sub _init_fields {
     my ($self) = @_;
     $self->{commonSeps} = 'org::allbinary::string::CommonSeps'->getInstance();
-    $self->{abPathData} = java::lang::Object::jstatic('org::allbinary::logic::io::path::AbPath', 'AbPathData')->getInstance();
+    $self->{abPathData} = 'org::allbinary::logic::io::path::AbPathData'->getInstance();
     $self->{abPathUtil} = 'org::allbinary::logic::io::path::PathUtil'->getInstance();
     $self->{EMPTY_STRING} = 'org::allbinary::logic::string::StringUtil'->getInstance()->{EMPTY_STRING};
     $self->{schema} = $self->{EMPTY_STRING};
@@ -176,6 +176,7 @@ use org::allbinary::logic::string::StringMaker ();
 use org::allbinary::logic::string::StringUtil ();
 use org::allbinary::logic::string::StringValidationUtil ();
 use org::allbinary::string::CommonSeps ();
+use org::allbinary::logic::io::path::AbPathData ();
 use org::allbinary::logic::io::path::PathUtil ();
 
 1;

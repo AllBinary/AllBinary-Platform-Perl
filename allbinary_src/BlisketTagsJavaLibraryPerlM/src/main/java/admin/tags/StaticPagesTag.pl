@@ -114,6 +114,7 @@ use org::allbinary::logic::system::security::licensing::LicensingException ();
 use org::allbinary::logic::visual::transform::info::TransformInfoData ();
 use org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory ();
 use org::allbinary::logic::communication::log::config::type::LogConfigTypes ();
+use admin::tags::TableTag ();
 
 1;
 

@@ -107,6 +107,7 @@ use org::allbinary::business::user::modules::admin::configuration::AdminConfigur
 use org::allbinary::logic::communication::log::LogUtil ();
 use org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory ();
 use org::allbinary::logic::communication::log::config::type::LogConfigTypes ();
+use admin::taghelpers::ModifyTable ();
 
 1;
 

@@ -55,6 +55,8 @@ use java::lang::Object ();
 use java::lang::LazyStatic ();
 use javax::microedition::media::Control ();
 use org::allbinary::logic::string::StringUtil ();
+use org::allbinary::media::audio::BasicPlayer ();
+use org::allbinary::media::audio::NullControl ();
 
 1;
 

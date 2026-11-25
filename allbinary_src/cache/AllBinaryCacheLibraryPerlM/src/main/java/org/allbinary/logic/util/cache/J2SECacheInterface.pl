@@ -28,6 +28,7 @@ sub keySet {
 }
 
 use java::util::Set ();
+use org::allbinary::logic::util::cache::AutomaticCacheInterface ();
 
 1;
 

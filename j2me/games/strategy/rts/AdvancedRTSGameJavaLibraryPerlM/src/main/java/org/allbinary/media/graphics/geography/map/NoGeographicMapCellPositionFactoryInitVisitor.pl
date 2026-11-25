@@ -34,6 +34,7 @@ sub visit {
 
 use java::lang::Object ();
 use org::allbinary::game::layer::AllBinaryTiledLayer ();
+use org::allbinary::media::graphics::geography::map::GeographicMapCellPositionFactoryInitVisitorInterface ();
 
 1;
 

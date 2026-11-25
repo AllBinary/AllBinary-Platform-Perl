@@ -37,8 +37,8 @@ sub getInstance {
 sub update {
     my ($self, $activity) = @_;
         my $commonStrings = 'org::allbinary::string::CommonStrings'->getInstance();
-        my $touchScreenFactory = java::lang::Object::jstatic('org::allbinary::input::motion::button::TouchScreenTypeFactory', 'TouchScreenFactory')->getInstance();
-        my $touchScreenTypesFactory = java::lang::Object::jstatic('org::allbinary::input::motion::button::TouchScreenTypeFactory', 'TouchScreenTypesFactory')->getInstance();
+        my $touchScreenFactory = 'org::allbinary::input::motion::button::TouchScreenFactory'->getInstance();
+        my $touchScreenTypesFactory = 'org::allbinary::input::motion::button::TouchScreenTypesFactory'->getInstance();
         my $configuration = $activity->getResources()->getConfiguration();
         my $touchScreen = $configuration->{touchscreen};
         if ($touchScreen == $android::content::res::Configuration::TOUCHSCREEN_FINGER) {
@@ -66,6 +66,8 @@ use java::lang::LazyStatic ();
 # use android::content::res::Configuration ();
 use org::allbinary::string::CommonStrings ();
 use org::allbinary::logic::communication::log::PreLogUtil ();
+use org::allbinary::input::motion::button::TouchScreenFactory ();
+use org::allbinary::input::motion::button::TouchScreenTypesFactory ();
 
 1;
 

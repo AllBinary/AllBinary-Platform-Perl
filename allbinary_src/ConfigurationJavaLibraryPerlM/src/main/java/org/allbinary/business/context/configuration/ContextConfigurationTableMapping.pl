@@ -45,7 +45,7 @@ sub toHashMap {
 # throws Exception
 sub getKey {
     my ($self) = @_;
-        return java::lang::Object::jstatic('org::allbinary::business::context::configuration::ContextConfigurationTableMapping', 'ContextConfigurationData')->getInstance()->{NAME};
+        return 'org::allbinary::business::context::configuration::ContextConfigurationData'->getInstance()->{NAME};
 }
 
 
@@ -62,6 +62,7 @@ use org::allbinary::util::BasicArrayList ();
 use org::allbinary::util::BasicArrayListD ();
 use org::allbinary::data::tables::TableMappingInterface ();
 use org::allbinary::logic::StdUtil ();
+use org::allbinary::business::context::configuration::ContextConfigurationData ();
 
 1;
 

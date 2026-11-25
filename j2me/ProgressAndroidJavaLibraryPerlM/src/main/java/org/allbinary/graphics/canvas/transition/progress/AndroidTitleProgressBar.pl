@@ -282,6 +282,7 @@ use org::allbinary::android::activity::ProgressActivityInterface ();
 use org::allbinary::graphics::color::BasicColor ();
 use org::allbinary::logic::communication::log::LogUtil ();
 use org::allbinary::string::CommonStrings ();
+use org::allbinary::graphics::canvas::transition::progress::ProgressCanvas ();
 
 1;
 

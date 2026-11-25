@@ -25,7 +25,7 @@ sub _init_fields {
     $self->{logUtil} = 'org::allbinary::logic::communication::log::LogUtil'->getInstance();
     $self->{linePathAnimation} = undef;
     $self->{pathFindingLayer} = undef;
-    $self->{allBinaryGameLayerManagerP} = java::lang::Object::jstatic('org::allbinary::game::layer::PathAnimation', 'AllBinaryGameLayerManager')->getNullInstance();
+    $self->{allBinaryGameLayerManagerP} = 'org::allbinary::game::layer::AllBinaryGameLayerManager'->getNullInstance();
     $self->{startColor} = 'org::allbinary::graphics::color::BasicColorFactory'->getInstance()->{RED};
     $self->{middleColor} = 'org::allbinary::graphics::color::BasicColorFactory'->getInstance()->{BLUE};
     $self->{endColor} = 'org::allbinary::graphics::color::BasicColorFactory'->getInstance()->{GREEN};
@@ -109,6 +109,7 @@ use org::allbinary::media::graphics::geography::map::GeographicMapCellPosition (
 use org::allbinary::media::graphics::geography::map::GeographicMapCompositeInterface ();
 use org::allbinary::media::graphics::geography::map::SimpleGeographicMapCellPositionFactory ();
 use org::allbinary::util::BasicArrayList ();
+use org::allbinary::game::layer::AllBinaryGameLayerManager ();
 
 1;
 

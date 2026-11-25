@@ -82,6 +82,7 @@ use javax::microedition::khronos::opengles::GL10 ();
 use javax::microedition::lcdui::Image ();
 use org::allbinary::graphics::color::BasicColor ();
 use org::allbinary::image::opengles::OpenGLESImage ();
+use org::allbinary::emulator::device::TrueTypeFontUtilBase ();
 
 1;
 

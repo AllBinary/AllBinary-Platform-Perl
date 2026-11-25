@@ -57,7 +57,7 @@ sub process {
         my $bufferedImageArray = $imageProcessorInput->getBufferedImageArray();
         for (my $index = 0; $index < scalar(@{$bufferedImageArray}); $index++) {
             $self->{logUtil}->putF($self->{TOTAL_ANGLE} . $totalAngle, $self, $self->{commonStrings}->{RUN});
-            $generatedBufferedImage = java::lang::Object::jstatic('org::allbinary::media::image::ImageArrayRotationUtil', 'ImageJ2SERotationUtil')->getInstance()->getRotatedImage($bufferedImageArray->[$index], int($totalAngle));
+            $generatedBufferedImage = 'org::allbinary::media::image::ImageJ2SERotationUtil'->getInstance()->getRotatedImage($bufferedImageArray->[$index], int($totalAngle));
             $visitor->visit($generatedBufferedImage, $input, $index);
         }
 }
@@ -68,6 +68,7 @@ use java::lang::LazyStatic ();
 # use java::io::IOException ();
 use org::allbinary::logic::communication::log::LogUtil ();
 use org::allbinary::string::CommonStrings ();
+use org::allbinary::media::image::ImageJ2SERotationUtil ();
 
 1;
 

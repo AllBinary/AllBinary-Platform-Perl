@@ -96,6 +96,7 @@ use org::allbinary::image::ImageCache ();
 use org::allbinary::logic::communication::log::LogUtil ();
 use org::allbinary::string::CommonStrings ();
 use org::allbinary::thread::BaseImageLoadingProcessor ();
+use org::allbinary::thread::ABRunnable ();
 use org::allbinary::thread::ImageThreadPool ();
 
 1;

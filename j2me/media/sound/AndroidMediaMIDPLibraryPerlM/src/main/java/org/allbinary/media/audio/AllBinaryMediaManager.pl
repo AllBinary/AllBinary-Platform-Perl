@@ -108,10 +108,10 @@ sub createPlayer {
                 return 'org::allbinary::media::audio::AndroidMediaPlayerWrapper'->new($resource);
             } catch ($e) {
                 $logUtil->put("Could not create AndroidMediaPlayerWrapper using NoPlayer at " . 'org::allbinary::string::CommonLabels'->getInstance()->{TOTAL_LABEL} . $org::allbinary::media::audio::AllBinaryMediaManager::mostUsedTotal, $org::allbinary::media::audio::AllBinaryMediaManager::THIS, "createPlayer", $e);
-                return java::lang::Object::jstatic('org::allbinary::media::audio::AllBinaryMediaManager', 'NoPlayer')->{NO_PLAYER};
+                return $org::allbinary::media::audio::NoPlayer::NO_PLAYER;
             }
         } else {
-            return java::lang::Object::jstatic('org::allbinary::media::audio::AllBinaryMediaManager', 'NoPlayer')->{NO_PLAYER};
+            return $org::allbinary::media::audio::NoPlayer::NO_PLAYER;
         }
 }
 
@@ -148,7 +148,9 @@ use org::allbinary::logic::ABSystemWrapper ();
 use org::allbinary::logic::communication::log::LogUtil ();
 use org::allbinary::string::CommonLabels ();
 use org::allbinary::string::CommonStrings ();
+use org::allbinary::media::audio::Sounds ();
 use org::allbinary::media::audio::MediaPlayerUtil ();
+use org::allbinary::media::audio::NoPlayer ();
 use org::allbinary::media::audio::AndroidMediaPlayerWrapper ();
 
 1;

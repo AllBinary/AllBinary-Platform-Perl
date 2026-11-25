@@ -61,6 +61,7 @@ use org::allbinary::game::tick::TickableInterface ();
 use org::allbinary::media::AllBinaryNoVibration ();
 use org::allbinary::media::AllBinaryVibration ();
 use org::allbinary::media::AllBinaryVibrationME ();
+use org::allbinary::game::layer::WaypointBehaviorBase ();
 
 1;
 

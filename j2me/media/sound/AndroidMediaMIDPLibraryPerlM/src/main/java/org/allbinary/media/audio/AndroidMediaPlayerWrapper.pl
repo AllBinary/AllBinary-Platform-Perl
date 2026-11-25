@@ -181,6 +181,7 @@ use org::allbinary::logic::NullUtil ();
 use org::allbinary::logic::communication::log::LogUtil ();
 use org::allbinary::logic::string::StringMaker ();
 use org::allbinary::logic::string::StringUtil ();
+use org::allbinary::media::audio::BasicPlayer ();
 
 1;
 

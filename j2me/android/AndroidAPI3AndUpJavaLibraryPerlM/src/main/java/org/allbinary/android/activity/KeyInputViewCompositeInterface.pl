@@ -28,6 +28,7 @@ sub setKeyInputView {
 }
 
 # use android::view::View ();
+use org::allbinary::android::activity::ViewCompositeInterface ();
 
 1;
 

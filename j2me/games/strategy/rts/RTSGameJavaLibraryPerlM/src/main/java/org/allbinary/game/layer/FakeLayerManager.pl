@@ -59,6 +59,7 @@ use org::allbinary::graphics::color::BasicColorFactory ();
 use org::allbinary::media::graphics::geography::map::BasicGeographicMap ();
 use org::allbinary::media::graphics::geography::map::GeographicMapCellType ();
 use org::allbinary::media::graphics::geography::map::GeographicMapCompositeInterface ();
+use org::allbinary::game::layer::AllBinaryGameLayerManager ();
 
 1;
 

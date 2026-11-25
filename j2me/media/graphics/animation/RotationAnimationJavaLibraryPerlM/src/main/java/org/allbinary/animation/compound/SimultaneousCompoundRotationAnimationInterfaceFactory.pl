@@ -49,6 +49,7 @@ use org::allbinary::animation::AnimationBehaviorFactory ();
 use org::allbinary::animation::AnimationInterfaceFactoryInterface ();
 use org::allbinary::animation::RotationAnimation ();
 use org::allbinary::logic::communication::log::ForcedLogUtil ();
+use org::allbinary::animation::compound::CompoundAnimationInterfaceFactory ();
 use org::allbinary::animation::compound::SimultaneousCompoundRotationAnimation ();
 
 1;

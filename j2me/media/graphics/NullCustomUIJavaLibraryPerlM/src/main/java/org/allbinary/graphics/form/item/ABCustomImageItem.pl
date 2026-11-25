@@ -32,6 +32,7 @@ use java::lang::Object ();
 use javax::microedition::lcdui::Image ();
 use javax::microedition::lcdui::NullImage ();
 use org::allbinary::graphics::color::BasicColor ();
+use org::allbinary::graphics::form::item::ABCustomItem ();
 
 1;
 

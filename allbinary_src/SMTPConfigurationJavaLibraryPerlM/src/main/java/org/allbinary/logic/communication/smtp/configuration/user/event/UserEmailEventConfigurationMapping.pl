@@ -38,8 +38,8 @@ sub new {
 sub toHashMap {
     my ($self) = @_;
         my $hashMap = 'org::allbinary::logic::StdUtil'->getInstance()->createHashMap();
-        $hashMap->put(java::lang::Object::jstatic('org::allbinary::logic::communication::smtp::configuration::user::event::UserEmailEventConfigurationMapping', 'UserEmailEventConfigurationData')->{NAME}, $self->{userEmailEventConfigurationInterface}->getName());
-        $hashMap->put(java::lang::Object::jstatic('org::allbinary::logic::communication::smtp::configuration::user::event::UserEmailEventConfigurationMapping', 'UserEmailEventConfigurationData')->{LISTENER_CLASSPATH}, $self->{userEmailEventConfigurationInterface}->getEventListenerClassPath());
+        $hashMap->put($org::allbinary::logic::communication::smtp::configuration::user::event::UserEmailEventConfigurationData::NAME, $self->{userEmailEventConfigurationInterface}->getName());
+        $hashMap->put($org::allbinary::logic::communication::smtp::configuration::user::event::UserEmailEventConfigurationData::LISTENER_CLASSPATH, $self->{userEmailEventConfigurationInterface}->getEventListenerClassPath());
         return $hashMap;
 }
 
@@ -47,7 +47,7 @@ sub toHashMap {
 # throws Exception
 sub getKey {
     my ($self) = @_;
-        return java::lang::Object::jstatic('org::allbinary::logic::communication::smtp::configuration::user::event::UserEmailEventConfigurationMapping', 'UserEmailEventConfigurationData')->{NAME};
+        return $org::allbinary::logic::communication::smtp::configuration::user::event::UserEmailEventConfigurationData::NAME;
 }
 
 
@@ -66,6 +66,7 @@ use org::allbinary::util::BasicArrayList ();
 use org::allbinary::util::BasicArrayListD ();
 use org::allbinary::data::tables::TableMappingInterface ();
 use org::allbinary::logic::StdUtil ();
+use org::allbinary::logic::communication::smtp::configuration::user::event::UserEmailEventConfigurationData ();
 
 1;
 

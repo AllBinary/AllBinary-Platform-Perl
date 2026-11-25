@@ -55,6 +55,7 @@ use org::allbinary::util::BasicArrayListD ();
 use org::allbinary::util::BasicArrayListUtil ();
 use org::allbinary::logic::communication::log::LogUtil ();
 use org::allbinary::input::motion::button::TouchButtonsListBuilder ();
+use org::allbinary::input::motion::button::BasicTouchButtonsBuilder ();
 use org::allbinary::input::motion::button::BuildingScrollTouchButtonsBuilder ();
 use org::allbinary::input::motion::button::UpgradeDowngradeTouchButtonsBuilder ();
 

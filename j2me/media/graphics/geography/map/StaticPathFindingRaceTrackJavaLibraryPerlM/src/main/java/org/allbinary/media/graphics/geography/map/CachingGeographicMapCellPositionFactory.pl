@@ -46,6 +46,7 @@ sub createInstance {
 use java::lang::Object ();
 use org::allbinary::graphics::CellPosition ();
 use org::allbinary::util::ABHashtable ();
+use org::allbinary::media::graphics::geography::map::BasicGeographicMapCellPositionFactory ();
 use org::allbinary::media::graphics::geography::map::GeographicMapCellPositionFactory ();
 
 1;

@@ -22,7 +22,7 @@ use parent -norequire,'java::lang::Object';
 
 sub _init_fields {
     my ($self) = @_;
-    $self->{pathFindingNodeCostInfoData} = java::lang::Object::jstatic('org::allbinary::media::graphics::geography::pathfinding::PathFindingNodeCostInfo', 'PathFindingNodeCostInfoData')->getInstance();
+    $self->{pathFindingNodeCostInfoData} = 'org::allbinary::media::graphics::geography::pathfinding::PathFindingNodeCostInfoData'->getInstance();
     $self->{costFromStartP} = undef;
     $self->{costToEndP} = undef;
     $self->{totalCostP} = 0;
@@ -102,6 +102,7 @@ sub toString {
 use java::lang::Object ();
 use org::allbinary::logic::string::StringMaker ();
 use org::allbinary::string::CommonLabels ();
+use org::allbinary::media::graphics::geography::pathfinding::PathFindingNodeCostInfoData ();
 
 1;
 

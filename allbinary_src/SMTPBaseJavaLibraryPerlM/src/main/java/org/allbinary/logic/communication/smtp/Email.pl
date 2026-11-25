@@ -169,37 +169,37 @@ sub toHashMap {
     my ($self) = @_;
         try {
             my $hashMap = 'org::allbinary::logic::StdUtil'->getInstance()->createHashMap();
-            $hashMap->put(java::lang::Object::jstatic('org::allbinary::logic::communication::smtp::Email', 'EmailData')->{SERVER}, $self->{properties}->get($org::allbinary::logic::communication::smtp::Email::SMTP_HOST));
+            $hashMap->put($org::allbinary::logic::communication::smtp::EmailData::SERVER, $self->{properties}->get($org::allbinary::logic::communication::smtp::Email::SMTP_HOST));
             my $addresses = $self->{msg}->getFrom();
             if (defined($addresses)) {
                 for (my $index = 0; $index < scalar(@{$addresses}); $index++) {
-                    $hashMap->put(java::lang::Object::jstatic('org::allbinary::logic::communication::smtp::Email', 'EmailData')->{FROM}, $addresses->[$index]->toString());
+                    $hashMap->put($org::allbinary::logic::communication::smtp::EmailData::FROM, $addresses->[$index]->toString());
                 }
             }
             $addresses = $self->{msg}->getRecipients($javax::mail::Message::RecipientType->{TO});
             if (defined($addresses)) {
                 for (my $index = 0; $index < scalar(@{$addresses}); $index++) {
-                    $hashMap->put(java::lang::Object::jstatic('org::allbinary::logic::communication::smtp::Email', 'EmailData')->{TO}, $addresses->[$index]->toString());
+                    $hashMap->put($org::allbinary::logic::communication::smtp::EmailData::TO, $addresses->[$index]->toString());
                 }
             }
             $addresses = $self->{msg}->getRecipients($javax::mail::Message::RecipientType->{CC});
             if (defined($addresses)) {
                 for (my $index = 0; $index < scalar(@{$addresses}); $index++) {
-                    $hashMap->put(java::lang::Object::jstatic('org::allbinary::logic::communication::smtp::Email', 'EmailData')->{CC}, $addresses->[$index]->toString());
+                    $hashMap->put($org::allbinary::logic::communication::smtp::EmailData::CC, $addresses->[$index]->toString());
                 }
             }
             $addresses = $self->{msg}->getRecipients($javax::mail::Message::RecipientType->{BCC});
             if (defined($addresses)) {
                 for (my $index = 0; $index < scalar(@{$addresses}); $index++) {
-                    $hashMap->put(java::lang::Object::jstatic('org::allbinary::logic::communication::smtp::Email', 'EmailData')->{BCC}, $addresses->[$index]->toString());
+                    $hashMap->put($org::allbinary::logic::communication::smtp::EmailData::BCC, $addresses->[$index]->toString());
                 }
             }
-            $hashMap->put(java::lang::Object::jstatic('org::allbinary::logic::communication::smtp::Email', 'EmailData')->{SUBJECT}, $self->{msg}->getSubject());
+            $hashMap->put($org::allbinary::logic::communication::smtp::EmailData::SUBJECT, $self->{msg}->getSubject());
             my $mimeMultipart = $self->{msg}->getContent();
             if (defined($mimeMultipart)) {
                 for (my $index = 0; $index < $mimeMultipart->getCount(); $index++) {
                     my $content = $mimeMultipart->getBodyPart($index)->getContent();
-                    $hashMap->put(java::lang::Object::jstatic('org::allbinary::logic::communication::smtp::Email', 'EmailData')->{CONTENT}, $content);
+                    $hashMap->put($org::allbinary::logic::communication::smtp::EmailData::CONTENT, $content);
                 }
             }
             return $hashMap;
@@ -215,7 +215,7 @@ sub toHashMap {
 # throws Exception
 sub toXmlNode {
     my ($self, $document) = @_;
-        my $node = 'org::allbinary::data::tree::dom::ModDomHelper'->createNameValueNodes($document, java::lang::Object::jstatic('org::allbinary::logic::communication::smtp::Email', 'EmailData')->{NAME}, $self->toHashMap());
+        my $node = 'org::allbinary::data::tree::dom::ModDomHelper'->createNameValueNodes($document, $org::allbinary::logic::communication::smtp::EmailData::NAME, $self->toHashMap());
         return $node;
 }
 
@@ -252,6 +252,7 @@ use org::w3c::dom::Node ();
 use org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory ();
 use org::allbinary::logic::communication::log::config::type::LogConfigTypes ();
 use org::allbinary::logic::communication::smtp::EmailInterface ();
+use org::allbinary::logic::communication::smtp::EmailData ();
 
 1;
 

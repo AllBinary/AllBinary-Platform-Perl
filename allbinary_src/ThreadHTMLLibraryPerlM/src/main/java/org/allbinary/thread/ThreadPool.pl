@@ -25,7 +25,7 @@ sub _init_fields {
     my ($self) = @_;
     $self->{logUtil} = 'org::allbinary::logic::communication::log::LogUtil'->getInstance();
     $self->{commonStrings} = 'org::allbinary::string::CommonStrings'->getInstance();
-    $self->{NULL_RUNNABLE} = java::lang::Object::jstatic('org::allbinary::thread::ThreadPool', 'NullRunnable')->getInstance();
+    $self->{NULL_RUNNABLE} = 'org::allbinary::thread::NullRunnable'->getInstance();
     $self->{threadPoolStrings} = 'org::allbinary::thread::ThreadPoolStrings'->getInstance();
     $self->{threadObjectUtil} = 'org::allbinary::thread::ThreadObjectUtil'->getInstance();
     $self->{isAlive} = 0;
@@ -197,6 +197,7 @@ use org::allbinary::logic::communication::log::LogUtil ();
 use org::allbinary::string::CommonStrings ();
 use org::allbinary::util::BasicArrayList ();
 use org::allbinary::util::BasicArrayListD ();
+use org::allbinary::thread::NullRunnable ();
 use org::allbinary::thread::ThreadPoolStrings ();
 use org::allbinary::thread::ThreadObjectUtil ();
 

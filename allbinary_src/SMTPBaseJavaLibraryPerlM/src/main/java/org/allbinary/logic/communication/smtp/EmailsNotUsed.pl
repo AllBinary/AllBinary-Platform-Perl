@@ -44,7 +44,7 @@ sub toXmlNode {
             if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{PAYMENT})) {
                 $self->{logUtil}->putF($self->{commonStrings}->{START}, $self, "toXmlNode");
             }
-            my $node = $document->createElement(java::lang::Object::jstatic('org::allbinary::logic::communication::smtp::EmailsNotUsed', 'EmailData')->{NAME});
+            my $node = $document->createElement($org::allbinary::logic::communication::smtp::EmailData::NAME);
             my $size = $self->{emailInfoVector}->size();
             for (my $index = 0; $index < $size; $index++) {
                 my $email = $self->{emailInfoVector}->get($index);
@@ -78,6 +78,7 @@ use org::w3c::dom::Document ();
 use org::w3c::dom::Node ();
 use org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory ();
 use org::allbinary::logic::communication::log::config::type::LogConfigTypes ();
+use org::allbinary::logic::communication::smtp::EmailData ();
 
 1;
 

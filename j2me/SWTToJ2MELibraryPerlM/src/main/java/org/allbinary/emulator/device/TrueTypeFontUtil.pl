@@ -219,6 +219,7 @@ use org::allbinary::image::opengles::OpenGLESImage ();
 use org::allbinary::logic::communication::log::PreLogUtil ();
 use org::allbinary::string::CommonSeps ();
 use org::allbinary::string::CommonStrings ();
+use org::allbinary::emulator::device::TrueTypeFontUtilBase ();
 
 1;
 

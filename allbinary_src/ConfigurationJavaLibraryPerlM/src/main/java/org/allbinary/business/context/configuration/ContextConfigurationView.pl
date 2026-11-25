@@ -70,7 +70,7 @@ sub getContextConfigurationInterface {
 # throws Exception
 sub toXmlNode {
     my ($self, $document) = @_;
-        my $node = $document->createElement(java::lang::Object::jstatic('org::allbinary::business::context::configuration::ContextConfigurationView', 'ContextConfigurationData')->getInstance()->{NAME});
+        my $node = $document->createElement('org::allbinary::business::context::configuration::ContextConfigurationData'->getInstance()->{NAME});
         my $emailServerConfigurationView = 'org::allbinary::logic::communication::smtp::configuration::server::EmailServerConfigurationView'->new($self->getContextConfigurationInterface()->getEmailServerConfigurationInterface());
         $node->appendChild($emailServerConfigurationView->toXmlNode($document));
         return $node;
@@ -86,6 +86,7 @@ use org::w3c::dom::Document ();
 use org::w3c::dom::Node ();
 use org::w3c::dom::NodeList ();
 use org::allbinary::business::context::configuration::ContextConfiguration ();
+use org::allbinary::business::context::configuration::ContextConfigurationData ();
 
 1;
 

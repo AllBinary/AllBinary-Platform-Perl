@@ -38,7 +38,7 @@ sub new {
 # throws Exception
 sub getInstance_j1_1 {
     my ($self, $document) = @_;
-        my $contextConfigurationData = java::lang::Object::jstatic('org::allbinary::business::context::configuration::ContextConfigurationInterfaceFactory', 'ContextConfigurationData')->getInstance();
+        my $contextConfigurationData = 'org::allbinary::business::context::configuration::ContextConfigurationData'->getInstance();
         my $contextConfigurationNode = 'org::allbinary::data::tree::dom::DomSearchHelper'->getNode($contextConfigurationData->{NAME}, $document->getChildNodes());
         return 'org::allbinary::business::context::configuration::ContextConfigurationView'->new($contextConfigurationNode)->getContextConfigurationInterface();
 }
@@ -47,8 +47,8 @@ sub getInstance_j1_1 {
 # throws Exception
 sub getInstance_j1_2 {
     my ($self, $contextName) = @_;
-        my $abPath = java::lang::Object::jstatic('org::allbinary::business::context::configuration::ContextConfigurationInterfaceFactory', 'ContextConfigurationPathUtil')->getAbPath($contextName);
-        my $contextConfigurationData = java::lang::Object::jstatic('org::allbinary::business::context::configuration::ContextConfigurationInterfaceFactory', 'ContextConfigurationData')->getInstance();
+        my $abPath = 'org::allbinary::business::context::configuration::ContextConfigurationPathUtil'->getAbPath($contextName);
+        my $contextConfigurationData = 'org::allbinary::business::context::configuration::ContextConfigurationData'->getInstance();
         my $documentString = 'org::allbinary::logic::control::crypt::file::CryptFileReader'->new($contextConfigurationData->{UNCRYPTED_EXTENSION}, $contextConfigurationData->{ENCRYPTED_EXTENSION})->get($abPath);
         my $document = 'org::allbinary::data::tree::dom::document::DomDocumentHelper'->create($documentString);
         return $self->getInstance($document);
@@ -75,7 +75,9 @@ use org::allbinary::logic::control::crypt::file::CryptFileReader ();
 use org::allbinary::logic::io::path::AbPath ();
 use org::w3c::dom::Document ();
 use org::w3c::dom::Node ();
+use org::allbinary::business::context::configuration::ContextConfigurationData ();
 use org::allbinary::business::context::configuration::ContextConfigurationView ();
+use org::allbinary::business::context::configuration::ContextConfigurationPathUtil ();
 
 1;
 

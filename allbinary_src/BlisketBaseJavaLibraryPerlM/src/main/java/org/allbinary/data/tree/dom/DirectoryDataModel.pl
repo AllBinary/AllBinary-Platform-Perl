@@ -105,6 +105,7 @@ use org::allbinary::logic::visual::transform::info::TransformInfoInterface ();
 use org::allbinary::util::BasicArrayList ();
 use org::w3c::dom::Document ();
 use org::w3c::dom::Node ();
+use org::allbinary::data::tree::dom::DomNodeInterface ();
 use org::allbinary::data::tree::dom::FileDomDataModel ();
 
 1;

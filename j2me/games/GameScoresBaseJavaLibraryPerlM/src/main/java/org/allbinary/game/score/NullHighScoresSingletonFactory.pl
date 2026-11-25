@@ -36,6 +36,7 @@ sub getInstance {
 use java::lang::Object ();
 use java::lang::LazyStatic ();
 use org::allbinary::string::CommonStrings ();
+use org::allbinary::game::score::HighScores ();
 
 1;
 

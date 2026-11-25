@@ -44,6 +44,7 @@ sub calculate {
 
 use java::lang::Object ();
 use org::allbinary::logic::math::BasicDecimal ();
+use org::allbinary::logic::math::vector::MathVector ();
 
 1;
 

@@ -143,6 +143,7 @@ use org::allbinary::business::user::commerce::money::MoneyException ();
 use org::allbinary::data::tables::user::commerce::inventory::item::InventoryEntity ();
 use org::allbinary::data::tables::user::commerce::inventory::item::InventoryEntityFactory ();
 use org::allbinary::logic::StdUtil ();
+use org::allbinary::business::user::commerce::inventory::basket::BasketInterface ();
 
 1;
 

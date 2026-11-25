@@ -75,6 +75,7 @@ sub getMainPath {
 use java::lang::Object ();
 use org::allbinary::business::init::InitInfo ();
 use org::allbinary::logic::string::StringValidationUtil ();
+use org::allbinary::globals::UrlGlobalsInterface ();
 
 1;
 

@@ -73,30 +73,30 @@ sub getFormData {
         my $stringUtil = 'org::allbinary::logic::string::StringUtil'->getInstance();
         my $empty = $stringUtil->{EMPTY_STRING};
         $self->{storeName} = $hashMap->get('org::allbinary::business::context::modules::storefront::StoreFrontData'->getInstance()->{NAME}->toString());
-        $self->{name} = $hashMap->get(java::lang::Object::jstatic('org::allbinary::business::user::commerce::money::payment::gateway::PaymentGateway', 'PaymentGatewayData')->{NAME}->toString());
+        $self->{name} = $hashMap->get($org::allbinary::business::user::commerce::money::payment::gateway::PaymentGatewayData::NAME->toString());
         $self->{enable} = $stringUtil->getNonNull($hashMap->get('org::allbinary::business::entry::EntryData'->getInstance()->{ENABLE}->toString()));
         $self->{paymentMethod} = $stringUtil->getNonNull($hashMap->get($org::allbinary::business::user::commerce::money::payment::PaymentData::METHOD->toString()));
-        $self->{mode} = $stringUtil->getNonNull($hashMap->get(java::lang::Object::jstatic('org::allbinary::business::user::commerce::money::payment::gateway::PaymentGateway', 'PaymentGatewayData')->{MODE}->toString()));
-        $self->{testProtocol} = $stringUtil->getNonNull($hashMap->get(java::lang::Object::jstatic('org::allbinary::business::user::commerce::money::payment::gateway::PaymentGateway', 'PaymentGatewayData')->{TESTPROTOCOL}->toString()));
-        $self->{testServer} = $stringUtil->getNonNull($hashMap->get(java::lang::Object::jstatic('org::allbinary::business::user::commerce::money::payment::gateway::PaymentGateway', 'PaymentGatewayData')->{TESTSERVER}->toString()));
-        $self->{testPort} = $stringUtil->getNonNull($hashMap->get(java::lang::Object::jstatic('org::allbinary::business::user::commerce::money::payment::gateway::PaymentGateway', 'PaymentGatewayData')->{TESTPORT}->toString()));
-        $self->{testPath} = $hashMap->get(java::lang::Object::jstatic('org::allbinary::business::user::commerce::money::payment::gateway::PaymentGateway', 'PaymentGatewayData')->{TESTPATH}->toString());
+        $self->{mode} = $stringUtil->getNonNull($hashMap->get($org::allbinary::business::user::commerce::money::payment::gateway::PaymentGatewayData::MODE->toString()));
+        $self->{testProtocol} = $stringUtil->getNonNull($hashMap->get($org::allbinary::business::user::commerce::money::payment::gateway::PaymentGatewayData::TESTPROTOCOL->toString()));
+        $self->{testServer} = $stringUtil->getNonNull($hashMap->get($org::allbinary::business::user::commerce::money::payment::gateway::PaymentGatewayData::TESTSERVER->toString()));
+        $self->{testPort} = $stringUtil->getNonNull($hashMap->get($org::allbinary::business::user::commerce::money::payment::gateway::PaymentGatewayData::TESTPORT->toString()));
+        $self->{testPath} = $hashMap->get($org::allbinary::business::user::commerce::money::payment::gateway::PaymentGatewayData::TESTPATH->toString());
         if (!defined($self->{testPath})) {
             $self->{testPath} = $empty;
         }
-        $self->{serverProtocol} = $hashMap->get(java::lang::Object::jstatic('org::allbinary::business::user::commerce::money::payment::gateway::PaymentGateway', 'PaymentGatewayData')->{SERVERPROTOCOL}->toString());
+        $self->{serverProtocol} = $hashMap->get($org::allbinary::business::user::commerce::money::payment::gateway::PaymentGatewayData::SERVERPROTOCOL->toString());
         if (!defined($self->{serverProtocol})) {
             $self->{serverProtocol} = $empty;
         }
-        $self->{server} = $hashMap->get(java::lang::Object::jstatic('org::allbinary::business::user::commerce::money::payment::gateway::PaymentGateway', 'PaymentGatewayData')->{SERVER}->toString());
+        $self->{server} = $hashMap->get($org::allbinary::business::user::commerce::money::payment::gateway::PaymentGatewayData::SERVER->toString());
         if (!defined($self->{server})) {
             $self->{server} = $empty;
         }
-        $self->{serverPort} = $hashMap->get(java::lang::Object::jstatic('org::allbinary::business::user::commerce::money::payment::gateway::PaymentGateway', 'PaymentGatewayData')->{SERVERPORT}->toString());
+        $self->{serverPort} = $hashMap->get($org::allbinary::business::user::commerce::money::payment::gateway::PaymentGatewayData::SERVERPORT->toString());
         if (!defined($self->{serverPort})) {
             $self->{serverPort} = $empty;
         }
-        $self->{serverPath} = $hashMap->get(java::lang::Object::jstatic('org::allbinary::business::user::commerce::money::payment::gateway::PaymentGateway', 'PaymentGatewayData')->{SERVERPATH}->toString());
+        $self->{serverPath} = $hashMap->get($org::allbinary::business::user::commerce::money::payment::gateway::PaymentGatewayData::SERVERPATH->toString());
         if (!defined($self->{serverPath})) {
             $self->{serverPath} = $empty;
         }
@@ -108,71 +108,71 @@ sub getFormData {
         if (!defined($self->{password})) {
             $self->{password} = $empty;
         }
-        $self->{timeout} = $hashMap->get(java::lang::Object::jstatic('org::allbinary::business::user::commerce::money::payment::gateway::PaymentGateway', 'PaymentGatewayData')->{TIMEOUT}->toString());
+        $self->{timeout} = $hashMap->get($org::allbinary::business::user::commerce::money::payment::gateway::PaymentGatewayData::TIMEOUT->toString());
         if (!defined($self->{timeout})) {
             $self->{timeout} = $empty;
         }
-        $self->{proxyProtocol} = $hashMap->get(java::lang::Object::jstatic('org::allbinary::business::user::commerce::money::payment::gateway::PaymentGateway', 'PaymentGatewayData')->{PROXYPROTOCOL}->toString());
+        $self->{proxyProtocol} = $hashMap->get($org::allbinary::business::user::commerce::money::payment::gateway::PaymentGatewayData::PROXYPROTOCOL->toString());
         if (!defined($self->{proxyProtocol})) {
             $self->{proxyProtocol} = $empty;
         }
-        $self->{proxyServer} = $hashMap->get(java::lang::Object::jstatic('org::allbinary::business::user::commerce::money::payment::gateway::PaymentGateway', 'PaymentGatewayData')->{PROXYSERVER}->toString());
+        $self->{proxyServer} = $hashMap->get($org::allbinary::business::user::commerce::money::payment::gateway::PaymentGatewayData::PROXYSERVER->toString());
         if (!defined($self->{proxyServer})) {
             $self->{proxyServer} = $empty;
         }
-        $self->{proxyPort} = $hashMap->get(java::lang::Object::jstatic('org::allbinary::business::user::commerce::money::payment::gateway::PaymentGateway', 'PaymentGatewayData')->{PROXYPORT}->toString());
+        $self->{proxyPort} = $hashMap->get($org::allbinary::business::user::commerce::money::payment::gateway::PaymentGatewayData::PROXYPORT->toString());
         if (!defined($self->{proxyPort})) {
             $self->{proxyPort} = $empty;
         }
-        $self->{proxyPath} = $hashMap->get(java::lang::Object::jstatic('org::allbinary::business::user::commerce::money::payment::gateway::PaymentGateway', 'PaymentGatewayData')->{PROXYPATH}->toString());
+        $self->{proxyPath} = $hashMap->get($org::allbinary::business::user::commerce::money::payment::gateway::PaymentGatewayData::PROXYPATH->toString());
         if (!defined($self->{proxyPath})) {
             $self->{proxyPath} = $empty;
         }
-        $self->{proxyUserName} = $hashMap->get(java::lang::Object::jstatic('org::allbinary::business::user::commerce::money::payment::gateway::PaymentGateway', 'PaymentGatewayData')->{PROXYUSERNAME}->toString());
+        $self->{proxyUserName} = $hashMap->get($org::allbinary::business::user::commerce::money::payment::gateway::PaymentGatewayData::PROXYUSERNAME->toString());
         if (!defined($self->{proxyUserName})) {
             $self->{proxyUserName} = $empty;
         }
-        $self->{proxyPassword} = $hashMap->get(java::lang::Object::jstatic('org::allbinary::business::user::commerce::money::payment::gateway::PaymentGateway', 'PaymentGatewayData')->{PROXYPASSWORD}->toString());
+        $self->{proxyPassword} = $hashMap->get($org::allbinary::business::user::commerce::money::payment::gateway::PaymentGatewayData::PROXYPASSWORD->toString());
         if (!defined($self->{proxyPassword})) {
             $self->{proxyPassword} = $empty;
         }
-        $self->{proxyTimeout} = $hashMap->get(java::lang::Object::jstatic('org::allbinary::business::user::commerce::money::payment::gateway::PaymentGateway', 'PaymentGatewayData')->{PROXYTIMEOUT}->toString());
+        $self->{proxyTimeout} = $hashMap->get($org::allbinary::business::user::commerce::money::payment::gateway::PaymentGatewayData::PROXYTIMEOUT->toString());
         if (!defined($self->{proxyTimeout})) {
             $self->{proxyTimeout} = $empty;
         }
-        $self->{special1} = $hashMap->get(java::lang::Object::jstatic('org::allbinary::business::user::commerce::money::payment::gateway::PaymentGateway', 'PaymentGatewayData')->{SPECIAL1}->toString());
+        $self->{special1} = $hashMap->get($org::allbinary::business::user::commerce::money::payment::gateway::PaymentGatewayData::SPECIAL1->toString());
         if (!defined($self->{special1})) {
             $self->{special1} = $empty;
         }
-        $self->{special2} = $hashMap->get(java::lang::Object::jstatic('org::allbinary::business::user::commerce::money::payment::gateway::PaymentGateway', 'PaymentGatewayData')->{SPECIAL2}->toString());
+        $self->{special2} = $hashMap->get($org::allbinary::business::user::commerce::money::payment::gateway::PaymentGatewayData::SPECIAL2->toString());
         if (!defined($self->{special2})) {
             $self->{special2} = $empty;
         }
-        $self->{special3} = $hashMap->get(java::lang::Object::jstatic('org::allbinary::business::user::commerce::money::payment::gateway::PaymentGateway', 'PaymentGatewayData')->{SPECIAL3}->toString());
+        $self->{special3} = $hashMap->get($org::allbinary::business::user::commerce::money::payment::gateway::PaymentGatewayData::SPECIAL3->toString());
         if (!defined($self->{special3})) {
             $self->{special3} = $empty;
         }
-        $self->{special4} = $hashMap->get(java::lang::Object::jstatic('org::allbinary::business::user::commerce::money::payment::gateway::PaymentGateway', 'PaymentGatewayData')->{SPECIAL4}->toString());
+        $self->{special4} = $hashMap->get($org::allbinary::business::user::commerce::money::payment::gateway::PaymentGatewayData::SPECIAL4->toString());
         if (!defined($self->{special4})) {
             $self->{special4} = $empty;
         }
-        $self->{special5} = $hashMap->get(java::lang::Object::jstatic('org::allbinary::business::user::commerce::money::payment::gateway::PaymentGateway', 'PaymentGatewayData')->{SPECIAL5}->toString());
+        $self->{special5} = $hashMap->get($org::allbinary::business::user::commerce::money::payment::gateway::PaymentGatewayData::SPECIAL5->toString());
         if (!defined($self->{special5})) {
             $self->{special5} = $empty;
         }
-        $self->{special6} = $hashMap->get(java::lang::Object::jstatic('org::allbinary::business::user::commerce::money::payment::gateway::PaymentGateway', 'PaymentGatewayData')->{SPECIAL6}->toString());
+        $self->{special6} = $hashMap->get($org::allbinary::business::user::commerce::money::payment::gateway::PaymentGatewayData::SPECIAL6->toString());
         if (!defined($self->{special6})) {
             $self->{special6} = $empty;
         }
-        $self->{special7} = $hashMap->get(java::lang::Object::jstatic('org::allbinary::business::user::commerce::money::payment::gateway::PaymentGateway', 'PaymentGatewayData')->{SPECIAL7}->toString());
+        $self->{special7} = $hashMap->get($org::allbinary::business::user::commerce::money::payment::gateway::PaymentGatewayData::SPECIAL7->toString());
         if (!defined($self->{special7})) {
             $self->{special7} = $empty;
         }
-        $self->{special8} = $hashMap->get(java::lang::Object::jstatic('org::allbinary::business::user::commerce::money::payment::gateway::PaymentGateway', 'PaymentGatewayData')->{SPECIAL8}->toString());
+        $self->{special8} = $hashMap->get($org::allbinary::business::user::commerce::money::payment::gateway::PaymentGatewayData::SPECIAL8->toString());
         if (!defined($self->{special8})) {
             $self->{special8} = $empty;
         }
-        $self->{special9} = $hashMap->get(java::lang::Object::jstatic('org::allbinary::business::user::commerce::money::payment::gateway::PaymentGateway', 'PaymentGatewayData')->{SPECIAL9}->toString());
+        $self->{special9} = $hashMap->get($org::allbinary::business::user::commerce::money::payment::gateway::PaymentGatewayData::SPECIAL9->toString());
         if (!defined($self->{special9})) {
             $self->{special9} = $empty;
         }
@@ -608,53 +608,53 @@ sub toHashMap_j1 {
         my $paymentGatewayHashMap = 'org::allbinary::logic::StdUtil'->getInstance()->createHashMap();
         $paymentGatewayHashMap->put('org::allbinary::business::entry::EntryData'->getInstance()->{ENABLE}, $self->{enable});
         $paymentGatewayHashMap->put('org::allbinary::business::context::modules::storefront::StoreFrontData'->getInstance()->{NAME}->toString(), $self->{storeName});
-        $paymentGatewayHashMap->put(java::lang::Object::jstatic('org::allbinary::business::user::commerce::money::payment::gateway::PaymentGateway', 'PaymentGatewayData')->{NAME}->toString(), $self->getName());
+        $paymentGatewayHashMap->put($org::allbinary::business::user::commerce::money::payment::gateway::PaymentGatewayData::NAME->toString(), $self->getName());
         $paymentGatewayHashMap->put($org::allbinary::business::user::commerce::money::payment::PaymentData::METHOD->toString(), $self->{paymentMethod});
-        $paymentGatewayHashMap->put(java::lang::Object::jstatic('org::allbinary::business::user::commerce::money::payment::gateway::PaymentGateway', 'PaymentGatewayData')->{MODE}->toString(), $self->{mode});
-        $paymentGatewayHashMap->put(java::lang::Object::jstatic('org::allbinary::business::user::commerce::money::payment::gateway::PaymentGateway', 'PaymentGatewayData')->{TESTPROTOCOL}->toString(), $self->{testProtocol});
-        $paymentGatewayHashMap->put(java::lang::Object::jstatic('org::allbinary::business::user::commerce::money::payment::gateway::PaymentGateway', 'PaymentGatewayData')->{TESTSERVER}->toString(), $self->{testServer});
-        $paymentGatewayHashMap->put(java::lang::Object::jstatic('org::allbinary::business::user::commerce::money::payment::gateway::PaymentGateway', 'PaymentGatewayData')->{TESTPORT}->toString(), $self->{testPort});
-        $paymentGatewayHashMap->put(java::lang::Object::jstatic('org::allbinary::business::user::commerce::money::payment::gateway::PaymentGateway', 'PaymentGatewayData')->{TESTPATH}->toString(), $self->{testPath});
-        $paymentGatewayHashMap->put(java::lang::Object::jstatic('org::allbinary::business::user::commerce::money::payment::gateway::PaymentGateway', 'PaymentGatewayData')->{SERVERPROTOCOL}->toString(), $self->{serverProtocol});
-        $paymentGatewayHashMap->put(java::lang::Object::jstatic('org::allbinary::business::user::commerce::money::payment::gateway::PaymentGateway', 'PaymentGatewayData')->{SERVER}->toString(), $self->{server});
-        $paymentGatewayHashMap->put(java::lang::Object::jstatic('org::allbinary::business::user::commerce::money::payment::gateway::PaymentGateway', 'PaymentGatewayData')->{SERVERPORT}->toString(), $self->{serverPort});
-        $paymentGatewayHashMap->put(java::lang::Object::jstatic('org::allbinary::business::user::commerce::money::payment::gateway::PaymentGateway', 'PaymentGatewayData')->{SERVERPATH}->toString(), $self->{serverPath});
+        $paymentGatewayHashMap->put($org::allbinary::business::user::commerce::money::payment::gateway::PaymentGatewayData::MODE->toString(), $self->{mode});
+        $paymentGatewayHashMap->put($org::allbinary::business::user::commerce::money::payment::gateway::PaymentGatewayData::TESTPROTOCOL->toString(), $self->{testProtocol});
+        $paymentGatewayHashMap->put($org::allbinary::business::user::commerce::money::payment::gateway::PaymentGatewayData::TESTSERVER->toString(), $self->{testServer});
+        $paymentGatewayHashMap->put($org::allbinary::business::user::commerce::money::payment::gateway::PaymentGatewayData::TESTPORT->toString(), $self->{testPort});
+        $paymentGatewayHashMap->put($org::allbinary::business::user::commerce::money::payment::gateway::PaymentGatewayData::TESTPATH->toString(), $self->{testPath});
+        $paymentGatewayHashMap->put($org::allbinary::business::user::commerce::money::payment::gateway::PaymentGatewayData::SERVERPROTOCOL->toString(), $self->{serverProtocol});
+        $paymentGatewayHashMap->put($org::allbinary::business::user::commerce::money::payment::gateway::PaymentGatewayData::SERVER->toString(), $self->{server});
+        $paymentGatewayHashMap->put($org::allbinary::business::user::commerce::money::payment::gateway::PaymentGatewayData::SERVERPORT->toString(), $self->{serverPort});
+        $paymentGatewayHashMap->put($org::allbinary::business::user::commerce::money::payment::gateway::PaymentGatewayData::SERVERPATH->toString(), $self->{serverPath});
         if ($isEncrypted) {
-            my $superCrypt = 'org::allbinary::logic::control::crypt::SuperCrypt'->new(java::lang::Object::jstatic('org::allbinary::business::user::commerce::money::payment::gateway::PaymentGateway', 'PaymentGatewayData')->{CRYPTNUM});
+            my $superCrypt = 'org::allbinary::logic::control::crypt::SuperCrypt'->new($org::allbinary::business::user::commerce::money::payment::gateway::PaymentGatewayData::CRYPTNUM);
             $paymentGatewayHashMap->put($org::allbinary::business::user::UserData::USERNAME->toString(), $superCrypt->encrypt($self->{userName}));
             $paymentGatewayHashMap->put($org::allbinary::business::user::UserData::PASSWORD->toString(), $superCrypt->encrypt($self->{password}));
         } else {
             $paymentGatewayHashMap->put($org::allbinary::business::user::UserData::USERNAME->toString(), $self->{userName});
             $paymentGatewayHashMap->put($org::allbinary::business::user::UserData::PASSWORD->toString(), $self->{password});
         }
-        $paymentGatewayHashMap->put(java::lang::Object::jstatic('org::allbinary::business::user::commerce::money::payment::gateway::PaymentGateway', 'PaymentGatewayData')->{TIMEOUT}->toString(), $self->{timeout});
-        $paymentGatewayHashMap->put(java::lang::Object::jstatic('org::allbinary::business::user::commerce::money::payment::gateway::PaymentGateway', 'PaymentGatewayData')->{PROXYPROTOCOL}->toString(), $self->{proxyProtocol});
-        $paymentGatewayHashMap->put(java::lang::Object::jstatic('org::allbinary::business::user::commerce::money::payment::gateway::PaymentGateway', 'PaymentGatewayData')->{PROXYSERVER}->toString(), $self->{proxyServer});
-        $paymentGatewayHashMap->put(java::lang::Object::jstatic('org::allbinary::business::user::commerce::money::payment::gateway::PaymentGateway', 'PaymentGatewayData')->{PROXYPORT}->toString(), $self->{proxyPort});
-        $paymentGatewayHashMap->put(java::lang::Object::jstatic('org::allbinary::business::user::commerce::money::payment::gateway::PaymentGateway', 'PaymentGatewayData')->{PROXYPATH}->toString(), $self->{proxyPath});
-        $paymentGatewayHashMap->put(java::lang::Object::jstatic('org::allbinary::business::user::commerce::money::payment::gateway::PaymentGateway', 'PaymentGatewayData')->{PROXYUSERNAME}->toString(), $self->{proxyUserName});
-        $paymentGatewayHashMap->put(java::lang::Object::jstatic('org::allbinary::business::user::commerce::money::payment::gateway::PaymentGateway', 'PaymentGatewayData')->{PROXYPASSWORD}->toString(), $self->{proxyPassword});
-        $paymentGatewayHashMap->put(java::lang::Object::jstatic('org::allbinary::business::user::commerce::money::payment::gateway::PaymentGateway', 'PaymentGatewayData')->{PROXYTIMEOUT}->toString(), $self->{proxyTimeout});
+        $paymentGatewayHashMap->put($org::allbinary::business::user::commerce::money::payment::gateway::PaymentGatewayData::TIMEOUT->toString(), $self->{timeout});
+        $paymentGatewayHashMap->put($org::allbinary::business::user::commerce::money::payment::gateway::PaymentGatewayData::PROXYPROTOCOL->toString(), $self->{proxyProtocol});
+        $paymentGatewayHashMap->put($org::allbinary::business::user::commerce::money::payment::gateway::PaymentGatewayData::PROXYSERVER->toString(), $self->{proxyServer});
+        $paymentGatewayHashMap->put($org::allbinary::business::user::commerce::money::payment::gateway::PaymentGatewayData::PROXYPORT->toString(), $self->{proxyPort});
+        $paymentGatewayHashMap->put($org::allbinary::business::user::commerce::money::payment::gateway::PaymentGatewayData::PROXYPATH->toString(), $self->{proxyPath});
+        $paymentGatewayHashMap->put($org::allbinary::business::user::commerce::money::payment::gateway::PaymentGatewayData::PROXYUSERNAME->toString(), $self->{proxyUserName});
+        $paymentGatewayHashMap->put($org::allbinary::business::user::commerce::money::payment::gateway::PaymentGatewayData::PROXYPASSWORD->toString(), $self->{proxyPassword});
+        $paymentGatewayHashMap->put($org::allbinary::business::user::commerce::money::payment::gateway::PaymentGatewayData::PROXYTIMEOUT->toString(), $self->{proxyTimeout});
         if ($isEncrypted) {
-            my $superCrypt = 'org::allbinary::logic::control::crypt::SuperCrypt'->new(java::lang::Object::jstatic('org::allbinary::business::user::commerce::money::payment::gateway::PaymentGateway', 'PaymentGatewayData')->{CRYPTNUM});
-            $paymentGatewayHashMap->put(java::lang::Object::jstatic('org::allbinary::business::user::commerce::money::payment::gateway::PaymentGateway', 'PaymentGatewayData')->{SPECIAL1}->toString(), $superCrypt->encrypt($self->{special1}));
-            $paymentGatewayHashMap->put(java::lang::Object::jstatic('org::allbinary::business::user::commerce::money::payment::gateway::PaymentGateway', 'PaymentGatewayData')->{SPECIAL2}->toString(), $superCrypt->encrypt($self->{special2}));
-            $paymentGatewayHashMap->put(java::lang::Object::jstatic('org::allbinary::business::user::commerce::money::payment::gateway::PaymentGateway', 'PaymentGatewayData')->{SPECIAL3}->toString(), $superCrypt->encrypt($self->{special3}));
-            $paymentGatewayHashMap->put(java::lang::Object::jstatic('org::allbinary::business::user::commerce::money::payment::gateway::PaymentGateway', 'PaymentGatewayData')->{SPECIAL4}->toString(), $superCrypt->encrypt($self->{special4}));
-            $paymentGatewayHashMap->put(java::lang::Object::jstatic('org::allbinary::business::user::commerce::money::payment::gateway::PaymentGateway', 'PaymentGatewayData')->{SPECIAL5}->toString(), $superCrypt->encrypt($self->{special5}));
-            $paymentGatewayHashMap->put(java::lang::Object::jstatic('org::allbinary::business::user::commerce::money::payment::gateway::PaymentGateway', 'PaymentGatewayData')->{SPECIAL6}->toString(), $superCrypt->encrypt($self->{special6}));
-            $paymentGatewayHashMap->put(java::lang::Object::jstatic('org::allbinary::business::user::commerce::money::payment::gateway::PaymentGateway', 'PaymentGatewayData')->{SPECIAL7}->toString(), $superCrypt->encrypt($self->{special7}));
-            $paymentGatewayHashMap->put(java::lang::Object::jstatic('org::allbinary::business::user::commerce::money::payment::gateway::PaymentGateway', 'PaymentGatewayData')->{SPECIAL8}->toString(), $superCrypt->encrypt($self->{special8}));
+            my $superCrypt = 'org::allbinary::logic::control::crypt::SuperCrypt'->new($org::allbinary::business::user::commerce::money::payment::gateway::PaymentGatewayData::CRYPTNUM);
+            $paymentGatewayHashMap->put($org::allbinary::business::user::commerce::money::payment::gateway::PaymentGatewayData::SPECIAL1->toString(), $superCrypt->encrypt($self->{special1}));
+            $paymentGatewayHashMap->put($org::allbinary::business::user::commerce::money::payment::gateway::PaymentGatewayData::SPECIAL2->toString(), $superCrypt->encrypt($self->{special2}));
+            $paymentGatewayHashMap->put($org::allbinary::business::user::commerce::money::payment::gateway::PaymentGatewayData::SPECIAL3->toString(), $superCrypt->encrypt($self->{special3}));
+            $paymentGatewayHashMap->put($org::allbinary::business::user::commerce::money::payment::gateway::PaymentGatewayData::SPECIAL4->toString(), $superCrypt->encrypt($self->{special4}));
+            $paymentGatewayHashMap->put($org::allbinary::business::user::commerce::money::payment::gateway::PaymentGatewayData::SPECIAL5->toString(), $superCrypt->encrypt($self->{special5}));
+            $paymentGatewayHashMap->put($org::allbinary::business::user::commerce::money::payment::gateway::PaymentGatewayData::SPECIAL6->toString(), $superCrypt->encrypt($self->{special6}));
+            $paymentGatewayHashMap->put($org::allbinary::business::user::commerce::money::payment::gateway::PaymentGatewayData::SPECIAL7->toString(), $superCrypt->encrypt($self->{special7}));
+            $paymentGatewayHashMap->put($org::allbinary::business::user::commerce::money::payment::gateway::PaymentGatewayData::SPECIAL8->toString(), $superCrypt->encrypt($self->{special8}));
         } else {
-            $paymentGatewayHashMap->put(java::lang::Object::jstatic('org::allbinary::business::user::commerce::money::payment::gateway::PaymentGateway', 'PaymentGatewayData')->{SPECIAL1}->toString(), $self->{special1});
-            $paymentGatewayHashMap->put(java::lang::Object::jstatic('org::allbinary::business::user::commerce::money::payment::gateway::PaymentGateway', 'PaymentGatewayData')->{SPECIAL2}->toString(), $self->{special2});
-            $paymentGatewayHashMap->put(java::lang::Object::jstatic('org::allbinary::business::user::commerce::money::payment::gateway::PaymentGateway', 'PaymentGatewayData')->{SPECIAL3}->toString(), $self->{special3});
-            $paymentGatewayHashMap->put(java::lang::Object::jstatic('org::allbinary::business::user::commerce::money::payment::gateway::PaymentGateway', 'PaymentGatewayData')->{SPECIAL4}->toString(), $self->{special4});
-            $paymentGatewayHashMap->put(java::lang::Object::jstatic('org::allbinary::business::user::commerce::money::payment::gateway::PaymentGateway', 'PaymentGatewayData')->{SPECIAL5}->toString(), $self->{special5});
-            $paymentGatewayHashMap->put(java::lang::Object::jstatic('org::allbinary::business::user::commerce::money::payment::gateway::PaymentGateway', 'PaymentGatewayData')->{SPECIAL6}->toString(), $self->{special6});
-            $paymentGatewayHashMap->put(java::lang::Object::jstatic('org::allbinary::business::user::commerce::money::payment::gateway::PaymentGateway', 'PaymentGatewayData')->{SPECIAL7}->toString(), $self->{special7});
-            $paymentGatewayHashMap->put(java::lang::Object::jstatic('org::allbinary::business::user::commerce::money::payment::gateway::PaymentGateway', 'PaymentGatewayData')->{SPECIAL8}->toString(), $self->{special8});
-            $paymentGatewayHashMap->put(java::lang::Object::jstatic('org::allbinary::business::user::commerce::money::payment::gateway::PaymentGateway', 'PaymentGatewayData')->{SPECIAL9}->toString(), $self->{special9});
+            $paymentGatewayHashMap->put($org::allbinary::business::user::commerce::money::payment::gateway::PaymentGatewayData::SPECIAL1->toString(), $self->{special1});
+            $paymentGatewayHashMap->put($org::allbinary::business::user::commerce::money::payment::gateway::PaymentGatewayData::SPECIAL2->toString(), $self->{special2});
+            $paymentGatewayHashMap->put($org::allbinary::business::user::commerce::money::payment::gateway::PaymentGatewayData::SPECIAL3->toString(), $self->{special3});
+            $paymentGatewayHashMap->put($org::allbinary::business::user::commerce::money::payment::gateway::PaymentGatewayData::SPECIAL4->toString(), $self->{special4});
+            $paymentGatewayHashMap->put($org::allbinary::business::user::commerce::money::payment::gateway::PaymentGatewayData::SPECIAL5->toString(), $self->{special5});
+            $paymentGatewayHashMap->put($org::allbinary::business::user::commerce::money::payment::gateway::PaymentGatewayData::SPECIAL6->toString(), $self->{special6});
+            $paymentGatewayHashMap->put($org::allbinary::business::user::commerce::money::payment::gateway::PaymentGatewayData::SPECIAL7->toString(), $self->{special7});
+            $paymentGatewayHashMap->put($org::allbinary::business::user::commerce::money::payment::gateway::PaymentGatewayData::SPECIAL8->toString(), $self->{special8});
+            $paymentGatewayHashMap->put($org::allbinary::business::user::commerce::money::payment::gateway::PaymentGatewayData::SPECIAL9->toString(), $self->{special9});
         }
         $paymentGatewayHashMap->put('org::allbinary::business::entry::EntryData'->getInstance()->{LASTMODIFIED}->toString(), $self->{lastModified});
         return $paymentGatewayHashMap;
@@ -691,7 +691,7 @@ sub toVector_j1 {
         $updateVector->add($self->{serverPort});
         $updateVector->add($self->{serverPath});
         if ($isEncrypted) {
-            my $superCrypt = 'org::allbinary::logic::control::crypt::SuperCrypt'->new(java::lang::Object::jstatic('org::allbinary::business::user::commerce::money::payment::gateway::PaymentGateway', 'PaymentGatewayData')->{CRYPTNUM});
+            my $superCrypt = 'org::allbinary::logic::control::crypt::SuperCrypt'->new($org::allbinary::business::user::commerce::money::payment::gateway::PaymentGatewayData::CRYPTNUM);
             $updateVector->add($superCrypt->encrypt($self->{userName}));
             $updateVector->add($superCrypt->encrypt($self->{password}));
         } else {
@@ -707,7 +707,7 @@ sub toVector_j1 {
         $updateVector->add($self->{proxyPassword});
         $updateVector->add($self->{proxyTimeout});
         if ($isEncrypted) {
-            my $superCrypt = 'org::allbinary::logic::control::crypt::SuperCrypt'->new(java::lang::Object::jstatic('org::allbinary::business::user::commerce::money::payment::gateway::PaymentGateway', 'PaymentGatewayData')->{CRYPTNUM});
+            my $superCrypt = 'org::allbinary::logic::control::crypt::SuperCrypt'->new($org::allbinary::business::user::commerce::money::payment::gateway::PaymentGatewayData::CRYPTNUM);
             $updateVector->add($superCrypt->encrypt($self->{special1}));
             $updateVector->add($superCrypt->encrypt($self->{special2}));
             $updateVector->add($superCrypt->encrypt($self->{special3}));
@@ -757,6 +757,7 @@ use org::allbinary::logic::StdUtil ();
 use org::allbinary::logic::control::crypt::SuperCrypt ();
 use org::allbinary::logic::string::StringUtil ();
 use org::allbinary::business::user::commerce::money::payment::gateway::PaymentGatewayInterface ();
+use org::allbinary::business::user::commerce::money::payment::gateway::PaymentGatewayData ();
 use org::allbinary::business::user::commerce::money::payment::gateway::PaymentGatewayPrimaryKey ();
 
 1;

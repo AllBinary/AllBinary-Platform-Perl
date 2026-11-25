@@ -84,7 +84,7 @@ sub put {
                 if (defined($anyType) && defined(ref($anyType))) {
                     $className = ("" . ref($anyType));
                 }
-                my $message = java::lang::Object::jstatic('org::allbinary::logic::communication::log::LogUtil', 'LogFormatUtil')->getInstance()->get($className, $functionName, $specialMessage, $exception);
+                my $message = 'org::allbinary::logic::communication::log::LogFormatUtil'->getInstance()->get($className, $functionName, $specialMessage, $exception);
                 try {
                     print("Eeeek", "\n");
                     if (!defined($self->{abeClientInformation})) {
@@ -116,6 +116,7 @@ use org::allbinary::canvas::SpecialMessageUtil ();
 use org::allbinary::string::CommonStrings ();
 use org::allbinary::time::TimeDelayHelper ();
 use org::allbinary::util::ABHashtable ();
+use org::allbinary::logic::communication::log::LogFormatUtil ();
 use java::lang::System ();
 use org::allbinary::logic::communication::log::XmlRpcRemoteLogClient ();
 

@@ -50,6 +50,7 @@ use java::lang::Object ();
 use java::lang::LazyStatic ();
 use org::allbinary::logic::communication::log::config::type::LogConfigTypes ();
 use org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory ();
+use org::allbinary::logic::communication::log::config::type::LogConfigType ();
 
 1;
 

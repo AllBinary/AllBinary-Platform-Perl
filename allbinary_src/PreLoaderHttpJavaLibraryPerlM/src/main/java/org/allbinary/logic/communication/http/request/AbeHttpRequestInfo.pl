@@ -23,7 +23,7 @@ use parent -norequire,'java::lang::Object';
 sub _init_fields {
     my ($self) = @_;
     $self->{NAME} = "AbeHttpRequestInfo";
-    $self->{abeHttpRequestInfoData} = java::lang::Object::jstatic('org::allbinary::logic::communication::http::request::AbeHttpRequestInfo', 'AbeHttpRequestInfoData')->getInstance();
+    $self->{abeHttpRequestInfoData} = 'org::allbinary::logic::communication::http::request::AbeHttpRequestInfoData'->getInstance();
     $self->{commonSeps} = 'org::allbinary::string::CommonSeps'->getInstance();
     $self->{httpUserAgent} = undef;
     $self->{remoteAddress} = undef;
@@ -126,6 +126,7 @@ use org::allbinary::logic::StdUtil ();
 use org::allbinary::logic::string::StringMaker ();
 use org::allbinary::logic::string::StringUtil ();
 use org::allbinary::string::CommonSeps ();
+use org::allbinary::logic::communication::http::request::AbeHttpRequestInfoData ();
 
 1;
 

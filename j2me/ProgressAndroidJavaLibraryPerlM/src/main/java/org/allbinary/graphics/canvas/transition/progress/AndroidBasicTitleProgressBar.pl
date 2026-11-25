@@ -359,6 +359,7 @@ use org::allbinary::data::resource::ResourceUtil ();
 use org::allbinary::logic::util::event::EventStrings ();
 use org::allbinary::thread::ARunnable ();
 use org::allbinary::thread::NullRunnable ();
+use org::allbinary::graphics::canvas::transition::progress::ProgressCanvas ();
 use org::allbinary::graphics::canvas::transition::progress::ShowTitleProgressBarRunnable ();
 use org::allbinary::graphics::canvas::transition::progress::DismissTitleProgressBarRunnable ();
 use org::allbinary::graphics::canvas::transition::progress::TitleProgressBarSetProgressRunnable ();

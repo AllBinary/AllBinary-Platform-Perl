@@ -26,8 +26,8 @@ sub new {
     my $self = $class->SUPER::new('org::allbinary::game::configuration::persistance::GamePersistanceStrings'->getInstance()->{DEFAULT_INPUT_MAPPING_RECORD_ID});
         # super(...) made $self above
         my $inputToGameKeyMapping = $self->getInputMapping();
-        my $pcKeyFactory = java::lang::Object::jstatic('org::allbinary::game::input::DesktopDefaultGameInputMapping', 'PCKeyFactory')->getInstance();
-        my $gameKeyFactory = java::lang::Object::jstatic('org::allbinary::game::input::DesktopDefaultGameInputMapping', 'GameKeyFactory')->getInstance();
+        my $pcKeyFactory = 'org::allbinary::game::input::PCKeyFactory'->getInstance();
+        my $gameKeyFactory = 'org::allbinary::game::input::GameKeyFactory'->getInstance();
         $inputToGameKeyMapping->add($gameKeyFactory->{FIRE}, $pcKeyFactory->{ENTER});
         $inputToGameKeyMapping->add($gameKeyFactory->{KEY_NUM1}, $pcKeyFactory->{FOUR});
         $inputToGameKeyMapping->add($gameKeyFactory->{KEY_NUM1}, $pcKeyFactory->{_P});
@@ -82,6 +82,8 @@ use java::lang::Object ();
 use org::allbinary::game::configuration::persistance::GamePersistanceStrings ();
 use org::allbinary::game::input::mapping::InputToGameKeyMapping ();
 use org::allbinary::game::input::mapping::PersistentInputMapping ();
+use org::allbinary::game::input::PCKeyFactory ();
+use org::allbinary::game::input::GameKeyFactory ();
 
 1;
 

@@ -36,6 +36,7 @@ sub getInstance {
 
 use java::lang::Object ();
 use java::lang::LazyStatic ();
+use org::allbinary::media::audio::CompositeSound ();
 
 1;
 

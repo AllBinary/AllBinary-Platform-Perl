@@ -40,7 +40,7 @@ sub toXmlNode {
     my ($self, $document) = @_;
         my $tableMappingInterface = 'org::allbinary::data::tree::dom::FileTableMapping'->new($self->{file});
         my $hashMap = $tableMappingInterface->toHashMap();
-        return java::lang::Object::jstatic('org::allbinary::data::tree::dom::FileDomDataModel', 'ModDomHelper')->createNodeWithValueNodes($document, "file", $hashMap);
+        return 'org::allbinary::data::tree::dom::ModDomHelper'->createNodeWithValueNodes($document, "file", $hashMap);
 }
 
 use java::lang::Object ();
@@ -49,7 +49,9 @@ use org::allbinary::data::tables::TableMappingInterface ();
 use org::allbinary::logic::io::file::AbFile ();
 use org::w3c::dom::Document ();
 use org::w3c::dom::Node ();
+use org::allbinary::data::tree::dom::DomNodeInterface ();
 use org::allbinary::data::tree::dom::FileTableMapping ();
+use org::allbinary::data::tree::dom::ModDomHelper ();
 
 1;
 

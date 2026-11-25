@@ -57,10 +57,10 @@ sub createPaintableTable {
         my $totalRows = $self->{touchButtonLocationHelper}->getTotalRows();
         my $paintableTable = [map { [(undef) x ($totalRows)] } 1 .. ($totalColumns)];
         my $cellPositionFactory = 'org::allbinary::graphics::CellPositionFactory'->getInstance();
-        my $commonButtons = java::lang::Object::jstatic('org::allbinary::input::motion::button::TouchButtonsMappingPaintable', 'CommonButtons')->getInstance();
+        my $commonButtons = 'org::allbinary::input::motion::button::CommonButtons'->getInstance();
         for (my $index = $totalColumns - 1; $index >= 0; $index--) {
             for (my $rowIndex = $totalRows - 1; $rowIndex >= 0; $rowIndex--) {
-                $self->{paintableTable}->[$index]->[$rowIndex] = java::lang::Object::jstatic('org::allbinary::input::motion::button::TouchButtonsMappingPaintable', 'TouchButton')->createButton(java::lang::Object::jstatic('org::allbinary::input::motion::button::TouchButtonsMappingPaintable', 'BasicTouchInputFactory')->getInstance()->{NONE}, java::lang::Object::jstatic('org::allbinary::input::motion::button::TouchButtonsMappingPaintable', 'TouchButtonBlankResource')->getInstance(), $commonButtons->{NORMAL_BUTTON}, $cellPositionFactory->getInstanceColRow($index, $rowIndex), $self->{touchButtonLocationHelper}->getColumnsRemainderHalf(), $self->{touchButtonLocationHelper}->getRowsRemainderHalf());
+                $self->{paintableTable}->[$index]->[$rowIndex] = 'org::allbinary::input::motion::button::TouchButton'->createButton('org::allbinary::input::motion::button::BasicTouchInputFactory'->getInstance()->{NONE}, 'org::allbinary::input::motion::button::TouchButtonBlankResource'->getInstance(), $commonButtons->{NORMAL_BUTTON}, $cellPositionFactory->getInstanceColRow($index, $rowIndex), $self->{touchButtonLocationHelper}->getColumnsRemainderHalf(), $self->{touchButtonLocationHelper}->getRowsRemainderHalf());
             }
         }
         return $paintableTable;
@@ -85,6 +85,11 @@ use org::allbinary::graphics::color::BasicColor ();
 use org::allbinary::graphics::paint::Paintable ();
 use org::allbinary::logic::communication::log::LogUtil ();
 use org::allbinary::string::CommonStrings ();
+use org::allbinary::input::motion::button::TouchButtonLocationHelper ();
+use org::allbinary::input::motion::button::CommonButtons ();
+use org::allbinary::input::motion::button::TouchButton ();
+use org::allbinary::input::motion::button::BasicTouchInputFactory ();
+use org::allbinary::input::motion::button::TouchButtonBlankResource ();
 
 1;
 

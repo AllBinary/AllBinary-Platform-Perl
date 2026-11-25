@@ -52,7 +52,7 @@ sub add {
 
 sub process {
     my ($self) = @_;
-        my $sound = java::lang::Object::jstatic('org::allbinary::media::audio::PlayerQueue', 'NoSound')->getInstance();
+        my $sound = 'org::allbinary::media::audio::NoSound'->getInstance();
         try {
             my $played = 0;
             if ($self->{list}->size() > 0) {
@@ -95,6 +95,7 @@ use org::allbinary::logic::string::StringUtil ();
 use org::allbinary::string::CommonStrings ();
 use org::allbinary::util::BasicArrayList ();
 use org::allbinary::util::BasicArrayListD ();
+use org::allbinary::media::audio::NoSound ();
 
 1;
 

@@ -40,7 +40,7 @@ sub new {
 # throws Exception
 sub toXmlNode {
     my ($self, $document) = @_;
-        my $node = $document->createElement(java::lang::Object::jstatic('org::allbinary::business::context::modules::storefront::statistics::RealTimeStoreFrontStatisticsView', 'StoreFrontStatisticsData')->getInstance()->{NAME});
+        my $node = $document->createElement('org::allbinary::business::context::modules::storefront::statistics::StoreFrontStatisticsData'->getInstance()->{NAME});
         my $storeFrontAdvertisementsStatisticsInterface = $self->{storeFrontStatisticsInterface}->getAdvertisements();
         my $storeFrontAdvertisementsStatisticsDomNodeInterface = 'org::allbinary::business::context::modules::storefront::statistics::advertisements::StoreFrontAdvertisementsStatisticsView'->new($storeFrontAdvertisementsStatisticsInterface);
         $node->appendChild($storeFrontAdvertisementsStatisticsDomNodeInterface->toXmlNode($document));
@@ -72,6 +72,7 @@ use org::allbinary::business::user::role::UserRoleFactory ();
 use org::allbinary::data::tree::dom::DomNodeInterface ();
 use org::w3c::dom::Document ();
 use org::w3c::dom::Node ();
+use org::allbinary::business::context::modules::storefront::statistics::StoreFrontStatisticsData ();
 
 1;
 

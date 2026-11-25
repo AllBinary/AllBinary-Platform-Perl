@@ -32,6 +32,7 @@ sub process {
 }
 
 use java::lang::Object ();
+use org::allbinary::graphics::paint::Paintable ();
 
 1;
 

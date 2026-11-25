@@ -54,7 +54,7 @@ sub _new1_1 {
     my ($class, $document) = @_;
     my $self = $class->SUPER::new();
     _init_fields($self);
-        my $nodeList = $document->getElementsByTagName(java::lang::Object::jstatic('org::allbinary::logic::visual::transform::template::customizer::bodies::GenericBodyValidation', 'BodyData')->getInstance()->{NAME});
+        my $nodeList = $document->getElementsByTagName('org::allbinary::logic::visual::transform::template::customizer::bodies::BodyData'->getInstance()->{NAME});
         for (my $index = 0; $index < $nodeList->getLength(); $index++) {
             my $aBodyNode = $nodeList->item($index);
             my $aBodyValueNode = 'org::allbinary::data::tree::dom::DomSearchHelper'->getNode($org::allbinary::data::tree::dom::DomData::VALUE, $aBodyNode->getChildNodes());
@@ -76,7 +76,7 @@ sub _new1_2 {
 # throws Exception
 sub getFormData {
     my ($self, $hashMap) = @_;
-        $self->{body} = $hashMap->get(java::lang::Object::jstatic('org::allbinary::logic::visual::transform::template::customizer::bodies::GenericBodyValidation', 'BodyData')->getInstance()->{NAME});
+        $self->{body} = $hashMap->get('org::allbinary::logic::visual::transform::template::customizer::bodies::BodyData'->getInstance()->{NAME});
 }
 
 
@@ -87,7 +87,7 @@ sub isValid {
             if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{VIEW})) {
                 $self->{logUtil}->putF($self->{commonStrings}->{START}, $self, $self->{commonStrings}->{IS_VALID});
             }
-            if (!'org::allbinary::logic::string::StringValidationUtil'->getInstance()->isValidNotRequired($self->{body}, java::lang::Object::jstatic('org::allbinary::logic::visual::transform::template::customizer::bodies::GenericBodyValidation', 'BodyData')->getInstance()->{MIN}, $org::allbinary::logic::communication::sql::AbSqlData::MAXBLOB)) {
+            if (!'org::allbinary::logic::string::StringValidationUtil'->getInstance()->isValidNotRequired($self->{body}, 'org::allbinary::logic::visual::transform::template::customizer::bodies::BodyData'->getInstance()->{MIN}, $org::allbinary::logic::communication::sql::AbSqlData::MAXBLOB)) {
                 $isValid = 0;
             }
             if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{VIEW})) {
@@ -109,7 +109,7 @@ sub validationInfo {
             my $stringBuffer = 'org::allbinary::logic::string::StringMaker'->new();
             {;
                 $stringBuffer->append("Error: Data submitted is < ");
-                $stringBuffer->appendint(int(java::lang::Object::jstatic('org::allbinary::logic::visual::transform::template::customizer::bodies::GenericBodyValidation', 'BodyData')->getInstance()->{MIN}));
+                $stringBuffer->appendint(int('org::allbinary::logic::visual::transform::template::customizer::bodies::BodyData'->getInstance()->{MIN}));
                 $stringBuffer->append(" or > ");
                 $stringBuffer->appendint(int($org::allbinary::logic::communication::sql::AbSqlData::MAXBLOB));
             }
@@ -138,7 +138,7 @@ sub toValidationInfoNode {
 # throws Exception
 sub toXmlNode {
     my ($self, $document) = @_;
-        my $node = 'org::allbinary::data::tree::dom::ModDomHelper'->createNameValueNodes($document, java::lang::Object::jstatic('org::allbinary::logic::visual::transform::template::customizer::bodies::GenericBodyValidation', 'BodyData')->getInstance()->{NAME}, $self->{body});
+        my $node = 'org::allbinary::data::tree::dom::ModDomHelper'->createNameValueNodes($document, 'org::allbinary::logic::visual::transform::template::customizer::bodies::BodyData'->getInstance()->{NAME}, $self->{body});
         return $node;
 }
 
@@ -160,6 +160,7 @@ use org::w3c::dom::Node ();
 use org::w3c::dom::NodeList ();
 use org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory ();
 use org::allbinary::logic::communication::log::config::type::LogConfigTypes ();
+use org::allbinary::logic::visual::transform::template::customizer::bodies::BodyData ();
 
 1;
 

@@ -38,12 +38,13 @@ sub new {
 # throws Exception
 sub process {
     my ($self) = @_;
-        java::lang::Object::jstatic('org::allbinary::graphics::displayable::screen::ScreenRepaintProcessor', 'ScreenRepaintUtil')->repaint($self->{displayable});
+        'org::allbinary::graphics::displayable::screen::ScreenRepaintUtil'->repaint($self->{displayable});
 }
 
 use java::lang::Object ();
 use javax::microedition::lcdui::Displayable ();
 use org::allbinary::canvas::Processor ();
+use org::allbinary::graphics::displayable::screen::ScreenRepaintUtil ();
 
 1;
 

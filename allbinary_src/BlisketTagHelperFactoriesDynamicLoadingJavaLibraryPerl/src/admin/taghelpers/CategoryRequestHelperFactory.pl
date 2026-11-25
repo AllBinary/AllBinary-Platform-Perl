@@ -33,7 +33,7 @@ sub new {
 # throws LicensingException
 sub getInstance {
     my ($self, $hashMap, $pageContext) = @_;
-        return java::lang::Object::jstatic('admin::taghelpers::CategoryRequestHelperFactory', 'HelperFactory')->getInstance($FACTORYNAME, $CLASSNAME, $hashMap, $pageContext);
+        return 'admin::taghelpers::HelperFactory'->getInstance($FACTORYNAME, $CLASSNAME, $hashMap, $pageContext);
 }
 
 use java::lang::Object ();
@@ -41,6 +41,8 @@ use java::util::HashMap ();
 # use javax::servlet::jsp::PageContext ();
 # use javax::servlet::jsp::PageContext ();
 use org::allbinary::logic::system::security::licensing::LicensingException ();
+use admin::taghelpers::TagHelperFactoryInterface ();
+use admin::taghelpers::HelperFactory ();
 
 1;
 

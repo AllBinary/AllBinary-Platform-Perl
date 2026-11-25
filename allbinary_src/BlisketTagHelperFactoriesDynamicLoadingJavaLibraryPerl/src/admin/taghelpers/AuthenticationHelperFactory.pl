@@ -33,14 +33,14 @@ sub new {
 # throws LicensingException
 sub getInstance_j2_1 {
     my ($self, $hashMap, $pageContext) = @_;
-        return java::lang::Object::jstatic('admin::taghelpers::AuthenticationHelperFactory', 'HelperFactory')->getInstance($FACTORYNAME, $CLASSNAME, $hashMap, $pageContext);
+        return 'admin::taghelpers::HelperFactory'->getInstance($FACTORYNAME, $CLASSNAME, $hashMap, $pageContext);
 }
 
 
 # throws LicensingException
 sub getInstance_j2_2 {
     my ($self, $hashMap, $httpServletRequest) = @_;
-        return java::lang::Object::jstatic('admin::taghelpers::AuthenticationHelperFactory', 'HelperFactory')->getInstance($FACTORYNAME, $CLASSNAME, $hashMap, $httpServletRequest);
+        return 'admin::taghelpers::HelperFactory'->getInstance($FACTORYNAME, $CLASSNAME, $hashMap, $httpServletRequest);
 }
 
 sub getInstance {
@@ -60,6 +60,8 @@ use java::util::HashMap ();
 # use javax::servlet::jsp::PageContext ();
 use org::allbinary::logic::system::security::licensing::LicensingException ();
 # use javax::servlet::http::HttpServletRequest ();
+use admin::taghelpers::TagHelperFactoryInterface ();
+use admin::taghelpers::HelperFactory ();
 
 1;
 

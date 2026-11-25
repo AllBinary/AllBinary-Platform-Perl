@@ -48,6 +48,8 @@ use org::allbinary::input::automation::module::generic::configuration::profile::
 use org::allbinary::input::automation::module::generic::constraints::NoImageComparatorConstraints ();
 use org::allbinary::input::automation::module::generic::constraints::NoMotionRectangleConstraints ();
 use org::allbinary::thread::RunnableInterface ();
+use org::allbinary::input::automation::module::generic::GenericInputAutomationAction ();
+use org::allbinary::input::automation::module::generic::GenericInputAutomationWorker ();
 
 1;
 

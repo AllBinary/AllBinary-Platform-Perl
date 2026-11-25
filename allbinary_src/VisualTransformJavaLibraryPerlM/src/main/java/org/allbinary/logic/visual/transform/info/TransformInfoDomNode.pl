@@ -56,7 +56,7 @@ sub _new1_1 {
         if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{VIEW})) {
             $self->{logUtil}->putF("Constructing TransformInfo From TransformInfoDomNode: " . $node->getNodeName(), $self, "TransformInfoDomNode(Node node)");
         }
-        my $transformInfoData = java::lang::Object::jstatic('org::allbinary::logic::visual::transform::info::TransformInfoDomNode', 'TransformInfoData')->getInstance();
+        my $transformInfoData = 'org::allbinary::logic::visual::transform::info::TransformInfoData'->getInstance();
         my $attributes = $node->getAttributes();
         my $attrNode = $attributes->getNamedItem($transformInfoData->{NAME});
         my $name = $attrNode->getValue();
@@ -168,6 +168,7 @@ use org::w3c::dom::Node ();
 use org::w3c::dom::NodeList ();
 use org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory ();
 use org::allbinary::logic::communication::log::config::type::LogConfigTypes ();
+use org::allbinary::logic::visual::transform::info::TransformInfoData ();
 use org::allbinary::logic::visual::transform::info::TransformInfo ();
 
 1;

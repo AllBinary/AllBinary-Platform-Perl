@@ -22,7 +22,7 @@ use parent -norequire,'org::allbinary::game::multiplayer::layer::MultiPlayerGame
 
 sub _init_fields {
     my ($self) = @_;
-    $self->{pickedUpLayerInterfaceFactoryInterface} = java::lang::Object::jstatic('org::allbinary::game::layer::pickup::PickupLayer', 'CountedPickedUpLayerInterfaceFactory')->{NULL_COUNTED_PICKUP_LAYER_FACTORY};
+    $self->{pickedUpLayerInterfaceFactoryInterface} = $org::allbinary::game::layer::pickup::CountedPickedUpLayerInterfaceFactory::NULL_COUNTED_PICKUP_LAYER_FACTORY;
     $self->{destroyed} = 0;
     $self->{animationInterface} = 'org::allbinary::animation::NullAnimationFactory'->getFactoryInstance()->getInstance(0);
 }
@@ -131,6 +131,9 @@ use org::allbinary::game::multiplayer::layer::RemoteInfo ();
 use org::allbinary::graphics::Rectangle ();
 use org::allbinary::image::opengles::OpenGLSurfaceChangedInterface ();
 use org::allbinary::view::ViewPositionBase ();
+use org::allbinary::game::layer::pickup::PickedUpLayerInterface ();
+use org::allbinary::game::layer::pickup::PickupableInterface ();
+use org::allbinary::game::layer::pickup::CountedPickedUpLayerInterfaceFactory ();
 
 1;
 

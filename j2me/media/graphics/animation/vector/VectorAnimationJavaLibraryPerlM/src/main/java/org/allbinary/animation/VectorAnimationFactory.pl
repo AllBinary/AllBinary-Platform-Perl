@@ -29,12 +29,14 @@ sub new {
 
 sub getInstance {
     my ($self, $points, $basicColor) = @_;
-        return 'org::allbinary::animation::VectorAnimation'->new($points, $basicColor, java::lang::Object::jstatic('org::allbinary::animation::VectorAnimationFactory', 'AnimationBehavior')->getInstance());
+        return 'org::allbinary::animation::VectorAnimation'->new($points, $basicColor, 'org::allbinary::animation::AnimationBehavior'->getInstance());
 }
 
 use java::lang::Object ();
 use org::allbinary::graphics::color::BasicColor ();
 use org::allbinary::animation::VectorAnimationFactoryInterface ();
+use org::allbinary::animation::VectorAnimation ();
+use org::allbinary::animation::AnimationBehavior ();
 
 1;
 

@@ -173,6 +173,7 @@ use org::allbinary::logic::io::path::AbPath ();
 use org::allbinary::logic::io::path::AbPathData ();
 use org::w3c::dom::Document ();
 use org::w3c::dom::Node ();
+use org::allbinary::business::category::properties::root::RootCategoryPropertiesInterface ();
 
 1;
 

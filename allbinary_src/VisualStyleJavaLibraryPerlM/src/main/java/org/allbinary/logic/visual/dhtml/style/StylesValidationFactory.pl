@@ -45,7 +45,7 @@ sub new {
 sub getInstance_j1_1 {
     my ($self, $document) = @_;
         my $commonStrings = 'org::allbinary::string::CommonStrings'->getInstance();
-        my $nodeList = $document->getElementsByTagName(java::lang::Object::jstatic('org::allbinary::logic::visual::dhtml::style::StylesValidationFactory', 'StylesData')->getInstance()->{NAME});
+        my $nodeList = $document->getElementsByTagName('org::allbinary::logic::visual::dhtml::style::StylesData'->getInstance()->{NAME});
         if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{VIEW})) {
             $self->{logUtil}->putF("Style Present: " . 'org::allbinary::data::tree::dom::document::XmlDocumentHelper'->toString($document), $self, $commonStrings->{GET_INSTANCE});
         }
@@ -54,7 +54,7 @@ sub getInstance_j1_1 {
         }
         for (my $index = 0; $index < $nodeList->getLength(); $index++) {
             my $stylesNode = $nodeList->item($index);
-            my $styleNodeList = 'org::allbinary::data::tree::dom::DomSearchHelper'->getAllNodes(java::lang::Object::jstatic('org::allbinary::logic::visual::dhtml::style::StylesValidationFactory', 'StyleData')->getInstance()->{NAME}, $stylesNode->getChildNodes());
+            my $styleNodeList = 'org::allbinary::data::tree::dom::DomSearchHelper'->getAllNodes('org::allbinary::logic::visual::dhtml::style::StyleData'->getInstance()->{NAME}, $stylesNode->getChildNodes());
             if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{VIEW})) {
                 $self->{logUtil}->putF("Number Of Style Nodes Present: " . $styleNodeList->size(), $self, $commonStrings->{GET_INSTANCE});
             }
@@ -111,6 +111,8 @@ use org::w3c::dom::Node ();
 use org::w3c::dom::NodeList ();
 use org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory ();
 use org::allbinary::logic::communication::log::config::type::LogConfigTypes ();
+use org::allbinary::logic::visual::dhtml::style::StylesData ();
+use org::allbinary::logic::visual::dhtml::style::StyleData ();
 
 1;
 

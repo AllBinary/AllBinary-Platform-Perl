@@ -68,7 +68,7 @@ sub _new2_1 {
     my $self = bless({}, $class);
     _init_fields($self);
         $self->{transformInfoInterface} = $transformInfoInterface;
-        my $categoryThemeAbPath = 'org::allbinary::logic::io::path::AbPath'->new($hashMap->get(java::lang::Object::jstatic('org::allbinary::logic::visual::theme::ThemeValidation', 'ThemeData')->getInstance()->{PATH}), 'org::allbinary::logic::string::StringUtil'->getInstance()->{EMPTY_STRING});
+        my $categoryThemeAbPath = 'org::allbinary::logic::io::path::AbPath'->new($hashMap->get('org::allbinary::logic::visual::theme::ThemeData'->getInstance()->{PATH}), 'org::allbinary::logic::string::StringUtil'->getInstance()->{EMPTY_STRING});
         my $pathData = 'org::allbinary::logic::io::path::AbPathData'->getInstance();
         my $pathUtil = 'org::allbinary::logic::io::path::PathUtil'->getInstance();
         $self->{categoryAbPath} = $pathUtil->removeNameFromPath($categoryThemeAbPath->toString());
@@ -94,10 +94,10 @@ sub _new2_2 {
     _init_fields($self);
         $self->{transformInfoInterface} = $storeThemeCategoryInterface->getTransformInfoInterface();
         $self->{categoryAbPath} = $storeThemeCategoryInterface->getPath();
-        my $themeNameNode = 'org::allbinary::data::tree::dom::DomSearchHelper'->getNode(java::lang::Object::jstatic('org::allbinary::logic::visual::theme::ThemeValidation', 'ThemeData')->getInstance()->{NAME}, $node->getChildNodes());
+        my $themeNameNode = 'org::allbinary::data::tree::dom::DomSearchHelper'->getNode('org::allbinary::logic::visual::theme::ThemeData'->getInstance()->{NAME}, $node->getChildNodes());
         my $valueNode = 'org::allbinary::data::tree::dom::DomSearchHelper'->getNode($org::allbinary::data::tree::dom::DomData::VALUE, $themeNameNode->getChildNodes());
         $self->{themeName} = 'org::allbinary::data::tree::dom::DomNodeHelper'->getTextNodeValue($valueNode);
-        my $previewImageNameNode = 'org::allbinary::data::tree::dom::DomSearchHelper'->getNode(java::lang::Object::jstatic('org::allbinary::logic::visual::theme::ThemeValidation', 'ThemeData')->getInstance()->{PREVIEW_IMAGE_NAME}, $node->getChildNodes());
+        my $previewImageNameNode = 'org::allbinary::data::tree::dom::DomSearchHelper'->getNode('org::allbinary::logic::visual::theme::ThemeData'->getInstance()->{PREVIEW_IMAGE_NAME}, $node->getChildNodes());
         my $previewImageNameValueNode = 'org::allbinary::data::tree::dom::DomSearchHelper'->getNode($org::allbinary::data::tree::dom::DomData::VALUE, $previewImageNameNode->getChildNodes());
         $self->{themePreviewImageName} = 'org::allbinary::data::tree::dom::DomNodeHelper'->getTextNodeValue($previewImageNameValueNode);
         $self->{webAppAbPath} = $storeThemeCategoryInterface->getWebAppPath();
@@ -250,7 +250,7 @@ sub toVector {
 
 sub toHashMap {
     my ($self) = @_;
-        my $themeData = java::lang::Object::jstatic('org::allbinary::logic::visual::theme::ThemeValidation', 'ThemeData')->getInstance();
+        my $themeData = 'org::allbinary::logic::visual::theme::ThemeData'->getInstance();
         my $hashMap = 'org::allbinary::logic::StdUtil'->getInstance()->createHashMap();
         $hashMap->put($themeData->{NAME}, $self->getName());
         $hashMap->put($themeData->{PATH}, $self->getPath());
@@ -263,7 +263,7 @@ sub toHashMap {
 # throws Exception
 sub toXmlNode {
     my ($self, $document) = @_;
-        my $node = 'org::allbinary::data::tree::dom::ModDomHelper'->createNameValueNodes($document, java::lang::Object::jstatic('org::allbinary::logic::visual::theme::ThemeValidation', 'ThemeData')->getInstance()->{NAME}, $self->toHashMap());
+        my $node = 'org::allbinary::data::tree::dom::ModDomHelper'->createNameValueNodes($document, 'org::allbinary::logic::visual::theme::ThemeData'->getInstance()->{NAME}, $self->toHashMap());
         my $domNodeInterface = $self->getCssStyleValidation();
         $node->appendChild($domNodeInterface->toXmlNode($document));
         return $node;
@@ -305,6 +305,7 @@ use org::w3c::dom::Node ();
 use org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory ();
 use org::allbinary::logic::communication::log::config::type::LogConfigTypes ();
 use org::allbinary::logic::visual::theme::ThemeInterface ();
+use org::allbinary::logic::visual::theme::ThemeData ();
 
 1;
 

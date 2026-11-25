@@ -59,14 +59,14 @@ sub toXmlNode {
         my $hourDelta = $calendar->get($java::util::Calendar::HOUR);
         my $minuteDelta = $calendar->get($java::util::Calendar::MINUTE);
         my $secondDelta = $calendar->get($java::util::Calendar::SECOND);
-        $hashMap->put(java::lang::Object::jstatic('org::allbinary::business::user::commerce::inventory::item::download::DownloadableItemView', 'DownloadItemData')->{VALID_TIME_YEARS}, ("" . ($yearDelta - $year)));
-        $hashMap->put(java::lang::Object::jstatic('org::allbinary::business::user::commerce::inventory::item::download::DownloadableItemView', 'DownloadItemData')->{VALID_TIME_MONTHS}, ("" . ($monthDelta - $month)));
-        $hashMap->put(java::lang::Object::jstatic('org::allbinary::business::user::commerce::inventory::item::download::DownloadableItemView', 'DownloadItemData')->{VALID_TIME_DAYS}, ("" . ($dayDelta - $day)));
-        $hashMap->put(java::lang::Object::jstatic('org::allbinary::business::user::commerce::inventory::item::download::DownloadableItemView', 'DownloadItemData')->{VALID_TIME_HOURS}, ("" . ($hourDelta - $hour)));
-        $hashMap->put(java::lang::Object::jstatic('org::allbinary::business::user::commerce::inventory::item::download::DownloadableItemView', 'DownloadItemData')->{VALID_TIME_MINUTES}, ("" . ($minuteDelta - $minute)));
-        $hashMap->put(java::lang::Object::jstatic('org::allbinary::business::user::commerce::inventory::item::download::DownloadableItemView', 'DownloadItemData')->{VALID_TIME_SECONDS}, ("" . ($secondDelta - $second)));
+        $hashMap->put($org::allbinary::business::user::commerce::inventory::item::download::DownloadItemData::VALID_TIME_YEARS, ("" . ($yearDelta - $year)));
+        $hashMap->put($org::allbinary::business::user::commerce::inventory::item::download::DownloadItemData::VALID_TIME_MONTHS, ("" . ($monthDelta - $month)));
+        $hashMap->put($org::allbinary::business::user::commerce::inventory::item::download::DownloadItemData::VALID_TIME_DAYS, ("" . ($dayDelta - $day)));
+        $hashMap->put($org::allbinary::business::user::commerce::inventory::item::download::DownloadItemData::VALID_TIME_HOURS, ("" . ($hourDelta - $hour)));
+        $hashMap->put($org::allbinary::business::user::commerce::inventory::item::download::DownloadItemData::VALID_TIME_MINUTES, ("" . ($minuteDelta - $minute)));
+        $hashMap->put($org::allbinary::business::user::commerce::inventory::item::download::DownloadItemData::VALID_TIME_SECONDS, ("" . ($secondDelta - $second)));
         my $keySet = $hashMap->keySet();
-        my $node = $document->createElement(java::lang::Object::jstatic('org::allbinary::business::user::commerce::inventory::item::download::DownloadableItemView', 'DownloadItemData')->{NAME});
+        my $node = $document->createElement($org::allbinary::business::user::commerce::inventory::item::download::DownloadItemData::NAME);
         my $stringUtil = 'org::allbinary::logic::string::StringUtil'->getInstance();
         my $nameArray = $keySet->toArray();
         my $size = scalar(@{$nameArray});
@@ -104,6 +104,7 @@ use org::w3c::dom::Document ();
 use org::w3c::dom::Node ();
 use org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory ();
 use org::allbinary::logic::communication::log::config::type::LogConfigTypes ();
+use org::allbinary::business::user::commerce::inventory::item::download::DownloadItemData ();
 
 1;
 

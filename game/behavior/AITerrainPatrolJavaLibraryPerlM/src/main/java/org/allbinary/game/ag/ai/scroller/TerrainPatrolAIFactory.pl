@@ -30,7 +30,7 @@ sub new {
 # throws Exception
 sub getInstance {
     my ($self, $hashtable, $ownerLayerInterface, $gameInput) = @_;
-        $hashtable->put(java::lang::Object::jstatic('org::allbinary::game::ag::ai::scroller::TerrainPatrolAIFactory', 'BasePatrolAI')->{MAX_DISTANCE}, 'org::allbinary::logic::math::SmallIntegerSingletonFactory'->getInstance()->getAt(220));
+        $hashtable->put($org::allbinary::game::ag::ai::scroller::BasePatrolAI::MAX_DISTANCE, 'org::allbinary::logic::math::SmallIntegerSingletonFactory'->getInstance()->getAt(220));
         return 'org::allbinary::game::ag::ai::scroller::TerrainPatrolAI'->new($hashtable, $ownerLayerInterface, $gameInput);
 }
 
@@ -41,6 +41,7 @@ use org::allbinary::game::input::GameInput ();
 use org::allbinary::layer::AllBinaryLayer ();
 use org::allbinary::logic::math::SmallIntegerSingletonFactory ();
 use org::allbinary::util::ABHashtable ();
+use org::allbinary::game::ag::ai::scroller::BasePatrolAI ();
 use org::allbinary::game::ag::ai::scroller::TerrainPatrolAI ();
 
 1;

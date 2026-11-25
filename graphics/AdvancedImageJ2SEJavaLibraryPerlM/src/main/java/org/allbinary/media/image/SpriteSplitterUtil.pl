@@ -65,7 +65,7 @@ sub process {
                 $generatedBufferedImageArray = [map { [(undef) x ($columns)] } 1 .. ($rows)];
                 $self->{logUtil}->putF("Processing Individual Cells columns: " . $columns . " rows: " . $rows, $self, $self->{commonStrings}->{RUN});
                 $self->{logUtil}->putF("Processing Individual Cells cellHeight: " . $cellHeight . " cellWidth: " . $cellWidth, $self, $self->{commonStrings}->{RUN});
-                my $imageUtil = java::lang::Object::jstatic('org::allbinary::media::image::SpriteSplitterUtil', 'ImageUtil')->getInstance();
+                my $imageUtil = 'org::allbinary::media::image::ImageUtil'->getInstance();
                 my $nameEnding = undef;
                 my $x = 0;
                 my $y = 0;
@@ -94,7 +94,7 @@ sub process {
                         $tempBufferedImageArray->[$index3] = $generatedBufferedImageArray->[$index2]->[$index3];
                         $nameEnding = 'org::allbinary::logic::string::StringMaker'->new()->appendint($index2)->append($self->{commonSeps}->{UNDERSCORE})->appendint(1)->append($self->{_ROW})->toString();
                     }
-                    my $generatedBufferedImage = java::lang::Object::jstatic('org::allbinary::media::image::SpriteSplitterUtil', 'ImageUnifierUtil')->getInstance()->getImage($tempBufferedImageArray, $imageUnifierProperties);
+                    my $generatedBufferedImage = 'org::allbinary::media::image::ImageUnifierUtil'->getInstance()->getImage($tempBufferedImageArray, $imageUnifierProperties);
                     $visitor->visit($generatedBufferedImage, $nameEnding, $index);
                 }
             } elsif ($spriteType eq $self->{HORIZONTAL_ANIMATIONS}) {
@@ -115,7 +115,7 @@ sub process {
                         $x = $cellWidth * $index3;
                         $generatedBufferedImageArray->[$index2]->[$index3] = $bufferedImage->getSubimage($x + $widthReduction, $y + $heightReduction, $cellWidth - ($widthReduction * 2), $cellHeight - ($heightReduction * 2));
                         if ($increaseWidth != 0 || $increaseHeight != 0) {
-                            $generatedBufferedImageArray->[$index2]->[$index3] = java::lang::Object::jstatic('org::allbinary::media::image::SpriteSplitterUtil', 'ImageUtil')->getInstance()->createBufferedImageAllowTranslate($generatedBufferedImageArray->[$index2]->[$index3], $cellWidth + $increaseWidth, $cellHeight + $increaseHeight, 0, 1);
+                            $generatedBufferedImageArray->[$index2]->[$index3] = 'org::allbinary::media::image::ImageUtil'->getInstance()->createBufferedImageAllowTranslate($generatedBufferedImageArray->[$index2]->[$index3], $cellWidth + $increaseWidth, $cellHeight + $increaseHeight, 0, 1);
                         }
                         $nameEnding = 'org::allbinary::logic::string::StringMaker'->new()->append($self->{commonStrings}->{DIRECTION_NAME}->[$index2])->append($self->{commonSeps}->{UNDERSCORE})->appendint($index3)->toString();
                         $visitor->visit($generatedBufferedImageArray->[$index2]->[$index3], $nameEnding, $index);
@@ -134,7 +134,7 @@ sub process {
                         $tempBufferedImageArray->[$index3] = $generatedBufferedImageArray->[$index2]->[$index3];
                         $nameEnding = 'org::allbinary::logic::string::StringMaker'->new()->append($self->{commonStrings}->{DIRECTION_NAME}->[$index2])->append($self->{commonSeps}->{UNDERSCORE})->appendint(1)->append($self->{_ROW})->toString();
                     }
-                    my $generatedBufferedImage = java::lang::Object::jstatic('org::allbinary::media::image::SpriteSplitterUtil', 'ImageUnifierUtil')->getInstance()->getImage($tempBufferedImageArray, $imageUnifierProperties);
+                    my $generatedBufferedImage = 'org::allbinary::media::image::ImageUnifierUtil'->getInstance()->getImage($tempBufferedImageArray, $imageUnifierProperties);
                     $visitor->visit($generatedBufferedImage, $nameEnding, $index);
                 }
             }
@@ -148,6 +148,10 @@ use org::allbinary::logic::communication::log::LogUtil ();
 use org::allbinary::logic::string::StringMaker ();
 use org::allbinary::string::CommonSeps ();
 use org::allbinary::string::CommonStrings ();
+use org::allbinary::media::image::ImageUtil ();
+use org::allbinary::media::image::ImageUnifierProperties ();
+use org::allbinary::media::image::ImageUnifierCell ();
+use org::allbinary::media::image::ImageUnifierUtil ();
 
 1;
 

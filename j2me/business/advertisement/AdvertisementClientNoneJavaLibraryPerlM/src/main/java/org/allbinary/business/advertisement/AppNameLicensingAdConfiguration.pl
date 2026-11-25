@@ -18,6 +18,7 @@ sub new {
 
 use java::lang::Object ();
 use org::allbinary::logic::string::StringUtil ();
+use org::allbinary::business::advertisement::AdConfiguration ();
 
 1;
 

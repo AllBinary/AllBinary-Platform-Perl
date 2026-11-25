@@ -66,7 +66,7 @@ sub get {
             my $licenseClient = 'org::allbinary::logic::system::security::licensing::client::AbeLicenseClient'->new();
             $self->{abeLicenseInterface} = $licenseClient->get($abeClientInformation);
             if (defined($self->{abeLicenseInterface})) {
-                $self->{logUtil}->putF("Default Key: " . $self->{abeLicenseInterface}->getKey(java::lang::Object::jstatic('org::allbinary::logic::system::security::licensing::AbeLicenseInterfaceFactory', 'AbeClientInformationData')->getInstance()->{KEY}), $self, $self->{commonStrings}->{GET});
+                $self->{logUtil}->putF("Default Key: " . $self->{abeLicenseInterface}->getKey('org::allbinary::logic::system::security::licensing::AbeClientInformationData'->getInstance()->{KEY}), $self, $self->{commonStrings}->{GET});
             }
             return $self->{abeLicenseInterface};
         } catch ($e) {
@@ -109,6 +109,7 @@ use org::allbinary::logic::communication::log::LogUtil ();
 use org::allbinary::logic::system::security::licensing::client::AbeLicenseClient ();
 use org::allbinary::string::CommonStrings ();
 use org::allbinary::logic::system::security::licensing::AbeNoLicense ();
+use org::allbinary::logic::system::security::licensing::AbeClientInformationData ();
 
 1;
 

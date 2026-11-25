@@ -46,6 +46,7 @@ sub paintXY {
 use java::lang::Object ();
 use javax::microedition::lcdui::Graphics ();
 use org::allbinary::graphics::color::BasicColor ();
+use org::allbinary::animation::VectorAnimation ();
 
 1;
 

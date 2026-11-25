@@ -50,6 +50,7 @@ use java::lang::LazyStatic ();
 use javax::microedition::lcdui::Image ();
 use javax::microedition::lcdui::game::Sprite ();
 use org::allbinary::logic::communication::log::LogUtil ();
+use org::allbinary::game::layer::SpriteFactoryInterface ();
 
 1;
 

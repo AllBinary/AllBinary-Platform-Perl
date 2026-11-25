@@ -76,6 +76,7 @@ sub paintThreed {
 
 use java::lang::Object ();
 use javax::microedition::lcdui::Graphics ();
+use org::allbinary::game::input::TestInputInterface ();
 
 1;
 

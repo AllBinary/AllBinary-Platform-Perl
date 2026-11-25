@@ -31,7 +31,7 @@ sub getHashMap {
     my ($class) = @_;
         my $commonSeps = 'org::allbinary::string::CommonSeps'->getInstance();
         my $commonPhoneStrings = 'org::allbinary::string::CommonPhoneStrings'->getInstance();
-        my $stringUtil = java::lang::Object::jstatic('org::allbinary::logic::string::SpecialCharacterUtil', 'StringUtil')->getInstance();
+        my $stringUtil = 'org::allbinary::logic::string::StringUtil'->getInstance();
         my $hashMap = 'org::allbinary::logic::StdUtil'->getInstance()->createHashMap();
         $hashMap->put("!", $stringUtil->{EMPTY_STRING});
         $hashMap->put("\@", $stringUtil->{EMPTY_STRING});
@@ -67,6 +67,7 @@ use org::allbinary::logic::io::path::AbPathData ();
 use org::allbinary::logic::math::MathData ();
 use org::allbinary::string::CommonPhoneStrings ();
 use org::allbinary::string::CommonSeps ();
+use org::allbinary::logic::string::StringUtil ();
 
 1;
 

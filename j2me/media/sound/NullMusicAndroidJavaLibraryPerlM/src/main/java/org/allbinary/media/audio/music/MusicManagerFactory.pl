@@ -34,6 +34,7 @@ sub createMusicManager {
 
 use java::lang::Object ();
 use org::allbinary::util::BasicArrayList ();
+use org::allbinary::media::audio::music::MusicManager ();
 
 1;
 

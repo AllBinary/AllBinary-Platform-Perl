@@ -246,6 +246,7 @@ use org::allbinary::media::graphics::geography::map::GeographicMapCellType ();
 use org::allbinary::media::graphics::geography::map::GeographicMapCompositeInterface ();
 use org::allbinary::media::graphics::geography::map::drop::DropCellPositionHistory ();
 use org::allbinary::media::graphics::geography::map::racetrack::RaceTrackGeographicMapCellTypeFactory ();
+use org::allbinary::game::input::form::RTSFormInput ();
 use org::allbinary::game::input::form::PrimaryWaypointHelper ();
 
 1;

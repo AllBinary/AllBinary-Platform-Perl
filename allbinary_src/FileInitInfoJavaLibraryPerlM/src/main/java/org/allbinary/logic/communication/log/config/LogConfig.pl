@@ -57,7 +57,7 @@ sub _new1 {
         my $enabledValueNode = 'org::allbinary::data::tree::dom::DomSearchHelper'->getNode('org::allbinary::business::entry::EntryData'->getInstance()->{ENABLE}, $node->getChildNodes());
         my $isEnabledString = 'org::allbinary::data::tree::dom::DomNodeHelper'->getTextNodeValue($enabledValueNode);
         $self->{isEnabled} = 'org::allbinary::logic::java::bool::BooleanUtil'->getInstance()->getFromString($isEnabledString);
-        my $logConfigData = java::lang::Object::jstatic('org::allbinary::logic::communication::log::config::LogConfig', 'LogConfigData')->getInstance();
+        my $logConfigData = 'org::allbinary::logic::communication::log::config::LogConfigData'->getInstance();
         my $nameValueNode = 'org::allbinary::data::tree::dom::DomSearchHelper'->getNode($logConfigData->{NAME}, $node->getChildNodes());
         $self->{name} = 'org::allbinary::data::tree::dom::DomNodeHelper'->getTextNodeValue($nameValueNode);
         my $descriptionValueNode = 'org::allbinary::data::tree::dom::DomSearchHelper'->getNode($logConfigData->{DESCRIPTION}, $node->getChildNodes());
@@ -178,6 +178,7 @@ use org::allbinary::util::BasicArrayListD ();
 use org::w3c::dom::Document ();
 use org::w3c::dom::Node ();
 use org::w3c::dom::NodeList ();
+use org::allbinary::logic::communication::log::config::LogConfigData ();
 
 1;
 

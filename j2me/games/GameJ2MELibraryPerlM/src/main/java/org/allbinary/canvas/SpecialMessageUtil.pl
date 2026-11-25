@@ -39,7 +39,7 @@ sub get {
         my $stringBuffer = 'org::allbinary::logic::string::StringMaker'->new();
         $stringBuffer->append('org::allbinary::system::Memory'->getInfo());
         $stringBuffer->append('org::allbinary::string::CommonSeps'->getInstance()->{SPACE});
-        $stringBuffer->append(java::lang::Object::jstatic('org::allbinary::canvas::SpecialMessageUtil', 'GameStatisticsFactory')->getInstance()->toString());
+        $stringBuffer->append('org::allbinary::canvas::GameStatisticsFactory'->getInstance()->toString());
         $stringBuffer->append('org::allbinary::string::CommonSeps'->getInstance()->{SPACE});
         $stringBuffer->append(" Option: ");
         if ('org::allbinary::game::configuration::feature::Features'->getInstance()->isDefault('org::allbinary::graphics::opengles::OpenGLFeatureFactory'->getInstance()->{OPENGL_AUTO_SELECT})) {
@@ -57,6 +57,7 @@ use org::allbinary::graphics::opengles::OpenGLFeatureFactory ();
 use org::allbinary::logic::string::StringMaker ();
 use org::allbinary::string::CommonSeps ();
 use org::allbinary::system::Memory ();
+use org::allbinary::canvas::GameStatisticsFactory ();
 
 1;
 

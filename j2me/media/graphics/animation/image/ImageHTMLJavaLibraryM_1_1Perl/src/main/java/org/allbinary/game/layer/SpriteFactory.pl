@@ -53,6 +53,7 @@ use org::allbinary::string::CommonSeps ();
 use org::allbinary::string::CommonStrings ();
 use org::allbinary::logic::string::StringMaker ();
 use org::allbinary::logic::communication::log::LogUtil ();
+use org::allbinary::game::layer::SpriteFactoryInterface ();
 
 1;
 

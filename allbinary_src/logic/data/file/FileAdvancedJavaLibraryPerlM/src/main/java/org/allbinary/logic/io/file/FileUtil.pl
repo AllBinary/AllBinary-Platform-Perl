@@ -123,7 +123,7 @@ sub copyToCloud_j6 {
     my ($self, $file, $path, $realPath, $cloud, $overwriteNewer, $overwriteAll) = @_;
         try {
             my $outPath = $self->fixPath($file, $path, $realPath, $cloud);
-            my $outFile = java::lang::Object::jstatic('org::allbinary::logic::io::file::FileUtil', 'AbFile')->createAbFileFromAbPath($outPath);
+            my $outFile = 'org::allbinary::logic::io::file::AbFile'->createAbFileFromAbPath($outPath);
             if (!$self->copyPrepare($file, $outFile, $overwriteNewer, $overwriteAll)) {
                 return;
             } else {
@@ -307,7 +307,7 @@ sub copyFile {
 sub getNewDirectory {
     my ($class, $fromFile) = @_;
         my $newDirectory = $fromFile->getPath();
-        my $separatorChar = java::lang::Object::jstatic('org::allbinary::logic::io::file::FileUtil', 'FilePathData')->getInstance()->{PATH_START};
+        my $separatorChar = 'org::allbinary::logic::io::file::FilePathData'->getInstance()->{PATH_START};
         if ('org::allbinary::logic::io::AbIOSystem'->getInstance()->isType("com.vobject.appengine.java.io")) {
             $separatorChar = 'org::allbinary::logic::io::path::AbPathData'->getInstance()->{SEPARATOR};
         }
@@ -323,7 +323,7 @@ sub getNewDirectory {
 # throws Exception
 sub copyDirectoryPortion {
     my ($self, $fromDirectoryAbPath, $toDirectoryAbPath, $overwriteNewer, $overwriteAll, $current, $total) = @_;
-        my $file = java::lang::Object::jstatic('org::allbinary::logic::io::file::FileUtil', 'AbFile')->createAbFileFromAbPath($fromDirectoryAbPath);
+        my $file = 'org::allbinary::logic::io::file::AbFile'->createAbFileFromAbPath($fromDirectoryAbPath);
         if (!$file->isDirectory()) {
             die ("Not a directory: " . $file->getPath());
         }
@@ -358,7 +358,7 @@ sub copyDirectoryPortion {
                     $beginIndex -= 'org::allbinary::logic::io::path::AbPath'->new('org::allbinary::globals::URLGLOBALS'->getWebappPath(), 'org::allbinary::logic::string::StringUtil'->getInstance()->{EMPTY_STRING})->getPath()->length();
                 }
                 my $newPath = $toDirectoryAbPath->toFileSystemString() . $path->substring($beginIndex);
-                my $toFile = java::lang::Object::jstatic('org::allbinary::logic::io::file::FileUtil', 'AbFile')->createAbFileFromAbPath('org::allbinary::logic::io::path::AbPath'->new($newPath, 'org::allbinary::logic::string::StringUtil'->getInstance()->{EMPTY_STRING}));
+                my $toFile = 'org::allbinary::logic::io::file::AbFile'->createAbFileFromAbPath('org::allbinary::logic::io::path::AbPath'->new($newPath, 'org::allbinary::logic::string::StringUtil'->getInstance()->{EMPTY_STRING}));
                 $self->copyFile($nextFile, $toFile, $overwriteNewer, $overwriteAll);
             }
         }
@@ -382,7 +382,7 @@ sub copyDirectory {
             if (!$self->{directory}->create($newDirectoryAbPath)) {
                 die ("Failed to create directory: " . $newDirectoryAbPath);
             }
-            my $fileArray = java::lang::Object::jstatic('org::allbinary::logic::io::file::FileUtil', 'FileWrapperUtil')->wrapFiles($fromFile->listFiles());
+            my $fileArray = 'org::allbinary::logic::io::file::FileWrapperUtil'->wrapFiles($fromFile->listFiles());
             my $size = scalar(@{$fileArray});
             if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains($self->{logConfigTypeFactory}->{FILE})) {
                 my $stringBuffer = 'org::allbinary::logic::string::StringMaker'->new();
@@ -398,9 +398,9 @@ sub copyDirectory {
             for (my $index = 0; $index < $size; $index++) {
                 $file = $fileArray->[$index];
                 if ($file->isFile()) {
-                    $self->copyFile($file, java::lang::Object::jstatic('org::allbinary::logic::io::file::FileUtil', 'AbFile')->createAbFilePathAndName($newDirectoryAbPath->toString(), $file->getName()));
+                    $self->copyFile($file, 'org::allbinary::logic::io::file::AbFile'->createAbFilePathAndName($newDirectoryAbPath->toString(), $file->getName()));
                 } elsif ($file->isDirectory()) {
-                    $self->copyDirectory($file, java::lang::Object::jstatic('org::allbinary::logic::io::file::FileUtil', 'AbFile')->createAbFileFromAbPath($newDirectoryAbPath));
+                    $self->copyDirectory($file, 'org::allbinary::logic::io::file::AbFile'->createAbFileFromAbPath($newDirectoryAbPath));
                 } else {
                     die ("File Copy Error");
                 }
@@ -438,11 +438,11 @@ sub copy_j2_2 {
             if (!defined($to)) {
                 die ("Cannot Copy To A Null Location");
             }
-            my $fromLocationFile = java::lang::Object::jstatic('org::allbinary::logic::io::file::FileUtil', 'AbFile')->createAbFileFromAbPath($fromAbPath);
-            my $toLocationFile = java::lang::Object::jstatic('org::allbinary::logic::io::file::FileUtil', 'AbFile')->createAbFileFromAbPath($to);
+            my $fromLocationFile = 'org::allbinary::logic::io::file::AbFile'->createAbFileFromAbPath($fromAbPath);
+            my $toLocationFile = 'org::allbinary::logic::io::file::AbFile'->createAbFileFromAbPath($to);
             if ($fromLocationFile->isFile()) {
                 if ($toLocationFile->isDirectory()) {
-                    my $file = java::lang::Object::jstatic('org::allbinary::logic::io::file::FileUtil', 'AbFile')->createAbFileWithChild($toLocationFile, $fromLocationFile->getName());
+                    my $file = 'org::allbinary::logic::io::file::AbFile'->createAbFileWithChild($toLocationFile, $fromLocationFile->getName());
                     $self->copyFile($fromLocationFile, $file);
                     if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains($self->{logConfigTypeFactory}->{FILE})) {
                         my $stringBuffer = 'org::allbinary::logic::string::StringMaker'->new();
@@ -471,11 +471,11 @@ sub copy_j2_2 {
                     if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains($self->{logConfigTypeFactory}->{FILE})) {
                         $self->{logUtil}->putF("Copying subdirectories", __PACKAGE__->getInstance(), $COPY);
                     }
-                    my $fileArray = java::lang::Object::jstatic('org::allbinary::logic::io::file::FileUtil', 'FileWrapperUtil')->wrapFiles($fromLocationFile->listFiles());
+                    my $fileArray = 'org::allbinary::logic::io::file::FileWrapperUtil'->wrapFiles($fromLocationFile->listFiles());
                     for (my $index = 0; $index < scalar(@{$fileArray}); $index++) {
                         my $file = $fileArray->[$index];
                         if ($file->isFile()) {
-                            my $aFile = java::lang::Object::jstatic('org::allbinary::logic::io::file::FileUtil', 'AbFile')->createAbFileWithChild($toLocationFile, $file->getName());
+                            my $aFile = 'org::allbinary::logic::io::file::AbFile'->createAbFileWithChild($toLocationFile, $file->getName());
                             $self->copyFile($file, $aFile);
                         } elsif ($file->isDirectory()) {
                             $self->copyDirectory($file, $toLocationFile);
@@ -598,6 +598,9 @@ use org::allbinary::string::CommonStrings ();
 use org::allbinary::util::BasicArrayList ();
 use java::io::File ();
 use org::allbinary::logic::communication::log::config::type::LogConfigTypes ();
+use org::allbinary::logic::io::file::AbFile ();
+use org::allbinary::logic::io::file::FilePathData ();
+use org::allbinary::logic::io::file::FileWrapperUtil ();
 use org::allbinary::logic::io::file::FileUtil2 ();
 
 1;

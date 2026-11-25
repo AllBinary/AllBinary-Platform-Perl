@@ -24,7 +24,7 @@ sub _init_fields {
     my ($self) = @_;
     $self->{logUtil} = 'org::allbinary::logic::communication::log::LogUtil'->getInstance();
     $self->{commonStrings} = 'org::allbinary::string::CommonStrings'->getInstance();
-    $self->{soundStrings} = java::lang::Object::jstatic('org::allbinary::media::audio::Sounds', 'SoundStrings')->getInstance();
+    $self->{soundStrings} = 'org::allbinary::media::audio::SoundStrings'->getInstance();
     $self->{soundsFactoryInterface} = undef;
 }
 
@@ -116,6 +116,7 @@ use org::allbinary::logic::math::SmallIntegerSingletonFactory ();
 use org::allbinary::logic::string::StringMaker ();
 use org::allbinary::string::CommonLabels ();
 use org::allbinary::string::CommonStrings ();
+use org::allbinary::media::audio::SoundStrings ();
 
 1;
 

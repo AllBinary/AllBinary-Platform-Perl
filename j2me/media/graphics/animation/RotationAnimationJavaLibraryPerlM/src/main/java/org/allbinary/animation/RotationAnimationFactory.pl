@@ -47,14 +47,14 @@ sub new {
 # throws Exception
 sub getInstance {
     my ($self, $instanceId) = @_;
-        return 'org::allbinary::animation::NullRotationAnimation'->createTotalAngle('org::allbinary::math::AngleInfo'->getInstance($self->{angleIncrement}), $self->{totalAngle}, java::lang::Object::jstatic('org::allbinary::animation::RotationAnimationFactory', 'AnimationBehavior')->getInstance());
+        return 'org::allbinary::animation::NullRotationAnimation'->createTotalAngle('org::allbinary::math::AngleInfo'->getInstance($self->{angleIncrement}), $self->{totalAngle}, 'org::allbinary::animation::AnimationBehavior'->getInstance());
 }
 
 
 # throws Exception
 sub getInstanceAnimation {
     my ($self, $animationInterface) = @_;
-        return 'org::allbinary::animation::NullRotationAnimation'->createTotalAngle('org::allbinary::math::AngleInfo'->getInstance($self->{angleIncrement}), $self->{totalAngle}, java::lang::Object::jstatic('org::allbinary::animation::RotationAnimationFactory', 'AnimationBehavior')->getInstance());
+        return 'org::allbinary::animation::NullRotationAnimation'->createTotalAngle('org::allbinary::math::AngleInfo'->getInstance($self->{angleIncrement}), $self->{totalAngle}, 'org::allbinary::animation::AnimationBehavior'->getInstance());
 }
 
 
@@ -67,7 +67,10 @@ use org::allbinary::game::configuration::GameConfigurationCentral ();
 use org::allbinary::math::AngleFactory ();
 use org::allbinary::math::AngleInfo ();
 use org::allbinary::media::ScaleProperties ();
+use org::allbinary::animation::AnimationInterfaceFactoryInterface ();
+use org::allbinary::animation::ProceduralAnimationInterfaceFactoryInterface ();
 use org::allbinary::animation::NullRotationAnimation ();
+use org::allbinary::animation::AnimationBehavior ();
 
 1;
 

@@ -32,8 +32,8 @@ sub _init_fields {
     $self->{commonStrings} = 'org::allbinary::string::CommonStrings'->getInstance();
     $self->{commonSeps} = 'org::allbinary::string::CommonSeps'->getInstance();
     $self->{stdUtil} = 'org::allbinary::logic::StdUtil'->getInstance();
-    $self->{sqlTypeStrings} = java::lang::Object::jstatic('org::allbinary::logic::communication::sql::AbSqlBasic', 'SqlTypeStrings')->getInstance();
-    $self->{sqlStrings} = java::lang::Object::jstatic('org::allbinary::logic::communication::sql::AbSqlBasic', 'SqlStrings')->getInstance();
+    $self->{sqlTypeStrings} = 'org::allbinary::logic::communication::sql::SqlTypeStrings'->getInstance();
+    $self->{sqlStrings} = 'org::allbinary::logic::communication::sql::SqlStrings'->getInstance();
     $self->{INSERT} = "insert";
     $self->{UPDATE} = "update";
     $self->{FAILED_SQL_STATEMENT} = "Failed\nSQL Statement: ";
@@ -175,6 +175,8 @@ use org::allbinary::string::CommonSeps ();
 use org::allbinary::string::CommonStrings ();
 use org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory ();
 use org::allbinary::logic::communication::log::config::type::LogConfigTypes ();
+use org::allbinary::logic::communication::sql::SqlTypeStrings ();
+use org::allbinary::logic::communication::sql::SqlStrings ();
 use java::lang::Thread ();
 
 1;

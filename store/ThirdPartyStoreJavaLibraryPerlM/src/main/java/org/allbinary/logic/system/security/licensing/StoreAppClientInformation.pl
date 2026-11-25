@@ -43,6 +43,7 @@ sub getLongArrayIdentifier {
 
 use java::lang::Object ();
 use org::allbinary::thirdparty::store::LongArrayIdentifierInterface ();
+use org::allbinary::logic::system::security::licensing::AbeClientInformation ();
 
 1;
 

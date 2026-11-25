@@ -38,7 +38,7 @@ sub new {
 # throws Exception
 sub toXmlNode {
     my ($self, $document) = @_;
-        my $node = 'org::allbinary::data::tree::dom::ModDomHelper'->createNameValueNodes($document, java::lang::Object::jstatic('org::allbinary::logic::visual::theme::ThemePropertiesView', 'ThemeData')->getInstance()->{NAME}, $self->{themeInterface}->toHashMap());
+        my $node = 'org::allbinary::data::tree::dom::ModDomHelper'->createNameValueNodes($document, 'org::allbinary::logic::visual::theme::ThemeData'->getInstance()->{NAME}, $self->{themeInterface}->toHashMap());
         return $node;
 }
 
@@ -47,6 +47,7 @@ use org::allbinary::data::tree::dom::DomNodeInterface ();
 use org::allbinary::data::tree::dom::ModDomHelper ();
 use org::w3c::dom::Document ();
 use org::w3c::dom::Node ();
+use org::allbinary::logic::visual::theme::ThemeData ();
 
 1;
 

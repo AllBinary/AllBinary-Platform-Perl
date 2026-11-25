@@ -66,7 +66,7 @@ sub isDefaultNew {
 
 sub getDefault {
     my ($self) = @_;
-        return java::lang::Object::jstatic('org::allbinary::game::input::mapping::PersistentInputMapping', 'InputToGameKeyMapping')->getNullInstance();
+        return 'org::allbinary::game::input::mapping::InputToGameKeyMapping'->getNullInstance();
 }
 
 
@@ -185,6 +185,7 @@ use org::allbinary::string::CommonStrings ();
 use org::allbinary::util::BasicArrayList ();
 use org::allbinary::util::EnumerationUtil ();
 use org::allbinary::util::ABHashtable ();
+use org::allbinary::game::input::mapping::InputToGameKeyMapping ();
 
 1;
 

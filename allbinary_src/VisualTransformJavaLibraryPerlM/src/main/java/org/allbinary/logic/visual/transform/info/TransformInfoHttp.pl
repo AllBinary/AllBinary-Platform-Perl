@@ -117,7 +117,7 @@ sub set {
         if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{VIEW})) {
             $self->{logUtil}->putF("Properties HashMap: " . $hashMap->toString(), $self, "set()");
         }
-        my $transformInfoData = java::lang::Object::jstatic('org::allbinary::logic::visual::transform::info::TransformInfoHttp', 'TransformInfoData')->getInstance();
+        my $transformInfoData = 'org::allbinary::logic::visual::transform::info::TransformInfoData'->getInstance();
         $self->setName($hashMap->get($transformInfoData->{NAME}));
         $self->setStoreName($hashMap->get('org::allbinary::business::context::modules::storefront::StoreFrontData'->getInstance()->{NAME}));
         $self->setObjectFile($hashMap->get($transformInfoData->{OBJECTFILENAME}));
@@ -198,6 +198,8 @@ use org::allbinary::logic::visual::transform::info::objectConfig::TransformInfoO
 use org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory ();
 use org::allbinary::logic::communication::log::config::type::LogConfigTypes ();
 use org::allbinary::logic::visual::transform::info::TransformInfo ();
+use org::allbinary::logic::visual::transform::info::TransformInfoHttpInterface ();
+use org::allbinary::logic::visual::transform::info::TransformInfoData ();
 
 1;
 

@@ -101,7 +101,7 @@ sub toValidationInfoNode {
 # throws Exception
 sub toXmlNode {
     my ($self, $document) = @_;
-        my $node = $document->createElement(java::lang::Object::jstatic('org::allbinary::logic::visual::transform::template::customizer::includes::globals::GlobalsValidation', 'GlobalsData')->{NAME});
+        my $node = $document->createElement($org::allbinary::logic::visual::transform::template::customizer::includes::globals::GlobalsData::NAME);
         $node->appendChild('org::allbinary::business::context::modules::storefront::StoreFrontView'->new($self->{storeFrontInterface})->toXmlNode($document));
         return $node;
 }
@@ -119,6 +119,7 @@ use org::w3c::dom::Document ();
 use org::w3c::dom::Node ();
 use org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory ();
 use org::allbinary::logic::communication::log::config::type::LogConfigTypes ();
+use org::allbinary::logic::visual::transform::template::customizer::includes::globals::GlobalsData ();
 
 1;
 

@@ -55,6 +55,7 @@ use org::allbinary::game::layer::AllBinaryGameLayerManager ();
 use org::allbinary::game::paint::ColorFillBasePaintable ();
 use org::allbinary::game::paint::ColorFillPaintableFactory ();
 use org::allbinary::graphics::paint::Paintable ();
+use org::allbinary::game::displayable::canvas::GameCommandCanvas ();
 
 1;
 

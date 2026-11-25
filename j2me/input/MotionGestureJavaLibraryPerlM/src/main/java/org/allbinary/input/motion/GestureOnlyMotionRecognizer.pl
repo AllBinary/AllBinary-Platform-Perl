@@ -73,6 +73,7 @@ use java::lang::LazyStatic ();
 use org::allbinary::graphics::CustomGPoint ();
 use org::allbinary::graphics::GPointCircularPool ();
 use org::allbinary::input::motion::gesture::MotionGestureRecognizer ();
+use org::allbinary::input::motion::MotionRecognizer ();
 
 1;
 

@@ -77,7 +77,7 @@ sub toXmlNode {
     my ($self, $document) = @_;
         my $emailConfigurationMapping = 'org::allbinary::logic::communication::smtp::configuration::user::UserEmailConfigurationMapping'->new($self->{userEmailConfigurationInterface});
         my $hashMap = $emailConfigurationMapping->toHashMap();
-        my $node = 'org::allbinary::data::tree::dom::ModDomHelper'->createNameValueNodes($document, java::lang::Object::jstatic('org::allbinary::logic::communication::smtp::configuration::user::UserEmailConfigurationView', 'UserEmailConfigurationData')->{NAME}, $hashMap);
+        my $node = 'org::allbinary::data::tree::dom::ModDomHelper'->createNameValueNodes($document, $org::allbinary::logic::communication::smtp::configuration::user::UserEmailConfigurationData::NAME, $hashMap);
         my $userEmailConfigurationInterface = $self->getEmailConfigurationInterface();
         my $userEmailEventsConfigurationInterface = $userEmailConfigurationInterface->getUserEmailEventsConfigurationInterface();
         my $userEmailEventsConfigurationView = 'org::allbinary::logic::communication::smtp::configuration::user::event::UserEmailEventsConfigurationView'->new($userEmailEventsConfigurationInterface);
@@ -102,6 +102,7 @@ use org::allbinary::logic::communication::log::config::type::LogConfigTypeFactor
 use org::allbinary::logic::communication::log::config::type::LogConfigTypes ();
 use org::allbinary::logic::communication::smtp::configuration::user::UserEmailConfiguration ();
 use org::allbinary::logic::communication::smtp::configuration::user::UserEmailConfigurationMapping ();
+use org::allbinary::logic::communication::smtp::configuration::user::UserEmailConfigurationData ();
 
 1;
 

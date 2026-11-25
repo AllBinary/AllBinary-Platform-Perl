@@ -52,6 +52,7 @@ use java::lang::Object ();
 use java::lang::LazyStatic ();
 use java::util::HashMap ();
 # use javax::servlet::jsp::PageContext ();
+use org::allbinary::logic::visual::transform::info::TransformInfoFactoryInterface ();
 use org::allbinary::logic::visual::transform::info::TransformInfoHttpStore ();
 
 1;

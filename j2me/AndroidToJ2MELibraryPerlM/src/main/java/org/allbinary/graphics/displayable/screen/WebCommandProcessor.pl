@@ -24,7 +24,7 @@ tie our $instance, 'java::lang::LazyStatic', sub { 'org::allbinary::graphics::di
 sub _init_fields {
     my ($self) = @_;
     $self->{logUtil} = 'org::allbinary::logic::communication::log::LogUtil'->getInstance();
-    $self->{aboutCommandProcessor} = java::lang::Object::jstatic('org::allbinary::graphics::displayable::screen::WebCommandProcessor', 'AboutCommandProcessor')->getInstance();
+    $self->{aboutCommandProcessor} = 'org::allbinary::graphics::displayable::screen::AboutCommandProcessor'->getInstance();
     $self->{WEB_VIEW_ACTIVITY} = "org.allbinary.android.activity.WebViewActivity";
     $self->{list} = 'org::allbinary::util::BasicArrayListD'->new();
 }
@@ -69,6 +69,7 @@ use org::allbinary::logic::communication::log::LogUtil ();
 use org::allbinary::string::CommonStrings ();
 use org::allbinary::util::BasicArrayList ();
 use org::allbinary::util::BasicArrayListD ();
+use org::allbinary::graphics::displayable::screen::AboutCommandProcessor ();
 
 1;
 

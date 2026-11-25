@@ -33,7 +33,7 @@ sub new {
     my ($class, $fullPath) = @_;
     my $self = bless({}, $class);
     _init_fields($self);
-        $self->{file} = 'org::allbinary::logic::io::file::AbFile'->createAbFileFromAbPath('org::allbinary::logic::io::path::AbPath'->new($fullPath->toFileSystemString(), java::lang::Object::jstatic('org::allbinary::logic::communication::http::file::upload::HttpFilePermissions', 'FileUploadData')->getInstance()->{FILE}));
+        $self->{file} = 'org::allbinary::logic::io::file::AbFile'->createAbFileFromAbPath('org::allbinary::logic::io::path::AbPath'->new($fullPath->toFileSystemString(), 'org::allbinary::logic::communication::http::file::upload::FileUploadData'->getInstance()->{FILE}));
         if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{VIEWERROR})) {
             $self->{logUtil}->putF("Loading Privileges: " . $fullPath->toFileSystemString(), $self, $self->{commonStrings}->{CONSTRUCTOR});
         }
@@ -69,6 +69,7 @@ use org::allbinary::logic::io::path::AbPath ();
 use org::allbinary::string::CommonStrings ();
 use org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory ();
 use org::allbinary::logic::communication::log::config::type::LogConfigTypes ();
+use org::allbinary::logic::communication::http::file::upload::FileUploadData ();
 
 1;
 

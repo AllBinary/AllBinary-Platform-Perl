@@ -149,6 +149,7 @@ use org::allbinary::logic::visual::transform::info::TransformInfoData ();
 use views::admin::inventory::listings::ProductListingFactory ();
 use org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory ();
 use org::allbinary::logic::communication::log::config::type::LogConfigTypes ();
+use admin::taghelpers::TagHelperInterface ();
 
 1;
 

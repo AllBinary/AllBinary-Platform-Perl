@@ -85,6 +85,7 @@ use org::allbinary::graphics::opengles::OpenGLLogUtil ();
 use org::allbinary::logic::communication::log::LogUtil ();
 use org::allbinary::platform::graphics::PlatformBitmapBaseFactory ();
 use org::allbinary::platform::opengles::PlatformTextureBaseFactory ();
+use org::allbinary::image::opengles::OpenGLESImage ();
 
 1;
 

@@ -34,6 +34,7 @@ use org::allbinary::graphics::color::BasicColor ();
 use org::allbinary::graphics::font::MyFontProcessor ();
 use org::allbinary::graphics::font::UpdateMyFontInterface ();
 use org::allbinary::graphics::font::UpdateMyFontProcessor ();
+use org::allbinary::graphics::form::item::ABCustomItem ();
 
 1;
 

@@ -80,7 +80,7 @@ sub _new5 {
 # throws Exception
 sub override {
     my ($self, $hashMap) = @_;
-        my $transformInfoData = java::lang::Object::jstatic('org::allbinary::logic::visual::transform::info::TransformInfo', 'TransformInfoData')->getInstance();
+        my $transformInfoData = 'org::allbinary::logic::visual::transform::info::TransformInfoData'->getInstance();
         my $stringValidationUtil = 'org::allbinary::logic::string::StringValidationUtil'->getInstance();
         my $aName = $hashMap->get($transformInfoData->{NAME});
         if (!$stringValidationUtil->isEmpty($aName)) {
@@ -420,7 +420,7 @@ sub getDataFile {
 
 sub toHashMap {
     my ($self) = @_;
-        my $transformInfoData = java::lang::Object::jstatic('org::allbinary::logic::visual::transform::info::TransformInfo', 'TransformInfoData')->getInstance();
+        my $transformInfoData = 'org::allbinary::logic::visual::transform::info::TransformInfoData'->getInstance();
         my $hashMap = 'org::allbinary::logic::StdUtil'->getInstance()->createHashMap();
         $hashMap->put($transformInfoData->{NAME}, $self->{name});
         $hashMap->put('org::allbinary::business::context::modules::storefront::StoreFrontData'->getInstance()->{NAME}, $self->{storeName});
@@ -524,6 +524,8 @@ use org::allbinary::string::CommonStrings ();
 use org::w3c::dom::Document ();
 use org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory ();
 use org::allbinary::logic::communication::log::config::type::LogConfigTypes ();
+use org::allbinary::logic::visual::transform::info::TransformInfoInterface ();
+use org::allbinary::logic::visual::transform::info::TransformInfoData ();
 
 1;
 

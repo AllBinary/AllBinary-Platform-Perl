@@ -63,7 +63,7 @@ sub createList {
     my ($self, $geographicMapInterface, $geographicMapCellHistory, $pathFindingInfo, $totalPaths) = @_;
         my $commonStrings = 'org::allbinary::string::CommonStrings'->getInstance();
         try {
-            my $pathCacheFactory = java::lang::Object::jstatic('org::allbinary::media::graphics::geography::pathfinding::StaticPathGenerator', 'PathCacheFactory')->getInstance();
+            my $pathCacheFactory = 'org::allbinary::media::graphics::geography::pathfinding::PathCacheFactory'->getInstance();
             my $mapIdInteger = $geographicMapInterface->getAllBinaryTiledLayer()->getDataId();
             my $list = $pathCacheFactory->getOrCreate($mapIdInteger);
             if ($list == $self->{basicArrayListUtil}->getImmutableInstance()) {
@@ -105,6 +105,8 @@ use org::allbinary::media::graphics::geography::map::GeographicMapCellHistory ()
 use org::allbinary::media::graphics::geography::map::GeographicMapCellPosition ();
 use org::allbinary::media::graphics::geography::map::PathData ();
 use org::allbinary::util::BasicArrayListUtil ();
+use org::allbinary::media::graphics::geography::pathfinding::PathGeneratorInterface ();
+use org::allbinary::media::graphics::geography::pathfinding::PathCacheFactory ();
 
 1;
 

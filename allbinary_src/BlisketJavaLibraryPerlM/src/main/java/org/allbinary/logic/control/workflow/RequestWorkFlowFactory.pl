@@ -43,7 +43,7 @@ sub getInstance_j4 {
 # throws Exception, LicensingException
 sub getInstance_j2 {
     my ($class, $hashMap, $pageContext) = @_;
-        my $workFlowName = $pageContext->getRequest()->getParameter(java::lang::Object::jstatic('org::allbinary::logic::control::workflow::RequestWorkFlowFactory', 'WorkFlowData')->getInstance()->{NAME});
+        my $workFlowName = $pageContext->getRequest()->getParameter('org::allbinary::logic::control::workflow::WorkFlowData'->getInstance()->{NAME});
         my $weblisketSession = 'org::allbinary::logic::communication::http::request::session::WeblisketSession'->new($hashMap, $pageContext);
         my $storeName = $weblisketSession->getStoreName();
         return 'org::allbinary::data::tables::workflow::WorkFlowEntityFactory'->getInstance()->create2()->get($workFlowName, $storeName);
@@ -68,6 +68,7 @@ use org::allbinary::data::tables::workflow::WorkFlowEntityFactory ();
 use org::allbinary::logic::communication::http::request::session::WeblisketSession ();
 use org::allbinary::logic::io::path::AbPathData ();
 use org::allbinary::logic::system::security::licensing::LicensingException ();
+use org::allbinary::logic::control::workflow::WorkFlowData ();
 
 1;
 

@@ -45,7 +45,7 @@ sub new {
 sub getInstance_j2 {
     my ($self, $transformInfoInterface, $objectConfigFileAbPath) = @_;
         try {
-            my $transformInfoObjectConfigData = java::lang::Object::jstatic('org::allbinary::logic::visual::transform::info::objectConfig::TransformInfoObjectConfigNoManipulationFactory', 'TransformInfoObjectConfigData')->getInstance();
+            my $transformInfoObjectConfigData = 'org::allbinary::logic::visual::transform::info::objectConfig::TransformInfoObjectConfigData'->getInstance();
             my $data = 'org::allbinary::logic::control::crypt::file::CryptFileReader'->new($transformInfoObjectConfigData->{UNCRYPTED_EXTENSION}, $transformInfoObjectConfigData->getInstance()->{ENCRYPTED_EXTENSION})->get($objectConfigFileAbPath);
             return 'org::allbinary::logic::visual::transform::info::objectConfig::TransformInfoObjectConfig'->new($transformInfoInterface, 'org::allbinary::data::tree::dom::document::DomDocumentHelper'->create($data));
         } catch ($e) {
@@ -74,6 +74,7 @@ use org::allbinary::logic::visual::transform::info::TransformInfoInterface ();
 use org::allbinary::string::CommonStrings ();
 use org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory ();
 use org::allbinary::logic::communication::log::config::type::LogConfigTypes ();
+use org::allbinary::logic::visual::transform::info::objectConfig::TransformInfoObjectConfigData ();
 use org::allbinary::logic::visual::transform::info::objectConfig::TransformInfoObjectConfig ();
 
 1;

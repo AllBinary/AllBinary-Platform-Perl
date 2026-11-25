@@ -92,7 +92,7 @@ sub createReplaceHashMap {
     my ($self, $transformInfoHttpStoreInterface, $objectConfigDocumentString) = @_;
         my $storeName = $transformInfoHttpStoreInterface->getStoreName();
         my $hashMap = $self->createHashMap($transformInfoHttpStoreInterface, $objectConfigDocumentString);
-        my $transformInfoObjectConfigData = java::lang::Object::jstatic('org::allbinary::logic::visual::transform::info::objectConfig::GenericStoreTransformInfoObjectConfig', 'TransformInfoObjectConfigData')->getInstance();
+        my $transformInfoObjectConfigData = 'org::allbinary::logic::visual::transform::info::objectConfig::TransformInfoObjectConfigData'->getInstance();
         $hashMap->put($transformInfoObjectConfigData->{VARKEY} + 'org::allbinary::business::context::modules::storefront::StoreFrontData'->getInstance()->{NAME}, $storeName);
         my $pageName = 'org::allbinary::logic::visual::transform::template::util::TransformTemplateCustomizerUtil'->getInstance()->getPageNameHack($self->getTransformInfoInterface()->getName(), $storeName);
         $hashMap->put($transformInfoObjectConfigData->{VARKEY} + 'org::allbinary::logic::visual::transform::info::TransformInfoData'->getInstance()->{PARTIAL}, $pageName);
@@ -115,7 +115,7 @@ sub createHashMap {
         $templateNameStringBuffer->append($templateNameOverride);
         $templateNameStringBuffer->append('org::allbinary::string::CommonSeps'->getInstance()->{SPACE});
         $templateNameStringBuffer->append($org::allbinary::logic::visual::transform::info::RootTransformInfoData::NAME);
-        my $templateNameKey = java::lang::Object::jstatic('org::allbinary::logic::visual::transform::info::objectConfig::GenericStoreTransformInfoObjectConfig', 'TransformInfoObjectConfigData')->getInstance()->{VARKEY} + 'org::allbinary::logic::visual::transform::info::TransformInfoData'->getInstance()->{OWNER};
+        my $templateNameKey = 'org::allbinary::logic::visual::transform::info::objectConfig::TransformInfoObjectConfigData'->getInstance()->{VARKEY} + 'org::allbinary::logic::visual::transform::info::TransformInfoData'->getInstance()->{OWNER};
         if (index($objectConfigDocumentString, $templateNameKey) != -1) {
             my $templateInterface = 'org::allbinary::logic::visual::transform::template::TransformTemplateFactory'->getInstance()->getInstance($self->{abeClientInformation}, $templateNameStringBuffer->toString(), $transformInfoHttpStoreInterface->getPropertiesHashMap(), $transformInfoHttpStoreInterface->getPageContext());
             my $selectedTemplate = $templateInterface->getName();
@@ -166,6 +166,7 @@ use org::w3c::dom::Document ();
 use org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory ();
 use org::allbinary::logic::communication::log::config::type::LogConfigTypes ();
 use org::allbinary::logic::visual::transform::info::objectConfig::TransformInfoObjectConfig ();
+use org::allbinary::logic::visual::transform::info::objectConfig::TransformInfoObjectConfigData ();
 
 1;
 

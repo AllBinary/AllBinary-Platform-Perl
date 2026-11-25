@@ -23,7 +23,7 @@ tie our $instance, 'java::lang::LazyStatic', sub { 'org::allbinary::logic::strin
 
 sub _init_fields {
     my ($self) = @_;
-    $self->{stringUtil} = java::lang::Object::jstatic('org::allbinary::logic::string::StringValidationUtil', 'StringUtil')->getInstance();
+    $self->{stringUtil} = 'org::allbinary::logic::string::StringUtil'->getInstance();
     $self->{tsUtil} = 'org::allbinary::TsUtil'->getInstance();
 }
 
@@ -137,6 +137,7 @@ sub isEmpty {
 use java::lang::Object ();
 use java::lang::LazyStatic ();
 use org::allbinary::TsUtil ();
+use org::allbinary::logic::string::StringUtil ();
 
 1;
 

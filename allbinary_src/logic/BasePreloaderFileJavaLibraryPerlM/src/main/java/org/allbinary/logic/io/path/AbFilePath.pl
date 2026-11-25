@@ -25,7 +25,7 @@ sub new {
     my ($class, $aPath) = @_;
     my $self = $class->SUPER::new('org::allbinary::logic::string::StringUtil'->getInstance()->{EMPTY_STRING}, 'org::allbinary::logic::string::StringUtil'->getInstance()->{EMPTY_STRING});
         # super(...) made $self above
-        my $pathData = java::lang::Object::jstatic('org::allbinary::logic::io::path::AbFilePath', 'AbPathData')->getInstance();
+        my $pathData = 'org::allbinary::logic::io::path::AbPathData'->getInstance();
         my $abPathUtil = 'org::allbinary::logic::io::path::PathUtil'->getInstance();
         $self->{schema} = $self->getSchema($aPath);
         $self->setName($pathData->getNameFromPath($aPath));
@@ -36,6 +36,7 @@ sub new {
 use java::lang::Object ();
 use org::allbinary::logic::string::StringUtil ();
 use org::allbinary::logic::io::path::AbPath ();
+use org::allbinary::logic::io::path::AbPathData ();
 use org::allbinary::logic::io::path::PathUtil ();
 
 1;

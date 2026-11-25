@@ -49,7 +49,7 @@ sub _new1 {
     _init_fields($self);
         my $indexPropertyValueHashMap = 'org::allbinary::logic::StdUtil'->getInstance()->createHashMap();
         $self->{propertyValueVector} = 'org::allbinary::util::BasicArrayListD'->new();
-        my $cssPropertyNodeVector = 'org::allbinary::data::tree::dom::DomSearchHelper'->getAllNodes(java::lang::Object::jstatic('org::allbinary::logic::visual::dhtml::style::css::property::CssPropertyValues', 'CssPropertyValueData')->getInstance()->{NAME}, $node->getChildNodes());
+        my $cssPropertyNodeVector = 'org::allbinary::data::tree::dom::DomSearchHelper'->getAllNodes('org::allbinary::logic::visual::dhtml::style::css::property::CssPropertyValueData'->getInstance()->{NAME}, $node->getChildNodes());
         if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{STYLE})) {
             $self->{logUtil}->putF("Number Of Properties: " . $cssPropertyNodeVector->size(), $self, "CssProperties()");
         }
@@ -78,7 +78,7 @@ sub _new1 {
 sub toHashMap {
     my ($self) = @_;
         my $commonSeps = 'org::allbinary::string::CommonSeps'->getInstance();
-        my $cssPropertyValueData = java::lang::Object::jstatic('org::allbinary::logic::visual::dhtml::style::css::property::CssPropertyValues', 'CssPropertyValueData')->getInstance();
+        my $cssPropertyValueData = 'org::allbinary::logic::visual::dhtml::style::css::property::CssPropertyValueData'->getInstance();
         my $hashMap = 'org::allbinary::logic::StdUtil'->getInstance()->createHashMap();
         my $stringBuffer = 'org::allbinary::logic::string::StringMaker'->new();
         my $size = $self->{propertyValueVector}->size();
@@ -103,7 +103,7 @@ sub toXmlNode {
             my $hashMap = $self->toHashMap();
             $self->{logUtil}->putF("CssPropertyValues HashMap: " . $hashMap->toString(), $self, "toXmlNode()");
         }
-        return 'org::allbinary::data::tree::dom::ModDomHelper'->createNameValueIndexNodes($document, java::lang::Object::jstatic('org::allbinary::logic::visual::dhtml::style::css::property::CssPropertyValues', 'CssPropertyData')->getInstance()->{VALUES}, java::lang::Object::jstatic('org::allbinary::logic::visual::dhtml::style::css::property::CssPropertyValues', 'CssPropertyValueData')->getInstance()->{NAME}, $self->{propertyValueVector});
+        return 'org::allbinary::data::tree::dom::ModDomHelper'->createNameValueIndexNodes($document, 'org::allbinary::logic::visual::dhtml::style::css::property::CssPropertyData'->getInstance()->{VALUES}, 'org::allbinary::logic::visual::dhtml::style::css::property::CssPropertyValueData'->getInstance()->{NAME}, $self->{propertyValueVector});
 }
 
 use java::lang::Object ();
@@ -123,6 +123,8 @@ use org::w3c::dom::Document ();
 use org::w3c::dom::Node ();
 use org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory ();
 use org::allbinary::logic::communication::log::config::type::LogConfigTypes ();
+use org::allbinary::logic::visual::dhtml::style::css::property::CssPropertyValueData ();
+use org::allbinary::logic::visual::dhtml::style::css::property::CssPropertyData ();
 
 1;
 

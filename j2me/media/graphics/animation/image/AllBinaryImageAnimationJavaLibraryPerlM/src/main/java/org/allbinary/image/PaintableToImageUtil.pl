@@ -31,7 +31,7 @@ sub new {
 # throws Exception
 sub getImage {
     my ($class, $paintableInterface, $width, $height) = @_;
-        my $image = java::lang::Object::jstatic('org::allbinary::image::PaintableToImageUtil', 'GameFeatureImageCacheFactory')->getInstance()->get(ref($org::allbinary::image::PaintableToImageUtil::instance), $width, $height);
+        my $image = 'org::allbinary::image::GameFeatureImageCacheFactory'->getInstance()->get(ref($org::allbinary::image::PaintableToImageUtil::instance), $width, $height);
         my $graphics = $image->getGraphics();
         $paintableInterface->paint($graphics);
         return $image;
@@ -42,6 +42,7 @@ use java::lang::LazyStatic ();
 use javax::microedition::lcdui::Graphics ();
 use javax::microedition::lcdui::Image ();
 use org::allbinary::graphics::paint::PaintableInterface ();
+use org::allbinary::image::GameFeatureImageCacheFactory ();
 
 1;
 

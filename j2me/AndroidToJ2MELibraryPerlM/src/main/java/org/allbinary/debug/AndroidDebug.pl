@@ -83,6 +83,7 @@ sub isRunning {
 
 use java::lang::Object ();
 # use android::os::Debug ();
+use org::allbinary::debug::DebugInterface ();
 use java::lang::System ();
 
 1;

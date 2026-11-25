@@ -84,6 +84,7 @@ use org::allbinary::logic::string::StringMaker ();
 use org::allbinary::string::CommonSeps ();
 use org::allbinary::media::graphics::geography::map::GeographicMapCellPosition ();
 use org::allbinary::string::CommonLabels ();
+use org::allbinary::media::graphics::geography::pathfinding::PathFindingNode ();
 
 1;
 

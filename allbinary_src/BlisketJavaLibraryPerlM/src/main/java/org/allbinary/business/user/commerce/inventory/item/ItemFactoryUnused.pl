@@ -59,6 +59,7 @@ use java::util::HashMap ();
 use org::allbinary::business::user::commerce::money::MoneyException ();
 use org::allbinary::data::tables::TableMappingInterface ();
 use org::allbinary::logic::communication::http::request::RequestParams ();
+use org::allbinary::business::user::commerce::inventory::item::Item ();
 
 1;
 

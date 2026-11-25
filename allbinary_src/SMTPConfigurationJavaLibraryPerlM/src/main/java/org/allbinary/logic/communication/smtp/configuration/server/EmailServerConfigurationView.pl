@@ -44,9 +44,9 @@ sub _new1_1 {
     my $self = bless({}, $class);
     _init_fields($self);
         my $childNodeList = $node->getChildNodes();
-        my $server = 'org::allbinary::data::tree::dom::DomNodeHelper'->getTextNodeValue(java::lang::Object::jstatic('org::allbinary::logic::communication::smtp::configuration::server::EmailServerConfigurationView', 'EmailServerConfigurationData')->{SERVER}, $childNodeList);
-        my $accountName = 'org::allbinary::data::tree::dom::DomNodeHelper'->getTextNodeValue(java::lang::Object::jstatic('org::allbinary::logic::communication::smtp::configuration::server::EmailServerConfigurationView', 'EmailServerConfigurationData')->{ACCOUNT}, $childNodeList);
-        my $password = 'org::allbinary::data::tree::dom::DomNodeHelper'->getTextNodeValue(java::lang::Object::jstatic('org::allbinary::logic::communication::smtp::configuration::server::EmailServerConfigurationView', 'EmailServerConfigurationData')->{PASSWORD}, $childNodeList);
+        my $server = 'org::allbinary::data::tree::dom::DomNodeHelper'->getTextNodeValue($org::allbinary::logic::communication::smtp::configuration::server::EmailServerConfigurationData::SERVER, $childNodeList);
+        my $accountName = 'org::allbinary::data::tree::dom::DomNodeHelper'->getTextNodeValue($org::allbinary::logic::communication::smtp::configuration::server::EmailServerConfigurationData::ACCOUNT, $childNodeList);
+        my $password = 'org::allbinary::data::tree::dom::DomNodeHelper'->getTextNodeValue($org::allbinary::logic::communication::smtp::configuration::server::EmailServerConfigurationData::PASSWORD, $childNodeList);
         $self->{emailServerConfigurationInterface} = 'org::allbinary::logic::communication::smtp::configuration::server::EmailServerConfiguration'->new($accountName, $password, $server);
     return $self;
 }
@@ -72,7 +72,7 @@ sub toXmlNode {
     my ($self, $document) = @_;
         my $emailConfigurationMapping = 'org::allbinary::logic::communication::smtp::configuration::server::EmailServerConfigurationMapping'->new($self->{emailServerConfigurationInterface});
         my $hashMap = $emailConfigurationMapping->toHashMap();
-        my $node = 'org::allbinary::data::tree::dom::ModDomHelper'->createNodeWithValueNodes($document, java::lang::Object::jstatic('org::allbinary::logic::communication::smtp::configuration::server::EmailServerConfigurationView', 'EmailServerConfigurationData')->{NAME}, $hashMap);
+        my $node = 'org::allbinary::data::tree::dom::ModDomHelper'->createNodeWithValueNodes($document, $org::allbinary::logic::communication::smtp::configuration::server::EmailServerConfigurationData::NAME, $hashMap);
         return $node;
 }
 
@@ -84,6 +84,7 @@ use org::allbinary::data::tree::dom::ModDomHelper ();
 use org::w3c::dom::Document ();
 use org::w3c::dom::Node ();
 use org::w3c::dom::NodeList ();
+use org::allbinary::logic::communication::smtp::configuration::server::EmailServerConfigurationData ();
 use org::allbinary::logic::communication::smtp::configuration::server::EmailServerConfiguration ();
 use org::allbinary::logic::communication::smtp::configuration::server::EmailServerConfigurationMapping ();
 

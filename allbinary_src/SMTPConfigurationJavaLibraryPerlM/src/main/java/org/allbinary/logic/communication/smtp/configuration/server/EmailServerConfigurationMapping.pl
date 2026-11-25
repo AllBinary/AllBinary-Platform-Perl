@@ -38,9 +38,9 @@ sub new {
 sub toHashMap {
     my ($self) = @_;
         my $hashMap = 'org::allbinary::logic::StdUtil'->getInstance()->createHashMap();
-        $hashMap->put(java::lang::Object::jstatic('org::allbinary::logic::communication::smtp::configuration::server::EmailServerConfigurationMapping', 'EmailServerConfigurationData')->{SERVER}, $self->{emailServerConfigurationInterface}->getSmtpServer());
-        $hashMap->put(java::lang::Object::jstatic('org::allbinary::logic::communication::smtp::configuration::server::EmailServerConfigurationMapping', 'EmailServerConfigurationData')->{ACCOUNT}, $self->{emailServerConfigurationInterface}->getAccountName());
-        $hashMap->put(java::lang::Object::jstatic('org::allbinary::logic::communication::smtp::configuration::server::EmailServerConfigurationMapping', 'EmailServerConfigurationData')->{PASSWORD}, $self->{emailServerConfigurationInterface}->getPassword());
+        $hashMap->put($org::allbinary::logic::communication::smtp::configuration::server::EmailServerConfigurationData::SERVER, $self->{emailServerConfigurationInterface}->getSmtpServer());
+        $hashMap->put($org::allbinary::logic::communication::smtp::configuration::server::EmailServerConfigurationData::ACCOUNT, $self->{emailServerConfigurationInterface}->getAccountName());
+        $hashMap->put($org::allbinary::logic::communication::smtp::configuration::server::EmailServerConfigurationData::PASSWORD, $self->{emailServerConfigurationInterface}->getPassword());
         return $hashMap;
 }
 
@@ -48,7 +48,7 @@ sub toHashMap {
 # throws Exception
 sub getKey {
     my ($self) = @_;
-        return java::lang::Object::jstatic('org::allbinary::logic::communication::smtp::configuration::server::EmailServerConfigurationMapping', 'EmailServerConfigurationData')->{NAME};
+        return $org::allbinary::logic::communication::smtp::configuration::server::EmailServerConfigurationData::NAME;
 }
 
 
@@ -66,6 +66,7 @@ use org::allbinary::util::BasicArrayList ();
 use org::allbinary::util::BasicArrayListD ();
 use org::allbinary::data::tables::TableMappingInterface ();
 use org::allbinary::logic::StdUtil ();
+use org::allbinary::logic::communication::smtp::configuration::server::EmailServerConfigurationData ();
 
 1;
 

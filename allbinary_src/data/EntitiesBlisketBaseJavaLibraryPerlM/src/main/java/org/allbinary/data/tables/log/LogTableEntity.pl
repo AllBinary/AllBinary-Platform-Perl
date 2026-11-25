@@ -75,6 +75,7 @@ use org::allbinary::logic::communication::http::request::AbeHttpRequestInfoData 
 use org::allbinary::logic::communication::sql::AbSqlBean ();
 use org::allbinary::logic::string::StringMaker ();
 use org::allbinary::util::BasicArrayList ();
+use org::allbinary::data::tables::log::LogTableEntityInterface ();
 
 1;
 

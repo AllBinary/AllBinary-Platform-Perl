@@ -82,6 +82,7 @@ use org::allbinary::math::AngleInfo ();
 use org::allbinary::media::ScaleProperties ();
 use org::allbinary::media::image::ImageToRotationImageArrayUtil ();
 use org::allbinary::vector::VectorInfo ();
+use org::allbinary::animation::image::BaseImageAnimationFactory ();
 use org::allbinary::animation::image::AdjustedImageArrayRotationAnimation ();
 
 1;

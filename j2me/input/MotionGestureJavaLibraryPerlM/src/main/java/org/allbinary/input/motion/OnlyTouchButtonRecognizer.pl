@@ -67,6 +67,7 @@ sub processDraggedMotionEvent {
 
 use java::lang::Object ();
 use org::allbinary::input::motion::button::TouchButtonRecognizer ();
+use org::allbinary::input::motion::MotionRecognizer ();
 
 1;
 

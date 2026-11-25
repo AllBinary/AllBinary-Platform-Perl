@@ -92,9 +92,9 @@ sub _new3 {
     _init_fields($self);
         $self->{ownerTransformInfoInterface} = $transformInfoInterface;
         $self->createDocument();
-        my $configNameAttr = $self->{document}->createAttribute(java::lang::Object::jstatic('org::allbinary::logic::visual::transform::info::objectConfig::TransformInfoObjectConfig', 'TransformInfoObjectConfigData')->getInstance()->{NAME});
+        my $configNameAttr = $self->{document}->createAttribute('org::allbinary::logic::visual::transform::info::objectConfig::TransformInfoObjectConfigData'->getInstance()->{NAME});
         $configNameAttr->setValue($name);
-        my $objectConfigNode = $self->{document}->getElementsByTagName(java::lang::Object::jstatic('org::allbinary::logic::visual::transform::info::objectConfig::TransformInfoObjectConfig', 'TransformInfoObjectConfigData')->getInstance()->{NAME})->item(0);
+        my $objectConfigNode = $self->{document}->getElementsByTagName('org::allbinary::logic::visual::transform::info::objectConfig::TransformInfoObjectConfigData'->getInstance()->{NAME})->item(0);
         $objectConfigNode->appendChild($configNameAttr);
         if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{VIEW})) {
             my $stringBuffer = 'org::allbinary::logic::string::StringMaker'->new();
@@ -115,7 +115,7 @@ sub _new3 {
 sub createDocument {
     my ($self) = @_;
         $self->{document} = 'org::allbinary::data::tree::dom::document::DomDocumentHelper'->create();
-        my $objectConfigNode = $self->{document}->createElement(java::lang::Object::jstatic('org::allbinary::logic::visual::transform::info::objectConfig::TransformInfoObjectConfig', 'TransformInfoObjectConfigData')->getInstance()->{NAME});
+        my $objectConfigNode = $self->{document}->createElement('org::allbinary::logic::visual::transform::info::objectConfig::TransformInfoObjectConfigData'->getInstance()->{NAME});
         $self->{document}->appendChild($objectConfigNode);
 }
 
@@ -141,7 +141,7 @@ sub setDocument {
 
 sub containsView {
     my ($self, $transformInfoInterface) = @_;
-        my $objectConfigNode = $self->{document}->getElementsByTagName(java::lang::Object::jstatic('org::allbinary::logic::visual::transform::info::objectConfig::TransformInfoObjectConfig', 'TransformInfoObjectConfigData')->getInstance()->{NAME})->item(0);
+        my $objectConfigNode = $self->{document}->getElementsByTagName('org::allbinary::logic::visual::transform::info::objectConfig::TransformInfoObjectConfigData'->getInstance()->{NAME})->item(0);
         my $viewNodeList = $objectConfigNode->getChildNodes();
         my $numberOfViews = $viewNodeList->getLength();
         for (my $index = 0; $index < $numberOfViews; $index++) {
@@ -159,7 +159,7 @@ sub containsView {
 # throws Exception
 sub getTemplateAttributes {
     my ($self) = @_;
-        my $componentNode = $self->{document}->getElementsByTagName(java::lang::Object::jstatic('org::allbinary::logic::visual::transform::info::objectConfig::TransformInfoObjectConfig', 'TransformInfoObjectConfigData')->getInstance()->{NAME})->item(0);
+        my $componentNode = $self->{document}->getElementsByTagName('org::allbinary::logic::visual::transform::info::objectConfig::TransformInfoObjectConfigData'->getInstance()->{NAME})->item(0);
         return $componentNode->getAttributes();
 }
 
@@ -167,7 +167,7 @@ sub getTemplateAttributes {
 # throws Exception
 sub getName {
     my ($self) = @_;
-        my $attrNode = $self->getTemplateAttributes()->getNamedItem(java::lang::Object::jstatic('org::allbinary::logic::visual::transform::info::objectConfig::TransformInfoObjectConfig', 'TransformInfoObjectConfigData')->getInstance()->{NAME});
+        my $attrNode = $self->getTemplateAttributes()->getNamedItem('org::allbinary::logic::visual::transform::info::objectConfig::TransformInfoObjectConfigData'->getInstance()->{NAME});
         return $attrNode->getValue();
 }
 
@@ -175,7 +175,7 @@ sub getName {
 # throws Exception
 sub setName {
     my ($self, $name) = @_;
-        my $attrNode = $self->getTemplateAttributes()->getNamedItem(java::lang::Object::jstatic('org::allbinary::logic::visual::transform::info::objectConfig::TransformInfoObjectConfig', 'TransformInfoObjectConfigData')->getInstance()->{NAME});
+        my $attrNode = $self->getTemplateAttributes()->getNamedItem('org::allbinary::logic::visual::transform::info::objectConfig::TransformInfoObjectConfigData'->getInstance()->{NAME});
         $attrNode->setValue($name);
 }
 
@@ -318,7 +318,7 @@ sub getParentTransforms {
 
 sub getRootNode {
     my ($self) = @_;
-        return $self->{document}->getElementsByTagName(java::lang::Object::jstatic('org::allbinary::logic::visual::transform::info::objectConfig::TransformInfoObjectConfig', 'TransformInfoObjectConfigData')->getInstance()->{NAME})->item(0);
+        return $self->{document}->getElementsByTagName('org::allbinary::logic::visual::transform::info::objectConfig::TransformInfoObjectConfigData'->getInstance()->{NAME})->item(0);
 }
 
 
@@ -399,6 +399,8 @@ use org::w3c::dom::Node ();
 use org::w3c::dom::NodeList ();
 use org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory ();
 use org::allbinary::logic::communication::log::config::type::LogConfigTypes ();
+use org::allbinary::logic::visual::transform::info::objectConfig::TransformInfoObjectConfigInterface ();
+use org::allbinary::logic::visual::transform::info::objectConfig::TransformInfoObjectConfigData ();
 
 1;
 

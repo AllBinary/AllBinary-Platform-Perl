@@ -63,6 +63,7 @@ use java::lang::Object ();
 use java::lang::LazyStatic ();
 use org::allbinary::logic::io::file::AbFile ();
 use org::allbinary::logic::io::AbFileOutputStream ();
+use org::allbinary::logic::io::AbDataOutputStream ();
 use org::allbinary::logic::io::FileStreamFactory ();
 
 1;

@@ -51,7 +51,7 @@ sub loadFileAsList {
         } catch ($e) {
             $self->{logUtil}->put($self->{commonStrings}->{EXCEPTION}, $self, $self->{commonStrings}->{ADD}, $e);
         }
-        return java::lang::Object::jstatic('org::allbinary::logic::io::file::FileUtil2', 'SimpleFileUtil')->getInstance()->loadFileAsList($inputStream, $max, $byteArray1);
+        return 'org::allbinary::logic::io::file::SimpleFileUtil'->getInstance()->loadFileAsList($inputStream, $max, $byteArray1);
 }
 
 use java::lang::Object ();
@@ -61,6 +61,7 @@ use org::allbinary::logic::io::AbFileInputStream ();
 use org::allbinary::logic::io::StreamUtil ();
 use org::allbinary::string::CommonStrings ();
 use org::allbinary::util::BasicArrayList ();
+use org::allbinary::logic::io::file::SimpleFileUtil ();
 
 1;
 

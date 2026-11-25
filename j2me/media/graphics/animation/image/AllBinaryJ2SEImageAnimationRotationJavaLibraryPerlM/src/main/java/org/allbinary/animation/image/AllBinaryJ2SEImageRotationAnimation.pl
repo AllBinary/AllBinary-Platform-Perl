@@ -214,6 +214,7 @@ use org::allbinary::math::AngleInfo ();
 use org::allbinary::media::image::ImageCopyUtil ();
 use org::allbinary::media::image::ImageModifierUtil ();
 use org::allbinary::media::image::ImageRotationUtil ();
+use org::allbinary::animation::image::ImageBaseRotationAnimation ();
 use org::allbinary::animation::image::ModifierBaseProcessor ();
 use org::allbinary::animation::image::ScaleProcessor ();
 use org::allbinary::animation::image::SetColorProcessor ();

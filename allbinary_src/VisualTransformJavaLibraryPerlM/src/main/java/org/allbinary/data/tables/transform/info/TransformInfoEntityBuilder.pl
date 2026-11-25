@@ -29,13 +29,14 @@ sub new {
 
 sub getInstance {
     my ($class) = @_;
-        return java::lang::Object::jstatic('org::allbinary::data::tables::transform::info::TransformInfoEntityBuilder', 'TransformInfoEntityFactory')->getInstance('org::allbinary::logic::visual::transform::info::objectConfig::generator::TransformInfoObjectConfigGeneratorFactory'->getInstance(), 'org::allbinary::logic::visual::transform::info::objectConfig::TransformInfoObjectConfigAndManipulatorFactory'->getInstance(), 'org::allbinary::logic::visual::transform::info::TransformInfoHttpStoreFactory'->getInstance());
+        return 'org::allbinary::data::tables::transform::info::TransformInfoEntityFactory'->getInstance('org::allbinary::logic::visual::transform::info::objectConfig::generator::TransformInfoObjectConfigGeneratorFactory'->getInstance(), 'org::allbinary::logic::visual::transform::info::objectConfig::TransformInfoObjectConfigAndManipulatorFactory'->getInstance(), 'org::allbinary::logic::visual::transform::info::TransformInfoHttpStoreFactory'->getInstance());
 }
 
 use java::lang::Object ();
 use org::allbinary::logic::visual::transform::info::TransformInfoHttpStoreFactory ();
 use org::allbinary::logic::visual::transform::info::objectConfig::TransformInfoObjectConfigAndManipulatorFactory ();
 use org::allbinary::logic::visual::transform::info::objectConfig::generator::TransformInfoObjectConfigGeneratorFactory ();
+use org::allbinary::data::tables::transform::info::TransformInfoEntityFactory ();
 
 1;
 

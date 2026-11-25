@@ -77,7 +77,7 @@ sub getUserConfigurationInterface {
 # throws Exception
 sub toXmlNode {
     my ($self, $document) = @_;
-        my $node = $document->createElement(java::lang::Object::jstatic('org::allbinary::business::user::modules::configuration::UserConfigurationView', 'UserConfigurationData')->{NAME});
+        my $node = $document->createElement($org::allbinary::business::user::modules::configuration::UserConfigurationData::NAME);
         my $userEmailConfigurationView = 'org::allbinary::logic::communication::smtp::configuration::user::UserEmailConfigurationView'->new($self->{userConfigurationInterface}->getUserEmailConfigurationInterface());
         $node->appendChild($userEmailConfigurationView->toXmlNode($document));
         my $timeCreatedView = 'org::allbinary::business::time::created::TimeCreatedView'->new($self->{userConfigurationInterface}->getTimeCreated());
@@ -100,6 +100,7 @@ use org::w3c::dom::Document ();
 use org::w3c::dom::Node ();
 use org::w3c::dom::NodeList ();
 use org::allbinary::business::user::modules::configuration::UserConfiguration ();
+use org::allbinary::business::user::modules::configuration::UserConfigurationData ();
 
 1;
 

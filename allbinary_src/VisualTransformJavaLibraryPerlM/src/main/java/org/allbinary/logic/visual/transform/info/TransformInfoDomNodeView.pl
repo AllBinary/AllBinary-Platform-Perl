@@ -77,7 +77,7 @@ sub _new1_2 {
 # throws Exception
 sub toXmlNode {
     my ($self, $document) = @_;
-        my $transformInfoData = java::lang::Object::jstatic('org::allbinary::logic::visual::transform::info::TransformInfoDomNodeView', 'TransformInfoData')->getInstance();
+        my $transformInfoData = 'org::allbinary::logic::visual::transform::info::TransformInfoData'->getInstance();
         my $subViewNode = $document->createElement($transformInfoData->{NAME});
         my $viewNameAttr = $document->createAttribute($transformInfoData->{NAME});
         $viewNameAttr->setValue($self->getTransformInfoInterface()->getName());
@@ -98,6 +98,7 @@ use org::w3c::dom::Document ();
 use org::w3c::dom::NamedNodeMap ();
 use org::w3c::dom::Node ();
 use org::allbinary::logic::visual::transform::info::TransformInfoDomNode ();
+use org::allbinary::logic::visual::transform::info::TransformInfoData ();
 
 1;
 

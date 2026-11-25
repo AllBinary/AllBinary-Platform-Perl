@@ -25,9 +25,9 @@ sub new {
     my ($class) = @_;
     my $self = $class->SUPER::new('org::allbinary::game::configuration::persistance::GamePersistanceStrings'->getInstance()->{DEFAULT_INPUT_MAPPING_RECORD_ID});
         # super(...) made $self above
-        my $pcKeyFactory = java::lang::Object::jstatic('org::allbinary::game::input::MotionLaptopDefaultGameInputMapping', 'PCKeyFactory')->getInstance();
+        my $pcKeyFactory = 'org::allbinary::game::input::PCKeyFactory'->getInstance();
         my $inputToGameKeyMapping = $self->getInputMapping();
-        my $gameKeyFactory = java::lang::Object::jstatic('org::allbinary::game::input::MotionLaptopDefaultGameInputMapping', 'GameKeyFactory')->getInstance();
+        my $gameKeyFactory = 'org::allbinary::game::input::GameKeyFactory'->getInstance();
         my $touchMotionGestureFactory = 'org::allbinary::input::motion::gesture::TouchMotionGestureFactory'->getInstance();
         my $basicTouchInputFactory = 'org::allbinary::input::motion::button::BasicTouchInputFactory'->getInstance();
         $inputToGameKeyMapping->add($gameKeyFactory->{FIRE}, $pcKeyFactory->{ENTER});
@@ -99,6 +99,8 @@ use org::allbinary::game::input::mapping::InputToGameKeyMapping ();
 use org::allbinary::game::input::mapping::PersistentInputMapping ();
 use org::allbinary::input::motion::button::BasicTouchInputFactory ();
 use org::allbinary::input::motion::gesture::TouchMotionGestureFactory ();
+use org::allbinary::game::input::PCKeyFactory ();
+use org::allbinary::game::input::GameKeyFactory ();
 
 1;
 

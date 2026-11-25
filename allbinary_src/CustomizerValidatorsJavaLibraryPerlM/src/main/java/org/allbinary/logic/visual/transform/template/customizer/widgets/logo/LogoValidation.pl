@@ -60,8 +60,8 @@ sub _new1_1 {
     my $self = $class->SUPER::new();
     _init_fields($self);
         $self->{isFile} = 0;
-        $self->{logoAbPath} = 'org::allbinary::logic::io::path::AbPath'->new('org::allbinary::data::tree::dom::DomSearchHelper'->getNode(java::lang::Object::jstatic('org::allbinary::logic::visual::transform::template::customizer::widgets::logo::LogoValidation', 'LogoData')->getInstance()->{IMAGEPATH}, $node->getChildNodes())->getNodeValue(), 'org::allbinary::logic::string::StringUtil'->getInstance()->{EMPTY_STRING});
-        $self->{logoFile} = 'org::allbinary::data::tree::dom::DomSearchHelper'->getNode(java::lang::Object::jstatic('org::allbinary::logic::visual::transform::template::customizer::widgets::logo::LogoValidation', 'LogoData')->getInstance()->{IMAGEFILENAME}, $node->getChildNodes())->getNodeValue();
+        $self->{logoAbPath} = 'org::allbinary::logic::io::path::AbPath'->new('org::allbinary::data::tree::dom::DomSearchHelper'->getNode('org::allbinary::logic::visual::transform::template::customizer::widgets::logo::LogoData'->getInstance()->{IMAGEPATH}, $node->getChildNodes())->getNodeValue(), 'org::allbinary::logic::string::StringUtil'->getInstance()->{EMPTY_STRING});
+        $self->{logoFile} = 'org::allbinary::data::tree::dom::DomSearchHelper'->getNode('org::allbinary::logic::visual::transform::template::customizer::widgets::logo::LogoData'->getInstance()->{IMAGEFILENAME}, $node->getChildNodes())->getNodeValue();
     return $self;
 }
 
@@ -79,8 +79,8 @@ sub _new1_2 {
 # throws Exception
 sub getFormData {
     my ($self, $hashMap) = @_;
-        $self->{logoFileItem} = $hashMap->get(java::lang::Object::jstatic('org::allbinary::logic::visual::transform::template::customizer::widgets::logo::LogoValidation', 'LogoData')->getInstance()->{IMAGE});
-        $self->{logoAbPath} = 'org::allbinary::logic::io::path::AbPath'->new($hashMap->get(java::lang::Object::jstatic('org::allbinary::logic::visual::transform::template::customizer::widgets::logo::LogoValidation', 'LogoData')->getInstance()->{IMAGEPATH}), 'org::allbinary::logic::string::StringUtil'->getInstance()->{EMPTY_STRING});
+        $self->{logoFileItem} = $hashMap->get('org::allbinary::logic::visual::transform::template::customizer::widgets::logo::LogoData'->getInstance()->{IMAGE});
+        $self->{logoAbPath} = 'org::allbinary::logic::io::path::AbPath'->new($hashMap->get('org::allbinary::logic::visual::transform::template::customizer::widgets::logo::LogoData'->getInstance()->{IMAGEPATH}), 'org::allbinary::logic::string::StringUtil'->getInstance()->{EMPTY_STRING});
         if (defined($self->{logoFileItem})) {
             $self->{logoFile} = 'org::allbinary::logic::communication::http::request::HttpRequestUtil'->getInstance()->generateFileName($self->{logoFileItem}->getName());
         }
@@ -170,13 +170,13 @@ sub toHashMap {
     my ($self) = @_;
         my $stringUtil = 'org::allbinary::logic::string::StringUtil'->getInstance();
         my $hashMap = 'org::allbinary::logic::StdUtil'->getInstance()->createHashMap();
-        $hashMap->put(java::lang::Object::jstatic('org::allbinary::logic::visual::transform::template::customizer::widgets::logo::LogoValidation', 'LogoData')->getInstance()->{IMAGE}, $stringUtil->{EMPTY_STRING});
+        $hashMap->put('org::allbinary::logic::visual::transform::template::customizer::widgets::logo::LogoData'->getInstance()->{IMAGE}, $stringUtil->{EMPTY_STRING});
         if (defined($self->{logoFile})) {
-            $hashMap->put(java::lang::Object::jstatic('org::allbinary::logic::visual::transform::template::customizer::widgets::logo::LogoValidation', 'LogoData')->getInstance()->{IMAGEPATH}, $self->{logoAbPath}->toString());
-            $hashMap->put(java::lang::Object::jstatic('org::allbinary::logic::visual::transform::template::customizer::widgets::logo::LogoValidation', 'LogoData')->getInstance()->{IMAGEFILENAME}, $self->{logoFile});
+            $hashMap->put('org::allbinary::logic::visual::transform::template::customizer::widgets::logo::LogoData'->getInstance()->{IMAGEPATH}, $self->{logoAbPath}->toString());
+            $hashMap->put('org::allbinary::logic::visual::transform::template::customizer::widgets::logo::LogoData'->getInstance()->{IMAGEFILENAME}, $self->{logoFile});
         } else {
-            $hashMap->put(java::lang::Object::jstatic('org::allbinary::logic::visual::transform::template::customizer::widgets::logo::LogoValidation', 'LogoData')->getInstance()->{IMAGEPATH}, undef);
-            $hashMap->put(java::lang::Object::jstatic('org::allbinary::logic::visual::transform::template::customizer::widgets::logo::LogoValidation', 'LogoData')->getInstance()->{IMAGEFILENAME}, $self->{logoFile});
+            $hashMap->put('org::allbinary::logic::visual::transform::template::customizer::widgets::logo::LogoData'->getInstance()->{IMAGEPATH}, undef);
+            $hashMap->put('org::allbinary::logic::visual::transform::template::customizer::widgets::logo::LogoData'->getInstance()->{IMAGEFILENAME}, $self->{logoFile});
         }
         return $hashMap;
 }
@@ -186,7 +186,7 @@ sub toHashMap {
 sub toXmlNode {
     my ($self, $document) = @_;
         my $hashMap = $self->toHashMap();
-        return 'org::allbinary::data::tree::dom::ModDomHelper'->createNameValueNodes($document, java::lang::Object::jstatic('org::allbinary::logic::visual::transform::template::customizer::widgets::logo::LogoValidation', 'LogoData')->getInstance()->{NAME}, $hashMap);
+        return 'org::allbinary::data::tree::dom::ModDomHelper'->createNameValueNodes($document, 'org::allbinary::logic::visual::transform::template::customizer::widgets::logo::LogoData'->getInstance()->{NAME}, $hashMap);
 }
 
 
@@ -222,6 +222,7 @@ use org::w3c::dom::Document ();
 use org::w3c::dom::Node ();
 use org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory ();
 use org::allbinary::logic::communication::log::config::type::LogConfigTypes ();
+use org::allbinary::logic::visual::transform::template::customizer::widgets::logo::LogoData ();
 use org::allbinary::logic::visual::transform::template::customizer::widgets::logo::LogoImageFileUtil ();
 
 1;

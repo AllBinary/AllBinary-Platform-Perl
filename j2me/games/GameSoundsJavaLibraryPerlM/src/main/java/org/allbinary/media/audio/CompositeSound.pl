@@ -32,10 +32,13 @@ sub new {
 # throws Exception
 sub init {
     my ($self) = @_;
-        $self->setPlayerP('org::allbinary::media::audio::PlayerComposite'->new(java::lang::Object::jstatic('org::allbinary::media::audio::CompositeSound', 'AllBinaryMediaManager')->createPlayer($self->getResource()), 570));
+        $self->setPlayerP('org::allbinary::media::audio::PlayerComposite'->new('org::allbinary::media::audio::AllBinaryMediaManager'->createPlayer($self->getResource()), 570));
 }
 
 use java::lang::Object ();
+use org::allbinary::media::audio::Sound ();
+use org::allbinary::media::audio::PlayerComposite ();
+use org::allbinary::media::audio::AllBinaryMediaManager ();
 
 1;
 

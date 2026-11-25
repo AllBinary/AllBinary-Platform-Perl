@@ -24,7 +24,7 @@ sub _init_fields {
     my ($self) = @_;
     $self->{logUtil} = 'org::allbinary::logic::communication::log::LogUtil'->getInstance();
     $self->{commonStrings} = 'org::allbinary::string::CommonStrings'->getInstance();
-    $self->{basicItemData} = java::lang::Object::jstatic('org::allbinary::business::user::commerce::inventory::item::BasicItem', 'BasicItemData')->getInstance();
+    $self->{basicItemData} = 'org::allbinary::business::user::commerce::inventory::item::BasicItemData'->getInstance();
     $self->{itemId} = undef;
     $self->{number} = undef;
     $self->{inBaskets} = undef;
@@ -624,6 +624,8 @@ use org::allbinary::string::CommonPhoneStrings ();
 use org::allbinary::string::CommonStrings ();
 use org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory ();
 use org::allbinary::logic::communication::log::config::type::LogConfigTypes ();
+use org::allbinary::business::user::commerce::inventory::item::ItemInterface ();
+use org::allbinary::business::user::commerce::inventory::item::BasicItemData ();
 
 1;
 

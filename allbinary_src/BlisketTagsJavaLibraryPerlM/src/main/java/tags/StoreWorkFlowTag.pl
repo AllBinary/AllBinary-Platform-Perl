@@ -93,6 +93,7 @@ use org::allbinary::logic::visual::transform::info::TransformInfoData ();
 use taghelpers::StoreTagWorkFlowHelperFactory ();
 use org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory ();
 use org::allbinary::logic::communication::log::config::type::LogConfigTypes ();
+use tags::HelperTag ();
 
 1;
 

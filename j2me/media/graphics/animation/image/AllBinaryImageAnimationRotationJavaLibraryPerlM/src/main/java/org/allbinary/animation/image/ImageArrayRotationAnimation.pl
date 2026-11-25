@@ -65,6 +65,7 @@ use java::lang::Object ();
 use javax::microedition::lcdui::Image ();
 use org::allbinary::animation::AnimationBehavior ();
 use org::allbinary::math::AngleInfo ();
+use org::allbinary::animation::image::ImageArrayBaseRotationAnimation ();
 
 1;
 

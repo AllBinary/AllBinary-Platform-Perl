@@ -19,7 +19,7 @@ use feature 'try';
 no warnings 'experimental::try';
 use parent -norequire,'java::lang::Object';
 
-tie our $instance, 'java::lang::LazyStatic', sub { 'org::allbinary::thread::ThreadPool'->new("Sound", 1, java::lang::Object::jstatic('org::allbinary::thread::SoundThreadPool', 'ThreadPool')->{NORMAL_PRIORITY}) };
+tie our $instance, 'java::lang::LazyStatic', sub { 'org::allbinary::thread::ThreadPool'->new("Sound", 1, $org::allbinary::thread::ThreadPool::NORMAL_PRIORITY) };
 
 sub new {
     my ($class) = @_;
@@ -35,6 +35,7 @@ sub getInstance {
 
 use java::lang::Object ();
 use java::lang::LazyStatic ();
+use org::allbinary::thread::ThreadPool ();
 
 1;
 

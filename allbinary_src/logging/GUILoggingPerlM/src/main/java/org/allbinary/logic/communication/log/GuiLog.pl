@@ -23,7 +23,7 @@ tie our $instance, 'java::lang::LazyStatic', sub { 'org::allbinary::logic::commu
 
 sub _init_fields {
     my ($self) = @_;
-    $self->{logFormatUtil} = java::lang::Object::jstatic('org::allbinary::logic::communication::log::GuiLog', 'LogFormatUtil')->getInstance();
+    $self->{logFormatUtil} = 'org::allbinary::logic::communication::log::LogFormatUtil'->getInstance();
     $self->{commonStrings} = 'org::allbinary::string::CommonStrings'->getInstance();
 }
 
@@ -78,7 +78,7 @@ sub put_j4_1 {
             print($data, "\n");
             return $data;
         } catch ($e) {
-            java::lang::Object::jstatic('org::allbinary::logic::communication::log::GuiLog', 'PreLogUtil')->putOE($self->{commonStrings}->{EXCEPTION}, $self, "put", $e);
+            'org::allbinary::logic::communication::log::PreLogUtil'->putOE($self->{commonStrings}->{EXCEPTION}, $self, "put", $e);
             return "Logging Error";
         }
 }
@@ -98,7 +98,7 @@ sub put_j4_2 {
             print($data, "\n");
             return $data;
         } catch ($e) {
-            java::lang::Object::jstatic('org::allbinary::logic::communication::log::GuiLog', 'PreLogUtil')->putOE($self->{commonStrings}->{EXCEPTION}, $self, "put", $e);
+            'org::allbinary::logic::communication::log::PreLogUtil'->putOE($self->{commonStrings}->{EXCEPTION}, $self, "put", $e);
             return "Logging Error";
         }
 }
@@ -130,7 +130,9 @@ use org::allbinary::string::CommonStrings ();
 # use javax::swing::JLabel ();
 # use javax::swing::JScrollPane ();
 # use javax::swing::JTextArea ();
+use org::allbinary::logic::communication::log::LogFormatUtil ();
 use java::lang::System ();
+use org::allbinary::logic::communication::log::PreLogUtil ();
 
 1;
 

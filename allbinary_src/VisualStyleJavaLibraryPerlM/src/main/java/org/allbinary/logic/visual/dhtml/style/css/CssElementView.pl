@@ -77,7 +77,7 @@ sub _new1 {
             if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{VIEW})) {
                 $self->{logUtil}->putF('org::allbinary::logic::string::StringMaker'->new()->append("Value: ")->append($self->{value})->append("\nTitle: ")->append($self->{title})->append("\nDescription: ")->append($self->{description})->toString(), $self, $self->{commonStrings}->{CONSTRUCTOR});
             }
-            my $cssElementStyleNodeVector = 'org::allbinary::data::tree::dom::DomSearchHelper'->getAllNodes(java::lang::Object::jstatic('org::allbinary::logic::visual::dhtml::style::css::CssElementView', 'CssElementData')->getInstance()->{NAME}, $node->getChildNodes());
+            my $cssElementStyleNodeVector = 'org::allbinary::data::tree::dom::DomSearchHelper'->getAllNodes('org::allbinary::logic::visual::dhtml::style::css::CssElementData'->getInstance()->{NAME}, $node->getChildNodes());
             if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{VIEW})) {
                 $self->{logUtil}->putF("Child Css Elements: " . $cssElementStyleNodeVector->size(), $self, "CssElementView()");
             }
@@ -117,7 +117,7 @@ sub toXmlNode {
         if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{VIEW})) {
             $self->{logUtil}->putF("CssView HashMap: " . $hashMap->toString(), $self, "toXmlNode");
         }
-        my $node = 'org::allbinary::data::tree::dom::ModDomHelper'->createNodeWithValueNodes($document, java::lang::Object::jstatic('org::allbinary::logic::visual::dhtml::style::css::CssElementView', 'CssElementData')->getInstance()->{NAME}, $hashMap);
+        my $node = 'org::allbinary::data::tree::dom::ModDomHelper'->createNodeWithValueNodes($document, 'org::allbinary::logic::visual::dhtml::style::css::CssElementData'->getInstance()->{NAME}, $hashMap);
         my $size = $self->{cssPropertyVector}->size();
         for (my $index = 0; $index < $size; $index++) {
             my $cssPropertyDomNodeInterface = $self->{cssPropertyVector}->get($index);
@@ -151,6 +151,7 @@ use org::w3c::dom::Node ();
 use org::w3c::dom::NodeList ();
 use org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory ();
 use org::allbinary::logic::communication::log::config::type::LogConfigTypes ();
+use org::allbinary::logic::visual::dhtml::style::css::CssElementData ();
 use org::allbinary::logic::visual::dhtml::style::css::CssElementsValidationFactory ();
 
 1;

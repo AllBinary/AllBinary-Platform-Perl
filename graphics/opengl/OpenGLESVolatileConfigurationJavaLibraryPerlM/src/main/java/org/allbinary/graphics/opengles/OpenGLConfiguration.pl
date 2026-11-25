@@ -26,10 +26,10 @@ sub _init_fields {
     $self->{logUtil} = 'org::allbinary::logic::communication::log::LogUtil'->getInstance();
     $self->{commonStrings} = 'org::allbinary::string::CommonStrings'->getInstance();
     $self->{opengl} = 0;
-    $self->{type} = java::lang::Object::jstatic('org::allbinary::graphics::opengles::OpenGLConfiguration', 'OpenGLFeatureFactory')->getInstance()->{OPENGL_AS_GAME_THREAD};
-    $self->{imageColor} = java::lang::Object::jstatic('org::allbinary::graphics::opengles::OpenGLConfiguration', 'OpenGLFeatureFactory')->getInstance()->{IMAGE_COLOR_DEPTH_4444};
-    $self->{color} = java::lang::Object::jstatic('org::allbinary::graphics::opengles::OpenGLConfiguration', 'OpenGLFeatureFactory')->getInstance()->{IMAGE_COLOR_DEPTH_4444};
-    $self->{versionSelector} = java::lang::Object::jstatic('org::allbinary::graphics::opengles::OpenGLConfiguration', 'OpenGLFeatureFactory')->getInstance()->{OPENGL_AUTO_SELECT};
+    $self->{type} = 'org::allbinary::graphics::opengles::OpenGLFeatureFactory'->getInstance()->{OPENGL_AS_GAME_THREAD};
+    $self->{imageColor} = 'org::allbinary::graphics::opengles::OpenGLFeatureFactory'->getInstance()->{IMAGE_COLOR_DEPTH_4444};
+    $self->{color} = 'org::allbinary::graphics::opengles::OpenGLFeatureFactory'->getInstance()->{IMAGE_COLOR_DEPTH_4444};
+    $self->{versionSelector} = 'org::allbinary::graphics::opengles::OpenGLFeatureFactory'->getInstance()->{OPENGL_AUTO_SELECT};
 }
 
 
@@ -61,9 +61,9 @@ sub init {
         my $features = 'org::allbinary::game::configuration::feature::Features'->getInstance();
         if ('org::allbinary::game::configuration::event::ChangedGameFeatureListener'->getInstance()->isChangedFeature('org::allbinary::game::configuration::feature::MainFeatureFactory'->getInstance()->{STATIC})) {
             if ($self->isOpenGL()) {
-                if (!$features->isDefault(java::lang::Object::jstatic('org::allbinary::graphics::opengles::OpenGLConfiguration', 'OpenGLFeatureFactory')->getInstance()->{OPENGL})) {
+                if (!$features->isDefault('org::allbinary::graphics::opengles::OpenGLFeatureFactory'->getInstance()->{OPENGL})) {
                     $self->{logUtil}->putF("Turning on OpenGL", $self, $self->{commonStrings}->{INIT});
-                    $features->addDefault(java::lang::Object::jstatic('org::allbinary::graphics::opengles::OpenGLConfiguration', 'OpenGLFeatureFactory')->getInstance()->{OPENGL});
+                    $features->addDefault('org::allbinary::graphics::opengles::OpenGLFeatureFactory'->getInstance()->{OPENGL});
                     $self->{logUtil}->putF("Using OpenGL Type Feature: " . $self->getType(), $self, $self->{commonStrings}->{INIT});
                     $features->addDefault($self->getType());
                     $self->{logUtil}->putF("Using OpenGL ImageColor Feature: " . $self->getImageColor(), $self, $self->{commonStrings}->{INIT});
@@ -77,7 +77,7 @@ sub init {
                 $self->{logUtil}->putF("OpenGL is Off", $self, $self->{commonStrings}->{INIT});
             }
         } else {
-            if ($self->isOpenGL() && !$features->isDefault(java::lang::Object::jstatic('org::allbinary::graphics::opengles::OpenGLConfiguration', 'OpenGLFeatureFactory')->getInstance()->{OPENGL})) {
+            if ($self->isOpenGL() && !$features->isDefault('org::allbinary::graphics::opengles::OpenGLFeatureFactory'->getInstance()->{OPENGL})) {
                 'org::allbinary::logic::communication::log::PreLogUtil'->put("OpenGL is set but not Enabled since Statics where not cleared (Reboot or Complete exit is Required)", $self, $self->{commonStrings}->{INIT});
             }
         }
@@ -89,7 +89,7 @@ sub init {
 sub update {
     my ($self, $gameFeature, $colorLocked) = @_;
         my $features = 'org::allbinary::game::configuration::feature::Features'->getInstance();
-        my $openGLFeatureFactory = java::lang::Object::jstatic('org::allbinary::graphics::opengles::OpenGLConfiguration', 'OpenGLFeatureFactory')->getInstance();
+        my $openGLFeatureFactory = 'org::allbinary::graphics::opengles::OpenGLFeatureFactory'->getInstance();
         my $modified = 0;
         if ($gameFeature == $openGLFeatureFactory->{OPENGL}) {
             if ($features->isFeature($gameFeature)) {
@@ -235,6 +235,7 @@ use org::allbinary::game::configuration::feature::Features ();
 use org::allbinary::game::configuration::feature::MainFeatureFactory ();
 use org::allbinary::logic::NullUtil ();
 use org::allbinary::logic::string::StringUtil ();
+use org::allbinary::graphics::opengles::OpenGLFeatureFactory ();
 
 1;
 

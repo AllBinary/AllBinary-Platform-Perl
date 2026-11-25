@@ -92,7 +92,7 @@ sub toValidationInfoNode {
 # throws Exception
 sub toXmlNode {
     my ($self, $document) = @_;
-        my $node = $document->createElement(java::lang::Object::jstatic('org::allbinary::logic::visual::theme::ThemesValidation', 'ThemesData')->getInstance()->{NAME});
+        my $node = $document->createElement('org::allbinary::logic::visual::theme::ThemesData'->getInstance()->{NAME});
         my $size = $self->{themeVector}->size();
         for (my $i = 0; $i < $size; $i++) {
             my $themeDomNodeInterface = $self->{themeVector}->get($i);
@@ -110,6 +110,7 @@ use org::allbinary::logic::StdUtil ();
 use org::allbinary::logic::control::validate::Validation ();
 use org::w3c::dom::Document ();
 use org::w3c::dom::Node ();
+use org::allbinary::logic::visual::theme::ThemesData ();
 
 1;
 

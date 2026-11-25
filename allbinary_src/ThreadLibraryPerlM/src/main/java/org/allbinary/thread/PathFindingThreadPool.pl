@@ -31,7 +31,7 @@ sub getInstance {
 
 sub new {
     my ($class, $poolName, $numThreads, $priority) = @_;
-    my $self = $class->SUPER::new($poolName, $numThreads, java::lang::Object::jstatic($class, 'ThreadPool')->{NORMAL_PRIORITY});
+    my $self = $class->SUPER::new($poolName, $numThreads, $org::allbinary::thread::ThreadPool::NORMAL_PRIORITY);
         # super(...) made $self above
     return $self;
 }
@@ -60,6 +60,7 @@ sub completedTask {
 
 use java::lang::Object ();
 use java::lang::LazyStatic ();
+use org::allbinary::thread::ThreadPool ();
 
 1;
 

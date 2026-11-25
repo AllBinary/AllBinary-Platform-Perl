@@ -41,6 +41,7 @@ sub previousRotation {
 
 use org::allbinary::direction::DirectionalInterface ();
 use org::allbinary::math::AngleInfo ();
+use org::allbinary::animation::IndexedAnimationInterface ();
 
 1;
 

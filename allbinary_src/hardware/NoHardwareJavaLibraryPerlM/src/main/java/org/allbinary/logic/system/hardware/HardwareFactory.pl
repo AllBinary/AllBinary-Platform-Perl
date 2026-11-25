@@ -23,7 +23,7 @@ tie our $instance, 'java::lang::LazyStatic', sub { 'org::allbinary::logic::syste
 
 sub _init_fields {
     my ($self) = @_;
-    $self->{SINGLETON} = java::lang::Object::jstatic('org::allbinary::logic::system::hardware::HardwareFactory', 'NoHardware')->getInstance();
+    $self->{SINGLETON} = 'org::allbinary::logic::system::hardware::NoHardware'->getInstance();
 }
 
 
@@ -61,6 +61,7 @@ sub getInstance {
 use java::lang::Object ();
 use java::lang::LazyStatic ();
 use org::allbinary::logic::system::os::OperatingSystemInterface ();
+use org::allbinary::logic::system::hardware::NoHardware ();
 
 1;
 

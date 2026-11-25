@@ -69,7 +69,9 @@ use org::allbinary::logic::system::security::licensing::AbeClientInformationInte
 use org::allbinary::logic::system::security::licensing::ClientInformationFactory ();
 use org::allbinary::thread::PrimaryThreadPool ();
 use org::allbinary::thread::ThreadPool ();
+use org::allbinary::midlet::AllBinaryMidlet ();
 use org::allbinary::midlet::MidletExitProcessorFactory ();
+use org::allbinary::midlet::ExitRunnable ();
 
 1;
 

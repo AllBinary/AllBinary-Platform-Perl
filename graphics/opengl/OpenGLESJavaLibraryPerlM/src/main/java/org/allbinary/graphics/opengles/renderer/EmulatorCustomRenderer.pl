@@ -25,7 +25,7 @@ sub _init_fields {
     my ($self) = @_;
     $self->{logUtil} = 'org::allbinary::logic::communication::log::LogUtil'->getInstance();
     $self->{commonStrings} = 'org::allbinary::string::CommonStrings'->getInstance();
-    $self->{renderStrings} = java::lang::Object::jstatic('org::allbinary::graphics::opengles::renderer::EmulatorCustomRenderer', 'RendererStrings')->getInstance();
+    $self->{renderStrings} = 'org::allbinary::graphics::opengles::renderer::RendererStrings'->getInstance();
 }
 
 sub new {
@@ -60,6 +60,7 @@ use org::allbinary::emulator::InitEmulatorFactory ();
 use org::allbinary::string::CommonStrings ();
 use org::allbinary::logic::communication::log::LogUtil ();
 use org::allbinary::logic::communication::log::PreLogUtil ();
+use org::allbinary::graphics::opengles::renderer::RendererStrings ();
 use java::lang::Thread ();
 
 1;

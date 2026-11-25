@@ -47,6 +47,7 @@ sub getDecalBasicColor {
 
 use org::allbinary::game::GameType ();
 use org::allbinary::graphics::color::BasicColor ();
+use org::allbinary::game::layer::RTSPlayerLayerInterface ();
 
 1;
 

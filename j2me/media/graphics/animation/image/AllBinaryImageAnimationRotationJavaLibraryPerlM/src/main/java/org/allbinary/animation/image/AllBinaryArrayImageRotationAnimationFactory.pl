@@ -111,6 +111,7 @@ use org::allbinary::logic::math::PrimitiveIntUtil ();
 use org::allbinary::math::AngleFactory ();
 use org::allbinary::math::AngleInfo ();
 use org::allbinary::media::image::ImageToRotationImageArrayUtil ();
+use org::allbinary::animation::image::BaseImageAnimationFactory ();
 use org::allbinary::animation::image::ImageArrayRotationAnimation ();
 use org::allbinary::animation::image::AdjustedImageArrayRotationAnimation ();
 

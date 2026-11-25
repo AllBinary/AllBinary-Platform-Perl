@@ -87,7 +87,7 @@ sub initCapabilities {
         my $METHOD_NAME = "initGLCapabilities";
         try {
             my $features = 'org::allbinary::game::configuration::feature::Features'->getInstance();
-            my $openGLFeatureFactory = java::lang::Object::jstatic('org::allbinary::graphics::opengles::OpenGLCapabilities', 'OpenGLFeatureFactory')->getInstance();
+            my $openGLFeatureFactory = 'org::allbinary::graphics::opengles::OpenGLFeatureFactory'->getInstance();
             my $openGLImageSpecificFactory = 'org::allbinary::image::opengles::OpenGLImageSpecificFactory'->getInstance();
             my $stringBuffer = 'org::allbinary::logic::string::StringMaker'->new();
             $self->{glVersionString} = $gl->glGetString($javax::microedition::khronos::opengles::GL10::GL_VERSION);
@@ -330,6 +330,7 @@ use org::allbinary::logic::string::tokens::Tokenizer ();
 use org::allbinary::logic::communication::log::PreLogUtil ();
 use org::allbinary::game::configuration::feature::Features ();
 use org::allbinary::logic::communication::log::LogUtil ();
+use org::allbinary::graphics::opengles::OpenGLFeatureFactory ();
 
 1;
 

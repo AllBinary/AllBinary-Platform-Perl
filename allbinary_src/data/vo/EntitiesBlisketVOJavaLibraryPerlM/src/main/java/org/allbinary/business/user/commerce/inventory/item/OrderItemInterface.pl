@@ -94,6 +94,7 @@ sub getSpecial {
 }
 
 use org::allbinary::business::user::address::StreetAddress ();
+use org::allbinary::business::user::commerce::inventory::item::ItemInterface ();
 
 1;
 

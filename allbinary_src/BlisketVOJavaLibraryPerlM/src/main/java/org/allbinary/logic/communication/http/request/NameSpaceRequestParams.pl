@@ -103,7 +103,7 @@ sub createPackageMultiNode {
         my $multiElementPackage = substr($packageName, 0, ($beginIndex) - (0));
         my $selectedValue = $nameSpaceRequestParam->getValue();
         my $propertyValue = $packagePropertiesHashMap->get($org::allbinary::data::tree::dom::DomData::VALUE);
-        if (($propertyValue cmp java::lang::Object::jstatic('org::allbinary::logic::communication::http::request::NameSpaceRequestParams', 'NameSpaceRequestParamData')->{VALUE}) != 0) {
+        if (($propertyValue cmp $org::allbinary::logic::communication::http::request::NameSpaceRequestParamData::VALUE) != 0) {
             $selectedValue = $propertyValue;
         }
         if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{HTTPREQUEST})) {
@@ -306,7 +306,7 @@ sub toHashMap {
             }
             if ((Scalar::Util::blessed($self->getMap()->get($key)) && $self->getMap()->get($key)->isa('String'))) {
                 my $value = $self->getMap()->get($key);
-                if (index($key, java::lang::Object::jstatic('org::allbinary::logic::communication::http::request::NameSpaceRequestParams', 'NameSpaceRequestParamData')->{NAME}) < 0) {
+                if (index($key, $org::allbinary::logic::communication::http::request::NameSpaceRequestParamData::NAME) < 0) {
                     if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{HTTPREQUEST})) {
                         $self->{logUtil}->putF("Not NameSpace key: " . $key . " Value: " . $value, $self, "toHashMap()");
                     }
@@ -316,7 +316,7 @@ sub toHashMap {
                 }
             } elsif ((Scalar::Util::blessed($self->getMap()->get($key)) && $self->getMap()->get($key)->isa('ARRAY'))) {
                 my $values = $self->getMap()->get($key);
-                if (index($key, java::lang::Object::jstatic('org::allbinary::logic::communication::http::request::NameSpaceRequestParams', 'NameSpaceRequestParamData')->{NAME}) < 0) {
+                if (index($key, $org::allbinary::logic::communication::http::request::NameSpaceRequestParamData::NAME) < 0) {
                     if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{HTTPREQUEST})) {
                         $self->{logUtil}->putF("Not NameSpace key: " . $key . " Value: " . $values->[0], $self, "toHashMap()");
                     }
@@ -329,7 +329,7 @@ sub toHashMap {
         if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{HTTPREQUEST})) {
             $self->{logUtil}->putF("NameSpaceRequestParams: " . $self->getMap()->toString() . "\ntoHashMap(): " . $hashMap->toString() . "\nDocument Created: " . 'org::allbinary::data::tree::dom::document::XmlDocumentHelper'->toString($document), $self, "toHashMap()");
         }
-        $hashMap->put(java::lang::Object::jstatic('org::allbinary::logic::communication::http::request::NameSpaceRequestParams', 'NameSpaceRequestParamData')->{DOCUMENT}, $document);
+        $hashMap->put($org::allbinary::logic::communication::http::request::NameSpaceRequestParamData::DOCUMENT, $document);
         return $hashMap;
 }
 
@@ -355,6 +355,8 @@ use org::w3c::dom::Document ();
 use org::w3c::dom::Node ();
 use org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory ();
 use org::allbinary::logic::communication::log::config::type::LogConfigTypes ();
+use org::allbinary::logic::communication::http::request::RequestParams ();
+use org::allbinary::logic::communication::http::request::NameSpaceRequestParamData ();
 use org::allbinary::logic::communication::http::request::NameSpaceRequestParam ();
 
 1;

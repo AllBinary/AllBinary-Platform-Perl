@@ -63,6 +63,7 @@ sub getBasicColorP {
 use java::lang::Object ();
 use org::allbinary::graphics::color::BasicColor ();
 use org::allbinary::graphics::color::BasicColorFactory ();
+use org::allbinary::animation::ProceduralAnimationInterfaceFactoryInterface ();
 use org::allbinary::animation::VectorExplosionGenerator ();
 use org::allbinary::animation::VectorRotationAnimation ();
 

@@ -58,9 +58,9 @@ sub _new1 {
             my $commonStrings = 'org::allbinary::string::CommonStrings'->getInstance();
             $self->{logUtil}->putF($commonStrings->{START}, $self, "EmailServerConfiguration(HashMap)");
         }
-        $self->setAccountName($hashMap->get(java::lang::Object::jstatic('org::allbinary::logic::communication::smtp::configuration::server::EmailServerConfiguration', 'EmailServerConfigurationData')->{ACCOUNT}));
-        $self->setPassword($hashMap->get(java::lang::Object::jstatic('org::allbinary::logic::communication::smtp::configuration::server::EmailServerConfiguration', 'EmailServerConfigurationData')->{PASSWORD}));
-        $self->setSmtpServer($hashMap->get(java::lang::Object::jstatic('org::allbinary::logic::communication::smtp::configuration::server::EmailServerConfiguration', 'EmailServerConfigurationData')->{SERVER}));
+        $self->setAccountName($hashMap->get($org::allbinary::logic::communication::smtp::configuration::server::EmailServerConfigurationData::ACCOUNT));
+        $self->setPassword($hashMap->get($org::allbinary::logic::communication::smtp::configuration::server::EmailServerConfigurationData::PASSWORD));
+        $self->setSmtpServer($hashMap->get($org::allbinary::logic::communication::smtp::configuration::server::EmailServerConfigurationData::SERVER));
         $self->log();
     return $self;
 }
@@ -139,6 +139,7 @@ use org::allbinary::string::CommonStrings ();
 use org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory ();
 use org::allbinary::logic::communication::log::config::type::LogConfigTypes ();
 use org::allbinary::logic::communication::smtp::configuration::server::EmailServerConfigurationInterface ();
+use org::allbinary::logic::communication::smtp::configuration::server::EmailServerConfigurationData ();
 
 1;
 

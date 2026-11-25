@@ -72,7 +72,7 @@ sub getNumberOfUsersByRole {
 sub toHashMap {
     my ($self) = @_;
         my $hashMap = 'org::allbinary::logic::StdUtil'->getInstance()->createHashMap();
-        $hashMap->put(java::lang::Object::jstatic('org::allbinary::business::context::modules::storefront::statistics::users::StoreFrontUsersStatistics', 'StoreFrontUsersStatisticsData')->getInstance()->{NUMBEROFUSERS}, $self->getNumberOfUsers()->toString());
+        $hashMap->put('org::allbinary::business::context::modules::storefront::statistics::users::StoreFrontUsersStatisticsData'->getInstance()->{NUMBEROFUSERS}, $self->getNumberOfUsers()->toString());
         my $setOfUserRoles = $self->{totalUsersByRoleHashMap}->keySet();
         my $nextUserRole = undef;
         my $userRoleArray = $setOfUserRoles->toArray();
@@ -108,6 +108,8 @@ use org::allbinary::business::user::role::UserRole ();
 use org::allbinary::data::tables::user::UserEntityFactory ();
 use org::allbinary::data::tables::user::UserEntityInterface ();
 use org::allbinary::logic::StdUtil ();
+use org::allbinary::business::context::modules::storefront::statistics::users::StoreFrontUsersStatisticsInterface ();
+use org::allbinary::business::context::modules::storefront::statistics::users::StoreFrontUsersStatisticsData ();
 
 1;
 

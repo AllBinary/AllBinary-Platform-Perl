@@ -36,7 +36,7 @@ sub new {
     my $self = bless({}, $class);
     _init_fields($self);
         $self->{hashtable} = 'org::allbinary::logic::StdUtil'->getInstance()->createHashtable();
-        my $abeClientInformationData = java::lang::Object::jstatic('org::allbinary::logic::system::security::licensing::AbeClientLicense', 'AbeClientInformationData')->getInstance();
+        my $abeClientInformationData = 'org::allbinary::logic::system::security::licensing::AbeClientInformationData'->getInstance();
         my $keyValue = $hashtable->get($abeClientInformationData->{KEY});
         if (defined($keyValue)) {
             if ((Scalar::Util::blessed($keyValue) && $keyValue->isa('String'))) {
@@ -60,7 +60,7 @@ sub new {
 
 sub hasRequiredKeys {
     my ($class, $resultHashtable) = @_;
-        my $abeClientInformationData = java::lang::Object::jstatic('org::allbinary::logic::system::security::licensing::AbeClientLicense', 'AbeClientInformationData')->getInstance();
+        my $abeClientInformationData = 'org::allbinary::logic::system::security::licensing::AbeClientInformationData'->getInstance();
         if ($resultHashtable->containsKey($abeClientInformationData->{LICENSEID}) && $resultHashtable->containsKey($abeClientInformationData->{LICENSESERVERS}) && $resultHashtable->containsKey($abeClientInformationData->{KEY}) && $resultHashtable->containsKey($abeClientInformationData->{LICENSE_TYPE})) {
             return 1;
         } else {
@@ -96,7 +96,7 @@ sub getServers {
 sub isValid {
     my ($self) = @_;
         my $stringValidationUtil = 'org::allbinary::logic::string::StringValidationUtil'->getInstance();
-        if (!$stringValidationUtil->isEmpty($self->getKey(java::lang::Object::jstatic('org::allbinary::logic::system::security::licensing::AbeClientLicense', 'AbeClientInformationData')->getInstance()->{KEY}))) {
+        if (!$stringValidationUtil->isEmpty($self->getKey('org::allbinary::logic::system::security::licensing::AbeClientInformationData'->getInstance()->{KEY}))) {
             return 1;
         }
         return 0;
@@ -154,6 +154,7 @@ use org::allbinary::util::ABHashtable ();
 use org::allbinary::util::BasicArrayList ();
 use org::allbinary::util::BasicArrayListD ();
 use org::allbinary::logic::system::security::licensing::AbeLicenseInterface ();
+use org::allbinary::logic::system::security::licensing::AbeClientInformationData ();
 use org::allbinary::logic::system::security::licensing::LicenseTypeFactory ();
 
 1;

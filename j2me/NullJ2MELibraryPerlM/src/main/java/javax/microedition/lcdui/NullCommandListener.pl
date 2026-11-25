@@ -22,6 +22,7 @@ sub commandAction {
 
 use java::lang::Object ();
 use java::lang::LazyStatic ();
+use javax::microedition::lcdui::CommandListener ();
 
 1;
 

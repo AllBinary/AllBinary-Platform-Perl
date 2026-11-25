@@ -37,6 +37,7 @@ sub new {
 
 use java::lang::Object ();
 use java::lang::LazyStatic ();
+use org::allbinary::game::configuration::persistance::KeyValuePersistance ();
 use org::allbinary::game::configuration::persistance::GamePersistanceStrings ();
 
 1;

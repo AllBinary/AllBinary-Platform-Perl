@@ -73,7 +73,9 @@ use org::allbinary::logic::visual::transform::info::TransformInfoInterface ();
 use org::allbinary::string::CommonStrings ();
 use org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory ();
 use org::allbinary::logic::communication::log::config::type::LogConfigTypes ();
+use org::allbinary::logic::visual::transform::info::objectConfig::generator::TransformInfoObjectConfigGeneratorFactoryInterface ();
 use org::allbinary::logic::visual::transform::info::objectConfig::generator::StoreFileGenerator ();
+use org::allbinary::logic::visual::transform::info::objectConfig::generator::BasicGenerator ();
 
 1;
 

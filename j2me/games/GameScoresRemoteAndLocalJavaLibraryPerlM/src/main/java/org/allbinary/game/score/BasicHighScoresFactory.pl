@@ -62,7 +62,7 @@ sub fetchHighScoresPreload {
                 my $logUtil = 'org::allbinary::logic::communication::log::LogUtil'->getInstance();
                 try {
                     $logUtil->putF($self->{commonStrings}->{START}, $self, $self->{FETCH});
-                    $self->{highScoresArray}->[0] = java::lang::Object::jstatic('org::allbinary::game::score::BasicHighScoresFactory', 'RecordStoreHighScores')->getInstance($self->{abeClientInformation}, $gameInfo, $self->{TOP}, $self->{PERSONAL_HIGH_SCORES}, $self->{SCORES}, 'org::allbinary::game::score::ScoreComparator'->new(1));
+                    $self->{highScoresArray}->[0] = 'org::allbinary::game::score::RecordStoreHighScores'->getInstance($self->{abeClientInformation}, $gameInfo, $self->{TOP}, $self->{PERSONAL_HIGH_SCORES}, $self->{SCORES}, 'org::allbinary::game::score::ScoreComparator'->new(1));
                     my $gameType = $gameInfo->getGameType();
                     my $gameTypeFactory = 'org::allbinary::game::GameTypeFactory'->getInstance();
                     my $gameInfo2 = $gameInfo;
@@ -73,7 +73,7 @@ sub fetchHighScoresPreload {
                     }
                     $self->{highScoresArray}->[1] = 'org::allbinary::game::score::remote::RemoteHighScores'->getInstancePreload($self->{abeClientInformation}, $self->{softwareInformation}, $gameInfo2, $self->{WORLD_TOP_SCORES}, $self->{SCORES}, 'org::allbinary::logic::java::bool::BooleanFactory'->getInstance()->{FALSE}, $preload);
                     $logUtil->putF($self->{commonStrings}->{END}, $self, $self->{FETCH});
-                    java::lang::Object::jstatic('org::allbinary::game::score::BasicHighScoresFactory', 'LastFetchHighScoresFactory')->getInstance()->{highScoresArray} = $self->{highScoresArray};
+                    'org::allbinary::game::score::LastFetchHighScoresFactory'->getInstance()->{highScoresArray} = $self->{highScoresArray};
                     $highScoresResultsListener->setHighScoresArray($self->{highScoresArray});
                 } catch ($e) {
                     $logUtil->put($self->{commonStrings}->{EXCEPTION}, $self, $self->{FETCH}, $e);
@@ -111,6 +111,11 @@ use org::allbinary::logic::java::bool::BooleanFactory ();
 use org::allbinary::logic::system::SoftwareInformation ();
 use org::allbinary::logic::system::security::licensing::AbeClientInformationInterface ();
 use org::allbinary::thread::SecondaryThreadPool ();
+use org::allbinary::game::score::HighScoresBase ();
+use org::allbinary::game::score::RecordStoreHighScores ();
+use org::allbinary::game::score::ScoreComparator ();
+use org::allbinary::game::score::LastFetchHighScoresFactory ();
+use org::allbinary::game::score::HighScoresHelper2 ();
 
 1;
 

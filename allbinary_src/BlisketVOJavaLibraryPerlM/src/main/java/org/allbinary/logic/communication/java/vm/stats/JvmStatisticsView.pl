@@ -33,7 +33,7 @@ sub new {
 sub toXmlNode {
     my ($self, $document) = @_;
         my $hashMap = $self->toHashMap();
-        my $node = 'org::allbinary::data::tree::dom::ModDomHelper'->createNameValueNodes($document, java::lang::Object::jstatic('org::allbinary::logic::communication::java::vm::stats::JvmStatisticsView', 'JvmStatisticsData')->{NAME}, $hashMap);
+        my $node = 'org::allbinary::data::tree::dom::ModDomHelper'->createNameValueNodes($document, $org::allbinary::logic::communication::java::vm::stats::JvmStatisticsData::NAME, $hashMap);
         return $node;
 }
 
@@ -44,6 +44,7 @@ use org::allbinary::data::tree::dom::ModDomHelper ();
 use org::w3c::dom::Document ();
 use org::w3c::dom::Node ();
 use org::allbinary::logic::communication::java::vm::stats::JvmStatisticsMapping ();
+use org::allbinary::logic::communication::java::vm::stats::JvmStatisticsData ();
 
 1;
 

@@ -49,6 +49,7 @@ sub translate2 {
 
 use java::lang::Object ();
 use javax::microedition::khronos::opengles::GL10 ();
+use org::allbinary::image::opengles::OpenGLESImageTranslate ();
 
 1;
 

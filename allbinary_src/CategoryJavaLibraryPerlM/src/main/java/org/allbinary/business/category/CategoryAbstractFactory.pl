@@ -174,6 +174,8 @@ use org::allbinary::string::CommonStrings ();
 use org::w3c::dom::Node ();
 use org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory ();
 use org::allbinary::logic::communication::log::config::type::LogConfigTypes ();
+use org::allbinary::business::category::CategoryFactoryInterface ();
+use org::allbinary::business::category::Category ();
 
 1;
 

@@ -32,7 +32,7 @@ sub new {
 # throws Exception
 sub getInstance_j1_1 {
     my ($class, $document) = @_;
-        my $configurationNode = 'org::allbinary::data::tree::dom::DomSearchHelper'->getNode(java::lang::Object::jstatic('org::allbinary::business::user::modules::configuration::UserConfigurationInterfaceFactory', 'UserConfigurationData')->{NAME}, $document->getChildNodes());
+        my $configurationNode = 'org::allbinary::data::tree::dom::DomSearchHelper'->getNode($org::allbinary::business::user::modules::configuration::UserConfigurationData::NAME, $document->getChildNodes());
         return 'org::allbinary::business::user::modules::configuration::UserConfigurationView'->new($configurationNode)->getUserConfigurationInterface();
 }
 
@@ -40,8 +40,8 @@ sub getInstance_j1_1 {
 # throws Exception
 sub getInstance_j1_2 {
     my ($class, $userRole) = @_;
-        my $abPath = 'org::allbinary::logic::io::path::AbPath'->new('org::allbinary::globals::URLGLOBALS'->getMainPath() + 'org::allbinary::globals::FREEBLISKET_PATH_GLOBALS'->getInstance()->{USERCONFIGURATIONPATH}, $org::allbinary::business::user::modules::configuration::UserConfigurationInterfaceFactory::configurationName . $userRole->toString() . 'org::allbinary::logic::io::path::AbPathData'->getInstance()->{EXTENSION_SEP} . java::lang::Object::jstatic('org::allbinary::business::user::modules::configuration::UserConfigurationInterfaceFactory', 'UserConfigurationData')->{UNCRYPTED_EXTENSION});
-        my $documentString = 'org::allbinary::logic::control::crypt::file::CryptFileReader'->new(java::lang::Object::jstatic('org::allbinary::business::user::modules::configuration::UserConfigurationInterfaceFactory', 'UserConfigurationData')->{UNCRYPTED_EXTENSION}, java::lang::Object::jstatic('org::allbinary::business::user::modules::configuration::UserConfigurationInterfaceFactory', 'UserConfigurationData')->{ENCRYPTED_EXTENSION})->get($abPath);
+        my $abPath = 'org::allbinary::logic::io::path::AbPath'->new('org::allbinary::globals::URLGLOBALS'->getMainPath() + 'org::allbinary::globals::FREEBLISKET_PATH_GLOBALS'->getInstance()->{USERCONFIGURATIONPATH}, $org::allbinary::business::user::modules::configuration::UserConfigurationInterfaceFactory::configurationName . $userRole->toString() . 'org::allbinary::logic::io::path::AbPathData'->getInstance()->{EXTENSION_SEP} . $org::allbinary::business::user::modules::configuration::UserConfigurationData::UNCRYPTED_EXTENSION);
+        my $documentString = 'org::allbinary::logic::control::crypt::file::CryptFileReader'->new($org::allbinary::business::user::modules::configuration::UserConfigurationData::UNCRYPTED_EXTENSION, $org::allbinary::business::user::modules::configuration::UserConfigurationData::ENCRYPTED_EXTENSION)->get($abPath);
         my $document = 'org::allbinary::data::tree::dom::document::DomDocumentHelper'->create($documentString);
         return 'org::allbinary::business::user::modules::configuration::UserConfigurationInterfaceFactory'->getInstance($document);
 }
@@ -77,6 +77,7 @@ use org::allbinary::logic::io::path::AbPath ();
 use org::allbinary::logic::io::path::AbPathData ();
 use org::w3c::dom::Document ();
 use org::w3c::dom::Node ();
+use org::allbinary::business::user::modules::configuration::UserConfigurationData ();
 use org::allbinary::business::user::modules::configuration::UserConfigurationView ();
 use org::allbinary::business::user::modules::configuration::UserConfiguration ();
 

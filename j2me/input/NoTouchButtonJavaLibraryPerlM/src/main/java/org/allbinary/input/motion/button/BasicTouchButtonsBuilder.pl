@@ -59,6 +59,7 @@ use org::allbinary::string::CommonStrings ();
 use org::allbinary::util::BasicArrayList ();
 use org::allbinary::util::BasicArrayListD ();
 use org::allbinary::util::BasicArrayListUtil ();
+use org::allbinary::input::motion::button::BaseTouchInput ();
 
 1;
 

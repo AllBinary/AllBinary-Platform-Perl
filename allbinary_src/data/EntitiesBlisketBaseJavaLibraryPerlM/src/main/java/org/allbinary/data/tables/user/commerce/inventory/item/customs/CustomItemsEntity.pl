@@ -107,6 +107,7 @@ use org::allbinary::logic::communication::sql::AbSqlBean ();
 use org::allbinary::logic::string::StringMaker ();
 use org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory ();
 use org::allbinary::logic::communication::log::config::type::LogConfigTypes ();
+use org::allbinary::data::tables::user::commerce::inventory::item::customs::CustomItemsEntityInterface ();
 
 1;
 

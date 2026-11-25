@@ -11,7 +11,7 @@ use parent -norequire,'javax::microedition::lcdui::Graphics','org::allbinary::im
 sub _init_fields {
     my ($self) = @_;
     $self->{commonStrings} = 'org::allbinary::string::CommonStrings'->getInstance();
-    $self->{gl} = java::lang::Object::jstatic('org::allbinary::device::OpenGLESGraphics', 'NullGL10')->{NULL_GL10};
+    $self->{gl} = $org::allbinary::device::NullGL10::NULL_GL10;
 }
 
 
@@ -75,6 +75,7 @@ use org::allbinary::graphics::font::FontDebugBase ();
 use org::allbinary::image::opengles::OpenGLSurfaceChangedInterface ();
 use org::allbinary::string::CommonStrings ();
 use org::allbinary::device::GraphicsInterface ();
+use org::allbinary::device::NullGL10 ();
 
 1;
 

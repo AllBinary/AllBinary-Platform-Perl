@@ -39,8 +39,8 @@ sub _init_fields {
     $self->{gameTickDisplayInfoSingleton} = 'org::allbinary::graphics::displayable::GameTickDisplayInfoSingleton'->getInstance();
     $self->{gameRunnable} = 'org::allbinary::game::displayable::canvas::GameCanvasRunnable'->new($self);
     $self->{gamePauseRunnable} = 'org::allbinary::game::displayable::canvas::GameCanvasPauseRunnable'->new($self);
-    $self->{formUtil} = java::lang::Object::jstatic('org::allbinary::game::displayable::canvas::AllBinaryGameCanvas', 'FormUtil')->getInstance();
-    $self->{myFormUtil} = java::lang::Object::jstatic('org::allbinary::game::displayable::canvas::AllBinaryGameCanvas', 'MyFormUtil')->getInstance();
+    $self->{formUtil} = 'org::allbinary::game::displayable::canvas::FormUtil'->getInstance();
+    $self->{myFormUtil} = 'org::allbinary::game::displayable::canvas::MyFormUtil'->getInstance();
     $self->{updateMyFontProcessor} = 'org::allbinary::graphics::font::UpdateMyFontProcessor'->new($self);
     $self->{myFontProcessor} = $self->{updateMyFontProcessor};
     $self->{gameSpecificPaintable} = 'org::allbinary::graphics::paint::NullPaintable'->getInstance();
@@ -79,9 +79,9 @@ sub _init_fields {
     $self->{processGameProcessor} = 'org::allbinary::canvas::Processor'->getInstance();
     $self->{highScoresFactoryInterface} = undef;
     $self->{startLevel} = 0;
-    $self->{mainMenuInputProcessor} = java::lang::Object::jstatic('org::allbinary::game::displayable::canvas::AllBinaryGameCanvas', 'NoMenuInputProcessor')->getInstance();
-    $self->{popupMenuInputProcessor} = java::lang::Object::jstatic('org::allbinary::game::displayable::canvas::AllBinaryGameCanvas', 'NoMenuInputProcessor')->getInstance();
-    $self->{menuInputProcessor} = java::lang::Object::jstatic('org::allbinary::game::displayable::canvas::AllBinaryGameCanvas', 'NoMenuInputProcessor')->getInstance();
+    $self->{mainMenuInputProcessor} = 'org::allbinary::game::displayable::canvas::NoMenuInputProcessor'->getInstance();
+    $self->{popupMenuInputProcessor} = 'org::allbinary::game::displayable::canvas::NoMenuInputProcessor'->getInstance();
+    $self->{menuInputProcessor} = 'org::allbinary::game::displayable::canvas::NoMenuInputProcessor'->getInstance();
     $self->{menuForm} = 'org::allbinary::graphics::form::ScrollSelectionForm'->getNullScrollSelectionForm();
     $self->{formPaintable} = 'org::allbinary::graphics::paint::NullPaintable'->getInstance();
     $self->{openMenuPaintable} = 'org::allbinary::graphics::paint::NullPaintable'->getInstance();
@@ -142,7 +142,7 @@ sub updateMeasurement {
             my $popupMenuRectangle = $self->{myFormUtil}->getPopupMenuRectangle();
             my $basicPopupMenuPaintable = ($self->getOpenMenuPaintable());
             $basicPopupMenuPaintable->init($popupMenuRectangle);
-            if ($self->getPopupMenuInputProcessor() != java::lang::Object::jstatic('org::allbinary::game::displayable::canvas::AllBinaryGameCanvas', 'NoMenuInputProcessor')->getInstance()) {
+            if ($self->getPopupMenuInputProcessor() != 'org::allbinary::game::displayable::canvas::NoMenuInputProcessor'->getInstance()) {
                 my $popupMenuInputProcessor = ($self->getPopupMenuInputProcessor());
                 $popupMenuInputProcessor->init($popupMenuRectangle);
             }
@@ -218,7 +218,7 @@ sub processSleep {
 # throws Exception
 sub initPopupMenu {
     my ($self) = @_;
-        if ($self->{popupMenuInputProcessor} == java::lang::Object::jstatic('org::allbinary::game::displayable::canvas::AllBinaryGameCanvas', 'NoMenuInputProcessor')->getInstance()) {
+        if ($self->{popupMenuInputProcessor} == 'org::allbinary::game::displayable::canvas::NoMenuInputProcessor'->getInstance()) {
             my $features = 'org::allbinary::game::configuration::feature::Features'->getInstance();
             my $popupMenuRectangle = $self->{myFormUtil}->getPopupMenuRectangle();
             if ($features->isFeature($self->{touchFeatureFactory}->{TOUCH_ENABLED})) {
@@ -316,7 +316,7 @@ sub unPause {
 
 sub isPausable {
     my ($self) = @_;
-        if ('org::allbinary::graphics::opengles::CurrentDisplayableFactory'->getInstance()->getUsedRunnable() == java::lang::Object::jstatic('org::allbinary::game::displayable::canvas::AllBinaryGameCanvas', 'NullWaitGameRunnable')->getInstance()) {
+        if ('org::allbinary::graphics::opengles::CurrentDisplayableFactory'->getInstance()->getUsedRunnable() == 'org::allbinary::game::displayable::canvas::NullWaitGameRunnable'->getInstance()) {
             return 1;
         } else {
             return 0;
@@ -1734,15 +1734,23 @@ use org::allbinary::util::BasicArrayListD ();
 use org::allbinary::util::BasicArrayListUtil ();
 use org::allbinary::game::displayable::canvas::AllBinaryGameCanvasInterface ();
 use org::allbinary::game::displayable::canvas::GameCanvasRunnableInterface ();
+use org::allbinary::game::displayable::canvas::MenuListener ();
+use org::allbinary::game::displayable::canvas::PopupMenuInterface ();
 use org::allbinary::game::displayable::canvas::GameCanvasRunnable ();
 use org::allbinary::game::displayable::canvas::GameCanvasPauseRunnable ();
+use org::allbinary::game::displayable::canvas::FormUtil ();
+use org::allbinary::game::displayable::canvas::MyFormUtil ();
+use org::allbinary::game::displayable::canvas::EndGameInfo ();
+use org::allbinary::game::displayable::canvas::NoMenuInputProcessor ();
 use org::allbinary::game::displayable::canvas::BaseGameBehavior ();
 use org::allbinary::game::displayable::canvas::DemoGameBehavior ();
 use org::allbinary::game::displayable::canvas::BaseMenuBehavior ();
 use org::allbinary::game::displayable::canvas::InGameMenuBehavior ();
+use org::allbinary::game::displayable::canvas::BasicPopupMenuPaintable ();
 use org::allbinary::game::displayable::canvas::PopupMenuInputProcessor ();
 use org::allbinary::game::displayable::canvas::GameLimitedCommandTextItemArrayFactory ();
 use org::allbinary::game::displayable::canvas::PopupCommandFormInputProcessor ();
+use org::allbinary::game::displayable::canvas::NullWaitGameRunnable ();
 use org::allbinary::game::displayable::canvas::GameProcessor ();
 use org::allbinary::game::displayable::canvas::CheatGameInputProcessor ();
 use org::allbinary::game::displayable::canvas::EndGameProcessor ();

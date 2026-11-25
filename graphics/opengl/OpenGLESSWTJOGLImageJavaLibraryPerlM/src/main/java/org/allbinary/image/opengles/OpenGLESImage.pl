@@ -43,7 +43,7 @@ sub new {
         # super(...) made $self above
         $self->{openGLBitmap} = $bitmapFactory->createBitmap($image);
         $self->{textureFactory} = $textureFactory;
-        java::lang::Object::jstatic('org::allbinary::image::opengles::OpenGLESImage', 'OpenGLImageCacheFactory')->getInstance()->init($self);
+        'org::allbinary::image::opengles::OpenGLImageCacheFactory'->getInstance()->init($self);
         $self->{platformImage} = 'javax::microedition::lcdui::OpenGLESPostLoadPlatformImage'->getInstance();
     return $self;
 }
@@ -129,8 +129,11 @@ use org::allbinary::platform::opengles::PlatformTextureBaseFactory ();
 use org::allbinary::string::CommonStrings ();
 use org::allbinary::util::BasicArrayList ();
 use org::allbinary::util::BasicArrayListD ();
+use org::allbinary::image::opengles::OpenGLSurfaceChangedInterface ();
 use org::allbinary::image::opengles::OpenGLESImageProcessor ();
 use org::allbinary::image::opengles::OpenGLESImageTranslate ();
+use org::allbinary::image::opengles::OpenGLESImageProperties ();
+use org::allbinary::image::opengles::OpenGLImageCacheFactory ();
 
 1;
 

@@ -24,7 +24,7 @@ tie our $instance, 'java::lang::LazyStatic', sub { 'org::allbinary::logic::syste
 sub _init_fields {
     my ($self) = @_;
     $self->{logUtil} = 'org::allbinary::logic::communication::log::LogUtil'->getInstance();
-    $self->{genericOperatingSystem} = java::lang::Object::jstatic('org::allbinary::logic::system::os::OperatingSystemFactory', 'NoOperatingSystem')->{NO_OPERATING_SYSTEM};
+    $self->{genericOperatingSystem} = $org::allbinary::logic::system::os::NoOperatingSystem::NO_OPERATING_SYSTEM;
     $self->{hasDetected} = 0;
 }
 
@@ -47,15 +47,15 @@ sub getOperatingSystemInstance {
     my ($self) = @_;
         my $commonStrings = 'org::allbinary::string::CommonStrings'->getInstance();
         try {
-            my $systemProperties = java::lang::Object::jstatic('org::allbinary::logic::system::os::OperatingSystemFactory', 'SystemProperties')->getInstance();
+            my $systemProperties = 'org::allbinary::logic::system::os::SystemProperties'->getInstance();
             my $osName = $systemProperties->getName();
             if (!$self->{hasDetected}) {
                 $self->{hasDetected} = 1;
-                if (index($osName, java::lang::Object::jstatic('org::allbinary::logic::system::os::OperatingSystemFactory', 'OperatingSystems')->getInstance()->{ANDROID}) >= 0) {
+                if (index($osName, 'org::allbinary::logic::system::os::OperatingSystems'->getInstance()->{ANDROID}) >= 0) {
                     $self->{logUtil}->putF("Found a Android OS", $self, $commonStrings->{GET_INSTANCE});
                     $self->{genericOperatingSystem} = 'org::allbinary::logic::system::os::android::AndroidOperatingSystemFactory'->getInstance()->getOperatingSystemInstance();
                     $self->{logUtil}->putF('org::allbinary::logic::string::StringMaker'->new()->append("Operating System Info: ")->append($self->{genericOperatingSystem}->toString())->toString(), $self, $commonStrings->{GET_INSTANCE});
-                } elsif (index($osName, java::lang::Object::jstatic('org::allbinary::logic::system::os::OperatingSystemFactory', 'OperatingSystems')->getInstance()->{HARMONY}) >= 0) {
+                } elsif (index($osName, 'org::allbinary::logic::system::os::OperatingSystems'->getInstance()->{HARMONY}) >= 0) {
                     $self->{logUtil}->putF("Found a Harmony OS", $self, $commonStrings->{GET_INSTANCE});
                     $self->{genericOperatingSystem} = 'org::allbinary::logic::system::os::android::AndroidOperatingSystemFactory'->getInstance()->getOperatingSystemInstance();
                     $self->{logUtil}->putF('org::allbinary::logic::string::StringMaker'->new()->append("Operating System Info: ")->append($self->{genericOperatingSystem}->toString())->toString(), $self, $commonStrings->{GET_INSTANCE});
@@ -64,7 +64,7 @@ sub getOperatingSystemInstance {
                 }
             }
         } catch ($e) {
-            $self->{genericOperatingSystem} = java::lang::Object::jstatic('org::allbinary::logic::system::os::OperatingSystemFactory', 'NoOperatingSystem')->{NO_OPERATING_SYSTEM};
+            $self->{genericOperatingSystem} = $org::allbinary::logic::system::os::NoOperatingSystem::NO_OPERATING_SYSTEM;
             $self->{logUtil}->put($commonStrings->{EXCEPTION}, $self, $commonStrings->{GET_INSTANCE}, $e);
         }
         return $self->{genericOperatingSystem};
@@ -76,6 +76,9 @@ use org::allbinary::logic::system::os::android::AndroidOperatingSystemFactory ()
 use org::allbinary::logic::communication::log::LogUtil ();
 use org::allbinary::logic::string::StringMaker ();
 use org::allbinary::string::CommonStrings ();
+use org::allbinary::logic::system::os::NoOperatingSystem ();
+use org::allbinary::logic::system::os::SystemProperties ();
+use org::allbinary::logic::system::os::OperatingSystems ();
 
 1;
 

@@ -25,7 +25,7 @@ our $LOG_SUCCESS = "org.allbinary: ";
 
 sub _init_fields {
     my ($self) = @_;
-    $self->{logFormatUtil} = java::lang::Object::jstatic('org::allbinary::logic::communication::log::LogUtil', 'LogFormatUtil')->getInstance();
+    $self->{logFormatUtil} = 'org::allbinary::logic::communication::log::LogFormatUtil'->getInstance();
 }
 
 
@@ -91,6 +91,7 @@ use org::allbinary::logic::TsUtil ();
 use org::allbinary::logic::string::StringMaker ();
 use org::allbinary::string::CommonSeps ();
 use org::allbinary::string::CommonStrings ();
+use org::allbinary::logic::communication::log::LogFormatUtil ();
 use java::lang::System ();
 
 1;

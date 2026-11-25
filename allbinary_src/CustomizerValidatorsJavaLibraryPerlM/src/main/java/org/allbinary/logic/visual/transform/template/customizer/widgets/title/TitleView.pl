@@ -56,7 +56,7 @@ sub _new1_1 {
     my ($class, $node) = @_;
     my $self = bless({}, $class);
     _init_fields($self);
-        my $titleTextNode = 'org::allbinary::data::tree::dom::DomSearchHelper'->getNode(java::lang::Object::jstatic('org::allbinary::logic::visual::transform::template::customizer::widgets::title::TitleView', 'TitleData')->getInstance()->{TEXT}, $node->getChildNodes());
+        my $titleTextNode = 'org::allbinary::data::tree::dom::DomSearchHelper'->getNode('org::allbinary::logic::visual::transform::template::customizer::widgets::title::TitleData'->getInstance()->{TEXT}, $node->getChildNodes());
         my $valueNode = 'org::allbinary::data::tree::dom::DomSearchHelper'->getNode($org::allbinary::data::tree::dom::DomData::VALUE, $titleTextNode->getChildNodes());
         $self->{title} = 'org::allbinary::data::tree::dom::DomNodeHelper'->getTextNodeValue($valueNode);
         if ('org::allbinary::logic::string::StringValidationUtil'->getInstance()->isEmpty($self->{title})) {
@@ -89,7 +89,7 @@ sub getTitle {
 
 sub getFormData {
     my ($self, $hashMap) = @_;
-        $self->{title} = $hashMap->get(java::lang::Object::jstatic('org::allbinary::logic::visual::transform::template::customizer::widgets::title::TitleView', 'TitleData')->getInstance()->{TEXT});
+        $self->{title} = $hashMap->get('org::allbinary::logic::visual::transform::template::customizer::widgets::title::TitleData'->getInstance()->{TEXT});
         if ('org::allbinary::logic::string::StringValidationUtil'->getInstance()->isEmpty($self->{title})) {
             $self->{title} = $org::allbinary::logic::visual::transform::template::customizer::widgets::title::TitleView::NAME;
         }
@@ -99,7 +99,7 @@ sub getFormData {
 sub toHashMap {
     my ($self) = @_;
         my $hashMap = 'org::allbinary::logic::StdUtil'->getInstance()->createHashMap();
-        $hashMap->put(java::lang::Object::jstatic('org::allbinary::logic::visual::transform::template::customizer::widgets::title::TitleView', 'TitleData')->getInstance()->{TEXT}, $self->getTitle());
+        $hashMap->put('org::allbinary::logic::visual::transform::template::customizer::widgets::title::TitleData'->getInstance()->{TEXT}, $self->getTitle());
         return $hashMap;
 }
 
@@ -111,7 +111,7 @@ sub toXmlNode {
         if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{VIEW})) {
             $self->{logUtil}->putF("TitleView HashMap: " . $hashMap->toString(), $self, "toXmlNode()");
         }
-        return 'org::allbinary::data::tree::dom::ModDomHelper'->createNameValueNodes($document, java::lang::Object::jstatic('org::allbinary::logic::visual::transform::template::customizer::widgets::title::TitleView', 'TitleData')->getInstance()->{NAME}, $hashMap);
+        return 'org::allbinary::data::tree::dom::ModDomHelper'->createNameValueNodes($document, 'org::allbinary::logic::visual::transform::template::customizer::widgets::title::TitleData'->getInstance()->{NAME}, $hashMap);
 }
 
 use java::lang::Object ();
@@ -129,6 +129,7 @@ use org::w3c::dom::Document ();
 use org::w3c::dom::Node ();
 use org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory ();
 use org::allbinary::logic::communication::log::config::type::LogConfigTypes ();
+use org::allbinary::logic::visual::transform::template::customizer::widgets::title::TitleData ();
 
 1;
 

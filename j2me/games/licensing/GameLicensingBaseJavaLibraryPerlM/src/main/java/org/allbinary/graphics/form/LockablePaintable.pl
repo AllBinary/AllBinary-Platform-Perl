@@ -61,6 +61,7 @@ use org::allbinary::animation::Animation ();
 use org::allbinary::animation::FeaturedAnimationInterfaceFactoryInterfaceFactory ();
 use org::allbinary::logic::system::security::licensing::LockedResources ();
 use org::allbinary::logic::system::security::licensing::LockedUtil ();
+use org::allbinary::graphics::form::ItemPaintable ();
 
 1;
 

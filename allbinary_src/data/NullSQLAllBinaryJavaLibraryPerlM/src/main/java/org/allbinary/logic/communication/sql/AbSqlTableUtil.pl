@@ -27,7 +27,7 @@ sub _init_fields {
     $self->{stringUtil} = 'org::allbinary::logic::string::StringUtil'->getInstance();
     $self->{commonStrings} = 'org::allbinary::string::CommonStrings'->getInstance();
     $self->{commonSeps} = 'org::allbinary::string::CommonSeps'->getInstance();
-    $self->{sqlStrings} = java::lang::Object::jstatic('org::allbinary::logic::communication::sql::AbSqlTableUtil', 'SqlStrings')->getInstance();
+    $self->{sqlStrings} = 'org::allbinary::logic::communication::sql::SqlStrings'->getInstance();
 }
 
 sub new {
@@ -68,6 +68,7 @@ use org::allbinary::logic::string::StringMaker ();
 use org::allbinary::logic::string::StringUtil ();
 use org::allbinary::string::CommonSeps ();
 use org::allbinary::string::CommonStrings ();
+use org::allbinary::logic::communication::sql::SqlStrings ();
 
 1;
 

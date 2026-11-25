@@ -42,7 +42,7 @@ sub transform {
     my ($self) = @_;
         my $inputStream = 'org::allbinary::logic::io::AbFileLocalInputStream'->new('org::allbinary::logic::io::file::AbFile'->createAbFileFromAbPath($self->{xsltFilePath}));
         my $document = 'org::allbinary::data::tree::dom::document::DomDocumentHelper'->create('org::allbinary::logic::io::AbFileLocalInputStream'->new('org::allbinary::logic::io::file::AbFile'->createAbFileFromAbPath($self->{dataFilePath})));
-        my $result = java::lang::Object::jstatic('org::allbinary::data::tree::dom::SimpleTransform', 'XslHelper')->getInstance()->translate('javax::xml::transform::stream::StreamSource'->new($inputStream), 'javax::xml::transform::stream::StreamSource'->new('java::io::StringBufferInputStream'->new('org::allbinary::data::tree::dom::document::XmlDocumentHelper'->toString($document))));
+        my $result = 'org::allbinary::data::tree::dom::XslHelper'->getInstance()->translate('javax::xml::transform::stream::StreamSource'->new($inputStream), 'javax::xml::transform::stream::StreamSource'->new('java::io::StringBufferInputStream'->new('org::allbinary::data::tree::dom::document::XmlDocumentHelper'->toString($document))));
         return $result;
 }
 
@@ -55,6 +55,7 @@ use org::allbinary::logic::io::AbFileLocalInputStream ();
 use org::allbinary::logic::io::file::AbFile ();
 use org::allbinary::logic::io::path::AbPath ();
 use org::w3c::dom::Document ();
+use org::allbinary::data::tree::dom::XslHelper ();
 
 1;
 

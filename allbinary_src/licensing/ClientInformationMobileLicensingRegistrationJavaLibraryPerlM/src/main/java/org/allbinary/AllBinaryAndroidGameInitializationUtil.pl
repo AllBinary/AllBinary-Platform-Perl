@@ -30,7 +30,7 @@ sub new {
 sub init {
     my ($class) = @_;
         my $resourceUtil = 'org::allbinary::data::resource::ResourceUtil'->getInstance();
-        my $androidResources = java::lang::Object::jstatic('org::allbinary::AllBinaryAndroidGameInitializationUtil', 'AndroidResources')->getInstance();
+        my $androidResources = 'org::allbinary::AndroidResources'->getInstance();
         my $licenseInitInfoUtil = 'org::allbinary::business::init::LicenseInitInfoUtil'->getInstance();
         $resourceUtil->addResource($licenseInitInfoUtil->{INITFILENAME}, ("" . ($androidResources->{raw}->{licenseinitdata})));
         $resourceUtil->addResource('org::allbinary::logic::system::security::licensing::PartnerIdentifierFileUtil'->getInstance()->{FILE_NAME}, ("" . ($androidResources->{raw}->{partner})));
@@ -41,6 +41,7 @@ use java::lang::Object ();
 use org::allbinary::business::init::LicenseInitInfoUtil ();
 use org::allbinary::data::resource::ResourceUtil ();
 use org::allbinary::logic::system::security::licensing::PartnerIdentifierFileUtil ();
+use org::allbinary::AndroidResources ();
 
 1;
 

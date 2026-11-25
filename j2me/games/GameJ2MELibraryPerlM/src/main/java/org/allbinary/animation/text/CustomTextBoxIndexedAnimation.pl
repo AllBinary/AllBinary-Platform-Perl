@@ -25,7 +25,7 @@ sub _init_fields {
     $self->{customTextBox} = undef;
     $self->{lastText} = 'org::allbinary::logic::string::StringUtil'->getInstance()->{INIT_STRING};
     $self->{hasChanged} = 1;
-    $self->{textChangeListener} = java::lang::Object::jstatic('org::allbinary::animation::text::CustomTextBoxIndexedAnimation', 'TextChangeListener')->getInstance();
+    $self->{textChangeListener} = 'org::allbinary::animation::text::TextChangeListener'->getInstance();
 }
 
 
@@ -62,7 +62,7 @@ sub updateMeasurement {
     my ($self, $graphics) = @_;
         my $font = $graphics->getFont();
         $self->{textChangeListener}->onMeasure();
-        $self->{textChangeListener} = java::lang::Object::jstatic('org::allbinary::animation::text::CustomTextBoxIndexedAnimation', 'TextChangeListener')->getInstance();
+        $self->{textChangeListener} = 'org::allbinary::animation::text::TextChangeListener'->getInstance();
 }
 
 
@@ -120,6 +120,8 @@ use org::allbinary::graphics::color::BasicColor ();
 use org::allbinary::graphics::font::UpdateMyFontInterface ();
 use org::allbinary::graphics::form::item::CustomTextBox ();
 use org::allbinary::logic::string::StringUtil ();
+use org::allbinary::animation::text::TextInterface ();
+use org::allbinary::animation::text::TextChangeListener ();
 
 1;
 

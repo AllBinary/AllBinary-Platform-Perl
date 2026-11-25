@@ -150,6 +150,7 @@ use org::allbinary::logic::string::StringMaker ();
 use org::allbinary::logic::string::StringUtil ();
 use org::allbinary::string::CommonStrings ();
 use org::allbinary::system::Memory ();
+use org::allbinary::image::ImageCacheBase ();
 use java::lang::Thread ();
 
 1;

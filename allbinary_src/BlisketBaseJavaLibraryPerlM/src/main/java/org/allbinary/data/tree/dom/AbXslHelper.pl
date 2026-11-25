@@ -53,7 +53,7 @@ sub translate_j2_3 {
     my ($self, $xsltFilePath, $xmlFilePath) = @_;
         try {
             my $outputStream = 'java::io::ByteArrayOutputStream'->new();
-            return java::lang::Object::jstatic('org::allbinary::data::tree::dom::AbXslHelper', 'XslHelper')->getInstance()->translate('javax::xml::transform::stream::StreamSource'->new($xsltFilePath), 'javax::xml::transform::stream::StreamSource'->new($xmlFilePath), 'javax::xml::transform::stream::StreamResult'->new($outputStream))->toString();
+            return 'org::allbinary::data::tree::dom::XslHelper'->getInstance()->translate('javax::xml::transform::stream::StreamSource'->new($xsltFilePath), 'javax::xml::transform::stream::StreamSource'->new($xmlFilePath), 'javax::xml::transform::stream::StreamResult'->new($outputStream))->toString();
         } catch ($e) {
             die $e;
         }
@@ -79,6 +79,7 @@ use java::lang::LazyStatic ();
 # use javax::xml::transform::stream::StreamSource ();
 use org::allbinary::logic::io::file::AbFile ();
 use org::allbinary::logic::io::path::AbPath ();
+use org::allbinary::data::tree::dom::XslHelper ();
 
 1;
 

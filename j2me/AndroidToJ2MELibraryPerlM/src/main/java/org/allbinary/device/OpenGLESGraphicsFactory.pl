@@ -29,10 +29,11 @@ sub new {
 
 sub getOpenGLESGraphicsInstance {
     my ($self) = @_;
-        return java::lang::Object::jstatic('org::allbinary::device::OpenGLESGraphicsFactory', 'OpenGLESNullGraphicsFactory')->getInstance();
+        return 'org::allbinary::device::OpenGLESNullGraphicsFactory'->getInstance();
 }
 
 use java::lang::Object ();
+use org::allbinary::device::OpenGLESNullGraphicsFactory ();
 
 1;
 

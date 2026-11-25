@@ -50,7 +50,7 @@ sub init {
         try {
             my $sunJce = 'com::sun::crypto::provider::SunJCE'->new();
             'java::security::Security'->addProvider($sunJce);
-            my $keySpec = java::lang::Object::jstatic('org::allbinary::logic::system::security::crypt::jcehelper::AbBasicCrypt', 'KeySpecFactory')->getInstance()->getInstance($self->{algorithm}, $self->{key});
+            my $keySpec = 'org::allbinary::logic::system::security::crypt::jcehelper::KeySpecFactory'->getInstance()->getInstance($self->{algorithm}, $self->{key});
             my $keyFactory = 'javax::crypto::SecretKeyFactory'->getInstance($self->{algorithm});
             $self->{secretKey} = $keyFactory->generateSecret($keySpec);
             $self->{cipher} = 'javax::crypto::Cipher'->getInstance($self->{algorithm});
@@ -115,6 +115,7 @@ use org::allbinary::init::crypt::jcehelper::CryptInterface ();
 use org::allbinary::logic::communication::log::PreLogUtil ();
 use org::allbinary::string::CommonStrings ();
 use com::sun::crypto::provider::SunJCE ();
+use org::allbinary::logic::system::security::crypt::jcehelper::KeySpecFactory ();
 
 1;
 

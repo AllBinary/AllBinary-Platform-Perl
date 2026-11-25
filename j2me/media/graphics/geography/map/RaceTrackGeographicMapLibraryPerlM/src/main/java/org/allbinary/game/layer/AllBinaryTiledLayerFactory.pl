@@ -56,6 +56,7 @@ use org::allbinary::media::graphics::geography::map::racetrack::AllBinaryTiledLa
 use org::allbinary::media::graphics::geography::map::racetrack::RaceTrackData ();
 use org::allbinary::media::graphics::geography::map::racetrack::RaceTrackInfo ();
 use org::allbinary::media::graphics::geography::map::racetrack::TiledLayerFactory ();
+use org::allbinary::game::layer::AllBinaryJ2METiledLayer ();
 
 1;
 

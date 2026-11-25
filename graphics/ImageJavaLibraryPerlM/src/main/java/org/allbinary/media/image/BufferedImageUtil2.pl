@@ -11,7 +11,7 @@ tie our $instance, 'java::lang::LazyStatic', sub { 'org::allbinary::media::image
 
 sub _init_fields {
     my ($self) = @_;
-    $self->{imageUtil} = java::lang::Object::jstatic('org::allbinary::media::image::BufferedImageUtil2', 'ImageUtil')->getInstance();
+    $self->{imageUtil} = 'org::allbinary::media::image::ImageUtil'->getInstance();
 }
 
 sub new {
@@ -60,6 +60,7 @@ use java::lang::Object ();
 use java::lang::LazyStatic ();
 # use java::awt::Graphics2D ();
 # use java::awt::image::BufferedImage ();
+use org::allbinary::media::image::ImageUtil ();
 
 1;
 

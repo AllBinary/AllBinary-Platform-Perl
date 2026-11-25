@@ -31,7 +31,7 @@ sub new {
     my ($class, $document) = @_;
     my $self = bless({}, $class);
     _init_fields($self);
-        my $node = 'org::allbinary::data::tree::dom::DomSearchHelper'->getNode(java::lang::Object::jstatic('org::allbinary::business::advertisement::area::AdvertisementAreaConstraints', 'AdvertisementAreaData')->getInstance()->{NAME}, $document->getChildNodes());
+        my $node = 'org::allbinary::data::tree::dom::DomSearchHelper'->getNode('org::allbinary::business::advertisement::area::AdvertisementAreaData'->getInstance()->{NAME}, $document->getChildNodes());
         $self->{displayInBrowserContraintsInterface} = 'org::allbinary::logic::control::contraints::display::browser::DisplayInBrowserContraints'->new($node);
         $self->{twoDimensionConstraintsInterface} = 'org::allbinary::logic::control::contraints::size::TwoDimensionalConstraint'->new($node);
     return $self;
@@ -77,6 +77,7 @@ use org::allbinary::logic::control::contraints::size::TwoDimensionalConstraintIn
 use org::w3c::dom::Document ();
 use org::w3c::dom::Node ();
 use org::allbinary::business::advertisement::area::AdvertisementAreaConstraintsInterface ();
+use org::allbinary::business::advertisement::area::AdvertisementAreaData ();
 
 1;
 

@@ -32,7 +32,7 @@ sub new {
     my ($class) = @_;
     my $self = $class->SUPER::new('org::allbinary::logic::string::StringUtil'->getInstance()->{EMPTY_STRING});
         # super(...) made $self above
-        $self->setPlayerP(java::lang::Object::jstatic('org::allbinary::media::audio::NoSound', 'NoPlayer')->{NO_PLAYER});
+        $self->setPlayerP($org::allbinary::media::audio::NoPlayer::NO_PLAYER);
     return $self;
 }
 
@@ -40,6 +40,7 @@ use java::lang::Object ();
 use java::lang::LazyStatic ();
 use org::allbinary::logic::string::StringUtil ();
 use org::allbinary::media::audio::Sound ();
+use org::allbinary::media::audio::NoPlayer ();
 
 1;
 

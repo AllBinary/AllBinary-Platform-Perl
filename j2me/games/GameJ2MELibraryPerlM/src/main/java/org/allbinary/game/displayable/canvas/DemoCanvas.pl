@@ -31,7 +31,7 @@ sub _init_fields {
     $self->{gameInputStrings} = 'org::allbinary::game::input::GameInputStrings'->getInstance();
     $self->{gameStateFactory} = 'org::allbinary::game::state::GameStateFactory'->getInstance();
     $self->{threadFactoryUtil} = 'org::allbinary::thread::ThreadFactoryUtil'->getInstance();
-    $self->{formUtil} = java::lang::Object::jstatic('org::allbinary::game::displayable::canvas::DemoCanvas', 'FormUtil')->getInstance();
+    $self->{formUtil} = 'org::allbinary::game::displayable::canvas::FormUtil'->getInstance();
     $self->{fullscreenPaintable} = 'org::allbinary::graphics::displayable::screen::FullScreenPaintableFactory'->getInstance()->{paintable};
     $self->{basicGameDemoPaintable} = 'org::allbinary::graphics::paint::StatePaintableFactory'->getInstance();
     $self->{specialAnimationInterface} = 'org::allbinary::animation::special::SpecialAnimation'->getInstance();
@@ -47,7 +47,7 @@ sub _init_fields {
     $self->{basicColor} = $self->{basicColorFactory}->{RED};
     $self->{abeClientInformation} = undef;
     $self->{highScoresFactoryInterface} = undef;
-    $self->{menuInputProcessor} = java::lang::Object::jstatic('org::allbinary::game::displayable::canvas::DemoCanvas', 'NoMenuInputProcessor')->getInstance();
+    $self->{menuInputProcessor} = 'org::allbinary::game::displayable::canvas::NoMenuInputProcessor'->getInstance();
     $self->{menuForm} = 'org::allbinary::graphics::form::ScrollSelectionForm'->getNullScrollSelectionForm();
     $self->{gameInitializationInterfaceFactoryInterface} = undef;
     $self->{initialized} = 0;
@@ -56,9 +56,9 @@ sub _init_fields {
     $self->{paintableInterface} = 'org::allbinary::graphics::paint::NullPaintable'->getInstance();
     $self->{overlayPaintable} = undef;
     $self->{progressPaintable} = 'org::allbinary::graphics::canvas::transition::progress::ProgressCanvasFactory'->getLazyInstance();
-    $self->{tempWait} = java::lang::Object::jstatic('org::allbinary::game::displayable::canvas::DemoCanvas', 'NullWaitGameRunnable')->getInstance()->{WAIT};
+    $self->{tempWait} = 'org::allbinary::game::displayable::canvas::NullWaitGameRunnable'->getInstance()->{WAIT};
     $self->{inputToGameKeyMapping} = 'org::allbinary::game::input::PlatformInputMappingFactory'->getInstance()->getPersistentInputMappingInstance()->getInputMapping();
-    $self->{gameRunnable} = java::lang::Object::jstatic('org::allbinary::game::displayable::canvas::DemoCanvas', 'NullWaitGameRunnable')->getInstance();
+    $self->{gameRunnable} = 'org::allbinary::game::displayable::canvas::NullWaitGameRunnable'->getInstance();
     $self->{isSingleKeyRepeatableProcessing} = 'org::allbinary::game::configuration::feature::Features'->getInstance()->isFeature('org::allbinary::game::configuration::feature::InputFeatureFactory'->getInstance()->{SINGLE_KEY_REPEAT_PRESS});
     $self->{NONE} = 'org::allbinary::game::input::GameKeyFactory'->getInstance()->{NONE};
     $self->{gameKeyEventFactory} = 'org::allbinary::game::input::event::GameKeyEventFactory'->getInstance();
@@ -74,7 +74,7 @@ sub new {
     _init_fields($self);
         # super(...) made $self above
         $self->{abeClientInformation} = $abeClientInformation;
-        $self->setWait(java::lang::Object::jstatic('org::allbinary::game::displayable::canvas::DemoCanvas', 'NullWaitGameRunnable')->getInstance()->{WAIT});
+        $self->setWait('org::allbinary::game::displayable::canvas::NullWaitGameRunnable'->getInstance()->{WAIT});
         $self->{gameInitializationInterfaceFactoryInterface} = $gameInitializationInterfaceFactoryInterface;
         'org::allbinary::game::init::GameInitializationUtil'->getInstance()->initDemo($abeClientInformation, $self, $gameInitializationInterfaceFactoryInterface);
         'org::allbinary::graphics::ResizableListenerHandler'->getInstance()->fireEvent(0);
@@ -302,7 +302,7 @@ sub pause {
     my ($self) = @_;
         $self->close();
         $self->setPaused(1);
-        $self->{gameRunnable} = java::lang::Object::jstatic('org::allbinary::game::displayable::canvas::DemoCanvas', 'NullWaitGameRunnable')->getInstance();
+        $self->{gameRunnable} = 'org::allbinary::game::displayable::canvas::NullWaitGameRunnable'->getInstance();
         $self->{gameCanvas}->pause();
 }
 
@@ -318,7 +318,7 @@ sub unPause {
 
 sub isPausable {
     my ($self) = @_;
-        if ('org::allbinary::graphics::opengles::CurrentDisplayableFactory'->getInstance()->getUsedRunnable() == java::lang::Object::jstatic('org::allbinary::game::displayable::canvas::DemoCanvas', 'NullWaitGameRunnable')->getInstance()) {
+        if ('org::allbinary::graphics::opengles::CurrentDisplayableFactory'->getInstance()->getUsedRunnable() == 'org::allbinary::game::displayable::canvas::NullWaitGameRunnable'->getInstance()) {
             return 1;
         } else {
             return 0;
@@ -472,7 +472,7 @@ sub start {
         $self->{canvasThread} = $self->{threadFactoryUtil}->getInstanceGameCanvasRunnable($gameCanvas);
         $self->{gameCanvas}->setThread($self->{canvasThread});
         $self->{threadFactoryUtil}->start($self->{canvasThread});
-        if ($self->getWait() == java::lang::Object::jstatic('org::allbinary::game::displayable::canvas::DemoCanvas', 'NullWaitGameRunnable')->getInstance()->{WAIT}) {
+        if ($self->getWait() == 'org::allbinary::game::displayable::canvas::NullWaitGameRunnable'->getInstance()->{WAIT}) {
             $self->setWait($self->getTempWait());
         }
 }
@@ -551,7 +551,7 @@ sub showGamePaintable {
             'org::allbinary::logic::communication::log::PreLogUtil'->put("Showing Game", $self, $METHOD_NAME);
             $self->setPaintableInterface($self->{gameCanvas});
         } else {
-            $self->{gameRunnable} = java::lang::Object::jstatic('org::allbinary::game::displayable::canvas::DemoCanvas', 'NullWaitGameRunnable')->getInstance();
+            $self->{gameRunnable} = 'org::allbinary::game::displayable::canvas::NullWaitGameRunnable'->getInstance();
             'org::allbinary::logic::communication::log::PreLogUtil'->put("Not Showing Game", $self, $METHOD_NAME);
             $self->setPaintableInterface($self->getDefaultPaintableInterface());
         }
@@ -973,11 +973,16 @@ use org::allbinary::util::ABHashtable ();
 use org::allbinary::util::BasicArrayList ();
 use org::allbinary::util::BasicArrayListD ();
 use org::allbinary::game::displayable::canvas::GameCanvasRunnableInterface ();
+use org::allbinary::game::displayable::canvas::MenuListener ();
 use org::allbinary::game::displayable::canvas::DemoPaintableInterface ();
+use org::allbinary::game::displayable::canvas::FormUtil ();
 use org::allbinary::game::displayable::canvas::NullGameCanvas ();
+use org::allbinary::game::displayable::canvas::NoMenuInputProcessor ();
+use org::allbinary::game::displayable::canvas::NullWaitGameRunnable ();
 use org::allbinary::game::displayable::canvas::DemoGameStartupRunnable ();
 use org::allbinary::game::displayable::canvas::GameInputMappingCanvas ();
 use org::allbinary::game::displayable::canvas::DemoLimitedCommandTextItemArrayFactory ();
+use org::allbinary::game::displayable::canvas::CommandFormInputProcessor ();
 use org::allbinary::game::displayable::canvas::DemoCanvasProgressUtil ();
 use org::allbinary::game::displayable::canvas::DemoGameRunnable ();
 

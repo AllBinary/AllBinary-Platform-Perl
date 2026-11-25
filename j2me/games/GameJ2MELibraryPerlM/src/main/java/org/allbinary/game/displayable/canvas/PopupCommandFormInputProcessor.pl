@@ -47,6 +47,7 @@ use org::allbinary::graphics::displayable::MyCanvas ();
 use org::allbinary::graphics::form::ScrollSelectionForm ();
 use org::allbinary::input::motion::gesture::observer::MotionGestureEvent ();
 use org::allbinary::util::BasicArrayList ();
+use org::allbinary::game::displayable::canvas::CommandFormInputProcessor ();
 
 1;
 

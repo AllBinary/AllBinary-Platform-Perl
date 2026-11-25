@@ -186,6 +186,7 @@ use org::allbinary::media::graphics::geography::pathfinding::PathFindingInfo ();
 use org::allbinary::media::graphics::geography::pathfinding::PathGenerator ();
 use org::allbinary::util::BasicArrayList ();
 use org::allbinary::util::BasicArrayListUtil ();
+use org::allbinary::game::layer::waypoint::WaypointBase ();
 
 1;
 

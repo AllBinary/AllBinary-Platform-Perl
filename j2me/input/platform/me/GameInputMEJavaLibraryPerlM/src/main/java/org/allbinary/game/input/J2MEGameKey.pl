@@ -27,7 +27,7 @@ sub new {
         # super(...) made $self above
         my $id = $self->getId();
         if ($id >= 0) {
-            my $inputFactory = java::lang::Object::jstatic('org::allbinary::game::input::J2MEGameKey', 'InputFactory')->getInstance();
+            my $inputFactory = 'org::allbinary::game::input::InputFactory'->getInstance();
             $inputFactory->add($id, $self);
         }
     return $self;
@@ -42,7 +42,7 @@ sub toString {
 
 sub getString {
     my ($class, $keyCode) = @_;
-        my $input = java::lang::Object::jstatic('org::allbinary::game::input::J2MEGameKey', 'InputFactory')->getInstance()->getInstanceById($keyCode);
+        my $input = 'org::allbinary::game::input::InputFactory'->getInstance()->getInstanceById($keyCode);
         if (defined($input)) {
             return $input->getName();
         } else {
@@ -53,6 +53,8 @@ sub getString {
 use java::lang::Object ();
 use org::allbinary::logic::string::StringMaker ();
 use org::allbinary::logic::string::StringUtil ();
+use org::allbinary::game::input::Input ();
+use org::allbinary::game::input::InputFactory ();
 
 1;
 

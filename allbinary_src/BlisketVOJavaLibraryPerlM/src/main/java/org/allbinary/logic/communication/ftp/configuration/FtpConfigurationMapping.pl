@@ -38,10 +38,10 @@ sub new {
 sub toHashMap {
     my ($self) = @_;
         my $hashMap = 'org::allbinary::logic::StdUtil'->getInstance()->createHashMap();
-        $hashMap->put(java::lang::Object::jstatic('org::allbinary::logic::communication::ftp::configuration::FtpConfigurationMapping', 'FtpConfigurationData')->{SERVER}, $self->{ftpConfigurationInterface}->getServer());
-        $hashMap->put(java::lang::Object::jstatic('org::allbinary::logic::communication::ftp::configuration::FtpConfigurationMapping', 'FtpConfigurationData')->{USERNAME}, $self->{ftpConfigurationInterface}->getUserName());
-        $hashMap->put(java::lang::Object::jstatic('org::allbinary::logic::communication::ftp::configuration::FtpConfigurationMapping', 'FtpConfigurationData')->{PASSWORD}, $self->{ftpConfigurationInterface}->getPassword());
-        $hashMap->put(java::lang::Object::jstatic('org::allbinary::logic::communication::ftp::configuration::FtpConfigurationMapping', 'FtpConfigurationData')->{PATH}, $self->{ftpConfigurationInterface}->getPath());
+        $hashMap->put($org::allbinary::logic::communication::ftp::configuration::FtpConfigurationData::SERVER, $self->{ftpConfigurationInterface}->getServer());
+        $hashMap->put($org::allbinary::logic::communication::ftp::configuration::FtpConfigurationData::USERNAME, $self->{ftpConfigurationInterface}->getUserName());
+        $hashMap->put($org::allbinary::logic::communication::ftp::configuration::FtpConfigurationData::PASSWORD, $self->{ftpConfigurationInterface}->getPassword());
+        $hashMap->put($org::allbinary::logic::communication::ftp::configuration::FtpConfigurationData::PATH, $self->{ftpConfigurationInterface}->getPath());
         return $hashMap;
 }
 
@@ -49,7 +49,7 @@ sub toHashMap {
 # throws Exception
 sub getKey {
     my ($self) = @_;
-        return java::lang::Object::jstatic('org::allbinary::logic::communication::ftp::configuration::FtpConfigurationMapping', 'FtpConfigurationData')->{NAME};
+        return $org::allbinary::logic::communication::ftp::configuration::FtpConfigurationData::NAME;
 }
 
 
@@ -70,6 +70,7 @@ use org::allbinary::util::BasicArrayList ();
 use org::allbinary::util::BasicArrayListD ();
 use org::allbinary::data::tables::TableMappingInterface ();
 use org::allbinary::logic::StdUtil ();
+use org::allbinary::logic::communication::ftp::configuration::FtpConfigurationData ();
 
 1;
 

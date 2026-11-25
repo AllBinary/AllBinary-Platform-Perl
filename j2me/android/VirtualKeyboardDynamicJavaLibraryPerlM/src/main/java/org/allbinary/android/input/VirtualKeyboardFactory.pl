@@ -19,7 +19,7 @@ use feature 'try';
 no warnings 'experimental::try';
 use parent -norequire,'java::lang::Object';
 
-tie our $virtualKeyboard, 'java::lang::LazyStatic', sub { java::lang::Object::jstatic('org::allbinary::android::input::VirtualKeyboardFactory', 'VirtualKeyboard')->{NULL_VIRTUAL_KEYBOARD} };
+tie our $virtualKeyboard, 'java::lang::LazyStatic', sub { $org::allbinary::android::input::VirtualKeyboard::NULL_VIRTUAL_KEYBOARD };
 
 sub new {
     my ($class) = @_;
@@ -50,6 +50,7 @@ use org::allbinary::android::AndroidInfoFactory ();
 use org::allbinary::android::input::api1::VirtualKeyboardAPI1 ();
 use org::allbinary::android::input::api3::VirtualKeyboardAPI3 ();
 # use android::app::Activity ();
+use org::allbinary::android::input::VirtualKeyboard ();
 
 1;
 

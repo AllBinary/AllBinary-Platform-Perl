@@ -28,8 +28,8 @@ sub _init_fields {
     $self->{TEMPLATEPATH} = "template" . 'org::allbinary::logic::io::path::AbPathData'->getInstance()->{SEPARATOR};
     $self->{STYLEPATH} = $self->{TEMPLATEPATH} . "style" . 'org::allbinary::logic::io::path::AbPathData'->getInstance()->{SEPARATOR};
     $self->{THEMEPATH} = $self->{STYLEPATH} . "theme" . 'org::allbinary::logic::io::path::AbPathData'->getInstance()->{SEPARATOR};
-    $self->{DBINITPATH} = java::lang::Object::jstatic('org::allbinary::globals::FREEBLISKET_PATH_GLOBALS', 'PATH_GLOBALS')->getInstance()->{INIT_PATH} . "db" . 'org::allbinary::logic::io::path::AbPathData'->getInstance()->{SEPARATOR};
-    $self->{LINEDATAPATH} = java::lang::Object::jstatic('org::allbinary::globals::FREEBLISKET_PATH_GLOBALS', 'PATH_GLOBALS')->getInstance()->{INIT_PATH} . "lineData" . 'org::allbinary::logic::io::path::AbPathData'->getInstance()->{SEPARATOR};
+    $self->{DBINITPATH} = 'org::allbinary::globals::PATH_GLOBALS'->getInstance()->{INIT_PATH} . "db" . 'org::allbinary::logic::io::path::AbPathData'->getInstance()->{SEPARATOR};
+    $self->{LINEDATAPATH} = 'org::allbinary::globals::PATH_GLOBALS'->getInstance()->{INIT_PATH} . "lineData" . 'org::allbinary::logic::io::path::AbPathData'->getInstance()->{SEPARATOR};
     $self->{CONFIGURATIONPATH} = undef;
     $self->{USERCONFIGURATIONPATH} = undef;
     $self->{CONTEXTCONFIGURATIONPATH} = undef;
@@ -53,7 +53,7 @@ sub new {
         $stringBuffer->append('org::allbinary::logic::io::path::AbPathData'->getInstance()->{SEPARATOR});
         $self->{INSTALLPATH} = $stringBuffer->toString();
         $stringBuffer->delete(0, $stringBuffer->length());
-        $stringBuffer->append(java::lang::Object::jstatic('org::allbinary::globals::FREEBLISKET_PATH_GLOBALS', 'PATH_GLOBALS')->getInstance()->{INIT_PATH});
+        $stringBuffer->append('org::allbinary::globals::PATH_GLOBALS'->getInstance()->{INIT_PATH});
         $stringBuffer->append("views");
         $stringBuffer->append('org::allbinary::logic::io::path::AbPathData'->getInstance()->{SEPARATOR});
         $self->{XSLPATH} = $stringBuffer->toString();
@@ -80,6 +80,7 @@ use java::lang::Object ();
 use java::lang::LazyStatic ();
 use org::allbinary::logic::io::path::AbPathData ();
 use org::allbinary::logic::string::StringMaker ();
+use org::allbinary::globals::PATH_GLOBALS ();
 
 1;
 

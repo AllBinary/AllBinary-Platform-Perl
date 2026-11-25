@@ -191,6 +191,7 @@ use org::allbinary::graphics::opengles::OpenGLLogUtil ();
 use org::allbinary::opengles::GLUtil ();
 use org::allbinary::platform::graphics::PlatformBitmapBaseFactory ();
 use org::allbinary::platform::opengles::PlatformTextureBaseFactory ();
+use org::allbinary::image::opengles::OpenGLESImage ();
 use org::allbinary::image::opengles::OpenGLESImageDraw ();
 
 1;

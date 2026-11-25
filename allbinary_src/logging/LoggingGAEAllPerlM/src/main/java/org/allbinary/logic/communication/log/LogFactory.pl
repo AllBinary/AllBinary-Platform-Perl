@@ -40,6 +40,7 @@ sub getInstanceF {
 
 use java::lang::Object ();
 use org::allbinary::logic::NullUtil ();
+use org::allbinary::logic::communication::log::Log ();
 
 1;
 

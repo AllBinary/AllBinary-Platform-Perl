@@ -78,7 +78,7 @@ sub createPlayer {
                 return 'org::allbinary::MIDPUtil'->getInstance()->createPlayerFromInputStream($inputStream, 'org::allbinary::audio::AudioContentTypeDataFactory'->getInstance()->{MIME_AUDIO_WAV}->getName());
             }
         } else {
-            return java::lang::Object::jstatic('org::allbinary::media::audio::AllBinaryMediaManager', 'NoPlayer')->{NO_PLAYER};
+            return $org::allbinary::media::audio::NoPlayer::NO_PLAYER;
         }
 }
 
@@ -105,6 +105,8 @@ use org::allbinary::game::configuration::feature::GameFeatureFactory ();
 use org::allbinary::graphics::canvas::transition::progress::ProgressCanvasFactory ();
 use org::allbinary::logic::communication::log::LogUtil ();
 use org::allbinary::string::CommonStrings ();
+use org::allbinary::media::audio::Sounds ();
+use org::allbinary::media::audio::NoPlayer ();
 
 1;
 

@@ -33,7 +33,7 @@ sub new {
 sub init {
     my ($self, $abeClientInformation) = @_;
         $self->{logUtil}->putF($self->{commonStrings}->{START}, $self, $self->{commonStrings}->{INIT});
-        java::lang::Object::jstatic('org::allbinary::game::input::PCGameInputMapping', 'PCKeyFactory')->getInstance();
+        'org::allbinary::game::input::PCKeyFactory'->getInstance();
         $self->SUPER::init($abeClientInformation);
         if ($self->getTotalMapped() == 0 || $self->isDefaultNew()) {
             $self->getInputMapping()->addMapping($self->getDefault());
@@ -44,7 +44,7 @@ sub init {
 
 sub isDelete {
     my ($self, $input) = @_;
-        if ($input == java::lang::Object::jstatic('org::allbinary::game::input::PCGameInputMapping', 'PCKeyFactory')->getInstance()->{DEL}) {
+        if ($input == 'org::allbinary::game::input::PCKeyFactory'->getInstance()->{DEL}) {
             return 1;
         } else {
             return 0;
@@ -61,6 +61,7 @@ use java::lang::Object ();
 use org::allbinary::game::configuration::persistance::GamePersistanceStrings ();
 use org::allbinary::game::input::mapping::PersistentInputMapping ();
 use org::allbinary::logic::system::security::licensing::AbeClientInformationInterface ();
+use org::allbinary::game::input::PCKeyFactory ();
 
 1;
 

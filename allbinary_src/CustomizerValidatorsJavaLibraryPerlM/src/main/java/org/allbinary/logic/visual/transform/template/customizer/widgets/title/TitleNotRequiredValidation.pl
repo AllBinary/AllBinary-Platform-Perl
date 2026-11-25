@@ -74,7 +74,7 @@ sub isValid {
                 $self->{logUtil}->putF($self->{commonStrings}->{START}, $self, $self->{commonStrings}->{IS_VALID});
             }
             my $valid = 1;
-            if (!'org::allbinary::logic::string::StringValidationUtil'->getInstance()->isValidNotRequired($self->getTitle(), 0, java::lang::Object::jstatic('org::allbinary::logic::visual::transform::template::customizer::widgets::title::TitleNotRequiredValidation', 'TitleData')->getInstance()->{MAXLEN})) {
+            if (!'org::allbinary::logic::string::StringValidationUtil'->getInstance()->isValidNotRequired($self->getTitle(), 0, 'org::allbinary::logic::visual::transform::template::customizer::widgets::title::TitleData'->getInstance()->{MAXLEN})) {
                 $valid = 0;
             }
             if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{VIEW})) {
@@ -132,6 +132,7 @@ use org::w3c::dom::Node ();
 use org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory ();
 use org::allbinary::logic::communication::log::config::type::LogConfigTypes ();
 use org::allbinary::logic::visual::transform::template::customizer::widgets::title::TitleView ();
+use org::allbinary::logic::visual::transform::template::customizer::widgets::title::TitleData ();
 
 1;
 

@@ -76,6 +76,7 @@ use org::allbinary::game::paint::ColorFillPaintableFactory ();
 use org::allbinary::graphics::Anchor ();
 use org::allbinary::graphics::draw::DrawStringUtil ();
 use org::allbinary::logic::string::StringUtil ();
+use org::allbinary::game::displayable::canvas::GameCommandCanvas ();
 
 1;
 

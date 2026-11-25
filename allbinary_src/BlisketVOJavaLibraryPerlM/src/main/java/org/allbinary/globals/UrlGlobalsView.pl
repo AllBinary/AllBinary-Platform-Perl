@@ -32,8 +32,8 @@ sub new {
 sub toXmlNode {
     my ($self, $document) = @_;
         my $hashMap = 'org::allbinary::logic::StdUtil'->getInstance()->createHashMap();
-        $hashMap->put(java::lang::Object::jstatic('org::allbinary::globals::UrlGlobalsView', 'UrlGlobalsData')->{WEBAPPPATH}, java::lang::Object::jstatic('org::allbinary::globals::UrlGlobalsView', 'URLGLOBALS')->getWebappPath());
-        my $node = 'org::allbinary::data::tree::dom::ModDomHelper'->createNameValueNodes($document, java::lang::Object::jstatic('org::allbinary::globals::UrlGlobalsView', 'UrlGlobalsData')->{NAME}, $hashMap);
+        $hashMap->put($org::allbinary::globals::UrlGlobalsData::WEBAPPPATH, 'org::allbinary::globals::URLGLOBALS'->getWebappPath());
+        my $node = 'org::allbinary::data::tree::dom::ModDomHelper'->createNameValueNodes($document, $org::allbinary::globals::UrlGlobalsData::NAME, $hashMap);
         return $node;
 }
 
@@ -44,6 +44,8 @@ use org::allbinary::data::tree::dom::ModDomHelper ();
 use org::allbinary::logic::StdUtil ();
 use org::w3c::dom::Document ();
 use org::w3c::dom::Node ();
+use org::allbinary::globals::UrlGlobalsData ();
+use org::allbinary::globals::URLGLOBALS ();
 
 1;
 

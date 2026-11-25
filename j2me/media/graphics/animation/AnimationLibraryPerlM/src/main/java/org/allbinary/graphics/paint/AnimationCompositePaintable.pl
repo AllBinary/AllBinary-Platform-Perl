@@ -49,6 +49,7 @@ sub paintThreed {
 use java::lang::Object ();
 use javax::microedition::lcdui::Graphics ();
 use org::allbinary::animation::Animation ();
+use org::allbinary::graphics::paint::InitUpdatePaintable ();
 
 1;
 

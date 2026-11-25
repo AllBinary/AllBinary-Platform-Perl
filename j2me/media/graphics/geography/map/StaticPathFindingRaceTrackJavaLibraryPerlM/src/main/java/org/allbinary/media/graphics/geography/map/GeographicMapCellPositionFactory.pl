@@ -65,6 +65,8 @@ use org::allbinary::logic::StdUtil ();
 use org::allbinary::logic::communication::log::LogUtil ();
 use org::allbinary::logic::string::StringMaker ();
 use org::allbinary::util::ABHashtable ();
+use org::allbinary::media::graphics::geography::map::GeographicMapCellPositionBaseFactory ();
+use org::allbinary::media::graphics::geography::map::BasicGeographicMapCellPositionFactory ();
 
 1;
 

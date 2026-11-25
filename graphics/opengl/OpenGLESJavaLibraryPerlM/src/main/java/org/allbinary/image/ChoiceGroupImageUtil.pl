@@ -40,7 +40,7 @@ sub init {
         my $choiceGroupFactory = 'javax::microedition::lcdui::ChoiceGroupImageFactory'->getInstance();
         my $imageArray = $choiceGroupFactory->getImageArray();
         if ($features->isDefault('org::allbinary::graphics::opengles::OpenGLFeatureFactory'->getInstance()->{OPENGL})) {
-            my $preResourceImageUtil = java::lang::Object::jstatic('org::allbinary::image::ChoiceGroupImageUtil', 'PreResourceImageUtil')->getInstance();
+            my $preResourceImageUtil = 'org::allbinary::image::PreResourceImageUtil'->getInstance();
             my $size = scalar(@{$imageArray});
             for (my $index = 0; $index < $size; $index++) {
                 $imageArray->[$index] = $preResourceImageUtil->encapsulate($imageArray->[$index]);
@@ -56,7 +56,7 @@ sub update_j1_1 {
         my $choiceGroupFactory = 'javax::microedition::lcdui::ChoiceGroupImageFactory'->getInstance();
         my $imageArray = $choiceGroupFactory->getImageArray();
         if ($features->isDefault('org::allbinary::graphics::opengles::OpenGLFeatureFactory'->getInstance()->{OPENGL})) {
-            my $preResourceImageUtil = java::lang::Object::jstatic('org::allbinary::image::ChoiceGroupImageUtil', 'PreResourceImageUtil')->getInstance();
+            my $preResourceImageUtil = 'org::allbinary::image::PreResourceImageUtil'->getInstance();
             my $size = scalar(@{$imageArray});
             for (my $index = 0; $index < $size; $index++) {
                 $preResourceImageUtil->updateGL($gl, $imageArray->[$index]);
@@ -72,7 +72,7 @@ sub update_j1_2 {
         my $choiceGroupFactory = 'javax::microedition::lcdui::ChoiceGroupImageFactory'->getInstance();
         my $imageArray = $choiceGroupFactory->getImageArray();
         if ($features->isDefault('org::allbinary::graphics::opengles::OpenGLFeatureFactory'->getInstance()->{OPENGL})) {
-            my $preResourceImageUtil = java::lang::Object::jstatic('org::allbinary::image::ChoiceGroupImageUtil', 'PreResourceImageUtil')->getInstance();
+            my $preResourceImageUtil = 'org::allbinary::image::PreResourceImageUtil'->getInstance();
             my $size = scalar(@{$imageArray});
             for (my $index = 0; $index < $size; $index++) {
                 $preResourceImageUtil->update($graphics, $imageArray->[$index]);
@@ -101,6 +101,7 @@ use javax::microedition::lcdui::Graphics ();
 use javax::microedition::lcdui::Image ();
 use org::allbinary::graphics::opengles::OpenGLFeatureFactory ();
 use org::allbinary::game::configuration::feature::Features ();
+use org::allbinary::image::PreResourceImageUtil ();
 
 1;
 

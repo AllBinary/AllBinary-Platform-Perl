@@ -56,7 +56,7 @@ sub _new1_1 {
     my ($class, $document) = @_;
     my $self = $class->SUPER::new();
     _init_fields($self);
-        my $headingNodeList = $document->getElementsByTagName(java::lang::Object::jstatic('org::allbinary::logic::visual::transform::template::customizer::hedges::heading::HeadingValidation', 'HeadingData')->{NAME});
+        my $headingNodeList = $document->getElementsByTagName($org::allbinary::logic::visual::transform::template::customizer::hedges::heading::HeadingData::NAME);
         my $titleNode = 'org::allbinary::data::tree::dom::DomSearchHelper'->getNode('org::allbinary::logic::visual::transform::template::customizer::widgets::title::TitleData'->getInstance()->{NAME}, $headingNodeList->item(0)->getChildNodes());
         my $logoNode = 'org::allbinary::data::tree::dom::DomSearchHelper'->getNode('org::allbinary::logic::visual::transform::template::customizer::widgets::logo::LogoData'->getInstance()->{NAME}, $headingNodeList->item(0)->getChildNodes());
         $self->{title} = 'org::allbinary::logic::visual::transform::template::customizer::widgets::title::TitleValidation'->new($titleNode);
@@ -159,7 +159,7 @@ sub toValidationInfoNode {
 # throws Exception
 sub toXmlNode {
     my ($self, $document) = @_;
-        my $node = $document->createElement(java::lang::Object::jstatic('org::allbinary::logic::visual::transform::template::customizer::hedges::heading::HeadingValidation', 'HeadingData')->{NAME});
+        my $node = $document->createElement($org::allbinary::logic::visual::transform::template::customizer::hedges::heading::HeadingData::NAME);
         $node->appendChild($self->{logo}->toXmlNode($document));
         $node->appendChild($self->{title}->toXmlNode($document));
         return $node;
@@ -181,6 +181,7 @@ use org::w3c::dom::Node ();
 use org::w3c::dom::NodeList ();
 use org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory ();
 use org::allbinary::logic::communication::log::config::type::LogConfigTypes ();
+use org::allbinary::logic::visual::transform::template::customizer::hedges::heading::HeadingData ();
 
 1;
 

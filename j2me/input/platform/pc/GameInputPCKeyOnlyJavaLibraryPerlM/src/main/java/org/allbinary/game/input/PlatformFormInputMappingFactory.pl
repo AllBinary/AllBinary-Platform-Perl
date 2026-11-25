@@ -48,9 +48,9 @@ sub getOrCreate {
     my ($self) = @_;
         try {
             if ($self->{inputToGameKeyMapping} == 'org::allbinary::game::input::mapping::InputToGameKeyMapping'->getNullInstance()) {
-                my $pcKeyFactory = java::lang::Object::jstatic('org::allbinary::game::input::PlatformFormInputMappingFactory', 'PCKeyFactory')->getInstance();
+                my $pcKeyFactory = 'org::allbinary::game::input::PCKeyFactory'->getInstance();
                 my $inputToGameKeyMapping = 'org::allbinary::game::input::mapping::InputToGameKeyMapping'->new();
-                my $gameKeyFactory = java::lang::Object::jstatic('org::allbinary::game::input::PlatformFormInputMappingFactory', 'GameKeyFactory')->getInstance();
+                my $gameKeyFactory = 'org::allbinary::game::input::GameKeyFactory'->getInstance();
                 $inputToGameKeyMapping->add($gameKeyFactory->{UP}, $pcKeyFactory->{DPAD_UP});
                 $inputToGameKeyMapping->add($gameKeyFactory->{DOWN}, $pcKeyFactory->{DPAD_DOWN});
                 $inputToGameKeyMapping->add($gameKeyFactory->{LEFT}, $pcKeyFactory->{DPAD_LEFT});
@@ -71,6 +71,8 @@ use org::allbinary::game::input::mapping::InputToGameKeyMapping ();
 use org::allbinary::logic::NullUtil ();
 use org::allbinary::logic::communication::log::LogUtil ();
 use org::allbinary::string::CommonStrings ();
+use org::allbinary::game::input::PCKeyFactory ();
+use org::allbinary::game::input::GameKeyFactory ();
 
 1;
 

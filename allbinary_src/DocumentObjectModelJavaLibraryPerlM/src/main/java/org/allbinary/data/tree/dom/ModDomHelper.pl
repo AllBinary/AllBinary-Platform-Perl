@@ -42,21 +42,21 @@ sub createTextNode {
 # throws Exception
 sub createValueNode {
     my ($class, $document, $text) = @_;
-        return 'org::allbinary::data::tree::dom::ModDomHelper'->createTextNode($document, java::lang::Object::jstatic('org::allbinary::data::tree::dom::ModDomHelper', 'DomData')->{VALUE}, $text);
+        return 'org::allbinary::data::tree::dom::ModDomHelper'->createTextNode($document, $org::allbinary::data::tree::dom::DomData::VALUE, $text);
 }
 
 
 # throws Exception
 sub createNameNode {
     my ($class, $document, $text) = @_;
-        return 'org::allbinary::data::tree::dom::ModDomHelper'->createTextNode($document, java::lang::Object::jstatic('org::allbinary::data::tree::dom::ModDomHelper', 'DomData')->{NAME}, $text);
+        return 'org::allbinary::data::tree::dom::ModDomHelper'->createTextNode($document, $org::allbinary::data::tree::dom::DomData::NAME, $text);
 }
 
 
 # throws Exception
 sub createIndexNode {
     my ($class, $document, $index) = @_;
-        return 'org::allbinary::data::tree::dom::ModDomHelper'->createTextNode($document, java::lang::Object::jstatic('org::allbinary::data::tree::dom::ModDomHelper', 'DomData')->{INDEX}, $index->toString());
+        return 'org::allbinary::data::tree::dom::ModDomHelper'->createTextNode($document, $org::allbinary::data::tree::dom::DomData::INDEX, $index->toString());
 }
 
 
@@ -228,6 +228,7 @@ use org::allbinary::logic::string::StringUtil ();
 use org::allbinary::string::CommonSeps ();
 use org::w3c::dom::Document ();
 use org::w3c::dom::Node ();
+use org::allbinary::data::tree::dom::DomData ();
 
 1;
 

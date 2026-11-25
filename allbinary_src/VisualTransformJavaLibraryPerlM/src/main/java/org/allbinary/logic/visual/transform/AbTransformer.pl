@@ -112,6 +112,7 @@ use org::allbinary::logic::visual::transform::info::objectConfig::generator::Tra
 use org::allbinary::string::CommonStrings ();
 use org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory ();
 use org::allbinary::logic::communication::log::config::type::LogConfigTypes ();
+use org::allbinary::logic::visual::transform::BasicTransformerInterface ();
 
 1;
 

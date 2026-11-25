@@ -24,7 +24,7 @@ sub _init_fields {
     my ($self) = @_;
     $self->{logUtil} = 'org::allbinary::logic::communication::log::LogUtil'->getInstance();
     $self->{commonStrings} = 'org::allbinary::string::CommonStrings'->getInstance();
-    $self->{basicItemData} = java::lang::Object::jstatic('org::allbinary::business::user::commerce::inventory::item::BasicItemView', 'BasicItemData')->getInstance();
+    $self->{basicItemData} = 'org::allbinary::business::user::commerce::inventory::item::BasicItemData'->getInstance();
     $self->{itemInterface} = undef;
     $self->{vector} = undef;
 }
@@ -97,6 +97,7 @@ use org::w3c::dom::Document ();
 use org::w3c::dom::Node ();
 use org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory ();
 use org::allbinary::logic::communication::log::config::type::LogConfigTypes ();
+use org::allbinary::business::user::commerce::inventory::item::BasicItemData ();
 
 1;
 

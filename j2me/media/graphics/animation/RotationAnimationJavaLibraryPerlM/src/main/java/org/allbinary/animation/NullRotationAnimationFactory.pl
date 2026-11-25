@@ -62,6 +62,8 @@ sub setInitialScale {
 use java::lang::Object ();
 use java::lang::LazyStatic ();
 use org::allbinary::media::ScaleProperties ();
+use org::allbinary::animation::AnimationInterfaceFactoryInterface ();
+use org::allbinary::animation::ProceduralAnimationInterfaceFactoryInterface ();
 use org::allbinary::animation::NullRotationAnimation2 ();
 
 1;

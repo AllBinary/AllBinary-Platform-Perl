@@ -45,7 +45,7 @@ sub new {
 sub getInstance_j1 {
     my ($self, $node) = @_;
         my $transformInfoChildNodeList = $node->getChildNodes();
-        my $transformInfoData = java::lang::Object::jstatic('org::allbinary::logic::visual::transform::info::TransformInfoPropertiesFactory', 'TransformInfoData')->getInstance();
+        my $transformInfoData = 'org::allbinary::logic::visual::transform::info::TransformInfoData'->getInstance();
         my $attributes = $node->getAttributes();
         my $attrNode = $attributes->getNamedItem($transformInfoData->{NAME});
         my $name = $attrNode->getValue();
@@ -88,6 +88,7 @@ use org::w3c::dom::Node ();
 use org::w3c::dom::NodeList ();
 use org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory ();
 use org::allbinary::logic::communication::log::config::type::LogConfigTypes ();
+use org::allbinary::logic::visual::transform::info::TransformInfoData ();
 use org::allbinary::logic::visual::transform::info::TransformInfoProperties ();
 
 1;

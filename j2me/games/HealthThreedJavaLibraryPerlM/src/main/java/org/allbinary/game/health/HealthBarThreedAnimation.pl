@@ -108,6 +108,7 @@ use org::allbinary::graphics::threed::min3d::renderer::Object3dProcessorUtil ();
 use org::allbinary::graphics::color::BasicColorFactory ();
 use org::allbinary::layer::AllBinaryLayer ();
 use org::allbinary::view::ViewPositionBase ();
+use org::allbinary::game::health::HealthBarAnimation ();
 
 1;
 

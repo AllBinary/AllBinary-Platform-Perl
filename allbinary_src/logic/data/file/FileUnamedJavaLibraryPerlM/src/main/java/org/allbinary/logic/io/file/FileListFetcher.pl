@@ -43,7 +43,7 @@ sub getInstance {
 sub getFiles_j1 {
     my ($self, $path) = @_;
         try {
-            my $files = $self->{subDirectory}->search(java::lang::Object::jstatic('org::allbinary::logic::io::file::FileListFetcher', 'AbFile')->createAbFile($path));
+            my $files = $self->{subDirectory}->search('org::allbinary::logic::io::file::AbFile'->createAbFile($path));
             return $files;
         } catch ($e) {
             print(STDERR $e, "\n");
@@ -62,7 +62,7 @@ sub getFiles_j2_1 {
                 $includeExtensionBasicArrayList->add($includeExtensions->[$index]);
             }
             my $visitorFileFilter = 'org::allbinary::logic::io::file::filter::VisitorFileFilter'->new('org::allbinary::logic::io::file::directory::DirectoryOrIncludeFileExtensionBooleanFileVisitor'->new($includeExtensionBasicArrayList));
-            my $files = $self->{subDirectory}->search($visitorFileFilter, java::lang::Object::jstatic('org::allbinary::logic::io::file::FileListFetcher', 'AbFile')->createAbFile($path));
+            my $files = $self->{subDirectory}->search($visitorFileFilter, 'org::allbinary::logic::io::file::AbFile'->createAbFile($path));
             return $files;
         } catch ($e) {
             print(STDERR $e, "\n");
@@ -78,7 +78,7 @@ sub getFiles_j2_2 {
             my $includeExtensionBasicArrayList = 'org::allbinary::util::BasicArrayListD'->new();
             $includeExtensionBasicArrayList->add($includeExtension);
             my $visitorFileFilter = 'org::allbinary::logic::io::file::filter::VisitorFileFilter'->new('org::allbinary::logic::io::file::directory::DirectoryOrIncludeFileExtensionBooleanFileVisitor'->new($includeExtensionBasicArrayList));
-            my $files = $self->{subDirectory}->search($visitorFileFilter, java::lang::Object::jstatic('org::allbinary::logic::io::file::FileListFetcher', 'AbFile')->createAbFile($path));
+            my $files = $self->{subDirectory}->search($visitorFileFilter, 'org::allbinary::logic::io::file::AbFile'->createAbFile($path));
             return $files;
         } catch ($e) {
             print(STDERR $e, "\n");
@@ -94,7 +94,7 @@ sub getFiles_j3 {
             my $includeExtensionBasicArrayList = 'org::allbinary::util::BasicArrayListD'->new();
             $includeExtensionBasicArrayList->add($includeExtension);
             my $visitorFileFilter = 'org::allbinary::logic::io::file::filter::VisitorFileFilter'->new('org::allbinary::logic::io::file::directory::DirectoryOrIncludeFileExtensionBooleanFileVisitor'->new($includeExtensionBasicArrayList, $pathIncludes));
-            my $files = $self->{subDirectory}->search($visitorFileFilter, java::lang::Object::jstatic('org::allbinary::logic::io::file::FileListFetcher', 'AbFile')->createAbFile($path));
+            my $files = $self->{subDirectory}->search($visitorFileFilter, 'org::allbinary::logic::io::file::AbFile'->createAbFile($path));
             return $files;
         } catch ($e) {
             print(STDERR $e, "\n");
@@ -127,7 +127,7 @@ sub getTrackedFiles_j2_1 {
                 $includeExtensionBasicArrayList->add($includeExtensions->[$index]);
             }
             my $visitorFileFilter = 'org::allbinary::logic::io::file::filter::VisitorFileFilter'->new('org::allbinary::logic::io::file::directory::DirectoryOrIncludeFileExtensionAndTrackedBooleanFileVisitor'->new($includeExtensionBasicArrayList));
-            my $files = $self->{subDirectory}->search($visitorFileFilter, java::lang::Object::jstatic('org::allbinary::logic::io::file::FileListFetcher', 'AbFile')->createAbFile($path));
+            my $files = $self->{subDirectory}->search($visitorFileFilter, 'org::allbinary::logic::io::file::AbFile'->createAbFile($path));
             return $files;
         } catch ($e) {
             print(STDERR $e, "\n");
@@ -143,7 +143,7 @@ sub getTrackedFiles_j2_2 {
             my $includeExtensionBasicArrayList = 'org::allbinary::util::BasicArrayListD'->new();
             $includeExtensionBasicArrayList->add($includeExtension);
             my $visitorFileFilter = 'org::allbinary::logic::io::file::filter::VisitorFileFilter'->new('org::allbinary::logic::io::file::directory::DirectoryOrIncludeFileExtensionAndTrackedBooleanFileVisitor'->new($includeExtensionBasicArrayList));
-            my $files = $self->{subDirectory}->search($visitorFileFilter, java::lang::Object::jstatic('org::allbinary::logic::io::file::FileListFetcher', 'AbFile')->createAbFile($path));
+            my $files = $self->{subDirectory}->search($visitorFileFilter, 'org::allbinary::logic::io::file::AbFile'->createAbFile($path));
             return $files;
         } catch ($e) {
             print(STDERR $e, "\n");
@@ -169,7 +169,7 @@ sub getDirectories {
     my ($self, $path) = @_;
         try {
             my $visitorFileFilter = 'org::allbinary::logic::io::file::filter::VisitorFileFilter'->new('org::allbinary::logic::io::file::directory::DirectoryBooleanFileVisitor'->new());
-            my $files = $self->{subDirectory}->search($visitorFileFilter, java::lang::Object::jstatic('org::allbinary::logic::io::file::FileListFetcher', 'AbFile')->createAbFile($path));
+            my $files = $self->{subDirectory}->search($visitorFileFilter, 'org::allbinary::logic::io::file::AbFile'->createAbFile($path));
             return $files;
         } catch ($e) {
             print(STDERR $e, "\n");
@@ -187,6 +187,7 @@ use org::allbinary::logic::io::file::directory::SubDirectory ();
 use org::allbinary::logic::io::file::filter::VisitorFileFilter ();
 use org::allbinary::util::BasicArrayList ();
 use org::allbinary::util::BasicArrayListD ();
+use org::allbinary::logic::io::file::AbFile ();
 use java::lang::System ();
 
 1;

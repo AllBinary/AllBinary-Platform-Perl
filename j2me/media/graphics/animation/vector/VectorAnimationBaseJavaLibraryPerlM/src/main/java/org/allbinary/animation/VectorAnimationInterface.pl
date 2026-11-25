@@ -28,6 +28,7 @@ sub getPoints {
 }
 
 use org::allbinary::graphics::color::ColorCompositeInterface ();
+use org::allbinary::animation::IndexedAnimationInterface ();
 
 1;
 

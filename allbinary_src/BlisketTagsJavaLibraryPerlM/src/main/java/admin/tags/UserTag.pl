@@ -71,6 +71,7 @@ use admin::taghelpers::UserHelperFactory ();
 use org::allbinary::business::entry::EntryData ();
 use org::allbinary::business::user::role::UserRoleData ();
 use org::allbinary::logic::communication::http::request::AbResponseHandler ();
+use admin::tags::TableTag ();
 
 1;
 

@@ -33,7 +33,7 @@ sub new {
     my ($class, $p1, $p2) = @_;
     my $self = bless({}, $class);
     _init_fields($self);
-        $self->{p1} = java::lang::Object::jstatic('org::allbinary::graphics::Line', 'PointFactory')->getInstance()->{ZERO_ZERO};
+        $self->{p1} = 'org::allbinary::graphics::PointFactory'->getInstance()->{ZERO_ZERO};
         $self->{p2} = $self->{p1};
         $self->setP1($p1);
         $self->setP2($p2);
@@ -92,6 +92,7 @@ sub setP2 {
 }
 
 use java::lang::Object ();
+use org::allbinary::graphics::PointFactory ();
 
 1;
 

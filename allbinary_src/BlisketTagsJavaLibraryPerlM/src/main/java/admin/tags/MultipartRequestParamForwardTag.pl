@@ -60,7 +60,7 @@ sub doStartTag {
             my $parentTag = $self->getParent();
             'admin::tags::ParentInventoryTagHelper'->getInstance()->isValid($self, $parentTag);
             my $hashMap = 'org::allbinary::logic::StdUtil'->getInstance()->createHashMap();
-            $hashMap->put(java::lang::Object::jstatic('admin::tags::MultipartRequestParamForwardTag', 'AbTagData')->{PARENT}, $parentTag);
+            $hashMap->put($admin::tags::AbTagData::PARENT, $parentTag);
             my $multipartRequestParamForwardHelper = 'admin::taghelpers::MultipartRequestParamForwardHelper'->new($parentTag, $self->{page}, $self->{command}, $self->{paramVector}, $self->{pageContext});
             $multipartRequestParamForwardHelper->forward();
             return $javax::servlet::jsp::tagext::Tag::SKIP_BODY;
@@ -83,6 +83,7 @@ use org::allbinary::logic::system::security::licensing::LicensingException ();
 use tags::CustomTagSupport ();
 use tags::HelperTag ();
 use admin::tags::ParentInventoryTagHelper ();
+use admin::tags::AbTagData ();
 
 1;
 

@@ -128,6 +128,7 @@ use org::allbinary::business::init::InitInfoEntity ();
 use org::allbinary::logic::communication::log::LogUtil ();
 use org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory ();
 use org::allbinary::logic::communication::log::config::type::LogConfigTypes ();
+use admin::taghelpers::BasicTable ();
 
 1;
 

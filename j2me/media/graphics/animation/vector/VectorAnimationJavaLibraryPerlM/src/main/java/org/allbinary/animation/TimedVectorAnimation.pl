@@ -46,6 +46,7 @@ use java::lang::Object ();
 use org::allbinary::graphics::color::BasicColor ();
 use org::allbinary::time::GameTickTimeDelayHelperFactory ();
 use org::allbinary::time::TimeDelayHelper ();
+use org::allbinary::animation::VectorAnimation ();
 
 1;
 

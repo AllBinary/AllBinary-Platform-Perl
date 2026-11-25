@@ -75,6 +75,7 @@ use org::allbinary::logic::system::hardware::android::AndroidHardware ();
 use org::allbinary::logic::system::os::GenericOperatingSystem ();
 use org::allbinary::logic::system::os::OperatingSystems ();
 use org::allbinary::string::CommonStrings ();
+use org::allbinary::logic::system::hardware::NoHardware ();
 
 1;
 

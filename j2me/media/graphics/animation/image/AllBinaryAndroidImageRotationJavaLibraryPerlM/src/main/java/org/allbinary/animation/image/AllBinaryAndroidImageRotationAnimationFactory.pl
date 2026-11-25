@@ -126,6 +126,7 @@ use org::allbinary::logic::math::PrimitiveIntUtil ();
 use org::allbinary::media::image::ImageCopyUtil ();
 use org::allbinary::math::AngleFactory ();
 use org::allbinary::math::AngleInfo ();
+use org::allbinary::animation::image::BaseImageAnimationFactory ();
 use org::allbinary::animation::image::AllBinaryFlickerAndroidImageRotationAnimation ();
 use org::allbinary::animation::image::AllBinaryAdjustedAndroidImageRotationAnimation ();
 

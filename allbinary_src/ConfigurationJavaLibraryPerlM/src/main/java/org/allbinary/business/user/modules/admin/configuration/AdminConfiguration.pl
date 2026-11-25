@@ -47,7 +47,7 @@ sub _new0 {
     my $self = bless({}, $class);
     _init_fields($self);
         $self->{logUtil}->putF($self->{commonStrings}->{START}, $self, $self->{commonStrings}->{CONSTRUCTOR});
-        $self->{contextConfigurationInterface} = 'org::allbinary::business::context::configuration::ContextConfigurationInterfaceFactory'->getInstance()->getInstance(java::lang::Object::jstatic('org::allbinary::business::user::modules::admin::configuration::AdminConfiguration', 'AdminConfigurationData')->{CONTEXTNAME});
+        $self->{contextConfigurationInterface} = 'org::allbinary::business::context::configuration::ContextConfigurationInterfaceFactory'->getInstance()->getInstance($org::allbinary::business::user::modules::admin::configuration::AdminConfigurationData::CONTEXTNAME);
     return $self;
 }
 
@@ -85,7 +85,7 @@ sub write {
     my ($self) = @_;
         my $contextConfigurationDomDocumentMapping = 'org::allbinary::business::context::configuration::ContextConfigurationDomDocumentMapping'->new($self->getContextConfigurationInterface());
         my $cryptFileWriter = 'org::allbinary::logic::control::crypt::file::CryptFileWriter'->new('org::allbinary::business::context::configuration::ContextConfigurationData'->getInstance()->{UNCRYPTED_EXTENSION}, 'org::allbinary::business::context::configuration::ContextConfigurationData'->getInstance()->{ENCRYPTED_EXTENSION});
-        $cryptFileWriter->write('org::allbinary::business::context::configuration::ContextConfigurationPathUtil'->getAbPath(java::lang::Object::jstatic('org::allbinary::business::user::modules::admin::configuration::AdminConfiguration', 'AdminConfigurationData')->{CONTEXTNAME}), $contextConfigurationDomDocumentMapping->toXmlDoc());
+        $cryptFileWriter->write('org::allbinary::business::context::configuration::ContextConfigurationPathUtil'->getAbPath($org::allbinary::business::user::modules::admin::configuration::AdminConfigurationData::CONTEXTNAME), $contextConfigurationDomDocumentMapping->toXmlDoc());
 }
 
 
@@ -114,6 +114,7 @@ use org::allbinary::logic::communication::log::LogUtil ();
 use org::allbinary::logic::control::crypt::file::CryptFileWriter ();
 use org::allbinary::string::CommonStrings ();
 use org::allbinary::business::user::modules::admin::configuration::AdminConfigurationInterface ();
+use org::allbinary::business::user::modules::admin::configuration::AdminConfigurationData ();
 
 1;
 

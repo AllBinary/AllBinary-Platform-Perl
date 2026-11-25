@@ -89,7 +89,7 @@ sub getMap {
 sub toXmlNode {
     my ($self, $document) = @_;
         try {
-            my $node = $document->createElement(java::lang::Object::jstatic('org::allbinary::logic::communication::http::request::RequestParams', 'RequestData')->{REQUEST});
+            my $node = $document->createElement($org::allbinary::logic::communication::http::request::RequestData::REQUEST);
             my $stringBuffer = 'org::allbinary::logic::string::StringMaker'->new();
             my $keys = $self->{map}->keySet();
             my $keyArray = $keys->toArray();
@@ -103,7 +103,7 @@ sub toXmlNode {
                 $stringBuffer->append($self->{VALUE});
                 $stringBuffer->append($values->[0]);
                 $self->{logUtil}->putF($stringBuffer->toString(), $self, "toXmlNode(document)");
-                $node->appendChild('org::allbinary::data::tree::dom::ModDomHelper'->createNameValueNodes($document, java::lang::Object::jstatic('org::allbinary::logic::communication::http::request::RequestParams', 'RequestData')->{PARAMETER}, ("" . $key), ("" . $values->[0])));
+                $node->appendChild('org::allbinary::data::tree::dom::ModDomHelper'->createNameValueNodes($document, $org::allbinary::logic::communication::http::request::RequestData::PARAMETER, ("" . $key), ("" . $values->[0])));
             }
             return $node;
         } catch ($e) {
@@ -148,6 +148,7 @@ use org::allbinary::logic::string::StringMaker ();
 use org::allbinary::string::CommonStrings ();
 use org::w3c::dom::Document ();
 use org::w3c::dom::Node ();
+use org::allbinary::logic::communication::http::request::RequestData ();
 
 1;
 

@@ -43,6 +43,7 @@ sub create {
 use java::lang::Object ();
 use java::lang::LazyStatic ();
 use org::allbinary::logic::util::visitor::Visitor ();
+use org::allbinary::game::input::SelectRTSLayerVisitorFactoryInterface ();
 use org::allbinary::game::input::SelectAdvancedRTSLayerVisitor ();
 
 1;

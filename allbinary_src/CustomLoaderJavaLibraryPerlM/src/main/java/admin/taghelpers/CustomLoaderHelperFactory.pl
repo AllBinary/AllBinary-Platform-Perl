@@ -57,6 +57,7 @@ use java::util::HashMap ();
 use org::allbinary::logic::system::security::licensing::AbeClientInformationInterface ();
 use org::allbinary::logic::system::security::licensing::LicensingException ();
 use org::allbinary::logic::system::security::licensing::ServiceClientInformationInterfaceFactory ();
+use admin::taghelpers::TagHelperFactoryInterface ();
 use admin::taghelpers::HelperFactory ();
 
 1;

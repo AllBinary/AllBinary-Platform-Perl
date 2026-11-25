@@ -39,7 +39,7 @@ sub new {
 sub toXmlNode {
     my ($self, $document) = @_;
         my $hashMap = $self->{storeFrontOrdersHistoryStatisticsInterface}->toHashMap();
-        my $node = 'org::allbinary::data::tree::dom::ModDomHelper'->createNameValueNodes($document, java::lang::Object::jstatic('org::allbinary::business::context::modules::storefront::statistics::orders::history::StoreFrontOrdersHistoryStatisticsView', 'StoreFrontOrdersHistoryStatisticsData')->getInstance()->{NAME}, $hashMap);
+        my $node = 'org::allbinary::data::tree::dom::ModDomHelper'->createNameValueNodes($document, 'org::allbinary::business::context::modules::storefront::statistics::orders::history::StoreFrontOrdersHistoryStatisticsData'->getInstance()->{NAME}, $hashMap);
         return $node;
 }
 
@@ -49,6 +49,7 @@ use org::allbinary::data::tree::dom::DomNodeInterface ();
 use org::allbinary::data::tree::dom::ModDomHelper ();
 use org::w3c::dom::Document ();
 use org::w3c::dom::Node ();
+use org::allbinary::business::context::modules::storefront::statistics::orders::history::StoreFrontOrdersHistoryStatisticsData ();
 
 1;
 

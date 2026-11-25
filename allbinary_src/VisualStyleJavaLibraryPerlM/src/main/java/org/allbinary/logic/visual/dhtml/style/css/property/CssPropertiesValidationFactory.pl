@@ -34,7 +34,7 @@ sub getInstance_j1_1 {
         my $propertiesVector = 'org::allbinary::util::BasicArrayListD'->new();
         for (my $index = 0; $index < $nodeList->getLength(); $index++) {
             my $node = $nodeList->item($index);
-            if ($node->getNodeName()->compareTo(java::lang::Object::jstatic('org::allbinary::logic::visual::dhtml::style::css::property::CssPropertiesValidationFactory', 'CssPropertyData')->getInstance()->{NAME}) == 0) {
+            if ($node->getNodeName()->compareTo('org::allbinary::logic::visual::dhtml::style::css::property::CssPropertyData'->getInstance()->{NAME}) == 0) {
                 my $cssPropertyValidationInterface = 'org::allbinary::logic::visual::dhtml::style::css::property::CssPropertyValidationFactory'->getInstance($node);
                 $propertiesVector->add($cssPropertyValidationInterface);
             }
@@ -69,6 +69,7 @@ use org::allbinary::logic::StdUtil ();
 use org::allbinary::logic::control::validate::ValidationInterface ();
 use org::w3c::dom::Node ();
 use org::w3c::dom::NodeList ();
+use org::allbinary::logic::visual::dhtml::style::css::property::CssPropertyData ();
 use org::allbinary::logic::visual::dhtml::style::css::property::CssPropertyValidationFactory ();
 
 1;

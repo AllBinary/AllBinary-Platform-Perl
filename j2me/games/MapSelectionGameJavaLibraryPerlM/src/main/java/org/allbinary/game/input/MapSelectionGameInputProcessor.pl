@@ -169,6 +169,9 @@ use org::allbinary::media::graphics::geography::map::racetrack::MultiLevelRaceTr
 use org::allbinary::thread::ABRunnable ();
 use org::allbinary::thread::ThreadObjectUtil ();
 use org::allbinary::time::TimeDelayHelper ();
+use org::allbinary::game::input::GameInputProcessorInterface ();
+use org::allbinary::game::input::PlayerGameInputCompositeInterface ();
+use org::allbinary::game::input::GameInputProcessorComposite ();
 
 1;
 

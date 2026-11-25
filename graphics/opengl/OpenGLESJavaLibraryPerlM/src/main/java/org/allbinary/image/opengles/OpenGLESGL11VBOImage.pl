@@ -138,6 +138,7 @@ use org::allbinary::graphics::displayable::DisplayInfoSingleton ();
 use org::allbinary::opengles::GLUtil ();
 use org::allbinary::platform::graphics::PlatformBitmapBaseFactory ();
 use org::allbinary::platform::opengles::PlatformTextureBaseFactory ();
+use org::allbinary::image::opengles::OpenGLESImage ();
 
 1;
 

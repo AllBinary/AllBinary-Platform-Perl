@@ -45,6 +45,7 @@ use org::allbinary::animation::Animation ();
 use org::allbinary::animation::AnimationBehaviorFactory ();
 use org::allbinary::animation::AnimationInterfaceFactoryInterface ();
 use org::allbinary::animation::RotationAnimation ();
+use org::allbinary::animation::compound::CompoundAnimationInterfaceFactory ();
 use org::allbinary::animation::compound::AutoCompoundRotationAnimation ();
 
 1;

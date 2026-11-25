@@ -223,6 +223,7 @@ use org::allbinary::logic::string::StringMaker ();
 use org::allbinary::logic::string::StringValidationUtil ();
 use org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory ();
 use org::allbinary::logic::communication::log::config::type::LogConfigTypes ();
+use org::allbinary::data::tables::user::commerce::inventory::item::InventoryEntityInterface ();
 
 1;
 

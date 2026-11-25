@@ -32,6 +32,7 @@ sub new {
 use java::lang::Object ();
 use admin::taghelpers::XmlOptionItemsHelperFactory ();
 use admin::taghelpers::XmlOptionItemsRequestHelperFactory ();
+use admin::tags::TableTag ();
 
 1;
 

@@ -61,7 +61,7 @@ sub getInstance_j4 {
     my ($self, $abeClientInformation, $className, $classes, $params) = @_;
         my $constructor = undef;
         try {
-            my $parent = java::lang::Object::jstatic('org::allbinary::logic::system::loader::AbeFactory', 'WebappClassLoaderInfo')->getLoader();
+            my $parent = 'org::allbinary::logic::system::loader::WebappClassLoaderInfo'->getLoader();
             if ($self->{useCustomLoader}) {
                 my $loader = 'org::allbinary::logic::system::loader::AbeClassLoader'->new($parent, 'org::allbinary::logic::system::security::AbKeys'->getInstance()->getKey($abeClientInformation, $className));
                 my $myClass = $loader->loadClass($className);
@@ -98,7 +98,7 @@ sub getInstance {
 sub getClass {
     my ($self, $abeClientInformation, $className) = @_;
         try {
-            my $parent = java::lang::Object::jstatic('org::allbinary::logic::system::loader::AbeFactory', 'WebappClassLoaderInfo')->getLoader();
+            my $parent = 'org::allbinary::logic::system::loader::WebappClassLoaderInfo'->getLoader();
             if ($self->{useCustomLoader}) {
                 my $loader = 'org::allbinary::logic::system::loader::AbeClassLoader'->new($parent, 'org::allbinary::logic::system::security::AbKeys'->getInstance()->getKey($abeClientInformation, $className));
                 my $c = $loader->loadClass($className);
@@ -127,6 +127,7 @@ use org::allbinary::logic::system::security::licensing::LicensingException ();
 use org::allbinary::string::CommonSeps ();
 use org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory ();
 use org::allbinary::logic::communication::log::config::type::LogConfigTypes ();
+use org::allbinary::logic::system::loader::WebappClassLoaderInfo ();
 use org::allbinary::logic::system::loader::AbeClassLoader ();
 
 1;

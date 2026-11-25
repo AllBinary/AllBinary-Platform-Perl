@@ -253,7 +253,7 @@ sub init {
 sub creatImage {
     my ($self, $key) = @_;
         my $inputStream = $self->{resourceUtil}->getResourceAsStream($key);
-        my $image = java::lang::Object::jstatic('org::allbinary::image::ImageCache', 'ImageFactory')->getInstance()->createImageFromInputStream($inputStream);
+        my $image = 'org::allbinary::image::ImageFactory'->getInstance()->createImageFromInputStream($inputStream);
         $image->setName($key);
         return $image;
 }
@@ -556,7 +556,9 @@ use org::allbinary::thread::SynchObject ();
 use org::allbinary::util::BasicArrayList ();
 use org::allbinary::util::BasicArrayListD ();
 use org::allbinary::logic::ABSystemWrapper ();
+use org::allbinary::image::ImageCacheBase ();
 use java::lang::Thread ();
+use org::allbinary::image::ImageFactory ();
 
 1;
 

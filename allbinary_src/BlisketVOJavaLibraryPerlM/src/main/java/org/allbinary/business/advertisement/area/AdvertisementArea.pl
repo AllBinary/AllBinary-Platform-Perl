@@ -34,10 +34,10 @@ sub new {
     my ($class, $hashMap) = @_;
     my $self = bless({}, $class);
     _init_fields($self);
-        $self->{name} = $hashMap->get(java::lang::Object::jstatic('org::allbinary::business::advertisement::area::AdvertisementArea', 'AdvertisementAreaData')->getInstance()->{NAME});
+        $self->{name} = $hashMap->get('org::allbinary::business::advertisement::area::AdvertisementAreaData'->getInstance()->{NAME});
         $self->{storeName} = $hashMap->get('org::allbinary::business::context::modules::storefront::StoreFrontData'->getInstance()->{NAME});
-        $self->{description} = $hashMap->get(java::lang::Object::jstatic('org::allbinary::business::advertisement::area::AdvertisementArea', 'AdvertisementAreaData')->getInstance()->{DESCRIPTION});
-        my $constraintsDomString = $hashMap->get(java::lang::Object::jstatic('org::allbinary::business::advertisement::area::AdvertisementArea', 'AdvertisementAreaData')->getInstance()->{CONSTRAINTS});
+        $self->{description} = $hashMap->get('org::allbinary::business::advertisement::area::AdvertisementAreaData'->getInstance()->{DESCRIPTION});
+        my $constraintsDomString = $hashMap->get('org::allbinary::business::advertisement::area::AdvertisementAreaData'->getInstance()->{CONSTRAINTS});
         my $document = 'org::allbinary::data::tree::dom::document::DomDocumentHelper'->create($constraintsDomString);
         $self->{advertisementAreaConstraintsInterface} = 'org::allbinary::business::advertisement::area::AdvertisementAreaConstraints'->new($document);
         $self->{campaign} = $hashMap->get('org::allbinary::business::advertisement::campaign::AdvertisementCampaignData'->getInstance()->{NAME});
@@ -111,6 +111,7 @@ use org::allbinary::business::context::modules::storefront::StoreFrontData ();
 use org::allbinary::data::tree::dom::document::DomDocumentHelper ();
 use org::w3c::dom::Document ();
 use org::allbinary::business::advertisement::area::AdvertisementAreaInterface ();
+use org::allbinary::business::advertisement::area::AdvertisementAreaData ();
 use org::allbinary::business::advertisement::area::AdvertisementAreaConstraints ();
 
 1;

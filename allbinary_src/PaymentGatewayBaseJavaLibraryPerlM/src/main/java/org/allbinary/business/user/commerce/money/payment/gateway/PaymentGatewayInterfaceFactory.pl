@@ -56,7 +56,7 @@ sub getInstance_j1_1 {
 sub getInstance_j1_2 {
     my ($self, $paymentType) = @_;
         my $hashMap = 'org::allbinary::logic::StdUtil'->getInstance()->createHashMap();
-        $hashMap->put(java::lang::Object::jstatic('org::allbinary::business::user::commerce::money::payment::gateway::PaymentGatewayInterfaceFactory', 'PaymentGatewayData')->{NAME}->toString(), $paymentType->getName());
+        $hashMap->put($org::allbinary::business::user::commerce::money::payment::gateway::PaymentGatewayData::NAME->toString(), $paymentType->getName());
         return $self->getInstance($hashMap);
 }
 
@@ -66,7 +66,7 @@ sub getInstance_j1_3 {
     my ($self, $hashMap) = @_;
         my $commonStrings = 'org::allbinary::string::CommonStrings'->getInstance();
         try {
-            my $gatewayName = $hashMap->get(java::lang::Object::jstatic('org::allbinary::business::user::commerce::money::payment::gateway::PaymentGatewayInterfaceFactory', 'PaymentGatewayData')->{NAME}->toString());
+            my $gatewayName = $hashMap->get($org::allbinary::business::user::commerce::money::payment::gateway::PaymentGatewayData::NAME->toString());
             my $paymentType = 'org::allbinary::business::user::commerce::money::payment::types::BasicPaymentTypeUtil'->getInstance()->get($gatewayName);
             if ($org::allbinary::logic::communication::log::config::type::LogConfigTypes::LOGGING->contains('org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory'->getInstance()->{PAYMENT})) {
                 $self->{logUtil}->putF("Getting PaymentGatewayInterface for PaymentType: " . $paymentType->getName() . " with: " . $hashMap, $self, $commonStrings->{GET_INSTANCE});
@@ -106,6 +106,7 @@ use org::allbinary::string::CommonStrings ();
 use org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory ();
 use org::allbinary::logic::communication::log::config::type::LogConfigTypes ();
 use org::allbinary::business::user::commerce::money::payment::gateway::PaymentGatewayInterfaceFactoryInterface ();
+use org::allbinary::business::user::commerce::money::payment::gateway::PaymentGatewayData ();
 
 1;
 

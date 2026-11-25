@@ -31,13 +31,14 @@ sub getInstance {
 sub new {
     my ($class) = @_;
     my $self = bless({}, $class);
-        my $touchScreenFactory = java::lang::Object::jstatic('org::allbinary::input::motion::button::TouchScreenTypeFactory', 'TouchScreenFactory')->getInstance();
+        my $touchScreenFactory = 'org::allbinary::input::motion::button::TouchScreenFactory'->getInstance();
         $touchScreenFactory->setTouch(1);
     return $self;
 }
 
 use java::lang::Object ();
 use java::lang::LazyStatic ();
+use org::allbinary::input::motion::button::TouchScreenFactory ();
 
 1;
 

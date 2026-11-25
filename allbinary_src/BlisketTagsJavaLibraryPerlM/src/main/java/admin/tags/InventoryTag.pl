@@ -52,7 +52,7 @@ sub doStartTag {
                     if ($self->getCommand()->compareTo($org::allbinary::globals::GLOBALS2::BACKUP) != 0 && $self->getCommand()->compareTo($org::allbinary::globals::GLOBALS2::RESTORE) != 0 && $self->getCommand()->compareTo($self->{commonStrings}->{CREATE}) != 0 && $self->getCommand()->compareTo($self->{commonStrings}->{DROP}) != 0) {
                         my $parentTag = $self->getParent();
                         'admin::tags::ParentInventoryTagHelper'->getInstance()->isValid($self, $parentTag);
-                        $self->getPropertiesHashMap()->put(java::lang::Object::jstatic('admin::tags::InventoryTag', 'AbTagData')->{PARENT}, $parentTag);
+                        $self->getPropertiesHashMap()->put($admin::tags::AbTagData::PARENT, $parentTag);
                         $self->getPropertiesHashMap()->put('org::allbinary::business::context::modules::storefront::StoreFrontData'->getInstance()->{NAME}, $self->{storeName});
                     }
                     return $self->SUPER::doStartTag();
@@ -73,7 +73,9 @@ use admin::taghelpers::InventoryRequestHelperFactory ();
 use org::allbinary::business::context::modules::storefront::StoreFrontData ();
 use org::allbinary::logic::communication::http::request::AbResponseHandler ();
 use org::allbinary::globals::GLOBALS2 ();
+use admin::tags::TableTag ();
 use admin::tags::ParentInventoryTagHelper ();
+use admin::tags::AbTagData ();
 
 1;
 

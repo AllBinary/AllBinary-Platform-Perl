@@ -105,7 +105,7 @@ sub _new1_2 {
     my $self = bless({}, $class);
     _init_fields($self);
         $self->getFormData($hashMap);
-        my $domDocumentString = $hashMap->get(java::lang::Object::jstatic('org::allbinary::business::context::modules::storefront::StoreFront', 'StoreFrontData')->getInstance()->{CONFIGURATION});
+        my $domDocumentString = $hashMap->get('org::allbinary::business::context::modules::storefront::StoreFrontData'->getInstance()->{CONFIGURATION});
         if (!defined($domDocumentString)) {
             my $document = 'org::allbinary::data::tree::dom::document::DomDocumentHelper'->create($domDocumentString);
             $self->setContextConfigurationInterface('org::allbinary::business::context::configuration::ContextConfigurationInterfaceFactory'->getInstance()->getInstance($document));
@@ -116,7 +116,7 @@ sub _new1_2 {
 
 sub isColumn {
     my ($self, $columnName) = @_;
-        if (($columnName cmp java::lang::Object::jstatic('org::allbinary::business::context::modules::storefront::StoreFront', 'StoreFrontData')->getInstance()->{NAME}) == 0 || ($columnName cmp $org::allbinary::business::user::UserData::MAINEMAIL) == 0) {
+        if (($columnName cmp 'org::allbinary::business::context::modules::storefront::StoreFrontData'->getInstance()->{NAME}) == 0 || ($columnName cmp $org::allbinary::business::user::UserData::MAINEMAIL) == 0) {
             return 1;
         } else {
             return 0;
@@ -169,7 +169,7 @@ sub create {
 # throws Exception
 sub getFormData {
     my ($self, $storeHashMap) = @_;
-        my $storeFrontData = java::lang::Object::jstatic('org::allbinary::business::context::modules::storefront::StoreFront', 'StoreFrontData')->getInstance();
+        my $storeFrontData = 'org::allbinary::business::context::modules::storefront::StoreFrontData'->getInstance();
         $self->{name} = $storeHashMap->get($storeFrontData->{NAME});
         $self->{basketName} = $storeHashMap->get($storeFrontData->{NAME});
         $self->{homeHostName} = $storeHashMap->get($storeFrontData->{HOMEHOSTNAME});
@@ -981,7 +981,7 @@ sub toVector {
 # throws Exception
 sub toHashMap {
     my ($self) = @_;
-        my $storeFrontData = java::lang::Object::jstatic('org::allbinary::business::context::modules::storefront::StoreFront', 'StoreFrontData')->getInstance();
+        my $storeFrontData = 'org::allbinary::business::context::modules::storefront::StoreFrontData'->getInstance();
         my $dataHashMap = 'org::allbinary::logic::StdUtil'->getInstance()->createHashMap();
         $dataHashMap->put($storeFrontData->{NAME}, $self->{name});
         $dataHashMap->put($storeFrontData->{HOMEHOSTNAME}, $self->{homeHostName});
@@ -1073,6 +1073,7 @@ use org::w3c::dom::Document ();
 use org::allbinary::logic::communication::log::config::type::LogConfigTypeFactory ();
 use org::allbinary::logic::communication::log::config::type::LogConfigTypes ();
 use org::allbinary::business::context::modules::storefront::StoreFrontInterface ();
+use org::allbinary::business::context::modules::storefront::StoreFrontData ();
 
 1;
 

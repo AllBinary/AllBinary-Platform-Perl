@@ -45,13 +45,13 @@ sub _new1_1 {
     _init_fields($self);
         $self->setFtpConfigurationInterface('org::allbinary::logic::communication::ftp::configuration::FtpConfiguration'->new());
         my $chileNodeList = $node->getChildNodes();
-        my $server = 'org::allbinary::data::tree::dom::DomNodeHelper'->getTextNodeValue(java::lang::Object::jstatic('org::allbinary::logic::communication::ftp::configuration::FtpConfigurationView', 'FtpConfigurationData')->{SERVER}, $chileNodeList);
+        my $server = 'org::allbinary::data::tree::dom::DomNodeHelper'->getTextNodeValue($org::allbinary::logic::communication::ftp::configuration::FtpConfigurationData::SERVER, $chileNodeList);
         $self->getFtpConfigurationInterface()->setServer($server);
-        my $userName = 'org::allbinary::data::tree::dom::DomNodeHelper'->getTextNodeValue(java::lang::Object::jstatic('org::allbinary::logic::communication::ftp::configuration::FtpConfigurationView', 'FtpConfigurationData')->{USERNAME}, $chileNodeList);
+        my $userName = 'org::allbinary::data::tree::dom::DomNodeHelper'->getTextNodeValue($org::allbinary::logic::communication::ftp::configuration::FtpConfigurationData::USERNAME, $chileNodeList);
         $self->getFtpConfigurationInterface()->setUserName($userName);
-        my $password = 'org::allbinary::data::tree::dom::DomNodeHelper'->getTextNodeValue(java::lang::Object::jstatic('org::allbinary::logic::communication::ftp::configuration::FtpConfigurationView', 'FtpConfigurationData')->{PASSWORD}, $chileNodeList);
+        my $password = 'org::allbinary::data::tree::dom::DomNodeHelper'->getTextNodeValue($org::allbinary::logic::communication::ftp::configuration::FtpConfigurationData::PASSWORD, $chileNodeList);
         $self->getFtpConfigurationInterface()->setPassword($password);
-        my $path = 'org::allbinary::data::tree::dom::DomNodeHelper'->getTextNodeValue(java::lang::Object::jstatic('org::allbinary::logic::communication::ftp::configuration::FtpConfigurationView', 'FtpConfigurationData')->{PATH}, $chileNodeList);
+        my $path = 'org::allbinary::data::tree::dom::DomNodeHelper'->getTextNodeValue($org::allbinary::logic::communication::ftp::configuration::FtpConfigurationData::PATH, $chileNodeList);
         $self->getFtpConfigurationInterface()->setPath($path);
     return $self;
 }
@@ -71,7 +71,7 @@ sub toXmlNode {
     my ($self, $document) = @_;
         my $ftpConfigurationMapping = 'org::allbinary::logic::communication::ftp::configuration::FtpConfigurationMapping'->new($self->getFtpConfigurationInterface());
         my $hashMap = $ftpConfigurationMapping->toHashMap();
-        my $node = 'org::allbinary::data::tree::dom::ModDomHelper'->createNameValueNodes($document, java::lang::Object::jstatic('org::allbinary::logic::communication::ftp::configuration::FtpConfigurationView', 'FtpConfigurationData')->{NAME}, $hashMap);
+        my $node = 'org::allbinary::data::tree::dom::ModDomHelper'->createNameValueNodes($document, $org::allbinary::logic::communication::ftp::configuration::FtpConfigurationData::NAME, $hashMap);
         return $node;
 }
 
@@ -96,6 +96,7 @@ use org::w3c::dom::Document ();
 use org::w3c::dom::Node ();
 use org::w3c::dom::NodeList ();
 use org::allbinary::logic::communication::ftp::configuration::FtpConfiguration ();
+use org::allbinary::logic::communication::ftp::configuration::FtpConfigurationData ();
 use org::allbinary::logic::communication::ftp::configuration::FtpConfigurationMapping ();
 
 1;

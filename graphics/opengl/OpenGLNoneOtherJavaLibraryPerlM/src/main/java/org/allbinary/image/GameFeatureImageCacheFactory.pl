@@ -29,22 +29,23 @@ sub new {
 
 sub getInstance {
     my ($class) = @_;
-        return java::lang::Object::jstatic('org::allbinary::image::GameFeatureImageCacheFactory', 'ImageCacheFactory')->getInstance();
+        return 'org::allbinary::image::ImageCacheFactory'->getInstance();
 }
 
 
 sub init {
     my ($class) = @_;
-        java::lang::Object::jstatic('org::allbinary::image::GameFeatureImageCacheFactory', 'ImageCacheFactory')->init();
+        'org::allbinary::image::ImageCacheFactory'->init();
 }
 
 
 sub releaseAll {
     my ($class) = @_;
-        java::lang::Object::jstatic('org::allbinary::image::GameFeatureImageCacheFactory', 'ImageCacheFactory')->getInstance()->releaseAll();
+        'org::allbinary::image::ImageCacheFactory'->getInstance()->releaseAll();
 }
 
 use java::lang::Object ();
+use org::allbinary::image::ImageCacheFactory ();
 
 1;
 
