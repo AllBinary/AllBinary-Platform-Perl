@@ -44,12 +44,12 @@ sub _init_fields {
     $self->{gameMidletStateFactory} = 'org::allbinary::game::midlet::GameMidletStateFactory'->getInstance();
     $self->{gameStartTimeHelper} = 'org::allbinary::time::TimeDelayHelper'->new(240);
     $self->{fullScreenUtil} = 'org::allbinary::canvas::FullScreenUtil'->getInstance();
-    $self->{debugInterface} = undef;
+    $self->{debugInterface} = undef unless exists $self->{debugInterface};
     $self->{allbinaryGameCanvasRunnableInterface} = $org::allbinary::game::displayable::canvas::NullGameCanvasRunnable::NULL_GAME_CANVAS_RUNNABLE;
     $self->{thread} = $org::allbinary::thread::NullThread::NULL_THREAD;
-    $self->{loadGameForm} = undef;
-    $self->{isFullScreen} = 0;
-    $self->{resized} = 0;
+    $self->{loadGameForm} = undef unless exists $self->{loadGameForm};
+    $self->{isFullScreen} = 0 unless exists $self->{isFullScreen};
+    $self->{resized} = 0 unless exists $self->{resized};
     $self->{startedBefore} = 0;
 }
 

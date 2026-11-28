@@ -25,7 +25,7 @@ sub _init_fields {
     my ($self) = @_;
     $self->{logUtil} = 'org::allbinary::logic::communication::log::LogUtil'->getInstance();
     $self->{commonStrings} = 'org::allbinary::string::CommonStrings'->getInstance();
-    $self->{player} = undef;
+    $self->{player} = undef unless exists $self->{player};
     $self->{timeElapsedHelper} = 'org::allbinary::time::TimeDelayHelper'->new(0);
     $self->{gameTickTimeDelayHelper} = 'org::allbinary::time::GameTickTimeDelayHelperFactory'->getInstance();
 }

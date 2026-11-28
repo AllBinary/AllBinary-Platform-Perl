@@ -22,11 +22,11 @@ use parent -norequire,'org::allbinary::game::graphics::hud::BasicHud','org::allb
 
 sub _init_fields {
     my ($self) = @_;
-    $self->{healthScale} = undef;
-    $self->{animationInterface} = undef;
-    $self->{healthInterface} = undef;
-    $self->{max} = 0;
-    $self->{xArray} = undef;
+    $self->{healthScale} = undef unless exists $self->{healthScale};
+    $self->{animationInterface} = undef unless exists $self->{animationInterface};
+    $self->{healthInterface} = undef unless exists $self->{healthInterface};
+    $self->{max} = 0 unless exists $self->{max};
+    $self->{xArray} = undef unless exists $self->{xArray};
     $self->{gameTickTimeDelayHelper} = 'org::allbinary::time::GameTickTimeDelayHelperFactory'->getInstance();
     $self->{timeDelayHelper} = $org::allbinary::time::NoTimeDelayHelper::SINGLETON;
     $self->{slowBeatTimeDelayHelper} = 'org::allbinary::time::TimeDelayHelper'->new(1280);

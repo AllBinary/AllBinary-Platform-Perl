@@ -23,14 +23,14 @@ use parent -norequire,'java::lang::Object','org::allbinary::logic::communication
 sub _init_fields {
     my ($self) = @_;
     $self->{logUtil} = 'org::allbinary::logic::communication::log::LogUtil'->getInstance();
-    $self->{name} = undef;
-    $self->{eventListenerClassPath} = undef;
+    $self->{name} = undef unless exists $self->{name};
+    $self->{eventListenerClassPath} = undef unless exists $self->{eventListenerClassPath};
 }
 
 sub new {
     my ($class, @arguments) = @_;
-    return $class->_new0(@arguments) if scalar(@arguments) == 0;
-    return $class->_new1(@arguments) if scalar(@arguments) == 1;
+    return _new0($class, @arguments) if scalar(@arguments) == 0;
+    return _new1($class, @arguments) if scalar(@arguments) == 1;
     die "No constructor of UserEmailEventConfiguration takes " . scalar(@arguments) . " arguments";
 }
 

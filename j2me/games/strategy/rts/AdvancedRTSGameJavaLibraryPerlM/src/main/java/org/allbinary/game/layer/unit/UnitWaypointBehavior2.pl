@@ -30,15 +30,15 @@ sub _init_fields {
     $self->{basicColorFactory} = 'org::allbinary::graphics::color::BasicColorFactory'->getInstance();
     $self->{layerDistanceUtil} = 'org::allbinary::math::LayerDistanceUtil'->getInstance();
     $self->{pathFindingThreadPool} = 'org::allbinary::thread::PathFindingThreadPool'->getInstance();
-    $self->{progressTimeDelayHelper} = undef;
-    $self->{wanderPathsList} = undef;
-    $self->{waypointPathRunnable} = undef;
+    $self->{progressTimeDelayHelper} = undef unless exists $self->{progressTimeDelayHelper};
+    $self->{wanderPathsList} = undef unless exists $self->{wanderPathsList};
+    $self->{waypointPathRunnable} = undef unless exists $self->{waypointPathRunnable};
     $self->{sensorRange} = 0;
     $self->{closeRange} = 0;
     $self->{nextUnvisitedPathGeographicMapCellPosition} = $org::allbinary::media::graphics::geography::map::SimpleGeographicMapCellPositionFactory::NULL_GEOGRAPHIC_MAP_CELL_POSITION;
     $self->{afterNextUnvisitedPathGeographicMapCellPosition} = $org::allbinary::media::graphics::geography::map::SimpleGeographicMapCellPositionFactory::NULL_GEOGRAPHIC_MAP_CELL_POSITION;
-    $self->{waitingOnTargetPath} = 0;
-    $self->{waitingOnWaypointPath} = 0;
+    $self->{waitingOnTargetPath} = 0 unless exists $self->{waitingOnTargetPath};
+    $self->{waitingOnWaypointPath} = 0 unless exists $self->{waitingOnWaypointPath};
     $self->{targetWithoutCachedPathLayerInterface} = 'org::allbinary::game::layer::special::CollidableDestroyableDamageableLayer'->getNullInstance();
     $self->{buildingSteeringVisitor} = do { local $java::lang::Object::jouter = $self; 'org::allbinary::game::layer::unit::BuildingSteeringVisitor'->new() };
 }

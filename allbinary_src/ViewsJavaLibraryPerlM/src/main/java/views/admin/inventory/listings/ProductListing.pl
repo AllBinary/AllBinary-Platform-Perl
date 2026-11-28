@@ -25,10 +25,10 @@ sub _init_fields {
     $self->{logUtil} = 'org::allbinary::logic::communication::log::LogUtil'->getInstance();
     $self->{directory} = 'org::allbinary::logic::io::file::directory::Directory'->getInstance();
     $self->{basicItemData} = 'org::allbinary::business::user::commerce::inventory::item::BasicItemData'->getInstance();
-    $self->{storeFronts} = undef;
-    $self->{staticPages} = undef;
-    $self->{inventory} = undef;
-    $self->{searchRequest} = undef;
+    $self->{storeFronts} = undef unless exists $self->{storeFronts};
+    $self->{staticPages} = undef unless exists $self->{staticPages};
+    $self->{inventory} = undef unless exists $self->{inventory};
+    $self->{searchRequest} = undef unless exists $self->{searchRequest};
     $self->{INVENTORY} = ".InventoryView";
 }
 

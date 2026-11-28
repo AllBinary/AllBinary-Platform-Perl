@@ -23,15 +23,15 @@ use parent -norequire,'java::lang::Object';
 sub _init_fields {
     my ($self) = @_;
     $self->{logUtil} = 'org::allbinary::logic::communication::log::LogUtil'->getInstance();
-    $self->{basicEmailInfo} = undef;
-    $self->{htmlAttachment} = undef;
-    $self->{contentBase} = undef;
+    $self->{basicEmailInfo} = undef unless exists $self->{basicEmailInfo};
+    $self->{htmlAttachment} = undef unless exists $self->{htmlAttachment};
+    $self->{contentBase} = undef unless exists $self->{contentBase};
 }
 
 sub new {
     my ($class, @arguments) = @_;
-    return $class->_new1(@arguments) if scalar(@arguments) == 1;
-    return $class->_new3(@arguments) if scalar(@arguments) == 3;
+    return _new1($class, @arguments) if scalar(@arguments) == 1;
+    return _new3($class, @arguments) if scalar(@arguments) == 3;
     die "No constructor of EmailInfo takes " . scalar(@arguments) . " arguments";
 }
 

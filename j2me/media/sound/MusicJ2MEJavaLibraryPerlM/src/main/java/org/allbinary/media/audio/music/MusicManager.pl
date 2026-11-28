@@ -26,11 +26,11 @@ sub _init_fields {
     $self->{WAITING_FOR_MEDIA_TO_END} = "Waiting for media to end";
     $self->{ALREADY_PLAYING} = "Already Playing: ";
     $self->{ALREADY_ENDED} = "Last Song already ended: ";
-    $self->{songList} = undef;
+    $self->{songList} = undef unless exists $self->{songList};
     $self->{currentSongSound} = 'org::allbinary::media::audio::NoSound'->getInstance();
     $self->{nextSongSound} = 'org::allbinary::media::audio::NoSound'->getInstance();
-    $self->{reset} = 0;
-    $self->{noDuration} = 0;
+    $self->{reset} = 0 unless exists $self->{reset};
+    $self->{noDuration} = 0 unless exists $self->{noDuration};
     $self->{stopped} = 1;
 }
 
@@ -178,7 +178,7 @@ sub stop {
 
     sub _init_fields {
         my ($self) = @_;
-        $self->{musicManager} = undef;
+        $self->{musicManager} = undef unless exists $self->{musicManager};
     }
     
 

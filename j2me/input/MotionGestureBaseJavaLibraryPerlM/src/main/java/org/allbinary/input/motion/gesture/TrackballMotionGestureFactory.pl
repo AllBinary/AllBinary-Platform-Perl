@@ -23,10 +23,10 @@ tie our $instance, 'java::lang::LazyStatic', sub { 'org::allbinary::logic::NullU
 
 sub _init_fields {
     my ($self) = @_;
-    $self->{LEFT} = undef;
-    $self->{RIGHT} = undef;
-    $self->{UP} = undef;
-    $self->{DOWN} = undef;
+    $self->{LEFT} = undef unless exists $self->{LEFT};
+    $self->{RIGHT} = undef unless exists $self->{RIGHT};
+    $self->{UP} = undef unless exists $self->{UP};
+    $self->{DOWN} = undef unless exists $self->{DOWN};
 }
 
 

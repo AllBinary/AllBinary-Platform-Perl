@@ -24,16 +24,16 @@ sub _init_fields {
     my ($self) = @_;
     $self->{logUtil} = 'org::allbinary::logic::communication::log::LogUtil'->getInstance();
     $self->{commonStrings} = 'org::allbinary::string::CommonStrings'->getInstance();
-    $self->{ownerTransformInfoInterface} = undef;
-    $self->{document} = undef;
-    $self->{outputTypeName} = undef;
+    $self->{ownerTransformInfoInterface} = undef unless exists $self->{ownerTransformInfoInterface};
+    $self->{document} = undef unless exists $self->{document};
+    $self->{outputTypeName} = undef unless exists $self->{outputTypeName};
 }
 
 sub new {
     my ($class, @arguments) = @_;
-    return $class->_new1(@arguments) if scalar(@arguments) == 1;
-    return $class->_new2(@arguments) if scalar(@arguments) == 2;
-    return $class->_new3(@arguments) if scalar(@arguments) == 3;
+    return _new1($class, @arguments) if scalar(@arguments) == 1;
+    return _new2($class, @arguments) if scalar(@arguments) == 2;
+    return _new3($class, @arguments) if scalar(@arguments) == 3;
     die "No constructor of TransformInfoObjectConfig takes " . scalar(@arguments) . " arguments";
 }
 

@@ -24,15 +24,15 @@ our $NAME = "If Color At";
 sub _init_fields {
     my ($self) = @_;
     $self->{logUtil} = 'org::allbinary::logic::communication::log::LogUtil'->getInstance();
-    $self->{colorAtActionScriptConditionJPanel} = undef;
-    $self->{point} = undef;
+    $self->{colorAtActionScriptConditionJPanel} = undef unless exists $self->{colorAtActionScriptConditionJPanel};
+    $self->{point} = undef unless exists $self->{point};
     $self->{colorRangeInterface} = 'org::allbinary::media::image::analysis::ColorRange'->new();
 }
 
 sub new {
     my ($class, @arguments) = @_;
-    return $class->_new1(@arguments) if scalar(@arguments) == 1;
-    return $class->_new0(@arguments) if scalar(@arguments) == 0;
+    return _new1($class, @arguments) if scalar(@arguments) == 1;
+    return _new0($class, @arguments) if scalar(@arguments) == 0;
     die "No constructor of ColorAtActionScriptCondition takes " . scalar(@arguments) . " arguments";
 }
 

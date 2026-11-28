@@ -22,10 +22,10 @@ use parent -norequire,'java::lang::Object','org::allbinary::init::crypt::jcehelp
 
 sub _init_fields {
     my ($self) = @_;
-    $self->{cipher} = undef;
-    $self->{secretKey} = undef;
-    $self->{algorithm} = undef;
-    $self->{key} = undef;
+    $self->{cipher} = undef unless exists $self->{cipher};
+    $self->{secretKey} = undef unless exists $self->{secretKey};
+    $self->{algorithm} = undef unless exists $self->{algorithm};
+    $self->{key} = undef unless exists $self->{key};
 }
 
 

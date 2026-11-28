@@ -23,7 +23,7 @@ our $RESOURCES = "Resources: ";
 
 sub _init_fields {
     my ($self) = @_;
-    $self->{keyvalueDrawString} = undef;
+    $self->{keyvalueDrawString} = undef unless exists $self->{keyvalueDrawString};
     $self->{fontHeight} = 0;
 }
 

@@ -27,9 +27,9 @@ sub _init_fields {
     $self->{KEY_CIRCLE} = "circle";
     $self->{KEY_RECTANGLE} = "rectangle";
     $self->{KEY_RECT} = "rect";
-    $self->{LINE} = undef;
-    $self->{CIRCLE} = undef;
-    $self->{RECTANGLE} = undef;
+    $self->{LINE} = undef unless exists $self->{LINE};
+    $self->{CIRCLE} = undef unless exists $self->{CIRCLE};
+    $self->{RECTANGLE} = undef unless exists $self->{RECTANGLE};
 }
 
 

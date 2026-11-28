@@ -23,7 +23,7 @@ use parent -norequire,'java::lang::Object';
 
 sub _init_fields {
     my ($self) = @_;
-    $self->{pointBasicArrayList} = undef;
+    $self->{pointBasicArrayList} = undef unless exists $self->{pointBasicArrayList};
     $self->{noDecimalTrigTable} = 'org::allbinary::math::NoDecimalTrigTable'->getInstance();
 }
 

@@ -22,8 +22,8 @@ use parent -norequire,'java::lang::Object';
 
 sub _init_fields {
     my ($self) = @_;
-    $self->{velocityProperties} = undef;
-    $self->{vehicleFrictionProperties} = undef;
+    $self->{velocityProperties} = undef unless exists $self->{velocityProperties};
+    $self->{vehicleFrictionProperties} = undef unless exists $self->{vehicleFrictionProperties};
 }
 
 

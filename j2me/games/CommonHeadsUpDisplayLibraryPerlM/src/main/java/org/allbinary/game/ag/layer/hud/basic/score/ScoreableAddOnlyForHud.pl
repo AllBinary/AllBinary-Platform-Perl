@@ -22,7 +22,7 @@ use parent -norequire,'org::allbinary::game::score::Scoreable';
 
 sub _init_fields {
     my ($self) = @_;
-    $self->{scoreHudWidget} = undef;
+    $self->{scoreHudWidget} = undef unless exists $self->{scoreHudWidget};
 }
 
 

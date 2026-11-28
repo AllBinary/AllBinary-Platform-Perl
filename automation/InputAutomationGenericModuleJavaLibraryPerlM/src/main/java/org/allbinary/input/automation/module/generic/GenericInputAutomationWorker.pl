@@ -25,8 +25,8 @@ sub _init_fields {
     $self->{logUtil} = 'org::allbinary::logic::communication::log::LogUtil'->getInstance();
     $self->{PROCESS_DATA_WORKER_RESULTS} = "processDataWorkerResults";
     $self->{lastFrame} = -1;
-    $self->{frame} = undef;
-    $self->{genericProfile} = undef;
+    $self->{frame} = undef unless exists $self->{frame};
+    $self->{genericProfile} = undef unless exists $self->{genericProfile};
 }
 
 

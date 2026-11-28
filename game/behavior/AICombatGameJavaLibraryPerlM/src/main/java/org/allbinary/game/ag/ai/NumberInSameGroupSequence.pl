@@ -22,17 +22,17 @@ use parent -norequire,'java::lang::Object';
 
 sub _init_fields {
     my ($self) = @_;
-    $self->{NUMBER_ON_SAME_TEAM_SEQUENCE_ZERO} = undef;
-    $self->{NUMBER_ON_SAME_TEAM_SEQUENCE_ONE} = undef;
-    $self->{NUMBER_ON_SAME_TEAM_SEQUENCE_TWO} = undef;
-    $self->{NUMBER_ON_SAME_TEAM_SEQUENCE_THREE} = undef;
-    $self->{NUMBER_ON_SAME_TEAM_SEQUENCE_FOUR} = undef;
-    $self->{NUMBER_ON_SAME_TEAM_SEQUENCE_FIVE} = undef;
-    $self->{NUMBER_ON_SAME_TEAM_SEQUENCE_SIX} = undef;
-    $self->{NUMBER_ON_SAME_TEAM_SEQUENCE_SEVEN} = undef;
-    $self->{NUMBER_ON_SAME_TEAM_SEQUENCE_EIGHT} = undef;
-    $self->{NUMBER_ON_SAME_TEAM_SEQUENCE_NINE} = undef;
-    $self->{NUMBER_ON_SAME_TEAM_SEQUENCE} = undef;
+    $self->{NUMBER_ON_SAME_TEAM_SEQUENCE_ZERO} = undef unless exists $self->{NUMBER_ON_SAME_TEAM_SEQUENCE_ZERO};
+    $self->{NUMBER_ON_SAME_TEAM_SEQUENCE_ONE} = undef unless exists $self->{NUMBER_ON_SAME_TEAM_SEQUENCE_ONE};
+    $self->{NUMBER_ON_SAME_TEAM_SEQUENCE_TWO} = undef unless exists $self->{NUMBER_ON_SAME_TEAM_SEQUENCE_TWO};
+    $self->{NUMBER_ON_SAME_TEAM_SEQUENCE_THREE} = undef unless exists $self->{NUMBER_ON_SAME_TEAM_SEQUENCE_THREE};
+    $self->{NUMBER_ON_SAME_TEAM_SEQUENCE_FOUR} = undef unless exists $self->{NUMBER_ON_SAME_TEAM_SEQUENCE_FOUR};
+    $self->{NUMBER_ON_SAME_TEAM_SEQUENCE_FIVE} = undef unless exists $self->{NUMBER_ON_SAME_TEAM_SEQUENCE_FIVE};
+    $self->{NUMBER_ON_SAME_TEAM_SEQUENCE_SIX} = undef unless exists $self->{NUMBER_ON_SAME_TEAM_SEQUENCE_SIX};
+    $self->{NUMBER_ON_SAME_TEAM_SEQUENCE_SEVEN} = undef unless exists $self->{NUMBER_ON_SAME_TEAM_SEQUENCE_SEVEN};
+    $self->{NUMBER_ON_SAME_TEAM_SEQUENCE_EIGHT} = undef unless exists $self->{NUMBER_ON_SAME_TEAM_SEQUENCE_EIGHT};
+    $self->{NUMBER_ON_SAME_TEAM_SEQUENCE_NINE} = undef unless exists $self->{NUMBER_ON_SAME_TEAM_SEQUENCE_NINE};
+    $self->{NUMBER_ON_SAME_TEAM_SEQUENCE} = undef unless exists $self->{NUMBER_ON_SAME_TEAM_SEQUENCE};
 }
 
 

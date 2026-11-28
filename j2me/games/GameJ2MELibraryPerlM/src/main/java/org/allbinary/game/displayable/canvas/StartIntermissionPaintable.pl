@@ -25,19 +25,19 @@ sub _init_fields {
     my ($self) = @_;
     $self->{fontDebugFactory} = 'org::allbinary::graphics::font::FontDebugFactory'->getInstance();
     $self->{basicSetColorUtil} = 'org::allbinary::graphics::color::BasicColorSetUtil'->getInstance();
-    $self->{gameCanvas} = undef;
-    $self->{stringArray} = undef;
-    $self->{fontSize} = undef;
-    $self->{font} = undef;
-    $self->{lastWidth} = undef;
+    $self->{gameCanvas} = undef unless exists $self->{gameCanvas};
+    $self->{stringArray} = undef unless exists $self->{stringArray};
+    $self->{fontSize} = undef unless exists $self->{fontSize};
+    $self->{font} = undef unless exists $self->{font};
+    $self->{lastWidth} = undef unless exists $self->{lastWidth};
     $self->{updateMyFontProcessor} = 'org::allbinary::graphics::font::UpdateMyFontProcessor'->new($self);
     $self->{myFontProcessor} = $self->{updateMyFontProcessor};
     $self->{basicColor} = 'org::allbinary::graphics::color::BasicColorFactory'->getInstance()->{BLACK};
-    $self->{color} = undef;
+    $self->{color} = undef unless exists $self->{color};
     $self->{lineYOffsetArray} = 'org::allbinary::logic::NullUtil'->getInstance()->{NULL_INT_ARRAY};
     $self->{hasChanged} = 1;
     $self->{anchor} = $org::allbinary::graphics::Anchor::TOP_LEFT;
-    $self->{fontHeightP} = 0;
+    $self->{fontHeightP} = 0 unless exists $self->{fontHeightP};
     $self->{BEGIN_LEVEL} = "Begin Level ";
     $self->{EMPTY_STRING} = 'org::allbinary::logic::string::StringUtil'->getInstance()->{EMPTY_STRING};
 }

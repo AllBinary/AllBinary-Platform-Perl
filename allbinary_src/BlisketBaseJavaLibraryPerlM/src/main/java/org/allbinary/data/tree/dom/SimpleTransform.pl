@@ -22,8 +22,8 @@ use parent -norequire,'java::lang::Object';
 
 sub _init_fields {
     my ($self) = @_;
-    $self->{xsltFilePath} = undef;
-    $self->{dataFilePath} = undef;
+    $self->{xsltFilePath} = undef unless exists $self->{xsltFilePath};
+    $self->{dataFilePath} = undef unless exists $self->{dataFilePath};
 }
 
 

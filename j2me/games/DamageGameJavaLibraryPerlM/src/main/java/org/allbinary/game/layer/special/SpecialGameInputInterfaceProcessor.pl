@@ -22,7 +22,7 @@ use parent -norequire,'org::allbinary::game::input::GameInputProcessor';
 
 sub _init_fields {
     my ($self) = @_;
-    $self->{specialGameInputInterface} = undef;
+    $self->{specialGameInputInterface} = undef unless exists $self->{specialGameInputInterface};
 }
 
 

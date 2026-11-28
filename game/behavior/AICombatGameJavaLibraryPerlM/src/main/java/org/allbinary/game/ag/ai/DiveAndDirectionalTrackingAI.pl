@@ -27,16 +27,16 @@ sub _init_fields {
     $self->{gameTickTimeDelayHelper} = 'org::allbinary::time::GameTickTimeDelayHelperFactory'->getInstance();
     $self->{timeDelayHelper} = 'org::allbinary::time::TimeDelayHelper'->new(500);
     $self->{list} = 'org::allbinary::util::BasicArrayListD'->new();
-    $self->{directionalInterface} = undef;
-    $self->{velocityInterface} = undef;
+    $self->{directionalInterface} = undef unless exists $self->{directionalInterface};
+    $self->{velocityInterface} = undef unless exists $self->{velocityInterface};
     $self->{directionToKeyMap} = [$javax::microedition::lcdui::Canvas::LEFT, $javax::microedition::lcdui::Canvas::DOWN, $javax::microedition::lcdui::Canvas::UP, $javax::microedition::lcdui::Canvas::RIGHT];
-    $self->{initialDropped} = 0;
-    $self->{diveP} = 0;
+    $self->{initialDropped} = 0 unless exists $self->{initialDropped};
+    $self->{diveP} = 0 unless exists $self->{diveP};
     $self->{directionOfTarget} = 'org::allbinary::direction::Direction'->getInstance(0);
     $self->{MIN_DISTANCE} = 40;
     $self->{lastTrackingLayerInterface} = $org::allbinary::layer::AllBinaryLayer::NULL_ALLBINARY_LAYER;
-    $self->{artificialIntelligenceInterface} = undef;
-    $self->{aiVistor} = undef;
+    $self->{artificialIntelligenceInterface} = undef unless exists $self->{artificialIntelligenceInterface};
+    $self->{aiVistor} = undef unless exists $self->{aiVistor};
     $self->{lastDirection} = 'org::allbinary::direction::DirectionFactory'->getInstance()->{NO_DIRECTION};
 }
 

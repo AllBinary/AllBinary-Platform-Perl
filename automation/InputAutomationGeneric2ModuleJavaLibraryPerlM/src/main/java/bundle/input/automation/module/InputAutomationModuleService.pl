@@ -22,7 +22,7 @@ use parent -norequire,'java::lang::Object','bundle::input::automation::module::I
 
 sub _init_fields {
     my ($self) = @_;
-    $self->{inputAutomationModuleInterfaceArray} = undef;
+    $self->{inputAutomationModuleInterfaceArray} = undef unless exists $self->{inputAutomationModuleInterfaceArray};
 }
 
 

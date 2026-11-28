@@ -22,9 +22,9 @@ use parent -norequire,'java::lang::Object';
 
 sub _init_fields {
     my ($self) = @_;
-    $self->{onDemandResourcesFactory} = undef;
-    $self->{gameLayerPlacementInterfaceBasicArrayListFactoryInterfaceFactory} = undef;
-    $self->{resourceAnimationInterfaceFactoryInterfaceFactory} = undef;
+    $self->{onDemandResourcesFactory} = undef unless exists $self->{onDemandResourcesFactory};
+    $self->{gameLayerPlacementInterfaceBasicArrayListFactoryInterfaceFactory} = undef unless exists $self->{gameLayerPlacementInterfaceBasicArrayListFactoryInterfaceFactory};
+    $self->{resourceAnimationInterfaceFactoryInterfaceFactory} = undef unless exists $self->{resourceAnimationInterfaceFactoryInterfaceFactory};
 }
 
 

@@ -22,10 +22,10 @@ use parent -norequire,'org::allbinary::animation::Animation','org::allbinary::gr
 
 sub _init_fields {
     my ($self) = @_;
-    $self->{width} = undef;
-    $self->{height} = undef;
-    $self->{offsetX} = undef;
-    $self->{offsetY} = undef;
+    $self->{width} = undef unless exists $self->{width};
+    $self->{height} = undef unless exists $self->{height};
+    $self->{offsetX} = undef unless exists $self->{offsetX};
+    $self->{offsetY} = undef unless exists $self->{offsetY};
 }
 
 

@@ -22,8 +22,8 @@ use parent -norequire,'java::lang::Object','org::allbinary::data::tree::dom::Dom
 
 sub _init_fields {
     my ($self) = @_;
-    $self->{fileBasicArrayList} = undef;
-    $self->{transformDocumentInterface} = undef;
+    $self->{fileBasicArrayList} = undef unless exists $self->{fileBasicArrayList};
+    $self->{transformDocumentInterface} = undef unless exists $self->{transformDocumentInterface};
     $self->{NO_TYPE} = 0;
 }
 

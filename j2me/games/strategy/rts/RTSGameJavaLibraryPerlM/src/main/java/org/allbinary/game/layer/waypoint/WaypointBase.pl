@@ -24,7 +24,7 @@ tie our $NULL_WAYPOINT_BASE, 'java::lang::LazyStatic', sub { 'org::allbinary::ga
 sub _init_fields {
     my ($self) = @_;
     $self->{connectedWaypointList} = 'org::allbinary::util::BasicArrayListD'->new();
-    $self->{sound} = undef;
+    $self->{sound} = undef unless exists $self->{sound};
     $self->{allBinaryGameLayerManagerP} = 'org::allbinary::game::layer::AllBinaryGameLayerManager'->getNullInstance();
 }
 

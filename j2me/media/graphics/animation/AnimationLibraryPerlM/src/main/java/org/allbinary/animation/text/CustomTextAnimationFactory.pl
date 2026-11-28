@@ -23,14 +23,14 @@ use parent -norequire,'java::lang::Object','org::allbinary::animation::Animation
 sub _init_fields {
     my ($self) = @_;
     $self->{logUtil} = 'org::allbinary::logic::communication::log::LogUtil'->getInstance();
-    $self->{animationBehaviorFactory} = undef;
+    $self->{animationBehaviorFactory} = undef unless exists $self->{animationBehaviorFactory};
     $self->{basicColor} = 'org::allbinary::graphics::color::BasicColorFactory'->getInstance()->{BLACK};
-    $self->{text} = undef;
-    $self->{initScaleHeight} = undef;
+    $self->{text} = undef unless exists $self->{text};
+    $self->{initScaleHeight} = undef unless exists $self->{initScaleHeight};
     $self->{dx} = 0;
     $self->{dy} = 0;
-    $self->{font} = undef;
-    $self->{scaleProperties} = undef;
+    $self->{font} = undef unless exists $self->{font};
+    $self->{scaleProperties} = undef unless exists $self->{scaleProperties};
 }
 
 

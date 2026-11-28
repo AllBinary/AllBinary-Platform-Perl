@@ -24,13 +24,13 @@ sub _init_fields {
     my ($self) = @_;
     $self->{trackedStrings} = 'org::allbinary::logic::io::file::directory::TrackedStrings'->getInstance();
     $self->{gitProcessHelper} = 'org::allbinary::java::runtime::process::git::GitProcessHelper'->getInstance();
-    $self->{includesString} = undef;
+    $self->{includesString} = undef unless exists $self->{includesString};
 }
 
 sub new {
     my ($class, @arguments) = @_;
-    return $class->_new1(@arguments) if scalar(@arguments) == 1;
-    return $class->_new2(@arguments) if scalar(@arguments) == 2;
+    return _new1($class, @arguments) if scalar(@arguments) == 1;
+    return _new2($class, @arguments) if scalar(@arguments) == 2;
     die "No constructor of DirectoryOrIncludeFileExtensionAndTrackedBooleanFileVisitor takes " . scalar(@arguments) . " arguments";
 }
 

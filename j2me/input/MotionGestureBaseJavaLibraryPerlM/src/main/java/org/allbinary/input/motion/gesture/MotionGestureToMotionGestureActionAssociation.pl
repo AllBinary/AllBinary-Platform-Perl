@@ -22,8 +22,8 @@ use parent -norequire,'java::lang::Object';
 
 sub _init_fields {
     my ($self) = @_;
-    $self->{list} = undef;
-    $self->{motionGestureAction} = undef;
+    $self->{list} = undef unless exists $self->{list};
+    $self->{motionGestureAction} = undef unless exists $self->{motionGestureAction};
 }
 
 

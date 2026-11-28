@@ -24,16 +24,16 @@ sub _init_fields {
     my ($self) = @_;
     $self->{logUtil} = 'org::allbinary::logic::communication::log::LogUtil'->getInstance();
     $self->{commonStrings} = 'org::allbinary::string::CommonStrings'->getInstance();
-    $self->{workFlowDoc} = undef;
-    $self->{workFlowName} = undef;
-    $self->{storeName} = undef;
+    $self->{workFlowDoc} = undef unless exists $self->{workFlowDoc};
+    $self->{workFlowName} = undef unless exists $self->{workFlowName};
+    $self->{storeName} = undef unless exists $self->{storeName};
 }
 
 sub new {
     my ($class, @arguments) = @_;
-    return $class->_new0(@arguments) if scalar(@arguments) == 0;
-    return $class->_new2(@arguments) if scalar(@arguments) == 2;
-    return $class->_new1(@arguments) if scalar(@arguments) == 1;
+    return _new0($class, @arguments) if scalar(@arguments) == 0;
+    return _new2($class, @arguments) if scalar(@arguments) == 2;
+    return _new1($class, @arguments) if scalar(@arguments) == 1;
     die "No constructor of BasicWorkFlow takes " . scalar(@arguments) . " arguments";
 }
 

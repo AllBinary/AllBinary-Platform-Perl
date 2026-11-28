@@ -27,9 +27,9 @@ sub _init_fields {
 
 sub new {
     my ($class, @arguments) = @_;
-    return $class->_new2(@arguments) if scalar(@arguments) == 2;
-    return $class->_new3(@arguments) if scalar(@arguments) == 3;
-    return $class->_new4(@arguments) if scalar(@arguments) == 4;
+    return _new2($class, @arguments) if scalar(@arguments) == 2;
+    return _new3($class, @arguments) if scalar(@arguments) == 3;
+    return _new4($class, @arguments) if scalar(@arguments) == 4;
     die "No constructor of CompoundContextTransformInfoObjectConfig takes " . scalar(@arguments) . " arguments";
 }
 

@@ -24,7 +24,7 @@ sub _init_fields {
     my ($self) = @_;
     $self->{logUtil} = 'org::allbinary::logic::communication::log::LogUtil'->getInstance();
     $self->{commonStrings} = 'org::allbinary::string::CommonStrings'->getInstance();
-    $self->{emailInfoVector} = undef;
+    $self->{emailInfoVector} = undef unless exists $self->{emailInfoVector};
 }
 
 

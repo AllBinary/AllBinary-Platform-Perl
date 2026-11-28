@@ -22,15 +22,15 @@ use parent -norequire,'org::allbinary::business::time::Time';
 
 sub new {
     my ($class, @arguments) = @_;
-    return $class->_new1(@arguments) if scalar(@arguments) == 1;
-    return $class->_new1(@arguments) if scalar(@arguments) == 1;
+    return _new1($class, @arguments) if scalar(@arguments) == 1;
+    return _new1($class, @arguments) if scalar(@arguments) == 1;
     die "No constructor of TimeLastModified takes " . scalar(@arguments) . " arguments";
 }
 
 sub _new1 {
     my ($class, @arguments) = @_;
-    return $class->_new1_1(@arguments) if 1 && !ref($arguments[0]);
-    return $class->_new1_2(@arguments);
+    return _new1_1($class, @arguments) if 1 && !ref($arguments[0]);
+    return _new1_2($class, @arguments);
 }
 
 

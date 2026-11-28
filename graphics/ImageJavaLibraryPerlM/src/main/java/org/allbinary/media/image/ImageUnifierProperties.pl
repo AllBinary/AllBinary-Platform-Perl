@@ -22,9 +22,9 @@ use parent -norequire,'java::lang::Object';
 
 sub _init_fields {
     my ($self) = @_;
-    $self->{rows} = undef;
-    $self->{columns} = undef;
-    $self->{imageUnifierCell} = undef;
+    $self->{rows} = undef unless exists $self->{rows};
+    $self->{columns} = undef unless exists $self->{columns};
+    $self->{imageUnifierCell} = undef unless exists $self->{imageUnifierCell};
 }
 
 

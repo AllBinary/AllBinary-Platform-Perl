@@ -22,19 +22,19 @@ use parent -norequire,'org::allbinary::business::user::commerce::inventory::item
 
 sub _init_fields {
     my ($self) = @_;
-    $self->{group} = undef;
-    $self->{tax} = undef;
-    $self->{shippingType} = undef;
-    $self->{shippingCost} = undef;
-    $self->{shippedDate} = undef;
-    $self->{shippingAddress} = undef;
-    $self->{special} = undef;
+    $self->{group} = undef unless exists $self->{group};
+    $self->{tax} = undef unless exists $self->{tax};
+    $self->{shippingType} = undef unless exists $self->{shippingType};
+    $self->{shippingCost} = undef unless exists $self->{shippingCost};
+    $self->{shippedDate} = undef unless exists $self->{shippedDate};
+    $self->{shippingAddress} = undef unless exists $self->{shippingAddress};
+    $self->{special} = undef unless exists $self->{special};
 }
 
 sub new {
     my ($class, @arguments) = @_;
-    return $class->_new1(@arguments) if scalar(@arguments) == 1;
-    return $class->_new0(@arguments) if scalar(@arguments) == 0;
+    return _new1($class, @arguments) if scalar(@arguments) == 1;
+    return _new0($class, @arguments) if scalar(@arguments) == 0;
     die "No constructor of Item takes " . scalar(@arguments) . " arguments";
 }
 

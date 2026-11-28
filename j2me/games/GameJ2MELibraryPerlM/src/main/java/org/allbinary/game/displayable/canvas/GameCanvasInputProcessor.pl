@@ -23,7 +23,7 @@ use parent -norequire,'org::allbinary::game::input::InputProcessor';
 sub _init_fields {
     my ($self) = @_;
     $self->{logUtil} = 'org::allbinary::logic::communication::log::LogUtil'->getInstance();
-    $self->{allBinaryGameCanvas} = undef;
+    $self->{allBinaryGameCanvas} = undef unless exists $self->{allBinaryGameCanvas};
     $self->{downGameKeyEventHandler} = 'org::allbinary::game::input::event::DownGameKeyEventHandler'->getInstance();
     $self->{upGameKeyEventHandler} = 'org::allbinary::game::input::event::UpGameKeyEventHandler'->getInstance();
     $self->{downKeyEventHandler} = 'org::allbinary::game::input::event::DownKeyEventHandler'->getInstance();

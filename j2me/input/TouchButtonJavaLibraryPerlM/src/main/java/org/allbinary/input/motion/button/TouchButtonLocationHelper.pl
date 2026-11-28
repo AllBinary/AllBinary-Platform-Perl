@@ -25,12 +25,12 @@ use parent -norequire,'java::lang::Object';
 
 sub _init_fields {
     my ($self) = @_;
-    $self->{totalColumns} = undef;
-    $self->{totalRows} = undef;
-    $self->{columnsRemainder} = undef;
-    $self->{rowsRemainder} = undef;
-    $self->{columnsRemainderHalf} = undef;
-    $self->{rowsRemainderHalf} = undef;
+    $self->{totalColumns} = undef unless exists $self->{totalColumns};
+    $self->{totalRows} = undef unless exists $self->{totalRows};
+    $self->{columnsRemainder} = undef unless exists $self->{columnsRemainder};
+    $self->{rowsRemainder} = undef unless exists $self->{rowsRemainder};
+    $self->{columnsRemainderHalf} = undef unless exists $self->{columnsRemainderHalf};
+    $self->{rowsRemainderHalf} = undef unless exists $self->{rowsRemainderHalf};
 }
 
 

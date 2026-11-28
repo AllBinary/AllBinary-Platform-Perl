@@ -23,7 +23,7 @@ tie our $instance, 'java::lang::LazyStatic', sub { 'org::allbinary::game::collis
 
 sub _init_fields {
     my ($self) = @_;
-    $self->{collisionProcessor} = undef;
+    $self->{collisionProcessor} = undef unless exists $self->{collisionProcessor};
 }
 
 

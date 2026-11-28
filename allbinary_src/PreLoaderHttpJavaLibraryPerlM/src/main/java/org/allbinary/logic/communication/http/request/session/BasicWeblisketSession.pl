@@ -22,8 +22,8 @@ use parent -norequire,'java::lang::Object';
 
 sub _init_fields {
     my ($self) = @_;
-    $self->{session} = undef;
-    $self->{pageContext} = undef;
+    $self->{session} = undef unless exists $self->{session};
+    $self->{pageContext} = undef unless exists $self->{pageContext};
 }
 
 

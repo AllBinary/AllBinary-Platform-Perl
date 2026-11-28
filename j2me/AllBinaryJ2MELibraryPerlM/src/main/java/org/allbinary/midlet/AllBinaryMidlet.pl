@@ -30,7 +30,7 @@ sub _init_fields {
     $self->{_DISPLAY_} = " Display: ";
     $self->{SETTING_NO_TITLE} = "Setting: No Title, Display: ";
     $self->{hashtable} = 'org::allbinary::logic::StdUtil'->getInstance()->createHashtable();
-    $self->{midletDestroyed} = 0;
+    $self->{midletDestroyed} = 0 unless exists $self->{midletDestroyed};
 }
 
 

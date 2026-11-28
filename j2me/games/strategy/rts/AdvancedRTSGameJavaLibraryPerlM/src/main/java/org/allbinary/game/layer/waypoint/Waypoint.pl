@@ -24,7 +24,7 @@ sub _init_fields {
     my ($self) = @_;
     $self->{logUtil} = 'org::allbinary::logic::communication::log::LogUtil'->getInstance();
     $self->{basicArrayListUtil} = 'org::allbinary::util::BasicArrayListUtil'->getInstance();
-    $self->{ownerLayer} = undef;
+    $self->{ownerLayer} = undef unless exists $self->{ownerLayer};
     $self->{endList} = $self->{basicArrayListUtil}->getImmutableInstance();
     $self->{paths} = $self->{basicArrayListUtil}->{NULL_ARRAY_OF_ARRAY};
 }

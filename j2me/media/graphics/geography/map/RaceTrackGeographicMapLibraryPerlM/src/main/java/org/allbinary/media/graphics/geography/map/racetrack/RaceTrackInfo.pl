@@ -22,14 +22,14 @@ use parent -norequire,'java::lang::Object';
 
 sub _init_fields {
     my ($self) = @_;
-    $self->{id} = undef;
-    $self->{name} = undef;
-    $self->{raceTrackFrictionProperties} = undef;
-    $self->{foregroundBasicColor} = undef;
-    $self->{backgroundBasicColor} = undef;
-    $self->{qualifyTime} = undef;
-    $self->{worstContinuePosition} = undef;
-    $self->{totalLaps} = undef;
+    $self->{id} = undef unless exists $self->{id};
+    $self->{name} = undef unless exists $self->{name};
+    $self->{raceTrackFrictionProperties} = undef unless exists $self->{raceTrackFrictionProperties};
+    $self->{foregroundBasicColor} = undef unless exists $self->{foregroundBasicColor};
+    $self->{backgroundBasicColor} = undef unless exists $self->{backgroundBasicColor};
+    $self->{qualifyTime} = undef unless exists $self->{qualifyTime};
+    $self->{worstContinuePosition} = undef unless exists $self->{worstContinuePosition};
+    $self->{totalLaps} = undef unless exists $self->{totalLaps};
 }
 
 

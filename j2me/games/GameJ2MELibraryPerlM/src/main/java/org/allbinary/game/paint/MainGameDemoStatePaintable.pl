@@ -22,8 +22,8 @@ use parent -norequire,'org::allbinary::graphics::paint::Paintable';
 
 sub _init_fields {
     my ($self) = @_;
-    $self->{ownershipPaintableInterface} = undef;
-    $self->{menuPaintableInterface} = undef;
+    $self->{ownershipPaintableInterface} = undef unless exists $self->{ownershipPaintableInterface};
+    $self->{menuPaintableInterface} = undef unless exists $self->{menuPaintableInterface};
 }
 
 

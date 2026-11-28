@@ -24,7 +24,7 @@ use parent -norequire,'views::admin::storefront::statistics::StoreFrontStatistic
 sub _init_fields {
     my ($self) = @_;
     $self->{logUtil} = 'org::allbinary::logic::communication::log::LogUtil'->getInstance();
-    $self->{newStoreFrontInterface} = undef;
+    $self->{newStoreFrontInterface} = undef unless exists $self->{newStoreFrontInterface};
 }
 
 

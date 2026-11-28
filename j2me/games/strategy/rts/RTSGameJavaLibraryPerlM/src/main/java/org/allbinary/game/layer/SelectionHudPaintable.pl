@@ -23,16 +23,16 @@ use parent -norequire,'org::allbinary::graphics::paint::InitUpdatePaintable','or
 sub _init_fields {
     my ($self) = @_;
     $self->{y} = 'org::allbinary::input::motion::button::CommonButtons'->getInstance()->{STANDARD_BUTTON_SIZE} + 17;
-    $self->{primitiveLongUtil} = undef;
+    $self->{primitiveLongUtil} = undef unless exists $self->{primitiveLongUtil};
     $self->{updateMyFontProcessor} = 'org::allbinary::graphics::font::UpdateMyFontProcessor'->new($self);
     $self->{myFontProcessor} = $self->{updateMyFontProcessor};
-    $self->{x} = 0;
-    $self->{textX} = 0;
-    $self->{imageX} = 0;
+    $self->{x} = 0 unless exists $self->{x};
+    $self->{textX} = 0 unless exists $self->{textX};
+    $self->{imageX} = 0 unless exists $self->{imageX};
     $self->{basicColor} = 'org::allbinary::graphics::color::BasicColorFactory'->getInstance()->{BLACK};
-    $self->{color} = 0;
-    $self->{width} = 0;
-    $self->{height} = 0;
+    $self->{color} = 0 unless exists $self->{color};
+    $self->{width} = 0 unless exists $self->{width};
+    $self->{height} = 0 unless exists $self->{height};
     $self->{name} = 'org::allbinary::logic::string::StringUtil'->getInstance()->{EMPTY_STRING};
     $self->{animationInterface} = 'org::allbinary::animation::NullAnimationFactory'->getFactoryInstance()->getInstance(0);
     $self->{backgroundColor} = int('org::allbinary::graphics::color::BasicColorFactory'->getInstance()->{GREY});

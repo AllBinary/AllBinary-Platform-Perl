@@ -23,8 +23,8 @@ use parent -norequire,'admin::taghelpers::TagHelper';
 sub _init_fields {
     my ($self) = @_;
     $self->{abeClientInformation} = 'org::allbinary::logic::system::security::licensing::ServiceClientInformationInterfaceFactory'->getInstance();
-    $self->{hashMap} = undef;
-    $self->{pageContext} = undef;
+    $self->{hashMap} = undef unless exists $self->{hashMap};
+    $self->{pageContext} = undef unless exists $self->{pageContext};
 }
 
 

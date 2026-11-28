@@ -22,8 +22,8 @@ use parent -norequire,'java::lang::Object','org::allbinary::logic::util::cache::
 
 sub _init_fields {
     my ($self) = @_;
-    $self->{motionRectangles} = undef;
-    $self->{frame} = undef;
+    $self->{motionRectangles} = undef unless exists $self->{motionRectangles};
+    $self->{frame} = undef unless exists $self->{frame};
 }
 
 

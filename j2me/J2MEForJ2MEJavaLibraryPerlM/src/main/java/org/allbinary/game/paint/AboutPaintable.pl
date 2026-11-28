@@ -26,14 +26,14 @@ sub _init_fields {
     my ($self) = @_;
     $self->{displayInfoSingleton} = 'org::allbinary::graphics::displayable::DisplayInfoSingleton'->getInstance();
     $self->{ABOUT} = 'org::allbinary::graphics::displayable::CanvasStrings'->getInstance()->{ABOUT};
-    $self->{info} = undef;
-    $self->{developers} = undef;
+    $self->{info} = undef unless exists $self->{info};
+    $self->{developers} = undef unless exists $self->{developers};
     $self->{paintableArray} = [$self];
     $self->{myFontProcessor} = 'org::allbinary::graphics::font::UpdateMyFontProcessor'->new($self);
-    $self->{charHeight} = 0;
-    $self->{aboutBeginWidth} = 0;
-    $self->{infoBeginWidth} = undef;
-    $self->{developersBeginWidth} = undef;
+    $self->{charHeight} = 0 unless exists $self->{charHeight};
+    $self->{aboutBeginWidth} = 0 unless exists $self->{aboutBeginWidth};
+    $self->{infoBeginWidth} = undef unless exists $self->{infoBeginWidth};
+    $self->{developersBeginWidth} = undef unless exists $self->{developersBeginWidth};
     $self->{anchor} = $org::allbinary::graphics::Anchor::TOP_LEFT;
 }
 

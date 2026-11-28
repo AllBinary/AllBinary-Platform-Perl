@@ -25,12 +25,12 @@ sub _init_fields {
     my ($self) = @_;
     $self->{logUtil} = 'org::allbinary::logic::communication::log::LogUtil'->getInstance();
     $self->{commonStrings} = 'org::allbinary::string::CommonStrings'->getInstance();
-    $self->{highScoresFactoryInterface} = undef;
-    $self->{highScoresArray} = undef;
-    $self->{highScore} = undef;
-    $self->{abeClientInformation} = undef;
-    $self->{gameInfo} = undef;
-    $self->{highScoresHelper} = undef;
+    $self->{highScoresFactoryInterface} = undef unless exists $self->{highScoresFactoryInterface};
+    $self->{highScoresArray} = undef unless exists $self->{highScoresArray};
+    $self->{highScore} = undef unless exists $self->{highScore};
+    $self->{abeClientInformation} = undef unless exists $self->{abeClientInformation};
+    $self->{gameInfo} = undef unless exists $self->{gameInfo};
+    $self->{highScoresHelper} = undef unless exists $self->{highScoresHelper};
     $self->{firstTime} = 1;
 }
 

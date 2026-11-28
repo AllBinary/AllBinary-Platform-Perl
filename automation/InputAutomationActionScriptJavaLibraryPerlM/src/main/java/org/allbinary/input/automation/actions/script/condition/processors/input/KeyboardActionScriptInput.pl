@@ -25,16 +25,16 @@ sub _init_fields {
     my ($self) = @_;
     $self->{logUtil} = 'org::allbinary::logic::communication::log::LogUtil'->getInstance();
     $self->{keyArray} = ['org::allbinary::input::KeySingletonFactory'->getInstance($java::awt::event::KeyEvent::VK_0)];
-    $self->{keyboardActionScriptInputJPanel} = undef;
-    $self->{press} = 0;
-    $self->{release} = 0;
-    $self->{delayBetweenKeys} = 0;
+    $self->{keyboardActionScriptInputJPanel} = undef unless exists $self->{keyboardActionScriptInputJPanel};
+    $self->{press} = 0 unless exists $self->{press};
+    $self->{release} = 0 unless exists $self->{release};
+    $self->{delayBetweenKeys} = 0 unless exists $self->{delayBetweenKeys};
 }
 
 sub new {
     my ($class, @arguments) = @_;
-    return $class->_new1(@arguments) if scalar(@arguments) == 1;
-    return $class->_new0(@arguments) if scalar(@arguments) == 0;
+    return _new1($class, @arguments) if scalar(@arguments) == 1;
+    return _new0($class, @arguments) if scalar(@arguments) == 0;
     die "No constructor of KeyboardActionScriptInput takes " . scalar(@arguments) . " arguments";
 }
 

@@ -25,17 +25,17 @@ sub _init_fields {
     my ($self) = @_;
     $self->{logUtil} = 'org::allbinary::logic::communication::log::LogUtil'->getInstance();
     $self->{basicItemData} = 'org::allbinary::business::user::commerce::inventory::item::BasicItemData'->getInstance();
-    $self->{request} = undef;
-    $self->{id} = undef;
-    $self->{itemInterface} = undef;
-    $self->{downloadableItem} = undef;
-    $self->{requestHashMap} = undef;
+    $self->{request} = undef unless exists $self->{request};
+    $self->{id} = undef unless exists $self->{id};
+    $self->{itemInterface} = undef unless exists $self->{itemInterface};
+    $self->{downloadableItem} = undef unless exists $self->{downloadableItem};
+    $self->{requestHashMap} = undef unless exists $self->{requestHashMap};
 }
 
 sub new {
     my ($class, @arguments) = @_;
-    return $class->_new1(@arguments) if scalar(@arguments) == 1;
-    return $class->_new2(@arguments) if scalar(@arguments) == 2;
+    return _new1($class, @arguments) if scalar(@arguments) == 1;
+    return _new2($class, @arguments) if scalar(@arguments) == 2;
     die "No constructor of DownloadableInventoryItemView takes " . scalar(@arguments) . " arguments";
 }
 

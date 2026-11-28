@@ -27,7 +27,7 @@ sub _init_fields {
     $self->{currentMotionGesture} = 'org::allbinary::input::motion::gesture::TouchMotionGestureFactory'->getInstance()->{NO_MOTION};
     $self->{isMouseGestureOccurring} = 0;
     $self->{motionGestureCollection} = 'org::allbinary::util::BasicArrayListD'->new();
-    $self->{signed} = undef;
+    $self->{signed} = undef unless exists $self->{signed};
 }
 
 

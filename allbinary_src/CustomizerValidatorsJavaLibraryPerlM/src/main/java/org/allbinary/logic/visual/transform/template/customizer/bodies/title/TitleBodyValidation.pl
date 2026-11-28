@@ -23,22 +23,22 @@ use parent -norequire,'org::allbinary::logic::control::validate::Validation','or
 sub _init_fields {
     my ($self) = @_;
     $self->{logUtil} = 'org::allbinary::logic::communication::log::LogUtil'->getInstance();
-    $self->{body} = undef;
-    $self->{titleValidation} = undef;
+    $self->{body} = undef unless exists $self->{body};
+    $self->{titleValidation} = undef unless exists $self->{titleValidation};
 }
 
 sub new {
     my ($class, @arguments) = @_;
-    return $class->_new0(@arguments) if scalar(@arguments) == 0;
-    return $class->_new1(@arguments) if scalar(@arguments) == 1;
-    return $class->_new1(@arguments) if scalar(@arguments) == 1;
+    return _new0($class, @arguments) if scalar(@arguments) == 0;
+    return _new1($class, @arguments) if scalar(@arguments) == 1;
+    return _new1($class, @arguments) if scalar(@arguments) == 1;
     die "No constructor of TitleBodyValidation takes " . scalar(@arguments) . " arguments";
 }
 
 sub _new1 {
     my ($class, @arguments) = @_;
-    return $class->_new1_1(@arguments) if 1 && (!defined($arguments[0]) || (ref($arguments[0]) && ref($arguments[0]) ne 'ARRAY'));
-    return $class->_new1_2(@arguments);
+    return _new1_1($class, @arguments) if 1 && (!defined($arguments[0]) || (ref($arguments[0]) && ref($arguments[0]) ne 'ARRAY'));
+    return _new1_2($class, @arguments);
 }
 
 

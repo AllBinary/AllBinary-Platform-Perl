@@ -25,9 +25,9 @@ sub _init_fields {
     my ($self) = @_;
     $self->{logUtil} = 'org::allbinary::logic::communication::log::LogUtil'->getInstance();
     $self->{enumerationUtil} = 'org::allbinary::util::EnumerationUtil'->getInstance();
-    $self->{abeClientInformation} = undef;
-    $self->{softwareInformation} = undef;
-    $self->{ascending} = undef;
+    $self->{abeClientInformation} = undef unless exists $self->{abeClientInformation};
+    $self->{softwareInformation} = undef unless exists $self->{softwareInformation};
+    $self->{ascending} = undef unless exists $self->{ascending};
     $self->{ASCENDING} = "ASCENDING";
 }
 

@@ -23,11 +23,11 @@ use parent -norequire,'java::lang::Object';
 sub _init_fields {
     my ($self) = @_;
     $self->{logUtil} = 'org::allbinary::logic::communication::log::LogUtil'->getInstance();
-    $self->{powerOfTen} = undef;
-    $self->{maxValue} = undef;
-    $self->{maxDigits} = undef;
-    $self->{charArray} = undef;
-    $self->{currentTotalDigits} = 0;
+    $self->{powerOfTen} = undef unless exists $self->{powerOfTen};
+    $self->{maxValue} = undef unless exists $self->{maxValue};
+    $self->{maxDigits} = undef unless exists $self->{maxDigits};
+    $self->{charArray} = undef unless exists $self->{charArray};
+    $self->{currentTotalDigits} = 0 unless exists $self->{currentTotalDigits};
     $self->{primitiveLongSingleton} = 'org::allbinary::logic::math::PrimitiveLongSingleton'->getInstance();
 }
 

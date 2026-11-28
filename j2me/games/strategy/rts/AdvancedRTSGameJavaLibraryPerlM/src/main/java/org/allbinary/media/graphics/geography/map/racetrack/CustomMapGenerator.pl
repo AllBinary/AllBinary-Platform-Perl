@@ -22,9 +22,9 @@ use parent -norequire,'org::allbinary::media::graphics::geography::map::racetrac
 
 sub _init_fields {
     my ($self) = @_;
-    $self->{customMapArray} = undef;
-    $self->{raceTrackGeographicMap} = undef;
-    $self->{geographicMapCellTypeFactory} = undef;
+    $self->{customMapArray} = undef unless exists $self->{customMapArray};
+    $self->{raceTrackGeographicMap} = undef unless exists $self->{raceTrackGeographicMap};
+    $self->{geographicMapCellTypeFactory} = undef unless exists $self->{geographicMapCellTypeFactory};
     $self->{dropCellPositionHistory} = 'org::allbinary::media::graphics::geography::map::drop::DropCellPositionHistory'->getInstance();
 }
 

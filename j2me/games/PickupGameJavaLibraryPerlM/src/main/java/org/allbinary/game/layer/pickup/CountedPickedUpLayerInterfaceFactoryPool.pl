@@ -23,7 +23,7 @@ tie our $SINGLETON, 'java::lang::LazyStatic', sub { 'org::allbinary::game::layer
 
 sub _init_fields {
     my ($self) = @_;
-    $self->{list} = undef;
+    $self->{list} = undef unless exists $self->{list};
 }
 
 

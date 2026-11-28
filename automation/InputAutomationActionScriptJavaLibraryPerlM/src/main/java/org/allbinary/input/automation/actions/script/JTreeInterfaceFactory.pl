@@ -15,7 +15,7 @@ tie our $instance, 'java::lang::LazyStatic', sub { 'org::allbinary::input::autom
 
 sub _init_fields {
     my ($self) = @_;
-    $self->{jTreeInterface} = undef;
+    $self->{jTreeInterface} = undef unless exists $self->{jTreeInterface};
 }
 
 sub new {

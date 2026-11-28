@@ -23,10 +23,10 @@ use parent -norequire,'java::lang::Object';
 sub _init_fields {
     my ($self) = @_;
     $self->{commonStrings} = 'org::allbinary::string::CommonStrings'->getInstance();
-    $self->{id} = undef;
-    $self->{name} = undef;
-    $self->{cellTypeIdToGeographicMapCellType} = undef;
-    $self->{tiledLayer} = undef;
+    $self->{id} = undef unless exists $self->{id};
+    $self->{name} = undef unless exists $self->{name};
+    $self->{cellTypeIdToGeographicMapCellType} = undef unless exists $self->{cellTypeIdToGeographicMapCellType};
+    $self->{tiledLayer} = undef unless exists $self->{tiledLayer};
     $self->{foregroundBasicColor} = 'org::allbinary::graphics::color::BasicColorFactory'->getInstance()->{NULL_COLOR};
     $self->{backgroundBasicColor} = 'org::allbinary::graphics::color::BasicColorFactory'->getInstance()->{NULL_COLOR};
     $self->{geographicMapCellTypeFactory} = 'org::allbinary::media::graphics::geography::map::GeographicMapCellTypeFactory'->getInstance();

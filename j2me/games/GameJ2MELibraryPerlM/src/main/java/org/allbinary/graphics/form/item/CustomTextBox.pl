@@ -22,7 +22,7 @@ use parent -norequire,'org::allbinary::game::displayable::canvas::GameCommandCan
 
 sub _init_fields {
     my ($self) = @_;
-    $self->{textFieldItem} = undef;
+    $self->{textFieldItem} = undef unless exists $self->{textFieldItem};
     $self->{inputFactory} = 'org::allbinary::game::input::InputFactory'->getInstance();
 }
 

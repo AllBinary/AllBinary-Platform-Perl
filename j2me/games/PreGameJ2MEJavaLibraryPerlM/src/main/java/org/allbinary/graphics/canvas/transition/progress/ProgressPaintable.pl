@@ -22,7 +22,7 @@ use parent -norequire,'org::allbinary::graphics::paint::Paintable';
 
 sub _init_fields {
     my ($self) = @_;
-    $self->{progressCanvas} = undef;
+    $self->{progressCanvas} = undef unless exists $self->{progressCanvas};
 }
 
 

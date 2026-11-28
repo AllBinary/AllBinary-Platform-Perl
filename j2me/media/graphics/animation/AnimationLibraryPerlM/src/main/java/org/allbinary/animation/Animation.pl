@@ -24,10 +24,10 @@ sub _init_fields {
     my ($self) = @_;
     $self->{basicSetColorUtil} = 'org::allbinary::graphics::color::BasicColorSetUtil'->getInstance();
     $self->{basicColor} = 'org::allbinary::graphics::color::BasicColorFactory'->getInstance()->{WHITE};
-    $self->{colorP} = 0;
+    $self->{colorP} = 0 unless exists $self->{colorP};
     $self->{changeBasicColorP} = 'org::allbinary::graphics::color::BasicColorFactory'->getInstance()->{NULL_COLOR};
-    $self->{changeColorP} = 0;
-    $self->{alphaP} = 0;
+    $self->{changeColorP} = 0 unless exists $self->{changeColorP};
+    $self->{alphaP} = 0 unless exists $self->{alphaP};
 }
 
 

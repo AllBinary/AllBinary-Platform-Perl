@@ -22,7 +22,7 @@ use parent -norequire,'java::lang::Object';
 
 sub _init_fields {
     my ($self) = @_;
-    $self->{sep} = undef;
+    $self->{sep} = undef unless exists $self->{sep};
     $self->{endSep} = 'org::allbinary::logic::string::StringUtil'->getInstance()->{EMPTY_STRING};
 }
 

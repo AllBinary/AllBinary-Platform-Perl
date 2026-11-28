@@ -27,21 +27,21 @@ sub _init_fields {
     $self->{REPLACERS_} = "Replacers: ";
     $self->{ALL} = "all";
     $self->{FOUND_KEY} = "found key total: ";
-    $self->{hashMap} = undef;
+    $self->{hashMap} = undef unless exists $self->{hashMap};
 }
 
 sub new {
     my ($class, @arguments) = @_;
-    return $class->_new2(@arguments) if scalar(@arguments) == 2;
-    return $class->_new2(@arguments) if scalar(@arguments) == 2;
-    return $class->_new1(@arguments) if scalar(@arguments) == 1;
+    return _new2($class, @arguments) if scalar(@arguments) == 2;
+    return _new2($class, @arguments) if scalar(@arguments) == 2;
+    return _new1($class, @arguments) if scalar(@arguments) == 1;
     die "No constructor of Replace takes " . scalar(@arguments) . " arguments";
 }
 
 sub _new2 {
     my ($class, @arguments) = @_;
-    return $class->_new2_1(@arguments) if 1 && !ref($arguments[0]) && !ref($arguments[1]);
-    return $class->_new2_2(@arguments);
+    return _new2_1($class, @arguments) if 1 && !ref($arguments[0]) && !ref($arguments[1]);
+    return _new2_2($class, @arguments);
 }
 
 

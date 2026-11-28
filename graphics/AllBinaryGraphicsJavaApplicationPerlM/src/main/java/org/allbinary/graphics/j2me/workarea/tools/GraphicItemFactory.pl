@@ -23,7 +23,7 @@ tie our $instance, 'java::lang::LazyStatic', sub { 'org::allbinary::graphics::j2
 
 sub _init_fields {
     my ($self) = @_;
-    $self->{graphicItems} = undef;
+    $self->{graphicItems} = undef unless exists $self->{graphicItems};
     $self->{DEFAULT} = 'org::allbinary::graphics::j2me::workarea::tools::SelectionToolFactory'->new();
 }
 

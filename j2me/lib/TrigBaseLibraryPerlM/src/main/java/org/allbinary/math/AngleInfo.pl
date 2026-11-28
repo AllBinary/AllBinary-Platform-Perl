@@ -23,7 +23,7 @@ our $ANGLE = "Angle: ";
 
 sub _init_fields {
     my ($self) = @_;
-    $self->{angleIncrementInfo} = undef;
+    $self->{angleIncrementInfo} = undef unless exists $self->{angleIncrementInfo};
     $self->{angle} = 0;
     $self->{frameUtil} = 'org::allbinary::math::FrameUtil'->getInstance();
 }

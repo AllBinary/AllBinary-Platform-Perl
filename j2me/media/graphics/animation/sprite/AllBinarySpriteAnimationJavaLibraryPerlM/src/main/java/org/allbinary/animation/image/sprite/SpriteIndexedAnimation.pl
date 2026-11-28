@@ -22,9 +22,9 @@ use parent -norequire,'org::allbinary::animation::IndexedAnimation','org::allbin
 
 sub _init_fields {
     my ($self) = @_;
-    $self->{sprite} = undef;
-    $self->{image} = undef;
-    $self->{basicColorArray} = undef;
+    $self->{sprite} = undef unless exists $self->{sprite};
+    $self->{image} = undef unless exists $self->{image};
+    $self->{basicColorArray} = undef unless exists $self->{basicColorArray};
 }
 
 

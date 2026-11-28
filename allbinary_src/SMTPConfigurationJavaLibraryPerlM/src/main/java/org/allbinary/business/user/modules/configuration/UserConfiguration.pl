@@ -22,15 +22,15 @@ use parent -norequire,'java::lang::Object','org::allbinary::business::user::modu
 
 sub _init_fields {
     my ($self) = @_;
-    $self->{userEmailConfigurationInterface} = undef;
-    $self->{timeCreated} = undef;
-    $self->{timeLastModified} = undef;
+    $self->{userEmailConfigurationInterface} = undef unless exists $self->{userEmailConfigurationInterface};
+    $self->{timeCreated} = undef unless exists $self->{timeCreated};
+    $self->{timeLastModified} = undef unless exists $self->{timeLastModified};
 }
 
 sub new {
     my ($class, @arguments) = @_;
-    return $class->_new0(@arguments) if scalar(@arguments) == 0;
-    return $class->_new1(@arguments) if scalar(@arguments) == 1;
+    return _new0($class, @arguments) if scalar(@arguments) == 0;
+    return _new1($class, @arguments) if scalar(@arguments) == 1;
     die "No constructor of UserConfiguration takes " . scalar(@arguments) . " arguments";
 }
 

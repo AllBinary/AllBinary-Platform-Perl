@@ -24,8 +24,8 @@ sub _init_fields {
     my ($self) = @_;
     $self->{logUtil} = 'org::allbinary::logic::communication::log::LogUtil'->getInstance();
     $self->{commonStrings} = 'org::allbinary::string::CommonStrings'->getInstance();
-    $self->{imageProcessorInput} = undef;
-    $self->{aboveJButton} = undef;
+    $self->{imageProcessorInput} = undef unless exists $self->{imageProcessorInput};
+    $self->{aboveJButton} = undef unless exists $self->{aboveJButton};
 }
 
 

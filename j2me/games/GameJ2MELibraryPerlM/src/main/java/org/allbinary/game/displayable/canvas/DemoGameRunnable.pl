@@ -23,7 +23,7 @@ use parent -norequire,'org::allbinary::game::displayable::canvas::GameRunnable';
 sub _init_fields {
     my ($self) = @_;
     $self->{logUtil} = 'org::allbinary::logic::communication::log::LogUtil'->getInstance();
-    $self->{demoCanvas} = undef;
+    $self->{demoCanvas} = undef unless exists $self->{demoCanvas};
     $self->{gameTickTimeDelayHelper} = 'org::allbinary::time::GameTickTimeDelayHelperFactory'->getInstance();
 }
 

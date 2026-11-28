@@ -25,7 +25,7 @@ sub _init_fields {
     my ($self) = @_;
     $self->{logUtil} = 'org::allbinary::logic::communication::log::LogUtil'->getInstance();
     $self->{commonStrings} = 'org::allbinary::string::CommonStrings'->getInstance();
-    $self->{PAYMENTGATEWAYFILEPATHSTRING} = undef;
+    $self->{PAYMENTGATEWAYFILEPATHSTRING} = undef unless exists $self->{PAYMENTGATEWAYFILEPATHSTRING};
     $self->{SHIPPINGMETHODSFILENAME} = "paymentGatewayTypes.xml";
     $self->{defaultName} = undef;
     $self->{paymentTypeVector} = 'org::allbinary::util::BasicArrayListD'->new();

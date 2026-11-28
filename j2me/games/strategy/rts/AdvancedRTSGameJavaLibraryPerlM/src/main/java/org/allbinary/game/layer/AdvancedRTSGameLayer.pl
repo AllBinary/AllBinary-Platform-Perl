@@ -22,9 +22,9 @@ use parent -norequire,'org::allbinary::game::layer::RTSLayer','org::allbinary::g
 
 sub _init_fields {
     my ($self) = @_;
-    $self->{shakeListener} = undef;
-    $self->{vibration} = undef;
-    $self->{duration} = undef;
+    $self->{shakeListener} = undef unless exists $self->{shakeListener};
+    $self->{vibration} = undef unless exists $self->{vibration};
+    $self->{duration} = undef unless exists $self->{duration};
     $self->{parentLayer} = $org::allbinary::game::layer::NullPathFindingLayer::NULL_PATH_FINDING_LAYER;
     $self->{waypointBehaviorBase} = 'org::allbinary::game::tick::NullTickable'->getInstance();
 }

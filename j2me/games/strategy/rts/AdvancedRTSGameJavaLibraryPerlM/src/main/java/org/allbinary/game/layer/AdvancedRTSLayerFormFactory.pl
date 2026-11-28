@@ -23,7 +23,7 @@ use parent -norequire,'org::allbinary::game::input::RTSLayerFormFactory';
 sub _init_fields {
     my ($self) = @_;
     $self->{logUtil} = 'org::allbinary::logic::communication::log::LogUtil'->getInstance();
-    $self->{scrollSelectionForm} = undef;
+    $self->{scrollSelectionForm} = undef unless exists $self->{scrollSelectionForm};
 }
 
 

@@ -25,8 +25,8 @@ sub _init_fields {
     my ($self) = @_;
     $self->{logUtil} = 'org::allbinary::logic::communication::log::LogUtil'->getInstance();
     $self->{displayInfo} = 'org::allbinary::graphics::displayable::DisplayInfoSingleton'->getInstance();
-    $self->{motionRecognizerArray} = undef;
-    $self->{TOTAL_MINUS_ONE} = undef;
+    $self->{motionRecognizerArray} = undef unless exists $self->{motionRecognizerArray};
+    $self->{TOTAL_MINUS_ONE} = undef unless exists $self->{TOTAL_MINUS_ONE};
 }
 
 

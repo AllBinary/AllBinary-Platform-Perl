@@ -23,8 +23,8 @@ use parent -norequire,'org::allbinary::animation::Animation','org::allbinary::gr
 sub _init_fields {
     my ($self) = @_;
     $self->{TOTAL_ANGLE} = int('org::allbinary::math::AngleFactory'->getInstance()->{TOTAL_ANGLE});
-    $self->{width} = undef;
-    $self->{height} = undef;
+    $self->{width} = undef unless exists $self->{width};
+    $self->{height} = undef unless exists $self->{height};
 }
 
 

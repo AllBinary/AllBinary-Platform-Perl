@@ -22,7 +22,7 @@ use parent -norequire,'org::allbinary::game::layer::hud::basic::HealthGraphic';
 
 sub _init_fields {
     my ($self) = @_;
-    $self->{image} = undef;
+    $self->{image} = undef unless exists $self->{image};
 }
 
 

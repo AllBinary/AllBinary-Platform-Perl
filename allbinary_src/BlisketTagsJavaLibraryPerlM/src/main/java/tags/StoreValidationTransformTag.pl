@@ -23,7 +23,7 @@ use parent -norequire,'tags::ValidationTransformTag';
 sub _init_fields {
     my ($self) = @_;
     $self->{logUtil} = 'org::allbinary::logic::communication::log::LogUtil'->getInstance();
-    $self->{storeName} = undef;
+    $self->{storeName} = undef unless exists $self->{storeName};
 }
 
 

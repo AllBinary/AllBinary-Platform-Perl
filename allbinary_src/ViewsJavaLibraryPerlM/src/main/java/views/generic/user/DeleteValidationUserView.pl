@@ -23,7 +23,7 @@ use parent -norequire,'views::generic::user::UserView','org::allbinary::logic::c
 sub _init_fields {
     my ($self) = @_;
     $self->{logUtil} = 'org::allbinary::logic::communication::log::LogUtil'->getInstance();
-    $self->{userName} = undef;
+    $self->{userName} = undef unless exists $self->{userName};
 }
 
 

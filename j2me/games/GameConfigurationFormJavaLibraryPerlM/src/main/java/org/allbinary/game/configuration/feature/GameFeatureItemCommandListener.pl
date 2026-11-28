@@ -24,7 +24,7 @@ use parent -norequire,'java::lang::Object','javax::microedition::lcdui::ItemComm
 sub _init_fields {
     my ($self) = @_;
     $self->{logUtil} = 'org::allbinary::logic::communication::log::LogUtil'->getInstance();
-    $self->{gameOptionsForm} = undef;
+    $self->{gameOptionsForm} = undef unless exists $self->{gameOptionsForm};
 }
 
 

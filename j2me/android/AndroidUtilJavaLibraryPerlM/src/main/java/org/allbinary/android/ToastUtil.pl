@@ -44,9 +44,9 @@ sub makeToast {
 
     sub _init_fields {
         my ($self) = @_;
-        $self->{context} = undef;
-        $self->{string} = undef;
-        $self->{time} = undef;
+        $self->{context} = undef unless exists $self->{context};
+        $self->{string} = undef unless exists $self->{string};
+        $self->{time} = undef unless exists $self->{time};
     }
     
 

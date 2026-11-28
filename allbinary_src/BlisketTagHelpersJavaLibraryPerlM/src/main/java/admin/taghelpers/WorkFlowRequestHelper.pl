@@ -24,7 +24,7 @@ sub _init_fields {
     my ($self) = @_;
     $self->{logUtil} = 'org::allbinary::logic::communication::log::LogUtil'->getInstance();
     $self->{abeClientInformation} = 'org::allbinary::logic::system::security::licensing::ServiceClientInformationInterfaceFactory'->getInstance();
-    $self->{workFlowInterface} = undef;
+    $self->{workFlowInterface} = undef unless exists $self->{workFlowInterface};
 }
 
 

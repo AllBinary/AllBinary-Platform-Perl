@@ -22,8 +22,8 @@ use parent -norequire,'java::lang::Object','org::allbinary::game::layer::RTSInte
 
 sub _init_fields {
     my ($self) = @_;
-    $self->{level} = 0;
-    $self->{maxLevel} = undef;
+    $self->{level} = 0 unless exists $self->{level};
+    $self->{maxLevel} = undef unless exists $self->{maxLevel};
 }
 
 

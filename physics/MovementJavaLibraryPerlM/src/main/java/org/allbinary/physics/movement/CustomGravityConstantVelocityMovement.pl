@@ -22,7 +22,7 @@ use parent -norequire,'org::allbinary::physics::movement::BasicConstantVelocityM
 
 sub _init_fields {
     my ($self) = @_;
-    $self->{customGravity} = undef;
+    $self->{customGravity} = undef unless exists $self->{customGravity};
     $self->{gravityUtil} = 'org::allbinary::game::physics::acceleration::GravityUtil'->getInstance();
 }
 

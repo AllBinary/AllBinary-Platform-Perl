@@ -23,9 +23,9 @@ use parent -norequire,'tags::CustomTagSupport';
 sub _init_fields {
     my ($self) = @_;
     $self->{logUtil} = 'org::allbinary::logic::communication::log::LogUtil'->getInstance();
-    $self->{command} = undef;
-    $self->{storeName} = undef;
-    $self->{propertiesHashMap} = undef;
+    $self->{command} = undef unless exists $self->{command};
+    $self->{storeName} = undef unless exists $self->{storeName};
+    $self->{propertiesHashMap} = undef unless exists $self->{propertiesHashMap};
 }
 
 

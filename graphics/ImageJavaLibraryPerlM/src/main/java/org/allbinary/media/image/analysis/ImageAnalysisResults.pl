@@ -22,9 +22,9 @@ use parent -norequire,'java::lang::Object';
 
 sub _init_fields {
     my ($self) = @_;
-    $self->{imageColorRangeResults} = undef;
-    $self->{imageColorResults} = undef;
-    $self->{averageAmbientLevel} = 0.0;
+    $self->{imageColorRangeResults} = undef unless exists $self->{imageColorRangeResults};
+    $self->{imageColorResults} = undef unless exists $self->{imageColorResults};
+    $self->{averageAmbientLevel} = 0.0 unless exists $self->{averageAmbientLevel};
 }
 
 

@@ -22,10 +22,10 @@ use parent -norequire,'java::lang::Object','org::allbinary::business::advertisem
 
 sub _init_fields {
     my ($self) = @_;
-    $self->{type} = undef;
-    $self->{link} = undef;
-    $self->{number} = 0;
-    $self->{constraint} = undef;
+    $self->{type} = undef unless exists $self->{type};
+    $self->{link} = undef unless exists $self->{link};
+    $self->{number} = 0 unless exists $self->{number};
+    $self->{constraint} = undef unless exists $self->{constraint};
 }
 
 

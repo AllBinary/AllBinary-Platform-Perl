@@ -22,7 +22,7 @@ use parent -norequire,'org::allbinary::logic::system::security::licensing::AbeCl
 
 sub _init_fields {
     my ($self) = @_;
-    $self->{longArrayIdentifier} = undef;
+    $self->{longArrayIdentifier} = undef unless exists $self->{longArrayIdentifier};
 }
 
 

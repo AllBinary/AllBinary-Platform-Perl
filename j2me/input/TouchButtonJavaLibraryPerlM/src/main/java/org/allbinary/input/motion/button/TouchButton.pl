@@ -24,17 +24,17 @@ sub _init_fields {
     my ($self) = @_;
     $self->{logUtil} = 'org::allbinary::logic::communication::log::LogUtil'->getInstance();
     $self->{commonStrings} = 'org::allbinary::string::CommonStrings'->getInstance();
-    $self->{touchButtonInput} = undef;
-    $self->{animationInterface} = undef;
-    $self->{hintAnimationInterface} = undef;
-    $self->{rawRectangle} = undef;
-    $self->{xBorder} = undef;
-    $self->{yBorder} = undef;
+    $self->{touchButtonInput} = undef unless exists $self->{touchButtonInput};
+    $self->{animationInterface} = undef unless exists $self->{animationInterface};
+    $self->{hintAnimationInterface} = undef unless exists $self->{hintAnimationInterface};
+    $self->{rawRectangle} = undef unless exists $self->{rawRectangle};
+    $self->{xBorder} = undef unless exists $self->{xBorder};
+    $self->{yBorder} = undef unless exists $self->{yBorder};
     $self->{rectangleP} = $org::allbinary::graphics::RectangleFactory::SINGLETON;
-    $self->{cellPositionP} = undef;
-    $self->{animationX} = 0;
-    $self->{animationY} = 0;
-    $self->{hintAnimationY} = 0;
+    $self->{cellPositionP} = undef unless exists $self->{cellPositionP};
+    $self->{animationX} = 0 unless exists $self->{animationX};
+    $self->{animationY} = 0 unless exists $self->{animationY};
+    $self->{hintAnimationY} = 0 unless exists $self->{hintAnimationY};
 }
 
 

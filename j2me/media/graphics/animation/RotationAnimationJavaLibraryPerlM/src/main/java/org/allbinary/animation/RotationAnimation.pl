@@ -24,8 +24,8 @@ sub _init_fields {
     my ($self) = @_;
     $self->{frameUtil} = 'org::allbinary::math::FrameUtil'->getInstance();
     $self->{directionUtil} = 'org::allbinary::direction::DirectionUtil'->getInstance();
-    $self->{angleInfo} = undef;
-    $self->{circularIndexUtil} = undef;
+    $self->{angleInfo} = undef unless exists $self->{angleInfo};
+    $self->{circularIndexUtil} = undef unless exists $self->{circularIndexUtil};
 }
 
 

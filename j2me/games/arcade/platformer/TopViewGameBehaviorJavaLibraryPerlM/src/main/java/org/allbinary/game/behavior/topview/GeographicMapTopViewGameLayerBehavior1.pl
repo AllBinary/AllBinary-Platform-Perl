@@ -25,8 +25,8 @@ sub _init_fields {
     $self->{logUtil} = 'org::allbinary::logic::communication::log::LogUtil'->getInstance();
     $self->{gravityUtil} = 'org::allbinary::game::physics::acceleration::GravityUtil'->getInstance();
     $self->{geographicMapBehavior} = 'org::allbinary::media::graphics::geography::map::MultiGeographicMapBehavior'->new();
-    $self->{autoStepBlocks} = undef;
-    $self->{offsetY} = undef;
+    $self->{autoStepBlocks} = undef unless exists $self->{autoStepBlocks};
+    $self->{offsetY} = undef unless exists $self->{offsetY};
     $self->{previousGeographicMapCellPosition} = $org::allbinary::media::graphics::geography::map::SimpleGeographicMapCellPositionFactory::NULL_GEOGRAPHIC_MAP_CELL_POSITION;
 }
 

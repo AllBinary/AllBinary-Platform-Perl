@@ -10,8 +10,8 @@ use parent -norequire,'org::allbinary::animation::vector::RectangleFilledAnimati
 
 sub _init_fields {
     my ($self) = @_;
-    $self->{x} = 0;
-    $self->{y} = 0;
+    $self->{x} = 0 unless exists $self->{x};
+    $self->{y} = 0 unless exists $self->{y};
 }
 
 

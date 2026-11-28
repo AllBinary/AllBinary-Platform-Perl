@@ -25,12 +25,12 @@ sub _init_fields {
     my ($self) = @_;
     $self->{commonSeps} = 'org::allbinary::string::CommonSeps'->getInstance();
     $self->{shaderStrings} = 'org::allbinary::graphics::opengles::shader::ShaderStrings'->getInstance();
-    $self->{uniformBlockHandleArray} = undef;
-    $self->{uniformBlockArray} = undef;
-    $self->{uniformHandleArray} = undef;
-    $self->{uniformArray} = undef;
-    $self->{attributeHandleArray} = undef;
-    $self->{attributeArray} = undef;
+    $self->{uniformBlockHandleArray} = undef unless exists $self->{uniformBlockHandleArray};
+    $self->{uniformBlockArray} = undef unless exists $self->{uniformBlockArray};
+    $self->{uniformHandleArray} = undef unless exists $self->{uniformHandleArray};
+    $self->{uniformArray} = undef unless exists $self->{uniformArray};
+    $self->{attributeHandleArray} = undef unless exists $self->{attributeHandleArray};
+    $self->{attributeArray} = undef unless exists $self->{attributeArray};
 }
 
 

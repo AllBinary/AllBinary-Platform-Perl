@@ -23,9 +23,9 @@ tie our $NO_LIFE, 'java::lang::LazyStatic', sub { 'org::allbinary::game::ag::lif
 
 sub _init_fields {
     my ($self) = @_;
-    $self->{lives} = undef;
-    $self->{startLives} = undef;
-    $self->{maxlives} = undef;
+    $self->{lives} = undef unless exists $self->{lives};
+    $self->{startLives} = undef unless exists $self->{startLives};
+    $self->{maxlives} = undef unless exists $self->{maxlives};
 }
 
 

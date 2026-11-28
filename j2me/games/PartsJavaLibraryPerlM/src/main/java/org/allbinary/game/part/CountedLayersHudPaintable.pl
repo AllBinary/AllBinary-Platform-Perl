@@ -24,13 +24,13 @@ our $XXStringWidth = 0;
 sub _init_fields {
     my ($self) = @_;
     $self->{displayInfoSingleton} = 'org::allbinary::graphics::displayable::DisplayInfoSingleton'->getInstance();
-    $self->{partInterfaceArray} = undef;
-    $self->{countedTotalStringColor} = undef;
-    $self->{countedPartsBorder} = undef;
-    $self->{startIndex} = undef;
-    $self->{dropSize} = undef;
+    $self->{partInterfaceArray} = undef unless exists $self->{partInterfaceArray};
+    $self->{countedTotalStringColor} = undef unless exists $self->{countedTotalStringColor};
+    $self->{countedPartsBorder} = undef unless exists $self->{countedPartsBorder};
+    $self->{startIndex} = undef unless exists $self->{startIndex};
+    $self->{dropSize} = undef unless exists $self->{dropSize};
     $self->{myFontProcessor} = 'org::allbinary::graphics::font::UpdateMyFontProcessor'->new($self);
-    $self->{height} = 0;
+    $self->{height} = 0 unless exists $self->{height};
 }
 
 

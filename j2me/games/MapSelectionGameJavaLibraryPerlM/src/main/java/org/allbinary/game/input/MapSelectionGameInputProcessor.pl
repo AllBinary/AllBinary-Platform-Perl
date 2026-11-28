@@ -23,12 +23,12 @@ use parent -norequire,'org::allbinary::canvas::Processor','org::allbinary::game:
 sub _init_fields {
     my ($self) = @_;
     $self->{logUtil} = 'org::allbinary::logic::communication::log::LogUtil'->getInstance();
-    $self->{gameCanvas} = undef;
-    $self->{raceTrackGeographicMapInterfaceFactoryInterface} = undef;
-    $self->{preGameSelectorPaintable} = undef;
+    $self->{gameCanvas} = undef unless exists $self->{gameCanvas};
+    $self->{raceTrackGeographicMapInterfaceFactoryInterface} = undef unless exists $self->{raceTrackGeographicMapInterfaceFactoryInterface};
+    $self->{preGameSelectorPaintable} = undef unless exists $self->{preGameSelectorPaintable};
     $self->{inputTimeHelper} = 'org::allbinary::time::TimeDelayHelper'->new(650);
-    $self->{playerGameInput} = undef;
-    $self->{lockedIndex} = undef;
+    $self->{playerGameInput} = undef unless exists $self->{playerGameInput};
+    $self->{lockedIndex} = undef unless exists $self->{lockedIndex};
     $self->{abRunnable} = do { local $java::lang::Object::jouter = $self; 'org::allbinary::game::input::MapSelectionRunnable'->new($self) };
 }
 
@@ -115,7 +115,7 @@ sub getPlayerGameInput {
 
     sub _init_fields {
         my ($self) = @_;
-        $self->{inputProcessor} = undef;
+        $self->{inputProcessor} = undef unless exists $self->{inputProcessor};
     }
     
 

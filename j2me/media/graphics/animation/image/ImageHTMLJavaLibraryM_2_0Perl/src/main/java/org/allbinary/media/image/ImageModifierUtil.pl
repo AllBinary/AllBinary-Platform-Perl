@@ -26,7 +26,7 @@ sub _init_fields {
     $self->{commonStrings} = 'org::allbinary::string::CommonStrings'->getInstance();
     $self->{resourceCallbackStrings} = 'org::microemu::device::ResourceCallbackStrings'->getInstance();
     $self->{playnUtil} = 'playn::html::HTMLPlaynUtil'->getInstance();
-    $self->{alphaArray} = undef;
+    $self->{alphaArray} = undef unless exists $self->{alphaArray};
 }
 
 sub new {
@@ -153,11 +153,11 @@ sub reset {
 
     sub _init_fields {
         my ($self) = @_;
-        $self->{imageModifierUtil} = undef;
-        $self->{imageArray} = undef;
-        $self->{index} = undef;
-        $self->{image} = undef;
-        $self->{image3} = undef;
+        $self->{imageModifierUtil} = undef unless exists $self->{imageModifierUtil};
+        $self->{imageArray} = undef unless exists $self->{imageArray};
+        $self->{index} = undef unless exists $self->{index};
+        $self->{image} = undef unless exists $self->{image};
+        $self->{image3} = undef unless exists $self->{image3};
     }
     
 

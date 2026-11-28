@@ -29,7 +29,7 @@ sub _init_fields {
     $self->{ALL_VISIBLE_TILEDLAYER} = 'javax::microedition::lcdui::game::SimpleTiledLayer'->new(0, 0, 0, 0);
     $self->{simpleTiledLayer} = $self->{ALL_VISIBLE_TILEDLAYER};
     $self->{paintSimpleTiledLayer} = $self->{ALL_VISIBLE_TILEDLAYER};
-    $self->{currentIndex} = 0;
+    $self->{currentIndex} = 0 unless exists $self->{currentIndex};
 }
 
 

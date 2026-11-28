@@ -27,7 +27,7 @@ sub _init_fields {
     $self->{reusableOccupyingGeographicMapCellPositionList} = 'org::allbinary::util::BasicArrayListS'->new(4);
     $self->{reusableSurroundingGeographicMapCellPositionList} = 'org::allbinary::util::BasicArrayListS'->new(12);
     $self->{surroundingCircularIndexUtil} = 'org::allbinary::util::CircularIndexUtil'->createInstance(0);
-    $self->{layerInterface} = undef;
+    $self->{layerInterface} = undef unless exists $self->{layerInterface};
     $self->{LIST} = 'org::allbinary::util::BasicArrayListUtil'->getInstance()->getImmutableInstance();
     $self->{occupyingGeographicMapCellPositionList} = $self->{LIST};
     $self->{surroundingGeographicMapCellPositionList} = $self->{LIST};

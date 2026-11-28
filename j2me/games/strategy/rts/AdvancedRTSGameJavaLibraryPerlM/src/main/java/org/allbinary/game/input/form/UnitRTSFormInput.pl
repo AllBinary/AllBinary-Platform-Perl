@@ -22,8 +22,8 @@ tie our $DECAL_ID, 'java::lang::LazyStatic', sub { 'org::allbinary::logic::math:
 
 sub _init_fields {
     my ($self) = @_;
-    $self->{noMoneyGameNotificationEvent} = undef;
-    $self->{newUnitGameNotificationEvent} = undef;
+    $self->{noMoneyGameNotificationEvent} = undef unless exists $self->{noMoneyGameNotificationEvent};
+    $self->{newUnitGameNotificationEvent} = undef unless exists $self->{newUnitGameNotificationEvent};
 }
 
 

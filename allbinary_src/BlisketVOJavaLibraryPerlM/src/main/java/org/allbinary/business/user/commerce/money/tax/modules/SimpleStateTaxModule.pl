@@ -24,12 +24,12 @@ sub _init_fields {
     my ($self) = @_;
     $self->{logUtil} = 'org::allbinary::logic::communication::log::LogUtil'->getInstance();
     $self->{commonStrings} = 'org::allbinary::string::CommonStrings'->getInstance();
-    $self->{streetAddress} = undef;
-    $self->{storeFrontInterface} = undef;
+    $self->{streetAddress} = undef unless exists $self->{streetAddress};
+    $self->{storeFrontInterface} = undef unless exists $self->{storeFrontInterface};
     $self->{ALL} = 'org::allbinary::string::CommonPhoneStrings'->getInstance()->{STAR};
     $self->{STATETAXPATH} = "/generic/taxes/";
     $self->{STATETAXFILE} = "stateTaxation.xml";
-    $self->{document} = undef;
+    $self->{document} = undef unless exists $self->{document};
 }
 
 

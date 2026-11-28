@@ -47,12 +47,12 @@ sub init {
 
         sub _init_fields {
             my ($self) = @_;
-            $self->{startLineId} = undef;
-            $self->{finishLineId} = undef;
-            $self->{pathFindingInfoFactory} = undef;
-            $self->{geographicMapInterface} = undef;
-            $self->{pathFindingInfo} = undef;
-            $self->{mapArray} = undef;
+            $self->{startLineId} = undef unless exists $self->{startLineId};
+            $self->{finishLineId} = undef unless exists $self->{finishLineId};
+            $self->{pathFindingInfoFactory} = undef unless exists $self->{pathFindingInfoFactory};
+            $self->{geographicMapInterface} = undef unless exists $self->{geographicMapInterface};
+            $self->{pathFindingInfo} = undef unless exists $self->{pathFindingInfo};
+            $self->{mapArray} = undef unless exists $self->{mapArray};
         }
         
 

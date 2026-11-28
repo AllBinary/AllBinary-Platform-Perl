@@ -23,11 +23,11 @@ use parent -norequire,'java::lang::Object';
 sub _init_fields {
     my ($self) = @_;
     $self->{logUtil} = 'org::allbinary::logic::communication::log::LogUtil'->getInstance();
-    $self->{pageContext} = undef;
-    $self->{requestMapInterface} = undef;
-    $self->{page} = undef;
-    $self->{command} = undef;
-    $self->{paramVector} = undef;
+    $self->{pageContext} = undef unless exists $self->{pageContext};
+    $self->{requestMapInterface} = undef unless exists $self->{requestMapInterface};
+    $self->{page} = undef unless exists $self->{page};
+    $self->{command} = undef unless exists $self->{command};
+    $self->{paramVector} = undef unless exists $self->{paramVector};
 }
 
 

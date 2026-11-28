@@ -22,22 +22,22 @@ use parent -norequire,'java::lang::Object','org::allbinary::business::user::comm
 
 sub _init_fields {
     my ($self) = @_;
-    $self->{basket} = undef;
-    $self->{paymentMethod} = undef;
-    $self->{shippingType} = undef;
-    $self->{storeName} = undef;
-    $self->{special} = undef;
-    $self->{id} = undef;
-    $self->{userComment} = undef;
-    $self->{userCancelComment} = undef;
-    $self->{storeComment} = undef;
-    $self->{storeCancelComment} = undef;
+    $self->{basket} = undef unless exists $self->{basket};
+    $self->{paymentMethod} = undef unless exists $self->{paymentMethod};
+    $self->{shippingType} = undef unless exists $self->{shippingType};
+    $self->{storeName} = undef unless exists $self->{storeName};
+    $self->{special} = undef unless exists $self->{special};
+    $self->{id} = undef unless exists $self->{id};
+    $self->{userComment} = undef unless exists $self->{userComment};
+    $self->{userCancelComment} = undef unless exists $self->{userCancelComment};
+    $self->{storeComment} = undef unless exists $self->{storeComment};
+    $self->{storeCancelComment} = undef unless exists $self->{storeCancelComment};
 }
 
 sub new {
     my ($class, @arguments) = @_;
-    return $class->_new1(@arguments) if scalar(@arguments) == 1;
-    return $class->_new6(@arguments) if scalar(@arguments) == 6;
+    return _new1($class, @arguments) if scalar(@arguments) == 1;
+    return _new6($class, @arguments) if scalar(@arguments) == 6;
     die "No constructor of Order takes " . scalar(@arguments) . " arguments";
 }
 

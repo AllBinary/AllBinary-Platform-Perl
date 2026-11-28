@@ -23,7 +23,7 @@ use parent -norequire,'java::lang::Object','org::allbinary::bounds::event::Bound
 sub _init_fields {
     my ($self) = @_;
     $self->{logUtil} = 'org::allbinary::logic::communication::log::LogUtil'->getInstance();
-    $self->{rectangle} = undef;
+    $self->{rectangle} = undef unless exists $self->{rectangle};
 }
 
 

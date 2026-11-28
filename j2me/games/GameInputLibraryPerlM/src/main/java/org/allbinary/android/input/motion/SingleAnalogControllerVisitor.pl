@@ -22,7 +22,7 @@ use parent -norequire,'org::allbinary::android::input::motion::AnalogControllerV
 
 sub _init_fields {
     my ($self) = @_;
-    $self->{playerInputId} = undef;
+    $self->{playerInputId} = undef unless exists $self->{playerInputId};
 }
 
 

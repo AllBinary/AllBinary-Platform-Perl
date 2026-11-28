@@ -24,9 +24,9 @@ tie our $instance, 'java::lang::LazyStatic', sub { 'org::allbinary::math::NoDeci
 sub _init_fields {
     my ($self) = @_;
     $self->{mathUtil} = 'org::allbinary::logic::math::MathUtil'->getInstance();
-    $self->{noDecimalSin} = undef;
-    $self->{noDecimalCos} = undef;
-    $self->{noDecimalTan} = undef;
+    $self->{noDecimalSin} = undef unless exists $self->{noDecimalSin};
+    $self->{noDecimalCos} = undef unless exists $self->{noDecimalCos};
+    $self->{noDecimalTan} = undef unless exists $self->{noDecimalTan};
     $self->{SCALE} = 10000;
 }
 

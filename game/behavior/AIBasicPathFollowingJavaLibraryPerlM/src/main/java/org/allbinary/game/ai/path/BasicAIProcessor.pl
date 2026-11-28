@@ -22,11 +22,11 @@ use parent -norequire,'java::lang::Object';
 
 sub _init_fields {
     my ($self) = @_;
-    $self->{name} = undef;
-    $self->{geographicMapCellHistory} = undef;
-    $self->{geographicMapCellPositionBasicArrayList} = undef;
-    $self->{geographicMapCellPathHistoryInfo} = undef;
-    $self->{basicAI} = undef;
+    $self->{name} = undef unless exists $self->{name};
+    $self->{geographicMapCellHistory} = undef unless exists $self->{geographicMapCellHistory};
+    $self->{geographicMapCellPositionBasicArrayList} = undef unless exists $self->{geographicMapCellPositionBasicArrayList};
+    $self->{geographicMapCellPathHistoryInfo} = undef unless exists $self->{geographicMapCellPathHistoryInfo};
+    $self->{basicAI} = undef unless exists $self->{basicAI};
     $self->{geographicMapDirectionUtil} = 'org::allbinary::media::graphics::geography::map::GeographicMapDirectionUtil'->getInstance();
 }
 

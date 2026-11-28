@@ -10,8 +10,8 @@ use parent -norequire,'java::lang::Object';
 
 sub _init_fields {
     my ($self) = @_;
-    $self->{charArray} = undef;
-    $self->{currentLength} = 0;
+    $self->{charArray} = undef unless exists $self->{charArray};
+    $self->{currentLength} = 0 unless exists $self->{currentLength};
 }
 
 

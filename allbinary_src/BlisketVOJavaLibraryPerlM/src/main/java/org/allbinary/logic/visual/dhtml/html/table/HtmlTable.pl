@@ -40,14 +40,14 @@ sub _init_fields {
     $self->{STYLE} = "style";
     $self->{BORDERCOLLAPSE} = "border-collapse: collapse";
     $self->{numberOfColumns} = 0;
-    $self->{before} = undef;
-    $self->{border} = undef;
-    $self->{cellpadding} = undef;
-    $self->{cellspacing} = undef;
-    $self->{style} = undef;
-    $self->{name} = undef;
-    $self->{after} = undef;
-    $self->{htmlRowsVector} = undef;
+    $self->{before} = undef unless exists $self->{before};
+    $self->{border} = undef unless exists $self->{border};
+    $self->{cellpadding} = undef unless exists $self->{cellpadding};
+    $self->{cellspacing} = undef unless exists $self->{cellspacing};
+    $self->{style} = undef unless exists $self->{style};
+    $self->{name} = undef unless exists $self->{name};
+    $self->{after} = undef unless exists $self->{after};
+    $self->{htmlRowsVector} = undef unless exists $self->{htmlRowsVector};
 }
 
 

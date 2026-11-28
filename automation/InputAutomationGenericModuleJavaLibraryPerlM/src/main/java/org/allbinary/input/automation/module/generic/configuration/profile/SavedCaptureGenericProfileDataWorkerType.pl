@@ -23,8 +23,8 @@ tie our $SAVED_CAPTURE, 'java::lang::LazyStatic', sub { 'org::allbinary::input::
 
 sub _init_fields {
     my ($self) = @_;
-    $self->{path} = undef;
-    $self->{lastFrame} = 0;
+    $self->{path} = undef unless exists $self->{path};
+    $self->{lastFrame} = 0 unless exists $self->{lastFrame};
 }
 
 

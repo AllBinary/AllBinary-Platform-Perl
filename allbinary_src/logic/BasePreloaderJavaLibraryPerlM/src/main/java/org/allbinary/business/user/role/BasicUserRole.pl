@@ -22,24 +22,24 @@ use parent -norequire,'java::lang::Object';
 
 sub _init_fields {
     my ($self) = @_;
-    $self->{m_int_RoleId} = undef;
-    $self->{role} = undef;
-    $self->{displayValue} = undef;
-    $self->{sessionTimeout} = undef;
-    $self->{sessionInactivityTimeout} = undef;
+    $self->{m_int_RoleId} = undef unless exists $self->{m_int_RoleId};
+    $self->{role} = undef unless exists $self->{role};
+    $self->{displayValue} = undef unless exists $self->{displayValue};
+    $self->{sessionTimeout} = undef unless exists $self->{sessionTimeout};
+    $self->{sessionInactivityTimeout} = undef unless exists $self->{sessionInactivityTimeout};
 }
 
 sub new {
     my ($class, @arguments) = @_;
-    return $class->_new4(@arguments) if scalar(@arguments) == 4;
-    return $class->_new5(@arguments) if scalar(@arguments) == 5;
+    return _new4($class, @arguments) if scalar(@arguments) == 4;
+    return _new5($class, @arguments) if scalar(@arguments) == 5;
     die "No constructor of BasicUserRole takes " . scalar(@arguments) . " arguments";
 }
 
 
 sub _new4 {
     my ($class, $aRole, $a_int_RoleId, $aSessionTimeout, $aSessionInactivityTimeout) = @_;
-    my $self = $class->_new5($aRole, $aRole, $a_int_RoleId, $aSessionTimeout, $aSessionInactivityTimeout);
+    my $self = _new5($class, $aRole, $aRole, $a_int_RoleId, $aSessionTimeout, $aSessionInactivityTimeout);
         # this(...) made $self above
     return $self;
 }

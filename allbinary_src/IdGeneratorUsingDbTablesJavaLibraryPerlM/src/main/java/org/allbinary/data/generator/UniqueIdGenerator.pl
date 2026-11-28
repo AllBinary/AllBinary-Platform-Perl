@@ -24,8 +24,8 @@ our $EXT = ".unq";
 sub _init_fields {
     my ($self) = @_;
     $self->{logUtil} = 'org::allbinary::logic::communication::log::LogUtil'->getInstance();
-    $self->{idGeneratorEntity} = undef;
-    $self->{name} = undef;
+    $self->{idGeneratorEntity} = undef unless exists $self->{idGeneratorEntity};
+    $self->{name} = undef unless exists $self->{name};
 }
 
 

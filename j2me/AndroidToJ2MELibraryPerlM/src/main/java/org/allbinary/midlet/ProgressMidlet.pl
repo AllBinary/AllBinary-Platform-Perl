@@ -23,7 +23,7 @@ use parent -norequire,'org::allbinary::midlet::AllBinaryMidlet';
 
 sub _init_fields {
     my ($self) = @_;
-    $self->{abeClientInformation} = undef;
+    $self->{abeClientInformation} = undef unless exists $self->{abeClientInformation};
 }
 
 

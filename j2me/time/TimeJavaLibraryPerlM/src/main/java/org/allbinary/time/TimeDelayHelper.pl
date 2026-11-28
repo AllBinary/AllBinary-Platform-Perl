@@ -25,7 +25,7 @@ sub _init_fields {
     my ($self) = @_;
     $self->{startTime} = -1;
     $self->{elapsedTimeAtPause} = (-9223372036854775807 - 1);
-    $self->{delay} = undef;
+    $self->{delay} = undef unless exists $self->{delay};
 }
 
 

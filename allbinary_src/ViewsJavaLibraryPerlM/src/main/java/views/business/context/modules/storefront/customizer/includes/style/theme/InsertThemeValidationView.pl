@@ -23,7 +23,7 @@ use parent -norequire,'views::business::context::modules::storefront::customizer
 sub _init_fields {
     my ($self) = @_;
     $self->{logUtil} = 'org::allbinary::logic::communication::log::LogUtil'->getInstance();
-    $self->{requestHashMap} = undef;
+    $self->{requestHashMap} = undef unless exists $self->{requestHashMap};
 }
 
 

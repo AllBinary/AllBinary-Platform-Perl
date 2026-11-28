@@ -23,9 +23,9 @@ use parent -norequire,'org::allbinary::logic::system::security::crypt::jcehelper
 sub _init_fields {
     my ($self) = @_;
     $self->{byteUtil} = 'org::allbinary::logic::java::byteutil::ByteUtil'->getInstance();
-    $self->{cipher} = undef;
-    $self->{secretKey} = undef;
-    $self->{key} = undef;
+    $self->{cipher} = undef unless exists $self->{cipher};
+    $self->{secretKey} = undef unless exists $self->{secretKey};
+    $self->{key} = undef unless exists $self->{key};
 }
 
 

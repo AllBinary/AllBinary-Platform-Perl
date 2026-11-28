@@ -22,10 +22,10 @@ use parent -norequire,'java::lang::Object','org::allbinary::media::image::compar
 
 sub _init_fields {
     my ($self) = @_;
-    $self->{minDimension} = undef;
-    $self->{maxDimension} = undef;
-    $self->{maxMotionRectangles} = 0;
-    $self->{minArea} = 0;
+    $self->{minDimension} = undef unless exists $self->{minDimension};
+    $self->{maxDimension} = undef unless exists $self->{maxDimension};
+    $self->{maxMotionRectangles} = 0 unless exists $self->{maxMotionRectangles};
+    $self->{minArea} = 0 unless exists $self->{minArea};
 }
 
 

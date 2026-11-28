@@ -23,10 +23,10 @@ our $directionArray = [(undef) x (13)];
 
 sub _init_fields {
     my ($self) = @_;
-    $self->{name} = undef;
-    $self->{otherName} = undef;
-    $self->{value} = undef;
-    $self->{frameFactor} = undef;
+    $self->{name} = undef unless exists $self->{name};
+    $self->{otherName} = undef unless exists $self->{otherName};
+    $self->{value} = undef unless exists $self->{value};
+    $self->{frameFactor} = undef unless exists $self->{frameFactor};
 }
 
 

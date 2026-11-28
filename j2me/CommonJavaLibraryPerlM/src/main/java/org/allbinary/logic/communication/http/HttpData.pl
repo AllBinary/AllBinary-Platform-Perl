@@ -23,9 +23,9 @@ tie our $instance, 'java::lang::LazyStatic', sub { 'org::allbinary::logic::commu
 
 sub _init_fields {
     my ($self) = @_;
-    $self->{EQUALS} = undef;
-    $self->{PARAM_SEP} = undef;
-    $self->{URL_PARAM_SEP} = undef;
+    $self->{EQUALS} = undef unless exists $self->{EQUALS};
+    $self->{PARAM_SEP} = undef unless exists $self->{PARAM_SEP};
+    $self->{URL_PARAM_SEP} = undef unless exists $self->{URL_PARAM_SEP};
     $self->{URL_LABEL} = "Url: ";
 }
 

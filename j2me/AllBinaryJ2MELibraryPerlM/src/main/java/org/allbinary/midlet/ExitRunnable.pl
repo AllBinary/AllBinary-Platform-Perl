@@ -24,9 +24,9 @@ sub _init_fields {
     my ($self) = @_;
     $self->{logUtil} = 'org::allbinary::logic::communication::log::LogUtil'->getInstance();
     $self->{commonStrings} = 'org::allbinary::string::CommonStrings'->getInstance();
-    $self->{midlet} = undef;
-    $self->{processor} = undef;
-    $self->{isProgress} = undef;
+    $self->{midlet} = undef unless exists $self->{midlet};
+    $self->{processor} = undef unless exists $self->{processor};
+    $self->{isProgress} = undef unless exists $self->{isProgress};
 }
 
 

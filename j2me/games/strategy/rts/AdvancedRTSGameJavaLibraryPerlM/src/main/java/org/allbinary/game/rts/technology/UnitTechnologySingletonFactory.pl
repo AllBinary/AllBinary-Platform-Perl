@@ -23,11 +23,11 @@ tie our $instance, 'java::lang::LazyStatic', sub { 'org::allbinary::game::rts::t
 
 sub _init_fields {
     my ($self) = @_;
-    $self->{damage} = 0;
-    $self->{health} = 0;
-    $self->{reload} = 0;
-    $self->{repair} = 0;
-    $self->{speed} = 0;
+    $self->{damage} = 0 unless exists $self->{damage};
+    $self->{health} = 0 unless exists $self->{health};
+    $self->{reload} = 0 unless exists $self->{reload};
+    $self->{repair} = 0 unless exists $self->{repair};
+    $self->{speed} = 0 unless exists $self->{speed};
 }
 
 

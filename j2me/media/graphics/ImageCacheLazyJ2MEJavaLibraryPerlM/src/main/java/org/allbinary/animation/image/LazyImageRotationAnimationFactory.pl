@@ -22,8 +22,8 @@ use parent -norequire,'java::lang::Object','org::allbinary::animation::Animation
 
 sub _init_fields {
     my ($self) = @_;
-    $self->{layoutIndex} = undef;
-    $self->{animationInterfaceFactoryInterface} = undef;
+    $self->{layoutIndex} = undef unless exists $self->{layoutIndex};
+    $self->{animationInterfaceFactoryInterface} = undef unless exists $self->{animationInterfaceFactoryInterface};
     $self->{scaleProperties} = $org::allbinary::media::ScaleProperties::instance;
 }
 

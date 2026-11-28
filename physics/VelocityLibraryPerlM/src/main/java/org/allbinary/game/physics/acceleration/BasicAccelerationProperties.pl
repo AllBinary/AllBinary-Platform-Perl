@@ -22,8 +22,8 @@ use parent -norequire,'java::lang::Object';
 
 sub _init_fields {
     my ($self) = @_;
-    $self->{forward} = 0;
-    $self->{reverse} = 0;
+    $self->{forward} = 0 unless exists $self->{forward};
+    $self->{reverse} = 0 unless exists $self->{reverse};
 }
 
 

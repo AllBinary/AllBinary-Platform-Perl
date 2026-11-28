@@ -23,7 +23,7 @@ use parent -norequire,'org::allbinary::animation::image::BaseImageAnimationFacto
 sub _init_fields {
     my ($self) = @_;
     $self->{animationFactorySpriteScaleUtil} = 'org::allbinary::image::sprite::AnimationFactorySpriteScaleUtil'->getInstance();
-    $self->{basicColorArray} = undef;
+    $self->{basicColorArray} = undef unless exists $self->{basicColorArray};
 }
 
 

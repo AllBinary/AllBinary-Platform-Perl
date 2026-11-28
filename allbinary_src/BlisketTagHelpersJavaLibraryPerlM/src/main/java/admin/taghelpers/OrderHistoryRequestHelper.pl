@@ -24,10 +24,10 @@ sub _init_fields {
     my ($self) = @_;
     $self->{logUtil} = 'org::allbinary::logic::communication::log::LogUtil'->getInstance();
     $self->{abeClientInformation} = 'org::allbinary::logic::system::security::licensing::ServiceClientInformationInterfaceFactory'->getInstance();
-    $self->{request} = undef;
-    $self->{id} = undef;
-    $self->{groupId} = undef;
-    $self->{status} = undef;
+    $self->{request} = undef unless exists $self->{request};
+    $self->{id} = undef unless exists $self->{id};
+    $self->{groupId} = undef unless exists $self->{groupId};
+    $self->{status} = undef unless exists $self->{status};
 }
 
 

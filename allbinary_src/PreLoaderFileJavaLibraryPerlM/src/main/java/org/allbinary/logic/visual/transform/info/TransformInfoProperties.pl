@@ -22,12 +22,12 @@ use parent -norequire,'java::lang::Object';
 
 sub _init_fields {
     my ($self) = @_;
-    $self->{name} = undef;
-    $self->{label} = undef;
-    $self->{description} = undef;
-    $self->{objectFileName} = undef;
-    $self->{objectConfigFileName} = undef;
-    $self->{templateFileName} = undef;
+    $self->{name} = undef unless exists $self->{name};
+    $self->{label} = undef unless exists $self->{label};
+    $self->{description} = undef unless exists $self->{description};
+    $self->{objectFileName} = undef unless exists $self->{objectFileName};
+    $self->{objectConfigFileName} = undef unless exists $self->{objectConfigFileName};
+    $self->{templateFileName} = undef unless exists $self->{templateFileName};
 }
 
 

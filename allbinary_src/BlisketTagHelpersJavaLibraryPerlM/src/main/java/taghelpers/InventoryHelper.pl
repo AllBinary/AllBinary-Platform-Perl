@@ -24,12 +24,12 @@ sub _init_fields {
     my ($self) = @_;
     $self->{logUtil} = 'org::allbinary::logic::communication::log::LogUtil'->getInstance();
     $self->{basicItemData} = 'org::allbinary::business::user::commerce::inventory::item::BasicItemData'->getInstance();
-    $self->{weblisketSession} = undef;
-    $self->{response} = undef;
-    $self->{request} = undef;
-    $self->{streetAddress} = undef;
-    $self->{id} = undef;
-    $self->{searchRequest} = undef;
+    $self->{weblisketSession} = undef unless exists $self->{weblisketSession};
+    $self->{response} = undef unless exists $self->{response};
+    $self->{request} = undef unless exists $self->{request};
+    $self->{streetAddress} = undef unless exists $self->{streetAddress};
+    $self->{id} = undef unless exists $self->{id};
+    $self->{searchRequest} = undef unless exists $self->{searchRequest};
 }
 
 

@@ -10,7 +10,7 @@ use parent -norequire,'org::allbinary::platform::graphics::PlatformBitmapBase';
 
 sub _init_fields {
     my ($self) = @_;
-    $self->{bitmap} = undef;
+    $self->{bitmap} = undef unless exists $self->{bitmap};
 }
 
 

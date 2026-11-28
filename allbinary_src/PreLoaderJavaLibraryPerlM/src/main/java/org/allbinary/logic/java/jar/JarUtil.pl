@@ -22,7 +22,7 @@ use parent -norequire,'java::lang::Object';
 
 sub _init_fields {
     my ($self) = @_;
-    $self->{jarURL} = undef;
+    $self->{jarURL} = undef unless exists $self->{jarURL};
 }
 
 

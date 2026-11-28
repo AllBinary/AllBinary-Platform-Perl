@@ -23,8 +23,8 @@ use parent -norequire,'org::allbinary::graphics::CellPosition';
 
 sub _init_fields {
     my ($self) = @_;
-    $self->{point} = undef;
-    $self->{midPoint} = undef;
+    $self->{point} = undef unless exists $self->{point};
+    $self->{midPoint} = undef unless exists $self->{midPoint};
 }
 
 

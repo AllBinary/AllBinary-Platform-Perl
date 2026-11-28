@@ -22,15 +22,15 @@ use parent -norequire,'java::lang::Object';
 
 sub _init_fields {
     my ($self) = @_;
-    $self->{command} = undef;
-    $self->{treeNode} = undef;
+    $self->{command} = undef unless exists $self->{command};
+    $self->{treeNode} = undef unless exists $self->{treeNode};
     $self->{angle} = 0.0;
 }
 
 sub new {
     my ($class, @arguments) = @_;
-    return $class->_new2(@arguments) if scalar(@arguments) == 2;
-    return $class->_new3(@arguments) if scalar(@arguments) == 3;
+    return _new2($class, @arguments) if scalar(@arguments) == 2;
+    return _new3($class, @arguments) if scalar(@arguments) == 3;
     die "No constructor of MyCanvasEventSource takes " . scalar(@arguments) . " arguments";
 }
 

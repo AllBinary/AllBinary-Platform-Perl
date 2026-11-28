@@ -25,7 +25,7 @@ sub _init_fields {
     $self->{logUtil} = 'org::allbinary::logic::communication::log::LogUtil'->getInstance();
     $self->{commonStrings} = 'org::allbinary::string::CommonStrings'->getInstance();
     $self->{basicItemData} = 'org::allbinary::business::user::commerce::inventory::item::BasicItemData'->getInstance();
-    $self->{searchRequest} = undef;
+    $self->{searchRequest} = undef unless exists $self->{searchRequest};
 }
 
 

@@ -25,7 +25,7 @@ sub _init_fields {
     my ($self) = @_;
     $self->{turnSpeed} = 'org::allbinary::logic::math::SmallIntegerSingletonFactory'->getInstance()->getAt(0);
     $self->{trackPathSelectionSkill} = 'org::allbinary::logic::math::SmallIntegerSingletonFactory'->getInstance()->getAt(0);
-    $self->{aggression} = undef;
+    $self->{aggression} = undef unless exists $self->{aggression};
 }
 
 

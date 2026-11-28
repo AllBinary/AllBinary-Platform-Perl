@@ -27,7 +27,7 @@ sub _init_fields {
     $self->{scaleY} = 1.0;
     $self->{scaleX2} = 1.0;
     $self->{scaleY2} = 1.0;
-    $self->{angle} = 0;
+    $self->{angle} = 0 unless exists $self->{angle};
     $self->{redf} = 1.0;
     $self->{greenf} = 1.0;
     $self->{bluef} = 1.0;

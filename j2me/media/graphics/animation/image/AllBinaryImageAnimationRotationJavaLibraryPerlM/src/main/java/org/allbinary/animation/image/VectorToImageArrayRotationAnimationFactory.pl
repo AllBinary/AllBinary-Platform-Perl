@@ -23,7 +23,7 @@ use parent -norequire,'org::allbinary::animation::image::BaseImageAnimationFacto
 sub _init_fields {
     my ($self) = @_;
     $self->{imageArray} = $javax::microedition::lcdui::NullImage::NULL_IMAGE_ARRAY;
-    $self->{angleIncrement} = 0;
+    $self->{angleIncrement} = 0 unless exists $self->{angleIncrement};
 }
 
 

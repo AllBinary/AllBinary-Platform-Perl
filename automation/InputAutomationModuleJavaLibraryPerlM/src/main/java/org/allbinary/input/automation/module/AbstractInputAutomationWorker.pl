@@ -25,13 +25,13 @@ sub _init_fields {
     my ($self) = @_;
     $self->{logUtil} = 'org::allbinary::logic::communication::log::LogUtil'->getInstance();
     $self->{commonStrings} = 'org::allbinary::string::CommonStrings'->getInstance();
-    $self->{index} = 0;
-    $self->{running} = 0;
-    $self->{inputAutomationActionInterface} = undef;
-    $self->{captureWorkerInterface} = undef;
-    $self->{imageComparisonWorker} = undef;
-    $self->{motionRectanglesWorker} = undef;
-    $self->{captureThread} = undef;
+    $self->{index} = 0 unless exists $self->{index};
+    $self->{running} = 0 unless exists $self->{running};
+    $self->{inputAutomationActionInterface} = undef unless exists $self->{inputAutomationActionInterface};
+    $self->{captureWorkerInterface} = undef unless exists $self->{captureWorkerInterface};
+    $self->{imageComparisonWorker} = undef unless exists $self->{imageComparisonWorker};
+    $self->{motionRectanglesWorker} = undef unless exists $self->{motionRectanglesWorker};
+    $self->{captureThread} = undef unless exists $self->{captureThread};
 }
 
 

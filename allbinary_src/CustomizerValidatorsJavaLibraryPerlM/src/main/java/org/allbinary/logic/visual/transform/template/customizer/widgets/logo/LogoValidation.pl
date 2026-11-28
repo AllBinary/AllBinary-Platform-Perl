@@ -23,24 +23,24 @@ use parent -norequire,'org::allbinary::logic::control::validate::Validation','or
 sub _init_fields {
     my ($self) = @_;
     $self->{logUtil} = 'org::allbinary::logic::communication::log::LogUtil'->getInstance();
-    $self->{logoFileItem} = undef;
-    $self->{logoAbPath} = undef;
-    $self->{logoFile} = undef;
-    $self->{isFile} = undef;
+    $self->{logoFileItem} = undef unless exists $self->{logoFileItem};
+    $self->{logoAbPath} = undef unless exists $self->{logoAbPath};
+    $self->{logoFile} = undef unless exists $self->{logoFile};
+    $self->{isFile} = undef unless exists $self->{isFile};
 }
 
 sub new {
     my ($class, @arguments) = @_;
-    return $class->_new0(@arguments) if scalar(@arguments) == 0;
-    return $class->_new1(@arguments) if scalar(@arguments) == 1;
-    return $class->_new1(@arguments) if scalar(@arguments) == 1;
+    return _new0($class, @arguments) if scalar(@arguments) == 0;
+    return _new1($class, @arguments) if scalar(@arguments) == 1;
+    return _new1($class, @arguments) if scalar(@arguments) == 1;
     die "No constructor of LogoValidation takes " . scalar(@arguments) . " arguments";
 }
 
 sub _new1 {
     my ($class, @arguments) = @_;
-    return $class->_new1_1(@arguments) if 1 && (!defined($arguments[0]) || (ref($arguments[0]) && ref($arguments[0]) ne 'ARRAY'));
-    return $class->_new1_2(@arguments);
+    return _new1_1($class, @arguments) if 1 && (!defined($arguments[0]) || (ref($arguments[0]) && ref($arguments[0]) ne 'ARRAY'));
+    return _new1_2($class, @arguments);
 }
 
 

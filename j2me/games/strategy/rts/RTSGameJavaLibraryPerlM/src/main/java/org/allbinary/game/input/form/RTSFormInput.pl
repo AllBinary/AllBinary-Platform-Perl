@@ -26,10 +26,10 @@ sub _init_fields {
     $self->{groupCommonFactory} = 'org::allbinary::game::identification::GroupCommonFactory'->getInstance();
     $self->{hashtable} = 'org::allbinary::logic::StdUtil'->getInstance()->createHashtable();
     $self->{newUnconstructedRTSLayerInterfaceArray} = [(undef) x (7)];
-    $self->{groupInterfaceArray} = undef;
+    $self->{groupInterfaceArray} = undef unless exists $self->{groupInterfaceArray};
     $self->{selectedGeographicCellPosition} = $org::allbinary::media::graphics::geography::map::SimpleGeographicMapCellPositionFactory::NULL_GEOGRAPHIC_MAP_CELL_POSITION;
-    $self->{stickyItemSelected} = 0;
-    $self->{selectedStickyItemIndex} = 0;
+    $self->{stickyItemSelected} = 0 unless exists $self->{stickyItemSelected};
+    $self->{selectedStickyItemIndex} = 0 unless exists $self->{selectedStickyItemIndex};
     $self->{selectedStickyItem} = 'org::allbinary::graphics::form::item::ABCustomItem'->getNullInstance();
 }
 

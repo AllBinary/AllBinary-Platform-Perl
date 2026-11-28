@@ -33,8 +33,8 @@ sub _init_fields {
     $self->{SMALL} = "Small";
     $self->{MEDIUM} = "Medium";
     $self->{LARGE} = "Large";
-    $self->{storeFrontInterface} = undef;
-    $self->{itemInterface} = undef;
+    $self->{storeFrontInterface} = undef unless exists $self->{storeFrontInterface};
+    $self->{itemInterface} = undef unless exists $self->{itemInterface};
 }
 
 

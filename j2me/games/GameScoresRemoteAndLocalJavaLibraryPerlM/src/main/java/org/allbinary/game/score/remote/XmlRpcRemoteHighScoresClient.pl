@@ -23,7 +23,7 @@ use parent -norequire,'org::allbinary::logic::communication::xmlrpc::XmlRpcAbeCl
 sub _init_fields {
     my ($self) = @_;
     $self->{logUtil} = 'org::allbinary::logic::communication::log::LogUtil'->getInstance();
-    $self->{page} = undef;
+    $self->{page} = undef unless exists $self->{page};
 }
 
 

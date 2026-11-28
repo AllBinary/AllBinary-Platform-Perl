@@ -30,16 +30,16 @@ sub _init_fields {
     my ($self) = @_;
     $self->{logUtil} = 'org::allbinary::logic::communication::log::LogUtil'->getInstance();
     $self->{commonStrings} = 'org::allbinary::string::CommonStrings'->getInstance();
-    $self->{msg} = undef;
-    $self->{properties} = undef;
-    $self->{bs} = undef;
-    $self->{isDebug} = undef;
+    $self->{msg} = undef unless exists $self->{msg};
+    $self->{properties} = undef unless exists $self->{properties};
+    $self->{bs} = undef unless exists $self->{bs};
+    $self->{isDebug} = undef unless exists $self->{isDebug};
 }
 
 sub new {
     my ($class, @arguments) = @_;
-    return $class->_new7(@arguments) if scalar(@arguments) == 7;
-    return $class->_new8(@arguments) if scalar(@arguments) == 8;
+    return _new7($class, @arguments) if scalar(@arguments) == 7;
+    return _new8($class, @arguments) if scalar(@arguments) == 8;
     die "No constructor of Email takes " . scalar(@arguments) . " arguments";
 }
 

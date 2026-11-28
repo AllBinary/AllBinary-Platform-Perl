@@ -23,7 +23,7 @@ use parent -norequire,'java::lang::Object','org::allbinary::game::identification
 sub _init_fields {
     my ($self) = @_;
     $self->{name} = 'org::allbinary::logic::string::StringUtil'->getInstance()->{EMPTY_STRING};
-    $self->{teamId} = undef;
+    $self->{teamId} = undef unless exists $self->{teamId};
     $self->{string} = 'org::allbinary::logic::string::StringUtil'->getInstance()->{EMPTY_STRING};
 }
 

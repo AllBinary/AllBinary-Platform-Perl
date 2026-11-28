@@ -24,11 +24,11 @@ sub _init_fields {
     my ($self) = @_;
     $self->{logUtil} = 'org::allbinary::logic::communication::log::LogUtil'->getInstance();
     $self->{commonStrings} = 'org::allbinary::string::CommonStrings'->getInstance();
-    $self->{hashtable} = undef;
-    $self->{rectangleHashtable} = undef;
-    $self->{rectangleArrayOfArraysHashtable} = undef;
-    $self->{name} = undef;
-    $self->{initialized} = 0;
+    $self->{hashtable} = undef unless exists $self->{hashtable};
+    $self->{rectangleHashtable} = undef unless exists $self->{rectangleHashtable};
+    $self->{rectangleArrayOfArraysHashtable} = undef unless exists $self->{rectangleArrayOfArraysHashtable};
+    $self->{name} = undef unless exists $self->{name};
+    $self->{initialized} = 0 unless exists $self->{initialized};
 }
 
 

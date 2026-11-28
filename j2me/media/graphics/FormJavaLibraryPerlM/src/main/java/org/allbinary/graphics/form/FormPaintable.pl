@@ -22,7 +22,7 @@ use parent -norequire,'org::allbinary::graphics::paint::Paintable';
 
 sub _init_fields {
     my ($self) = @_;
-    $self->{form} = undef;
+    $self->{form} = undef unless exists $self->{form};
 }
 
 

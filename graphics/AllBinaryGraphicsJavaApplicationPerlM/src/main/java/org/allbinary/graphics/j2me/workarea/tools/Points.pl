@@ -22,7 +22,7 @@ use parent -norequire,'java::lang::Object','org::allbinary::graphics::j2me::work
 
 sub _init_fields {
     my ($self) = @_;
-    $self->{pointVector} = undef;
+    $self->{pointVector} = undef unless exists $self->{pointVector};
 }
 
 

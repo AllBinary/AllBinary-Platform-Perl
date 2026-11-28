@@ -24,8 +24,8 @@ use parent -norequire,'org::allbinary::image::opengles::OpenGLESImage';
 sub _init_fields {
     my ($self) = @_;
     $self->{logUtil} = 'org::allbinary::logic::communication::log::LogUtil'->getInstance();
-    $self->{a} = 0;
-    $self->{rectangle} = undef;
+    $self->{a} = 0 unless exists $self->{a};
+    $self->{rectangle} = undef unless exists $self->{rectangle};
 }
 
 

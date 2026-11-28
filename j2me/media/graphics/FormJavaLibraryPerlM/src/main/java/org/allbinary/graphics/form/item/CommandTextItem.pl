@@ -22,7 +22,7 @@ use parent -norequire,'org::allbinary::graphics::form::item::ABTextItem';
 
 sub _init_fields {
     my ($self) = @_;
-    $self->{command} = undef;
+    $self->{command} = undef unless exists $self->{command};
 }
 
 

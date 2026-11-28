@@ -22,7 +22,7 @@ use parent -norequire,'org::allbinary::media::graphics::geography::map::racetrac
 
 sub _init_fields {
     my ($self) = @_;
-    $self->{customMapGenerator} = undef;
+    $self->{customMapGenerator} = undef unless exists $self->{customMapGenerator};
 }
 
 

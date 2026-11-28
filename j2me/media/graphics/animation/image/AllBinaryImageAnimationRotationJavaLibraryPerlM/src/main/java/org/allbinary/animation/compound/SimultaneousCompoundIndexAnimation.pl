@@ -22,7 +22,7 @@ use parent -norequire,'org::allbinary::animation::IndexedAnimation';
 
 sub _init_fields {
     my ($self) = @_;
-    $self->{animationInterfaceArray} = undef;
+    $self->{animationInterfaceArray} = undef unless exists $self->{animationInterfaceArray};
 }
 
 

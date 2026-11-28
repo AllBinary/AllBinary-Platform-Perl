@@ -22,32 +22,32 @@ use parent -norequire,'java::lang::Object';
 
 sub _init_fields {
     my ($self) = @_;
-    $self->{id} = undef;
-    $self->{basicItemId} = undef;
-    $self->{enabled} = undef;
-    $self->{system} = undef;
-    $self->{platform} = undef;
-    $self->{specialName} = undef;
-    $self->{version} = undef;
-    $self->{changes} = undef;
-    $self->{licenseFile} = undef;
-    $self->{file} = undef;
-    $self->{size} = undef;
-    $self->{validTime} = undef;
-    $self->{retries} = undef;
+    $self->{id} = undef unless exists $self->{id};
+    $self->{basicItemId} = undef unless exists $self->{basicItemId};
+    $self->{enabled} = undef unless exists $self->{enabled};
+    $self->{system} = undef unless exists $self->{system};
+    $self->{platform} = undef unless exists $self->{platform};
+    $self->{specialName} = undef unless exists $self->{specialName};
+    $self->{version} = undef unless exists $self->{version};
+    $self->{changes} = undef unless exists $self->{changes};
+    $self->{licenseFile} = undef unless exists $self->{licenseFile};
+    $self->{file} = undef unless exists $self->{file};
+    $self->{size} = undef unless exists $self->{size};
+    $self->{validTime} = undef unless exists $self->{validTime};
+    $self->{retries} = undef unless exists $self->{retries};
 }
 
 sub new {
     my ($class, @arguments) = @_;
-    return $class->_new1(@arguments) if scalar(@arguments) == 1;
-    return $class->_new1(@arguments) if scalar(@arguments) == 1;
+    return _new1($class, @arguments) if scalar(@arguments) == 1;
+    return _new1($class, @arguments) if scalar(@arguments) == 1;
     die "No constructor of DownloadableItem takes " . scalar(@arguments) . " arguments";
 }
 
 sub _new1 {
     my ($class, @arguments) = @_;
-    return $class->_new1_1(@arguments) if 1 && !ref($arguments[0]);
-    return $class->_new1_2(@arguments);
+    return _new1_1($class, @arguments) if 1 && !ref($arguments[0]);
+    return _new1_2($class, @arguments);
 }
 
 

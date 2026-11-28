@@ -28,8 +28,8 @@ sub _init_fields {
     $self->{totalCells} = $self->{cellsPerRowOrColumn} * $self->{cellsPerRowOrColumn};
     $self->{rowArray} = [0, 1, 2, 0, 1, 2, 0, 1, 2];
     $self->{columnArray} = [0, 0, 0, 1, 1, 1, 2, 2, 2];
-    $self->{cellWidth} = 0;
-    $self->{cellHeight} = 0;
+    $self->{cellWidth} = 0 unless exists $self->{cellWidth};
+    $self->{cellHeight} = 0 unless exists $self->{cellHeight};
 }
 
 

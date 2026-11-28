@@ -24,7 +24,7 @@ sub _init_fields {
     my ($self) = @_;
     $self->{timeHelper} = 'org::allbinary::time::TimeDelayHelper'->new(620);
     $self->{textAnimation} = 'org::allbinary::animation::text::TextAnimation'->new('org::allbinary::logic::string::StringUtil'->getInstance()->{EMPTY_STRING}, 'org::allbinary::animation::AnimationBehavior'->getInstance());
-    $self->{captionAnimation} = undef;
+    $self->{captionAnimation} = undef unless exists $self->{captionAnimation};
     $self->{animation} = 'org::allbinary::animation::NullAnimationFactory'->getFactoryInstance()->getInstance(0);
 }
 

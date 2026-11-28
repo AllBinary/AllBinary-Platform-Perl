@@ -22,7 +22,7 @@ use parent -norequire,'org::allbinary::game::ag::ai::sequence::SequenceAI';
 
 sub _init_fields {
     my ($self) = @_;
-    $self->{numberOnSameTeam} = undef;
+    $self->{numberOnSameTeam} = undef unless exists $self->{numberOnSameTeam};
 }
 
 

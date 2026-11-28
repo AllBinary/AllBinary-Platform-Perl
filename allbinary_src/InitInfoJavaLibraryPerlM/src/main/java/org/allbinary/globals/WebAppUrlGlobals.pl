@@ -22,7 +22,7 @@ use parent -norequire,'org::allbinary::globals::UrlGlobalsInterface';
 
 sub _init_fields {
     my ($self) = @_;
-    $self->{path} = undef;
+    $self->{path} = undef unless exists $self->{path};
     $self->{isWebappPathSet} = 0;
 }
 

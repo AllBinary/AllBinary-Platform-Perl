@@ -22,7 +22,7 @@ use parent -norequire,'org::allbinary::graphics::form::ItemPaintableFactory';
 
 sub _init_fields {
     my ($self) = @_;
-    $self->{lockedIndex} = undef;
+    $self->{lockedIndex} = undef unless exists $self->{lockedIndex};
 }
 
 

@@ -23,7 +23,7 @@ tie our $NULL_FILE, 'java::lang::LazyStatic', sub { 'org::allbinary::logic::io::
 
 sub _init_fields {
     my ($self) = @_;
-    $self->{file} = undef;
+    $self->{file} = undef unless exists $self->{file};
 }
 
 

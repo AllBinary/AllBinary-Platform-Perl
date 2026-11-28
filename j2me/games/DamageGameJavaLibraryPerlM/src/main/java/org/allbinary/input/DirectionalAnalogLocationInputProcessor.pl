@@ -23,7 +23,7 @@ use parent -norequire,'org::allbinary::android::input::motion::AnalogLocationInp
 sub _init_fields {
     my ($self) = @_;
     $self->{logUtil} = 'org::allbinary::logic::communication::log::LogUtil'->getInstance();
-    $self->{inputProcessorArray} = undef;
+    $self->{inputProcessorArray} = undef unless exists $self->{inputProcessorArray};
     $self->{gameKeyFactory} = 'org::allbinary::game::input::GameKeyFactory'->getInstance();
     $self->{leftGameKeyEvent} = $org::allbinary::game::input::event::GameKeyEvent::NONE;
     $self->{rightGameKeyEvent} = $org::allbinary::game::input::event::GameKeyEvent::NONE;

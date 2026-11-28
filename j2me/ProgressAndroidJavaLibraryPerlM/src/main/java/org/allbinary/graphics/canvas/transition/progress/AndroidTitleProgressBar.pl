@@ -134,7 +134,7 @@ sub paint {
 
     sub _init_fields {
         my ($self) = @_;
-        $self->{androidTitleProgressBar} = undef;
+        $self->{androidTitleProgressBar} = undef unless exists $self->{androidTitleProgressBar};
     }
     
 
@@ -172,7 +172,7 @@ sub paint {
 
     sub _init_fields {
         my ($self) = @_;
-        $self->{androidTitleProgressBar} = undef;
+        $self->{androidTitleProgressBar} = undef unless exists $self->{androidTitleProgressBar};
     }
     
 
@@ -210,7 +210,7 @@ sub paint {
 
     sub _init_fields {
         my ($self) = @_;
-        $self->{androidTitleProgressBar} = undef;
+        $self->{androidTitleProgressBar} = undef unless exists $self->{androidTitleProgressBar};
     }
     
 
@@ -248,7 +248,7 @@ sub paint {
 
     sub _init_fields {
         my ($self) = @_;
-        $self->{androidTitleProgressBar} = undef;
+        $self->{androidTitleProgressBar} = undef unless exists $self->{androidTitleProgressBar};
     }
     
 

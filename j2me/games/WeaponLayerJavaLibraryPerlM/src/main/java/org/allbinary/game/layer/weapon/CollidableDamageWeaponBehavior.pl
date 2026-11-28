@@ -22,8 +22,8 @@ use parent -norequire,'org::allbinary::game::layer::special::CollidableDestroyab
 
 sub _init_fields {
     my ($self) = @_;
-    $self->{collided} = 0;
-    $self->{collisionHelper} = undef;
+    $self->{collided} = 0 unless exists $self->{collided};
+    $self->{collisionHelper} = undef unless exists $self->{collisionHelper};
 }
 
 

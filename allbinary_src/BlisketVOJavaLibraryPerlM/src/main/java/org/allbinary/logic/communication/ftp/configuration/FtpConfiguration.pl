@@ -22,16 +22,16 @@ use parent -norequire,'java::lang::Object','org::allbinary::logic::communication
 
 sub _init_fields {
     my ($self) = @_;
-    $self->{ftpServer} = undef;
-    $self->{ftpPath} = undef;
-    $self->{ftpUserName} = undef;
-    $self->{ftpPassword} = undef;
+    $self->{ftpServer} = undef unless exists $self->{ftpServer};
+    $self->{ftpPath} = undef unless exists $self->{ftpPath};
+    $self->{ftpUserName} = undef unless exists $self->{ftpUserName};
+    $self->{ftpPassword} = undef unless exists $self->{ftpPassword};
 }
 
 sub new {
     my ($class, @arguments) = @_;
-    return $class->_new0(@arguments) if scalar(@arguments) == 0;
-    return $class->_new1(@arguments) if scalar(@arguments) == 1;
+    return _new0($class, @arguments) if scalar(@arguments) == 0;
+    return _new1($class, @arguments) if scalar(@arguments) == 1;
     die "No constructor of FtpConfiguration takes " . scalar(@arguments) . " arguments";
 }
 

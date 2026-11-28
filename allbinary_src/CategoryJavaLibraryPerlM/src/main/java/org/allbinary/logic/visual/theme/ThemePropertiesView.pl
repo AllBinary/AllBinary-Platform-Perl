@@ -22,7 +22,7 @@ use parent -norequire,'java::lang::Object','org::allbinary::data::tree::dom::Dom
 
 sub _init_fields {
     my ($self) = @_;
-    $self->{themeInterface} = undef;
+    $self->{themeInterface} = undef unless exists $self->{themeInterface};
 }
 
 

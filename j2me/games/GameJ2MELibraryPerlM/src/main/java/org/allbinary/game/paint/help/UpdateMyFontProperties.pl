@@ -28,7 +28,7 @@ sub _init_fields {
     $self->{inputDeltaXArray} = 'org::allbinary::logic::NullUtil'->getInstance()->{NULL_INT_ARRAY_ARRAY};
     $self->{sepArray} = 'org::allbinary::logic::string::StringUtil'->getInstance()->{ONE_EMPTY_STRING_ARRAY_OF_ARRAYS};
     $self->{sepWidthArray} = 'org::allbinary::logic::NullUtil'->getInstance()->{NULL_INT_ARRAY_ARRAY};
-    $self->{charHeight} = 0;
+    $self->{charHeight} = 0 unless exists $self->{charHeight};
 }
 
 sub new {

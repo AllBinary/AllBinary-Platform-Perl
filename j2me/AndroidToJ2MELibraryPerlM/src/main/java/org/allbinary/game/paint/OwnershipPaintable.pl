@@ -31,8 +31,8 @@ sub _init_fields {
     $self->{basicColor} = 'org::allbinary::graphics::color::BasicColorFactory'->getInstance()->{WHITE};
     $self->{color} = int($self->{basicColor});
     $self->{anchor} = $org::allbinary::graphics::Anchor::TOP_LEFT;
-    $self->{COPYRIGHT_Y} = 0;
-    $self->{beginWidth} = 0;
+    $self->{COPYRIGHT_Y} = 0 unless exists $self->{COPYRIGHT_Y};
+    $self->{beginWidth} = 0 unless exists $self->{beginWidth};
 }
 
 

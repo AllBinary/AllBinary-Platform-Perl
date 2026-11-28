@@ -21,13 +21,13 @@ sub _init_fields {
     $self->{gameTickTimeDelayHelper} = 'org::allbinary::time::GameTickTimeDelayHelperFactory'->getInstance();
     $self->{timeDelayHelper} = 'org::allbinary::time::TimeDelayHelper'->new(0);
     $self->{timeDelayHelper2} = 'org::allbinary::time::TimeDelayHelper'->new(1200);
-    $self->{songList} = undef;
+    $self->{songList} = undef unless exists $self->{songList};
     $self->{currentSongSound} = 'org::allbinary::media::audio::NoSound'->getInstance();
     $self->{nextSongSound} = 'org::allbinary::media::audio::NoSound'->getInstance();
     $self->{leftVolume} = 100;
     $self->{rightVolume} = 100;
-    $self->{musicServiceClass} = undef;
-    $self->{currentIntent} = undef;
+    $self->{musicServiceClass} = undef unless exists $self->{musicServiceClass};
+    $self->{currentIntent} = undef unless exists $self->{currentIntent};
 }
 
 

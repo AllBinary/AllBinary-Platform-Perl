@@ -22,11 +22,11 @@ use parent -norequire,'java::lang::Object','org::allbinary::business::context::m
 
 sub _init_fields {
     my ($self) = @_;
-    $self->{numberOfOrdersLong} = undef;
-    $self->{subTotalMoney} = undef;
-    $self->{shippingCostMoney} = undef;
-    $self->{taxesMoney} = undef;
-    $self->{totalMoney} = undef;
+    $self->{numberOfOrdersLong} = undef unless exists $self->{numberOfOrdersLong};
+    $self->{subTotalMoney} = undef unless exists $self->{subTotalMoney};
+    $self->{shippingCostMoney} = undef unless exists $self->{shippingCostMoney};
+    $self->{taxesMoney} = undef unless exists $self->{taxesMoney};
+    $self->{totalMoney} = undef unless exists $self->{totalMoney};
 }
 
 

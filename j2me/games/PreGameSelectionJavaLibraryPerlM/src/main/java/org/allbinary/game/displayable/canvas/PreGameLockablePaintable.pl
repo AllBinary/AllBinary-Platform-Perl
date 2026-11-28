@@ -22,8 +22,8 @@ use parent -norequire,'org::allbinary::graphics::form::LockablePaintable';
 
 sub _init_fields {
     my ($self) = @_;
-    $self->{halfWidth} = undef;
-    $self->{paintableForm} = undef;
+    $self->{halfWidth} = undef unless exists $self->{halfWidth};
+    $self->{paintableForm} = undef unless exists $self->{paintableForm};
 }
 
 

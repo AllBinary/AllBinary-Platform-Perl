@@ -26,23 +26,23 @@ sub _init_fields {
     $self->{commonStrings} = 'org::allbinary::string::CommonStrings'->getInstance();
     $self->{abeClientInformation} = 'org::allbinary::logic::system::security::licensing::ServiceClientInformationInterfaceFactory'->getInstance();
     $self->{isChild} = 0;
-    $self->{name} = undef;
-    $self->{storeName} = undef;
-    $self->{objectFileName} = undef;
-    $self->{anyType} = undef;
-    $self->{objectConfigFileName} = undef;
-    $self->{objectConfigInterface} = undef;
-    $self->{template} = undef;
-    $self->{templateFileName} = undef;
-    $self->{dataFileName} = undef;
+    $self->{name} = undef unless exists $self->{name};
+    $self->{storeName} = undef unless exists $self->{storeName};
+    $self->{objectFileName} = undef unless exists $self->{objectFileName};
+    $self->{anyType} = undef unless exists $self->{anyType};
+    $self->{objectConfigFileName} = undef unless exists $self->{objectConfigFileName};
+    $self->{objectConfigInterface} = undef unless exists $self->{objectConfigInterface};
+    $self->{template} = undef unless exists $self->{template};
+    $self->{templateFileName} = undef unless exists $self->{templateFileName};
+    $self->{dataFileName} = undef unless exists $self->{dataFileName};
     $self->{data} = 'org::allbinary::logic::string::StringUtil'->getInstance()->{EMPTY_STRING};
 }
 
 sub new {
     my ($class, @arguments) = @_;
-    return $class->_new0(@arguments) if scalar(@arguments) == 0;
-    return $class->_new1(@arguments) if scalar(@arguments) == 1;
-    return $class->_new5(@arguments) if scalar(@arguments) == 5;
+    return _new0($class, @arguments) if scalar(@arguments) == 0;
+    return _new1($class, @arguments) if scalar(@arguments) == 1;
+    return _new5($class, @arguments) if scalar(@arguments) == 5;
     die "No constructor of TransformInfo takes " . scalar(@arguments) . " arguments";
 }
 

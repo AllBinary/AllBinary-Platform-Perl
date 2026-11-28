@@ -22,12 +22,12 @@ use parent -norequire,'java::lang::Object';
 
 sub _init_fields {
     my ($self) = @_;
-    $self->{captureWorker} = undef;
-    $self->{imageComparisonWorker} = undef;
-    $self->{motionRectanglesWorker} = undef;
-    $self->{changedPixelsImageComparisonResultsWorker} = undef;
-    $self->{saveMotionRectanglesAsImagesWorker} = undef;
-    $self->{moveMouseToFirstMotionRectanglesResultsWorker} = undef;
+    $self->{captureWorker} = undef unless exists $self->{captureWorker};
+    $self->{imageComparisonWorker} = undef unless exists $self->{imageComparisonWorker};
+    $self->{motionRectanglesWorker} = undef unless exists $self->{motionRectanglesWorker};
+    $self->{changedPixelsImageComparisonResultsWorker} = undef unless exists $self->{changedPixelsImageComparisonResultsWorker};
+    $self->{saveMotionRectanglesAsImagesWorker} = undef unless exists $self->{saveMotionRectanglesAsImagesWorker};
+    $self->{moveMouseToFirstMotionRectanglesResultsWorker} = undef unless exists $self->{moveMouseToFirstMotionRectanglesResultsWorker};
 }
 
 

@@ -26,11 +26,11 @@ sub _init_fields {
     my ($self) = @_;
     $self->{logUtil} = 'org::allbinary::logic::communication::log::LogUtil'->getInstance();
     $self->{gameInfoData} = 'org::allbinary::game::GameInfoData'->getInstance();
-    $self->{gameType} = undef;
-    $self->{gameMode} = undef;
-    $self->{playerType} = undef;
-    $self->{highestLevel} = 0;
-    $self->{currentLevel} = undef;
+    $self->{gameType} = undef unless exists $self->{gameType};
+    $self->{gameMode} = undef unless exists $self->{gameMode};
+    $self->{playerType} = undef unless exists $self->{playerType};
+    $self->{highestLevel} = 0 unless exists $self->{highestLevel};
+    $self->{currentLevel} = undef unless exists $self->{currentLevel};
     $self->{NEW_LEVEL} = "New Level: ";
     $self->{SET_CURRENT_LEVEL} = "setCurrentLevel";
     $self->{NEXT_GAME_LEVEL} = "nextGameLevel";

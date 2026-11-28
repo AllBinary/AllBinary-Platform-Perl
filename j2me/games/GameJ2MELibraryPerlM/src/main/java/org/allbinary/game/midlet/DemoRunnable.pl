@@ -24,8 +24,8 @@ sub _init_fields {
     my ($self) = @_;
     $self->{logUtil} = 'org::allbinary::logic::communication::log::LogUtil'->getInstance();
     $self->{commonStrings} = 'org::allbinary::string::CommonStrings'->getInstance();
-    $self->{demoGameMidlet} = undef;
-    $self->{startDemoGameMidletEvent} = undef;
+    $self->{demoGameMidlet} = undef unless exists $self->{demoGameMidlet};
+    $self->{startDemoGameMidletEvent} = undef unless exists $self->{startDemoGameMidletEvent};
 }
 
 

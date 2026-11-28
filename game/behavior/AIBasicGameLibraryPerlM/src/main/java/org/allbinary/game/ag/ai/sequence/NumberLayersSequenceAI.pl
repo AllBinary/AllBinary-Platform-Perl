@@ -22,7 +22,7 @@ use parent -norequire,'org::allbinary::game::ag::ai::sequence::SequenceAI';
 
 sub _init_fields {
     my ($self) = @_;
-    $self->{numberOfLayersLeft} = undef;
+    $self->{numberOfLayersLeft} = undef unless exists $self->{numberOfLayersLeft};
 }
 
 

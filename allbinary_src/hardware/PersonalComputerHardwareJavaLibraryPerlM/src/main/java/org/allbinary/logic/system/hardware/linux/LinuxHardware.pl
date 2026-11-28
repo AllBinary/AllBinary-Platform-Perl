@@ -25,26 +25,26 @@ sub _init_fields {
     my ($self) = @_;
     $self->{logUtil} = 'org::allbinary::logic::communication::log::LogUtil'->getInstance();
     $self->{commonStrings} = 'org::allbinary::string::CommonStrings'->getInstance();
-    $self->{componentInterfaceVector} = undef;
-    $self->{videoInterfaceVector} = undef;
-    $self->{hardDriveControllerInterfaceVector} = undef;
-    $self->{cpuInterfaceVector} = undef;
-    $self->{usbInterfaceVector} = undef;
-    $self->{ethernetInterfaceVector} = undef;
-    $self->{multimediaInterfaceVector} = undef;
-    $self->{fireWireInterfaceVector} = undef;
-    $self->{bridgeInterfaceVector} = undef;
-    $self->{hardDriveInterfaceVector} = undef;
-    $self->{macInterfaceVector} = undef;
-    $self->{monitorInterfaceVector} = undef;
+    $self->{componentInterfaceVector} = undef unless exists $self->{componentInterfaceVector};
+    $self->{videoInterfaceVector} = undef unless exists $self->{videoInterfaceVector};
+    $self->{hardDriveControllerInterfaceVector} = undef unless exists $self->{hardDriveControllerInterfaceVector};
+    $self->{cpuInterfaceVector} = undef unless exists $self->{cpuInterfaceVector};
+    $self->{usbInterfaceVector} = undef unless exists $self->{usbInterfaceVector};
+    $self->{ethernetInterfaceVector} = undef unless exists $self->{ethernetInterfaceVector};
+    $self->{multimediaInterfaceVector} = undef unless exists $self->{multimediaInterfaceVector};
+    $self->{fireWireInterfaceVector} = undef unless exists $self->{fireWireInterfaceVector};
+    $self->{bridgeInterfaceVector} = undef unless exists $self->{bridgeInterfaceVector};
+    $self->{hardDriveInterfaceVector} = undef unless exists $self->{hardDriveInterfaceVector};
+    $self->{macInterfaceVector} = undef unless exists $self->{macInterfaceVector};
+    $self->{monitorInterfaceVector} = undef unless exists $self->{monitorInterfaceVector};
     $self->{NAME} = "Linux Hardware Profile";
     $self->{MINHARDWARE} = 5;
 }
 
 sub new {
     my ($class, @arguments) = @_;
-    return $class->_new1(@arguments) if scalar(@arguments) == 1;
-    return $class->_new0(@arguments) if scalar(@arguments) == 0;
+    return _new1($class, @arguments) if scalar(@arguments) == 1;
+    return _new0($class, @arguments) if scalar(@arguments) == 0;
     die "No constructor of LinuxHardware takes " . scalar(@arguments) . " arguments";
 }
 

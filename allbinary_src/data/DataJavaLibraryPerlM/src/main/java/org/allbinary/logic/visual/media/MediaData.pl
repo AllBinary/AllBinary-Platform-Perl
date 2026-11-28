@@ -23,9 +23,9 @@ tie our $hashMap, 'java::lang::LazyStatic', sub { 'org::allbinary::logic::StdUti
 
 sub _init_fields {
     my ($self) = @_;
-    $self->{name} = undef;
-    $self->{type} = undef;
-    $self->{extension} = undef;
+    $self->{name} = undef unless exists $self->{name};
+    $self->{type} = undef unless exists $self->{type};
+    $self->{extension} = undef unless exists $self->{extension};
 }
 
 

@@ -22,9 +22,9 @@ use parent -norequire,'java::lang::Object';
 
 sub _init_fields {
     my ($self) = @_;
-    $self->{avgRed} = 0.0;
-    $self->{avgGreen} = 0.0;
-    $self->{avgBlue} = 0.0;
+    $self->{avgRed} = 0.0 unless exists $self->{avgRed};
+    $self->{avgGreen} = 0.0 unless exists $self->{avgGreen};
+    $self->{avgBlue} = 0.0 unless exists $self->{avgBlue};
 }
 
 

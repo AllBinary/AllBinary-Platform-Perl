@@ -26,14 +26,14 @@ sub _init_fields {
     my ($self) = @_;
     $self->{logUtil} = 'org::allbinary::logic::communication::log::LogUtil'->getInstance();
     $self->{commonStrings} = 'org::allbinary::string::CommonStrings'->getInstance();
-    $self->{baseNode} = undef;
-    $self->{document} = undef;
+    $self->{baseNode} = undef unless exists $self->{baseNode};
+    $self->{document} = undef unless exists $self->{document};
 }
 
 sub new {
     my ($class, @arguments) = @_;
-    return $class->_new2(@arguments) if scalar(@arguments) == 2;
-    return $class->_new1(@arguments) if scalar(@arguments) == 1;
+    return _new2($class, @arguments) if scalar(@arguments) == 2;
+    return _new1($class, @arguments) if scalar(@arguments) == 1;
     die "No constructor of TransformHttpRequestDocument takes " . scalar(@arguments) . " arguments";
 }
 

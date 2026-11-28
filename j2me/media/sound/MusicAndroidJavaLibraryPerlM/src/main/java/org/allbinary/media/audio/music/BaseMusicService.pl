@@ -143,9 +143,9 @@ sub onStartCommandIntent {
 
     sub _init_fields {
         my ($self) = @_;
-        $self->{baseMusicService} = undef;
-        $self->{player} = undef;
-        $self->{intent} = undef;
+        $self->{baseMusicService} = undef unless exists $self->{baseMusicService};
+        $self->{player} = undef unless exists $self->{player};
+        $self->{intent} = undef unless exists $self->{intent};
     }
     
 

@@ -22,7 +22,7 @@ use parent -norequire,'org::allbinary::game::paint::help::HelpPaintable';
 
 sub _init_fields {
     my ($self) = @_;
-    $self->{gameInputMappingArray} = undef;
+    $self->{gameInputMappingArray} = undef unless exists $self->{gameInputMappingArray};
     $self->{NONE} = 'org::allbinary::game::input::GameKeyFactory'->getInstance()->{NONE};
 }
 

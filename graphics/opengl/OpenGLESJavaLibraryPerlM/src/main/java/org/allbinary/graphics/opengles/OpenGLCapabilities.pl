@@ -34,7 +34,7 @@ sub _init_fields {
     $self->{glRenderer} = $self->{stringUtil}->{EMPTY_STRING};
     $self->{glVendor} = $self->{stringUtil}->{EMPTY_STRING};
     $self->{glExtensions} = $self->{stringUtil}->{EMPTY_STRING};
-    $self->{possiblyAccelerated} = 0;
+    $self->{possiblyAccelerated} = 0 unless exists $self->{possiblyAccelerated};
     $self->{acceleratedString} = $self->{stringUtil}->{EMPTY_STRING};
     $self->{maxTextureSize} = 64;
     $self->{VERSION_1_0} = "1.0";
@@ -49,11 +49,11 @@ sub _init_fields {
     $self->{GL_EXT_GPU_SHADER4} = "GL_EXT_gpu_shader4";
     $self->{glVersion} = $self->{glVersionString};
     $self->{glInstanceVersion} = $self->{VERSION_UNK};
-    $self->{glExtensionDrawTexture} = 0;
-    $self->{glThreedDrawTexture} = 0;
-    $self->{glExtensionGPUShader4} = 0;
-    $self->{glExtensionGPUShader100} = 0;
-    $self->{vertexBufferObjectSupport} = 0;
+    $self->{glExtensionDrawTexture} = 0 unless exists $self->{glExtensionDrawTexture};
+    $self->{glThreedDrawTexture} = 0 unless exists $self->{glThreedDrawTexture};
+    $self->{glExtensionGPUShader4} = 0 unless exists $self->{glExtensionGPUShader4};
+    $self->{glExtensionGPUShader100} = 0 unless exists $self->{glExtensionGPUShader100};
+    $self->{vertexBufferObjectSupport} = 0 unless exists $self->{vertexBufferObjectSupport};
 }
 
 

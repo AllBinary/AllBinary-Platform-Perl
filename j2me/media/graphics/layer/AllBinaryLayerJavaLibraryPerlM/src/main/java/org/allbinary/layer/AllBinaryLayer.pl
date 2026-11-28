@@ -26,9 +26,9 @@ our $TYPE = "Type: ";
 sub _init_fields {
     my ($self) = @_;
     $self->{viewPositionEvent} = 'org::allbinary::view::event::ViewPositionEvent'->new($self);
-    $self->{halfWidth} = 0;
-    $self->{halfHeight} = 0;
-    $self->{name} = undef;
+    $self->{halfWidth} = 0 unless exists $self->{halfWidth};
+    $self->{halfHeight} = 0 unless exists $self->{halfHeight};
+    $self->{name} = undef unless exists $self->{name};
     $self->{viewPosition} = $org::allbinary::view::ViewPositionBase::NULL_VIEW_POSITION;
 }
 

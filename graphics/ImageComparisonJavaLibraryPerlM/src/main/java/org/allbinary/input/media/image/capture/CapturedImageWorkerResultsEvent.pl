@@ -22,8 +22,8 @@ use parent -norequire,'org::allbinary::logic::util::event::AllBinaryEventObject'
 
 sub _init_fields {
     my ($self) = @_;
-    $self->{frame} = undef;
-    $self->{bufferedImage} = undef;
+    $self->{frame} = undef unless exists $self->{frame};
+    $self->{bufferedImage} = undef unless exists $self->{bufferedImage};
 }
 
 

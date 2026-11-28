@@ -23,9 +23,9 @@ use parent -norequire,'java::lang::Object';
 sub _init_fields {
     my ($self) = @_;
     $self->{pathFindingNodeCostInfoData} = 'org::allbinary::media::graphics::geography::pathfinding::PathFindingNodeCostInfoData'->getInstance();
-    $self->{costFromStartP} = undef;
-    $self->{costToEndP} = undef;
-    $self->{totalCostP} = 0;
+    $self->{costFromStartP} = undef unless exists $self->{costFromStartP};
+    $self->{costToEndP} = undef unless exists $self->{costToEndP};
+    $self->{totalCostP} = 0 unless exists $self->{totalCostP};
 }
 
 

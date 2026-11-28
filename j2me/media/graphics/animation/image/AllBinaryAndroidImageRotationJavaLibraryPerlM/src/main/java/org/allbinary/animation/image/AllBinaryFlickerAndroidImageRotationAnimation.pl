@@ -26,10 +26,10 @@ sub _init_fields {
     $self->{imageModifierUtil} = 'org::allbinary::media::image::ImageModifierUtil'->getInstanceOrCreate();
     $self->{androidImageUtil} = 'org::allbinary::media::image::AndroidImageUtil'->getInstance();
     $self->{matrix} = 'android::graphics::Matrix'->new();
-    $self->{halfWidth} = undef;
-    $self->{halfHeight} = undef;
-    $self->{increment} = undef;
-    $self->{originalImage} = undef;
+    $self->{halfWidth} = undef unless exists $self->{halfWidth};
+    $self->{halfHeight} = undef unless exists $self->{halfHeight};
+    $self->{increment} = undef unless exists $self->{increment};
+    $self->{originalImage} = undef unless exists $self->{originalImage};
 }
 
 

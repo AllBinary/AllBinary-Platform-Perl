@@ -23,7 +23,7 @@ use parent -norequire,'org::allbinary::logic::util::event::AllBinaryEventObject'
 sub _init_fields {
     my ($self) = @_;
     $self->{resourceLoadingLevel} = 'org::allbinary::game::resource::ResourceLoadingLevelFactory'->getInstance()->{LEVEL};
-    $self->{level} = 0;
+    $self->{level} = 0 unless exists $self->{level};
 }
 
 

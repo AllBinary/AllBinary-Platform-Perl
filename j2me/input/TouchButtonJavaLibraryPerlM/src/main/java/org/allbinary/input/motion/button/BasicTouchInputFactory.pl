@@ -24,19 +24,19 @@ tie our $instance, 'java::lang::LazyStatic', sub { 'org::allbinary::logic::NullU
 sub _init_fields {
     my ($self) = @_;
     $self->{logUtil} = 'org::allbinary::logic::communication::log::LogUtil'->getInstance();
-    $self->{SPECIAL_BUTTON_SEVEN_TESTING_ONLY} = undef;
-    $self->{SPECIAL_BUTTON_EIGHT_TESTING_ONLY} = undef;
-    $self->{SPECIAL_BUTTON_SIX} = undef;
-    $self->{SPECIAL_BUTTON_FIVE} = undef;
-    $self->{SPECIAL_BUTTON_FOUR} = undef;
-    $self->{SPECIAL_BUTTON_THREE} = undef;
-    $self->{SPECIAL_BUTTON_TWO} = undef;
-    $self->{SPECIAL_BUTTON_ONE} = undef;
-    $self->{UP} = undef;
-    $self->{LEFT} = undef;
-    $self->{RIGHT} = undef;
-    $self->{DOWN} = undef;
-    $self->{NONE} = undef;
+    $self->{SPECIAL_BUTTON_SEVEN_TESTING_ONLY} = undef unless exists $self->{SPECIAL_BUTTON_SEVEN_TESTING_ONLY};
+    $self->{SPECIAL_BUTTON_EIGHT_TESTING_ONLY} = undef unless exists $self->{SPECIAL_BUTTON_EIGHT_TESTING_ONLY};
+    $self->{SPECIAL_BUTTON_SIX} = undef unless exists $self->{SPECIAL_BUTTON_SIX};
+    $self->{SPECIAL_BUTTON_FIVE} = undef unless exists $self->{SPECIAL_BUTTON_FIVE};
+    $self->{SPECIAL_BUTTON_FOUR} = undef unless exists $self->{SPECIAL_BUTTON_FOUR};
+    $self->{SPECIAL_BUTTON_THREE} = undef unless exists $self->{SPECIAL_BUTTON_THREE};
+    $self->{SPECIAL_BUTTON_TWO} = undef unless exists $self->{SPECIAL_BUTTON_TWO};
+    $self->{SPECIAL_BUTTON_ONE} = undef unless exists $self->{SPECIAL_BUTTON_ONE};
+    $self->{UP} = undef unless exists $self->{UP};
+    $self->{LEFT} = undef unless exists $self->{LEFT};
+    $self->{RIGHT} = undef unless exists $self->{RIGHT};
+    $self->{DOWN} = undef unless exists $self->{DOWN};
+    $self->{NONE} = undef unless exists $self->{NONE};
     $self->{initialized} = 0;
     $self->{list} = 'org::allbinary::util::BasicArrayListD'->new();
 }

@@ -24,9 +24,9 @@ sub _init_fields {
     my ($self) = @_;
     $self->{circularIndexUtil} = 'org::allbinary::util::CircularIndexUtil'->createInstanceAt(10, 2147483647);
     $self->{currentSpeedDivisor} = 5;
-    $self->{rotationAnimationInterface} = undef;
-    $self->{baseVelocityInterface} = undef;
-    $self->{velocityInterface} = undef;
+    $self->{rotationAnimationInterface} = undef unless exists $self->{rotationAnimationInterface};
+    $self->{baseVelocityInterface} = undef unless exists $self->{baseVelocityInterface};
+    $self->{velocityInterface} = undef unless exists $self->{velocityInterface};
 }
 
 

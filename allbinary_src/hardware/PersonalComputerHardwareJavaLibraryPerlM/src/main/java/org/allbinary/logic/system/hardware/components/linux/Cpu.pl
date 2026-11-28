@@ -25,13 +25,13 @@ sub _init_fields {
     $self->{logUtil} = 'org::allbinary::logic::communication::log::LogUtil'->getInstance();
     $self->{commonStrings} = 'org::allbinary::string::CommonStrings'->getInstance();
     $self->{CPUFILE} = "/proc/cpuinfo";
-    $self->{cpuHashMap} = undef;
+    $self->{cpuHashMap} = undef unless exists $self->{cpuHashMap};
 }
 
 sub new {
     my ($class, @arguments) = @_;
-    return $class->_new1(@arguments) if scalar(@arguments) == 1;
-    return $class->_new0(@arguments) if scalar(@arguments) == 0;
+    return _new1($class, @arguments) if scalar(@arguments) == 1;
+    return _new0($class, @arguments) if scalar(@arguments) == 0;
     die "No constructor of Cpu takes " . scalar(@arguments) . " arguments";
 }
 

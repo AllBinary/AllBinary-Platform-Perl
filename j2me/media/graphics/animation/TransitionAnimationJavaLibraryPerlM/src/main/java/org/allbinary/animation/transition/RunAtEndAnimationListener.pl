@@ -22,7 +22,7 @@ use parent -norequire,'java::lang::Object','org::allbinary::animation::transitio
 
 sub _init_fields {
     my ($self) = @_;
-    $self->{runnable} = undef;
+    $self->{runnable} = undef unless exists $self->{runnable};
 }
 
 

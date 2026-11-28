@@ -24,7 +24,7 @@ our $TYPE = 4;
 sub _init_fields {
     my ($self) = @_;
     $self->{logUtil} = 'org::allbinary::logic::communication::log::LogUtil'->getInstance();
-    $self->{demoCanvas} = undef;
+    $self->{demoCanvas} = undef unless exists $self->{demoCanvas};
 }
 
 

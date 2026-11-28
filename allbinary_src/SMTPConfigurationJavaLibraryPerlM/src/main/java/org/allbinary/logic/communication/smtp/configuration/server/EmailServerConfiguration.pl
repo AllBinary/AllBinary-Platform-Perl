@@ -23,16 +23,16 @@ use parent -norequire,'java::lang::Object','org::allbinary::logic::communication
 sub _init_fields {
     my ($self) = @_;
     $self->{logUtil} = 'org::allbinary::logic::communication::log::LogUtil'->getInstance();
-    $self->{accountName} = undef;
-    $self->{password} = undef;
-    $self->{smtpServer} = undef;
+    $self->{accountName} = undef unless exists $self->{accountName};
+    $self->{password} = undef unless exists $self->{password};
+    $self->{smtpServer} = undef unless exists $self->{smtpServer};
 }
 
 sub new {
     my ($class, @arguments) = @_;
-    return $class->_new0(@arguments) if scalar(@arguments) == 0;
-    return $class->_new1(@arguments) if scalar(@arguments) == 1;
-    return $class->_new3(@arguments) if scalar(@arguments) == 3;
+    return _new0($class, @arguments) if scalar(@arguments) == 0;
+    return _new1($class, @arguments) if scalar(@arguments) == 1;
+    return _new3($class, @arguments) if scalar(@arguments) == 3;
     die "No constructor of EmailServerConfiguration takes " . scalar(@arguments) . " arguments";
 }
 

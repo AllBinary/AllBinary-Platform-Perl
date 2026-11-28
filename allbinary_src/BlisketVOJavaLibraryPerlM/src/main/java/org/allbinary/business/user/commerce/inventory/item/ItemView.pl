@@ -22,8 +22,8 @@ use parent -norequire,'java::lang::Object';
 
 sub _init_fields {
     my ($self) = @_;
-    $self->{itemInterface} = undef;
-    $self->{vector} = undef;
+    $self->{itemInterface} = undef unless exists $self->{itemInterface};
+    $self->{vector} = undef unless exists $self->{vector};
 }
 
 

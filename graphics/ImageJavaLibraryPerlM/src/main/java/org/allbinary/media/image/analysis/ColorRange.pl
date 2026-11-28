@@ -22,12 +22,12 @@ use parent -norequire,'java::lang::Object','org::allbinary::media::image::analys
 
 sub _init_fields {
     my ($self) = @_;
-    $self->{minRed} = undef;
-    $self->{maxRed} = undef;
-    $self->{minGreen} = undef;
-    $self->{maxGreen} = undef;
-    $self->{minBlue} = undef;
-    $self->{maxBlue} = undef;
+    $self->{minRed} = undef unless exists $self->{minRed};
+    $self->{maxRed} = undef unless exists $self->{maxRed};
+    $self->{minGreen} = undef unless exists $self->{minGreen};
+    $self->{maxGreen} = undef unless exists $self->{maxGreen};
+    $self->{minBlue} = undef unless exists $self->{minBlue};
+    $self->{maxBlue} = undef unless exists $self->{maxBlue};
 }
 
 

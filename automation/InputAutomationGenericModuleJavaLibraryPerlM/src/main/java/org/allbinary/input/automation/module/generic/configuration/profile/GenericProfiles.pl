@@ -26,9 +26,9 @@ tie our $DEFAULT_FILE, 'java::lang::LazyStatic', sub { $org::allbinary::input::a
 sub _init_fields {
     my ($self) = @_;
     $self->{logUtil} = 'org::allbinary::logic::communication::log::LogUtil'->getInstance();
-    $self->{hashMap} = undef;
-    $self->{profilesDefaultListModelHelper} = undef;
-    $self->{fileName} = undef;
+    $self->{hashMap} = undef unless exists $self->{hashMap};
+    $self->{profilesDefaultListModelHelper} = undef unless exists $self->{profilesDefaultListModelHelper};
+    $self->{fileName} = undef unless exists $self->{fileName};
 }
 
 

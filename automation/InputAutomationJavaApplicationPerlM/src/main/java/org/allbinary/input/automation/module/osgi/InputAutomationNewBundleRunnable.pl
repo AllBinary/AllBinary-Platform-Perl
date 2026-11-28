@@ -28,9 +28,9 @@ sub _init_fields {
     my ($self) = @_;
     $self->{logUtil} = 'org::allbinary::logic::communication::log::LogUtil'->getInstance();
     $self->{commonStrings} = 'org::allbinary::string::CommonStrings'->getInstance();
-    $self->{inputAutomationBundleActivator} = undef;
-    $self->{running} = 0;
-    $self->{fileBasicArrayList} = undef;
+    $self->{inputAutomationBundleActivator} = undef unless exists $self->{inputAutomationBundleActivator};
+    $self->{running} = 0 unless exists $self->{running};
+    $self->{fileBasicArrayList} = undef unless exists $self->{fileBasicArrayList};
 }
 
 

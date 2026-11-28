@@ -24,12 +24,12 @@ tie our $basicColorArrayIndexer, 'java::lang::LazyStatic', sub { 'org::allbinary
 sub _init_fields {
     my ($self) = @_;
     $self->{basicSetColorUtil} = 'org::allbinary::graphics::color::BasicColorSetUtil'->getInstance();
-    $self->{layerInterface} = undef;
+    $self->{layerInterface} = undef unless exists $self->{layerInterface};
     $self->{lastDamage} = [(0) x (5)];
     $self->{lastDamageString} = [map { [("\0") x (0)] } 1 .. (5)];
     $self->{lastDamageStringSizeArray} = [(0) x (5)];
     $self->{circularIndexUtil} = 'org::allbinary::util::CircularIndexUtil'->createInstance(5);
-    $self->{primitiveLongUtil} = undef;
+    $self->{primitiveLongUtil} = undef unless exists $self->{primitiveLongUtil};
     $self->{myRandomFactory} = 'org::allbinary::game::rand::MyRandomFactory'->getInstance();
 }
 

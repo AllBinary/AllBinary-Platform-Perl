@@ -23,7 +23,7 @@ use parent -norequire,'org::allbinary::game::displayable::canvas::GameRunnable';
 sub _init_fields {
     my ($self) = @_;
     $self->{logUtil} = 'org::allbinary::logic::communication::log::LogUtil'->getInstance();
-    $self->{runnableCanvas} = undef;
+    $self->{runnableCanvas} = undef unless exists $self->{runnableCanvas};
 }
 
 

@@ -22,9 +22,9 @@ use parent -norequire,'java::lang::Object','org::allbinary::animation::Animation
 
 sub _init_fields {
     my ($self) = @_;
-    $self->{currentPoints} = undef;
+    $self->{currentPoints} = undef unless exists $self->{currentPoints};
     $self->{basicColor} = 'org::allbinary::graphics::color::BasicColorFactory'->getInstance()->{WHITE};
-    $self->{animationBehaviorFactory} = undef;
+    $self->{animationBehaviorFactory} = undef unless exists $self->{animationBehaviorFactory};
 }
 
 

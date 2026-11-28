@@ -25,7 +25,7 @@ our $TEXT = "text";
 sub _init_fields {
     my ($self) = @_;
     $self->{logUtil} = 'org::allbinary::logic::communication::log::LogUtil'->getInstance();
-    $self->{portion} = undef;
+    $self->{portion} = undef unless exists $self->{portion};
     $self->{commonPhoneStrings} = 'org::allbinary::string::CommonPhoneStrings'->getInstance();
 }
 

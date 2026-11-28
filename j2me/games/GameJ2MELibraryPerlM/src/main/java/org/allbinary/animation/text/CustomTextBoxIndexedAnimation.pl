@@ -22,7 +22,7 @@ use parent -norequire,'org::allbinary::animation::IndexedAnimation','org::allbin
 
 sub _init_fields {
     my ($self) = @_;
-    $self->{customTextBox} = undef;
+    $self->{customTextBox} = undef unless exists $self->{customTextBox};
     $self->{lastText} = 'org::allbinary::logic::string::StringUtil'->getInstance()->{INIT_STRING};
     $self->{hasChanged} = 1;
     $self->{textChangeListener} = 'org::allbinary::animation::text::TextChangeListener'->getInstance();

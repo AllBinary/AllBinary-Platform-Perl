@@ -22,9 +22,9 @@ use parent -norequire,'org::allbinary::game::input::form::RTSFormInput';
 
 sub _init_fields {
     my ($self) = @_;
-    $self->{rtsFormInputArray} = undef;
-    $self->{itemIndex} = undef;
-    $self->{isPrimaryWaypointCreator} = undef;
+    $self->{rtsFormInputArray} = undef unless exists $self->{rtsFormInputArray};
+    $self->{itemIndex} = undef unless exists $self->{itemIndex};
+    $self->{isPrimaryWaypointCreator} = undef unless exists $self->{isPrimaryWaypointCreator};
 }
 
 

@@ -23,8 +23,8 @@ use parent -norequire,'tags::CustomTagSupport';
 sub _init_fields {
     my ($self) = @_;
     $self->{logUtil} = 'org::allbinary::logic::communication::log::LogUtil'->getInstance();
-    $self->{command} = undef;
-    $self->{webappPath} = undef;
+    $self->{command} = undef unless exists $self->{command};
+    $self->{webappPath} = undef unless exists $self->{webappPath};
 }
 
 

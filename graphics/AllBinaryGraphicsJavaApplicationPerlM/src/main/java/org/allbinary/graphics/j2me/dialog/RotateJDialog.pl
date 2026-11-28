@@ -24,12 +24,12 @@ sub _init_fields {
     my ($self) = @_;
     $self->{logUtil} = 'org::allbinary::logic::communication::log::LogUtil'->getInstance();
     $self->{hashMap} = 'org::allbinary::logic::StdUtil'->getInstance()->createHashMap();
-    $self->{angleIncrementJTextField} = undef;
-    $self->{jButton1} = undef;
-    $self->{jLabel1} = undef;
-    $self->{jLabel2} = undef;
-    $self->{jPanel1} = undef;
-    $self->{totalRotationJTextField} = undef;
+    $self->{angleIncrementJTextField} = undef unless exists $self->{angleIncrementJTextField};
+    $self->{jButton1} = undef unless exists $self->{jButton1};
+    $self->{jLabel1} = undef unless exists $self->{jLabel1};
+    $self->{jLabel2} = undef unless exists $self->{jLabel2};
+    $self->{jPanel1} = undef unless exists $self->{jPanel1};
+    $self->{totalRotationJTextField} = undef unless exists $self->{totalRotationJTextField};
 }
 
 

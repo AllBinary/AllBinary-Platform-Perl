@@ -23,9 +23,9 @@ use parent -norequire,'java::lang::Object';
 sub _init_fields {
     my ($self) = @_;
     $self->{logUtil} = 'org::allbinary::logic::communication::log::LogUtil'->getInstance();
-    $self->{name} = undef;
-    $self->{cost} = undef;
-    $self->{types} = undef;
+    $self->{name} = undef unless exists $self->{name};
+    $self->{cost} = undef unless exists $self->{cost};
+    $self->{types} = undef unless exists $self->{types};
 }
 
 

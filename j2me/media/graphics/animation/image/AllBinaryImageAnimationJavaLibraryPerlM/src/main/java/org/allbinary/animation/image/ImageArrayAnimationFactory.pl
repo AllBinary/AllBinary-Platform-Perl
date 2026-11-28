@@ -24,8 +24,8 @@ sub _init_fields {
     my ($self) = @_;
     $self->{dx} = 0;
     $self->{dy} = 0;
-    $self->{imageArray} = undef;
-    $self->{animationBehaviorFactory} = undef;
+    $self->{imageArray} = undef unless exists $self->{imageArray};
+    $self->{animationBehaviorFactory} = undef unless exists $self->{animationBehaviorFactory};
 }
 
 

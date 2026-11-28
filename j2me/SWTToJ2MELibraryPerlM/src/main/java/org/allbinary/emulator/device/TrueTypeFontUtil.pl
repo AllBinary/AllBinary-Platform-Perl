@@ -26,9 +26,9 @@ tie our $instance, 'java::lang::LazyStatic', sub { 'org::allbinary::emulator::de
 sub _init_fields {
     my ($self) = @_;
     $self->{preResourceImageUtil} = 'org::allbinary::image::PreResourceImageUtil'->getInstance();
-    $self->{widthFloatArray} = undef;
+    $self->{widthFloatArray} = undef unless exists $self->{widthFloatArray};
     $self->{fontImage} = $org::allbinary::image::opengles::OpenGLESImage::NULL_OPENGL_IMAGE;
-    $self->{widthScale} = undef;
+    $self->{widthScale} = undef unless exists $self->{widthScale};
 }
 
 

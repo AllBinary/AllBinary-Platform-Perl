@@ -22,9 +22,9 @@ use parent -norequire,'org::allbinary::game::layer::SelectionHudPaintable';
 
 sub _init_fields {
     my ($self) = @_;
-    $self->{keyvalueDrawString} = undef;
+    $self->{keyvalueDrawString} = undef unless exists $self->{keyvalueDrawString};
     $self->{rtsLayerP} = $org::allbinary::game::layer::NullPathFindingLayer::NULL_PATH_FINDING_LAYER;
-    $self->{textLine2Y} = 0;
+    $self->{textLine2Y} = 0 unless exists $self->{textLine2Y};
 }
 
 

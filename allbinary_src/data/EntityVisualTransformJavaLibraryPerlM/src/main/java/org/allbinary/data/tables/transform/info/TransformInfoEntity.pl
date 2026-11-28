@@ -25,9 +25,9 @@ sub _init_fields {
     $self->{logUtil} = 'org::allbinary::logic::communication::log::LogUtil'->getInstance();
     $self->{tableName} = "transforminfo";
     $self->{abeClientInformation} = 'org::allbinary::logic::system::security::licensing::ServiceClientInformationInterfaceFactory'->getInstance();
-    $self->{transformInfoFactoryInterface} = undef;
-    $self->{transformInfoObjectConfigAndManipulatorFactoryInterface} = undef;
-    $self->{transformInfoObjectConfigGeneratorFactoryInterface} = undef;
+    $self->{transformInfoFactoryInterface} = undef unless exists $self->{transformInfoFactoryInterface};
+    $self->{transformInfoObjectConfigAndManipulatorFactoryInterface} = undef unless exists $self->{transformInfoObjectConfigAndManipulatorFactoryInterface};
+    $self->{transformInfoObjectConfigGeneratorFactoryInterface} = undef unless exists $self->{transformInfoObjectConfigGeneratorFactoryInterface};
 }
 
 

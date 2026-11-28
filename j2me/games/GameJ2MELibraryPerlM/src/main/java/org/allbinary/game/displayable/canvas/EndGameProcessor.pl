@@ -23,7 +23,7 @@ use parent -norequire,'org::allbinary::canvas::Processor';
 sub _init_fields {
     my ($self) = @_;
     $self->{gameStateFactory} = 'org::allbinary::game::state::GameStateFactory'->getInstance();
-    $self->{gameCanvas} = undef;
+    $self->{gameCanvas} = undef unless exists $self->{gameCanvas};
     $self->{WAIT} = 5000;
 }
 

@@ -24,18 +24,18 @@ sub _init_fields {
     my ($self) = @_;
     $self->{animationFactoryImageScaleUtil} = 'org::allbinary::image::AnimationFactoryImageScaleUtil'->getInstance();
     $self->{animationFactorySpriteScaleUtil} = 'org::allbinary::image::sprite::AnimationFactorySpriteScaleUtil'->getInstance();
-    $self->{captionImage} = undef;
-    $self->{spriteMovieImage} = undef;
-    $self->{frameWidth} = undef;
-    $self->{frameHeight} = undef;
-    $self->{captionDx} = undef;
-    $self->{captionDy} = undef;
-    $self->{dx} = undef;
-    $self->{dy} = undef;
-    $self->{time} = undef;
-    $self->{soundInterface} = undef;
+    $self->{captionImage} = undef unless exists $self->{captionImage};
+    $self->{spriteMovieImage} = undef unless exists $self->{spriteMovieImage};
+    $self->{frameWidth} = undef unless exists $self->{frameWidth};
+    $self->{frameHeight} = undef unless exists $self->{frameHeight};
+    $self->{captionDx} = undef unless exists $self->{captionDx};
+    $self->{captionDy} = undef unless exists $self->{captionDy};
+    $self->{dx} = undef unless exists $self->{dx};
+    $self->{dy} = undef unless exists $self->{dy};
+    $self->{time} = undef unless exists $self->{time};
+    $self->{soundInterface} = undef unless exists $self->{soundInterface};
     $self->{scaleProperties} = $org::allbinary::media::ScaleProperties::instance;
-    $self->{animationBehaviorFactory} = undef;
+    $self->{animationBehaviorFactory} = undef unless exists $self->{animationBehaviorFactory};
 }
 
 

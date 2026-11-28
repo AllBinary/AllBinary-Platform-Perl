@@ -25,9 +25,9 @@ sub _init_fields {
     my ($self) = @_;
     $self->{scaleX} = 1.0;
     $self->{scaleY} = 1.0;
-    $self->{scaleWidth} = 0;
-    $self->{scaleHeight} = 0;
-    $self->{shouldScale} = 0;
+    $self->{scaleWidth} = 0 unless exists $self->{scaleWidth};
+    $self->{scaleHeight} = 0 unless exists $self->{scaleHeight};
+    $self->{shouldScale} = 0 unless exists $self->{shouldScale};
 }
 
 sub new {

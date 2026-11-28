@@ -23,10 +23,10 @@ tie our $NULL_RELATIVE_RELATIONSHIP, 'java::lang::LazyStatic', sub { 'org::allbi
 
 sub _init_fields {
     my ($self) = @_;
-    $self->{typesAllowedList} = undef;
-    $self->{x} = undef;
-    $self->{y} = undef;
-    $self->{z} = undef;
+    $self->{typesAllowedList} = undef unless exists $self->{typesAllowedList};
+    $self->{x} = undef unless exists $self->{x};
+    $self->{y} = undef unless exists $self->{y};
+    $self->{z} = undef unless exists $self->{z};
 }
 
 

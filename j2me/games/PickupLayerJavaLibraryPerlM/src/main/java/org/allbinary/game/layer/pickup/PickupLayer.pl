@@ -23,7 +23,7 @@ use parent -norequire,'org::allbinary::game::multiplayer::layer::MultiPlayerGame
 sub _init_fields {
     my ($self) = @_;
     $self->{pickedUpLayerInterfaceFactoryInterface} = $org::allbinary::game::layer::pickup::CountedPickedUpLayerInterfaceFactory::NULL_COUNTED_PICKUP_LAYER_FACTORY;
-    $self->{destroyed} = 0;
+    $self->{destroyed} = 0 unless exists $self->{destroyed};
     $self->{animationInterface} = 'org::allbinary::animation::NullAnimationFactory'->getFactoryInstance()->getInstance(0);
 }
 

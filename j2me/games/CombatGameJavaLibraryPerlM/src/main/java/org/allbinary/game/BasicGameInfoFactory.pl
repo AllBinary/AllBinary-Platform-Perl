@@ -11,9 +11,9 @@ tie our $SINGLETON, 'java::lang::LazyStatic', sub { 'org::allbinary::game::Basic
 
 sub _init_fields {
     my ($self) = @_;
-    $self->{currentReleaseIndex} = 0;
-    $self->{currentDestroyIndex} = 0;
-    $self->{total} = 0;
+    $self->{currentReleaseIndex} = 0 unless exists $self->{currentReleaseIndex};
+    $self->{currentDestroyIndex} = 0 unless exists $self->{currentDestroyIndex};
+    $self->{total} = 0 unless exists $self->{total};
 }
 
 

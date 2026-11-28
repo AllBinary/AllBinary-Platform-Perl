@@ -23,7 +23,7 @@ use parent -norequire,'admin::tags::TableTag';
 sub _init_fields {
     my ($self) = @_;
     $self->{logUtil} = 'org::allbinary::logic::communication::log::LogUtil'->getInstance();
-    $self->{xsl} = undef;
+    $self->{xsl} = undef unless exists $self->{xsl};
 }
 
 

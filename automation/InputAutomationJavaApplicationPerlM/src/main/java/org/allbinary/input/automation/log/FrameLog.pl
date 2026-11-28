@@ -25,7 +25,7 @@ tie our $actions, 'java::lang::LazyStatic', sub { ("" . "Actions: \n")->getBytes
 
 sub _init_fields {
     my ($self) = @_;
-    $self->{frame} = undef;
+    $self->{frame} = undef unless exists $self->{frame};
     $self->{infoStringBuffer} = 'org::allbinary::logic::string::StringMaker'->new();
     $self->{actionsStringBuffer} = 'org::allbinary::logic::string::StringMaker'->new();
 }

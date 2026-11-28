@@ -14,7 +14,7 @@ sub _init_fields {
     $self->{commonStrings} = 'org::allbinary::string::CommonStrings'->getInstance();
     $self->{systemWrapper} = 'org::allbinary::logic::ABSystemWrapper'->getInstance();
     $self->{tsUtil} = 'org::allbinary::TsUtil'->getInstance();
-    $self->{layerManagerLogging} = undef;
+    $self->{layerManagerLogging} = undef unless exists $self->{layerManagerLogging};
     $self->{list} = 'org::allbinary::util::BasicArrayListD'->new();
     $self->{anyType} = 'org::allbinary::thread::SynchObject'->new();
 }

@@ -28,7 +28,7 @@ tie our $TRANSPORT, 'java::lang::LazyStatic', sub { 'org::allbinary::input::auto
 sub _init_fields {
     my ($self) = @_;
     $self->{SPELL_GAME_SKILL_TYPE} = "SpellGameSkillType: ";
-    $self->{name} = undef;
+    $self->{name} = undef unless exists $self->{name};
 }
 
 

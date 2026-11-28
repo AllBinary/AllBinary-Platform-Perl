@@ -24,9 +24,9 @@ tie our $ID, 'java::lang::LazyStatic', sub { 'org::allbinary::logic::math::Small
 
 sub _init_fields {
     my ($self) = @_;
-    $self->{backgroundBasicColor} = undef;
-    $self->{foregroundBasicColor} = undef;
-    $self->{gameInfo} = undef;
+    $self->{backgroundBasicColor} = undef unless exists $self->{backgroundBasicColor};
+    $self->{foregroundBasicColor} = undef unless exists $self->{foregroundBasicColor};
+    $self->{gameInfo} = undef unless exists $self->{gameInfo};
     $self->{playerGameInputCompositeInterface} = $org::allbinary::game::input::NullPlayerGameInputComposite::NULL_PLAYER_GAME_INPUT_COMPOSITE;
 }
 

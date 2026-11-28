@@ -24,15 +24,15 @@ sub _init_fields {
     my ($self) = @_;
     $self->{logUtil} = 'org::allbinary::logic::communication::log::LogUtil'->getInstance();
     $self->{commonStrings} = 'org::allbinary::string::CommonStrings'->getInstance();
-    $self->{isSameHeight} = 0;
-    $self->{isSameWidth} = 0;
-    $self->{pixelsThatMatch} = 0;
-    $self->{pixelsIgnored} = 0;
-    $self->{imageHeight} = undef;
-    $self->{imageWidth} = undef;
-    $self->{tolerance} = 0;
-    $self->{nonMatchingPixelVector} = undef;
-    $self->{bufferedImages} = undef;
+    $self->{isSameHeight} = 0 unless exists $self->{isSameHeight};
+    $self->{isSameWidth} = 0 unless exists $self->{isSameWidth};
+    $self->{pixelsThatMatch} = 0 unless exists $self->{pixelsThatMatch};
+    $self->{pixelsIgnored} = 0 unless exists $self->{pixelsIgnored};
+    $self->{imageHeight} = undef unless exists $self->{imageHeight};
+    $self->{imageWidth} = undef unless exists $self->{imageWidth};
+    $self->{tolerance} = 0 unless exists $self->{tolerance};
+    $self->{nonMatchingPixelVector} = undef unless exists $self->{nonMatchingPixelVector};
+    $self->{bufferedImages} = undef unless exists $self->{bufferedImages};
     $self->{matchingPercent} = -1;
 }
 

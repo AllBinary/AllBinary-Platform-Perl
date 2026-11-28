@@ -25,8 +25,8 @@ use parent -norequire,'org::allbinary::media::audio::BasicPlayer';
 sub _init_fields {
     my ($self) = @_;
     $self->{logUtil} = 'org::allbinary::logic::communication::log::LogUtil'->getInstance();
-    $self->{audioInputStream} = undef;
-    $self->{clip} = undef;
+    $self->{audioInputStream} = undef unless exists $self->{audioInputStream};
+    $self->{clip} = undef unless exists $self->{clip};
 }
 
 

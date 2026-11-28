@@ -27,15 +27,15 @@ tie our $STARTCHECKOUT, 'java::lang::LazyStatic', sub { "StartCheckout" . $org::
 
 sub _init_fields {
     my ($self) = @_;
-    $self->{MAKEPAYMENT} = undef;
-    $self->{CHECKOUT} = undef;
-    $self->{SHIPPING} = undef;
-    $self->{SHIPPINGADDRESS} = undef;
-    $self->{SHIPPINGADDRESSACTION} = undef;
-    $self->{BILLINGADDRESS} = undef;
-    $self->{PAYMENT} = undef;
-    $self->{AUTHORIZE} = undef;
-    $self->{FINISH} = undef;
+    $self->{MAKEPAYMENT} = undef unless exists $self->{MAKEPAYMENT};
+    $self->{CHECKOUT} = undef unless exists $self->{CHECKOUT};
+    $self->{SHIPPING} = undef unless exists $self->{SHIPPING};
+    $self->{SHIPPINGADDRESS} = undef unless exists $self->{SHIPPINGADDRESS};
+    $self->{SHIPPINGADDRESSACTION} = undef unless exists $self->{SHIPPINGADDRESSACTION};
+    $self->{BILLINGADDRESS} = undef unless exists $self->{BILLINGADDRESS};
+    $self->{PAYMENT} = undef unless exists $self->{PAYMENT};
+    $self->{AUTHORIZE} = undef unless exists $self->{AUTHORIZE};
+    $self->{FINISH} = undef unless exists $self->{FINISH};
 }
 
 

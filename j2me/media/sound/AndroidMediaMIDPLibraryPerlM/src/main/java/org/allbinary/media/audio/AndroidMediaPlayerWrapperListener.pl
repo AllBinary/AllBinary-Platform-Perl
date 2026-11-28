@@ -138,7 +138,7 @@ sub new {
     sub _init_fields {
         my ($self) = @_;
         $self->{ON_BUFFERING_UPDATE} = "onBufferingUpdate()";
-        $self->{androidMediaPlayerWrapperListener} = undef;
+        $self->{androidMediaPlayerWrapperListener} = undef unless exists $self->{androidMediaPlayerWrapperListener};
     }
     
 
@@ -172,7 +172,7 @@ sub new {
     sub _init_fields {
         my ($self) = @_;
         $self->{ON_PREPARE} = "onPrepare()";
-        $self->{androidMediaPlayerWrapperListener} = undef;
+        $self->{androidMediaPlayerWrapperListener} = undef unless exists $self->{androidMediaPlayerWrapperListener};
     }
     
 
@@ -207,7 +207,7 @@ sub new {
     sub _init_fields {
         my ($self) = @_;
         $self->{ON_ERROR} = "onError()";
-        $self->{androidMediaPlayerWrapperListener} = undef;
+        $self->{androidMediaPlayerWrapperListener} = undef unless exists $self->{androidMediaPlayerWrapperListener};
     }
     
 
@@ -242,7 +242,7 @@ sub new {
     sub _init_fields {
         my ($self) = @_;
         $self->{ON_COMPLETE} = "onComplete()";
-        $self->{androidMediaPlayerWrapperListener} = undef;
+        $self->{androidMediaPlayerWrapperListener} = undef unless exists $self->{androidMediaPlayerWrapperListener};
     }
     
 

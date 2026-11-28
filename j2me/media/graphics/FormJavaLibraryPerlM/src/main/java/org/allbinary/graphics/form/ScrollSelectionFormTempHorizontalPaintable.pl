@@ -22,7 +22,7 @@ use parent -norequire,'org::allbinary::graphics::form::ItemIndexPaintable';
 
 sub _init_fields {
     my ($self) = @_;
-    $self->{scrollSelectionForm} = undef;
+    $self->{scrollSelectionForm} = undef unless exists $self->{scrollSelectionForm};
 }
 
 

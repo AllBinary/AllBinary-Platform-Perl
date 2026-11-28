@@ -24,9 +24,9 @@ sub _init_fields {
     my ($self) = @_;
     $self->{logUtil} = 'org::allbinary::logic::communication::log::LogUtil'->getInstance();
     $self->{commonStrings} = 'org::allbinary::string::CommonStrings'->getInstance();
-    $self->{transformInfoInterface} = undef;
-    $self->{inputStream} = undef;
-    $self->{uriResolver} = undef;
+    $self->{transformInfoInterface} = undef unless exists $self->{transformInfoInterface};
+    $self->{inputStream} = undef unless exists $self->{inputStream};
+    $self->{uriResolver} = undef unless exists $self->{uriResolver};
 }
 
 

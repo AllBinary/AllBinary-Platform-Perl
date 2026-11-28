@@ -22,9 +22,9 @@ use parent -norequire,'org::allbinary::graphics::paint::InitUpdatePaintable';
 
 sub _init_fields {
     my ($self) = @_;
-    $self->{title} = undef;
-    $self->{canvasDrawLineString} = undef;
-    $self->{preGameScrollSelectionForm} = undef;
+    $self->{title} = undef unless exists $self->{title};
+    $self->{canvasDrawLineString} = undef unless exists $self->{canvasDrawLineString};
+    $self->{preGameScrollSelectionForm} = undef unless exists $self->{preGameScrollSelectionForm};
 }
 
 

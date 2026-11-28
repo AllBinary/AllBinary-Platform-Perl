@@ -23,11 +23,11 @@ tie our $NONE, 'java::lang::LazyStatic', sub { 'org::allbinary::game::input::eve
 
 sub _init_fields {
     my ($self) = @_;
-    $self->{sourceId} = undef;
-    $self->{repeated} = 0;
-    $self->{key} = undef;
-    $self->{gameActionKey} = 0;
-    $self->{originalKey} = 0;
+    $self->{sourceId} = undef unless exists $self->{sourceId};
+    $self->{repeated} = 0 unless exists $self->{repeated};
+    $self->{key} = undef unless exists $self->{key};
+    $self->{gameActionKey} = 0 unless exists $self->{gameActionKey};
+    $self->{originalKey} = 0 unless exists $self->{originalKey};
 }
 
 

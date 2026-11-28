@@ -22,7 +22,7 @@ use parent -norequire,'java::lang::Object';
 
 sub _init_fields {
     my ($self) = @_;
-    $self->{inputSensor} = undef;
+    $self->{inputSensor} = undef unless exists $self->{inputSensor};
 }
 
 sub new {

@@ -23,11 +23,11 @@ tie our $instance, 'java::lang::LazyStatic', sub { 'org::allbinary::media::Scale
 
 sub _init_fields {
     my ($self) = @_;
-    $self->{scaleX} = 0.0;
-    $self->{scaleY} = 0.0;
-    $self->{scaleWidth} = 0;
-    $self->{scaleHeight} = 0;
-    $self->{shouldScale} = 0;
+    $self->{scaleX} = 0.0 unless exists $self->{scaleX};
+    $self->{scaleY} = 0.0 unless exists $self->{scaleY};
+    $self->{scaleWidth} = 0 unless exists $self->{scaleWidth};
+    $self->{scaleHeight} = 0 unless exists $self->{scaleHeight};
+    $self->{shouldScale} = 0 unless exists $self->{shouldScale};
 }
 
 sub new {

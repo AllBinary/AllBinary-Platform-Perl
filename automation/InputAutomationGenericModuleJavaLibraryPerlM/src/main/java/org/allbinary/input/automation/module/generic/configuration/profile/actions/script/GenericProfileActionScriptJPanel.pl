@@ -26,9 +26,9 @@ sub _init_fields {
     $self->{logUtil} = 'org::allbinary::logic::communication::log::LogUtil'->getInstance();
     $self->{commonStrings} = 'org::allbinary::string::CommonStrings'->getInstance();
     $self->{defaultMutableTreeNode} = 'javax::swing::tree::DefaultMutableTreeNode'->new("Root");
-    $self->{genericProfileActionScript} = undef;
-    $self->{actionScriptJTree} = undef;
-    $self->{jScrollPane1} = undef;
+    $self->{genericProfileActionScript} = undef unless exists $self->{genericProfileActionScript};
+    $self->{actionScriptJTree} = undef unless exists $self->{actionScriptJTree};
+    $self->{jScrollPane1} = undef unless exists $self->{jScrollPane1};
 }
 
 

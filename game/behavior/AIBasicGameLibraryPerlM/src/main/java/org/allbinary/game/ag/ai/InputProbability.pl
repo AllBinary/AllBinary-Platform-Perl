@@ -23,10 +23,10 @@ tie our $INPUT_PROBABILITY, 'java::lang::LazyStatic', sub { 'org::allbinary::log
 
 sub _init_fields {
     my ($self) = @_;
-    $self->{likelyhoodIntegerArray} = undef;
-    $self->{repeatLikelyhoodIntegerArray} = undef;
-    $self->{max} = undef;
-    $self->{timeDelayHelper} = undef;
+    $self->{likelyhoodIntegerArray} = undef unless exists $self->{likelyhoodIntegerArray};
+    $self->{repeatLikelyhoodIntegerArray} = undef unless exists $self->{repeatLikelyhoodIntegerArray};
+    $self->{max} = undef unless exists $self->{max};
+    $self->{timeDelayHelper} = undef unless exists $self->{timeDelayHelper};
 }
 
 

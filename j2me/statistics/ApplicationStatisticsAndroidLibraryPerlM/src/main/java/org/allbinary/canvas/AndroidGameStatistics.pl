@@ -23,7 +23,7 @@ use parent -norequire,'org::allbinary::canvas::BaseGameStatistics';
 sub _init_fields {
     my ($self) = @_;
     $self->{view} = $org::allbinary::android::view::BaseViewWrapper::NULL_VIEW_WRAPPER;
-    $self->{totalOnDraws} = 0;
+    $self->{totalOnDraws} = 0 unless exists $self->{totalOnDraws};
     $self->{ANDROID_STRING_ARRAY} = [(undef) x (14)];
     $self->{TOTAL_ONDRAWS} = " Total onDraws: ";
     $self->{ONDRAWS_RATE} = " onDraws(/10) Sec: ";

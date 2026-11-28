@@ -23,23 +23,23 @@ use parent -norequire,'tags::ModifyTag';
 sub _init_fields {
     my ($self) = @_;
     $self->{logUtil} = 'org::allbinary::logic::communication::log::LogUtil'->getInstance();
-    $self->{name} = undef;
-    $self->{storeName} = undef;
-    $self->{objectFile} = undef;
-    $self->{anyType} = undef;
-    $self->{objectConfigFile} = undef;
-    $self->{objectConfig} = undef;
-    $self->{templateFile} = undef;
-    $self->{template} = undef;
-    $self->{dataFile} = undef;
-    $self->{data} = undef;
-    $self->{type} = undef;
+    $self->{name} = undef unless exists $self->{name};
+    $self->{storeName} = undef unless exists $self->{storeName};
+    $self->{objectFile} = undef unless exists $self->{objectFile};
+    $self->{anyType} = undef unless exists $self->{anyType};
+    $self->{objectConfigFile} = undef unless exists $self->{objectConfigFile};
+    $self->{objectConfig} = undef unless exists $self->{objectConfig};
+    $self->{templateFile} = undef unless exists $self->{templateFile};
+    $self->{template} = undef unless exists $self->{template};
+    $self->{dataFile} = undef unless exists $self->{dataFile};
+    $self->{data} = undef unless exists $self->{data};
+    $self->{type} = undef unless exists $self->{type};
 }
 
 sub new {
     my ($class, @arguments) = @_;
-    return $class->_new0(@arguments) if scalar(@arguments) == 0;
-    return $class->_new1(@arguments) if scalar(@arguments) == 1;
+    return _new0($class, @arguments) if scalar(@arguments) == 0;
+    return _new1($class, @arguments) if scalar(@arguments) == 1;
     die "No constructor of TransformInfoTag takes " . scalar(@arguments) . " arguments";
 }
 

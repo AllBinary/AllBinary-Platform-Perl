@@ -23,7 +23,7 @@ tie our $NULL_HUD_GRAPHICS_POSITION, 'java::lang::LazyStatic', sub { 'org::allbi
 
 sub _init_fields {
     my ($self) = @_;
-    $self->{anchor} = 0;
+    $self->{anchor} = 0 unless exists $self->{anchor};
     $self->{point} = 'org::allbinary::graphics::PointFactory'->getInstance()->{ZERO_ZERO};
 }
 

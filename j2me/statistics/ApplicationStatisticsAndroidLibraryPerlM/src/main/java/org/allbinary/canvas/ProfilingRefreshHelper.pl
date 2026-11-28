@@ -25,9 +25,9 @@ tie our $instance, 'java::lang::LazyStatic', sub { 'org::allbinary::canvas::Prof
 sub _init_fields {
     my ($self) = @_;
     $self->{firstTime} = 1;
-    $self->{bestFrameProcessingTime} = 0;
-    $self->{worstFrameProcessingTime} = 0;
-    $self->{frameProcessingTimeElapsed} = 0;
+    $self->{bestFrameProcessingTime} = 0 unless exists $self->{bestFrameProcessingTime};
+    $self->{worstFrameProcessingTime} = 0 unless exists $self->{worstFrameProcessingTime};
+    $self->{frameProcessingTimeElapsed} = 0 unless exists $self->{frameProcessingTimeElapsed};
 }
 
 

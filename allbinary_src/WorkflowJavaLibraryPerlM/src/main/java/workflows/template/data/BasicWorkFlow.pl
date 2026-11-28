@@ -25,9 +25,9 @@ sub _init_fields {
     $self->{logUtil} = 'org::allbinary::logic::communication::log::LogUtil'->getInstance();
     $self->{commonStrings} = 'org::allbinary::string::CommonStrings'->getInstance();
     $self->{abeClientInformation} = 'org::allbinary::logic::system::security::licensing::ServiceClientInformationInterfaceFactory'->getInstance();
-    $self->{validationDomNodeInterface} = undef;
-    $self->{propertiesHashMap} = undef;
-    $self->{pageContext} = undef;
+    $self->{validationDomNodeInterface} = undef unless exists $self->{validationDomNodeInterface};
+    $self->{propertiesHashMap} = undef unless exists $self->{propertiesHashMap};
+    $self->{pageContext} = undef unless exists $self->{pageContext};
 }
 
 

@@ -22,7 +22,7 @@ use parent -norequire,'org::allbinary::logic::visual::transform::info::Transform
 
 sub _init_fields {
     my ($self) = @_;
-    $self->{paymentGatewayPrimaryKey} = undef;
+    $self->{paymentGatewayPrimaryKey} = undef unless exists $self->{paymentGatewayPrimaryKey};
 }
 
 

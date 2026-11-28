@@ -22,8 +22,8 @@ use parent -norequire,'org::allbinary::input::automation::actions::script::condi
 
 sub new {
     my ($class, @arguments) = @_;
-    return $class->_new2(@arguments) if scalar(@arguments) == 2;
-    return $class->_new1(@arguments) if scalar(@arguments) == 1;
+    return _new2($class, @arguments) if scalar(@arguments) == 2;
+    return _new1($class, @arguments) if scalar(@arguments) == 1;
     die "No constructor of BasicProfileActionScriptOutput takes " . scalar(@arguments) . " arguments";
 }
 

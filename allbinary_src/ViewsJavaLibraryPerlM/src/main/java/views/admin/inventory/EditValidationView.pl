@@ -22,7 +22,7 @@ use parent -norequire,'views::admin::inventory::InventoryItemView','org::allbina
 
 sub _init_fields {
     my ($self) = @_;
-    $self->{id} = undef;
+    $self->{id} = undef unless exists $self->{id};
 }
 
 

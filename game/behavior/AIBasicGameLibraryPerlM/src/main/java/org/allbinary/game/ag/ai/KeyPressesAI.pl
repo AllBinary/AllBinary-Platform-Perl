@@ -23,7 +23,7 @@ use parent -norequire,'org::allbinary::game::ai::BasicAI';
 sub _init_fields {
     my ($self) = @_;
     $self->{on} = 1;
-    $self->{keys} = undef;
+    $self->{keys} = undef unless exists $self->{keys};
 }
 
 

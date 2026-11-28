@@ -22,7 +22,7 @@ use parent -norequire,'java::lang::Object','bundle::input::automation::robot::In
 
 sub _init_fields {
     my ($self) = @_;
-    $self->{inputRobotInterfaceArray} = undef;
+    $self->{inputRobotInterfaceArray} = undef unless exists $self->{inputRobotInterfaceArray};
 }
 
 

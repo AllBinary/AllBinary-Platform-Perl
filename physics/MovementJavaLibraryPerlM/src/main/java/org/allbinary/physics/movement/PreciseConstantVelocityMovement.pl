@@ -10,9 +10,9 @@ use parent -norequire,'org::allbinary::physics::movement::BasicConstantVelocityM
 
 sub _init_fields {
     my ($self) = @_;
-    $self->{accumulatedX} = 0;
-    $self->{accumulatedY} = 0;
-    $self->{accumulatedZ} = 0;
+    $self->{accumulatedX} = 0 unless exists $self->{accumulatedX};
+    $self->{accumulatedY} = 0 unless exists $self->{accumulatedY};
+    $self->{accumulatedZ} = 0 unless exists $self->{accumulatedZ};
     $self->{factorValue} = 'org::allbinary::logic::math::ScaleFactorFactory'->getInstance()->{DEFAULT_SCALE_VALUE};
 }
 

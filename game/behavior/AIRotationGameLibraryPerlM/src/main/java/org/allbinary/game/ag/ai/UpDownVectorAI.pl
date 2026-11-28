@@ -22,7 +22,7 @@ use parent -norequire,'org::allbinary::game::ai::BasicAI';
 
 sub _init_fields {
     my ($self) = @_;
-    $self->{velocityInterface} = undef;
+    $self->{velocityInterface} = undef unless exists $self->{velocityInterface};
     $self->{index} = 0;
 }
 

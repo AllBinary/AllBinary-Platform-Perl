@@ -23,7 +23,7 @@ use parent -norequire,'java::lang::Object';
 
 sub _init_fields {
     my ($self) = @_;
-    $self->{reduceTimeFactor} = undef;
+    $self->{reduceTimeFactor} = undef unless exists $self->{reduceTimeFactor};
     $self->{SCALE_VALUE} = 'org::allbinary::android::input::motion::AnalogControllerConfigurationFactory'->getInstance()->{SCALE_VALUE};
     $self->{rightTimeElapsedHelper} = 'org::allbinary::time::TimeDelayHelper'->new(0);
     $self->{leftTimeElapsedHelper} = 'org::allbinary::time::TimeDelayHelper'->new(0);

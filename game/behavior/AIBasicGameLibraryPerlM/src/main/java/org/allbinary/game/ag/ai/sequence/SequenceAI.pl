@@ -23,7 +23,7 @@ our $SEQUENCE_AI = "Sequence AI";
 
 sub _init_fields {
     my ($self) = @_;
-    $self->{index} = 0;
+    $self->{index} = 0 unless exists $self->{index};
 }
 
 

@@ -23,10 +23,10 @@ tie our $instance, 'java::lang::LazyStatic', sub { 'org::allbinary::business::ad
 
 sub _init_fields {
     my ($self) = @_;
-    $self->{bottom} = 0;
-    $self->{deltaY} = 0;
-    $self->{lower} = 0;
-    $self->{higher} = 0;
+    $self->{bottom} = 0 unless exists $self->{bottom};
+    $self->{deltaY} = 0 unless exists $self->{deltaY};
+    $self->{lower} = 0 unless exists $self->{lower};
+    $self->{higher} = 0 unless exists $self->{higher};
 }
 
 

@@ -23,9 +23,9 @@ use parent -norequire,'org::allbinary::logic::util::event::AllBinaryEventObject'
 sub _init_fields {
     my ($self) = @_;
     $self->{string} = 'org::allbinary::logic::string::StringUtil'->getInstance()->{EMPTY_STRING};
-    $self->{seconds} = undef;
+    $self->{seconds} = undef unless exists $self->{seconds};
     $self->{basicColor} = 'org::allbinary::graphics::color::BasicColorFactory'->getInstance()->{BLACK};
-    $self->{removeable} = undef;
+    $self->{removeable} = undef unless exists $self->{removeable};
 }
 
 

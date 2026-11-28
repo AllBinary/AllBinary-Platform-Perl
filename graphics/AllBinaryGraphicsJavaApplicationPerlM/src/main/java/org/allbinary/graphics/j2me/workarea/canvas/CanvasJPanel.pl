@@ -29,19 +29,19 @@ sub _init_fields {
     $self->{guiLog} = 'org::allbinary::logic::communication::log::GuiLog'->getInstance();
     $self->{gameInputStrings} = 'org::allbinary::game::input::GameInputStrings'->getInstance();
     $self->{selectedTool} = undef;
-    $self->{graphicItemHashMap} = undef;
-    $self->{canvasDimension} = undef;
+    $self->{graphicItemHashMap} = undef unless exists $self->{graphicItemHashMap};
+    $self->{canvasDimension} = undef unless exists $self->{canvasDimension};
     $self->{angle} = 0.0;
-    $self->{canvasTreeNode} = undef;
-    $self->{frameLabel} = undef;
-    $self->{workAreaJTreeJPanel} = undef;
-    $self->{grid} = undef;
+    $self->{canvasTreeNode} = undef unless exists $self->{canvasTreeNode};
+    $self->{frameLabel} = undef unless exists $self->{frameLabel};
+    $self->{workAreaJTreeJPanel} = undef unless exists $self->{workAreaJTreeJPanel};
+    $self->{grid} = undef unless exists $self->{grid};
 }
 
 sub new {
     my ($class, @arguments) = @_;
-    return $class->_new4(@arguments) if scalar(@arguments) == 4;
-    return $class->_new3(@arguments) if scalar(@arguments) == 3;
+    return _new4($class, @arguments) if scalar(@arguments) == 4;
+    return _new3($class, @arguments) if scalar(@arguments) == 3;
     die "No constructor of CanvasJPanel takes " . scalar(@arguments) . " arguments";
 }
 

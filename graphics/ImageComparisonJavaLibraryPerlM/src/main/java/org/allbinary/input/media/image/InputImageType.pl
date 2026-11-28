@@ -27,8 +27,8 @@ tie our $MOTION, 'java::lang::LazyStatic', sub { 'org::allbinary::input::media::
 
 sub _init_fields {
     my ($self) = @_;
-    $self->{name} = undef;
-    $self->{index} = undef;
+    $self->{name} = undef unless exists $self->{name};
+    $self->{index} = undef unless exists $self->{index};
 }
 
 

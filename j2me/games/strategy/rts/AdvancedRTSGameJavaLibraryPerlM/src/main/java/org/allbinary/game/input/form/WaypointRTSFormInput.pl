@@ -23,13 +23,13 @@ use parent -norequire,'org::allbinary::game::input::form::RTSFormInput';
 sub _init_fields {
     my ($self) = @_;
     $self->{WAYPOINT_EVENT} = 'org::allbinary::game::layer::RTSLayerEvent'->new($org::allbinary::game::layer::NullRTSLayer::NULL_RTS_LAYER);
-    $self->{dragToSpotGameNotificationEvent} = undef;
-    $self->{spotTakenGameNotificationEvent} = undef;
-    $self->{buildingCollisionGameNotificationEvent} = undef;
-    $self->{roadCollisionGameNotificationEvent} = undef;
-    $self->{newWaypointGameNotificationEvent} = undef;
-    $self->{noMoneyGameNotificationEvent} = undef;
-    $self->{isPrimaryWaypointCreator} = undef;
+    $self->{dragToSpotGameNotificationEvent} = undef unless exists $self->{dragToSpotGameNotificationEvent};
+    $self->{spotTakenGameNotificationEvent} = undef unless exists $self->{spotTakenGameNotificationEvent};
+    $self->{buildingCollisionGameNotificationEvent} = undef unless exists $self->{buildingCollisionGameNotificationEvent};
+    $self->{roadCollisionGameNotificationEvent} = undef unless exists $self->{roadCollisionGameNotificationEvent};
+    $self->{newWaypointGameNotificationEvent} = undef unless exists $self->{newWaypointGameNotificationEvent};
+    $self->{noMoneyGameNotificationEvent} = undef unless exists $self->{noMoneyGameNotificationEvent};
+    $self->{isPrimaryWaypointCreator} = undef unless exists $self->{isPrimaryWaypointCreator};
     $self->{stickyAssociatedRtsLayer} = $org::allbinary::game::layer::NullPathFindingLayer::NULL_PATH_FINDING_LAYER;
 }
 

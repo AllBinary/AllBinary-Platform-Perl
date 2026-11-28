@@ -24,10 +24,10 @@ sub _init_fields {
     my ($self) = @_;
     $self->{TIME_STRING} = "Time ";
     $self->{TIME_CHAR_ARRAY} = ["T", "i", "m", "e", " "];
-    $self->{offset} = 0;
+    $self->{offset} = 0 unless exists $self->{offset};
     $self->{string} = 'org::allbinary::logic::math::PrimitiveLongSingleton'->getInstance()->{ZERO};
     $self->{totalDigits} = 1;
-    $self->{timer} = undef;
+    $self->{timer} = undef unless exists $self->{timer};
 }
 
 

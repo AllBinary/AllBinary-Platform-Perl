@@ -22,14 +22,14 @@ use parent -norequire,'org::allbinary::game::graphics::hud::BasicHud','org::allb
 
 sub _init_fields {
     my ($self) = @_;
-    $self->{primitiveLongUtil} = undef;
-    $self->{prependString} = undef;
-    $self->{PREPEND_STRING} = undef;
-    $self->{value} = undef;
-    $self->{max} = undef;
-    $self->{offset} = 0;
-    $self->{valueString} = undef;
-    $self->{valueTotalDigits} = 0;
+    $self->{primitiveLongUtil} = undef unless exists $self->{primitiveLongUtil};
+    $self->{prependString} = undef unless exists $self->{prependString};
+    $self->{PREPEND_STRING} = undef unless exists $self->{PREPEND_STRING};
+    $self->{value} = undef unless exists $self->{value};
+    $self->{max} = undef unless exists $self->{max};
+    $self->{offset} = 0 unless exists $self->{offset};
+    $self->{valueString} = undef unless exists $self->{valueString};
+    $self->{valueTotalDigits} = 0 unless exists $self->{valueTotalDigits};
 }
 
 

@@ -24,7 +24,7 @@ our $NAME = "Java Robot";
 sub _init_fields {
     my ($self) = @_;
     $self->{logUtil} = 'org::allbinary::logic::communication::log::LogUtil'->getInstance();
-    $self->{robot} = undef;
+    $self->{robot} = undef unless exists $self->{robot};
 }
 
 

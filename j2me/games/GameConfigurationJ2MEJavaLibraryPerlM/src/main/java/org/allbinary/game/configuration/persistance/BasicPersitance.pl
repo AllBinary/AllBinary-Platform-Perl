@@ -26,7 +26,7 @@ sub _init_fields {
     $self->{commonStrings} = 'org::allbinary::string::CommonStrings'->getInstance();
     $self->{persistanceStrings} = 'org::allbinary::game::configuration::persistance::PersistanceStrings'->getInstance();
     $self->{platformRecordIdUtil} = 'org::allbinary::persistance::PlatformRecordIdUtil'->getInstance();
-    $self->{recordId} = undef;
+    $self->{recordId} = undef unless exists $self->{recordId};
     $self->{valueList} = 'org::allbinary::util::BasicArrayListD'->new();
     $self->{idList} = 'org::allbinary::util::BasicArrayListD'->new();
 }

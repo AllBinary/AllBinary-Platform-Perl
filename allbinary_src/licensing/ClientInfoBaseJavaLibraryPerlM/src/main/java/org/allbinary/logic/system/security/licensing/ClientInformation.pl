@@ -25,10 +25,10 @@ sub _init_fields {
     my ($self) = @_;
     $self->{operatingSystemInterface} = $org::allbinary::logic::system::os::NoOperatingSystem::NO_OPERATING_SYSTEM;
     $self->{tsUtil} = 'org::allbinary::TsUtil'->getInstance();
-    $self->{name} = undef;
-    $self->{shortName} = undef;
-    $self->{version} = undef;
-    $self->{specialName} = undef;
+    $self->{name} = undef unless exists $self->{name};
+    $self->{shortName} = undef unless exists $self->{shortName};
+    $self->{version} = undef unless exists $self->{version};
+    $self->{specialName} = undef unless exists $self->{specialName};
     $self->{hardSale} = 1;
     $self->{licenseId} = 'org::allbinary::logic::string::StringUtil'->getInstance()->{EMPTY_STRING};
     $self->{licenseServers} = 'org::allbinary::util::BasicArrayListUtil'->getInstance()->getImmutableInstance();

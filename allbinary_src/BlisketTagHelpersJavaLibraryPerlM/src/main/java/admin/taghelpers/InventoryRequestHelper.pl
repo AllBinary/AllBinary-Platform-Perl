@@ -24,7 +24,7 @@ sub _init_fields {
     my ($self) = @_;
     $self->{logUtil} = 'org::allbinary::logic::communication::log::LogUtil'->getInstance();
     $self->{basicItemData} = 'org::allbinary::business::user::commerce::inventory::item::BasicItemData'->getInstance();
-    $self->{itemInterface} = undef;
+    $self->{itemInterface} = undef unless exists $self->{itemInterface};
 }
 
 

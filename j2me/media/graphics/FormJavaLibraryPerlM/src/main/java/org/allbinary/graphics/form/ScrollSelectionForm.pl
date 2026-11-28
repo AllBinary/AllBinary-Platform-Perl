@@ -29,13 +29,13 @@ our $GET_SELECTED_INDEX = "getSelectedIndexForPoint";
 sub _init_fields {
     my ($self) = @_;
     $self->{rectangleCollisionUtil} = 'org::allbinary::math::RectangleCollisionUtil'->getInstance();
-    $self->{border} = undef;
-    $self->{halfBorder} = undef;
-    $self->{buttonBasicColor} = undef;
+    $self->{border} = undef unless exists $self->{border};
+    $self->{halfBorder} = undef unless exists $self->{halfBorder};
+    $self->{buttonBasicColor} = undef unless exists $self->{buttonBasicColor};
     $self->{scrollSelectionFormFormTypeItemIndexPaintable} = 'org::allbinary::graphics::form::ItemIndexPaintable'->getInstance();
     $self->{formTypeItemIndexDx} = 'org::allbinary::graphics::form::ItemIndexDx'->getInstance();
     $self->{paintable} = 'org::allbinary::graphics::form::ItemPaintableFactory'->getInstance();
-    $self->{adjustedExtraBorder} = undef;
+    $self->{adjustedExtraBorder} = undef unless exists $self->{adjustedExtraBorder};
 }
 
 

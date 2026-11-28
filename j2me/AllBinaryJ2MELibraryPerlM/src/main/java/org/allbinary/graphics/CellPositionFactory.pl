@@ -26,8 +26,8 @@ sub _init_fields {
     $self->{logUtil} = 'org::allbinary::logic::communication::log::LogUtil'->getInstance();
     $self->{NONE} = 'org::allbinary::graphics::CellPosition'->new(-1, -1, -1, -1);
     $self->{cellPositionArray} = [map { [(undef) x (0)] } 1 .. (0)];
-    $self->{columns} = 0;
-    $self->{rows} = 0;
+    $self->{columns} = 0 unless exists $self->{columns};
+    $self->{rows} = 0 unless exists $self->{rows};
 }
 
 

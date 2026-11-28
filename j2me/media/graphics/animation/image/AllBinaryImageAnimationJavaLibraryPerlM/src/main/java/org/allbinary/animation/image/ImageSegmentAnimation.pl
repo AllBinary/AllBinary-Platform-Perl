@@ -22,12 +22,12 @@ use parent -norequire,'org::allbinary::animation::image::ImageAnimation';
 
 sub _init_fields {
     my ($self) = @_;
-    $self->{startX} = undef;
-    $self->{startY} = undef;
-    $self->{drawWidth} = undef;
-    $self->{drawHeight} = undef;
-    $self->{circularIndexUtil} = undef;
-    $self->{sequenceArray} = undef;
+    $self->{startX} = undef unless exists $self->{startX};
+    $self->{startY} = undef unless exists $self->{startY};
+    $self->{drawWidth} = undef unless exists $self->{drawWidth};
+    $self->{drawHeight} = undef unless exists $self->{drawHeight};
+    $self->{circularIndexUtil} = undef unless exists $self->{circularIndexUtil};
+    $self->{sequenceArray} = undef unless exists $self->{sequenceArray};
 }
 
 

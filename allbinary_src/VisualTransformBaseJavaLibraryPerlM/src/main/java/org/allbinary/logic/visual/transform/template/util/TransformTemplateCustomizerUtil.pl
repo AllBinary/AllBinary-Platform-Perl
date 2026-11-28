@@ -24,14 +24,14 @@ tie our $instance, 'java::lang::LazyStatic', sub { 'org::allbinary::logic::visua
 sub _init_fields {
     my ($self) = @_;
     $self->{logUtil} = 'org::allbinary::logic::communication::log::LogUtil'->getInstance();
-    $self->{CUSTOMIZER_NAME} = undef;
-    $self->{BODY_VIEWNAMEKEY} = undef;
-    $self->{TITLE_VIEWNAMEKEY} = undef;
-    $self->{GLOBALS_NEW} = undef;
-    $self->{GLOBALS_INSERT} = undef;
-    $self->{GLOBALS_DELETE} = undef;
-    $self->{GLOBALS_EDIT} = undef;
-    $self->{GLOBALS_UPDATE} = undef;
+    $self->{CUSTOMIZER_NAME} = undef unless exists $self->{CUSTOMIZER_NAME};
+    $self->{BODY_VIEWNAMEKEY} = undef unless exists $self->{BODY_VIEWNAMEKEY};
+    $self->{TITLE_VIEWNAMEKEY} = undef unless exists $self->{TITLE_VIEWNAMEKEY};
+    $self->{GLOBALS_NEW} = undef unless exists $self->{GLOBALS_NEW};
+    $self->{GLOBALS_INSERT} = undef unless exists $self->{GLOBALS_INSERT};
+    $self->{GLOBALS_DELETE} = undef unless exists $self->{GLOBALS_DELETE};
+    $self->{GLOBALS_EDIT} = undef unless exists $self->{GLOBALS_EDIT};
+    $self->{GLOBALS_UPDATE} = undef unless exists $self->{GLOBALS_UPDATE};
 }
 
 

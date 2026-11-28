@@ -29,7 +29,7 @@ sub _init_fields {
     $self->{tsUtil} = 'org::allbinary::TsUtil'->getInstance();
     $self->{thread} = $org::allbinary::thread::NullThread::NULL_THREAD;
     $self->{currentThread} = $org::allbinary::thread::NullThread::NULL_THREAD;
-    $self->{running} = 0;
+    $self->{running} = 0 unless exists $self->{running};
     $self->{loopTimeHelper} = 'org::allbinary::time::TimeDelayHelper'->new('org::allbinary::game::displayable::canvas::NullWaitGameRunnable'->getInstance()->{WAIT});
     $self->{runnableCanvasRefreshHelper} = 'org::allbinary::canvas::Processor'->getInstance();
     $self->{commonLabels} = 'org::allbinary::string::CommonLabels'->getInstance();

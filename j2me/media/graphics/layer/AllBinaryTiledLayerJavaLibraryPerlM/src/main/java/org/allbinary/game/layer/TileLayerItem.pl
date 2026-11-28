@@ -22,7 +22,7 @@ use parent -norequire,'org::allbinary::graphics::form::item::ABCustomItem','org:
 
 sub _init_fields {
     my ($self) = @_;
-    $self->{tiledLayer} = undef;
+    $self->{tiledLayer} = undef unless exists $self->{tiledLayer};
 }
 
 

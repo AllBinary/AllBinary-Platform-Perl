@@ -24,14 +24,14 @@ use parent -norequire,'org::allbinary::input::automation::actions::script::Profi
 sub _init_fields {
     my ($self) = @_;
     $self->{logUtil} = 'org::allbinary::logic::communication::log::LogUtil'->getInstance();
-    $self->{profileActionProcessorInterfaceVector} = undef;
-    $self->{profileActionConditionInterfaceVector} = undef;
+    $self->{profileActionProcessorInterfaceVector} = undef unless exists $self->{profileActionProcessorInterfaceVector};
+    $self->{profileActionConditionInterfaceVector} = undef unless exists $self->{profileActionConditionInterfaceVector};
 }
 
 sub new {
     my ($class, @arguments) = @_;
-    return $class->_new2(@arguments) if scalar(@arguments) == 2;
-    return $class->_new1(@arguments) if scalar(@arguments) == 1;
+    return _new2($class, @arguments) if scalar(@arguments) == 2;
+    return _new1($class, @arguments) if scalar(@arguments) == 1;
     die "No constructor of BasicProfileActionScriptCondition takes " . scalar(@arguments) . " arguments";
 }
 

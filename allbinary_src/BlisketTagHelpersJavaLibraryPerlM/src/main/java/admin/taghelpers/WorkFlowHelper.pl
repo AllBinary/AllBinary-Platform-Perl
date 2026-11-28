@@ -23,9 +23,9 @@ use parent -norequire,'admin::taghelpers::BasicTable';
 sub _init_fields {
     my ($self) = @_;
     $self->{logUtil} = 'org::allbinary::logic::communication::log::LogUtil'->getInstance();
-    $self->{hashMap} = undef;
-    $self->{pageContext} = undef;
-    $self->{portion} = undef;
+    $self->{hashMap} = undef unless exists $self->{hashMap};
+    $self->{pageContext} = undef unless exists $self->{pageContext};
+    $self->{portion} = undef unless exists $self->{portion};
 }
 
 

@@ -22,13 +22,13 @@ use parent -norequire,'java::lang::Object','org::allbinary::input::automation::m
 
 sub _init_fields {
     my ($self) = @_;
-    $self->{ratios} = undef;
+    $self->{ratios} = undef unless exists $self->{ratios};
     $self->{good} = 0;
     $self->{dropping} = 0;
-    $self->{minX} = undef;
-    $self->{maxX} = undef;
-    $self->{y} = undef;
-    $self->{size} = undef;
+    $self->{minX} = undef unless exists $self->{minX};
+    $self->{maxX} = undef unless exists $self->{maxX};
+    $self->{y} = undef unless exists $self->{y};
+    $self->{size} = undef unless exists $self->{size};
     $self->{RATIOS_LABEL} = "Ratios: ";
     $self->{IS_GOOD_LABEL} = "isGood: ";
     $self->{IS_DROPPPING_LABEL} = "isDropping: ";

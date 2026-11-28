@@ -22,16 +22,16 @@ use parent -norequire,'org::allbinary::canvas::RunnableCanvas','org::allbinary::
 
 sub _init_fields {
     my ($self) = @_;
-    $self->{hasPainted} = 0;
-    $self->{backgroundBasicColor} = undef;
+    $self->{hasPainted} = 0 unless exists $self->{hasPainted};
+    $self->{backgroundBasicColor} = undef unless exists $self->{backgroundBasicColor};
     $self->{GAUGE_PAINTABLE} = 'org::allbinary::graphics::canvas::transition::progress::ProgressPaintable'->new($self);
     $self->{maxValue} = 100.0;
-    $self->{gauge} = undef;
+    $self->{gauge} = undef unless exists $self->{gauge};
     $self->{TEXT} = $self->{commonStrings}->{LOADING};
     $self->{updateMyFontProcessor} = 'org::allbinary::graphics::font::UpdateMyFontProcessor'->new($self);
     $self->{myFontProcessor} = $self->{updateMyFontProcessor};
     $self->{allbinaryMidlet} = 'org::allbinary::midlet::AllBinaryMidlet'->getNullInstance();
-    $self->{value} = 0.0;
+    $self->{value} = 0.0 unless exists $self->{value};
     $self->{text} = $self->{TEXT};
     $self->{background} = 1;
     $self->{paintable} = $self->{GAUGE_PAINTABLE};

@@ -22,7 +22,7 @@ use parent -norequire,'org::allbinary::thread::ARunnable';
 
 sub _init_fields {
     my ($self) = @_;
-    $self->{canvas} = undef;
+    $self->{canvas} = undef unless exists $self->{canvas};
 }
 
 

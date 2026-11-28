@@ -23,7 +23,7 @@ use parent -norequire,'org::allbinary::graphics::form::ItemPaintable';
 sub _init_fields {
     my ($self) = @_;
     $self->{animation} = 'org::allbinary::animation::FeaturedAnimationInterfaceFactoryInterfaceFactory'->getInstance()->get('org::allbinary::logic::system::security::licensing::LockedResources'->getInstance()->{LOCKED_DEMO_GAME_FEATURE_RESOURCE})->getInstance(0);
-    $self->{lockedIndex} = undef;
+    $self->{lockedIndex} = undef unless exists $self->{lockedIndex};
 }
 
 

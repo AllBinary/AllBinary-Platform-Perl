@@ -26,12 +26,12 @@ sub _init_fields {
     $self->{paintable} = 'org::allbinary::graphics::paint::NullPaintable'->getInstance();
     $self->{highScoreCommandsFactory} = 'org::allbinary::game::score::HighScoreCommandsFactory'->getInstance();
     $self->{waitPaintable} = 'org::allbinary::graphics::paint::SimpleTextPaintable'->new($self->{commonStrings}->{PLEASE_WAIT_FOR_SERVER}, 'org::allbinary::graphics::color::BasicColorFactory'->getInstance()->{WHITE});
-    $self->{highScoresPaintable} = undef;
-    $self->{highScoresFactoryInterface} = undef;
-    $self->{colorFillPaintable} = undef;
+    $self->{highScoresPaintable} = undef unless exists $self->{highScoresPaintable};
+    $self->{highScoresFactoryInterface} = undef unless exists $self->{highScoresFactoryInterface};
+    $self->{colorFillPaintable} = undef unless exists $self->{colorFillPaintable};
     $self->{highScoresHelper} = 'org::allbinary::game::score::HighScoresHelperBase'->new();
-    $self->{gameInfo} = undef;
-    $self->{highScoresCanvasInputProcessor} = undef;
+    $self->{gameInfo} = undef unless exists $self->{gameInfo};
+    $self->{highScoresCanvasInputProcessor} = undef unless exists $self->{highScoresCanvasInputProcessor};
     $self->{currentCommand} = $self->{highScoreCommandsFactory}->{HIGH_SCORE_COMMANDS}->[0];
     $self->{hasPainted} = 0;
 }

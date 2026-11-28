@@ -26,7 +26,7 @@ sub _init_fields {
     $self->{downGradeCost} = 'org::allbinary::logic::string::StringUtil'->getInstance()->{EMPTY_STRING};
     $self->{UPGRADE} = "Up: \$";
     $self->{DOWNGRADE} = "Down: \$-";
-    $self->{upgradableRTSLayerHudPaintable} = undef;
+    $self->{upgradableRTSLayerHudPaintable} = undef unless exists $self->{upgradableRTSLayerHudPaintable};
 }
 
 

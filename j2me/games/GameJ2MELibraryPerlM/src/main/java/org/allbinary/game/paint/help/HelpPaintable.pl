@@ -27,12 +27,12 @@ sub _init_fields {
     $self->{updateMyFontProcessor} = 'org::allbinary::graphics::font::UpdateMyFontProcessor'->new($self);
     $self->{myFontProcessor} = $self->{updateMyFontProcessor};
     $self->{anchor} = $org::allbinary::graphics::Anchor::TOP_LEFT;
-    $self->{title} = undef;
+    $self->{title} = undef unless exists $self->{title};
     $self->{inputInfo} = 'org::allbinary::logic::string::StringUtil'->getInstance()->getArrayInstance();
-    $self->{basicColor} = undef;
-    $self->{titleBeginWidth} = 0;
+    $self->{basicColor} = undef unless exists $self->{basicColor};
+    $self->{titleBeginWidth} = 0 unless exists $self->{titleBeginWidth};
     $self->{beginWidthArray} = 'org::allbinary::logic::NullUtil'->getInstance()->{NULL_INT_ARRAY};
-    $self->{charHeight} = 0;
+    $self->{charHeight} = 0 unless exists $self->{charHeight};
 }
 
 

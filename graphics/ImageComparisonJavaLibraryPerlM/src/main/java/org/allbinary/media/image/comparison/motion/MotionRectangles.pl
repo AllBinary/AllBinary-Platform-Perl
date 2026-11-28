@@ -22,9 +22,9 @@ use parent -norequire,'java::lang::Object';
 
 sub _init_fields {
     my ($self) = @_;
-    $self->{name} = undef;
-    $self->{rectangleVector} = undef;
-    $self->{imageComparisonResult} = undef;
+    $self->{name} = undef unless exists $self->{name};
+    $self->{rectangleVector} = undef unless exists $self->{rectangleVector};
+    $self->{imageComparisonResult} = undef unless exists $self->{imageComparisonResult};
     $self->{MAX_PIXEL_DISTANCE_THRESHOLD} = 2;
 }
 

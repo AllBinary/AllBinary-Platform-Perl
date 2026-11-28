@@ -22,16 +22,16 @@ use parent -norequire,'org::allbinary::game::layer::AdvancedRTSGameLayer','org::
 
 sub _init_fields {
     my ($self) = @_;
-    $self->{buildingLevelCost} = 0;
-    $self->{productivity} = 0;
-    $self->{efficiency} = undef;
-    $self->{efficiencyPerLevel} = undef;
-    $self->{trackingEvent} = undef;
-    $self->{damageFloaters} = undef;
-    $self->{damageFloatersPaintableInterface} = undef;
-    $self->{healthBar} = undef;
-    $self->{pathsHashtable} = undef;
-    $self->{local} = 0;
+    $self->{buildingLevelCost} = 0 unless exists $self->{buildingLevelCost};
+    $self->{productivity} = 0 unless exists $self->{productivity};
+    $self->{efficiency} = undef unless exists $self->{efficiency};
+    $self->{efficiencyPerLevel} = undef unless exists $self->{efficiencyPerLevel};
+    $self->{trackingEvent} = undef unless exists $self->{trackingEvent};
+    $self->{damageFloaters} = undef unless exists $self->{damageFloaters};
+    $self->{damageFloatersPaintableInterface} = undef unless exists $self->{damageFloatersPaintableInterface};
+    $self->{healthBar} = undef unless exists $self->{healthBar};
+    $self->{pathsHashtable} = undef unless exists $self->{pathsHashtable};
+    $self->{local} = 0 unless exists $self->{local};
     $self->{timeDelayHelper} = 'org::allbinary::time::TimeDelayHelper'->new(3000);
 }
 

@@ -14,7 +14,7 @@ our $SIZE = ", Size: ";
 sub _init_fields {
     my ($self) = @_;
     $self->{arrayUtil} = 'org::allbinary::util::ArrayUtil'->getInstance();
-    $self->{objectArray} = undef;
+    $self->{objectArray} = undef unless exists $self->{objectArray};
     $self->{currentIndex} = 0;
 }
 

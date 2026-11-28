@@ -25,8 +25,8 @@ sub _init_fields {
     my ($self) = @_;
     $self->{timeDelayHelper} = 'org::allbinary::time::TimeDelayHelper'->new(2147483647);
     $self->{updateDelayHelper} = 'org::allbinary::time::TimeDelayHelper'->new(2000);
-    $self->{totalRefreshes} = 0;
-    $self->{totalFrames} = 0;
+    $self->{totalRefreshes} = 0 unless exists $self->{totalRefreshes};
+    $self->{totalFrames} = 0 unless exists $self->{totalFrames};
     $self->{gameTickTimeDelayHelper} = 'org::allbinary::time::GameTickTimeDelayHelperFactory'->getInstance();
     $self->{DEFAULT_SCALE_FACTOR} = 'org::allbinary::logic::math::ScaleFactorFactory'->getInstance()->{DEFAULT_SCALE_FACTOR};
     $self->{NOT} = "Not enough Time to Calculate";

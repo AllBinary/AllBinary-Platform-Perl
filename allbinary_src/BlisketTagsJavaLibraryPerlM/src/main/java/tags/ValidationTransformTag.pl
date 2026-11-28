@@ -23,8 +23,8 @@ use parent -norequire,'tags::TransformTag';
 sub _init_fields {
     my ($self) = @_;
     $self->{logUtil} = 'org::allbinary::logic::communication::log::LogUtil'->getInstance();
-    $self->{xslFile} = undef;
-    $self->{logic} = undef;
+    $self->{xslFile} = undef unless exists $self->{xslFile};
+    $self->{logic} = undef unless exists $self->{logic};
 }
 
 

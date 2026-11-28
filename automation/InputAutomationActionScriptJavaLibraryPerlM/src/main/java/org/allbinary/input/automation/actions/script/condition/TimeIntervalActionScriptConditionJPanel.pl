@@ -24,14 +24,14 @@ sub _init_fields {
     my ($self) = @_;
     $self->{logUtil} = 'org::allbinary::logic::communication::log::LogUtil'->getInstance();
     $self->{commonStrings} = 'org::allbinary::string::CommonStrings'->getInstance();
-    $self->{timeIntervalActionScriptConditionInterface} = undef;
-    $self->{jLabel1} = undef;
-    $self->{jLabel2} = undef;
-    $self->{okJButton} = undef;
-    $self->{timeIntervalActionJButton} = undef;
-    $self->{timeIntervalActionJDialog} = undef;
-    $self->{timeIntervalJTextField} = undef;
-    $self->{titleJLabel} = undef;
+    $self->{timeIntervalActionScriptConditionInterface} = undef unless exists $self->{timeIntervalActionScriptConditionInterface};
+    $self->{jLabel1} = undef unless exists $self->{jLabel1};
+    $self->{jLabel2} = undef unless exists $self->{jLabel2};
+    $self->{okJButton} = undef unless exists $self->{okJButton};
+    $self->{timeIntervalActionJButton} = undef unless exists $self->{timeIntervalActionJButton};
+    $self->{timeIntervalActionJDialog} = undef unless exists $self->{timeIntervalActionJDialog};
+    $self->{timeIntervalJTextField} = undef unless exists $self->{timeIntervalJTextField};
+    $self->{titleJLabel} = undef unless exists $self->{titleJLabel};
 }
 
 

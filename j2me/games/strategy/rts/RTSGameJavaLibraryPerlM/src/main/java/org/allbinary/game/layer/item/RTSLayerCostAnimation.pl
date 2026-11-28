@@ -25,12 +25,12 @@ sub _init_fields {
     $self->{logUtil} = 'org::allbinary::logic::communication::log::LogUtil'->getInstance();
     $self->{primitiveLongUtil} = 'org::allbinary::logic::math::PrimitiveLongUtil'->createPowerOfTen(10000);
     $self->{DOLLAR} = "\$";
-    $self->{image} = undef;
-    $self->{layerInterfaceFactoryInterface} = undef;
+    $self->{image} = undef unless exists $self->{image};
+    $self->{layerInterfaceFactoryInterface} = undef unless exists $self->{layerInterfaceFactoryInterface};
     $self->{myFontProcessor} = 'org::allbinary::graphics::font::UpdateMyFontProcessor'->new($self);
     $self->{costString} = 'org::allbinary::logic::NullUtil'->getInstance()->{NULL_CHAR_ARRAY};
-    $self->{len} = 0;
-    $self->{adjustedCostX} = 0;
+    $self->{len} = 0 unless exists $self->{len};
+    $self->{adjustedCostX} = 0 unless exists $self->{adjustedCostX};
     $self->{fontHeight} = 0;
 }
 

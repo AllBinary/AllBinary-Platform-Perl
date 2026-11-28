@@ -23,7 +23,7 @@ use parent -norequire,'org::allbinary::graphics::paint::Paintable','org::allbina
 sub _init_fields {
     my ($self) = @_;
     $self->{basicColor} = 'org::allbinary::graphics::color::BasicColorFactory'->getInstance()->{WHITE};
-    $self->{colorP} = 0;
+    $self->{colorP} = 0 unless exists $self->{colorP};
 }
 
 

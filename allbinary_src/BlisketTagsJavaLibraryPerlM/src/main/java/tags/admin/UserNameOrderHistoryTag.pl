@@ -22,7 +22,7 @@ use parent -norequire,'tags::StoreValidationTransformTag';
 
 sub _init_fields {
     my ($self) = @_;
-    $self->{status} = undef;
+    $self->{status} = undef unless exists $self->{status};
 }
 
 

@@ -117,7 +117,7 @@ sub getInstance_returns_same_singleton {
 
     sub _init_fields {
         my ($self) = @_;
-        $self->{hour} = undef;
+        $self->{hour} = undef unless exists $self->{hour};
     }
     
 

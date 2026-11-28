@@ -22,12 +22,12 @@ use parent -norequire,'org::allbinary::animation::Animation';
 
 sub _init_fields {
     my ($self) = @_;
-    $self->{animationInterface} = undef;
-    $self->{overlayAnimationInterface} = undef;
-    $self->{captionDx} = undef;
-    $self->{captionDy} = undef;
-    $self->{dx} = undef;
-    $self->{dy} = undef;
+    $self->{animationInterface} = undef unless exists $self->{animationInterface};
+    $self->{overlayAnimationInterface} = undef unless exists $self->{overlayAnimationInterface};
+    $self->{captionDx} = undef unless exists $self->{captionDx};
+    $self->{captionDy} = undef unless exists $self->{captionDy};
+    $self->{dx} = undef unless exists $self->{dx};
+    $self->{dy} = undef unless exists $self->{dy};
 }
 
 

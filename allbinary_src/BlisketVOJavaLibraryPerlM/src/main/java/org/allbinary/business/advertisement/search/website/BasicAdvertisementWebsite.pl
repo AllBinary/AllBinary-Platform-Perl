@@ -22,7 +22,7 @@ use parent -norequire,'java::lang::Object','org::allbinary::business::advertisem
 
 sub _init_fields {
     my ($self) = @_;
-    $self->{websiteId} = undef;
+    $self->{websiteId} = undef unless exists $self->{websiteId};
 }
 
 

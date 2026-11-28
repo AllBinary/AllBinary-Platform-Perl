@@ -34,10 +34,10 @@ sub _init_fields {
     $self->{LIGHT} = "light: ";
     $self->{FACE} = "face: ";
     $self->{TARGET} = "target: ";
-    $self->{gl10} = undef;
-    $self->{glu} = undef;
-    $self->{GL_LINE} = undef;
-    $self->{GL_QUAD_STRIP} = undef;
+    $self->{gl10} = undef unless exists $self->{gl10};
+    $self->{glu} = undef unless exists $self->{glu};
+    $self->{GL_LINE} = undef unless exists $self->{GL_LINE};
+    $self->{GL_QUAD_STRIP} = undef unless exists $self->{GL_QUAD_STRIP};
 }
 
 

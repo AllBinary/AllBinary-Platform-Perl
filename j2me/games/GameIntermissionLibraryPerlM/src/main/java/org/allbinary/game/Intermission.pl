@@ -22,7 +22,7 @@ use parent -norequire,'java::lang::Object','org::allbinary::game::IntermissionIn
 
 sub _init_fields {
     my ($self) = @_;
-    $self->{enabled} = 0;
+    $self->{enabled} = 0 unless exists $self->{enabled};
     $self->{timeElapsedHelper} = 'org::allbinary::time::TimeDelayHelper'->new(0);
     $self->{intermissionEnableListener} = 'org::allbinary::game::NullIntermissionEnableListener'->getInstance();
 }

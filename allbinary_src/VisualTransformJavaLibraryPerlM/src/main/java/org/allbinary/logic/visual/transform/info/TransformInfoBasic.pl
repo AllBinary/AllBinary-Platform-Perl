@@ -23,7 +23,7 @@ use parent -norequire,'org::allbinary::business::context::AbContext','org::allbi
 
 sub _init_fields {
     my ($self) = @_;
-    $self->{storeFrontInterface} = undef;
+    $self->{storeFrontInterface} = undef unless exists $self->{storeFrontInterface};
 }
 
 

@@ -25,11 +25,11 @@ sub _init_fields {
     my ($self) = @_;
     $self->{inputProcessorArray} = [(undef) x ('org::allbinary::game::input::InputFactory'->getInstance()->{MAX})];
     $self->{border} = 150;
-    $self->{inputList} = undef;
+    $self->{inputList} = undef unless exists $self->{inputList};
     $self->{isSingleKeyProcessing} = 'org::allbinary::game::configuration::feature::Features'->getInstance()->isFeature('org::allbinary::game::configuration::feature::InputFeatureFactory'->getInstance()->{SINGLE_KEY_REPEAT_PRESS}) || 'org::allbinary::game::configuration::feature::Features'->getInstance()->isFeature('org::allbinary::game::configuration::feature::InputFeatureFactory'->getInstance()->{SINGLE_KEY_PRESS});
-    $self->{geographicMapInterface} = undef;
-    $self->{maxBottom} = 0;
-    $self->{maxRight} = 0;
+    $self->{geographicMapInterface} = undef unless exists $self->{geographicMapInterface};
+    $self->{maxBottom} = 0 unless exists $self->{maxBottom};
+    $self->{maxRight} = 0 unless exists $self->{maxRight};
     $self->{scrollMapEvent} = 'org::allbinary::layer::event::ScrollMapEvent'->new($self);
 }
 

@@ -23,8 +23,8 @@ tie our $NULL_VELOCITY_PROPERTIES, 'java::lang::LazyStatic', sub { 'org::allbina
 
 sub _init_fields {
     my ($self) = @_;
-    $self->{maxForwardVelocity} = 0;
-    $self->{maxReverseVelocity} = 0;
+    $self->{maxForwardVelocity} = 0 unless exists $self->{maxForwardVelocity};
+    $self->{maxReverseVelocity} = 0 unless exists $self->{maxReverseVelocity};
 }
 
 

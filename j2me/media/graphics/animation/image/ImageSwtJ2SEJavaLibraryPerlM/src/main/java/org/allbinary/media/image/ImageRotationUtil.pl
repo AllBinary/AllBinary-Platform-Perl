@@ -47,7 +47,7 @@ sub rotateImage {
         my $originalImage2 = $originalImage;
         if ($self->{features}->isFeature('org::allbinary::graphics::opengles::OpenGLFeatureFactory'->getInstance()->{OPENGL})) {
             if ($image->getType() >= $org::allbinary::image::opengles::OpenGLESImage::TYPE) {
-                my $openGLESImage = java::lang::Object::jstatic('org::allbinary::media::image::ImageRotationUtil', 'SwtOpenGLESImageBridge')->getOpenGLESImage($image);
+                my $openGLESImage = 'org::allbinary::media::image::SwtOpenGLESImageBridge'->getOpenGLESImage($image);
                 $openGLESImage->{openGLESImageProperties}->{angle} = $totalAngle;
                 return;
             } else {
@@ -85,6 +85,7 @@ use org::allbinary::logic::communication::log::PreLogUtil ();
 use org::microemu::device::swt::SwtImmutableImage ();
 use org::microemu::device::swt::SwtMutableImage ();
 use org::allbinary::media::image::ImageSwtRotationUtil ();
+use org::allbinary::media::image::SwtOpenGLESImageBridge ();
 
 1;
 

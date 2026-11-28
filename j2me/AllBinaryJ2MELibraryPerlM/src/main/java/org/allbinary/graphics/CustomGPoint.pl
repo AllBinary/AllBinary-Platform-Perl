@@ -23,9 +23,9 @@ tie our $NULL_CUSTOM_POINT, 'java::lang::LazyStatic', sub { 'org::allbinary::gra
 
 sub _init_fields {
     my ($self) = @_;
-    $self->{cx} = 0;
-    $self->{cy} = 0;
-    $self->{cz} = 0;
+    $self->{cx} = 0 unless exists $self->{cx};
+    $self->{cy} = 0 unless exists $self->{cy};
+    $self->{cz} = 0 unless exists $self->{cz};
 }
 
 

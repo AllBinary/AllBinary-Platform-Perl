@@ -22,7 +22,7 @@ use parent -norequire,'org::allbinary::game::input::PlayerGameInput';
 
 sub _init_fields {
     my ($self) = @_;
-    $self->{highScoresCanvas} = undef;
+    $self->{highScoresCanvas} = undef unless exists $self->{highScoresCanvas};
 }
 
 

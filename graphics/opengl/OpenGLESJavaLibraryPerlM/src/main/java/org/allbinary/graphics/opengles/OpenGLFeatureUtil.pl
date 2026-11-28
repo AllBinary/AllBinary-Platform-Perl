@@ -23,7 +23,7 @@ tie our $instance, 'java::lang::LazyStatic', sub { 'org::allbinary::graphics::op
 
 sub _init_fields {
     my ($self) = @_;
-    $self->{anyThreed} = undef;
+    $self->{anyThreed} = undef unless exists $self->{anyThreed};
 }
 
 

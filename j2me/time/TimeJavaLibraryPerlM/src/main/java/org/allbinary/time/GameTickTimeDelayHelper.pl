@@ -23,9 +23,9 @@ use parent -norequire,'java::lang::Object';
 
 sub _init_fields {
     my ($self) = @_;
-    $self->{timeDelta} = 0;
-    $self->{startTime} = undef;
-    $self->{lastStartTime} = undef;
+    $self->{timeDelta} = 0 unless exists $self->{timeDelta};
+    $self->{startTime} = undef unless exists $self->{startTime};
+    $self->{lastStartTime} = undef unless exists $self->{lastStartTime};
 }
 
 

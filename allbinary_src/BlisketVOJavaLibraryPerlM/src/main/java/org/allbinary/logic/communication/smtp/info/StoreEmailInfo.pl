@@ -23,7 +23,7 @@ use parent -norequire,'org::allbinary::logic::communication::smtp::info::BasicEm
 sub _init_fields {
     my ($self) = @_;
     $self->{logUtil} = 'org::allbinary::logic::communication::log::LogUtil'->getInstance();
-    $self->{storeFrontInterface} = undef;
+    $self->{storeFrontInterface} = undef unless exists $self->{storeFrontInterface};
 }
 
 

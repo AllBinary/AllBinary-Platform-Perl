@@ -22,10 +22,10 @@ use parent -norequire,'org::allbinary::game::physics::FrictionProperties';
 
 sub _init_fields {
     my ($self) = @_;
-    $self->{TIRE_FRICTION_NOMINATOR} = undef;
-    $self->{BRAKE_FRICTION_NOMINATOR} = undef;
-    $self->{AIR_FRICTION_NOMINATOR} = undef;
-    $self->{CRASH_FRICTION_NOMINATOR} = undef;
+    $self->{TIRE_FRICTION_NOMINATOR} = undef unless exists $self->{TIRE_FRICTION_NOMINATOR};
+    $self->{BRAKE_FRICTION_NOMINATOR} = undef unless exists $self->{BRAKE_FRICTION_NOMINATOR};
+    $self->{AIR_FRICTION_NOMINATOR} = undef unless exists $self->{AIR_FRICTION_NOMINATOR};
+    $self->{CRASH_FRICTION_NOMINATOR} = undef unless exists $self->{CRASH_FRICTION_NOMINATOR};
 }
 
 

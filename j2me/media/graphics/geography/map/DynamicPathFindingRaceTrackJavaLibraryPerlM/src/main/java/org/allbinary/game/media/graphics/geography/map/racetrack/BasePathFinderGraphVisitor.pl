@@ -22,10 +22,10 @@ use parent -norequire,'org::allbinary::media::graphics::geography::pathfinding::
 
 sub _init_fields {
     my ($self) = @_;
-    $self->{geographicMapInterface} = undef;
-    $self->{edgeMinimum} = undef;
-    $self->{minPathWeight} = undef;
-    $self->{maxPathWeight} = undef;
+    $self->{geographicMapInterface} = undef unless exists $self->{geographicMapInterface};
+    $self->{edgeMinimum} = undef unless exists $self->{edgeMinimum};
+    $self->{minPathWeight} = undef unless exists $self->{minPathWeight};
+    $self->{maxPathWeight} = undef unless exists $self->{maxPathWeight};
 }
 
 

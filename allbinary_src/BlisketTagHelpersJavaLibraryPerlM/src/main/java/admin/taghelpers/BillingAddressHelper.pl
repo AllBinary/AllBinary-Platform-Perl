@@ -24,11 +24,11 @@ sub _init_fields {
     my ($self) = @_;
     $self->{logUtil} = 'org::allbinary::logic::communication::log::LogUtil'->getInstance();
     $self->{stringUtil} = 'org::allbinary::logic::string::StringUtil'->getInstance();
-    $self->{weblisketSession} = undef;
-    $self->{request} = undef;
-    $self->{userName} = undef;
-    $self->{streetAddress} = undef;
-    $self->{portion} = undef;
+    $self->{weblisketSession} = undef unless exists $self->{weblisketSession};
+    $self->{request} = undef unless exists $self->{request};
+    $self->{userName} = undef unless exists $self->{userName};
+    $self->{streetAddress} = undef unless exists $self->{streetAddress};
+    $self->{portion} = undef unless exists $self->{portion};
 }
 
 

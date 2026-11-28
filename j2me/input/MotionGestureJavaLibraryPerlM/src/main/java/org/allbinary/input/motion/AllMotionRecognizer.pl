@@ -25,12 +25,12 @@ tie our $pointCircularPool, 'java::lang::LazyStatic', sub { 'org::allbinary::gra
 sub _init_fields {
     my ($self) = @_;
     $self->{logUtil} = 'org::allbinary::logic::communication::log::LogUtil'->getInstance();
-    $self->{motionGestureRecognizer} = undef;
+    $self->{motionGestureRecognizer} = undef unless exists $self->{motionGestureRecognizer};
     $self->{touchButtonProcessing} = 0;
-    $self->{touchButtonRecognizer} = undef;
-    $self->{id} = undef;
-    $self->{lastX} = 0;
-    $self->{lastY} = 0;
+    $self->{touchButtonRecognizer} = undef unless exists $self->{touchButtonRecognizer};
+    $self->{id} = undef unless exists $self->{id};
+    $self->{lastX} = 0 unless exists $self->{lastX};
+    $self->{lastY} = 0 unless exists $self->{lastY};
 }
 
 

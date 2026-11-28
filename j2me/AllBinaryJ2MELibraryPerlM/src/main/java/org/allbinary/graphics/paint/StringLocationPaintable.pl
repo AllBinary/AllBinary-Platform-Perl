@@ -22,7 +22,7 @@ use parent -norequire,'org::allbinary::graphics::paint::LocationPaintable';
 
 sub _init_fields {
     my ($self) = @_;
-    $self->{value} = undef;
+    $self->{value} = undef unless exists $self->{value};
 }
 
 

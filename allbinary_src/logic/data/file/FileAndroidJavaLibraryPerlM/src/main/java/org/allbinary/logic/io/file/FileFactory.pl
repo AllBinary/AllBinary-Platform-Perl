@@ -23,7 +23,7 @@ tie our $SINGLETON, 'java::lang::LazyStatic', sub { 'org::allbinary::logic::io::
 
 sub _init_fields {
     my ($self) = @_;
-    $self->{context} = undef;
+    $self->{context} = undef unless exists $self->{context};
 }
 
 

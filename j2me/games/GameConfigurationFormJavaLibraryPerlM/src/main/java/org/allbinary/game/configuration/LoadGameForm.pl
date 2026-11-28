@@ -23,7 +23,7 @@ use parent -norequire,'org::allbinary::graphics::displayable::screen::CommandFor
 sub _init_fields {
     my ($self) = @_;
     $self->{meUtil} = 'org::allbinary::MIDPUtil'->getInstance();
-    $self->{areChoices} = 0;
+    $self->{areChoices} = 0 unless exists $self->{areChoices};
 }
 
 

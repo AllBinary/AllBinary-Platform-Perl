@@ -22,7 +22,7 @@ use parent -norequire,'org::allbinary::game::combat::destroy::DestroyableBaseBeh
 
 sub _init_fields {
     my ($self) = @_;
-    $self->{ownerLayer} = undef;
+    $self->{ownerLayer} = undef unless exists $self->{ownerLayer};
     $self->{destroyed} = 0;
 }
 

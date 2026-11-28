@@ -29,7 +29,7 @@ sub _init_fields {
     $self->{enumerationUtil} = 'org::allbinary::util::EnumerationUtil'->getInstance();
     $self->{inputMapping} = 'org::allbinary::game::input::mapping::InputToGameKeyMapping'->new();
     $self->{inputMappingEventListenerInterface} = $org::allbinary::game::input::mapping::event::NullInputMappingEventListener::NULL_INPUT_MAPPING_EVENT_LISTENER;
-    $self->{inputPersistance} = undef;
+    $self->{inputPersistance} = undef unless exists $self->{inputPersistance};
     $self->{inputMappingEvent} = 'org::allbinary::game::input::mapping::event::InputMappingEvent'->new($self);
 }
 

@@ -23,8 +23,8 @@ tie our $ZERO_BIGDECIMAL, 'java::lang::LazyStatic', sub { 'org::allbinary::logic
 
 sub _init_fields {
     my ($self) = @_;
-    $self->{units} = undef;
-    $self->{scaled} = 0;
+    $self->{units} = undef unless exists $self->{units};
+    $self->{scaled} = 0 unless exists $self->{scaled};
     $self->{factor} = 'org::allbinary::logic::math::ScaleFactorFactory'->getInstance()->{DEFAULT_SCALE_FACTOR};
     $self->{factorValue} = 'org::allbinary::logic::math::ScaleFactorFactory'->getInstance()->{DEFAULT_SCALE_VALUE};
 }

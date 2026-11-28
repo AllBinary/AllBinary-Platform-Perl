@@ -25,8 +25,8 @@ sub _init_fields {
     my ($self) = @_;
     $self->{logUtil} = 'org::allbinary::logic::communication::log::LogUtil'->getInstance();
     $self->{INDENT_NUMBER} = "indent-number";
-    $self->{indent} = 0;
-    $self->{ignoreDeclaration} = 0;
+    $self->{indent} = 0 unless exists $self->{indent};
+    $self->{ignoreDeclaration} = 0 unless exists $self->{ignoreDeclaration};
 }
 
 

@@ -22,7 +22,7 @@ use parent -norequire,'org::allbinary::game::ai::BasicAI';
 
 sub _init_fields {
     my ($self) = @_;
-    $self->{allowedDistance} = undef;
+    $self->{allowedDistance} = undef unless exists $self->{allowedDistance};
 }
 
 

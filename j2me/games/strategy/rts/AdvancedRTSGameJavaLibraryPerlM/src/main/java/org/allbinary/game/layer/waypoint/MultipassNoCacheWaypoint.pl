@@ -23,7 +23,7 @@ use parent -norequire,'org::allbinary::game::layer::waypoint::WaypointBase','org
 sub _init_fields {
     my ($self) = @_;
     $self->{logUtil} = 'org::allbinary::logic::communication::log::LogUtil'->getInstance();
-    $self->{ownerLayer} = undef;
+    $self->{ownerLayer} = undef unless exists $self->{ownerLayer};
 }
 
 

@@ -30,9 +30,9 @@ sub _init_fields {
     $self->{POST} = "POST\"";
     $self->{METHODS} = [$self->{GET}, $self->{POST}];
     $self->{METHOD} = "METHOD=\"";
-    $self->{method} = undef;
-    $self->{action} = undef;
-    $self->{inputs} = undef;
+    $self->{method} = undef unless exists $self->{method};
+    $self->{action} = undef unless exists $self->{action};
+    $self->{inputs} = undef unless exists $self->{inputs};
 }
 
 

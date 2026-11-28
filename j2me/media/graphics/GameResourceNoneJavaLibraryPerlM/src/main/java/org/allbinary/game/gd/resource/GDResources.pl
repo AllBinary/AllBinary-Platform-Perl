@@ -24,7 +24,7 @@ tie our $instance, 'java::lang::LazyStatic', sub { 'org::allbinary::game::gd::re
 sub _init_fields {
     my ($self) = @_;
     $self->{resourceStringArray} = [];
-    $self->{currentLayoutRequiredTotal} = 0;
+    $self->{currentLayoutRequiredTotal} = 0 unless exists $self->{currentLayoutRequiredTotal};
 }
 
 sub new {

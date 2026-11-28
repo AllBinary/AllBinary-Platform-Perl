@@ -28,15 +28,15 @@ sub _init_fields {
 
 sub new {
     my ($class, @arguments) = @_;
-    return $class->_new3(@arguments) if scalar(@arguments) == 3;
-    return $class->_new3(@arguments) if scalar(@arguments) == 3;
+    return _new3($class, @arguments) if scalar(@arguments) == 3;
+    return _new3($class, @arguments) if scalar(@arguments) == 3;
     die "No constructor of GraphicsException takes " . scalar(@arguments) . " arguments";
 }
 
 sub _new3 {
     my ($class, @arguments) = @_;
-    return $class->_new3_1(@arguments) if 1 && !ref($arguments[0]) && (!defined($arguments[1]) || (ref($arguments[1]) && ref($arguments[1]) ne 'ARRAY')) && !ref($arguments[2]);
-    return $class->_new3_2(@arguments);
+    return _new3_1($class, @arguments) if 1 && !ref($arguments[0]) && (!defined($arguments[1]) || (ref($arguments[1]) && ref($arguments[1]) ne 'ARRAY')) && !ref($arguments[2]);
+    return _new3_2($class, @arguments);
 }
 
 

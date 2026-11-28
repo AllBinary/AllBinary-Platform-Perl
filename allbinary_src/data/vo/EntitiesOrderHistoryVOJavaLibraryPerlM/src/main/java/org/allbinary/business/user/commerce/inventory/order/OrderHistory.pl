@@ -22,33 +22,33 @@ use parent -norequire,'org::allbinary::business::user::commerce::inventory::orde
 
 sub _init_fields {
     my ($self) = @_;
-    $self->{userName} = undef;
-    $self->{shippingAddress} = undef;
-    $self->{billingAddress} = undef;
-    $self->{payment} = undef;
-    $self->{shipDate} = undef;
-    $self->{orderDate} = undef;
-    $self->{transDate} = undef;
-    $self->{cancelDate} = undef;
-    $self->{status} = undef;
-    $self->{subTotal} = undef;
-    $self->{shippingCost} = undef;
-    $self->{taxes} = undef;
-    $self->{total} = undef;
+    $self->{userName} = undef unless exists $self->{userName};
+    $self->{shippingAddress} = undef unless exists $self->{shippingAddress};
+    $self->{billingAddress} = undef unless exists $self->{billingAddress};
+    $self->{payment} = undef unless exists $self->{payment};
+    $self->{shipDate} = undef unless exists $self->{shipDate};
+    $self->{orderDate} = undef unless exists $self->{orderDate};
+    $self->{transDate} = undef unless exists $self->{transDate};
+    $self->{cancelDate} = undef unless exists $self->{cancelDate};
+    $self->{status} = undef unless exists $self->{status};
+    $self->{subTotal} = undef unless exists $self->{subTotal};
+    $self->{shippingCost} = undef unless exists $self->{shippingCost};
+    $self->{taxes} = undef unless exists $self->{taxes};
+    $self->{total} = undef unless exists $self->{total};
 }
 
 sub new {
     my ($class, @arguments) = @_;
-    return $class->_new1(@arguments) if scalar(@arguments) == 1;
-    return $class->_new2(@arguments) if scalar(@arguments) == 2;
-    return $class->_new2(@arguments) if scalar(@arguments) == 2;
+    return _new1($class, @arguments) if scalar(@arguments) == 1;
+    return _new2($class, @arguments) if scalar(@arguments) == 2;
+    return _new2($class, @arguments) if scalar(@arguments) == 2;
     die "No constructor of OrderHistory takes " . scalar(@arguments) . " arguments";
 }
 
 sub _new2 {
     my ($class, @arguments) = @_;
-    return $class->_new2_1(@arguments) if 1 && (!defined($arguments[0]) || (ref($arguments[0]) && ref($arguments[0]) ne 'ARRAY')) && (!defined($arguments[1]) || (ref($arguments[1]) && ref($arguments[1]) ne 'ARRAY'));
-    return $class->_new2_2(@arguments);
+    return _new2_1($class, @arguments) if 1 && (!defined($arguments[0]) || (ref($arguments[0]) && ref($arguments[0]) ne 'ARRAY')) && (!defined($arguments[1]) || (ref($arguments[1]) && ref($arguments[1]) ne 'ARRAY'));
+    return _new2_2($class, @arguments);
 }
 
 

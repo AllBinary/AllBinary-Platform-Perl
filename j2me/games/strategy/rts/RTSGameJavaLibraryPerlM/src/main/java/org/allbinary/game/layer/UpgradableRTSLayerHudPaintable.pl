@@ -25,16 +25,16 @@ sub _init_fields {
     my ($self) = @_;
     $self->{PERCENT} = "%";
     $self->{rtsLayer} = 'org::allbinary::game::layer::special::CollidableDestroyableDamageableLayer'->getNullInstance();
-    $self->{costY} = 0;
-    $self->{costY1} = 0;
-    $self->{percentCompleteX2} = 0;
-    $self->{rtsLayerCompositePaintableLateInit} = undef;
-    $self->{charHeight} = 0;
-    $self->{charWidth} = 0;
-    $self->{percentComplete} = 0;
-    $self->{percentCompleteX} = 0;
+    $self->{costY} = 0 unless exists $self->{costY};
+    $self->{costY1} = 0 unless exists $self->{costY1};
+    $self->{percentCompleteX2} = 0 unless exists $self->{percentCompleteX2};
+    $self->{rtsLayerCompositePaintableLateInit} = undef unless exists $self->{rtsLayerCompositePaintableLateInit};
+    $self->{charHeight} = 0 unless exists $self->{charHeight};
+    $self->{charWidth} = 0 unless exists $self->{charWidth};
+    $self->{percentComplete} = 0 unless exists $self->{percentComplete};
+    $self->{percentCompleteX} = 0 unless exists $self->{percentCompleteX};
     $self->{percentCompleteArray} = 'org::allbinary::logic::java::character::CharArrayFactory'->getInstance()->getZeroCharArray();
-    $self->{currentTotalDigits} = 0;
+    $self->{currentTotalDigits} = 0 unless exists $self->{currentTotalDigits};
 }
 
 

@@ -25,7 +25,7 @@ sub _init_fields {
     $self->{logUtil} = 'org::allbinary::logic::communication::log::LogUtil'->getInstance();
     $self->{commonStrings} = 'org::allbinary::string::CommonStrings'->getInstance();
     $self->{eventStrings} = 'org::allbinary::logic::util::event::EventStrings'->getInstance();
-    $self->{eventListenerInterfaceList} = undef;
+    $self->{eventListenerInterfaceList} = undef unless exists $self->{eventListenerInterfaceList};
 }
 
 

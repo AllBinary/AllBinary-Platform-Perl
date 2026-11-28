@@ -23,18 +23,18 @@ use parent -norequire,'tags::CustomTagSupport';
 sub _init_fields {
     my ($self) = @_;
     $self->{logUtil} = 'org::allbinary::logic::communication::log::LogUtil'->getInstance();
-    $self->{attemptsInteger} = undef;
-    $self->{weblisketSession} = undef;
-    $self->{request} = undef;
-    $self->{command} = undef;
-    $self->{userName} = undef;
-    $self->{password} = undef;
-    $self->{newPassword} = undef;
-    $self->{authenticated} = undef;
-    $self->{sessionUserName} = undef;
-    $self->{role} = undef;
-    $self->{timeout} = undef;
-    $self->{roles} = undef;
+    $self->{attemptsInteger} = undef unless exists $self->{attemptsInteger};
+    $self->{weblisketSession} = undef unless exists $self->{weblisketSession};
+    $self->{request} = undef unless exists $self->{request};
+    $self->{command} = undef unless exists $self->{command};
+    $self->{userName} = undef unless exists $self->{userName};
+    $self->{password} = undef unless exists $self->{password};
+    $self->{newPassword} = undef unless exists $self->{newPassword};
+    $self->{authenticated} = undef unless exists $self->{authenticated};
+    $self->{sessionUserName} = undef unless exists $self->{sessionUserName};
+    $self->{role} = undef unless exists $self->{role};
+    $self->{timeout} = undef unless exists $self->{timeout};
+    $self->{roles} = undef unless exists $self->{roles};
 }
 
 

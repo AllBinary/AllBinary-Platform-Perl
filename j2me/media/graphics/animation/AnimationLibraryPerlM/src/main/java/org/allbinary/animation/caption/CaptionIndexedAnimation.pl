@@ -22,16 +22,16 @@ use parent -norequire,'org::allbinary::animation::IndexedAnimation';
 
 sub _init_fields {
     my ($self) = @_;
-    $self->{animationInterface} = undef;
-    $self->{movieIndexedAnimationInterface} = undef;
-    $self->{captionDx} = undef;
-    $self->{captionDy} = undef;
-    $self->{dx} = undef;
-    $self->{dy} = undef;
-    $self->{time} = undef;
-    $self->{END_EVENT} = undef;
-    $self->{timeDelayHelper} = undef;
-    $self->{player} = undef;
+    $self->{animationInterface} = undef unless exists $self->{animationInterface};
+    $self->{movieIndexedAnimationInterface} = undef unless exists $self->{movieIndexedAnimationInterface};
+    $self->{captionDx} = undef unless exists $self->{captionDx};
+    $self->{captionDy} = undef unless exists $self->{captionDy};
+    $self->{dx} = undef unless exists $self->{dx};
+    $self->{dy} = undef unless exists $self->{dy};
+    $self->{time} = undef unless exists $self->{time};
+    $self->{END_EVENT} = undef unless exists $self->{END_EVENT};
+    $self->{timeDelayHelper} = undef unless exists $self->{timeDelayHelper};
+    $self->{player} = undef unless exists $self->{player};
 }
 
 

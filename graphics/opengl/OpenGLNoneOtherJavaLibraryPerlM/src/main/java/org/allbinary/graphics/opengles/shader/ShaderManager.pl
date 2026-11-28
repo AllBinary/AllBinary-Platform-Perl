@@ -25,8 +25,8 @@ sub _init_fields {
     my ($self) = @_;
     $self->{LOAD_SHADER} = "loadShader";
     $self->{commonStrings} = 'org::allbinary::string::CommonStrings'->getInstance();
-    $self->{GL_VERTEX_SHADER} = undef;
-    $self->{GL_FRAGMENT_SHADER} = undef;
+    $self->{GL_VERTEX_SHADER} = undef unless exists $self->{GL_VERTEX_SHADER};
+    $self->{GL_FRAGMENT_SHADER} = undef unless exists $self->{GL_FRAGMENT_SHADER};
 }
 
 

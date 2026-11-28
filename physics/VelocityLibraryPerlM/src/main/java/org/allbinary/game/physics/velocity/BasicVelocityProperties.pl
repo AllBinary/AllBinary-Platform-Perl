@@ -23,9 +23,9 @@ use parent -norequire,'java::lang::Object','org::allbinary::game::physics::veloc
 sub _init_fields {
     my ($self) = @_;
     $self->{logUtil} = 'org::allbinary::logic::communication::log::LogUtil'->getInstance();
-    $self->{velocityXBasicDecimal} = undef;
-    $self->{velocityYBasicDecimal} = undef;
-    $self->{velocityZBasicDecimal} = undef;
+    $self->{velocityXBasicDecimal} = undef unless exists $self->{velocityXBasicDecimal};
+    $self->{velocityYBasicDecimal} = undef unless exists $self->{velocityYBasicDecimal};
+    $self->{velocityZBasicDecimal} = undef unless exists $self->{velocityZBasicDecimal};
     $self->{axisMathVectorUtil} = 'org::allbinary::logic::math::vector::AxisMathVectorUtil'->getInstance();
     $self->{directionUtil} = 'org::allbinary::direction::DirectionUtil'->getInstance();
 }

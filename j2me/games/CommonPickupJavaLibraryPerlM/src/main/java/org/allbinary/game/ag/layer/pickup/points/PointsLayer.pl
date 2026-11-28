@@ -22,7 +22,7 @@ use parent -norequire,'org::allbinary::layer::AllBinaryLayer';
 
 sub _init_fields {
     my ($self) = @_;
-    $self->{points} = undef;
+    $self->{points} = undef unless exists $self->{points};
 }
 
 

@@ -25,9 +25,9 @@ sub _init_fields {
     my ($self) = @_;
     $self->{logUtil} = 'org::allbinary::logic::communication::log::LogUtil'->getInstance();
     $self->{sqlConnectionPool} = 'org::allbinary::logic::communication::sql::connection::pool::SqlConnectionPool'->getInstance();
-    $self->{databaseConnectionInfoInterface} = undef;
-    $self->{connectAttemptCounter} = undef;
-    $self->{conn} = undef;
+    $self->{databaseConnectionInfoInterface} = undef unless exists $self->{databaseConnectionInfoInterface};
+    $self->{connectAttemptCounter} = undef unless exists $self->{connectAttemptCounter};
+    $self->{conn} = undef unless exists $self->{conn};
     $self->{stringUtil} = 'org::allbinary::logic::string::StringUtil'->getInstance();
     $self->{commonStrings} = 'org::allbinary::string::CommonStrings'->getInstance();
     $self->{commonSeps} = 'org::allbinary::string::CommonSeps'->getInstance();

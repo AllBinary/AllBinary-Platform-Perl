@@ -24,7 +24,7 @@ sub _init_fields {
     my ($self) = @_;
     $self->{logUtil} = 'org::allbinary::logic::communication::log::LogUtil'->getInstance();
     $self->{streamUtil} = 'org::allbinary::logic::io::StreamUtil'->getInstance();
-    $self->{abeClientInformation} = undef;
+    $self->{abeClientInformation} = undef unless exists $self->{abeClientInformation};
 }
 
 

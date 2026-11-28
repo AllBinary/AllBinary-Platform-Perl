@@ -23,7 +23,7 @@ use parent -norequire,'java::lang::Object','org::allbinary::layer::LayerProcesso
 sub _init_fields {
     my ($self) = @_;
     $self->{commonStrings} = 'org::allbinary::string::CommonStrings'->getInstance();
-    $self->{layerManager} = undef;
+    $self->{layerManager} = undef unless exists $self->{layerManager};
 }
 
 

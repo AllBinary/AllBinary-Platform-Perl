@@ -28,7 +28,7 @@ sub _init_fields {
     $self->{VIBRATING} = "Vibrating";
     $self->{myFontProcessor} = 'org::allbinary::graphics::font::UpdateMyFontProcessor'->new($self);
     $self->{anchor} = $org::allbinary::graphics::Anchor::TOP_LEFT;
-    $self->{width} = 0;
+    $self->{width} = 0 unless exists $self->{width};
 }
 
 sub new {

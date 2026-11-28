@@ -24,8 +24,8 @@ sub _init_fields {
     my ($self) = @_;
     $self->{logUtil} = 'org::allbinary::logic::communication::log::LogUtil'->getInstance();
     $self->{commonStrings} = 'org::allbinary::string::CommonStrings'->getInstance();
-    $self->{inputMappingInterface} = undef;
-    $self->{touchButtonsPaintable} = undef;
+    $self->{inputMappingInterface} = undef unless exists $self->{inputMappingInterface};
+    $self->{touchButtonsPaintable} = undef unless exists $self->{touchButtonsPaintable};
     $self->{timeHelper} = 'org::allbinary::time::TimeDelayHelper'->new(250);
     $self->{released} = 1;
     $self->{METHOD_NAME} = "onCompleteMotionGestureInputEvent";

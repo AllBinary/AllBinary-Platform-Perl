@@ -22,8 +22,8 @@ use parent -norequire,'org::allbinary::graphics::paint::Paintable';
 
 sub _init_fields {
     my ($self) = @_;
-    $self->{foregroundBasicColor} = undef;
-    $self->{foregroundColor} = undef;
+    $self->{foregroundBasicColor} = undef unless exists $self->{foregroundBasicColor};
+    $self->{foregroundColor} = undef unless exists $self->{foregroundColor};
     $self->{basicSetColorUtil} = 'org::allbinary::graphics::color::BasicColorSetUtil'->getInstance();
     $self->{touchButtonFactory} = 'org::allbinary::input::motion::button::TouchButtonFactory'->getInstance();
 }

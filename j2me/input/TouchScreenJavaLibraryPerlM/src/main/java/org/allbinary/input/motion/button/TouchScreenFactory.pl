@@ -24,9 +24,9 @@ tie our $SINGLETON, 'java::lang::LazyStatic', sub { 'org::allbinary::input::moti
 sub _init_fields {
     my ($self) = @_;
     $self->{logUtil} = 'org::allbinary::logic::communication::log::LogUtil'->getInstance();
-    $self->{touch} = 0;
-    $self->{multiTouch} = 0;
-    $self->{multiTouchDistinct} = 0;
+    $self->{touch} = 0 unless exists $self->{touch};
+    $self->{multiTouch} = 0 unless exists $self->{multiTouch};
+    $self->{multiTouchDistinct} = 0 unless exists $self->{multiTouchDistinct};
     $self->{touchScreenType} = 'org::allbinary::input::motion::button::TouchScreenTypesFactory'->getInstance()->{NOTOUCH};
 }
 

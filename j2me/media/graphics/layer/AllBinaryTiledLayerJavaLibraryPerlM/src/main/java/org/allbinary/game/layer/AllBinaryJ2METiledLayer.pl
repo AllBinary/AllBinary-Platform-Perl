@@ -22,8 +22,8 @@ use parent -norequire,'org::allbinary::game::layer::AllBinaryTiledLayer';
 
 sub _init_fields {
     my ($self) = @_;
-    $self->{tiledLayerP} = undef;
-    $self->{debugColor} = undef;
+    $self->{tiledLayerP} = undef unless exists $self->{tiledLayerP};
+    $self->{debugColor} = undef unless exists $self->{debugColor};
     $self->{font2} = 'javax::microedition::lcdui::Font'->getFont($javax::microedition::lcdui::Font::FACE_SYSTEM, $javax::microedition::lcdui::Font::STYLE_PLAIN, 4);
 }
 

@@ -89,7 +89,7 @@ sub changeColor {
     my ($self, $unusedOriginalImage, $image, $imageIndex, $basicColor) = @_;
         if ($self->{features}->isFeature('org::allbinary::graphics::opengles::OpenGLFeatureFactory'->getInstance()->{OPENGL})) {
             if ($image->getType() >= $org::allbinary::image::opengles::OpenGLESImage::TYPE) {
-                my $openGLESImage = java::lang::Object::jstatic('org::allbinary::media::image::ImageModifierUtil', 'SwtOpenGLESImageBridge')->getOpenGLESImage($image);
+                my $openGLESImage = 'org::allbinary::media::image::SwtOpenGLESImageBridge'->getOpenGLESImage($image);
                 $openGLESImage->{imageProcessor} = 'org::allbinary::image::opengles::ModifierOpenGLESImageProcessor'->getInstance();
                 $openGLESImage->{openGLESImageProperties}->{redf} = $basicColor->getRedComponent();
                 $openGLESImage->{openGLESImageProperties}->{greenf} = $basicColor->getGreenComponent();
@@ -134,7 +134,7 @@ sub setAlpha {
     my ($self, $unusedOriginalImage, $image, $imageIndex, $alphaInt) = @_;
         if ($self->{features}->isFeature('org::allbinary::graphics::opengles::OpenGLFeatureFactory'->getInstance()->{OPENGL})) {
             if ($image->getType() >= $org::allbinary::image::opengles::OpenGLESImage::TYPE) {
-                my $openGLESImage = java::lang::Object::jstatic('org::allbinary::media::image::ImageModifierUtil', 'SwtOpenGLESImageBridge')->getOpenGLESImage($image);
+                my $openGLESImage = 'org::allbinary::media::image::SwtOpenGLESImageBridge'->getOpenGLESImage($image);
                 $openGLESImage->{imageProcessor} = 'org::allbinary::image::opengles::ModifierOpenGLESImageProcessor'->getInstance();
                 $openGLESImage->{openGLESImageProperties}->{alphaf} = ($alphaInt) / 255;
                 return;
@@ -203,6 +203,7 @@ use org::allbinary::logic::communication::log::PreLogUtil ();
 use org::microemu::device::swt::SwtImmutableImage ();
 use org::microemu::device::swt::SwtMutableImage ();
 use org::allbinary::media::image::ImageCopyUtil ();
+use org::allbinary::media::image::SwtOpenGLESImageBridge ();
 
 1;
 

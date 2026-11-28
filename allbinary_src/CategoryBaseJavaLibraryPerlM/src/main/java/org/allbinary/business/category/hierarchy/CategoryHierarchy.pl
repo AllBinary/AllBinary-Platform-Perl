@@ -22,23 +22,23 @@ use parent -norequire,'java::lang::Object','org::allbinary::business::category::
 
 sub _init_fields {
     my ($self) = @_;
-    $self->{rootCategoryInterface} = undef;
-    $self->{parentCategoryInterface} = undef;
-    $self->{level} = undef;
+    $self->{rootCategoryInterface} = undef unless exists $self->{rootCategoryInterface};
+    $self->{parentCategoryInterface} = undef unless exists $self->{parentCategoryInterface};
+    $self->{level} = undef unless exists $self->{level};
 }
 
 sub new {
     my ($class, @arguments) = @_;
-    return $class->_new2(@arguments) if scalar(@arguments) == 2;
-    return $class->_new3(@arguments) if scalar(@arguments) == 3;
-    return $class->_new3(@arguments) if scalar(@arguments) == 3;
+    return _new2($class, @arguments) if scalar(@arguments) == 2;
+    return _new3($class, @arguments) if scalar(@arguments) == 3;
+    return _new3($class, @arguments) if scalar(@arguments) == 3;
     die "No constructor of CategoryHierarchy takes " . scalar(@arguments) . " arguments";
 }
 
 sub _new3 {
     my ($class, @arguments) = @_;
-    return $class->_new3_1(@arguments) if 1 && (!defined($arguments[0]) || (ref($arguments[0]) && ref($arguments[0]) ne 'ARRAY')) && (!defined($arguments[1]) || (ref($arguments[1]) && ref($arguments[1]) ne 'ARRAY')) && !ref($arguments[2]);
-    return $class->_new3_2(@arguments);
+    return _new3_1($class, @arguments) if 1 && (!defined($arguments[0]) || (ref($arguments[0]) && ref($arguments[0]) ne 'ARRAY')) && (!defined($arguments[1]) || (ref($arguments[1]) && ref($arguments[1]) ne 'ARRAY')) && !ref($arguments[2]);
+    return _new3_2($class, @arguments);
 }
 
 

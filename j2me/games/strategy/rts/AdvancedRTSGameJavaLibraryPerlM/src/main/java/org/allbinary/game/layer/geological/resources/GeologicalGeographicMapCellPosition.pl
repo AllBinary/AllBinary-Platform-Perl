@@ -22,7 +22,7 @@ use parent -norequire,'org::allbinary::media::graphics::geography::map::Geograph
 
 sub _init_fields {
     my ($self) = @_;
-    $self->{geologicalResource} = undef;
+    $self->{geologicalResource} = undef unless exists $self->{geologicalResource};
 }
 
 

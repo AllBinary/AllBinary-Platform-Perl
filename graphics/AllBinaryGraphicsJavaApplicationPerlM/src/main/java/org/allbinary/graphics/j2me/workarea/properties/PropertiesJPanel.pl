@@ -22,19 +22,19 @@ use parent -norequire,'java::lang::Object';
 
 sub _init_fields {
     my ($self) = @_;
-    $self->{rotateJButton} = undef;
-    $self->{copyVerticalJButton} = undef;
-    $self->{leftJButton} = undef;
-    $self->{rotateJPanel} = undef;
-    $self->{angleJTextField} = undef;
-    $self->{workAreaPropertiesJPanel} = undef;
-    $self->{modifierJPanel} = undef;
-    $self->{upJButton} = undef;
-    $self->{jPanel8} = undef;
-    $self->{downJButton} = undef;
-    $self->{jPanel7} = undef;
-    $self->{rightJButton} = undef;
-    $self->{copyHorizontalJButton} = undef;
+    $self->{rotateJButton} = undef unless exists $self->{rotateJButton};
+    $self->{copyVerticalJButton} = undef unless exists $self->{copyVerticalJButton};
+    $self->{leftJButton} = undef unless exists $self->{leftJButton};
+    $self->{rotateJPanel} = undef unless exists $self->{rotateJPanel};
+    $self->{angleJTextField} = undef unless exists $self->{angleJTextField};
+    $self->{workAreaPropertiesJPanel} = undef unless exists $self->{workAreaPropertiesJPanel};
+    $self->{modifierJPanel} = undef unless exists $self->{modifierJPanel};
+    $self->{upJButton} = undef unless exists $self->{upJButton};
+    $self->{jPanel8} = undef unless exists $self->{jPanel8};
+    $self->{downJButton} = undef unless exists $self->{downJButton};
+    $self->{jPanel7} = undef unless exists $self->{jPanel7};
+    $self->{rightJButton} = undef unless exists $self->{rightJButton};
+    $self->{copyHorizontalJButton} = undef unless exists $self->{copyHorizontalJButton};
 }
 
 

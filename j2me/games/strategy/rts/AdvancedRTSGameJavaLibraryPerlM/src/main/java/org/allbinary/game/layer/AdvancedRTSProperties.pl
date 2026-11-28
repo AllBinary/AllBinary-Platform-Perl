@@ -22,10 +22,10 @@ use parent -norequire,'java::lang::Object';
 
 sub _init_fields {
     my ($self) = @_;
-    $self->{shakeListener} = undef;
-    $self->{vibration} = undef;
-    $self->{duration} = undef;
-    $self->{waypointBehaviorBase} = undef;
+    $self->{shakeListener} = undef unless exists $self->{shakeListener};
+    $self->{vibration} = undef unless exists $self->{vibration};
+    $self->{duration} = undef unless exists $self->{duration};
+    $self->{waypointBehaviorBase} = undef unless exists $self->{waypointBehaviorBase};
 }
 
 

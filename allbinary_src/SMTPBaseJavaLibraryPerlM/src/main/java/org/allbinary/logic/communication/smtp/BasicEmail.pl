@@ -22,7 +22,7 @@ use parent -norequire,'java::lang::Object','org::allbinary::logic::communication
 
 sub _init_fields {
     my ($self) = @_;
-    $self->{email} = undef;
+    $self->{email} = undef unless exists $self->{email};
 }
 
 

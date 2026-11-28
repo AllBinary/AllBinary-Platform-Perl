@@ -22,7 +22,7 @@ use parent -norequire,'org::allbinary::canvas::Processor';
 
 sub _init_fields {
     my ($self) = @_;
-    $self->{playerGameInputCompositeInterface} = undef;
+    $self->{playerGameInputCompositeInterface} = undef unless exists $self->{playerGameInputCompositeInterface};
 }
 
 

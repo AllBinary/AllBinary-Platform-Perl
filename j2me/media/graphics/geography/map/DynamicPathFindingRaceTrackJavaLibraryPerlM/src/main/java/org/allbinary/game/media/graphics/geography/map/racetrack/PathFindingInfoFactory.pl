@@ -24,10 +24,10 @@ our $instance = undef;
 sub _init_fields {
     my ($self) = @_;
     $self->{MAX_DIRECTIONS} = 4;
-    $self->{pathFindingInfo} = undef;
-    $self->{basicGeographicMapGraph} = undef;
-    $self->{basicGeographicMapPathFinder} = undef;
-    $self->{pathFinderGraphVisitorFactoryInterface} = undef;
+    $self->{pathFindingInfo} = undef unless exists $self->{pathFindingInfo};
+    $self->{basicGeographicMapGraph} = undef unless exists $self->{basicGeographicMapGraph};
+    $self->{basicGeographicMapPathFinder} = undef unless exists $self->{basicGeographicMapPathFinder};
+    $self->{pathFinderGraphVisitorFactoryInterface} = undef unless exists $self->{pathFinderGraphVisitorFactoryInterface};
 }
 
 

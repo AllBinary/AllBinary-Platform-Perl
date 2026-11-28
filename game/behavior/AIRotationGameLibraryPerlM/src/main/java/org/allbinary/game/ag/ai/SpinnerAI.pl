@@ -22,8 +22,8 @@ use parent -norequire,'org::allbinary::game::ai::BasicAI';
 
 sub _init_fields {
     my ($self) = @_;
-    $self->{isEven} = 0;
-    $self->{direction} = undef;
+    $self->{isEven} = 0 unless exists $self->{isEven};
+    $self->{direction} = undef unless exists $self->{direction};
 }
 
 

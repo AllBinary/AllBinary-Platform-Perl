@@ -24,7 +24,7 @@ tie our $TIME, 'java::lang::LazyStatic', sub { 'org::allbinary::logic::math::Sma
 sub _init_fields {
     my ($self) = @_;
     $self->{maxFireDelayTimeHelper} = 'org::allbinary::time::TimeDelayHelper'->new(0);
-    $self->{delay} = undef;
+    $self->{delay} = undef unless exists $self->{delay};
 }
 
 

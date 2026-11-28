@@ -27,8 +27,8 @@ our $TYPE = 4;
 sub _init_fields {
     my ($self) = @_;
     $self->{commonStrings} = 'org::allbinary::string::CommonStrings'->getInstance();
-    $self->{textureFactory} = undef;
-    $self->{openGLBitmap} = undef;
+    $self->{textureFactory} = undef unless exists $self->{textureFactory};
+    $self->{openGLBitmap} = undef unless exists $self->{openGLBitmap};
     $self->{openGLESImageProperties} = 'org::allbinary::image::opengles::OpenGLESImageProperties'->new();
     $self->{imageProcessor} = 'org::allbinary::image::opengles::OpenGLESImageProcessor'->getInstance();
     $self->{openGLESImageTranslate} = 'org::allbinary::image::opengles::OpenGLESImageTranslate'->getInstance();

@@ -24,10 +24,10 @@ our $MIN_API = 3;
 
 sub _init_fields {
     my ($self) = @_;
-    $self->{virtualKeyboard} = 0;
-    $self->{activity} = undef;
-    $self->{showVirtualKeyboardRunnable} = undef;
-    $self->{hideVirtualKeyboardRunnable} = undef;
+    $self->{virtualKeyboard} = 0 unless exists $self->{virtualKeyboard};
+    $self->{activity} = undef unless exists $self->{activity};
+    $self->{showVirtualKeyboardRunnable} = undef unless exists $self->{showVirtualKeyboardRunnable};
+    $self->{hideVirtualKeyboardRunnable} = undef unless exists $self->{hideVirtualKeyboardRunnable};
 }
 
 

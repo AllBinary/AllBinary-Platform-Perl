@@ -23,7 +23,7 @@ use parent -norequire,'org::allbinary::game::input::form::RTSFormInput';
 sub _init_fields {
     my ($self) = @_;
     $self->{EVENT} = 'org::allbinary::logic::util::event::AllBinaryEventObject'->new($self);
-    $self->{noMoneyGameNotificationEvent} = undef;
+    $self->{noMoneyGameNotificationEvent} = undef unless exists $self->{noMoneyGameNotificationEvent};
 }
 
 

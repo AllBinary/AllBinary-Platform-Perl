@@ -22,7 +22,7 @@ use parent -norequire,'java::lang::Object','org::allbinary::logic::util::event::
 
 sub _init_fields {
     my ($self) = @_;
-    $self->{combatGameCanvas} = undef;
+    $self->{combatGameCanvas} = undef unless exists $self->{combatGameCanvas};
 }
 
 

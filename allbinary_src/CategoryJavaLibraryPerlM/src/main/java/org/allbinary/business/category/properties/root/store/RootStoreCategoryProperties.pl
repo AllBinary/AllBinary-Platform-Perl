@@ -24,28 +24,28 @@ sub _init_fields {
     my ($self) = @_;
     $self->{logUtil} = 'org::allbinary::logic::communication::log::LogUtil'->getInstance();
     $self->{pathData} = 'org::allbinary::logic::io::path::AbPathData'->getInstance();
-    $self->{fileAbPath} = undef;
-    $self->{abPath} = undef;
-    $self->{category} = undef;
-    $self->{isRealRoot} = undef;
-    $self->{webAppAbPath} = undef;
-    $self->{transformInfoInterface} = undef;
+    $self->{fileAbPath} = undef unless exists $self->{fileAbPath};
+    $self->{abPath} = undef unless exists $self->{abPath};
+    $self->{category} = undef unless exists $self->{category};
+    $self->{isRealRoot} = undef unless exists $self->{isRealRoot};
+    $self->{webAppAbPath} = undef unless exists $self->{webAppAbPath};
+    $self->{transformInfoInterface} = undef unless exists $self->{transformInfoInterface};
 }
 
 sub new {
     my ($class, @arguments) = @_;
-    return $class->_new1(@arguments) if scalar(@arguments) == 1;
-    return $class->_new2(@arguments) if scalar(@arguments) == 2;
-    return $class->_new2(@arguments) if scalar(@arguments) == 2;
-    return $class->_new2(@arguments) if scalar(@arguments) == 2;
+    return _new1($class, @arguments) if scalar(@arguments) == 1;
+    return _new2($class, @arguments) if scalar(@arguments) == 2;
+    return _new2($class, @arguments) if scalar(@arguments) == 2;
+    return _new2($class, @arguments) if scalar(@arguments) == 2;
     die "No constructor of RootStoreCategoryProperties takes " . scalar(@arguments) . " arguments";
 }
 
 sub _new2 {
     my ($class, @arguments) = @_;
-    return $class->_new2_1(@arguments) if 1 && (!defined($arguments[0]) || (ref($arguments[0]) && ref($arguments[0]) ne 'ARRAY')) && (!defined($arguments[1]) || (ref($arguments[1]) && ref($arguments[1]) ne 'ARRAY'));
-    return $class->_new2_2(@arguments) if 1 && (!defined($arguments[0]) || (ref($arguments[0]) && ref($arguments[0]) ne 'ARRAY')) && (!defined($arguments[1]) || (ref($arguments[1]) && ref($arguments[1]) ne 'ARRAY'));
-    return $class->_new2_3(@arguments);
+    return _new2_1($class, @arguments) if 1 && (!defined($arguments[0]) || (ref($arguments[0]) && ref($arguments[0]) ne 'ARRAY')) && (!defined($arguments[1]) || (ref($arguments[1]) && ref($arguments[1]) ne 'ARRAY'));
+    return _new2_2($class, @arguments) if 1 && (!defined($arguments[0]) || (ref($arguments[0]) && ref($arguments[0]) ne 'ARRAY')) && (!defined($arguments[1]) || (ref($arguments[1]) && ref($arguments[1]) ne 'ARRAY'));
+    return _new2_3($class, @arguments);
 }
 
 

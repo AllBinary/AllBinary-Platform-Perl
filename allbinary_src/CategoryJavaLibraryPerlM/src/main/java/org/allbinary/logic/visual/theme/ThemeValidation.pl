@@ -24,27 +24,27 @@ sub _init_fields {
     my ($self) = @_;
     $self->{logUtil} = 'org::allbinary::logic::communication::log::LogUtil'->getInstance();
     $self->{commonStrings} = 'org::allbinary::string::CommonStrings'->getInstance();
-    $self->{transformInfoInterface} = undef;
-    $self->{styleValidationInterface} = undef;
-    $self->{themeName} = undef;
-    $self->{themePreviewImageName} = undef;
-    $self->{webAppAbPath} = undef;
-    $self->{categoryAbPath} = undef;
-    $self->{fileAbPath} = undef;
+    $self->{transformInfoInterface} = undef unless exists $self->{transformInfoInterface};
+    $self->{styleValidationInterface} = undef unless exists $self->{styleValidationInterface};
+    $self->{themeName} = undef unless exists $self->{themeName};
+    $self->{themePreviewImageName} = undef unless exists $self->{themePreviewImageName};
+    $self->{webAppAbPath} = undef unless exists $self->{webAppAbPath};
+    $self->{categoryAbPath} = undef unless exists $self->{categoryAbPath};
+    $self->{fileAbPath} = undef unless exists $self->{fileAbPath};
 }
 
 sub new {
     my ($class, @arguments) = @_;
-    return $class->_new3(@arguments) if scalar(@arguments) == 3;
-    return $class->_new2(@arguments) if scalar(@arguments) == 2;
-    return $class->_new2(@arguments) if scalar(@arguments) == 2;
+    return _new3($class, @arguments) if scalar(@arguments) == 3;
+    return _new2($class, @arguments) if scalar(@arguments) == 2;
+    return _new2($class, @arguments) if scalar(@arguments) == 2;
     die "No constructor of ThemeValidation takes " . scalar(@arguments) . " arguments";
 }
 
 sub _new2 {
     my ($class, @arguments) = @_;
-    return $class->_new2_1(@arguments) if 1 && (!defined($arguments[0]) || (ref($arguments[0]) && ref($arguments[0]) ne 'ARRAY')) && (!defined($arguments[1]) || (ref($arguments[1]) && ref($arguments[1]) ne 'ARRAY'));
-    return $class->_new2_2(@arguments);
+    return _new2_1($class, @arguments) if 1 && (!defined($arguments[0]) || (ref($arguments[0]) && ref($arguments[0]) ne 'ARRAY')) && (!defined($arguments[1]) || (ref($arguments[1]) && ref($arguments[1]) ne 'ARRAY'));
+    return _new2_2($class, @arguments);
 }
 
 

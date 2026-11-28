@@ -27,9 +27,9 @@ sub _init_fields {
     my ($self) = @_;
     $self->{logUtil} = 'org::allbinary::logic::communication::log::LogUtil'->getInstance();
     $self->{commonStrings} = 'org::allbinary::string::CommonStrings'->getInstance();
-    $self->{canvasJPanel} = undef;
+    $self->{canvasJPanel} = undef unless exists $self->{canvasJPanel};
     $self->{active} = 1;
-    $self->{controlIdDown} = 0;
+    $self->{controlIdDown} = 0 unless exists $self->{controlIdDown};
     $self->{rectColor} = 'java::awt::Color'->new(int('org::allbinary::graphics::color::BasicColorFactory'->getInstance()->{RED}));
     $self->{startPoint} = 'org::allbinary::graphics::PointFactory'->getInstance()->{ZERO_ZERO};
     $self->{endPoint} = $self->{startPoint};

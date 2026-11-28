@@ -25,7 +25,7 @@ sub _init_fields {
     my ($self) = @_;
     $self->{SCALE_FACTOR} = 'org::allbinary::logic::math::ScaleFactorFactory'->getInstance()->{DEFAULT_SCALE_FACTOR};
     $self->{SCALE_VALUE} = 'org::allbinary::logic::math::ScaleFactorFactory'->getInstance()->{DEFAULT_SCALE_VALUE};
-    $self->{available} = 0;
+    $self->{available} = 0 unless exists $self->{available};
     $self->{analogControllerConfigurationEvent} = 'org::allbinary::android::input::motion::event::AnalogControllerConfigurationEvent'->new($self);
 }
 

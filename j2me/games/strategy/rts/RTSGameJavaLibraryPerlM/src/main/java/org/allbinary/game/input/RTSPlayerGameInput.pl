@@ -24,15 +24,15 @@ sub _init_fields {
     my ($self) = @_;
     $self->{inputProcessorArray} = [(undef) x ('org::allbinary::game::input::InputFactory'->getInstance()->{MAX})];
     $self->{removeInputProcessorArray} = [(undef) x ('org::allbinary::game::input::InputFactory'->getInstance()->{MAX})];
-    $self->{inputList} = undef;
+    $self->{inputList} = undef unless exists $self->{inputList};
     $self->{isSingleKeyProcessing} = 'org::allbinary::game::configuration::feature::Features'->getInstance()->isFeature('org::allbinary::game::configuration::feature::InputFeatureFactory'->getInstance()->{SINGLE_KEY_REPEAT_PRESS}) || 'org::allbinary::game::configuration::feature::Features'->getInstance()->isFeature('org::allbinary::game::configuration::feature::InputFeatureFactory'->getInstance()->{SINGLE_KEY_PRESS});
-    $self->{gameCanvas} = undef;
+    $self->{gameCanvas} = undef unless exists $self->{gameCanvas};
     $self->{motionGestureInputList} = 'org::allbinary::util::BasicArrayListD'->new();
-    $self->{scrollPlayerGameInput} = undef;
-    $self->{selectedRTSLayerPlayerGameInput} = undef;
-    $self->{towerInfoPaintable} = undef;
-    $self->{rtsPlayerLayerInterface} = undef;
-    $self->{layerPositionFinderInterface} = undef;
+    $self->{scrollPlayerGameInput} = undef unless exists $self->{scrollPlayerGameInput};
+    $self->{selectedRTSLayerPlayerGameInput} = undef unless exists $self->{selectedRTSLayerPlayerGameInput};
+    $self->{towerInfoPaintable} = undef unless exists $self->{towerInfoPaintable};
+    $self->{rtsPlayerLayerInterface} = undef unless exists $self->{rtsPlayerLayerInterface};
+    $self->{layerPositionFinderInterface} = undef unless exists $self->{layerPositionFinderInterface};
     $self->{selectedRtsFormInput} = 'org::allbinary::game::input::form::NullRTSFormInputFactory'->getInstance();
 }
 

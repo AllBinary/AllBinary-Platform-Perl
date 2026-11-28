@@ -22,7 +22,7 @@ use parent -norequire,'org::allbinary::game::layer::behavior::GameLayerBehavior'
 
 sub _init_fields {
     my ($self) = @_;
-    $self->{maxGravityActionIndex} = undef;
+    $self->{maxGravityActionIndex} = undef unless exists $self->{maxGravityActionIndex};
     $self->{isJumpAction} = 1;
     $self->{isJumpOver} = 0;
     $self->{isFallingWithoutJumpAttempt} = 0;

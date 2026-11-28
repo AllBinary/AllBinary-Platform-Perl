@@ -24,9 +24,9 @@ sub _init_fields {
     my ($self) = @_;
     $self->{logUtil} = 'org::allbinary::logic::communication::log::LogUtil'->getInstance();
     $self->{commonStrings} = 'org::allbinary::string::CommonStrings'->getInstance();
-    $self->{abeClientInformation} = undef;
-    $self->{userInterface} = undef;
-    $self->{newPassword} = undef;
+    $self->{abeClientInformation} = undef unless exists $self->{abeClientInformation};
+    $self->{userInterface} = undef unless exists $self->{userInterface};
+    $self->{newPassword} = undef unless exists $self->{newPassword};
 }
 
 

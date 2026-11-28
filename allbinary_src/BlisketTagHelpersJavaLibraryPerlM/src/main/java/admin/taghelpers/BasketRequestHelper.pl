@@ -24,13 +24,13 @@ sub _init_fields {
     my ($self) = @_;
     $self->{logUtil} = 'org::allbinary::logic::communication::log::LogUtil'->getInstance();
     $self->{basicItemData} = 'org::allbinary::business::user::commerce::inventory::item::BasicItemData'->getInstance();
-    $self->{weblisketSession} = undef;
-    $self->{storeFrontInterface} = undef;
-    $self->{propertiesHashMap} = undef;
-    $self->{pageContext} = undef;
-    $self->{request} = undef;
-    $self->{id} = undef;
-    $self->{num} = undef;
+    $self->{weblisketSession} = undef unless exists $self->{weblisketSession};
+    $self->{storeFrontInterface} = undef unless exists $self->{storeFrontInterface};
+    $self->{propertiesHashMap} = undef unless exists $self->{propertiesHashMap};
+    $self->{pageContext} = undef unless exists $self->{pageContext};
+    $self->{request} = undef unless exists $self->{request};
+    $self->{id} = undef unless exists $self->{id};
+    $self->{num} = undef unless exists $self->{num};
     $self->{MAX} = 200;
 }
 

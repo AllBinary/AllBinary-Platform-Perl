@@ -24,11 +24,11 @@ our $SET_REAL_ANIMATION = "setRealAnimation";
 sub _init_fields {
     my ($self) = @_;
     $self->{logUtil} = 'org::allbinary::logic::communication::log::LogUtil'->getInstance();
-    $self->{layoutIndex} = undef;
-    $self->{instanceId} = undef;
-    $self->{animationInterfaceFactoryInterface} = undef;
-    $self->{NULL_INDEX_ANIMATION} = undef;
-    $self->{animation} = undef;
+    $self->{layoutIndex} = undef unless exists $self->{layoutIndex};
+    $self->{instanceId} = undef unless exists $self->{instanceId};
+    $self->{animationInterfaceFactoryInterface} = undef unless exists $self->{animationInterfaceFactoryInterface};
+    $self->{NULL_INDEX_ANIMATION} = undef unless exists $self->{NULL_INDEX_ANIMATION};
+    $self->{animation} = undef unless exists $self->{animation};
     $self->{scaleProperties} = $org::allbinary::media::ScaleProperties::instance;
 }
 
@@ -56,8 +56,8 @@ sub new {
 
         sub _init_fields {
             my ($self) = @_;
-            $self->{lazyImageRotationAnimation} = undef;
-            $self->{index} = 0;
+            $self->{lazyImageRotationAnimation} = undef unless exists $self->{lazyImageRotationAnimation};
+            $self->{index} = 0 unless exists $self->{index};
         }
         
 

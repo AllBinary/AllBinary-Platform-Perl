@@ -23,10 +23,10 @@ use parent -norequire,'org::allbinary::animation::RotationAnimation';
 sub _init_fields {
     my ($self) = @_;
     $self->{imageModifierUtil} = 'org::allbinary::media::image::ImageModifierUtil'->getInstanceOrCreate();
-    $self->{originalImageArray} = undef;
+    $self->{originalImageArray} = undef unless exists $self->{originalImageArray};
     $self->{imageArray} = $javax::microedition::lcdui::NullImage::NULL_IMAGE_ARRAY;
-    $self->{currentImage} = undef;
-    $self->{totalFrames} = 0;
+    $self->{currentImage} = undef unless exists $self->{currentImage};
+    $self->{totalFrames} = 0 unless exists $self->{totalFrames};
     $self->{anchor} = $org::allbinary::graphics::Anchor::TOP_LEFT;
 }
 

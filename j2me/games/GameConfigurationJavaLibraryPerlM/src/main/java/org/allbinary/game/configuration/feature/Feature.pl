@@ -23,7 +23,7 @@ tie our $hashtable, 'java::lang::LazyStatic', sub { 'org::allbinary::logic::StdU
 
 sub _init_fields {
     my ($self) = @_;
-    $self->{name} = undef;
+    $self->{name} = undef unless exists $self->{name};
 }
 
 

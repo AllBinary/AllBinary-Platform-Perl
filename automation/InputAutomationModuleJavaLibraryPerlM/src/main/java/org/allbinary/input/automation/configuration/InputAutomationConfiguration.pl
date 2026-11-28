@@ -25,8 +25,8 @@ our $FILENAME = "InputAutomationConfig.xml";
 sub _init_fields {
     my ($self) = @_;
     $self->{logUtil} = 'org::allbinary::logic::communication::log::LogUtil'->getInstance();
-    $self->{installed} = 0;
-    $self->{inputAutomationModuleConfigurationList} = undef;
+    $self->{installed} = 0 unless exists $self->{installed};
+    $self->{inputAutomationModuleConfigurationList} = undef unless exists $self->{inputAutomationModuleConfigurationList};
 }
 
 

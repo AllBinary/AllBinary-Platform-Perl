@@ -22,8 +22,8 @@ use parent -norequire,'java::lang::Object';
 
 sub _init_fields {
     my ($self) = @_;
-    $self->{rectangle} = undef;
-    $self->{pixelDeltaVector} = undef;
+    $self->{rectangle} = undef unless exists $self->{rectangle};
+    $self->{pixelDeltaVector} = undef unless exists $self->{pixelDeltaVector};
 }
 
 

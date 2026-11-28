@@ -23,7 +23,7 @@ use parent -norequire,'tags::CommandTag';
 sub _init_fields {
     my ($self) = @_;
     $self->{logUtil} = 'org::allbinary::logic::communication::log::LogUtil'->getInstance();
-    $self->{propertiesHashMap} = undef;
+    $self->{propertiesHashMap} = undef unless exists $self->{propertiesHashMap};
 }
 
 

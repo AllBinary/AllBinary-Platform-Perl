@@ -22,7 +22,7 @@ use parent -norequire,'java::lang::Object','org::allbinary::data::tree::dom::doc
 
 sub _init_fields {
     my ($self) = @_;
-    $self->{contextConfigurationInterface} = undef;
+    $self->{contextConfigurationInterface} = undef unless exists $self->{contextConfigurationInterface};
 }
 
 

@@ -24,7 +24,7 @@ our $NAME = "constrainedMotionRectangles_";
 sub _init_fields {
     my ($self) = @_;
     $self->{logUtil} = 'org::allbinary::logic::communication::log::LogUtil'->getInstance();
-    $self->{motionRectangleConstraintsInterface} = undef;
+    $self->{motionRectangleConstraintsInterface} = undef unless exists $self->{motionRectangleConstraintsInterface};
 }
 
 

@@ -24,8 +24,8 @@ sub _init_fields {
     my ($self) = @_;
     $self->{logUtil} = 'org::allbinary::logic::communication::log::LogUtil'->getInstance();
     $self->{commonStrings} = 'org::allbinary::string::CommonStrings'->getInstance();
-    $self->{inputAutomationModuleInterface} = undef;
-    $self->{serviceFactory} = undef;
+    $self->{inputAutomationModuleInterface} = undef unless exists $self->{inputAutomationModuleInterface};
+    $self->{serviceFactory} = undef unless exists $self->{serviceFactory};
 }
 
 

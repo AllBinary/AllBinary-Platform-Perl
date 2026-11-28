@@ -22,7 +22,7 @@ use parent -norequire,'org::allbinary::android::view::BaseViewWrapper';
 
 sub _init_fields {
     my ($self) = @_;
-    $self->{view} = undef;
+    $self->{view} = undef unless exists $self->{view};
 }
 
 

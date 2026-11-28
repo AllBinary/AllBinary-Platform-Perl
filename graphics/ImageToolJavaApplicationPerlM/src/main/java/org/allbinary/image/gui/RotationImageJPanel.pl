@@ -25,17 +25,17 @@ sub _init_fields {
     $self->{logUtil} = 'org::allbinary::logic::communication::log::LogUtil'->getInstance();
     $self->{commonStrings} = 'org::allbinary::string::CommonStrings'->getInstance();
     $self->{imageStrings} = 'org::allbinary::media::image::ImageStrings'->getInstance();
-    $self->{imageProcessorInput} = undef;
-    $self->{result} = undef;
-    $self->{generateJButton} = undef;
-    $self->{jLabel1} = undef;
-    $self->{jLabel2} = undef;
-    $self->{jLabel3} = undef;
-    $self->{jPanel1} = undef;
-    $self->{jPanel2} = undef;
-    $self->{jPanel3} = undef;
-    $self->{totalAngleJComboBox} = undef;
-    $self->{writeOverOriginalJCheckBox} = undef;
+    $self->{imageProcessorInput} = undef unless exists $self->{imageProcessorInput};
+    $self->{result} = undef unless exists $self->{result};
+    $self->{generateJButton} = undef unless exists $self->{generateJButton};
+    $self->{jLabel1} = undef unless exists $self->{jLabel1};
+    $self->{jLabel2} = undef unless exists $self->{jLabel2};
+    $self->{jLabel3} = undef unless exists $self->{jLabel3};
+    $self->{jPanel1} = undef unless exists $self->{jPanel1};
+    $self->{jPanel2} = undef unless exists $self->{jPanel2};
+    $self->{jPanel3} = undef unless exists $self->{jPanel3};
+    $self->{totalAngleJComboBox} = undef unless exists $self->{totalAngleJComboBox};
+    $self->{writeOverOriginalJCheckBox} = undef unless exists $self->{writeOverOriginalJCheckBox};
 }
 
 

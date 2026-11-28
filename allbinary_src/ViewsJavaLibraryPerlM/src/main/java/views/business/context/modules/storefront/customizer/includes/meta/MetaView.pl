@@ -23,7 +23,7 @@ use parent -norequire,'views::business::context::modules::storefront::HttpStoreC
 sub _init_fields {
     my ($self) = @_;
     $self->{logUtil} = 'org::allbinary::logic::communication::log::LogUtil'->getInstance();
-    $self->{metasValidation} = undef;
+    $self->{metasValidation} = undef unless exists $self->{metasValidation};
 }
 
 

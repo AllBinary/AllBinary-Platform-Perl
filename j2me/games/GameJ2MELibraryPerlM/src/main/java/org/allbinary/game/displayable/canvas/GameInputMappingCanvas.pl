@@ -25,12 +25,12 @@ tie our $DEFAULT, 'java::lang::LazyStatic', sub { 'javax::microedition::lcdui::C
 
 sub _init_fields {
     my ($self) = @_;
-    $self->{paintable} = undef;
-    $self->{helpPaintable} = undef;
-    $self->{colorFillPaintable} = undef;
-    $self->{inputMapping} = undef;
+    $self->{paintable} = undef unless exists $self->{paintable};
+    $self->{helpPaintable} = undef unless exists $self->{helpPaintable};
+    $self->{colorFillPaintable} = undef unless exists $self->{colorFillPaintable};
+    $self->{inputMapping} = undef unless exists $self->{inputMapping};
     $self->{NONE} = 'org::allbinary::game::input::GameKeyFactory'->getInstance()->{NONE};
-    $self->{abeClientInformation} = undef;
+    $self->{abeClientInformation} = undef unless exists $self->{abeClientInformation};
     $self->{selectedGameKey} = $self->{NONE};
     $self->{selectedInput} = $self->{NONE};
     $self->{inputFactory} = 'org::allbinary::game::input::InputFactory'->getInstance();

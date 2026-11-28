@@ -22,7 +22,7 @@ use parent -norequire,'org::allbinary::canvas::Processor';
 
 sub _init_fields {
     my ($self) = @_;
-    $self->{displayable} = undef;
+    $self->{displayable} = undef unless exists $self->{displayable};
 }
 
 

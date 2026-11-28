@@ -23,9 +23,9 @@ use parent -norequire,'java::lang::Object','org::allbinary::media::image::compar
 sub _init_fields {
     my ($self) = @_;
     $self->{logUtil} = 'org::allbinary::logic::communication::log::LogUtil'->getInstance();
-    $self->{avoidVector} = undef;
-    $self->{maxNonMatchingPixelDeltas} = 0;
-    $self->{doImageComparisonEveryNthFrame} = undef;
+    $self->{avoidVector} = undef unless exists $self->{avoidVector};
+    $self->{maxNonMatchingPixelDeltas} = 0 unless exists $self->{maxNonMatchingPixelDeltas};
+    $self->{doImageComparisonEveryNthFrame} = undef unless exists $self->{doImageComparisonEveryNthFrame};
 }
 
 

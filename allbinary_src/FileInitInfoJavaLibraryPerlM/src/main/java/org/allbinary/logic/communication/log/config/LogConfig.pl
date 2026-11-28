@@ -22,17 +22,17 @@ use parent -norequire,'java::lang::Object';
 
 sub _init_fields {
     my ($self) = @_;
-    $self->{isEnabled} = undef;
-    $self->{name} = undef;
-    $self->{description} = undef;
-    $self->{path} = undef;
-    $self->{fileName} = undef;
+    $self->{isEnabled} = undef unless exists $self->{isEnabled};
+    $self->{name} = undef unless exists $self->{name};
+    $self->{description} = undef unless exists $self->{description};
+    $self->{path} = undef unless exists $self->{path};
+    $self->{fileName} = undef unless exists $self->{fileName};
 }
 
 sub new {
     my ($class, @arguments) = @_;
-    return $class->_new4(@arguments) if scalar(@arguments) == 4;
-    return $class->_new1(@arguments) if scalar(@arguments) == 1;
+    return _new4($class, @arguments) if scalar(@arguments) == 4;
+    return _new1($class, @arguments) if scalar(@arguments) == 1;
     die "No constructor of LogConfig takes " . scalar(@arguments) . " arguments";
 }
 

@@ -23,7 +23,7 @@ use parent -norequire,'org::allbinary::game::displayable::canvas::CommandFormInp
 sub _init_fields {
     my ($self) = @_;
     $self->{timeHelper} = 'org::allbinary::time::TimeDelayHelper'->new(25);
-    $self->{gameCommandCanvas} = undef;
+    $self->{gameCommandCanvas} = undef unless exists $self->{gameCommandCanvas};
 }
 
 

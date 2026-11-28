@@ -34,20 +34,20 @@ sub _init_fields {
     $self->{logUtil} = 'org::allbinary::logic::communication::log::LogUtil'->getInstance();
     $self->{commonStrings} = 'org::allbinary::string::CommonStrings'->getInstance();
     $self->{gameInputStrings} = 'org::allbinary::game::input::GameInputStrings'->getInstance();
-    $self->{treeNode} = undef;
-    $self->{pointTreeNodeVector} = undef;
-    $self->{currentMousePoint} = undef;
-    $self->{fulcrumPoint} = undef;
+    $self->{treeNode} = undef unless exists $self->{treeNode};
+    $self->{pointTreeNodeVector} = undef unless exists $self->{pointTreeNodeVector};
+    $self->{currentMousePoint} = undef unless exists $self->{currentMousePoint};
+    $self->{fulcrumPoint} = undef unless exists $self->{fulcrumPoint};
     $self->{active} = 0;
     $self->{theta} = 0.0;
     $self->{color} = 'java::awt::Color'->new(int('org::allbinary::graphics::color::BasicColorFactory'->getInstance()->{WHITE}));
-    $self->{points} = undef;
+    $self->{points} = undef unless exists $self->{points};
 }
 
 sub new {
     my ($class, @arguments) = @_;
-    return $class->_new0(@arguments) if scalar(@arguments) == 0;
-    return $class->_new1(@arguments) if scalar(@arguments) == 1;
+    return _new0($class, @arguments) if scalar(@arguments) == 0;
+    return _new1($class, @arguments) if scalar(@arguments) == 1;
     die "No constructor of LinesGraphicItem takes " . scalar(@arguments) . " arguments";
 }
 

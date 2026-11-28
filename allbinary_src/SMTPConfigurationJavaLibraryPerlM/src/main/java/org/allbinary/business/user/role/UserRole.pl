@@ -22,8 +22,8 @@ use parent -norequire,'java::lang::Object';
 
 sub _init_fields {
     my ($self) = @_;
-    $self->{basicUserRole} = undef;
-    $self->{userFactoryInterface} = undef;
+    $self->{basicUserRole} = undef unless exists $self->{basicUserRole};
+    $self->{userFactoryInterface} = undef unless exists $self->{userFactoryInterface};
 }
 
 

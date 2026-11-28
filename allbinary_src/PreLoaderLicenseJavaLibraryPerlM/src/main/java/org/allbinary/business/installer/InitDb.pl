@@ -23,7 +23,7 @@ use parent -norequire,'java::lang::Object';
 
 sub _init_fields {
     my ($self) = @_;
-    $self->{anyType} = undef;
+    $self->{anyType} = undef unless exists $self->{anyType};
     $self->{METHOD_CALL_GET_HOST_NAME} = "getHostName";
     $self->{METHOD_CALL_ADD_USERS} = "addUsers";
     $self->{METHOD_CALL_ADD_DATABASES} = "addDatabases";
@@ -34,8 +34,8 @@ sub _init_fields {
 
 sub new {
     my ($class, @arguments) = @_;
-    return $class->_new0(@arguments) if scalar(@arguments) == 0;
-    return $class->_new1(@arguments) if scalar(@arguments) == 1;
+    return _new0($class, @arguments) if scalar(@arguments) == 0;
+    return _new1($class, @arguments) if scalar(@arguments) == 1;
     die "No constructor of InitDb takes " . scalar(@arguments) . " arguments";
 }
 

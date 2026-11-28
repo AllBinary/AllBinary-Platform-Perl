@@ -22,7 +22,7 @@ use parent -norequire,'org::allbinary::game::health::HealthBarAnimation';
 
 sub _init_fields {
     my ($self) = @_;
-    $self->{rectangle} = undef;
+    $self->{rectangle} = undef unless exists $self->{rectangle};
     $self->{basicColorFactory} = 'org::allbinary::graphics::color::BasicColorFactory'->getInstance();
     $self->{object3dProcessor} = 'org::allbinary::graphics::threed::min3d::renderer::Object3dProcessorUtil'->getInstance()->getInstanceObject3dProcessor();
 }

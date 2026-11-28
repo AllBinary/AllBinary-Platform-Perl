@@ -22,11 +22,11 @@ use parent -norequire,'java::lang::Object';
 
 sub _init_fields {
     my ($self) = @_;
-    $self->{xslFile} = undef;
-    $self->{pageName} = undef;
-    $self->{contentType} = undef;
-    $self->{keywords} = undef;
-    $self->{searchParams} = undef;
+    $self->{xslFile} = undef unless exists $self->{xslFile};
+    $self->{pageName} = undef unless exists $self->{pageName};
+    $self->{contentType} = undef unless exists $self->{contentType};
+    $self->{keywords} = undef unless exists $self->{keywords};
+    $self->{searchParams} = undef unless exists $self->{searchParams};
 }
 
 

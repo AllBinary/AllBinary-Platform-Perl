@@ -25,9 +25,9 @@ sub _init_fields {
     $self->{logUtil} = 'org::allbinary::logic::communication::log::LogUtil'->getInstance();
     $self->{commonStrings} = 'org::allbinary::string::CommonStrings'->getInstance();
     $self->{osgiServiceUtil} = 'org::allbinary::osgi::service::OSGIServiceUtil'->getInstance();
-    $self->{registryName} = undef;
-    $self->{bundleContext} = undef;
-    $self->{osgiServiceVisitorInterface} = undef;
+    $self->{registryName} = undef unless exists $self->{registryName};
+    $self->{bundleContext} = undef unless exists $self->{bundleContext};
+    $self->{osgiServiceVisitorInterface} = undef unless exists $self->{osgiServiceVisitorInterface};
 }
 
 

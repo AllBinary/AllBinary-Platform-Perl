@@ -23,9 +23,9 @@ tie our $NULL_COMBAT_BEHAVIOR, 'java::lang::LazyStatic', sub { 'org::allbinary::
 
 sub _init_fields {
     my ($self) = @_;
-    $self->{damageableBaseBehavior} = undef;
-    $self->{destroyableBaseBehavior} = undef;
-    $self->{readyForExplosion} = 0;
+    $self->{damageableBaseBehavior} = undef unless exists $self->{damageableBaseBehavior};
+    $self->{destroyableBaseBehavior} = undef unless exists $self->{destroyableBaseBehavior};
+    $self->{readyForExplosion} = 0 unless exists $self->{readyForExplosion};
 }
 
 

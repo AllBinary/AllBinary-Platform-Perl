@@ -10,9 +10,9 @@ use parent -norequire,'org::allbinary::animation::IndexedAnimation';
 
 sub _init_fields {
     my ($self) = @_;
-    $self->{pixelBuffer} = undef;
-    $self->{width} = undef;
-    $self->{height} = undef;
+    $self->{pixelBuffer} = undef unless exists $self->{pixelBuffer};
+    $self->{width} = undef unless exists $self->{width};
+    $self->{height} = undef unless exists $self->{height};
 }
 
 

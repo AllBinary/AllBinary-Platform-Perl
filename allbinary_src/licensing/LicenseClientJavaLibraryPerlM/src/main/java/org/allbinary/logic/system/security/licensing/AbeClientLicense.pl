@@ -23,11 +23,11 @@ use parent -norequire,'java::lang::Object','org::allbinary::logic::system::secur
 
 sub _init_fields {
     my ($self) = @_;
-    $self->{hashtable} = undef;
-    $self->{id} = undef;
-    $self->{servers} = undef;
-    $self->{special} = undef;
-    $self->{licenseType} = undef;
+    $self->{hashtable} = undef unless exists $self->{hashtable};
+    $self->{id} = undef unless exists $self->{id};
+    $self->{servers} = undef unless exists $self->{servers};
+    $self->{special} = undef unless exists $self->{special};
+    $self->{licenseType} = undef unless exists $self->{licenseType};
 }
 
 

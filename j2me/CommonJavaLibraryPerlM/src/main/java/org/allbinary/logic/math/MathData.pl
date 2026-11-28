@@ -23,12 +23,12 @@ tie our $instance, 'java::lang::LazyStatic', sub { 'org::allbinary::logic::math:
 
 sub _init_fields {
     my ($self) = @_;
-    $self->{EQUALS} = undef;
+    $self->{EQUALS} = undef unless exists $self->{EQUALS};
     $self->{PLUS} = "+";
     $self->{GREATER_THAN} = ">";
-    $self->{MINUS} = undef;
-    $self->{DIVIDE} = undef;
-    $self->{MULTIPLY} = undef;
+    $self->{MINUS} = undef unless exists $self->{MINUS};
+    $self->{DIVIDE} = undef unless exists $self->{DIVIDE};
+    $self->{MULTIPLY} = undef unless exists $self->{MULTIPLY};
 }
 
 

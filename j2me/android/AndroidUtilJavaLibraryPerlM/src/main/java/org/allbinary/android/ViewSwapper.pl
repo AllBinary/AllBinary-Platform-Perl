@@ -11,8 +11,8 @@ our $NULL_VIEW_ARRAY = [(undef) x (0)];
 
 sub _init_fields {
     my ($self) = @_;
-    $self->{rootViewId} = undef;
-    $self->{activity} = undef;
+    $self->{rootViewId} = undef unless exists $self->{rootViewId};
+    $self->{activity} = undef unless exists $self->{activity};
     $self->{currentMainViewId} = -1;
     $self->{mainViewArray} = $org::allbinary::android::ViewSwapper::NULL_VIEW_ARRAY;
     $self->{topViewArray} = $org::allbinary::android::ViewSwapper::NULL_VIEW_ARRAY;

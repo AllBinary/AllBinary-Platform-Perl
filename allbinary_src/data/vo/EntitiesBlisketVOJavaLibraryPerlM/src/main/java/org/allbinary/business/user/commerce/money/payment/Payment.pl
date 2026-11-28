@@ -22,37 +22,37 @@ use parent -norequire,'java::lang::Object','org::allbinary::business::user::comm
 
 sub _init_fields {
     my ($self) = @_;
-    $self->{name} = undef;
-    $self->{expiration} = undef;
-    $self->{encryption} = undef;
-    $self->{number} = undef;
-    $self->{id} = undef;
-    $self->{type} = undef;
-    $self->{tenderType} = undef;
-    $self->{transactionType} = undef;
-    $self->{aba} = undef;
-    $self->{account} = undef;
-    $self->{accountType} = undef;
-    $self->{authorizationCode} = undef;
-    $self->{checkNumber} = undef;
-    $self->{checkType} = undef;
-    $self->{driversLicense} = undef;
-    $self->{magneticInkCheckReader} = undef;
+    $self->{name} = undef unless exists $self->{name};
+    $self->{expiration} = undef unless exists $self->{expiration};
+    $self->{encryption} = undef unless exists $self->{encryption};
+    $self->{number} = undef unless exists $self->{number};
+    $self->{id} = undef unless exists $self->{id};
+    $self->{type} = undef unless exists $self->{type};
+    $self->{tenderType} = undef unless exists $self->{tenderType};
+    $self->{transactionType} = undef unless exists $self->{transactionType};
+    $self->{aba} = undef unless exists $self->{aba};
+    $self->{account} = undef unless exists $self->{account};
+    $self->{accountType} = undef unless exists $self->{accountType};
+    $self->{authorizationCode} = undef unless exists $self->{authorizationCode};
+    $self->{checkNumber} = undef unless exists $self->{checkNumber};
+    $self->{checkType} = undef unless exists $self->{checkType};
+    $self->{driversLicense} = undef unless exists $self->{driversLicense};
+    $self->{magneticInkCheckReader} = undef unless exists $self->{magneticInkCheckReader};
     $self->{isDefault} = 0;
 }
 
 sub new {
     my ($class, @arguments) = @_;
-    return $class->_new1(@arguments) if scalar(@arguments) == 1;
-    return $class->_new1(@arguments) if scalar(@arguments) == 1;
-    return $class->_new0(@arguments) if scalar(@arguments) == 0;
+    return _new1($class, @arguments) if scalar(@arguments) == 1;
+    return _new1($class, @arguments) if scalar(@arguments) == 1;
+    return _new0($class, @arguments) if scalar(@arguments) == 0;
     die "No constructor of Payment takes " . scalar(@arguments) . " arguments";
 }
 
 sub _new1 {
     my ($class, @arguments) = @_;
-    return $class->_new1_1(@arguments) if 1 && (!defined($arguments[0]) || (ref($arguments[0]) && ref($arguments[0]) ne 'ARRAY'));
-    return $class->_new1_2(@arguments);
+    return _new1_1($class, @arguments) if 1 && (!defined($arguments[0]) || (ref($arguments[0]) && ref($arguments[0]) ne 'ARRAY'));
+    return _new1_2($class, @arguments);
 }
 
 

@@ -26,17 +26,17 @@ sub _init_fields {
     $self->{commonStrings} = 'org::allbinary::string::CommonStrings'->getInstance();
     $self->{TITLE} = "title";
     $self->{DESCRIPTION} = "description";
-    $self->{value} = undef;
-    $self->{title} = undef;
-    $self->{description} = undef;
-    $self->{cssElementVector} = undef;
-    $self->{cssPropertyVector} = undef;
+    $self->{value} = undef unless exists $self->{value};
+    $self->{title} = undef unless exists $self->{title};
+    $self->{description} = undef unless exists $self->{description};
+    $self->{cssElementVector} = undef unless exists $self->{cssElementVector};
+    $self->{cssPropertyVector} = undef unless exists $self->{cssPropertyVector};
 }
 
 sub new {
     my ($class, @arguments) = @_;
-    return $class->_new0(@arguments) if scalar(@arguments) == 0;
-    return $class->_new1(@arguments) if scalar(@arguments) == 1;
+    return _new0($class, @arguments) if scalar(@arguments) == 0;
+    return _new1($class, @arguments) if scalar(@arguments) == 1;
     die "No constructor of CssElementView takes " . scalar(@arguments) . " arguments";
 }
 

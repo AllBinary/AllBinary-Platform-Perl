@@ -22,10 +22,10 @@ use parent -norequire,'org::allbinary::physics::movement::BasicConstantVelocityM
 
 sub _init_fields {
     my ($self) = @_;
-    $self->{oscillateMin} = undef;
-    $self->{oscillateMax} = undef;
-    $self->{oscillate} = 0;
-    $self->{oscillatePositive} = 0;
+    $self->{oscillateMin} = undef unless exists $self->{oscillateMin};
+    $self->{oscillateMax} = undef unless exists $self->{oscillateMax};
+    $self->{oscillate} = 0 unless exists $self->{oscillate};
+    $self->{oscillatePositive} = 0 unless exists $self->{oscillatePositive};
 }
 
 

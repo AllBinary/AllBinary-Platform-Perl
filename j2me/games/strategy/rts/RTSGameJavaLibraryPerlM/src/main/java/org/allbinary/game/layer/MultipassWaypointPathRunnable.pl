@@ -176,7 +176,7 @@ sub processEndRunnable {
 
     sub _init_fields {
         my ($self) = @_;
-        $self->{multipassWaypointPathRunnable} = undef;
+        $self->{multipassWaypointPathRunnable} = undef unless exists $self->{multipassWaypointPathRunnable};
     }
     
 
@@ -208,7 +208,7 @@ sub processEndRunnable {
 
     sub _init_fields {
         my ($self) = @_;
-        $self->{multipassWaypointPathRunnable} = undef;
+        $self->{multipassWaypointPathRunnable} = undef unless exists $self->{multipassWaypointPathRunnable};
     }
     
 
@@ -239,7 +239,7 @@ sub processEndRunnable {
 
     sub _init_fields {
         my ($self) = @_;
-        $self->{multipassWaypointPathRunnable} = undef;
+        $self->{multipassWaypointPathRunnable} = undef unless exists $self->{multipassWaypointPathRunnable};
     }
     
 

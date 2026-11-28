@@ -23,10 +23,10 @@ use parent -norequire,'java::lang::Object';
 sub _init_fields {
     my ($self) = @_;
     $self->{logFormatUtil} = 'org::allbinary::logic::communication::log::LogFormatUtil'->getInstance();
-    $self->{specialMessage} = undef;
-    $self->{anyType} = undef;
-    $self->{functionName} = undef;
-    $self->{exception} = undef;
+    $self->{specialMessage} = undef unless exists $self->{specialMessage};
+    $self->{anyType} = undef unless exists $self->{anyType};
+    $self->{functionName} = undef unless exists $self->{functionName};
+    $self->{exception} = undef unless exists $self->{exception};
 }
 
 

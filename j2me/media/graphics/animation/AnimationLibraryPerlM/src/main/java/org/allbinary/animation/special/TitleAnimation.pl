@@ -24,17 +24,17 @@ use parent -norequire,'org::allbinary::animation::special::SpecialAnimation';
 sub _init_fields {
     my ($self) = @_;
     $self->{systemWrapper} = 'org::allbinary::logic::ABSystemWrapper'->getInstance();
-    $self->{deltaX} = 0.0;
-    $self->{deltaY} = 0.0;
-    $self->{deltaZ} = 0.0;
-    $self->{basicColorArray} = undef;
-    $self->{dxArray} = undef;
-    $self->{dyArray} = undef;
-    $self->{widthP} = undef;
-    $self->{animationInterfaceArray} = undef;
-    $self->{sizeP} = undef;
-    $self->{y} = undef;
-    $self->{lastFrameStartTime} = undef;
+    $self->{deltaX} = 0.0 unless exists $self->{deltaX};
+    $self->{deltaY} = 0.0 unless exists $self->{deltaY};
+    $self->{deltaZ} = 0.0 unless exists $self->{deltaZ};
+    $self->{basicColorArray} = undef unless exists $self->{basicColorArray};
+    $self->{dxArray} = undef unless exists $self->{dxArray};
+    $self->{dyArray} = undef unless exists $self->{dyArray};
+    $self->{widthP} = undef unless exists $self->{widthP};
+    $self->{animationInterfaceArray} = undef unless exists $self->{animationInterfaceArray};
+    $self->{sizeP} = undef unless exists $self->{sizeP};
+    $self->{y} = undef unless exists $self->{y};
+    $self->{lastFrameStartTime} = undef unless exists $self->{lastFrameStartTime};
     $self->{displayInfoSingleton} = 'org::allbinary::graphics::displayable::DisplayInfoSingleton'->getInstance();
     $self->{CLEAR_COLOR} = 'org::allbinary::graphics::color::BasicColorFactory'->getInstance()->{CLEAR_COLOR};
 }

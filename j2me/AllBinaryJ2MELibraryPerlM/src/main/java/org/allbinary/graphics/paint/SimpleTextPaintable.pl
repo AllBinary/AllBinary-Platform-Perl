@@ -26,8 +26,8 @@ sub _init_fields {
     $self->{displayInfoSingleton} = 'org::allbinary::graphics::displayable::DisplayInfoSingleton'->getInstance();
     $self->{updateMyFontProcessor} = 'org::allbinary::graphics::font::UpdateMyFontProcessor'->new($self);
     $self->{myFontProcessor} = $self->{updateMyFontProcessor};
-    $self->{text} = undef;
-    $self->{basicColor} = undef;
+    $self->{text} = undef unless exists $self->{text};
+    $self->{basicColor} = undef unless exists $self->{basicColor};
     $self->{topScoresWidth} = 0;
     $self->{fontHeight} = 0;
     $self->{anchor} = $org::allbinary::graphics::Anchor::TOP_LEFT;

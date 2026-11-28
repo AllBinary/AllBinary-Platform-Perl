@@ -27,54 +27,54 @@ our $MINPASSWORD = 0;
 sub _init_fields {
     my ($self) = @_;
     $self->{logUtil} = 'org::allbinary::logic::communication::log::LogUtil'->getInstance();
-    $self->{userJdbcDriver} = undef;
-    $self->{userName} = undef;
-    $self->{userUserName} = undef;
-    $self->{userPassword} = undef;
-    $self->{userSchema} = undef;
-    $self->{userServer} = undef;
-    $self->{userPort} = undef;
-    $self->{historyJdbcDriver} = undef;
-    $self->{historyName} = undef;
-    $self->{historyUserName} = undef;
-    $self->{historyPassword} = undef;
-    $self->{historySchema} = undef;
-    $self->{historyServer} = undef;
-    $self->{historyPort} = undef;
-    $self->{logJdbcDriver} = undef;
-    $self->{logName} = undef;
-    $self->{logUserName} = undef;
-    $self->{logPassword} = undef;
-    $self->{logSchema} = undef;
-    $self->{logServer} = undef;
-    $self->{logPort} = undef;
-    $self->{inventoryJdbcDriver} = undef;
-    $self->{inventoryName} = undef;
-    $self->{inventoryUserName} = undef;
-    $self->{inventoryPassword} = undef;
-    $self->{inventorySchema} = undef;
-    $self->{inventoryServer} = undef;
-    $self->{inventoryPort} = undef;
-    $self->{staticPagesJdbcDriver} = undef;
-    $self->{staticPagesName} = undef;
-    $self->{staticPagesUserName} = undef;
-    $self->{staticPagesPassword} = undef;
-    $self->{staticPagesSchema} = undef;
-    $self->{staticPagesServer} = undef;
-    $self->{staticPagesPort} = undef;
+    $self->{userJdbcDriver} = undef unless exists $self->{userJdbcDriver};
+    $self->{userName} = undef unless exists $self->{userName};
+    $self->{userUserName} = undef unless exists $self->{userUserName};
+    $self->{userPassword} = undef unless exists $self->{userPassword};
+    $self->{userSchema} = undef unless exists $self->{userSchema};
+    $self->{userServer} = undef unless exists $self->{userServer};
+    $self->{userPort} = undef unless exists $self->{userPort};
+    $self->{historyJdbcDriver} = undef unless exists $self->{historyJdbcDriver};
+    $self->{historyName} = undef unless exists $self->{historyName};
+    $self->{historyUserName} = undef unless exists $self->{historyUserName};
+    $self->{historyPassword} = undef unless exists $self->{historyPassword};
+    $self->{historySchema} = undef unless exists $self->{historySchema};
+    $self->{historyServer} = undef unless exists $self->{historyServer};
+    $self->{historyPort} = undef unless exists $self->{historyPort};
+    $self->{logJdbcDriver} = undef unless exists $self->{logJdbcDriver};
+    $self->{logName} = undef unless exists $self->{logName};
+    $self->{logUserName} = undef unless exists $self->{logUserName};
+    $self->{logPassword} = undef unless exists $self->{logPassword};
+    $self->{logSchema} = undef unless exists $self->{logSchema};
+    $self->{logServer} = undef unless exists $self->{logServer};
+    $self->{logPort} = undef unless exists $self->{logPort};
+    $self->{inventoryJdbcDriver} = undef unless exists $self->{inventoryJdbcDriver};
+    $self->{inventoryName} = undef unless exists $self->{inventoryName};
+    $self->{inventoryUserName} = undef unless exists $self->{inventoryUserName};
+    $self->{inventoryPassword} = undef unless exists $self->{inventoryPassword};
+    $self->{inventorySchema} = undef unless exists $self->{inventorySchema};
+    $self->{inventoryServer} = undef unless exists $self->{inventoryServer};
+    $self->{inventoryPort} = undef unless exists $self->{inventoryPort};
+    $self->{staticPagesJdbcDriver} = undef unless exists $self->{staticPagesJdbcDriver};
+    $self->{staticPagesName} = undef unless exists $self->{staticPagesName};
+    $self->{staticPagesUserName} = undef unless exists $self->{staticPagesUserName};
+    $self->{staticPagesPassword} = undef unless exists $self->{staticPagesPassword};
+    $self->{staticPagesSchema} = undef unless exists $self->{staticPagesSchema};
+    $self->{staticPagesServer} = undef unless exists $self->{staticPagesServer};
+    $self->{staticPagesPort} = undef unless exists $self->{staticPagesPort};
 }
 
 sub new {
     my ($class, @arguments) = @_;
-    return $class->_new1(@arguments) if scalar(@arguments) == 1;
-    return $class->_new1(@arguments) if scalar(@arguments) == 1;
+    return _new1($class, @arguments) if scalar(@arguments) == 1;
+    return _new1($class, @arguments) if scalar(@arguments) == 1;
     die "No constructor of Initializer takes " . scalar(@arguments) . " arguments";
 }
 
 sub _new1 {
     my ($class, @arguments) = @_;
-    return $class->_new1_1(@arguments) if 1 && (!defined($arguments[0]) || (ref($arguments[0]) && ref($arguments[0]) ne 'ARRAY'));
-    return $class->_new1_2(@arguments);
+    return _new1_1($class, @arguments) if 1 && (!defined($arguments[0]) || (ref($arguments[0]) && ref($arguments[0]) ne 'ARRAY'));
+    return _new1_2($class, @arguments);
 }
 
 

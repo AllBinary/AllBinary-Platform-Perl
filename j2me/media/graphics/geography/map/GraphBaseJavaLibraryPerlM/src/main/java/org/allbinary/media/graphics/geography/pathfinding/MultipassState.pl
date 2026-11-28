@@ -22,9 +22,9 @@ use parent -norequire,'java::lang::Object';
 
 sub _init_fields {
     my ($self) = @_;
-    $self->{step} = 0;
-    $self->{iteration} = 0;
-    $self->{iteration2} = 0;
+    $self->{step} = 0 unless exists $self->{step};
+    $self->{iteration} = 0 unless exists $self->{iteration};
+    $self->{iteration2} = 0 unless exists $self->{iteration2};
 }
 
 sub new {

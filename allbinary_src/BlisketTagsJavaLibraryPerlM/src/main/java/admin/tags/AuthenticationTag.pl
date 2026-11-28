@@ -23,12 +23,12 @@ use parent -norequire,'tags::CustomTagSupport';
 sub _init_fields {
     my ($self) = @_;
     $self->{logUtil} = 'org::allbinary::logic::communication::log::LogUtil'->getInstance();
-    $self->{command} = undef;
-    $self->{userName} = undef;
-    $self->{password} = undef;
-    $self->{newPassword} = undef;
-    $self->{roles} = undef;
-    $self->{propertiesHashMap} = undef;
+    $self->{command} = undef unless exists $self->{command};
+    $self->{userName} = undef unless exists $self->{userName};
+    $self->{password} = undef unless exists $self->{password};
+    $self->{newPassword} = undef unless exists $self->{newPassword};
+    $self->{roles} = undef unless exists $self->{roles};
+    $self->{propertiesHashMap} = undef unless exists $self->{propertiesHashMap};
 }
 
 

@@ -23,43 +23,43 @@ use parent -norequire,'java::lang::Object','org::allbinary::business::user::User
 sub _init_fields {
     my ($self) = @_;
     $self->{logUtil} = 'org::allbinary::logic::communication::log::LogUtil'->getInstance();
-    $self->{userName} = undef;
-    $self->{prefixName} = undef;
-    $self->{firstName} = undef;
-    $self->{lastName} = undef;
-    $self->{middleName} = undef;
-    $self->{suffixName} = undef;
-    $self->{company} = undef;
-    $self->{positionAtCompany} = undef;
-    $self->{mainEmail} = undef;
-    $self->{secondaryEmail} = undef;
-    $self->{homePhone} = undef;
-    $self->{cellPhone} = undef;
-    $self->{workPhone} = undef;
-    $self->{otherContact} = undef;
-    $self->{electronicDevice} = undef;
-    $self->{fax} = undef;
-    $self->{role} = undef;
-    $self->{encryption} = undef;
-    $self->{secret} = undef;
-    $self->{password} = undef;
-    $self->{enable} = undef;
-    $self->{permissions} = undef;
-    $self->{userConfigurationInterface} = undef;
+    $self->{userName} = undef unless exists $self->{userName};
+    $self->{prefixName} = undef unless exists $self->{prefixName};
+    $self->{firstName} = undef unless exists $self->{firstName};
+    $self->{lastName} = undef unless exists $self->{lastName};
+    $self->{middleName} = undef unless exists $self->{middleName};
+    $self->{suffixName} = undef unless exists $self->{suffixName};
+    $self->{company} = undef unless exists $self->{company};
+    $self->{positionAtCompany} = undef unless exists $self->{positionAtCompany};
+    $self->{mainEmail} = undef unless exists $self->{mainEmail};
+    $self->{secondaryEmail} = undef unless exists $self->{secondaryEmail};
+    $self->{homePhone} = undef unless exists $self->{homePhone};
+    $self->{cellPhone} = undef unless exists $self->{cellPhone};
+    $self->{workPhone} = undef unless exists $self->{workPhone};
+    $self->{otherContact} = undef unless exists $self->{otherContact};
+    $self->{electronicDevice} = undef unless exists $self->{electronicDevice};
+    $self->{fax} = undef unless exists $self->{fax};
+    $self->{role} = undef unless exists $self->{role};
+    $self->{encryption} = undef unless exists $self->{encryption};
+    $self->{secret} = undef unless exists $self->{secret};
+    $self->{password} = undef unless exists $self->{password};
+    $self->{enable} = undef unless exists $self->{enable};
+    $self->{permissions} = undef unless exists $self->{permissions};
+    $self->{userConfigurationInterface} = undef unless exists $self->{userConfigurationInterface};
 }
 
 sub new {
     my ($class, @arguments) = @_;
-    return $class->_new0(@arguments) if scalar(@arguments) == 0;
-    return $class->_new1(@arguments) if scalar(@arguments) == 1;
-    return $class->_new1(@arguments) if scalar(@arguments) == 1;
+    return _new0($class, @arguments) if scalar(@arguments) == 0;
+    return _new1($class, @arguments) if scalar(@arguments) == 1;
+    return _new1($class, @arguments) if scalar(@arguments) == 1;
     die "No constructor of User takes " . scalar(@arguments) . " arguments";
 }
 
 sub _new1 {
     my ($class, @arguments) = @_;
-    return $class->_new1_1(@arguments) if 1 && (!defined($arguments[0]) || (ref($arguments[0]) && ref($arguments[0]) ne 'ARRAY'));
-    return $class->_new1_2(@arguments);
+    return _new1_1($class, @arguments) if 1 && (!defined($arguments[0]) || (ref($arguments[0]) && ref($arguments[0]) ne 'ARRAY'));
+    return _new1_2($class, @arguments);
 }
 
 

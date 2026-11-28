@@ -22,8 +22,8 @@ use parent -norequire,'org::allbinary::animation::vector::RectangleFilledAnimati
 
 sub _init_fields {
     my ($self) = @_;
-    $self->{offsetX} = undef;
-    $self->{offsetY} = undef;
+    $self->{offsetX} = undef unless exists $self->{offsetX};
+    $self->{offsetY} = undef unless exists $self->{offsetY};
 }
 
 

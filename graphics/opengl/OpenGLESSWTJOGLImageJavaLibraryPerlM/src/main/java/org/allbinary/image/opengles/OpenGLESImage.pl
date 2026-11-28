@@ -28,8 +28,8 @@ sub _init_fields {
     my ($self) = @_;
     $self->{logUtil} = 'org::allbinary::logic::communication::log::LogUtil'->getInstance();
     $self->{commonStrings} = 'org::allbinary::string::CommonStrings'->getInstance();
-    $self->{textureFactory} = undef;
-    $self->{openGLBitmap} = undef;
+    $self->{textureFactory} = undef unless exists $self->{textureFactory};
+    $self->{openGLBitmap} = undef unless exists $self->{openGLBitmap};
     $self->{imageProcessor} = 'org::allbinary::image::opengles::OpenGLESImageProcessor'->getInstance();
     $self->{openGLESImageTranslate} = 'org::allbinary::image::opengles::OpenGLESImageTranslate'->getInstance();
     $self->{openGLESImageProperties} = 'org::allbinary::image::opengles::OpenGLESImageProperties'->new();

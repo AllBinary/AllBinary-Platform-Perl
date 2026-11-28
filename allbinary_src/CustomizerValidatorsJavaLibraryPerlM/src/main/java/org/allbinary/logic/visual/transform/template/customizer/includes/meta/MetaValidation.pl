@@ -23,16 +23,16 @@ use parent -norequire,'org::allbinary::logic::control::validate::Validation','or
 sub _init_fields {
     my ($self) = @_;
     $self->{logUtil} = 'org::allbinary::logic::communication::log::LogUtil'->getInstance();
-    $self->{label} = undef;
-    $self->{name} = undef;
-    $self->{httpEquiv} = undef;
-    $self->{content} = undef;
+    $self->{label} = undef unless exists $self->{label};
+    $self->{name} = undef unless exists $self->{name};
+    $self->{httpEquiv} = undef unless exists $self->{httpEquiv};
+    $self->{content} = undef unless exists $self->{content};
 }
 
 sub new {
     my ($class, @arguments) = @_;
-    return $class->_new4(@arguments) if scalar(@arguments) == 4;
-    return $class->_new1(@arguments) if scalar(@arguments) == 1;
+    return _new4($class, @arguments) if scalar(@arguments) == 4;
+    return _new1($class, @arguments) if scalar(@arguments) == 1;
     die "No constructor of MetaValidation takes " . scalar(@arguments) . " arguments";
 }
 

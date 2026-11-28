@@ -10,7 +10,7 @@ use parent -norequire,'java::lang::Object','org::apache::xmlrpc::XmlRpcHandler';
 
 sub _init_fields {
     my ($self) = @_;
-    $self->{url} = undef;
+    $self->{url} = undef unless exists $self->{url};
 }
 
 

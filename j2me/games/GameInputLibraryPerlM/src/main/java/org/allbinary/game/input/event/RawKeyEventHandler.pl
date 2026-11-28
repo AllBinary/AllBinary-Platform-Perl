@@ -26,7 +26,7 @@ our $LISTENER_LABEL = " Listener: ";
 sub _init_fields {
     my ($self) = @_;
     $self->{logUtil} = 'org::allbinary::logic::communication::log::LogUtil'->getInstance();
-    $self->{eventListenerInterfaceList} = undef;
+    $self->{eventListenerInterfaceList} = undef unless exists $self->{eventListenerInterfaceList};
 }
 
 

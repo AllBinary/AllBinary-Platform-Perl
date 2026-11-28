@@ -14,8 +14,8 @@ use parent -norequire,'java::lang::Object';
 
 sub _init_fields {
     my ($self) = @_;
-    $self->{RESOURCE} = undef;
-    $self->{HINT} = undef;
+    $self->{RESOURCE} = undef unless exists $self->{RESOURCE};
+    $self->{HINT} = undef unless exists $self->{HINT};
 }
 
 

@@ -23,10 +23,10 @@ use parent -norequire,'java::lang::Object','org::allbinary::game::score::HighSco
 sub _init_fields {
     my ($self) = @_;
     $self->{orderedHighScoresList} = 'org::allbinary::util::BasicArrayListD'->new();
-    $self->{name} = undef;
-    $self->{heading} = undef;
+    $self->{name} = undef unless exists $self->{name};
+    $self->{heading} = undef unless exists $self->{heading};
     $self->{columnOneHeading} = "Name";
-    $self->{columnTwoHeading} = undef;
+    $self->{columnTwoHeading} = undef unless exists $self->{columnTwoHeading};
 }
 
 

@@ -24,11 +24,11 @@ use parent -norequire,'org::allbinary::logic::communication::sql::AbDatabaseMana
 sub _init_fields {
     my ($self) = @_;
     $self->{logUtil} = 'org::allbinary::logic::communication::log::LogUtil'->getInstance();
-    $self->{userDbInitInfo} = undef;
-    $self->{inventoryDbInitInfo} = undef;
-    $self->{historyDbInitInfo} = undef;
-    $self->{staticpagesDbInitInfo} = undef;
-    $self->{logDbInitInfo} = undef;
+    $self->{userDbInitInfo} = undef unless exists $self->{userDbInitInfo};
+    $self->{inventoryDbInitInfo} = undef unless exists $self->{inventoryDbInitInfo};
+    $self->{historyDbInitInfo} = undef unless exists $self->{historyDbInitInfo};
+    $self->{staticpagesDbInitInfo} = undef unless exists $self->{staticpagesDbInitInfo};
+    $self->{logDbInitInfo} = undef unless exists $self->{logDbInitInfo};
     $self->{SQL_FILE} = "initWeblisket.sql";
 }
 

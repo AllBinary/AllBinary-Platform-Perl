@@ -23,8 +23,8 @@ use parent -norequire,'org::allbinary::animation::Animation';
 sub _init_fields {
     my ($self) = @_;
     $self->{logUtil} = 'org::allbinary::logic::communication::log::LogUtil'->getInstance();
-    $self->{linePathAnimation} = undef;
-    $self->{pathFindingLayer} = undef;
+    $self->{linePathAnimation} = undef unless exists $self->{linePathAnimation};
+    $self->{pathFindingLayer} = undef unless exists $self->{pathFindingLayer};
     $self->{allBinaryGameLayerManagerP} = 'org::allbinary::game::layer::AllBinaryGameLayerManager'->getNullInstance();
     $self->{startColor} = 'org::allbinary::graphics::color::BasicColorFactory'->getInstance()->{RED};
     $self->{middleColor} = 'org::allbinary::graphics::color::BasicColorFactory'->getInstance()->{BLUE};

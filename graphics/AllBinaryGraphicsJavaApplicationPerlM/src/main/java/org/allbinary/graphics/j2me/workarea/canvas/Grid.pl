@@ -22,7 +22,7 @@ use parent -norequire,'java::lang::Object';
 
 sub _init_fields {
     my ($self) = @_;
-    $self->{grid} = undef;
+    $self->{grid} = undef unless exists $self->{grid};
     $self->{isGridOn} = 1;
     $self->{isGridPossible} = 0;
     $self->{zoom} = 3;
@@ -31,8 +31,8 @@ sub _init_fields {
 
 sub new {
     my ($class, @arguments) = @_;
-    return $class->_new0(@arguments) if scalar(@arguments) == 0;
-    return $class->_new1(@arguments) if scalar(@arguments) == 1;
+    return _new0($class, @arguments) if scalar(@arguments) == 0;
+    return _new1($class, @arguments) if scalar(@arguments) == 1;
     die "No constructor of Grid takes " . scalar(@arguments) . " arguments";
 }
 

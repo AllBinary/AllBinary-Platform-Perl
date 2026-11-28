@@ -22,7 +22,7 @@ use parent -norequire,'org::allbinary::game::layer::capital::Capital';
 
 sub _init_fields {
     my ($self) = @_;
-    $self->{capitalGraphic} = undef;
+    $self->{capitalGraphic} = undef unless exists $self->{capitalGraphic};
 }
 
 

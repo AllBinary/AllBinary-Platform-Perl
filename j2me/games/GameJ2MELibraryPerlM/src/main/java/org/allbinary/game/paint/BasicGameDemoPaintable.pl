@@ -22,9 +22,9 @@ use parent -norequire,'org::allbinary::graphics::paint::StatePaintable';
 
 sub _init_fields {
     my ($self) = @_;
-    $self->{mainDemoStatePaintable} = undef;
-    $self->{ownershipPaintable} = undef;
-    $self->{helpPaintableInterface} = undef;
+    $self->{mainDemoStatePaintable} = undef unless exists $self->{mainDemoStatePaintable};
+    $self->{ownershipPaintable} = undef unless exists $self->{ownershipPaintable};
+    $self->{helpPaintableInterface} = undef unless exists $self->{helpPaintableInterface};
     $self->{currentStatePaintable} = 'org::allbinary::graphics::paint::NullPaintable'->getInstance();
 }
 

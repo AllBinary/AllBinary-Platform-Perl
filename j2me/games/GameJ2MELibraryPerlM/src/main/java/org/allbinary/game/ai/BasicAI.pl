@@ -27,8 +27,8 @@ sub _init_fields {
     $self->{logUtil} = 'org::allbinary::logic::communication::log::LogUtil'->getInstance();
     $self->{commonStrings} = 'org::allbinary::string::CommonStrings'->getInstance();
     $self->{gameKeyEventFactory} = 'org::allbinary::game::input::event::GameKeyEventFactory'->getInstance();
-    $self->{ownerLayerInterface} = undef;
-    $self->{gameInput} = undef;
+    $self->{ownerLayerInterface} = undef unless exists $self->{ownerLayerInterface};
+    $self->{gameInput} = undef unless exists $self->{gameInput};
     $self->{lastKey} = -1;
 }
 

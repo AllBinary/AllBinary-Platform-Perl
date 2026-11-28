@@ -23,16 +23,16 @@ tie our $instance, 'java::lang::LazyStatic', sub { 'org::allbinary::globals::FRE
 
 sub _init_fields {
     my ($self) = @_;
-    $self->{INSTALLPATH} = undef;
-    $self->{XSLPATH} = undef;
+    $self->{INSTALLPATH} = undef unless exists $self->{INSTALLPATH};
+    $self->{XSLPATH} = undef unless exists $self->{XSLPATH};
     $self->{TEMPLATEPATH} = "template" . 'org::allbinary::logic::io::path::AbPathData'->getInstance()->{SEPARATOR};
     $self->{STYLEPATH} = $self->{TEMPLATEPATH} . "style" . 'org::allbinary::logic::io::path::AbPathData'->getInstance()->{SEPARATOR};
     $self->{THEMEPATH} = $self->{STYLEPATH} . "theme" . 'org::allbinary::logic::io::path::AbPathData'->getInstance()->{SEPARATOR};
     $self->{DBINITPATH} = 'org::allbinary::globals::PATH_GLOBALS'->getInstance()->{INIT_PATH} . "db" . 'org::allbinary::logic::io::path::AbPathData'->getInstance()->{SEPARATOR};
     $self->{LINEDATAPATH} = 'org::allbinary::globals::PATH_GLOBALS'->getInstance()->{INIT_PATH} . "lineData" . 'org::allbinary::logic::io::path::AbPathData'->getInstance()->{SEPARATOR};
-    $self->{CONFIGURATIONPATH} = undef;
-    $self->{USERCONFIGURATIONPATH} = undef;
-    $self->{CONTEXTCONFIGURATIONPATH} = undef;
+    $self->{CONFIGURATIONPATH} = undef unless exists $self->{CONFIGURATIONPATH};
+    $self->{USERCONFIGURATIONPATH} = undef unless exists $self->{USERCONFIGURATIONPATH};
+    $self->{CONTEXTCONFIGURATIONPATH} = undef unless exists $self->{CONTEXTCONFIGURATIONPATH};
     $self->{LICENSEERRORPAGE} = "LicensingError.jsp";
     $self->{ERRORPAGE} = "Error.jsp";
 }

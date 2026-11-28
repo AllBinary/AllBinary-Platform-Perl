@@ -22,10 +22,10 @@ use parent -norequire,'org::allbinary::animation::AnimationBehavior';
 
 sub _init_fields {
     my ($self) = @_;
-    $self->{frameDelayTime} = undef;
-    $self->{loopTotal} = undef;
-    $self->{elapsedTime} = 0;
-    $self->{loopIndex} = 0;
+    $self->{frameDelayTime} = undef unless exists $self->{frameDelayTime};
+    $self->{loopTotal} = undef unless exists $self->{loopTotal};
+    $self->{elapsedTime} = 0 unless exists $self->{elapsedTime};
+    $self->{loopIndex} = 0 unless exists $self->{loopIndex};
 }
 
 

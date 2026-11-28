@@ -23,7 +23,7 @@ use parent -norequire,'org::allbinary::game::input::GameInput','org::allbinary::
 sub _init_fields {
     my ($self) = @_;
     $self->{gameInputStrings} = 'org::allbinary::game::input::GameInputStrings'->getInstance();
-    $self->{playerInputId} = undef;
+    $self->{playerInputId} = undef unless exists $self->{playerInputId};
 }
 
 

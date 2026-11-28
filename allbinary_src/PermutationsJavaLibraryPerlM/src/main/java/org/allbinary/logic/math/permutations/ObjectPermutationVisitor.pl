@@ -10,7 +10,7 @@ use parent -norequire,'org::allbinary::logic::util::visitor::Visitor';
 
 sub _init_fields {
     my ($self) = @_;
-    $self->{data} = undef;
+    $self->{data} = undef unless exists $self->{data};
     $self->{stringBuilder} = 'org::allbinary::logic::string::StringMaker'->new();
 }
 

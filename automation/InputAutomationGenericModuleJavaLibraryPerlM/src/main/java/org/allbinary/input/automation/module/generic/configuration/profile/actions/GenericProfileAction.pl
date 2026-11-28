@@ -23,15 +23,15 @@ use parent -norequire,'java::lang::Object','org::allbinary::data::tree::dom::Dom
 sub _init_fields {
     my ($self) = @_;
     $self->{logUtil} = 'org::allbinary::logic::communication::log::LogUtil'->getInstance();
-    $self->{name} = undef;
-    $self->{genericProfileActionScript} = undef;
-    $self->{genericProfileActionJPanel} = undef;
+    $self->{name} = undef unless exists $self->{name};
+    $self->{genericProfileActionScript} = undef unless exists $self->{genericProfileActionScript};
+    $self->{genericProfileActionJPanel} = undef unless exists $self->{genericProfileActionJPanel};
 }
 
 sub new {
     my ($class, @arguments) = @_;
-    return $class->_new2(@arguments) if scalar(@arguments) == 2;
-    return $class->_new1(@arguments) if scalar(@arguments) == 1;
+    return _new2($class, @arguments) if scalar(@arguments) == 2;
+    return _new1($class, @arguments) if scalar(@arguments) == 1;
     die "No constructor of GenericProfileAction takes " . scalar(@arguments) . " arguments";
 }
 

@@ -22,7 +22,7 @@ use parent -norequire,'java::lang::Object';
 
 sub _init_fields {
     my ($self) = @_;
-    $self->{allBinaryGyroSensor} = undef;
+    $self->{allBinaryGyroSensor} = undef unless exists $self->{allBinaryGyroSensor};
     $self->{MIN} = 15;
 }
 

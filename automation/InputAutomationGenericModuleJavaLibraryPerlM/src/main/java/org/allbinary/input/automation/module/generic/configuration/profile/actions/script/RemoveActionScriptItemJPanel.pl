@@ -23,9 +23,9 @@ use parent -norequire,'java::lang::Object';
 sub _init_fields {
     my ($self) = @_;
     $self->{logUtil} = 'org::allbinary::logic::communication::log::LogUtil'->getInstance();
-    $self->{genericProfileActionJPanel} = undef;
-    $self->{profileActionScriptConditionInterface} = undef;
-    $self->{removeJButton} = undef;
+    $self->{genericProfileActionJPanel} = undef unless exists $self->{genericProfileActionJPanel};
+    $self->{profileActionScriptConditionInterface} = undef unless exists $self->{profileActionScriptConditionInterface};
+    $self->{removeJButton} = undef unless exists $self->{removeJButton};
 }
 
 

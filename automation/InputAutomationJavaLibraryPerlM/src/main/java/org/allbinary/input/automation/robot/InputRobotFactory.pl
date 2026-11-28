@@ -26,7 +26,7 @@ sub _init_fields {
     $self->{logUtil} = 'org::allbinary::logic::communication::log::LogUtil'->getInstance();
     $self->{commonStrings} = 'org::allbinary::string::CommonStrings'->getInstance();
     $self->{hashtable} = 'org::allbinary::logic::StdUtil'->getInstance()->createHashtable();
-    $self->{helpSetListenerInterface} = undef;
+    $self->{helpSetListenerInterface} = undef unless exists $self->{helpSetListenerInterface};
 }
 
 

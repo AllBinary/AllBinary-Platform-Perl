@@ -25,9 +25,9 @@ sub _init_fields {
     $self->{logUtil} = 'org::allbinary::logic::communication::log::LogUtil'->getInstance();
     $self->{commonStrings} = 'org::allbinary::string::CommonStrings'->getInstance();
     $self->{imageComparisonInfoVector} = 'org::allbinary::util::BasicArrayListD'->new();
-    $self->{motionRectangleConstraintsInterface} = undef;
-    $self->{index} = 0;
-    $self->{running} = 0;
+    $self->{motionRectangleConstraintsInterface} = undef unless exists $self->{motionRectangleConstraintsInterface};
+    $self->{index} = 0 unless exists $self->{index};
+    $self->{running} = 0 unless exists $self->{running};
 }
 
 

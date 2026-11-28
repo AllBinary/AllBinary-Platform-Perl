@@ -23,8 +23,8 @@ tie our $NULL_COLLIDABLE_WEAPON_BEHAVIOR, 'java::lang::LazyStatic', sub { 'org::
 
 sub _init_fields {
     my ($self) = @_;
-    $self->{collided} = 0;
-    $self->{collisionHelper} = undef;
+    $self->{collided} = 0 unless exists $self->{collided};
+    $self->{collisionHelper} = undef unless exists $self->{collisionHelper};
 }
 
 

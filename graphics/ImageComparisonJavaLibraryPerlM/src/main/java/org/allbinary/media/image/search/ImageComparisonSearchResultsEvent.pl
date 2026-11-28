@@ -22,7 +22,7 @@ use parent -norequire,'org::allbinary::logic::util::event::AllBinaryEventObject'
 
 sub _init_fields {
     my ($self) = @_;
-    $self->{imageComparisonSearch} = undef;
+    $self->{imageComparisonSearch} = undef unless exists $self->{imageComparisonSearch};
 }
 
 

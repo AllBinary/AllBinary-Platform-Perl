@@ -22,7 +22,7 @@ use parent -norequire,'org::allbinary::input::motion::MotionRecognizer';
 
 sub _init_fields {
     my ($self) = @_;
-    $self->{touchButtonRecognizer} = undef;
+    $self->{touchButtonRecognizer} = undef unless exists $self->{touchButtonRecognizer};
     $self->{touchButtonProcessing} = 0;
 }
 

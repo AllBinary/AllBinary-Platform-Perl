@@ -22,14 +22,14 @@ use parent -norequire,'java::lang::Object';
 
 sub _init_fields {
     my ($self) = @_;
-    $self->{disableProgramShaderOpenGLProcessor} = undef;
-    $self->{requiresOpenGLVersion} = undef;
-    $self->{shaderArray} = undef;
-    $self->{shaderInitializer} = undef;
-    $self->{compositeShaderUpdater} = undef;
-    $self->{modelViewProjection} = undef;
-    $self->{colorOpenGLProcessor} = undef;
-    $self->{vertexOpenGLProcessor} = undef;
+    $self->{disableProgramShaderOpenGLProcessor} = undef unless exists $self->{disableProgramShaderOpenGLProcessor};
+    $self->{requiresOpenGLVersion} = undef unless exists $self->{requiresOpenGLVersion};
+    $self->{shaderArray} = undef unless exists $self->{shaderArray};
+    $self->{shaderInitializer} = undef unless exists $self->{shaderInitializer};
+    $self->{compositeShaderUpdater} = undef unless exists $self->{compositeShaderUpdater};
+    $self->{modelViewProjection} = undef unless exists $self->{modelViewProjection};
+    $self->{colorOpenGLProcessor} = undef unless exists $self->{colorOpenGLProcessor};
+    $self->{vertexOpenGLProcessor} = undef unless exists $self->{vertexOpenGLProcessor};
     $self->{useProgramShaderOpenGLProcessor} = 'org::allbinary::graphics::opengles::NullOpenGLProcessorFactory'->getInstance();
     $self->{shaderMatrixOpenGLProcessor} = 'org::allbinary::graphics::opengles::NullOpenGLProcessorFactory'->getInstance();
     $self->{colorEnableVertexAttribArrayOpenGLProcessor} = 'org::allbinary::graphics::opengles::NullOpenGLProcessorFactory'->getInstance();
@@ -44,7 +44,7 @@ sub _init_fields {
     $self->{uniformLightColorOpenGLProcessor} = 'org::allbinary::graphics::opengles::shader::NullOpenGLTextureProcessor'->getInstance();
     $self->{uniformCameraPositionOpenGLProcessor} = 'org::allbinary::graphics::opengles::shader::NullOpenGLTextureProcessor'->getInstance();
     $self->{uniformTextureUnitOpenGLProcessor} = 'org::allbinary::graphics::opengles::shader::NullOpenGLTextureProcessor'->getInstance();
-    $self->{programHandle} = 0;
+    $self->{programHandle} = 0 unless exists $self->{programHandle};
 }
 
 

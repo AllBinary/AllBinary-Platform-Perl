@@ -22,7 +22,7 @@ use parent -norequire,'org::allbinary::logic::visual::dhtml::html::input::HtmlIn
 
 sub _init_fields {
     my ($self) = @_;
-    $self->{value} = undef;
+    $self->{value} = undef unless exists $self->{value};
     $self->{VALUE} = "VALUE";
 }
 

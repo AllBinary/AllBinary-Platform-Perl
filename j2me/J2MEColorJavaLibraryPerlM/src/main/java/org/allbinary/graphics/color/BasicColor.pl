@@ -23,16 +23,16 @@ use parent -norequire,'java::lang::Object';
 
 sub _init_fields {
     my ($self) = @_;
-    $self->{name} = undef;
-    $self->{value} = undef;
-    $self->{redComponent} = undef;
-    $self->{greenComponent} = undef;
-    $self->{blueComponent} = undef;
-    $self->{alphaComponent} = undef;
-    $self->{red} = undef;
-    $self->{green} = undef;
-    $self->{blue} = undef;
-    $self->{alpha} = undef;
+    $self->{name} = undef unless exists $self->{name};
+    $self->{value} = undef unless exists $self->{value};
+    $self->{redComponent} = undef unless exists $self->{redComponent};
+    $self->{greenComponent} = undef unless exists $self->{greenComponent};
+    $self->{blueComponent} = undef unless exists $self->{blueComponent};
+    $self->{alphaComponent} = undef unless exists $self->{alphaComponent};
+    $self->{red} = undef unless exists $self->{red};
+    $self->{green} = undef unless exists $self->{green};
+    $self->{blue} = undef unless exists $self->{blue};
+    $self->{alpha} = undef unless exists $self->{alpha};
 }
 
 

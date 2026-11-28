@@ -23,7 +23,7 @@ use parent -norequire,'org::allbinary::thread::BaseImageLoadingProcessor';
 sub _init_fields {
     my ($self) = @_;
     $self->{logUtil} = 'org::allbinary::logic::communication::log::LogUtil'->getInstance();
-    $self->{runnable} = undef;
+    $self->{runnable} = undef unless exists $self->{runnable};
 }
 
 
@@ -53,7 +53,7 @@ sub runTask {
 
     sub _init_fields {
         my ($self) = @_;
-        $self->{imageCache} = undef;
+        $self->{imageCache} = undef unless exists $self->{imageCache};
     }
     
 

@@ -22,9 +22,9 @@ use parent -norequire,'org::allbinary::graph::V';
 
 sub _init_fields {
     my ($self) = @_;
-    $self->{id} = undef;
-    $self->{column} = undef;
-    $self->{row} = undef;
+    $self->{id} = undef unless exists $self->{id};
+    $self->{column} = undef unless exists $self->{column};
+    $self->{row} = undef unless exists $self->{row};
 }
 
 

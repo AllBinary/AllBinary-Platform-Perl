@@ -22,7 +22,7 @@ use parent -norequire,'admin::tags::TableTag';
 
 sub _init_fields {
     my ($self) = @_;
-    $self->{storeName} = undef;
+    $self->{storeName} = undef unless exists $self->{storeName};
 }
 
 

@@ -22,9 +22,9 @@ use parent -norequire,'org::allbinary::game::layer::pickup::PickedUpLayerInterfa
 
 sub _init_fields {
     my ($self) = @_;
-    $self->{pickedUpLayerType} = undef;
-    $self->{iconLayer} = undef;
-    $self->{animationInterface} = undef;
+    $self->{pickedUpLayerType} = undef unless exists $self->{pickedUpLayerType};
+    $self->{iconLayer} = undef unless exists $self->{iconLayer};
+    $self->{animationInterface} = undef unless exists $self->{animationInterface};
 }
 
 

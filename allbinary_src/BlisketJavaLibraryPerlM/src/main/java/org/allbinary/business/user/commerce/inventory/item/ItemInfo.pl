@@ -22,11 +22,11 @@ use parent -norequire,'java::lang::Object';
 
 sub _init_fields {
     my ($self) = @_;
-    $self->{type} = undef;
-    $self->{view} = undef;
-    $self->{data} = undef;
-    $self->{creationDate} = undef;
-    $self->{lastModified} = undef;
+    $self->{type} = undef unless exists $self->{type};
+    $self->{view} = undef unless exists $self->{view};
+    $self->{data} = undef unless exists $self->{data};
+    $self->{creationDate} = undef unless exists $self->{creationDate};
+    $self->{lastModified} = undef unless exists $self->{lastModified};
 }
 
 

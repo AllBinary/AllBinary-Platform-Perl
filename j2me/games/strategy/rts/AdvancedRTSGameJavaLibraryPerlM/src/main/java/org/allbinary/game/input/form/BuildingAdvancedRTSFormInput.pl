@@ -21,7 +21,7 @@ use parent -norequire,'org::allbinary::game::input::form::BuildingRTSFormInput';
 
 sub _init_fields {
     my ($self) = @_;
-    $self->{atLeastOneHouseGameNotificationEvent} = undef;
+    $self->{atLeastOneHouseGameNotificationEvent} = undef unless exists $self->{atLeastOneHouseGameNotificationEvent};
     $self->{BUILD_BUILDING_RTS_LAYER_EVENT} = 'org::allbinary::game::layer::RTSLayerEvent'->new($org::allbinary::game::layer::NullPathFindingLayer::NULL_PATH_FINDING_LAYER);
 }
 

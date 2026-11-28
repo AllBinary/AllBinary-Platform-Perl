@@ -24,16 +24,16 @@ sub _init_fields {
     my ($self) = @_;
     $self->{logUtil} = 'org::allbinary::logic::communication::log::LogUtil'->getInstance();
     $self->{commonStrings} = 'org::allbinary::string::CommonStrings'->getInstance();
-    $self->{capturedImageActionScriptOutputInterface} = undef;
-    $self->{capturedImageActionJButton} = undef;
-    $self->{capturedImageActionJDialog} = undef;
-    $self->{displayJCheckBox} = undef;
-    $self->{itemTypesJList} = undef;
-    $self->{jLabel1} = undef;
-    $self->{jScrollPane1} = undef;
-    $self->{okJButton} = undef;
-    $self->{saveJCheckBox} = undef;
-    $self->{titleJLabel} = undef;
+    $self->{capturedImageActionScriptOutputInterface} = undef unless exists $self->{capturedImageActionScriptOutputInterface};
+    $self->{capturedImageActionJButton} = undef unless exists $self->{capturedImageActionJButton};
+    $self->{capturedImageActionJDialog} = undef unless exists $self->{capturedImageActionJDialog};
+    $self->{displayJCheckBox} = undef unless exists $self->{displayJCheckBox};
+    $self->{itemTypesJList} = undef unless exists $self->{itemTypesJList};
+    $self->{jLabel1} = undef unless exists $self->{jLabel1};
+    $self->{jScrollPane1} = undef unless exists $self->{jScrollPane1};
+    $self->{okJButton} = undef unless exists $self->{okJButton};
+    $self->{saveJCheckBox} = undef unless exists $self->{saveJCheckBox};
+    $self->{titleJLabel} = undef unless exists $self->{titleJLabel};
 }
 
 

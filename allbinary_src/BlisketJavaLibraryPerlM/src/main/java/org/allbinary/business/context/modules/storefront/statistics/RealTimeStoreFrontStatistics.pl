@@ -22,10 +22,10 @@ use parent -norequire,'java::lang::Object','org::allbinary::business::context::m
 
 sub _init_fields {
     my ($self) = @_;
-    $self->{storeFrontAdvertisementsStatisticsInterface} = undef;
-    $self->{storeFrontUsersStatisticsInterface} = undef;
-    $self->{storeFrontInventoryStatisticsInterface} = undef;
-    $self->{storeFrontOrderHistoryStatisticsInterface} = undef;
+    $self->{storeFrontAdvertisementsStatisticsInterface} = undef unless exists $self->{storeFrontAdvertisementsStatisticsInterface};
+    $self->{storeFrontUsersStatisticsInterface} = undef unless exists $self->{storeFrontUsersStatisticsInterface};
+    $self->{storeFrontInventoryStatisticsInterface} = undef unless exists $self->{storeFrontInventoryStatisticsInterface};
+    $self->{storeFrontOrderHistoryStatisticsInterface} = undef unless exists $self->{storeFrontOrderHistoryStatisticsInterface};
 }
 
 

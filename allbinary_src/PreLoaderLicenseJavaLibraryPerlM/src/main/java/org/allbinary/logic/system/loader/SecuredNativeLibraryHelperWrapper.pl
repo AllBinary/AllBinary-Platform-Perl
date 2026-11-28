@@ -22,7 +22,7 @@ use parent -norequire,'org::allbinary::logic::system::loader::NativeLibraryHelpe
 
 sub _init_fields {
     my ($self) = @_;
-    $self->{securedNativeLibraryInterface} = undef;
+    $self->{securedNativeLibraryInterface} = undef unless exists $self->{securedNativeLibraryInterface};
 }
 
 

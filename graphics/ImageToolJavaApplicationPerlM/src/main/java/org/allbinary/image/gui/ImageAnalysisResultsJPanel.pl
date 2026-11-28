@@ -22,32 +22,32 @@ use parent -norequire,'java::lang::Object';
 
 sub _init_fields {
     my ($self) = @_;
-    $self->{avgBlueJTextField} = undef;
-    $self->{avgGreenJTextField} = undef;
-    $self->{avgRedJTextField} = undef;
-    $self->{jComboBox1} = undef;
-    $self->{jLabel1} = undef;
-    $self->{jLabel10} = undef;
-    $self->{jLabel11} = undef;
-    $self->{jLabel12} = undef;
-    $self->{jLabel13} = undef;
-    $self->{jLabel2} = undef;
-    $self->{jLabel3} = undef;
-    $self->{jLabel4} = undef;
-    $self->{jLabel5} = undef;
-    $self->{jLabel6} = undef;
-    $self->{jLabel7} = undef;
-    $self->{jLabel8} = undef;
-    $self->{jLabel9} = undef;
-    $self->{matchingPixelsJTextField} = undef;
-    $self->{maxBlueJTextField} = undef;
-    $self->{maxGreenJTextField} = undef;
-    $self->{maxRedJTextField} = undef;
-    $self->{minBlueJTextField} = undef;
-    $self->{minGreenJTextField} = undef;
-    $self->{minRedJTextField} = undef;
-    $self->{percentMatchingJTextField} = undef;
-    $self->{totalPixelsJTextField} = undef;
+    $self->{avgBlueJTextField} = undef unless exists $self->{avgBlueJTextField};
+    $self->{avgGreenJTextField} = undef unless exists $self->{avgGreenJTextField};
+    $self->{avgRedJTextField} = undef unless exists $self->{avgRedJTextField};
+    $self->{jComboBox1} = undef unless exists $self->{jComboBox1};
+    $self->{jLabel1} = undef unless exists $self->{jLabel1};
+    $self->{jLabel10} = undef unless exists $self->{jLabel10};
+    $self->{jLabel11} = undef unless exists $self->{jLabel11};
+    $self->{jLabel12} = undef unless exists $self->{jLabel12};
+    $self->{jLabel13} = undef unless exists $self->{jLabel13};
+    $self->{jLabel2} = undef unless exists $self->{jLabel2};
+    $self->{jLabel3} = undef unless exists $self->{jLabel3};
+    $self->{jLabel4} = undef unless exists $self->{jLabel4};
+    $self->{jLabel5} = undef unless exists $self->{jLabel5};
+    $self->{jLabel6} = undef unless exists $self->{jLabel6};
+    $self->{jLabel7} = undef unless exists $self->{jLabel7};
+    $self->{jLabel8} = undef unless exists $self->{jLabel8};
+    $self->{jLabel9} = undef unless exists $self->{jLabel9};
+    $self->{matchingPixelsJTextField} = undef unless exists $self->{matchingPixelsJTextField};
+    $self->{maxBlueJTextField} = undef unless exists $self->{maxBlueJTextField};
+    $self->{maxGreenJTextField} = undef unless exists $self->{maxGreenJTextField};
+    $self->{maxRedJTextField} = undef unless exists $self->{maxRedJTextField};
+    $self->{minBlueJTextField} = undef unless exists $self->{minBlueJTextField};
+    $self->{minGreenJTextField} = undef unless exists $self->{minGreenJTextField};
+    $self->{minRedJTextField} = undef unless exists $self->{minRedJTextField};
+    $self->{percentMatchingJTextField} = undef unless exists $self->{percentMatchingJTextField};
+    $self->{totalPixelsJTextField} = undef unless exists $self->{totalPixelsJTextField};
 }
 
 

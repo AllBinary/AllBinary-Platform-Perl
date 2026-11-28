@@ -25,18 +25,18 @@ sub _init_fields {
     $self->{logUtil} = 'org::allbinary::logic::communication::log::LogUtil'->getInstance();
     $self->{commonStrings} = 'org::allbinary::string::CommonStrings'->getInstance();
     $self->{imageStrings} = 'org::allbinary::media::image::ImageStrings'->getInstance();
-    $self->{imageProcessorInput} = undef;
-    $self->{result} = undef;
-    $self->{generateJButton} = undef;
-    $self->{horizontalJCheckBox} = undef;
-    $self->{imageHeightIsFrameSizeJCheckBox} = undef;
-    $self->{jLabel2} = undef;
-    $self->{jLayeredPane1} = undef;
-    $self->{jPanel1} = undef;
-    $self->{jPanel2} = undef;
-    $self->{jPanel3} = undef;
-    $self->{verticleJCheckBox} = undef;
-    $self->{writeOverOriginalJCheckBox} = undef;
+    $self->{imageProcessorInput} = undef unless exists $self->{imageProcessorInput};
+    $self->{result} = undef unless exists $self->{result};
+    $self->{generateJButton} = undef unless exists $self->{generateJButton};
+    $self->{horizontalJCheckBox} = undef unless exists $self->{horizontalJCheckBox};
+    $self->{imageHeightIsFrameSizeJCheckBox} = undef unless exists $self->{imageHeightIsFrameSizeJCheckBox};
+    $self->{jLabel2} = undef unless exists $self->{jLabel2};
+    $self->{jLayeredPane1} = undef unless exists $self->{jLayeredPane1};
+    $self->{jPanel1} = undef unless exists $self->{jPanel1};
+    $self->{jPanel2} = undef unless exists $self->{jPanel2};
+    $self->{jPanel3} = undef unless exists $self->{jPanel3};
+    $self->{verticleJCheckBox} = undef unless exists $self->{verticleJCheckBox};
+    $self->{writeOverOriginalJCheckBox} = undef unless exists $self->{writeOverOriginalJCheckBox};
 }
 
 

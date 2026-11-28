@@ -24,8 +24,8 @@ use parent -norequire,'org::allbinary::game::ag::ai::scroller::BasePatrolAI','or
 
 sub _init_fields {
     my ($self) = @_;
-    $self->{trackingList} = undef;
-    $self->{firingDistance} = 0;
+    $self->{trackingList} = undef unless exists $self->{trackingList};
+    $self->{firingDistance} = 0 unless exists $self->{firingDistance};
     $self->{isFollowLimitedByTerrain} = 0;
 }
 

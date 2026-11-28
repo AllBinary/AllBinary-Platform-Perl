@@ -22,9 +22,9 @@ use parent -norequire,'java::lang::Object','org::allbinary::business::advertisem
 
 sub _init_fields {
     my ($self) = @_;
-    $self->{imageFileName} = undef;
-    $self->{imageUrl} = undef;
-    $self->{constraint} = undef;
+    $self->{imageFileName} = undef unless exists $self->{imageFileName};
+    $self->{imageUrl} = undef unless exists $self->{imageUrl};
+    $self->{constraint} = undef unless exists $self->{constraint};
 }
 
 

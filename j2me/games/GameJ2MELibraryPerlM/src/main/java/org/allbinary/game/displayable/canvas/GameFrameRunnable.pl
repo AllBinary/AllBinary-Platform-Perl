@@ -24,7 +24,7 @@ sub _init_fields {
     my ($self) = @_;
     $self->{logUtil} = 'org::allbinary::logic::communication::log::LogUtil'->getInstance();
     $self->{gameTickDisplayInfoSingleton} = 'org::allbinary::graphics::displayable::GameTickDisplayInfoSingleton'->getInstance();
-    $self->{allBinaryGameCanvas} = undef;
+    $self->{allBinaryGameCanvas} = undef unless exists $self->{allBinaryGameCanvas};
     $self->{gameTickTimeDelayHelper} = 'org::allbinary::time::GameTickTimeDelayHelperFactory'->getInstance();
 }
 

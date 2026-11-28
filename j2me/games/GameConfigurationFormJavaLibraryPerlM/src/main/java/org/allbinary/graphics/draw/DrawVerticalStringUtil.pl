@@ -26,8 +26,8 @@ sub _init_fields {
     my ($self) = @_;
     $self->{EMPTY_STRING} = 'org::allbinary::logic::string::StringUtil'->getInstance()->{EMPTY_STRING};
     $self->{anchor} = $org::allbinary::graphics::Anchor::TOP_LEFT;
-    $self->{charHeight} = 0;
-    $self->{offsetY} = 0;
+    $self->{charHeight} = 0 unless exists $self->{charHeight};
+    $self->{offsetY} = 0 unless exists $self->{offsetY};
     $self->{offsetXArray} = 'org::allbinary::logic::NullUtil'->getInstance()->{NULL_INT_ARRAY};
 }
 

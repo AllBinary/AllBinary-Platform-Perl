@@ -22,8 +22,8 @@ use parent -norequire,'java::lang::Object','org::allbinary::animation::Animation
 
 sub _init_fields {
     my ($self) = @_;
-    $self->{totalAngle} = undef;
-    $self->{angleIncrement} = undef;
+    $self->{totalAngle} = undef unless exists $self->{totalAngle};
+    $self->{angleIncrement} = undef unless exists $self->{angleIncrement};
 }
 
 

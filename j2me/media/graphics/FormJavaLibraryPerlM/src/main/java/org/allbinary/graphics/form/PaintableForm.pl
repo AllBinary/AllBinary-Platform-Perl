@@ -13,8 +13,8 @@ sub _init_fields {
     my ($self) = @_;
     $self->{canvasStrings} = 'org::allbinary::graphics::displayable::CanvasStrings'->getInstance();
     $self->{rectangle} = $org::allbinary::graphics::RectangleFactory::SINGLETON;
-    $self->{x} = 0;
-    $self->{y} = 0;
+    $self->{x} = 0 unless exists $self->{x};
+    $self->{y} = 0 unless exists $self->{y};
     $self->{formType} = 'org::allbinary::graphics::form::FormTypeFactory'->getInstance()->{NULL_FORM_TYPE};
 }
 

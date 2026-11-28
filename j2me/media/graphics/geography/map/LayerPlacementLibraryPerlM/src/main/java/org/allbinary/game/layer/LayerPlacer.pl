@@ -23,8 +23,8 @@ use parent -norequire,'java::lang::Object';
 sub _init_fields {
     my ($self) = @_;
     $self->{enumerationUtil} = 'org::allbinary::util::EnumerationUtil'->getInstance();
-    $self->{layerInterfaceVisitor} = undef;
-    $self->{dimension} = undef;
+    $self->{layerInterfaceVisitor} = undef unless exists $self->{layerInterfaceVisitor};
+    $self->{dimension} = undef unless exists $self->{dimension};
 }
 
 

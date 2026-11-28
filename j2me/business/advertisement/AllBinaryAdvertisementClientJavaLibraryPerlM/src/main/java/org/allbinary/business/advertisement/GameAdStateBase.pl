@@ -22,9 +22,9 @@ use parent -norequire,'java::lang::Object';
 
 sub _init_fields {
     my ($self) = @_;
-    $self->{adConfigurationP} = undef;
+    $self->{adConfigurationP} = undef unless exists $self->{adConfigurationP};
     $self->{advertisementsP} = 'org::allbinary::business::advertisement::Advertisements'->new();
-    $self->{okayToShowAdsP} = 0;
+    $self->{okayToShowAdsP} = 0 unless exists $self->{okayToShowAdsP};
 }
 
 

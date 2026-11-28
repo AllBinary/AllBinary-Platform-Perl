@@ -23,10 +23,10 @@ use parent -norequire,'admin::taghelpers::Table';
 sub _init_fields {
     my ($self) = @_;
     $self->{logUtil} = 'org::allbinary::logic::communication::log::LogUtil'->getInstance();
-    $self->{weblisketSession} = undef;
-    $self->{request} = undef;
-    $self->{value} = undef;
-    $self->{portion} = undef;
+    $self->{weblisketSession} = undef unless exists $self->{weblisketSession};
+    $self->{request} = undef unless exists $self->{request};
+    $self->{value} = undef unless exists $self->{value};
+    $self->{portion} = undef unless exists $self->{portion};
 }
 
 

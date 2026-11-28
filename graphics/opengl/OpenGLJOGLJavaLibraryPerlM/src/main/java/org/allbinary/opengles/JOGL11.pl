@@ -23,20 +23,20 @@ use parent -norequire,'org::allbinary::opengles::JOGL10','javax::microedition::k
 
 sub _init_fields {
     my ($self) = @_;
-    $self->{gl11} = undef;
+    $self->{gl11} = undef unless exists $self->{gl11};
 }
 
 sub new {
     my ($class, @arguments) = @_;
-    return $class->_new1(@arguments) if scalar(@arguments) == 1;
-    return $class->_new2(@arguments) if scalar(@arguments) == 2;
+    return _new1($class, @arguments) if scalar(@arguments) == 1;
+    return _new2($class, @arguments) if scalar(@arguments) == 2;
     die "No constructor of JOGL11 takes " . scalar(@arguments) . " arguments";
 }
 
 
 sub _new1 {
     my ($class, $gl) = @_;
-    my $self = $class->_new2($gl, $gl);
+    my $self = _new2($class, $gl, $gl);
         # this(...) made $self above
     return $self;
 }

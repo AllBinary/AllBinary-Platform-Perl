@@ -23,9 +23,9 @@ use parent -norequire,'java::lang::Object','org::allbinary::graphics::font::Upda
 sub _init_fields {
     my ($self) = @_;
     $self->{myFontProcessor} = 'org::allbinary::graphics::font::UpdateMyFontProcessor'->new($self);
-    $self->{LABEL} = undef;
-    $self->{labelX} = undef;
-    $self->{valueX} = 0;
+    $self->{LABEL} = undef unless exists $self->{LABEL};
+    $self->{labelX} = undef unless exists $self->{labelX};
+    $self->{valueX} = 0 unless exists $self->{valueX};
     $self->{value} = 'org::allbinary::logic::string::StringUtil'->getInstance()->{EMPTY_STRING};
 }
 

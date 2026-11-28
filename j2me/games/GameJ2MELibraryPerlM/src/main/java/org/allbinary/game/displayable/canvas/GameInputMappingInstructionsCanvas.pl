@@ -29,7 +29,7 @@ sub _init_fields {
     $self->{drawStringUtil} = 'org::allbinary::graphics::draw::DrawStringUtil'->getInstance();
     $self->{TITLE} = "Input Instructions";
     $self->{instructions} = ["Add Input Mapping:", "1. Select the desired action by generating a currently defined input for a given action.", "(Example: Press the '1' key to select the Fire action)", "2. Make the newly desired input for the selected action.", "(Example: Press 'f' to add it to the selected action)", "Note: If the input is already mapped to another action then it will not be added. You", "will need to deleted from the other action before adding it to another.", "Warning: Not all keys map for a given platform and show as Unknown.", 'org::allbinary::logic::string::StringUtil'->getInstance()->{EMPTY_STRING}, "Remove Input Mapping:", "1. Select the desired action by generating a currently defined input for a given action.", "(Example: Press the key '1' to select the Fire action)", "2. Select a mapped input for the selected action.", "(Example: Press the key '1' to select the '1' key input for the selected Fire action)", "3. Press the Delete Key."];
-    $self->{colorFillPaintable} = undef;
+    $self->{colorFillPaintable} = undef unless exists $self->{colorFillPaintable};
     $self->{anchor} = $org::allbinary::graphics::Anchor::TOP_LEFT;
 }
 

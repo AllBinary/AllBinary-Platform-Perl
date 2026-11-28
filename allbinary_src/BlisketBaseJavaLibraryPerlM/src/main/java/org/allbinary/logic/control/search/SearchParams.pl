@@ -22,12 +22,12 @@ use parent -norequire,'java::lang::Object';
 
 sub _init_fields {
     my ($self) = @_;
-    $self->{columnsAndSearchValues} = undef;
-    $self->{order} = undef;
-    $self->{sortBy} = undef;
-    $self->{listLength} = undef;
-    $self->{startPage} = undef;
-    $self->{endPage} = undef;
+    $self->{columnsAndSearchValues} = undef unless exists $self->{columnsAndSearchValues};
+    $self->{order} = undef unless exists $self->{order};
+    $self->{sortBy} = undef unless exists $self->{sortBy};
+    $self->{listLength} = undef unless exists $self->{listLength};
+    $self->{startPage} = undef unless exists $self->{startPage};
+    $self->{endPage} = undef unless exists $self->{endPage};
 }
 
 

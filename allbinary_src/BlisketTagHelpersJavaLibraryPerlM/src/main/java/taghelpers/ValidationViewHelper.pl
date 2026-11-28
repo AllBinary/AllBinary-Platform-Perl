@@ -23,7 +23,7 @@ use parent -norequire,'taghelpers::ViewHelper','org::allbinary::logic::control::
 sub _init_fields {
     my ($self) = @_;
     $self->{logUtil} = 'org::allbinary::logic::communication::log::LogUtil'->getInstance();
-    $self->{viewInterface} = undef;
+    $self->{viewInterface} = undef unless exists $self->{viewInterface};
 }
 
 

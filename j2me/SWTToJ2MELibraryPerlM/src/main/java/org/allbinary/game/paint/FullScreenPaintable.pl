@@ -28,8 +28,8 @@ sub _init_fields {
     $self->{myFontProcessor} = 'org::allbinary::graphics::font::UpdateMyFontProcessor'->new($self);
     $self->{FULLSCREEN_TEXT} = "F11 - Toggle Fullscreen";
     $self->{anchor} = $org::allbinary::graphics::Anchor::TOP_LEFT;
-    $self->{Y} = 0;
-    $self->{beginWidth} = 0;
+    $self->{Y} = 0 unless exists $self->{Y};
+    $self->{beginWidth} = 0 unless exists $self->{beginWidth};
 }
 
 

@@ -22,11 +22,11 @@ use parent -norequire,'org::allbinary::business::context::AbContext';
 
 sub _init_fields {
     my ($self) = @_;
-    $self->{xslFile} = undef;
-    $self->{pageName} = undef;
-    $self->{contentType} = undef;
-    $self->{searchParams} = undef;
-    $self->{storeFront} = undef;
+    $self->{xslFile} = undef unless exists $self->{xslFile};
+    $self->{pageName} = undef unless exists $self->{pageName};
+    $self->{contentType} = undef unless exists $self->{contentType};
+    $self->{searchParams} = undef unless exists $self->{searchParams};
+    $self->{storeFront} = undef unless exists $self->{storeFront};
 }
 
 

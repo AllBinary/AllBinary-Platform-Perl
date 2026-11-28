@@ -23,7 +23,7 @@ use parent -norequire,'org::allbinary::graphics::paint::Paintable';
 sub _init_fields {
     my ($self) = @_;
     $self->{logUtil} = 'org::allbinary::logic::communication::log::LogUtil'->getInstance();
-    $self->{foregroundColor} = undef;
+    $self->{foregroundColor} = undef unless exists $self->{foregroundColor};
     $self->{paintableTable} = [map { [(undef) x (0)] } 1 .. (0)];
     $self->{touchButtonLocationHelper} = 'org::allbinary::input::motion::button::TouchButtonLocationHelper'->new();
 }

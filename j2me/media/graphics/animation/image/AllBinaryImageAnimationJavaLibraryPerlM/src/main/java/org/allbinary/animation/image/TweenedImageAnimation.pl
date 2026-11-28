@@ -22,11 +22,11 @@ use parent -norequire,'org::allbinary::animation::IndexedAnimation';
 
 sub _init_fields {
     my ($self) = @_;
-    $self->{image} = undef;
-    $self->{dx} = undef;
-    $self->{dy} = undef;
-    $self->{totalFrames} = undef;
-    $self->{circularIndexUtil} = undef;
+    $self->{image} = undef unless exists $self->{image};
+    $self->{dx} = undef unless exists $self->{dx};
+    $self->{dy} = undef unless exists $self->{dy};
+    $self->{totalFrames} = undef unless exists $self->{totalFrames};
+    $self->{circularIndexUtil} = undef unless exists $self->{circularIndexUtil};
     $self->{anchor} = $org::allbinary::graphics::Anchor::TOP_LEFT;
 }
 

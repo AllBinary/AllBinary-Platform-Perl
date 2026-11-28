@@ -22,8 +22,8 @@ use parent -norequire,'org::allbinary::logic::util::event::AllBinaryEventObject'
 
 sub _init_fields {
     my ($self) = @_;
-    $self->{dx} = 0;
-    $self->{dy} = 0;
+    $self->{dx} = 0 unless exists $self->{dx};
+    $self->{dy} = 0 unless exists $self->{dy};
 }
 
 

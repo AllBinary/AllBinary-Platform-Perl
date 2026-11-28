@@ -22,8 +22,8 @@ use parent -norequire,'org::allbinary::animation::image::ImageSegmentAnimation';
 
 sub _init_fields {
     my ($self) = @_;
-    $self->{startHeight} = 0;
-    $self->{currentHeight} = 0;
+    $self->{startHeight} = 0 unless exists $self->{startHeight};
+    $self->{currentHeight} = 0 unless exists $self->{currentHeight};
     $self->{anchor} = $org::allbinary::graphics::Anchor::TOP_LEFT;
 }
 

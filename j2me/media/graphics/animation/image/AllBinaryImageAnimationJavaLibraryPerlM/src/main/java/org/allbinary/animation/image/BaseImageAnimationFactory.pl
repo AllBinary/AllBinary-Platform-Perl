@@ -23,10 +23,10 @@ use parent -norequire,'java::lang::Object','org::allbinary::animation::Animation
 sub _init_fields {
     my ($self) = @_;
     $self->{animationFactoryImageScaleUtil} = 'org::allbinary::image::AnimationFactoryImageScaleUtil'->getInstance();
-    $self->{image} = undef;
-    $self->{animationBehaviorFactory} = undef;
-    $self->{sequenceArray} = undef;
-    $self->{animationFactoryInitializationVisitor} = undef;
+    $self->{image} = undef unless exists $self->{image};
+    $self->{animationBehaviorFactory} = undef unless exists $self->{animationBehaviorFactory};
+    $self->{sequenceArray} = undef unless exists $self->{sequenceArray};
+    $self->{animationFactoryInitializationVisitor} = undef unless exists $self->{animationFactoryInitializationVisitor};
     $self->{scaleProperties} = $org::allbinary::media::ScaleProperties::instance;
 }
 

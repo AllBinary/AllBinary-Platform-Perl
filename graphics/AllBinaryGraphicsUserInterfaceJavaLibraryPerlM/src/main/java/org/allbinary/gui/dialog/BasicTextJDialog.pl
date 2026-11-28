@@ -22,15 +22,15 @@ use parent -norequire,'java::lang::Object';
 
 sub _init_fields {
     my ($self) = @_;
-    $self->{closeListenerInterface} = undef;
-    $self->{jButton1} = undef;
-    $self->{textJLabel} = undef;
+    $self->{closeListenerInterface} = undef unless exists $self->{closeListenerInterface};
+    $self->{jButton1} = undef unless exists $self->{jButton1};
+    $self->{textJLabel} = undef unless exists $self->{textJLabel};
 }
 
 sub new {
     my ($class, @arguments) = @_;
-    return $class->_new3(@arguments) if scalar(@arguments) == 3;
-    return $class->_new1(@arguments) if scalar(@arguments) == 1;
+    return _new3($class, @arguments) if scalar(@arguments) == 3;
+    return _new1($class, @arguments) if scalar(@arguments) == 1;
     die "No constructor of BasicTextJDialog takes " . scalar(@arguments) . " arguments";
 }
 

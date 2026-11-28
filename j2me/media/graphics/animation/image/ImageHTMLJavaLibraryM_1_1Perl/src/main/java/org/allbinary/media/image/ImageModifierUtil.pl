@@ -25,7 +25,7 @@ sub _init_fields {
     $self->{logUtil} = 'org::allbinary::logic::communication::log::LogUtil'->getInstance();
     $self->{commonStrings} = 'org::allbinary::string::CommonStrings'->getInstance();
     $self->{resourceCallbackStrings} = 'org::microemu::device::ResourceCallbackStrings'->getInstance();
-    $self->{alphaArray} = undef;
+    $self->{alphaArray} = undef unless exists $self->{alphaArray};
 }
 
 sub new {

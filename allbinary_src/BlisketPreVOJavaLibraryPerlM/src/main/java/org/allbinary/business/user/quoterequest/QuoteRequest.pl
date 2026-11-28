@@ -24,19 +24,19 @@ sub _init_fields {
     my ($self) = @_;
     $self->{logUtil} = 'org::allbinary::logic::communication::log::LogUtil'->getInstance();
     $self->{commonStrings} = 'org::allbinary::string::CommonStrings'->getInstance();
-    $self->{id} = undef;
-    $self->{userName} = undef;
-    $self->{projectInfo} = undef;
-    $self->{userComments} = undef;
-    $self->{budget} = undef;
-    $self->{timeFrame} = undef;
-    $self->{comments} = undef;
+    $self->{id} = undef unless exists $self->{id};
+    $self->{userName} = undef unless exists $self->{userName};
+    $self->{projectInfo} = undef unless exists $self->{projectInfo};
+    $self->{userComments} = undef unless exists $self->{userComments};
+    $self->{budget} = undef unless exists $self->{budget};
+    $self->{timeFrame} = undef unless exists $self->{timeFrame};
+    $self->{comments} = undef unless exists $self->{comments};
 }
 
 sub new {
     my ($class, @arguments) = @_;
-    return $class->_new2(@arguments) if scalar(@arguments) == 2;
-    return $class->_new1(@arguments) if scalar(@arguments) == 1;
+    return _new2($class, @arguments) if scalar(@arguments) == 2;
+    return _new1($class, @arguments) if scalar(@arguments) == 1;
     die "No constructor of QuoteRequest takes " . scalar(@arguments) . " arguments";
 }
 

@@ -23,7 +23,7 @@ tie our $NAME, 'java::lang::LazyStatic', sub { "Test New Game" . $org::allbinary
 
 sub _init_fields {
     my ($self) = @_;
-    $self->{blankModuleConfigurationJPanel} = undef;
+    $self->{blankModuleConfigurationJPanel} = undef unless exists $self->{blankModuleConfigurationJPanel};
 }
 
 

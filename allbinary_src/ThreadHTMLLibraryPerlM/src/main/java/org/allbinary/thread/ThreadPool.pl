@@ -28,10 +28,10 @@ sub _init_fields {
     $self->{NULL_RUNNABLE} = 'org::allbinary::thread::NullRunnable'->getInstance();
     $self->{threadPoolStrings} = 'org::allbinary::thread::ThreadPoolStrings'->getInstance();
     $self->{threadObjectUtil} = 'org::allbinary::thread::ThreadObjectUtil'->getInstance();
-    $self->{isAlive} = 0;
+    $self->{isAlive} = 0 unless exists $self->{isAlive};
     $self->{taskQueue} = 'org::allbinary::util::BasicArrayListD'->new();
-    $self->{numThreads} = 0;
-    $self->{runningTask} = 0;
+    $self->{numThreads} = 0 unless exists $self->{numThreads};
+    $self->{runningTask} = 0 unless exists $self->{runningTask};
     $self->{currentPriorityRunnable} = $self->{threadObjectUtil}->{NULL_PRIORITY_RUNNABLE};
 }
 

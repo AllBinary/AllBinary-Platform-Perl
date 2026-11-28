@@ -27,7 +27,7 @@ sub _init_fields {
     $self->{EMPTY_STRING} = 'org::allbinary::logic::string::StringUtil'->getInstance()->{EMPTY_STRING};
     $self->{displayInfo} = 'org::allbinary::graphics::displayable::DisplayInfoSingleton'->getInstance();
     $self->{timeDelayHelper} = 'org::allbinary::time::TimeDelayHelper'->new(0);
-    $self->{circularIndexUtil} = undef;
+    $self->{circularIndexUtil} = undef unless exists $self->{circularIndexUtil};
     $self->{gameNotification} = 'org::allbinary::game::ag::layer::hud::basic::notification::GameNotification'->new();
     $self->{permanentGameNotification} = 'org::allbinary::game::ag::layer::hud::basic::notification::GameNotification'->new();
     $self->{setAndRemoveProcessor} = 'org::allbinary::game::ag::layer::hud::basic::SetAndRemoveProcessor'->new($self);
@@ -37,7 +37,7 @@ sub _init_fields {
     $self->{lastString} = 'org::allbinary::logic::string::StringUtil'->getInstance()->{EMPTY_STRING};
     $self->{string} = $self->{EMPTY_STRING};
     $self->{point} = $org::allbinary::graphics::CustomGPoint::NULL_CUSTOM_POINT;
-    $self->{width} = 0;
+    $self->{width} = 0 unless exists $self->{width};
 }
 
 

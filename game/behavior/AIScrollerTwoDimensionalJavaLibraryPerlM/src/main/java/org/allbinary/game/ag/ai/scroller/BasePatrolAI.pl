@@ -26,9 +26,9 @@ tie our $SPEED, 'java::lang::LazyStatic', sub { 'org::allbinary::logic::math::Sm
 
 sub _init_fields {
     my ($self) = @_;
-    $self->{maxDistance} = undef;
-    $self->{currentDistance} = undef;
-    $self->{xTotalDistance} = 0;
+    $self->{maxDistance} = undef unless exists $self->{maxDistance};
+    $self->{currentDistance} = undef unless exists $self->{currentDistance};
+    $self->{xTotalDistance} = 0 unless exists $self->{xTotalDistance};
     $self->{lastKeyDirection} = $javax::microedition::lcdui::Canvas::RIGHT;
     $self->{keyDirection} = $javax::microedition::lcdui::Canvas::RIGHT;
 }

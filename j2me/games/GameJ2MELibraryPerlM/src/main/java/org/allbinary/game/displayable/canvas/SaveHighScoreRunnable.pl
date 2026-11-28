@@ -23,8 +23,8 @@ use parent -norequire,'java::lang::Object';
 sub _init_fields {
     my ($self) = @_;
     $self->{progressCanvas} = 'org::allbinary::graphics::canvas::transition::progress::ProgressCanvasFactory'->getInstance();
-    $self->{isLast} = undef;
-    $self->{textBox} = undef;
+    $self->{isLast} = undef unless exists $self->{isLast};
+    $self->{textBox} = undef unless exists $self->{textBox};
 }
 
 

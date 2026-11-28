@@ -11,8 +11,8 @@ tie our $instance, 'java::lang::LazyStatic', sub { 'org::allbinary::media::graph
 
 sub _init_fields {
     my ($self) = @_;
-    $self->{maxConcurrentPaths} = 0;
-    $self->{maxPaths} = 0;
+    $self->{maxConcurrentPaths} = 0 unless exists $self->{maxConcurrentPaths};
+    $self->{maxPaths} = 0 unless exists $self->{maxPaths};
 }
 
 

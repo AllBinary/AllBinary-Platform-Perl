@@ -23,9 +23,9 @@ use parent -norequire,'java::lang::Object','org::allbinary::animation::Procedura
 sub _init_fields {
     my ($self) = @_;
     $self->{framePoints} = 'org::allbinary::logic::NullUtil'->getInstance()->{NULL_INT_ARRAY_ARRAY_ARRAY};
-    $self->{vectorInfo} = undef;
-    $self->{basicColor} = undef;
-    $self->{vectorAnimationFactoryInterface} = undef;
+    $self->{vectorInfo} = undef unless exists $self->{vectorInfo};
+    $self->{basicColor} = undef unless exists $self->{basicColor};
+    $self->{vectorAnimationFactoryInterface} = undef unless exists $self->{vectorAnimationFactoryInterface};
     $self->{vectorExplosionGenerator} = 'org::allbinary::animation::VectorExplosionGenerator'->getInstance();
 }
 

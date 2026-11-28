@@ -22,7 +22,7 @@ use parent -norequire,'org::allbinary::game::layer::waypoint::WaypointBase','org
 
 sub _init_fields {
     my ($self) = @_;
-    $self->{ownerLayer} = undef;
+    $self->{ownerLayer} = undef unless exists $self->{ownerLayer};
 }
 
 

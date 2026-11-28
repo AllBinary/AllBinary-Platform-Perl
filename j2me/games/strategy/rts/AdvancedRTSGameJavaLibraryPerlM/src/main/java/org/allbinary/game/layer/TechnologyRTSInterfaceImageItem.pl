@@ -22,21 +22,21 @@ use parent -norequire,'org::allbinary::graphics::form::item::ABCustomImageItem',
 
 sub _init_fields {
     my ($self) = @_;
-    $self->{rtsInterface} = undef;
+    $self->{rtsInterface} = undef unless exists $self->{rtsInterface};
     $self->{primitiveLongUtil} = 'org::allbinary::logic::math::PrimitiveLongUtil'->createPowerOfTen(10000);
     $self->{LEVEL} = "Level";
     $self->{COST} = "Cost";
     $self->{DOLLAR} = "\$";
     $self->{myFontProcessor} = 'org::allbinary::graphics::font::UpdateMyFontProcessor'->new($self);
     $self->{costString} = 'org::allbinary::logic::java::character::CharArrayFactory'->getInstance()->getZeroCharArray();
-    $self->{costLength} = 0;
+    $self->{costLength} = 0 unless exists $self->{costLength};
     $self->{levelString} = 'org::allbinary::logic::java::character::CharArrayFactory'->getInstance()->getZeroCharArray();
-    $self->{levelLength} = 0;
-    $self->{adjustedCostLabelY} = 0;
-    $self->{adjustedCostX} = 0;
-    $self->{adjustedCostY} = 0;
-    $self->{adjustedLevelX} = 0;
-    $self->{adjustedLevelY} = 0;
+    $self->{levelLength} = 0 unless exists $self->{levelLength};
+    $self->{adjustedCostLabelY} = 0 unless exists $self->{adjustedCostLabelY};
+    $self->{adjustedCostX} = 0 unless exists $self->{adjustedCostX};
+    $self->{adjustedCostY} = 0 unless exists $self->{adjustedCostY};
+    $self->{adjustedLevelX} = 0 unless exists $self->{adjustedLevelX};
+    $self->{adjustedLevelY} = 0 unless exists $self->{adjustedLevelY};
 }
 
 

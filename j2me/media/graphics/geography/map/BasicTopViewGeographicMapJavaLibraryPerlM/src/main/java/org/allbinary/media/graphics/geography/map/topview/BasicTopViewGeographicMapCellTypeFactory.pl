@@ -22,14 +22,14 @@ use parent -norequire,'org::allbinary::media::graphics::geography::map::Geograph
 
 sub _init_fields {
     my ($self) = @_;
-    $self->{BLOCK_CELL_TYPE} = undef;
-    $self->{OFF_MAP_CELL_TYPE} = undef;
-    $self->{FLOOR_CELL_TYPE} = undef;
-    $self->{DOOR_CELL_TYPE} = undef;
-    $self->{STAIRS_UP_CELL_TYPE} = undef;
-    $self->{STAIRS_DOWN_CELL_TYPE} = undef;
-    $self->{OTHER_CELL_TYPE} = undef;
-    $self->{maxTileId} = undef;
+    $self->{BLOCK_CELL_TYPE} = undef unless exists $self->{BLOCK_CELL_TYPE};
+    $self->{OFF_MAP_CELL_TYPE} = undef unless exists $self->{OFF_MAP_CELL_TYPE};
+    $self->{FLOOR_CELL_TYPE} = undef unless exists $self->{FLOOR_CELL_TYPE};
+    $self->{DOOR_CELL_TYPE} = undef unless exists $self->{DOOR_CELL_TYPE};
+    $self->{STAIRS_UP_CELL_TYPE} = undef unless exists $self->{STAIRS_UP_CELL_TYPE};
+    $self->{STAIRS_DOWN_CELL_TYPE} = undef unless exists $self->{STAIRS_DOWN_CELL_TYPE};
+    $self->{OTHER_CELL_TYPE} = undef unless exists $self->{OTHER_CELL_TYPE};
+    $self->{maxTileId} = undef unless exists $self->{maxTileId};
 }
 
 

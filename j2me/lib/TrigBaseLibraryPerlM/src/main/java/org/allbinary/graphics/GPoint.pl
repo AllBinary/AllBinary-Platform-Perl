@@ -23,9 +23,9 @@ our $POINT_LABEL = "Point: ";
 
 sub _init_fields {
     my ($self) = @_;
-    $self->{x} = undef;
-    $self->{y} = undef;
-    $self->{z} = undef;
+    $self->{x} = undef unless exists $self->{x};
+    $self->{y} = undef unless exists $self->{y};
+    $self->{z} = undef unless exists $self->{z};
 }
 
 

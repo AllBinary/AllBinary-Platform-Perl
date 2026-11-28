@@ -24,9 +24,9 @@ our $NULL_BASIC_GEOGRAPHIC_MAP_ARRAY = [(undef) x (0)];
 sub _init_fields {
     my ($self) = @_;
     $self->{mathUtil} = 'org::allbinary::logic::math::MathUtil'->getInstance();
-    $self->{geographicMapCellPositionFactory} = undef;
-    $self->{geographicMapCellPositionFactoryInterface} = undef;
-    $self->{geographicMapCellTypeFactory} = undef;
+    $self->{geographicMapCellPositionFactory} = undef unless exists $self->{geographicMapCellPositionFactory};
+    $self->{geographicMapCellPositionFactoryInterface} = undef unless exists $self->{geographicMapCellPositionFactoryInterface};
+    $self->{geographicMapCellTypeFactory} = undef unless exists $self->{geographicMapCellTypeFactory};
 }
 
 

@@ -22,7 +22,7 @@ use parent -norequire,'org::allbinary::graphics::paint::Paintable';
 
 sub _init_fields {
     my ($self) = @_;
-    $self->{multipleScrollSelectionForm} = undef;
+    $self->{multipleScrollSelectionForm} = undef unless exists $self->{multipleScrollSelectionForm};
 }
 
 

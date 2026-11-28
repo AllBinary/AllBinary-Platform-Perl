@@ -23,7 +23,7 @@ tie our $ID, 'java::lang::LazyStatic', sub { 'org::allbinary::logic::math::Small
 
 sub _init_fields {
     my ($self) = @_;
-    $self->{points} = undef;
+    $self->{points} = undef unless exists $self->{points};
 }
 
 

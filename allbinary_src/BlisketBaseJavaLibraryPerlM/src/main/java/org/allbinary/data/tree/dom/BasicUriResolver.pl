@@ -24,7 +24,7 @@ sub _init_fields {
     my ($self) = @_;
     $self->{logUtil} = 'org::allbinary::logic::communication::log::LogUtil'->getInstance();
     $self->{uriResolverStrings} = 'org::allbinary::data::tree::dom::URIResolverStrings'->getInstance();
-    $self->{extension} = undef;
+    $self->{extension} = undef unless exists $self->{extension};
 }
 
 

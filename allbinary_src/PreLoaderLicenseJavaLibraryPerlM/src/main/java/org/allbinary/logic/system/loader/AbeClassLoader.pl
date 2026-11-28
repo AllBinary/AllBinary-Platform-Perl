@@ -28,7 +28,7 @@ sub _init_fields {
     $self->{abCryptUtil} = 'org::allbinary::logic::system::security::AbCryptUtil'->getInstance();
     $self->{LOAD_CLASS} = "loadClass";
     $self->{ENCRYPTED_EXTENSION} = 'org::allbinary::logic::io::path::AbPathData'->getInstance()->{EXTENSION_SEP} . "abc";
-    $self->{key} = undef;
+    $self->{key} = undef unless exists $self->{key};
 }
 
 

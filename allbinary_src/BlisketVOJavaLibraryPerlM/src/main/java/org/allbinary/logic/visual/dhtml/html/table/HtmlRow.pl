@@ -26,9 +26,9 @@ sub _init_fields {
     $self->{START} = "<tr ";
     $self->{ENDTAG} = "</tr>";
     $self->{numberOfColumns} = 0;
-    $self->{before} = undef;
-    $self->{after} = undef;
-    $self->{htmlCellsVector} = undef;
+    $self->{before} = undef unless exists $self->{before};
+    $self->{after} = undef unless exists $self->{after};
+    $self->{htmlCellsVector} = undef unless exists $self->{htmlCellsVector};
 }
 
 

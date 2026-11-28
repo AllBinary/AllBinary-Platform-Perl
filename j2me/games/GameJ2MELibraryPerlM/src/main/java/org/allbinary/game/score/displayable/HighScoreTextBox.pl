@@ -23,7 +23,7 @@ use parent -norequire,'org::allbinary::graphics::form::item::CustomTextBox';
 sub _init_fields {
     my ($self) = @_;
     $self->{virtualKeyboardEventHandler} = 'org::allbinary::input::event::VirtualKeyboardEventHandler'->getInstance();
-    $self->{highScoreUtil} = undef;
+    $self->{highScoreUtil} = undef unless exists $self->{highScoreUtil};
     $self->{pleaseWait} = 'org::allbinary::graphics::paint::SimpleTextPaintable'->new($self->{commonStrings}->{PLEASE_WAIT}, 'org::allbinary::graphics::color::BasicColorFactory'->getInstance()->{WHITE});
     $self->{paintable} = 'org::allbinary::graphics::paint::NullPaintable'->getInstance();
     $self->{submitted} = 0;

@@ -26,7 +26,7 @@ sub _init_fields {
     $self->{SOURCE_ID} = $self->{gameKeyEventFactory}->{MOTION_GESTURE_SOURCE_ID};
     $self->{gameKey} = $org::allbinary::game::input::GameKey::NULL_GAME_KEY;
     $self->{gameKeyEvent} = $org::allbinary::game::input::event::GameKeyEvent::NONE;
-    $self->{inputToGameKeyMapping} = undef;
+    $self->{inputToGameKeyMapping} = undef unless exists $self->{inputToGameKeyMapping};
 }
 
 

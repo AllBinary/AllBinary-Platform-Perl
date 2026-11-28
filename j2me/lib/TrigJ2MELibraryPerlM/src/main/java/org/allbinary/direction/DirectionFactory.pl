@@ -28,10 +28,10 @@ sub _init_fields {
     $self->{RIGHT} = 'org::allbinary::direction::Direction'->new('org::allbinary::string::CommonPhoneStrings'->getInstance()->{RIGHT}, "EAST", 1, 0);
     $self->{DOWN} = 'org::allbinary::direction::Direction'->new('org::allbinary::string::CommonPhoneStrings'->getInstance()->{DOWN}, "SOUTH", 2, 0);
     $self->{UP} = 'org::allbinary::direction::Direction'->new('org::allbinary::string::CommonPhoneStrings'->getInstance()->{UP}, "NORTH", 3, 0);
-    $self->{UP_LEFT} = undef;
-    $self->{UP_RIGHT} = undef;
-    $self->{DOWN_LEFT} = undef;
-    $self->{DOWN_RIGHT} = undef;
+    $self->{UP_LEFT} = undef unless exists $self->{UP_LEFT};
+    $self->{UP_RIGHT} = undef unless exists $self->{UP_RIGHT};
+    $self->{DOWN_LEFT} = undef unless exists $self->{DOWN_LEFT};
+    $self->{DOWN_RIGHT} = undef unless exists $self->{DOWN_RIGHT};
     $self->{NOT_BORDERED_WITH} = 'org::allbinary::direction::Direction'->new("NOT_BORDERED_WITH", "NOT_BORDERED_WITH", 8, 0);
     $self->{NO_DIRECTION} = 'org::allbinary::direction::Direction'->new("NO_DIRECTION", "NO_DIRECTION", 9, 0);
     $self->{TOP} = 'org::allbinary::direction::Direction'->new("TOP", "TOP", 10, 0);

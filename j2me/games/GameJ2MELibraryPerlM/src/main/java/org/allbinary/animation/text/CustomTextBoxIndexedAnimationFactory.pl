@@ -23,8 +23,8 @@ use parent -norequire,'java::lang::Object','org::allbinary::animation::Animation
 sub _init_fields {
     my ($self) = @_;
     $self->{logUtil} = 'org::allbinary::logic::communication::log::LogUtil'->getInstance();
-    $self->{scaleProperties} = undef;
-    $self->{maxLength} = undef;
+    $self->{scaleProperties} = undef unless exists $self->{scaleProperties};
+    $self->{maxLength} = undef unless exists $self->{maxLength};
 }
 
 

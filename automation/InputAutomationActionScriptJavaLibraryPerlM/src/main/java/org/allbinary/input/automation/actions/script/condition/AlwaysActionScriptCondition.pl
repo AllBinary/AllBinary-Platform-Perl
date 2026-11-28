@@ -24,14 +24,14 @@ our $NAME = "Always On/Off";
 sub _init_fields {
     my ($self) = @_;
     $self->{logUtil} = 'org::allbinary::logic::communication::log::LogUtil'->getInstance();
-    $self->{alwaysActionScriptConditionJPanel} = undef;
-    $self->{isOn} = 0;
+    $self->{alwaysActionScriptConditionJPanel} = undef unless exists $self->{alwaysActionScriptConditionJPanel};
+    $self->{isOn} = 0 unless exists $self->{isOn};
 }
 
 sub new {
     my ($class, @arguments) = @_;
-    return $class->_new1(@arguments) if scalar(@arguments) == 1;
-    return $class->_new0(@arguments) if scalar(@arguments) == 0;
+    return _new1($class, @arguments) if scalar(@arguments) == 1;
+    return _new0($class, @arguments) if scalar(@arguments) == 0;
     die "No constructor of AlwaysActionScriptCondition takes " . scalar(@arguments) . " arguments";
 }
 

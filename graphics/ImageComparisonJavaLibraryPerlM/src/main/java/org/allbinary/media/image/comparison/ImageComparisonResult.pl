@@ -25,17 +25,17 @@ sub _init_fields {
     $self->{logUtil} = 'org::allbinary::logic::communication::log::LogUtil'->getInstance();
     $self->{commonStrings} = 'org::allbinary::string::CommonStrings'->getInstance();
     $self->{bufferedImages} = [(undef) x (2)];
-    $self->{name} = undef;
-    $self->{isSameHeight} = 0;
-    $self->{isSameWidth} = 0;
-    $self->{imageHeight} = undef;
-    $self->{imageWidth} = undef;
-    $self->{nonMatchingPixelVector} = undef;
-    $self->{frameOne} = undef;
-    $self->{frameTwo} = undef;
-    $self->{pixelsThatMatch} = 0;
-    $self->{pixelsIgnored} = 0;
-    $self->{tolerance} = 0;
+    $self->{name} = undef unless exists $self->{name};
+    $self->{isSameHeight} = 0 unless exists $self->{isSameHeight};
+    $self->{isSameWidth} = 0 unless exists $self->{isSameWidth};
+    $self->{imageHeight} = undef unless exists $self->{imageHeight};
+    $self->{imageWidth} = undef unless exists $self->{imageWidth};
+    $self->{nonMatchingPixelVector} = undef unless exists $self->{nonMatchingPixelVector};
+    $self->{frameOne} = undef unless exists $self->{frameOne};
+    $self->{frameTwo} = undef unless exists $self->{frameTwo};
+    $self->{pixelsThatMatch} = 0 unless exists $self->{pixelsThatMatch};
+    $self->{pixelsIgnored} = 0 unless exists $self->{pixelsIgnored};
+    $self->{tolerance} = 0 unless exists $self->{tolerance};
     $self->{matchingPercent} = -1;
 }
 

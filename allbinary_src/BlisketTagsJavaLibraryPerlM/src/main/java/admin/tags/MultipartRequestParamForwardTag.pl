@@ -22,9 +22,9 @@ use parent -norequire,'tags::CustomTagSupport';
 
 sub _init_fields {
     my ($self) = @_;
-    $self->{page} = undef;
-    $self->{command} = undef;
-    $self->{paramVector} = undef;
+    $self->{page} = undef unless exists $self->{page};
+    $self->{command} = undef unless exists $self->{command};
+    $self->{paramVector} = undef unless exists $self->{paramVector};
 }
 
 sub new {

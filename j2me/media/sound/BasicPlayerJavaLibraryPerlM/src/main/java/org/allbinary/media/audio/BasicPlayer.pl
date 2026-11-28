@@ -26,8 +26,8 @@ sub _init_fields {
     my ($self) = @_;
     $self->{commonStrings} = 'org::allbinary::string::CommonStrings'->getInstance();
     $self->{listenersList} = 'org::allbinary::util::BasicArrayListD'->new();
-    $self->{stateP} = 0;
-    $self->{loopCountP} = 0;
+    $self->{stateP} = 0 unless exists $self->{stateP};
+    $self->{loopCountP} = 0 unless exists $self->{loopCountP};
 }
 
 

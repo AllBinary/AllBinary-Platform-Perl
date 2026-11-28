@@ -24,7 +24,7 @@ sub _init_fields {
     my ($self) = @_;
     $self->{tsUtil} = 'org::allbinary::TsUtil'->getInstance();
     $self->{secretComposite} = $org::allbinary::logic::system::security::crypt::jcehelper::BaseSecretComposite::NULL_SECRET_COMPOSITE;
-    $self->{algorithm} = undef;
+    $self->{algorithm} = undef unless exists $self->{algorithm};
 }
 
 

@@ -22,9 +22,9 @@ use parent -norequire,'org::allbinary::graphics::paint::Paintable','org::allbina
 
 sub _init_fields {
     my ($self) = @_;
-    $self->{animationInterface} = undef;
-    $self->{healthInterface} = undef;
-    $self->{allbinaryLayer} = undef;
+    $self->{animationInterface} = undef unless exists $self->{animationInterface};
+    $self->{healthInterface} = undef unless exists $self->{healthInterface};
+    $self->{allbinaryLayer} = undef unless exists $self->{allbinaryLayer};
 }
 
 

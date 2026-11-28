@@ -22,8 +22,8 @@ use parent -norequire,'java::lang::Object';
 
 sub _init_fields {
     my ($self) = @_;
-    $self->{ROAD_FRICTION_NOMINATOR} = undef;
-    $self->{GROUND_FRICTION_NOMINATOR} = undef;
+    $self->{ROAD_FRICTION_NOMINATOR} = undef unless exists $self->{ROAD_FRICTION_NOMINATOR};
+    $self->{GROUND_FRICTION_NOMINATOR} = undef unless exists $self->{GROUND_FRICTION_NOMINATOR};
 }
 
 

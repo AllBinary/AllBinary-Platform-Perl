@@ -27,11 +27,11 @@ sub _init_fields {
     $self->{canvasStrings} = 'org::allbinary::graphics::displayable::CanvasStrings'->getInstance();
     $self->{stringUtil} = 'org::allbinary::logic::string::StringUtil'->getInstance();
     $self->{displayInfo} = 'org::allbinary::graphics::displayable::DisplayInfoSingleton'->getInstance();
-    $self->{name} = undef;
-    $self->{childNameList} = undef;
-    $self->{commandStack} = undef;
+    $self->{name} = undef unless exists $self->{name};
+    $self->{childNameList} = undef unless exists $self->{childNameList};
+    $self->{commandStack} = undef unless exists $self->{commandStack};
     $self->{commandListener} = $javax::microedition::lcdui::NullCommandListener::NULL_COMMAND_LISTENER;
-    $self->{paused} = 0;
+    $self->{paused} = 0 unless exists $self->{paused};
     $self->{touchME} = 'org::allbinary::input::TouchJ2ME'->new();
 }
 

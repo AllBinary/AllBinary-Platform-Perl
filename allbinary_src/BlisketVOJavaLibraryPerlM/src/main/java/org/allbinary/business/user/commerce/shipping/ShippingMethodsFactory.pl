@@ -24,9 +24,9 @@ our $SHIPPINGMETHODSFILENAME = "shippingMethods.xml";
 
 sub _init_fields {
     my ($self) = @_;
-    $self->{defaultShippingMethodInterface} = undef;
-    $self->{document} = undef;
-    $self->{shippingVector} = undef;
+    $self->{defaultShippingMethodInterface} = undef unless exists $self->{defaultShippingMethodInterface};
+    $self->{document} = undef unless exists $self->{document};
+    $self->{shippingVector} = undef unless exists $self->{shippingVector};
 }
 
 

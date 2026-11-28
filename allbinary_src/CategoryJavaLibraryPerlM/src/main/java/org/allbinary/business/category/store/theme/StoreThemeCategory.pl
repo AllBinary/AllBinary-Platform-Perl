@@ -22,23 +22,23 @@ use parent -norequire,'org::allbinary::business::category::Category','org::allbi
 
 sub _init_fields {
     my ($self) = @_;
-    $self->{transformInfoInterface} = undef;
-    $self->{themeVector} = undef;
+    $self->{transformInfoInterface} = undef unless exists $self->{transformInfoInterface};
+    $self->{themeVector} = undef unless exists $self->{themeVector};
 }
 
 sub new {
     my ($class, @arguments) = @_;
-    return $class->_new3(@arguments) if scalar(@arguments) == 3;
-    return $class->_new4(@arguments) if scalar(@arguments) == 4;
-    return $class->_new4(@arguments) if scalar(@arguments) == 4;
-    return $class->_new5(@arguments) if scalar(@arguments) == 5;
+    return _new3($class, @arguments) if scalar(@arguments) == 3;
+    return _new4($class, @arguments) if scalar(@arguments) == 4;
+    return _new4($class, @arguments) if scalar(@arguments) == 4;
+    return _new5($class, @arguments) if scalar(@arguments) == 5;
     die "No constructor of StoreThemeCategory takes " . scalar(@arguments) . " arguments";
 }
 
 sub _new4 {
     my ($class, @arguments) = @_;
-    return $class->_new4_1(@arguments) if 1 && (!defined($arguments[0]) || (ref($arguments[0]) && ref($arguments[0]) ne 'ARRAY')) && (!defined($arguments[1]) || (ref($arguments[1]) && ref($arguments[1]) ne 'ARRAY')) && (!defined($arguments[2]) || (ref($arguments[2]) && ref($arguments[2]) ne 'ARRAY')) && (!defined($arguments[3]) || (ref($arguments[3]) && ref($arguments[3]) ne 'ARRAY'));
-    return $class->_new4_2(@arguments);
+    return _new4_1($class, @arguments) if 1 && (!defined($arguments[0]) || (ref($arguments[0]) && ref($arguments[0]) ne 'ARRAY')) && (!defined($arguments[1]) || (ref($arguments[1]) && ref($arguments[1]) ne 'ARRAY')) && (!defined($arguments[2]) || (ref($arguments[2]) && ref($arguments[2]) ne 'ARRAY')) && (!defined($arguments[3]) || (ref($arguments[3]) && ref($arguments[3]) ne 'ARRAY'));
+    return _new4_2($class, @arguments);
 }
 
 

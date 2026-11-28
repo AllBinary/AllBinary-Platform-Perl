@@ -24,9 +24,9 @@ tie our $instance, 'java::lang::LazyStatic', sub { 'org::allbinary::input::motio
 
 sub _init_fields {
     my ($self) = @_;
-    $self->{STANDARD_BUTTON_SIZE} = undef;
-    $self->{NORMAL_BUTTON} = undef;
-    $self->{LARGE_BUTTON} = undef;
+    $self->{STANDARD_BUTTON_SIZE} = undef unless exists $self->{STANDARD_BUTTON_SIZE};
+    $self->{NORMAL_BUTTON} = undef unless exists $self->{NORMAL_BUTTON};
+    $self->{LARGE_BUTTON} = undef unless exists $self->{LARGE_BUTTON};
 }
 
 

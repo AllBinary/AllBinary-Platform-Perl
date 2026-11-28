@@ -22,8 +22,8 @@ use parent -norequire,'java::lang::Object';
 
 sub _init_fields {
     my ($self) = @_;
-    $self->{storeName} = undef;
-    $self->{name} = undef;
+    $self->{storeName} = undef unless exists $self->{storeName};
+    $self->{name} = undef unless exists $self->{name};
 }
 
 

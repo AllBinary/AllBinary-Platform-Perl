@@ -22,11 +22,11 @@ use parent -norequire,'java::lang::Object';
 
 sub _init_fields {
     my ($self) = @_;
-    $self->{childActionScriptConditionJPanel} = undef;
-    $self->{newActionScriptConditionJPanel} = undef;
-    $self->{newActionScriptInputJPanel} = undef;
-    $self->{removeJPanel} = undef;
-    $self->{scriptItemJPanel} = undef;
+    $self->{childActionScriptConditionJPanel} = undef unless exists $self->{childActionScriptConditionJPanel};
+    $self->{newActionScriptConditionJPanel} = undef unless exists $self->{newActionScriptConditionJPanel};
+    $self->{newActionScriptInputJPanel} = undef unless exists $self->{newActionScriptInputJPanel};
+    $self->{removeJPanel} = undef unless exists $self->{removeJPanel};
+    $self->{scriptItemJPanel} = undef unless exists $self->{scriptItemJPanel};
 }
 
 

@@ -23,11 +23,11 @@ use parent -norequire,'org::allbinary::game::combat::damage::DamageFloaters';
 sub _init_fields {
     my ($self) = @_;
     $self->{logUtil} = 'org::allbinary::logic::communication::log::LogUtil'->getInstance();
-    $self->{layerInterface} = undef;
-    $self->{animationInterfaceArray} = undef;
-    $self->{circularIndexUtil} = undef;
-    $self->{dx} = undef;
-    $self->{dy} = undef;
+    $self->{layerInterface} = undef unless exists $self->{layerInterface};
+    $self->{animationInterfaceArray} = undef unless exists $self->{animationInterfaceArray};
+    $self->{circularIndexUtil} = undef unless exists $self->{circularIndexUtil};
+    $self->{dx} = undef unless exists $self->{dx};
+    $self->{dy} = undef unless exists $self->{dy};
 }
 
 

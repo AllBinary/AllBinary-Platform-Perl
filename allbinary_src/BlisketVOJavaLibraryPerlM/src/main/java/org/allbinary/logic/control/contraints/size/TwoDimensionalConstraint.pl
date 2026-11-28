@@ -22,8 +22,8 @@ use parent -norequire,'java::lang::Object','org::allbinary::logic::control::cont
 
 sub _init_fields {
     my ($self) = @_;
-    $self->{widthSizeConstraintInterface} = undef;
-    $self->{heightSizeConstraintInterface} = undef;
+    $self->{widthSizeConstraintInterface} = undef unless exists $self->{widthSizeConstraintInterface};
+    $self->{heightSizeConstraintInterface} = undef unless exists $self->{heightSizeConstraintInterface};
 }
 
 

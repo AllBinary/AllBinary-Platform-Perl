@@ -27,11 +27,11 @@ sub _init_fields {
     $self->{ENDTAG} = "</td>";
     $self->{HEIGHT} = "height";
     $self->{WIDTH} = "width";
-    $self->{height} = undef;
-    $self->{width} = undef;
-    $self->{before} = undef;
-    $self->{body} = undef;
-    $self->{after} = undef;
+    $self->{height} = undef unless exists $self->{height};
+    $self->{width} = undef unless exists $self->{width};
+    $self->{before} = undef unless exists $self->{before};
+    $self->{body} = undef unless exists $self->{body};
+    $self->{after} = undef unless exists $self->{after};
 }
 
 

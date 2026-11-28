@@ -22,7 +22,7 @@ use parent -norequire,'java::lang::Object';
 
 sub _init_fields {
     my ($self) = @_;
-    $self->{jColorChooser1} = undef;
+    $self->{jColorChooser1} = undef unless exists $self->{jColorChooser1};
 }
 
 

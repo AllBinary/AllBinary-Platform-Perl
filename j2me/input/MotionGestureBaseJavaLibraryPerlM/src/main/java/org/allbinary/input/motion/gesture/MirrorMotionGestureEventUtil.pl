@@ -23,7 +23,7 @@ tie our $instance, 'java::lang::LazyStatic', sub { 'org::allbinary::input::motio
 
 sub _init_fields {
     my ($self) = @_;
-    $self->{motionEventCircularPool} = undef;
+    $self->{motionEventCircularPool} = undef unless exists $self->{motionEventCircularPool};
 }
 
 

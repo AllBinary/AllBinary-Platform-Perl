@@ -24,7 +24,7 @@ tie our $inputProcessor, 'java::lang::LazyStatic', sub { $org::allbinary::game::
 sub _init_fields {
     my ($self) = @_;
     $self->{PROCESS_GAME} = "processGame";
-    $self->{gameCanvas} = undef;
+    $self->{gameCanvas} = undef unless exists $self->{gameCanvas};
     $self->{gameKeyFactory} = 'org::allbinary::game::input::GameKeyFactory'->getInstance();
 }
 

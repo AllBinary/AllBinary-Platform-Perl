@@ -23,7 +23,7 @@ our $index = 0;
 
 sub _init_fields {
     my ($self) = @_;
-    $self->{id} = undef;
+    $self->{id} = undef unless exists $self->{id};
 }
 
 

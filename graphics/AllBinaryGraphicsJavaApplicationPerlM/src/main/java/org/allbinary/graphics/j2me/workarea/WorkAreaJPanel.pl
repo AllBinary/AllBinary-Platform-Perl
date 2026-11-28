@@ -25,20 +25,20 @@ our $document = undef;
 sub _init_fields {
     my ($self) = @_;
     $self->{logUtil} = 'org::allbinary::logic::communication::log::LogUtil'->getInstance();
-    $self->{canvasJPanelList} = undef;
-    $self->{canvasHolderJPanel} = undef;
-    $self->{name} = undef;
-    $self->{selectedFrame} = 0;
-    $self->{propertiesJPanel} = undef;
-    $self->{workAreaJTreeJPanel} = undef;
+    $self->{canvasJPanelList} = undef unless exists $self->{canvasJPanelList};
+    $self->{canvasHolderJPanel} = undef unless exists $self->{canvasHolderJPanel};
+    $self->{name} = undef unless exists $self->{name};
+    $self->{selectedFrame} = 0 unless exists $self->{selectedFrame};
+    $self->{propertiesJPanel} = undef unless exists $self->{propertiesJPanel};
+    $self->{workAreaJTreeJPanel} = undef unless exists $self->{workAreaJTreeJPanel};
     $self->{isPlaying} = 0;
-    $self->{innerJPanel} = undef;
+    $self->{innerJPanel} = undef unless exists $self->{innerJPanel};
 }
 
 sub new {
     my ($class, @arguments) = @_;
-    return $class->_new4(@arguments) if scalar(@arguments) == 4;
-    return $class->_new2(@arguments) if scalar(@arguments) == 2;
+    return _new4($class, @arguments) if scalar(@arguments) == 4;
+    return _new2($class, @arguments) if scalar(@arguments) == 2;
     die "No constructor of WorkAreaJPanel takes " . scalar(@arguments) . " arguments";
 }
 

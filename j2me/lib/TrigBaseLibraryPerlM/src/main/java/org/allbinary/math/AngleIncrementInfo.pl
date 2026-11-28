@@ -23,11 +23,11 @@ our $INCREMENT = "Inc: ";
 
 sub _init_fields {
     my ($self) = @_;
-    $self->{angleIncrement} = undef;
-    $self->{DOWN_FRAME} = undef;
-    $self->{UP_FRAME} = undef;
-    $self->{LEFT_FRAME} = undef;
-    $self->{RIGHT_FRAME} = undef;
+    $self->{angleIncrement} = undef unless exists $self->{angleIncrement};
+    $self->{DOWN_FRAME} = undef unless exists $self->{DOWN_FRAME};
+    $self->{UP_FRAME} = undef unless exists $self->{UP_FRAME};
+    $self->{LEFT_FRAME} = undef unless exists $self->{LEFT_FRAME};
+    $self->{RIGHT_FRAME} = undef unless exists $self->{RIGHT_FRAME};
     $self->{frameUtil} = 'org::allbinary::math::FrameUtil'->getInstance();
 }
 

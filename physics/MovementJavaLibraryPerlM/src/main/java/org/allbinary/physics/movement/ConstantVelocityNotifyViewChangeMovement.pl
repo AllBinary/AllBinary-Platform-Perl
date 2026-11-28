@@ -22,8 +22,8 @@ use parent -norequire,'org::allbinary::physics::movement::Movement';
 
 sub _init_fields {
     my ($self) = @_;
-    $self->{basicVelocityProperties} = undef;
-    $self->{speedBasicDecimal} = undef;
+    $self->{basicVelocityProperties} = undef unless exists $self->{basicVelocityProperties};
+    $self->{speedBasicDecimal} = undef unless exists $self->{speedBasicDecimal};
     $self->{axisMathVectorUtil} = 'org::allbinary::logic::math::vector::AxisMathVectorUtil'->getInstance();
 }
 

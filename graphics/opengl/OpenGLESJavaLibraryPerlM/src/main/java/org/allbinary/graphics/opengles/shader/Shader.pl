@@ -25,7 +25,7 @@ sub _init_fields {
     $self->{shaderName} = 'org::allbinary::logic::string::StringUtil'->getInstance()->{EMPTY_STRING};
     $self->{shaderStringList} = 'org::allbinary::util::BasicArrayListUtil'->getInstance()->getImmutableInstance();
     $self->{shaderAsString} = 'org::allbinary::logic::string::StringUtil'->getInstance()->{EMPTY_STRING};
-    $self->{shaderHandle} = 0;
+    $self->{shaderHandle} = 0 unless exists $self->{shaderHandle};
 }
 
 sub new {

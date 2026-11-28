@@ -22,7 +22,7 @@ use parent -norequire,'java::lang::Object','org::allbinary::game::input::TestInp
 
 sub _init_fields {
     my ($self) = @_;
-    $self->{testValue} = 0;
+    $self->{testValue} = 0 unless exists $self->{testValue};
 }
 
 sub new {

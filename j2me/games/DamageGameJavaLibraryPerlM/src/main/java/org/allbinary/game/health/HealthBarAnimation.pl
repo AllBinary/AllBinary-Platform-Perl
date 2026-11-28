@@ -24,10 +24,10 @@ use parent -norequire,'org::allbinary::animation::Animation';
 sub _init_fields {
     my ($self) = @_;
     $self->{basicColorFactory} = 'org::allbinary::graphics::color::BasicColorFactory'->getInstance();
-    $self->{x2} = 0;
-    $self->{thickness} = 0;
-    $self->{location} = undef;
-    $self->{allbinaryLayer} = undef;
+    $self->{x2} = 0 unless exists $self->{x2};
+    $self->{thickness} = 0 unless exists $self->{thickness};
+    $self->{location} = undef unless exists $self->{location};
+    $self->{allbinaryLayer} = undef unless exists $self->{allbinaryLayer};
 }
 
 

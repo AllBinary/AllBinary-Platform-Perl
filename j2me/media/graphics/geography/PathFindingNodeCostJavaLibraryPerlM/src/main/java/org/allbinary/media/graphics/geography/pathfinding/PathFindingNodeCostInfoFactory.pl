@@ -22,7 +22,7 @@ use parent -norequire,'org::allbinary::media::graphics::geography::pathfinding::
 
 sub _init_fields {
     my ($self) = @_;
-    $self->{pathFindingNodeCostInfoAdjacencyList} = undef;
+    $self->{pathFindingNodeCostInfoAdjacencyList} = undef unless exists $self->{pathFindingNodeCostInfoAdjacencyList};
 }
 
 

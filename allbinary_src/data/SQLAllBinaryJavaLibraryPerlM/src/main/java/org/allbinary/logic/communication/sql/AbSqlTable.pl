@@ -23,7 +23,7 @@ use parent -norequire,'org::allbinary::logic::communication::sql::AbSqlBasic';
 sub _init_fields {
     my ($self) = @_;
     $self->{logUtil} = 'org::allbinary::logic::communication::log::LogUtil'->getInstance();
-    $self->{tableName} = undef;
+    $self->{tableName} = undef unless exists $self->{tableName};
     $self->{METHOD_CREATED_TABLE} = "createTable()";
     $self->{METHOD_DROP_TABLE} = "dropTable()";
     $self->{TABLE_CREATION_SUCCESS} = "Table Creation Successful: ";

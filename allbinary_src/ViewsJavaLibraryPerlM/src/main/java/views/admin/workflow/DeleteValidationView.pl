@@ -23,7 +23,7 @@ use parent -norequire,'views::admin::workflow::WorkFlowView','org::allbinary::lo
 sub _init_fields {
     my ($self) = @_;
     $self->{logUtil} = 'org::allbinary::logic::communication::log::LogUtil'->getInstance();
-    $self->{workFlowName} = undef;
+    $self->{workFlowName} = undef unless exists $self->{workFlowName};
 }
 
 

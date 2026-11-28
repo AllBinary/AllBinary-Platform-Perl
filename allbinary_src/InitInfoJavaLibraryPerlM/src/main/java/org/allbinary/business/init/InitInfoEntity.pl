@@ -25,7 +25,7 @@ sub _init_fields {
     $self->{NAME} = "InitInfoEntity";
     $self->{NOTHING} = "NOTHING";
     $self->{tableName} = "initdata";
-    $self->{tableData} = undef;
+    $self->{tableData} = undef unless exists $self->{tableData};
     $self->{NOT_IN_DB} = "Not In DB";
     $self->{METHOD_GET} = "get()";
     $self->{METHOD_IS} = "is()";

@@ -23,9 +23,9 @@ use parent -norequire,'org::allbinary::media::graphics::geography::map::BasicGeo
 sub _init_fields {
     my ($self) = @_;
     $self->{logUtil} = 'org::allbinary::logic::communication::log::LogUtil'->getInstance();
-    $self->{raceTrackInfo} = undef;
-    $self->{raceTrackData} = undef;
-    $self->{miniGeographicMap} = undef;
+    $self->{raceTrackInfo} = undef unless exists $self->{raceTrackInfo};
+    $self->{raceTrackData} = undef unless exists $self->{raceTrackData};
+    $self->{miniGeographicMap} = undef unless exists $self->{miniGeographicMap};
 }
 
 

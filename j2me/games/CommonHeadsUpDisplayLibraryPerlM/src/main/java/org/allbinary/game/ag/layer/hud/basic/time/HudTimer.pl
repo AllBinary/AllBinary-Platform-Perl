@@ -23,12 +23,12 @@ use parent -norequire,'java::lang::Object';
 sub _init_fields {
     my ($self) = @_;
     $self->{startTime} = -1;
-    $self->{hundredthTime} = 0;
-    $self->{maxTime} = undef;
-    $self->{modifier} = 0;
+    $self->{hundredthTime} = 0 unless exists $self->{hundredthTime};
+    $self->{maxTime} = undef unless exists $self->{maxTime};
+    $self->{modifier} = 0 unless exists $self->{modifier};
     $self->{hundrethsString} = 'org::allbinary::logic::math::PrimitiveLongSingleton'->getInstance()->{ZERO};
     $self->{totalDigits} = 1;
-    $self->{primitiveLongUtil} = undef;
+    $self->{primitiveLongUtil} = undef unless exists $self->{primitiveLongUtil};
     $self->{MAX} = ["L", "O", "L"];
     $self->{gameTickTimeDelayHelper} = 'org::allbinary::time::GameTickTimeDelayHelperFactory'->getInstance();
 }

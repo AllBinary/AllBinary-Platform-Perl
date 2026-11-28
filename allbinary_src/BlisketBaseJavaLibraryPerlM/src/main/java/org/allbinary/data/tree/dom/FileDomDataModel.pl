@@ -22,7 +22,7 @@ use parent -norequire,'java::lang::Object','org::allbinary::data::tree::dom::Dom
 
 sub _init_fields {
     my ($self) = @_;
-    $self->{file} = undef;
+    $self->{file} = undef unless exists $self->{file};
 }
 
 

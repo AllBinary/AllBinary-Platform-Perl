@@ -23,8 +23,8 @@ use parent -norequire,'org::allbinary::animation::vector::CircleAnimation';
 
 sub _init_fields {
     my ($self) = @_;
-    $self->{xAdjustment} = 0;
-    $self->{yAdjustment} = 0;
+    $self->{xAdjustment} = 0 unless exists $self->{xAdjustment};
+    $self->{yAdjustment} = 0 unless exists $self->{yAdjustment};
 }
 
 

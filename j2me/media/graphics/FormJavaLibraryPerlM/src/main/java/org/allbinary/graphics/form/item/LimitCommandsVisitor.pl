@@ -22,7 +22,7 @@ use parent -norequire,'org::allbinary::logic::util::visitor::Visitor';
 
 sub _init_fields {
     my ($self) = @_;
-    $self->{isNotSmallDisplay} = undef;
+    $self->{isNotSmallDisplay} = undef unless exists $self->{isNotSmallDisplay};
 }
 
 

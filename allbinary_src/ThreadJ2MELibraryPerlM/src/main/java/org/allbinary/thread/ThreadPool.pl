@@ -29,13 +29,13 @@ sub _init_fields {
     $self->{NULL_RUNNABLE} = 'org::allbinary::thread::NullRunnable'->getInstance();
     $self->{threadPoolStrings} = 'org::allbinary::thread::ThreadPoolStrings'->getInstance();
     $self->{threadObjectUtil} = 'org::allbinary::thread::ThreadObjectUtil'->getInstance();
-    $self->{poolName} = undef;
-    $self->{priority} = undef;
+    $self->{poolName} = undef unless exists $self->{poolName};
+    $self->{priority} = undef unless exists $self->{priority};
     $self->{isAlive} = 0;
     $self->{taskQueue} = 'org::allbinary::util::BasicArrayListUtil'->getInstance()->getImmutableInstance();
-    $self->{threadID} = 0;
-    $self->{numThreads} = undef;
-    $self->{runningTask} = 0;
+    $self->{threadID} = 0 unless exists $self->{threadID};
+    $self->{numThreads} = undef unless exists $self->{numThreads};
+    $self->{runningTask} = 0 unless exists $self->{runningTask};
 }
 
 

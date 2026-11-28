@@ -22,8 +22,8 @@ use parent -norequire,'java::lang::Object','org::allbinary::logic::util::cache::
 
 sub _init_fields {
     my ($self) = @_;
-    $self->{key} = undef;
-    $self->{color} = undef;
+    $self->{key} = undef unless exists $self->{key};
+    $self->{color} = undef unless exists $self->{color};
 }
 
 

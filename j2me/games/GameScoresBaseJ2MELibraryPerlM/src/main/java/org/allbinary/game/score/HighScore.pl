@@ -22,11 +22,11 @@ use parent -norequire,'java::lang::Object';
 
 sub _init_fields {
     my ($self) = @_;
-    $self->{id} = undef;
-    $self->{name} = undef;
-    $self->{gameInfo} = undef;
-    $self->{score} = undef;
-    $self->{scoreString} = undef;
+    $self->{id} = undef unless exists $self->{id};
+    $self->{name} = undef unless exists $self->{name};
+    $self->{gameInfo} = undef unless exists $self->{gameInfo};
+    $self->{score} = undef unless exists $self->{score};
+    $self->{scoreString} = undef unless exists $self->{scoreString};
 }
 
 

@@ -22,18 +22,18 @@ use parent -norequire,'java::lang::Object','org::allbinary::logic::system::hardw
 
 sub _init_fields {
     my ($self) = @_;
-    $self->{componentInterfaceVector} = undef;
-    $self->{videoInterfaceVector} = undef;
-    $self->{hardDriveControllerInterfaceVector} = undef;
-    $self->{cpuInterfaceVector} = undef;
-    $self->{usbInterfaceVector} = undef;
-    $self->{ethernetInterfaceVector} = undef;
-    $self->{multimediaInterfaceVector} = undef;
-    $self->{fireWireInterfaceVector} = undef;
-    $self->{bridgeInterfaceVector} = undef;
-    $self->{hardDriveInterfaceVector} = undef;
-    $self->{macInterfaceVector} = undef;
-    $self->{monitorInterfaceVector} = undef;
+    $self->{componentInterfaceVector} = undef unless exists $self->{componentInterfaceVector};
+    $self->{videoInterfaceVector} = undef unless exists $self->{videoInterfaceVector};
+    $self->{hardDriveControllerInterfaceVector} = undef unless exists $self->{hardDriveControllerInterfaceVector};
+    $self->{cpuInterfaceVector} = undef unless exists $self->{cpuInterfaceVector};
+    $self->{usbInterfaceVector} = undef unless exists $self->{usbInterfaceVector};
+    $self->{ethernetInterfaceVector} = undef unless exists $self->{ethernetInterfaceVector};
+    $self->{multimediaInterfaceVector} = undef unless exists $self->{multimediaInterfaceVector};
+    $self->{fireWireInterfaceVector} = undef unless exists $self->{fireWireInterfaceVector};
+    $self->{bridgeInterfaceVector} = undef unless exists $self->{bridgeInterfaceVector};
+    $self->{hardDriveInterfaceVector} = undef unless exists $self->{hardDriveInterfaceVector};
+    $self->{macInterfaceVector} = undef unless exists $self->{macInterfaceVector};
+    $self->{monitorInterfaceVector} = undef unless exists $self->{monitorInterfaceVector};
     $self->{NAME} = "Windows Hardware Profile";
     $self->{MINHARDWARE} = 0;
     $self->{componentFactory} = 'org::allbinary::logic::system::hardware::components::ComponentFactory'->getInstance();

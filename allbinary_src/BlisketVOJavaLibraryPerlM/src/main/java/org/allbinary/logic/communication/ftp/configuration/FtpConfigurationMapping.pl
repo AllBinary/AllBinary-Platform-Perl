@@ -22,7 +22,7 @@ use parent -norequire,'java::lang::Object','org::allbinary::data::tables::TableM
 
 sub _init_fields {
     my ($self) = @_;
-    $self->{ftpConfigurationInterface} = undef;
+    $self->{ftpConfigurationInterface} = undef unless exists $self->{ftpConfigurationInterface};
 }
 
 

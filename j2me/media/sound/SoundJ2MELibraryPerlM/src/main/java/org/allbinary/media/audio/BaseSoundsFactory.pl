@@ -22,7 +22,7 @@ use parent -norequire,'java::lang::Object','org::allbinary::media::audio::Sounds
 
 sub _init_fields {
     my ($self) = @_;
-    $self->{initialized} = 0;
+    $self->{initialized} = 0 unless exists $self->{initialized};
 }
 
 sub new {

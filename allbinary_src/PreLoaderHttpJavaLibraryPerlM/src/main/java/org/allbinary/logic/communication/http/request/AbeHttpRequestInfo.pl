@@ -25,25 +25,25 @@ sub _init_fields {
     $self->{NAME} = "AbeHttpRequestInfo";
     $self->{abeHttpRequestInfoData} = 'org::allbinary::logic::communication::http::request::AbeHttpRequestInfoData'->getInstance();
     $self->{commonSeps} = 'org::allbinary::string::CommonSeps'->getInstance();
-    $self->{httpUserAgent} = undef;
-    $self->{remoteAddress} = undef;
-    $self->{remoteHost} = undef;
-    $self->{remoteHostByAddr} = undef;
-    $self->{remotePort} = undef;
-    $self->{requestedFilePath} = undef;
+    $self->{httpUserAgent} = undef unless exists $self->{httpUserAgent};
+    $self->{remoteAddress} = undef unless exists $self->{remoteAddress};
+    $self->{remoteHost} = undef unless exists $self->{remoteHost};
+    $self->{remoteHostByAddr} = undef unless exists $self->{remoteHostByAddr};
+    $self->{remotePort} = undef unless exists $self->{remotePort};
+    $self->{requestedFilePath} = undef unless exists $self->{requestedFilePath};
 }
 
 sub new {
     my ($class, @arguments) = @_;
-    return $class->_new1(@arguments) if scalar(@arguments) == 1;
-    return $class->_new1(@arguments) if scalar(@arguments) == 1;
+    return _new1($class, @arguments) if scalar(@arguments) == 1;
+    return _new1($class, @arguments) if scalar(@arguments) == 1;
     die "No constructor of AbeHttpRequestInfo takes " . scalar(@arguments) . " arguments";
 }
 
 sub _new1 {
     my ($class, @arguments) = @_;
-    return $class->_new1_1(@arguments) if 1 && (!defined($arguments[0]) || (ref($arguments[0]) && ref($arguments[0]) ne 'ARRAY'));
-    return $class->_new1_2(@arguments);
+    return _new1_1($class, @arguments) if 1 && (!defined($arguments[0]) || (ref($arguments[0]) && ref($arguments[0]) ne 'ARRAY'));
+    return _new1_2($class, @arguments);
 }
 
 

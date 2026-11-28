@@ -22,7 +22,7 @@ use parent -norequire,'org::allbinary::graphics::paint::InitUpdatePaintable';
 
 sub _init_fields {
     my ($self) = @_;
-    $self->{animationInterface} = undef;
+    $self->{animationInterface} = undef unless exists $self->{animationInterface};
 }
 
 

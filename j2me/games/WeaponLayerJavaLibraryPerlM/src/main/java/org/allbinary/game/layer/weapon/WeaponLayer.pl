@@ -23,16 +23,16 @@ use parent -norequire,'org::allbinary::game::multiplayer::layer::MultiPlayerGame
 sub _init_fields {
     my ($self) = @_;
     $self->{animationInterface} = 'org::allbinary::animation::NullAnimationFactory'->getFactoryInstance()->getInstance(0);
-    $self->{initAnimationInterface} = undef;
-    $self->{destroyedAnimationInterface} = undef;
+    $self->{initAnimationInterface} = undef unless exists $self->{initAnimationInterface};
+    $self->{destroyedAnimationInterface} = undef unless exists $self->{destroyedAnimationInterface};
     $self->{sourceLayerInterface} = $org::allbinary::layer::AllBinaryLayer::NULL_ALLBINARY_LAYER;
-    $self->{totalDamage} = 0;
-    $self->{initDamage} = 0;
+    $self->{totalDamage} = 0 unless exists $self->{totalDamage};
+    $self->{initDamage} = 0 unless exists $self->{initDamage};
     $self->{destroyed} = 1;
     $self->{scoreableInterface} = 'org::allbinary::game::score::NoScoreable'->getInstance();
-    $self->{movement} = undef;
+    $self->{movement} = undef unless exists $self->{movement};
     $self->{weaponProperties} = $org::allbinary::game::combat::weapon::WeaponProperties::NULL_WEAPON_PROPERTIES;
-    $self->{multiPlayerType} = undef;
+    $self->{multiPlayerType} = undef unless exists $self->{multiPlayerType};
     $self->{collidableWeaponBehavior} = 'org::allbinary::game::layer::weapon::CollidableWeaponBehavior'->getNullInstance();
 }
 

@@ -22,8 +22,8 @@ use parent -norequire,'java::lang::Object';
 
 sub _init_fields {
     my ($self) = @_;
-    $self->{bufferedImageArray} = undef;
-    $self->{files} = undef;
+    $self->{bufferedImageArray} = undef unless exists $self->{bufferedImageArray};
+    $self->{files} = undef unless exists $self->{files};
 }
 
 

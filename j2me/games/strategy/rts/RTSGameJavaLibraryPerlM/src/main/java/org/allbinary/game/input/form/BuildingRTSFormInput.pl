@@ -22,16 +22,16 @@ use parent -norequire,'org::allbinary::game::input::form::RTSFormInput';
 
 sub _init_fields {
     my ($self) = @_;
-    $self->{isUnitProducer} = undef;
-    $self->{buildOnPathGameNotificationEvent} = undef;
-    $self->{spotTakenGameNotificationEvent} = undef;
-    $self->{selectBuildSpotGameNotificationEvent} = undef;
-    $self->{roadCollisionGameNotificationEvent} = undef;
-    $self->{noMoneyGameNotificationEvent} = undef;
-    $self->{buildingCollisionGameNotificationEvent} = undef;
-    $self->{structureToCloseCollisionGameNotificationEvent} = undef;
-    $self->{buildingGameNotificationEvent} = undef;
-    $self->{mapEdgeGameNotificationEvent} = undef;
+    $self->{isUnitProducer} = undef unless exists $self->{isUnitProducer};
+    $self->{buildOnPathGameNotificationEvent} = undef unless exists $self->{buildOnPathGameNotificationEvent};
+    $self->{spotTakenGameNotificationEvent} = undef unless exists $self->{spotTakenGameNotificationEvent};
+    $self->{selectBuildSpotGameNotificationEvent} = undef unless exists $self->{selectBuildSpotGameNotificationEvent};
+    $self->{roadCollisionGameNotificationEvent} = undef unless exists $self->{roadCollisionGameNotificationEvent};
+    $self->{noMoneyGameNotificationEvent} = undef unless exists $self->{noMoneyGameNotificationEvent};
+    $self->{buildingCollisionGameNotificationEvent} = undef unless exists $self->{buildingCollisionGameNotificationEvent};
+    $self->{structureToCloseCollisionGameNotificationEvent} = undef unless exists $self->{structureToCloseCollisionGameNotificationEvent};
+    $self->{buildingGameNotificationEvent} = undef unless exists $self->{buildingGameNotificationEvent};
+    $self->{mapEdgeGameNotificationEvent} = undef unless exists $self->{mapEdgeGameNotificationEvent};
     $self->{dropCellPositionHistory} = 'org::allbinary::media::graphics::geography::map::drop::DropCellPositionHistory'->getInstance();
 }
 

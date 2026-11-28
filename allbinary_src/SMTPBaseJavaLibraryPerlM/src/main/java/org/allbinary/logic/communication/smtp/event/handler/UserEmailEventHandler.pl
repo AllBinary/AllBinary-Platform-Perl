@@ -22,9 +22,9 @@ use parent -norequire,'java::lang::Object';
 
 sub _init_fields {
     my ($self) = @_;
-    $self->{emailVector} = undef;
-    $self->{emailInfo} = undef;
-    $self->{userEmailEventNameData} = undef;
+    $self->{emailVector} = undef unless exists $self->{emailVector};
+    $self->{emailInfo} = undef unless exists $self->{emailInfo};
+    $self->{userEmailEventNameData} = undef unless exists $self->{userEmailEventNameData};
 }
 
 

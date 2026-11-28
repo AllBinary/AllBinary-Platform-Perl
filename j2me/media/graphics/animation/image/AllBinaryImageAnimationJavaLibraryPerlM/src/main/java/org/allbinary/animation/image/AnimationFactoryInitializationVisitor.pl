@@ -22,12 +22,12 @@ use parent -norequire,'java::lang::Object';
 
 sub _init_fields {
     my ($self) = @_;
-    $self->{width} = 0;
-    $self->{height} = 0;
-    $self->{dx} = 0;
-    $self->{dy} = 0;
-    $self->{originalDx} = 0;
-    $self->{originalDy} = 0;
+    $self->{width} = 0 unless exists $self->{width};
+    $self->{height} = 0 unless exists $self->{height};
+    $self->{dx} = 0 unless exists $self->{dx};
+    $self->{dy} = 0 unless exists $self->{dy};
+    $self->{originalDx} = 0 unless exists $self->{originalDx};
+    $self->{originalDy} = 0 unless exists $self->{originalDy};
 }
 
 sub new {

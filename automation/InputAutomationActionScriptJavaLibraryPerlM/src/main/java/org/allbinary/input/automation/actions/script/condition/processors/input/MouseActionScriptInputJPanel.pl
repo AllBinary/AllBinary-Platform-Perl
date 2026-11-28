@@ -24,24 +24,24 @@ sub _init_fields {
     my ($self) = @_;
     $self->{logUtil} = 'org::allbinary::logic::communication::log::LogUtil'->getInstance();
     $self->{commonStrings} = 'org::allbinary::string::CommonStrings'->getInstance();
-    $self->{mouseActionScriptInputInterface} = undef;
-    $self->{button1JCheckBox} = undef;
-    $self->{button2JCheckBox} = undef;
-    $self->{inputAutomationTypeJComboBox} = undef;
-    $self->{inputTypeJLabel} = undef;
-    $self->{jLabel1} = undef;
-    $self->{jLabel2} = undef;
-    $self->{jLabel3} = undef;
-    $self->{jLabel4} = undef;
-    $self->{jLabel5} = undef;
-    $self->{jLabel6} = undef;
-    $self->{mouseActionJButton} = undef;
-    $self->{mouseActionJDialog} = undef;
-    $self->{mouseDelayJTextField} = undef;
-    $self->{mouseXJTextField} = undef;
-    $self->{mouseYJTextField} = undef;
-    $self->{okJButton} = undef;
-    $self->{titleJLabel} = undef;
+    $self->{mouseActionScriptInputInterface} = undef unless exists $self->{mouseActionScriptInputInterface};
+    $self->{button1JCheckBox} = undef unless exists $self->{button1JCheckBox};
+    $self->{button2JCheckBox} = undef unless exists $self->{button2JCheckBox};
+    $self->{inputAutomationTypeJComboBox} = undef unless exists $self->{inputAutomationTypeJComboBox};
+    $self->{inputTypeJLabel} = undef unless exists $self->{inputTypeJLabel};
+    $self->{jLabel1} = undef unless exists $self->{jLabel1};
+    $self->{jLabel2} = undef unless exists $self->{jLabel2};
+    $self->{jLabel3} = undef unless exists $self->{jLabel3};
+    $self->{jLabel4} = undef unless exists $self->{jLabel4};
+    $self->{jLabel5} = undef unless exists $self->{jLabel5};
+    $self->{jLabel6} = undef unless exists $self->{jLabel6};
+    $self->{mouseActionJButton} = undef unless exists $self->{mouseActionJButton};
+    $self->{mouseActionJDialog} = undef unless exists $self->{mouseActionJDialog};
+    $self->{mouseDelayJTextField} = undef unless exists $self->{mouseDelayJTextField};
+    $self->{mouseXJTextField} = undef unless exists $self->{mouseXJTextField};
+    $self->{mouseYJTextField} = undef unless exists $self->{mouseYJTextField};
+    $self->{okJButton} = undef unless exists $self->{okJButton};
+    $self->{titleJLabel} = undef unless exists $self->{titleJLabel};
 }
 
 

@@ -23,7 +23,7 @@ use parent -norequire,'java::lang::Object','org::allbinary::logic::util::visitor
 sub _init_fields {
     my ($self) = @_;
     $self->{commonStrings} = 'org::allbinary::string::CommonStrings'->getInstance();
-    $self->{filterStringBasicArrayList} = undef;
+    $self->{filterStringBasicArrayList} = undef unless exists $self->{filterStringBasicArrayList};
 }
 
 

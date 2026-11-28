@@ -22,7 +22,7 @@ use parent -norequire,'java::lang::Object';
 
 sub _init_fields {
     my ($self) = @_;
-    $self->{touchButtonRecognizer} = undef;
+    $self->{touchButtonRecognizer} = undef unless exists $self->{touchButtonRecognizer};
 }
 
 

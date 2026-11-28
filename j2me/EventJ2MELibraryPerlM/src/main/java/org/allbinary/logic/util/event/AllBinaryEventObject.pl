@@ -23,7 +23,7 @@ tie our $NULL_EVENT, 'java::lang::LazyStatic', sub { 'org::allbinary::logic::uti
 
 sub _init_fields {
     my ($self) = @_;
-    $self->{source} = undef;
+    $self->{source} = undef unless exists $self->{source};
 }
 
 

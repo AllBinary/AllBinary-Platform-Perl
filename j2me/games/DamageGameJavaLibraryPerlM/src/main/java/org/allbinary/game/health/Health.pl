@@ -26,8 +26,8 @@ our $MAX_HEALTH_LABEL = " Max: ";
 
 sub _init_fields {
     my ($self) = @_;
-    $self->{health} = 0;
-    $self->{maxHealth} = 0;
+    $self->{health} = 0 unless exists $self->{health};
+    $self->{maxHealth} = 0 unless exists $self->{maxHealth};
     $self->{healthListenerInterface} = $org::allbinary::game::health::NullHealthListener::NULL_HEALTH_LISTENER;
 }
 

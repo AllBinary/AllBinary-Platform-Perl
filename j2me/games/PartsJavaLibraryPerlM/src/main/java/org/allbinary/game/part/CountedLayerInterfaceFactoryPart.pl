@@ -27,11 +27,11 @@ sub _init_fields {
     $self->{updateMyFontProcessor} = 'org::allbinary::graphics::font::UpdateMyFontProcessor'->new($self);
     $self->{myFontProcessor} = $self->{updateMyFontProcessor};
     $self->{animationInterface} = 'org::allbinary::animation::NullAnimationFactory'->getFactoryInstance()->getInstance(0);
-    $self->{total} = 0;
+    $self->{total} = 0 unless exists $self->{total};
     $self->{totalString} = 'org::allbinary::logic::NullUtil'->getInstance()->{NULL_CHAR_ARRAY};
-    $self->{xOffset} = 0;
+    $self->{xOffset} = 0 unless exists $self->{xOffset};
     $self->{countedPickedUpLayerInterfaceFactory} = $org::allbinary::game::layer::pickup::CountedPickedUpLayerInterfaceFactory::NULL_COUNTED_PICKUP_LAYER_FACTORY;
-    $self->{primitiveLongUtil} = undef;
+    $self->{primitiveLongUtil} = undef unless exists $self->{primitiveLongUtil};
 }
 
 

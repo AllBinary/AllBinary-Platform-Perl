@@ -22,9 +22,9 @@ use parent -norequire,'java::lang::Object';
 
 sub _init_fields {
     my ($self) = @_;
-    $self->{colorRangeInterface} = undef;
-    $self->{matchingPixelsChecked} = 0;
-    $self->{totalPixelsChecked} = 0;
+    $self->{colorRangeInterface} = undef unless exists $self->{colorRangeInterface};
+    $self->{matchingPixelsChecked} = 0 unless exists $self->{matchingPixelsChecked};
+    $self->{totalPixelsChecked} = 0 unless exists $self->{totalPixelsChecked};
 }
 
 

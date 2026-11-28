@@ -24,7 +24,7 @@ sub _init_fields {
     my ($self) = @_;
     $self->{currentPoints} = 'org::allbinary::logic::NullUtil'->getInstance()->{NULL_INT_ARRAY_ARRAY_ARRAY};
     $self->{basicColor} = 'org::allbinary::graphics::color::BasicColorFactory'->getInstance()->{WHITE};
-    $self->{animationBehaviorFactory} = undef;
+    $self->{animationBehaviorFactory} = undef unless exists $self->{animationBehaviorFactory};
 }
 
 

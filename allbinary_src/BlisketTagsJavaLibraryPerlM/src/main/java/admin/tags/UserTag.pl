@@ -22,8 +22,8 @@ use parent -norequire,'admin::tags::TableTag';
 
 sub _init_fields {
     my ($self) = @_;
-    $self->{role} = undef;
-    $self->{enable} = undef;
+    $self->{role} = undef unless exists $self->{role};
+    $self->{enable} = undef unless exists $self->{enable};
 }
 
 

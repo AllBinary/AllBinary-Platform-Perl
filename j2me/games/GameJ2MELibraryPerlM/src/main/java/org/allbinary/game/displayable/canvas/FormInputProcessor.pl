@@ -29,7 +29,7 @@ sub _init_fields {
     $self->{upGameKeyEventHandler} = 'org::allbinary::game::input::event::UpGameKeyEventHandler'->getInstance();
     $self->{inputFactory} = 'org::allbinary::game::input::InputFactory'->getInstance();
     $self->{platformKeyFactory} = 'org::allbinary::game::input::PlatformKeyFactory'->getInstance();
-    $self->{allBinaryGameCanvas} = undef;
+    $self->{allBinaryGameCanvas} = undef unless exists $self->{allBinaryGameCanvas};
 }
 
 

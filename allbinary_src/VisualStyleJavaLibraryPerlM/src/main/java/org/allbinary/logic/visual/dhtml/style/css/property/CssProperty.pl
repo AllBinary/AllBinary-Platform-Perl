@@ -23,21 +23,21 @@ use parent -norequire,'java::lang::Object','org::allbinary::data::tree::dom::Dom
 sub _init_fields {
     my ($self) = @_;
     $self->{logUtil} = 'org::allbinary::logic::communication::log::LogUtil'->getInstance();
-    $self->{propertyName} = undef;
-    $self->{cssPropertyValues} = undef;
+    $self->{propertyName} = undef unless exists $self->{propertyName};
+    $self->{cssPropertyValues} = undef unless exists $self->{cssPropertyValues};
 }
 
 sub new {
     my ($class, @arguments) = @_;
-    return $class->_new1(@arguments) if scalar(@arguments) == 1;
-    return $class->_new1(@arguments) if scalar(@arguments) == 1;
+    return _new1($class, @arguments) if scalar(@arguments) == 1;
+    return _new1($class, @arguments) if scalar(@arguments) == 1;
     die "No constructor of CssProperty takes " . scalar(@arguments) . " arguments";
 }
 
 sub _new1 {
     my ($class, @arguments) = @_;
-    return $class->_new1_1(@arguments) if 1 && !ref($arguments[0]);
-    return $class->_new1_2(@arguments);
+    return _new1_1($class, @arguments) if 1 && !ref($arguments[0]);
+    return _new1_2($class, @arguments);
 }
 
 

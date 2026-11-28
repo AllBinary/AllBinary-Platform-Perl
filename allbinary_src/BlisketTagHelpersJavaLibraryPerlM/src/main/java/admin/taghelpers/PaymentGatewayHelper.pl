@@ -23,9 +23,9 @@ use parent -norequire,'admin::taghelpers::BasicTable';
 sub _init_fields {
     my ($self) = @_;
     $self->{logUtil} = 'org::allbinary::logic::communication::log::LogUtil'->getInstance();
-    $self->{weblisketSession} = undef;
-    $self->{httpServletRequest} = undef;
-    $self->{portion} = undef;
+    $self->{weblisketSession} = undef unless exists $self->{weblisketSession};
+    $self->{httpServletRequest} = undef unless exists $self->{httpServletRequest};
+    $self->{portion} = undef unless exists $self->{portion};
 }
 
 

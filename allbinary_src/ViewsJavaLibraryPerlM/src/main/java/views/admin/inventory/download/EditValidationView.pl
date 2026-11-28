@@ -22,7 +22,7 @@ use parent -norequire,'views::admin::inventory::download::DownloadableInventoryI
 
 sub _init_fields {
     my ($self) = @_;
-    $self->{downloadItemId} = undef;
+    $self->{downloadItemId} = undef unless exists $self->{downloadItemId};
 }
 
 

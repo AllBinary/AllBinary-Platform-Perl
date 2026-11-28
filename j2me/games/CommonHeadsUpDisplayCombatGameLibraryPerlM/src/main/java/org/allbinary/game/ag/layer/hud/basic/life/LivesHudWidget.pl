@@ -22,9 +22,9 @@ use parent -norequire,'org::allbinary::game::graphics::hud::BasicHud','org::allb
 
 sub _init_fields {
     my ($self) = @_;
-    $self->{lifeInterface} = undef;
-    $self->{xArray} = undef;
-    $self->{animationInterface} = undef;
+    $self->{lifeInterface} = undef unless exists $self->{lifeInterface};
+    $self->{xArray} = undef unless exists $self->{xArray};
+    $self->{animationInterface} = undef unless exists $self->{animationInterface};
 }
 
 

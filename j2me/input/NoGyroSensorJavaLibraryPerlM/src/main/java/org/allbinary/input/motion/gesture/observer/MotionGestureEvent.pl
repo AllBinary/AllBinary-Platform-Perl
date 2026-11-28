@@ -25,7 +25,7 @@ our $HASHCODE = " hashcode: ";
 sub _init_fields {
     my ($self) = @_;
     $self->{motionGesture} = 'org::allbinary::input::motion::gesture::TouchMotionGestureFactory'->getInstance()->{NO_MOTION};
-    $self->{id} = undef;
+    $self->{id} = undef unless exists $self->{id};
     $self->{previousPoint} = 'org::allbinary::graphics::PointFactory'->getInstance()->{ZERO_ZERO};
     $self->{currentPoint} = 'org::allbinary::graphics::PointFactory'->getInstance()->{ZERO_ZERO};
     $self->{commonLabels} = 'org::allbinary::string::CommonLabels'->getInstance();

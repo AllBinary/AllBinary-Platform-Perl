@@ -22,7 +22,7 @@ use parent -norequire,'admin::taghelpers::TagHelper';
 
 sub _init_fields {
     my ($self) = @_;
-    $self->{paymentProcessorComponent} = undef;
+    $self->{paymentProcessorComponent} = undef unless exists $self->{paymentProcessorComponent};
 }
 
 

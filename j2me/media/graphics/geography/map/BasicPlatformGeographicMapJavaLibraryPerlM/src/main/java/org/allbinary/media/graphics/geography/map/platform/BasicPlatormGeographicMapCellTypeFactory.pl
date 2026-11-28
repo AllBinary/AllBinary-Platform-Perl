@@ -23,10 +23,10 @@ use parent -norequire,'org::allbinary::media::graphics::geography::map::Geograph
 sub _init_fields {
     my ($self) = @_;
     $self->{enumerationUtil} = 'org::allbinary::util::EnumerationUtil'->getInstance();
-    $self->{BLOCK_CELL_TYPE} = undef;
-    $self->{JUMP_THRU_CELL_TYPE} = undef;
-    $self->{LADDER_CELL_TYPE} = undef;
-    $self->{maxTileId} = undef;
+    $self->{BLOCK_CELL_TYPE} = undef unless exists $self->{BLOCK_CELL_TYPE};
+    $self->{JUMP_THRU_CELL_TYPE} = undef unless exists $self->{JUMP_THRU_CELL_TYPE};
+    $self->{LADDER_CELL_TYPE} = undef unless exists $self->{LADDER_CELL_TYPE};
+    $self->{maxTileId} = undef unless exists $self->{maxTileId};
 }
 
 

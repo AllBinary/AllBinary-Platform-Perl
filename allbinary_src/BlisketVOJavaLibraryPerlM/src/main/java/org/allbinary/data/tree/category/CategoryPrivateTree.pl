@@ -23,7 +23,7 @@ use parent -norequire,'java::lang::Object';
 sub _init_fields {
     my ($self) = @_;
     $self->{logUtil} = 'org::allbinary::logic::communication::log::LogUtil'->getInstance();
-    $self->{categoryFactoryInterface} = undef;
+    $self->{categoryFactoryInterface} = undef unless exists $self->{categoryFactoryInterface};
 }
 
 

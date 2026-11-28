@@ -38,8 +38,8 @@ sub new {
     _init_fields($self);
         # super(...) made $self above
         $self->initVertices();
-        $self->{regionRectangleVertexFloatBuffer}->put($self->{regionRectangleFloatArray});
-        $self->{regionTextureVertexFloatBuffer}->put($self->{regionTextureRectangleFloatArray});
+        $self->{regionRectangleVertexFloatBuffer}->put('java::nio::FloatBuffer'->wrap($self->{regionRectangleFloatArray}));
+        $self->{regionTextureVertexFloatBuffer}->put('java::nio::FloatBuffer'->wrap($self->{regionTextureRectangleFloatArray}));
     return $self;
 }
 

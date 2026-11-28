@@ -24,20 +24,20 @@ sub _init_fields {
     my ($self) = @_;
     $self->{logUtil} = 'org::allbinary::logic::communication::log::LogUtil'->getInstance();
     $self->{basicItemData} = 'org::allbinary::business::user::commerce::inventory::item::BasicItemData'->getInstance();
-    $self->{request} = undef;
-    $self->{id} = undef;
-    $self->{itemOne} = undef;
-    $self->{itemTwo} = undef;
-    $self->{itemThree} = undef;
-    $self->{itemFour} = undef;
-    $self->{itemFive} = undef;
-    $self->{itemSix} = undef;
-    $self->{itemSeven} = undef;
-    $self->{itemEight} = undef;
-    $self->{itemNine} = undef;
-    $self->{itemTen} = undef;
-    $self->{timeEntered} = undef;
-    $self->{lastModified} = undef;
+    $self->{request} = undef unless exists $self->{request};
+    $self->{id} = undef unless exists $self->{id};
+    $self->{itemOne} = undef unless exists $self->{itemOne};
+    $self->{itemTwo} = undef unless exists $self->{itemTwo};
+    $self->{itemThree} = undef unless exists $self->{itemThree};
+    $self->{itemFour} = undef unless exists $self->{itemFour};
+    $self->{itemFive} = undef unless exists $self->{itemFive};
+    $self->{itemSix} = undef unless exists $self->{itemSix};
+    $self->{itemSeven} = undef unless exists $self->{itemSeven};
+    $self->{itemEight} = undef unless exists $self->{itemEight};
+    $self->{itemNine} = undef unless exists $self->{itemNine};
+    $self->{itemTen} = undef unless exists $self->{itemTen};
+    $self->{timeEntered} = undef unless exists $self->{timeEntered};
+    $self->{lastModified} = undef unless exists $self->{lastModified};
 }
 
 

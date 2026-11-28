@@ -23,7 +23,7 @@ tie our $NULL_ICON_LAYER, 'java::lang::LazyStatic', sub { 'org::allbinary::game:
 
 sub _init_fields {
     my ($self) = @_;
-    $self->{animationInterface} = undef;
+    $self->{animationInterface} = undef unless exists $self->{animationInterface};
 }
 
 

@@ -22,7 +22,7 @@ use parent -norequire,'java::lang::Object','org::allbinary::media::audio::SoundI
 
 sub _init_fields {
     my ($self) = @_;
-    $self->{resource} = undef;
+    $self->{resource} = undef unless exists $self->{resource};
     $self->{player} = $org::allbinary::media::audio::NoPlayer::NO_PLAYER;
 }
 

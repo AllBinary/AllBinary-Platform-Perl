@@ -26,21 +26,21 @@ sub _init_fields {
     $self->{commonStrings} = 'org::allbinary::string::CommonStrings'->getInstance();
     $self->{commonSeps} = 'org::allbinary::string::CommonSeps'->getInstance();
     $self->{imageStrings} = 'org::allbinary::media::image::ImageStrings'->getInstance();
-    $self->{imageProcessorInput} = undef;
-    $self->{result} = undef;
-    $self->{generateJButton} = undef;
-    $self->{heightReductionTextField} = undef;
-    $self->{heightReductionTextField1} = undef;
-    $self->{jLabel4} = undef;
-    $self->{jLabel5} = undef;
-    $self->{jLabel6} = undef;
-    $self->{jLabel7} = undef;
-    $self->{jLabel8} = undef;
-    $self->{jPanel1} = undef;
-    $self->{jPanel2} = undef;
-    $self->{widthReductionTextField} = undef;
-    $self->{widthReductionTextField1} = undef;
-    $self->{writeOverOriginalJCheckBox} = undef;
+    $self->{imageProcessorInput} = undef unless exists $self->{imageProcessorInput};
+    $self->{result} = undef unless exists $self->{result};
+    $self->{generateJButton} = undef unless exists $self->{generateJButton};
+    $self->{heightReductionTextField} = undef unless exists $self->{heightReductionTextField};
+    $self->{heightReductionTextField1} = undef unless exists $self->{heightReductionTextField1};
+    $self->{jLabel4} = undef unless exists $self->{jLabel4};
+    $self->{jLabel5} = undef unless exists $self->{jLabel5};
+    $self->{jLabel6} = undef unless exists $self->{jLabel6};
+    $self->{jLabel7} = undef unless exists $self->{jLabel7};
+    $self->{jLabel8} = undef unless exists $self->{jLabel8};
+    $self->{jPanel1} = undef unless exists $self->{jPanel1};
+    $self->{jPanel2} = undef unless exists $self->{jPanel2};
+    $self->{widthReductionTextField} = undef unless exists $self->{widthReductionTextField};
+    $self->{widthReductionTextField1} = undef unless exists $self->{widthReductionTextField1};
+    $self->{writeOverOriginalJCheckBox} = undef unless exists $self->{writeOverOriginalJCheckBox};
 }
 
 

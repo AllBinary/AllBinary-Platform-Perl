@@ -23,8 +23,8 @@ use parent -norequire,'org::allbinary::game::part::weapon::BasicWeaponPart';
 
 sub _init_fields {
     my ($self) = @_;
-    $self->{weaponLayerCircularStaticPool} = undef;
-    $self->{total} = undef;
+    $self->{weaponLayerCircularStaticPool} = undef unless exists $self->{weaponLayerCircularStaticPool};
+    $self->{total} = undef unless exists $self->{total};
     $self->{TOTAL_ANGLE} = int('org::allbinary::math::AngleFactory'->getInstance()->{TOTAL_ANGLE});
 }
 

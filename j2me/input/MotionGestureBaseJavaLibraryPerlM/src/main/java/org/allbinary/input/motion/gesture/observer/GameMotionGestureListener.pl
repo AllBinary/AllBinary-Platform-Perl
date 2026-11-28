@@ -26,7 +26,7 @@ sub _init_fields {
     $self->{commonStrings} = 'org::allbinary::string::CommonStrings'->getInstance();
     $self->{motionGestureCollection} = 'org::allbinary::util::BasicArrayListD'->new();
     $self->{touchGestureCollection} = 'org::allbinary::util::BasicArrayListD'->new();
-    $self->{signed} = undef;
+    $self->{signed} = undef unless exists $self->{signed};
 }
 
 

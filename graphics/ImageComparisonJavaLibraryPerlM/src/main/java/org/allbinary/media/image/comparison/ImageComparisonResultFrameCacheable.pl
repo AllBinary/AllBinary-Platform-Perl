@@ -22,8 +22,8 @@ use parent -norequire,'java::lang::Object','org::allbinary::logic::util::cache::
 
 sub _init_fields {
     my ($self) = @_;
-    $self->{frame} = undef;
-    $self->{imageComparisonResult} = undef;
+    $self->{frame} = undef unless exists $self->{frame};
+    $self->{imageComparisonResult} = undef unless exists $self->{imageComparisonResult};
 }
 
 

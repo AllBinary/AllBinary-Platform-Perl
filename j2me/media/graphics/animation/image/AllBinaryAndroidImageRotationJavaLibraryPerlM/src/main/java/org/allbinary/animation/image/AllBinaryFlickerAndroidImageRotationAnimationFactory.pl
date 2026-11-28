@@ -23,8 +23,8 @@ use parent -norequire,'java::lang::Object','org::allbinary::animation::Animation
 sub _init_fields {
     my ($self) = @_;
     $self->{image} = $javax::microedition::lcdui::NullImage::NULL_IMAGE;
-    $self->{angleIncrement} = undef;
-    $self->{animationBehaviorFactory} = undef;
+    $self->{angleIncrement} = undef unless exists $self->{angleIncrement};
+    $self->{animationBehaviorFactory} = undef unless exists $self->{animationBehaviorFactory};
 }
 
 

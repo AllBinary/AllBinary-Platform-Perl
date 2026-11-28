@@ -22,9 +22,9 @@ use parent -norequire,'java::lang::Object','org::allbinary::logic::system::os::O
 
 sub _init_fields {
     my ($self) = @_;
-    $self->{osName} = undef;
-    $self->{osArch} = undef;
-    $self->{osVersion} = undef;
+    $self->{osName} = undef unless exists $self->{osName};
+    $self->{osArch} = undef unless exists $self->{osArch};
+    $self->{osVersion} = undef unless exists $self->{osVersion};
     $self->{characterSet} = 'org::allbinary::logic::java::character::CharacterSet'->new();
     $self->{scalable} = 0;
 }

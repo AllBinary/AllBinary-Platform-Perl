@@ -23,12 +23,12 @@ use parent -norequire,'java::lang::Object';
 sub _init_fields {
     my ($self) = @_;
     $self->{logUtil} = 'org::allbinary::logic::communication::log::LogUtil'->getInstance();
-    $self->{geographicMapCellPositionArray} = undef;
-    $self->{geographicMapInterface} = undef;
-    $self->{geographicMapCellPositionFactoryInterface} = undef;
-    $self->{columns} = undef;
-    $self->{rows} = undef;
-    $self->{tiledLayer} = undef;
+    $self->{geographicMapCellPositionArray} = undef unless exists $self->{geographicMapCellPositionArray};
+    $self->{geographicMapInterface} = undef unless exists $self->{geographicMapInterface};
+    $self->{geographicMapCellPositionFactoryInterface} = undef unless exists $self->{geographicMapCellPositionFactoryInterface};
+    $self->{columns} = undef unless exists $self->{columns};
+    $self->{rows} = undef unless exists $self->{rows};
+    $self->{tiledLayer} = undef unless exists $self->{tiledLayer};
 }
 
 

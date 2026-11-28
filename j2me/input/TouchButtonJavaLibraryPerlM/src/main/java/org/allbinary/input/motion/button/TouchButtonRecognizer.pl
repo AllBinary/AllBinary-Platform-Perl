@@ -28,7 +28,7 @@ sub _init_fields {
     $self->{downGameKeyEventHandler} = 'org::allbinary::game::input::event::DownGameKeyEventHandler'->getInstance();
     $self->{lastPressedTouchButtonInput} = 'org::allbinary::input::motion::button::BasicTouchInputFactory'->getInstance()->{NONE};
     $self->{currentlyPressedTouchButtonSingleton} = 'org::allbinary::input::motion::button::CurrentlyPressedTouchButtonSingleton'->getInstance();
-    $self->{releaseHelper} = undef;
+    $self->{releaseHelper} = undef unless exists $self->{releaseHelper};
 }
 
 

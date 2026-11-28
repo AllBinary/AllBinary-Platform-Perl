@@ -25,10 +25,10 @@ sub _init_fields {
     $self->{logUtil} = 'org::allbinary::logic::communication::log::LogUtil'->getInstance();
     $self->{commonStrings} = 'org::allbinary::string::CommonStrings'->getInstance();
     $self->{bufferedImageVector} = 'org::allbinary::util::BasicArrayListD'->new();
-    $self->{imageComparatorConstraintsInterface} = undef;
-    $self->{imageComparator} = undef;
-    $self->{running} = 0;
-    $self->{index2} = 0;
+    $self->{imageComparatorConstraintsInterface} = undef unless exists $self->{imageComparatorConstraintsInterface};
+    $self->{imageComparator} = undef unless exists $self->{imageComparator};
+    $self->{running} = 0 unless exists $self->{running};
+    $self->{index2} = 0 unless exists $self->{index2};
 }
 
 

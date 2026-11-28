@@ -22,8 +22,8 @@ use parent -norequire,'java::lang::Object';
 
 sub _init_fields {
     my ($self) = @_;
-    $self->{MAX_API} = undef;
-    $self->{MAX_POINTERS} = undef;
+    $self->{MAX_API} = undef unless exists $self->{MAX_API};
+    $self->{MAX_POINTERS} = undef unless exists $self->{MAX_POINTERS};
 }
 
 

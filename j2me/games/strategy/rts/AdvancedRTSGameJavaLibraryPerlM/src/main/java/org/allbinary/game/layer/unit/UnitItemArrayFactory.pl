@@ -25,7 +25,7 @@ sub _init_fields {
     my ($self) = @_;
     $self->{commonSeps} = 'org::allbinary::string::CommonSeps'->getInstance();
     $self->{basicColor} = 'org::allbinary::graphics::color::BasicColorFactory'->getInstance()->{WHITE};
-    $self->{resources} = undef;
+    $self->{resources} = undef unless exists $self->{resources};
 }
 
 

@@ -23,7 +23,7 @@ tie our $NULL_BASIC_TERRAIN_INFO, 'java::lang::LazyStatic', sub { 'org::allbinar
 
 sub _init_fields {
     my ($self) = @_;
-    $self->{angle} = undef;
+    $self->{angle} = undef unless exists $self->{angle};
 }
 
 

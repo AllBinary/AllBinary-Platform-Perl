@@ -30,10 +30,10 @@ sub _init_fields {
     $self->{myFontProcessor} = 'org::allbinary::graphics::font::UpdateMyFontProcessor'->new($self);
     $self->{startString} = 'org::allbinary::logic::string::StringUtil'->getInstance()->{EMPTY_STRING};
     $self->{timeDelayHelper} = 'org::allbinary::time::TimeDelayHelper'->new(1100);
-    $self->{flash} = 0;
+    $self->{flash} = 0 unless exists $self->{flash};
     $self->{anchor} = $org::allbinary::graphics::Anchor::TOP_LEFT;
-    $self->{beginWidth} = 0;
-    $self->{line} = 0;
+    $self->{beginWidth} = 0 unless exists $self->{beginWidth};
+    $self->{line} = 0 unless exists $self->{line};
 }
 
 

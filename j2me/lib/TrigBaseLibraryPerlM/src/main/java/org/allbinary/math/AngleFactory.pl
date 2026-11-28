@@ -29,10 +29,10 @@ sub _init_fields {
     $self->{angleArray} = [(undef) x ($self->{TOTAL_ANGLE})];
     $self->{NEGATIVE_ONE} = ((int(-1) + 32768) % 65536 - 32768);
     $self->{NOT_ANGLE} = 'org::allbinary::math::NamedAngle'->new($self->{NEGATIVE_ONE}, 'org::allbinary::string::CommonStrings'->getInstance()->{EMPTY});
-    $self->{DOWN} = undef;
-    $self->{UP} = undef;
-    $self->{LEFT} = undef;
-    $self->{RIGHT} = undef;
+    $self->{DOWN} = undef unless exists $self->{DOWN};
+    $self->{UP} = undef unless exists $self->{UP};
+    $self->{LEFT} = undef unless exists $self->{LEFT};
+    $self->{RIGHT} = undef unless exists $self->{RIGHT};
     $self->{frameUtil} = 'org::allbinary::math::FrameUtil'->getInstance();
 }
 

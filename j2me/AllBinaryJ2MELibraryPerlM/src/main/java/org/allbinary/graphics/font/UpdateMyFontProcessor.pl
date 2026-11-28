@@ -22,7 +22,7 @@ use parent -norequire,'org::allbinary::graphics::font::MyFontProcessor';
 
 sub _init_fields {
     my ($self) = @_;
-    $self->{updateMeasurementProcessor} = undef;
+    $self->{updateMeasurementProcessor} = undef unless exists $self->{updateMeasurementProcessor};
 }
 
 

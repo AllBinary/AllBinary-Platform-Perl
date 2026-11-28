@@ -23,7 +23,7 @@ use parent -norequire,'org::allbinary::game::ai::BasicAI';
 sub _init_fields {
     my ($self) = @_;
     $self->{currentRelativeAngle} = 0;
-    $self->{currentSpeed} = undef;
+    $self->{currentSpeed} = undef unless exists $self->{currentSpeed};
 }
 
 

@@ -29,7 +29,7 @@ sub _init_fields {
     $self->{DOUBLE_CLICK_DELAY} = 1200;
     $self->{doubleClickTimeHelper} = 'org::allbinary::time::TimeDelayHelper'->new($self->{DOUBLE_CLICK_DELAY});
     $self->{isSingleKeyProcessing} = 'org::allbinary::game::configuration::feature::InputFeatureFactory'->getInstance()->isSingleKeyProcessing();
-    $self->{form} = undef;
+    $self->{form} = undef unless exists $self->{form};
     $self->{hasPressed} = 0;
     $self->{PROCESS_COMMAND} = "processCommand";
     $self->{NAME_LABEL} = " ScrollSelectionForm: ";

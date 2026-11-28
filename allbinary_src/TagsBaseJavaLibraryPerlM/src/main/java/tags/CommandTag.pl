@@ -23,7 +23,7 @@ use parent -norequire,'tags::CustomTagSupport';
 sub _init_fields {
     my ($self) = @_;
     $self->{tagStrings} = 'tags::TagStrings'->getInstance();
-    $self->{command} = undef;
+    $self->{command} = undef unless exists $self->{command};
 }
 
 

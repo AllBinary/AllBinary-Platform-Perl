@@ -23,7 +23,7 @@ our $DESKTOP_SYMBOLIC_NAME = "org.knopflerfish.bundle.desktop";
 
 sub _init_fields {
     my ($self) = @_;
-    $self->{bundle} = undef;
+    $self->{bundle} = undef unless exists $self->{bundle};
 }
 
 

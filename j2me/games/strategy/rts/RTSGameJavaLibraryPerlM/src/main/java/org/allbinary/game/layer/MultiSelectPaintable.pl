@@ -27,8 +27,8 @@ sub _init_fields {
     $self->{rootNamesString} = 'org::allbinary::logic::string::StringUtil'->getInstance()->{EMPTY_STRING};
     $self->{TOTAL} = "Total Selected: ";
     $self->{backgroundColor} = int('org::allbinary::graphics::color::BasicColorFactory'->getInstance()->{GREY});
-    $self->{totalWidth} = 0;
-    $self->{textLine2Y} = 0;
+    $self->{totalWidth} = 0 unless exists $self->{totalWidth};
+    $self->{textLine2Y} = 0 unless exists $self->{textLine2Y};
 }
 
 

@@ -25,7 +25,7 @@ use parent -norequire,'java::lang::Object','org::allbinary::animation::Animation
 sub _init_fields {
     my ($self) = @_;
     $self->{allBinaryImageRotationAnimationInfo} = 'org::allbinary::logic::NullUtil'->getInstance()->{NULL_OBJECT};
-    $self->{animationBehaviorFactory} = undef;
+    $self->{animationBehaviorFactory} = undef unless exists $self->{animationBehaviorFactory};
 }
 
 

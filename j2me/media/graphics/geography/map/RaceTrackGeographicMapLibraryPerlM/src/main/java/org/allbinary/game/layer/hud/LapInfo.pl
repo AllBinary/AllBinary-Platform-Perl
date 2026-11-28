@@ -23,8 +23,8 @@ tie our $NULL_LAP_INFO, 'java::lang::LazyStatic', sub { 'org::allbinary::game::l
 
 sub _init_fields {
     my ($self) = @_;
-    $self->{numberOfLaps} = undef;
-    $self->{totalLaps} = undef;
+    $self->{numberOfLaps} = undef unless exists $self->{numberOfLaps};
+    $self->{totalLaps} = undef unless exists $self->{totalLaps};
 }
 
 

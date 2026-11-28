@@ -22,7 +22,7 @@ use parent -norequire,'java::lang::Object','org::allbinary::data::tables::TableM
 
 sub _init_fields {
     my ($self) = @_;
-    $self->{paymentGatewayInterface} = undef;
+    $self->{paymentGatewayInterface} = undef unless exists $self->{paymentGatewayInterface};
 }
 
 

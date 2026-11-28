@@ -24,8 +24,8 @@ tie our $availableLogConfigTypes, 'java::lang::LazyStatic', sub { 'org::allbinar
 sub _init_fields {
     my ($self) = @_;
     $self->{logUtil} = 'org::allbinary::logic::communication::log::LogUtil'->getInstance();
-    $self->{name} = undef;
-    $self->{description} = undef;
+    $self->{name} = undef unless exists $self->{name};
+    $self->{description} = undef unless exists $self->{description};
 }
 
 

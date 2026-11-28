@@ -27,8 +27,8 @@ our $RELOAD = "Reload: ";
 
 sub _init_fields {
     my ($self) = @_;
-    $self->{reloadTime} = 0;
-    $self->{targetingTime} = 0;
+    $self->{reloadTime} = 0 unless exists $self->{reloadTime};
+    $self->{targetingTime} = 0 unless exists $self->{targetingTime};
     $self->{speed} = $org::allbinary::logic::math::BasicDecimal::ZERO_BIGDECIMAL;
     $self->{MAX} = 10240;
     $self->{ZERO} = 0;

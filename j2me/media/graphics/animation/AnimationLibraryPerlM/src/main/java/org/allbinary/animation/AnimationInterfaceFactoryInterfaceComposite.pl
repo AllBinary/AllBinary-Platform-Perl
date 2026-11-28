@@ -22,7 +22,7 @@ use parent -norequire,'java::lang::Object','org::allbinary::animation::Animation
 
 sub _init_fields {
     my ($self) = @_;
-    $self->{animationInterfaceFactoryInterfaceArray} = undef;
+    $self->{animationInterfaceFactoryInterfaceArray} = undef unless exists $self->{animationInterfaceFactoryInterfaceArray};
 }
 
 

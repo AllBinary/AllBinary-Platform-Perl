@@ -23,7 +23,7 @@ use parent -norequire,'org::allbinary::logic::util::event::AllBinaryEventObject'
 sub _init_fields {
     my ($self) = @_;
     $self->{layerInterface} = $org::allbinary::layer::AllBinaryLayer::NULL_ALLBINARY_LAYER;
-    $self->{crud} = undef;
+    $self->{crud} = undef unless exists $self->{crud};
 }
 
 

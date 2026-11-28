@@ -22,13 +22,13 @@ use parent -norequire,'org::allbinary::game::graphics::hud::BasicHud','org::allb
 
 sub _init_fields {
     my ($self) = @_;
-    $self->{level} = undef;
-    $self->{maxlevel} = undef;
-    $self->{levelString} = undef;
+    $self->{level} = undef unless exists $self->{level};
+    $self->{maxlevel} = undef unless exists $self->{maxlevel};
+    $self->{levelString} = undef unless exists $self->{levelString};
     $self->{levelNumberCharArray} = 'org::allbinary::logic::NullUtil'->getInstance()->{NULL_CHAR_ARRAY};
-    $self->{levelNumberTotalDigits} = 0;
-    $self->{offset} = 0;
-    $self->{primitiveLongUtil} = undef;
+    $self->{levelNumberTotalDigits} = 0 unless exists $self->{levelNumberTotalDigits};
+    $self->{offset} = 0 unless exists $self->{offset};
+    $self->{primitiveLongUtil} = undef unless exists $self->{primitiveLongUtil};
 }
 
 

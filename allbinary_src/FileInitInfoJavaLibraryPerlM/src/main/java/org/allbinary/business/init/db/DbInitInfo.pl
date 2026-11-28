@@ -27,7 +27,7 @@ sub _init_fields {
     $self->{httpData} = 'org::allbinary::logic::communication::http::HttpData'->getInstance();
     $self->{GET_URL} = "getUrl";
     $self->{PACKAGE} = 'org::allbinary::globals::FREEBLISKET_PATH_GLOBALS'->getInstance()->{DBINITPATH};
-    $self->{initFileName} = undef;
+    $self->{initFileName} = undef unless exists $self->{initFileName};
     $self->{hasRead} = 0;
 }
 

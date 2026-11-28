@@ -25,8 +25,8 @@ sub _init_fields {
     my ($self) = @_;
     $self->{logUtil} = 'org::allbinary::logic::communication::log::LogUtil'->getInstance();
     $self->{commonStrings} = 'org::allbinary::string::CommonStrings'->getInstance();
-    $self->{categoryHierarchyInterface} = undef;
-    $self->{categoryPropertiesInterface} = undef;
+    $self->{categoryHierarchyInterface} = undef unless exists $self->{categoryHierarchyInterface};
+    $self->{categoryPropertiesInterface} = undef unless exists $self->{categoryPropertiesInterface};
     $self->{childCategoryVector} = 'org::allbinary::util::BasicArrayListD'->new();
     $self->{typeVector} = 'org::allbinary::util::BasicArrayListD'->new();
     $self->{PROPERTIES} = 1;
@@ -35,9 +35,9 @@ sub _init_fields {
 
 sub new {
     my ($class, @arguments) = @_;
-    return $class->_new1(@arguments) if scalar(@arguments) == 1;
-    return $class->_new2(@arguments) if scalar(@arguments) == 2;
-    return $class->_new3(@arguments) if scalar(@arguments) == 3;
+    return _new1($class, @arguments) if scalar(@arguments) == 1;
+    return _new2($class, @arguments) if scalar(@arguments) == 2;
+    return _new3($class, @arguments) if scalar(@arguments) == 3;
     die "No constructor of Category takes " . scalar(@arguments) . " arguments";
 }
 

@@ -24,8 +24,8 @@ tie our $pointCircularPool, 'java::lang::LazyStatic', sub { 'org::allbinary::gra
 
 sub _init_fields {
     my ($self) = @_;
-    $self->{motionGestureRecognizer} = undef;
-    $self->{id} = undef;
+    $self->{motionGestureRecognizer} = undef unless exists $self->{motionGestureRecognizer};
+    $self->{id} = undef unless exists $self->{id};
 }
 
 

@@ -54,7 +54,7 @@ tie our $SPECIAL9, 'java::lang::LazyStatic', sub { 'org::allbinary::business::us
 
 sub _init_fields {
     my ($self) = @_;
-    $self->{key} = undef;
+    $self->{key} = undef unless exists $self->{key};
 }
 
 

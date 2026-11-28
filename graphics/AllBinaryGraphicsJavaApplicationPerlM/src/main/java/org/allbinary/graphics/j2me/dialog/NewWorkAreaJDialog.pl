@@ -22,11 +22,11 @@ use parent -norequire,'java::lang::Object';
 
 sub _init_fields {
     my ($self) = @_;
-    $self->{parent} = undef;
-    $self->{dimension} = undef;
-    $self->{xSizeJTextField} = undef;
-    $self->{ySizeJTextField} = undef;
-    $self->{nameJTextField} = undef;
+    $self->{parent} = undef unless exists $self->{parent};
+    $self->{dimension} = undef unless exists $self->{dimension};
+    $self->{xSizeJTextField} = undef unless exists $self->{xSizeJTextField};
+    $self->{ySizeJTextField} = undef unless exists $self->{ySizeJTextField};
+    $self->{nameJTextField} = undef unless exists $self->{nameJTextField};
 }
 
 

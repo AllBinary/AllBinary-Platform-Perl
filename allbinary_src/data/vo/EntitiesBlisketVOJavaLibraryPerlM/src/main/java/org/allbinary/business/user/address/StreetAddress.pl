@@ -23,33 +23,33 @@ use parent -norequire,'java::lang::Object';
 sub _init_fields {
     my ($self) = @_;
     $self->{logUtil} = 'org::allbinary::logic::communication::log::LogUtil'->getInstance();
-    $self->{id} = undef;
-    $self->{name} = undef;
-    $self->{street} = undef;
-    $self->{city} = undef;
-    $self->{state} = undef;
-    $self->{code} = undef;
-    $self->{country} = undef;
+    $self->{id} = undef unless exists $self->{id};
+    $self->{name} = undef unless exists $self->{name};
+    $self->{street} = undef unless exists $self->{street};
+    $self->{city} = undef unless exists $self->{city};
+    $self->{state} = undef unless exists $self->{state};
+    $self->{code} = undef unless exists $self->{code};
+    $self->{country} = undef unless exists $self->{country};
     $self->{isDefault} = 0;
 }
 
 sub new {
     my ($class, @arguments) = @_;
-    return $class->_new0(@arguments) if scalar(@arguments) == 0;
-    return $class->_new1(@arguments) if scalar(@arguments) == 1;
-    return $class->_new1(@arguments) if scalar(@arguments) == 1;
-    return $class->_new1(@arguments) if scalar(@arguments) == 1;
-    return $class->_new6(@arguments) if scalar(@arguments) == 6;
-    return $class->_new1(@arguments) if scalar(@arguments) == 1;
+    return _new0($class, @arguments) if scalar(@arguments) == 0;
+    return _new1($class, @arguments) if scalar(@arguments) == 1;
+    return _new1($class, @arguments) if scalar(@arguments) == 1;
+    return _new1($class, @arguments) if scalar(@arguments) == 1;
+    return _new6($class, @arguments) if scalar(@arguments) == 6;
+    return _new1($class, @arguments) if scalar(@arguments) == 1;
     die "No constructor of StreetAddress takes " . scalar(@arguments) . " arguments";
 }
 
 sub _new1 {
     my ($class, @arguments) = @_;
-    return $class->_new1_1(@arguments) if 1 && (!defined($arguments[0]) || (ref($arguments[0]) && ref($arguments[0]) ne 'ARRAY'));
-    return $class->_new1_2(@arguments) if 1 && (!defined($arguments[0]) || (ref($arguments[0]) && ref($arguments[0]) ne 'ARRAY'));
-    return $class->_new1_3(@arguments) if 1 && (!defined($arguments[0]) || (ref($arguments[0]) && ref($arguments[0]) ne 'ARRAY'));
-    return $class->_new1_4(@arguments);
+    return _new1_1($class, @arguments) if 1 && (!defined($arguments[0]) || (ref($arguments[0]) && ref($arguments[0]) ne 'ARRAY'));
+    return _new1_2($class, @arguments) if 1 && (!defined($arguments[0]) || (ref($arguments[0]) && ref($arguments[0]) ne 'ARRAY'));
+    return _new1_3($class, @arguments) if 1 && (!defined($arguments[0]) || (ref($arguments[0]) && ref($arguments[0]) ne 'ARRAY'));
+    return _new1_4($class, @arguments);
 }
 
 

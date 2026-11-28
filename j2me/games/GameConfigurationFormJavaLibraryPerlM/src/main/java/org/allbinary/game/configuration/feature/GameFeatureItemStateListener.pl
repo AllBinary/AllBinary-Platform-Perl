@@ -25,7 +25,7 @@ tie our $toggleList, 'java::lang::LazyStatic', sub { 'org::allbinary::util::Basi
 sub _init_fields {
     my ($self) = @_;
     $self->{logUtil} = 'org::allbinary::logic::communication::log::LogUtil'->getInstance();
-    $self->{gameOptionsForm} = undef;
+    $self->{gameOptionsForm} = undef unless exists $self->{gameOptionsForm};
 }
 
 

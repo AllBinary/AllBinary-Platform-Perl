@@ -25,8 +25,8 @@ our $MAX = 32768;
 
 sub _init_fields {
     my ($self) = @_;
-    $self->{pathFindingInfo} = undef;
-    $self->{pathFinder} = undef;
+    $self->{pathFindingInfo} = undef unless exists $self->{pathFindingInfo};
+    $self->{pathFinder} = undef unless exists $self->{pathFinder};
 }
 
 

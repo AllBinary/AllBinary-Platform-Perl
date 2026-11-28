@@ -22,7 +22,7 @@ use parent -norequire,'java::lang::Object','org::allbinary::media::graphics::geo
 
 sub _init_fields {
     my ($self) = @_;
-    $self->{resourcePerMapCellType} = undef;
+    $self->{resourcePerMapCellType} = undef unless exists $self->{resourcePerMapCellType};
 }
 
 

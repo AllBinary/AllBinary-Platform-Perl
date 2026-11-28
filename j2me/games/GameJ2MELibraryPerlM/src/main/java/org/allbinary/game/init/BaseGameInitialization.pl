@@ -23,15 +23,15 @@ tie our $NULL_BASE_GAME_INITIALIZATION, 'java::lang::LazyStatic', sub { 'org::al
 
 sub _init_fields {
     my ($self) = @_;
-    $self->{resourceInitializationArray} = undef;
-    $self->{portion} = undef;
-    $self->{initialized} = 0;
+    $self->{resourceInitializationArray} = undef unless exists $self->{resourceInitializationArray};
+    $self->{portion} = undef unless exists $self->{portion};
+    $self->{initialized} = 0 unless exists $self->{initialized};
     $self->{EARLY_RESOURCES} = 0;
     $self->{GAME_RESOURCES} = 1;
     $self->{EARLY_CHANGABLE_RESOURCES} = 2;
     $self->{GAME_CHANGABLE_RESOURCES} = 3;
-    $self->{gameInitialized} = 0;
-    $self->{allLoaded} = 0;
+    $self->{gameInitialized} = 0 unless exists $self->{gameInitialized};
+    $self->{allLoaded} = 0 unless exists $self->{allLoaded};
 }
 
 

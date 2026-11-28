@@ -26,7 +26,7 @@ sub _init_fields {
     $self->{commonStrings} = 'org::allbinary::string::CommonStrings'->getInstance();
     $self->{canvasStrings} = 'org::allbinary::graphics::displayable::CanvasStrings'->getInstance();
     $self->{isDrawn} = 0;
-    $self->{bufferedImage} = undef;
+    $self->{bufferedImage} = undef unless exists $self->{bufferedImage};
 }
 
 

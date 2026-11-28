@@ -22,7 +22,7 @@ use parent -norequire,'org::allbinary::physics::movement::Movement','org::allbin
 
 sub _init_fields {
     my ($self) = @_;
-    $self->{velocityProperties} = undef;
+    $self->{velocityProperties} = undef unless exists $self->{velocityProperties};
     $self->{speedBasicDecimal} = $org::allbinary::logic::math::BasicDecimal::ZERO_BIGDECIMAL;
     $self->{axisMathVectorUtil} = 'org::allbinary::logic::math::vector::AxisMathVectorUtil'->getInstance();
 }

@@ -22,8 +22,8 @@ use parent -norequire,'org::allbinary::graphics::form::item::ABCustomImageItem';
 
 sub _init_fields {
     my ($self) = @_;
-    $self->{animationArray} = undef;
-    $self->{layerInterfaceFactoryInterface} = undef;
+    $self->{animationArray} = undef unless exists $self->{animationArray};
+    $self->{layerInterfaceFactoryInterface} = undef unless exists $self->{layerInterfaceFactoryInterface};
 }
 
 

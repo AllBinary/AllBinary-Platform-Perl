@@ -27,10 +27,10 @@ sub _init_fields {
     $self->{ENDINPUT} = "</INPUT>";
     $self->{TYPE} = "TYPE=\"";
     $self->{NAME} = "NAME=\"";
-    $self->{before} = undef;
-    $self->{type} = undef;
-    $self->{name} = undef;
-    $self->{after} = undef;
+    $self->{before} = undef unless exists $self->{before};
+    $self->{type} = undef unless exists $self->{type};
+    $self->{name} = undef unless exists $self->{name};
+    $self->{after} = undef unless exists $self->{after};
 }
 
 

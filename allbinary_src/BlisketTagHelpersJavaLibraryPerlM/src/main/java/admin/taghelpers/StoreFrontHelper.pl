@@ -22,9 +22,9 @@ use parent -norequire,'admin::taghelpers::TagHelper';
 
 sub _init_fields {
     my ($self) = @_;
-    $self->{storeFrontInterface} = undef;
-    $self->{currentLocation} = undef;
-    $self->{currentHomeLocation} = undef;
+    $self->{storeFrontInterface} = undef unless exists $self->{storeFrontInterface};
+    $self->{currentLocation} = undef unless exists $self->{currentLocation};
+    $self->{currentHomeLocation} = undef unless exists $self->{currentHomeLocation};
 }
 
 

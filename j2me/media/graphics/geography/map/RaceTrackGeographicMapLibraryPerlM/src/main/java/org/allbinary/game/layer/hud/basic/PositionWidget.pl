@@ -23,7 +23,7 @@ use parent -norequire,'org::allbinary::game::graphics::hud::BasicHud';
 
 sub _init_fields {
     my ($self) = @_;
-    $self->{position} = 0;
+    $self->{position} = 0 unless exists $self->{position};
     $self->{positionString} = 'org::allbinary::logic::string::StringUtil'->getInstance()->{EMPTY_STRING};
 }
 

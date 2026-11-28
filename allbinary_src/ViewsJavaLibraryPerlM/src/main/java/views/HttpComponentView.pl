@@ -24,8 +24,8 @@ sub _init_fields {
     my ($self) = @_;
     $self->{logUtil} = 'org::allbinary::logic::communication::log::LogUtil'->getInstance();
     $self->{abeClientInformation} = 'org::allbinary::logic::system::security::licensing::ServiceClientInformationInterfaceFactory'->getInstance();
-    $self->{domNodeInterfaceVector} = undef;
-    $self->{transformDocumentInterface} = undef;
+    $self->{domNodeInterfaceVector} = undef unless exists $self->{domNodeInterfaceVector};
+    $self->{transformDocumentInterface} = undef unless exists $self->{transformDocumentInterface};
     $self->{NO_TYPE} = 0;
 }
 

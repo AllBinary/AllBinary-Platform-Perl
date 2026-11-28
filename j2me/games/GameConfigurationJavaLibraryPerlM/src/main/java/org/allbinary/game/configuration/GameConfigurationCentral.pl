@@ -24,21 +24,21 @@ tie our $SINGLETON, 'java::lang::LazyStatic', sub { 'org::allbinary::logic::Null
 sub _init_fields {
     my ($self) = @_;
     $self->{logUtil} = 'org::allbinary::logic::communication::log::LogUtil'->getInstance();
-    $self->{SCALE} = undef;
-    $self->{ORIENTATION} = undef;
-    $self->{SENSOR_UPDATE_RATE} = undef;
-    $self->{VIBRATION} = undef;
-    $self->{CHALLENGE_LEVEL} = undef;
-    $self->{COLLIDE_DAMAGE} = undef;
-    $self->{DURABILITY_CHALLENGE_LEVEL} = undef;
-    $self->{SPEED_CHALLENGE_LEVEL} = undef;
-    $self->{ATTACK_CHALLENGE_LEVEL} = undef;
-    $self->{CONTROL_LEVEL} = undef;
-    $self->{PLAYER_INPUT_WAIT} = undef;
-    $self->{SPEED} = undef;
-    $self->{SOUND_VOLUME} = undef;
-    $self->{MAX_GAME_OBJECTS} = undef;
-    $self->{MAX_LAYERS} = undef;
+    $self->{SCALE} = undef unless exists $self->{SCALE};
+    $self->{ORIENTATION} = undef unless exists $self->{ORIENTATION};
+    $self->{SENSOR_UPDATE_RATE} = undef unless exists $self->{SENSOR_UPDATE_RATE};
+    $self->{VIBRATION} = undef unless exists $self->{VIBRATION};
+    $self->{CHALLENGE_LEVEL} = undef unless exists $self->{CHALLENGE_LEVEL};
+    $self->{COLLIDE_DAMAGE} = undef unless exists $self->{COLLIDE_DAMAGE};
+    $self->{DURABILITY_CHALLENGE_LEVEL} = undef unless exists $self->{DURABILITY_CHALLENGE_LEVEL};
+    $self->{SPEED_CHALLENGE_LEVEL} = undef unless exists $self->{SPEED_CHALLENGE_LEVEL};
+    $self->{ATTACK_CHALLENGE_LEVEL} = undef unless exists $self->{ATTACK_CHALLENGE_LEVEL};
+    $self->{CONTROL_LEVEL} = undef unless exists $self->{CONTROL_LEVEL};
+    $self->{PLAYER_INPUT_WAIT} = undef unless exists $self->{PLAYER_INPUT_WAIT};
+    $self->{SPEED} = undef unless exists $self->{SPEED};
+    $self->{SOUND_VOLUME} = undef unless exists $self->{SOUND_VOLUME};
+    $self->{MAX_GAME_OBJECTS} = undef unless exists $self->{MAX_GAME_OBJECTS};
+    $self->{MAX_LAYERS} = undef unless exists $self->{MAX_LAYERS};
     $self->{gameControlFidelity} = 36;
 }
 

@@ -23,10 +23,10 @@ tie our $hashMap, 'java::lang::LazyStatic', sub { 'org::allbinary::logic::StdUti
 
 sub _init_fields {
     my ($self) = @_;
-    $self->{gameSkillType} = undef;
-    $self->{extra} = undef;
-    $self->{time} = 0;
-    $self->{vector} = undef;
+    $self->{gameSkillType} = undef unless exists $self->{gameSkillType};
+    $self->{extra} = undef unless exists $self->{extra};
+    $self->{time} = 0 unless exists $self->{time};
+    $self->{vector} = undef unless exists $self->{vector};
     $self->{GAME_SKILL_LABEL} = "GameSkill: ";
     $self->{EXTRA_LABEL} = "Extra: ";
     $self->{TIME_LABEL} = "Time: ";

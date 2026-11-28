@@ -25,7 +25,7 @@ sub _init_fields {
     $self->{logUtil} = 'org::allbinary::logic::communication::log::LogUtil'->getInstance();
     $self->{MAXWEIGHT} = 14;
     $self->{MAXPRICE} = 14;
-    $self->{itemInterface} = undef;
+    $self->{itemInterface} = undef unless exists $self->{itemInterface};
 }
 
 

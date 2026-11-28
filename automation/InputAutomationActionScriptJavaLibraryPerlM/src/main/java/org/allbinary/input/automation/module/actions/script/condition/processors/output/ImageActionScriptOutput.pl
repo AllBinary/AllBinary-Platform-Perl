@@ -26,14 +26,14 @@ sub _init_fields {
     $self->{logUtil} = 'org::allbinary::logic::communication::log::LogUtil'->getInstance();
     $self->{saved} = 0;
     $self->{display} = 0;
-    $self->{imageTypes} = undef;
-    $self->{actionScriptOutputJPanel} = undef;
+    $self->{imageTypes} = undef unless exists $self->{imageTypes};
+    $self->{actionScriptOutputJPanel} = undef unless exists $self->{actionScriptOutputJPanel};
 }
 
 sub new {
     my ($class, @arguments) = @_;
-    return $class->_new1(@arguments) if scalar(@arguments) == 1;
-    return $class->_new0(@arguments) if scalar(@arguments) == 0;
+    return _new1($class, @arguments) if scalar(@arguments) == 1;
+    return _new0($class, @arguments) if scalar(@arguments) == 0;
     die "No constructor of ImageActionScriptOutput takes " . scalar(@arguments) . " arguments";
 }
 

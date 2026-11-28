@@ -11,11 +11,11 @@ tie our $NULL_ANALOG_LOCATION_INPUT, 'java::lang::LazyStatic', sub { 'org::allbi
 
 sub _init_fields {
     my ($self) = @_;
-    $self->{playerId} = undef;
-    $self->{customGPoint} = undef;
-    $self->{rz} = 0;
-    $self->{rightTrigger} = 0;
-    $self->{leftTrigger} = 0;
+    $self->{playerId} = undef unless exists $self->{playerId};
+    $self->{customGPoint} = undef unless exists $self->{customGPoint};
+    $self->{rz} = 0 unless exists $self->{rz};
+    $self->{rightTrigger} = 0 unless exists $self->{rightTrigger};
+    $self->{leftTrigger} = 0 unless exists $self->{leftTrigger};
 }
 
 

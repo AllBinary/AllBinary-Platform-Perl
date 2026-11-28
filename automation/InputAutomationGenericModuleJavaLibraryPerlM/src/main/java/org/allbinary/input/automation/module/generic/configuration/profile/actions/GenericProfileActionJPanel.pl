@@ -23,14 +23,14 @@ use parent -norequire,'java::lang::Object';
 sub _init_fields {
     my ($self) = @_;
     $self->{logUtil} = 'org::allbinary::logic::communication::log::LogUtil'->getInstance();
-    $self->{genericProfileAction} = undef;
-    $self->{genericProfileActionScriptJPanel} = undef;
-    $self->{blankProfileActionScriptJPanel} = undef;
-    $self->{genericProfileActionScriptJScrollPane} = undef;
-    $self->{ifJLabel} = undef;
-    $self->{newAlwaysJButton} = undef;
-    $self->{newColorAtJButton} = undef;
-    $self->{newTimeIntervalJButton} = undef;
+    $self->{genericProfileAction} = undef unless exists $self->{genericProfileAction};
+    $self->{genericProfileActionScriptJPanel} = undef unless exists $self->{genericProfileActionScriptJPanel};
+    $self->{blankProfileActionScriptJPanel} = undef unless exists $self->{blankProfileActionScriptJPanel};
+    $self->{genericProfileActionScriptJScrollPane} = undef unless exists $self->{genericProfileActionScriptJScrollPane};
+    $self->{ifJLabel} = undef unless exists $self->{ifJLabel};
+    $self->{newAlwaysJButton} = undef unless exists $self->{newAlwaysJButton};
+    $self->{newColorAtJButton} = undef unless exists $self->{newColorAtJButton};
+    $self->{newTimeIntervalJButton} = undef unless exists $self->{newTimeIntervalJButton};
 }
 
 

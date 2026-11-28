@@ -22,40 +22,40 @@ use parent -norequire,'java::lang::Object','org::allbinary::business::context::m
 
 sub _init_fields {
     my ($self) = @_;
-    $self->{name} = undef;
-    $self->{userName} = undef;
-    $self->{basketName} = undef;
-    $self->{homeHostName} = undef;
-    $self->{homeHostNamePath} = undef;
-    $self->{hostName} = undef;
-    $self->{hostNamePath} = undef;
-    $self->{testHomeHostName} = undef;
-    $self->{testHomeHostNamePath} = undef;
-    $self->{testHostName} = undef;
-    $self->{testHostNamePath} = undef;
-    $self->{imagePath} = undef;
-    $self->{staticPath} = undef;
-    $self->{categoryPath} = undef;
-    $self->{inventoryControl} = undef;
-    $self->{subStores} = undef;
-    $self->{tagLocation} = undef;
-    $self->{packageLocation} = undef;
-    $self->{ftp} = undef;
-    $self->{ftpPath} = undef;
-    $self->{ftpUserName} = undef;
-    $self->{ftpPassword} = undef;
-    $self->{testFtp} = undef;
-    $self->{testFtpPath} = undef;
-    $self->{testFtpUserName} = undef;
-    $self->{testFtpPassword} = undef;
-    $self->{timeCreated} = undef;
-    $self->{lastModified} = undef;
+    $self->{name} = undef unless exists $self->{name};
+    $self->{userName} = undef unless exists $self->{userName};
+    $self->{basketName} = undef unless exists $self->{basketName};
+    $self->{homeHostName} = undef unless exists $self->{homeHostName};
+    $self->{homeHostNamePath} = undef unless exists $self->{homeHostNamePath};
+    $self->{hostName} = undef unless exists $self->{hostName};
+    $self->{hostNamePath} = undef unless exists $self->{hostNamePath};
+    $self->{testHomeHostName} = undef unless exists $self->{testHomeHostName};
+    $self->{testHomeHostNamePath} = undef unless exists $self->{testHomeHostNamePath};
+    $self->{testHostName} = undef unless exists $self->{testHostName};
+    $self->{testHostNamePath} = undef unless exists $self->{testHostNamePath};
+    $self->{imagePath} = undef unless exists $self->{imagePath};
+    $self->{staticPath} = undef unless exists $self->{staticPath};
+    $self->{categoryPath} = undef unless exists $self->{categoryPath};
+    $self->{inventoryControl} = undef unless exists $self->{inventoryControl};
+    $self->{subStores} = undef unless exists $self->{subStores};
+    $self->{tagLocation} = undef unless exists $self->{tagLocation};
+    $self->{packageLocation} = undef unless exists $self->{packageLocation};
+    $self->{ftp} = undef unless exists $self->{ftp};
+    $self->{ftpPath} = undef unless exists $self->{ftpPath};
+    $self->{ftpUserName} = undef unless exists $self->{ftpUserName};
+    $self->{ftpPassword} = undef unless exists $self->{ftpPassword};
+    $self->{testFtp} = undef unless exists $self->{testFtp};
+    $self->{testFtpPath} = undef unless exists $self->{testFtpPath};
+    $self->{testFtpUserName} = undef unless exists $self->{testFtpUserName};
+    $self->{testFtpPassword} = undef unless exists $self->{testFtpPassword};
+    $self->{timeCreated} = undef unless exists $self->{timeCreated};
+    $self->{lastModified} = undef unless exists $self->{lastModified};
 }
 
 sub new {
     my ($class, @arguments) = @_;
-    return $class->_new0(@arguments) if scalar(@arguments) == 0;
-    return $class->_new1(@arguments) if scalar(@arguments) == 1;
+    return _new0($class, @arguments) if scalar(@arguments) == 0;
+    return _new1($class, @arguments) if scalar(@arguments) == 1;
     die "No constructor of BasicStoreFront takes " . scalar(@arguments) . " arguments";
 }
 

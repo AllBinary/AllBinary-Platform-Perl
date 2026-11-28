@@ -24,19 +24,19 @@ sub _init_fields {
     my ($self) = @_;
     $self->{logUtil} = 'org::allbinary::logic::communication::log::LogUtil'->getInstance();
     $self->{commonStrings} = 'org::allbinary::string::CommonStrings'->getInstance();
-    $self->{genericProfileActions} = undef;
-    $self->{genericProfileActionJPanel} = undef;
-    $self->{blankGenericProfileActionJPanel} = undef;
-    $self->{deleteActionJButton} = undef;
-    $self->{genericProfileActionsJList} = undef;
-    $self->{genericProfileActionsJPanel} = undef;
-    $self->{genericProfileActionsJScrollPane} = undef;
-    $self->{newActionJButton} = undef;
-    $self->{newProfileActionJDialog} = undef;
-    $self->{newProfileActionJLabel} = undef;
-    $self->{newProfileActionJTextField} = undef;
-    $self->{okNewProfileActionJButton} = undef;
-    $self->{saveJButton} = undef;
+    $self->{genericProfileActions} = undef unless exists $self->{genericProfileActions};
+    $self->{genericProfileActionJPanel} = undef unless exists $self->{genericProfileActionJPanel};
+    $self->{blankGenericProfileActionJPanel} = undef unless exists $self->{blankGenericProfileActionJPanel};
+    $self->{deleteActionJButton} = undef unless exists $self->{deleteActionJButton};
+    $self->{genericProfileActionsJList} = undef unless exists $self->{genericProfileActionsJList};
+    $self->{genericProfileActionsJPanel} = undef unless exists $self->{genericProfileActionsJPanel};
+    $self->{genericProfileActionsJScrollPane} = undef unless exists $self->{genericProfileActionsJScrollPane};
+    $self->{newActionJButton} = undef unless exists $self->{newActionJButton};
+    $self->{newProfileActionJDialog} = undef unless exists $self->{newProfileActionJDialog};
+    $self->{newProfileActionJLabel} = undef unless exists $self->{newProfileActionJLabel};
+    $self->{newProfileActionJTextField} = undef unless exists $self->{newProfileActionJTextField};
+    $self->{okNewProfileActionJButton} = undef unless exists $self->{okNewProfileActionJButton};
+    $self->{saveJButton} = undef unless exists $self->{saveJButton};
 }
 
 

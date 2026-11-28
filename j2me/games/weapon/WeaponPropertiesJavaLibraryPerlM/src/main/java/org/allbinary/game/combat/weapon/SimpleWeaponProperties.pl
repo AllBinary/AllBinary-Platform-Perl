@@ -22,9 +22,9 @@ use parent -norequire,'java::lang::Object';
 
 sub _init_fields {
     my ($self) = @_;
-    $self->{damage} = 0;
-    $self->{dissipation} = 0;
-    $self->{range} = 0;
+    $self->{damage} = 0 unless exists $self->{damage};
+    $self->{dissipation} = 0 unless exists $self->{dissipation};
+    $self->{range} = 0 unless exists $self->{range};
 }
 
 sub new {

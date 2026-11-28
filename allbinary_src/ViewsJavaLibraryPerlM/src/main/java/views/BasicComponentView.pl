@@ -25,8 +25,8 @@ sub _init_fields {
     $self->{logUtil} = 'org::allbinary::logic::communication::log::LogUtil'->getInstance();
     $self->{commonStrings} = 'org::allbinary::string::CommonStrings'->getInstance();
     $self->{abeClientInformation} = 'org::allbinary::logic::system::security::licensing::ServiceClientInformationInterfaceFactory'->getInstance();
-    $self->{transformDocumentInterface} = undef;
-    $self->{transformInfoInterface} = undef;
+    $self->{transformDocumentInterface} = undef unless exists $self->{transformDocumentInterface};
+    $self->{transformInfoInterface} = undef unless exists $self->{transformInfoInterface};
     $self->{NO_TYPE} = 0;
 }
 

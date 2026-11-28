@@ -24,15 +24,15 @@ sub _init_fields {
     my ($self) = @_;
     $self->{logUtil} = 'org::allbinary::logic::communication::log::LogUtil'->getInstance();
     $self->{commonStrings} = 'org::allbinary::string::CommonStrings'->getInstance();
-    $self->{touchButtonInput} = undef;
-    $self->{animationInterface} = undef;
-    $self->{rawRectangle} = undef;
-    $self->{xBorder} = undef;
-    $self->{yBorder} = undef;
+    $self->{touchButtonInput} = undef unless exists $self->{touchButtonInput};
+    $self->{animationInterface} = undef unless exists $self->{animationInterface};
+    $self->{rawRectangle} = undef unless exists $self->{rawRectangle};
+    $self->{xBorder} = undef unless exists $self->{xBorder};
+    $self->{yBorder} = undef unless exists $self->{yBorder};
     $self->{rectangle} = $org::allbinary::graphics::RectangleFactory::SINGLETON;
-    $self->{cellPosition} = undef;
-    $self->{animationX} = 0;
-    $self->{animationY} = 0;
+    $self->{cellPosition} = undef unless exists $self->{cellPosition};
+    $self->{animationX} = 0 unless exists $self->{animationX};
+    $self->{animationY} = 0 unless exists $self->{animationY};
 }
 
 

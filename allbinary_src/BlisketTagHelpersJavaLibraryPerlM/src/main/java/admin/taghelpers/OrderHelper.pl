@@ -23,11 +23,11 @@ use parent -norequire,'admin::taghelpers::TagHelper';
 sub _init_fields {
     my ($self) = @_;
     $self->{logUtil} = 'org::allbinary::logic::communication::log::LogUtil'->getInstance();
-    $self->{weblisketSession} = undef;
-    $self->{storeFrontInterface} = undef;
-    $self->{propertiesHashMap} = undef;
-    $self->{pageContext} = undef;
-    $self->{request} = undef;
+    $self->{weblisketSession} = undef unless exists $self->{weblisketSession};
+    $self->{storeFrontInterface} = undef unless exists $self->{storeFrontInterface};
+    $self->{propertiesHashMap} = undef unless exists $self->{propertiesHashMap};
+    $self->{pageContext} = undef unless exists $self->{pageContext};
+    $self->{request} = undef unless exists $self->{request};
 }
 
 

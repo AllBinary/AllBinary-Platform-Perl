@@ -22,15 +22,15 @@ use parent -norequire,'java::lang::Object';
 
 sub _init_fields {
     my ($self) = @_;
-    $self->{basicPaymentType} = undef;
-    $self->{paymentTransactionInterfaceFactoryInterface} = undef;
-    $self->{paymentProcessorInterfaceFactoryInterface} = undef;
+    $self->{basicPaymentType} = undef unless exists $self->{basicPaymentType};
+    $self->{paymentTransactionInterfaceFactoryInterface} = undef unless exists $self->{paymentTransactionInterfaceFactoryInterface};
+    $self->{paymentProcessorInterfaceFactoryInterface} = undef unless exists $self->{paymentProcessorInterfaceFactoryInterface};
 }
 
 sub new {
     my ($class, @arguments) = @_;
-    return $class->_new1(@arguments) if scalar(@arguments) == 1;
-    return $class->_new3(@arguments) if scalar(@arguments) == 3;
+    return _new1($class, @arguments) if scalar(@arguments) == 1;
+    return _new3($class, @arguments) if scalar(@arguments) == 3;
     die "No constructor of PaymentType takes " . scalar(@arguments) . " arguments";
 }
 

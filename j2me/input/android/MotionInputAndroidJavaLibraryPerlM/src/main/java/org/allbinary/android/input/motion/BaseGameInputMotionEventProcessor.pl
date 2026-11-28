@@ -23,7 +23,7 @@ use parent -norequire,'org::allbinary::android::input::motion::MotionEventProces
 sub _init_fields {
     my ($self) = @_;
     $self->{commonStrings} = 'org::allbinary::string::CommonStrings'->getInstance();
-    $self->{gameMotionGestureListener} = undef;
+    $self->{gameMotionGestureListener} = undef unless exists $self->{gameMotionGestureListener};
 }
 
 

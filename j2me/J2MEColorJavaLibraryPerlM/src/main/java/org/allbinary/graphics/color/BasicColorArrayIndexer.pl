@@ -22,8 +22,8 @@ use parent -norequire,'java::lang::Object';
 
 sub _init_fields {
     my ($self) = @_;
-    $self->{basicColorArray} = undef;
-    $self->{circularIndexUtil} = undef;
+    $self->{basicColorArray} = undef unless exists $self->{basicColorArray};
+    $self->{circularIndexUtil} = undef unless exists $self->{circularIndexUtil};
 }
 
 

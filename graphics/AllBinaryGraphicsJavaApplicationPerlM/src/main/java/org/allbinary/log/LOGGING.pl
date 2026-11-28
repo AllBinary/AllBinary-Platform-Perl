@@ -42,7 +42,7 @@ tie our $WINDOWEVENT, 'java::lang::LazyStatic', sub { 'org::allbinary::log::LOGG
 
 sub _init_fields {
     my ($self) = @_;
-    $self->{name} = undef;
+    $self->{name} = undef unless exists $self->{name};
 }
 
 

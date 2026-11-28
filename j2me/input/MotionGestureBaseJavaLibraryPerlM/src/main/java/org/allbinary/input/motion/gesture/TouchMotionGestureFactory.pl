@@ -23,20 +23,20 @@ tie our $instance, 'java::lang::LazyStatic', sub { 'org::allbinary::logic::NullU
 
 sub _init_fields {
     my ($self) = @_;
-    $self->{LEFT} = undef;
-    $self->{RIGHT} = undef;
-    $self->{UP} = undef;
-    $self->{DOWN} = undef;
-    $self->{PRESSED} = undef;
-    $self->{RELEASED} = undef;
-    $self->{DIAGONAL_DOWN_RIGHT} = undef;
-    $self->{DIAGONAL_DOWN_LEFT} = undef;
-    $self->{DIAGONAL_UP_RIGHT} = undef;
-    $self->{DIAGONAL_UP_LEFT} = undef;
-    $self->{SCROLL_UP} = undef;
-    $self->{SCROLL_DOWN} = undef;
-    $self->{NO_MOTION} = undef;
-    $self->{LAST_MOTION} = undef;
+    $self->{LEFT} = undef unless exists $self->{LEFT};
+    $self->{RIGHT} = undef unless exists $self->{RIGHT};
+    $self->{UP} = undef unless exists $self->{UP};
+    $self->{DOWN} = undef unless exists $self->{DOWN};
+    $self->{PRESSED} = undef unless exists $self->{PRESSED};
+    $self->{RELEASED} = undef unless exists $self->{RELEASED};
+    $self->{DIAGONAL_DOWN_RIGHT} = undef unless exists $self->{DIAGONAL_DOWN_RIGHT};
+    $self->{DIAGONAL_DOWN_LEFT} = undef unless exists $self->{DIAGONAL_DOWN_LEFT};
+    $self->{DIAGONAL_UP_RIGHT} = undef unless exists $self->{DIAGONAL_UP_RIGHT};
+    $self->{DIAGONAL_UP_LEFT} = undef unless exists $self->{DIAGONAL_UP_LEFT};
+    $self->{SCROLL_UP} = undef unless exists $self->{SCROLL_UP};
+    $self->{SCROLL_DOWN} = undef unless exists $self->{SCROLL_DOWN};
+    $self->{NO_MOTION} = undef unless exists $self->{NO_MOTION};
+    $self->{LAST_MOTION} = undef unless exists $self->{LAST_MOTION};
 }
 
 

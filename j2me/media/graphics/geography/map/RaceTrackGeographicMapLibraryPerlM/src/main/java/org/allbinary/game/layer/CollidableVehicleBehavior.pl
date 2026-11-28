@@ -24,8 +24,8 @@ use parent -norequire,'org::allbinary::game::layer::special::CollidableDestroyab
 sub _init_fields {
     my ($self) = @_;
     $self->{totalImpactVelocity} = 0;
-    $self->{halfImpactVelocityX} = 0;
-    $self->{halfImpactVelocityY} = 0;
+    $self->{halfImpactVelocityX} = 0 unless exists $self->{halfImpactVelocityX};
+    $self->{halfImpactVelocityY} = 0 unless exists $self->{halfImpactVelocityY};
 }
 
 

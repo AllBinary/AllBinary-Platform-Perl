@@ -24,11 +24,11 @@ tie our $ID, 'java::lang::LazyStatic', sub { 'org::allbinary::logic::math::Small
 sub _init_fields {
     my ($self) = @_;
     $self->{logUtil} = 'org::allbinary::logic::communication::log::LogUtil'->getInstance();
-    $self->{x} = 0;
-    $self->{y} = 0;
+    $self->{x} = 0 unless exists $self->{x};
+    $self->{y} = 0 unless exists $self->{y};
     $self->{z} = 3;
-    $self->{width} = 0;
-    $self->{height} = 0;
+    $self->{width} = 0 unless exists $self->{width};
+    $self->{height} = 0 unless exists $self->{height};
     $self->{visible} = 1;
 }
 

@@ -24,8 +24,8 @@ use parent -norequire,'tags::HelperTag';
 sub _init_fields {
     my ($self) = @_;
     $self->{logUtil} = 'org::allbinary::logic::communication::log::LogUtil'->getInstance();
-    $self->{viewName} = undef;
-    $self->{viewFile} = undef;
+    $self->{viewName} = undef unless exists $self->{viewName};
+    $self->{viewFile} = undef unless exists $self->{viewFile};
 }
 
 

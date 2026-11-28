@@ -22,8 +22,8 @@ use parent -norequire,'java::lang::Object','org::allbinary::business::advertisem
 
 sub _init_fields {
     my ($self) = @_;
-    $self->{displayInBrowserContraintsInterface} = undef;
-    $self->{twoDimensionConstraintsInterface} = undef;
+    $self->{displayInBrowserContraintsInterface} = undef unless exists $self->{displayInBrowserContraintsInterface};
+    $self->{twoDimensionConstraintsInterface} = undef unless exists $self->{twoDimensionConstraintsInterface};
 }
 
 

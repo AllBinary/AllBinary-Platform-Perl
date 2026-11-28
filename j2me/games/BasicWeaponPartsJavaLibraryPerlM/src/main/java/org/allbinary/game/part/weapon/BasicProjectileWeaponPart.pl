@@ -22,7 +22,7 @@ use parent -norequire,'org::allbinary::game::part::weapon::BasicWeaponPart';
 
 sub _init_fields {
     my ($self) = @_;
-    $self->{weaponLayerCircularStaticPool} = undef;
+    $self->{weaponLayerCircularStaticPool} = undef unless exists $self->{weaponLayerCircularStaticPool};
 }
 
 

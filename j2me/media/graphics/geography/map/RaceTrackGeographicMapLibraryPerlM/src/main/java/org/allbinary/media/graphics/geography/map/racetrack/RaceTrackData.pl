@@ -32,7 +32,7 @@ sub _init_fields {
     $self->{cellTypeIdToGeographicMapCellTypeArray} = 'org::allbinary::logic::NullUtil'->getInstance()->{NULL_INT_ARRAY};
     $self->{NO_OVER_PASSES_ARRAY} = [(undef) x (0)];
     $self->{overPassGeographicMapCellPositionArray} = $self->{NO_OVER_PASSES_ARRAY};
-    $self->{id} = undef;
+    $self->{id} = undef unless exists $self->{id};
 }
 
 

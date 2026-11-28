@@ -25,10 +25,10 @@ sub _init_fields {
     my ($self) = @_;
     $self->{logUtil} = 'org::allbinary::logic::communication::log::LogUtil'->getInstance();
     $self->{HEALTH} = "Health:";
-    $self->{productivityHud} = undef;
-    $self->{efficiencyHud} = undef;
-    $self->{healthHud} = undef;
-    $self->{maxHealthHud} = undef;
+    $self->{productivityHud} = undef unless exists $self->{productivityHud};
+    $self->{efficiencyHud} = undef unless exists $self->{efficiencyHud};
+    $self->{healthHud} = undef unless exists $self->{healthHud};
+    $self->{maxHealthHud} = undef unless exists $self->{maxHealthHud};
     $self->{rtsLayer} = $org::allbinary::game::layer::NullPathFindingLayer::NULL_PATH_FINDING_LAYER;
     $self->{currentHealth} = 0;
 }
@@ -130,11 +130,11 @@ sub setRtsLayer {
 
     sub _init_fields {
         my ($self) = @_;
-        $self->{baseTextX} = undef;
-        $self->{baseY} = undef;
-        $self->{row} = undef;
-        $self->{prefixLength} = undef;
-        $self->{positionBeforeMeasurement} = undef;
+        $self->{baseTextX} = undef unless exists $self->{baseTextX};
+        $self->{baseY} = undef unless exists $self->{baseY};
+        $self->{row} = undef unless exists $self->{row};
+        $self->{prefixLength} = undef unless exists $self->{prefixLength};
+        $self->{positionBeforeMeasurement} = undef unless exists $self->{positionBeforeMeasurement};
     }
     
 

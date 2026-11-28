@@ -24,9 +24,9 @@ sub _init_fields {
     my ($self) = @_;
     $self->{logUtil} = 'org::allbinary::logic::communication::log::LogUtil'->getInstance();
     $self->{commonStrings} = 'org::allbinary::string::CommonStrings'->getInstance();
-    $self->{gameKeyEventList} = undef;
-    $self->{removalGameKeyEventList} = undef;
-    $self->{isRemoveDuplicateKeyPresses} = undef;
+    $self->{gameKeyEventList} = undef unless exists $self->{gameKeyEventList};
+    $self->{removalGameKeyEventList} = undef unless exists $self->{removalGameKeyEventList};
+    $self->{isRemoveDuplicateKeyPresses} = undef unless exists $self->{isRemoveDuplicateKeyPresses};
 }
 
 

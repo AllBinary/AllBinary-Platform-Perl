@@ -22,9 +22,9 @@ use parent -norequire,'java::lang::Object','org::allbinary::logic::math::vector:
 
 sub _init_fields {
     my ($self) = @_;
-    $self->{magnitudeBasicDecimal} = undef;
-    $self->{direction} = undef;
-    $self->{resultBasicDecimal} = undef;
+    $self->{magnitudeBasicDecimal} = undef unless exists $self->{magnitudeBasicDecimal};
+    $self->{direction} = undef unless exists $self->{direction};
+    $self->{resultBasicDecimal} = undef unless exists $self->{resultBasicDecimal};
 }
 
 

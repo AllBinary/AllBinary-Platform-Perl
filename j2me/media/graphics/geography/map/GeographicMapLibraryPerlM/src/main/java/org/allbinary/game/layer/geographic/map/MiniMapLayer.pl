@@ -22,12 +22,12 @@ use parent -norequire,'org::allbinary::layer::AllBinaryLayer','org::allbinary::m
 
 sub _init_fields {
     my ($self) = @_;
-    $self->{allBinaryTiledLayer} = undef;
-    $self->{geographicMapCellPositionFactory} = undef;
-    $self->{list} = undef;
-    $self->{basicColorList} = undef;
-    $self->{positionList} = undef;
-    $self->{animationInterface} = undef;
+    $self->{allBinaryTiledLayer} = undef unless exists $self->{allBinaryTiledLayer};
+    $self->{geographicMapCellPositionFactory} = undef unless exists $self->{geographicMapCellPositionFactory};
+    $self->{list} = undef unless exists $self->{list};
+    $self->{basicColorList} = undef unless exists $self->{basicColorList};
+    $self->{positionList} = undef unless exists $self->{positionList};
+    $self->{animationInterface} = undef unless exists $self->{animationInterface};
 }
 
 

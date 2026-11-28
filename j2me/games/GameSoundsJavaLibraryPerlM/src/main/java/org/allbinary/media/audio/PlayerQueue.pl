@@ -25,7 +25,7 @@ sub _init_fields {
     my ($self) = @_;
     $self->{commonStrings} = 'org::allbinary::string::CommonStrings'->getInstance();
     $self->{list} = 'org::allbinary::util::BasicArrayListD'->new();
-    $self->{max} = undef;
+    $self->{max} = undef unless exists $self->{max};
 }
 
 

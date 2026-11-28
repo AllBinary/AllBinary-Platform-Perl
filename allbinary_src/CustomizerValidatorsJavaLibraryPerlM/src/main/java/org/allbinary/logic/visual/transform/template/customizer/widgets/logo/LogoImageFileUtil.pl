@@ -23,8 +23,8 @@ use parent -norequire,'java::lang::Object';
 sub _init_fields {
     my ($self) = @_;
     $self->{directory} = 'org::allbinary::logic::io::file::directory::Directory'->getInstance();
-    $self->{fileName} = undef;
-    $self->{imageFileAbPath} = undef;
+    $self->{fileName} = undef unless exists $self->{fileName};
+    $self->{imageFileAbPath} = undef unless exists $self->{imageFileAbPath};
 }
 
 

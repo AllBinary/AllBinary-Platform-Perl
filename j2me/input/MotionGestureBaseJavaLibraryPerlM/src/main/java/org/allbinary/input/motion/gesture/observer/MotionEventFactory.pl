@@ -23,8 +23,8 @@ our $index = 0;
 
 sub _init_fields {
     my ($self) = @_;
-    $self->{source} = undef;
-    $self->{id} = undef;
+    $self->{source} = undef unless exists $self->{source};
+    $self->{id} = undef unless exists $self->{id};
 }
 
 

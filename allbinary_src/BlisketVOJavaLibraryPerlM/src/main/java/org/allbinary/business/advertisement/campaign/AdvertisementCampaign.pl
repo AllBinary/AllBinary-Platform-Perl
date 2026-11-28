@@ -22,7 +22,7 @@ use parent -norequire,'java::lang::Object','org::allbinary::business::advertisem
 
 sub _init_fields {
     my ($self) = @_;
-    $self->{hashMap} = undef;
+    $self->{hashMap} = undef unless exists $self->{hashMap};
 }
 
 

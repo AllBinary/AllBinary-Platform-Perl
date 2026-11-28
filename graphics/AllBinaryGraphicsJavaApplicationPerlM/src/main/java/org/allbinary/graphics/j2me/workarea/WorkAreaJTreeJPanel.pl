@@ -25,15 +25,15 @@ sub _init_fields {
     my ($self) = @_;
     $self->{logUtil} = 'org::allbinary::logic::communication::log::LogUtil'->getInstance();
     $self->{commonStrings} = 'org::allbinary::string::CommonStrings'->getInstance();
-    $self->{rootTreeNode} = undef;
-    $self->{workAreaJTree} = undef;
-    $self->{highlightedBasicArrayList} = undef;
-    $self->{copyJMenuItem} = undef;
-    $self->{deleteJMenuItem} = undef;
-    $self->{itemJPopupMenu} = undef;
-    $self->{itemJScrollPane1} = undef;
-    $self->{rotateJMenuItem} = undef;
-    $self->{workAreaPropertiesJPanel} = undef;
+    $self->{rootTreeNode} = undef unless exists $self->{rootTreeNode};
+    $self->{workAreaJTree} = undef unless exists $self->{workAreaJTree};
+    $self->{highlightedBasicArrayList} = undef unless exists $self->{highlightedBasicArrayList};
+    $self->{copyJMenuItem} = undef unless exists $self->{copyJMenuItem};
+    $self->{deleteJMenuItem} = undef unless exists $self->{deleteJMenuItem};
+    $self->{itemJPopupMenu} = undef unless exists $self->{itemJPopupMenu};
+    $self->{itemJScrollPane1} = undef unless exists $self->{itemJScrollPane1};
+    $self->{rotateJMenuItem} = undef unless exists $self->{rotateJMenuItem};
+    $self->{workAreaPropertiesJPanel} = undef unless exists $self->{workAreaPropertiesJPanel};
 }
 
 

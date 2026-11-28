@@ -26,20 +26,20 @@ sub _init_fields {
     $self->{unitWaypointStrings} = 'org::allbinary::game::layer::unit::UnitWaypointStrings'->getInstance();
     $self->{longWeaponRange} = 0;
     $self->{sensorAction} = 'org::allbinary::game::layer::SensorActionFactory'->getInstance()->{ATTACK};
-    $self->{completeTimeDelayHelper} = undef;
-    $self->{currentGeographicMapCellHistoryP} = undef;
+    $self->{completeTimeDelayHelper} = undef unless exists $self->{completeTimeDelayHelper};
+    $self->{currentGeographicMapCellHistoryP} = undef unless exists $self->{currentGeographicMapCellHistoryP};
     $self->{lastPathGeographicMapCellPosition} = $org::allbinary::media::graphics::geography::map::SimpleGeographicMapCellPositionFactory::NULL_GEOGRAPHIC_MAP_CELL_POSITION;
     $self->{currentPathGeographicMapCellPosition} = $org::allbinary::media::graphics::geography::map::SimpleGeographicMapCellPositionFactory::NULL_GEOGRAPHIC_MAP_CELL_POSITION;
-    $self->{FAKE_WAYPOINT_LAYER} = undef;
-    $self->{targetList} = undef;
-    $self->{possibleTargetList} = undef;
-    $self->{associatedAdvancedRTSGameLayer} = undef;
+    $self->{FAKE_WAYPOINT_LAYER} = undef unless exists $self->{FAKE_WAYPOINT_LAYER};
+    $self->{targetList} = undef unless exists $self->{targetList};
+    $self->{possibleTargetList} = undef unless exists $self->{possibleTargetList};
+    $self->{associatedAdvancedRTSGameLayer} = undef unless exists $self->{associatedAdvancedRTSGameLayer};
     $self->{moving} = 0;
     $self->{movingFromStopped} = 0;
     $self->{waypointPathsListP} = 'org::allbinary::util::BasicArrayListUtil'->getInstance()->getImmutableInstance();
     $self->{currentTargetDistance} = 2147483647;
     $self->{currentTargetLayerInterfaceP} = 'org::allbinary::game::layer::special::CollidableDestroyableDamageableLayer'->getNullInstance();
-    $self->{trackingWaypoint} = 0;
+    $self->{trackingWaypoint} = 0 unless exists $self->{trackingWaypoint};
     $self->{repeatedToLong} = 'org::allbinary::time::TimeDelayHelper'->new(22000);
 }
 

@@ -24,18 +24,18 @@ sub _init_fields {
     my ($self) = @_;
     $self->{logUtil} = 'org::allbinary::logic::communication::log::LogUtil'->getInstance();
     $self->{commonStrings} = 'org::allbinary::string::CommonStrings'->getInstance();
-    $self->{imageProcessorInput} = undef;
-    $self->{aboveJButton} = undef;
-    $self->{adjustFor16AboveJButton} = undef;
-    $self->{adjustFor16BelowJButton} = undef;
-    $self->{floatPercentJTextField} = undef;
-    $self->{jComboBox1} = undef;
-    $self->{jLabel1} = undef;
-    $self->{jLabel2} = undef;
-    $self->{jLabel3} = undef;
-    $self->{jTextField1} = undef;
-    $self->{jTextField2} = undef;
-    $self->{updateJButton} = undef;
+    $self->{imageProcessorInput} = undef unless exists $self->{imageProcessorInput};
+    $self->{aboveJButton} = undef unless exists $self->{aboveJButton};
+    $self->{adjustFor16AboveJButton} = undef unless exists $self->{adjustFor16AboveJButton};
+    $self->{adjustFor16BelowJButton} = undef unless exists $self->{adjustFor16BelowJButton};
+    $self->{floatPercentJTextField} = undef unless exists $self->{floatPercentJTextField};
+    $self->{jComboBox1} = undef unless exists $self->{jComboBox1};
+    $self->{jLabel1} = undef unless exists $self->{jLabel1};
+    $self->{jLabel2} = undef unless exists $self->{jLabel2};
+    $self->{jLabel3} = undef unless exists $self->{jLabel3};
+    $self->{jTextField1} = undef unless exists $self->{jTextField1};
+    $self->{jTextField2} = undef unless exists $self->{jTextField2};
+    $self->{updateJButton} = undef unless exists $self->{updateJButton};
 }
 
 

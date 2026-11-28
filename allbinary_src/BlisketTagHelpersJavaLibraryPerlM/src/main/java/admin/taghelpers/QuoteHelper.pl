@@ -24,9 +24,9 @@ sub _init_fields {
     my ($self) = @_;
     $self->{logUtil} = 'org::allbinary::logic::communication::log::LogUtil'->getInstance();
     $self->{abeClientInformation} = 'org::allbinary::logic::system::security::licensing::ServiceClientInformationInterfaceFactory'->getInstance();
-    $self->{weblisketSession} = undef;
-    $self->{storeFrontInterface} = undef;
-    $self->{portion} = undef;
+    $self->{weblisketSession} = undef unless exists $self->{weblisketSession};
+    $self->{storeFrontInterface} = undef unless exists $self->{storeFrontInterface};
+    $self->{portion} = undef unless exists $self->{portion};
 }
 
 

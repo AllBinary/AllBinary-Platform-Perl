@@ -25,24 +25,24 @@ sub _init_fields {
     my ($self) = @_;
     $self->{logUtil} = 'org::allbinary::logic::communication::log::LogUtil'->getInstance();
     $self->{commonFileStrings} = 'org::allbinary::logic::io::file::CommonDataFileStrings'->getInstance();
-    $self->{name} = undef;
-    $self->{genericProfileActionsJPanel} = undef;
-    $self->{actionsDefaultListModelHelper} = undef;
-    $self->{hashMap} = undef;
+    $self->{name} = undef unless exists $self->{name};
+    $self->{genericProfileActionsJPanel} = undef unless exists $self->{genericProfileActionsJPanel};
+    $self->{actionsDefaultListModelHelper} = undef unless exists $self->{actionsDefaultListModelHelper};
+    $self->{hashMap} = undef unless exists $self->{hashMap};
 }
 
 sub new {
     my ($class, @arguments) = @_;
-    return $class->_new2(@arguments) if scalar(@arguments) == 2;
-    return $class->_new3(@arguments) if scalar(@arguments) == 3;
-    return $class->_new3(@arguments) if scalar(@arguments) == 3;
+    return _new2($class, @arguments) if scalar(@arguments) == 2;
+    return _new3($class, @arguments) if scalar(@arguments) == 3;
+    return _new3($class, @arguments) if scalar(@arguments) == 3;
     die "No constructor of GenericProfileActions takes " . scalar(@arguments) . " arguments";
 }
 
 sub _new3 {
     my ($class, @arguments) = @_;
-    return $class->_new3_1(@arguments) if 1 && (!defined($arguments[0]) || (ref($arguments[0]) && ref($arguments[0]) ne 'ARRAY')) && (!defined($arguments[1]) || (ref($arguments[1]) && ref($arguments[1]) ne 'ARRAY')) && !ref($arguments[2]);
-    return $class->_new3_2(@arguments);
+    return _new3_1($class, @arguments) if 1 && (!defined($arguments[0]) || (ref($arguments[0]) && ref($arguments[0]) ne 'ARRAY')) && (!defined($arguments[1]) || (ref($arguments[1]) && ref($arguments[1]) ne 'ARRAY')) && !ref($arguments[2]);
+    return _new3_2($class, @arguments);
 }
 
 

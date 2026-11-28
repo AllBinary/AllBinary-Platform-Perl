@@ -28,8 +28,8 @@ sub _init_fields {
     $self->{touchMotionGestureFactory} = 'org::allbinary::input::motion::gesture::TouchMotionGestureFactory'->getInstance();
     $self->{PRESSED} = $self->{touchMotionGestureFactory}->{PRESSED};
     $self->{RELEASED} = $self->{touchMotionGestureFactory}->{RELEASED};
-    $self->{touchButtonsBuilderFactory} = undef;
-    $self->{notYoursGameNotificationEvent} = undef;
+    $self->{touchButtonsBuilderFactory} = undef unless exists $self->{touchButtonsBuilderFactory};
+    $self->{notYoursGameNotificationEvent} = undef unless exists $self->{notYoursGameNotificationEvent};
     $self->{selectedRtsLayer} = 'org::allbinary::game::layer::special::CollidableDestroyableDamageableLayer'->getNullInstance();
     $self->{startPoint} = 'org::allbinary::graphics::PointFactory'->getInstance()->{ZERO_ZERO};
     $self->{endPoint} = 'org::allbinary::graphics::PointFactory'->getInstance()->{ZERO_ZERO};

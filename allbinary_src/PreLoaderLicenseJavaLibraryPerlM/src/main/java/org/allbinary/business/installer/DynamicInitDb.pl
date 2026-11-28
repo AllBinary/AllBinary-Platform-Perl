@@ -23,8 +23,8 @@ use parent -norequire,'org::allbinary::business::installer::InitDb';
 
 sub new {
     my ($class, @arguments) = @_;
-    return $class->_new1(@arguments) if scalar(@arguments) == 1;
-    return $class->_new2(@arguments) if scalar(@arguments) == 2;
+    return _new1($class, @arguments) if scalar(@arguments) == 1;
+    return _new2($class, @arguments) if scalar(@arguments) == 2;
     die "No constructor of DynamicInitDb takes " . scalar(@arguments) . " arguments";
 }
 

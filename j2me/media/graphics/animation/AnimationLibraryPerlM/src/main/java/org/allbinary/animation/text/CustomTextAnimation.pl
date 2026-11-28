@@ -23,11 +23,11 @@ use parent -norequire,'org::allbinary::animation::text::TextAnimation','org::all
 sub _init_fields {
     my ($self) = @_;
     $self->{fontDebugFactory} = 'org::allbinary::graphics::font::FontDebugFactory'->getInstance();
-    $self->{fontSize} = undef;
-    $self->{font} = undef;
+    $self->{fontSize} = undef unless exists $self->{fontSize};
+    $self->{font} = undef unless exists $self->{font};
     $self->{lastText} = 'org::allbinary::logic::string::StringUtil'->getInstance()->{INIT_STRING};
     $self->{hasChanged} = 1;
-    $self->{textWidth} = 0;
+    $self->{textWidth} = 0 unless exists $self->{textWidth};
 }
 
 

@@ -10,7 +10,7 @@ use parent -norequire,'org::allbinary::graphics::form::item::ABTextItem';
 
 sub _init_fields {
     my ($self) = @_;
-    $self->{font} = undef;
+    $self->{font} = undef unless exists $self->{font};
 }
 
 

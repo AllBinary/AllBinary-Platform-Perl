@@ -22,7 +22,7 @@ use parent -norequire,'java::lang::Object';
 
 sub _init_fields {
     my ($self) = @_;
-    $self->{initInfoDocument} = undef;
+    $self->{initInfoDocument} = undef unless exists $self->{initInfoDocument};
 }
 
 

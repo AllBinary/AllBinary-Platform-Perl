@@ -23,10 +23,10 @@ use parent -norequire,'views::business::context::modules::storefront::HttpStoreC
 sub _init_fields {
     my ($self) = @_;
     $self->{logUtil} = 'org::allbinary::logic::communication::log::LogUtil'->getInstance();
-    $self->{request} = undef;
-    $self->{order} = undef;
-    $self->{orderHistory} = undef;
-    $self->{basketReview} = undef;
+    $self->{request} = undef unless exists $self->{request};
+    $self->{order} = undef unless exists $self->{order};
+    $self->{orderHistory} = undef unless exists $self->{orderHistory};
+    $self->{basketReview} = undef unless exists $self->{basketReview};
 }
 
 

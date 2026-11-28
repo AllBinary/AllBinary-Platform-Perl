@@ -22,8 +22,8 @@ use parent -norequire,'org::allbinary::media::graphics::geography::map::Geograph
 
 sub _init_fields {
     my ($self) = @_;
-    $self->{name} = undef;
-    $self->{travelCost} = undef;
+    $self->{name} = undef unless exists $self->{name};
+    $self->{travelCost} = undef unless exists $self->{travelCost};
 }
 
 

@@ -24,7 +24,7 @@ our $NULL_PATH_FINDING_NODE_COST_ARRAY_ARRAY = [map { [(undef) x (0)] } 1 .. (0)
 sub _init_fields {
     my ($self) = @_;
     $self->{commonSeps} = 'org::allbinary::string::CommonSeps'->getInstance();
-    $self->{pathFindingNodeCostInfoP} = undef;
+    $self->{pathFindingNodeCostInfoP} = undef unless exists $self->{pathFindingNodeCostInfoP};
 }
 
 

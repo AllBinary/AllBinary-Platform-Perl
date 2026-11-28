@@ -23,7 +23,7 @@ use parent -norequire,'java::lang::Object','org::allbinary::logic::system::hardw
 
 sub _init_fields {
     my ($self) = @_;
-    $self->{data} = undef;
+    $self->{data} = undef unless exists $self->{data};
 }
 
 

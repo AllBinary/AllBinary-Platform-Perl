@@ -28,7 +28,7 @@ sub _init_fields {
     $self->{basicColor} = 'org::allbinary::graphics::color::BasicColorFactory'->getInstance()->{WHITE};
     $self->{highScores} = 'org::allbinary::game::score::NullHighScoresSingletonFactory'->getInstance();
     $self->{anchor} = $org::allbinary::graphics::Anchor::TOP_LEFT;
-    $self->{charHeight} = 0;
+    $self->{charHeight} = 0 unless exists $self->{charHeight};
 }
 
 

@@ -22,8 +22,8 @@ use parent -norequire,'java::lang::Object','org::allbinary::business::context::m
 
 sub _init_fields {
     my ($self) = @_;
-    $self->{totalNumberOfUsers} = undef;
-    $self->{totalUsersByRoleHashMap} = undef;
+    $self->{totalNumberOfUsers} = undef unless exists $self->{totalNumberOfUsers};
+    $self->{totalUsersByRoleHashMap} = undef unless exists $self->{totalUsersByRoleHashMap};
 }
 
 

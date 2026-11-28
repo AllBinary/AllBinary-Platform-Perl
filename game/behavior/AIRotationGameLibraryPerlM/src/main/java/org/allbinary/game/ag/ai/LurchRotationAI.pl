@@ -22,7 +22,7 @@ use parent -norequire,'org::allbinary::game::ag::ai::tactical::LurchAI';
 
 sub _init_fields {
     my ($self) = @_;
-    $self->{rotationAnimationInterface} = undef;
+    $self->{rotationAnimationInterface} = undef unless exists $self->{rotationAnimationInterface};
 }
 
 

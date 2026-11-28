@@ -25,7 +25,7 @@ sub _init_fields {
     my ($self) = @_;
     $self->{logUtil} = 'org::allbinary::logic::communication::log::LogUtil'->getInstance();
     $self->{notificationManager} = 'org::allbinary::data::resource::ResourceUtil'->getInstance()->getContext()->getSystemService($android::content::Context::NOTIFICATION_SERVICE);
-    $self->{notificationBuilder} = undef;
+    $self->{notificationBuilder} = undef unless exists $self->{notificationBuilder};
 }
 
 

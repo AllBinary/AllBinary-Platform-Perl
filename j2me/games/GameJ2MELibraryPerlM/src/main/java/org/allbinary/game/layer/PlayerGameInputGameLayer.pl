@@ -22,7 +22,7 @@ use parent -norequire,'org::allbinary::game::layer::AllBinaryGameLayer','org::al
 
 sub _init_fields {
     my ($self) = @_;
-    $self->{playerGameInput} = undef;
+    $self->{playerGameInput} = undef unless exists $self->{playerGameInput};
 }
 
 

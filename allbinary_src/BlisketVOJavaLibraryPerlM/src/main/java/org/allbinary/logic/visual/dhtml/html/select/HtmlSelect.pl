@@ -30,12 +30,12 @@ sub _init_fields {
     $self->{STARTOPTION} = "<OPTION";
     $self->{SELETED} = "SELECTED";
     $self->{ENDOPTION} = "</OPTION>";
-    $self->{before} = undef;
-    $self->{name} = undef;
-    $self->{after} = undef;
-    $self->{size} = undef;
-    $self->{selected} = undef;
-    $self->{options} = undef;
+    $self->{before} = undef unless exists $self->{before};
+    $self->{name} = undef unless exists $self->{name};
+    $self->{after} = undef unless exists $self->{after};
+    $self->{size} = undef unless exists $self->{size};
+    $self->{selected} = undef unless exists $self->{selected};
+    $self->{options} = undef unless exists $self->{options};
     $self->{multiple} = "multiple";
     $self->{isMultipleSelect} = 0;
 }

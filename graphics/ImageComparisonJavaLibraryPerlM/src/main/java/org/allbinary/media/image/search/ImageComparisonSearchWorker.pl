@@ -24,10 +24,10 @@ sub _init_fields {
     my ($self) = @_;
     $self->{logUtil} = 'org::allbinary::logic::communication::log::LogUtil'->getInstance();
     $self->{commonStrings} = 'org::allbinary::string::CommonStrings'->getInstance();
-    $self->{imageComparisonInfoVector} = undef;
-    $self->{index} = 0;
-    $self->{running} = 0;
-    $self->{imageSearchConstraintsInterface} = undef;
+    $self->{imageComparisonInfoVector} = undef unless exists $self->{imageComparisonInfoVector};
+    $self->{index} = 0 unless exists $self->{index};
+    $self->{running} = 0 unless exists $self->{running};
+    $self->{imageSearchConstraintsInterface} = undef unless exists $self->{imageSearchConstraintsInterface};
 }
 
 

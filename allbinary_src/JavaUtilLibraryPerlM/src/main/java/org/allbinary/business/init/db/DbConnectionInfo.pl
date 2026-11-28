@@ -22,15 +22,15 @@ use parent -norequire,'java::lang::Object','org::allbinary::business::init::db::
 
 sub _init_fields {
     my ($self) = @_;
-    $self->{jdbcDriver} = undef;
-    $self->{name} = undef;
-    $self->{userName} = undef;
-    $self->{password} = undef;
-    $self->{schema} = undef;
-    $self->{server} = undef;
-    $self->{port} = undef;
-    $self->{url} = undef;
-    $self->{host} = undef;
+    $self->{jdbcDriver} = undef unless exists $self->{jdbcDriver};
+    $self->{name} = undef unless exists $self->{name};
+    $self->{userName} = undef unless exists $self->{userName};
+    $self->{password} = undef unless exists $self->{password};
+    $self->{schema} = undef unless exists $self->{schema};
+    $self->{server} = undef unless exists $self->{server};
+    $self->{port} = undef unless exists $self->{port};
+    $self->{url} = undef unless exists $self->{url};
+    $self->{host} = undef unless exists $self->{host};
     $self->{SCHEMA_SEP} = "://";
     $self->{USER_NAME_KEY} = "?user=";
     $self->{PASSWORD_KEY} = "&password=";

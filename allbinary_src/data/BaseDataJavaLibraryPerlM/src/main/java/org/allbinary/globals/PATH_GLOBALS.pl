@@ -23,11 +23,11 @@ tie our $instance, 'java::lang::LazyStatic', sub { 'org::allbinary::globals::PAT
 
 sub _init_fields {
     my ($self) = @_;
-    $self->{DATA_PATH} = undef;
-    $self->{INIT_PATH} = undef;
-    $self->{VIEWS_PATH} = undef;
-    $self->{LOG_PATH} = undef;
-    $self->{BACKUP_PATH} = undef;
+    $self->{DATA_PATH} = undef unless exists $self->{DATA_PATH};
+    $self->{INIT_PATH} = undef unless exists $self->{INIT_PATH};
+    $self->{VIEWS_PATH} = undef unless exists $self->{VIEWS_PATH};
+    $self->{LOG_PATH} = undef unless exists $self->{LOG_PATH};
+    $self->{BACKUP_PATH} = undef unless exists $self->{BACKUP_PATH};
 }
 
 

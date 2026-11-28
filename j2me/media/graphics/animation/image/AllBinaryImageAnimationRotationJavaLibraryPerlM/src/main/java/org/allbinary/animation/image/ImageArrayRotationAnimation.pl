@@ -22,7 +22,7 @@ use parent -norequire,'org::allbinary::animation::image::ImageArrayBaseRotationA
 
 sub _init_fields {
     my ($self) = @_;
-    $self->{expectedTotalFrames} = 0;
+    $self->{expectedTotalFrames} = 0 unless exists $self->{expectedTotalFrames};
 }
 
 

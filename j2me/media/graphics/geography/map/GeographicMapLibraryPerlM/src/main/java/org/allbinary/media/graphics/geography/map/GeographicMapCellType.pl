@@ -25,7 +25,7 @@ tie our $NULL_GEOGRAPHIC_MAP_CELL_TYPE, 'java::lang::LazyStatic', sub { 'org::al
 sub _init_fields {
     my ($self) = @_;
     $self->{logUtil} = 'org::allbinary::logic::communication::log::LogUtil'->getInstance();
-    $self->{type} = undef;
+    $self->{type} = undef unless exists $self->{type};
 }
 
 

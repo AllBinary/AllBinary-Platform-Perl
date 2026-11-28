@@ -26,7 +26,7 @@ sub _init_fields {
     $self->{pathFindingLayer} = $org::allbinary::game::layer::NullPathFindingLayer::NULL_PATH_FINDING_LAYER;
     $self->{targetPathFindingLayer} = $org::allbinary::game::layer::NullPathFindingLayer::NULL_PATH_FINDING_LAYER;
     $self->{priorityP} = 2147483647;
-    $self->{runningP} = 0;
+    $self->{runningP} = 0 unless exists $self->{runningP};
 }
 
 sub new {

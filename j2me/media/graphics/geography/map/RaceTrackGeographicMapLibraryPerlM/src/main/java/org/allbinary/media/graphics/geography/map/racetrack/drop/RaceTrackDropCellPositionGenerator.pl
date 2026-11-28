@@ -23,7 +23,7 @@ use parent -norequire,'org::allbinary::media::graphics::geography::map::drop::Ba
 sub _init_fields {
     my ($self) = @_;
     $self->{list} = 'org::allbinary::util::BasicArrayListD'->new();
-    $self->{timeDelayHelper} = undef;
+    $self->{timeDelayHelper} = undef unless exists $self->{timeDelayHelper};
     $self->{STRAIGHTAWAY} = 4;
     $self->{raceTrackGeographicMap} = $org::allbinary::media::graphics::geography::map::racetrack::NullRaceTrackGeographicMap::NULL_RACE_TRACK_GEOGRAPHIC_MAP;
     $self->{raceTrackGeographicMapCellTypeFactory} = 'org::allbinary::media::graphics::geography::map::GeographicMapCellTypeFactory'->getInstance();

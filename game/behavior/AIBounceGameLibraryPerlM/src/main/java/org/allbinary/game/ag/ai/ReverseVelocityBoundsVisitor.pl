@@ -23,8 +23,8 @@ use parent -norequire,'java::lang::Object','org::allbinary::bounds::BoundsVisito
 sub _init_fields {
     my ($self) = @_;
     $self->{logUtil} = 'org::allbinary::logic::communication::log::LogUtil'->getInstance();
-    $self->{velocityInterface} = undef;
-    $self->{layerInterface} = undef;
+    $self->{velocityInterface} = undef unless exists $self->{velocityInterface};
+    $self->{layerInterface} = undef unless exists $self->{layerInterface};
 }
 
 

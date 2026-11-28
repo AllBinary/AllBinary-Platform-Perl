@@ -25,8 +25,8 @@ sub _init_fields {
     my ($self) = @_;
     $self->{drawStringUtil} = 'org::allbinary::graphics::draw::DrawStringUtil'->getInstance();
     $self->{myFontProcessor} = 'org::allbinary::graphics::font::UpdateMyFontProcessor'->new($self);
-    $self->{x} = undef;
-    $self->{y} = undef;
+    $self->{x} = undef unless exists $self->{x};
+    $self->{y} = undef unless exists $self->{y};
     $self->{fontHeight} = 0;
 }
 

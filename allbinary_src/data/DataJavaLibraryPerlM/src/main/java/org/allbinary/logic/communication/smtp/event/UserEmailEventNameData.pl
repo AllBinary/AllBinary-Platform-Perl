@@ -48,8 +48,8 @@ tie our $NEWPASSWORD, 'java::lang::LazyStatic', sub { 'org::allbinary::logic::co
 
 sub _init_fields {
     my ($self) = @_;
-    $self->{eventNameId} = 0;
-    $self->{eventHandlerName} = undef;
+    $self->{eventNameId} = 0 unless exists $self->{eventNameId};
+    $self->{eventHandlerName} = undef unless exists $self->{eventHandlerName};
 }
 
 

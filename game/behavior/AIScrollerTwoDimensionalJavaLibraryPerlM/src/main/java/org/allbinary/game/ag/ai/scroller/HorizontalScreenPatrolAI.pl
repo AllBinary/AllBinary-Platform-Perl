@@ -31,7 +31,7 @@ sub _init_fields {
     $self->{MAX_FIRE} = 28;
     $self->{timeDelayHelper} = 'org::allbinary::time::TimeDelayHelper'->new(240);
     $self->{secondaryPlayerQueue} = 'org::allbinary::media::audio::SecondaryPlayerQueueFactory'->getInstance();
-    $self->{sound} = undef;
+    $self->{sound} = undef unless exists $self->{sound};
 }
 
 

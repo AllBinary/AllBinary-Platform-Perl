@@ -24,12 +24,12 @@ sub _init_fields {
     my ($self) = @_;
     $self->{KILOMETERS_PER_HOUR_STR} = [" ", "k", "m", "/", "h"];
     $self->{totalChars} = scalar(@{$self->{KILOMETERS_PER_HOUR_STR}});
-    $self->{velocity} = undef;
-    $self->{maxVelocity} = undef;
+    $self->{velocity} = undef unless exists $self->{velocity};
+    $self->{maxVelocity} = undef unless exists $self->{maxVelocity};
     $self->{string} = 'org::allbinary::logic::math::PrimitiveLongSingleton'->getInstance()->{ZERO};
     $self->{totalDigits} = 1;
-    $self->{powerOfTenVelocity} = undef;
-    $self->{primitiveLongUtil} = undef;
+    $self->{powerOfTenVelocity} = undef unless exists $self->{powerOfTenVelocity};
+    $self->{primitiveLongUtil} = undef unless exists $self->{primitiveLongUtil};
     $self->{offset} = 0;
     $self->{offset2} = 0;
 }

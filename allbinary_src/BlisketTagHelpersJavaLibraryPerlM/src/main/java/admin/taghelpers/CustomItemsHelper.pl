@@ -23,7 +23,7 @@ use parent -norequire,'admin::taghelpers::BasicTable';
 sub _init_fields {
     my ($self) = @_;
     $self->{logUtil} = 'org::allbinary::logic::communication::log::LogUtil'->getInstance();
-    $self->{portion} = undef;
+    $self->{portion} = undef unless exists $self->{portion};
 }
 
 

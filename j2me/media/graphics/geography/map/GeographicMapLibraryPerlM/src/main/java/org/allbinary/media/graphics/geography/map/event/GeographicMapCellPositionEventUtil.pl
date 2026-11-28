@@ -22,7 +22,7 @@ use parent -norequire,'java::lang::Object';
 
 sub _init_fields {
     my ($self) = @_;
-    $self->{geographicMapCellPositionEvent} = undef;
+    $self->{geographicMapCellPositionEvent} = undef unless exists $self->{geographicMapCellPositionEvent};
     $self->{geographicMapCellPositionEventHandler} = 'org::allbinary::media::graphics::geography::map::event::GeographicMapCellPositionEventHandler'->getInstance();
 }
 

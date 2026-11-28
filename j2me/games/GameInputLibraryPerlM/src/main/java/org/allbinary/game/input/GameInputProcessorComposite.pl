@@ -22,8 +22,8 @@ use parent -norequire,'org::allbinary::game::input::PlayerGameInput';
 
 sub _init_fields {
     my ($self) = @_;
-    $self->{name} = undef;
-    $self->{gameInputProcessorInterface} = undef;
+    $self->{name} = undef unless exists $self->{name};
+    $self->{gameInputProcessorInterface} = undef unless exists $self->{gameInputProcessorInterface};
     $self->{NAME_LABEL} = " GameInputProcessorInterface: ";
 }
 

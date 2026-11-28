@@ -22,8 +22,8 @@ use parent -norequire,'org::allbinary::game::displayable::canvas::GameCommandCan
 
 sub _init_fields {
     my ($self) = @_;
-    $self->{paintableArray} = undef;
-    $self->{colorFillPaintable} = undef;
+    $self->{paintableArray} = undef unless exists $self->{paintableArray};
+    $self->{colorFillPaintable} = undef unless exists $self->{colorFillPaintable};
 }
 
 

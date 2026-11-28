@@ -22,8 +22,8 @@ use parent -norequire,'org::allbinary::animation::AnimationBehaviorFactory';
 
 sub _init_fields {
     my ($self) = @_;
-    $self->{frameDelayTime} = undef;
-    $self->{loopTotal} = undef;
+    $self->{frameDelayTime} = undef unless exists $self->{frameDelayTime};
+    $self->{loopTotal} = undef unless exists $self->{loopTotal};
 }
 
 

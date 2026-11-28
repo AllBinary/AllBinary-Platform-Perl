@@ -22,8 +22,8 @@ use parent -norequire,'java::lang::Object','org::allbinary::business::context::m
 
 sub _init_fields {
     my ($self) = @_;
-    $self->{totalNumberOfItems} = 0;
-    $self->{totalInventorySaleValueMoney} = undef;
+    $self->{totalNumberOfItems} = 0 unless exists $self->{totalNumberOfItems};
+    $self->{totalInventorySaleValueMoney} = undef unless exists $self->{totalInventorySaleValueMoney};
 }
 
 

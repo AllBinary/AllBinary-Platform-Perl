@@ -25,9 +25,9 @@ our $CONTROL_TYPE = "ToneControl";
 sub _init_fields {
     my ($self) = @_;
     $self->{listenersList} = 'org::allbinary::util::BasicArrayListD'->new();
-    $self->{timeBase} = undef;
-    $self->{stateP} = 0;
-    $self->{loopCountP} = 0;
+    $self->{timeBase} = undef unless exists $self->{timeBase};
+    $self->{stateP} = 0 unless exists $self->{stateP};
+    $self->{loopCountP} = 0 unless exists $self->{loopCountP};
 }
 
 

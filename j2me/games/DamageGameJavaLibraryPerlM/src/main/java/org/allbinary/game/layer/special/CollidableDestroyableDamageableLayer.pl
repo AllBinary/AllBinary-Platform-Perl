@@ -24,15 +24,15 @@ our $READYFOREXPLOSION = "ReadyForExplosion: ";
 
 sub _init_fields {
     my ($self) = @_;
-    $self->{groupInterface} = undef;
-    $self->{readyForExplosion} = 0;
-    $self->{initWidth} = undef;
-    $self->{initHeight} = undef;
-    $self->{initX} = 0;
-    $self->{initY} = 0;
-    $self->{initZ} = 0;
+    $self->{groupInterface} = undef unless exists $self->{groupInterface};
+    $self->{readyForExplosion} = 0 unless exists $self->{readyForExplosion};
+    $self->{initWidth} = undef unless exists $self->{initWidth};
+    $self->{initHeight} = undef unless exists $self->{initHeight};
+    $self->{initX} = 0 unless exists $self->{initX};
+    $self->{initY} = 0 unless exists $self->{initY};
+    $self->{initZ} = 0 unless exists $self->{initZ};
     $self->{partInterfaceArrayP} = 'org::allbinary::game::part::PartInterfaceUtil'->getZeroArray();
-    $self->{pickupBehavior} = undef;
+    $self->{pickupBehavior} = undef unless exists $self->{pickupBehavior};
     $self->{allBinaryGameLayerManagerP} = 'org::allbinary::game::layer::AllBinaryGameLayerManager'->getNullInstance();
     $self->{isDraggable} = 0;
     $self->{isDragged} = 0;

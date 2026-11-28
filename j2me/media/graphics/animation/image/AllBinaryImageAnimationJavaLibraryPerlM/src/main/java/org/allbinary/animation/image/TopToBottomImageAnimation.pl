@@ -22,7 +22,7 @@ use parent -norequire,'org::allbinary::animation::image::ImageSegmentAnimation';
 
 sub _init_fields {
     my ($self) = @_;
-    $self->{currentHeight} = undef;
+    $self->{currentHeight} = undef unless exists $self->{currentHeight};
     $self->{anchor} = $org::allbinary::graphics::Anchor::TOP_LEFT;
 }
 

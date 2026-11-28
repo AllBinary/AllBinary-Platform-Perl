@@ -24,8 +24,8 @@ tie our $NULL_PICKUP_BEHAVIOR, 'java::lang::LazyStatic', sub { 'org::allbinary::
 sub _init_fields {
     my ($self) = @_;
     $self->{logUtil} = 'org::allbinary::logic::communication::log::LogUtil'->getInstance();
-    $self->{countedIndex} = undef;
-    $self->{ownerLayerInterface} = undef;
+    $self->{countedIndex} = undef unless exists $self->{countedIndex};
+    $self->{ownerLayerInterface} = undef unless exists $self->{ownerLayerInterface};
 }
 
 

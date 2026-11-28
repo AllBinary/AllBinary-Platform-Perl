@@ -23,8 +23,8 @@ use parent -norequire,'org::allbinary::game::score::HighScoresBase';
 sub _init_fields {
     my ($self) = @_;
     $self->{logUtil} = 'org::allbinary::logic::communication::log::LogUtil'->getInstance();
-    $self->{abeClientInformation} = undef;
-    $self->{softwareInformation} = undef;
+    $self->{abeClientInformation} = undef unless exists $self->{abeClientInformation};
+    $self->{softwareInformation} = undef unless exists $self->{softwareInformation};
     $self->{highScoresArray} = [(undef) x (2)];
     $self->{TOP} = "Top";
     $self->{SCORES} = "Scores";

@@ -22,20 +22,20 @@ use parent -norequire,'java::lang::Object';
 
 sub _init_fields {
     my ($self) = @_;
-    $self->{timeLong} = undef;
+    $self->{timeLong} = undef unless exists $self->{timeLong};
 }
 
 sub new {
     my ($class, @arguments) = @_;
-    return $class->_new1(@arguments) if scalar(@arguments) == 1;
-    return $class->_new1(@arguments) if scalar(@arguments) == 1;
+    return _new1($class, @arguments) if scalar(@arguments) == 1;
+    return _new1($class, @arguments) if scalar(@arguments) == 1;
     die "No constructor of Time takes " . scalar(@arguments) . " arguments";
 }
 
 sub _new1 {
     my ($class, @arguments) = @_;
-    return $class->_new1_1(@arguments) if 1 && !ref($arguments[0]);
-    return $class->_new1_2(@arguments);
+    return _new1_1($class, @arguments) if 1 && !ref($arguments[0]);
+    return _new1_2($class, @arguments);
 }
 
 

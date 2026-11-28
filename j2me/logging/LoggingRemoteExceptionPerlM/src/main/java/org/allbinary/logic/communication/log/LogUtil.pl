@@ -27,7 +27,7 @@ sub _init_fields {
     $self->{MESSAGE} = "message";
     $self->{isFirstException} = 1;
     $self->{timeDelayHelper} = 'org::allbinary::time::TimeDelayHelper'->new(200000);
-    $self->{abeClientInformation} = undef;
+    $self->{abeClientInformation} = undef unless exists $self->{abeClientInformation};
     $self->{stringBuffer} = 'org::allbinary::logic::string::StringMaker'->new();
 }
 

@@ -22,8 +22,8 @@ use parent -norequire,'org::allbinary::animation::RotationAnimation';
 
 sub _init_fields {
     my ($self) = @_;
-    $self->{sprite} = undef;
-    $self->{image} = undef;
+    $self->{sprite} = undef unless exists $self->{sprite};
+    $self->{image} = undef unless exists $self->{image};
 }
 
 

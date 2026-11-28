@@ -24,9 +24,9 @@ use parent -norequire,'admin::taghelpers::ModifyTable';
 sub _init_fields {
     my ($self) = @_;
     $self->{logUtil} = 'org::allbinary::logic::communication::log::LogUtil'->getInstance();
-    $self->{weblisketSession} = undef;
-    $self->{storeFrontInterface} = undef;
-    $self->{quoteRequest} = undef;
+    $self->{weblisketSession} = undef unless exists $self->{weblisketSession};
+    $self->{storeFrontInterface} = undef unless exists $self->{storeFrontInterface};
+    $self->{quoteRequest} = undef unless exists $self->{quoteRequest};
 }
 
 

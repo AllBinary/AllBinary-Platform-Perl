@@ -24,15 +24,15 @@ sub _init_fields {
     my ($self) = @_;
     $self->{logUtil} = 'org::allbinary::logic::communication::log::LogUtil'->getInstance();
     $self->{basicItemData} = 'org::allbinary::business::user::commerce::inventory::item::BasicItemData'->getInstance();
-    $self->{request} = undef;
-    $self->{id} = undef;
-    $self->{optionOneTitle} = undef;
-    $self->{defaultOptionItem} = undef;
-    $self->{defaultOptionValue} = undef;
-    $self->{optionItem} = undef;
-    $self->{optionValue} = undef;
-    $self->{timeEntered} = undef;
-    $self->{lastModified} = undef;
+    $self->{request} = undef unless exists $self->{request};
+    $self->{id} = undef unless exists $self->{id};
+    $self->{optionOneTitle} = undef unless exists $self->{optionOneTitle};
+    $self->{defaultOptionItem} = undef unless exists $self->{defaultOptionItem};
+    $self->{defaultOptionValue} = undef unless exists $self->{defaultOptionValue};
+    $self->{optionItem} = undef unless exists $self->{optionItem};
+    $self->{optionValue} = undef unless exists $self->{optionValue};
+    $self->{timeEntered} = undef unless exists $self->{timeEntered};
+    $self->{lastModified} = undef unless exists $self->{lastModified};
 }
 
 

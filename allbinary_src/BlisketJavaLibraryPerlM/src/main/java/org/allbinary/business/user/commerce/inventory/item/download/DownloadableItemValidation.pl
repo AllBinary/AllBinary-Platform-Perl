@@ -23,7 +23,7 @@ use parent -norequire,'org::allbinary::logic::control::validate::Validation';
 sub _init_fields {
     my ($self) = @_;
     $self->{logUtil} = 'org::allbinary::logic::communication::log::LogUtil'->getInstance();
-    $self->{downloadableItem} = undef;
+    $self->{downloadableItem} = undef unless exists $self->{downloadableItem};
 }
 
 

@@ -23,13 +23,13 @@ use parent -norequire,'org::allbinary::graphics::form::ScrollSelectionForm','org
 
 sub _init_fields {
     my ($self) = @_;
-    $self->{moveForSmallScreen} = undef;
+    $self->{moveForSmallScreen} = undef unless exists $self->{moveForSmallScreen};
     $self->{updateMyFontProcessor} = 'org::allbinary::graphics::font::UpdateMyFontProcessor'->new($self);
     $self->{myFontProcessor} = $self->{updateMyFontProcessor};
     $self->{processor} = 'org::allbinary::canvas::Processor'->getInstance();
     $self->{preItemIndexDx} = 'org::allbinary::graphics::form::ItemIndexDx'->getInstance();
-    $self->{dx} = 0;
-    $self->{dy} = 0;
+    $self->{dx} = 0 unless exists $self->{dx};
+    $self->{dy} = 0 unless exists $self->{dy};
     $self->{maxWidth} = 0;
 }
 

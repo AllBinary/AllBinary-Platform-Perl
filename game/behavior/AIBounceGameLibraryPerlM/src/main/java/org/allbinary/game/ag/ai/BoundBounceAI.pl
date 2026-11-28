@@ -23,8 +23,8 @@ use parent -norequire,'org::allbinary::game::ai::BasicAI';
 sub _init_fields {
     my ($self) = @_;
     $self->{currentRelativeAngle} = 0;
-    $self->{layerBounds} = undef;
-    $self->{boundsVisitorInterface} = undef;
+    $self->{layerBounds} = undef unless exists $self->{layerBounds};
+    $self->{boundsVisitorInterface} = undef unless exists $self->{boundsVisitorInterface};
 }
 
 

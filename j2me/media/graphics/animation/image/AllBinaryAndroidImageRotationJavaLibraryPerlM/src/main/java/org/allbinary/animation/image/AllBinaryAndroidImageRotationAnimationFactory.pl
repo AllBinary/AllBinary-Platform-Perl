@@ -23,8 +23,8 @@ use parent -norequire,'org::allbinary::animation::image::BaseImageAnimationFacto
 
 sub _init_fields {
     my ($self) = @_;
-    $self->{angleIncrement} = undef;
-    $self->{resizeCanvasForRotation} = undef;
+    $self->{angleIncrement} = undef unless exists $self->{angleIncrement};
+    $self->{resizeCanvasForRotation} = undef unless exists $self->{resizeCanvasForRotation};
 }
 
 

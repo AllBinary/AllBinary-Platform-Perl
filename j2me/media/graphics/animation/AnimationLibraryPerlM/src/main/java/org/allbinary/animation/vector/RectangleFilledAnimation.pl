@@ -22,8 +22,8 @@ use parent -norequire,'org::allbinary::animation::Animation','org::allbinary::gr
 
 sub _init_fields {
     my ($self) = @_;
-    $self->{widthP} = undef;
-    $self->{heightP} = undef;
+    $self->{widthP} = undef unless exists $self->{widthP};
+    $self->{heightP} = undef unless exists $self->{heightP};
 }
 
 

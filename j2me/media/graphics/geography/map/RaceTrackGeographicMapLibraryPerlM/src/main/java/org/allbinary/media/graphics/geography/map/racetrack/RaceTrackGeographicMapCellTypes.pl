@@ -23,14 +23,14 @@ tie our $instance, 'java::lang::LazyStatic', sub { 'org::allbinary::media::graph
 
 sub _init_fields {
     my ($self) = @_;
-    $self->{BOTTOM_LEFT_TURN_ROAD_CELL_TYPE} = undef;
-    $self->{BOTTOM_RIGHT_TURN_ROAD_CELL_TYPE} = undef;
-    $self->{TOP_LEFT_TURN_ROAD_CELL_TYPE} = undef;
-    $self->{TOP_RIGHT_TURN_ROAD_CELL_TYPE} = undef;
-    $self->{HORIZONTAL_STRAIGHT_ROAD_CELL_TYPE} = undef;
-    $self->{VERTICAL_STRAIGHT_ROAD_CELL_TYPE} = undef;
-    $self->{START_LINE_ROAD_CELL_TYPE} = undef;
-    $self->{DEFAULT_FINISH_LINE_ROAD_CELL_TYPE} = undef;
+    $self->{BOTTOM_LEFT_TURN_ROAD_CELL_TYPE} = undef unless exists $self->{BOTTOM_LEFT_TURN_ROAD_CELL_TYPE};
+    $self->{BOTTOM_RIGHT_TURN_ROAD_CELL_TYPE} = undef unless exists $self->{BOTTOM_RIGHT_TURN_ROAD_CELL_TYPE};
+    $self->{TOP_LEFT_TURN_ROAD_CELL_TYPE} = undef unless exists $self->{TOP_LEFT_TURN_ROAD_CELL_TYPE};
+    $self->{TOP_RIGHT_TURN_ROAD_CELL_TYPE} = undef unless exists $self->{TOP_RIGHT_TURN_ROAD_CELL_TYPE};
+    $self->{HORIZONTAL_STRAIGHT_ROAD_CELL_TYPE} = undef unless exists $self->{HORIZONTAL_STRAIGHT_ROAD_CELL_TYPE};
+    $self->{VERTICAL_STRAIGHT_ROAD_CELL_TYPE} = undef unless exists $self->{VERTICAL_STRAIGHT_ROAD_CELL_TYPE};
+    $self->{START_LINE_ROAD_CELL_TYPE} = undef unless exists $self->{START_LINE_ROAD_CELL_TYPE};
+    $self->{DEFAULT_FINISH_LINE_ROAD_CELL_TYPE} = undef unless exists $self->{DEFAULT_FINISH_LINE_ROAD_CELL_TYPE};
 }
 
 

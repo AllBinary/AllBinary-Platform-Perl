@@ -22,7 +22,7 @@ use parent -norequire,'java::lang::Object','org::allbinary::game::tick::Tickable
 
 sub _init_fields {
     my ($self) = @_;
-    $self->{ownedWaypointList} = undef;
+    $self->{ownedWaypointList} = undef unless exists $self->{ownedWaypointList};
     $self->{waypointOverridesAttacking} = 1;
     $self->{waypoint} = $org::allbinary::game::layer::waypoint::WaypointBase::NULL_WAYPOINT_BASE;
     $self->{steeringVisitorList} = 'org::allbinary::util::BasicArrayListD'->new();

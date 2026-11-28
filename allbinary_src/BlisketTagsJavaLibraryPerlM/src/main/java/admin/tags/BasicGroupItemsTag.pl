@@ -22,7 +22,7 @@ use parent -norequire,'admin::tags::TableTag';
 
 sub _init_fields {
     my ($self) = @_;
-    $self->{propertiesHashMap} = undef;
+    $self->{propertiesHashMap} = undef unless exists $self->{propertiesHashMap};
 }
 
 

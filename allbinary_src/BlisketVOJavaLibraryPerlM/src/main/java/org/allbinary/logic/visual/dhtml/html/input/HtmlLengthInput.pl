@@ -24,8 +24,8 @@ sub _init_fields {
     my ($self) = @_;
     $self->{MAXLENGTH} = "MAXLENGTH";
     $self->{SIZE} = "SIZE";
-    $self->{length} = undef;
-    $self->{size} = undef;
+    $self->{length} = undef unless exists $self->{length};
+    $self->{size} = undef unless exists $self->{size};
 }
 
 

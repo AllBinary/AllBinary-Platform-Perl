@@ -24,10 +24,10 @@ sub _init_fields {
     my ($self) = @_;
     $self->{logUtil} = 'org::allbinary::logic::communication::log::LogUtil'->getInstance();
     $self->{commonStrings} = 'org::allbinary::string::CommonStrings'->getInstance();
-    $self->{abeClientInformation} = undef;
-    $self->{orderHistory} = undef;
-    $self->{storeFrontInterface} = undef;
-    $self->{user} = undef;
+    $self->{abeClientInformation} = undef unless exists $self->{abeClientInformation};
+    $self->{orderHistory} = undef unless exists $self->{orderHistory};
+    $self->{storeFrontInterface} = undef unless exists $self->{storeFrontInterface};
+    $self->{user} = undef unless exists $self->{user};
 }
 
 

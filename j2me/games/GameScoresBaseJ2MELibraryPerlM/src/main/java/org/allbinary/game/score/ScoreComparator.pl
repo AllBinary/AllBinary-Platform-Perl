@@ -23,7 +23,7 @@ use parent -norequire,'java::lang::Object','javax::microedition::rms::RecordComp
 sub _init_fields {
     my ($self) = @_;
     $self->{logUtil} = 'org::allbinary::logic::communication::log::LogUtil'->getInstance();
-    $self->{isHighestBest} = undef;
+    $self->{isHighestBest} = undef unless exists $self->{isHighestBest};
 }
 
 

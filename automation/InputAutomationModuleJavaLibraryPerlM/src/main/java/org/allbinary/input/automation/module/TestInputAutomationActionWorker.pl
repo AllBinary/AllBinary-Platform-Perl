@@ -24,7 +24,7 @@ use parent -norequire,'org::allbinary::input::automation::module::AbstractInputA
 sub _init_fields {
     my ($self) = @_;
     $self->{logUtil} = 'org::allbinary::logic::communication::log::LogUtil'->getInstance();
-    $self->{sleep} = undef;
+    $self->{sleep} = undef unless exists $self->{sleep};
 }
 
 

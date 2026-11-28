@@ -23,8 +23,8 @@ use parent -norequire,'org::allbinary::game::ai::BasicAI';
 sub _init_fields {
     my ($self) = @_;
     $self->{i_random} = 0;
-    $self->{inputProbability} = undef;
-    $self->{visitor} = undef;
+    $self->{inputProbability} = undef unless exists $self->{inputProbability};
+    $self->{visitor} = undef unless exists $self->{visitor};
     $self->{keyArray} = [$javax::microedition::lcdui::Canvas::UP, $javax::microedition::lcdui::Canvas::DOWN, $javax::microedition::lcdui::Canvas::LEFT, $javax::microedition::lcdui::Canvas::RIGHT, $javax::microedition::lcdui::Canvas::KEY_NUM1, $javax::microedition::lcdui::Canvas::KEY_NUM7, $javax::microedition::lcdui::Canvas::KEY_NUM9];
     $self->{myRandomFactory} = 'org::allbinary::game::rand::MyRandomFactory'->getInstance();
 }

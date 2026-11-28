@@ -24,9 +24,9 @@ tie our $NULL_PATH_FINDING_INFO, 'java::lang::LazyStatic', sub { 'org::allbinary
 sub _init_fields {
     my ($self) = @_;
     $self->{pathFinder} = $org::allbinary::media::graphics::geography::pathfinding::GeographicPathFinderBase::NULL_GEOGRAPHIC_PATH_FINDER_BASE;
-    $self->{startPathFindingNodeList} = undef;
-    $self->{endPathFindingNodeList} = undef;
-    $self->{pathFindingNodeCostInfoFactoryInterface} = undef;
+    $self->{startPathFindingNodeList} = undef unless exists $self->{startPathFindingNodeList};
+    $self->{endPathFindingNodeList} = undef unless exists $self->{endPathFindingNodeList};
+    $self->{pathFindingNodeCostInfoFactoryInterface} = undef unless exists $self->{pathFindingNodeCostInfoFactoryInterface};
 }
 
 

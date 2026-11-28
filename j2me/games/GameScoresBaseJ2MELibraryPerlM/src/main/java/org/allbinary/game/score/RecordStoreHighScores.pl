@@ -29,9 +29,9 @@ sub _init_fields {
     $self->{tsUtil} = 'org::allbinary::TsUtil'->getInstance();
     $self->{RECORD_ID} = "_HS";
     $self->{MAXHIGHSCORES} = 100;
-    $self->{gameInfo} = undef;
-    $self->{abeClientInformation} = undef;
-    $self->{recordComparatorInterface} = undef;
+    $self->{gameInfo} = undef unless exists $self->{gameInfo};
+    $self->{abeClientInformation} = undef unless exists $self->{abeClientInformation};
+    $self->{recordComparatorInterface} = undef unless exists $self->{recordComparatorInterface};
 }
 
 

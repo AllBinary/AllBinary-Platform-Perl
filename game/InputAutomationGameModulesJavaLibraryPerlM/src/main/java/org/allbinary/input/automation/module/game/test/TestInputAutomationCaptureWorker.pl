@@ -23,7 +23,7 @@ use parent -norequire,'org::allbinary::input::automation::module::AbstractInputA
 sub _init_fields {
     my ($self) = @_;
     $self->{logUtil} = 'org::allbinary::logic::communication::log::LogUtil'->getInstance();
-    $self->{genericProfileActions} = undef;
+    $self->{genericProfileActions} = undef unless exists $self->{genericProfileActions};
     $self->{MESSAGE} = "GenericInputAutomationCaptureWorker";
     $self->{PROCESS_DATA_WORKER_RESULTS} = "processDataWorkerResults";
     $self->{IMAGE_AVAILABLE_SO_PROCESSING} = "Image Available so processing";

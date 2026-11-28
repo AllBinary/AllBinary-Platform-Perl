@@ -30,10 +30,10 @@ sub _init_fields {
     $self->{previous} = $self->{origin};
     $self->{intermediate} = $self->{origin};
     $self->{line} = 'org::allbinary::graphics::Line'->new($self->{origin}, $self->{origin});
-    $self->{motionGesturesHandler} = undef;
-    $self->{movedMotionGesturesHandler} = undef;
-    $self->{scrolledMotionGesturesHandler} = undef;
-    $self->{motionEventCircularPool} = undef;
+    $self->{motionGesturesHandler} = undef unless exists $self->{motionGesturesHandler};
+    $self->{movedMotionGesturesHandler} = undef unless exists $self->{movedMotionGesturesHandler};
+    $self->{scrolledMotionGesturesHandler} = undef unless exists $self->{scrolledMotionGesturesHandler};
+    $self->{motionEventCircularPool} = undef unless exists $self->{motionEventCircularPool};
 }
 
 

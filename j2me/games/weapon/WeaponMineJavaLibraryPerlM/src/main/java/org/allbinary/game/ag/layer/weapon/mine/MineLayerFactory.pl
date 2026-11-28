@@ -22,7 +22,7 @@ use parent -norequire,'java::lang::Object','org::allbinary::layer::AllBinaryLaye
 
 sub _init_fields {
     my ($self) = @_;
-    $self->{viewPositionFactoryInterface} = undef;
+    $self->{viewPositionFactoryInterface} = undef unless exists $self->{viewPositionFactoryInterface};
 }
 
 

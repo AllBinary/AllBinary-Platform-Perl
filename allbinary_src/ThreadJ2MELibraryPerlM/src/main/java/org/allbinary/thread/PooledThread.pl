@@ -25,7 +25,7 @@ sub _init_fields {
     $self->{logUtil} = 'org::allbinary::logic::communication::log::LogUtil'->getInstance();
     $self->{commonStrings} = 'org::allbinary::string::CommonStrings'->getInstance();
     $self->{threadObjectUtil} = 'org::allbinary::thread::ThreadObjectUtil'->getInstance();
-    $self->{threadPool} = undef;
+    $self->{threadPool} = undef unless exists $self->{threadPool};
     $self->{INTERRUPT_EXCEPTION} = "Exit InterruptedException";
 }
 

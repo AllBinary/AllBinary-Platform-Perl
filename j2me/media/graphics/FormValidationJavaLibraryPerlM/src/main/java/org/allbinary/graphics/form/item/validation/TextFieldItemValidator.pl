@@ -22,10 +22,10 @@ use parent -norequire,'org::allbinary::logic::control::validate::ValidatorBase';
 
 sub _init_fields {
     my ($self) = @_;
-    $self->{textFieldItem} = undef;
-    $self->{min} = undef;
-    $self->{max} = undef;
-    $self->{allowOnEmpty} = undef;
+    $self->{textFieldItem} = undef unless exists $self->{textFieldItem};
+    $self->{min} = undef unless exists $self->{min};
+    $self->{max} = undef unless exists $self->{max};
+    $self->{allowOnEmpty} = undef unless exists $self->{allowOnEmpty};
 }
 
 

@@ -29,18 +29,18 @@ sub _init_fields {
     $self->{displayInfo} = 'org::allbinary::graphics::displayable::DisplayInfoSingleton'->getInstance();
     $self->{updateMyFontProcessor} = 'org::allbinary::graphics::font::UpdateMyFontProcessor'->new($self);
     $self->{myFontProcessor} = $self->{updateMyFontProcessor};
-    $self->{location} = 0;
-    $self->{direction} = 0;
-    $self->{bufferZone} = 0;
-    $self->{bufferZoneY} = 0;
+    $self->{location} = 0 unless exists $self->{location};
+    $self->{direction} = 0 unless exists $self->{direction};
+    $self->{bufferZone} = 0 unless exists $self->{bufferZone};
+    $self->{bufferZoneY} = 0 unless exists $self->{bufferZoneY};
     $self->{hudGraphicsPosition} = $org::allbinary::game::graphics::hud::HudGraphicsPosition::NULL_HUD_GRAPHICS_POSITION;
-    $self->{x} = 0;
-    $self->{y} = 0;
+    $self->{x} = 0 unless exists $self->{x};
+    $self->{y} = 0 unless exists $self->{y};
     $self->{basicColor} = 'org::allbinary::graphics::color::BasicColorFactory'->getInstance()->{BLACK};
-    $self->{color} = undef;
-    $self->{updateMaxWidth} = 0;
-    $self->{updateMaxHeight} = 0;
-    $self->{offsetY} = 0;
+    $self->{color} = undef unless exists $self->{color};
+    $self->{updateMaxWidth} = 0 unless exists $self->{updateMaxWidth};
+    $self->{updateMaxHeight} = 0 unless exists $self->{updateMaxHeight};
+    $self->{offsetY} = 0 unless exists $self->{offsetY};
 }
 
 

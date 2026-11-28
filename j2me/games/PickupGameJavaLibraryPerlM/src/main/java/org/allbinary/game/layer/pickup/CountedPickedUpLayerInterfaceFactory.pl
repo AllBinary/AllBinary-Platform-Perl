@@ -23,7 +23,7 @@ tie our $NULL_COUNTED_PICKUP_LAYER_FACTORY, 'java::lang::LazyStatic', sub { 'org
 
 sub _init_fields {
     my ($self) = @_;
-    $self->{id} = undef;
+    $self->{id} = undef unless exists $self->{id};
 }
 
 

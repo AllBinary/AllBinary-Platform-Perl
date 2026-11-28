@@ -24,11 +24,11 @@ sub _init_fields {
     my ($self) = @_;
     $self->{imageRotationUtil} = 'org::allbinary::media::image::ImageRotationUtil'->getInstance();
     $self->{imageModifierUtil} = 'org::allbinary::media::image::ImageModifierUtil'->getInstanceOrCreate();
-    $self->{originalImage} = undef;
+    $self->{originalImage} = undef unless exists $self->{originalImage};
     $self->{twoImages} = [(undef) x (2)];
     $self->{canvasSurfaceArray} = [(undef) x (2)];
-    $self->{imageToShow} = undef;
-    $self->{bufferedImageIndex} = 0;
+    $self->{imageToShow} = undef unless exists $self->{imageToShow};
+    $self->{bufferedImageIndex} = 0 unless exists $self->{bufferedImageIndex};
     $self->{alphaProcessor} = 'org::allbinary::animation::image::AlphaBaseProcessor'->getInstance();
 }
 

@@ -23,8 +23,8 @@ use parent -norequire,'tags::PropertiesTag';
 sub _init_fields {
     my ($self) = @_;
     $self->{logUtil} = 'org::allbinary::logic::communication::log::LogUtil'->getInstance();
-    $self->{tagHelperFactoryInterface} = undef;
-    $self->{anyType} = undef;
+    $self->{tagHelperFactoryInterface} = undef unless exists $self->{tagHelperFactoryInterface};
+    $self->{anyType} = undef unless exists $self->{anyType};
 }
 
 

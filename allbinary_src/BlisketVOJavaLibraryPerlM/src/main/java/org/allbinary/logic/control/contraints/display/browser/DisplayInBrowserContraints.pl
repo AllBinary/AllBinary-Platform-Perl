@@ -22,10 +22,10 @@ use parent -norequire,'java::lang::Object','org::allbinary::logic::control::cont
 
 sub _init_fields {
     my ($self) = @_;
-    $self->{frameable} = 0;
-    $self->{mountable} = 0;
-    $self->{quickFrameable} = 0;
-    $self->{mountedLink} = undef;
+    $self->{frameable} = 0 unless exists $self->{frameable};
+    $self->{mountable} = 0 unless exists $self->{mountable};
+    $self->{quickFrameable} = 0 unless exists $self->{quickFrameable};
+    $self->{mountedLink} = undef unless exists $self->{mountedLink};
 }
 
 

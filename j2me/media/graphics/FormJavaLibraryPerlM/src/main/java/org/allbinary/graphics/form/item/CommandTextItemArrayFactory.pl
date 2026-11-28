@@ -23,7 +23,7 @@ use parent -norequire,'java::lang::Object';
 sub _init_fields {
     my ($self) = @_;
     $self->{list} = 'org::allbinary::util::BasicArrayListD'->new();
-    $self->{visitorInterface} = undef;
+    $self->{visitorInterface} = undef unless exists $self->{visitorInterface};
 }
 
 

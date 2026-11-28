@@ -26,7 +26,7 @@ sub _init_fields {
     $self->{yArray} = [$self->{halfHeight} + 30, $self->{halfHeight} + 30, $self->{halfHeight} + 30 + 15, $self->{halfHeight} + 30 + 15, $self->{halfHeight} + 30 + 30, $self->{halfHeight} + 30 + 30, $self->{halfHeight} + 30 + 45, $self->{halfHeight} + 30 + 45];
     $self->{myFontProcessor} = 'org::allbinary::graphics::font::UpdateMyFontProcessor'->new($self);
     $self->{baseRefreshHelperCharArray} = [map { [("\0") x (0)] } 1 .. (0)];
-    $self->{defaultStringWidth} = 0;
+    $self->{defaultStringWidth} = 0 unless exists $self->{defaultStringWidth};
     $self->{RED} = int('org::allbinary::graphics::color::BasicColorFactory'->getInstance()->{RED});
 }
 

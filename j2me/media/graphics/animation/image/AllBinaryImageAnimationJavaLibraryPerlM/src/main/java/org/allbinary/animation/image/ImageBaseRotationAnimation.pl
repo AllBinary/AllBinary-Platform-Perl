@@ -22,7 +22,7 @@ use parent -norequire,'org::allbinary::animation::RotationAnimation';
 
 sub _init_fields {
     my ($self) = @_;
-    $self->{image} = undef;
+    $self->{image} = undef unless exists $self->{image};
     $self->{anchor} = $org::allbinary::graphics::Anchor::TOP_LEFT;
 }
 

@@ -23,13 +23,13 @@ use parent -norequire,'org::allbinary::layer::Layer','org::allbinary::layer::Nam
 
 sub _init_fields {
     my ($self) = @_;
-    $self->{cellWidth} = undef;
-    $self->{cellHeight} = undef;
-    $self->{halfWidth} = undef;
-    $self->{halfHeight} = undef;
-    $self->{halfCellWidth} = undef;
-    $self->{halfCellHeight} = undef;
-    $self->{dataId} = undef;
+    $self->{cellWidth} = undef unless exists $self->{cellWidth};
+    $self->{cellHeight} = undef unless exists $self->{cellHeight};
+    $self->{halfWidth} = undef unless exists $self->{halfWidth};
+    $self->{halfHeight} = undef unless exists $self->{halfHeight};
+    $self->{halfCellWidth} = undef unless exists $self->{halfCellWidth};
+    $self->{halfCellHeight} = undef unless exists $self->{halfCellHeight};
+    $self->{dataId} = undef unless exists $self->{dataId};
 }
 
 

@@ -25,9 +25,9 @@ sub _init_fields {
     my ($self) = @_;
     $self->{weaponProperties} = 'org::allbinary::logic::string::StringUtil'->getInstance()->getArrayInstance();
     $self->{rtsLayer} = 'org::allbinary::game::layer::special::CollidableDestroyableDamageableLayer'->getNullInstance();
-    $self->{costY} = 0;
-    $self->{costY1} = 0;
-    $self->{fontHeight} = 0;
+    $self->{costY} = 0 unless exists $self->{costY};
+    $self->{costY1} = 0 unless exists $self->{costY1};
+    $self->{fontHeight} = 0 unless exists $self->{fontHeight};
 }
 
 

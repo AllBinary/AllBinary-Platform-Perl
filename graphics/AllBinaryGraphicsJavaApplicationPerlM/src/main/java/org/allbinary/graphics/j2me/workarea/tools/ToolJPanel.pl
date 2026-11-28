@@ -22,24 +22,24 @@ use parent -norequire,'java::lang::Object';
 
 sub _init_fields {
     my ($self) = @_;
-    $self->{arcJButton} = undef;
-    $self->{charJButton} = undef;
-    $self->{colorJList} = undef;
-    $self->{colorJPanel} = undef;
-    $self->{dottedArcJButton} = undef;
-    $self->{dottedFillArcJButton} = undef;
-    $self->{dottedFillRectJButton} = undef;
-    $self->{dottedFillRountRectJButton} = undef;
-    $self->{dottedLineJButton} = undef;
-    $self->{dottedRectButton} = undef;
-    $self->{fillArcJButton} = undef;
-    $self->{fillRectJButton} = undef;
-    $self->{fillRoundRectJButton} = undef;
-    $self->{imageJButton} = undef;
-    $self->{lineJButton} = undef;
-    $self->{rectJButton} = undef;
-    $self->{roundRectJButton} = undef;
-    $self->{stringJButton} = undef;
+    $self->{arcJButton} = undef unless exists $self->{arcJButton};
+    $self->{charJButton} = undef unless exists $self->{charJButton};
+    $self->{colorJList} = undef unless exists $self->{colorJList};
+    $self->{colorJPanel} = undef unless exists $self->{colorJPanel};
+    $self->{dottedArcJButton} = undef unless exists $self->{dottedArcJButton};
+    $self->{dottedFillArcJButton} = undef unless exists $self->{dottedFillArcJButton};
+    $self->{dottedFillRectJButton} = undef unless exists $self->{dottedFillRectJButton};
+    $self->{dottedFillRountRectJButton} = undef unless exists $self->{dottedFillRountRectJButton};
+    $self->{dottedLineJButton} = undef unless exists $self->{dottedLineJButton};
+    $self->{dottedRectButton} = undef unless exists $self->{dottedRectButton};
+    $self->{fillArcJButton} = undef unless exists $self->{fillArcJButton};
+    $self->{fillRectJButton} = undef unless exists $self->{fillRectJButton};
+    $self->{fillRoundRectJButton} = undef unless exists $self->{fillRoundRectJButton};
+    $self->{imageJButton} = undef unless exists $self->{imageJButton};
+    $self->{lineJButton} = undef unless exists $self->{lineJButton};
+    $self->{rectJButton} = undef unless exists $self->{rectJButton};
+    $self->{roundRectJButton} = undef unless exists $self->{roundRectJButton};
+    $self->{stringJButton} = undef unless exists $self->{stringJButton};
 }
 
 

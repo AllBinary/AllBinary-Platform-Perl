@@ -24,15 +24,15 @@ our $NAME = "Mouse";
 sub _init_fields {
     my ($self) = @_;
     $self->{logUtil} = 'org::allbinary::logic::communication::log::LogUtil'->getInstance();
-    $self->{point} = undef;
-    $self->{buttons} = 0;
-    $self->{mouseActionScriptInputJPanel} = undef;
+    $self->{point} = undef unless exists $self->{point};
+    $self->{buttons} = 0 unless exists $self->{buttons};
+    $self->{mouseActionScriptInputJPanel} = undef unless exists $self->{mouseActionScriptInputJPanel};
 }
 
 sub new {
     my ($class, @arguments) = @_;
-    return $class->_new1(@arguments) if scalar(@arguments) == 1;
-    return $class->_new0(@arguments) if scalar(@arguments) == 0;
+    return _new1($class, @arguments) if scalar(@arguments) == 1;
+    return _new0($class, @arguments) if scalar(@arguments) == 0;
     die "No constructor of MouseActionScriptInput takes " . scalar(@arguments) . " arguments";
 }
 

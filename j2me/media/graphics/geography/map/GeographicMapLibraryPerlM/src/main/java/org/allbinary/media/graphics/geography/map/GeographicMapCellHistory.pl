@@ -26,12 +26,12 @@ sub _init_fields {
     my ($self) = @_;
     $self->{logUtil} = 'org::allbinary::logic::communication::log::LogUtil'->getInstance();
     $self->{booleanFactory} = 'org::allbinary::logic::java::bool::BooleanFactory'->getInstance();
-    $self->{list} = undef;
-    $self->{visitedList} = undef;
+    $self->{list} = undef unless exists $self->{list};
+    $self->{visitedList} = undef unless exists $self->{visitedList};
     $self->{MISSED_INFO} = "Missed";
     $self->{animation} = 'org::allbinary::animation::text::TextAnimation'->new($self->{MISSED_INFO}, 'org::allbinary::animation::AnimationBehavior'->getInstance());
     $self->{myFontProcessor} = 'org::allbinary::graphics::font::UpdateMyFontProcessor'->new($self);
-    $self->{totalVisited} = 0;
+    $self->{totalVisited} = 0 unless exists $self->{totalVisited};
     $self->{halfWidth} = 0;
     $self->{fontHeight} = 0;
     $self->{RED} = int('org::allbinary::graphics::color::BasicColorFactory'->getInstance()->{RED});

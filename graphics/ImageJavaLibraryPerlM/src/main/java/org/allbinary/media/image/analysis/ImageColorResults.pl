@@ -22,8 +22,8 @@ use parent -norequire,'java::lang::Object';
 
 sub _init_fields {
     my ($self) = @_;
-    $self->{colorRange} = undef;
-    $self->{colorAverage} = undef;
+    $self->{colorRange} = undef unless exists $self->{colorRange};
+    $self->{colorAverage} = undef unless exists $self->{colorAverage};
 }
 
 

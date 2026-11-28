@@ -26,7 +26,7 @@ tie our $instance, 'java::lang::LazyStatic', sub { 'org::allbinary::game::rand::
 sub _init_fields {
     my ($self) = @_;
     $self->{mathUtil} = 'org::allbinary::logic::math::MathUtil'->getInstance();
-    $self->{rand} = undef;
+    $self->{rand} = undef unless exists $self->{rand};
 }
 
 

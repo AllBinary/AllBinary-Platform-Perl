@@ -22,19 +22,19 @@ use parent -norequire,'java::lang::Object','org::allbinary::business::advertisem
 
 sub _init_fields {
     my ($self) = @_;
-    $self->{artist} = undef;
-    $self->{artistLink} = undef;
-    $self->{title} = undef;
-    $self->{dateAdded} = undef;
-    $self->{directory} = undef;
-    $self->{framedLink} = undef;
-    $self->{rank} = 0;
-    $self->{listPrice} = undef;
-    $self->{ourPrice} = undef;
-    $self->{image} = undef;
-    $self->{product} = undef;
-    $self->{thumbnail} = undef;
-    $self->{displayInBrowserContraintsInterface} = undef;
+    $self->{artist} = undef unless exists $self->{artist};
+    $self->{artistLink} = undef unless exists $self->{artistLink};
+    $self->{title} = undef unless exists $self->{title};
+    $self->{dateAdded} = undef unless exists $self->{dateAdded};
+    $self->{directory} = undef unless exists $self->{directory};
+    $self->{framedLink} = undef unless exists $self->{framedLink};
+    $self->{rank} = 0 unless exists $self->{rank};
+    $self->{listPrice} = undef unless exists $self->{listPrice};
+    $self->{ourPrice} = undef unless exists $self->{ourPrice};
+    $self->{image} = undef unless exists $self->{image};
+    $self->{product} = undef unless exists $self->{product};
+    $self->{thumbnail} = undef unless exists $self->{thumbnail};
+    $self->{displayInBrowserContraintsInterface} = undef unless exists $self->{displayInBrowserContraintsInterface};
 }
 
 

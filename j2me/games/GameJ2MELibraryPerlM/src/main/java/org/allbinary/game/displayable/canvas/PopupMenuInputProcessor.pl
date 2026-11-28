@@ -25,7 +25,7 @@ sub _init_fields {
     $self->{rectangleCollisionUtil} = 'org::allbinary::math::RectangleCollisionUtil'->getInstance();
     $self->{CLICK_DELAY} = 120;
     $self->{clickTimeHelper} = 'org::allbinary::time::TimeDelayHelper'->new($self->{CLICK_DELAY});
-    $self->{rectangle} = undef;
+    $self->{rectangle} = undef unless exists $self->{rectangle};
 }
 
 

@@ -24,13 +24,13 @@ tie our $categoryRequest, 'java::lang::LazyStatic', sub { 'org::allbinary::logic
 sub _init_fields {
     my ($self) = @_;
     $self->{logUtil} = 'org::allbinary::logic::communication::log::LogUtil'->getInstance();
-    $self->{pageContext} = undef;
-    $self->{hashMap} = undef;
-    $self->{request} = undef;
-    $self->{categoryLoaderInterface} = undef;
-    $self->{categoryInterface} = undef;
-    $self->{childCategoryInterface} = undef;
-    $self->{transformInfoInterface} = undef;
+    $self->{pageContext} = undef unless exists $self->{pageContext};
+    $self->{hashMap} = undef unless exists $self->{hashMap};
+    $self->{request} = undef unless exists $self->{request};
+    $self->{categoryLoaderInterface} = undef unless exists $self->{categoryLoaderInterface};
+    $self->{categoryInterface} = undef unless exists $self->{categoryInterface};
+    $self->{childCategoryInterface} = undef unless exists $self->{childCategoryInterface};
+    $self->{transformInfoInterface} = undef unless exists $self->{transformInfoInterface};
 }
 
 

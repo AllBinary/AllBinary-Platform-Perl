@@ -26,7 +26,7 @@ sub _init_fields {
     $self->{logUtil} = 'org::allbinary::logic::communication::log::LogUtil'->getInstance();
     $self->{commonStrings} = 'org::allbinary::string::CommonStrings'->getInstance();
     $self->{repaintProcessor} = 'org::allbinary::graphics::displayable::screen::ScreenRepaintProcessorFactory'->getInstance()->create($self);
-    $self->{commandStack} = undef;
+    $self->{commandStack} = undef unless exists $self->{commandStack};
 }
 
 

@@ -24,7 +24,7 @@ sub _init_fields {
     my ($self) = @_;
     $self->{vectorExplosionGenerator} = 'org::allbinary::animation::VectorExplosionGenerator'->getInstance();
     $self->{basicColor} = 'org::allbinary::graphics::color::BasicColorFactory'->getInstance()->{WHITE};
-    $self->{animationBehaviorFactory} = undef;
+    $self->{animationBehaviorFactory} = undef unless exists $self->{animationBehaviorFactory};
 }
 
 

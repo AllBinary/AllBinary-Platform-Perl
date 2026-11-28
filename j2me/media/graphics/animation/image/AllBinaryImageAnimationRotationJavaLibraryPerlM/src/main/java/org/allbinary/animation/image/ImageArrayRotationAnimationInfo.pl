@@ -22,11 +22,11 @@ use parent -norequire,'java::lang::Object';
 
 sub _init_fields {
     my ($self) = @_;
-    $self->{imageArray} = undef;
-    $self->{angleIncrement} = undef;
-    $self->{totalAngle} = undef;
-    $self->{dx} = undef;
-    $self->{dy} = undef;
+    $self->{imageArray} = undef unless exists $self->{imageArray};
+    $self->{angleIncrement} = undef unless exists $self->{angleIncrement};
+    $self->{totalAngle} = undef unless exists $self->{totalAngle};
+    $self->{dx} = undef unless exists $self->{dx};
+    $self->{dy} = undef unless exists $self->{dy};
 }
 
 

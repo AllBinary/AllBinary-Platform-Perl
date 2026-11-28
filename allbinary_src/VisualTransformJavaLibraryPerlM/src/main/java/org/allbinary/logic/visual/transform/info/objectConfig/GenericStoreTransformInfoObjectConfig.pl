@@ -23,14 +23,14 @@ use parent -norequire,'org::allbinary::logic::visual::transform::info::objectCon
 sub _init_fields {
     my ($self) = @_;
     $self->{logUtil} = 'org::allbinary::logic::communication::log::LogUtil'->getInstance();
-    $self->{abeClientInformation} = undef;
+    $self->{abeClientInformation} = undef unless exists $self->{abeClientInformation};
 }
 
 sub new {
     my ($class, @arguments) = @_;
-    return $class->_new2(@arguments) if scalar(@arguments) == 2;
-    return $class->_new3(@arguments) if scalar(@arguments) == 3;
-    return $class->_new4(@arguments) if scalar(@arguments) == 4;
+    return _new2($class, @arguments) if scalar(@arguments) == 2;
+    return _new3($class, @arguments) if scalar(@arguments) == 3;
+    return _new4($class, @arguments) if scalar(@arguments) == 4;
     die "No constructor of GenericStoreTransformInfoObjectConfig takes " . scalar(@arguments) . " arguments";
 }
 

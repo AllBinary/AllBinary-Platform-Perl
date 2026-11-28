@@ -22,8 +22,8 @@ use parent -norequire,'java::lang::Object';
 
 sub _init_fields {
     my ($self) = @_;
-    $self->{width} = 0;
-    $self->{height} = 0;
+    $self->{width} = 0 unless exists $self->{width};
+    $self->{height} = 0 unless exists $self->{height};
 }
 
 

@@ -24,7 +24,7 @@ use parent -norequire,'java::lang::Object';
 
 sub _init_fields {
     my ($self) = @_;
-    $self->{imageComparatorConstraintsInterface} = undef;
+    $self->{imageComparatorConstraintsInterface} = undef unless exists $self->{imageComparatorConstraintsInterface};
 }
 
 

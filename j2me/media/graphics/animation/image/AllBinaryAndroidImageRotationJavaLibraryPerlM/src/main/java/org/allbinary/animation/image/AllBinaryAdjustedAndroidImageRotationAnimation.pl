@@ -22,8 +22,8 @@ use parent -norequire,'org::allbinary::animation::image::AllBinaryFlickerAndroid
 
 sub _init_fields {
     my ($self) = @_;
-    $self->{dx} = 0;
-    $self->{dy} = 0;
+    $self->{dx} = 0 unless exists $self->{dx};
+    $self->{dy} = 0 unless exists $self->{dy};
 }
 
 

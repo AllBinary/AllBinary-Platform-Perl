@@ -25,7 +25,7 @@ sub _init_fields {
     $self->{logUtil} = 'org::allbinary::logic::communication::log::LogUtil'->getInstance();
     $self->{commonStrings} = 'org::allbinary::string::CommonStrings'->getInstance();
     $self->{soundStrings} = 'org::allbinary::media::audio::SoundStrings'->getInstance();
-    $self->{soundsFactoryInterface} = undef;
+    $self->{soundsFactoryInterface} = undef unless exists $self->{soundsFactoryInterface};
 }
 
 

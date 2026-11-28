@@ -23,7 +23,7 @@ use parent -norequire,'java::lang::Object';
 sub _init_fields {
     my ($self) = @_;
     $self->{logUtil} = 'org::allbinary::logic::communication::log::LogUtil'->getInstance();
-    $self->{groupInterface} = undef;
+    $self->{groupInterface} = undef unless exists $self->{groupInterface};
     $self->{list} = 'org::allbinary::util::BasicArrayListD'->new();
 }
 

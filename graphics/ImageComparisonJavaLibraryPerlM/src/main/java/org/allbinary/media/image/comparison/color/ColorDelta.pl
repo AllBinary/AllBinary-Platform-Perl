@@ -22,9 +22,9 @@ use parent -norequire,'java::lang::Object','org::allbinary::logic::util::cache::
 
 sub _init_fields {
     my ($self) = @_;
-    $self->{rgb1} = 0;
-    $self->{rgb2} = 0;
-    $self->{key} = undef;
+    $self->{rgb1} = 0 unless exists $self->{rgb1};
+    $self->{rgb2} = 0 unless exists $self->{rgb2};
+    $self->{key} = undef unless exists $self->{key};
 }
 
 

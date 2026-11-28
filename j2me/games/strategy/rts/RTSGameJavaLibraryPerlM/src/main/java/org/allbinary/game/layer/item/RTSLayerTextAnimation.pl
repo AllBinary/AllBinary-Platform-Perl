@@ -22,8 +22,8 @@ use parent -norequire,'org::allbinary::animation::Animation','org::allbinary::gr
 
 sub _init_fields {
     my ($self) = @_;
-    $self->{image} = undef;
-    $self->{text} = undef;
+    $self->{image} = undef unless exists $self->{image};
+    $self->{text} = undef unless exists $self->{text};
     $self->{myFontProcessor} = 'org::allbinary::graphics::font::UpdateMyFontProcessor'->new($self);
     $self->{fontHeight} = 0;
 }

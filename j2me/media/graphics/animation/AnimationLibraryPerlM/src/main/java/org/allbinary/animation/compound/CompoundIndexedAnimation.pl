@@ -22,8 +22,8 @@ use parent -norequire,'org::allbinary::animation::IndexedAnimation','org::allbin
 
 sub _init_fields {
     my ($self) = @_;
-    $self->{circularIndexUtil} = undef;
-    $self->{animationInterfaceArray} = undef;
+    $self->{circularIndexUtil} = undef unless exists $self->{circularIndexUtil};
+    $self->{animationInterfaceArray} = undef unless exists $self->{animationInterfaceArray};
 }
 
 

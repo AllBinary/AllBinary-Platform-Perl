@@ -23,16 +23,16 @@ use parent -norequire,'org::allbinary::game::input::PlayerGameInput';
 sub _init_fields {
     my ($self) = @_;
     $self->{inputProcessorArray} = [(undef) x ('org::allbinary::game::input::InputFactory'->getInstance()->{MAX})];
-    $self->{list} = undef;
+    $self->{list} = undef unless exists $self->{list};
     $self->{isSingleKeyProcessing} = 'org::allbinary::game::configuration::feature::Features'->getInstance()->isFeature('org::allbinary::game::configuration::feature::InputFeatureFactory'->getInstance()->{SINGLE_KEY_REPEAT_PRESS}) || 'org::allbinary::game::configuration::feature::Features'->getInstance()->isFeature('org::allbinary::game::configuration::feature::InputFeatureFactory'->getInstance()->{SINGLE_KEY_PRESS});
     $self->{selectedRTSLayersList} = 'org::allbinary::util::BasicArrayListD'->new();
     $self->{preSelectedRTSLayersList} = 'org::allbinary::util::BasicArrayListD'->new();
     $self->{paintSelectedRTSLayersList} = 'org::allbinary::util::BasicArrayListUtil'->getInstance()->getImmutableInstance();
-    $self->{rtsPlayerLayerInterface} = undef;
-    $self->{selectRTSLayerVisitorInterface} = undef;
-    $self->{upgradeGameNotificationEvent} = undef;
-    $self->{noMoneyGameNotificationEvent} = undef;
-    $self->{downgradeGameNotificationEvent} = undef;
+    $self->{rtsPlayerLayerInterface} = undef unless exists $self->{rtsPlayerLayerInterface};
+    $self->{selectRTSLayerVisitorInterface} = undef unless exists $self->{selectRTSLayerVisitorInterface};
+    $self->{upgradeGameNotificationEvent} = undef unless exists $self->{upgradeGameNotificationEvent};
+    $self->{noMoneyGameNotificationEvent} = undef unless exists $self->{noMoneyGameNotificationEvent};
+    $self->{downgradeGameNotificationEvent} = undef unless exists $self->{downgradeGameNotificationEvent};
 }
 
 

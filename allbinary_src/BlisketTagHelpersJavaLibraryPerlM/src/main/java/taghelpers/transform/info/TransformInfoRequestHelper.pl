@@ -23,7 +23,7 @@ use parent -norequire,'admin::taghelpers::ModifyTable';
 sub _init_fields {
     my ($self) = @_;
     $self->{logUtil} = 'org::allbinary::logic::communication::log::LogUtil'->getInstance();
-    $self->{transformInfoInterface} = undef;
+    $self->{transformInfoInterface} = undef unless exists $self->{transformInfoInterface};
 }
 
 

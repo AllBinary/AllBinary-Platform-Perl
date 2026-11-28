@@ -24,7 +24,7 @@ sub _init_fields {
     my ($self) = @_;
     $self->{basicArrayListUtil} = 'org::allbinary::util::BasicArrayListUtil'->getInstance();
     $self->{hashtable} = 'org::allbinary::logic::StdUtil'->getInstance()->createHashtable();
-    $self->{initialized} = 0;
+    $self->{initialized} = 0 unless exists $self->{initialized};
 }
 
 sub new {

@@ -23,7 +23,7 @@ use parent -norequire,'org::allbinary::animation::IndexedAnimation';
 sub _init_fields {
     my ($self) = @_;
     $self->{imageArray} = $javax::microedition::lcdui::NullImage::NULL_IMAGE_ARRAY;
-    $self->{totalFrames} = 0;
+    $self->{totalFrames} = 0 unless exists $self->{totalFrames};
     $self->{circularIndexUtil} = $org::allbinary::util::CircularIndexUtil::NULL_CIRCULAR_INDEX_UTIL;
     $self->{anchor} = $org::allbinary::graphics::Anchor::TOP_LEFT;
 }

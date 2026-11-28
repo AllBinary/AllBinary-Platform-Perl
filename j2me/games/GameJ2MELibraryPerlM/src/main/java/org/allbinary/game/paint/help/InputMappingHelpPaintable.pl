@@ -33,11 +33,11 @@ sub _init_fields {
     $self->{basicColorFactory} = 'org::allbinary::graphics::color::BasicColorFactory'->getInstance();
     $self->{NONE} = 'org::allbinary::game::input::GameKeyFactory'->getInstance()->{NONE};
     $self->{EMPTY_STRING} = 'org::allbinary::logic::string::StringUtil'->getInstance()->{EMPTY_STRING};
-    $self->{gameInputMappingArray} = undef;
+    $self->{gameInputMappingArray} = undef unless exists $self->{gameInputMappingArray};
     $self->{keyMappingArray} = [(undef) x (0)];
     $self->{actionBasicColor} = 'org::allbinary::graphics::color::BasicColorUtil'->getInstance()->{ZERO_ARRAY};
     $self->{inputBasicColorArray} = [map { [(undef) x (0)] } 1 .. (0)];
-    $self->{selectedBasicColor} = undef;
+    $self->{selectedBasicColor} = undef unless exists $self->{selectedBasicColor};
     $self->{updateMyFontProperties} = 'org::allbinary::game::paint::help::UpdateMyFontProperties'->new();
 }
 

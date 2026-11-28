@@ -26,14 +26,14 @@ sub _init_fields {
     my ($self) = @_;
     $self->{basicSetColorUtil} = 'org::allbinary::graphics::color::BasicColorSetUtil'->getInstance();
     $self->{drawStringUtil} = 'org::allbinary::graphics::draw::DrawVerticalStringUtil'->getInstance();
-    $self->{label} = undef;
-    $self->{foregroundBasicColor} = undef;
+    $self->{label} = undef unless exists $self->{label};
+    $self->{foregroundBasicColor} = undef unless exists $self->{foregroundBasicColor};
     $self->{myFontProcessor} = 'org::allbinary::graphics::font::UpdateMyFontProcessor'->new($self);
-    $self->{rectangle} = undef;
-    $self->{BORDER} = 0;
-    $self->{heightOffset} = 0;
-    $self->{offset} = 0;
-    $self->{animationInterface} = undef;
+    $self->{rectangle} = undef unless exists $self->{rectangle};
+    $self->{BORDER} = 0 unless exists $self->{BORDER};
+    $self->{heightOffset} = 0 unless exists $self->{heightOffset};
+    $self->{offset} = 0 unless exists $self->{offset};
+    $self->{animationInterface} = undef unless exists $self->{animationInterface};
 }
 
 

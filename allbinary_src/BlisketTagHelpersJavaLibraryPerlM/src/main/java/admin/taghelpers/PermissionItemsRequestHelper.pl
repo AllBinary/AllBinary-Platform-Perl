@@ -24,19 +24,19 @@ sub _init_fields {
     my ($self) = @_;
     $self->{logUtil} = 'org::allbinary::logic::communication::log::LogUtil'->getInstance();
     $self->{basicItemData} = 'org::allbinary::business::user::commerce::inventory::item::BasicItemData'->getInstance();
-    $self->{request} = undef;
-    $self->{id} = undef;
-    $self->{enabled} = undef;
-    $self->{number} = undef;
-    $self->{who} = undef;
-    $self->{what} = undef;
-    $self->{type} = undef;
-    $self->{remoteAddr} = undef;
-    $self->{startTime} = undef;
-    $self->{endTime} = undef;
-    $self->{price} = undef;
-    $self->{timeEntered} = undef;
-    $self->{lastModified} = undef;
+    $self->{request} = undef unless exists $self->{request};
+    $self->{id} = undef unless exists $self->{id};
+    $self->{enabled} = undef unless exists $self->{enabled};
+    $self->{number} = undef unless exists $self->{number};
+    $self->{who} = undef unless exists $self->{who};
+    $self->{what} = undef unless exists $self->{what};
+    $self->{type} = undef unless exists $self->{type};
+    $self->{remoteAddr} = undef unless exists $self->{remoteAddr};
+    $self->{startTime} = undef unless exists $self->{startTime};
+    $self->{endTime} = undef unless exists $self->{endTime};
+    $self->{price} = undef unless exists $self->{price};
+    $self->{timeEntered} = undef unless exists $self->{timeEntered};
+    $self->{lastModified} = undef unless exists $self->{lastModified};
 }
 
 

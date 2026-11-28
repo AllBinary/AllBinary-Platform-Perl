@@ -23,8 +23,8 @@ use parent -norequire,'views::business::context::modules::storefront::HttpStoreC
 sub _init_fields {
     my ($self) = @_;
     $self->{logUtil} = 'org::allbinary::logic::communication::log::LogUtil'->getInstance();
-    $self->{shippingMethods} = undef;
-    $self->{storeFrontInterface} = undef;
+    $self->{shippingMethods} = undef unless exists $self->{shippingMethods};
+    $self->{storeFrontInterface} = undef unless exists $self->{storeFrontInterface};
 }
 
 

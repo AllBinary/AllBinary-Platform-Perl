@@ -23,7 +23,7 @@ use parent -norequire,'java::lang::Object','org::allbinary::init::crypt::jcehelp
 sub _init_fields {
     my ($self) = @_;
     $self->{byteUtil} = 'org::allbinary::logic::java::byteutil::ByteUtil'->getInstance();
-    $self->{key} = undef;
+    $self->{key} = undef unless exists $self->{key};
 }
 
 

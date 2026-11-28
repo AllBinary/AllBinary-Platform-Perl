@@ -22,9 +22,9 @@ use parent -norequire,'java::lang::Object';
 
 sub _init_fields {
     my ($self) = @_;
-    $self->{width} = undef;
-    $self->{height} = undef;
-    $self->{type} = undef;
+    $self->{width} = undef unless exists $self->{width};
+    $self->{height} = undef unless exists $self->{height};
+    $self->{type} = undef unless exists $self->{type};
 }
 
 

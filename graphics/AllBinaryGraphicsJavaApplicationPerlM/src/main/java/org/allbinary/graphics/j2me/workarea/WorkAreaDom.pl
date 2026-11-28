@@ -25,8 +25,8 @@ our $FRAMES = "frames";
 
 sub _init_fields {
     my ($self) = @_;
-    $self->{name} = undef;
-    $self->{canvasNodeList} = undef;
+    $self->{name} = undef unless exists $self->{name};
+    $self->{canvasNodeList} = undef unless exists $self->{canvasNodeList};
 }
 
 

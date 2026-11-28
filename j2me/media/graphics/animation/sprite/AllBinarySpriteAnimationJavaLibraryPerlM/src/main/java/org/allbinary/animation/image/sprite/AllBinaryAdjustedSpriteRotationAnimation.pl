@@ -22,8 +22,8 @@ use parent -norequire,'org::allbinary::animation::image::sprite::AllBinarySprite
 
 sub _init_fields {
     my ($self) = @_;
-    $self->{dx} = undef;
-    $self->{dy} = undef;
+    $self->{dx} = undef unless exists $self->{dx};
+    $self->{dy} = undef unless exists $self->{dy};
 }
 
 
